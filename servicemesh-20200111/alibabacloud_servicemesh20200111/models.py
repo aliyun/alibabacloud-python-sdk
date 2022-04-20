@@ -1622,6 +1622,7 @@ class CreateServiceMeshRequest(TeaModel):
         auto_renew: bool = None,
         auto_renew_period: int = None,
         craggregation_enabled: bool = None,
+        canary_upgrade_enabled: bool = None,
         charge_type: str = None,
         cluster_spec: str = None,
         config_source_enabled: bool = None,
@@ -1689,6 +1690,7 @@ class CreateServiceMeshRequest(TeaModel):
         self.auto_renew = auto_renew
         self.auto_renew_period = auto_renew_period
         self.craggregation_enabled = craggregation_enabled
+        self.canary_upgrade_enabled = canary_upgrade_enabled
         self.charge_type = charge_type
         self.cluster_spec = cluster_spec
         self.config_source_enabled = config_source_enabled
@@ -1778,6 +1780,8 @@ class CreateServiceMeshRequest(TeaModel):
             result['AutoRenewPeriod'] = self.auto_renew_period
         if self.craggregation_enabled is not None:
             result['CRAggregationEnabled'] = self.craggregation_enabled
+        if self.canary_upgrade_enabled is not None:
+            result['CanaryUpgradeEnabled'] = self.canary_upgrade_enabled
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.cluster_spec is not None:
@@ -1914,6 +1918,8 @@ class CreateServiceMeshRequest(TeaModel):
             self.auto_renew_period = m.get('AutoRenewPeriod')
         if m.get('CRAggregationEnabled') is not None:
             self.craggregation_enabled = m.get('CRAggregationEnabled')
+        if m.get('CanaryUpgradeEnabled') is not None:
+            self.canary_upgrade_enabled = m.get('CanaryUpgradeEnabled')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('ClusterSpec') is not None:
@@ -6339,6 +6345,51 @@ class DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances(T
         return self
 
 
+class DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource(TeaModel):
+    def __init__(
+        self,
+        limit_cpu: str = None,
+        limit_memory: str = None,
+        request_cpu: str = None,
+        request_memory: str = None,
+    ):
+        self.limit_cpu = limit_cpu
+        self.limit_memory = limit_memory
+        self.request_cpu = request_cpu
+        self.request_memory = request_memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.limit_cpu is not None:
+            result['LimitCPU'] = self.limit_cpu
+        if self.limit_memory is not None:
+            result['LimitMemory'] = self.limit_memory
+        if self.request_cpu is not None:
+            result['RequestCPU'] = self.request_cpu
+        if self.request_memory is not None:
+            result['RequestMemory'] = self.request_memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LimitCPU') is not None:
+            self.limit_cpu = m.get('LimitCPU')
+        if m.get('LimitMemory') is not None:
+            self.limit_memory = m.get('LimitMemory')
+        if m.get('RequestCPU') is not None:
+            self.request_cpu = m.get('RequestCPU')
+        if m.get('RequestMemory') is not None:
+            self.request_memory = m.get('RequestMemory')
+        return self
+
+
 class DescribeManagedServicesResponseBodyManagedServiceInfo(TeaModel):
     def __init__(
         self,
@@ -6348,6 +6399,7 @@ class DescribeManagedServicesResponseBodyManagedServiceInfo(TeaModel):
         selector: Dict[str, str] = None,
         service_name: str = None,
         sidecar_inject_status: str = None,
+        sidecar_resource: DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource = None,
     ):
         self.create_time = create_time
         self.deployment_instances = deployment_instances
@@ -6355,12 +6407,15 @@ class DescribeManagedServicesResponseBodyManagedServiceInfo(TeaModel):
         self.selector = selector
         self.service_name = service_name
         self.sidecar_inject_status = sidecar_inject_status
+        self.sidecar_resource = sidecar_resource
 
     def validate(self):
         if self.deployment_instances:
             for k in self.deployment_instances:
                 if k:
                     k.validate()
+        if self.sidecar_resource:
+            self.sidecar_resource.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6382,6 +6437,8 @@ class DescribeManagedServicesResponseBodyManagedServiceInfo(TeaModel):
             result['ServiceName'] = self.service_name
         if self.sidecar_inject_status is not None:
             result['SidecarInjectStatus'] = self.sidecar_inject_status
+        if self.sidecar_resource is not None:
+            result['SidecarResource'] = self.sidecar_resource.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -6401,6 +6458,9 @@ class DescribeManagedServicesResponseBodyManagedServiceInfo(TeaModel):
             self.service_name = m.get('ServiceName')
         if m.get('SidecarInjectStatus') is not None:
             self.sidecar_inject_status = m.get('SidecarInjectStatus')
+        if m.get('SidecarResource') is not None:
+            temp_model = DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource()
+            self.sidecar_resource = temp_model.from_map(m['SidecarResource'])
         return self
 
 
@@ -6518,6 +6578,45 @@ class DescribeNamespaceScopeSidecarConfigRequest(TeaModel):
             self.namespace = m.get('Namespace')
         if m.get('ServiceMeshId') is not None:
             self.service_mesh_id = m.get('ServiceMeshId')
+        return self
+
+
+class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesProxyStatsMatcher(TeaModel):
+    def __init__(
+        self,
+        inclusion_prefixes: List[str] = None,
+        inclusion_regexps: List[str] = None,
+        inclusion_suffixes: List[str] = None,
+    ):
+        self.inclusion_prefixes = inclusion_prefixes
+        self.inclusion_regexps = inclusion_regexps
+        self.inclusion_suffixes = inclusion_suffixes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inclusion_prefixes is not None:
+            result['InclusionPrefixes'] = self.inclusion_prefixes
+        if self.inclusion_regexps is not None:
+            result['InclusionRegexps'] = self.inclusion_regexps
+        if self.inclusion_suffixes is not None:
+            result['InclusionSuffixes'] = self.inclusion_suffixes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InclusionPrefixes') is not None:
+            self.inclusion_prefixes = m.get('InclusionPrefixes')
+        if m.get('InclusionRegexps') is not None:
+            self.inclusion_regexps = m.get('InclusionRegexps')
+        if m.get('InclusionSuffixes') is not None:
+            self.inclusion_suffixes = m.get('InclusionSuffixes')
         return self
 
 
@@ -6656,28 +6755,36 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyRe
 class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
     def __init__(
         self,
+        concurrency: int = None,
         exclude_inbound_ports: str = None,
         exclude_outbound_ipranges: str = None,
         exclude_outbound_ports: str = None,
+        hold_application_until_proxy_starts: bool = None,
         include_inbound_ports: str = None,
         include_outbound_ipranges: str = None,
         include_outbound_ports: str = None,
         istio_dnsproxy_enabled: bool = None,
         lifecycle_str: str = None,
+        log_level: str = None,
+        proxy_stats_matcher: DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesProxyStatsMatcher = None,
         sidecar_proxy_init_resource_limit: DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyInitResourceLimit = None,
         sidecar_proxy_init_resource_request: DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyInitResourceRequest = None,
         sidecar_proxy_resource_limit: DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyResourceLimit = None,
         sidecar_proxy_resource_request: DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyResourceRequest = None,
         termination_drain_duration: str = None,
     ):
+        self.concurrency = concurrency
         self.exclude_inbound_ports = exclude_inbound_ports
         self.exclude_outbound_ipranges = exclude_outbound_ipranges
         self.exclude_outbound_ports = exclude_outbound_ports
+        self.hold_application_until_proxy_starts = hold_application_until_proxy_starts
         self.include_inbound_ports = include_inbound_ports
         self.include_outbound_ipranges = include_outbound_ipranges
         self.include_outbound_ports = include_outbound_ports
         self.istio_dnsproxy_enabled = istio_dnsproxy_enabled
         self.lifecycle_str = lifecycle_str
+        self.log_level = log_level
+        self.proxy_stats_matcher = proxy_stats_matcher
         self.sidecar_proxy_init_resource_limit = sidecar_proxy_init_resource_limit
         self.sidecar_proxy_init_resource_request = sidecar_proxy_init_resource_request
         self.sidecar_proxy_resource_limit = sidecar_proxy_resource_limit
@@ -6685,6 +6792,8 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
         self.termination_drain_duration = termination_drain_duration
 
     def validate(self):
+        if self.proxy_stats_matcher:
+            self.proxy_stats_matcher.validate()
         if self.sidecar_proxy_init_resource_limit:
             self.sidecar_proxy_init_resource_limit.validate()
         if self.sidecar_proxy_init_resource_request:
@@ -6700,12 +6809,16 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
             return _map
 
         result = dict()
+        if self.concurrency is not None:
+            result['Concurrency'] = self.concurrency
         if self.exclude_inbound_ports is not None:
             result['ExcludeInboundPorts'] = self.exclude_inbound_ports
         if self.exclude_outbound_ipranges is not None:
             result['ExcludeOutboundIPRanges'] = self.exclude_outbound_ipranges
         if self.exclude_outbound_ports is not None:
             result['ExcludeOutboundPorts'] = self.exclude_outbound_ports
+        if self.hold_application_until_proxy_starts is not None:
+            result['HoldApplicationUntilProxyStarts'] = self.hold_application_until_proxy_starts
         if self.include_inbound_ports is not None:
             result['IncludeInboundPorts'] = self.include_inbound_ports
         if self.include_outbound_ipranges is not None:
@@ -6716,6 +6829,10 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
             result['IstioDNSProxyEnabled'] = self.istio_dnsproxy_enabled
         if self.lifecycle_str is not None:
             result['LifecycleStr'] = self.lifecycle_str
+        if self.log_level is not None:
+            result['LogLevel'] = self.log_level
+        if self.proxy_stats_matcher is not None:
+            result['ProxyStatsMatcher'] = self.proxy_stats_matcher.to_map()
         if self.sidecar_proxy_init_resource_limit is not None:
             result['SidecarProxyInitResourceLimit'] = self.sidecar_proxy_init_resource_limit.to_map()
         if self.sidecar_proxy_init_resource_request is not None:
@@ -6730,12 +6847,16 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Concurrency') is not None:
+            self.concurrency = m.get('Concurrency')
         if m.get('ExcludeInboundPorts') is not None:
             self.exclude_inbound_ports = m.get('ExcludeInboundPorts')
         if m.get('ExcludeOutboundIPRanges') is not None:
             self.exclude_outbound_ipranges = m.get('ExcludeOutboundIPRanges')
         if m.get('ExcludeOutboundPorts') is not None:
             self.exclude_outbound_ports = m.get('ExcludeOutboundPorts')
+        if m.get('HoldApplicationUntilProxyStarts') is not None:
+            self.hold_application_until_proxy_starts = m.get('HoldApplicationUntilProxyStarts')
         if m.get('IncludeInboundPorts') is not None:
             self.include_inbound_ports = m.get('IncludeInboundPorts')
         if m.get('IncludeOutboundIPRanges') is not None:
@@ -6746,6 +6867,11 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
             self.istio_dnsproxy_enabled = m.get('IstioDNSProxyEnabled')
         if m.get('LifecycleStr') is not None:
             self.lifecycle_str = m.get('LifecycleStr')
+        if m.get('LogLevel') is not None:
+            self.log_level = m.get('LogLevel')
+        if m.get('ProxyStatsMatcher') is not None:
+            temp_model = DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesProxyStatsMatcher()
+            self.proxy_stats_matcher = temp_model.from_map(m['ProxyStatsMatcher'])
         if m.get('SidecarProxyInitResourceLimit') is not None:
             temp_model = DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyInitResourceLimit()
             self.sidecar_proxy_init_resource_limit = temp_model.from_map(m['SidecarProxyInitResourceLimit'])
@@ -7275,162 +7401,6 @@ class DescribeServiceAccessDetailResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeServiceAccessDetailResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeServiceManagedResourceRequest(TeaModel):
-    def __init__(
-        self,
-        guest_cluster: str = None,
-        namespace: str = None,
-        service_mesh_id: str = None,
-        service_name: str = None,
-    ):
-        self.guest_cluster = guest_cluster
-        self.namespace = namespace
-        self.service_mesh_id = service_mesh_id
-        self.service_name = service_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.guest_cluster is not None:
-            result['GuestCluster'] = self.guest_cluster
-        if self.namespace is not None:
-            result['Namespace'] = self.namespace
-        if self.service_mesh_id is not None:
-            result['ServiceMeshId'] = self.service_mesh_id
-        if self.service_name is not None:
-            result['ServiceName'] = self.service_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('GuestCluster') is not None:
-            self.guest_cluster = m.get('GuestCluster')
-        if m.get('Namespace') is not None:
-            self.namespace = m.get('Namespace')
-        if m.get('ServiceMeshId') is not None:
-            self.service_mesh_id = m.get('ServiceMeshId')
-        if m.get('ServiceName') is not None:
-            self.service_name = m.get('ServiceName')
-        return self
-
-
-class DescribeServiceManagedResourceResponseBodyManagedResource(TeaModel):
-    def __init__(
-        self,
-        destination_rules: List[str] = None,
-        local_rate_limiters: List[str] = None,
-        virtual_services: List[str] = None,
-    ):
-        self.destination_rules = destination_rules
-        self.local_rate_limiters = local_rate_limiters
-        self.virtual_services = virtual_services
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.destination_rules is not None:
-            result['DestinationRules'] = self.destination_rules
-        if self.local_rate_limiters is not None:
-            result['LocalRateLimiters'] = self.local_rate_limiters
-        if self.virtual_services is not None:
-            result['VirtualServices'] = self.virtual_services
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DestinationRules') is not None:
-            self.destination_rules = m.get('DestinationRules')
-        if m.get('LocalRateLimiters') is not None:
-            self.local_rate_limiters = m.get('LocalRateLimiters')
-        if m.get('VirtualServices') is not None:
-            self.virtual_services = m.get('VirtualServices')
-        return self
-
-
-class DescribeServiceManagedResourceResponseBody(TeaModel):
-    def __init__(
-        self,
-        managed_resource: DescribeServiceManagedResourceResponseBodyManagedResource = None,
-        request_id: str = None,
-    ):
-        self.managed_resource = managed_resource
-        self.request_id = request_id
-
-    def validate(self):
-        if self.managed_resource:
-            self.managed_resource.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.managed_resource is not None:
-            result['ManagedResource'] = self.managed_resource.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ManagedResource') is not None:
-            temp_model = DescribeServiceManagedResourceResponseBodyManagedResource()
-            self.managed_resource = temp_model.from_map(m['ManagedResource'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeServiceManagedResourceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeServiceManagedResourceResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeServiceManagedResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8395,17 +8365,17 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
 
         result = dict()
         if self.command is not None:
-            result['Command'] = self.command
+            result['command'] = self.command
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Command') is not None:
-            self.command = m.get('Command')
+        if m.get('command') is not None:
+            self.command = m.get('command')
         return self
 
 
-class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartHTTPGetHTTPHeaders(TeaModel):
+class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartHttpGetHttpHeaders(TeaModel):
     def __init__(
         self,
         name: str = None,
@@ -8424,36 +8394,36 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
 
         result = dict()
         if self.name is not None:
-            result['Name'] = self.name
+            result['name'] = self.name
         if self.value is not None:
-            result['Value'] = self.value
+            result['value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
-class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartHTTPGet(TeaModel):
+class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartHttpGet(TeaModel):
     def __init__(
         self,
-        httpheaders: List[DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartHTTPGetHTTPHeaders] = None,
         host: str = None,
+        http_headers: List[DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartHttpGetHttpHeaders] = None,
         port: str = None,
         scheme: str = None,
     ):
-        self.httpheaders = httpheaders
         self.host = host
+        self.http_headers = http_headers
         self.port = port
         self.scheme = scheme
 
     def validate(self):
-        if self.httpheaders:
-            for k in self.httpheaders:
+        if self.http_headers:
+            for k in self.http_headers:
                 if k:
                     k.validate()
 
@@ -8463,35 +8433,35 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
             return _map
 
         result = dict()
-        result['HTTPHeaders'] = []
-        if self.httpheaders is not None:
-            for k in self.httpheaders:
-                result['HTTPHeaders'].append(k.to_map() if k else None)
         if self.host is not None:
-            result['Host'] = self.host
+            result['host'] = self.host
+        result['httpHeaders'] = []
+        if self.http_headers is not None:
+            for k in self.http_headers:
+                result['httpHeaders'].append(k.to_map() if k else None)
         if self.port is not None:
-            result['Port'] = self.port
+            result['port'] = self.port
         if self.scheme is not None:
-            result['Scheme'] = self.scheme
+            result['scheme'] = self.scheme
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.httpheaders = []
-        if m.get('HTTPHeaders') is not None:
-            for k in m.get('HTTPHeaders'):
-                temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartHTTPGetHTTPHeaders()
-                self.httpheaders.append(temp_model.from_map(k))
-        if m.get('Host') is not None:
-            self.host = m.get('Host')
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
-        if m.get('Scheme') is not None:
-            self.scheme = m.get('Scheme')
+        if m.get('host') is not None:
+            self.host = m.get('host')
+        self.http_headers = []
+        if m.get('httpHeaders') is not None:
+            for k in m.get('httpHeaders'):
+                temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartHttpGetHttpHeaders()
+                self.http_headers.append(temp_model.from_map(k))
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('scheme') is not None:
+            self.scheme = m.get('scheme')
         return self
 
 
-class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartTCPSocket(TeaModel):
+class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartTcpSocket(TeaModel):
     def __init__(
         self,
         host: str = None,
@@ -8510,17 +8480,17 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
 
         result = dict()
         if self.host is not None:
-            result['Host'] = self.host
+            result['host'] = self.host
         if self.port is not None:
-            result['Port'] = self.port
+            result['port'] = self.port
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Host') is not None:
-            self.host = m.get('Host')
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
+        if m.get('host') is not None:
+            self.host = m.get('host')
+        if m.get('port') is not None:
+            self.port = m.get('port')
         return self
 
 
@@ -8528,20 +8498,20 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
     def __init__(
         self,
         exec: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartExec = None,
-        httpget: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartHTTPGet = None,
-        tcpsocket: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartTCPSocket = None,
+        http_get: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartHttpGet = None,
+        tcp_socket: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartTcpSocket = None,
     ):
         self.exec = exec
-        self.httpget = httpget
-        self.tcpsocket = tcpsocket
+        self.http_get = http_get
+        self.tcp_socket = tcp_socket
 
     def validate(self):
         if self.exec:
             self.exec.validate()
-        if self.httpget:
-            self.httpget.validate()
-        if self.tcpsocket:
-            self.tcpsocket.validate()
+        if self.http_get:
+            self.http_get.validate()
+        if self.tcp_socket:
+            self.tcp_socket.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8550,24 +8520,24 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
 
         result = dict()
         if self.exec is not None:
-            result['Exec'] = self.exec.to_map()
-        if self.httpget is not None:
-            result['HTTPGet'] = self.httpget.to_map()
-        if self.tcpsocket is not None:
-            result['TCPSocket'] = self.tcpsocket.to_map()
+            result['exec'] = self.exec.to_map()
+        if self.http_get is not None:
+            result['httpGet'] = self.http_get.to_map()
+        if self.tcp_socket is not None:
+            result['tcpSocket'] = self.tcp_socket.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Exec') is not None:
+        if m.get('exec') is not None:
             temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartExec()
-            self.exec = temp_model.from_map(m['Exec'])
-        if m.get('HTTPGet') is not None:
-            temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartHTTPGet()
-            self.httpget = temp_model.from_map(m['HTTPGet'])
-        if m.get('TCPSocket') is not None:
-            temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartTCPSocket()
-            self.tcpsocket = temp_model.from_map(m['TCPSocket'])
+            self.exec = temp_model.from_map(m['exec'])
+        if m.get('httpGet') is not None:
+            temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartHttpGet()
+            self.http_get = temp_model.from_map(m['httpGet'])
+        if m.get('tcpSocket') is not None:
+            temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartTcpSocket()
+            self.tcp_socket = temp_model.from_map(m['tcpSocket'])
         return self
 
 
@@ -8588,17 +8558,17 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
 
         result = dict()
         if self.command is not None:
-            result['Command'] = self.command
+            result['command'] = self.command
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Command') is not None:
-            self.command = m.get('Command')
+        if m.get('command') is not None:
+            self.command = m.get('command')
         return self
 
 
-class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopHTTPGetHTTPHeaders(TeaModel):
+class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopHttpGetHttpHeaders(TeaModel):
     def __init__(
         self,
         name: str = None,
@@ -8617,36 +8587,36 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
 
         result = dict()
         if self.name is not None:
-            result['Name'] = self.name
+            result['name'] = self.name
         if self.value is not None:
-            result['Value'] = self.value
+            result['value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
-class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopHTTPGet(TeaModel):
+class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopHttpGet(TeaModel):
     def __init__(
         self,
-        httpheaders: List[DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopHTTPGetHTTPHeaders] = None,
         host: str = None,
+        http_headers: List[DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopHttpGetHttpHeaders] = None,
         port: str = None,
         scheme: str = None,
     ):
-        self.httpheaders = httpheaders
         self.host = host
+        self.http_headers = http_headers
         self.port = port
         self.scheme = scheme
 
     def validate(self):
-        if self.httpheaders:
-            for k in self.httpheaders:
+        if self.http_headers:
+            for k in self.http_headers:
                 if k:
                     k.validate()
 
@@ -8656,35 +8626,35 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
             return _map
 
         result = dict()
-        result['HTTPHeaders'] = []
-        if self.httpheaders is not None:
-            for k in self.httpheaders:
-                result['HTTPHeaders'].append(k.to_map() if k else None)
         if self.host is not None:
-            result['Host'] = self.host
+            result['host'] = self.host
+        result['httpHeaders'] = []
+        if self.http_headers is not None:
+            for k in self.http_headers:
+                result['httpHeaders'].append(k.to_map() if k else None)
         if self.port is not None:
-            result['Port'] = self.port
+            result['port'] = self.port
         if self.scheme is not None:
-            result['Scheme'] = self.scheme
+            result['scheme'] = self.scheme
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.httpheaders = []
-        if m.get('HTTPHeaders') is not None:
-            for k in m.get('HTTPHeaders'):
-                temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopHTTPGetHTTPHeaders()
-                self.httpheaders.append(temp_model.from_map(k))
-        if m.get('Host') is not None:
-            self.host = m.get('Host')
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
-        if m.get('Scheme') is not None:
-            self.scheme = m.get('Scheme')
+        if m.get('host') is not None:
+            self.host = m.get('host')
+        self.http_headers = []
+        if m.get('httpHeaders') is not None:
+            for k in m.get('httpHeaders'):
+                temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopHttpGetHttpHeaders()
+                self.http_headers.append(temp_model.from_map(k))
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('scheme') is not None:
+            self.scheme = m.get('scheme')
         return self
 
 
-class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopTCPSocket(TeaModel):
+class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopTcpSocket(TeaModel):
     def __init__(
         self,
         host: str = None,
@@ -8703,17 +8673,17 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
 
         result = dict()
         if self.host is not None:
-            result['Host'] = self.host
+            result['host'] = self.host
         if self.port is not None:
-            result['Port'] = self.port
+            result['port'] = self.port
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Host') is not None:
-            self.host = m.get('Host')
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
+        if m.get('host') is not None:
+            self.host = m.get('host')
+        if m.get('port') is not None:
+            self.port = m.get('port')
         return self
 
 
@@ -8721,20 +8691,20 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
     def __init__(
         self,
         exec: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopExec = None,
-        httpget: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopHTTPGet = None,
-        tcpsocket: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopTCPSocket = None,
+        http_get: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopHttpGet = None,
+        tcp_socket: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopTcpSocket = None,
     ):
         self.exec = exec
-        self.httpget = httpget
-        self.tcpsocket = tcpsocket
+        self.http_get = http_get
+        self.tcp_socket = tcp_socket
 
     def validate(self):
         if self.exec:
             self.exec.validate()
-        if self.httpget:
-            self.httpget.validate()
-        if self.tcpsocket:
-            self.tcpsocket.validate()
+        if self.http_get:
+            self.http_get.validate()
+        if self.tcp_socket:
+            self.tcp_socket.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8743,24 +8713,24 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
 
         result = dict()
         if self.exec is not None:
-            result['Exec'] = self.exec.to_map()
-        if self.httpget is not None:
-            result['HTTPGet'] = self.httpget.to_map()
-        if self.tcpsocket is not None:
-            result['TCPSocket'] = self.tcpsocket.to_map()
+            result['exec'] = self.exec.to_map()
+        if self.http_get is not None:
+            result['httpGet'] = self.http_get.to_map()
+        if self.tcp_socket is not None:
+            result['tcpSocket'] = self.tcp_socket.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Exec') is not None:
+        if m.get('exec') is not None:
             temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopExec()
-            self.exec = temp_model.from_map(m['Exec'])
-        if m.get('HTTPGet') is not None:
-            temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopHTTPGet()
-            self.httpget = temp_model.from_map(m['HTTPGet'])
-        if m.get('TCPSocket') is not None:
-            temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopTCPSocket()
-            self.tcpsocket = temp_model.from_map(m['TCPSocket'])
+            self.exec = temp_model.from_map(m['exec'])
+        if m.get('httpGet') is not None:
+            temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopHttpGet()
+            self.http_get = temp_model.from_map(m['httpGet'])
+        if m.get('tcpSocket') is not None:
+            temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopTcpSocket()
+            self.tcp_socket = temp_model.from_map(m['tcpSocket'])
         return self
 
 
@@ -8786,19 +8756,19 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
 
         result = dict()
         if self.post_start is not None:
-            result['PostStart'] = self.post_start.to_map()
+            result['postStart'] = self.post_start.to_map()
         if self.pre_stop is not None:
-            result['PreStop'] = self.pre_stop.to_map()
+            result['preStop'] = self.pre_stop.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PostStart') is not None:
+        if m.get('postStart') is not None:
             temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStart()
-            self.post_start = temp_model.from_map(m['PostStart'])
-        if m.get('PreStop') is not None:
+            self.post_start = temp_model.from_map(m['postStart'])
+        if m.get('preStop') is not None:
             temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStop()
-            self.pre_stop = temp_model.from_map(m['PreStop'])
+            self.pre_stop = temp_model.from_map(m['preStop'])
         return self
 
 
@@ -9961,12 +9931,16 @@ class DescribeServiceMeshDetailResponseBodyServiceMesh(TeaModel):
         cluster_spec: str = None,
         clusters: List[str] = None,
         endpoints: DescribeServiceMeshDetailResponseBodyServiceMeshEndpoints = None,
+        owner_id: str = None,
+        owner_type: str = None,
         service_mesh_info: DescribeServiceMeshDetailResponseBodyServiceMeshServiceMeshInfo = None,
         spec: DescribeServiceMeshDetailResponseBodyServiceMeshSpec = None,
     ):
         self.cluster_spec = cluster_spec
         self.clusters = clusters
         self.endpoints = endpoints
+        self.owner_id = owner_id
+        self.owner_type = owner_type
         self.service_mesh_info = service_mesh_info
         self.spec = spec
 
@@ -9990,6 +9964,10 @@ class DescribeServiceMeshDetailResponseBodyServiceMesh(TeaModel):
             result['Clusters'] = self.clusters
         if self.endpoints is not None:
             result['Endpoints'] = self.endpoints.to_map()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.owner_type is not None:
+            result['OwnerType'] = self.owner_type
         if self.service_mesh_info is not None:
             result['ServiceMeshInfo'] = self.service_mesh_info.to_map()
         if self.spec is not None:
@@ -10005,6 +9983,10 @@ class DescribeServiceMeshDetailResponseBodyServiceMesh(TeaModel):
         if m.get('Endpoints') is not None:
             temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshEndpoints()
             self.endpoints = temp_model.from_map(m['Endpoints'])
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('OwnerType') is not None:
+            self.owner_type = m.get('OwnerType')
         if m.get('ServiceMeshInfo') is not None:
             temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshServiceMeshInfo()
             self.service_mesh_info = temp_model.from_map(m['ServiceMeshInfo'])
@@ -11491,12 +11473,16 @@ class DescribeServiceMeshesResponseBodyServiceMeshes(TeaModel):
         cluster_spec: str = None,
         clusters: List[str] = None,
         endpoints: DescribeServiceMeshesResponseBodyServiceMeshesEndpoints = None,
+        owner_id: str = None,
+        owner_type: str = None,
         service_mesh_info: DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo = None,
         spec: DescribeServiceMeshesResponseBodyServiceMeshesSpec = None,
     ):
         self.cluster_spec = cluster_spec
         self.clusters = clusters
         self.endpoints = endpoints
+        self.owner_id = owner_id
+        self.owner_type = owner_type
         self.service_mesh_info = service_mesh_info
         self.spec = spec
 
@@ -11520,6 +11506,10 @@ class DescribeServiceMeshesResponseBodyServiceMeshes(TeaModel):
             result['Clusters'] = self.clusters
         if self.endpoints is not None:
             result['Endpoints'] = self.endpoints.to_map()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.owner_type is not None:
+            result['OwnerType'] = self.owner_type
         if self.service_mesh_info is not None:
             result['ServiceMeshInfo'] = self.service_mesh_info.to_map()
         if self.spec is not None:
@@ -11535,6 +11525,10 @@ class DescribeServiceMeshesResponseBodyServiceMeshes(TeaModel):
         if m.get('Endpoints') is not None:
             temp_model = DescribeServiceMeshesResponseBodyServiceMeshesEndpoints()
             self.endpoints = temp_model.from_map(m['Endpoints'])
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('OwnerType') is not None:
+            self.owner_type = m.get('OwnerType')
         if m.get('ServiceMeshInfo') is not None:
             temp_model = DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo()
             self.service_mesh_info = temp_model.from_map(m['ServiceMeshInfo'])
@@ -12264,12 +12258,16 @@ class DescribeVersionManagementResponseBodyVersionDetailsPodInstances(TeaModel):
         node_ip: str = None,
         pod_ip: str = None,
         pod_name: str = None,
+        restart_time: int = None,
+        status: str = None,
     ):
         self.create_time = create_time
         self.namespace = namespace
         self.node_ip = node_ip
         self.pod_ip = pod_ip
         self.pod_name = pod_name
+        self.restart_time = restart_time
+        self.status = status
 
     def validate(self):
         pass
@@ -12290,6 +12288,10 @@ class DescribeVersionManagementResponseBodyVersionDetailsPodInstances(TeaModel):
             result['PodIP'] = self.pod_ip
         if self.pod_name is not None:
             result['PodName'] = self.pod_name
+        if self.restart_time is not None:
+            result['RestartTime'] = self.restart_time
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -12304,6 +12306,55 @@ class DescribeVersionManagementResponseBodyVersionDetailsPodInstances(TeaModel):
             self.pod_ip = m.get('PodIP')
         if m.get('PodName') is not None:
             self.pod_name = m.get('PodName')
+        if m.get('RestartTime') is not None:
+            self.restart_time = m.get('RestartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeVersionManagementResponseBodyVersionDetailsResource(TeaModel):
+    def __init__(
+        self,
+        cpulimit: str = None,
+        cpurequest: str = None,
+        memory_limit: str = None,
+        memory_request: str = None,
+    ):
+        self.cpulimit = cpulimit
+        self.cpurequest = cpurequest
+        self.memory_limit = memory_limit
+        self.memory_request = memory_request
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpulimit is not None:
+            result['CPULimit'] = self.cpulimit
+        if self.cpurequest is not None:
+            result['CPURequest'] = self.cpurequest
+        if self.memory_limit is not None:
+            result['MemoryLimit'] = self.memory_limit
+        if self.memory_request is not None:
+            result['MemoryRequest'] = self.memory_request
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPULimit') is not None:
+            self.cpulimit = m.get('CPULimit')
+        if m.get('CPURequest') is not None:
+            self.cpurequest = m.get('CPURequest')
+        if m.get('MemoryLimit') is not None:
+            self.memory_limit = m.get('MemoryLimit')
+        if m.get('MemoryRequest') is not None:
+            self.memory_request = m.get('MemoryRequest')
         return self
 
 
@@ -12317,6 +12368,7 @@ class DescribeVersionManagementResponseBodyVersionDetails(TeaModel):
         pod_instances: List[DescribeVersionManagementResponseBodyVersionDetailsPodInstances] = None,
         ready_replicas: int = None,
         replicas: int = None,
+        resource: DescribeVersionManagementResponseBodyVersionDetailsResource = None,
         version: str = None,
     ):
         self.create_time = create_time
@@ -12326,6 +12378,7 @@ class DescribeVersionManagementResponseBodyVersionDetails(TeaModel):
         self.pod_instances = pod_instances
         self.ready_replicas = ready_replicas
         self.replicas = replicas
+        self.resource = resource
         self.version = version
 
     def validate(self):
@@ -12333,6 +12386,8 @@ class DescribeVersionManagementResponseBodyVersionDetails(TeaModel):
             for k in self.pod_instances:
                 if k:
                     k.validate()
+        if self.resource:
+            self.resource.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12356,6 +12411,8 @@ class DescribeVersionManagementResponseBodyVersionDetails(TeaModel):
             result['ReadyReplicas'] = self.ready_replicas
         if self.replicas is not None:
             result['Replicas'] = self.replicas
+        if self.resource is not None:
+            result['Resource'] = self.resource.to_map()
         if self.version is not None:
             result['Version'] = self.version
         return result
@@ -12379,6 +12436,9 @@ class DescribeVersionManagementResponseBodyVersionDetails(TeaModel):
             self.ready_replicas = m.get('ReadyReplicas')
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
+        if m.get('Resource') is not None:
+            temp_model = DescribeVersionManagementResponseBodyVersionDetailsResource()
+            self.resource = temp_model.from_map(m['Resource'])
         if m.get('Version') is not None:
             self.version = m.get('Version')
         return self
@@ -14404,139 +14464,6 @@ class UpdateASMGatewayImportedServicesResponse(TeaModel):
         return self
 
 
-class UpdateInjectedProxyConfigRequest(TeaModel):
-    def __init__(
-        self,
-        deployment_names: str = None,
-        guest_cluster: str = None,
-        limit_cpus: str = None,
-        limit_memories: str = None,
-        namespace: str = None,
-        request_cpus: str = None,
-        request_memories: str = None,
-        service_mesh_id: str = None,
-    ):
-        self.deployment_names = deployment_names
-        self.guest_cluster = guest_cluster
-        self.limit_cpus = limit_cpus
-        self.limit_memories = limit_memories
-        self.namespace = namespace
-        self.request_cpus = request_cpus
-        self.request_memories = request_memories
-        self.service_mesh_id = service_mesh_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.deployment_names is not None:
-            result['DeploymentNames'] = self.deployment_names
-        if self.guest_cluster is not None:
-            result['GuestCluster'] = self.guest_cluster
-        if self.limit_cpus is not None:
-            result['LimitCPUs'] = self.limit_cpus
-        if self.limit_memories is not None:
-            result['LimitMemories'] = self.limit_memories
-        if self.namespace is not None:
-            result['Namespace'] = self.namespace
-        if self.request_cpus is not None:
-            result['RequestCPUs'] = self.request_cpus
-        if self.request_memories is not None:
-            result['RequestMemories'] = self.request_memories
-        if self.service_mesh_id is not None:
-            result['ServiceMeshId'] = self.service_mesh_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DeploymentNames') is not None:
-            self.deployment_names = m.get('DeploymentNames')
-        if m.get('GuestCluster') is not None:
-            self.guest_cluster = m.get('GuestCluster')
-        if m.get('LimitCPUs') is not None:
-            self.limit_cpus = m.get('LimitCPUs')
-        if m.get('LimitMemories') is not None:
-            self.limit_memories = m.get('LimitMemories')
-        if m.get('Namespace') is not None:
-            self.namespace = m.get('Namespace')
-        if m.get('RequestCPUs') is not None:
-            self.request_cpus = m.get('RequestCPUs')
-        if m.get('RequestMemories') is not None:
-            self.request_memories = m.get('RequestMemories')
-        if m.get('ServiceMeshId') is not None:
-            self.service_mesh_id = m.get('ServiceMeshId')
-        return self
-
-
-class UpdateInjectedProxyConfigResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class UpdateInjectedProxyConfigResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: UpdateInjectedProxyConfigResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = UpdateInjectedProxyConfigResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate(TeaModel):
     def __init__(
         self,
@@ -16187,19 +16114,25 @@ class UpdateMeshFeatureResponse(TeaModel):
 class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
     def __init__(
         self,
+        concurrency: int = None,
         exclude_ipranges: str = None,
         exclude_inbound_ports: str = None,
         exclude_outbound_ports: str = None,
+        hold_application_until_proxy_starts: bool = None,
         include_ipranges: str = None,
         include_inbound_ports: str = None,
         include_outbound_ports: str = None,
         istio_dnsproxy_enabled: bool = None,
         lifecycle: str = None,
+        log_level: str = None,
         namespace: str = None,
+        post_start: str = None,
+        pre_stop: str = None,
         proxy_init_cpuresource_limit: str = None,
         proxy_init_cpuresource_request: str = None,
         proxy_init_memory_resource_limit: str = None,
         proxy_init_memory_resource_request: str = None,
+        proxy_stats_matcher: str = None,
         service_mesh_id: str = None,
         sidecar_proxy_cpuresource_limit: str = None,
         sidecar_proxy_cpuresource_request: str = None,
@@ -16207,19 +16140,25 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
         sidecar_proxy_memory_resource_request: str = None,
         termination_drain_duration: str = None,
     ):
+        self.concurrency = concurrency
         self.exclude_ipranges = exclude_ipranges
         self.exclude_inbound_ports = exclude_inbound_ports
         self.exclude_outbound_ports = exclude_outbound_ports
+        self.hold_application_until_proxy_starts = hold_application_until_proxy_starts
         self.include_ipranges = include_ipranges
         self.include_inbound_ports = include_inbound_ports
         self.include_outbound_ports = include_outbound_ports
         self.istio_dnsproxy_enabled = istio_dnsproxy_enabled
         self.lifecycle = lifecycle
+        self.log_level = log_level
         self.namespace = namespace
+        self.post_start = post_start
+        self.pre_stop = pre_stop
         self.proxy_init_cpuresource_limit = proxy_init_cpuresource_limit
         self.proxy_init_cpuresource_request = proxy_init_cpuresource_request
         self.proxy_init_memory_resource_limit = proxy_init_memory_resource_limit
         self.proxy_init_memory_resource_request = proxy_init_memory_resource_request
+        self.proxy_stats_matcher = proxy_stats_matcher
         self.service_mesh_id = service_mesh_id
         self.sidecar_proxy_cpuresource_limit = sidecar_proxy_cpuresource_limit
         self.sidecar_proxy_cpuresource_request = sidecar_proxy_cpuresource_request
@@ -16236,12 +16175,16 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.concurrency is not None:
+            result['Concurrency'] = self.concurrency
         if self.exclude_ipranges is not None:
             result['ExcludeIPRanges'] = self.exclude_ipranges
         if self.exclude_inbound_ports is not None:
             result['ExcludeInboundPorts'] = self.exclude_inbound_ports
         if self.exclude_outbound_ports is not None:
             result['ExcludeOutboundPorts'] = self.exclude_outbound_ports
+        if self.hold_application_until_proxy_starts is not None:
+            result['HoldApplicationUntilProxyStarts'] = self.hold_application_until_proxy_starts
         if self.include_ipranges is not None:
             result['IncludeIPRanges'] = self.include_ipranges
         if self.include_inbound_ports is not None:
@@ -16252,8 +16195,14 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
             result['IstioDNSProxyEnabled'] = self.istio_dnsproxy_enabled
         if self.lifecycle is not None:
             result['Lifecycle'] = self.lifecycle
+        if self.log_level is not None:
+            result['LogLevel'] = self.log_level
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.post_start is not None:
+            result['PostStart'] = self.post_start
+        if self.pre_stop is not None:
+            result['PreStop'] = self.pre_stop
         if self.proxy_init_cpuresource_limit is not None:
             result['ProxyInitCPUResourceLimit'] = self.proxy_init_cpuresource_limit
         if self.proxy_init_cpuresource_request is not None:
@@ -16262,6 +16211,8 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
             result['ProxyInitMemoryResourceLimit'] = self.proxy_init_memory_resource_limit
         if self.proxy_init_memory_resource_request is not None:
             result['ProxyInitMemoryResourceRequest'] = self.proxy_init_memory_resource_request
+        if self.proxy_stats_matcher is not None:
+            result['ProxyStatsMatcher'] = self.proxy_stats_matcher
         if self.service_mesh_id is not None:
             result['ServiceMeshId'] = self.service_mesh_id
         if self.sidecar_proxy_cpuresource_limit is not None:
@@ -16278,12 +16229,16 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Concurrency') is not None:
+            self.concurrency = m.get('Concurrency')
         if m.get('ExcludeIPRanges') is not None:
             self.exclude_ipranges = m.get('ExcludeIPRanges')
         if m.get('ExcludeInboundPorts') is not None:
             self.exclude_inbound_ports = m.get('ExcludeInboundPorts')
         if m.get('ExcludeOutboundPorts') is not None:
             self.exclude_outbound_ports = m.get('ExcludeOutboundPorts')
+        if m.get('HoldApplicationUntilProxyStarts') is not None:
+            self.hold_application_until_proxy_starts = m.get('HoldApplicationUntilProxyStarts')
         if m.get('IncludeIPRanges') is not None:
             self.include_ipranges = m.get('IncludeIPRanges')
         if m.get('IncludeInboundPorts') is not None:
@@ -16294,8 +16249,14 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
             self.istio_dnsproxy_enabled = m.get('IstioDNSProxyEnabled')
         if m.get('Lifecycle') is not None:
             self.lifecycle = m.get('Lifecycle')
+        if m.get('LogLevel') is not None:
+            self.log_level = m.get('LogLevel')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('PostStart') is not None:
+            self.post_start = m.get('PostStart')
+        if m.get('PreStop') is not None:
+            self.pre_stop = m.get('PreStop')
         if m.get('ProxyInitCPUResourceLimit') is not None:
             self.proxy_init_cpuresource_limit = m.get('ProxyInitCPUResourceLimit')
         if m.get('ProxyInitCPUResourceRequest') is not None:
@@ -16304,6 +16265,8 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
             self.proxy_init_memory_resource_limit = m.get('ProxyInitMemoryResourceLimit')
         if m.get('ProxyInitMemoryResourceRequest') is not None:
             self.proxy_init_memory_resource_request = m.get('ProxyInitMemoryResourceRequest')
+        if m.get('ProxyStatsMatcher') is not None:
+            self.proxy_stats_matcher = m.get('ProxyStatsMatcher')
         if m.get('ServiceMeshId') is not None:
             self.service_mesh_id = m.get('ServiceMeshId')
         if m.get('SidecarProxyCPUResourceLimit') is not None:
@@ -16379,254 +16342,6 @@ class UpdateNamespaceScopeSidecarConfigResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpdateNamespaceScopeSidecarConfigResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UpdateServiceSidecarInjectRequest(TeaModel):
-    def __init__(
-        self,
-        guest_cluster: str = None,
-        inject: bool = None,
-        limit_cpu: str = None,
-        limit_memory: str = None,
-        namespace: str = None,
-        request_cpu: str = None,
-        request_memory: str = None,
-        service_mesh_id: str = None,
-        service_name: str = None,
-    ):
-        self.guest_cluster = guest_cluster
-        self.inject = inject
-        self.limit_cpu = limit_cpu
-        self.limit_memory = limit_memory
-        self.namespace = namespace
-        self.request_cpu = request_cpu
-        self.request_memory = request_memory
-        self.service_mesh_id = service_mesh_id
-        self.service_name = service_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.guest_cluster is not None:
-            result['GuestCluster'] = self.guest_cluster
-        if self.inject is not None:
-            result['Inject'] = self.inject
-        if self.limit_cpu is not None:
-            result['LimitCPU'] = self.limit_cpu
-        if self.limit_memory is not None:
-            result['LimitMemory'] = self.limit_memory
-        if self.namespace is not None:
-            result['Namespace'] = self.namespace
-        if self.request_cpu is not None:
-            result['RequestCPU'] = self.request_cpu
-        if self.request_memory is not None:
-            result['RequestMemory'] = self.request_memory
-        if self.service_mesh_id is not None:
-            result['ServiceMeshId'] = self.service_mesh_id
-        if self.service_name is not None:
-            result['ServiceName'] = self.service_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('GuestCluster') is not None:
-            self.guest_cluster = m.get('GuestCluster')
-        if m.get('Inject') is not None:
-            self.inject = m.get('Inject')
-        if m.get('LimitCPU') is not None:
-            self.limit_cpu = m.get('LimitCPU')
-        if m.get('LimitMemory') is not None:
-            self.limit_memory = m.get('LimitMemory')
-        if m.get('Namespace') is not None:
-            self.namespace = m.get('Namespace')
-        if m.get('RequestCPU') is not None:
-            self.request_cpu = m.get('RequestCPU')
-        if m.get('RequestMemory') is not None:
-            self.request_memory = m.get('RequestMemory')
-        if m.get('ServiceMeshId') is not None:
-            self.service_mesh_id = m.get('ServiceMeshId')
-        if m.get('ServiceName') is not None:
-            self.service_name = m.get('ServiceName')
-        return self
-
-
-class UpdateServiceSidecarInjectResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class UpdateServiceSidecarInjectResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: UpdateServiceSidecarInjectResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = UpdateServiceSidecarInjectResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UpdateUnlabeledServiceManagedResourceRequest(TeaModel):
-    def __init__(
-        self,
-        guest_cluster: str = None,
-        namespace: str = None,
-        service_mesh_id: str = None,
-        service_name: str = None,
-    ):
-        self.guest_cluster = guest_cluster
-        self.namespace = namespace
-        self.service_mesh_id = service_mesh_id
-        self.service_name = service_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.guest_cluster is not None:
-            result['GuestCluster'] = self.guest_cluster
-        if self.namespace is not None:
-            result['Namespace'] = self.namespace
-        if self.service_mesh_id is not None:
-            result['ServiceMeshId'] = self.service_mesh_id
-        if self.service_name is not None:
-            result['ServiceName'] = self.service_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('GuestCluster') is not None:
-            self.guest_cluster = m.get('GuestCluster')
-        if m.get('Namespace') is not None:
-            self.namespace = m.get('Namespace')
-        if m.get('ServiceMeshId') is not None:
-            self.service_mesh_id = m.get('ServiceMeshId')
-        if m.get('ServiceName') is not None:
-            self.service_name = m.get('ServiceName')
-        return self
-
-
-class UpdateUnlabeledServiceManagedResourceResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class UpdateUnlabeledServiceManagedResourceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: UpdateUnlabeledServiceManagedResourceResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = UpdateUnlabeledServiceManagedResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16828,39 +16543,6 @@ class UpgradeMeshVersionResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = UpgradeMeshVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ClusterStatusLogtailStatusRecordValueValue(TeaModel):
-    def __init__(
-        self,
-        title: str = None,
-        url: str = None,
-    ):
-        self.title = title
-        self.url = url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.title is not None:
-            result['Title'] = self.title
-        if self.url is not None:
-            result['Url'] = self.url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
-        if m.get('Url') is not None:
-            self.url = m.get('Url')
         return self
 
 

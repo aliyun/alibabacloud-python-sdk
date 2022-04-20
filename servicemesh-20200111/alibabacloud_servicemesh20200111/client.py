@@ -590,6 +590,8 @@ class Client(OpenApiClient):
             body['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.craggregation_enabled):
             body['CRAggregationEnabled'] = request.craggregation_enabled
+        if not UtilClient.is_unset(request.canary_upgrade_enabled):
+            body['CanaryUpgradeEnabled'] = request.canary_upgrade_enabled
         if not UtilClient.is_unset(request.charge_type):
             body['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.cluster_spec):
@@ -748,6 +750,8 @@ class Client(OpenApiClient):
             body['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.craggregation_enabled):
             body['CRAggregationEnabled'] = request.craggregation_enabled
+        if not UtilClient.is_unset(request.canary_upgrade_enabled):
+            body['CanaryUpgradeEnabled'] = request.canary_upgrade_enabled
         if not UtilClient.is_unset(request.charge_type):
             body['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.cluster_spec):
@@ -2932,88 +2936,6 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.DescribeServiceAccessDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_service_access_detail_with_options_async(request, runtime)
-
-    def describe_service_managed_resource_with_options(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceManagedResourceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeServiceManagedResourceResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.guest_cluster):
-            body['GuestCluster'] = request.guest_cluster
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        if not UtilClient.is_unset(request.service_name):
-            body['ServiceName'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeServiceManagedResource',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeServiceManagedResourceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_service_managed_resource_with_options_async(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceManagedResourceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeServiceManagedResourceResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.guest_cluster):
-            body['GuestCluster'] = request.guest_cluster
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        if not UtilClient.is_unset(request.service_name):
-            body['ServiceName'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeServiceManagedResource',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeServiceManagedResourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_service_managed_resource(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceManagedResourceRequest,
-    ) -> servicemesh_20200111_models.DescribeServiceManagedResourceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_service_managed_resource_with_options(request, runtime)
-
-    async def describe_service_managed_resource_async(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceManagedResourceRequest,
-    ) -> servicemesh_20200111_models.DescribeServiceManagedResourceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_service_managed_resource_with_options_async(request, runtime)
 
     def describe_service_mesh_additional_status_with_options(
         self,
@@ -5261,104 +5183,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_asmgateway_imported_services_with_options_async(request, runtime)
 
-    def update_injected_proxy_config_with_options(
-        self,
-        request: servicemesh_20200111_models.UpdateInjectedProxyConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.UpdateInjectedProxyConfigResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.deployment_names):
-            body['DeploymentNames'] = request.deployment_names
-        if not UtilClient.is_unset(request.guest_cluster):
-            body['GuestCluster'] = request.guest_cluster
-        if not UtilClient.is_unset(request.limit_cpus):
-            body['LimitCPUs'] = request.limit_cpus
-        if not UtilClient.is_unset(request.limit_memories):
-            body['LimitMemories'] = request.limit_memories
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.request_cpus):
-            body['RequestCPUs'] = request.request_cpus
-        if not UtilClient.is_unset(request.request_memories):
-            body['RequestMemories'] = request.request_memories
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateInjectedProxyConfig',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.UpdateInjectedProxyConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_injected_proxy_config_with_options_async(
-        self,
-        request: servicemesh_20200111_models.UpdateInjectedProxyConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.UpdateInjectedProxyConfigResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.deployment_names):
-            body['DeploymentNames'] = request.deployment_names
-        if not UtilClient.is_unset(request.guest_cluster):
-            body['GuestCluster'] = request.guest_cluster
-        if not UtilClient.is_unset(request.limit_cpus):
-            body['LimitCPUs'] = request.limit_cpus
-        if not UtilClient.is_unset(request.limit_memories):
-            body['LimitMemories'] = request.limit_memories
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.request_cpus):
-            body['RequestCPUs'] = request.request_cpus
-        if not UtilClient.is_unset(request.request_memories):
-            body['RequestMemories'] = request.request_memories
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateInjectedProxyConfig',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.UpdateInjectedProxyConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_injected_proxy_config(
-        self,
-        request: servicemesh_20200111_models.UpdateInjectedProxyConfigRequest,
-    ) -> servicemesh_20200111_models.UpdateInjectedProxyConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_injected_proxy_config_with_options(request, runtime)
-
-    async def update_injected_proxy_config_async(
-        self,
-        request: servicemesh_20200111_models.UpdateInjectedProxyConfigRequest,
-    ) -> servicemesh_20200111_models.UpdateInjectedProxyConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_injected_proxy_config_with_options_async(request, runtime)
-
     def update_istio_gateway_routes_with_options(
         self,
         tmp_req: servicemesh_20200111_models.UpdateIstioGatewayRoutesRequest,
@@ -5932,12 +5756,16 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.concurrency):
+            body['Concurrency'] = request.concurrency
         if not UtilClient.is_unset(request.exclude_ipranges):
             body['ExcludeIPRanges'] = request.exclude_ipranges
         if not UtilClient.is_unset(request.exclude_inbound_ports):
             body['ExcludeInboundPorts'] = request.exclude_inbound_ports
         if not UtilClient.is_unset(request.exclude_outbound_ports):
             body['ExcludeOutboundPorts'] = request.exclude_outbound_ports
+        if not UtilClient.is_unset(request.hold_application_until_proxy_starts):
+            body['HoldApplicationUntilProxyStarts'] = request.hold_application_until_proxy_starts
         if not UtilClient.is_unset(request.include_ipranges):
             body['IncludeIPRanges'] = request.include_ipranges
         if not UtilClient.is_unset(request.include_inbound_ports):
@@ -5948,8 +5776,14 @@ class Client(OpenApiClient):
             body['IstioDNSProxyEnabled'] = request.istio_dnsproxy_enabled
         if not UtilClient.is_unset(request.lifecycle):
             body['Lifecycle'] = request.lifecycle
+        if not UtilClient.is_unset(request.log_level):
+            body['LogLevel'] = request.log_level
         if not UtilClient.is_unset(request.namespace):
             body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.post_start):
+            body['PostStart'] = request.post_start
+        if not UtilClient.is_unset(request.pre_stop):
+            body['PreStop'] = request.pre_stop
         if not UtilClient.is_unset(request.proxy_init_cpuresource_limit):
             body['ProxyInitCPUResourceLimit'] = request.proxy_init_cpuresource_limit
         if not UtilClient.is_unset(request.proxy_init_cpuresource_request):
@@ -5958,6 +5792,8 @@ class Client(OpenApiClient):
             body['ProxyInitMemoryResourceLimit'] = request.proxy_init_memory_resource_limit
         if not UtilClient.is_unset(request.proxy_init_memory_resource_request):
             body['ProxyInitMemoryResourceRequest'] = request.proxy_init_memory_resource_request
+        if not UtilClient.is_unset(request.proxy_stats_matcher):
+            body['ProxyStatsMatcher'] = request.proxy_stats_matcher
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         if not UtilClient.is_unset(request.sidecar_proxy_cpuresource_limit):
@@ -5996,12 +5832,16 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.concurrency):
+            body['Concurrency'] = request.concurrency
         if not UtilClient.is_unset(request.exclude_ipranges):
             body['ExcludeIPRanges'] = request.exclude_ipranges
         if not UtilClient.is_unset(request.exclude_inbound_ports):
             body['ExcludeInboundPorts'] = request.exclude_inbound_ports
         if not UtilClient.is_unset(request.exclude_outbound_ports):
             body['ExcludeOutboundPorts'] = request.exclude_outbound_ports
+        if not UtilClient.is_unset(request.hold_application_until_proxy_starts):
+            body['HoldApplicationUntilProxyStarts'] = request.hold_application_until_proxy_starts
         if not UtilClient.is_unset(request.include_ipranges):
             body['IncludeIPRanges'] = request.include_ipranges
         if not UtilClient.is_unset(request.include_inbound_ports):
@@ -6012,8 +5852,14 @@ class Client(OpenApiClient):
             body['IstioDNSProxyEnabled'] = request.istio_dnsproxy_enabled
         if not UtilClient.is_unset(request.lifecycle):
             body['Lifecycle'] = request.lifecycle
+        if not UtilClient.is_unset(request.log_level):
+            body['LogLevel'] = request.log_level
         if not UtilClient.is_unset(request.namespace):
             body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.post_start):
+            body['PostStart'] = request.post_start
+        if not UtilClient.is_unset(request.pre_stop):
+            body['PreStop'] = request.pre_stop
         if not UtilClient.is_unset(request.proxy_init_cpuresource_limit):
             body['ProxyInitCPUResourceLimit'] = request.proxy_init_cpuresource_limit
         if not UtilClient.is_unset(request.proxy_init_cpuresource_request):
@@ -6022,6 +5868,8 @@ class Client(OpenApiClient):
             body['ProxyInitMemoryResourceLimit'] = request.proxy_init_memory_resource_limit
         if not UtilClient.is_unset(request.proxy_init_memory_resource_request):
             body['ProxyInitMemoryResourceRequest'] = request.proxy_init_memory_resource_request
+        if not UtilClient.is_unset(request.proxy_stats_matcher):
+            body['ProxyStatsMatcher'] = request.proxy_stats_matcher
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         if not UtilClient.is_unset(request.sidecar_proxy_cpuresource_limit):
@@ -6066,190 +5914,6 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_namespace_scope_sidecar_config_with_options_async(request, runtime)
-
-    def update_service_sidecar_inject_with_options(
-        self,
-        request: servicemesh_20200111_models.UpdateServiceSidecarInjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.UpdateServiceSidecarInjectResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.guest_cluster):
-            body['GuestCluster'] = request.guest_cluster
-        if not UtilClient.is_unset(request.inject):
-            body['Inject'] = request.inject
-        if not UtilClient.is_unset(request.limit_cpu):
-            body['LimitCPU'] = request.limit_cpu
-        if not UtilClient.is_unset(request.limit_memory):
-            body['LimitMemory'] = request.limit_memory
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.request_cpu):
-            body['RequestCPU'] = request.request_cpu
-        if not UtilClient.is_unset(request.request_memory):
-            body['RequestMemory'] = request.request_memory
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        if not UtilClient.is_unset(request.service_name):
-            body['ServiceName'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateServiceSidecarInject',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.UpdateServiceSidecarInjectResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_service_sidecar_inject_with_options_async(
-        self,
-        request: servicemesh_20200111_models.UpdateServiceSidecarInjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.UpdateServiceSidecarInjectResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.guest_cluster):
-            body['GuestCluster'] = request.guest_cluster
-        if not UtilClient.is_unset(request.inject):
-            body['Inject'] = request.inject
-        if not UtilClient.is_unset(request.limit_cpu):
-            body['LimitCPU'] = request.limit_cpu
-        if not UtilClient.is_unset(request.limit_memory):
-            body['LimitMemory'] = request.limit_memory
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.request_cpu):
-            body['RequestCPU'] = request.request_cpu
-        if not UtilClient.is_unset(request.request_memory):
-            body['RequestMemory'] = request.request_memory
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        if not UtilClient.is_unset(request.service_name):
-            body['ServiceName'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateServiceSidecarInject',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.UpdateServiceSidecarInjectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_service_sidecar_inject(
-        self,
-        request: servicemesh_20200111_models.UpdateServiceSidecarInjectRequest,
-    ) -> servicemesh_20200111_models.UpdateServiceSidecarInjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_service_sidecar_inject_with_options(request, runtime)
-
-    async def update_service_sidecar_inject_async(
-        self,
-        request: servicemesh_20200111_models.UpdateServiceSidecarInjectRequest,
-    ) -> servicemesh_20200111_models.UpdateServiceSidecarInjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_service_sidecar_inject_with_options_async(request, runtime)
-
-    def update_unlabeled_service_managed_resource_with_options(
-        self,
-        request: servicemesh_20200111_models.UpdateUnlabeledServiceManagedResourceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.UpdateUnlabeledServiceManagedResourceResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.guest_cluster):
-            body['GuestCluster'] = request.guest_cluster
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        if not UtilClient.is_unset(request.service_name):
-            body['ServiceName'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateUnlabeledServiceManagedResource',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.UpdateUnlabeledServiceManagedResourceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_unlabeled_service_managed_resource_with_options_async(
-        self,
-        request: servicemesh_20200111_models.UpdateUnlabeledServiceManagedResourceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.UpdateUnlabeledServiceManagedResourceResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.guest_cluster):
-            body['GuestCluster'] = request.guest_cluster
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        if not UtilClient.is_unset(request.service_name):
-            body['ServiceName'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateUnlabeledServiceManagedResource',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.UpdateUnlabeledServiceManagedResourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_unlabeled_service_managed_resource(
-        self,
-        request: servicemesh_20200111_models.UpdateUnlabeledServiceManagedResourceRequest,
-    ) -> servicemesh_20200111_models.UpdateUnlabeledServiceManagedResourceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_unlabeled_service_managed_resource_with_options(request, runtime)
-
-    async def update_unlabeled_service_managed_resource_async(
-        self,
-        request: servicemesh_20200111_models.UpdateUnlabeledServiceManagedResourceRequest,
-    ) -> servicemesh_20200111_models.UpdateUnlabeledServiceManagedResourceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_unlabeled_service_managed_resource_with_options_async(request, runtime)
 
     def upgrade_mesh_edition_partially_with_options(
         self,
