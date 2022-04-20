@@ -1,3 +1,6 @@
+2022-04-20 Version: 1.0.10
+- Add Campaign APIs.
+
 2022-03-08 Version: 1.0.9
 - CreateTemplate adds input parameter Signature.
 
