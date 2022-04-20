@@ -12747,6 +12747,8 @@ class DisableNotificationRequestList(TeaModel):
         app_id: str = None,
         dedicated_line_id: str = None,
         device_id: str = None,
+        event_id: str = None,
+        event_object_id: str = None,
         monitor_item_id: str = None,
         port_collection_id: str = None,
         type: str = None,
@@ -12759,6 +12761,8 @@ class DisableNotificationRequestList(TeaModel):
         self.dedicated_line_id = dedicated_line_id
         # 设备ID
         self.device_id = device_id
+        self.event_id = event_id
+        self.event_object_id = event_object_id
         # 监控项ID
         self.monitor_item_id = monitor_item_id
         # 端口集ID
@@ -12783,6 +12787,10 @@ class DisableNotificationRequestList(TeaModel):
             result['DedicatedLineId'] = self.dedicated_line_id
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.event_object_id is not None:
+            result['EventObjectId'] = self.event_object_id
         if self.monitor_item_id is not None:
             result['MonitorItemId'] = self.monitor_item_id
         if self.port_collection_id is not None:
@@ -12801,6 +12809,10 @@ class DisableNotificationRequestList(TeaModel):
             self.dedicated_line_id = m.get('DedicatedLineId')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('EventObjectId') is not None:
+            self.event_object_id = m.get('EventObjectId')
         if m.get('MonitorItemId') is not None:
             self.monitor_item_id = m.get('MonitorItemId')
         if m.get('PortCollectionId') is not None:
@@ -13123,6 +13135,8 @@ class EnableNotificationRequestList(TeaModel):
         app_id: str = None,
         dedicated_line_id: str = None,
         device_id: str = None,
+        event_id: str = None,
+        event_object_id: str = None,
         monitor_item_id: str = None,
         port_collection_id: str = None,
         type: str = None,
@@ -13135,6 +13149,8 @@ class EnableNotificationRequestList(TeaModel):
         self.dedicated_line_id = dedicated_line_id
         # 设备ID
         self.device_id = device_id
+        self.event_id = event_id
+        self.event_object_id = event_object_id
         # 监控项ID
         self.monitor_item_id = monitor_item_id
         # 端口集ID
@@ -13159,6 +13175,10 @@ class EnableNotificationRequestList(TeaModel):
             result['DedicatedLineId'] = self.dedicated_line_id
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.event_object_id is not None:
+            result['EventObjectId'] = self.event_object_id
         if self.monitor_item_id is not None:
             result['MonitorItemId'] = self.monitor_item_id
         if self.port_collection_id is not None:
@@ -13177,6 +13197,10 @@ class EnableNotificationRequestList(TeaModel):
             self.dedicated_line_id = m.get('DedicatedLineId')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('EventObjectId') is not None:
+            self.event_object_id = m.get('EventObjectId')
         if m.get('MonitorItemId') is not None:
             self.monitor_item_id = m.get('MonitorItemId')
         if m.get('PortCollectionId') is not None:
