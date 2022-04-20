@@ -10942,6 +10942,7 @@ class DescribeGroupedVulRequest(TeaModel):
     def __init__(
         self,
         alias_name: str = None,
+        attach_types: str = None,
         current_page: int = None,
         dealed: str = None,
         group_id: str = None,
@@ -10953,6 +10954,7 @@ class DescribeGroupedVulRequest(TeaModel):
         uuids: str = None,
     ):
         self.alias_name = alias_name
+        self.attach_types = attach_types
         self.current_page = current_page
         self.dealed = dealed
         self.group_id = group_id
@@ -10974,6 +10976,8 @@ class DescribeGroupedVulRequest(TeaModel):
         result = dict()
         if self.alias_name is not None:
             result['AliasName'] = self.alias_name
+        if self.attach_types is not None:
+            result['AttachTypes'] = self.attach_types
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.dealed is not None:
@@ -10998,6 +11002,8 @@ class DescribeGroupedVulRequest(TeaModel):
         m = m or dict()
         if m.get('AliasName') is not None:
             self.alias_name = m.get('AliasName')
+        if m.get('AttachTypes') is not None:
+            self.attach_types = m.get('AttachTypes')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('Dealed') is not None:
