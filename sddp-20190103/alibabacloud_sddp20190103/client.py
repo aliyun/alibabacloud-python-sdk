@@ -137,6 +137,8 @@ class Client(OpenApiClient):
             query['AuditStatus'] = request.audit_status
         if not UtilClient.is_unset(request.auto_scan):
             query['AutoScan'] = request.auto_scan
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
         if not UtilClient.is_unset(request.engine_type):
             query['EngineType'] = request.engine_type
         if not UtilClient.is_unset(request.event_status):
@@ -189,6 +191,8 @@ class Client(OpenApiClient):
             query['AuditStatus'] = request.audit_status
         if not UtilClient.is_unset(request.auto_scan):
             query['AutoScan'] = request.auto_scan
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
         if not UtilClient.is_unset(request.engine_type):
             query['EngineType'] = request.engine_type
         if not UtilClient.is_unset(request.event_status):

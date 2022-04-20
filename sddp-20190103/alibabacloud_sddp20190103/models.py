@@ -124,6 +124,7 @@ class CreateDataLimitRequest(TeaModel):
         self,
         audit_status: int = None,
         auto_scan: int = None,
+        enable: int = None,
         engine_type: str = None,
         event_status: int = None,
         lang: str = None,
@@ -138,6 +139,7 @@ class CreateDataLimitRequest(TeaModel):
     ):
         self.audit_status = audit_status
         self.auto_scan = auto_scan
+        self.enable = enable
         self.engine_type = engine_type
         self.event_status = event_status
         self.lang = lang
@@ -163,6 +165,8 @@ class CreateDataLimitRequest(TeaModel):
             result['AuditStatus'] = self.audit_status
         if self.auto_scan is not None:
             result['AutoScan'] = self.auto_scan
+        if self.enable is not None:
+            result['Enable'] = self.enable
         if self.engine_type is not None:
             result['EngineType'] = self.engine_type
         if self.event_status is not None:
@@ -193,6 +197,8 @@ class CreateDataLimitRequest(TeaModel):
             self.audit_status = m.get('AuditStatus')
         if m.get('AutoScan') is not None:
             self.auto_scan = m.get('AutoScan')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
         if m.get('EngineType') is not None:
             self.engine_type = m.get('EngineType')
         if m.get('EventStatus') is not None:

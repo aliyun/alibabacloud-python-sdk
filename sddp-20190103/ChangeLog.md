@@ -1,3 +1,6 @@
+2022-04-20 Version: 1.0.7
+- CreateDataLimit add enable parameter .
+
 2022-04-18 Version: 1.0.6
 - Change DescribeEventDetail Data.
 
