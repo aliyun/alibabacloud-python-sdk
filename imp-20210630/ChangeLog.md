@@ -1,3 +1,6 @@
+2022-04-20 Version: 2.9.0
+- Add SetRoomUser and CancelRoomUser Function.
+
 2022-03-23 Version: 2.8.10
 - Add KickRoomUser Function.
 

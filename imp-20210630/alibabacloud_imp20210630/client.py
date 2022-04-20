@@ -271,88 +271,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.apply_link_mic_with_options_async(request, runtime)
 
-    def attach_standard_room_https_certificate_with_options(
-        self,
-        request: imp_20210630_models.AttachStandardRoomHttpsCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.AttachStandardRoomHttpsCertificateResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.certificate_private_key):
-            body['CertificatePrivateKey'] = request.certificate_private_key
-        if not UtilClient.is_unset(request.certificate_public_key):
-            body['CertificatePublicKey'] = request.certificate_public_key
-        if not UtilClient.is_unset(request.domain_name):
-            body['DomainName'] = request.domain_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AttachStandardRoomHttpsCertificate',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.AttachStandardRoomHttpsCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def attach_standard_room_https_certificate_with_options_async(
-        self,
-        request: imp_20210630_models.AttachStandardRoomHttpsCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.AttachStandardRoomHttpsCertificateResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.certificate_private_key):
-            body['CertificatePrivateKey'] = request.certificate_private_key
-        if not UtilClient.is_unset(request.certificate_public_key):
-            body['CertificatePublicKey'] = request.certificate_public_key
-        if not UtilClient.is_unset(request.domain_name):
-            body['DomainName'] = request.domain_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AttachStandardRoomHttpsCertificate',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.AttachStandardRoomHttpsCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def attach_standard_room_https_certificate(
-        self,
-        request: imp_20210630_models.AttachStandardRoomHttpsCertificateRequest,
-    ) -> imp_20210630_models.AttachStandardRoomHttpsCertificateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.attach_standard_room_https_certificate_with_options(request, runtime)
-
-    async def attach_standard_room_https_certificate_async(
-        self,
-        request: imp_20210630_models.AttachStandardRoomHttpsCertificateRequest,
-    ) -> imp_20210630_models.AttachStandardRoomHttpsCertificateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.attach_standard_room_https_certificate_with_options_async(request, runtime)
-
     def ban_all_comment_with_options(
         self,
         request: imp_20210630_models.BanAllCommentRequest,
@@ -750,6 +668,84 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.CancelBanCommentResponse:
         runtime = util_models.RuntimeOptions()
         return await self.cancel_ban_comment_with_options_async(request, runtime)
+
+    def cancel_user_admin_with_options(
+        self,
+        request: imp_20210630_models.CancelUserAdminRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CancelUserAdminResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelUserAdmin',
+            version='2021-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CancelUserAdminResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_user_admin_with_options_async(
+        self,
+        request: imp_20210630_models.CancelUserAdminRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CancelUserAdminResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelUserAdmin',
+            version='2021-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CancelUserAdminResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_user_admin(
+        self,
+        request: imp_20210630_models.CancelUserAdminRequest,
+    ) -> imp_20210630_models.CancelUserAdminResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_user_admin_with_options(request, runtime)
+
+    async def cancel_user_admin_async(
+        self,
+        request: imp_20210630_models.CancelUserAdminRequest,
+    ) -> imp_20210630_models.CancelUserAdminResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_user_admin_with_options_async(request, runtime)
 
     def create_app_with_options(
         self,
@@ -1385,6 +1381,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_room_with_options_async(request, runtime)
 
+    def create_sensitive_word_with_options(
+        self,
+        tmp_req: imp_20210630_models.CreateSensitiveWordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CreateSensitiveWordResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.CreateSensitiveWordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.word_list):
+            request.word_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.word_list, 'WordList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.word_list_shrink):
+            body['WordList'] = request.word_list_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSensitiveWord',
+            version='2021-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CreateSensitiveWordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sensitive_word_with_options_async(
+        self,
+        tmp_req: imp_20210630_models.CreateSensitiveWordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.CreateSensitiveWordResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.CreateSensitiveWordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.word_list):
+            request.word_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.word_list, 'WordList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.word_list_shrink):
+            body['WordList'] = request.word_list_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSensitiveWord',
+            version='2021-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.CreateSensitiveWordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sensitive_word(
+        self,
+        request: imp_20210630_models.CreateSensitiveWordRequest,
+    ) -> imp_20210630_models.CreateSensitiveWordResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_sensitive_word_with_options(request, runtime)
+
+    async def create_sensitive_word_async(
+        self,
+        request: imp_20210630_models.CreateSensitiveWordRequest,
+    ) -> imp_20210630_models.CreateSensitiveWordResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_sensitive_word_with_options_async(request, runtime)
+
     def delete_app_with_options(
         self,
         request: imp_20210630_models.DeleteAppRequest,
@@ -1995,26 +2073,26 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_room_with_options_async(request, runtime)
 
-    def describe_meter_imp_watch_time_with_options(
+    def delete_sensitive_word_with_options(
         self,
-        request: imp_20210630_models.DescribeMeterImpWatchTimeRequest,
+        tmp_req: imp_20210630_models.DeleteSensitiveWordRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.DescribeMeterImpWatchTimeResponse:
-        UtilClient.validate_model(request)
-        query = {}
+    ) -> imp_20210630_models.DeleteSensitiveWordResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.DeleteSensitiveWordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.word_list):
+            request.word_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.word_list, 'WordList', 'json')
+        body = {}
         if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.interval):
-            query['Interval'] = request.interval
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.word_list_shrink):
+            body['WordList'] = request.word_list_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='DescribeMeterImpWatchTime',
+            action='DeleteSensitiveWord',
             version='2021-06-30',
             protocol='HTTPS',
             pathname='/',
@@ -2025,30 +2103,30 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            imp_20210630_models.DescribeMeterImpWatchTimeResponse(),
+            imp_20210630_models.DeleteSensitiveWordResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def describe_meter_imp_watch_time_with_options_async(
+    async def delete_sensitive_word_with_options_async(
         self,
-        request: imp_20210630_models.DescribeMeterImpWatchTimeRequest,
+        tmp_req: imp_20210630_models.DeleteSensitiveWordRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.DescribeMeterImpWatchTimeResponse:
-        UtilClient.validate_model(request)
-        query = {}
+    ) -> imp_20210630_models.DeleteSensitiveWordResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imp_20210630_models.DeleteSensitiveWordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.word_list):
+            request.word_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.word_list, 'WordList', 'json')
+        body = {}
         if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.interval):
-            query['Interval'] = request.interval
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.word_list_shrink):
+            body['WordList'] = request.word_list_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='DescribeMeterImpWatchTime',
+            action='DeleteSensitiveWord',
             version='2021-06-30',
             protocol='HTTPS',
             pathname='/',
@@ -2059,23 +2137,23 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            imp_20210630_models.DescribeMeterImpWatchTimeResponse(),
+            imp_20210630_models.DeleteSensitiveWordResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_meter_imp_watch_time(
+    def delete_sensitive_word(
         self,
-        request: imp_20210630_models.DescribeMeterImpWatchTimeRequest,
-    ) -> imp_20210630_models.DescribeMeterImpWatchTimeResponse:
+        request: imp_20210630_models.DeleteSensitiveWordRequest,
+    ) -> imp_20210630_models.DeleteSensitiveWordResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_meter_imp_watch_time_with_options(request, runtime)
+        return self.delete_sensitive_word_with_options(request, runtime)
 
-    async def describe_meter_imp_watch_time_async(
+    async def delete_sensitive_word_async(
         self,
-        request: imp_20210630_models.DescribeMeterImpWatchTimeRequest,
-    ) -> imp_20210630_models.DescribeMeterImpWatchTimeResponse:
+        request: imp_20210630_models.DeleteSensitiveWordRequest,
+    ) -> imp_20210630_models.DeleteSensitiveWordResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_meter_imp_watch_time_with_options_async(request, runtime)
+        return await self.delete_sensitive_word_with_options_async(request, runtime)
 
     def get_app_with_options(
         self,
@@ -2455,72 +2533,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_class_record_with_options_async(request, runtime)
 
-    def get_cname_detail_with_options(
-        self,
-        request: imp_20210630_models.GetCnameDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetCnameDetailResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetCnameDetail',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetCnameDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_cname_detail_with_options_async(
-        self,
-        request: imp_20210630_models.GetCnameDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetCnameDetailResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetCnameDetail',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetCnameDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_cname_detail(
-        self,
-        request: imp_20210630_models.GetCnameDetailRequest,
-    ) -> imp_20210630_models.GetCnameDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_cname_detail_with_options(request, runtime)
-
-    async def get_cname_detail_async(
-        self,
-        request: imp_20210630_models.GetCnameDetailRequest,
-    ) -> imp_20210630_models.GetCnameDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_cname_detail_with_options_async(request, runtime)
-
     def get_conference_with_options(
         self,
         request: imp_20210630_models.GetConferenceRequest,
@@ -2660,56 +2672,6 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.GetDomainOwnerVerifyContentResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_domain_owner_verify_content_with_options_async(request, runtime)
-
-    def get_imp_product_status_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetImpProductStatusResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetImpProductStatus',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetImpProductStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_imp_product_status_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetImpProductStatusResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetImpProductStatus',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetImpProductStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_imp_product_status(self) -> imp_20210630_models.GetImpProductStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_imp_product_status_with_options(runtime)
-
-    async def get_imp_product_status_async(self) -> imp_20210630_models.GetImpProductStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_imp_product_status_with_options_async(runtime)
 
     def get_live_with_options(
         self,
@@ -3175,72 +3137,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_live_room_user_statistics_with_options_async(request, runtime)
 
-    def get_page_config_with_options(
-        self,
-        request: imp_20210630_models.GetPageConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetPageConfigResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetPageConfig',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetPageConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_page_config_with_options_async(
-        self,
-        request: imp_20210630_models.GetPageConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetPageConfigResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetPageConfig',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetPageConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_page_config(
-        self,
-        request: imp_20210630_models.GetPageConfigRequest,
-    ) -> imp_20210630_models.GetPageConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_page_config_with_options(request, runtime)
-
-    async def get_page_config_async(
-        self,
-        request: imp_20210630_models.GetPageConfigRequest,
-    ) -> imp_20210630_models.GetPageConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_page_config_with_options_async(request, runtime)
-
     def get_room_with_options(
         self,
         request: imp_20210630_models.GetRoomRequest,
@@ -3478,72 +3374,6 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.GetStandardRoomJumpUrlResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_standard_room_jump_url_with_options_async(request, runtime)
-
-    def get_user_info_with_options(
-        self,
-        request: imp_20210630_models.GetUserInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetUserInfoResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetUserInfo',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetUserInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_user_info_with_options_async(
-        self,
-        request: imp_20210630_models.GetUserInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetUserInfoResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetUserInfo',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetUserInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_user_info(
-        self,
-        request: imp_20210630_models.GetUserInfoRequest,
-    ) -> imp_20210630_models.GetUserInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_user_info_with_options(request, runtime)
-
-    async def get_user_info_async(
-        self,
-        request: imp_20210630_models.GetUserInfoRequest,
-    ) -> imp_20210630_models.GetUserInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_user_info_with_options_async(request, runtime)
 
     def kick_room_user_with_options(
         self,
@@ -3790,6 +3620,8 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.ListAppsResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.app_ids):
+            body['AppIds'] = request.app_ids
         if not UtilClient.is_unset(request.integration_mode):
             body['IntegrationMode'] = request.integration_mode
         if not UtilClient.is_unset(request.page_number):
@@ -3824,6 +3656,8 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.ListAppsResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.app_ids):
+            body['AppIds'] = request.app_ids
         if not UtilClient.is_unset(request.integration_mode):
             body['IntegrationMode'] = request.integration_mode
         if not UtilClient.is_unset(request.page_number):
@@ -4353,104 +4187,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_live_rooms_by_id_with_options_async(request, runtime)
 
-    def list_room_lives_with_options(
-        self,
-        tmp_req: imp_20210630_models.ListRoomLivesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListRoomLivesResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.ListRoomLivesShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.room_id_list):
-            request.room_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_id_list, 'RoomIdList', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.query_timestamp):
-            body['QueryTimestamp'] = request.query_timestamp
-        if not UtilClient.is_unset(request.room_id):
-            body['RoomId'] = request.room_id
-        if not UtilClient.is_unset(request.room_id_list_shrink):
-            body['RoomIdList'] = request.room_id_list_shrink
-        if not UtilClient.is_unset(request.size):
-            body['Size'] = request.size
-        if not UtilClient.is_unset(request.status):
-            body['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListRoomLives',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListRoomLivesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_room_lives_with_options_async(
-        self,
-        tmp_req: imp_20210630_models.ListRoomLivesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListRoomLivesResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.ListRoomLivesShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.room_id_list):
-            request.room_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_id_list, 'RoomIdList', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.query_timestamp):
-            body['QueryTimestamp'] = request.query_timestamp
-        if not UtilClient.is_unset(request.room_id):
-            body['RoomId'] = request.room_id
-        if not UtilClient.is_unset(request.room_id_list_shrink):
-            body['RoomIdList'] = request.room_id_list_shrink
-        if not UtilClient.is_unset(request.size):
-            body['Size'] = request.size
-        if not UtilClient.is_unset(request.status):
-            body['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListRoomLives',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListRoomLivesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_room_lives(
-        self,
-        request: imp_20210630_models.ListRoomLivesRequest,
-    ) -> imp_20210630_models.ListRoomLivesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_room_lives_with_options(request, runtime)
-
-    async def list_room_lives_async(
-        self,
-        request: imp_20210630_models.ListRoomLivesRequest,
-    ) -> imp_20210630_models.ListRoomLivesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_room_lives_with_options_async(request, runtime)
-
     def list_room_users_with_options(
         self,
         request: imp_20210630_models.ListRoomUsersRequest,
@@ -4610,6 +4346,76 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.ListRoomsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_rooms_with_options_async(request, runtime)
+
+    def list_sensitive_word_with_options(
+        self,
+        request: imp_20210630_models.ListSensitiveWordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListSensitiveWordResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSensitiveWord',
+            version='2021-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListSensitiveWordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_sensitive_word_with_options_async(
+        self,
+        request: imp_20210630_models.ListSensitiveWordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListSensitiveWordResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSensitiveWord',
+            version='2021-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListSensitiveWordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_sensitive_word(
+        self,
+        request: imp_20210630_models.ListSensitiveWordRequest,
+    ) -> imp_20210630_models.ListSensitiveWordResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_sensitive_word_with_options(request, runtime)
+
+    async def list_sensitive_word_async(
+        self,
+        request: imp_20210630_models.ListSensitiveWordRequest,
+    ) -> imp_20210630_models.ListSensitiveWordResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_sensitive_word_with_options_async(request, runtime)
 
     def publish_live_with_options(
         self,
@@ -5182,6 +4988,84 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
         runtime = util_models.RuntimeOptions()
         return await self.send_custom_message_to_users_with_options_async(request, runtime)
+
+    def set_user_admin_with_options(
+        self,
+        request: imp_20210630_models.SetUserAdminRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.SetUserAdminResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetUserAdmin',
+            version='2021-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.SetUserAdminResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_user_admin_with_options_async(
+        self,
+        request: imp_20210630_models.SetUserAdminRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.SetUserAdminResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetUserAdmin',
+            version='2021-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.SetUserAdminResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_user_admin(
+        self,
+        request: imp_20210630_models.SetUserAdminRequest,
+    ) -> imp_20210630_models.SetUserAdminResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_user_admin_with_options(request, runtime)
+
+    async def set_user_admin_async(
+        self,
+        request: imp_20210630_models.SetUserAdminRequest,
+    ) -> imp_20210630_models.SetUserAdminResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_user_admin_with_options_async(request, runtime)
 
     def stop_class_with_options(
         self,
