@@ -343,88 +343,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_robot_smart_call_with_options_async(request, runtime)
 
-    def cancel_call_with_options(
-        self,
-        request: dyvmsapi_20170525_models.CancelCallRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.CancelCallResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.call_id):
-            query['CallId'] = request.call_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CancelCall',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.CancelCallResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def cancel_call_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.CancelCallRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.CancelCallResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.call_id):
-            query['CallId'] = request.call_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CancelCall',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.CancelCallResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def cancel_call(
-        self,
-        request: dyvmsapi_20170525_models.CancelCallRequest,
-    ) -> dyvmsapi_20170525_models.CancelCallResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.cancel_call_with_options(request, runtime)
-
-    async def cancel_call_async(
-        self,
-        request: dyvmsapi_20170525_models.CancelCallRequest,
-    ) -> dyvmsapi_20170525_models.CancelCallResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.cancel_call_with_options_async(request, runtime)
-
     def cancel_order_robot_task_with_options(
         self,
         request: dyvmsapi_20170525_models.CancelOrderRobotTaskRequest,
@@ -588,120 +506,6 @@ class Client(OpenApiClient):
     ) -> dyvmsapi_20170525_models.CancelRobotTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.cancel_robot_task_with_options_async(request, runtime)
-
-    def click_to_dial_with_options(
-        self,
-        request: dyvmsapi_20170525_models.ClickToDialRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.ClickToDialResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.asr_flag):
-            query['AsrFlag'] = request.asr_flag
-        if not UtilClient.is_unset(request.asr_model_id):
-            query['AsrModelId'] = request.asr_model_id
-        if not UtilClient.is_unset(request.called_number):
-            query['CalledNumber'] = request.called_number
-        if not UtilClient.is_unset(request.called_show_number):
-            query['CalledShowNumber'] = request.called_show_number
-        if not UtilClient.is_unset(request.caller_number):
-            query['CallerNumber'] = request.caller_number
-        if not UtilClient.is_unset(request.caller_show_number):
-            query['CallerShowNumber'] = request.caller_show_number
-        if not UtilClient.is_unset(request.out_id):
-            query['OutId'] = request.out_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.record_flag):
-            query['RecordFlag'] = request.record_flag
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.session_timeout):
-            query['SessionTimeout'] = request.session_timeout
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ClickToDial',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.ClickToDialResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def click_to_dial_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.ClickToDialRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.ClickToDialResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.asr_flag):
-            query['AsrFlag'] = request.asr_flag
-        if not UtilClient.is_unset(request.asr_model_id):
-            query['AsrModelId'] = request.asr_model_id
-        if not UtilClient.is_unset(request.called_number):
-            query['CalledNumber'] = request.called_number
-        if not UtilClient.is_unset(request.called_show_number):
-            query['CalledShowNumber'] = request.called_show_number
-        if not UtilClient.is_unset(request.caller_number):
-            query['CallerNumber'] = request.caller_number
-        if not UtilClient.is_unset(request.caller_show_number):
-            query['CallerShowNumber'] = request.caller_show_number
-        if not UtilClient.is_unset(request.out_id):
-            query['OutId'] = request.out_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.record_flag):
-            query['RecordFlag'] = request.record_flag
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.session_timeout):
-            query['SessionTimeout'] = request.session_timeout
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ClickToDial',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.ClickToDialResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def click_to_dial(
-        self,
-        request: dyvmsapi_20170525_models.ClickToDialRequest,
-    ) -> dyvmsapi_20170525_models.ClickToDialResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.click_to_dial_with_options(request, runtime)
-
-    async def click_to_dial_async(
-        self,
-        request: dyvmsapi_20170525_models.ClickToDialRequest,
-    ) -> dyvmsapi_20170525_models.ClickToDialResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.click_to_dial_with_options_async(request, runtime)
 
     def create_call_task_with_options(
         self,
@@ -3241,6 +3045,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_voice_file_audit_info_with_options_async(request, runtime)
 
+    def recover_call_in_config_with_options(
+        self,
+        request: dyvmsapi_20170525_models.RecoverCallInConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.RecoverCallInConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.number):
+            query['Number'] = request.number
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecoverCallInConfig',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.RecoverCallInConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recover_call_in_config_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.RecoverCallInConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.RecoverCallInConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.number):
+            query['Number'] = request.number
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecoverCallInConfig',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.RecoverCallInConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recover_call_in_config(
+        self,
+        request: dyvmsapi_20170525_models.RecoverCallInConfigRequest,
+    ) -> dyvmsapi_20170525_models.RecoverCallInConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recover_call_in_config_with_options(request, runtime)
+
+    async def recover_call_in_config_async(
+        self,
+        request: dyvmsapi_20170525_models.RecoverCallInConfigRequest,
+    ) -> dyvmsapi_20170525_models.RecoverCallInConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recover_call_in_config_with_options_async(request, runtime)
+
     def refresh_mqtt_token_with_options(
         self,
         request: dyvmsapi_20170525_models.RefreshMqttTokenRequest,
@@ -4080,6 +3966,88 @@ class Client(OpenApiClient):
     ) -> dyvmsapi_20170525_models.StartRobotTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.start_robot_task_with_options_async(request, runtime)
+
+    def stop_call_in_config_with_options(
+        self,
+        request: dyvmsapi_20170525_models.StopCallInConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.StopCallInConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.number):
+            query['Number'] = request.number
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopCallInConfig',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.StopCallInConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_call_in_config_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.StopCallInConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.StopCallInConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.number):
+            query['Number'] = request.number
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopCallInConfig',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.StopCallInConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_call_in_config(
+        self,
+        request: dyvmsapi_20170525_models.StopCallInConfigRequest,
+    ) -> dyvmsapi_20170525_models.StopCallInConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_call_in_config_with_options(request, runtime)
+
+    async def stop_call_in_config_async(
+        self,
+        request: dyvmsapi_20170525_models.StopCallInConfigRequest,
+    ) -> dyvmsapi_20170525_models.StopCallInConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_call_in_config_with_options_async(request, runtime)
 
     def stop_robot_task_with_options(
         self,
