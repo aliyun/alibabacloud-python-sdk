@@ -8941,6 +8941,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_data_correct_exec_sqlwith_options_async(request, runtime)
 
+    def offline_task_flow_with_options(
+        self,
+        request: dms_enterprise_20181101_models.OfflineTaskFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.OfflineTaskFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OfflineTaskFlow',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.OfflineTaskFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def offline_task_flow_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.OfflineTaskFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.OfflineTaskFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OfflineTaskFlow',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.OfflineTaskFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def offline_task_flow(
+        self,
+        request: dms_enterprise_20181101_models.OfflineTaskFlowRequest,
+    ) -> dms_enterprise_20181101_models.OfflineTaskFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.offline_task_flow_with_options(request, runtime)
+
+    async def offline_task_flow_async(
+        self,
+        request: dms_enterprise_20181101_models.OfflineTaskFlowRequest,
+    ) -> dms_enterprise_20181101_models.OfflineTaskFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.offline_task_flow_with_options_async(request, runtime)
+
     def pause_data_correct_sqljob_with_options(
         self,
         request: dms_enterprise_20181101_models.PauseDataCorrectSQLJobRequest,
