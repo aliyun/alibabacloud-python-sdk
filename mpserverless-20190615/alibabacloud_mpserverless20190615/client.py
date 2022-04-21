@@ -3605,15 +3605,21 @@ class Client(OpenApiClient):
 
     def list_space_with_options(
         self,
-        request: mpserverless_20190615_models.ListSpaceRequest,
+        tmp_req: mpserverless_20190615_models.ListSpaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mpserverless_20190615_models.ListSpaceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mpserverless_20190615_models.ListSpaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.space_ids):
+            request.space_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.space_ids, 'SpaceIds', 'simple')
         body = {}
         if not UtilClient.is_unset(request.page_num):
             body['PageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.space_ids_shrink):
+            body['SpaceIds'] = request.space_ids_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3635,15 +3641,21 @@ class Client(OpenApiClient):
 
     async def list_space_with_options_async(
         self,
-        request: mpserverless_20190615_models.ListSpaceRequest,
+        tmp_req: mpserverless_20190615_models.ListSpaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mpserverless_20190615_models.ListSpaceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mpserverless_20190615_models.ListSpaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.space_ids):
+            request.space_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.space_ids, 'SpaceIds', 'simple')
         body = {}
         if not UtilClient.is_unset(request.page_num):
             body['PageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.space_ids_shrink):
+            body['SpaceIds'] = request.space_ids_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
