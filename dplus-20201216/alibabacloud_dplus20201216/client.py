@@ -2030,6 +2030,170 @@ class Client(OpenApiClient):
         replace_background_resp = await self.replace_background_with_options_async(replace_background_req, runtime)
         return replace_background_resp
 
+    def selete_commodity_with_options(
+        self,
+        request: dplus_20201216_models.SeleteCommodityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dplus_20201216_models.SeleteCommodityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.num):
+            query['Num'] = request.num
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SeleteCommodity',
+            version='2020-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dplus_20201216_models.SeleteCommodityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def selete_commodity_with_options_async(
+        self,
+        request: dplus_20201216_models.SeleteCommodityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dplus_20201216_models.SeleteCommodityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.num):
+            query['Num'] = request.num
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SeleteCommodity',
+            version='2020-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dplus_20201216_models.SeleteCommodityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def selete_commodity(
+        self,
+        request: dplus_20201216_models.SeleteCommodityRequest,
+    ) -> dplus_20201216_models.SeleteCommodityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.selete_commodity_with_options(request, runtime)
+
+    async def selete_commodity_async(
+        self,
+        request: dplus_20201216_models.SeleteCommodityRequest,
+    ) -> dplus_20201216_models.SeleteCommodityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.selete_commodity_with_options_async(request, runtime)
+
+    def selete_commodity_by_bto_bwith_options(
+        self,
+        request: dplus_20201216_models.SeleteCommodityByBToBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dplus_20201216_models.SeleteCommodityByBToBResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.num):
+            query['Num'] = request.num
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SeleteCommodityByBToB',
+            version='2020-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dplus_20201216_models.SeleteCommodityByBToBResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def selete_commodity_by_bto_bwith_options_async(
+        self,
+        request: dplus_20201216_models.SeleteCommodityByBToBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dplus_20201216_models.SeleteCommodityByBToBResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.num):
+            query['Num'] = request.num
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SeleteCommodityByBToB',
+            version='2020-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dplus_20201216_models.SeleteCommodityByBToBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def selete_commodity_by_bto_b(
+        self,
+        request: dplus_20201216_models.SeleteCommodityByBToBRequest,
+    ) -> dplus_20201216_models.SeleteCommodityByBToBResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.selete_commodity_by_bto_bwith_options(request, runtime)
+
+    async def selete_commodity_by_bto_b_async(
+        self,
+        request: dplus_20201216_models.SeleteCommodityByBToBRequest,
+    ) -> dplus_20201216_models.SeleteCommodityByBToBResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.selete_commodity_by_bto_bwith_options_async(request, runtime)
+
     def tb_predict_category_with_options(
         self,
         request: dplus_20201216_models.TbPredictCategoryRequest,
@@ -2453,3 +2617,77 @@ class Client(OpenApiClient):
             tb_prop_rec_req.pic_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         tb_prop_rec_resp = await self.tb_prop_rec_with_options_async(tb_prop_rec_req, runtime)
         return tb_prop_rec_resp
+
+    def transfer_url_by_bto_bwith_options(
+        self,
+        request: dplus_20201216_models.TransferUrlByBtoBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dplus_20201216_models.TransferUrlByBtoBResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.offer_id):
+            query['OfferId'] = request.offer_id
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransferUrlByBtoB',
+            version='2020-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dplus_20201216_models.TransferUrlByBtoBResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transfer_url_by_bto_bwith_options_async(
+        self,
+        request: dplus_20201216_models.TransferUrlByBtoBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dplus_20201216_models.TransferUrlByBtoBResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.offer_id):
+            query['OfferId'] = request.offer_id
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransferUrlByBtoB',
+            version='2020-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dplus_20201216_models.TransferUrlByBtoBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transfer_url_by_bto_b(
+        self,
+        request: dplus_20201216_models.TransferUrlByBtoBRequest,
+    ) -> dplus_20201216_models.TransferUrlByBtoBResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.transfer_url_by_bto_bwith_options(request, runtime)
+
+    async def transfer_url_by_bto_b_async(
+        self,
+        request: dplus_20201216_models.TransferUrlByBtoBRequest,
+    ) -> dplus_20201216_models.TransferUrlByBtoBResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.transfer_url_by_bto_bwith_options_async(request, runtime)

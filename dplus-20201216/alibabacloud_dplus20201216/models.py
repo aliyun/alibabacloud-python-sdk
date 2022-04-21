@@ -1421,6 +1421,164 @@ class ReplaceBackgroundResponse(TeaModel):
         return self
 
 
+class SeleteCommodityRequest(TeaModel):
+    def __init__(
+        self,
+        num: int = None,
+        pid: str = None,
+        query: str = None,
+        start: int = None,
+    ):
+        self.num = num
+        self.pid = pid
+        self.query = query
+        self.start = start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.num is not None:
+            result['Num'] = self.num
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.start is not None:
+            result['Start'] = self.start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Num') is not None:
+            self.num = m.get('Num')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        return self
+
+
+class SeleteCommodityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: dict = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class SeleteCommodityByBToBRequest(TeaModel):
+    def __init__(
+        self,
+        num: int = None,
+        pid: str = None,
+        query: str = None,
+        start: int = None,
+    ):
+        self.num = num
+        self.pid = pid
+        self.query = query
+        self.start = start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.num is not None:
+            result['Num'] = self.num
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.start is not None:
+            result['Start'] = self.start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Num') is not None:
+            self.num = m.get('Num')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        return self
+
+
+class SeleteCommodityByBToBResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: dict = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
 class TbPredictCategoryRequest(TeaModel):
     def __init__(
         self,
@@ -1564,6 +1722,73 @@ class TbPropRecAdvanceRequest(TeaModel):
 
 
 class TbPropRecResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: dict = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class TransferUrlByBtoBRequest(TeaModel):
+    def __init__(
+        self,
+        offer_id: int = None,
+        pid: str = None,
+    ):
+        self.offer_id = offer_id
+        self.pid = pid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.offer_id is not None:
+            result['OfferId'] = self.offer_id
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OfferId') is not None:
+            self.offer_id = m.get('OfferId')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        return self
+
+
+class TransferUrlByBtoBResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
