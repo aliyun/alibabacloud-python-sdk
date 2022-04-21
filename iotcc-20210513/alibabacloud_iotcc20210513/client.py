@@ -3697,6 +3697,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_group_dnsservice_rules_with_options_async(request, runtime)
 
+    def list_io_tcloud_connector_access_session_logs_with_options(
+        self,
+        request: io_tcc20210513_models.ListIoTCloudConnectorAccessSessionLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ListIoTCloudConnectorAccessSessionLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destinations):
+            query['Destinations'] = request.destinations
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_ips):
+            query['SourceIps'] = request.source_ips
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIoTCloudConnectorAccessSessionLogs',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ListIoTCloudConnectorAccessSessionLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_io_tcloud_connector_access_session_logs_with_options_async(
+        self,
+        request: io_tcc20210513_models.ListIoTCloudConnectorAccessSessionLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ListIoTCloudConnectorAccessSessionLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destinations):
+            query['Destinations'] = request.destinations
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_ips):
+            query['SourceIps'] = request.source_ips
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIoTCloudConnectorAccessSessionLogs',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ListIoTCloudConnectorAccessSessionLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_io_tcloud_connector_access_session_logs(
+        self,
+        request: io_tcc20210513_models.ListIoTCloudConnectorAccessSessionLogsRequest,
+    ) -> io_tcc20210513_models.ListIoTCloudConnectorAccessSessionLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_io_tcloud_connector_access_session_logs_with_options(request, runtime)
+
+    async def list_io_tcloud_connector_access_session_logs_async(
+        self,
+        request: io_tcc20210513_models.ListIoTCloudConnectorAccessSessionLogsRequest,
+    ) -> io_tcc20210513_models.ListIoTCloudConnectorAccessSessionLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_io_tcloud_connector_access_session_logs_with_options_async(request, runtime)
+
     def list_io_tcloud_connector_available_zones_with_options(
         self,
         request: io_tcc20210513_models.ListIoTCloudConnectorAvailableZonesRequest,
