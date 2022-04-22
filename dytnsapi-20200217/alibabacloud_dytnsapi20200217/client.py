@@ -569,6 +569,186 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_phone_number_status_with_options_async(request, runtime)
 
+    def invalid_phone_number_filter_with_options(
+        self,
+        request: dytnsapi_20200217_models.InvalidPhoneNumberFilterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.InvalidPhoneNumberFilterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InvalidPhoneNumberFilter',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.InvalidPhoneNumberFilterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def invalid_phone_number_filter_with_options_async(
+        self,
+        request: dytnsapi_20200217_models.InvalidPhoneNumberFilterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.InvalidPhoneNumberFilterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InvalidPhoneNumberFilter',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.InvalidPhoneNumberFilterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def invalid_phone_number_filter(
+        self,
+        request: dytnsapi_20200217_models.InvalidPhoneNumberFilterRequest,
+    ) -> dytnsapi_20200217_models.InvalidPhoneNumberFilterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.invalid_phone_number_filter_with_options(request, runtime)
+
+    async def invalid_phone_number_filter_async(
+        self,
+        request: dytnsapi_20200217_models.InvalidPhoneNumberFilterRequest,
+    ) -> dytnsapi_20200217_models.InvalidPhoneNumberFilterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.invalid_phone_number_filter_with_options_async(request, runtime)
+
+    def phone_number_encrypt_with_options(
+        self,
+        request: dytnsapi_20200217_models.PhoneNumberEncryptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.PhoneNumberEncryptResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PhoneNumberEncrypt',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.PhoneNumberEncryptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def phone_number_encrypt_with_options_async(
+        self,
+        request: dytnsapi_20200217_models.PhoneNumberEncryptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.PhoneNumberEncryptResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PhoneNumberEncrypt',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.PhoneNumberEncryptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def phone_number_encrypt(
+        self,
+        request: dytnsapi_20200217_models.PhoneNumberEncryptRequest,
+    ) -> dytnsapi_20200217_models.PhoneNumberEncryptResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.phone_number_encrypt_with_options(request, runtime)
+
+    async def phone_number_encrypt_async(
+        self,
+        request: dytnsapi_20200217_models.PhoneNumberEncryptRequest,
+    ) -> dytnsapi_20200217_models.PhoneNumberEncryptResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.phone_number_encrypt_with_options_async(request, runtime)
+
     def pvr_callback_fcuwith_options(
         self,
         runtime: util_models.RuntimeOptions,

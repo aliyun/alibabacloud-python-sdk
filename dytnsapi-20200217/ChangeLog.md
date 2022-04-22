@@ -1,3 +1,6 @@
+2022-04-22 Version: 1.0.11
+- Add InvalidPhoneNumberFilter, PhoneNumberEncrypt openApi .
+
 2022-04-07 Version: 1.0.10
 - Supported New Features.
 
