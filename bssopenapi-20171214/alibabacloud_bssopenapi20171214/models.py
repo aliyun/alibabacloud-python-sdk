@@ -71,8 +71,10 @@ class AddAccountRelationResponseBodyData(TeaModel):
     def __init__(
         self,
         host_id: str = None,
+        relation_id: int = None,
     ):
         self.host_id = host_id
+        self.relation_id = relation_id
 
     def validate(self):
         pass
@@ -85,12 +87,16 @@ class AddAccountRelationResponseBodyData(TeaModel):
         result = dict()
         if self.host_id is not None:
             result['HostId'] = self.host_id
+        if self.relation_id is not None:
+            result['RelationId'] = self.relation_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('HostId') is not None:
             self.host_id = m.get('HostId')
+        if m.get('RelationId') is not None:
+            self.relation_id = m.get('RelationId')
         return self
 
 
@@ -929,6 +935,7 @@ class ConfirmRelationRequest(TeaModel):
         confirm_code: str = None,
         parent_user_id: int = None,
         permission_codes: List[str] = None,
+        relation_id: int = None,
         relation_type: str = None,
         request_id: str = None,
     ):
@@ -936,6 +943,7 @@ class ConfirmRelationRequest(TeaModel):
         self.confirm_code = confirm_code
         self.parent_user_id = parent_user_id
         self.permission_codes = permission_codes
+        self.relation_id = relation_id
         self.relation_type = relation_type
         self.request_id = request_id
 
@@ -956,6 +964,8 @@ class ConfirmRelationRequest(TeaModel):
             result['ParentUserId'] = self.parent_user_id
         if self.permission_codes is not None:
             result['PermissionCodes'] = self.permission_codes
+        if self.relation_id is not None:
+            result['RelationId'] = self.relation_id
         if self.relation_type is not None:
             result['RelationType'] = self.relation_type
         if self.request_id is not None:
@@ -972,6 +982,8 @@ class ConfirmRelationRequest(TeaModel):
             self.parent_user_id = m.get('ParentUserId')
         if m.get('PermissionCodes') is not None:
             self.permission_codes = m.get('PermissionCodes')
+        if m.get('RelationId') is not None:
+            self.relation_id = m.get('RelationId')
         if m.get('RelationType') is not None:
             self.relation_type = m.get('RelationType')
         if m.get('RequestId') is not None:
@@ -2777,6 +2789,7 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
         bill_account_name: str = None,
         billing_date: str = None,
         billing_item: str = None,
+        billing_item_code: str = None,
         billing_type: str = None,
         biz_type: str = None,
         cash_amount: float = None,
@@ -2794,6 +2807,7 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
         intranet_ip: str = None,
         invoice_discount: float = None,
         item: str = None,
+        item_name: str = None,
         list_price: str = None,
         list_price_unit: str = None,
         nick_name: str = None,
@@ -2822,6 +2836,7 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
         self.bill_account_name = bill_account_name
         self.billing_date = billing_date
         self.billing_item = billing_item
+        self.billing_item_code = billing_item_code
         self.billing_type = billing_type
         self.biz_type = biz_type
         self.cash_amount = cash_amount
@@ -2839,6 +2854,7 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
         self.intranet_ip = intranet_ip
         self.invoice_discount = invoice_discount
         self.item = item
+        self.item_name = item_name
         self.list_price = list_price
         self.list_price_unit = list_price_unit
         self.nick_name = nick_name
@@ -2881,6 +2897,8 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
             result['BillingDate'] = self.billing_date
         if self.billing_item is not None:
             result['BillingItem'] = self.billing_item
+        if self.billing_item_code is not None:
+            result['BillingItemCode'] = self.billing_item_code
         if self.billing_type is not None:
             result['BillingType'] = self.billing_type
         if self.biz_type is not None:
@@ -2915,6 +2933,8 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
             result['InvoiceDiscount'] = self.invoice_discount
         if self.item is not None:
             result['Item'] = self.item
+        if self.item_name is not None:
+            result['ItemName'] = self.item_name
         if self.list_price is not None:
             result['ListPrice'] = self.list_price
         if self.list_price_unit is not None:
@@ -2973,6 +2993,8 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
             self.billing_date = m.get('BillingDate')
         if m.get('BillingItem') is not None:
             self.billing_item = m.get('BillingItem')
+        if m.get('BillingItemCode') is not None:
+            self.billing_item_code = m.get('BillingItemCode')
         if m.get('BillingType') is not None:
             self.billing_type = m.get('BillingType')
         if m.get('BizType') is not None:
@@ -3007,6 +3029,8 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
             self.invoice_discount = m.get('InvoiceDiscount')
         if m.get('Item') is not None:
             self.item = m.get('Item')
+        if m.get('ItemName') is not None:
+            self.item_name = m.get('ItemName')
         if m.get('ListPrice') is not None:
             self.list_price = m.get('ListPrice')
         if m.get('ListPriceUnit') is not None:
@@ -6676,6 +6700,7 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
         bill_account_name: str = None,
         billing_date: str = None,
         billing_item: str = None,
+        billing_item_code: str = None,
         billing_type: str = None,
         biz_type: str = None,
         cash_amount: float = None,
@@ -6693,6 +6718,7 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
         intranet_ip: str = None,
         invoice_discount: float = None,
         item: str = None,
+        item_name: str = None,
         list_price: str = None,
         list_price_unit: str = None,
         nick_name: str = None,
@@ -6729,6 +6755,7 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
         self.bill_account_name = bill_account_name
         self.billing_date = billing_date
         self.billing_item = billing_item
+        self.billing_item_code = billing_item_code
         self.billing_type = billing_type
         self.biz_type = biz_type
         self.cash_amount = cash_amount
@@ -6746,6 +6773,7 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
         self.intranet_ip = intranet_ip
         self.invoice_discount = invoice_discount
         self.item = item
+        self.item_name = item_name
         self.list_price = list_price
         self.list_price_unit = list_price_unit
         self.nick_name = nick_name
@@ -6796,6 +6824,8 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
             result['BillingDate'] = self.billing_date
         if self.billing_item is not None:
             result['BillingItem'] = self.billing_item
+        if self.billing_item_code is not None:
+            result['BillingItemCode'] = self.billing_item_code
         if self.billing_type is not None:
             result['BillingType'] = self.billing_type
         if self.biz_type is not None:
@@ -6830,6 +6860,8 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
             result['InvoiceDiscount'] = self.invoice_discount
         if self.item is not None:
             result['Item'] = self.item
+        if self.item_name is not None:
+            result['ItemName'] = self.item_name
         if self.list_price is not None:
             result['ListPrice'] = self.list_price
         if self.list_price_unit is not None:
@@ -6904,6 +6936,8 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
             self.billing_date = m.get('BillingDate')
         if m.get('BillingItem') is not None:
             self.billing_item = m.get('BillingItem')
+        if m.get('BillingItemCode') is not None:
+            self.billing_item_code = m.get('BillingItemCode')
         if m.get('BillingType') is not None:
             self.billing_type = m.get('BillingType')
         if m.get('BizType') is not None:
@@ -6938,6 +6972,8 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
             self.invoice_discount = m.get('InvoiceDiscount')
         if m.get('Item') is not None:
             self.item = m.get('Item')
+        if m.get('ItemName') is not None:
+            self.item_name = m.get('ItemName')
         if m.get('ListPrice') is not None:
             self.list_price = m.get('ListPrice')
         if m.get('ListPriceUnit') is not None:
@@ -7308,6 +7344,208 @@ class EnableBillGenerationResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = EnableBillGenerationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAccountRelationRequest(TeaModel):
+    def __init__(
+        self,
+        relation_id: int = None,
+        request_id: str = None,
+    ):
+        # relationId
+        self.relation_id = relation_id
+        # requestId
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.relation_id is not None:
+            result['RelationId'] = self.relation_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RelationId') is not None:
+            self.relation_id = m.get('RelationId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetAccountRelationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        child_user_id: int = None,
+        end_time: int = None,
+        gmt_modified: int = None,
+        id: int = None,
+        parent_user_id: int = None,
+        start_time: int = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.child_user_id = child_user_id
+        self.end_time = end_time
+        self.gmt_modified = gmt_modified
+        # id
+        self.id = id
+        # parentUserId
+        self.parent_user_id = parent_user_id
+        self.start_time = start_time
+        self.status = status
+        # type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.child_user_id is not None:
+            result['ChildUserId'] = self.child_user_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.parent_user_id is not None:
+            result['ParentUserId'] = self.parent_user_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChildUserId') is not None:
+            self.child_user_id = m.get('ChildUserId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ParentUserId') is not None:
+            self.parent_user_id = m.get('ParentUserId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetAccountRelationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetAccountRelationResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # code
+        self.code = code
+        # data
+        self.data = data
+        # message
+        self.message = message
+        # requestId
+        self.request_id = request_id
+        # success
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAccountRelationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAccountRelationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetAccountRelationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetAccountRelationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9139,6 +9377,199 @@ class GetSubscriptionPriceResponse(TeaModel):
         return self
 
 
+class InquiryPriceRefundInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        product_code: str = None,
+        product_type: str = None,
+    ):
+        # clientToken
+        self.client_token = client_token
+        # instanceId
+        self.instance_id = instance_id
+        # productCode
+        self.product_code = product_code
+        # productType
+        self.product_type = product_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        return self
+
+
+class InquiryPriceRefundInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        currency: str = None,
+        host_id: str = None,
+        instance_id: str = None,
+        refund_amount: float = None,
+    ):
+        # currency
+        self.currency = currency
+        # hostId
+        self.host_id = host_id
+        # instanceId
+        self.instance_id = instance_id
+        # refundAmount
+        self.refund_amount = refund_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.host_id is not None:
+            result['HostId'] = self.host_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.refund_amount is not None:
+            result['RefundAmount'] = self.refund_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('HostId') is not None:
+            self.host_id = m.get('HostId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RefundAmount') is not None:
+            self.refund_amount = m.get('RefundAmount')
+        return self
+
+
+class InquiryPriceRefundInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: InquiryPriceRefundInstanceResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # code
+        self.code = code
+        # data
+        self.data = data
+        # message
+        self.message = message
+        # requestId
+        self.request_id = request_id
+        # success
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = InquiryPriceRefundInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class InquiryPriceRefundInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: InquiryPriceRefundInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = InquiryPriceRefundInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyAccountRelationRequest(TeaModel):
     def __init__(
         self,
@@ -9146,6 +9577,7 @@ class ModifyAccountRelationRequest(TeaModel):
         child_user_id: int = None,
         parent_user_id: int = None,
         permission_codes: List[str] = None,
+        relation_id: int = None,
         relation_operation: str = None,
         relation_type: str = None,
         request_id: str = None,
@@ -9155,6 +9587,7 @@ class ModifyAccountRelationRequest(TeaModel):
         self.child_user_id = child_user_id
         self.parent_user_id = parent_user_id
         self.permission_codes = permission_codes
+        self.relation_id = relation_id
         self.relation_operation = relation_operation
         self.relation_type = relation_type
         self.request_id = request_id
@@ -9177,6 +9610,8 @@ class ModifyAccountRelationRequest(TeaModel):
             result['ParentUserId'] = self.parent_user_id
         if self.permission_codes is not None:
             result['PermissionCodes'] = self.permission_codes
+        if self.relation_id is not None:
+            result['RelationId'] = self.relation_id
         if self.relation_operation is not None:
             result['RelationOperation'] = self.relation_operation
         if self.relation_type is not None:
@@ -9197,6 +9632,8 @@ class ModifyAccountRelationRequest(TeaModel):
             self.parent_user_id = m.get('ParentUserId')
         if m.get('PermissionCodes') is not None:
             self.permission_codes = m.get('PermissionCodes')
+        if m.get('RelationId') is not None:
+            self.relation_id = m.get('RelationId')
         if m.get('RelationOperation') is not None:
             self.relation_operation = m.get('RelationOperation')
         if m.get('RelationType') is not None:
@@ -10686,16 +11123,22 @@ class QueryAccountTransactionsRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
         record_id: str = None,
+        transaction_channel: str = None,
         transaction_channel_sn: str = None,
+        transaction_flow: str = None,
         transaction_number: str = None,
+        transaction_type: str = None,
     ):
         self.create_time_end = create_time_end
         self.create_time_start = create_time_start
         self.page_num = page_num
         self.page_size = page_size
         self.record_id = record_id
+        self.transaction_channel = transaction_channel
         self.transaction_channel_sn = transaction_channel_sn
+        self.transaction_flow = transaction_flow
         self.transaction_number = transaction_number
+        self.transaction_type = transaction_type
 
     def validate(self):
         pass
@@ -10716,10 +11159,16 @@ class QueryAccountTransactionsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.record_id is not None:
             result['RecordID'] = self.record_id
+        if self.transaction_channel is not None:
+            result['TransactionChannel'] = self.transaction_channel
         if self.transaction_channel_sn is not None:
             result['TransactionChannelSN'] = self.transaction_channel_sn
+        if self.transaction_flow is not None:
+            result['TransactionFlow'] = self.transaction_flow
         if self.transaction_number is not None:
             result['TransactionNumber'] = self.transaction_number
+        if self.transaction_type is not None:
+            result['TransactionType'] = self.transaction_type
         return result
 
     def from_map(self, m: dict = None):
@@ -10734,10 +11183,16 @@ class QueryAccountTransactionsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RecordID') is not None:
             self.record_id = m.get('RecordID')
+        if m.get('TransactionChannel') is not None:
+            self.transaction_channel = m.get('TransactionChannel')
         if m.get('TransactionChannelSN') is not None:
             self.transaction_channel_sn = m.get('TransactionChannelSN')
+        if m.get('TransactionFlow') is not None:
+            self.transaction_flow = m.get('TransactionFlow')
         if m.get('TransactionNumber') is not None:
             self.transaction_number = m.get('TransactionNumber')
+        if m.get('TransactionType') is not None:
+            self.transaction_type = m.get('TransactionType')
         return self
 
 
@@ -22106,16 +22561,204 @@ class QueryUserOmsDataResponse(TeaModel):
         return self
 
 
+class RefundInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        immediately_release: str = None,
+        instance_id: str = None,
+        product_code: str = None,
+        product_type: str = None,
+    ):
+        # clientToken
+        self.client_token = client_token
+        # immediatelyRelease
+        self.immediately_release = immediately_release
+        # instanceId
+        self.instance_id = instance_id
+        # productCode
+        self.product_code = product_code
+        # productType
+        self.product_type = product_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.immediately_release is not None:
+            result['ImmediatelyRelease'] = self.immediately_release
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ImmediatelyRelease') is not None:
+            self.immediately_release = m.get('ImmediatelyRelease')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        return self
+
+
+class RefundInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        host_id: str = None,
+        order_id: int = None,
+    ):
+        # hostId
+        self.host_id = host_id
+        # orderId
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.host_id is not None:
+            result['HostId'] = self.host_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HostId') is not None:
+            self.host_id = m.get('HostId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class RefundInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: RefundInstanceResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # code
+        self.code = code
+        # data
+        self.data = data
+        # message
+        self.message = message
+        # requestId
+        self.request_id = request_id
+        # success
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = RefundInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RefundInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RefundInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RefundInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RelieveAccountRelationRequest(TeaModel):
     def __init__(
         self,
         child_user_id: int = None,
         parent_user_id: int = None,
+        relation_id: int = None,
         relation_type: str = None,
         request_id: str = None,
     ):
         self.child_user_id = child_user_id
         self.parent_user_id = parent_user_id
+        self.relation_id = relation_id
         self.relation_type = relation_type
         self.request_id = request_id
 
@@ -22132,6 +22775,8 @@ class RelieveAccountRelationRequest(TeaModel):
             result['ChildUserId'] = self.child_user_id
         if self.parent_user_id is not None:
             result['ParentUserId'] = self.parent_user_id
+        if self.relation_id is not None:
+            result['RelationId'] = self.relation_id
         if self.relation_type is not None:
             result['RelationType'] = self.relation_type
         if self.request_id is not None:
@@ -22144,6 +22789,8 @@ class RelieveAccountRelationRequest(TeaModel):
             self.child_user_id = m.get('ChildUserId')
         if m.get('ParentUserId') is not None:
             self.parent_user_id = m.get('ParentUserId')
+        if m.get('RelationId') is not None:
+            self.relation_id = m.get('RelationId')
         if m.get('RelationType') is not None:
             self.relation_type = m.get('RelationType')
         if m.get('RequestId') is not None:

@@ -1,3 +1,6 @@
+2022-04-24 Version: 2.0.4
+- Bill api add query conditions and return data field.
+
 2021-11-23 Version: 2.0.3
 - Add Create Savingplan Instance API.
 
