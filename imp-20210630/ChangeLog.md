@@ -1,3 +1,6 @@
+2022-04-24 Version: 2.9.1
+- Supported CommentCount and LikeCount for GetLiveRoomUserStatistics.
+
 2022-04-20 Version: 2.9.0
 - Add SetRoomUser and CancelRoomUser Function.
 
