@@ -7,18 +7,14 @@ from typing import Dict, List
 class AcceptVpcPeerConnectionRequest(TeaModel):
     def __init__(
         self,
-        channel: str = None,
         client_token: str = None,
         dry_run: bool = None,
         instance_id: str = None,
-        request_content: str = None,
         resource_owner_account: str = None,
     ):
-        self.channel = channel
         self.client_token = client_token
         self.dry_run = dry_run
         self.instance_id = instance_id
-        self.request_content = request_content
         self.resource_owner_account = resource_owner_account
 
     def validate(self):
@@ -30,32 +26,24 @@ class AcceptVpcPeerConnectionRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.channel is not None:
-            result['Channel'] = self.channel
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.request_content is not None:
-            result['RequestContent'] = self.request_content
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Channel') is not None:
-            self.channel = m.get('Channel')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RequestContent') is not None:
-            self.request_content = m.get('RequestContent')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         return self
@@ -131,7 +119,6 @@ class CreateVpcPeerConnectionRequest(TeaModel):
         accepting_ali_uid: int = None,
         accepting_region_id: str = None,
         accepting_vpc_id: str = None,
-        channel: str = None,
         client_token: str = None,
         description: str = None,
         dry_run: bool = None,
@@ -142,7 +129,6 @@ class CreateVpcPeerConnectionRequest(TeaModel):
         self.accepting_ali_uid = accepting_ali_uid
         self.accepting_region_id = accepting_region_id
         self.accepting_vpc_id = accepting_vpc_id
-        self.channel = channel
         self.client_token = client_token
         self.description = description
         self.dry_run = dry_run
@@ -165,8 +151,6 @@ class CreateVpcPeerConnectionRequest(TeaModel):
             result['AcceptingRegionId'] = self.accepting_region_id
         if self.accepting_vpc_id is not None:
             result['AcceptingVpcId'] = self.accepting_vpc_id
-        if self.channel is not None:
-            result['Channel'] = self.channel
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.description is not None:
@@ -189,8 +173,6 @@ class CreateVpcPeerConnectionRequest(TeaModel):
             self.accepting_region_id = m.get('AcceptingRegionId')
         if m.get('AcceptingVpcId') is not None:
             self.accepting_vpc_id = m.get('AcceptingVpcId')
-        if m.get('Channel') is not None:
-            self.channel = m.get('Channel')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
@@ -279,13 +261,11 @@ class CreateVpcPeerConnectionResponse(TeaModel):
 class DeleteVpcPeerConnectionRequest(TeaModel):
     def __init__(
         self,
-        channel: str = None,
         client_token: str = None,
         dry_run: bool = None,
         force: bool = None,
         instance_id: str = None,
     ):
-        self.channel = channel
         self.client_token = client_token
         self.dry_run = dry_run
         # 是否强删
@@ -301,8 +281,6 @@ class DeleteVpcPeerConnectionRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.channel is not None:
-            result['Channel'] = self.channel
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
@@ -315,8 +293,6 @@ class DeleteVpcPeerConnectionRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Channel') is not None:
-            self.channel = m.get('Channel')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
@@ -395,18 +371,14 @@ class DeleteVpcPeerConnectionResponse(TeaModel):
 class GetVpcPeerConnectionAttributeRequest(TeaModel):
     def __init__(
         self,
-        channel: str = None,
         client_token: str = None,
         dry_run: bool = None,
         instance_id: str = None,
-        request_content: str = None,
         resource_owner_account: str = None,
     ):
-        self.channel = channel
         self.client_token = client_token
         self.dry_run = dry_run
         self.instance_id = instance_id
-        self.request_content = request_content
         self.resource_owner_account = resource_owner_account
 
     def validate(self):
@@ -418,32 +390,24 @@ class GetVpcPeerConnectionAttributeRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.channel is not None:
-            result['Channel'] = self.channel
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.request_content is not None:
-            result['RequestContent'] = self.request_content
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Channel') is not None:
-            self.channel = m.get('Channel')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RequestContent') is not None:
-            self.request_content = m.get('RequestContent')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         return self
@@ -695,7 +659,6 @@ class GetVpcPeerConnectionAttributeResponse(TeaModel):
 class ListVpcPeerConnectionsRequest(TeaModel):
     def __init__(
         self,
-        channel: str = None,
         client_token: str = None,
         dry_run: bool = None,
         instance_id: str = None,
@@ -705,7 +668,6 @@ class ListVpcPeerConnectionsRequest(TeaModel):
         region_id: str = None,
         vpc_id: List[str] = None,
     ):
-        self.channel = channel
         self.client_token = client_token
         self.dry_run = dry_run
         self.instance_id = instance_id
@@ -725,8 +687,6 @@ class ListVpcPeerConnectionsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.channel is not None:
-            result['Channel'] = self.channel
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
@@ -747,8 +707,6 @@ class ListVpcPeerConnectionsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Channel') is not None:
-            self.channel = m.get('Channel')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
@@ -771,7 +729,6 @@ class ListVpcPeerConnectionsRequest(TeaModel):
 class ListVpcPeerConnectionsShrinkRequest(TeaModel):
     def __init__(
         self,
-        channel: str = None,
         client_token: str = None,
         dry_run: bool = None,
         instance_id: str = None,
@@ -781,7 +738,6 @@ class ListVpcPeerConnectionsShrinkRequest(TeaModel):
         region_id: str = None,
         vpc_id_shrink: str = None,
     ):
-        self.channel = channel
         self.client_token = client_token
         self.dry_run = dry_run
         self.instance_id = instance_id
@@ -801,8 +757,6 @@ class ListVpcPeerConnectionsShrinkRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.channel is not None:
-            result['Channel'] = self.channel
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
@@ -823,8 +777,6 @@ class ListVpcPeerConnectionsShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Channel') is not None:
-            self.channel = m.get('Channel')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
@@ -1143,14 +1095,12 @@ class ListVpcPeerConnectionsResponse(TeaModel):
 class ModifyVpcPeerConnectionRequest(TeaModel):
     def __init__(
         self,
-        channel: str = None,
         client_token: str = None,
         description: str = None,
         dry_run: bool = None,
         instance_id: str = None,
         name: str = None,
     ):
-        self.channel = channel
         self.client_token = client_token
         self.description = description
         self.dry_run = dry_run
@@ -1166,8 +1116,6 @@ class ModifyVpcPeerConnectionRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.channel is not None:
-            result['Channel'] = self.channel
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.description is not None:
@@ -1182,8 +1130,6 @@ class ModifyVpcPeerConnectionRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Channel') is not None:
-            self.channel = m.get('Channel')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
@@ -1264,13 +1210,11 @@ class ModifyVpcPeerConnectionResponse(TeaModel):
 class RejectVpcPeerConnectionRequest(TeaModel):
     def __init__(
         self,
-        channel: str = None,
         client_token: str = None,
         dry_run: bool = None,
         instance_id: str = None,
         resource_owner_account: str = None,
     ):
-        self.channel = channel
         self.client_token = client_token
         self.dry_run = dry_run
         self.instance_id = instance_id
@@ -1285,8 +1229,6 @@ class RejectVpcPeerConnectionRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.channel is not None:
-            result['Channel'] = self.channel
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
@@ -1299,8 +1241,6 @@ class RejectVpcPeerConnectionRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Channel') is not None:
-            self.channel = m.get('Channel')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:

@@ -48,16 +48,12 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         if not UtilClient.is_unset(request.resource_owner_account):
             body['ResourceOwnerAccount'] = request.resource_owner_account
         req = open_api_models.OpenApiRequest(
@@ -86,16 +82,12 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         if not UtilClient.is_unset(request.resource_owner_account):
             body['ResourceOwnerAccount'] = request.resource_owner_account
         req = open_api_models.OpenApiRequest(
@@ -144,8 +136,6 @@ class Client(OpenApiClient):
             body['AcceptingRegionId'] = request.accepting_region_id
         if not UtilClient.is_unset(request.accepting_vpc_id):
             body['AcceptingVpcId'] = request.accepting_vpc_id
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -190,8 +180,6 @@ class Client(OpenApiClient):
             body['AcceptingRegionId'] = request.accepting_region_id
         if not UtilClient.is_unset(request.accepting_vpc_id):
             body['AcceptingVpcId'] = request.accepting_vpc_id
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -244,8 +232,6 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
@@ -280,8 +266,6 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
@@ -330,16 +314,12 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         if not UtilClient.is_unset(request.resource_owner_account):
             body['ResourceOwnerAccount'] = request.resource_owner_account
         req = open_api_models.OpenApiRequest(
@@ -368,16 +348,12 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         if not UtilClient.is_unset(request.resource_owner_account):
             body['ResourceOwnerAccount'] = request.resource_owner_account
         req = open_api_models.OpenApiRequest(
@@ -424,8 +400,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.vpc_id):
             request.vpc_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vpc_id, 'VpcId', 'simple')
         body = {}
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
@@ -472,8 +446,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.vpc_id):
             request.vpc_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vpc_id, 'VpcId', 'simple')
         body = {}
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
@@ -530,8 +502,6 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -568,8 +538,6 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -620,8 +588,6 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.RejectVpcPeerConnectionResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
@@ -656,8 +622,6 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.RejectVpcPeerConnectionResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.channel):
-            body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
