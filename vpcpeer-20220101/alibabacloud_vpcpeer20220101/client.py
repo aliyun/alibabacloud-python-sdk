@@ -48,10 +48,6 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.caller_bid_login_email):
-            body['CallerBidLoginEmail'] = request.caller_bid_login_email
-        if not UtilClient.is_unset(request.caller_uid_login_email):
-            body['CallerUidLoginEmail'] = request.caller_uid_login_email
         if not UtilClient.is_unset(request.channel):
             body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
@@ -60,10 +56,6 @@ class Client(OpenApiClient):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.owner_account):
-            body['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id_login_email):
-            body['OwnerIdLoginEmail'] = request.owner_id_login_email
         if not UtilClient.is_unset(request.request_content):
             body['RequestContent'] = request.request_content
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -94,10 +86,6 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.caller_bid_login_email):
-            body['CallerBidLoginEmail'] = request.caller_bid_login_email
-        if not UtilClient.is_unset(request.caller_uid_login_email):
-            body['CallerUidLoginEmail'] = request.caller_uid_login_email
         if not UtilClient.is_unset(request.channel):
             body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
@@ -106,10 +94,6 @@ class Client(OpenApiClient):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.owner_account):
-            body['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id_login_email):
-            body['OwnerIdLoginEmail'] = request.owner_id_login_email
         if not UtilClient.is_unset(request.request_content):
             body['RequestContent'] = request.request_content
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -266,6 +250,8 @@ class Client(OpenApiClient):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.force):
+            body['Force'] = request.force
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
@@ -300,6 +286,8 @@ class Client(OpenApiClient):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.force):
+            body['Force'] = request.force
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
@@ -342,10 +330,6 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.caller_bid_login_email):
-            body['CallerBidLoginEmail'] = request.caller_bid_login_email
-        if not UtilClient.is_unset(request.caller_uid_login_email):
-            body['CallerUidLoginEmail'] = request.caller_uid_login_email
         if not UtilClient.is_unset(request.channel):
             body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
@@ -354,10 +338,6 @@ class Client(OpenApiClient):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.owner_account):
-            body['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id_login_email):
-            body['OwnerIdLoginEmail'] = request.owner_id_login_email
         if not UtilClient.is_unset(request.request_content):
             body['RequestContent'] = request.request_content
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -388,10 +368,6 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.caller_bid_login_email):
-            body['CallerBidLoginEmail'] = request.caller_bid_login_email
-        if not UtilClient.is_unset(request.caller_uid_login_email):
-            body['CallerUidLoginEmail'] = request.caller_uid_login_email
         if not UtilClient.is_unset(request.channel):
             body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
@@ -400,10 +376,6 @@ class Client(OpenApiClient):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.owner_account):
-            body['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id_login_email):
-            body['OwnerIdLoginEmail'] = request.owner_id_login_email
         if not UtilClient.is_unset(request.request_content):
             body['RequestContent'] = request.request_content
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -648,10 +620,6 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.RejectVpcPeerConnectionResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.caller_bid_login_email):
-            body['CallerBidLoginEmail'] = request.caller_bid_login_email
-        if not UtilClient.is_unset(request.caller_uid_login_email):
-            body['CallerUidLoginEmail'] = request.caller_uid_login_email
         if not UtilClient.is_unset(request.channel):
             body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
@@ -660,12 +628,6 @@ class Client(OpenApiClient):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.owner_account):
-            body['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id_login_email):
-            body['OwnerIdLoginEmail'] = request.owner_id_login_email
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         if not UtilClient.is_unset(request.resource_owner_account):
             body['ResourceOwnerAccount'] = request.resource_owner_account
         req = open_api_models.OpenApiRequest(
@@ -694,10 +656,6 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.RejectVpcPeerConnectionResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.caller_bid_login_email):
-            body['CallerBidLoginEmail'] = request.caller_bid_login_email
-        if not UtilClient.is_unset(request.caller_uid_login_email):
-            body['CallerUidLoginEmail'] = request.caller_uid_login_email
         if not UtilClient.is_unset(request.channel):
             body['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_token):
@@ -706,12 +664,6 @@ class Client(OpenApiClient):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.owner_account):
-            body['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id_login_email):
-            body['OwnerIdLoginEmail'] = request.owner_id_login_email
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         if not UtilClient.is_unset(request.resource_owner_account):
             body['ResourceOwnerAccount'] = request.resource_owner_account
         req = open_api_models.OpenApiRequest(
