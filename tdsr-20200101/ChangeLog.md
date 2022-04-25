@@ -1,3 +1,6 @@
+2022-04-25 Version: 3.0.8
+- Add Model Preview Interface.
+
 2022-03-10 Version: 3.0.7
 - Add CheckUserProperty Interface.
 

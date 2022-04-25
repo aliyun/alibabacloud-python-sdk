@@ -343,6 +343,8 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.AddSceneResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.customer_uid):
+            query['CustomerUid'] = request.customer_uid
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.project_id):
@@ -375,6 +377,8 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.AddSceneResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.customer_uid):
+            query['CustomerUid'] = request.customer_uid
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.project_id):
@@ -1811,6 +1815,76 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetScenePreviewInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_scene_preview_info_with_options_async(request, runtime)
+
+    def get_scene_preview_resource_with_options(
+        self,
+        request: tdsr_20200101_models.GetScenePreviewResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.GetScenePreviewResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.preview_token):
+            query['PreviewToken'] = request.preview_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetScenePreviewResource',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.GetScenePreviewResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_scene_preview_resource_with_options_async(
+        self,
+        request: tdsr_20200101_models.GetScenePreviewResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.GetScenePreviewResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.preview_token):
+            query['PreviewToken'] = request.preview_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetScenePreviewResource',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.GetScenePreviewResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_scene_preview_resource(
+        self,
+        request: tdsr_20200101_models.GetScenePreviewResourceRequest,
+    ) -> tdsr_20200101_models.GetScenePreviewResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_scene_preview_resource_with_options(request, runtime)
+
+    async def get_scene_preview_resource_async(
+        self,
+        request: tdsr_20200101_models.GetScenePreviewResourceRequest,
+    ) -> tdsr_20200101_models.GetScenePreviewResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_scene_preview_resource_with_options_async(request, runtime)
 
     def get_single_conn_data_with_options(
         self,
