@@ -97,31 +97,56 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ColdStorage'] = request.cold_storage
-        query['CoreSpec'] = request.core_spec
-        query['DiskCategory'] = request.disk_category
-        query['Duration'] = request.duration
-        query['FilestoreNum'] = request.filestore_num
-        query['FilestoreSpec'] = request.filestore_spec
-        query['InstanceAlias'] = request.instance_alias
-        query['InstanceStorage'] = request.instance_storage
-        query['LindormNum'] = request.lindorm_num
-        query['LindormSpec'] = request.lindorm_spec
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PayType'] = request.pay_type
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
-        query['SolrNum'] = request.solr_num
-        query['SolrSpec'] = request.solr_spec
-        query['TsdbNum'] = request.tsdb_num
-        query['TsdbSpec'] = request.tsdb_spec
-        query['VPCId'] = request.vpcid
-        query['VSwitchId'] = request.v_switch_id
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.cold_storage):
+            query['ColdStorage'] = request.cold_storage
+        if not UtilClient.is_unset(request.core_spec):
+            query['CoreSpec'] = request.core_spec
+        if not UtilClient.is_unset(request.disk_category):
+            query['DiskCategory'] = request.disk_category
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.filestore_num):
+            query['FilestoreNum'] = request.filestore_num
+        if not UtilClient.is_unset(request.filestore_spec):
+            query['FilestoreSpec'] = request.filestore_spec
+        if not UtilClient.is_unset(request.instance_alias):
+            query['InstanceAlias'] = request.instance_alias
+        if not UtilClient.is_unset(request.instance_storage):
+            query['InstanceStorage'] = request.instance_storage
+        if not UtilClient.is_unset(request.lindorm_num):
+            query['LindormNum'] = request.lindorm_num
+        if not UtilClient.is_unset(request.lindorm_spec):
+            query['LindormSpec'] = request.lindorm_spec
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.solr_num):
+            query['SolrNum'] = request.solr_num
+        if not UtilClient.is_unset(request.solr_spec):
+            query['SolrSpec'] = request.solr_spec
+        if not UtilClient.is_unset(request.tsdb_num):
+            query['TsdbNum'] = request.tsdb_num
+        if not UtilClient.is_unset(request.tsdb_spec):
+            query['TsdbSpec'] = request.tsdb_spec
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -148,31 +173,56 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ColdStorage'] = request.cold_storage
-        query['CoreSpec'] = request.core_spec
-        query['DiskCategory'] = request.disk_category
-        query['Duration'] = request.duration
-        query['FilestoreNum'] = request.filestore_num
-        query['FilestoreSpec'] = request.filestore_spec
-        query['InstanceAlias'] = request.instance_alias
-        query['InstanceStorage'] = request.instance_storage
-        query['LindormNum'] = request.lindorm_num
-        query['LindormSpec'] = request.lindorm_spec
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PayType'] = request.pay_type
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
-        query['SolrNum'] = request.solr_num
-        query['SolrSpec'] = request.solr_spec
-        query['TsdbNum'] = request.tsdb_num
-        query['TsdbSpec'] = request.tsdb_spec
-        query['VPCId'] = request.vpcid
-        query['VSwitchId'] = request.v_switch_id
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.cold_storage):
+            query['ColdStorage'] = request.cold_storage
+        if not UtilClient.is_unset(request.core_spec):
+            query['CoreSpec'] = request.core_spec
+        if not UtilClient.is_unset(request.disk_category):
+            query['DiskCategory'] = request.disk_category
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.filestore_num):
+            query['FilestoreNum'] = request.filestore_num
+        if not UtilClient.is_unset(request.filestore_spec):
+            query['FilestoreSpec'] = request.filestore_spec
+        if not UtilClient.is_unset(request.instance_alias):
+            query['InstanceAlias'] = request.instance_alias
+        if not UtilClient.is_unset(request.instance_storage):
+            query['InstanceStorage'] = request.instance_storage
+        if not UtilClient.is_unset(request.lindorm_num):
+            query['LindormNum'] = request.lindorm_num
+        if not UtilClient.is_unset(request.lindorm_spec):
+            query['LindormSpec'] = request.lindorm_spec
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.solr_num):
+            query['SolrNum'] = request.solr_num
+        if not UtilClient.is_unset(request.solr_spec):
+            query['SolrSpec'] = request.solr_spec
+        if not UtilClient.is_unset(request.tsdb_num):
+            query['TsdbNum'] = request.tsdb_num
+        if not UtilClient.is_unset(request.tsdb_spec):
+            query['TsdbSpec'] = request.tsdb_spec
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -213,12 +263,18 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AcceptLanguage'] = request.accept_language
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -245,12 +301,18 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AcceptLanguage'] = request.accept_language
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -291,13 +353,20 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.GetInstanceIpWhiteListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -324,13 +393,20 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.GetInstanceIpWhiteListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -371,13 +447,20 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.GetLindormInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -404,13 +487,20 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.GetLindormInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -451,13 +541,20 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.GetLindormInstanceEngineListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -484,13 +581,20 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.GetLindormInstanceEngineListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -531,17 +635,30 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.GetLindormInstanceListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['QueryStr'] = request.query_str
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
-        query['ServiceType'] = request.service_type
-        query['SupportEngine'] = request.support_engine
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_str):
+            query['QueryStr'] = request.query_str
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.support_engine):
+            query['SupportEngine'] = request.support_engine
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -568,17 +685,30 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.GetLindormInstanceListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['QueryStr'] = request.query_str
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
-        query['ServiceType'] = request.service_type
-        query['SupportEngine'] = request.support_engine
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_str):
+            query['QueryStr'] = request.query_str
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.support_engine):
+            query['SupportEngine'] = request.support_engine
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -612,6 +742,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_lindorm_instance_list_with_options_async(request, runtime)
 
+    def list_tag_resources_with_options(
+        self,
+        request: hitsdb_20200615_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: hitsdb_20200615_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: hitsdb_20200615_models.ListTagResourcesRequest,
+    ) -> hitsdb_20200615_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: hitsdb_20200615_models.ListTagResourcesRequest,
+    ) -> hitsdb_20200615_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
+
     def release_lindorm_instance_with_options(
         self,
         request: hitsdb_20200615_models.ReleaseLindormInstanceRequest,
@@ -619,12 +855,18 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.ReleaseLindormInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -651,12 +893,18 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.ReleaseLindormInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -690,6 +938,206 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.release_lindorm_instance_with_options_async(request, runtime)
 
+    def tag_resources_with_options(
+        self,
+        request: hitsdb_20200615_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: hitsdb_20200615_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: hitsdb_20200615_models.TagResourcesRequest,
+    ) -> hitsdb_20200615_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: hitsdb_20200615_models.TagResourcesRequest,
+    ) -> hitsdb_20200615_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: hitsdb_20200615_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: hitsdb_20200615_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: hitsdb_20200615_models.UntagResourcesRequest,
+    ) -> hitsdb_20200615_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: hitsdb_20200615_models.UntagResourcesRequest,
+    ) -> hitsdb_20200615_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
+
     def update_instance_ip_white_list_with_options(
         self,
         request: hitsdb_20200615_models.UpdateInstanceIpWhiteListRequest,
@@ -697,14 +1145,22 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityIpList'] = request.security_ip_list
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_ip_list):
+            query['SecurityIpList'] = request.security_ip_list
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -731,14 +1187,22 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityIpList'] = request.security_ip_list
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_ip_list):
+            query['SecurityIpList'] = request.security_ip_list
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -779,31 +1243,56 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterStorage'] = request.cluster_storage
-        query['ColdStorage'] = request.cold_storage
-        query['CoreNum'] = request.core_num
-        query['CoreSpec'] = request.core_spec
-        query['FilestoreNum'] = request.filestore_num
-        query['FilestoreSpec'] = request.filestore_spec
-        query['InstanceId'] = request.instance_id
-        query['LindormNum'] = request.lindorm_num
-        query['LindormSpec'] = request.lindorm_spec
-        query['LtsCoreNum'] = request.lts_core_num
-        query['LtsCoreSpec'] = request.lts_core_spec
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhoenixCoreNum'] = request.phoenix_core_num
-        query['PhoenixCoreSpec'] = request.phoenix_core_spec
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
-        query['SolrNum'] = request.solr_num
-        query['SolrSpec'] = request.solr_spec
-        query['TsdbNum'] = request.tsdb_num
-        query['TsdbSpec'] = request.tsdb_spec
-        query['UpgradeType'] = request.upgrade_type
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.cluster_storage):
+            query['ClusterStorage'] = request.cluster_storage
+        if not UtilClient.is_unset(request.cold_storage):
+            query['ColdStorage'] = request.cold_storage
+        if not UtilClient.is_unset(request.core_num):
+            query['CoreNum'] = request.core_num
+        if not UtilClient.is_unset(request.core_spec):
+            query['CoreSpec'] = request.core_spec
+        if not UtilClient.is_unset(request.filestore_num):
+            query['FilestoreNum'] = request.filestore_num
+        if not UtilClient.is_unset(request.filestore_spec):
+            query['FilestoreSpec'] = request.filestore_spec
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lindorm_num):
+            query['LindormNum'] = request.lindorm_num
+        if not UtilClient.is_unset(request.lindorm_spec):
+            query['LindormSpec'] = request.lindorm_spec
+        if not UtilClient.is_unset(request.lts_core_num):
+            query['LtsCoreNum'] = request.lts_core_num
+        if not UtilClient.is_unset(request.lts_core_spec):
+            query['LtsCoreSpec'] = request.lts_core_spec
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phoenix_core_num):
+            query['PhoenixCoreNum'] = request.phoenix_core_num
+        if not UtilClient.is_unset(request.phoenix_core_spec):
+            query['PhoenixCoreSpec'] = request.phoenix_core_spec
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.solr_num):
+            query['SolrNum'] = request.solr_num
+        if not UtilClient.is_unset(request.solr_spec):
+            query['SolrSpec'] = request.solr_spec
+        if not UtilClient.is_unset(request.tsdb_num):
+            query['TsdbNum'] = request.tsdb_num
+        if not UtilClient.is_unset(request.tsdb_spec):
+            query['TsdbSpec'] = request.tsdb_spec
+        if not UtilClient.is_unset(request.upgrade_type):
+            query['UpgradeType'] = request.upgrade_type
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -830,31 +1319,56 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterStorage'] = request.cluster_storage
-        query['ColdStorage'] = request.cold_storage
-        query['CoreNum'] = request.core_num
-        query['CoreSpec'] = request.core_spec
-        query['FilestoreNum'] = request.filestore_num
-        query['FilestoreSpec'] = request.filestore_spec
-        query['InstanceId'] = request.instance_id
-        query['LindormNum'] = request.lindorm_num
-        query['LindormSpec'] = request.lindorm_spec
-        query['LtsCoreNum'] = request.lts_core_num
-        query['LtsCoreSpec'] = request.lts_core_spec
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhoenixCoreNum'] = request.phoenix_core_num
-        query['PhoenixCoreSpec'] = request.phoenix_core_spec
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityToken'] = request.security_token
-        query['SolrNum'] = request.solr_num
-        query['SolrSpec'] = request.solr_spec
-        query['TsdbNum'] = request.tsdb_num
-        query['TsdbSpec'] = request.tsdb_spec
-        query['UpgradeType'] = request.upgrade_type
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.cluster_storage):
+            query['ClusterStorage'] = request.cluster_storage
+        if not UtilClient.is_unset(request.cold_storage):
+            query['ColdStorage'] = request.cold_storage
+        if not UtilClient.is_unset(request.core_num):
+            query['CoreNum'] = request.core_num
+        if not UtilClient.is_unset(request.core_spec):
+            query['CoreSpec'] = request.core_spec
+        if not UtilClient.is_unset(request.filestore_num):
+            query['FilestoreNum'] = request.filestore_num
+        if not UtilClient.is_unset(request.filestore_spec):
+            query['FilestoreSpec'] = request.filestore_spec
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lindorm_num):
+            query['LindormNum'] = request.lindorm_num
+        if not UtilClient.is_unset(request.lindorm_spec):
+            query['LindormSpec'] = request.lindorm_spec
+        if not UtilClient.is_unset(request.lts_core_num):
+            query['LtsCoreNum'] = request.lts_core_num
+        if not UtilClient.is_unset(request.lts_core_spec):
+            query['LtsCoreSpec'] = request.lts_core_spec
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phoenix_core_num):
+            query['PhoenixCoreNum'] = request.phoenix_core_num
+        if not UtilClient.is_unset(request.phoenix_core_spec):
+            query['PhoenixCoreSpec'] = request.phoenix_core_spec
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.solr_num):
+            query['SolrNum'] = request.solr_num
+        if not UtilClient.is_unset(request.solr_spec):
+            query['SolrSpec'] = request.solr_spec
+        if not UtilClient.is_unset(request.tsdb_num):
+            query['TsdbNum'] = request.tsdb_num
+        if not UtilClient.is_unset(request.tsdb_spec):
+            query['TsdbSpec'] = request.tsdb_spec
+        if not UtilClient.is_unset(request.upgrade_type):
+            query['UpgradeType'] = request.upgrade_type
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

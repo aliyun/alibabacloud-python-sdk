@@ -257,20 +257,16 @@ class DescribeRegionsRequest(TeaModel):
         accept_language: str = None,
         owner_account: str = None,
         owner_id: int = None,
-        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
-        zone_id: str = None,
     ):
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
-        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -287,16 +283,12 @@ class DescribeRegionsRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
-        if self.zone_id is not None:
-            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -307,16 +299,12 @@ class DescribeRegionsRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
-        if m.get('ZoneId') is not None:
-            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -444,7 +432,6 @@ class GetInstanceIpWhiteListRequest(TeaModel):
         instance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
-        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
@@ -453,7 +440,6 @@ class GetInstanceIpWhiteListRequest(TeaModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -475,8 +461,6 @@ class GetInstanceIpWhiteListRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -495,8 +479,6 @@ class GetInstanceIpWhiteListRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -720,8 +702,12 @@ class GetLindormInstanceResponseBody(TeaModel):
         disk_category: str = None,
         disk_threshold: str = None,
         disk_usage: str = None,
+        enable_cdc: bool = None,
         enable_compute: bool = None,
         enable_kms: bool = None,
+        enable_ssl: bool = None,
+        enable_shs: bool = None,
+        enable_stream: bool = None,
         engine_list: List[GetLindormInstanceResponseBodyEngineList] = None,
         engine_type: int = None,
         expire_time: str = None,
@@ -730,6 +716,8 @@ class GetLindormInstanceResponseBody(TeaModel):
         instance_id: str = None,
         instance_status: str = None,
         instance_storage: str = None,
+        maintain_end_time: str = None,
+        maintain_start_time: str = None,
         network_type: str = None,
         pay_type: str = None,
         region_id: str = None,
@@ -748,8 +736,12 @@ class GetLindormInstanceResponseBody(TeaModel):
         self.disk_category = disk_category
         self.disk_threshold = disk_threshold
         self.disk_usage = disk_usage
+        self.enable_cdc = enable_cdc
         self.enable_compute = enable_compute
         self.enable_kms = enable_kms
+        self.enable_ssl = enable_ssl
+        self.enable_shs = enable_shs
+        self.enable_stream = enable_stream
         self.engine_list = engine_list
         self.engine_type = engine_type
         self.expire_time = expire_time
@@ -758,6 +750,8 @@ class GetLindormInstanceResponseBody(TeaModel):
         self.instance_id = instance_id
         self.instance_status = instance_status
         self.instance_storage = instance_storage
+        self.maintain_end_time = maintain_end_time
+        self.maintain_start_time = maintain_start_time
         self.network_type = network_type
         self.pay_type = pay_type
         self.region_id = region_id
@@ -797,10 +791,18 @@ class GetLindormInstanceResponseBody(TeaModel):
             result['DiskThreshold'] = self.disk_threshold
         if self.disk_usage is not None:
             result['DiskUsage'] = self.disk_usage
+        if self.enable_cdc is not None:
+            result['EnableCdc'] = self.enable_cdc
         if self.enable_compute is not None:
             result['EnableCompute'] = self.enable_compute
         if self.enable_kms is not None:
             result['EnableKms'] = self.enable_kms
+        if self.enable_ssl is not None:
+            result['EnableSSL'] = self.enable_ssl
+        if self.enable_shs is not None:
+            result['EnableShs'] = self.enable_shs
+        if self.enable_stream is not None:
+            result['EnableStream'] = self.enable_stream
         result['EngineList'] = []
         if self.engine_list is not None:
             for k in self.engine_list:
@@ -819,6 +821,10 @@ class GetLindormInstanceResponseBody(TeaModel):
             result['InstanceStatus'] = self.instance_status
         if self.instance_storage is not None:
             result['InstanceStorage'] = self.instance_storage
+        if self.maintain_end_time is not None:
+            result['MaintainEndTime'] = self.maintain_end_time
+        if self.maintain_start_time is not None:
+            result['MaintainStartTime'] = self.maintain_start_time
         if self.network_type is not None:
             result['NetworkType'] = self.network_type
         if self.pay_type is not None:
@@ -857,10 +863,18 @@ class GetLindormInstanceResponseBody(TeaModel):
             self.disk_threshold = m.get('DiskThreshold')
         if m.get('DiskUsage') is not None:
             self.disk_usage = m.get('DiskUsage')
+        if m.get('EnableCdc') is not None:
+            self.enable_cdc = m.get('EnableCdc')
         if m.get('EnableCompute') is not None:
             self.enable_compute = m.get('EnableCompute')
         if m.get('EnableKms') is not None:
             self.enable_kms = m.get('EnableKms')
+        if m.get('EnableSSL') is not None:
+            self.enable_ssl = m.get('EnableSSL')
+        if m.get('EnableShs') is not None:
+            self.enable_shs = m.get('EnableShs')
+        if m.get('EnableStream') is not None:
+            self.enable_stream = m.get('EnableStream')
         self.engine_list = []
         if m.get('EngineList') is not None:
             for k in m.get('EngineList'):
@@ -880,6 +894,10 @@ class GetLindormInstanceResponseBody(TeaModel):
             self.instance_status = m.get('InstanceStatus')
         if m.get('InstanceStorage') is not None:
             self.instance_storage = m.get('InstanceStorage')
+        if m.get('MaintainEndTime') is not None:
+            self.maintain_end_time = m.get('MaintainEndTime')
+        if m.get('MaintainStartTime') is not None:
+            self.maintain_start_time = m.get('MaintainStartTime')
         if m.get('NetworkType') is not None:
             self.network_type = m.get('NetworkType')
         if m.get('PayType') is not None:
@@ -1169,6 +1187,39 @@ class GetLindormInstanceEngineListResponse(TeaModel):
         return self
 
 
+class GetLindormInstanceListRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetLindormInstanceListRequest(TeaModel):
     def __init__(
         self,
@@ -1183,6 +1234,7 @@ class GetLindormInstanceListRequest(TeaModel):
         security_token: str = None,
         service_type: str = None,
         support_engine: int = None,
+        tag: List[GetLindormInstanceListRequestTag] = None,
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1195,9 +1247,13 @@ class GetLindormInstanceListRequest(TeaModel):
         self.security_token = security_token
         self.service_type = service_type
         self.support_engine = support_engine
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1227,6 +1283,10 @@ class GetLindormInstanceListRequest(TeaModel):
             result['ServiceType'] = self.service_type
         if self.support_engine is not None:
             result['SupportEngine'] = self.support_engine
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1253,6 +1313,44 @@ class GetLindormInstanceListRequest(TeaModel):
             self.service_type = m.get('ServiceType')
         if m.get('SupportEngine') is not None:
             self.support_engine = m.get('SupportEngine')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = GetLindormInstanceListRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class GetLindormInstanceListResponseBodyInstanceListTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -1262,6 +1360,7 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
         ali_uid: int = None,
         create_milliseconds: int = None,
         create_time: str = None,
+        enable_stream: bool = None,
         engine_type: str = None,
         expire_time: str = None,
         expired_milliseconds: int = None,
@@ -1273,12 +1372,14 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
         pay_type: str = None,
         region_id: str = None,
         service_type: str = None,
+        tags: List[GetLindormInstanceListResponseBodyInstanceListTags] = None,
         vpc_id: str = None,
         zone_id: str = None,
     ):
         self.ali_uid = ali_uid
         self.create_milliseconds = create_milliseconds
         self.create_time = create_time
+        self.enable_stream = enable_stream
         self.engine_type = engine_type
         self.expire_time = expire_time
         self.expired_milliseconds = expired_milliseconds
@@ -1290,11 +1391,15 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
         self.pay_type = pay_type
         self.region_id = region_id
         self.service_type = service_type
+        self.tags = tags
         self.vpc_id = vpc_id
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1308,6 +1413,8 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
             result['CreateMilliseconds'] = self.create_milliseconds
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.enable_stream is not None:
+            result['EnableStream'] = self.enable_stream
         if self.engine_type is not None:
             result['EngineType'] = self.engine_type
         if self.expire_time is not None:
@@ -1330,6 +1437,10 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
             result['RegionId'] = self.region_id
         if self.service_type is not None:
             result['ServiceType'] = self.service_type
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.zone_id is not None:
@@ -1344,6 +1455,8 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
             self.create_milliseconds = m.get('CreateMilliseconds')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('EnableStream') is not None:
+            self.enable_stream = m.get('EnableStream')
         if m.get('EngineType') is not None:
             self.engine_type = m.get('EngineType')
         if m.get('ExpireTime') is not None:
@@ -1366,6 +1479,11 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetLindormInstanceListResponseBodyInstanceListTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('ZoneId') is not None:
@@ -1469,13 +1587,263 @@ class GetLindormInstanceListResponse(TeaModel):
         return self
 
 
+class ListTagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        security_token: str = None,
+        tag: List[ListTagResourcesRequestTag] = None,
+    ):
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+        self.security_token = security_token
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            for k in self.tag_resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TagResources'] = []
+        if self.tag_resources is not None:
+            for k in self.tag_resources:
+                result['TagResources'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tag_resources = []
+        if m.get('TagResources') is not None:
+            for k in m.get('TagResources'):
+                temp_model = ListTagResourcesResponseBodyTagResources()
+                self.tag_resources.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ReleaseLindormInstanceRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
-        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
@@ -1483,7 +1851,6 @@ class ReleaseLindormInstanceRequest(TeaModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -1503,8 +1870,6 @@ class ReleaseLindormInstanceRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -1521,8 +1886,6 @@ class ReleaseLindormInstanceRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -1596,6 +1959,319 @@ class ReleaseLindormInstanceResponse(TeaModel):
         return self
 
 
+class TagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_id: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        security_token: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_id = resource_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+        self.security_token = security_token
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: TagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UntagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_id: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        security_token: str = None,
+        tag_key: List[str] = None,
+    ):
+        self.all = all
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_id = resource_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+        self.security_token = security_token
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class UntagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UntagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UntagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateInstanceIpWhiteListRequest(TeaModel):
     def __init__(
         self,
@@ -1603,7 +2279,6 @@ class UpdateInstanceIpWhiteListRequest(TeaModel):
         instance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
-        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_ip_list: str = None,
@@ -1613,7 +2288,6 @@ class UpdateInstanceIpWhiteListRequest(TeaModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_ip_list = security_ip_list
@@ -1636,8 +2310,6 @@ class UpdateInstanceIpWhiteListRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -1658,8 +2330,6 @@ class UpdateInstanceIpWhiteListRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
