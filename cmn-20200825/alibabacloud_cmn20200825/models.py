@@ -4598,6 +4598,133 @@ class PhysicalSpace(TeaModel):
         return self
 
 
+class PhysicalSpaceDto(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        children: List['PhysicalSpaceDto'] = None,
+        city: str = None,
+        country: str = None,
+        full_parent_path: str = None,
+        instance: str = None,
+        owner: str = None,
+        parent_uid: str = None,
+        physical_space_id: str = None,
+        physical_space_name: str = None,
+        province: str = None,
+        remark: str = None,
+        space_abbreviation: str = None,
+        space_type: str = None,
+    ):
+        # 具体地址
+        self.address = address
+        # 下一级
+        self.children = children
+        # 所属城市
+        self.city = city
+        # 所属国家
+        self.country = country
+        # 上级全路径
+        self.full_parent_path = full_parent_path
+        # 实例
+        self.instance = instance
+        # 负责人
+        self.owner = owner
+        # 上级物理空间
+        self.parent_uid = parent_uid
+        # 物理空间ID
+        self.physical_space_id = physical_space_id
+        # 物理空间名称
+        self.physical_space_name = physical_space_name
+        # 所属省份
+        self.province = province
+        # 备注
+        self.remark = remark
+        # 缩写
+        self.space_abbreviation = space_abbreviation
+        # 模型
+        self.space_type = space_type
+
+    def validate(self):
+        if self.children:
+            for k in self.children:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        result['Children'] = []
+        if self.children is not None:
+            for k in self.children:
+                result['Children'].append(k.to_map() if k else None)
+        if self.city is not None:
+            result['City'] = self.city
+        if self.country is not None:
+            result['Country'] = self.country
+        if self.full_parent_path is not None:
+            result['FullParentPath'] = self.full_parent_path
+        if self.instance is not None:
+            result['Instance'] = self.instance
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.parent_uid is not None:
+            result['ParentUid'] = self.parent_uid
+        if self.physical_space_id is not None:
+            result['PhysicalSpaceId'] = self.physical_space_id
+        if self.physical_space_name is not None:
+            result['PhysicalSpaceName'] = self.physical_space_name
+        if self.province is not None:
+            result['Province'] = self.province
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.space_abbreviation is not None:
+            result['SpaceAbbreviation'] = self.space_abbreviation
+        if self.space_type is not None:
+            result['SpaceType'] = self.space_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        self.children = []
+        if m.get('Children') is not None:
+            for k in m.get('Children'):
+                temp_model = PhysicalSpaceDto()
+                self.children.append(temp_model.from_map(k))
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('Country') is not None:
+            self.country = m.get('Country')
+        if m.get('FullParentPath') is not None:
+            self.full_parent_path = m.get('FullParentPath')
+        if m.get('Instance') is not None:
+            self.instance = m.get('Instance')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ParentUid') is not None:
+            self.parent_uid = m.get('ParentUid')
+        if m.get('PhysicalSpaceId') is not None:
+            self.physical_space_id = m.get('PhysicalSpaceId')
+        if m.get('PhysicalSpaceName') is not None:
+            self.physical_space_name = m.get('PhysicalSpaceName')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('SpaceAbbreviation') is not None:
+            self.space_abbreviation = m.get('SpaceAbbreviation')
+        if m.get('SpaceType') is not None:
+            self.space_type = m.get('SpaceType')
+        return self
+
+
 class Port(TeaModel):
     def __init__(
         self,
@@ -9469,6 +9596,7 @@ class CreatePhysicalSpaceRequest(TeaModel):
         country: str = None,
         instance_id: str = None,
         owner: str = None,
+        parent_uid: str = None,
         physical_space_name: str = None,
         province: str = None,
         remark: str = None,
@@ -9487,6 +9615,7 @@ class CreatePhysicalSpaceRequest(TeaModel):
         self.instance_id = instance_id
         # 负责人
         self.owner = owner
+        self.parent_uid = parent_uid
         # 物理空间名称
         self.physical_space_name = physical_space_name
         # 所属省份
@@ -9519,6 +9648,8 @@ class CreatePhysicalSpaceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.owner is not None:
             result['Owner'] = self.owner
+        if self.parent_uid is not None:
+            result['ParentUid'] = self.parent_uid
         if self.physical_space_name is not None:
             result['PhysicalSpaceName'] = self.physical_space_name
         if self.province is not None:
@@ -9545,6 +9676,8 @@ class CreatePhysicalSpaceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
+        if m.get('ParentUid') is not None:
+            self.parent_uid = m.get('ParentUid')
         if m.get('PhysicalSpaceName') is not None:
             self.physical_space_name = m.get('PhysicalSpaceName')
         if m.get('Province') is not None:
@@ -16790,6 +16923,377 @@ class GetInspectionTaskResponse(TeaModel):
         return self
 
 
+class GetMonitorItemRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        monitor_item_id: str = None,
+    ):
+        # 实例ID
+        self.instance_id = instance_id
+        # 监控项ID
+        self.monitor_item_id = monitor_item_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.monitor_item_id is not None:
+            result['MonitorItemId'] = self.monitor_item_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MonitorItemId') is not None:
+            self.monitor_item_id = m.get('MonitorItemId')
+        return self
+
+
+class GetMonitorItemResponseBodyMonitorItemAlarmRuleList(TeaModel):
+    def __init__(
+        self,
+        alarm_status: str = None,
+        expression: str = None,
+        value: str = None,
+        variable: str = None,
+    ):
+        # 告警规则
+        self.alarm_status = alarm_status
+        # 表达式
+        self.expression = expression
+        # 比较值
+        self.value = value
+        # 指标名
+        self.variable = variable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alarm_status is not None:
+            result['AlarmStatus'] = self.alarm_status
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.variable is not None:
+            result['Variable'] = self.variable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlarmStatus') is not None:
+            self.alarm_status = m.get('AlarmStatus')
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Variable') is not None:
+            self.variable = m.get('Variable')
+        return self
+
+
+class GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList(TeaModel):
+    def __init__(
+        self,
+        alarm_status: str = None,
+        expression: str = None,
+        field_name: str = None,
+        field_value: str = None,
+        value: str = None,
+        variable: str = None,
+    ):
+        # 告警规则
+        self.alarm_status = alarm_status
+        # 表达式
+        self.expression = expression
+        # 个性化对象类型
+        self.field_name = field_name
+        # 个性化对象值
+        self.field_value = field_value
+        # 类型
+        self.value = value
+        # 指标名
+        self.variable = variable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alarm_status is not None:
+            result['AlarmStatus'] = self.alarm_status
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.field_name is not None:
+            result['FieldName'] = self.field_name
+        if self.field_value is not None:
+            result['FieldValue'] = self.field_value
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.variable is not None:
+            result['Variable'] = self.variable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlarmStatus') is not None:
+            self.alarm_status = m.get('AlarmStatus')
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('FieldName') is not None:
+            self.field_name = m.get('FieldName')
+        if m.get('FieldValue') is not None:
+            self.field_value = m.get('FieldValue')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Variable') is not None:
+            self.variable = m.get('Variable')
+        return self
+
+
+class GetMonitorItemResponseBodyMonitorItem(TeaModel):
+    def __init__(
+        self,
+        alarm_rule_list: List[GetMonitorItemResponseBodyMonitorItemAlarmRuleList] = None,
+        analysis_code: str = None,
+        collection_type: str = None,
+        config: str = None,
+        create_time: str = None,
+        data_item: str = None,
+        device_form: str = None,
+        effective: int = None,
+        exec_interval: int = None,
+        monitor_item_description: str = None,
+        monitor_item_id: str = None,
+        monitor_item_name: str = None,
+        personalized_alarm_rule_list: List[GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList] = None,
+        security_domain: str = None,
+        type: str = None,
+        update_time: str = None,
+    ):
+        # 通用告警规则列表
+        self.alarm_rule_list = alarm_rule_list
+        # 解析代码
+        self.analysis_code = analysis_code
+        # 采集类型
+        self.collection_type = collection_type
+        # 监控项参数配置
+        self.config = config
+        # 创建时间
+        self.create_time = create_time
+        # 数据项
+        self.data_item = data_item
+        # 设备形态
+        self.device_form = device_form
+        # 是否启用
+        self.effective = effective
+        # 执行间隔(s)
+        self.exec_interval = exec_interval
+        # 监控项描述
+        self.monitor_item_description = monitor_item_description
+        # 监控项ID
+        self.monitor_item_id = monitor_item_id
+        # 监控项名称
+        self.monitor_item_name = monitor_item_name
+        # 个性化告警规则列表
+        self.personalized_alarm_rule_list = personalized_alarm_rule_list
+        # 安全域
+        self.security_domain = security_domain
+        # 类型
+        self.type = type
+        # 修改时间
+        self.update_time = update_time
+
+    def validate(self):
+        if self.alarm_rule_list:
+            for k in self.alarm_rule_list:
+                if k:
+                    k.validate()
+        if self.personalized_alarm_rule_list:
+            for k in self.personalized_alarm_rule_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AlarmRuleList'] = []
+        if self.alarm_rule_list is not None:
+            for k in self.alarm_rule_list:
+                result['AlarmRuleList'].append(k.to_map() if k else None)
+        if self.analysis_code is not None:
+            result['AnalysisCode'] = self.analysis_code
+        if self.collection_type is not None:
+            result['CollectionType'] = self.collection_type
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.data_item is not None:
+            result['DataItem'] = self.data_item
+        if self.device_form is not None:
+            result['DeviceForm'] = self.device_form
+        if self.effective is not None:
+            result['Effective'] = self.effective
+        if self.exec_interval is not None:
+            result['ExecInterval'] = self.exec_interval
+        if self.monitor_item_description is not None:
+            result['MonitorItemDescription'] = self.monitor_item_description
+        if self.monitor_item_id is not None:
+            result['MonitorItemId'] = self.monitor_item_id
+        if self.monitor_item_name is not None:
+            result['MonitorItemName'] = self.monitor_item_name
+        result['PersonalizedAlarmRuleList'] = []
+        if self.personalized_alarm_rule_list is not None:
+            for k in self.personalized_alarm_rule_list:
+                result['PersonalizedAlarmRuleList'].append(k.to_map() if k else None)
+        if self.security_domain is not None:
+            result['SecurityDomain'] = self.security_domain
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.alarm_rule_list = []
+        if m.get('AlarmRuleList') is not None:
+            for k in m.get('AlarmRuleList'):
+                temp_model = GetMonitorItemResponseBodyMonitorItemAlarmRuleList()
+                self.alarm_rule_list.append(temp_model.from_map(k))
+        if m.get('AnalysisCode') is not None:
+            self.analysis_code = m.get('AnalysisCode')
+        if m.get('CollectionType') is not None:
+            self.collection_type = m.get('CollectionType')
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DataItem') is not None:
+            self.data_item = m.get('DataItem')
+        if m.get('DeviceForm') is not None:
+            self.device_form = m.get('DeviceForm')
+        if m.get('Effective') is not None:
+            self.effective = m.get('Effective')
+        if m.get('ExecInterval') is not None:
+            self.exec_interval = m.get('ExecInterval')
+        if m.get('MonitorItemDescription') is not None:
+            self.monitor_item_description = m.get('MonitorItemDescription')
+        if m.get('MonitorItemId') is not None:
+            self.monitor_item_id = m.get('MonitorItemId')
+        if m.get('MonitorItemName') is not None:
+            self.monitor_item_name = m.get('MonitorItemName')
+        self.personalized_alarm_rule_list = []
+        if m.get('PersonalizedAlarmRuleList') is not None:
+            for k in m.get('PersonalizedAlarmRuleList'):
+                temp_model = GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList()
+                self.personalized_alarm_rule_list.append(temp_model.from_map(k))
+        if m.get('SecurityDomain') is not None:
+            self.security_domain = m.get('SecurityDomain')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetMonitorItemResponseBody(TeaModel):
+    def __init__(
+        self,
+        monitor_item: GetMonitorItemResponseBodyMonitorItem = None,
+        request_id: str = None,
+    ):
+        # 数据
+        self.monitor_item = monitor_item
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.monitor_item:
+            self.monitor_item.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.monitor_item is not None:
+            result['MonitorItem'] = self.monitor_item.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MonitorItem') is not None:
+            temp_model = GetMonitorItemResponseBodyMonitorItem()
+            self.monitor_item = temp_model.from_map(m['MonitorItem'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetMonitorItemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetMonitorItemResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetMonitorItemResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetOsDownloadPathRequest(TeaModel):
     def __init__(
         self,
@@ -21761,12 +22265,19 @@ class ListDedicatedLinesRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
         physical_space_id: str = None,
+        space_name: str = None,
     ):
         # 实例ID
         self.instance_id = instance_id
+        self.max_results = max_results
+        self.next_token = next_token
         # 物理空间ID
         self.physical_space_id = physical_space_id
+        # 物理空间名称
+        self.space_name = space_name
 
     def validate(self):
         pass
@@ -21779,16 +22290,28 @@ class ListDedicatedLinesRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.physical_space_id is not None:
             result['PhysicalSpaceId'] = self.physical_space_id
+        if self.space_name is not None:
+            result['SpaceName'] = self.space_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('PhysicalSpaceId') is not None:
             self.physical_space_id = m.get('PhysicalSpaceId')
+        if m.get('SpaceName') is not None:
+            self.space_name = m.get('SpaceName')
         return self
 
 
@@ -21808,6 +22331,7 @@ class ListDedicatedLinesResponseBodyDedicatedLines(TeaModel):
         isp: str = None,
         phone: str = None,
         physical_space_id: str = None,
+        space_name: str = None,
     ):
         # 宽带（Mbps）
         self.bandwidth = bandwidth
@@ -21835,6 +22359,7 @@ class ListDedicatedLinesResponseBodyDedicatedLines(TeaModel):
         self.phone = phone
         # 关联物理空间ID
         self.physical_space_id = physical_space_id
+        self.space_name = space_name
 
     def validate(self):
         pass
@@ -21871,6 +22396,8 @@ class ListDedicatedLinesResponseBodyDedicatedLines(TeaModel):
             result['Phone'] = self.phone
         if self.physical_space_id is not None:
             result['PhysicalSpaceId'] = self.physical_space_id
+        if self.space_name is not None:
+            result['SpaceName'] = self.space_name
         return result
 
     def from_map(self, m: dict = None):
@@ -21901,6 +22428,8 @@ class ListDedicatedLinesResponseBodyDedicatedLines(TeaModel):
             self.phone = m.get('Phone')
         if m.get('PhysicalSpaceId') is not None:
             self.physical_space_id = m.get('PhysicalSpaceId')
+        if m.get('SpaceName') is not None:
+            self.space_name = m.get('SpaceName')
         return self
 
 
@@ -21908,12 +22437,18 @@ class ListDedicatedLinesResponseBody(TeaModel):
     def __init__(
         self,
         dedicated_lines: List[ListDedicatedLinesResponseBodyDedicatedLines] = None,
+        max_results: int = None,
+        next_token: int = None,
         request_id: str = None,
+        total_count: int = None,
     ):
         # 数组，返回示例目录。
         self.dedicated_lines = dedicated_lines
+        self.max_results = max_results
+        self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.dedicated_lines:
@@ -21931,8 +22466,14 @@ class ListDedicatedLinesResponseBody(TeaModel):
         if self.dedicated_lines is not None:
             for k in self.dedicated_lines:
                 result['DedicatedLines'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -21942,8 +22483,14 @@ class ListDedicatedLinesResponseBody(TeaModel):
             for k in m.get('DedicatedLines'):
                 temp_model = ListDedicatedLinesResponseBodyDedicatedLines()
                 self.dedicated_lines.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -22030,6 +22577,7 @@ class ListDeviceFormsResponseBodyDeviceFormsAttributeList(TeaModel):
     def __init__(
         self,
         attribute_built_in: bool = None,
+        attribute_content: str = None,
         attribute_format: str = None,
         attribute_fuzzy_query: bool = None,
         attribute_key: str = None,
@@ -22044,6 +22592,7 @@ class ListDeviceFormsResponseBodyDeviceFormsAttributeList(TeaModel):
     ):
         # 设备形态属性是否内置
         self.attribute_built_in = attribute_built_in
+        self.attribute_content = attribute_content
         # 设备形态属性值格式
         self.attribute_format = attribute_format
         # 前端查询控件是否支持模糊搜索
@@ -22078,6 +22627,8 @@ class ListDeviceFormsResponseBodyDeviceFormsAttributeList(TeaModel):
         result = dict()
         if self.attribute_built_in is not None:
             result['AttributeBuiltIn'] = self.attribute_built_in
+        if self.attribute_content is not None:
+            result['AttributeContent'] = self.attribute_content
         if self.attribute_format is not None:
             result['AttributeFormat'] = self.attribute_format
         if self.attribute_fuzzy_query is not None:
@@ -22106,6 +22657,8 @@ class ListDeviceFormsResponseBodyDeviceFormsAttributeList(TeaModel):
         m = m or dict()
         if m.get('AttributeBuiltIn') is not None:
             self.attribute_built_in = m.get('AttributeBuiltIn')
+        if m.get('AttributeContent') is not None:
+            self.attribute_content = m.get('AttributeContent')
         if m.get('AttributeFormat') is not None:
             self.attribute_format = m.get('AttributeFormat')
         if m.get('AttributeFuzzyQuery') is not None:
@@ -29143,6 +29696,164 @@ class ListTasksHistoriesResponse(TeaModel):
         return self
 
 
+class ListTreePhysicalSpacesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        max_results: str = None,
+        next_token: str = None,
+        physical_space_ids: List[str] = None,
+        physical_space_name: str = None,
+        tree: bool = None,
+    ):
+        # 实例ID
+        self.instance_id = instance_id
+        # 返回结果的最大个数。
+        self.max_results = max_results
+        # 当总结果个数大于MaxResults时，用于翻页的token。
+        self.next_token = next_token
+        # 物理空间ID
+        self.physical_space_ids = physical_space_ids
+        self.physical_space_name = physical_space_name
+        # 如果Tree为true时，分页失效
+        self.tree = tree
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.physical_space_ids is not None:
+            result['PhysicalSpaceIds'] = self.physical_space_ids
+        if self.physical_space_name is not None:
+            result['PhysicalSpaceName'] = self.physical_space_name
+        if self.tree is not None:
+            result['Tree'] = self.tree
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PhysicalSpaceIds') is not None:
+            self.physical_space_ids = m.get('PhysicalSpaceIds')
+        if m.get('PhysicalSpaceName') is not None:
+            self.physical_space_name = m.get('PhysicalSpaceName')
+        if m.get('Tree') is not None:
+            self.tree = m.get('Tree')
+        return self
+
+
+class ListTreePhysicalSpacesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: int = None,
+        physical_spaces: List[PhysicalSpaceDto] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.physical_spaces = physical_spaces
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.physical_spaces:
+            for k in self.physical_spaces:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['PhysicalSpaces'] = []
+        if self.physical_spaces is not None:
+            for k in self.physical_spaces:
+                result['PhysicalSpaces'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.physical_spaces = []
+        if m.get('PhysicalSpaces') is not None:
+            for k in m.get('PhysicalSpaces'):
+                temp_model = PhysicalSpaceDto()
+                self.physical_spaces.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTreePhysicalSpacesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListTreePhysicalSpacesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListTreePhysicalSpacesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListWorkOrdersRequest(TeaModel):
     def __init__(
         self,
@@ -32505,6 +33216,7 @@ class UpdatePhysicalSpaceRequest(TeaModel):
         country: str = None,
         instance_id: str = None,
         owner: str = None,
+        parent_uid: str = None,
         physical_space_id: str = None,
         physical_space_name: str = None,
         province: str = None,
@@ -32522,6 +33234,7 @@ class UpdatePhysicalSpaceRequest(TeaModel):
         self.instance_id = instance_id
         # 负责人
         self.owner = owner
+        self.parent_uid = parent_uid
         # 实例 ID。
         self.physical_space_id = physical_space_id
         # 物理空间名称
@@ -32554,6 +33267,8 @@ class UpdatePhysicalSpaceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.owner is not None:
             result['Owner'] = self.owner
+        if self.parent_uid is not None:
+            result['ParentUid'] = self.parent_uid
         if self.physical_space_id is not None:
             result['PhysicalSpaceId'] = self.physical_space_id
         if self.physical_space_name is not None:
@@ -32580,6 +33295,8 @@ class UpdatePhysicalSpaceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
+        if m.get('ParentUid') is not None:
+            self.parent_uid = m.get('ParentUid')
         if m.get('PhysicalSpaceId') is not None:
             self.physical_space_id = m.get('PhysicalSpaceId')
         if m.get('PhysicalSpaceName') is not None:

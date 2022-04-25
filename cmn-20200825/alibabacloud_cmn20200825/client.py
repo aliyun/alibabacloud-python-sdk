@@ -1537,6 +1537,8 @@ class Client(OpenApiClient):
             body['Country'] = request.country
         if not UtilClient.is_unset(request.owner):
             body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.parent_uid):
+            body['ParentUid'] = request.parent_uid
         if not UtilClient.is_unset(request.physical_space_name):
             body['PhysicalSpaceName'] = request.physical_space_name
         if not UtilClient.is_unset(request.province):
@@ -1587,6 +1589,8 @@ class Client(OpenApiClient):
             body['Country'] = request.country
         if not UtilClient.is_unset(request.owner):
             body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.parent_uid):
+            body['ParentUid'] = request.parent_uid
         if not UtilClient.is_unset(request.physical_space_name):
             body['PhysicalSpaceName'] = request.physical_space_name
         if not UtilClient.is_unset(request.province):
@@ -4879,6 +4883,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_inspection_task_with_options_async(request, runtime)
 
+    def get_monitor_item_with_options(
+        self,
+        request: cmn_20200825_models.GetMonitorItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cmn_20200825_models.GetMonitorItemResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMonitorItem',
+            version='2020-08-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cmn_20200825_models.GetMonitorItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_monitor_item_with_options_async(
+        self,
+        request: cmn_20200825_models.GetMonitorItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cmn_20200825_models.GetMonitorItemResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMonitorItem',
+            version='2020-08-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cmn_20200825_models.GetMonitorItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_monitor_item(
+        self,
+        request: cmn_20200825_models.GetMonitorItemRequest,
+    ) -> cmn_20200825_models.GetMonitorItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_monitor_item_with_options(request, runtime)
+
+    async def get_monitor_item_async(
+        self,
+        request: cmn_20200825_models.GetMonitorItemRequest,
+    ) -> cmn_20200825_models.GetMonitorItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_monitor_item_with_options_async(request, runtime)
+
     def get_os_download_path_with_options(
         self,
         request: cmn_20200825_models.GetOsDownloadPathRequest,
@@ -8019,6 +8089,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tasks_histories_with_options_async(request, runtime)
 
+    def list_tree_physical_spaces_with_options(
+        self,
+        request: cmn_20200825_models.ListTreePhysicalSpacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cmn_20200825_models.ListTreePhysicalSpacesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTreePhysicalSpaces',
+            version='2020-08-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cmn_20200825_models.ListTreePhysicalSpacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tree_physical_spaces_with_options_async(
+        self,
+        request: cmn_20200825_models.ListTreePhysicalSpacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cmn_20200825_models.ListTreePhysicalSpacesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTreePhysicalSpaces',
+            version='2020-08-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cmn_20200825_models.ListTreePhysicalSpacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tree_physical_spaces(
+        self,
+        request: cmn_20200825_models.ListTreePhysicalSpacesRequest,
+    ) -> cmn_20200825_models.ListTreePhysicalSpacesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tree_physical_spaces_with_options(request, runtime)
+
+    async def list_tree_physical_spaces_async(
+        self,
+        request: cmn_20200825_models.ListTreePhysicalSpacesRequest,
+    ) -> cmn_20200825_models.ListTreePhysicalSpacesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tree_physical_spaces_with_options_async(request, runtime)
+
     def list_work_orders_with_options(
         self,
         request: cmn_20200825_models.ListWorkOrdersRequest,
@@ -9757,6 +9893,8 @@ class Client(OpenApiClient):
             body['Country'] = request.country
         if not UtilClient.is_unset(request.owner):
             body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.parent_uid):
+            body['ParentUid'] = request.parent_uid
         if not UtilClient.is_unset(request.physical_space_id):
             body['PhysicalSpaceId'] = request.physical_space_id
         if not UtilClient.is_unset(request.physical_space_name):
@@ -9807,6 +9945,8 @@ class Client(OpenApiClient):
             body['Country'] = request.country
         if not UtilClient.is_unset(request.owner):
             body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.parent_uid):
+            body['ParentUid'] = request.parent_uid
         if not UtilClient.is_unset(request.physical_space_id):
             body['PhysicalSpaceId'] = request.physical_space_id
         if not UtilClient.is_unset(request.physical_space_name):
