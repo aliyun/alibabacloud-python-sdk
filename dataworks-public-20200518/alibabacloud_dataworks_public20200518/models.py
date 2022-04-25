@@ -2524,6 +2524,8 @@ class CreateFileRequest(TeaModel):
         file_name: str = None,
         file_type: int = None,
         input_list: str = None,
+        input_parameters: str = None,
+        output_parameters: str = None,
         owner: str = None,
         para_value: str = None,
         project_id: int = None,
@@ -2552,6 +2554,8 @@ class CreateFileRequest(TeaModel):
         self.file_name = file_name
         self.file_type = file_type
         self.input_list = input_list
+        self.input_parameters = input_parameters
+        self.output_parameters = output_parameters
         self.owner = owner
         self.para_value = para_value
         self.project_id = project_id
@@ -2605,6 +2609,10 @@ class CreateFileRequest(TeaModel):
             result['FileType'] = self.file_type
         if self.input_list is not None:
             result['InputList'] = self.input_list
+        if self.input_parameters is not None:
+            result['InputParameters'] = self.input_parameters
+        if self.output_parameters is not None:
+            result['OutputParameters'] = self.output_parameters
         if self.owner is not None:
             result['Owner'] = self.owner
         if self.para_value is not None:
@@ -2663,6 +2671,10 @@ class CreateFileRequest(TeaModel):
             self.file_type = m.get('FileType')
         if m.get('InputList') is not None:
             self.input_list = m.get('InputList')
+        if m.get('InputParameters') is not None:
+            self.input_parameters = m.get('InputParameters')
+        if m.get('OutputParameters') is not None:
+            self.output_parameters = m.get('OutputParameters')
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
         if m.get('ParaValue') is not None:
@@ -14601,6 +14613,39 @@ class GetFileResponseBodyDataNodeConfigurationInputList(TeaModel):
         return self
 
 
+class GetFileResponseBodyDataNodeConfigurationInputParameters(TeaModel):
+    def __init__(
+        self,
+        parameter_name: str = None,
+        value_source: str = None,
+    ):
+        self.parameter_name = parameter_name
+        self.value_source = value_source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameter_name is not None:
+            result['ParameterName'] = self.parameter_name
+        if self.value_source is not None:
+            result['ValueSource'] = self.value_source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterName') is not None:
+            self.parameter_name = m.get('ParameterName')
+        if m.get('ValueSource') is not None:
+            self.value_source = m.get('ValueSource')
+        return self
+
+
 class GetFileResponseBodyDataNodeConfigurationOutputList(TeaModel):
     def __init__(
         self,
@@ -14634,6 +14679,51 @@ class GetFileResponseBodyDataNodeConfigurationOutputList(TeaModel):
         return self
 
 
+class GetFileResponseBodyDataNodeConfigurationOutputParameters(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        parameter_name: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.description = description
+        self.parameter_name = parameter_name
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.parameter_name is not None:
+            result['ParameterName'] = self.parameter_name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ParameterName') is not None:
+            self.parameter_name = m.get('ParameterName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetFileResponseBodyDataNodeConfiguration(TeaModel):
     def __init__(
         self,
@@ -14645,7 +14735,9 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
         dependent_type: str = None,
         end_effect_date: int = None,
         input_list: List[GetFileResponseBodyDataNodeConfigurationInputList] = None,
+        input_parameters: List[GetFileResponseBodyDataNodeConfigurationInputParameters] = None,
         output_list: List[GetFileResponseBodyDataNodeConfigurationOutputList] = None,
+        output_parameters: List[GetFileResponseBodyDataNodeConfigurationOutputParameters] = None,
         para_value: str = None,
         rerun_mode: str = None,
         resource_group_id: int = None,
@@ -14662,7 +14754,9 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
         self.dependent_type = dependent_type
         self.end_effect_date = end_effect_date
         self.input_list = input_list
+        self.input_parameters = input_parameters
         self.output_list = output_list
+        self.output_parameters = output_parameters
         self.para_value = para_value
         self.rerun_mode = rerun_mode
         self.resource_group_id = resource_group_id
@@ -14676,8 +14770,16 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
             for k in self.input_list:
                 if k:
                     k.validate()
+        if self.input_parameters:
+            for k in self.input_parameters:
+                if k:
+                    k.validate()
         if self.output_list:
             for k in self.output_list:
+                if k:
+                    k.validate()
+        if self.output_parameters:
+            for k in self.output_parameters:
                 if k:
                     k.validate()
 
@@ -14705,10 +14807,18 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
         if self.input_list is not None:
             for k in self.input_list:
                 result['InputList'].append(k.to_map() if k else None)
+        result['InputParameters'] = []
+        if self.input_parameters is not None:
+            for k in self.input_parameters:
+                result['InputParameters'].append(k.to_map() if k else None)
         result['OutputList'] = []
         if self.output_list is not None:
             for k in self.output_list:
                 result['OutputList'].append(k.to_map() if k else None)
+        result['OutputParameters'] = []
+        if self.output_parameters is not None:
+            for k in self.output_parameters:
+                result['OutputParameters'].append(k.to_map() if k else None)
         if self.para_value is not None:
             result['ParaValue'] = self.para_value
         if self.rerun_mode is not None:
@@ -14746,11 +14856,21 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
             for k in m.get('InputList'):
                 temp_model = GetFileResponseBodyDataNodeConfigurationInputList()
                 self.input_list.append(temp_model.from_map(k))
+        self.input_parameters = []
+        if m.get('InputParameters') is not None:
+            for k in m.get('InputParameters'):
+                temp_model = GetFileResponseBodyDataNodeConfigurationInputParameters()
+                self.input_parameters.append(temp_model.from_map(k))
         self.output_list = []
         if m.get('OutputList') is not None:
             for k in m.get('OutputList'):
                 temp_model = GetFileResponseBodyDataNodeConfigurationOutputList()
                 self.output_list.append(temp_model.from_map(k))
+        self.output_parameters = []
+        if m.get('OutputParameters') is not None:
+            for k in m.get('OutputParameters'):
+                temp_model = GetFileResponseBodyDataNodeConfigurationOutputParameters()
+                self.output_parameters.append(temp_model.from_map(k))
         if m.get('ParaValue') is not None:
             self.para_value = m.get('ParaValue')
         if m.get('RerunMode') is not None:
@@ -46131,7 +46251,9 @@ class UpdateFileRequest(TeaModel):
         file_id: int = None,
         file_name: str = None,
         input_list: str = None,
+        input_parameters: str = None,
         output_list: str = None,
+        output_parameters: str = None,
         owner: str = None,
         para_value: str = None,
         project_id: int = None,
@@ -46159,7 +46281,9 @@ class UpdateFileRequest(TeaModel):
         self.file_id = file_id
         self.file_name = file_name
         self.input_list = input_list
+        self.input_parameters = input_parameters
         self.output_list = output_list
+        self.output_parameters = output_parameters
         self.owner = owner
         self.para_value = para_value
         self.project_id = project_id
@@ -46212,8 +46336,12 @@ class UpdateFileRequest(TeaModel):
             result['FileName'] = self.file_name
         if self.input_list is not None:
             result['InputList'] = self.input_list
+        if self.input_parameters is not None:
+            result['InputParameters'] = self.input_parameters
         if self.output_list is not None:
             result['OutputList'] = self.output_list
+        if self.output_parameters is not None:
+            result['OutputParameters'] = self.output_parameters
         if self.owner is not None:
             result['Owner'] = self.owner
         if self.para_value is not None:
@@ -46270,8 +46398,12 @@ class UpdateFileRequest(TeaModel):
             self.file_name = m.get('FileName')
         if m.get('InputList') is not None:
             self.input_list = m.get('InputList')
+        if m.get('InputParameters') is not None:
+            self.input_parameters = m.get('InputParameters')
         if m.get('OutputList') is not None:
             self.output_list = m.get('OutputList')
+        if m.get('OutputParameters') is not None:
+            self.output_parameters = m.get('OutputParameters')
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
         if m.get('ParaValue') is not None:
