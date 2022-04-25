@@ -1,3 +1,6 @@
+2022-04-25 Version: 3.2.2
+- The Feature parameter of GetFeatureDetails is supported to be specified as TemplateScratch, which indicates the supported resource types for the template scratch.
+
 2022-02-28 Version: 3.2.1
 - The response of GetServiceProvisions adds DependentServiceNames.
 
