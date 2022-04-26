@@ -3721,6 +3721,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.hold_call_with_options_async(request, runtime)
 
+    def import_admins_with_options(
+        self,
+        request: ccc20200701_models.ImportAdminsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ImportAdminsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ram_id_list):
+            query['RamIdList'] = request.ram_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportAdmins',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ImportAdminsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_admins_with_options_async(
+        self,
+        request: ccc20200701_models.ImportAdminsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ImportAdminsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ram_id_list):
+            query['RamIdList'] = request.ram_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportAdmins',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ImportAdminsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_admins(
+        self,
+        request: ccc20200701_models.ImportAdminsRequest,
+    ) -> ccc20200701_models.ImportAdminsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.import_admins_with_options(request, runtime)
+
+    async def import_admins_async(
+        self,
+        request: ccc20200701_models.ImportAdminsRequest,
+    ) -> ccc20200701_models.ImportAdminsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.import_admins_with_options_async(request, runtime)
+
     def import_custom_call_tagging_with_options(
         self,
         request: ccc20200701_models.ImportCustomCallTaggingRequest,
@@ -4070,6 +4144,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
             query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.contact_flow_variables):
+            query['ContactFlowVariables'] = request.contact_flow_variables
         if not UtilClient.is_unset(request.device_id):
             query['DeviceId'] = request.device_id
         if not UtilClient.is_unset(request.instance_id):
@@ -4106,6 +4182,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
             query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.contact_flow_variables):
+            query['ContactFlowVariables'] = request.contact_flow_variables
         if not UtilClient.is_unset(request.device_id):
             query['DeviceId'] = request.device_id
         if not UtilClient.is_unset(request.instance_id):
@@ -4156,12 +4234,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
             query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.contact_flow_variables):
+            query['ContactFlowVariables'] = request.contact_flow_variables
         if not UtilClient.is_unset(request.device_id):
             query['DeviceId'] = request.device_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.sms_metadata_id):
+            query['SmsMetadataId'] = request.sms_metadata_id
+        if not UtilClient.is_unset(request.survey_channel):
+            query['SurveyChannel'] = request.survey_channel
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
@@ -4192,12 +4276,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
             query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.contact_flow_variables):
+            query['ContactFlowVariables'] = request.contact_flow_variables
         if not UtilClient.is_unset(request.device_id):
             query['DeviceId'] = request.device_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.sms_metadata_id):
+            query['SmsMetadataId'] = request.sms_metadata_id
+        if not UtilClient.is_unset(request.survey_channel):
+            query['SurveyChannel'] = request.survey_channel
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(

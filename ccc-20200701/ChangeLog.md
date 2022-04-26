@@ -1,3 +1,6 @@
+2022-04-26 Version: 2.4.1
+- Support to pass variables to authentication IVR.
+
 2022-04-14 Version: 2.4.0
 - Support to pass variables to authentication IVR.
 
