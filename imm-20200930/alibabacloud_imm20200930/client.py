@@ -44,6 +44,80 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def attach_ossbucket_with_options(
+        self,
+        request: imm_20200930_models.AttachOSSBucketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.AttachOSSBucketResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ossbucket):
+            query['OSSBucket'] = request.ossbucket
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachOSSBucket',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.AttachOSSBucketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_ossbucket_with_options_async(
+        self,
+        request: imm_20200930_models.AttachOSSBucketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.AttachOSSBucketResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ossbucket):
+            query['OSSBucket'] = request.ossbucket
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachOSSBucket',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.AttachOSSBucketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_ossbucket(
+        self,
+        request: imm_20200930_models.AttachOSSBucketRequest,
+    ) -> imm_20200930_models.AttachOSSBucketResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.attach_ossbucket_with_options(request, runtime)
+
+    async def attach_ossbucket_async(
+        self,
+        request: imm_20200930_models.AttachOSSBucketRequest,
+    ) -> imm_20200930_models.AttachOSSBucketResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_ossbucket_with_options_async(request, runtime)
+
     def batch_delete_file_meta_with_options(
         self,
         tmp_req: imm_20200930_models.BatchDeleteFileMetaRequest,
@@ -578,10 +652,14 @@ class Client(OpenApiClient):
 
     def create_detect_video_labels_task_with_options(
         self,
-        request: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
+        tmp_req: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateDetectVideoLabelsTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.notify_endpoint):
             query['NotifyEndpoint'] = request.notify_endpoint
@@ -591,6 +669,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
             query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
@@ -614,10 +694,14 @@ class Client(OpenApiClient):
 
     async def create_detect_video_labels_task_with_options_async(
         self,
-        request: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
+        tmp_req: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateDetectVideoLabelsTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.notify_endpoint):
             query['NotifyEndpoint'] = request.notify_endpoint
@@ -627,6 +711,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
             query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
@@ -664,10 +750,14 @@ class Client(OpenApiClient):
 
     def create_figure_clustering_task_with_options(
         self,
-        request: imm_20200930_models.CreateFigureClusteringTaskRequest,
+        tmp_req: imm_20200930_models.CreateFigureClusteringTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateFigureClusteringTaskResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateFigureClusteringTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -677,6 +767,8 @@ class Client(OpenApiClient):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
@@ -700,10 +792,14 @@ class Client(OpenApiClient):
 
     async def create_figure_clustering_task_with_options_async(
         self,
-        request: imm_20200930_models.CreateFigureClusteringTaskRequest,
+        tmp_req: imm_20200930_models.CreateFigureClusteringTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateFigureClusteringTaskResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateFigureClusteringTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -713,6 +809,8 @@ class Client(OpenApiClient):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
@@ -750,10 +848,14 @@ class Client(OpenApiClient):
 
     def create_figure_clusters_merging_task_with_options(
         self,
-        request: imm_20200930_models.CreateFigureClustersMergingTaskRequest,
+        tmp_req: imm_20200930_models.CreateFigureClustersMergingTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateFigureClustersMergingTaskResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateFigureClustersMergingTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -765,6 +867,8 @@ class Client(OpenApiClient):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.to):
             query['To'] = request.to
         if not UtilClient.is_unset(request.user_data):
@@ -790,10 +894,14 @@ class Client(OpenApiClient):
 
     async def create_figure_clusters_merging_task_with_options_async(
         self,
-        request: imm_20200930_models.CreateFigureClustersMergingTaskRequest,
+        tmp_req: imm_20200930_models.CreateFigureClustersMergingTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateFigureClustersMergingTaskResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateFigureClustersMergingTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -805,6 +913,8 @@ class Client(OpenApiClient):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.to):
             query['To'] = request.to
         if not UtilClient.is_unset(request.user_data):
@@ -841,6 +951,318 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.CreateFigureClustersMergingTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_figure_clusters_merging_task_with_options_async(request, runtime)
+
+    def create_media_convert_task_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateMediaConvertTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateMediaConvertTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateMediaConvertTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        if not UtilClient.is_unset(tmp_req.targets):
+            request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.targets_shrink):
+            query['Targets'] = request.targets_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMediaConvertTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateMediaConvertTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_media_convert_task_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateMediaConvertTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateMediaConvertTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateMediaConvertTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        if not UtilClient.is_unset(tmp_req.targets):
+            request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.targets_shrink):
+            query['Targets'] = request.targets_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMediaConvertTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateMediaConvertTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_media_convert_task(
+        self,
+        request: imm_20200930_models.CreateMediaConvertTaskRequest,
+    ) -> imm_20200930_models.CreateMediaConvertTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_media_convert_task_with_options(request, runtime)
+
+    async def create_media_convert_task_async(
+        self,
+        request: imm_20200930_models.CreateMediaConvertTaskRequest,
+    ) -> imm_20200930_models.CreateMediaConvertTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_media_convert_task_with_options_async(request, runtime)
+
+    def create_office_conversion_task_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateOfficeConversionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateOfficeConversionTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateOfficeConversionTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assume_role_chain):
+            request.assume_role_chain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.assume_role_chain), 'AssumeRoleChain', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        if not UtilClient.is_unset(tmp_req.trim_policy):
+            request.trim_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.trim_policy), 'TrimPolicy', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.assume_role_chain_shrink):
+            query['AssumeRoleChain'] = request.assume_role_chain_shrink
+        if not UtilClient.is_unset(request.end_page):
+            query['EndPage'] = request.end_page
+        if not UtilClient.is_unset(request.first_page):
+            query['FirstPage'] = request.first_page
+        if not UtilClient.is_unset(request.fit_to_height):
+            query['FitToHeight'] = request.fit_to_height
+        if not UtilClient.is_unset(request.fit_to_width):
+            query['FitToWidth'] = request.fit_to_width
+        if not UtilClient.is_unset(request.hold_line_feed):
+            query['HoldLineFeed'] = request.hold_line_feed
+        if not UtilClient.is_unset(request.long_picture):
+            query['LongPicture'] = request.long_picture
+        if not UtilClient.is_unset(request.long_text):
+            query['LongText'] = request.long_text
+        if not UtilClient.is_unset(request.max_sheet_column):
+            query['MaxSheetColumn'] = request.max_sheet_column
+        if not UtilClient.is_unset(request.max_sheet_row):
+            query['MaxSheetRow'] = request.max_sheet_row
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.paper_horizontal):
+            query['PaperHorizontal'] = request.paper_horizontal
+        if not UtilClient.is_unset(request.paper_size):
+            query['PaperSize'] = request.paper_size
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.quality):
+            query['Quality'] = request.quality
+        if not UtilClient.is_unset(request.scale_percentage):
+            query['ScalePercentage'] = request.scale_percentage
+        if not UtilClient.is_unset(request.sheet_count):
+            query['SheetCount'] = request.sheet_count
+        if not UtilClient.is_unset(request.sheet_index):
+            query['SheetIndex'] = request.sheet_index
+        if not UtilClient.is_unset(request.show_comments):
+            query['ShowComments'] = request.show_comments
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.start_page):
+            query['StartPage'] = request.start_page
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.target_uriprefix):
+            query['TargetURIPrefix'] = request.target_uriprefix
+        if not UtilClient.is_unset(request.trim_policy_shrink):
+            query['TrimPolicy'] = request.trim_policy_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOfficeConversionTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateOfficeConversionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_office_conversion_task_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateOfficeConversionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateOfficeConversionTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateOfficeConversionTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assume_role_chain):
+            request.assume_role_chain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.assume_role_chain), 'AssumeRoleChain', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        if not UtilClient.is_unset(tmp_req.trim_policy):
+            request.trim_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.trim_policy), 'TrimPolicy', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.assume_role_chain_shrink):
+            query['AssumeRoleChain'] = request.assume_role_chain_shrink
+        if not UtilClient.is_unset(request.end_page):
+            query['EndPage'] = request.end_page
+        if not UtilClient.is_unset(request.first_page):
+            query['FirstPage'] = request.first_page
+        if not UtilClient.is_unset(request.fit_to_height):
+            query['FitToHeight'] = request.fit_to_height
+        if not UtilClient.is_unset(request.fit_to_width):
+            query['FitToWidth'] = request.fit_to_width
+        if not UtilClient.is_unset(request.hold_line_feed):
+            query['HoldLineFeed'] = request.hold_line_feed
+        if not UtilClient.is_unset(request.long_picture):
+            query['LongPicture'] = request.long_picture
+        if not UtilClient.is_unset(request.long_text):
+            query['LongText'] = request.long_text
+        if not UtilClient.is_unset(request.max_sheet_column):
+            query['MaxSheetColumn'] = request.max_sheet_column
+        if not UtilClient.is_unset(request.max_sheet_row):
+            query['MaxSheetRow'] = request.max_sheet_row
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.paper_horizontal):
+            query['PaperHorizontal'] = request.paper_horizontal
+        if not UtilClient.is_unset(request.paper_size):
+            query['PaperSize'] = request.paper_size
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.quality):
+            query['Quality'] = request.quality
+        if not UtilClient.is_unset(request.scale_percentage):
+            query['ScalePercentage'] = request.scale_percentage
+        if not UtilClient.is_unset(request.sheet_count):
+            query['SheetCount'] = request.sheet_count
+        if not UtilClient.is_unset(request.sheet_index):
+            query['SheetIndex'] = request.sheet_index
+        if not UtilClient.is_unset(request.show_comments):
+            query['ShowComments'] = request.show_comments
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.start_page):
+            query['StartPage'] = request.start_page
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.target_uriprefix):
+            query['TargetURIPrefix'] = request.target_uriprefix
+        if not UtilClient.is_unset(request.trim_policy_shrink):
+            query['TrimPolicy'] = request.trim_policy_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOfficeConversionTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateOfficeConversionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_office_conversion_task(
+        self,
+        request: imm_20200930_models.CreateOfficeConversionTaskRequest,
+    ) -> imm_20200930_models.CreateOfficeConversionTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_office_conversion_task_with_options(request, runtime)
+
+    async def create_office_conversion_task_async(
+        self,
+        request: imm_20200930_models.CreateOfficeConversionTaskRequest,
+    ) -> imm_20200930_models.CreateOfficeConversionTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_office_conversion_task_with_options_async(request, runtime)
 
     def create_project_with_options(
         self,
@@ -966,6 +1388,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.custom_labels):
             request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         body = {}
         if not UtilClient.is_unset(request.custom_id):
             body['CustomId'] = request.custom_id
@@ -996,6 +1425,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.story_type):
             body['StoryType'] = request.story_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1024,6 +1454,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.custom_labels):
             request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         body = {}
         if not UtilClient.is_unset(request.custom_id):
             body['CustomId'] = request.custom_id
@@ -1054,6 +1491,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.story_type):
             body['StoryType'] = request.story_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1467,6 +1905,154 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.DeleteStoryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_story_with_options_async(request, runtime)
+
+    def detach_ossbucket_with_options(
+        self,
+        request: imm_20200930_models.DetachOSSBucketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetachOSSBucketResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ossbucket):
+            query['OSSBucket'] = request.ossbucket
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachOSSBucket',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetachOSSBucketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_ossbucket_with_options_async(
+        self,
+        request: imm_20200930_models.DetachOSSBucketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetachOSSBucketResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ossbucket):
+            query['OSSBucket'] = request.ossbucket
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachOSSBucket',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetachOSSBucketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_ossbucket(
+        self,
+        request: imm_20200930_models.DetachOSSBucketRequest,
+    ) -> imm_20200930_models.DetachOSSBucketResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detach_ossbucket_with_options(request, runtime)
+
+    async def detach_ossbucket_async(
+        self,
+        request: imm_20200930_models.DetachOSSBucketRequest,
+    ) -> imm_20200930_models.DetachOSSBucketResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_ossbucket_with_options_async(request, runtime)
+
+    def detect_image_cropping_with_options(
+        self,
+        request: imm_20200930_models.DetectImageCroppingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetectImageCroppingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aspect_ratios):
+            query['AspectRatios'] = request.aspect_ratios
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectImageCropping',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetectImageCroppingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detect_image_cropping_with_options_async(
+        self,
+        request: imm_20200930_models.DetectImageCroppingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetectImageCroppingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aspect_ratios):
+            query['AspectRatios'] = request.aspect_ratios
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectImageCropping',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetectImageCroppingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detect_image_cropping(
+        self,
+        request: imm_20200930_models.DetectImageCroppingRequest,
+    ) -> imm_20200930_models.DetectImageCroppingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_image_cropping_with_options(request, runtime)
+
+    async def detect_image_cropping_async(
+        self,
+        request: imm_20200930_models.DetectImageCroppingRequest,
+    ) -> imm_20200930_models.DetectImageCroppingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_image_cropping_with_options_async(request, runtime)
 
     def detect_image_faces_with_options(
         self,
@@ -2170,6 +2756,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_file_meta_with_options_async(request, runtime)
 
+    def get_media_meta_with_options(
+        self,
+        request: imm_20200930_models.GetMediaMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetMediaMetaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMediaMeta',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetMediaMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_media_meta_with_options_async(
+        self,
+        request: imm_20200930_models.GetMediaMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetMediaMetaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMediaMeta',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetMediaMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_media_meta(
+        self,
+        request: imm_20200930_models.GetMediaMetaRequest,
+    ) -> imm_20200930_models.GetMediaMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_media_meta_with_options(request, runtime)
+
+    async def get_media_meta_async(
+        self,
+        request: imm_20200930_models.GetMediaMetaRequest,
+    ) -> imm_20200930_models.GetMediaMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_media_meta_with_options_async(request, runtime)
+
+    def get_ossbucket_attachment_with_options(
+        self,
+        request: imm_20200930_models.GetOSSBucketAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetOSSBucketAttachmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ossbucket):
+            query['OSSBucket'] = request.ossbucket
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOSSBucketAttachment',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetOSSBucketAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ossbucket_attachment_with_options_async(
+        self,
+        request: imm_20200930_models.GetOSSBucketAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetOSSBucketAttachmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ossbucket):
+            query['OSSBucket'] = request.ossbucket
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOSSBucketAttachment',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetOSSBucketAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ossbucket_attachment(
+        self,
+        request: imm_20200930_models.GetOSSBucketAttachmentRequest,
+    ) -> imm_20200930_models.GetOSSBucketAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_ossbucket_attachment_with_options(request, runtime)
+
+    async def get_ossbucket_attachment_async(
+        self,
+        request: imm_20200930_models.GetOSSBucketAttachmentRequest,
+    ) -> imm_20200930_models.GetOSSBucketAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ossbucket_attachment_with_options_async(request, runtime)
+
     def get_project_with_options(
         self,
         request: imm_20200930_models.GetProjectRequest,
@@ -2419,6 +3149,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.assume_role_chain_shrink):
             query['AssumeRoleChain'] = request.assume_role_chain_shrink
+        if not UtilClient.is_unset(request.cache_preview):
+            query['CachePreview'] = request.cache_preview
         if not UtilClient.is_unset(request.external_uploaded):
             query['ExternalUploaded'] = request.external_uploaded
         if not UtilClient.is_unset(request.filename):
@@ -2485,6 +3217,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.assume_role_chain_shrink):
             query['AssumeRoleChain'] = request.assume_role_chain_shrink
+        if not UtilClient.is_unset(request.cache_preview):
+            query['CachePreview'] = request.cache_preview
         if not UtilClient.is_unset(request.external_uploaded):
             query['ExternalUploaded'] = request.external_uploaded
         if not UtilClient.is_unset(request.filename):
@@ -2884,19 +3618,29 @@ class Client(OpenApiClient):
 
     def list_tasks_with_options(
         self,
-        request: imm_20200930_models.ListTasksRequest,
+        tmp_req: imm_20200930_models.ListTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListTasksResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.ListTasksShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_types):
+            request.task_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_types, 'TaskTypes', 'json')
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.task_type):
-            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.tag_selector):
+            query['TagSelector'] = request.tag_selector
+        if not UtilClient.is_unset(request.task_types_shrink):
+            query['TaskTypes'] = request.task_types_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2918,19 +3662,29 @@ class Client(OpenApiClient):
 
     async def list_tasks_with_options_async(
         self,
-        request: imm_20200930_models.ListTasksRequest,
+        tmp_req: imm_20200930_models.ListTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListTasksResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.ListTasksShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_types):
+            request.task_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_types, 'TaskTypes', 'json')
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.task_type):
-            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.tag_selector):
+            query['TagSelector'] = request.tag_selector
+        if not UtilClient.is_unset(request.task_types_shrink):
+            query['TaskTypes'] = request.task_types_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3187,8 +3941,12 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.object_id):
             query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
         if not UtilClient.is_unset(request.story_end_time_range_shrink):
             query['StoryEndTimeRange'] = request.story_end_time_range_shrink
         if not UtilClient.is_unset(request.story_name):
@@ -3251,8 +4009,12 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.object_id):
             query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
         if not UtilClient.is_unset(request.story_end_time_range_shrink):
             query['StoryEndTimeRange'] = request.story_end_time_range_shrink
         if not UtilClient.is_unset(request.story_name):

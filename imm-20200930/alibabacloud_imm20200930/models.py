@@ -171,6 +171,7 @@ class AudioStream(TeaModel):
         codec_tag_string: str = None,
         codec_time_base: str = None,
         duration: float = None,
+        frame_count: int = None,
         index: int = None,
         language: str = None,
         lyric: str = None,
@@ -197,6 +198,8 @@ class AudioStream(TeaModel):
         self.codec_time_base = codec_time_base
         # Duration
         self.duration = duration
+        # FrameCount
+        self.frame_count = frame_count
         # Index
         self.index = index
         # Language
@@ -239,6 +242,8 @@ class AudioStream(TeaModel):
             result['CodecTimeBase'] = self.codec_time_base
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.frame_count is not None:
+            result['FrameCount'] = self.frame_count
         if self.index is not None:
             result['Index'] = self.index
         if self.language is not None:
@@ -275,6 +280,8 @@ class AudioStream(TeaModel):
             self.codec_time_base = m.get('CodecTimeBase')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('FrameCount') is not None:
+            self.frame_count = m.get('FrameCount')
         if m.get('Index') is not None:
             self.index = m.get('Index')
         if m.get('Language') is not None:
@@ -1172,16 +1179,43 @@ class Label(TeaModel):
 class SubtitleStream(TeaModel):
     def __init__(
         self,
+        bitrate: int = None,
+        codec_long_name: str = None,
+        codec_name: str = None,
+        codec_tag: str = None,
+        codec_tag_string: str = None,
         content: str = None,
+        duration: float = None,
+        height: int = None,
         index: int = None,
         language: str = None,
+        start_time: float = None,
+        width: int = None,
     ):
+        # Bitrate
+        self.bitrate = bitrate
+        # CodecLongName
+        self.codec_long_name = codec_long_name
+        # CodecName
+        self.codec_name = codec_name
+        # CodecTag
+        self.codec_tag = codec_tag
+        # CodecTagString
+        self.codec_tag_string = codec_tag_string
         # Content
         self.content = content
+        # Duration
+        self.duration = duration
+        # Height
+        self.height = height
         # Index
         self.index = index
         # Language
         self.language = language
+        # StartTime
+        self.start_time = start_time
+        # Width
+        self.width = width
 
     def validate(self):
         pass
@@ -1192,22 +1226,58 @@ class SubtitleStream(TeaModel):
             return _map
 
         result = dict()
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.codec_long_name is not None:
+            result['CodecLongName'] = self.codec_long_name
+        if self.codec_name is not None:
+            result['CodecName'] = self.codec_name
+        if self.codec_tag is not None:
+            result['CodecTag'] = self.codec_tag
+        if self.codec_tag_string is not None:
+            result['CodecTagString'] = self.codec_tag_string
         if self.content is not None:
             result['Content'] = self.content
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.height is not None:
+            result['Height'] = self.height
         if self.index is not None:
             result['Index'] = self.index
         if self.language is not None:
             result['Language'] = self.language
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.width is not None:
+            result['Width'] = self.width
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('CodecLongName') is not None:
+            self.codec_long_name = m.get('CodecLongName')
+        if m.get('CodecName') is not None:
+            self.codec_name = m.get('CodecName')
+        if m.get('CodecTag') is not None:
+            self.codec_tag = m.get('CodecTag')
+        if m.get('CodecTagString') is not None:
+            self.codec_tag_string = m.get('CodecTagString')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
         if m.get('Index') is not None:
             self.index = m.get('Index')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
         return self
 
 
@@ -1215,12 +1285,17 @@ class VideoStream(TeaModel):
     def __init__(
         self,
         average_frame_rate: str = None,
+        bit_depth: int = None,
         bitrate: int = None,
         codec_long_name: str = None,
         codec_name: str = None,
         codec_tag: str = None,
         codec_tag_string: str = None,
         codec_time_base: str = None,
+        color_primaries: str = None,
+        color_range: str = None,
+        color_space: str = None,
+        color_transfer: str = None,
         display_aspect_ratio: str = None,
         duration: float = None,
         frame_count: int = None,
@@ -1240,6 +1315,8 @@ class VideoStream(TeaModel):
     ):
         # AverageFrameRate
         self.average_frame_rate = average_frame_rate
+        # BitDepth
+        self.bit_depth = bit_depth
         # Bitrate
         self.bitrate = bitrate
         # CodecLongName
@@ -1252,6 +1329,14 @@ class VideoStream(TeaModel):
         self.codec_tag_string = codec_tag_string
         # CodecTimeBase
         self.codec_time_base = codec_time_base
+        # ColorPrimaries
+        self.color_primaries = color_primaries
+        # ColorRange
+        self.color_range = color_range
+        # ColorSpace
+        self.color_space = color_space
+        # ColorTransfer
+        self.color_transfer = color_transfer
         # DisplayAspectRatio
         self.display_aspect_ratio = display_aspect_ratio
         # Duration
@@ -1296,6 +1381,8 @@ class VideoStream(TeaModel):
         result = dict()
         if self.average_frame_rate is not None:
             result['AverageFrameRate'] = self.average_frame_rate
+        if self.bit_depth is not None:
+            result['BitDepth'] = self.bit_depth
         if self.bitrate is not None:
             result['Bitrate'] = self.bitrate
         if self.codec_long_name is not None:
@@ -1308,6 +1395,14 @@ class VideoStream(TeaModel):
             result['CodecTagString'] = self.codec_tag_string
         if self.codec_time_base is not None:
             result['CodecTimeBase'] = self.codec_time_base
+        if self.color_primaries is not None:
+            result['ColorPrimaries'] = self.color_primaries
+        if self.color_range is not None:
+            result['ColorRange'] = self.color_range
+        if self.color_space is not None:
+            result['ColorSpace'] = self.color_space
+        if self.color_transfer is not None:
+            result['ColorTransfer'] = self.color_transfer
         if self.display_aspect_ratio is not None:
             result['DisplayAspectRatio'] = self.display_aspect_ratio
         if self.duration is not None:
@@ -1346,6 +1441,8 @@ class VideoStream(TeaModel):
         m = m or dict()
         if m.get('AverageFrameRate') is not None:
             self.average_frame_rate = m.get('AverageFrameRate')
+        if m.get('BitDepth') is not None:
+            self.bit_depth = m.get('BitDepth')
         if m.get('Bitrate') is not None:
             self.bitrate = m.get('Bitrate')
         if m.get('CodecLongName') is not None:
@@ -1358,6 +1455,14 @@ class VideoStream(TeaModel):
             self.codec_tag_string = m.get('CodecTagString')
         if m.get('CodecTimeBase') is not None:
             self.codec_time_base = m.get('CodecTimeBase')
+        if m.get('ColorPrimaries') is not None:
+            self.color_primaries = m.get('ColorPrimaries')
+        if m.get('ColorRange') is not None:
+            self.color_range = m.get('ColorRange')
+        if m.get('ColorSpace') is not None:
+            self.color_space = m.get('ColorSpace')
+        if m.get('ColorTransfer') is not None:
+            self.color_transfer = m.get('ColorTransfer')
         if m.get('DisplayAspectRatio') is not None:
             self.display_aspect_ratio = m.get('DisplayAspectRatio')
         if m.get('Duration') is not None:
@@ -2831,6 +2936,7 @@ class TaskInfo(TeaModel):
         message: str = None,
         start_time: str = None,
         status: str = None,
+        tags: Dict[str, Any] = None,
         task_id: str = None,
         task_type: str = None,
         user_data: str = None,
@@ -2845,6 +2951,8 @@ class TaskInfo(TeaModel):
         self.start_time = start_time
         # 任务状态
         self.status = status
+        # 标签
+        self.tags = tags
         # 任务唯一ID
         self.task_id = task_id
         # 任务类型
@@ -2871,6 +2979,8 @@ class TaskInfo(TeaModel):
             result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.task_type is not None:
@@ -2891,6 +3001,8 @@ class TaskInfo(TeaModel):
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TaskType') is not None:
@@ -2932,6 +3044,55 @@ class TimeRange(TeaModel):
             self.end = m.get('End')
         if m.get('Start') is not None:
             self.start = m.get('Start')
+        return self
+
+
+class TrimPolicy(TeaModel):
+    def __init__(
+        self,
+        disable_delete_empty_cell: bool = None,
+        disable_delete_repeated_style: bool = None,
+        disable_delete_unused_picture: bool = None,
+        disable_delete_unused_shape: bool = None,
+    ):
+        # 禁止删除所有空单元格
+        self.disable_delete_empty_cell = disable_delete_empty_cell
+        # 禁止删除所有重复样式
+        self.disable_delete_repeated_style = disable_delete_repeated_style
+        # 禁止删除未使用的单元格图片
+        self.disable_delete_unused_picture = disable_delete_unused_picture
+        # 禁止删除没有使用的Shape
+        self.disable_delete_unused_shape = disable_delete_unused_shape
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable_delete_empty_cell is not None:
+            result['DisableDeleteEmptyCell'] = self.disable_delete_empty_cell
+        if self.disable_delete_repeated_style is not None:
+            result['DisableDeleteRepeatedStyle'] = self.disable_delete_repeated_style
+        if self.disable_delete_unused_picture is not None:
+            result['DisableDeleteUnusedPicture'] = self.disable_delete_unused_picture
+        if self.disable_delete_unused_shape is not None:
+            result['DisableDeleteUnusedShape'] = self.disable_delete_unused_shape
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisableDeleteEmptyCell') is not None:
+            self.disable_delete_empty_cell = m.get('DisableDeleteEmptyCell')
+        if m.get('DisableDeleteRepeatedStyle') is not None:
+            self.disable_delete_repeated_style = m.get('DisableDeleteRepeatedStyle')
+        if m.get('DisableDeleteUnusedPicture') is not None:
+            self.disable_delete_unused_picture = m.get('DisableDeleteUnusedPicture')
+        if m.get('DisableDeleteUnusedShape') is not None:
+            self.disable_delete_unused_shape = m.get('DisableDeleteUnusedShape')
         return self
 
 
@@ -3107,6 +3268,105 @@ class WebofficeWatermark(TeaModel):
             self.value = m.get('Value')
         if m.get('Vertical') is not None:
             self.vertical = m.get('Vertical')
+        return self
+
+
+class AttachOSSBucketRequest(TeaModel):
+    def __init__(
+        self,
+        ossbucket: str = None,
+        project_name: str = None,
+    ):
+        self.ossbucket = ossbucket
+        # 项目名称
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ossbucket is not None:
+            result['OSSBucket'] = self.ossbucket
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OSSBucket') is not None:
+            self.ossbucket = m.get('OSSBucket')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class AttachOSSBucketResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # RequestId
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AttachOSSBucketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AttachOSSBucketResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AttachOSSBucketResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -4074,6 +4334,7 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
         notify_topic_name: str = None,
         project_name: str = None,
         source_uri: str = None,
+        tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
         # NotifyEndpoint
@@ -4084,6 +4345,7 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
         self.project_name = project_name
         # SourceURI
         self.source_uri = source_uri
+        self.tags = tags
         # UserData
         self.user_data = user_data
 
@@ -4104,6 +4366,8 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.source_uri is not None:
             result['SourceURI'] = self.source_uri
+        if self.tags is not None:
+            result['Tags'] = self.tags
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -4118,6 +4382,70 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('SourceURI') is not None:
             self.source_uri = m.get('SourceURI')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateDetectVideoLabelsTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+        tags_shrink: str = None,
+        user_data: str = None,
+    ):
+        # NotifyEndpoint
+        self.notify_endpoint = notify_endpoint
+        # NotifyTopicName
+        self.notify_topic_name = notify_topic_name
+        # 项目名称
+        self.project_name = project_name
+        # SourceURI
+        self.source_uri = source_uri
+        self.tags_shrink = tags_shrink
+        # UserData
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self
@@ -4209,12 +4537,14 @@ class CreateFigureClusteringTaskRequest(TeaModel):
         notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
+        tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
         self.dataset_name = dataset_name
         self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
+        self.tags = tags
         self.user_data = user_data
 
     def validate(self):
@@ -4234,6 +4564,8 @@ class CreateFigureClusteringTaskRequest(TeaModel):
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.tags is not None:
+            result['Tags'] = self.tags
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -4248,6 +4580,65 @@ class CreateFigureClusteringTaskRequest(TeaModel):
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateFigureClusteringTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        tags_shrink: str = None,
+        user_data: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.notify_endpoint = notify_endpoint
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+        self.tags_shrink = tags_shrink
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self
@@ -4338,6 +4729,7 @@ class CreateFigureClustersMergingTaskRequest(TeaModel):
         notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
+        tags: Dict[str, Any] = None,
         to: str = None,
         user_data: str = None,
     ):
@@ -4347,6 +4739,7 @@ class CreateFigureClustersMergingTaskRequest(TeaModel):
         self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
+        self.tags = tags
         # 目的cluster
         self.to = to
         self.user_data = user_data
@@ -4370,6 +4763,8 @@ class CreateFigureClustersMergingTaskRequest(TeaModel):
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.tags is not None:
+            result['Tags'] = self.tags
         if self.to is not None:
             result['To'] = self.to
         if self.user_data is not None:
@@ -4388,6 +4783,79 @@ class CreateFigureClustersMergingTaskRequest(TeaModel):
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('To') is not None:
+            self.to = m.get('To')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateFigureClustersMergingTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        from_: str = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        tags_shrink: str = None,
+        to: str = None,
+        user_data: str = None,
+    ):
+        self.dataset_name = dataset_name
+        # 源cluster
+        self.from_ = from_
+        self.notify_endpoint = notify_endpoint
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+        self.tags_shrink = tags_shrink
+        # 目的cluster
+        self.to = to
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.to is not None:
+            result['To'] = self.to
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
         if m.get('To') is not None:
             self.to = m.get('To')
         if m.get('UserData') is not None:
@@ -4468,6 +4936,1764 @@ class CreateFigureClustersMergingTaskResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CreateFigureClustersMergingTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateMediaConvertTaskRequestSourcesSubtitles(TeaModel):
+    def __init__(
+        self,
+        language: str = None,
+        time_offset: float = None,
+        uri: str = None,
+    ):
+        self.language = language
+        self.time_offset = time_offset
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.time_offset is not None:
+            result['TimeOffset'] = self.time_offset
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('TimeOffset') is not None:
+            self.time_offset = m.get('TimeOffset')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class CreateMediaConvertTaskRequestSources(TeaModel):
+    def __init__(
+        self,
+        duration: float = None,
+        start_time: float = None,
+        subtitles: List[CreateMediaConvertTaskRequestSourcesSubtitles] = None,
+        uri: str = None,
+    ):
+        self.duration = duration
+        self.start_time = start_time
+        self.subtitles = subtitles
+        self.uri = uri
+
+    def validate(self):
+        if self.subtitles:
+            for k in self.subtitles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        result['Subtitles'] = []
+        if self.subtitles is not None:
+            for k in self.subtitles:
+                result['Subtitles'].append(k.to_map() if k else None)
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        self.subtitles = []
+        if m.get('Subtitles') is not None:
+            for k in m.get('Subtitles'):
+                temp_model = CreateMediaConvertTaskRequestSourcesSubtitles()
+                self.subtitles.append(temp_model.from_map(k))
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class CreateMediaConvertTaskRequestTargetsAudioFilterAudio(TeaModel):
+    def __init__(
+        self,
+        mixing: bool = None,
+    ):
+        self.mixing = mixing
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mixing is not None:
+            result['Mixing'] = self.mixing
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Mixing') is not None:
+            self.mixing = m.get('Mixing')
+        return self
+
+
+class CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio(TeaModel):
+    def __init__(
+        self,
+        bitrate: int = None,
+        channel: int = None,
+        codec: str = None,
+        quality: int = None,
+        sample_rate: int = None,
+    ):
+        self.bitrate = bitrate
+        self.channel = channel
+        self.codec = codec
+        self.quality = quality
+        self.sample_rate = sample_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.channel is not None:
+            result['Channel'] = self.channel
+        if self.codec is not None:
+            result['Codec'] = self.codec
+        if self.quality is not None:
+            result['Quality'] = self.quality
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
+        if m.get('Codec') is not None:
+            self.codec = m.get('Codec')
+        if m.get('Quality') is not None:
+            self.quality = m.get('Quality')
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+        return self
+
+
+class CreateMediaConvertTaskRequestTargetsAudio(TeaModel):
+    def __init__(
+        self,
+        disable_audio: bool = None,
+        filter_audio: CreateMediaConvertTaskRequestTargetsAudioFilterAudio = None,
+        transcode_audio: CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio = None,
+    ):
+        self.disable_audio = disable_audio
+        self.filter_audio = filter_audio
+        self.transcode_audio = transcode_audio
+
+    def validate(self):
+        if self.filter_audio:
+            self.filter_audio.validate()
+        if self.transcode_audio:
+            self.transcode_audio.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable_audio is not None:
+            result['DisableAudio'] = self.disable_audio
+        if self.filter_audio is not None:
+            result['FilterAudio'] = self.filter_audio.to_map()
+        if self.transcode_audio is not None:
+            result['TranscodeAudio'] = self.transcode_audio.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisableAudio') is not None:
+            self.disable_audio = m.get('DisableAudio')
+        if m.get('FilterAudio') is not None:
+            temp_model = CreateMediaConvertTaskRequestTargetsAudioFilterAudio()
+            self.filter_audio = temp_model.from_map(m['FilterAudio'])
+        if m.get('TranscodeAudio') is not None:
+            temp_model = CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio()
+            self.transcode_audio = temp_model.from_map(m['TranscodeAudio'])
+        return self
+
+
+class CreateMediaConvertTaskRequestTargetsImageSnapshots(TeaModel):
+    def __init__(
+        self,
+        format: str = None,
+        height: int = None,
+        interval: float = None,
+        number: int = None,
+        scale_type: str = None,
+        start_time: float = None,
+        uri: str = None,
+        width: int = None,
+    ):
+        self.format = format
+        self.height = height
+        self.interval = interval
+        self.number = number
+        self.scale_type = scale_type
+        self.start_time = start_time
+        self.uri = uri
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.format is not None:
+            result['Format'] = self.format
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.number is not None:
+            result['Number'] = self.number
+        if self.scale_type is not None:
+            result['ScaleType'] = self.scale_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.uri is not None:
+            result['URI'] = self.uri
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('Number') is not None:
+            self.number = m.get('Number')
+        if m.get('ScaleType') is not None:
+            self.scale_type = m.get('ScaleType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class CreateMediaConvertTaskRequestTargetsImageSprites(TeaModel):
+    def __init__(
+        self,
+        format: str = None,
+        interval: float = None,
+        margin: int = None,
+        number: int = None,
+        pad: int = None,
+        scale_height: float = None,
+        scale_type: str = None,
+        scale_width: float = None,
+        start_time: float = None,
+        tile_height: int = None,
+        tile_width: int = None,
+        uri: str = None,
+    ):
+        self.format = format
+        self.interval = interval
+        self.margin = margin
+        self.number = number
+        self.pad = pad
+        self.scale_height = scale_height
+        self.scale_type = scale_type
+        self.scale_width = scale_width
+        self.start_time = start_time
+        self.tile_height = tile_height
+        self.tile_width = tile_width
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.format is not None:
+            result['Format'] = self.format
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.margin is not None:
+            result['Margin'] = self.margin
+        if self.number is not None:
+            result['Number'] = self.number
+        if self.pad is not None:
+            result['Pad'] = self.pad
+        if self.scale_height is not None:
+            result['ScaleHeight'] = self.scale_height
+        if self.scale_type is not None:
+            result['ScaleType'] = self.scale_type
+        if self.scale_width is not None:
+            result['ScaleWidth'] = self.scale_width
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.tile_height is not None:
+            result['TileHeight'] = self.tile_height
+        if self.tile_width is not None:
+            result['TileWidth'] = self.tile_width
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('Margin') is not None:
+            self.margin = m.get('Margin')
+        if m.get('Number') is not None:
+            self.number = m.get('Number')
+        if m.get('Pad') is not None:
+            self.pad = m.get('Pad')
+        if m.get('ScaleHeight') is not None:
+            self.scale_height = m.get('ScaleHeight')
+        if m.get('ScaleType') is not None:
+            self.scale_type = m.get('ScaleType')
+        if m.get('ScaleWidth') is not None:
+            self.scale_width = m.get('ScaleWidth')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TileHeight') is not None:
+            self.tile_height = m.get('TileHeight')
+        if m.get('TileWidth') is not None:
+            self.tile_width = m.get('TileWidth')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class CreateMediaConvertTaskRequestTargetsImage(TeaModel):
+    def __init__(
+        self,
+        snapshots: List[CreateMediaConvertTaskRequestTargetsImageSnapshots] = None,
+        sprites: List[CreateMediaConvertTaskRequestTargetsImageSprites] = None,
+    ):
+        self.snapshots = snapshots
+        self.sprites = sprites
+
+    def validate(self):
+        if self.snapshots:
+            for k in self.snapshots:
+                if k:
+                    k.validate()
+        if self.sprites:
+            for k in self.sprites:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Snapshots'] = []
+        if self.snapshots is not None:
+            for k in self.snapshots:
+                result['Snapshots'].append(k.to_map() if k else None)
+        result['Sprites'] = []
+        if self.sprites is not None:
+            for k in self.sprites:
+                result['Sprites'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.snapshots = []
+        if m.get('Snapshots') is not None:
+            for k in m.get('Snapshots'):
+                temp_model = CreateMediaConvertTaskRequestTargetsImageSnapshots()
+                self.snapshots.append(temp_model.from_map(k))
+        self.sprites = []
+        if m.get('Sprites') is not None:
+            for k in m.get('Sprites'):
+                temp_model = CreateMediaConvertTaskRequestTargetsImageSprites()
+                self.sprites.append(temp_model.from_map(k))
+        return self
+
+
+class CreateMediaConvertTaskRequestTargetsSegment(TeaModel):
+    def __init__(
+        self,
+        duration: float = None,
+        format: str = None,
+    ):
+        self.duration = duration
+        self.format = format
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.format is not None:
+            result['Format'] = self.format
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        return self
+
+
+class CreateMediaConvertTaskRequestTargetsSubtitleExtractSubtitle(TeaModel):
+    def __init__(
+        self,
+        format: str = None,
+        uri: str = None,
+    ):
+        self.format = format
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.format is not None:
+            result['Format'] = self.format
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class CreateMediaConvertTaskRequestTargetsSubtitle(TeaModel):
+    def __init__(
+        self,
+        disable_subtitle: bool = None,
+        extract_subtitle: CreateMediaConvertTaskRequestTargetsSubtitleExtractSubtitle = None,
+    ):
+        self.disable_subtitle = disable_subtitle
+        self.extract_subtitle = extract_subtitle
+
+    def validate(self):
+        if self.extract_subtitle:
+            self.extract_subtitle.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable_subtitle is not None:
+            result['DisableSubtitle'] = self.disable_subtitle
+        if self.extract_subtitle is not None:
+            result['ExtractSubtitle'] = self.extract_subtitle.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisableSubtitle') is not None:
+            self.disable_subtitle = m.get('DisableSubtitle')
+        if m.get('ExtractSubtitle') is not None:
+            temp_model = CreateMediaConvertTaskRequestTargetsSubtitleExtractSubtitle()
+            self.extract_subtitle = temp_model.from_map(m['ExtractSubtitle'])
+        return self
+
+
+class CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos(TeaModel):
+    def __init__(
+        self,
+        durtion: float = None,
+        dx: float = None,
+        dy: float = None,
+        height: float = None,
+        refer_pos: str = None,
+        start_time: float = None,
+        width: float = None,
+    ):
+        self.durtion = durtion
+        self.dx = dx
+        self.dy = dy
+        self.height = height
+        self.refer_pos = refer_pos
+        self.start_time = start_time
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.durtion is not None:
+            result['Durtion'] = self.durtion
+        if self.dx is not None:
+            result['Dx'] = self.dx
+        if self.dy is not None:
+            result['Dy'] = self.dy
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.refer_pos is not None:
+            result['ReferPos'] = self.refer_pos
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Durtion') is not None:
+            self.durtion = m.get('Durtion')
+        if m.get('Dx') is not None:
+            self.dx = m.get('Dx')
+        if m.get('Dy') is not None:
+            self.dy = m.get('Dy')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('ReferPos') is not None:
+            self.refer_pos = m.get('ReferPos')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks(TeaModel):
+    def __init__(
+        self,
+        border_color: str = None,
+        border_width: int = None,
+        content: str = None,
+        duration: float = None,
+        dx: float = None,
+        dy: float = None,
+        font_apha: float = None,
+        font_color: str = None,
+        font_name: str = None,
+        font_size: int = None,
+        height: float = None,
+        refer_pos: str = None,
+        start_time: float = None,
+        type: str = None,
+        uri: str = None,
+        width: float = None,
+    ):
+        self.border_color = border_color
+        self.border_width = border_width
+        self.content = content
+        self.duration = duration
+        self.dx = dx
+        self.dy = dy
+        self.font_apha = font_apha
+        self.font_color = font_color
+        self.font_name = font_name
+        self.font_size = font_size
+        self.height = height
+        self.refer_pos = refer_pos
+        self.start_time = start_time
+        self.type = type
+        self.uri = uri
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.border_color is not None:
+            result['BorderColor'] = self.border_color
+        if self.border_width is not None:
+            result['BorderWidth'] = self.border_width
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.dx is not None:
+            result['Dx'] = self.dx
+        if self.dy is not None:
+            result['Dy'] = self.dy
+        if self.font_apha is not None:
+            result['FontApha'] = self.font_apha
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color
+        if self.font_name is not None:
+            result['FontName'] = self.font_name
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.refer_pos is not None:
+            result['ReferPos'] = self.refer_pos
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.uri is not None:
+            result['URI'] = self.uri
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BorderColor') is not None:
+            self.border_color = m.get('BorderColor')
+        if m.get('BorderWidth') is not None:
+            self.border_width = m.get('BorderWidth')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Dx') is not None:
+            self.dx = m.get('Dx')
+        if m.get('Dy') is not None:
+            self.dy = m.get('Dy')
+        if m.get('FontApha') is not None:
+            self.font_apha = m.get('FontApha')
+        if m.get('FontColor') is not None:
+            self.font_color = m.get('FontColor')
+        if m.get('FontName') is not None:
+            self.font_name = m.get('FontName')
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('ReferPos') is not None:
+            self.refer_pos = m.get('ReferPos')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class CreateMediaConvertTaskRequestTargetsVideoFilterVideo(TeaModel):
+    def __init__(
+        self,
+        delogos: List[CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos] = None,
+        watermarks: List[CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks] = None,
+    ):
+        self.delogos = delogos
+        self.watermarks = watermarks
+
+    def validate(self):
+        if self.delogos:
+            for k in self.delogos:
+                if k:
+                    k.validate()
+        if self.watermarks:
+            for k in self.watermarks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Delogos'] = []
+        if self.delogos is not None:
+            for k in self.delogos:
+                result['Delogos'].append(k.to_map() if k else None)
+        result['Watermarks'] = []
+        if self.watermarks is not None:
+            for k in self.watermarks:
+                result['Watermarks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.delogos = []
+        if m.get('Delogos') is not None:
+            for k in m.get('Delogos'):
+                temp_model = CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos()
+                self.delogos.append(temp_model.from_map(k))
+        self.watermarks = []
+        if m.get('Watermarks') is not None:
+            for k in m.get('Watermarks'):
+                temp_model = CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks()
+                self.watermarks.append(temp_model.from_map(k))
+        return self
+
+
+class CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo(TeaModel):
+    def __init__(
+        self,
+        adaptive_resolution_direction: bool = None,
+        bframes: int = None,
+        bitrate: int = None,
+        buffer_size: int = None,
+        crf: float = None,
+        codec: str = None,
+        frame_rate: float = None,
+        gopsize: int = None,
+        max_bitrate: int = None,
+        pixel_format: str = None,
+        refs: int = None,
+        resolution: str = None,
+        rotation: int = None,
+        scale_type: str = None,
+    ):
+        self.adaptive_resolution_direction = adaptive_resolution_direction
+        self.bframes = bframes
+        self.bitrate = bitrate
+        self.buffer_size = buffer_size
+        self.crf = crf
+        self.codec = codec
+        self.frame_rate = frame_rate
+        self.gopsize = gopsize
+        self.max_bitrate = max_bitrate
+        self.pixel_format = pixel_format
+        self.refs = refs
+        self.resolution = resolution
+        self.rotation = rotation
+        self.scale_type = scale_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adaptive_resolution_direction is not None:
+            result['AdaptiveResolutionDirection'] = self.adaptive_resolution_direction
+        if self.bframes is not None:
+            result['BFrames'] = self.bframes
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.buffer_size is not None:
+            result['BufferSize'] = self.buffer_size
+        if self.crf is not None:
+            result['CRF'] = self.crf
+        if self.codec is not None:
+            result['Codec'] = self.codec
+        if self.frame_rate is not None:
+            result['FrameRate'] = self.frame_rate
+        if self.gopsize is not None:
+            result['GOPSize'] = self.gopsize
+        if self.max_bitrate is not None:
+            result['MaxBitrate'] = self.max_bitrate
+        if self.pixel_format is not None:
+            result['PixelFormat'] = self.pixel_format
+        if self.refs is not None:
+            result['Refs'] = self.refs
+        if self.resolution is not None:
+            result['Resolution'] = self.resolution
+        if self.rotation is not None:
+            result['Rotation'] = self.rotation
+        if self.scale_type is not None:
+            result['ScaleType'] = self.scale_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdaptiveResolutionDirection') is not None:
+            self.adaptive_resolution_direction = m.get('AdaptiveResolutionDirection')
+        if m.get('BFrames') is not None:
+            self.bframes = m.get('BFrames')
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('BufferSize') is not None:
+            self.buffer_size = m.get('BufferSize')
+        if m.get('CRF') is not None:
+            self.crf = m.get('CRF')
+        if m.get('Codec') is not None:
+            self.codec = m.get('Codec')
+        if m.get('FrameRate') is not None:
+            self.frame_rate = m.get('FrameRate')
+        if m.get('GOPSize') is not None:
+            self.gopsize = m.get('GOPSize')
+        if m.get('MaxBitrate') is not None:
+            self.max_bitrate = m.get('MaxBitrate')
+        if m.get('PixelFormat') is not None:
+            self.pixel_format = m.get('PixelFormat')
+        if m.get('Refs') is not None:
+            self.refs = m.get('Refs')
+        if m.get('Resolution') is not None:
+            self.resolution = m.get('Resolution')
+        if m.get('Rotation') is not None:
+            self.rotation = m.get('Rotation')
+        if m.get('ScaleType') is not None:
+            self.scale_type = m.get('ScaleType')
+        return self
+
+
+class CreateMediaConvertTaskRequestTargetsVideo(TeaModel):
+    def __init__(
+        self,
+        disable_video: bool = None,
+        filter_video: CreateMediaConvertTaskRequestTargetsVideoFilterVideo = None,
+        transcode_video: CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo = None,
+    ):
+        self.disable_video = disable_video
+        self.filter_video = filter_video
+        self.transcode_video = transcode_video
+
+    def validate(self):
+        if self.filter_video:
+            self.filter_video.validate()
+        if self.transcode_video:
+            self.transcode_video.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable_video is not None:
+            result['DisableVideo'] = self.disable_video
+        if self.filter_video is not None:
+            result['FilterVideo'] = self.filter_video.to_map()
+        if self.transcode_video is not None:
+            result['TranscodeVideo'] = self.transcode_video.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisableVideo') is not None:
+            self.disable_video = m.get('DisableVideo')
+        if m.get('FilterVideo') is not None:
+            temp_model = CreateMediaConvertTaskRequestTargetsVideoFilterVideo()
+            self.filter_video = temp_model.from_map(m['FilterVideo'])
+        if m.get('TranscodeVideo') is not None:
+            temp_model = CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo()
+            self.transcode_video = temp_model.from_map(m['TranscodeVideo'])
+        return self
+
+
+class CreateMediaConvertTaskRequestTargets(TeaModel):
+    def __init__(
+        self,
+        audio: CreateMediaConvertTaskRequestTargetsAudio = None,
+        container: str = None,
+        image: CreateMediaConvertTaskRequestTargetsImage = None,
+        preset_id: str = None,
+        segment: CreateMediaConvertTaskRequestTargetsSegment = None,
+        speed: float = None,
+        subtitle: CreateMediaConvertTaskRequestTargetsSubtitle = None,
+        uri: str = None,
+        video: CreateMediaConvertTaskRequestTargetsVideo = None,
+    ):
+        self.audio = audio
+        self.container = container
+        self.image = image
+        self.preset_id = preset_id
+        self.segment = segment
+        self.speed = speed
+        self.subtitle = subtitle
+        self.uri = uri
+        self.video = video
+
+    def validate(self):
+        if self.audio:
+            self.audio.validate()
+        if self.image:
+            self.image.validate()
+        if self.segment:
+            self.segment.validate()
+        if self.subtitle:
+            self.subtitle.validate()
+        if self.video:
+            self.video.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio is not None:
+            result['Audio'] = self.audio.to_map()
+        if self.container is not None:
+            result['Container'] = self.container
+        if self.image is not None:
+            result['Image'] = self.image.to_map()
+        if self.preset_id is not None:
+            result['PresetId'] = self.preset_id
+        if self.segment is not None:
+            result['Segment'] = self.segment.to_map()
+        if self.speed is not None:
+            result['Speed'] = self.speed
+        if self.subtitle is not None:
+            result['Subtitle'] = self.subtitle.to_map()
+        if self.uri is not None:
+            result['URI'] = self.uri
+        if self.video is not None:
+            result['Video'] = self.video.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Audio') is not None:
+            temp_model = CreateMediaConvertTaskRequestTargetsAudio()
+            self.audio = temp_model.from_map(m['Audio'])
+        if m.get('Container') is not None:
+            self.container = m.get('Container')
+        if m.get('Image') is not None:
+            temp_model = CreateMediaConvertTaskRequestTargetsImage()
+            self.image = temp_model.from_map(m['Image'])
+        if m.get('PresetId') is not None:
+            self.preset_id = m.get('PresetId')
+        if m.get('Segment') is not None:
+            temp_model = CreateMediaConvertTaskRequestTargetsSegment()
+            self.segment = temp_model.from_map(m['Segment'])
+        if m.get('Speed') is not None:
+            self.speed = m.get('Speed')
+        if m.get('Subtitle') is not None:
+            temp_model = CreateMediaConvertTaskRequestTargetsSubtitle()
+            self.subtitle = temp_model.from_map(m['Subtitle'])
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        if m.get('Video') is not None:
+            temp_model = CreateMediaConvertTaskRequestTargetsVideo()
+            self.video = temp_model.from_map(m['Video'])
+        return self
+
+
+class CreateMediaConvertTaskRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        sources: List[CreateMediaConvertTaskRequestSources] = None,
+        tags: Dict[str, Any] = None,
+        targets: List[CreateMediaConvertTaskRequestTargets] = None,
+        user_data: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.notify_endpoint = notify_endpoint
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+        self.sources = sources
+        self.tags = tags
+        self.targets = targets
+        self.user_data = user_data
+
+    def validate(self):
+        if self.sources:
+            for k in self.sources:
+                if k:
+                    k.validate()
+        if self.targets:
+            for k in self.targets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        result['Sources'] = []
+        if self.sources is not None:
+            for k in self.sources:
+                result['Sources'].append(k.to_map() if k else None)
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        result['Targets'] = []
+        if self.targets is not None:
+            for k in self.targets:
+                result['Targets'].append(k.to_map() if k else None)
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        self.sources = []
+        if m.get('Sources') is not None:
+            for k in m.get('Sources'):
+                temp_model = CreateMediaConvertTaskRequestSources()
+                self.sources.append(temp_model.from_map(k))
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        self.targets = []
+        if m.get('Targets') is not None:
+            for k in m.get('Targets'):
+                temp_model = CreateMediaConvertTaskRequestTargets()
+                self.targets.append(temp_model.from_map(k))
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateMediaConvertTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        sources_shrink: str = None,
+        tags_shrink: str = None,
+        targets_shrink: str = None,
+        user_data: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.notify_endpoint = notify_endpoint
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+        self.sources_shrink = sources_shrink
+        self.tags_shrink = tags_shrink
+        self.targets_shrink = targets_shrink
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.sources_shrink is not None:
+            result['Sources'] = self.sources_shrink
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.targets_shrink is not None:
+            result['Targets'] = self.targets_shrink
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Sources') is not None:
+            self.sources_shrink = m.get('Sources')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('Targets') is not None:
+            self.targets_shrink = m.get('Targets')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateMediaConvertTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        # 请求 ID
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateMediaConvertTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateMediaConvertTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateMediaConvertTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateOfficeConversionTaskRequest(TeaModel):
+    def __init__(
+        self,
+        assume_role_chain: AssumeRoleChain = None,
+        end_page: int = None,
+        first_page: bool = None,
+        fit_to_height: bool = None,
+        fit_to_width: bool = None,
+        hold_line_feed: bool = None,
+        long_picture: bool = None,
+        long_text: bool = None,
+        max_sheet_column: int = None,
+        max_sheet_row: int = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        paper_horizontal: bool = None,
+        paper_size: str = None,
+        password: str = None,
+        project_name: str = None,
+        quality: int = None,
+        scale_percentage: int = None,
+        sheet_count: int = None,
+        sheet_index: int = None,
+        show_comments: bool = None,
+        source_type: str = None,
+        source_uri: str = None,
+        start_page: int = None,
+        tags: Dict[str, Any] = None,
+        target_type: str = None,
+        target_uriprefix: str = None,
+        trim_policy: TrimPolicy = None,
+        user_data: str = None,
+    ):
+        # 链式授权
+        self.assume_role_chain = assume_role_chain
+        # 转换终止页，包含终止页，默认转换到最后一页，表格转图片时需要指定 SheetIndex 才有效
+        self.end_page = end_page
+        # 表格转图片参数，是否只返回表格的第一张图片，默认为否
+        self.first_page = first_page
+        # 表格转图片参数，是否将所有行输出到一张图片，默认为否
+        self.fit_to_height = fit_to_height
+        # 表格转图片参数，是否将所有列输出到一张图片，默认为否
+        self.fit_to_width = fit_to_width
+        # 转文本时是否保留文档中的换行符，默认不保留
+        self.hold_line_feed = hold_line_feed
+        # 转图片时是否转换成一张长图，最多支持将 20 页合成一张长图，超过可能报错，默认为不转成长图
+        self.long_picture = long_picture
+        # 转文本时是否转换成长文本，默认每页是个独立的文本
+        self.long_text = long_text
+        # 表格转图片的最大列数，在 LongPicture 为 true 时生效，默认转所有列
+        self.max_sheet_column = max_sheet_column
+        # 表格转图片的最大行数，在 LongPicture 为 true 时生效，默认转所有行
+        self.max_sheet_row = max_sheet_row
+        # mns 消息通知地址
+        self.notify_endpoint = notify_endpoint
+        # mns 消息通知 topic
+        self.notify_topic_name = notify_topic_name
+        # 表格转图片纸张是否水平放置，默认为否
+        self.paper_horizontal = paper_horizontal
+        # 表格转图片纸张大小，支持 A4/A2/A0，默认A4，配合 FitToHeight 或 FitToWidth 一起使用才有效
+        self.paper_size = paper_size
+        # 文档密码
+        self.password = password
+        # 项目名称
+        self.project_name = project_name
+        # 质量参数，范围是0-100，越大质量越好，默认系统自动选择适合的分辨率
+        self.quality = quality
+        # 缩放参数，允许范围 20~200，100代表不缩放，小于100表示缩小，大于100表示放大，默认不缩放
+        self.scale_percentage = scale_percentage
+        # 表格转图片参数，指定转换表格中的 sheet 数量，默认转换所有 sheet
+        self.sheet_count = sheet_count
+        # 表格转图片参数，指定转换哪一个 sheet，从 1 开始，默认从起始页开始转
+        self.sheet_index = sheet_index
+        # 文字转图片，是否显示批注，目前只支持文字转图片时携带批注，默认不显示批注
+        self.show_comments = show_comments
+        # 输入文件格式，默认使用文件名后缀小写格式
+        self.source_type = source_type
+        # 文档转换输入文件地址
+        self.source_uri = source_uri
+        # 转换起始页，从 1 开始，包含起始页，默认从第一页开始转换，表格转图片时需要指定 SheetIndex 才有效
+        self.start_page = start_page
+        # 用户自定义标签
+        self.tags = tags
+        # 输出文件格式
+        self.target_type = target_type
+        # 文档转换输出文件地址前缀
+        self.target_uriprefix = target_uriprefix
+        # 表格瘦身
+        self.trim_policy = trim_policy
+        # 用户自定义数据，在消息通知中返回
+        self.user_data = user_data
+
+    def validate(self):
+        if self.assume_role_chain:
+            self.assume_role_chain.validate()
+        if self.trim_policy:
+            self.trim_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assume_role_chain is not None:
+            result['AssumeRoleChain'] = self.assume_role_chain.to_map()
+        if self.end_page is not None:
+            result['EndPage'] = self.end_page
+        if self.first_page is not None:
+            result['FirstPage'] = self.first_page
+        if self.fit_to_height is not None:
+            result['FitToHeight'] = self.fit_to_height
+        if self.fit_to_width is not None:
+            result['FitToWidth'] = self.fit_to_width
+        if self.hold_line_feed is not None:
+            result['HoldLineFeed'] = self.hold_line_feed
+        if self.long_picture is not None:
+            result['LongPicture'] = self.long_picture
+        if self.long_text is not None:
+            result['LongText'] = self.long_text
+        if self.max_sheet_column is not None:
+            result['MaxSheetColumn'] = self.max_sheet_column
+        if self.max_sheet_row is not None:
+            result['MaxSheetRow'] = self.max_sheet_row
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.paper_horizontal is not None:
+            result['PaperHorizontal'] = self.paper_horizontal
+        if self.paper_size is not None:
+            result['PaperSize'] = self.paper_size
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.quality is not None:
+            result['Quality'] = self.quality
+        if self.scale_percentage is not None:
+            result['ScalePercentage'] = self.scale_percentage
+        if self.sheet_count is not None:
+            result['SheetCount'] = self.sheet_count
+        if self.sheet_index is not None:
+            result['SheetIndex'] = self.sheet_index
+        if self.show_comments is not None:
+            result['ShowComments'] = self.show_comments
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.start_page is not None:
+            result['StartPage'] = self.start_page
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        if self.target_uriprefix is not None:
+            result['TargetURIPrefix'] = self.target_uriprefix
+        if self.trim_policy is not None:
+            result['TrimPolicy'] = self.trim_policy.to_map()
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssumeRoleChain') is not None:
+            temp_model = AssumeRoleChain()
+            self.assume_role_chain = temp_model.from_map(m['AssumeRoleChain'])
+        if m.get('EndPage') is not None:
+            self.end_page = m.get('EndPage')
+        if m.get('FirstPage') is not None:
+            self.first_page = m.get('FirstPage')
+        if m.get('FitToHeight') is not None:
+            self.fit_to_height = m.get('FitToHeight')
+        if m.get('FitToWidth') is not None:
+            self.fit_to_width = m.get('FitToWidth')
+        if m.get('HoldLineFeed') is not None:
+            self.hold_line_feed = m.get('HoldLineFeed')
+        if m.get('LongPicture') is not None:
+            self.long_picture = m.get('LongPicture')
+        if m.get('LongText') is not None:
+            self.long_text = m.get('LongText')
+        if m.get('MaxSheetColumn') is not None:
+            self.max_sheet_column = m.get('MaxSheetColumn')
+        if m.get('MaxSheetRow') is not None:
+            self.max_sheet_row = m.get('MaxSheetRow')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('PaperHorizontal') is not None:
+            self.paper_horizontal = m.get('PaperHorizontal')
+        if m.get('PaperSize') is not None:
+            self.paper_size = m.get('PaperSize')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Quality') is not None:
+            self.quality = m.get('Quality')
+        if m.get('ScalePercentage') is not None:
+            self.scale_percentage = m.get('ScalePercentage')
+        if m.get('SheetCount') is not None:
+            self.sheet_count = m.get('SheetCount')
+        if m.get('SheetIndex') is not None:
+            self.sheet_index = m.get('SheetIndex')
+        if m.get('ShowComments') is not None:
+            self.show_comments = m.get('ShowComments')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('StartPage') is not None:
+            self.start_page = m.get('StartPage')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        if m.get('TargetURIPrefix') is not None:
+            self.target_uriprefix = m.get('TargetURIPrefix')
+        if m.get('TrimPolicy') is not None:
+            temp_model = TrimPolicy()
+            self.trim_policy = temp_model.from_map(m['TrimPolicy'])
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateOfficeConversionTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        assume_role_chain_shrink: str = None,
+        end_page: int = None,
+        first_page: bool = None,
+        fit_to_height: bool = None,
+        fit_to_width: bool = None,
+        hold_line_feed: bool = None,
+        long_picture: bool = None,
+        long_text: bool = None,
+        max_sheet_column: int = None,
+        max_sheet_row: int = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        paper_horizontal: bool = None,
+        paper_size: str = None,
+        password: str = None,
+        project_name: str = None,
+        quality: int = None,
+        scale_percentage: int = None,
+        sheet_count: int = None,
+        sheet_index: int = None,
+        show_comments: bool = None,
+        source_type: str = None,
+        source_uri: str = None,
+        start_page: int = None,
+        tags_shrink: str = None,
+        target_type: str = None,
+        target_uriprefix: str = None,
+        trim_policy_shrink: str = None,
+        user_data: str = None,
+    ):
+        # 链式授权
+        self.assume_role_chain_shrink = assume_role_chain_shrink
+        # 转换终止页，包含终止页，默认转换到最后一页，表格转图片时需要指定 SheetIndex 才有效
+        self.end_page = end_page
+        # 表格转图片参数，是否只返回表格的第一张图片，默认为否
+        self.first_page = first_page
+        # 表格转图片参数，是否将所有行输出到一张图片，默认为否
+        self.fit_to_height = fit_to_height
+        # 表格转图片参数，是否将所有列输出到一张图片，默认为否
+        self.fit_to_width = fit_to_width
+        # 转文本时是否保留文档中的换行符，默认不保留
+        self.hold_line_feed = hold_line_feed
+        # 转图片时是否转换成一张长图，最多支持将 20 页合成一张长图，超过可能报错，默认为不转成长图
+        self.long_picture = long_picture
+        # 转文本时是否转换成长文本，默认每页是个独立的文本
+        self.long_text = long_text
+        # 表格转图片的最大列数，在 LongPicture 为 true 时生效，默认转所有列
+        self.max_sheet_column = max_sheet_column
+        # 表格转图片的最大行数，在 LongPicture 为 true 时生效，默认转所有行
+        self.max_sheet_row = max_sheet_row
+        # mns 消息通知地址
+        self.notify_endpoint = notify_endpoint
+        # mns 消息通知 topic
+        self.notify_topic_name = notify_topic_name
+        # 表格转图片纸张是否水平放置，默认为否
+        self.paper_horizontal = paper_horizontal
+        # 表格转图片纸张大小，支持 A4/A2/A0，默认A4，配合 FitToHeight 或 FitToWidth 一起使用才有效
+        self.paper_size = paper_size
+        # 文档密码
+        self.password = password
+        # 项目名称
+        self.project_name = project_name
+        # 质量参数，范围是0-100，越大质量越好，默认系统自动选择适合的分辨率
+        self.quality = quality
+        # 缩放参数，允许范围 20~200，100代表不缩放，小于100表示缩小，大于100表示放大，默认不缩放
+        self.scale_percentage = scale_percentage
+        # 表格转图片参数，指定转换表格中的 sheet 数量，默认转换所有 sheet
+        self.sheet_count = sheet_count
+        # 表格转图片参数，指定转换哪一个 sheet，从 1 开始，默认从起始页开始转
+        self.sheet_index = sheet_index
+        # 文字转图片，是否显示批注，目前只支持文字转图片时携带批注，默认不显示批注
+        self.show_comments = show_comments
+        # 输入文件格式，默认使用文件名后缀小写格式
+        self.source_type = source_type
+        # 文档转换输入文件地址
+        self.source_uri = source_uri
+        # 转换起始页，从 1 开始，包含起始页，默认从第一页开始转换，表格转图片时需要指定 SheetIndex 才有效
+        self.start_page = start_page
+        # 用户自定义标签
+        self.tags_shrink = tags_shrink
+        # 输出文件格式
+        self.target_type = target_type
+        # 文档转换输出文件地址前缀
+        self.target_uriprefix = target_uriprefix
+        # 表格瘦身
+        self.trim_policy_shrink = trim_policy_shrink
+        # 用户自定义数据，在消息通知中返回
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assume_role_chain_shrink is not None:
+            result['AssumeRoleChain'] = self.assume_role_chain_shrink
+        if self.end_page is not None:
+            result['EndPage'] = self.end_page
+        if self.first_page is not None:
+            result['FirstPage'] = self.first_page
+        if self.fit_to_height is not None:
+            result['FitToHeight'] = self.fit_to_height
+        if self.fit_to_width is not None:
+            result['FitToWidth'] = self.fit_to_width
+        if self.hold_line_feed is not None:
+            result['HoldLineFeed'] = self.hold_line_feed
+        if self.long_picture is not None:
+            result['LongPicture'] = self.long_picture
+        if self.long_text is not None:
+            result['LongText'] = self.long_text
+        if self.max_sheet_column is not None:
+            result['MaxSheetColumn'] = self.max_sheet_column
+        if self.max_sheet_row is not None:
+            result['MaxSheetRow'] = self.max_sheet_row
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.paper_horizontal is not None:
+            result['PaperHorizontal'] = self.paper_horizontal
+        if self.paper_size is not None:
+            result['PaperSize'] = self.paper_size
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.quality is not None:
+            result['Quality'] = self.quality
+        if self.scale_percentage is not None:
+            result['ScalePercentage'] = self.scale_percentage
+        if self.sheet_count is not None:
+            result['SheetCount'] = self.sheet_count
+        if self.sheet_index is not None:
+            result['SheetIndex'] = self.sheet_index
+        if self.show_comments is not None:
+            result['ShowComments'] = self.show_comments
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.start_page is not None:
+            result['StartPage'] = self.start_page
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        if self.target_uriprefix is not None:
+            result['TargetURIPrefix'] = self.target_uriprefix
+        if self.trim_policy_shrink is not None:
+            result['TrimPolicy'] = self.trim_policy_shrink
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssumeRoleChain') is not None:
+            self.assume_role_chain_shrink = m.get('AssumeRoleChain')
+        if m.get('EndPage') is not None:
+            self.end_page = m.get('EndPage')
+        if m.get('FirstPage') is not None:
+            self.first_page = m.get('FirstPage')
+        if m.get('FitToHeight') is not None:
+            self.fit_to_height = m.get('FitToHeight')
+        if m.get('FitToWidth') is not None:
+            self.fit_to_width = m.get('FitToWidth')
+        if m.get('HoldLineFeed') is not None:
+            self.hold_line_feed = m.get('HoldLineFeed')
+        if m.get('LongPicture') is not None:
+            self.long_picture = m.get('LongPicture')
+        if m.get('LongText') is not None:
+            self.long_text = m.get('LongText')
+        if m.get('MaxSheetColumn') is not None:
+            self.max_sheet_column = m.get('MaxSheetColumn')
+        if m.get('MaxSheetRow') is not None:
+            self.max_sheet_row = m.get('MaxSheetRow')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('PaperHorizontal') is not None:
+            self.paper_horizontal = m.get('PaperHorizontal')
+        if m.get('PaperSize') is not None:
+            self.paper_size = m.get('PaperSize')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Quality') is not None:
+            self.quality = m.get('Quality')
+        if m.get('ScalePercentage') is not None:
+            self.scale_percentage = m.get('ScalePercentage')
+        if m.get('SheetCount') is not None:
+            self.sheet_count = m.get('SheetCount')
+        if m.get('SheetIndex') is not None:
+            self.sheet_index = m.get('SheetIndex')
+        if m.get('ShowComments') is not None:
+            self.show_comments = m.get('ShowComments')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('StartPage') is not None:
+            self.start_page = m.get('StartPage')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        if m.get('TargetURIPrefix') is not None:
+            self.target_uriprefix = m.get('TargetURIPrefix')
+        if m.get('TrimPolicy') is not None:
+            self.trim_policy_shrink = m.get('TrimPolicy')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateOfficeConversionTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        # 请求 id
+        self.request_id = request_id
+        # 任务 id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateOfficeConversionTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateOfficeConversionTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateOfficeConversionTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4656,6 +6882,8 @@ class CreateStoryRequest(TeaModel):
         story_start_time: str = None,
         story_sub_type: str = None,
         story_type: str = None,
+        tags: Dict[str, Any] = None,
+        user_data: str = None,
     ):
         self.custom_id = custom_id
         self.custom_labels = custom_labels
@@ -4671,6 +6899,8 @@ class CreateStoryRequest(TeaModel):
         self.story_start_time = story_start_time
         self.story_sub_type = story_sub_type
         self.story_type = story_type
+        self.tags = tags
+        self.user_data = user_data
 
     def validate(self):
         pass
@@ -4709,6 +6939,10 @@ class CreateStoryRequest(TeaModel):
             result['StorySubType'] = self.story_sub_type
         if self.story_type is not None:
             result['StoryType'] = self.story_type
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         return result
 
     def from_map(self, m: dict = None):
@@ -4741,6 +6975,10 @@ class CreateStoryRequest(TeaModel):
             self.story_sub_type = m.get('StorySubType')
         if m.get('StoryType') is not None:
             self.story_type = m.get('StoryType')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         return self
 
 
@@ -4761,6 +6999,8 @@ class CreateStoryShrinkRequest(TeaModel):
         story_start_time: str = None,
         story_sub_type: str = None,
         story_type: str = None,
+        tags_shrink: str = None,
+        user_data: str = None,
     ):
         self.custom_id = custom_id
         self.custom_labels_shrink = custom_labels_shrink
@@ -4776,6 +7016,8 @@ class CreateStoryShrinkRequest(TeaModel):
         self.story_start_time = story_start_time
         self.story_sub_type = story_sub_type
         self.story_type = story_type
+        self.tags_shrink = tags_shrink
+        self.user_data = user_data
 
     def validate(self):
         pass
@@ -4814,6 +7056,10 @@ class CreateStoryShrinkRequest(TeaModel):
             result['StorySubType'] = self.story_sub_type
         if self.story_type is not None:
             result['StoryType'] = self.story_type
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         return result
 
     def from_map(self, m: dict = None):
@@ -4846,6 +7092,10 @@ class CreateStoryShrinkRequest(TeaModel):
             self.story_sub_type = m.get('StorySubType')
         if m.get('StoryType') is not None:
             self.story_type = m.get('StoryType')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         return self
 
 
@@ -5431,6 +7681,219 @@ class DeleteStoryResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DeleteStoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DetachOSSBucketRequest(TeaModel):
+    def __init__(
+        self,
+        ossbucket: str = None,
+    ):
+        self.ossbucket = ossbucket
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ossbucket is not None:
+            result['OSSBucket'] = self.ossbucket
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OSSBucket') is not None:
+            self.ossbucket = m.get('OSSBucket')
+        return self
+
+
+class DetachOSSBucketResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # RequestId
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DetachOSSBucketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DetachOSSBucketResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DetachOSSBucketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DetectImageCroppingRequest(TeaModel):
+    def __init__(
+        self,
+        aspect_ratios: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+    ):
+        self.aspect_ratios = aspect_ratios
+        # 项目名称
+        self.project_name = project_name
+        # SourceURI
+        self.source_uri = source_uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aspect_ratios is not None:
+            result['AspectRatios'] = self.aspect_ratios
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AspectRatios') is not None:
+            self.aspect_ratios = m.get('AspectRatios')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        return self
+
+
+class DetectImageCroppingResponseBody(TeaModel):
+    def __init__(
+        self,
+        croppings: List[CroppingSuggestion] = None,
+        request_id: str = None,
+    ):
+        # 图片裁剪结果
+        self.croppings = croppings
+        # 请求唯一ID
+        self.request_id = request_id
+
+    def validate(self):
+        if self.croppings:
+            for k in self.croppings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Croppings'] = []
+        if self.croppings is not None:
+            for k in self.croppings:
+                result['Croppings'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.croppings = []
+        if m.get('Croppings') is not None:
+            for k in m.get('Croppings'):
+                temp_model = CroppingSuggestion()
+                self.croppings.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DetectImageCroppingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DetectImageCroppingResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DetectImageCroppingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6592,6 +9055,374 @@ class GetFileMetaResponse(TeaModel):
         return self
 
 
+class GetMediaMetaRequest(TeaModel):
+    def __init__(
+        self,
+        project_name: str = None,
+        source_uri: str = None,
+    ):
+        self.project_name = project_name
+        self.source_uri = source_uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        return self
+
+
+class GetMediaMetaResponseBody(TeaModel):
+    def __init__(
+        self,
+        addresses: List[Address] = None,
+        album: str = None,
+        album_artist: str = None,
+        artist: str = None,
+        audio_streams: List[AudioStream] = None,
+        bitrate: int = None,
+        composer: str = None,
+        duration: float = None,
+        format_long_name: str = None,
+        format_name: str = None,
+        language: str = None,
+        lat_long: str = None,
+        performer: str = None,
+        produce_time: str = None,
+        program_count: int = None,
+        request_id: str = None,
+        start_time: float = None,
+        stream_count: int = None,
+        subtitles: List[SubtitleStream] = None,
+        title: str = None,
+        video_height: int = None,
+        video_start_time: float = None,
+        video_streams: List[VideoStream] = None,
+        video_width: int = None,
+    ):
+        self.addresses = addresses
+        self.album = album
+        self.album_artist = album_artist
+        self.artist = artist
+        self.audio_streams = audio_streams
+        self.bitrate = bitrate
+        self.composer = composer
+        self.duration = duration
+        self.format_long_name = format_long_name
+        self.format_name = format_name
+        self.language = language
+        self.lat_long = lat_long
+        self.performer = performer
+        self.produce_time = produce_time
+        self.program_count = program_count
+        self.request_id = request_id
+        self.start_time = start_time
+        self.stream_count = stream_count
+        self.subtitles = subtitles
+        self.title = title
+        self.video_height = video_height
+        self.video_start_time = video_start_time
+        self.video_streams = video_streams
+        self.video_width = video_width
+
+    def validate(self):
+        if self.addresses:
+            for k in self.addresses:
+                if k:
+                    k.validate()
+        if self.audio_streams:
+            for k in self.audio_streams:
+                if k:
+                    k.validate()
+        if self.subtitles:
+            for k in self.subtitles:
+                if k:
+                    k.validate()
+        if self.video_streams:
+            for k in self.video_streams:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Addresses'] = []
+        if self.addresses is not None:
+            for k in self.addresses:
+                result['Addresses'].append(k.to_map() if k else None)
+        if self.album is not None:
+            result['Album'] = self.album
+        if self.album_artist is not None:
+            result['AlbumArtist'] = self.album_artist
+        if self.artist is not None:
+            result['Artist'] = self.artist
+        result['AudioStreams'] = []
+        if self.audio_streams is not None:
+            for k in self.audio_streams:
+                result['AudioStreams'].append(k.to_map() if k else None)
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.composer is not None:
+            result['Composer'] = self.composer
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.format_long_name is not None:
+            result['FormatLongName'] = self.format_long_name
+        if self.format_name is not None:
+            result['FormatName'] = self.format_name
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.lat_long is not None:
+            result['LatLong'] = self.lat_long
+        if self.performer is not None:
+            result['Performer'] = self.performer
+        if self.produce_time is not None:
+            result['ProduceTime'] = self.produce_time
+        if self.program_count is not None:
+            result['ProgramCount'] = self.program_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.stream_count is not None:
+            result['StreamCount'] = self.stream_count
+        result['Subtitles'] = []
+        if self.subtitles is not None:
+            for k in self.subtitles:
+                result['Subtitles'].append(k.to_map() if k else None)
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.video_height is not None:
+            result['VideoHeight'] = self.video_height
+        if self.video_start_time is not None:
+            result['VideoStartTime'] = self.video_start_time
+        result['VideoStreams'] = []
+        if self.video_streams is not None:
+            for k in self.video_streams:
+                result['VideoStreams'].append(k.to_map() if k else None)
+        if self.video_width is not None:
+            result['VideoWidth'] = self.video_width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.addresses = []
+        if m.get('Addresses') is not None:
+            for k in m.get('Addresses'):
+                temp_model = Address()
+                self.addresses.append(temp_model.from_map(k))
+        if m.get('Album') is not None:
+            self.album = m.get('Album')
+        if m.get('AlbumArtist') is not None:
+            self.album_artist = m.get('AlbumArtist')
+        if m.get('Artist') is not None:
+            self.artist = m.get('Artist')
+        self.audio_streams = []
+        if m.get('AudioStreams') is not None:
+            for k in m.get('AudioStreams'):
+                temp_model = AudioStream()
+                self.audio_streams.append(temp_model.from_map(k))
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('Composer') is not None:
+            self.composer = m.get('Composer')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('FormatLongName') is not None:
+            self.format_long_name = m.get('FormatLongName')
+        if m.get('FormatName') is not None:
+            self.format_name = m.get('FormatName')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('LatLong') is not None:
+            self.lat_long = m.get('LatLong')
+        if m.get('Performer') is not None:
+            self.performer = m.get('Performer')
+        if m.get('ProduceTime') is not None:
+            self.produce_time = m.get('ProduceTime')
+        if m.get('ProgramCount') is not None:
+            self.program_count = m.get('ProgramCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StreamCount') is not None:
+            self.stream_count = m.get('StreamCount')
+        self.subtitles = []
+        if m.get('Subtitles') is not None:
+            for k in m.get('Subtitles'):
+                temp_model = SubtitleStream()
+                self.subtitles.append(temp_model.from_map(k))
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('VideoHeight') is not None:
+            self.video_height = m.get('VideoHeight')
+        if m.get('VideoStartTime') is not None:
+            self.video_start_time = m.get('VideoStartTime')
+        self.video_streams = []
+        if m.get('VideoStreams') is not None:
+            for k in m.get('VideoStreams'):
+                temp_model = VideoStream()
+                self.video_streams.append(temp_model.from_map(k))
+        if m.get('VideoWidth') is not None:
+            self.video_width = m.get('VideoWidth')
+        return self
+
+
+class GetMediaMetaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetMediaMetaResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetMediaMetaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetOSSBucketAttachmentRequest(TeaModel):
+    def __init__(
+        self,
+        ossbucket: str = None,
+    ):
+        self.ossbucket = ossbucket
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ossbucket is not None:
+            result['OSSBucket'] = self.ossbucket
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OSSBucket') is not None:
+            self.ossbucket = m.get('OSSBucket')
+        return self
+
+
+class GetOSSBucketAttachmentResponseBody(TeaModel):
+    def __init__(
+        self,
+        project_name: str = None,
+        request_id: str = None,
+    ):
+        self.project_name = project_name
+        # RequestId
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetOSSBucketAttachmentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetOSSBucketAttachmentResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetOSSBucketAttachmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetProjectRequest(TeaModel):
     def __init__(
         self,
@@ -6865,6 +9696,7 @@ class GetTaskResponseBody(TeaModel):
         request_id: str = None,
         start_time: str = None,
         status: str = None,
+        tags: Dict[str, Any] = None,
         task_id: str = None,
         task_type: str = None,
         user_data: str = None,
@@ -6885,6 +9717,7 @@ class GetTaskResponseBody(TeaModel):
         self.start_time = start_time
         # 任务运行状态
         self.status = status
+        self.tags = tags
         # 任务唯一ID
         self.task_id = task_id
         # 任务类型
@@ -6917,6 +9750,8 @@ class GetTaskResponseBody(TeaModel):
             result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.task_type is not None:
@@ -6943,6 +9778,8 @@ class GetTaskResponseBody(TeaModel):
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TaskType') is not None:
@@ -6993,6 +9830,7 @@ class GetWebofficeURLRequest(TeaModel):
     def __init__(
         self,
         assume_role_chain: AssumeRoleChain = None,
+        cache_preview: bool = None,
         external_uploaded: bool = None,
         filename: str = None,
         hidecmb: bool = None,
@@ -7010,6 +9848,8 @@ class GetWebofficeURLRequest(TeaModel):
     ):
         # 链式授权
         self.assume_role_chain = assume_role_chain
+        # 缓存预览标识
+        self.cache_preview = cache_preview
         # 是否支持外部上传
         self.external_uploaded = external_uploaded
         # 文件名，必须带文件名后缀，默认是 SourceUri 的最后一级
@@ -7057,6 +9897,8 @@ class GetWebofficeURLRequest(TeaModel):
         result = dict()
         if self.assume_role_chain is not None:
             result['AssumeRoleChain'] = self.assume_role_chain.to_map()
+        if self.cache_preview is not None:
+            result['CachePreview'] = self.cache_preview
         if self.external_uploaded is not None:
             result['ExternalUploaded'] = self.external_uploaded
         if self.filename is not None:
@@ -7092,6 +9934,8 @@ class GetWebofficeURLRequest(TeaModel):
         if m.get('AssumeRoleChain') is not None:
             temp_model = AssumeRoleChain()
             self.assume_role_chain = temp_model.from_map(m['AssumeRoleChain'])
+        if m.get('CachePreview') is not None:
+            self.cache_preview = m.get('CachePreview')
         if m.get('ExternalUploaded') is not None:
             self.external_uploaded = m.get('ExternalUploaded')
         if m.get('Filename') is not None:
@@ -7130,6 +9974,7 @@ class GetWebofficeURLShrinkRequest(TeaModel):
     def __init__(
         self,
         assume_role_chain_shrink: str = None,
+        cache_preview: bool = None,
         external_uploaded: bool = None,
         filename: str = None,
         hidecmb: bool = None,
@@ -7147,6 +9992,8 @@ class GetWebofficeURLShrinkRequest(TeaModel):
     ):
         # 链式授权
         self.assume_role_chain_shrink = assume_role_chain_shrink
+        # 缓存预览标识
+        self.cache_preview = cache_preview
         # 是否支持外部上传
         self.external_uploaded = external_uploaded
         # 文件名，必须带文件名后缀，默认是 SourceUri 的最后一级
@@ -7187,6 +10034,8 @@ class GetWebofficeURLShrinkRequest(TeaModel):
         result = dict()
         if self.assume_role_chain_shrink is not None:
             result['AssumeRoleChain'] = self.assume_role_chain_shrink
+        if self.cache_preview is not None:
+            result['CachePreview'] = self.cache_preview
         if self.external_uploaded is not None:
             result['ExternalUploaded'] = self.external_uploaded
         if self.filename is not None:
@@ -7221,6 +10070,8 @@ class GetWebofficeURLShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AssumeRoleChain') is not None:
             self.assume_role_chain_shrink = m.get('AssumeRoleChain')
+        if m.get('CachePreview') is not None:
+            self.cache_preview = m.get('CachePreview')
         if m.get('ExternalUploaded') is not None:
             self.external_uploaded = m.get('ExternalUploaded')
         if m.get('Filename') is not None:
@@ -7926,17 +10777,22 @@ class ListTasksRequest(TeaModel):
         self,
         max_results: int = None,
         next_token: str = None,
+        order: str = None,
         project_name: str = None,
-        task_type: str = None,
+        sort: str = None,
+        tag_selector: str = None,
+        task_types: List[str] = None,
     ):
         # MaxResults
         self.max_results = max_results
         # NextToken
         self.next_token = next_token
+        self.order = order
         # 项目名称
         self.project_name = project_name
-        # TaskType
-        self.task_type = task_type
+        self.sort = sort
+        self.tag_selector = tag_selector
+        self.task_types = task_types
 
     def validate(self):
         pass
@@ -7951,10 +10807,16 @@ class ListTasksRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.order is not None:
+            result['Order'] = self.order
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
-        if self.task_type is not None:
-            result['TaskType'] = self.task_type
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        if self.tag_selector is not None:
+            result['TagSelector'] = self.tag_selector
+        if self.task_types is not None:
+            result['TaskTypes'] = self.task_types
         return result
 
     def from_map(self, m: dict = None):
@@ -7963,10 +10825,82 @@ class ListTasksRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
-        if m.get('TaskType') is not None:
-            self.task_type = m.get('TaskType')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        if m.get('TagSelector') is not None:
+            self.tag_selector = m.get('TagSelector')
+        if m.get('TaskTypes') is not None:
+            self.task_types = m.get('TaskTypes')
+        return self
+
+
+class ListTasksShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        order: str = None,
+        project_name: str = None,
+        sort: str = None,
+        tag_selector: str = None,
+        task_types_shrink: str = None,
+    ):
+        # MaxResults
+        self.max_results = max_results
+        # NextToken
+        self.next_token = next_token
+        self.order = order
+        # 项目名称
+        self.project_name = project_name
+        self.sort = sort
+        self.tag_selector = tag_selector
+        self.task_types_shrink = task_types_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        if self.tag_selector is not None:
+            result['TagSelector'] = self.tag_selector
+        if self.task_types_shrink is not None:
+            result['TaskTypes'] = self.task_types_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        if m.get('TagSelector') is not None:
+            self.tag_selector = m.get('TagSelector')
+        if m.get('TaskTypes') is not None:
+            self.task_types_shrink = m.get('TaskTypes')
         return self
 
 
@@ -8371,7 +11305,9 @@ class QueryStoriesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         object_id: str = None,
+        order: str = None,
         project_name: str = None,
+        sort: str = None,
         story_end_time_range: TimeRange = None,
         story_name: str = None,
         story_start_time_range: TimeRange = None,
@@ -8386,7 +11322,9 @@ class QueryStoriesRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.object_id = object_id
+        self.order = order
         self.project_name = project_name
+        self.sort = sort
         self.story_end_time_range = story_end_time_range
         self.story_name = story_name
         self.story_start_time_range = story_start_time_range
@@ -8422,8 +11360,12 @@ class QueryStoriesRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.object_id is not None:
             result['ObjectId'] = self.object_id
+        if self.order is not None:
+            result['Order'] = self.order
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.sort is not None:
+            result['Sort'] = self.sort
         if self.story_end_time_range is not None:
             result['StoryEndTimeRange'] = self.story_end_time_range.to_map()
         if self.story_name is not None:
@@ -8455,8 +11397,12 @@ class QueryStoriesRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('ObjectId') is not None:
             self.object_id = m.get('ObjectId')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
         if m.get('StoryEndTimeRange') is not None:
             temp_model = TimeRange()
             self.story_end_time_range = temp_model.from_map(m['StoryEndTimeRange'])
@@ -8484,7 +11430,9 @@ class QueryStoriesShrinkRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         object_id: str = None,
+        order: str = None,
         project_name: str = None,
+        sort: str = None,
         story_end_time_range_shrink: str = None,
         story_name: str = None,
         story_start_time_range_shrink: str = None,
@@ -8499,7 +11447,9 @@ class QueryStoriesShrinkRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.object_id = object_id
+        self.order = order
         self.project_name = project_name
+        self.sort = sort
         self.story_end_time_range_shrink = story_end_time_range_shrink
         self.story_name = story_name
         self.story_start_time_range_shrink = story_start_time_range_shrink
@@ -8530,8 +11480,12 @@ class QueryStoriesShrinkRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.object_id is not None:
             result['ObjectId'] = self.object_id
+        if self.order is not None:
+            result['Order'] = self.order
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.sort is not None:
+            result['Sort'] = self.sort
         if self.story_end_time_range_shrink is not None:
             result['StoryEndTimeRange'] = self.story_end_time_range_shrink
         if self.story_name is not None:
@@ -8562,8 +11516,12 @@ class QueryStoriesShrinkRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('ObjectId') is not None:
             self.object_id = m.get('ObjectId')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
         if m.get('StoryEndTimeRange') is not None:
             self.story_end_time_range_shrink = m.get('StoryEndTimeRange')
         if m.get('StoryName') is not None:
