@@ -1,3 +1,6 @@
+2022-04-26 Version: 1.1.5
+- HealthCode and TravelCard.
+
 2022-03-29 Version: 1.1.4
 - Phase III Fix MultiLanguage.
 
