@@ -1,3 +1,6 @@
+2022-04-27 Version: 2.1.1
+- Support systemdisk encrypt and arns.
+
 2022-04-13 Version: 4.24.17
 - Support throughput for API DescribeDisks.
 

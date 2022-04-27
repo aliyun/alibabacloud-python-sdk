@@ -24,8 +24,8 @@ class Client(OpenApiClient):
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'ecs-cn-hangzhou.aliyuncs.com',
-            'us-east-1': 'ecs.aliyuncs.com',
             'us-west-1': 'ecs.aliyuncs.com',
+            'us-east-1': 'ecs.aliyuncs.com',
             'cn-shanghai-finance-1': 'ecs-cn-hangzhou.aliyuncs.com',
             'cn-shenzhen-finance-1': 'ecs-cn-hangzhou.aliyuncs.com',
             'cn-north-2-gov-1': 'ecs.aliyuncs.com',
@@ -4232,6 +4232,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_deployment_set_with_options_async(request, runtime)
 
+    def create_diagnostic_report_with_options(
+        self,
+        request: ecs_20140526_models.CreateDiagnosticReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreateDiagnosticReportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.command_name):
+            query['CommandName'] = request.command_name
+        if not UtilClient.is_unset(request.command_type):
+            query['CommandType'] = request.command_type
+        if not UtilClient.is_unset(request.diagnostic_category):
+            query['DiagnosticCategory'] = request.diagnostic_category
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.plugin_version):
+            query['PluginVersion'] = request.plugin_version
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.source_system):
+            query['SourceSystem'] = request.source_system
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnosticReport',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDiagnosticReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_diagnostic_report_with_options_async(
+        self,
+        request: ecs_20140526_models.CreateDiagnosticReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreateDiagnosticReportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.command_name):
+            query['CommandName'] = request.command_name
+        if not UtilClient.is_unset(request.command_type):
+            query['CommandType'] = request.command_type
+        if not UtilClient.is_unset(request.diagnostic_category):
+            query['DiagnosticCategory'] = request.diagnostic_category
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.plugin_version):
+            query['PluginVersion'] = request.plugin_version
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.source_system):
+            query['SourceSystem'] = request.source_system
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnosticReport',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDiagnosticReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_diagnostic_report(
+        self,
+        request: ecs_20140526_models.CreateDiagnosticReportRequest,
+    ) -> ecs_20140526_models.CreateDiagnosticReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_diagnostic_report_with_options(request, runtime)
+
+    async def create_diagnostic_report_async(
+        self,
+        request: ecs_20140526_models.CreateDiagnosticReportRequest,
+    ) -> ecs_20140526_models.CreateDiagnosticReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_diagnostic_report_with_options_async(request, runtime)
+
     def create_disk_with_options(
         self,
         request: ecs_20140526_models.CreateDiskRequest,
@@ -4867,6 +4993,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.architecture):
             query['Architecture'] = request.architecture
+        if not UtilClient.is_unset(request.boot_mode):
+            query['BootMode'] = request.boot_mode
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -4927,6 +5055,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.architecture):
             query['Architecture'] = request.architecture
+        if not UtilClient.is_unset(request.boot_mode):
+            query['BootMode'] = request.boot_mode
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -11481,6 +11611,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.attribute_name):
             query['AttributeName'] = request.attribute_name
+        if not UtilClient.is_unset(request.biz_ali_uid):
+            query['BizAliUid'] = request.biz_ali_uid
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
@@ -11519,6 +11651,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.attribute_name):
             query['AttributeName'] = request.attribute_name
+        if not UtilClient.is_unset(request.biz_ali_uid):
+            query['BizAliUid'] = request.biz_ali_uid
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
@@ -12101,12 +12235,16 @@ class Client(OpenApiClient):
             query['DestinationResource'] = request.destination_resource
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_feature_options):
+            query['InstanceFeatureOptions'] = request.instance_feature_options
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.io_optimized):
             query['IoOptimized'] = request.io_optimized
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
+        if not UtilClient.is_unset(request.need_inventory_score):
+            query['NeedInventoryScore'] = request.need_inventory_score
         if not UtilClient.is_unset(request.network_category):
             query['NetworkCategory'] = request.network_category
         if not UtilClient.is_unset(request.owner_account):
@@ -12167,12 +12305,16 @@ class Client(OpenApiClient):
             query['DestinationResource'] = request.destination_resource
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_feature_options):
+            query['InstanceFeatureOptions'] = request.instance_feature_options
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.io_optimized):
             query['IoOptimized'] = request.io_optimized
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
+        if not UtilClient.is_unset(request.need_inventory_score):
+            query['NeedInventoryScore'] = request.need_inventory_score
         if not UtilClient.is_unset(request.network_category):
             query['NetworkCategory'] = request.network_category
         if not UtilClient.is_unset(request.owner_account):
@@ -17187,6 +17329,8 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
         if not UtilClient.is_unset(request.instance_type_family):
             query['InstanceTypeFamily'] = request.instance_type_family
         if not UtilClient.is_unset(request.instance_types):
@@ -17229,6 +17373,8 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
         if not UtilClient.is_unset(request.instance_type_family):
             query['InstanceTypeFamily'] = request.instance_type_family
         if not UtilClient.is_unset(request.instance_types):
@@ -19627,6 +19773,8 @@ class Client(OpenApiClient):
             query['AssuranceTimes'] = request.assurance_times
         if not UtilClient.is_unset(request.capacity):
             query['Capacity'] = request.capacity
+        if not UtilClient.is_unset(request.data_disk):
+            query['DataDisk'] = request.data_disk
         if not UtilClient.is_unset(request.dedicated_host_type):
             query['DedicatedHostType'] = request.dedicated_host_type
         if not UtilClient.is_unset(request.image_id):
@@ -19675,12 +19823,10 @@ class Client(OpenApiClient):
             query['SpotDuration'] = request.spot_duration
         if not UtilClient.is_unset(request.spot_strategy):
             query['SpotStrategy'] = request.spot_strategy
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        if not UtilClient.is_unset(request.data_disk):
-            query['DataDisk'] = request.data_disk
         if not UtilClient.is_unset(request.system_disk):
             query['SystemDisk'] = request.system_disk
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -19713,6 +19859,8 @@ class Client(OpenApiClient):
             query['AssuranceTimes'] = request.assurance_times
         if not UtilClient.is_unset(request.capacity):
             query['Capacity'] = request.capacity
+        if not UtilClient.is_unset(request.data_disk):
+            query['DataDisk'] = request.data_disk
         if not UtilClient.is_unset(request.dedicated_host_type):
             query['DedicatedHostType'] = request.dedicated_host_type
         if not UtilClient.is_unset(request.image_id):
@@ -19761,12 +19909,10 @@ class Client(OpenApiClient):
             query['SpotDuration'] = request.spot_duration
         if not UtilClient.is_unset(request.spot_strategy):
             query['SpotStrategy'] = request.spot_strategy
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        if not UtilClient.is_unset(request.data_disk):
-            query['DataDisk'] = request.data_disk
         if not UtilClient.is_unset(request.system_disk):
             query['SystemDisk'] = request.system_disk
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -19817,6 +19963,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.instance_type_family):
             query['InstanceTypeFamily'] = request.instance_type_family
+        if not UtilClient.is_unset(request.instance_type_support_ipv_6):
+            query['InstanceTypeSupportIPv6'] = request.instance_type_support_ipv_6
         if not UtilClient.is_unset(request.io_optimized):
             query['IoOptimized'] = request.io_optimized
         if not UtilClient.is_unset(request.max_price):
@@ -19883,6 +20031,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.instance_type_family):
             query['InstanceTypeFamily'] = request.instance_type_family
+        if not UtilClient.is_unset(request.instance_type_support_ipv_6):
+            query['InstanceTypeSupportIPv6'] = request.instance_type_support_ipv_6
         if not UtilClient.is_unset(request.io_optimized):
             query['IoOptimized'] = request.io_optimized
         if not UtilClient.is_unset(request.max_price):
@@ -31305,6 +31455,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.disable_instant_access):
             query['DisableInstantAccess'] = request.disable_instant_access
+        if not UtilClient.is_unset(request.instant_access_retention_days):
+            query['InstantAccessRetentionDays'] = request.instant_access_retention_days
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -31313,6 +31465,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.retention_days):
+            query['RetentionDays'] = request.retention_days
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
         if not UtilClient.is_unset(request.snapshot_name):
@@ -31347,6 +31501,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.disable_instant_access):
             query['DisableInstantAccess'] = request.disable_instant_access
+        if not UtilClient.is_unset(request.instant_access_retention_days):
+            query['InstantAccessRetentionDays'] = request.instant_access_retention_days
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -31355,6 +31511,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.retention_days):
+            query['RetentionDays'] = request.retention_days
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
         if not UtilClient.is_unset(request.snapshot_name):
@@ -32981,6 +33139,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.waive_local_disk_data):
+            query['WaiveLocalDiskData'] = request.waive_local_disk_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -33019,6 +33179,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.waive_local_disk_data):
+            query['WaiveLocalDiskData'] = request.waive_local_disk_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -34773,6 +34935,8 @@ class Client(OpenApiClient):
             query['ContentEncoding'] = request.content_encoding
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.enable_parameter):
             query['EnableParameter'] = request.enable_parameter
         if not UtilClient.is_unset(request.frequency):
@@ -34847,6 +35011,8 @@ class Client(OpenApiClient):
             query['ContentEncoding'] = request.content_encoding
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.enable_parameter):
             query['EnableParameter'] = request.enable_parameter
         if not UtilClient.is_unset(request.frequency):
