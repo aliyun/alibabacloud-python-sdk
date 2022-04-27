@@ -9359,6 +9359,125 @@ class CreateMonitorItemRequest(TeaModel):
         return self
 
 
+class CreateMonitorItemShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        alarm_rule_list_shrink: str = None,
+        analysis_code: str = None,
+        client_token: str = None,
+        collection_type: str = None,
+        config: str = None,
+        data_item: str = None,
+        device_form: str = None,
+        effective: int = None,
+        exec_interval: int = None,
+        instance_id: str = None,
+        monitor_item_description: str = None,
+        monitor_item_name: str = None,
+        security_domain: str = None,
+        type: str = None,
+    ):
+        # 告警规则列表
+        self.alarm_rule_list_shrink = alarm_rule_list_shrink
+        # 解析代码
+        self.analysis_code = analysis_code
+        # 幂等参数
+        self.client_token = client_token
+        # 采集类型
+        self.collection_type = collection_type
+        # 监控项参数配置
+        self.config = config
+        # 数据项
+        self.data_item = data_item
+        # 设备形态
+        self.device_form = device_form
+        # 是否启用
+        self.effective = effective
+        # 执行间隔(s)
+        self.exec_interval = exec_interval
+        # 实例ID
+        self.instance_id = instance_id
+        # 监控项描述
+        self.monitor_item_description = monitor_item_description
+        # 监控项名称
+        self.monitor_item_name = monitor_item_name
+        # 安全域
+        self.security_domain = security_domain
+        # 类型
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alarm_rule_list_shrink is not None:
+            result['AlarmRuleList'] = self.alarm_rule_list_shrink
+        if self.analysis_code is not None:
+            result['AnalysisCode'] = self.analysis_code
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.collection_type is not None:
+            result['CollectionType'] = self.collection_type
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.data_item is not None:
+            result['DataItem'] = self.data_item
+        if self.device_form is not None:
+            result['DeviceForm'] = self.device_form
+        if self.effective is not None:
+            result['Effective'] = self.effective
+        if self.exec_interval is not None:
+            result['ExecInterval'] = self.exec_interval
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.monitor_item_description is not None:
+            result['MonitorItemDescription'] = self.monitor_item_description
+        if self.monitor_item_name is not None:
+            result['MonitorItemName'] = self.monitor_item_name
+        if self.security_domain is not None:
+            result['SecurityDomain'] = self.security_domain
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlarmRuleList') is not None:
+            self.alarm_rule_list_shrink = m.get('AlarmRuleList')
+        if m.get('AnalysisCode') is not None:
+            self.analysis_code = m.get('AnalysisCode')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('CollectionType') is not None:
+            self.collection_type = m.get('CollectionType')
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('DataItem') is not None:
+            self.data_item = m.get('DataItem')
+        if m.get('DeviceForm') is not None:
+            self.device_form = m.get('DeviceForm')
+        if m.get('Effective') is not None:
+            self.effective = m.get('Effective')
+        if m.get('ExecInterval') is not None:
+            self.exec_interval = m.get('ExecInterval')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MonitorItemDescription') is not None:
+            self.monitor_item_description = m.get('MonitorItemDescription')
+        if m.get('MonitorItemName') is not None:
+            self.monitor_item_name = m.get('MonitorItemName')
+        if m.get('SecurityDomain') is not None:
+            self.security_domain = m.get('SecurityDomain')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class CreateMonitorItemResponseBody(TeaModel):
     def __init__(
         self,
@@ -13012,6 +13131,55 @@ class DisableNotificationRequest(TeaModel):
         return self
 
 
+class DisableNotificationShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        expiry_time: str = None,
+        instance_id: str = None,
+        list_shrink: str = None,
+        reason: str = None,
+    ):
+        # 到期时间
+        self.expiry_time = expiry_time
+        # 实例ID
+        self.instance_id = instance_id
+        # 关闭通知的对象
+        self.list_shrink = list_shrink
+        # 关闭原因
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expiry_time is not None:
+            result['ExpiryTime'] = self.expiry_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.list_shrink is not None:
+            result['List'] = self.list_shrink
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpiryTime') is not None:
+            self.expiry_time = m.get('ExpiryTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('List') is not None:
+            self.list_shrink = m.get('List')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        return self
+
+
 class DisableNotificationResponseBody(TeaModel):
     def __init__(
         self,
@@ -13383,6 +13551,41 @@ class EnableNotificationRequest(TeaModel):
             for k in m.get('List'):
                 temp_model = EnableNotificationRequestList()
                 self.list.append(temp_model.from_map(k))
+        return self
+
+
+class EnableNotificationShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        list_shrink: str = None,
+    ):
+        # 实例ID
+        self.instance_id = instance_id
+        # 通知对象
+        self.list_shrink = list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.list_shrink is not None:
+            result['List'] = self.list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('List') is not None:
+            self.list_shrink = m.get('List')
         return self
 
 
@@ -23739,20 +23942,20 @@ class ListDevicesShrinkRequest(TeaModel):
         device_form_name: str = None,
         device_ids_shrink: str = None,
         ext_attributes: str = None,
-        host_name: List[str] = None,
+        host_name_shrink: str = None,
         instance_id: str = None,
-        ip: List[str] = None,
+        ip_shrink: str = None,
         keyword: str = None,
-        mac: List[str] = None,
+        mac_shrink: str = None,
         max_results: int = None,
-        model: List[str] = None,
+        model_shrink: str = None,
         next_token: str = None,
         physical_space_id: str = None,
         physical_space_ids_shrink: str = None,
-        security_domain: List[str] = None,
-        service_status: List[str] = None,
-        sn: List[str] = None,
-        vendor: List[str] = None,
+        security_domain_shrink: str = None,
+        service_status_shrink: str = None,
+        sn_shrink: str = None,
+        vendor_shrink: str = None,
     ):
         # 设备形态ID
         self.device_form_id = device_form_id
@@ -23763,19 +23966,19 @@ class ListDevicesShrinkRequest(TeaModel):
         # 设备额外属性
         self.ext_attributes = ext_attributes
         # 设备主机名
-        self.host_name = host_name
+        self.host_name_shrink = host_name_shrink
         # 实例ID
         self.instance_id = instance_id
         # 设备IP
-        self.ip = ip
+        self.ip_shrink = ip_shrink
         # 模糊查询值
         self.keyword = keyword
         # 设备MAC
-        self.mac = mac
+        self.mac_shrink = mac_shrink
         # 返回结果的最大个数。
         self.max_results = max_results
         # 设备型号
-        self.model = model
+        self.model_shrink = model_shrink
         # 当总结果个数大于MaxResults时，用于翻页的token。
         self.next_token = next_token
         # 物理空间ID
@@ -23783,13 +23986,13 @@ class ListDevicesShrinkRequest(TeaModel):
         # 物理空间IDS
         self.physical_space_ids_shrink = physical_space_ids_shrink
         # 安全域
-        self.security_domain = security_domain
+        self.security_domain_shrink = security_domain_shrink
         # 设备服务状态
-        self.service_status = service_status
+        self.service_status_shrink = service_status_shrink
         # 设备SN
-        self.sn = sn
+        self.sn_shrink = sn_shrink
         # 设备厂商
-        self.vendor = vendor
+        self.vendor_shrink = vendor_shrink
 
     def validate(self):
         pass
@@ -23808,34 +24011,34 @@ class ListDevicesShrinkRequest(TeaModel):
             result['DeviceIds'] = self.device_ids_shrink
         if self.ext_attributes is not None:
             result['ExtAttributes'] = self.ext_attributes
-        if self.host_name is not None:
-            result['HostName'] = self.host_name
+        if self.host_name_shrink is not None:
+            result['HostName'] = self.host_name_shrink
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.ip is not None:
-            result['Ip'] = self.ip
+        if self.ip_shrink is not None:
+            result['Ip'] = self.ip_shrink
         if self.keyword is not None:
             result['Keyword'] = self.keyword
-        if self.mac is not None:
-            result['Mac'] = self.mac
+        if self.mac_shrink is not None:
+            result['Mac'] = self.mac_shrink
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
-        if self.model is not None:
-            result['Model'] = self.model
+        if self.model_shrink is not None:
+            result['Model'] = self.model_shrink
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.physical_space_id is not None:
             result['PhysicalSpaceId'] = self.physical_space_id
         if self.physical_space_ids_shrink is not None:
             result['PhysicalSpaceIds'] = self.physical_space_ids_shrink
-        if self.security_domain is not None:
-            result['SecurityDomain'] = self.security_domain
-        if self.service_status is not None:
-            result['ServiceStatus'] = self.service_status
-        if self.sn is not None:
-            result['Sn'] = self.sn
-        if self.vendor is not None:
-            result['Vendor'] = self.vendor
+        if self.security_domain_shrink is not None:
+            result['SecurityDomain'] = self.security_domain_shrink
+        if self.service_status_shrink is not None:
+            result['ServiceStatus'] = self.service_status_shrink
+        if self.sn_shrink is not None:
+            result['Sn'] = self.sn_shrink
+        if self.vendor_shrink is not None:
+            result['Vendor'] = self.vendor_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -23849,19 +24052,19 @@ class ListDevicesShrinkRequest(TeaModel):
         if m.get('ExtAttributes') is not None:
             self.ext_attributes = m.get('ExtAttributes')
         if m.get('HostName') is not None:
-            self.host_name = m.get('HostName')
+            self.host_name_shrink = m.get('HostName')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Ip') is not None:
-            self.ip = m.get('Ip')
+            self.ip_shrink = m.get('Ip')
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')
         if m.get('Mac') is not None:
-            self.mac = m.get('Mac')
+            self.mac_shrink = m.get('Mac')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('Model') is not None:
-            self.model = m.get('Model')
+            self.model_shrink = m.get('Model')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('PhysicalSpaceId') is not None:
@@ -23869,13 +24072,13 @@ class ListDevicesShrinkRequest(TeaModel):
         if m.get('PhysicalSpaceIds') is not None:
             self.physical_space_ids_shrink = m.get('PhysicalSpaceIds')
         if m.get('SecurityDomain') is not None:
-            self.security_domain = m.get('SecurityDomain')
+            self.security_domain_shrink = m.get('SecurityDomain')
         if m.get('ServiceStatus') is not None:
-            self.service_status = m.get('ServiceStatus')
+            self.service_status_shrink = m.get('ServiceStatus')
         if m.get('Sn') is not None:
-            self.sn = m.get('Sn')
+            self.sn_shrink = m.get('Sn')
         if m.get('Vendor') is not None:
-            self.vendor = m.get('Vendor')
+            self.vendor_shrink = m.get('Vendor')
         return self
 
 
@@ -27968,6 +28171,62 @@ class ListPhysicalSpacesRequest(TeaModel):
         return self
 
 
+class ListPhysicalSpacesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        physical_space_ids_shrink: str = None,
+        physical_space_name: str = None,
+    ):
+        # 实例ID
+        self.instance_id = instance_id
+        # 返回结果的最大个数。
+        self.max_results = max_results
+        # 当总结果个数大于MaxResults时，用于翻页的token。
+        self.next_token = next_token
+        # 物理空间ID
+        self.physical_space_ids_shrink = physical_space_ids_shrink
+        # 物理空间名称，支持模糊搜索。
+        self.physical_space_name = physical_space_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.physical_space_ids_shrink is not None:
+            result['PhysicalSpaceIds'] = self.physical_space_ids_shrink
+        if self.physical_space_name is not None:
+            result['PhysicalSpaceName'] = self.physical_space_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PhysicalSpaceIds') is not None:
+            self.physical_space_ids_shrink = m.get('PhysicalSpaceIds')
+        if m.get('PhysicalSpaceName') is not None:
+            self.physical_space_name = m.get('PhysicalSpaceName')
+        return self
+
+
 class ListPhysicalSpacesResponseBodyPhysicalSpaces(TeaModel):
     def __init__(
         self,
@@ -29751,6 +30010,68 @@ class ListTreePhysicalSpacesRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('PhysicalSpaceIds') is not None:
             self.physical_space_ids = m.get('PhysicalSpaceIds')
+        if m.get('PhysicalSpaceName') is not None:
+            self.physical_space_name = m.get('PhysicalSpaceName')
+        if m.get('Tree') is not None:
+            self.tree = m.get('Tree')
+        return self
+
+
+class ListTreePhysicalSpacesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        max_results: str = None,
+        next_token: str = None,
+        physical_space_ids_shrink: str = None,
+        physical_space_name: str = None,
+        tree: bool = None,
+    ):
+        # 实例ID
+        self.instance_id = instance_id
+        # 返回结果的最大个数。
+        self.max_results = max_results
+        # 当总结果个数大于MaxResults时，用于翻页的token。
+        self.next_token = next_token
+        # 物理空间ID
+        self.physical_space_ids_shrink = physical_space_ids_shrink
+        self.physical_space_name = physical_space_name
+        # 如果Tree为true时，分页失效
+        self.tree = tree
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.physical_space_ids_shrink is not None:
+            result['PhysicalSpaceIds'] = self.physical_space_ids_shrink
+        if self.physical_space_name is not None:
+            result['PhysicalSpaceName'] = self.physical_space_name
+        if self.tree is not None:
+            result['Tree'] = self.tree
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PhysicalSpaceIds') is not None:
+            self.physical_space_ids_shrink = m.get('PhysicalSpaceIds')
         if m.get('PhysicalSpaceName') is not None:
             self.physical_space_name = m.get('PhysicalSpaceName')
         if m.get('Tree') is not None:
@@ -32605,6 +32926,167 @@ class UpdateDevicesRequest(TeaModel):
         m = m or dict()
         if m.get('DeviceIds') is not None:
             self.device_ids = m.get('DeviceIds')
+        if m.get('EnablePassword') is not None:
+            self.enable_password = m.get('EnablePassword')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LoginPassword') is not None:
+            self.login_password = m.get('LoginPassword')
+        if m.get('LoginType') is not None:
+            self.login_type = m.get('LoginType')
+        if m.get('LoginUsername') is not None:
+            self.login_username = m.get('LoginUsername')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('PhysicalSpaceId') is not None:
+            self.physical_space_id = m.get('PhysicalSpaceId')
+        if m.get('PhysicalSpaceName') is not None:
+            self.physical_space_name = m.get('PhysicalSpaceName')
+        if m.get('ServiceStatus') is not None:
+            self.service_status = m.get('ServiceStatus')
+        if m.get('SnmpAccountType') is not None:
+            self.snmp_account_type = m.get('SnmpAccountType')
+        if m.get('SnmpAccountVersion') is not None:
+            self.snmp_account_version = m.get('SnmpAccountVersion')
+        if m.get('SnmpAuthPassphrase') is not None:
+            self.snmp_auth_passphrase = m.get('SnmpAuthPassphrase')
+        if m.get('SnmpAuthProtocol') is not None:
+            self.snmp_auth_protocol = m.get('SnmpAuthProtocol')
+        if m.get('SnmpCommunity') is not None:
+            self.snmp_community = m.get('SnmpCommunity')
+        if m.get('SnmpPrivacyPassphrase') is not None:
+            self.snmp_privacy_passphrase = m.get('SnmpPrivacyPassphrase')
+        if m.get('SnmpPrivacyProtocol') is not None:
+            self.snmp_privacy_protocol = m.get('SnmpPrivacyProtocol')
+        if m.get('SnmpSecurityLevel') is not None:
+            self.snmp_security_level = m.get('SnmpSecurityLevel')
+        if m.get('SnmpUsername') is not None:
+            self.snmp_username = m.get('SnmpUsername')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        return self
+
+
+class UpdateDevicesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        device_ids_shrink: str = None,
+        enable_password: str = None,
+        instance_id: str = None,
+        login_password: str = None,
+        login_type: str = None,
+        login_username: str = None,
+        model: str = None,
+        physical_space_id: str = None,
+        physical_space_name: str = None,
+        service_status: str = None,
+        snmp_account_type: str = None,
+        snmp_account_version: str = None,
+        snmp_auth_passphrase: str = None,
+        snmp_auth_protocol: str = None,
+        snmp_community: str = None,
+        snmp_privacy_passphrase: str = None,
+        snmp_privacy_protocol: str = None,
+        snmp_security_level: str = None,
+        snmp_username: str = None,
+        vendor: str = None,
+    ):
+        # 设备ID
+        self.device_ids_shrink = device_ids_shrink
+        # enable密码
+        self.enable_password = enable_password
+        # 实例ID
+        self.instance_id = instance_id
+        # 登录密码
+        self.login_password = login_password
+        # 登录类型
+        self.login_type = login_type
+        # 登录账号
+        self.login_username = login_username
+        # 型号
+        self.model = model
+        # 物理空间id
+        self.physical_space_id = physical_space_id
+        # 物理空间名称
+        self.physical_space_name = physical_space_name
+        # 服务状态
+        self.service_status = service_status
+        # SNMP 账号类型
+        self.snmp_account_type = snmp_account_type
+        # SNMP 版本号
+        self.snmp_account_version = snmp_account_version
+        # SNMP Auth Passphrase
+        self.snmp_auth_passphrase = snmp_auth_passphrase
+        # SNMP Auth Protocol
+        self.snmp_auth_protocol = snmp_auth_protocol
+        # SNMP Community
+        self.snmp_community = snmp_community
+        # SNMP Privacy Passphrase
+        self.snmp_privacy_passphrase = snmp_privacy_passphrase
+        # SNMP Privacy Protocol
+        self.snmp_privacy_protocol = snmp_privacy_protocol
+        # SNMP 安全级别
+        self.snmp_security_level = snmp_security_level
+        # SNMP 用户名
+        self.snmp_username = snmp_username
+        # 厂商
+        self.vendor = vendor
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_ids_shrink is not None:
+            result['DeviceIds'] = self.device_ids_shrink
+        if self.enable_password is not None:
+            result['EnablePassword'] = self.enable_password
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.login_password is not None:
+            result['LoginPassword'] = self.login_password
+        if self.login_type is not None:
+            result['LoginType'] = self.login_type
+        if self.login_username is not None:
+            result['LoginUsername'] = self.login_username
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.physical_space_id is not None:
+            result['PhysicalSpaceId'] = self.physical_space_id
+        if self.physical_space_name is not None:
+            result['PhysicalSpaceName'] = self.physical_space_name
+        if self.service_status is not None:
+            result['ServiceStatus'] = self.service_status
+        if self.snmp_account_type is not None:
+            result['SnmpAccountType'] = self.snmp_account_type
+        if self.snmp_account_version is not None:
+            result['SnmpAccountVersion'] = self.snmp_account_version
+        if self.snmp_auth_passphrase is not None:
+            result['SnmpAuthPassphrase'] = self.snmp_auth_passphrase
+        if self.snmp_auth_protocol is not None:
+            result['SnmpAuthProtocol'] = self.snmp_auth_protocol
+        if self.snmp_community is not None:
+            result['SnmpCommunity'] = self.snmp_community
+        if self.snmp_privacy_passphrase is not None:
+            result['SnmpPrivacyPassphrase'] = self.snmp_privacy_passphrase
+        if self.snmp_privacy_protocol is not None:
+            result['SnmpPrivacyProtocol'] = self.snmp_privacy_protocol
+        if self.snmp_security_level is not None:
+            result['SnmpSecurityLevel'] = self.snmp_security_level
+        if self.snmp_username is not None:
+            result['SnmpUsername'] = self.snmp_username
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceIds') is not None:
+            self.device_ids_shrink = m.get('DeviceIds')
         if m.get('EnablePassword') is not None:
             self.enable_password = m.get('EnablePassword')
         if m.get('InstanceId') is not None:
