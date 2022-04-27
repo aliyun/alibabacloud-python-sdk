@@ -9232,6 +9232,7 @@ class DescribeCenRouteMapsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         route_map_id: str = None,
+        transit_router_route_table_id: str = None,
         transmit_direction: str = None,
     ):
         self.cen_id = cen_id
@@ -9243,6 +9244,7 @@ class DescribeCenRouteMapsRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.route_map_id = route_map_id
+        self.transit_router_route_table_id = transit_router_route_table_id
         self.transmit_direction = transmit_direction
 
     def validate(self):
@@ -9272,6 +9274,8 @@ class DescribeCenRouteMapsRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.route_map_id is not None:
             result['RouteMapId'] = self.route_map_id
+        if self.transit_router_route_table_id is not None:
+            result['TransitRouterRouteTableId'] = self.transit_router_route_table_id
         if self.transmit_direction is not None:
             result['TransmitDirection'] = self.transmit_direction
         return result
@@ -9296,6 +9300,8 @@ class DescribeCenRouteMapsRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('RouteMapId') is not None:
             self.route_map_id = m.get('RouteMapId')
+        if m.get('TransitRouterRouteTableId') is not None:
+            self.transit_router_route_table_id = m.get('TransitRouterRouteTableId')
         if m.get('TransmitDirection') is not None:
             self.transmit_direction = m.get('TransmitDirection')
         return self
@@ -9683,6 +9689,7 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMap(TeaModel):
         source_region_ids: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds = None,
         source_route_table_ids: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds = None,
         status: str = None,
+        transit_router_route_table_id: str = None,
         transmit_direction: str = None,
     ):
         self.as_path_match_mode = as_path_match_mode
@@ -9713,6 +9720,7 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMap(TeaModel):
         self.source_region_ids = source_region_ids
         self.source_route_table_ids = source_route_table_ids
         self.status = status
+        self.transit_router_route_table_id = transit_router_route_table_id
         self.transmit_direction = transmit_direction
 
     def validate(self):
@@ -9805,6 +9813,8 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMap(TeaModel):
             result['SourceRouteTableIds'] = self.source_route_table_ids.to_map()
         if self.status is not None:
             result['Status'] = self.status
+        if self.transit_router_route_table_id is not None:
+            result['TransitRouterRouteTableId'] = self.transit_router_route_table_id
         if self.transmit_direction is not None:
             result['TransmitDirection'] = self.transmit_direction
         return result
@@ -9880,6 +9890,8 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMap(TeaModel):
             self.source_route_table_ids = temp_model.from_map(m['SourceRouteTableIds'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TransitRouterRouteTableId') is not None:
+            self.transit_router_route_table_id = m.get('TransitRouterRouteTableId')
         if m.get('TransmitDirection') is not None:
             self.transmit_direction = m.get('TransmitDirection')
         return self
@@ -22168,6 +22180,7 @@ class UpdateTransitRouterRouteTableResponse(TeaModel):
 class UpdateTransitRouterVbrAttachmentAttributeRequest(TeaModel):
     def __init__(
         self,
+        auto_publish_route_enabled: bool = None,
         client_token: str = None,
         dry_run: bool = None,
         owner_account: str = None,
@@ -22178,6 +22191,7 @@ class UpdateTransitRouterVbrAttachmentAttributeRequest(TeaModel):
         transit_router_attachment_id: str = None,
         transit_router_attachment_name: str = None,
     ):
+        self.auto_publish_route_enabled = auto_publish_route_enabled
         self.client_token = client_token
         self.dry_run = dry_run
         self.owner_account = owner_account
@@ -22197,6 +22211,8 @@ class UpdateTransitRouterVbrAttachmentAttributeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_publish_route_enabled is not None:
+            result['AutoPublishRouteEnabled'] = self.auto_publish_route_enabled
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
@@ -22219,6 +22235,8 @@ class UpdateTransitRouterVbrAttachmentAttributeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPublishRouteEnabled') is not None:
+            self.auto_publish_route_enabled = m.get('AutoPublishRouteEnabled')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:

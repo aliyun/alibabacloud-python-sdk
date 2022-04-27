@@ -5372,6 +5372,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.route_map_id):
             query['RouteMapId'] = request.route_map_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         if not UtilClient.is_unset(request.transmit_direction):
             query['TransmitDirection'] = request.transmit_direction
         req = open_api_models.OpenApiRequest(
@@ -5418,6 +5420,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.route_map_id):
             query['RouteMapId'] = request.route_map_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         if not UtilClient.is_unset(request.transmit_direction):
             query['TransmitDirection'] = request.transmit_direction
         req = open_api_models.OpenApiRequest(
@@ -11998,6 +12002,8 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_publish_route_enabled):
+            query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
@@ -12042,6 +12048,8 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_publish_route_enabled):
+            query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
