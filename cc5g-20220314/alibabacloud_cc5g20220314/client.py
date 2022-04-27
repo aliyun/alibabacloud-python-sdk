@@ -671,6 +671,468 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detach_vpc_from_net_link_with_options_async(request, runtime)
 
+    def get_wireless_cloud_connector_with_options(
+        self,
+        request: cc5g20220314_models.GetWirelessCloudConnectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.GetWirelessCloudConnectorResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWirelessCloudConnector',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.GetWirelessCloudConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_wireless_cloud_connector_with_options_async(
+        self,
+        request: cc5g20220314_models.GetWirelessCloudConnectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.GetWirelessCloudConnectorResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWirelessCloudConnector',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.GetWirelessCloudConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_wireless_cloud_connector(
+        self,
+        request: cc5g20220314_models.GetWirelessCloudConnectorRequest,
+    ) -> cc5g20220314_models.GetWirelessCloudConnectorResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_wireless_cloud_connector_with_options(request, runtime)
+
+    async def get_wireless_cloud_connector_async(
+        self,
+        request: cc5g20220314_models.GetWirelessCloudConnectorRequest,
+    ) -> cc5g20220314_models.GetWirelessCloudConnectorResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_wireless_cloud_connector_with_options_async(request, runtime)
+
+    def list_authorization_rules_with_options(
+        self,
+        request: cc5g20220314_models.ListAuthorizationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListAuthorizationRulesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizationRules',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListAuthorizationRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorization_rules_with_options_async(
+        self,
+        request: cc5g20220314_models.ListAuthorizationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListAuthorizationRulesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizationRules',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListAuthorizationRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorization_rules(
+        self,
+        request: cc5g20220314_models.ListAuthorizationRulesRequest,
+    ) -> cc5g20220314_models.ListAuthorizationRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_authorization_rules_with_options(request, runtime)
+
+    async def list_authorization_rules_async(
+        self,
+        request: cc5g20220314_models.ListAuthorizationRulesRequest,
+    ) -> cc5g20220314_models.ListAuthorizationRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_authorization_rules_with_options_async(request, runtime)
+
+    def list_cards_with_options(
+        self,
+        request: cc5g20220314_models.ListCardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListCardsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCards',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListCardsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cards_with_options_async(
+        self,
+        request: cc5g20220314_models.ListCardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListCardsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCards',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListCardsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cards(
+        self,
+        request: cc5g20220314_models.ListCardsRequest,
+    ) -> cc5g20220314_models.ListCardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_cards_with_options(request, runtime)
+
+    async def list_cards_async(
+        self,
+        request: cc5g20220314_models.ListCardsRequest,
+    ) -> cc5g20220314_models.ListCardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cards_with_options_async(request, runtime)
+
+    def list_data_packages_with_options(
+        self,
+        request: cc5g20220314_models.ListDataPackagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListDataPackagesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataPackages',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListDataPackagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_packages_with_options_async(
+        self,
+        request: cc5g20220314_models.ListDataPackagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListDataPackagesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataPackages',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListDataPackagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_packages(
+        self,
+        request: cc5g20220314_models.ListDataPackagesRequest,
+    ) -> cc5g20220314_models.ListDataPackagesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_packages_with_options(request, runtime)
+
+    async def list_data_packages_async(
+        self,
+        request: cc5g20220314_models.ListDataPackagesRequest,
+    ) -> cc5g20220314_models.ListDataPackagesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_packages_with_options_async(request, runtime)
+
+    def list_orders_with_options(
+        self,
+        request: cc5g20220314_models.ListOrdersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListOrdersResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOrders',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListOrdersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_orders_with_options_async(
+        self,
+        request: cc5g20220314_models.ListOrdersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListOrdersResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOrders',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListOrdersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_orders(
+        self,
+        request: cc5g20220314_models.ListOrdersRequest,
+    ) -> cc5g20220314_models.ListOrdersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_orders_with_options(request, runtime)
+
+    async def list_orders_async(
+        self,
+        request: cc5g20220314_models.ListOrdersRequest,
+    ) -> cc5g20220314_models.ListOrdersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_orders_with_options_async(request, runtime)
+
+    def list_regions_with_options(
+        self,
+        request: cc5g20220314_models.ListRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListRegionsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRegions',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_regions_with_options_async(
+        self,
+        request: cc5g20220314_models.ListRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListRegionsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRegions',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_regions(
+        self,
+        request: cc5g20220314_models.ListRegionsRequest,
+    ) -> cc5g20220314_models.ListRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_regions_with_options(request, runtime)
+
+    async def list_regions_async(
+        self,
+        request: cc5g20220314_models.ListRegionsRequest,
+    ) -> cc5g20220314_models.ListRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_regions_with_options_async(request, runtime)
+
+    def list_wireless_cloud_connectors_with_options(
+        self,
+        request: cc5g20220314_models.ListWirelessCloudConnectorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListWirelessCloudConnectorsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWirelessCloudConnectors',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListWirelessCloudConnectorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_wireless_cloud_connectors_with_options_async(
+        self,
+        request: cc5g20220314_models.ListWirelessCloudConnectorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListWirelessCloudConnectorsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWirelessCloudConnectors',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListWirelessCloudConnectorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_wireless_cloud_connectors(
+        self,
+        request: cc5g20220314_models.ListWirelessCloudConnectorsRequest,
+    ) -> cc5g20220314_models.ListWirelessCloudConnectorsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_wireless_cloud_connectors_with_options(request, runtime)
+
+    async def list_wireless_cloud_connectors_async(
+        self,
+        request: cc5g20220314_models.ListWirelessCloudConnectorsRequest,
+    ) -> cc5g20220314_models.ListWirelessCloudConnectorsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_wireless_cloud_connectors_with_options_async(request, runtime)
+
     def list_zones_with_options(
         self,
         request: cc5g20220314_models.ListZonesRequest,
