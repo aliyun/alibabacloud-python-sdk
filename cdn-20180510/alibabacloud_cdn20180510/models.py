@@ -1368,109 +1368,6 @@ class CreateCdnCertificateSigningRequestResponse(TeaModel):
         return self
 
 
-class CreateCdnComputeDomainRequest(TeaModel):
-    def __init__(
-        self,
-        coverage: str = None,
-        domain_name: str = None,
-        owner_id: int = None,
-    ):
-        self.coverage = coverage
-        self.domain_name = domain_name
-        self.owner_id = owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.coverage is not None:
-            result['Coverage'] = self.coverage
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Coverage') is not None:
-            self.coverage = m.get('Coverage')
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        return self
-
-
-class CreateCdnComputeDomainResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class CreateCdnComputeDomainResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: CreateCdnComputeDomainResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = CreateCdnComputeDomainResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateCdnDeliverTaskRequest(TeaModel):
     def __init__(
         self,
@@ -3821,221 +3718,6 @@ class DescribeCdnCertificateListResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeCdnCertificateListResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeCdnComputeUserDomainRequest(TeaModel):
-    def __init__(
-        self,
-        owner_id: int = None,
-        page_number: int = None,
-        page_size: int = None,
-    ):
-        self.owner_id = owner_id
-        self.page_number = page_number
-        self.page_size = page_size
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        return self
-
-
-class DescribeCdnComputeUserDomainResponseBodyDomainsPageData(TeaModel):
-    def __init__(
-        self,
-        cname: str = None,
-        domain_name: str = None,
-        domain_status: str = None,
-        gmt_created: str = None,
-        gmt_modified: str = None,
-    ):
-        self.cname = cname
-        self.domain_name = domain_name
-        self.domain_status = domain_status
-        self.gmt_created = gmt_created
-        self.gmt_modified = gmt_modified
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cname is not None:
-            result['Cname'] = self.cname
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.domain_status is not None:
-            result['DomainStatus'] = self.domain_status
-        if self.gmt_created is not None:
-            result['GmtCreated'] = self.gmt_created
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Cname') is not None:
-            self.cname = m.get('Cname')
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('DomainStatus') is not None:
-            self.domain_status = m.get('DomainStatus')
-        if m.get('GmtCreated') is not None:
-            self.gmt_created = m.get('GmtCreated')
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
-        return self
-
-
-class DescribeCdnComputeUserDomainResponseBodyDomains(TeaModel):
-    def __init__(
-        self,
-        page_data: List[DescribeCdnComputeUserDomainResponseBodyDomainsPageData] = None,
-    ):
-        self.page_data = page_data
-
-    def validate(self):
-        if self.page_data:
-            for k in self.page_data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['PageData'] = []
-        if self.page_data is not None:
-            for k in self.page_data:
-                result['PageData'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.page_data = []
-        if m.get('PageData') is not None:
-            for k in m.get('PageData'):
-                temp_model = DescribeCdnComputeUserDomainResponseBodyDomainsPageData()
-                self.page_data.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeCdnComputeUserDomainResponseBody(TeaModel):
-    def __init__(
-        self,
-        domains: DescribeCdnComputeUserDomainResponseBodyDomains = None,
-        page_number: int = None,
-        page_size: int = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        self.domains = domains
-        self.page_number = page_number
-        self.page_size = page_size
-        self.request_id = request_id
-        self.total_count = total_count
-
-    def validate(self):
-        if self.domains:
-            self.domains.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domains is not None:
-            result['Domains'] = self.domains.to_map()
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Domains') is not None:
-            temp_model = DescribeCdnComputeUserDomainResponseBodyDomains()
-            self.domains = temp_model.from_map(m['Domains'])
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class DescribeCdnComputeUserDomainResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeCdnComputeUserDomainResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeCdnComputeUserDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -26821,11 +26503,9 @@ class PublishStagingConfigToProductionRequest(TeaModel):
     def __init__(
         self,
         domain_name: str = None,
-        function_name: str = None,
         owner_id: int = None,
     ):
         self.domain_name = domain_name
-        self.function_name = function_name
         self.owner_id = owner_id
 
     def validate(self):
@@ -26839,8 +26519,6 @@ class PublishStagingConfigToProductionRequest(TeaModel):
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.function_name is not None:
-            result['FunctionName'] = self.function_name
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         return result
@@ -26849,8 +26527,6 @@ class PublishStagingConfigToProductionRequest(TeaModel):
         m = m or dict()
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('FunctionName') is not None:
-            self.function_name = m.get('FunctionName')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         return self
@@ -27160,11 +26836,9 @@ class RollbackStagingConfigRequest(TeaModel):
     def __init__(
         self,
         domain_name: str = None,
-        function_name: str = None,
         owner_id: int = None,
     ):
         self.domain_name = domain_name
-        self.function_name = function_name
         self.owner_id = owner_id
 
     def validate(self):
@@ -27178,8 +26852,6 @@ class RollbackStagingConfigRequest(TeaModel):
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.function_name is not None:
-            result['FunctionName'] = self.function_name
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         return result
@@ -27188,8 +26860,6 @@ class RollbackStagingConfigRequest(TeaModel):
         m = m or dict()
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('FunctionName') is not None:
-            self.function_name = m.get('FunctionName')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         return self
