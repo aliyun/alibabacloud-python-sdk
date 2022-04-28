@@ -590,8 +590,6 @@ class Client(OpenApiClient):
             body['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.craggregation_enabled):
             body['CRAggregationEnabled'] = request.craggregation_enabled
-        if not UtilClient.is_unset(request.canary_upgrade_enabled):
-            body['CanaryUpgradeEnabled'] = request.canary_upgrade_enabled
         if not UtilClient.is_unset(request.charge_type):
             body['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.cluster_spec):
@@ -750,8 +748,6 @@ class Client(OpenApiClient):
             body['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.craggregation_enabled):
             body['CRAggregationEnabled'] = request.craggregation_enabled
-        if not UtilClient.is_unset(request.canary_upgrade_enabled):
-            body['CanaryUpgradeEnabled'] = request.canary_upgrade_enabled
         if not UtilClient.is_unset(request.charge_type):
             body['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.cluster_spec):
@@ -2551,92 +2547,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_istio_gateway_routes_with_options_async(request, runtime)
 
-    def describe_managed_services_with_options(
-        self,
-        request: servicemesh_20200111_models.DescribeManagedServicesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeManagedServicesResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.guest_cluster):
-            body['GuestCluster'] = request.guest_cluster
-        if not UtilClient.is_unset(request.limit):
-            body['Limit'] = request.limit
-        if not UtilClient.is_unset(request.marker):
-            body['Marker'] = request.marker
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeManagedServices',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeManagedServicesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_managed_services_with_options_async(
-        self,
-        request: servicemesh_20200111_models.DescribeManagedServicesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeManagedServicesResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.guest_cluster):
-            body['GuestCluster'] = request.guest_cluster
-        if not UtilClient.is_unset(request.limit):
-            body['Limit'] = request.limit
-        if not UtilClient.is_unset(request.marker):
-            body['Marker'] = request.marker
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeManagedServices',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeManagedServicesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_managed_services(
-        self,
-        request: servicemesh_20200111_models.DescribeManagedServicesRequest,
-    ) -> servicemesh_20200111_models.DescribeManagedServicesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_managed_services_with_options(request, runtime)
-
-    async def describe_managed_services_async(
-        self,
-        request: servicemesh_20200111_models.DescribeManagedServicesRequest,
-    ) -> servicemesh_20200111_models.DescribeManagedServicesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_managed_services_with_options_async(request, runtime)
-
     def describe_namespace_scope_sidecar_config_with_options(
         self,
         request: servicemesh_20200111_models.DescribeNamespaceScopeSidecarConfigRequest,
@@ -2854,88 +2764,6 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.DescribeReusableSlbResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_reusable_slb_with_options_async(request, runtime)
-
-    def describe_service_access_detail_with_options(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceAccessDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeServiceAccessDetailResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.guest_cluster):
-            body['GuestCluster'] = request.guest_cluster
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        if not UtilClient.is_unset(request.service_name):
-            body['ServiceName'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeServiceAccessDetail',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeServiceAccessDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_service_access_detail_with_options_async(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceAccessDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeServiceAccessDetailResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.guest_cluster):
-            body['GuestCluster'] = request.guest_cluster
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        if not UtilClient.is_unset(request.service_name):
-            body['ServiceName'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeServiceAccessDetail',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeServiceAccessDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_service_access_detail(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceAccessDetailRequest,
-    ) -> servicemesh_20200111_models.DescribeServiceAccessDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_service_access_detail_with_options(request, runtime)
-
-    async def describe_service_access_detail_async(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceAccessDetailRequest,
-    ) -> servicemesh_20200111_models.DescribeServiceAccessDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_service_access_detail_with_options_async(request, runtime)
 
     def describe_service_mesh_additional_status_with_options(
         self,
@@ -3376,84 +3204,6 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.DescribeServiceMeshProxyStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_service_mesh_proxy_status_with_options_async(request, runtime)
-
-    def describe_service_mesh_service_label_with_options(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceMeshServiceLabelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeServiceMeshServiceLabelResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        if not UtilClient.is_unset(request.service_names):
-            body['ServiceNames'] = request.service_names
-        if not UtilClient.is_unset(request.service_namespaces):
-            body['ServiceNamespaces'] = request.service_namespaces
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeServiceMeshServiceLabel',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeServiceMeshServiceLabelResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_service_mesh_service_label_with_options_async(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceMeshServiceLabelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeServiceMeshServiceLabelResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        if not UtilClient.is_unset(request.service_names):
-            body['ServiceNames'] = request.service_names
-        if not UtilClient.is_unset(request.service_namespaces):
-            body['ServiceNamespaces'] = request.service_namespaces
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeServiceMeshServiceLabel',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeServiceMeshServiceLabelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_service_mesh_service_label(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceMeshServiceLabelRequest,
-    ) -> servicemesh_20200111_models.DescribeServiceMeshServiceLabelResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_service_mesh_service_label_with_options(request, runtime)
-
-    async def describe_service_mesh_service_label_async(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceMeshServiceLabelRequest,
-    ) -> servicemesh_20200111_models.DescribeServiceMeshServiceLabelResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_service_mesh_service_label_with_options_async(request, runtime)
 
     def describe_service_mesh_upgrade_status_with_options(
         self,
@@ -3941,88 +3691,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vswitches_with_options_async(request, runtime)
 
-    def describe_version_management_with_options(
-        self,
-        request: servicemesh_20200111_models.DescribeVersionManagementRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeVersionManagementResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.guest_cluster):
-            body['GuestCluster'] = request.guest_cluster
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        if not UtilClient.is_unset(request.service_name):
-            body['ServiceName'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeVersionManagement',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeVersionManagementResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_version_management_with_options_async(
-        self,
-        request: servicemesh_20200111_models.DescribeVersionManagementRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeVersionManagementResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.guest_cluster):
-            body['GuestCluster'] = request.guest_cluster
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        if not UtilClient.is_unset(request.service_name):
-            body['ServiceName'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeVersionManagement',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeVersionManagementResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_version_management(
-        self,
-        request: servicemesh_20200111_models.DescribeVersionManagementRequest,
-    ) -> servicemesh_20200111_models.DescribeVersionManagementResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_version_management_with_options(request, runtime)
-
-    async def describe_version_management_async(
-        self,
-        request: servicemesh_20200111_models.DescribeVersionManagementRequest,
-    ) -> servicemesh_20200111_models.DescribeVersionManagementResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_version_management_with_options_async(request, runtime)
-
     def describe_versions_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -4500,80 +4168,6 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.GetVmMetaResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_vm_meta_with_options_async(request, runtime)
-
-    def list_dashboard_with_options(
-        self,
-        request: servicemesh_20200111_models.ListDashboardRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.ListDashboardResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.k_8s_cluster_id):
-            query['K8sClusterId'] = request.k_8s_cluster_id
-        if not UtilClient.is_unset(request.service_mesh_id):
-            query['ServiceMeshId'] = request.service_mesh_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDashboard',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.ListDashboardResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_dashboard_with_options_async(
-        self,
-        request: servicemesh_20200111_models.ListDashboardRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.ListDashboardResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.k_8s_cluster_id):
-            query['K8sClusterId'] = request.k_8s_cluster_id
-        if not UtilClient.is_unset(request.service_mesh_id):
-            query['ServiceMeshId'] = request.service_mesh_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDashboard',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.ListDashboardResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_dashboard(
-        self,
-        request: servicemesh_20200111_models.ListDashboardRequest,
-    ) -> servicemesh_20200111_models.ListDashboardResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_dashboard_with_options(request, runtime)
-
-    async def list_dashboard_async(
-        self,
-        request: servicemesh_20200111_models.ListDashboardRequest,
-    ) -> servicemesh_20200111_models.ListDashboardResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_dashboard_with_options_async(request, runtime)
 
     def modify_api_server_eip_resource_with_options(
         self,
@@ -5402,8 +4996,6 @@ class Client(OpenApiClient):
             body['AutoInjectionPolicyEnabled'] = request.auto_injection_policy_enabled
         if not UtilClient.is_unset(request.craggregation_enabled):
             body['CRAggregationEnabled'] = request.craggregation_enabled
-        if not UtilClient.is_unset(request.canary_upgrade_enabled):
-            body['CanaryUpgradeEnabled'] = request.canary_upgrade_enabled
         if not UtilClient.is_unset(request.cluster_spec):
             body['ClusterSpec'] = request.cluster_spec
         if not UtilClient.is_unset(request.cni_enabled):
@@ -5582,8 +5174,6 @@ class Client(OpenApiClient):
             body['AutoInjectionPolicyEnabled'] = request.auto_injection_policy_enabled
         if not UtilClient.is_unset(request.craggregation_enabled):
             body['CRAggregationEnabled'] = request.craggregation_enabled
-        if not UtilClient.is_unset(request.canary_upgrade_enabled):
-            body['CanaryUpgradeEnabled'] = request.canary_upgrade_enabled
         if not UtilClient.is_unset(request.cluster_spec):
             body['ClusterSpec'] = request.cluster_spec
         if not UtilClient.is_unset(request.cni_enabled):

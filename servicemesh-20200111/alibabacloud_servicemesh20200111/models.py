@@ -1622,7 +1622,6 @@ class CreateServiceMeshRequest(TeaModel):
         auto_renew: bool = None,
         auto_renew_period: int = None,
         craggregation_enabled: bool = None,
-        canary_upgrade_enabled: bool = None,
         charge_type: str = None,
         cluster_spec: str = None,
         config_source_enabled: bool = None,
@@ -1690,7 +1689,6 @@ class CreateServiceMeshRequest(TeaModel):
         self.auto_renew = auto_renew
         self.auto_renew_period = auto_renew_period
         self.craggregation_enabled = craggregation_enabled
-        self.canary_upgrade_enabled = canary_upgrade_enabled
         self.charge_type = charge_type
         self.cluster_spec = cluster_spec
         self.config_source_enabled = config_source_enabled
@@ -1780,8 +1778,6 @@ class CreateServiceMeshRequest(TeaModel):
             result['AutoRenewPeriod'] = self.auto_renew_period
         if self.craggregation_enabled is not None:
             result['CRAggregationEnabled'] = self.craggregation_enabled
-        if self.canary_upgrade_enabled is not None:
-            result['CanaryUpgradeEnabled'] = self.canary_upgrade_enabled
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.cluster_spec is not None:
@@ -1918,8 +1914,6 @@ class CreateServiceMeshRequest(TeaModel):
             self.auto_renew_period = m.get('AutoRenewPeriod')
         if m.get('CRAggregationEnabled') is not None:
             self.craggregation_enabled = m.get('CRAggregationEnabled')
-        if m.get('CanaryUpgradeEnabled') is not None:
-            self.canary_upgrade_enabled = m.get('CanaryUpgradeEnabled')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('ClusterSpec') is not None:
@@ -6255,299 +6249,6 @@ class DescribeIstioGatewayRoutesResponse(TeaModel):
         return self
 
 
-class DescribeManagedServicesRequest(TeaModel):
-    def __init__(
-        self,
-        guest_cluster: str = None,
-        limit: int = None,
-        marker: str = None,
-        namespace: str = None,
-        service_mesh_id: str = None,
-    ):
-        self.guest_cluster = guest_cluster
-        self.limit = limit
-        self.marker = marker
-        self.namespace = namespace
-        self.service_mesh_id = service_mesh_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.guest_cluster is not None:
-            result['GuestCluster'] = self.guest_cluster
-        if self.limit is not None:
-            result['Limit'] = self.limit
-        if self.marker is not None:
-            result['Marker'] = self.marker
-        if self.namespace is not None:
-            result['Namespace'] = self.namespace
-        if self.service_mesh_id is not None:
-            result['ServiceMeshId'] = self.service_mesh_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('GuestCluster') is not None:
-            self.guest_cluster = m.get('GuestCluster')
-        if m.get('Limit') is not None:
-            self.limit = m.get('Limit')
-        if m.get('Marker') is not None:
-            self.marker = m.get('Marker')
-        if m.get('Namespace') is not None:
-            self.namespace = m.get('Namespace')
-        if m.get('ServiceMeshId') is not None:
-            self.service_mesh_id = m.get('ServiceMeshId')
-        return self
-
-
-class DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances(TeaModel):
-    def __init__(
-        self,
-        ready_replicas: int = None,
-        replicas: int = None,
-        version: str = None,
-    ):
-        self.ready_replicas = ready_replicas
-        self.replicas = replicas
-        self.version = version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ready_replicas is not None:
-            result['ReadyReplicas'] = self.ready_replicas
-        if self.replicas is not None:
-            result['Replicas'] = self.replicas
-        if self.version is not None:
-            result['Version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ReadyReplicas') is not None:
-            self.ready_replicas = m.get('ReadyReplicas')
-        if m.get('Replicas') is not None:
-            self.replicas = m.get('Replicas')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
-        return self
-
-
-class DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource(TeaModel):
-    def __init__(
-        self,
-        limit_cpu: str = None,
-        limit_memory: str = None,
-        request_cpu: str = None,
-        request_memory: str = None,
-    ):
-        self.limit_cpu = limit_cpu
-        self.limit_memory = limit_memory
-        self.request_cpu = request_cpu
-        self.request_memory = request_memory
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.limit_cpu is not None:
-            result['LimitCPU'] = self.limit_cpu
-        if self.limit_memory is not None:
-            result['LimitMemory'] = self.limit_memory
-        if self.request_cpu is not None:
-            result['RequestCPU'] = self.request_cpu
-        if self.request_memory is not None:
-            result['RequestMemory'] = self.request_memory
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('LimitCPU') is not None:
-            self.limit_cpu = m.get('LimitCPU')
-        if m.get('LimitMemory') is not None:
-            self.limit_memory = m.get('LimitMemory')
-        if m.get('RequestCPU') is not None:
-            self.request_cpu = m.get('RequestCPU')
-        if m.get('RequestMemory') is not None:
-            self.request_memory = m.get('RequestMemory')
-        return self
-
-
-class DescribeManagedServicesResponseBodyManagedServiceInfo(TeaModel):
-    def __init__(
-        self,
-        create_time: str = None,
-        deployment_instances: List[DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances] = None,
-        message: str = None,
-        selector: Dict[str, str] = None,
-        service_name: str = None,
-        sidecar_inject_status: str = None,
-        sidecar_resource: DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource = None,
-    ):
-        self.create_time = create_time
-        self.deployment_instances = deployment_instances
-        self.message = message
-        self.selector = selector
-        self.service_name = service_name
-        self.sidecar_inject_status = sidecar_inject_status
-        self.sidecar_resource = sidecar_resource
-
-    def validate(self):
-        if self.deployment_instances:
-            for k in self.deployment_instances:
-                if k:
-                    k.validate()
-        if self.sidecar_resource:
-            self.sidecar_resource.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        result['DeploymentInstances'] = []
-        if self.deployment_instances is not None:
-            for k in self.deployment_instances:
-                result['DeploymentInstances'].append(k.to_map() if k else None)
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.selector is not None:
-            result['Selector'] = self.selector
-        if self.service_name is not None:
-            result['ServiceName'] = self.service_name
-        if self.sidecar_inject_status is not None:
-            result['SidecarInjectStatus'] = self.sidecar_inject_status
-        if self.sidecar_resource is not None:
-            result['SidecarResource'] = self.sidecar_resource.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        self.deployment_instances = []
-        if m.get('DeploymentInstances') is not None:
-            for k in m.get('DeploymentInstances'):
-                temp_model = DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances()
-                self.deployment_instances.append(temp_model.from_map(k))
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Selector') is not None:
-            self.selector = m.get('Selector')
-        if m.get('ServiceName') is not None:
-            self.service_name = m.get('ServiceName')
-        if m.get('SidecarInjectStatus') is not None:
-            self.sidecar_inject_status = m.get('SidecarInjectStatus')
-        if m.get('SidecarResource') is not None:
-            temp_model = DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource()
-            self.sidecar_resource = temp_model.from_map(m['SidecarResource'])
-        return self
-
-
-class DescribeManagedServicesResponseBody(TeaModel):
-    def __init__(
-        self,
-        managed_service_info: List[DescribeManagedServicesResponseBodyManagedServiceInfo] = None,
-        mark: str = None,
-        request_id: str = None,
-    ):
-        self.managed_service_info = managed_service_info
-        self.mark = mark
-        self.request_id = request_id
-
-    def validate(self):
-        if self.managed_service_info:
-            for k in self.managed_service_info:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['ManagedServiceInfo'] = []
-        if self.managed_service_info is not None:
-            for k in self.managed_service_info:
-                result['ManagedServiceInfo'].append(k.to_map() if k else None)
-        if self.mark is not None:
-            result['Mark'] = self.mark
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.managed_service_info = []
-        if m.get('ManagedServiceInfo') is not None:
-            for k in m.get('ManagedServiceInfo'):
-                temp_model = DescribeManagedServicesResponseBodyManagedServiceInfo()
-                self.managed_service_info.append(temp_model.from_map(k))
-        if m.get('Mark') is not None:
-            self.mark = m.get('Mark')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeManagedServicesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeManagedServicesResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeManagedServicesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeNamespaceScopeSidecarConfigRequest(TeaModel):
     def __init__(
         self,
@@ -7243,168 +6944,6 @@ class DescribeReusableSlbResponse(TeaModel):
         return self
 
 
-class DescribeServiceAccessDetailRequest(TeaModel):
-    def __init__(
-        self,
-        guest_cluster: str = None,
-        namespace: str = None,
-        service_mesh_id: str = None,
-        service_name: str = None,
-    ):
-        self.guest_cluster = guest_cluster
-        self.namespace = namespace
-        self.service_mesh_id = service_mesh_id
-        self.service_name = service_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.guest_cluster is not None:
-            result['GuestCluster'] = self.guest_cluster
-        if self.namespace is not None:
-            result['Namespace'] = self.namespace
-        if self.service_mesh_id is not None:
-            result['ServiceMeshId'] = self.service_mesh_id
-        if self.service_name is not None:
-            result['ServiceName'] = self.service_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('GuestCluster') is not None:
-            self.guest_cluster = m.get('GuestCluster')
-        if m.get('Namespace') is not None:
-            self.namespace = m.get('Namespace')
-        if m.get('ServiceMeshId') is not None:
-            self.service_mesh_id = m.get('ServiceMeshId')
-        if m.get('ServiceName') is not None:
-            self.service_name = m.get('ServiceName')
-        return self
-
-
-class DescribeServiceAccessDetailResponseBodyAccessDetail(TeaModel):
-    def __init__(
-        self,
-        cluster_ip: str = None,
-        name: str = None,
-        ports: str = None,
-        type: str = None,
-    ):
-        self.cluster_ip = cluster_ip
-        self.name = name
-        self.ports = ports
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_ip is not None:
-            result['ClusterIP'] = self.cluster_ip
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.ports is not None:
-            result['Ports'] = self.ports
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterIP') is not None:
-            self.cluster_ip = m.get('ClusterIP')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Ports') is not None:
-            self.ports = m.get('Ports')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class DescribeServiceAccessDetailResponseBody(TeaModel):
-    def __init__(
-        self,
-        access_detail: DescribeServiceAccessDetailResponseBodyAccessDetail = None,
-        request_id: str = None,
-    ):
-        self.access_detail = access_detail
-        self.request_id = request_id
-
-    def validate(self):
-        if self.access_detail:
-            self.access_detail.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.access_detail is not None:
-            result['AccessDetail'] = self.access_detail.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AccessDetail') is not None:
-            temp_model = DescribeServiceAccessDetailResponseBodyAccessDetail()
-            self.access_detail = temp_model.from_map(m['AccessDetail'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeServiceAccessDetailResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeServiceAccessDetailResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeServiceAccessDetailResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeServiceMeshAdditionalStatusRequest(TeaModel):
     def __init__(
         self,
@@ -7441,11 +6980,13 @@ class DescribeServiceMeshAdditionalStatusRequest(TeaModel):
 class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus(TeaModel):
     def __init__(
         self,
+        locked: bool = None,
         pay_type: str = None,
         reused: bool = None,
         slbback_end_server_num_status: str = None,
         slbexist_status: str = None,
     ):
+        self.locked = locked
         self.pay_type = pay_type
         self.reused = reused
         self.slbback_end_server_num_status = slbback_end_server_num_status
@@ -7460,6 +7001,8 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadB
             return _map
 
         result = dict()
+        if self.locked is not None:
+            result['Locked'] = self.locked
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.reused is not None:
@@ -7472,6 +7015,8 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadB
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Locked') is not None:
+            self.locked = m.get('Locked')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('Reused') is not None:
@@ -7486,11 +7031,13 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadB
 class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus(TeaModel):
     def __init__(
         self,
+        locked: bool = None,
         pay_type: str = None,
         reused: bool = None,
         slbback_end_server_num_status: str = None,
         slbexist_status: str = None,
     ):
+        self.locked = locked
         self.pay_type = pay_type
         self.reused = reused
         self.slbback_end_server_num_status = slbback_end_server_num_status
@@ -7505,6 +7052,8 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalan
             return _map
 
         result = dict()
+        if self.locked is not None:
+            result['Locked'] = self.locked
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.reused is not None:
@@ -7517,6 +7066,8 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalan
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Locked') is not None:
+            self.locked = m.get('Locked')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('Reused') is not None:
@@ -7528,86 +7079,6 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalan
         return self
 
 
-class ClusterStatusLogtailStatusRecordValueAccessLogDashboards(TeaModel):
-    def __init__(
-        self,
-        title: str = None,
-        url: str = None,
-    ):
-        self.title = title
-        self.url = url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.title is not None:
-            result['Title'] = self.title
-        if self.url is not None:
-            result['Url'] = self.url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
-        if m.get('Url') is not None:
-            self.url = m.get('Url')
-        return self
-
-
-class ClusterStatusLogtailStatusRecordValue(TeaModel):
-    def __init__(
-        self,
-        cluster_id: str = None,
-        logtail_detail_status: str = None,
-        access_log_dashboards: List[ClusterStatusLogtailStatusRecordValueAccessLogDashboards] = None,
-    ):
-        self.cluster_id = cluster_id
-        self.logtail_detail_status = logtail_detail_status
-        self.access_log_dashboards = access_log_dashboards
-
-    def validate(self):
-        if self.access_log_dashboards:
-            for k in self.access_log_dashboards:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.logtail_detail_status is not None:
-            result['LogtailDetailStatus'] = self.logtail_detail_status
-        result['AccessLogDashboards'] = []
-        if self.access_log_dashboards is not None:
-            for k in self.access_log_dashboards:
-                result['AccessLogDashboards'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('LogtailDetailStatus') is not None:
-            self.logtail_detail_status = m.get('LogtailDetailStatus')
-        self.access_log_dashboards = []
-        if m.get('AccessLogDashboards') is not None:
-            for k in m.get('AccessLogDashboards'):
-                temp_model = ClusterStatusLogtailStatusRecordValueAccessLogDashboards()
-                self.access_log_dashboards.append(temp_model.from_map(k))
-        return self
-
-
 class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
     def __init__(
         self,
@@ -7616,7 +7087,7 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
         api_server_load_balancer_status: DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus = None,
         audit_project_status: str = None,
         control_plane_project_status: str = None,
-        logtail_status_record: Dict[str, ClusterStatusLogtailStatusRecordValue] = None,
+        logtail_status_record: Dict[str, Any] = None,
         pilot_load_balancer_status: DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus = None,
         sg_status: str = None,
     ):
@@ -7632,10 +7103,6 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
     def validate(self):
         if self.api_server_load_balancer_status:
             self.api_server_load_balancer_status.validate()
-        if self.logtail_status_record:
-            for v in self.logtail_status_record.values():
-                if v:
-                    v.validate()
         if self.pilot_load_balancer_status:
             self.pilot_load_balancer_status.validate()
 
@@ -7655,10 +7122,8 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
             result['AuditProjectStatus'] = self.audit_project_status
         if self.control_plane_project_status is not None:
             result['ControlPlaneProjectStatus'] = self.control_plane_project_status
-        result['LogtailStatusRecord'] = {}
         if self.logtail_status_record is not None:
-            for k, v in self.logtail_status_record.items():
-                result['LogtailStatusRecord'][k] = v.to_map()
+            result['LogtailStatusRecord'] = self.logtail_status_record
         if self.pilot_load_balancer_status is not None:
             result['PilotLoadBalancerStatus'] = self.pilot_load_balancer_status.to_map()
         if self.sg_status is not None:
@@ -7678,11 +7143,8 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
             self.audit_project_status = m.get('AuditProjectStatus')
         if m.get('ControlPlaneProjectStatus') is not None:
             self.control_plane_project_status = m.get('ControlPlaneProjectStatus')
-        self.logtail_status_record = {}
         if m.get('LogtailStatusRecord') is not None:
-            for k, v in m.get('LogtailStatusRecord').items():
-                temp_model = ClusterStatusLogtailStatusRecordValue()
-                self.logtail_status_record[k] = temp_model.from_map(v)
+            self.logtail_status_record = m.get('LogtailStatusRecord')
         if m.get('PilotLoadBalancerStatus') is not None:
             temp_model = DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus()
             self.pilot_load_balancer_status = temp_model.from_map(m['PilotLoadBalancerStatus'])
@@ -10507,156 +9969,6 @@ class DescribeServiceMeshProxyStatusResponse(TeaModel):
         return self
 
 
-class DescribeServiceMeshServiceLabelRequest(TeaModel):
-    def __init__(
-        self,
-        service_mesh_id: str = None,
-        service_names: str = None,
-        service_namespaces: str = None,
-    ):
-        self.service_mesh_id = service_mesh_id
-        self.service_names = service_names
-        self.service_namespaces = service_namespaces
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.service_mesh_id is not None:
-            result['ServiceMeshId'] = self.service_mesh_id
-        if self.service_names is not None:
-            result['ServiceNames'] = self.service_names
-        if self.service_namespaces is not None:
-            result['ServiceNamespaces'] = self.service_namespaces
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServiceMeshId') is not None:
-            self.service_mesh_id = m.get('ServiceMeshId')
-        if m.get('ServiceNames') is not None:
-            self.service_names = m.get('ServiceNames')
-        if m.get('ServiceNamespaces') is not None:
-            self.service_namespaces = m.get('ServiceNamespaces')
-        return self
-
-
-class ServiceLabelsValue(TeaModel):
-    def __init__(
-        self,
-        labels: Dict[str, str] = None,
-        success: bool = None,
-    ):
-        self.labels = labels
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.labels is not None:
-            result['Labels'] = self.labels
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Labels') is not None:
-            self.labels = m.get('Labels')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class DescribeServiceMeshServiceLabelResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        service_labels: Dict[str, ServiceLabelsValue] = None,
-    ):
-        self.request_id = request_id
-        self.service_labels = service_labels
-
-    def validate(self):
-        if self.service_labels:
-            for v in self.service_labels.values():
-                if v:
-                    v.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        result['ServiceLabels'] = {}
-        if self.service_labels is not None:
-            for k, v in self.service_labels.items():
-                result['ServiceLabels'][k] = v.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        self.service_labels = {}
-        if m.get('ServiceLabels') is not None:
-            for k, v in m.get('ServiceLabels').items():
-                temp_model = ServiceLabelsValue()
-                self.service_labels[k] = temp_model.from_map(v)
-        return self
-
-
-class DescribeServiceMeshServiceLabelResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeServiceMeshServiceLabelResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeServiceMeshServiceLabelResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeServiceMeshUpgradeStatusRequest(TeaModel):
     def __init__(
         self,
@@ -12205,323 +11517,6 @@ class DescribeVSwitchesResponse(TeaModel):
         return self
 
 
-class DescribeVersionManagementRequest(TeaModel):
-    def __init__(
-        self,
-        guest_cluster: str = None,
-        namespace: str = None,
-        service_mesh_id: str = None,
-        service_name: str = None,
-    ):
-        self.guest_cluster = guest_cluster
-        self.namespace = namespace
-        self.service_mesh_id = service_mesh_id
-        self.service_name = service_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.guest_cluster is not None:
-            result['GuestCluster'] = self.guest_cluster
-        if self.namespace is not None:
-            result['Namespace'] = self.namespace
-        if self.service_mesh_id is not None:
-            result['ServiceMeshId'] = self.service_mesh_id
-        if self.service_name is not None:
-            result['ServiceName'] = self.service_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('GuestCluster') is not None:
-            self.guest_cluster = m.get('GuestCluster')
-        if m.get('Namespace') is not None:
-            self.namespace = m.get('Namespace')
-        if m.get('ServiceMeshId') is not None:
-            self.service_mesh_id = m.get('ServiceMeshId')
-        if m.get('ServiceName') is not None:
-            self.service_name = m.get('ServiceName')
-        return self
-
-
-class DescribeVersionManagementResponseBodyVersionDetailsPodInstances(TeaModel):
-    def __init__(
-        self,
-        create_time: str = None,
-        namespace: str = None,
-        node_ip: str = None,
-        pod_ip: str = None,
-        pod_name: str = None,
-        restart_time: int = None,
-        status: str = None,
-    ):
-        self.create_time = create_time
-        self.namespace = namespace
-        self.node_ip = node_ip
-        self.pod_ip = pod_ip
-        self.pod_name = pod_name
-        self.restart_time = restart_time
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.namespace is not None:
-            result['Namespace'] = self.namespace
-        if self.node_ip is not None:
-            result['NodeIp'] = self.node_ip
-        if self.pod_ip is not None:
-            result['PodIP'] = self.pod_ip
-        if self.pod_name is not None:
-            result['PodName'] = self.pod_name
-        if self.restart_time is not None:
-            result['RestartTime'] = self.restart_time
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('Namespace') is not None:
-            self.namespace = m.get('Namespace')
-        if m.get('NodeIp') is not None:
-            self.node_ip = m.get('NodeIp')
-        if m.get('PodIP') is not None:
-            self.pod_ip = m.get('PodIP')
-        if m.get('PodName') is not None:
-            self.pod_name = m.get('PodName')
-        if m.get('RestartTime') is not None:
-            self.restart_time = m.get('RestartTime')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class DescribeVersionManagementResponseBodyVersionDetailsResource(TeaModel):
-    def __init__(
-        self,
-        cpulimit: str = None,
-        cpurequest: str = None,
-        memory_limit: str = None,
-        memory_request: str = None,
-    ):
-        self.cpulimit = cpulimit
-        self.cpurequest = cpurequest
-        self.memory_limit = memory_limit
-        self.memory_request = memory_request
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cpulimit is not None:
-            result['CPULimit'] = self.cpulimit
-        if self.cpurequest is not None:
-            result['CPURequest'] = self.cpurequest
-        if self.memory_limit is not None:
-            result['MemoryLimit'] = self.memory_limit
-        if self.memory_request is not None:
-            result['MemoryRequest'] = self.memory_request
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CPULimit') is not None:
-            self.cpulimit = m.get('CPULimit')
-        if m.get('CPURequest') is not None:
-            self.cpurequest = m.get('CPURequest')
-        if m.get('MemoryLimit') is not None:
-            self.memory_limit = m.get('MemoryLimit')
-        if m.get('MemoryRequest') is not None:
-            self.memory_request = m.get('MemoryRequest')
-        return self
-
-
-class DescribeVersionManagementResponseBodyVersionDetails(TeaModel):
-    def __init__(
-        self,
-        create_time: str = None,
-        deployment_name: str = None,
-        images: List[str] = None,
-        inject: bool = None,
-        pod_instances: List[DescribeVersionManagementResponseBodyVersionDetailsPodInstances] = None,
-        ready_replicas: int = None,
-        replicas: int = None,
-        resource: DescribeVersionManagementResponseBodyVersionDetailsResource = None,
-        version: str = None,
-    ):
-        self.create_time = create_time
-        self.deployment_name = deployment_name
-        self.images = images
-        self.inject = inject
-        self.pod_instances = pod_instances
-        self.ready_replicas = ready_replicas
-        self.replicas = replicas
-        self.resource = resource
-        self.version = version
-
-    def validate(self):
-        if self.pod_instances:
-            for k in self.pod_instances:
-                if k:
-                    k.validate()
-        if self.resource:
-            self.resource.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.deployment_name is not None:
-            result['DeploymentName'] = self.deployment_name
-        if self.images is not None:
-            result['Images'] = self.images
-        if self.inject is not None:
-            result['Inject'] = self.inject
-        result['PodInstances'] = []
-        if self.pod_instances is not None:
-            for k in self.pod_instances:
-                result['PodInstances'].append(k.to_map() if k else None)
-        if self.ready_replicas is not None:
-            result['ReadyReplicas'] = self.ready_replicas
-        if self.replicas is not None:
-            result['Replicas'] = self.replicas
-        if self.resource is not None:
-            result['Resource'] = self.resource.to_map()
-        if self.version is not None:
-            result['Version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('DeploymentName') is not None:
-            self.deployment_name = m.get('DeploymentName')
-        if m.get('Images') is not None:
-            self.images = m.get('Images')
-        if m.get('Inject') is not None:
-            self.inject = m.get('Inject')
-        self.pod_instances = []
-        if m.get('PodInstances') is not None:
-            for k in m.get('PodInstances'):
-                temp_model = DescribeVersionManagementResponseBodyVersionDetailsPodInstances()
-                self.pod_instances.append(temp_model.from_map(k))
-        if m.get('ReadyReplicas') is not None:
-            self.ready_replicas = m.get('ReadyReplicas')
-        if m.get('Replicas') is not None:
-            self.replicas = m.get('Replicas')
-        if m.get('Resource') is not None:
-            temp_model = DescribeVersionManagementResponseBodyVersionDetailsResource()
-            self.resource = temp_model.from_map(m['Resource'])
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
-        return self
-
-
-class DescribeVersionManagementResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        version_details: List[DescribeVersionManagementResponseBodyVersionDetails] = None,
-    ):
-        self.request_id = request_id
-        self.version_details = version_details
-
-    def validate(self):
-        if self.version_details:
-            for k in self.version_details:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        result['VersionDetails'] = []
-        if self.version_details is not None:
-            for k in self.version_details:
-                result['VersionDetails'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        self.version_details = []
-        if m.get('VersionDetails') is not None:
-            for k in m.get('VersionDetails'):
-                temp_model = DescribeVersionManagementResponseBodyVersionDetails()
-                self.version_details.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeVersionManagementResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeVersionManagementResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeVersionManagementResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeVersionsResponseBodyVersionInfo(TeaModel):
     def __init__(
         self,
@@ -13531,110 +12526,6 @@ class GetVmMetaResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetVmMetaResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListDashboardRequest(TeaModel):
-    def __init__(
-        self,
-        k_8s_cluster_id: str = None,
-        service_mesh_id: str = None,
-    ):
-        self.k_8s_cluster_id = k_8s_cluster_id
-        self.service_mesh_id = service_mesh_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.k_8s_cluster_id is not None:
-            result['K8sClusterId'] = self.k_8s_cluster_id
-        if self.service_mesh_id is not None:
-            result['ServiceMeshId'] = self.service_mesh_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('K8sClusterId') is not None:
-            self.k_8s_cluster_id = m.get('K8sClusterId')
-        if m.get('ServiceMeshId') is not None:
-            self.service_mesh_id = m.get('ServiceMeshId')
-        return self
-
-
-class ListDashboardResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: str = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ListDashboardResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ListDashboardResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ListDashboardResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15577,7 +14468,6 @@ class UpdateMeshFeatureRequest(TeaModel):
         audit_project: str = None,
         auto_injection_policy_enabled: bool = None,
         craggregation_enabled: bool = None,
-        canary_upgrade_enabled: bool = None,
         cluster_spec: str = None,
         cni_enabled: bool = None,
         cni_exclude_namespaces: str = None,
@@ -15655,7 +14545,6 @@ class UpdateMeshFeatureRequest(TeaModel):
         self.audit_project = audit_project
         self.auto_injection_policy_enabled = auto_injection_policy_enabled
         self.craggregation_enabled = craggregation_enabled
-        self.canary_upgrade_enabled = canary_upgrade_enabled
         self.cluster_spec = cluster_spec
         self.cni_enabled = cni_enabled
         self.cni_exclude_namespaces = cni_exclude_namespaces
@@ -15752,8 +14641,6 @@ class UpdateMeshFeatureRequest(TeaModel):
             result['AutoInjectionPolicyEnabled'] = self.auto_injection_policy_enabled
         if self.craggregation_enabled is not None:
             result['CRAggregationEnabled'] = self.craggregation_enabled
-        if self.canary_upgrade_enabled is not None:
-            result['CanaryUpgradeEnabled'] = self.canary_upgrade_enabled
         if self.cluster_spec is not None:
             result['ClusterSpec'] = self.cluster_spec
         if self.cni_enabled is not None:
@@ -15910,8 +14797,6 @@ class UpdateMeshFeatureRequest(TeaModel):
             self.auto_injection_policy_enabled = m.get('AutoInjectionPolicyEnabled')
         if m.get('CRAggregationEnabled') is not None:
             self.craggregation_enabled = m.get('CRAggregationEnabled')
-        if m.get('CanaryUpgradeEnabled') is not None:
-            self.canary_upgrade_enabled = m.get('CanaryUpgradeEnabled')
         if m.get('ClusterSpec') is not None:
             self.cluster_spec = m.get('ClusterSpec')
         if m.get('CniEnabled') is not None:
