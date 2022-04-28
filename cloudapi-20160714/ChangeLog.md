@@ -1,3 +1,6 @@
+2022-04-28 Version: 2.1.5
+- Add a new api ModifyApiConfiguration.
+
 2022-04-16 Version: 2.1.4
 - Support customized host header in vpc access.
 

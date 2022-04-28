@@ -8725,6 +8725,216 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_api_with_options_async(request, runtime)
 
+    def modify_api_configuration_with_options(
+        self,
+        request: cloud_api20160714_models.ModifyApiConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ModifyApiConfigurationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_signature_method):
+            query['AllowSignatureMethod'] = request.allow_signature_method
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.app_code_auth_type):
+            query['AppCodeAuthType'] = request.app_code_auth_type
+        if not UtilClient.is_unset(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not UtilClient.is_unset(request.backend_name):
+            query['BackendName'] = request.backend_name
+        if not UtilClient.is_unset(request.body_format):
+            query['BodyFormat'] = request.body_format
+        if not UtilClient.is_unset(request.body_model):
+            query['BodyModel'] = request.body_model
+        if not UtilClient.is_unset(request.content_type_category):
+            query['ContentTypeCategory'] = request.content_type_category
+        if not UtilClient.is_unset(request.content_type_value):
+            query['ContentTypeValue'] = request.content_type_value
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.disable_internet):
+            query['DisableInternet'] = request.disable_internet
+        if not UtilClient.is_unset(request.error_code_samples):
+            query['ErrorCodeSamples'] = request.error_code_samples
+        if not UtilClient.is_unset(request.fail_result_sample):
+            query['FailResultSample'] = request.fail_result_sample
+        if not UtilClient.is_unset(request.force_nonce_check):
+            query['ForceNonceCheck'] = request.force_nonce_check
+        if not UtilClient.is_unset(request.function_compute_config):
+            query['FunctionComputeConfig'] = request.function_compute_config
+        if not UtilClient.is_unset(request.http_config):
+            query['HttpConfig'] = request.http_config
+        if not UtilClient.is_unset(request.mock_config):
+            query['MockConfig'] = request.mock_config
+        if not UtilClient.is_unset(request.model_name):
+            query['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.oss_config):
+            query['OssConfig'] = request.oss_config
+        if not UtilClient.is_unset(request.post_body_description):
+            query['PostBodyDescription'] = request.post_body_description
+        if not UtilClient.is_unset(request.request_http_method):
+            query['RequestHttpMethod'] = request.request_http_method
+        if not UtilClient.is_unset(request.request_mode):
+            query['RequestMode'] = request.request_mode
+        if not UtilClient.is_unset(request.request_parameters):
+            query['RequestParameters'] = request.request_parameters
+        if not UtilClient.is_unset(request.request_path):
+            query['RequestPath'] = request.request_path
+        if not UtilClient.is_unset(request.request_protocol):
+            query['RequestProtocol'] = request.request_protocol
+        if not UtilClient.is_unset(request.result_sample):
+            query['ResultSample'] = request.result_sample
+        if not UtilClient.is_unset(request.result_type):
+            query['ResultType'] = request.result_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.service_parameters):
+            query['ServiceParameters'] = request.service_parameters
+        if not UtilClient.is_unset(request.service_parameters_map):
+            query['ServiceParametersMap'] = request.service_parameters_map
+        if not UtilClient.is_unset(request.service_protocol):
+            query['ServiceProtocol'] = request.service_protocol
+        if not UtilClient.is_unset(request.service_timeout):
+            query['ServiceTimeout'] = request.service_timeout
+        if not UtilClient.is_unset(request.use_backend_service):
+            query['UseBackendService'] = request.use_backend_service
+        if not UtilClient.is_unset(request.visibility):
+            query['Visibility'] = request.visibility
+        if not UtilClient.is_unset(request.vpc_config):
+            query['VpcConfig'] = request.vpc_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApiConfiguration',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ModifyApiConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_api_configuration_with_options_async(
+        self,
+        request: cloud_api20160714_models.ModifyApiConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ModifyApiConfigurationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_signature_method):
+            query['AllowSignatureMethod'] = request.allow_signature_method
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.app_code_auth_type):
+            query['AppCodeAuthType'] = request.app_code_auth_type
+        if not UtilClient.is_unset(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not UtilClient.is_unset(request.backend_name):
+            query['BackendName'] = request.backend_name
+        if not UtilClient.is_unset(request.body_format):
+            query['BodyFormat'] = request.body_format
+        if not UtilClient.is_unset(request.body_model):
+            query['BodyModel'] = request.body_model
+        if not UtilClient.is_unset(request.content_type_category):
+            query['ContentTypeCategory'] = request.content_type_category
+        if not UtilClient.is_unset(request.content_type_value):
+            query['ContentTypeValue'] = request.content_type_value
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.disable_internet):
+            query['DisableInternet'] = request.disable_internet
+        if not UtilClient.is_unset(request.error_code_samples):
+            query['ErrorCodeSamples'] = request.error_code_samples
+        if not UtilClient.is_unset(request.fail_result_sample):
+            query['FailResultSample'] = request.fail_result_sample
+        if not UtilClient.is_unset(request.force_nonce_check):
+            query['ForceNonceCheck'] = request.force_nonce_check
+        if not UtilClient.is_unset(request.function_compute_config):
+            query['FunctionComputeConfig'] = request.function_compute_config
+        if not UtilClient.is_unset(request.http_config):
+            query['HttpConfig'] = request.http_config
+        if not UtilClient.is_unset(request.mock_config):
+            query['MockConfig'] = request.mock_config
+        if not UtilClient.is_unset(request.model_name):
+            query['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.oss_config):
+            query['OssConfig'] = request.oss_config
+        if not UtilClient.is_unset(request.post_body_description):
+            query['PostBodyDescription'] = request.post_body_description
+        if not UtilClient.is_unset(request.request_http_method):
+            query['RequestHttpMethod'] = request.request_http_method
+        if not UtilClient.is_unset(request.request_mode):
+            query['RequestMode'] = request.request_mode
+        if not UtilClient.is_unset(request.request_parameters):
+            query['RequestParameters'] = request.request_parameters
+        if not UtilClient.is_unset(request.request_path):
+            query['RequestPath'] = request.request_path
+        if not UtilClient.is_unset(request.request_protocol):
+            query['RequestProtocol'] = request.request_protocol
+        if not UtilClient.is_unset(request.result_sample):
+            query['ResultSample'] = request.result_sample
+        if not UtilClient.is_unset(request.result_type):
+            query['ResultType'] = request.result_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.service_parameters):
+            query['ServiceParameters'] = request.service_parameters
+        if not UtilClient.is_unset(request.service_parameters_map):
+            query['ServiceParametersMap'] = request.service_parameters_map
+        if not UtilClient.is_unset(request.service_protocol):
+            query['ServiceProtocol'] = request.service_protocol
+        if not UtilClient.is_unset(request.service_timeout):
+            query['ServiceTimeout'] = request.service_timeout
+        if not UtilClient.is_unset(request.use_backend_service):
+            query['UseBackendService'] = request.use_backend_service
+        if not UtilClient.is_unset(request.visibility):
+            query['Visibility'] = request.visibility
+        if not UtilClient.is_unset(request.vpc_config):
+            query['VpcConfig'] = request.vpc_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApiConfiguration',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ModifyApiConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_api_configuration(
+        self,
+        request: cloud_api20160714_models.ModifyApiConfigurationRequest,
+    ) -> cloud_api20160714_models.ModifyApiConfigurationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_api_configuration_with_options(request, runtime)
+
+    async def modify_api_configuration_async(
+        self,
+        request: cloud_api20160714_models.ModifyApiConfigurationRequest,
+    ) -> cloud_api20160714_models.ModifyApiConfigurationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_api_configuration_with_options_async(request, runtime)
+
     def modify_api_group_with_options(
         self,
         request: cloud_api20160714_models.ModifyApiGroupRequest,

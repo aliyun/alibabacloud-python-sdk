@@ -25097,6 +25097,307 @@ class ModifyApiResponse(TeaModel):
         return self
 
 
+class ModifyApiConfigurationRequest(TeaModel):
+    def __init__(
+        self,
+        allow_signature_method: str = None,
+        api_id: str = None,
+        api_name: str = None,
+        app_code_auth_type: str = None,
+        auth_type: str = None,
+        backend_name: str = None,
+        body_format: str = None,
+        body_model: str = None,
+        content_type_category: str = None,
+        content_type_value: str = None,
+        description: str = None,
+        disable_internet: bool = None,
+        error_code_samples: str = None,
+        fail_result_sample: str = None,
+        force_nonce_check: bool = None,
+        function_compute_config: str = None,
+        http_config: str = None,
+        mock_config: str = None,
+        model_name: str = None,
+        oss_config: str = None,
+        post_body_description: str = None,
+        request_http_method: str = None,
+        request_mode: str = None,
+        request_parameters: str = None,
+        request_path: str = None,
+        request_protocol: str = None,
+        result_sample: str = None,
+        result_type: str = None,
+        security_token: str = None,
+        service_parameters: str = None,
+        service_parameters_map: str = None,
+        service_protocol: str = None,
+        service_timeout: int = None,
+        use_backend_service: bool = None,
+        visibility: str = None,
+        vpc_config: str = None,
+    ):
+        self.allow_signature_method = allow_signature_method
+        self.api_id = api_id
+        self.api_name = api_name
+        self.app_code_auth_type = app_code_auth_type
+        self.auth_type = auth_type
+        self.backend_name = backend_name
+        self.body_format = body_format
+        self.body_model = body_model
+        self.content_type_category = content_type_category
+        self.content_type_value = content_type_value
+        self.description = description
+        self.disable_internet = disable_internet
+        self.error_code_samples = error_code_samples
+        self.fail_result_sample = fail_result_sample
+        self.force_nonce_check = force_nonce_check
+        self.function_compute_config = function_compute_config
+        self.http_config = http_config
+        self.mock_config = mock_config
+        self.model_name = model_name
+        self.oss_config = oss_config
+        self.post_body_description = post_body_description
+        self.request_http_method = request_http_method
+        self.request_mode = request_mode
+        self.request_parameters = request_parameters
+        self.request_path = request_path
+        self.request_protocol = request_protocol
+        self.result_sample = result_sample
+        self.result_type = result_type
+        self.security_token = security_token
+        self.service_parameters = service_parameters
+        self.service_parameters_map = service_parameters_map
+        self.service_protocol = service_protocol
+        self.service_timeout = service_timeout
+        self.use_backend_service = use_backend_service
+        self.visibility = visibility
+        self.vpc_config = vpc_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_signature_method is not None:
+            result['AllowSignatureMethod'] = self.allow_signature_method
+        if self.api_id is not None:
+            result['ApiId'] = self.api_id
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.app_code_auth_type is not None:
+            result['AppCodeAuthType'] = self.app_code_auth_type
+        if self.auth_type is not None:
+            result['AuthType'] = self.auth_type
+        if self.backend_name is not None:
+            result['BackendName'] = self.backend_name
+        if self.body_format is not None:
+            result['BodyFormat'] = self.body_format
+        if self.body_model is not None:
+            result['BodyModel'] = self.body_model
+        if self.content_type_category is not None:
+            result['ContentTypeCategory'] = self.content_type_category
+        if self.content_type_value is not None:
+            result['ContentTypeValue'] = self.content_type_value
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.disable_internet is not None:
+            result['DisableInternet'] = self.disable_internet
+        if self.error_code_samples is not None:
+            result['ErrorCodeSamples'] = self.error_code_samples
+        if self.fail_result_sample is not None:
+            result['FailResultSample'] = self.fail_result_sample
+        if self.force_nonce_check is not None:
+            result['ForceNonceCheck'] = self.force_nonce_check
+        if self.function_compute_config is not None:
+            result['FunctionComputeConfig'] = self.function_compute_config
+        if self.http_config is not None:
+            result['HttpConfig'] = self.http_config
+        if self.mock_config is not None:
+            result['MockConfig'] = self.mock_config
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+        if self.oss_config is not None:
+            result['OssConfig'] = self.oss_config
+        if self.post_body_description is not None:
+            result['PostBodyDescription'] = self.post_body_description
+        if self.request_http_method is not None:
+            result['RequestHttpMethod'] = self.request_http_method
+        if self.request_mode is not None:
+            result['RequestMode'] = self.request_mode
+        if self.request_parameters is not None:
+            result['RequestParameters'] = self.request_parameters
+        if self.request_path is not None:
+            result['RequestPath'] = self.request_path
+        if self.request_protocol is not None:
+            result['RequestProtocol'] = self.request_protocol
+        if self.result_sample is not None:
+            result['ResultSample'] = self.result_sample
+        if self.result_type is not None:
+            result['ResultType'] = self.result_type
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.service_parameters is not None:
+            result['ServiceParameters'] = self.service_parameters
+        if self.service_parameters_map is not None:
+            result['ServiceParametersMap'] = self.service_parameters_map
+        if self.service_protocol is not None:
+            result['ServiceProtocol'] = self.service_protocol
+        if self.service_timeout is not None:
+            result['ServiceTimeout'] = self.service_timeout
+        if self.use_backend_service is not None:
+            result['UseBackendService'] = self.use_backend_service
+        if self.visibility is not None:
+            result['Visibility'] = self.visibility
+        if self.vpc_config is not None:
+            result['VpcConfig'] = self.vpc_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowSignatureMethod') is not None:
+            self.allow_signature_method = m.get('AllowSignatureMethod')
+        if m.get('ApiId') is not None:
+            self.api_id = m.get('ApiId')
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('AppCodeAuthType') is not None:
+            self.app_code_auth_type = m.get('AppCodeAuthType')
+        if m.get('AuthType') is not None:
+            self.auth_type = m.get('AuthType')
+        if m.get('BackendName') is not None:
+            self.backend_name = m.get('BackendName')
+        if m.get('BodyFormat') is not None:
+            self.body_format = m.get('BodyFormat')
+        if m.get('BodyModel') is not None:
+            self.body_model = m.get('BodyModel')
+        if m.get('ContentTypeCategory') is not None:
+            self.content_type_category = m.get('ContentTypeCategory')
+        if m.get('ContentTypeValue') is not None:
+            self.content_type_value = m.get('ContentTypeValue')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DisableInternet') is not None:
+            self.disable_internet = m.get('DisableInternet')
+        if m.get('ErrorCodeSamples') is not None:
+            self.error_code_samples = m.get('ErrorCodeSamples')
+        if m.get('FailResultSample') is not None:
+            self.fail_result_sample = m.get('FailResultSample')
+        if m.get('ForceNonceCheck') is not None:
+            self.force_nonce_check = m.get('ForceNonceCheck')
+        if m.get('FunctionComputeConfig') is not None:
+            self.function_compute_config = m.get('FunctionComputeConfig')
+        if m.get('HttpConfig') is not None:
+            self.http_config = m.get('HttpConfig')
+        if m.get('MockConfig') is not None:
+            self.mock_config = m.get('MockConfig')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
+        if m.get('OssConfig') is not None:
+            self.oss_config = m.get('OssConfig')
+        if m.get('PostBodyDescription') is not None:
+            self.post_body_description = m.get('PostBodyDescription')
+        if m.get('RequestHttpMethod') is not None:
+            self.request_http_method = m.get('RequestHttpMethod')
+        if m.get('RequestMode') is not None:
+            self.request_mode = m.get('RequestMode')
+        if m.get('RequestParameters') is not None:
+            self.request_parameters = m.get('RequestParameters')
+        if m.get('RequestPath') is not None:
+            self.request_path = m.get('RequestPath')
+        if m.get('RequestProtocol') is not None:
+            self.request_protocol = m.get('RequestProtocol')
+        if m.get('ResultSample') is not None:
+            self.result_sample = m.get('ResultSample')
+        if m.get('ResultType') is not None:
+            self.result_type = m.get('ResultType')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('ServiceParameters') is not None:
+            self.service_parameters = m.get('ServiceParameters')
+        if m.get('ServiceParametersMap') is not None:
+            self.service_parameters_map = m.get('ServiceParametersMap')
+        if m.get('ServiceProtocol') is not None:
+            self.service_protocol = m.get('ServiceProtocol')
+        if m.get('ServiceTimeout') is not None:
+            self.service_timeout = m.get('ServiceTimeout')
+        if m.get('UseBackendService') is not None:
+            self.use_backend_service = m.get('UseBackendService')
+        if m.get('Visibility') is not None:
+            self.visibility = m.get('Visibility')
+        if m.get('VpcConfig') is not None:
+            self.vpc_config = m.get('VpcConfig')
+        return self
+
+
+class ModifyApiConfigurationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyApiConfigurationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyApiConfigurationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyApiConfigurationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyApiGroupRequestTag(TeaModel):
     def __init__(
         self,
