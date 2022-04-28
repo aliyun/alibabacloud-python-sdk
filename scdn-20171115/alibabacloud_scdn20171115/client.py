@@ -4121,6 +4121,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_scdn_user_quota_with_options_async(request, runtime)
 
+    def describe_scdn_verify_content_with_options(
+        self,
+        request: scdn_20171115_models.DescribeScdnVerifyContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scdn_20171115_models.DescribeScdnVerifyContentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeScdnVerifyContent',
+            version='2017-11-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scdn_20171115_models.DescribeScdnVerifyContentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_scdn_verify_content_with_options_async(
+        self,
+        request: scdn_20171115_models.DescribeScdnVerifyContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scdn_20171115_models.DescribeScdnVerifyContentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeScdnVerifyContent',
+            version='2017-11-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scdn_20171115_models.DescribeScdnVerifyContentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_scdn_verify_content(
+        self,
+        request: scdn_20171115_models.DescribeScdnVerifyContentRequest,
+    ) -> scdn_20171115_models.DescribeScdnVerifyContentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_scdn_verify_content_with_options(request, runtime)
+
+    async def describe_scdn_verify_content_async(
+        self,
+        request: scdn_20171115_models.DescribeScdnVerifyContentRequest,
+    ) -> scdn_20171115_models.DescribeScdnVerifyContentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_scdn_verify_content_with_options_async(request, runtime)
+
     def open_scdn_service_with_options(
         self,
         request: scdn_20171115_models.OpenScdnServiceRequest,
@@ -5006,3 +5080,81 @@ class Client(OpenApiClient):
     ) -> scdn_20171115_models.UpdateScdnDomainResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_scdn_domain_with_options_async(request, runtime)
+
+    def verify_scdn_domain_owner_with_options(
+        self,
+        request: scdn_20171115_models.VerifyScdnDomainOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scdn_20171115_models.VerifyScdnDomainOwnerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyScdnDomainOwner',
+            version='2017-11-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scdn_20171115_models.VerifyScdnDomainOwnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_scdn_domain_owner_with_options_async(
+        self,
+        request: scdn_20171115_models.VerifyScdnDomainOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> scdn_20171115_models.VerifyScdnDomainOwnerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyScdnDomainOwner',
+            version='2017-11-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            scdn_20171115_models.VerifyScdnDomainOwnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_scdn_domain_owner(
+        self,
+        request: scdn_20171115_models.VerifyScdnDomainOwnerRequest,
+    ) -> scdn_20171115_models.VerifyScdnDomainOwnerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.verify_scdn_domain_owner_with_options(request, runtime)
+
+    async def verify_scdn_domain_owner_async(
+        self,
+        request: scdn_20171115_models.VerifyScdnDomainOwnerRequest,
+    ) -> scdn_20171115_models.VerifyScdnDomainOwnerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_scdn_domain_owner_with_options_async(request, runtime)
