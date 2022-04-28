@@ -5831,52 +5831,13 @@ class GetAsyncErrorRequestStatResultRequest(TeaModel):
         return self
 
 
-class DataResultValue(TeaModel):
-    def __init__(
-        self,
-        sql_id: str = None,
-        error_code: str = None,
-        count: int = None,
-    ):
-        self.sql_id = sql_id
-        self.error_code = error_code
-        self.count = count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.sql_id is not None:
-            result['sqlId'] = self.sql_id
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-        if self.count is not None:
-            result['count'] = self.count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('sqlId') is not None:
-            self.sql_id = m.get('sqlId')
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-        if m.get('count') is not None:
-            self.count = m.get('count')
-        return self
-
-
 class GetAsyncErrorRequestStatResultResponseBodyData(TeaModel):
     def __init__(
         self,
         complete: bool = None,
         fail: bool = None,
         is_finish: bool = None,
-        result: Dict[str, DataResultValue] = None,
+        result: List[Dict[str, DataResultValue]] = None,
         result_id: str = None,
         state: str = None,
         timestamp: int = None,
@@ -5890,10 +5851,7 @@ class GetAsyncErrorRequestStatResultResponseBodyData(TeaModel):
         self.timestamp = timestamp
 
     def validate(self):
-        if self.result:
-            for v in self.result.values():
-                if v:
-                    v.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -5907,10 +5865,13 @@ class GetAsyncErrorRequestStatResultResponseBodyData(TeaModel):
             result['fail'] = self.fail
         if self.is_finish is not None:
             result['isFinish'] = self.is_finish
-        result['result'] = {}
+        result['result'] = []
         if self.result is not None:
-            for k, v in self.result.items():
-                result['result'][k] = v.to_map()
+            for k in self.result:
+                d1 = {}
+                for k1 ,v1 in k.items():
+                    d1[k1] = v1.to_map()
+                result['result'].append(d1)
         if self.result_id is not None:
             result['resultId'] = self.result_id
         if self.state is not None:
@@ -5927,11 +5888,14 @@ class GetAsyncErrorRequestStatResultResponseBodyData(TeaModel):
             self.fail = m.get('fail')
         if m.get('isFinish') is not None:
             self.is_finish = m.get('isFinish')
-        self.result = {}
+        self.result = []
         if m.get('result') is not None:
-            for k, v in m.get('result').items():
-                temp_model = DataResultValue()
-                self.result[k] = temp_model.from_map(v)
+            for k in m.get('result'):
+                d1 = {}
+                for k1, v1 in k.items():
+                    temp_model = DataResultValue()
+                    d1[k1] = temp_model.from_map(v1)
+                self.result.append(d1)
         if m.get('resultId') is not None:
             self.result_id = m.get('resultId')
         if m.get('state') is not None:
@@ -12818,6 +12782,45 @@ class SyncHDMAliyunResourceResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = SyncHDMAliyunResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DataResultValue(TeaModel):
+    def __init__(
+        self,
+        sql_id: str = None,
+        instance_id: str = None,
+        count: int = None,
+    ):
+        self.sql_id = sql_id
+        self.instance_id = instance_id
+        self.count = count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sql_id is not None:
+            result['sqlId'] = self.sql_id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.count is not None:
+            result['count'] = self.count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sqlId') is not None:
+            self.sql_id = m.get('sqlId')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('count') is not None:
+            self.count = m.get('count')
         return self
 
 

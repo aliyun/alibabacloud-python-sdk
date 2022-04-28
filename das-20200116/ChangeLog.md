@@ -1,3 +1,7 @@
+2022-04-28 Version: 2.0.17
+- EventCenter support event name filter.
+
+
 2022-04-01 Version: 2.0.16
 - FIX GetAsyncErrorRequestStatResult PARAM TYPE.
 
