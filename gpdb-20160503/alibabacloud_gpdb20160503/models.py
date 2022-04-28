@@ -12720,24 +12720,24 @@ class UpgradeDBInstanceRequest(TeaModel):
         dbinstance_group_count: str = None,
         dbinstance_id: str = None,
         instance_spec: str = None,
+        master_node_num: str = None,
         owner_id: int = None,
         pay_type: str = None,
         region_id: str = None,
         seg_node_num: str = None,
         storage_size: str = None,
-        master_node_num: str = None,
         upgrade_type: int = None,
     ):
         self.dbinstance_class = dbinstance_class
         self.dbinstance_group_count = dbinstance_group_count
         self.dbinstance_id = dbinstance_id
         self.instance_spec = instance_spec
+        self.master_node_num = master_node_num
         self.owner_id = owner_id
         self.pay_type = pay_type
         self.region_id = region_id
         self.seg_node_num = seg_node_num
         self.storage_size = storage_size
-        self.master_node_num = master_node_num
         self.upgrade_type = upgrade_type
 
     def validate(self):
@@ -12757,6 +12757,8 @@ class UpgradeDBInstanceRequest(TeaModel):
             result['DBInstanceId'] = self.dbinstance_id
         if self.instance_spec is not None:
             result['InstanceSpec'] = self.instance_spec
+        if self.master_node_num is not None:
+            result['MasterNodeNum'] = self.master_node_num
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.pay_type is not None:
@@ -12767,10 +12769,8 @@ class UpgradeDBInstanceRequest(TeaModel):
             result['SegNodeNum'] = self.seg_node_num
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
-        if self.master_node_num is not None:
-            result['masterNodeNum'] = self.master_node_num
         if self.upgrade_type is not None:
-            result['upgradeType'] = self.upgrade_type
+            result['UpgradeType'] = self.upgrade_type
         return result
 
     def from_map(self, m: dict = None):
@@ -12783,6 +12783,8 @@ class UpgradeDBInstanceRequest(TeaModel):
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('InstanceSpec') is not None:
             self.instance_spec = m.get('InstanceSpec')
+        if m.get('MasterNodeNum') is not None:
+            self.master_node_num = m.get('MasterNodeNum')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('PayType') is not None:
@@ -12793,10 +12795,8 @@ class UpgradeDBInstanceRequest(TeaModel):
             self.seg_node_num = m.get('SegNodeNum')
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
-        if m.get('masterNodeNum') is not None:
-            self.master_node_num = m.get('masterNodeNum')
-        if m.get('upgradeType') is not None:
-            self.upgrade_type = m.get('upgradeType')
+        if m.get('UpgradeType') is not None:
+            self.upgrade_type = m.get('UpgradeType')
         return self
 
 
