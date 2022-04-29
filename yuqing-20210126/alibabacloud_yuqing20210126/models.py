@@ -1567,11 +1567,13 @@ class SearchCondition(TeaModel):
         advertisement_filter: bool = None,
         alipay_account_filter: str = None,
         ass_keywords_idx: str = None,
+        at_users_idx: str = None,
         audio_count_max_filter: int = None,
         audio_count_min_filter: int = None,
         author_followers_count_max_filter: int = None,
         author_followers_count_min_filter: int = None,
         author_name_idx: str = None,
+        author_sex_filter: str = None,
         author_verify_type_filter: str = None,
         biz_tags_idx: str = None,
         bkz_filter: bool = None,
@@ -1595,6 +1597,7 @@ class SearchCondition(TeaModel):
         enable_keyword_highlight: bool = None,
         entity_name: str = None,
         eroticism_filter: bool = None,
+        exclude_at_users_idx: str = None,
         exclude_author_name_idx: str = None,
         excluding_media_hosts_filter: str = None,
         excluding_media_name_filter: str = None,
@@ -1614,6 +1617,8 @@ class SearchCondition(TeaModel):
         keyword_tree_ids_idx: str = None,
         likes_count_max_filter: int = None,
         likes_count_min_filter: int = None,
+        media_area_city_filter: str = None,
+        media_area_province_filter: str = None,
         media_hosts_filter: str = None,
         media_influence_score_max_filter: float = None,
         media_influence_score_min_filter: float = None,
@@ -1654,6 +1659,8 @@ class SearchCondition(TeaModel):
         self.alipay_account_filter = alipay_account_filter
         # 搭配词，json字符串数组
         self.ass_keywords_idx = ass_keywords_idx
+        # 提及用户 如@蚂蚁集团
+        self.at_users_idx = at_users_idx
         # 音频数量上限
         self.audio_count_max_filter = audio_count_max_filter
         # 音频数量下限
@@ -1664,6 +1671,8 @@ class SearchCondition(TeaModel):
         self.author_followers_count_min_filter = author_followers_count_min_filter
         # 指定用户名，多个用户用英文逗号隔开
         self.author_name_idx = author_name_idx
+        # 指定作者性别：如m:男，f:女
+        self.author_sex_filter = author_sex_filter
         # 作者认证类型，多个用,隔开
         self.author_verify_type_filter = author_verify_type_filter
         # 业务自定义标签字段过滤
@@ -1710,6 +1719,8 @@ class SearchCondition(TeaModel):
         self.entity_name = entity_name
         # 色情取值true or false
         self.eroticism_filter = eroticism_filter
+        # 排除提及用户 如@蚂蚁集团
+        self.exclude_at_users_idx = exclude_at_users_idx
         # 排除指定用户名，多个用户用英文逗号隔开
         self.exclude_author_name_idx = exclude_author_name_idx
         # 排除指定Host
@@ -1748,6 +1759,10 @@ class SearchCondition(TeaModel):
         self.likes_count_max_filter = likes_count_max_filter
         # 点赞数下限
         self.likes_count_min_filter = likes_count_min_filter
+        # 媒体市级过滤，如：媒体省份过滤，如：成都市
+        self.media_area_city_filter = media_area_city_filter
+        # 媒体省份过滤，如：上海市
+        self.media_area_province_filter = media_area_province_filter
         # 指定Host
         self.media_hosts_filter = media_hosts_filter
         # 媒体影响分上限
@@ -1830,6 +1845,8 @@ class SearchCondition(TeaModel):
             result['alipayAccountFilter'] = self.alipay_account_filter
         if self.ass_keywords_idx is not None:
             result['assKeywordsIdx'] = self.ass_keywords_idx
+        if self.at_users_idx is not None:
+            result['atUsersIdx'] = self.at_users_idx
         if self.audio_count_max_filter is not None:
             result['audioCountMaxFilter'] = self.audio_count_max_filter
         if self.audio_count_min_filter is not None:
@@ -1840,6 +1857,8 @@ class SearchCondition(TeaModel):
             result['authorFollowersCountMinFilter'] = self.author_followers_count_min_filter
         if self.author_name_idx is not None:
             result['authorNameIdx'] = self.author_name_idx
+        if self.author_sex_filter is not None:
+            result['authorSexFilter'] = self.author_sex_filter
         if self.author_verify_type_filter is not None:
             result['authorVerifyTypeFilter'] = self.author_verify_type_filter
         if self.biz_tags_idx is not None:
@@ -1886,6 +1905,8 @@ class SearchCondition(TeaModel):
             result['entityName'] = self.entity_name
         if self.eroticism_filter is not None:
             result['eroticismFilter'] = self.eroticism_filter
+        if self.exclude_at_users_idx is not None:
+            result['excludeAtUsersIdx'] = self.exclude_at_users_idx
         if self.exclude_author_name_idx is not None:
             result['excludeAuthorNameIdx'] = self.exclude_author_name_idx
         if self.excluding_media_hosts_filter is not None:
@@ -1924,6 +1945,10 @@ class SearchCondition(TeaModel):
             result['likesCountMaxFilter'] = self.likes_count_max_filter
         if self.likes_count_min_filter is not None:
             result['likesCountMinFilter'] = self.likes_count_min_filter
+        if self.media_area_city_filter is not None:
+            result['mediaAreaCityFilter'] = self.media_area_city_filter
+        if self.media_area_province_filter is not None:
+            result['mediaAreaProvinceFilter'] = self.media_area_province_filter
         if self.media_hosts_filter is not None:
             result['mediaHostsFilter'] = self.media_hosts_filter
         if self.media_influence_score_max_filter is not None:
@@ -2000,6 +2025,8 @@ class SearchCondition(TeaModel):
             self.alipay_account_filter = m.get('alipayAccountFilter')
         if m.get('assKeywordsIdx') is not None:
             self.ass_keywords_idx = m.get('assKeywordsIdx')
+        if m.get('atUsersIdx') is not None:
+            self.at_users_idx = m.get('atUsersIdx')
         if m.get('audioCountMaxFilter') is not None:
             self.audio_count_max_filter = m.get('audioCountMaxFilter')
         if m.get('audioCountMinFilter') is not None:
@@ -2010,6 +2037,8 @@ class SearchCondition(TeaModel):
             self.author_followers_count_min_filter = m.get('authorFollowersCountMinFilter')
         if m.get('authorNameIdx') is not None:
             self.author_name_idx = m.get('authorNameIdx')
+        if m.get('authorSexFilter') is not None:
+            self.author_sex_filter = m.get('authorSexFilter')
         if m.get('authorVerifyTypeFilter') is not None:
             self.author_verify_type_filter = m.get('authorVerifyTypeFilter')
         if m.get('bizTagsIdx') is not None:
@@ -2056,6 +2085,8 @@ class SearchCondition(TeaModel):
             self.entity_name = m.get('entityName')
         if m.get('eroticismFilter') is not None:
             self.eroticism_filter = m.get('eroticismFilter')
+        if m.get('excludeAtUsersIdx') is not None:
+            self.exclude_at_users_idx = m.get('excludeAtUsersIdx')
         if m.get('excludeAuthorNameIdx') is not None:
             self.exclude_author_name_idx = m.get('excludeAuthorNameIdx')
         if m.get('excludingMediaHostsFilter') is not None:
@@ -2094,6 +2125,10 @@ class SearchCondition(TeaModel):
             self.likes_count_max_filter = m.get('likesCountMaxFilter')
         if m.get('likesCountMinFilter') is not None:
             self.likes_count_min_filter = m.get('likesCountMinFilter')
+        if m.get('mediaAreaCityFilter') is not None:
+            self.media_area_city_filter = m.get('mediaAreaCityFilter')
+        if m.get('mediaAreaProvinceFilter') is not None:
+            self.media_area_province_filter = m.get('mediaAreaProvinceFilter')
         if m.get('mediaHostsFilter') is not None:
             self.media_hosts_filter = m.get('mediaHostsFilter')
         if m.get('mediaInfluenceScoreMaxFilter') is not None:
