@@ -1,3 +1,6 @@
+2022-04-29 Version: 1.1.2
+- SeachTraces support TagMap.
+
 2021-03-30 Version: 1.1.1
 - Generated python 2019-08-08 for xtrace.
 

@@ -48,14 +48,18 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.GetTagKeyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ServiceName'] = request.service_name
-        query['SpanName'] = request.span_name
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.span_name):
+            query['SpanName'] = request.span_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTagKey',
@@ -65,7 +69,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -80,14 +84,18 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.GetTagKeyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ServiceName'] = request.service_name
-        query['SpanName'] = request.span_name
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.span_name):
+            query['SpanName'] = request.span_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTagKey',
@@ -97,7 +105,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -126,15 +134,20 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.GetTagValResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ServiceName'] = request.service_name
-        query['SpanName'] = request.span_name
-        query['TagKey'] = request.tag_key
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.span_name):
+            query['SpanName'] = request.span_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTagVal',
@@ -144,7 +157,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -159,15 +172,20 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.GetTagValResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ServiceName'] = request.service_name
-        query['SpanName'] = request.span_name
-        query['TagKey'] = request.tag_key
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.span_name):
+            query['SpanName'] = request.span_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTagVal',
@@ -177,7 +195,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -199,82 +217,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_tag_val_with_options_async(request, runtime)
 
-    def get_token_with_options(
-        self,
-        request: xtrace_20190808_models.GetTokenRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtrace_20190808_models.GetTokenResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['RegionId'] = request.region_id
-        query['AppType'] = request.app_type
-        query['ProxyUserId'] = request.proxy_user_id
-        query['IsForce'] = request.is_force
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetToken',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtrace_20190808_models.GetTokenResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_token_with_options_async(
-        self,
-        request: xtrace_20190808_models.GetTokenRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtrace_20190808_models.GetTokenResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['RegionId'] = request.region_id
-        query['AppType'] = request.app_type
-        query['ProxyUserId'] = request.proxy_user_id
-        query['IsForce'] = request.is_force
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetToken',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtrace_20190808_models.GetTokenResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_token(
-        self,
-        request: xtrace_20190808_models.GetTokenRequest,
-    ) -> xtrace_20190808_models.GetTokenResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_token_with_options(request, runtime)
-
-    async def get_token_async(
-        self,
-        request: xtrace_20190808_models.GetTokenRequest,
-    ) -> xtrace_20190808_models.GetTokenResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_token_with_options_async(request, runtime)
-
     def get_trace_with_options(
         self,
         request: xtrace_20190808_models.GetTraceRequest,
@@ -282,12 +224,14 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.GetTraceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TraceID'] = request.trace_id
-        query['AppType'] = request.app_type
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.trace_id):
+            query['TraceID'] = request.trace_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTrace',
@@ -297,7 +241,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -312,12 +256,14 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.GetTraceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TraceID'] = request.trace_id
-        query['AppType'] = request.app_type
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.trace_id):
+            query['TraceID'] = request.trace_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTrace',
@@ -327,7 +273,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -356,13 +302,16 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.ListIpOrHostsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ServiceName'] = request.service_name
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListIpOrHosts',
@@ -372,7 +321,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -387,13 +336,16 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.ListIpOrHostsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ServiceName'] = request.service_name
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListIpOrHosts',
@@ -403,7 +355,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -432,11 +384,12 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.ListServicesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListServices',
@@ -446,7 +399,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -461,11 +414,12 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.ListServicesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListServices',
@@ -475,7 +429,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -504,13 +458,16 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.ListSpanNamesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ServiceName'] = request.service_name
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSpanNames',
@@ -520,7 +477,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -535,13 +492,16 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.ListSpanNamesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ServiceName'] = request.service_name
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSpanNames',
@@ -551,7 +511,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -580,20 +540,30 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.QueryMetricResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IntervalInSec'] = request.interval_in_sec
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['OrderBy'] = request.order_by
-        query['Limit'] = request.limit
-        query['Metric'] = request.metric
-        query['Order'] = request.order
-        query['ProxyUserId'] = request.proxy_user_id
-        query['Filters'] = request.filters
-        query['Dimensions'] = request.dimensions
-        query['Measures'] = request.measures
+        if not UtilClient.is_unset(request.dimensions):
+            query['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
+        if not UtilClient.is_unset(request.interval_in_sec):
+            query['IntervalInSec'] = request.interval_in_sec
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.measures):
+            query['Measures'] = request.measures
+        if not UtilClient.is_unset(request.metric):
+            query['Metric'] = request.metric
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.proxy_user_id):
+            query['ProxyUserId'] = request.proxy_user_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMetric',
@@ -603,7 +573,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -618,20 +588,30 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.QueryMetricResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IntervalInSec'] = request.interval_in_sec
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['OrderBy'] = request.order_by
-        query['Limit'] = request.limit
-        query['Metric'] = request.metric
-        query['Order'] = request.order
-        query['ProxyUserId'] = request.proxy_user_id
-        query['Filters'] = request.filters
-        query['Dimensions'] = request.dimensions
-        query['Measures'] = request.measures
+        if not UtilClient.is_unset(request.dimensions):
+            query['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
+        if not UtilClient.is_unset(request.interval_in_sec):
+            query['IntervalInSec'] = request.interval_in_sec
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.measures):
+            query['Measures'] = request.measures
+        if not UtilClient.is_unset(request.metric):
+            query['Metric'] = request.metric
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.proxy_user_id):
+            query['ProxyUserId'] = request.proxy_user_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMetric',
@@ -641,7 +621,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -670,21 +650,32 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.SearchTracesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['RegionId'] = request.region_id
-        query['ServiceName'] = request.service_name
-        query['OperationName'] = request.operation_name
-        query['MinDuration'] = request.min_duration
-        query['AppType'] = request.app_type
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Reverse'] = request.reverse
-        query['ServiceIp'] = request.service_ip
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.min_duration):
+            query['MinDuration'] = request.min_duration
+        if not UtilClient.is_unset(request.operation_name):
+            query['OperationName'] = request.operation_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reverse):
+            query['Reverse'] = request.reverse
+        if not UtilClient.is_unset(request.service_ip):
+            query['ServiceIp'] = request.service_ip
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SearchTraces',
@@ -694,7 +685,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -709,21 +700,32 @@ class Client(OpenApiClient):
     ) -> xtrace_20190808_models.SearchTracesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['RegionId'] = request.region_id
-        query['ServiceName'] = request.service_name
-        query['OperationName'] = request.operation_name
-        query['MinDuration'] = request.min_duration
-        query['AppType'] = request.app_type
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Reverse'] = request.reverse
-        query['ServiceIp'] = request.service_ip
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.min_duration):
+            query['MinDuration'] = request.min_duration
+        if not UtilClient.is_unset(request.operation_name):
+            query['OperationName'] = request.operation_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reverse):
+            query['Reverse'] = request.reverse
+        if not UtilClient.is_unset(request.service_ip):
+            query['ServiceIp'] = request.service_ip
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SearchTraces',
@@ -733,7 +735,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
