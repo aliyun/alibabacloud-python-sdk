@@ -1,3 +1,6 @@
+2022-04-29 Version: 1.1.1
+- 更新防火墙python3 sdk
+
 2021-10-19 Version: 1.1.0
 - Generated python 2017-12-07 for Cloudfw.
 

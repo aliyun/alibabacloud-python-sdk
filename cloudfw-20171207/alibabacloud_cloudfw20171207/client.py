@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_cloudfw20171207 import models as cloudfw_20171207_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -50,12 +51,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddAddressBookResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_list):
+            query['AddressList'] = request.address_list
+        if not UtilClient.is_unset(request.auto_add_tag_ecs):
+            query['AutoAddTagEcs'] = request.auto_add_tag_ecs
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_type):
+            query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.tag_list):
+            query['TagList'] = request.tag_list
+        if not UtilClient.is_unset(request.tag_relation):
+            query['TagRelation'] = request.tag_relation
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddAddressBook',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.AddAddressBookResponse(),
-            self.do_rpcrequest('AddAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_address_book_with_options_async(
@@ -64,12 +95,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddAddressBookResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_list):
+            query['AddressList'] = request.address_list
+        if not UtilClient.is_unset(request.auto_add_tag_ecs):
+            query['AutoAddTagEcs'] = request.auto_add_tag_ecs
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_type):
+            query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.tag_list):
+            query['TagList'] = request.tag_list
+        if not UtilClient.is_unset(request.tag_relation):
+            query['TagRelation'] = request.tag_relation
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddAddressBook',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.AddAddressBookResponse(),
-            await self.do_rpcrequest_async('AddAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_address_book(
@@ -92,12 +153,60 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.application_name_list):
+            query['ApplicationNameList'] = request.application_name_list
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dest_port):
+            query['DestPort'] = request.dest_port
+        if not UtilClient.is_unset(request.dest_port_group):
+            query['DestPortGroup'] = request.dest_port_group
+        if not UtilClient.is_unset(request.dest_port_type):
+            query['DestPortType'] = request.dest_port_type
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.new_order):
+            query['NewOrder'] = request.new_order
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.AddControlPolicyResponse(),
-            self.do_rpcrequest('AddControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_control_policy_with_options_async(
@@ -106,12 +215,60 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.application_name_list):
+            query['ApplicationNameList'] = request.application_name_list
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dest_port):
+            query['DestPort'] = request.dest_port
+        if not UtilClient.is_unset(request.dest_port_group):
+            query['DestPortGroup'] = request.dest_port_group
+        if not UtilClient.is_unset(request.dest_port_type):
+            query['DestPortType'] = request.dest_port_type
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.new_order):
+            query['NewOrder'] = request.new_order
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.AddControlPolicyResponse(),
-            await self.do_rpcrequest_async('AddControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_control_policy(
@@ -134,12 +291,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddInstanceMembersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.members):
+            query['Members'] = request.members
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddInstanceMembers',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.AddInstanceMembersResponse(),
-            self.do_rpcrequest('AddInstanceMembers', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_instance_members_with_options_async(
@@ -148,12 +319,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddInstanceMembersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.members):
+            query['Members'] = request.members
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddInstanceMembers',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.AddInstanceMembersResponse(),
-            await self.do_rpcrequest_async('AddInstanceMembers', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_instance_members(
@@ -170,18 +355,344 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_instance_members_with_options_async(request, runtime)
 
+    def batch_copy_vpc_firewall_control_policy_with_options(
+        self,
+        request: cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.source_vpc_firewall_id):
+            query['SourceVpcFirewallId'] = request.source_vpc_firewall_id
+        if not UtilClient.is_unset(request.target_vpc_firewall_id):
+            query['TargetVpcFirewallId'] = request.target_vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchCopyVpcFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_copy_vpc_firewall_control_policy_with_options_async(
+        self,
+        request: cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.source_vpc_firewall_id):
+            query['SourceVpcFirewallId'] = request.source_vpc_firewall_id
+        if not UtilClient.is_unset(request.target_vpc_firewall_id):
+            query['TargetVpcFirewallId'] = request.target_vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchCopyVpcFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_copy_vpc_firewall_control_policy(
+        self,
+        request: cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyRequest,
+    ) -> cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_copy_vpc_firewall_control_policy_with_options(request, runtime)
+
+    async def batch_copy_vpc_firewall_control_policy_async(
+        self,
+        request: cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyRequest,
+    ) -> cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_copy_vpc_firewall_control_policy_with_options_async(request, runtime)
+
+    def create_vpc_firewall_cen_configure_with_options(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallCenConfigureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallCenConfigureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.firewall_switch):
+            query['FirewallSwitch'] = request.firewall_switch
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.network_instance_id):
+            query['NetworkInstanceId'] = request.network_instance_id
+        if not UtilClient.is_unset(request.vpc_firewall_name):
+            query['VpcFirewallName'] = request.vpc_firewall_name
+        if not UtilClient.is_unset(request.vpc_region):
+            query['VpcRegion'] = request.vpc_region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVpcFirewallCenConfigure',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateVpcFirewallCenConfigureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vpc_firewall_cen_configure_with_options_async(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallCenConfigureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallCenConfigureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.firewall_switch):
+            query['FirewallSwitch'] = request.firewall_switch
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.network_instance_id):
+            query['NetworkInstanceId'] = request.network_instance_id
+        if not UtilClient.is_unset(request.vpc_firewall_name):
+            query['VpcFirewallName'] = request.vpc_firewall_name
+        if not UtilClient.is_unset(request.vpc_region):
+            query['VpcRegion'] = request.vpc_region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVpcFirewallCenConfigure',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateVpcFirewallCenConfigureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vpc_firewall_cen_configure(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallCenConfigureRequest,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallCenConfigureResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_vpc_firewall_cen_configure_with_options(request, runtime)
+
+    async def create_vpc_firewall_cen_configure_async(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallCenConfigureRequest,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallCenConfigureResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_vpc_firewall_cen_configure_with_options_async(request, runtime)
+
+    def create_vpc_firewall_configure_with_options(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallConfigureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallConfigureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_switch):
+            query['FirewallSwitch'] = request.firewall_switch
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.local_vpc_cidr_table_list):
+            query['LocalVpcCidrTableList'] = request.local_vpc_cidr_table_list
+        if not UtilClient.is_unset(request.local_vpc_id):
+            query['LocalVpcId'] = request.local_vpc_id
+        if not UtilClient.is_unset(request.local_vpc_region):
+            query['LocalVpcRegion'] = request.local_vpc_region
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.peer_vpc_cidr_table_list):
+            query['PeerVpcCidrTableList'] = request.peer_vpc_cidr_table_list
+        if not UtilClient.is_unset(request.peer_vpc_id):
+            query['PeerVpcId'] = request.peer_vpc_id
+        if not UtilClient.is_unset(request.peer_vpc_region):
+            query['PeerVpcRegion'] = request.peer_vpc_region
+        if not UtilClient.is_unset(request.vpc_firewall_name):
+            query['VpcFirewallName'] = request.vpc_firewall_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVpcFirewallConfigure',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateVpcFirewallConfigureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vpc_firewall_configure_with_options_async(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallConfigureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallConfigureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_switch):
+            query['FirewallSwitch'] = request.firewall_switch
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.local_vpc_cidr_table_list):
+            query['LocalVpcCidrTableList'] = request.local_vpc_cidr_table_list
+        if not UtilClient.is_unset(request.local_vpc_id):
+            query['LocalVpcId'] = request.local_vpc_id
+        if not UtilClient.is_unset(request.local_vpc_region):
+            query['LocalVpcRegion'] = request.local_vpc_region
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.peer_vpc_cidr_table_list):
+            query['PeerVpcCidrTableList'] = request.peer_vpc_cidr_table_list
+        if not UtilClient.is_unset(request.peer_vpc_id):
+            query['PeerVpcId'] = request.peer_vpc_id
+        if not UtilClient.is_unset(request.peer_vpc_region):
+            query['PeerVpcRegion'] = request.peer_vpc_region
+        if not UtilClient.is_unset(request.vpc_firewall_name):
+            query['VpcFirewallName'] = request.vpc_firewall_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVpcFirewallConfigure',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateVpcFirewallConfigureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vpc_firewall_configure(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallConfigureRequest,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallConfigureResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_vpc_firewall_configure_with_options(request, runtime)
+
+    async def create_vpc_firewall_configure_async(
+        self,
+        request: cloudfw_20171207_models.CreateVpcFirewallConfigureRequest,
+    ) -> cloudfw_20171207_models.CreateVpcFirewallConfigureResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_vpc_firewall_configure_with_options_async(request, runtime)
+
     def create_vpc_firewall_control_policy_with_options(
         self,
         request: cloudfw_20171207_models.CreateVpcFirewallControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateVpcFirewallControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dest_port):
+            query['DestPort'] = request.dest_port
+        if not UtilClient.is_unset(request.dest_port_group):
+            query['DestPortGroup'] = request.dest_port_group
+        if not UtilClient.is_unset(request.dest_port_type):
+            query['DestPortType'] = request.dest_port_type
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.new_order):
+            query['NewOrder'] = request.new_order
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVpcFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.CreateVpcFirewallControlPolicyResponse(),
-            self.do_rpcrequest('CreateVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_vpc_firewall_control_policy_with_options_async(
@@ -190,12 +701,56 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateVpcFirewallControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dest_port):
+            query['DestPort'] = request.dest_port
+        if not UtilClient.is_unset(request.dest_port_group):
+            query['DestPortGroup'] = request.dest_port_group
+        if not UtilClient.is_unset(request.dest_port_type):
+            query['DestPortType'] = request.dest_port_type
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.new_order):
+            query['NewOrder'] = request.new_order
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVpcFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.CreateVpcFirewallControlPolicyResponse(),
-            await self.do_rpcrequest_async('CreateVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_vpc_firewall_control_policy(
@@ -218,12 +773,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteAddressBookResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_uuid):
+            query['GroupUuid'] = request.group_uuid
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAddressBook',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DeleteAddressBookResponse(),
-            self.do_rpcrequest('DeleteAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_address_book_with_options_async(
@@ -232,12 +805,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteAddressBookResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_uuid):
+            query['GroupUuid'] = request.group_uuid
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAddressBook',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DeleteAddressBookResponse(),
-            await self.do_rpcrequest_async('DeleteAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_address_book(
@@ -260,12 +851,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DeleteControlPolicyResponse(),
-            self.do_rpcrequest('DeleteControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_control_policy_with_options_async(
@@ -274,12 +885,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DeleteControlPolicyResponse(),
-            await self.do_rpcrequest_async('DeleteControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_control_policy(
@@ -302,12 +933,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteInstanceMembersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.member_uids):
+            query['MemberUids'] = request.member_uids
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceMembers',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DeleteInstanceMembersResponse(),
-            self.do_rpcrequest('DeleteInstanceMembers', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_instance_members_with_options_async(
@@ -316,12 +961,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteInstanceMembersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.member_uids):
+            query['MemberUids'] = request.member_uids
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceMembers',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DeleteInstanceMembersResponse(),
-            await self.do_rpcrequest_async('DeleteInstanceMembers', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_instance_members(
@@ -338,18 +997,192 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_instance_members_with_options_async(request, runtime)
 
+    def delete_vpc_firewall_cen_configure_with_options(
+        self,
+        request: cloudfw_20171207_models.DeleteVpcFirewallCenConfigureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteVpcFirewallCenConfigureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.vpc_firewall_id_list):
+            query['VpcFirewallIdList'] = request.vpc_firewall_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVpcFirewallCenConfigure',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteVpcFirewallCenConfigureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_vpc_firewall_cen_configure_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DeleteVpcFirewallCenConfigureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteVpcFirewallCenConfigureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.vpc_firewall_id_list):
+            query['VpcFirewallIdList'] = request.vpc_firewall_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVpcFirewallCenConfigure',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteVpcFirewallCenConfigureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_vpc_firewall_cen_configure(
+        self,
+        request: cloudfw_20171207_models.DeleteVpcFirewallCenConfigureRequest,
+    ) -> cloudfw_20171207_models.DeleteVpcFirewallCenConfigureResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_vpc_firewall_cen_configure_with_options(request, runtime)
+
+    async def delete_vpc_firewall_cen_configure_async(
+        self,
+        request: cloudfw_20171207_models.DeleteVpcFirewallCenConfigureRequest,
+    ) -> cloudfw_20171207_models.DeleteVpcFirewallCenConfigureResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_vpc_firewall_cen_configure_with_options_async(request, runtime)
+
+    def delete_vpc_firewall_configure_with_options(
+        self,
+        request: cloudfw_20171207_models.DeleteVpcFirewallConfigureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteVpcFirewallConfigureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.vpc_firewall_id_list):
+            query['VpcFirewallIdList'] = request.vpc_firewall_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVpcFirewallConfigure',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteVpcFirewallConfigureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_vpc_firewall_configure_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DeleteVpcFirewallConfigureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteVpcFirewallConfigureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.vpc_firewall_id_list):
+            query['VpcFirewallIdList'] = request.vpc_firewall_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVpcFirewallConfigure',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteVpcFirewallConfigureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_vpc_firewall_configure(
+        self,
+        request: cloudfw_20171207_models.DeleteVpcFirewallConfigureRequest,
+    ) -> cloudfw_20171207_models.DeleteVpcFirewallConfigureResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_vpc_firewall_configure_with_options(request, runtime)
+
+    async def delete_vpc_firewall_configure_async(
+        self,
+        request: cloudfw_20171207_models.DeleteVpcFirewallConfigureRequest,
+    ) -> cloudfw_20171207_models.DeleteVpcFirewallConfigureResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_vpc_firewall_configure_with_options_async(request, runtime)
+
     def delete_vpc_firewall_control_policy_with_options(
         self,
         request: cloudfw_20171207_models.DeleteVpcFirewallControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteVpcFirewallControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVpcFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DeleteVpcFirewallControlPolicyResponse(),
-            self.do_rpcrequest('DeleteVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_vpc_firewall_control_policy_with_options_async(
@@ -358,12 +1191,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteVpcFirewallControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVpcFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DeleteVpcFirewallControlPolicyResponse(),
-            await self.do_rpcrequest_async('DeleteVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_vpc_firewall_control_policy(
@@ -386,12 +1237,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeAddressBookResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contain_port):
+            query['ContainPort'] = request.contain_port
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.group_type):
+            query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAddressBook',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeAddressBookResponse(),
-            self.do_rpcrequest('DescribeAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_address_book_with_options_async(
@@ -400,12 +1279,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeAddressBookResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contain_port):
+            query['ContainPort'] = request.contain_port
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.group_type):
+            query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAddressBook',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeAddressBookResponse(),
-            await self.do_rpcrequest_async('DescribeAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_address_book(
@@ -428,12 +1335,50 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeAssetListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.search_item):
+            query['SearchItem'] = request.search_item
+        if not UtilClient.is_unset(request.sg_status):
+            query['SgStatus'] = request.sg_status
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAssetList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeAssetListResponse(),
-            self.do_rpcrequest('DescribeAssetList', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_asset_list_with_options_async(
@@ -442,12 +1387,50 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeAssetListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.search_item):
+            query['SearchItem'] = request.search_item
+        if not UtilClient.is_unset(request.sg_status):
+            query['SgStatus'] = request.sg_status
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAssetList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeAssetListResponse(),
-            await self.do_rpcrequest_async('DescribeAssetList', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_asset_list(
@@ -470,12 +1453,52 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeControlPolicyResponse(),
-            self.do_rpcrequest('DescribeControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_control_policy_with_options_async(
@@ -484,12 +1507,52 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeControlPolicyResponse(),
-            await self.do_rpcrequest_async('DescribeControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_control_policy(
@@ -512,12 +1575,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDomainResolveResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainResolve',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeDomainResolveResponse(),
-            self.do_rpcrequest('DescribeDomainResolve', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_resolve_with_options_async(
@@ -526,12 +1611,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDomainResolveResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainResolve',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeDomainResolveResponse(),
-            await self.do_rpcrequest_async('DescribeDomainResolve', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_resolve(
@@ -554,12 +1661,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeInstanceMembersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.member_desc):
+            query['MemberDesc'] = request.member_desc
+        if not UtilClient.is_unset(request.member_display_name):
+            query['MemberDisplayName'] = request.member_display_name
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceMembers',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeInstanceMembersResponse(),
-            self.do_rpcrequest('DescribeInstanceMembers', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_instance_members_with_options_async(
@@ -568,12 +1697,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeInstanceMembersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.member_desc):
+            query['MemberDesc'] = request.member_desc
+        if not UtilClient.is_unset(request.member_display_name):
+            query['MemberDisplayName'] = request.member_display_name
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceMembers',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeInstanceMembersResponse(),
-            await self.do_rpcrequest_async('DescribeInstanceMembers', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_instance_members(
@@ -596,12 +1747,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePolicyAdvancedConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolicyAdvancedConfig',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribePolicyAdvancedConfigResponse(),
-            self.do_rpcrequest('DescribePolicyAdvancedConfig', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_policy_advanced_config_with_options_async(
@@ -610,12 +1779,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePolicyAdvancedConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolicyAdvancedConfig',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribePolicyAdvancedConfigResponse(),
-            await self.do_rpcrequest_async('DescribePolicyAdvancedConfig', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_policy_advanced_config(
@@ -638,12 +1825,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePolicyPriorUsedResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolicyPriorUsed',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribePolicyPriorUsedResponse(),
-            self.do_rpcrequest('DescribePolicyPriorUsed', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_policy_prior_used_with_options_async(
@@ -652,12 +1859,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePolicyPriorUsedResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolicyPriorUsed',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribePolicyPriorUsedResponse(),
-            await self.do_rpcrequest_async('DescribePolicyPriorUsed', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_policy_prior_used(
@@ -680,12 +1907,64 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeRiskEventGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attack_app):
+            query['AttackApp'] = request.attack_app
+        if not UtilClient.is_unset(request.attack_type):
+            query['AttackType'] = request.attack_type
+        if not UtilClient.is_unset(request.buy_version):
+            query['BuyVersion'] = request.buy_version
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.dst_ip):
+            query['DstIP'] = request.dst_ip
+        if not UtilClient.is_unset(request.dst_network_instance_id):
+            query['DstNetworkInstanceId'] = request.dst_network_instance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.firewall_type):
+            query['FirewallType'] = request.firewall_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.no_location):
+            query['NoLocation'] = request.no_location
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_result):
+            query['RuleResult'] = request.rule_result
+        if not UtilClient.is_unset(request.rule_source):
+            query['RuleSource'] = request.rule_source
+        if not UtilClient.is_unset(request.src_ip):
+            query['SrcIP'] = request.src_ip
+        if not UtilClient.is_unset(request.src_network_instance_id):
+            query['SrcNetworkInstanceId'] = request.src_network_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.vul_level):
+            query['VulLevel'] = request.vul_level
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRiskEventGroup',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeRiskEventGroupResponse(),
-            self.do_rpcrequest('DescribeRiskEventGroup', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_risk_event_group_with_options_async(
@@ -694,12 +1973,64 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeRiskEventGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attack_app):
+            query['AttackApp'] = request.attack_app
+        if not UtilClient.is_unset(request.attack_type):
+            query['AttackType'] = request.attack_type
+        if not UtilClient.is_unset(request.buy_version):
+            query['BuyVersion'] = request.buy_version
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.dst_ip):
+            query['DstIP'] = request.dst_ip
+        if not UtilClient.is_unset(request.dst_network_instance_id):
+            query['DstNetworkInstanceId'] = request.dst_network_instance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.firewall_type):
+            query['FirewallType'] = request.firewall_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.no_location):
+            query['NoLocation'] = request.no_location
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_result):
+            query['RuleResult'] = request.rule_result
+        if not UtilClient.is_unset(request.rule_source):
+            query['RuleSource'] = request.rule_source
+        if not UtilClient.is_unset(request.src_ip):
+            query['SrcIP'] = request.src_ip
+        if not UtilClient.is_unset(request.src_network_instance_id):
+            query['SrcNetworkInstanceId'] = request.src_network_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.vul_level):
+            query['VulLevel'] = request.vul_level
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRiskEventGroup',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeRiskEventGroupResponse(),
-            await self.do_rpcrequest_async('DescribeRiskEventGroup', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_risk_event_group(
@@ -722,12 +2053,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallAclGroupListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.firewall_configure_status):
+            query['FirewallConfigureStatus'] = request.firewall_configure_status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallAclGroupList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeVpcFirewallAclGroupListResponse(),
-            self.do_rpcrequest('DescribeVpcFirewallAclGroupList', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vpc_firewall_acl_group_list_with_options_async(
@@ -736,12 +2089,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallAclGroupListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.firewall_configure_status):
+            query['FirewallConfigureStatus'] = request.firewall_configure_status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallAclGroupList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeVpcFirewallAclGroupListResponse(),
-            await self.do_rpcrequest_async('DescribeVpcFirewallAclGroupList', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vpc_firewall_acl_group_list(
@@ -758,18 +2133,254 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vpc_firewall_acl_group_list_with_options_async(request, runtime)
 
+    def describe_vpc_firewall_cen_detail_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallCenDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallCenDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.network_instance_id):
+            query['NetworkInstanceId'] = request.network_instance_id
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallCenDetail',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallCenDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vpc_firewall_cen_detail_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallCenDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallCenDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.network_instance_id):
+            query['NetworkInstanceId'] = request.network_instance_id
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallCenDetail',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallCenDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vpc_firewall_cen_detail(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallCenDetailRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallCenDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vpc_firewall_cen_detail_with_options(request, runtime)
+
+    async def describe_vpc_firewall_cen_detail_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallCenDetailRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallCenDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vpc_firewall_cen_detail_with_options_async(request, runtime)
+
+    def describe_vpc_firewall_cen_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallCenListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallCenListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.firewall_switch_status):
+            query['FirewallSwitchStatus'] = request.firewall_switch_status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.network_instance_id):
+            query['NetworkInstanceId'] = request.network_instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.route_mode):
+            query['RouteMode'] = request.route_mode
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        if not UtilClient.is_unset(request.vpc_firewall_name):
+            query['VpcFirewallName'] = request.vpc_firewall_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallCenList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallCenListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vpc_firewall_cen_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallCenListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallCenListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.firewall_switch_status):
+            query['FirewallSwitchStatus'] = request.firewall_switch_status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.network_instance_id):
+            query['NetworkInstanceId'] = request.network_instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.route_mode):
+            query['RouteMode'] = request.route_mode
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        if not UtilClient.is_unset(request.vpc_firewall_name):
+            query['VpcFirewallName'] = request.vpc_firewall_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallCenList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallCenListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vpc_firewall_cen_list(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallCenListRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallCenListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vpc_firewall_cen_list_with_options(request, runtime)
+
+    async def describe_vpc_firewall_cen_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallCenListRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallCenListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vpc_firewall_cen_list_with_options_async(request, runtime)
+
     def describe_vpc_firewall_control_policy_with_options(
         self,
         request: cloudfw_20171207_models.DescribeVpcFirewallControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse(),
-            self.do_rpcrequest('DescribeVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vpc_firewall_control_policy_with_options_async(
@@ -778,12 +2389,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse(),
-            await self.do_rpcrequest_async('DescribeVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vpc_firewall_control_policy(
@@ -800,18 +2447,300 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vpc_firewall_control_policy_with_options_async(request, runtime)
 
+    def describe_vpc_firewall_default_ipsconfig_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallDefaultIPSConfig',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vpc_firewall_default_ipsconfig_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallDefaultIPSConfig',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vpc_firewall_default_ipsconfig(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vpc_firewall_default_ipsconfig_with_options(request, runtime)
+
+    async def describe_vpc_firewall_default_ipsconfig_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vpc_firewall_default_ipsconfig_with_options_async(request, runtime)
+
+    def describe_vpc_firewall_detail_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.local_vpc_id):
+            query['LocalVpcId'] = request.local_vpc_id
+        if not UtilClient.is_unset(request.peer_vpc_id):
+            query['PeerVpcId'] = request.peer_vpc_id
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallDetail',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vpc_firewall_detail_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.local_vpc_id):
+            query['LocalVpcId'] = request.local_vpc_id
+        if not UtilClient.is_unset(request.peer_vpc_id):
+            query['PeerVpcId'] = request.peer_vpc_id
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallDetail',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vpc_firewall_detail(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallDetailRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vpc_firewall_detail_with_options(request, runtime)
+
+    async def describe_vpc_firewall_detail_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallDetailRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vpc_firewall_detail_with_options_async(request, runtime)
+
+    def describe_vpc_firewall_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.firewall_switch_status):
+            query['FirewallSwitchStatus'] = request.firewall_switch_status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        if not UtilClient.is_unset(request.vpc_firewall_name):
+            query['VpcFirewallName'] = request.vpc_firewall_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vpc_firewall_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.firewall_switch_status):
+            query['FirewallSwitchStatus'] = request.firewall_switch_status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        if not UtilClient.is_unset(request.vpc_firewall_name):
+            query['VpcFirewallName'] = request.vpc_firewall_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVpcFirewallListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vpc_firewall_list(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallListRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vpc_firewall_list_with_options(request, runtime)
+
+    async def describe_vpc_firewall_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVpcFirewallListRequest,
+    ) -> cloudfw_20171207_models.DescribeVpcFirewallListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vpc_firewall_list_with_options_async(request, runtime)
+
     def describe_vpc_firewall_policy_prior_used_with_options(
         self,
         request: cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallPolicyPriorUsed',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedResponse(),
-            self.do_rpcrequest('DescribeVpcFirewallPolicyPriorUsed', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vpc_firewall_policy_prior_used_with_options_async(
@@ -820,12 +2749,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcFirewallPolicyPriorUsed',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedResponse(),
-            await self.do_rpcrequest_async('DescribeVpcFirewallPolicyPriorUsed', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vpc_firewall_policy_prior_used(
@@ -848,12 +2793,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyAddressBookResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_list):
+            query['AddressList'] = request.address_list
+        if not UtilClient.is_unset(request.auto_add_tag_ecs):
+            query['AutoAddTagEcs'] = request.auto_add_tag_ecs
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_uuid):
+            query['GroupUuid'] = request.group_uuid
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.tag_list):
+            query['TagList'] = request.tag_list
+        if not UtilClient.is_unset(request.tag_relation):
+            query['TagRelation'] = request.tag_relation
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAddressBook',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ModifyAddressBookResponse(),
-            self.do_rpcrequest('ModifyAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_address_book_with_options_async(
@@ -862,12 +2837,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyAddressBookResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_list):
+            query['AddressList'] = request.address_list
+        if not UtilClient.is_unset(request.auto_add_tag_ecs):
+            query['AutoAddTagEcs'] = request.auto_add_tag_ecs
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_uuid):
+            query['GroupUuid'] = request.group_uuid
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.tag_list):
+            query['TagList'] = request.tag_list
+        if not UtilClient.is_unset(request.tag_relation):
+            query['TagRelation'] = request.tag_relation
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAddressBook',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ModifyAddressBookResponse(),
-            await self.do_rpcrequest_async('ModifyAddressBook', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_address_book(
@@ -890,12 +2895,60 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.application_name_list):
+            query['ApplicationNameList'] = request.application_name_list
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dest_port):
+            query['DestPort'] = request.dest_port
+        if not UtilClient.is_unset(request.dest_port_group):
+            query['DestPortGroup'] = request.dest_port_group
+        if not UtilClient.is_unset(request.dest_port_type):
+            query['DestPortType'] = request.dest_port_type
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ModifyControlPolicyResponse(),
-            self.do_rpcrequest('ModifyControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_control_policy_with_options_async(
@@ -904,12 +2957,60 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.application_name_list):
+            query['ApplicationNameList'] = request.application_name_list
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dest_port):
+            query['DestPort'] = request.dest_port
+        if not UtilClient.is_unset(request.dest_port_group):
+            query['DestPortGroup'] = request.dest_port_group
+        if not UtilClient.is_unset(request.dest_port_type):
+            query['DestPortType'] = request.dest_port_type
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ModifyControlPolicyResponse(),
-            await self.do_rpcrequest_async('ModifyControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_control_policy(
@@ -932,12 +3033,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyControlPolicyPositionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.new_order):
+            query['NewOrder'] = request.new_order
+        if not UtilClient.is_unset(request.old_order):
+            query['OldOrder'] = request.old_order
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyControlPolicyPosition',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ModifyControlPolicyPositionResponse(),
-            self.do_rpcrequest('ModifyControlPolicyPosition', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_control_policy_position_with_options_async(
@@ -946,12 +3069,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyControlPolicyPositionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.new_order):
+            query['NewOrder'] = request.new_order
+        if not UtilClient.is_unset(request.old_order):
+            query['OldOrder'] = request.old_order
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyControlPolicyPosition',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ModifyControlPolicyPositionResponse(),
-            await self.do_rpcrequest_async('ModifyControlPolicyPosition', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_control_policy_position(
@@ -974,12 +3119,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyInstanceMemberAttributesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.members):
+            query['Members'] = request.members
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceMemberAttributes',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ModifyInstanceMemberAttributesResponse(),
-            self.do_rpcrequest('ModifyInstanceMemberAttributes', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_instance_member_attributes_with_options_async(
@@ -988,12 +3147,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyInstanceMemberAttributesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.members):
+            query['Members'] = request.members
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceMemberAttributes',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ModifyInstanceMemberAttributesResponse(),
-            await self.do_rpcrequest_async('ModifyInstanceMemberAttributes', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_instance_member_attributes(
@@ -1016,12 +3189,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyPolicyAdvancedConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.internet_switch):
+            query['InternetSwitch'] = request.internet_switch
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPolicyAdvancedConfig',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ModifyPolicyAdvancedConfigResponse(),
-            self.do_rpcrequest('ModifyPolicyAdvancedConfig', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_policy_advanced_config_with_options_async(
@@ -1030,12 +3221,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyPolicyAdvancedConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.internet_switch):
+            query['InternetSwitch'] = request.internet_switch
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPolicyAdvancedConfig',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ModifyPolicyAdvancedConfigResponse(),
-            await self.do_rpcrequest_async('ModifyPolicyAdvancedConfig', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_policy_advanced_config(
@@ -1052,18 +3261,314 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_policy_advanced_config_with_options_async(request, runtime)
 
+    def modify_vpc_firewall_cen_configure_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallCenConfigureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallCenConfigureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        if not UtilClient.is_unset(request.vpc_firewall_name):
+            query['VpcFirewallName'] = request.vpc_firewall_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallCenConfigure',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallCenConfigureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_vpc_firewall_cen_configure_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallCenConfigureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallCenConfigureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        if not UtilClient.is_unset(request.vpc_firewall_name):
+            query['VpcFirewallName'] = request.vpc_firewall_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallCenConfigure',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallCenConfigureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_vpc_firewall_cen_configure(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallCenConfigureRequest,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallCenConfigureResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_vpc_firewall_cen_configure_with_options(request, runtime)
+
+    async def modify_vpc_firewall_cen_configure_async(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallCenConfigureRequest,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallCenConfigureResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_vpc_firewall_cen_configure_with_options_async(request, runtime)
+
+    def modify_vpc_firewall_cen_switch_status_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_switch):
+            query['FirewallSwitch'] = request.firewall_switch
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallCenSwitchStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_vpc_firewall_cen_switch_status_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_switch):
+            query['FirewallSwitch'] = request.firewall_switch
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallCenSwitchStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_vpc_firewall_cen_switch_status(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusRequest,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_vpc_firewall_cen_switch_status_with_options(request, runtime)
+
+    async def modify_vpc_firewall_cen_switch_status_async(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusRequest,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_vpc_firewall_cen_switch_status_with_options_async(request, runtime)
+
+    def modify_vpc_firewall_configure_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallConfigureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallConfigureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.local_vpc_cidr_table_list):
+            query['LocalVpcCidrTableList'] = request.local_vpc_cidr_table_list
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.peer_vpc_cidr_table_list):
+            query['PeerVpcCidrTableList'] = request.peer_vpc_cidr_table_list
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        if not UtilClient.is_unset(request.vpc_firewall_name):
+            query['VpcFirewallName'] = request.vpc_firewall_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallConfigure',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallConfigureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_vpc_firewall_configure_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallConfigureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallConfigureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.local_vpc_cidr_table_list):
+            query['LocalVpcCidrTableList'] = request.local_vpc_cidr_table_list
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.peer_vpc_cidr_table_list):
+            query['PeerVpcCidrTableList'] = request.peer_vpc_cidr_table_list
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        if not UtilClient.is_unset(request.vpc_firewall_name):
+            query['VpcFirewallName'] = request.vpc_firewall_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallConfigure',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallConfigureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_vpc_firewall_configure(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallConfigureRequest,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallConfigureResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_vpc_firewall_configure_with_options(request, runtime)
+
+    async def modify_vpc_firewall_configure_async(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallConfigureRequest,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallConfigureResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_vpc_firewall_configure_with_options_async(request, runtime)
+
     def modify_vpc_firewall_control_policy_with_options(
         self,
         request: cloudfw_20171207_models.ModifyVpcFirewallControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dest_port):
+            query['DestPort'] = request.dest_port
+        if not UtilClient.is_unset(request.dest_port_group):
+            query['DestPortGroup'] = request.dest_port_group
+        if not UtilClient.is_unset(request.dest_port_type):
+            query['DestPortType'] = request.dest_port_type
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse(),
-            self.do_rpcrequest('ModifyVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_vpc_firewall_control_policy_with_options_async(
@@ -1072,12 +3577,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_action):
+            query['AclAction'] = request.acl_action
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dest_port):
+            query['DestPort'] = request.dest_port
+        if not UtilClient.is_unset(request.dest_port_group):
+            query['DestPortGroup'] = request.dest_port_group
+        if not UtilClient.is_unset(request.dest_port_type):
+            query['DestPortType'] = request.dest_port_type
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.proto):
+            query['Proto'] = request.proto
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallControlPolicy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse(),
-            await self.do_rpcrequest_async('ModifyVpcFirewallControlPolicy', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_vpc_firewall_control_policy(
@@ -1100,12 +3647,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyPositionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.new_order):
+            query['NewOrder'] = request.new_order
+        if not UtilClient.is_unset(request.old_order):
+            query['OldOrder'] = request.old_order
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallControlPolicyPosition',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ModifyVpcFirewallControlPolicyPositionResponse(),
-            self.do_rpcrequest('ModifyVpcFirewallControlPolicyPosition', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_vpc_firewall_control_policy_position_with_options_async(
@@ -1114,12 +3681,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyPositionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.new_order):
+            query['NewOrder'] = request.new_order
+        if not UtilClient.is_unset(request.old_order):
+            query['OldOrder'] = request.old_order
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallControlPolicyPosition',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ModifyVpcFirewallControlPolicyPositionResponse(),
-            await self.do_rpcrequest_async('ModifyVpcFirewallControlPolicyPosition', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_vpc_firewall_control_policy_position(
@@ -1136,18 +3723,212 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_vpc_firewall_control_policy_position_with_options_async(request, runtime)
 
+    def modify_vpc_firewall_default_ipsconfig_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.basic_rules):
+            query['BasicRules'] = request.basic_rules
+        if not UtilClient.is_unset(request.enable_all_patch):
+            query['EnableAllPatch'] = request.enable_all_patch
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.run_mode):
+            query['RunMode'] = request.run_mode
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallDefaultIPSConfig',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_vpc_firewall_default_ipsconfig_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.basic_rules):
+            query['BasicRules'] = request.basic_rules
+        if not UtilClient.is_unset(request.enable_all_patch):
+            query['EnableAllPatch'] = request.enable_all_patch
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.run_mode):
+            query['RunMode'] = request.run_mode
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallDefaultIPSConfig',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_vpc_firewall_default_ipsconfig(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigRequest,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_vpc_firewall_default_ipsconfig_with_options(request, runtime)
+
+    async def modify_vpc_firewall_default_ipsconfig_async(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigRequest,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_vpc_firewall_default_ipsconfig_with_options_async(request, runtime)
+
+    def modify_vpc_firewall_switch_status_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_switch):
+            query['FirewallSwitch'] = request.firewall_switch
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallSwitchStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_vpc_firewall_switch_status_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firewall_switch):
+            query['FirewallSwitch'] = request.firewall_switch
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpcFirewallSwitchStatus',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_vpc_firewall_switch_status(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusRequest,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_vpc_firewall_switch_status_with_options(request, runtime)
+
+    async def modify_vpc_firewall_switch_status_async(
+        self,
+        request: cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusRequest,
+    ) -> cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_vpc_firewall_switch_status_with_options_async(request, runtime)
+
     def put_disable_all_fw_switch_with_options(
         self,
         request: cloudfw_20171207_models.PutDisableAllFwSwitchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutDisableAllFwSwitchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutDisableAllFwSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.PutDisableAllFwSwitchResponse(),
-            self.do_rpcrequest('PutDisableAllFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def put_disable_all_fw_switch_with_options_async(
@@ -1156,12 +3937,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutDisableAllFwSwitchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutDisableAllFwSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.PutDisableAllFwSwitchResponse(),
-            await self.do_rpcrequest_async('PutDisableAllFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def put_disable_all_fw_switch(
@@ -1184,12 +3983,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutDisableFwSwitchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ipaddr_list):
+            query['IpaddrList'] = request.ipaddr_list
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.region_list):
+            query['RegionList'] = request.region_list
+        if not UtilClient.is_unset(request.resource_type_list):
+            query['ResourceTypeList'] = request.resource_type_list
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutDisableFwSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.PutDisableFwSwitchResponse(),
-            self.do_rpcrequest('PutDisableFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def put_disable_fw_switch_with_options_async(
@@ -1198,12 +4019,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutDisableFwSwitchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ipaddr_list):
+            query['IpaddrList'] = request.ipaddr_list
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.region_list):
+            query['RegionList'] = request.region_list
+        if not UtilClient.is_unset(request.resource_type_list):
+            query['ResourceTypeList'] = request.resource_type_list
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutDisableFwSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.PutDisableFwSwitchResponse(),
-            await self.do_rpcrequest_async('PutDisableFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def put_disable_fw_switch(
@@ -1226,12 +4069,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutEnableAllFwSwitchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutEnableAllFwSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.PutEnableAllFwSwitchResponse(),
-            self.do_rpcrequest('PutEnableAllFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def put_enable_all_fw_switch_with_options_async(
@@ -1240,12 +4101,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutEnableAllFwSwitchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutEnableAllFwSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.PutEnableAllFwSwitchResponse(),
-            await self.do_rpcrequest_async('PutEnableAllFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def put_enable_all_fw_switch(
@@ -1268,12 +4147,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutEnableFwSwitchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ipaddr_list):
+            query['IpaddrList'] = request.ipaddr_list
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.region_list):
+            query['RegionList'] = request.region_list
+        if not UtilClient.is_unset(request.resource_type_list):
+            query['ResourceTypeList'] = request.resource_type_list
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutEnableFwSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.PutEnableFwSwitchResponse(),
-            self.do_rpcrequest('PutEnableFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def put_enable_fw_switch_with_options_async(
@@ -1282,12 +4183,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutEnableFwSwitchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ipaddr_list):
+            query['IpaddrList'] = request.ipaddr_list
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.region_list):
+            query['RegionList'] = request.region_list
+        if not UtilClient.is_unset(request.resource_type_list):
+            query['ResourceTypeList'] = request.resource_type_list
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutEnableFwSwitch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.PutEnableFwSwitchResponse(),
-            await self.do_rpcrequest_async('PutEnableFwSwitch', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def put_enable_fw_switch(
@@ -1310,12 +4233,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ResetVpcFirewallRuleHitCountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetVpcFirewallRuleHitCount',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ResetVpcFirewallRuleHitCountResponse(),
-            self.do_rpcrequest('ResetVpcFirewallRuleHitCount', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def reset_vpc_firewall_rule_hit_count_with_options_async(
@@ -1324,12 +4263,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ResetVpcFirewallRuleHitCountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_uuid):
+            query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetVpcFirewallRuleHitCount',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cloudfw_20171207_models.ResetVpcFirewallRuleHitCountResponse(),
-            await self.do_rpcrequest_async('ResetVpcFirewallRuleHitCount', '2017-12-07', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def reset_vpc_firewall_rule_hit_count(
