@@ -9116,6 +9116,317 @@ class GetAppMessageQueueRouteResponse(TeaModel):
         return self
 
 
+class GetApplicationListRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        language: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region: str = None,
+        sentinel_enable: bool = None,
+        source: str = None,
+        switch_enable: bool = None,
+    ):
+        self.accept_language = accept_language
+        self.app_id = app_id
+        self.app_name = app_name
+        self.language = language
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region = region
+        self.sentinel_enable = sentinel_enable
+        self.source = source
+        self.switch_enable = switch_enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.sentinel_enable is not None:
+            result['SentinelEnable'] = self.sentinel_enable
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.switch_enable is not None:
+            result['SwitchEnable'] = self.switch_enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SentinelEnable') is not None:
+            self.sentinel_enable = m.get('SentinelEnable')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SwitchEnable') is not None:
+            self.switch_enable = m.get('SwitchEnable')
+        return self
+
+
+class GetApplicationListResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+        extra_info: str = None,
+        instances_number: int = None,
+        language: str = None,
+        license_key: str = None,
+        region_id: str = None,
+        source: str = None,
+        status: int = None,
+        user_id: str = None,
+    ):
+        self.app_id = app_id
+        self.app_name = app_name
+        self.extra_info = extra_info
+        self.instances_number = instances_number
+        self.language = language
+        self.license_key = license_key
+        self.region_id = region_id
+        self.source = source
+        self.status = status
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info
+        if self.instances_number is not None:
+            result['InstancesNumber'] = self.instances_number
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.license_key is not None:
+            result['LicenseKey'] = self.license_key
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('ExtraInfo') is not None:
+            self.extra_info = m.get('ExtraInfo')
+        if m.get('InstancesNumber') is not None:
+            self.instances_number = m.get('InstancesNumber')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('LicenseKey') is not None:
+            self.license_key = m.get('LicenseKey')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetApplicationListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        result: List[GetApplicationListResponseBodyDataResult] = None,
+        total_size: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.result = result
+        self.total_size = total_size
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = GetApplicationListResponseBodyDataResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class GetApplicationListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetApplicationListResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetApplicationListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetApplicationListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetApplicationListResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetApplicationListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetBlackWhiteListRequest(TeaModel):
     def __init__(
         self,
@@ -17900,6 +18211,7 @@ class ListGatewayResponseBodyDataResult(TeaModel):
     def __init__(
         self,
         ahas_on: bool = None,
+        app_version: str = None,
         arms_on: bool = None,
         charge_type: str = None,
         current_version: str = None,
@@ -17922,11 +18234,13 @@ class ListGatewayResponseBodyDataResult(TeaModel):
         spec: str = None,
         status: int = None,
         status_desc: str = None,
+        support_wasm: bool = None,
         tag: str = None,
         upgrade: bool = None,
         vswitch_2: str = None,
     ):
         self.ahas_on = ahas_on
+        self.app_version = app_version
         self.arms_on = arms_on
         self.charge_type = charge_type
         self.current_version = current_version
@@ -17949,6 +18263,7 @@ class ListGatewayResponseBodyDataResult(TeaModel):
         self.spec = spec
         self.status = status
         self.status_desc = status_desc
+        self.support_wasm = support_wasm
         self.tag = tag
         self.upgrade = upgrade
         self.vswitch_2 = vswitch_2
@@ -17973,6 +18288,8 @@ class ListGatewayResponseBodyDataResult(TeaModel):
         result = dict()
         if self.ahas_on is not None:
             result['AhasOn'] = self.ahas_on
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
         if self.arms_on is not None:
             result['ArmsOn'] = self.arms_on
         if self.charge_type is not None:
@@ -18021,6 +18338,8 @@ class ListGatewayResponseBodyDataResult(TeaModel):
             result['Status'] = self.status
         if self.status_desc is not None:
             result['StatusDesc'] = self.status_desc
+        if self.support_wasm is not None:
+            result['SupportWasm'] = self.support_wasm
         if self.tag is not None:
             result['Tag'] = self.tag
         if self.upgrade is not None:
@@ -18033,6 +18352,8 @@ class ListGatewayResponseBodyDataResult(TeaModel):
         m = m or dict()
         if m.get('AhasOn') is not None:
             self.ahas_on = m.get('AhasOn')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
         if m.get('ArmsOn') is not None:
             self.arms_on = m.get('ArmsOn')
         if m.get('ChargeType') is not None:
@@ -18084,6 +18405,8 @@ class ListGatewayResponseBodyDataResult(TeaModel):
             self.status = m.get('Status')
         if m.get('StatusDesc') is not None:
             self.status_desc = m.get('StatusDesc')
+        if m.get('SupportWasm') is not None:
+            self.support_wasm = m.get('SupportWasm')
         if m.get('Tag') is not None:
             self.tag = m.get('Tag')
         if m.get('Upgrade') is not None:

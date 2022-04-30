@@ -3979,6 +3979,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_app_message_queue_route_with_options_async(request, runtime)
 
+    def get_application_list_with_options(
+        self,
+        request: mse_20190531_models.GetApplicationListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetApplicationListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.sentinel_enable):
+            query['SentinelEnable'] = request.sentinel_enable
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.switch_enable):
+            query['SwitchEnable'] = request.switch_enable
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplicationList',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetApplicationListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_application_list_with_options_async(
+        self,
+        request: mse_20190531_models.GetApplicationListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetApplicationListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.sentinel_enable):
+            query['SentinelEnable'] = request.sentinel_enable
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.switch_enable):
+            query['SwitchEnable'] = request.switch_enable
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplicationList',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetApplicationListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_application_list(
+        self,
+        request: mse_20190531_models.GetApplicationListRequest,
+    ) -> mse_20190531_models.GetApplicationListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_application_list_with_options(request, runtime)
+
+    async def get_application_list_async(
+        self,
+        request: mse_20190531_models.GetApplicationListRequest,
+    ) -> mse_20190531_models.GetApplicationListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_application_list_with_options_async(request, runtime)
+
     def get_black_white_list_with_options(
         self,
         request: mse_20190531_models.GetBlackWhiteListRequest,
