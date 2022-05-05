@@ -3624,9 +3624,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.ListTasksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.end_time_range):
+            request.end_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.end_time_range), 'EndTimeRange', 'json')
+        if not UtilClient.is_unset(tmp_req.start_time_range):
+            request.start_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.start_time_range), 'StartTimeRange', 'json')
         if not UtilClient.is_unset(tmp_req.task_types):
             request.task_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_types, 'TaskTypes', 'json')
         query = {}
+        if not UtilClient.is_unset(request.end_time_range_shrink):
+            query['EndTimeRange'] = request.end_time_range_shrink
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -3637,6 +3643,10 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.start_time_range_shrink):
+            query['StartTimeRange'] = request.start_time_range_shrink
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.tag_selector):
             query['TagSelector'] = request.tag_selector
         if not UtilClient.is_unset(request.task_types_shrink):
@@ -3668,9 +3678,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.ListTasksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.end_time_range):
+            request.end_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.end_time_range), 'EndTimeRange', 'json')
+        if not UtilClient.is_unset(tmp_req.start_time_range):
+            request.start_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.start_time_range), 'StartTimeRange', 'json')
         if not UtilClient.is_unset(tmp_req.task_types):
             request.task_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_types, 'TaskTypes', 'json')
         query = {}
+        if not UtilClient.is_unset(request.end_time_range_shrink):
+            query['EndTimeRange'] = request.end_time_range_shrink
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -3681,6 +3697,10 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.start_time_range_shrink):
+            query['StartTimeRange'] = request.start_time_range_shrink
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.tag_selector):
             query['TagSelector'] = request.tag_selector
         if not UtilClient.is_unset(request.task_types_shrink):

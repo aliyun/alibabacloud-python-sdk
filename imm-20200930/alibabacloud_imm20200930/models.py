@@ -2788,6 +2788,7 @@ class Story(TeaModel):
         dataset_name: str = None,
         figure_cluster_ids: List[str] = None,
         files: List[File] = None,
+        miilcustom_fields: List[Dict[str, Any]] = None,
         object_id: str = None,
         object_type: str = None,
         owner_id: str = None,
@@ -2812,6 +2813,8 @@ class Story(TeaModel):
         self.figure_cluster_ids = figure_cluster_ids
         # Files
         self.files = files
+        # MIILCustomFields
+        self.miilcustom_fields = miilcustom_fields
         # ObjectId
         self.object_id = object_id
         # ObjectType
@@ -2863,6 +2866,8 @@ class Story(TeaModel):
         if self.files is not None:
             for k in self.files:
                 result['Files'].append(k.to_map() if k else None)
+        if self.miilcustom_fields is not None:
+            result['MIILCustomFields'] = self.miilcustom_fields
         if self.object_id is not None:
             result['ObjectId'] = self.object_id
         if self.object_type is not None:
@@ -2905,6 +2910,8 @@ class Story(TeaModel):
             for k in m.get('Files'):
                 temp_model = File()
                 self.files.append(temp_model.from_map(k))
+        if m.get('MIILCustomFields') is not None:
+            self.miilcustom_fields = m.get('MIILCustomFields')
         if m.get('ObjectId') is not None:
             self.object_id = m.get('ObjectId')
         if m.get('ObjectType') is not None:
@@ -10775,14 +10782,18 @@ class ListProjectsResponse(TeaModel):
 class ListTasksRequest(TeaModel):
     def __init__(
         self,
+        end_time_range: TimeRange = None,
         max_results: int = None,
         next_token: str = None,
         order: str = None,
         project_name: str = None,
         sort: str = None,
+        start_time_range: TimeRange = None,
+        status: str = None,
         tag_selector: str = None,
         task_types: List[str] = None,
     ):
+        self.end_time_range = end_time_range
         # MaxResults
         self.max_results = max_results
         # NextToken
@@ -10791,11 +10802,16 @@ class ListTasksRequest(TeaModel):
         # 项目名称
         self.project_name = project_name
         self.sort = sort
+        self.start_time_range = start_time_range
+        self.status = status
         self.tag_selector = tag_selector
         self.task_types = task_types
 
     def validate(self):
-        pass
+        if self.end_time_range:
+            self.end_time_range.validate()
+        if self.start_time_range:
+            self.start_time_range.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10803,6 +10819,8 @@ class ListTasksRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time_range is not None:
+            result['EndTimeRange'] = self.end_time_range.to_map()
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -10813,6 +10831,10 @@ class ListTasksRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.sort is not None:
             result['Sort'] = self.sort
+        if self.start_time_range is not None:
+            result['StartTimeRange'] = self.start_time_range.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
         if self.tag_selector is not None:
             result['TagSelector'] = self.tag_selector
         if self.task_types is not None:
@@ -10821,6 +10843,9 @@ class ListTasksRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndTimeRange') is not None:
+            temp_model = TimeRange()
+            self.end_time_range = temp_model.from_map(m['EndTimeRange'])
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -10831,6 +10856,11 @@ class ListTasksRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('Sort') is not None:
             self.sort = m.get('Sort')
+        if m.get('StartTimeRange') is not None:
+            temp_model = TimeRange()
+            self.start_time_range = temp_model.from_map(m['StartTimeRange'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('TagSelector') is not None:
             self.tag_selector = m.get('TagSelector')
         if m.get('TaskTypes') is not None:
@@ -10841,14 +10871,18 @@ class ListTasksRequest(TeaModel):
 class ListTasksShrinkRequest(TeaModel):
     def __init__(
         self,
+        end_time_range_shrink: str = None,
         max_results: int = None,
         next_token: str = None,
         order: str = None,
         project_name: str = None,
         sort: str = None,
+        start_time_range_shrink: str = None,
+        status: str = None,
         tag_selector: str = None,
         task_types_shrink: str = None,
     ):
+        self.end_time_range_shrink = end_time_range_shrink
         # MaxResults
         self.max_results = max_results
         # NextToken
@@ -10857,6 +10891,8 @@ class ListTasksShrinkRequest(TeaModel):
         # 项目名称
         self.project_name = project_name
         self.sort = sort
+        self.start_time_range_shrink = start_time_range_shrink
+        self.status = status
         self.tag_selector = tag_selector
         self.task_types_shrink = task_types_shrink
 
@@ -10869,6 +10905,8 @@ class ListTasksShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time_range_shrink is not None:
+            result['EndTimeRange'] = self.end_time_range_shrink
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -10879,6 +10917,10 @@ class ListTasksShrinkRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.sort is not None:
             result['Sort'] = self.sort
+        if self.start_time_range_shrink is not None:
+            result['StartTimeRange'] = self.start_time_range_shrink
+        if self.status is not None:
+            result['Status'] = self.status
         if self.tag_selector is not None:
             result['TagSelector'] = self.tag_selector
         if self.task_types_shrink is not None:
@@ -10887,6 +10929,8 @@ class ListTasksShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndTimeRange') is not None:
+            self.end_time_range_shrink = m.get('EndTimeRange')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -10897,6 +10941,10 @@ class ListTasksShrinkRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('Sort') is not None:
             self.sort = m.get('Sort')
+        if m.get('StartTimeRange') is not None:
+            self.start_time_range_shrink = m.get('StartTimeRange')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('TagSelector') is not None:
             self.tag_selector = m.get('TagSelector')
         if m.get('TaskTypes') is not None:
