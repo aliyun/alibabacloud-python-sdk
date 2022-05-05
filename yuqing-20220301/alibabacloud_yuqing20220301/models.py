@@ -8,14 +8,20 @@ class FieldCondition(TeaModel):
     def __init__(
         self,
         field_name: str = None,
+        nest_field_path: str = None,
+        nest_field_value: List[int] = None,
         operate_type: str = None,
         value: str = None,
     ):
         # 字段名称
         self.field_name = field_name
+        # 复杂查询下，嵌套子条件字段jsonPath
+        self.nest_field_path = nest_field_path
+        # 复杂查询下，嵌套子条件字段值
+        self.nest_field_value = nest_field_value
         # 操作符，枚举值
         self.operate_type = operate_type
-        # 字段值
+        # 字段值，不同字段值类型不一样
         self.value = value
 
     def validate(self):
@@ -29,6 +35,10 @@ class FieldCondition(TeaModel):
         result = dict()
         if self.field_name is not None:
             result['fieldName'] = self.field_name
+        if self.nest_field_path is not None:
+            result['nestFieldPath'] = self.nest_field_path
+        if self.nest_field_value is not None:
+            result['nestFieldValue'] = self.nest_field_value
         if self.operate_type is not None:
             result['operateType'] = self.operate_type
         if self.value is not None:
@@ -39,6 +49,10 @@ class FieldCondition(TeaModel):
         m = m or dict()
         if m.get('fieldName') is not None:
             self.field_name = m.get('fieldName')
+        if m.get('nestFieldPath') is not None:
+            self.nest_field_path = m.get('nestFieldPath')
+        if m.get('nestFieldValue') is not None:
+            self.nest_field_value = m.get('nestFieldValue')
         if m.get('operateType') is not None:
             self.operate_type = m.get('operateType')
         if m.get('value') is not None:
