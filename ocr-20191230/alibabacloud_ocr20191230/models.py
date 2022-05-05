@@ -910,6 +910,33 @@ class RecognizeBankCardRequest(TeaModel):
         return self
 
 
+class RecognizeBankCardAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        return self
+
+
 class RecognizeBankCardResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -5349,201 +5376,6 @@ class RecognizeStampResponse(TeaModel):
         return self
 
 
-class RecognizeStructuredTaxiInvoicesRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class RecognizeStructuredTaxiInvoicesAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
-        return self
-
-
-class RecognizeStructuredTaxiInvoicesResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        addresses: List[str] = None,
-        cell_phone_numbers: List[str] = None,
-        companies: List[str] = None,
-        departments: List[str] = None,
-        emails: List[str] = None,
-        name: str = None,
-        office_phone_numbers: List[str] = None,
-        titles: List[str] = None,
-    ):
-        self.addresses = addresses
-        self.cell_phone_numbers = cell_phone_numbers
-        self.companies = companies
-        self.departments = departments
-        self.emails = emails
-        self.name = name
-        self.office_phone_numbers = office_phone_numbers
-        self.titles = titles
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.addresses is not None:
-            result['Addresses'] = self.addresses
-        if self.cell_phone_numbers is not None:
-            result['CellPhoneNumbers'] = self.cell_phone_numbers
-        if self.companies is not None:
-            result['Companies'] = self.companies
-        if self.departments is not None:
-            result['Departments'] = self.departments
-        if self.emails is not None:
-            result['Emails'] = self.emails
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.office_phone_numbers is not None:
-            result['OfficePhoneNumbers'] = self.office_phone_numbers
-        if self.titles is not None:
-            result['Titles'] = self.titles
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Addresses') is not None:
-            self.addresses = m.get('Addresses')
-        if m.get('CellPhoneNumbers') is not None:
-            self.cell_phone_numbers = m.get('CellPhoneNumbers')
-        if m.get('Companies') is not None:
-            self.companies = m.get('Companies')
-        if m.get('Departments') is not None:
-            self.departments = m.get('Departments')
-        if m.get('Emails') is not None:
-            self.emails = m.get('Emails')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('OfficePhoneNumbers') is not None:
-            self.office_phone_numbers = m.get('OfficePhoneNumbers')
-        if m.get('Titles') is not None:
-            self.titles = m.get('Titles')
-        return self
-
-
-class RecognizeStructuredTaxiInvoicesResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: RecognizeStructuredTaxiInvoicesResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = RecognizeStructuredTaxiInvoicesResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class RecognizeStructuredTaxiInvoicesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: RecognizeStructuredTaxiInvoicesResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = RecognizeStructuredTaxiInvoicesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class RecognizeTableRequest(TeaModel):
     def __init__(
         self,
@@ -7172,6 +7004,1310 @@ class RecognizeTrainTicketResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = RecognizeTrainTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizeUkraineIdentityCardRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        return self
+
+
+class RecognizeUkraineIdentityCardAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_url_object: BinaryIO = None,
+    ):
+        self.image_url_object = image_url_object
+
+    def validate(self):
+        self.validate_required(self.image_url_object, 'image_url_object')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url_object is not None:
+            result['ImageUrlObject'] = self.image_url_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageUrlObject') is not None:
+            self.image_url_object = m.get('ImageUrlObject')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataBirthDateKeyPoints(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataBirthDate(TeaModel):
+    def __init__(
+        self,
+        key_points: List[RecognizeUkraineIdentityCardResponseBodyDataBirthDateKeyPoints] = None,
+        score: float = None,
+        text: str = None,
+    ):
+        self.key_points = key_points
+        self.score = score
+        self.text = text
+
+    def validate(self):
+        if self.key_points:
+            for k in self.key_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyPoints'] = []
+        if self.key_points is not None:
+            for k in self.key_points:
+                result['KeyPoints'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_points = []
+        if m.get('KeyPoints') is not None:
+            for k in m.get('KeyPoints'):
+                temp_model = RecognizeUkraineIdentityCardResponseBodyDataBirthDateKeyPoints()
+                self.key_points.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataCardBoxKeyPoints(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataCardBox(TeaModel):
+    def __init__(
+        self,
+        key_points: List[RecognizeUkraineIdentityCardResponseBodyDataCardBoxKeyPoints] = None,
+        score: float = None,
+        text: str = None,
+    ):
+        self.key_points = key_points
+        self.score = score
+        self.text = text
+
+    def validate(self):
+        if self.key_points:
+            for k in self.key_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyPoints'] = []
+        if self.key_points is not None:
+            for k in self.key_points:
+                result['KeyPoints'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_points = []
+        if m.get('KeyPoints') is not None:
+            for k in m.get('KeyPoints'):
+                temp_model = RecognizeUkraineIdentityCardResponseBodyDataCardBoxKeyPoints()
+                self.key_points.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataDocumentNumberKeyPoints(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataDocumentNumber(TeaModel):
+    def __init__(
+        self,
+        key_points: List[RecognizeUkraineIdentityCardResponseBodyDataDocumentNumberKeyPoints] = None,
+        score: float = None,
+        text: str = None,
+    ):
+        self.key_points = key_points
+        self.score = score
+        self.text = text
+
+    def validate(self):
+        if self.key_points:
+            for k in self.key_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyPoints'] = []
+        if self.key_points is not None:
+            for k in self.key_points:
+                result['KeyPoints'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_points = []
+        if m.get('KeyPoints') is not None:
+            for k in m.get('KeyPoints'):
+                temp_model = RecognizeUkraineIdentityCardResponseBodyDataDocumentNumberKeyPoints()
+                self.key_points.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataExpiryDateKeyPoints(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataExpiryDate(TeaModel):
+    def __init__(
+        self,
+        key_points: List[RecognizeUkraineIdentityCardResponseBodyDataExpiryDateKeyPoints] = None,
+        score: float = None,
+        text: str = None,
+    ):
+        self.key_points = key_points
+        self.score = score
+        self.text = text
+
+    def validate(self):
+        if self.key_points:
+            for k in self.key_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyPoints'] = []
+        if self.key_points is not None:
+            for k in self.key_points:
+                result['KeyPoints'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_points = []
+        if m.get('KeyPoints') is not None:
+            for k in m.get('KeyPoints'):
+                temp_model = RecognizeUkraineIdentityCardResponseBodyDataExpiryDateKeyPoints()
+                self.key_points.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataNameEnglishKeyPoints(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataNameEnglish(TeaModel):
+    def __init__(
+        self,
+        key_points: List[RecognizeUkraineIdentityCardResponseBodyDataNameEnglishKeyPoints] = None,
+        score: float = None,
+        text: str = None,
+    ):
+        self.key_points = key_points
+        self.score = score
+        self.text = text
+
+    def validate(self):
+        if self.key_points:
+            for k in self.key_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyPoints'] = []
+        if self.key_points is not None:
+            for k in self.key_points:
+                result['KeyPoints'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_points = []
+        if m.get('KeyPoints') is not None:
+            for k in m.get('KeyPoints'):
+                temp_model = RecognizeUkraineIdentityCardResponseBodyDataNameEnglishKeyPoints()
+                self.key_points.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataNameUkraineKeyPoints(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataNameUkraine(TeaModel):
+    def __init__(
+        self,
+        key_points: List[RecognizeUkraineIdentityCardResponseBodyDataNameUkraineKeyPoints] = None,
+        score: float = None,
+        text: str = None,
+    ):
+        self.key_points = key_points
+        self.score = score
+        self.text = text
+
+    def validate(self):
+        if self.key_points:
+            for k in self.key_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyPoints'] = []
+        if self.key_points is not None:
+            for k in self.key_points:
+                result['KeyPoints'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_points = []
+        if m.get('KeyPoints') is not None:
+            for k in m.get('KeyPoints'):
+                temp_model = RecognizeUkraineIdentityCardResponseBodyDataNameUkraineKeyPoints()
+                self.key_points.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataNationalityKeyPoints(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataNationality(TeaModel):
+    def __init__(
+        self,
+        key_points: List[RecognizeUkraineIdentityCardResponseBodyDataNationalityKeyPoints] = None,
+        score: float = None,
+        text: str = None,
+    ):
+        self.key_points = key_points
+        self.score = score
+        self.text = text
+
+    def validate(self):
+        if self.key_points:
+            for k in self.key_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyPoints'] = []
+        if self.key_points is not None:
+            for k in self.key_points:
+                result['KeyPoints'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_points = []
+        if m.get('KeyPoints') is not None:
+            for k in m.get('KeyPoints'):
+                temp_model = RecognizeUkraineIdentityCardResponseBodyDataNationalityKeyPoints()
+                self.key_points.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataPatronymicKeyPoints(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataPatronymic(TeaModel):
+    def __init__(
+        self,
+        key_points: List[RecognizeUkraineIdentityCardResponseBodyDataPatronymicKeyPoints] = None,
+        score: float = None,
+        text: str = None,
+    ):
+        self.key_points = key_points
+        self.score = score
+        self.text = text
+
+    def validate(self):
+        if self.key_points:
+            for k in self.key_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyPoints'] = []
+        if self.key_points is not None:
+            for k in self.key_points:
+                result['KeyPoints'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_points = []
+        if m.get('KeyPoints') is not None:
+            for k in m.get('KeyPoints'):
+                temp_model = RecognizeUkraineIdentityCardResponseBodyDataPatronymicKeyPoints()
+                self.key_points.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataPortraitBoxKeyPoints(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataPortraitBox(TeaModel):
+    def __init__(
+        self,
+        key_points: List[RecognizeUkraineIdentityCardResponseBodyDataPortraitBoxKeyPoints] = None,
+        score: float = None,
+        text: str = None,
+    ):
+        self.key_points = key_points
+        self.score = score
+        self.text = text
+
+    def validate(self):
+        if self.key_points:
+            for k in self.key_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyPoints'] = []
+        if self.key_points is not None:
+            for k in self.key_points:
+                result['KeyPoints'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_points = []
+        if m.get('KeyPoints') is not None:
+            for k in m.get('KeyPoints'):
+                temp_model = RecognizeUkraineIdentityCardResponseBodyDataPortraitBoxKeyPoints()
+                self.key_points.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataRecordNumberKeyPoints(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataRecordNumber(TeaModel):
+    def __init__(
+        self,
+        key_points: List[RecognizeUkraineIdentityCardResponseBodyDataRecordNumberKeyPoints] = None,
+        score: float = None,
+        text: str = None,
+    ):
+        self.key_points = key_points
+        self.score = score
+        self.text = text
+
+    def validate(self):
+        if self.key_points:
+            for k in self.key_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyPoints'] = []
+        if self.key_points is not None:
+            for k in self.key_points:
+                result['KeyPoints'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_points = []
+        if m.get('KeyPoints') is not None:
+            for k in m.get('KeyPoints'):
+                temp_model = RecognizeUkraineIdentityCardResponseBodyDataRecordNumberKeyPoints()
+                self.key_points.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataSexKeyPoints(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataSex(TeaModel):
+    def __init__(
+        self,
+        key_points: List[RecognizeUkraineIdentityCardResponseBodyDataSexKeyPoints] = None,
+        score: float = None,
+        text: str = None,
+    ):
+        self.key_points = key_points
+        self.score = score
+        self.text = text
+
+    def validate(self):
+        if self.key_points:
+            for k in self.key_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyPoints'] = []
+        if self.key_points is not None:
+            for k in self.key_points:
+                result['KeyPoints'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_points = []
+        if m.get('KeyPoints') is not None:
+            for k in m.get('KeyPoints'):
+                temp_model = RecognizeUkraineIdentityCardResponseBodyDataSexKeyPoints()
+                self.key_points.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglishKeyPoints(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglish(TeaModel):
+    def __init__(
+        self,
+        key_points: List[RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglishKeyPoints] = None,
+        score: float = None,
+        text: str = None,
+    ):
+        self.key_points = key_points
+        self.score = score
+        self.text = text
+
+    def validate(self):
+        if self.key_points:
+            for k in self.key_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyPoints'] = []
+        if self.key_points is not None:
+            for k in self.key_points:
+                result['KeyPoints'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_points = []
+        if m.get('KeyPoints') is not None:
+            for k in m.get('KeyPoints'):
+                temp_model = RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglishKeyPoints()
+                self.key_points.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraineKeyPoints(TeaModel):
+    def __init__(
+        self,
+        x: float = None,
+        y: float = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraine(TeaModel):
+    def __init__(
+        self,
+        key_points: List[RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraineKeyPoints] = None,
+        score: float = None,
+        text: str = None,
+    ):
+        self.key_points = key_points
+        self.score = score
+        self.text = text
+
+    def validate(self):
+        if self.key_points:
+            for k in self.key_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyPoints'] = []
+        if self.key_points is not None:
+            for k in self.key_points:
+                result['KeyPoints'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_points = []
+        if m.get('KeyPoints') is not None:
+            for k in m.get('KeyPoints'):
+                temp_model = RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraineKeyPoints()
+                self.key_points.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        birth_date: RecognizeUkraineIdentityCardResponseBodyDataBirthDate = None,
+        card_box: RecognizeUkraineIdentityCardResponseBodyDataCardBox = None,
+        document_number: RecognizeUkraineIdentityCardResponseBodyDataDocumentNumber = None,
+        expiry_date: RecognizeUkraineIdentityCardResponseBodyDataExpiryDate = None,
+        name_english: RecognizeUkraineIdentityCardResponseBodyDataNameEnglish = None,
+        name_ukraine: RecognizeUkraineIdentityCardResponseBodyDataNameUkraine = None,
+        nationality: RecognizeUkraineIdentityCardResponseBodyDataNationality = None,
+        patronymic: RecognizeUkraineIdentityCardResponseBodyDataPatronymic = None,
+        portrait_box: RecognizeUkraineIdentityCardResponseBodyDataPortraitBox = None,
+        record_number: RecognizeUkraineIdentityCardResponseBodyDataRecordNumber = None,
+        sex: RecognizeUkraineIdentityCardResponseBodyDataSex = None,
+        surname_english: RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglish = None,
+        surname_ukraine: RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraine = None,
+    ):
+        self.birth_date = birth_date
+        self.card_box = card_box
+        self.document_number = document_number
+        self.expiry_date = expiry_date
+        self.name_english = name_english
+        self.name_ukraine = name_ukraine
+        self.nationality = nationality
+        self.patronymic = patronymic
+        self.portrait_box = portrait_box
+        self.record_number = record_number
+        self.sex = sex
+        self.surname_english = surname_english
+        self.surname_ukraine = surname_ukraine
+
+    def validate(self):
+        if self.birth_date:
+            self.birth_date.validate()
+        if self.card_box:
+            self.card_box.validate()
+        if self.document_number:
+            self.document_number.validate()
+        if self.expiry_date:
+            self.expiry_date.validate()
+        if self.name_english:
+            self.name_english.validate()
+        if self.name_ukraine:
+            self.name_ukraine.validate()
+        if self.nationality:
+            self.nationality.validate()
+        if self.patronymic:
+            self.patronymic.validate()
+        if self.portrait_box:
+            self.portrait_box.validate()
+        if self.record_number:
+            self.record_number.validate()
+        if self.sex:
+            self.sex.validate()
+        if self.surname_english:
+            self.surname_english.validate()
+        if self.surname_ukraine:
+            self.surname_ukraine.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.birth_date is not None:
+            result['BirthDate'] = self.birth_date.to_map()
+        if self.card_box is not None:
+            result['CardBox'] = self.card_box.to_map()
+        if self.document_number is not None:
+            result['DocumentNumber'] = self.document_number.to_map()
+        if self.expiry_date is not None:
+            result['ExpiryDate'] = self.expiry_date.to_map()
+        if self.name_english is not None:
+            result['NameEnglish'] = self.name_english.to_map()
+        if self.name_ukraine is not None:
+            result['NameUkraine'] = self.name_ukraine.to_map()
+        if self.nationality is not None:
+            result['Nationality'] = self.nationality.to_map()
+        if self.patronymic is not None:
+            result['Patronymic'] = self.patronymic.to_map()
+        if self.portrait_box is not None:
+            result['PortraitBox'] = self.portrait_box.to_map()
+        if self.record_number is not None:
+            result['RecordNumber'] = self.record_number.to_map()
+        if self.sex is not None:
+            result['Sex'] = self.sex.to_map()
+        if self.surname_english is not None:
+            result['SurnameEnglish'] = self.surname_english.to_map()
+        if self.surname_ukraine is not None:
+            result['SurnameUkraine'] = self.surname_ukraine.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BirthDate') is not None:
+            temp_model = RecognizeUkraineIdentityCardResponseBodyDataBirthDate()
+            self.birth_date = temp_model.from_map(m['BirthDate'])
+        if m.get('CardBox') is not None:
+            temp_model = RecognizeUkraineIdentityCardResponseBodyDataCardBox()
+            self.card_box = temp_model.from_map(m['CardBox'])
+        if m.get('DocumentNumber') is not None:
+            temp_model = RecognizeUkraineIdentityCardResponseBodyDataDocumentNumber()
+            self.document_number = temp_model.from_map(m['DocumentNumber'])
+        if m.get('ExpiryDate') is not None:
+            temp_model = RecognizeUkraineIdentityCardResponseBodyDataExpiryDate()
+            self.expiry_date = temp_model.from_map(m['ExpiryDate'])
+        if m.get('NameEnglish') is not None:
+            temp_model = RecognizeUkraineIdentityCardResponseBodyDataNameEnglish()
+            self.name_english = temp_model.from_map(m['NameEnglish'])
+        if m.get('NameUkraine') is not None:
+            temp_model = RecognizeUkraineIdentityCardResponseBodyDataNameUkraine()
+            self.name_ukraine = temp_model.from_map(m['NameUkraine'])
+        if m.get('Nationality') is not None:
+            temp_model = RecognizeUkraineIdentityCardResponseBodyDataNationality()
+            self.nationality = temp_model.from_map(m['Nationality'])
+        if m.get('Patronymic') is not None:
+            temp_model = RecognizeUkraineIdentityCardResponseBodyDataPatronymic()
+            self.patronymic = temp_model.from_map(m['Patronymic'])
+        if m.get('PortraitBox') is not None:
+            temp_model = RecognizeUkraineIdentityCardResponseBodyDataPortraitBox()
+            self.portrait_box = temp_model.from_map(m['PortraitBox'])
+        if m.get('RecordNumber') is not None:
+            temp_model = RecognizeUkraineIdentityCardResponseBodyDataRecordNumber()
+            self.record_number = temp_model.from_map(m['RecordNumber'])
+        if m.get('Sex') is not None:
+            temp_model = RecognizeUkraineIdentityCardResponseBodyDataSex()
+            self.sex = temp_model.from_map(m['Sex'])
+        if m.get('SurnameEnglish') is not None:
+            temp_model = RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglish()
+            self.surname_english = temp_model.from_map(m['SurnameEnglish'])
+        if m.get('SurnameUkraine') is not None:
+            temp_model = RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraine()
+            self.surname_ukraine = temp_model.from_map(m['SurnameUkraine'])
+        return self
+
+
+class RecognizeUkraineIdentityCardResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: RecognizeUkraineIdentityCardResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = RecognizeUkraineIdentityCardResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RecognizeUkraineIdentityCardResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeUkraineIdentityCardResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeUkraineIdentityCardResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
