@@ -4970,6 +4970,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UnTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):
@@ -5004,6 +5006,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UnTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):

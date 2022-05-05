@@ -11766,8 +11766,11 @@ class ListRulesResponseBodyRulesRuleActionsRewriteConfig(TeaModel):
 
 
 class ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig(TeaModel):
-    def __init__(self):
-        pass
+    def __init__(
+        self,
+        qps: int = None,
+    ):
+        self.qps = qps
 
     def validate(self):
         pass
@@ -11778,19 +11781,96 @@ class ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.qps is not None:
+            result['QPS'] = self.qps
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('QPS') is not None:
+            self.qps = m.get('QPS')
+        return self
+
+
+class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples(TeaModel):
+    def __init__(
+        self,
+        server_group_id: str = None,
+        weight: int = None,
+    ):
+        self.server_group_id = server_group_id
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig(TeaModel):
+    def __init__(
+        self,
+        server_group_tuples: List[ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples] = None,
+    ):
+        self.server_group_tuples = server_group_tuples
+
+    def validate(self):
+        if self.server_group_tuples:
+            for k in self.server_group_tuples:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ServerGroupTuples'] = []
+        if self.server_group_tuples is not None:
+            for k in self.server_group_tuples:
+                result['ServerGroupTuples'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.server_group_tuples = []
+        if m.get('ServerGroupTuples') is not None:
+            for k in m.get('ServerGroupTuples'):
+                temp_model = ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples()
+                self.server_group_tuples.append(temp_model.from_map(k))
         return self
 
 
 class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig(TeaModel):
-    def __init__(self):
-        pass
+    def __init__(
+        self,
+        mirror_group_config: ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
+    ):
+        # TargetType为服务器组时必选，目标服务器组
+        self.mirror_group_config = mirror_group_config
 
     def validate(self):
-        pass
+        if self.mirror_group_config:
+            self.mirror_group_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11798,10 +11878,15 @@ class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.mirror_group_config is not None:
+            result['MirrorGroupConfig'] = self.mirror_group_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MirrorGroupConfig') is not None:
+            temp_model = ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig()
+            self.mirror_group_config = temp_model.from_map(m['MirrorGroupConfig'])
         return self
 
 
@@ -12169,6 +12254,34 @@ class ListRulesResponseBodyRulesRuleConditionsQueryStringConfig(TeaModel):
         return self
 
 
+class ListRulesResponseBodyRulesRuleConditionsSourceIpConfig(TeaModel):
+    def __init__(
+        self,
+        values: List[str] = None,
+    ):
+        # 需要匹配的源IP列表
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
 class ListRulesResponseBodyRulesRuleConditions(TeaModel):
     def __init__(
         self,
@@ -12178,6 +12291,7 @@ class ListRulesResponseBodyRulesRuleConditions(TeaModel):
         method_config: ListRulesResponseBodyRulesRuleConditionsMethodConfig = None,
         path_config: ListRulesResponseBodyRulesRuleConditionsPathConfig = None,
         query_string_config: ListRulesResponseBodyRulesRuleConditionsQueryStringConfig = None,
+        source_ip_config: ListRulesResponseBodyRulesRuleConditionsSourceIpConfig = None,
         type: str = None,
     ):
         # Cookie条件配置
@@ -12192,6 +12306,8 @@ class ListRulesResponseBodyRulesRuleConditions(TeaModel):
         self.path_config = path_config
         # 查询字符串条件配置
         self.query_string_config = query_string_config
+        # 源IP业务流量匹配
+        self.source_ip_config = source_ip_config
         # 条件类型
         self.type = type
 
@@ -12208,6 +12324,8 @@ class ListRulesResponseBodyRulesRuleConditions(TeaModel):
             self.path_config.validate()
         if self.query_string_config:
             self.query_string_config.validate()
+        if self.source_ip_config:
+            self.source_ip_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12227,6 +12345,8 @@ class ListRulesResponseBodyRulesRuleConditions(TeaModel):
             result['PathConfig'] = self.path_config.to_map()
         if self.query_string_config is not None:
             result['QueryStringConfig'] = self.query_string_config.to_map()
+        if self.source_ip_config is not None:
+            result['SourceIpConfig'] = self.source_ip_config.to_map()
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -12251,6 +12371,9 @@ class ListRulesResponseBodyRulesRuleConditions(TeaModel):
         if m.get('QueryStringConfig') is not None:
             temp_model = ListRulesResponseBodyRulesRuleConditionsQueryStringConfig()
             self.query_string_config = temp_model.from_map(m['QueryStringConfig'])
+        if m.get('SourceIpConfig') is not None:
+            temp_model = ListRulesResponseBodyRulesRuleConditionsSourceIpConfig()
+            self.source_ip_config = temp_model.from_map(m['SourceIpConfig'])
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -15487,11 +15610,14 @@ class UnTagResourcesRequestTag(TeaModel):
 class UnTagResourcesRequest(TeaModel):
     def __init__(
         self,
+        all: bool = None,
         resource_id: List[str] = None,
         resource_type: str = None,
         tag: List[UnTagResourcesRequestTag] = None,
         tag_key: List[str] = None,
     ):
+        # 是否删除全部
+        self.all = all
         # 资源实例Id
         self.resource_id = resource_id
         # 资源类型
@@ -15513,6 +15639,8 @@ class UnTagResourcesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.all is not None:
+            result['All'] = self.all
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -15527,6 +15655,8 @@ class UnTagResourcesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
