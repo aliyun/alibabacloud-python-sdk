@@ -198,6 +198,7 @@ class SearchCondition(TeaModel):
         exclude_media_type_list: List[str] = None,
         exclude_message_type_list: List[str] = None,
         field_conditions: List[FieldCondition] = None,
+        filter_id: int = None,
         has_image: bool = None,
         has_video: bool = None,
         host_name_list: List[str] = None,
@@ -212,6 +213,7 @@ class SearchCondition(TeaModel):
         parent_doc_id: str = None,
         pos_keyword_list: List[str] = None,
         pos_keyword_list_in_title: List[str] = None,
+        project_id: int = None,
         publish_time_end: int = None,
         publish_time_start: int = None,
         reads_level: int = None,
@@ -269,6 +271,8 @@ class SearchCondition(TeaModel):
         self.exclude_message_type_list = exclude_message_type_list
         # 其他过滤条件
         self.field_conditions = field_conditions
+        # 高级筛选模板id
+        self.filter_id = filter_id
         # 文章是否含有图片
         self.has_image = has_image
         # 是否含有视频
@@ -297,6 +301,8 @@ class SearchCondition(TeaModel):
         self.pos_keyword_list = pos_keyword_list
         # 标题关键词
         self.pos_keyword_list_in_title = pos_keyword_list_in_title
+        # 舆情项目id
+        self.project_id = project_id
         # 截止发布时间
         self.publish_time_end = publish_time_end
         # 起始发布时间
@@ -378,6 +384,8 @@ class SearchCondition(TeaModel):
         if self.field_conditions is not None:
             for k in self.field_conditions:
                 result['fieldConditions'].append(k.to_map() if k else None)
+        if self.filter_id is not None:
+            result['filterId'] = self.filter_id
         if self.has_image is not None:
             result['hasImage'] = self.has_image
         if self.has_video is not None:
@@ -406,6 +414,8 @@ class SearchCondition(TeaModel):
             result['posKeywordList'] = self.pos_keyword_list
         if self.pos_keyword_list_in_title is not None:
             result['posKeywordListInTitle'] = self.pos_keyword_list_in_title
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
         if self.publish_time_end is not None:
             result['publishTimeEnd'] = self.publish_time_end
         if self.publish_time_start is not None:
@@ -479,6 +489,8 @@ class SearchCondition(TeaModel):
             for k in m.get('fieldConditions'):
                 temp_model = FieldCondition()
                 self.field_conditions.append(temp_model.from_map(k))
+        if m.get('filterId') is not None:
+            self.filter_id = m.get('filterId')
         if m.get('hasImage') is not None:
             self.has_image = m.get('hasImage')
         if m.get('hasVideo') is not None:
@@ -507,6 +519,8 @@ class SearchCondition(TeaModel):
             self.pos_keyword_list = m.get('posKeywordList')
         if m.get('posKeywordListInTitle') is not None:
             self.pos_keyword_list_in_title = m.get('posKeywordListInTitle')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
         if m.get('publishTimeEnd') is not None:
             self.publish_time_end = m.get('publishTimeEnd')
         if m.get('publishTimeStart') is not None:
