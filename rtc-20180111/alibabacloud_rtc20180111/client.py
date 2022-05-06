@@ -851,6 +851,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_record_template_with_options_async(request, runtime)
 
+    def describe_app_key_with_options(
+        self,
+        request: rtc_20180111_models.DescribeAppKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppKey',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_app_key_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeAppKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppKey',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_app_key(
+        self,
+        request: rtc_20180111_models.DescribeAppKeyRequest,
+    ) -> rtc_20180111_models.DescribeAppKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_app_key_with_options(request, runtime)
+
+    async def describe_app_key_async(
+        self,
+        request: rtc_20180111_models.DescribeAppKeyRequest,
+    ) -> rtc_20180111_models.DescribeAppKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_app_key_with_options_async(request, runtime)
+
     def describe_apps_with_options(
         self,
         request: rtc_20180111_models.DescribeAppsRequest,

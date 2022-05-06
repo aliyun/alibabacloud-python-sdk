@@ -1403,6 +1403,109 @@ class DeleteRecordTemplateResponse(TeaModel):
         return self
 
 
+class DescribeAppKeyRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        owner_id: int = None,
+    ):
+        self.app_id = app_id
+        self.owner_id = owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        return self
+
+
+class DescribeAppKeyResponseBody(TeaModel):
+    def __init__(
+        self,
+        app_key: str = None,
+        request_id: str = None,
+    ):
+        self.app_key = app_key
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAppKeyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeAppKeyResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeAppKeyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAppsRequest(TeaModel):
     def __init__(
         self,
@@ -1495,6 +1598,7 @@ class DescribeAppsResponseBodyAppListApp(TeaModel):
         app_type: str = None,
         bill_type: str = None,
         create_time: str = None,
+        region: str = None,
         service_areas: DescribeAppsResponseBodyAppListAppServiceAreas = None,
         status: int = None,
     ):
@@ -1503,6 +1607,7 @@ class DescribeAppsResponseBodyAppListApp(TeaModel):
         self.app_type = app_type
         self.bill_type = bill_type
         self.create_time = create_time
+        self.region = region
         self.service_areas = service_areas
         self.status = status
 
@@ -1526,6 +1631,8 @@ class DescribeAppsResponseBodyAppListApp(TeaModel):
             result['BillType'] = self.bill_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.region is not None:
+            result['Region'] = self.region
         if self.service_areas is not None:
             result['ServiceAreas'] = self.service_areas.to_map()
         if self.status is not None:
@@ -1544,6 +1651,8 @@ class DescribeAppsResponseBodyAppListApp(TeaModel):
             self.bill_type = m.get('BillType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
         if m.get('ServiceAreas') is not None:
             temp_model = DescribeAppsResponseBodyAppListAppServiceAreas()
             self.service_areas = temp_model.from_map(m['ServiceAreas'])
