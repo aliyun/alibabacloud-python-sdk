@@ -106,3 +106,53 @@ class Client(OpenApiClient):
     ) -> um_test_20211027_models.GetOssUploadParamResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_oss_upload_param_with_options_async(request, runtime)
+
+    def upload_notary_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> um_test_20211027_models.UploadNotaryResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='UploadNotary',
+            version='2021-10-27',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            um_test_20211027_models.UploadNotaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_notary_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> um_test_20211027_models.UploadNotaryResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='UploadNotary',
+            version='2021-10-27',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            um_test_20211027_models.UploadNotaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_notary(self) -> um_test_20211027_models.UploadNotaryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.upload_notary_with_options(runtime)
+
+    async def upload_notary_async(self) -> um_test_20211027_models.UploadNotaryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_notary_with_options_async(runtime)
