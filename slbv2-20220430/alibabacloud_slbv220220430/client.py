@@ -1381,6 +1381,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_load_balancers_with_options_async(request, runtime)
 
+    def list_security_policy_with_options(
+        self,
+        request: slb_v220220430_models.ListSecurityPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> slb_v220220430_models.ListSecurityPolicyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_policy_ids):
+            body['SecurityPolicyIds'] = request.security_policy_ids
+        if not UtilClient.is_unset(request.security_policy_names):
+            body['SecurityPolicyNames'] = request.security_policy_names
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSecurityPolicy',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            slb_v220220430_models.ListSecurityPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_security_policy_with_options_async(
+        self,
+        request: slb_v220220430_models.ListSecurityPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> slb_v220220430_models.ListSecurityPolicyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_policy_ids):
+            body['SecurityPolicyIds'] = request.security_policy_ids
+        if not UtilClient.is_unset(request.security_policy_names):
+            body['SecurityPolicyNames'] = request.security_policy_names
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSecurityPolicy',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            slb_v220220430_models.ListSecurityPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_security_policy(
+        self,
+        request: slb_v220220430_models.ListSecurityPolicyRequest,
+    ) -> slb_v220220430_models.ListSecurityPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_security_policy_with_options(request, runtime)
+
+    async def list_security_policy_async(
+        self,
+        request: slb_v220220430_models.ListSecurityPolicyRequest,
+    ) -> slb_v220220430_models.ListSecurityPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_security_policy_with_options_async(request, runtime)
+
     def list_server_group_servers_with_options(
         self,
         request: slb_v220220430_models.ListServerGroupServersRequest,

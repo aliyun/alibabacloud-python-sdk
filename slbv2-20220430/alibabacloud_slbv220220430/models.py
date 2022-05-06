@@ -3981,6 +3981,274 @@ class ListLoadBalancersResponse(TeaModel):
         return self
 
 
+class ListSecurityPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+        security_policy_ids: List[str] = None,
+        security_policy_names: List[str] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.region_id = region_id
+        self.security_policy_ids = security_policy_ids
+        self.security_policy_names = security_policy_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_policy_ids is not None:
+            result['SecurityPolicyIds'] = self.security_policy_ids
+        if self.security_policy_names is not None:
+            result['SecurityPolicyNames'] = self.security_policy_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityPolicyIds') is not None:
+            self.security_policy_ids = m.get('SecurityPolicyIds')
+        if m.get('SecurityPolicyNames') is not None:
+            self.security_policy_names = m.get('SecurityPolicyNames')
+        return self
+
+
+class ListSecurityPolicyResponseBodyDataSecurityPolicies(TeaModel):
+    def __init__(
+        self,
+        ciphers: str = None,
+        region_id: str = None,
+        security_policy_id: str = None,
+        security_policy_name: str = None,
+        tls_version: str = None,
+    ):
+        # 加密套件
+        self.ciphers = ciphers
+        # 业务location
+        self.region_id = region_id
+        # tls策略ID
+        self.security_policy_id = security_policy_id
+        # 名称
+        self.security_policy_name = security_policy_name
+        # tls版本
+        self.tls_version = tls_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ciphers is not None:
+            result['Ciphers'] = self.ciphers
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_policy_id is not None:
+            result['SecurityPolicyId'] = self.security_policy_id
+        if self.security_policy_name is not None:
+            result['SecurityPolicyName'] = self.security_policy_name
+        if self.tls_version is not None:
+            result['TlsVersion'] = self.tls_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ciphers') is not None:
+            self.ciphers = m.get('Ciphers')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityPolicyId') is not None:
+            self.security_policy_id = m.get('SecurityPolicyId')
+        if m.get('SecurityPolicyName') is not None:
+            self.security_policy_name = m.get('SecurityPolicyName')
+        if m.get('TlsVersion') is not None:
+            self.tls_version = m.get('TlsVersion')
+        return self
+
+
+class ListSecurityPolicyResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        security_policies: List[ListSecurityPolicyResponseBodyDataSecurityPolicies] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.security_policies = security_policies
+        self.total_count = total_count
+
+    def validate(self):
+        if self.security_policies:
+            for k in self.security_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['SecurityPolicies'] = []
+        if self.security_policies is not None:
+            for k in self.security_policies:
+                result['SecurityPolicies'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.security_policies = []
+        if m.get('SecurityPolicies') is not None:
+            for k in m.get('SecurityPolicies'):
+                temp_model = ListSecurityPolicyResponseBodyDataSecurityPolicies()
+                self.security_policies.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListSecurityPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListSecurityPolicyResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListSecurityPolicyResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListSecurityPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListSecurityPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListSecurityPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListServerGroupServersRequest(TeaModel):
     def __init__(
         self,
@@ -4735,18 +5003,11 @@ class ListServerGroupsResponse(TeaModel):
 class RemoveServersFromServerGroupRequestServers(TeaModel):
     def __init__(
         self,
-        description: str = None,
-        id: int = None,
         port: int = None,
         server_id: str = None,
         server_ip: str = None,
         server_type: str = None,
-        weight: int = None,
-        zone_id: str = None,
     ):
-        # 服务器描述信息
-        self.description = description
-        self.id = id
         # 服务器端口
         self.port = port
         # 服务器id
@@ -4755,10 +5016,6 @@ class RemoveServersFromServerGroupRequestServers(TeaModel):
         self.server_ip = server_ip
         # 服务器类型
         self.server_type = server_type
-        # 后端权重
-        self.weight = weight
-        # 服务器对应的zoneId
-        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -4769,10 +5026,6 @@ class RemoveServersFromServerGroupRequestServers(TeaModel):
             return _map
 
         result = dict()
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.id is not None:
-            result['Id'] = self.id
         if self.port is not None:
             result['Port'] = self.port
         if self.server_id is not None:
@@ -4781,18 +5034,10 @@ class RemoveServersFromServerGroupRequestServers(TeaModel):
             result['ServerIp'] = self.server_ip
         if self.server_type is not None:
             result['ServerType'] = self.server_type
-        if self.weight is not None:
-            result['Weight'] = self.weight
-        if self.zone_id is not None:
-            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
         if m.get('Port') is not None:
             self.port = m.get('Port')
         if m.get('ServerId') is not None:
@@ -4801,10 +5046,6 @@ class RemoveServersFromServerGroupRequestServers(TeaModel):
             self.server_ip = m.get('ServerIp')
         if m.get('ServerType') is not None:
             self.server_type = m.get('ServerType')
-        if m.get('Weight') is not None:
-            self.weight = m.get('Weight')
-        if m.get('ZoneId') is not None:
-            self.zone_id = m.get('ZoneId')
         return self
 
 
