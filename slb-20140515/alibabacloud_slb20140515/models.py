@@ -6771,6 +6771,7 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
         delete_protection: str = None,
         end_time: str = None,
         end_time_stamp: int = None,
+        instance_charge_type: str = None,
         internet_charge_type: str = None,
         listener_ports: DescribeLoadBalancerAttributeResponseBodyListenerPorts = None,
         listener_ports_and_protocal: DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal = None,
@@ -6806,6 +6807,7 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
         self.delete_protection = delete_protection
         self.end_time = end_time
         self.end_time_stamp = end_time_stamp
+        self.instance_charge_type = instance_charge_type
         self.internet_charge_type = internet_charge_type
         self.listener_ports = listener_ports
         self.listener_ports_and_protocal = listener_ports_and_protocal
@@ -6868,6 +6870,8 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
             result['EndTime'] = self.end_time
         if self.end_time_stamp is not None:
             result['EndTimeStamp'] = self.end_time_stamp
+        if self.instance_charge_type is not None:
+            result['InstanceChargeType'] = self.instance_charge_type
         if self.internet_charge_type is not None:
             result['InternetChargeType'] = self.internet_charge_type
         if self.listener_ports is not None:
@@ -6941,6 +6945,8 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('EndTimeStamp') is not None:
             self.end_time_stamp = m.get('EndTimeStamp')
+        if m.get('InstanceChargeType') is not None:
+            self.instance_charge_type = m.get('InstanceChargeType')
         if m.get('InternetChargeType') is not None:
             self.internet_charge_type = m.get('InternetChargeType')
         if m.get('ListenerPorts') is not None:
@@ -9689,6 +9695,7 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
         create_time: str = None,
         create_time_stamp: int = None,
         delete_protection: str = None,
+        instance_charge_type: str = None,
         internet_charge_type: str = None,
         internet_charge_type_alias: str = None,
         load_balancer_id: str = None,
@@ -9715,6 +9722,7 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
         self.create_time = create_time
         self.create_time_stamp = create_time_stamp
         self.delete_protection = delete_protection
+        self.instance_charge_type = instance_charge_type
         self.internet_charge_type = internet_charge_type
         self.internet_charge_type_alias = internet_charge_type_alias
         self.load_balancer_id = load_balancer_id
@@ -9758,6 +9766,8 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
             result['CreateTimeStamp'] = self.create_time_stamp
         if self.delete_protection is not None:
             result['DeleteProtection'] = self.delete_protection
+        if self.instance_charge_type is not None:
+            result['InstanceChargeType'] = self.instance_charge_type
         if self.internet_charge_type is not None:
             result['InternetChargeType'] = self.internet_charge_type
         if self.internet_charge_type_alias is not None:
@@ -9812,6 +9822,8 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
             self.create_time_stamp = m.get('CreateTimeStamp')
         if m.get('DeleteProtection') is not None:
             self.delete_protection = m.get('DeleteProtection')
+        if m.get('InstanceChargeType') is not None:
+            self.instance_charge_type = m.get('InstanceChargeType')
         if m.get('InternetChargeType') is not None:
             self.internet_charge_type = m.get('InternetChargeType')
         if m.get('InternetChargeTypeAlias') is not None:
