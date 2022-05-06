@@ -812,6 +812,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_clear_edge_instance_device_config_with_options_async(request, runtime)
 
+    def batch_create_sound_code_label_with_options(
+        self,
+        request: iot_20180120_models.BatchCreateSoundCodeLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchCreateSoundCodeLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        if not UtilClient.is_unset(request.total):
+            body['Total'] = request.total
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchCreateSoundCodeLabel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchCreateSoundCodeLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_create_sound_code_label_with_options_async(
+        self,
+        request: iot_20180120_models.BatchCreateSoundCodeLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchCreateSoundCodeLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        if not UtilClient.is_unset(request.total):
+            body['Total'] = request.total
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchCreateSoundCodeLabel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchCreateSoundCodeLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_create_sound_code_label(
+        self,
+        request: iot_20180120_models.BatchCreateSoundCodeLabelRequest,
+    ) -> iot_20180120_models.BatchCreateSoundCodeLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_create_sound_code_label_with_options(request, runtime)
+
+    async def batch_create_sound_code_label_async(
+        self,
+        request: iot_20180120_models.BatchCreateSoundCodeLabelRequest,
+    ) -> iot_20180120_models.BatchCreateSoundCodeLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_create_sound_code_label_with_options_async(request, runtime)
+
+    def batch_create_sound_code_label_with_labels_with_options(
+        self,
+        request: iot_20180120_models.BatchCreateSoundCodeLabelWithLabelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchCreateSoundCodeLabelWithLabelsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchCreateSoundCodeLabelWithLabels',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchCreateSoundCodeLabelWithLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_create_sound_code_label_with_labels_with_options_async(
+        self,
+        request: iot_20180120_models.BatchCreateSoundCodeLabelWithLabelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchCreateSoundCodeLabelWithLabelsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchCreateSoundCodeLabelWithLabels',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchCreateSoundCodeLabelWithLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_create_sound_code_label_with_labels(
+        self,
+        request: iot_20180120_models.BatchCreateSoundCodeLabelWithLabelsRequest,
+    ) -> iot_20180120_models.BatchCreateSoundCodeLabelWithLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_create_sound_code_label_with_labels_with_options(request, runtime)
+
+    async def batch_create_sound_code_label_with_labels_async(
+        self,
+        request: iot_20180120_models.BatchCreateSoundCodeLabelWithLabelsRequest,
+    ) -> iot_20180120_models.BatchCreateSoundCodeLabelWithLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_create_sound_code_label_with_labels_with_options_async(request, runtime)
+
     def batch_delete_device_group_relations_with_options(
         self,
         request: iot_20180120_models.BatchDeleteDeviceGroupRelationsRequest,
@@ -2650,6 +2814,166 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.bind_gateway_to_edge_instance_with_options_async(request, runtime)
 
+    def bind_license_device_with_options(
+        self,
+        request: iot_20180120_models.BindLicenseDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BindLicenseDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_id_list):
+            query['IotIdList'] = request.iot_id_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.license_code):
+            query['LicenseCode'] = request.license_code
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindLicenseDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BindLicenseDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_license_device_with_options_async(
+        self,
+        request: iot_20180120_models.BindLicenseDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BindLicenseDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_id_list):
+            query['IotIdList'] = request.iot_id_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.license_code):
+            query['LicenseCode'] = request.license_code
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindLicenseDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BindLicenseDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_license_device(
+        self,
+        request: iot_20180120_models.BindLicenseDeviceRequest,
+    ) -> iot_20180120_models.BindLicenseDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.bind_license_device_with_options(request, runtime)
+
+    async def bind_license_device_async(
+        self,
+        request: iot_20180120_models.BindLicenseDeviceRequest,
+    ) -> iot_20180120_models.BindLicenseDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_license_device_with_options_async(request, runtime)
+
+    def bind_license_product_with_options(
+        self,
+        request: iot_20180120_models.BindLicenseProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BindLicenseProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.license_code):
+            query['LicenseCode'] = request.license_code
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindLicenseProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BindLicenseProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_license_product_with_options_async(
+        self,
+        request: iot_20180120_models.BindLicenseProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BindLicenseProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.license_code):
+            query['LicenseCode'] = request.license_code
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindLicenseProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BindLicenseProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_license_product(
+        self,
+        request: iot_20180120_models.BindLicenseProductRequest,
+    ) -> iot_20180120_models.BindLicenseProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.bind_license_product_with_options(request, runtime)
+
+    async def bind_license_product_async(
+        self,
+        request: iot_20180120_models.BindLicenseProductRequest,
+    ) -> iot_20180120_models.BindLicenseProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_license_product_with_options_async(request, runtime)
+
     def bind_role_to_edge_instance_with_options(
         self,
         request: iot_20180120_models.BindRoleToEdgeInstanceRequest,
@@ -3847,6 +4171,84 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.CreateDataAPIServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_data_apiservice_with_options_async(request, runtime)
+
+    def create_data_source_item_with_options(
+        self,
+        request: iot_20180120_models.CreateDataSourceItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateDataSourceItemResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataSourceItem',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateDataSourceItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_source_item_with_options_async(
+        self,
+        request: iot_20180120_models.CreateDataSourceItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateDataSourceItemResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataSourceItem',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateDataSourceItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_source_item(
+        self,
+        request: iot_20180120_models.CreateDataSourceItemRequest,
+    ) -> iot_20180120_models.CreateDataSourceItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_source_item_with_options(request, runtime)
+
+    async def create_data_source_item_async(
+        self,
+        request: iot_20180120_models.CreateDataSourceItemRequest,
+    ) -> iot_20180120_models.CreateDataSourceItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_source_item_with_options_async(request, runtime)
 
     def create_device_distribute_job_with_options(
         self,
@@ -6290,6 +6692,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_scene_rule_with_options_async(request, runtime)
 
+    def create_schedule_period_with_options(
+        self,
+        request: iot_20180120_models.CreateSchedulePeriodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateSchedulePeriodResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        if not UtilClient.is_unset(request.sound_code_content):
+            body['SoundCodeContent'] = request.sound_code_content
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSchedulePeriod',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateSchedulePeriodResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_schedule_period_with_options_async(
+        self,
+        request: iot_20180120_models.CreateSchedulePeriodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateSchedulePeriodResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        if not UtilClient.is_unset(request.sound_code_content):
+            body['SoundCodeContent'] = request.sound_code_content
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSchedulePeriod',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateSchedulePeriodResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_schedule_period(
+        self,
+        request: iot_20180120_models.CreateSchedulePeriodRequest,
+    ) -> iot_20180120_models.CreateSchedulePeriodResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_schedule_period_with_options(request, runtime)
+
+    async def create_schedule_period_async(
+        self,
+        request: iot_20180120_models.CreateSchedulePeriodRequest,
+    ) -> iot_20180120_models.CreateSchedulePeriodResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_schedule_period_with_options_async(request, runtime)
+
     def create_sound_code_with_options(
         self,
         request: iot_20180120_models.CreateSoundCodeRequest,
@@ -6301,6 +6793,10 @@ class Client(OpenApiClient):
             body['Duration'] = request.duration
         if not UtilClient.is_unset(request.iot_instance_id):
             body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.open_type):
+            body['OpenType'] = request.open_type
         if not UtilClient.is_unset(request.sound_code_content):
             body['SoundCodeContent'] = request.sound_code_content
         req = open_api_models.OpenApiRequest(
@@ -6333,6 +6829,10 @@ class Client(OpenApiClient):
             body['Duration'] = request.duration
         if not UtilClient.is_unset(request.iot_instance_id):
             body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.open_type):
+            body['OpenType'] = request.open_type
         if not UtilClient.is_unset(request.sound_code_content):
             body['SoundCodeContent'] = request.sound_code_content
         req = open_api_models.OpenApiRequest(
@@ -6367,6 +6867,174 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.CreateSoundCodeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_sound_code_with_options_async(request, runtime)
+
+    def create_sound_code_label_with_options(
+        self,
+        request: iot_20180120_models.CreateSoundCodeLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateSoundCodeLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.label):
+            body['Label'] = request.label
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSoundCodeLabel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateSoundCodeLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sound_code_label_with_options_async(
+        self,
+        request: iot_20180120_models.CreateSoundCodeLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateSoundCodeLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.label):
+            body['Label'] = request.label
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSoundCodeLabel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateSoundCodeLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sound_code_label(
+        self,
+        request: iot_20180120_models.CreateSoundCodeLabelRequest,
+    ) -> iot_20180120_models.CreateSoundCodeLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_sound_code_label_with_options(request, runtime)
+
+    async def create_sound_code_label_async(
+        self,
+        request: iot_20180120_models.CreateSoundCodeLabelRequest,
+    ) -> iot_20180120_models.CreateSoundCodeLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_sound_code_label_with_options_async(request, runtime)
+
+    def create_sound_code_schedule_with_options(
+        self,
+        request: iot_20180120_models.CreateSoundCodeScheduleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateSoundCodeScheduleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.open_type):
+            body['OpenType'] = request.open_type
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSoundCodeSchedule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateSoundCodeScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sound_code_schedule_with_options_async(
+        self,
+        request: iot_20180120_models.CreateSoundCodeScheduleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateSoundCodeScheduleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.open_type):
+            body['OpenType'] = request.open_type
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSoundCodeSchedule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateSoundCodeScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sound_code_schedule(
+        self,
+        request: iot_20180120_models.CreateSoundCodeScheduleRequest,
+    ) -> iot_20180120_models.CreateSoundCodeScheduleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_sound_code_schedule_with_options(request, runtime)
+
+    async def create_sound_code_schedule_async(
+        self,
+        request: iot_20180120_models.CreateSoundCodeScheduleRequest,
+    ) -> iot_20180120_models.CreateSoundCodeScheduleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_sound_code_schedule_with_options_async(request, runtime)
 
     def create_speech_with_options(
         self,
@@ -8772,6 +9440,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_scene_rule_with_options_async(request, runtime)
 
+    def delete_schedule_period_with_options(
+        self,
+        request: iot_20180120_models.DeleteSchedulePeriodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.DeleteSchedulePeriodResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.period_code):
+            body['PeriodCode'] = request.period_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSchedulePeriod',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.DeleteSchedulePeriodResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_schedule_period_with_options_async(
+        self,
+        request: iot_20180120_models.DeleteSchedulePeriodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.DeleteSchedulePeriodResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.period_code):
+            body['PeriodCode'] = request.period_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSchedulePeriod',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.DeleteSchedulePeriodResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_schedule_period(
+        self,
+        request: iot_20180120_models.DeleteSchedulePeriodRequest,
+    ) -> iot_20180120_models.DeleteSchedulePeriodResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_schedule_period_with_options(request, runtime)
+
+    async def delete_schedule_period_async(
+        self,
+        request: iot_20180120_models.DeleteSchedulePeriodRequest,
+    ) -> iot_20180120_models.DeleteSchedulePeriodResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_schedule_period_with_options_async(request, runtime)
+
     def delete_sound_code_with_options(
         self,
         request: iot_20180120_models.DeleteSoundCodeRequest,
@@ -8845,6 +9587,154 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.DeleteSoundCodeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_sound_code_with_options_async(request, runtime)
+
+    def delete_sound_code_label_with_options(
+        self,
+        request: iot_20180120_models.DeleteSoundCodeLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.DeleteSoundCodeLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.sound_code):
+            body['SoundCode'] = request.sound_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSoundCodeLabel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.DeleteSoundCodeLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_sound_code_label_with_options_async(
+        self,
+        request: iot_20180120_models.DeleteSoundCodeLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.DeleteSoundCodeLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.sound_code):
+            body['SoundCode'] = request.sound_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSoundCodeLabel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.DeleteSoundCodeLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_sound_code_label(
+        self,
+        request: iot_20180120_models.DeleteSoundCodeLabelRequest,
+    ) -> iot_20180120_models.DeleteSoundCodeLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_sound_code_label_with_options(request, runtime)
+
+    async def delete_sound_code_label_async(
+        self,
+        request: iot_20180120_models.DeleteSoundCodeLabelRequest,
+    ) -> iot_20180120_models.DeleteSoundCodeLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_sound_code_label_with_options_async(request, runtime)
+
+    def delete_sound_code_schedule_with_options(
+        self,
+        request: iot_20180120_models.DeleteSoundCodeScheduleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.DeleteSoundCodeScheduleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSoundCodeSchedule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.DeleteSoundCodeScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_sound_code_schedule_with_options_async(
+        self,
+        request: iot_20180120_models.DeleteSoundCodeScheduleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.DeleteSoundCodeScheduleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSoundCodeSchedule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.DeleteSoundCodeScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_sound_code_schedule(
+        self,
+        request: iot_20180120_models.DeleteSoundCodeScheduleRequest,
+    ) -> iot_20180120_models.DeleteSoundCodeScheduleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_sound_code_schedule_with_options(request, runtime)
+
+    async def delete_sound_code_schedule_async(
+        self,
+        request: iot_20180120_models.DeleteSoundCodeScheduleRequest,
+    ) -> iot_20180120_models.DeleteSoundCodeScheduleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_sound_code_schedule_with_options_async(request, runtime)
 
     def delete_speech_with_options(
         self,
@@ -11252,6 +12142,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_sound_code_audio_with_options_async(request, runtime)
 
+    def get_sound_code_schedule_with_options(
+        self,
+        request: iot_20180120_models.GetSoundCodeScheduleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.GetSoundCodeScheduleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSoundCodeSchedule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.GetSoundCodeScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sound_code_schedule_with_options_async(
+        self,
+        request: iot_20180120_models.GetSoundCodeScheduleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.GetSoundCodeScheduleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSoundCodeSchedule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.GetSoundCodeScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sound_code_schedule(
+        self,
+        request: iot_20180120_models.GetSoundCodeScheduleRequest,
+    ) -> iot_20180120_models.GetSoundCodeScheduleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_sound_code_schedule_with_options(request, runtime)
+
+    async def get_sound_code_schedule_async(
+        self,
+        request: iot_20180120_models.GetSoundCodeScheduleRequest,
+    ) -> iot_20180120_models.GetSoundCodeScheduleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_sound_code_schedule_with_options_async(request, runtime)
+
     def get_speech_device_detail_with_options(
         self,
         request: iot_20180120_models.GetSpeechDeviceDetailRequest,
@@ -12473,6 +13437,92 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.ListAnalyticsDataResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_analytics_data_with_options_async(request, runtime)
+
+    def list_data_source_item_with_options(
+        self,
+        request: iot_20180120_models.ListDataSourceItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ListDataSourceItemResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataSourceItem',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ListDataSourceItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_source_item_with_options_async(
+        self,
+        request: iot_20180120_models.ListDataSourceItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ListDataSourceItemResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataSourceItem',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ListDataSourceItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_source_item(
+        self,
+        request: iot_20180120_models.ListDataSourceItemRequest,
+    ) -> iot_20180120_models.ListDataSourceItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_source_item_with_options(request, runtime)
+
+    async def list_data_source_item_async(
+        self,
+        request: iot_20180120_models.ListDataSourceItemRequest,
+    ) -> iot_20180120_models.ListDataSourceItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_source_item_with_options_async(request, runtime)
 
     def list_device_distribute_job_with_options(
         self,
@@ -14137,6 +15187,80 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.OpenIotServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.open_iot_service_with_options_async(request, runtime)
+
+    def package_sound_code_label_batch_audio_with_options(
+        self,
+        request: iot_20180120_models.PackageSoundCodeLabelBatchAudioRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.PackageSoundCodeLabelBatchAudioResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.batch_code):
+            body['BatchCode'] = request.batch_code
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PackageSoundCodeLabelBatchAudio',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.PackageSoundCodeLabelBatchAudioResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def package_sound_code_label_batch_audio_with_options_async(
+        self,
+        request: iot_20180120_models.PackageSoundCodeLabelBatchAudioRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.PackageSoundCodeLabelBatchAudioResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.batch_code):
+            body['BatchCode'] = request.batch_code
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PackageSoundCodeLabelBatchAudio',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.PackageSoundCodeLabelBatchAudioResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def package_sound_code_label_batch_audio(
+        self,
+        request: iot_20180120_models.PackageSoundCodeLabelBatchAudioRequest,
+    ) -> iot_20180120_models.PackageSoundCodeLabelBatchAudioResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.package_sound_code_label_batch_audio_with_options(request, runtime)
+
+    async def package_sound_code_label_batch_audio_async(
+        self,
+        request: iot_20180120_models.PackageSoundCodeLabelBatchAudioRequest,
+    ) -> iot_20180120_models.PackageSoundCodeLabelBatchAudioResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.package_sound_code_label_batch_audio_with_options_async(request, runtime)
 
     def print_by_template_with_options(
         self,
@@ -19866,6 +20990,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_scene_rule_with_options_async(request, runtime)
 
+    def query_schedule_period_list_with_options(
+        self,
+        request: iot_20180120_models.QuerySchedulePeriodListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySchedulePeriodListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            body['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySchedulePeriodList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySchedulePeriodListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_schedule_period_list_with_options_async(
+        self,
+        request: iot_20180120_models.QuerySchedulePeriodListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySchedulePeriodListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            body['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySchedulePeriodList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySchedulePeriodListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_schedule_period_list(
+        self,
+        request: iot_20180120_models.QuerySchedulePeriodListRequest,
+    ) -> iot_20180120_models.QuerySchedulePeriodListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_schedule_period_list_with_options(request, runtime)
+
+    async def query_schedule_period_list_async(
+        self,
+        request: iot_20180120_models.QuerySchedulePeriodListRequest,
+    ) -> iot_20180120_models.QuerySchedulePeriodListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_schedule_period_list_with_options_async(request, runtime)
+
     def query_solution_device_group_page_with_options(
         self,
         request: iot_20180120_models.QuerySolutionDeviceGroupPageRequest,
@@ -19952,6 +21158,244 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_solution_device_group_page_with_options_async(request, runtime)
 
+    def query_sound_code_label_batch_failed_result_with_options(
+        self,
+        request: iot_20180120_models.QuerySoundCodeLabelBatchFailedResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySoundCodeLabelBatchFailedResultResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.batch_code):
+            body['BatchCode'] = request.batch_code
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySoundCodeLabelBatchFailedResult',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySoundCodeLabelBatchFailedResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_sound_code_label_batch_failed_result_with_options_async(
+        self,
+        request: iot_20180120_models.QuerySoundCodeLabelBatchFailedResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySoundCodeLabelBatchFailedResultResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.batch_code):
+            body['BatchCode'] = request.batch_code
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySoundCodeLabelBatchFailedResult',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySoundCodeLabelBatchFailedResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_sound_code_label_batch_failed_result(
+        self,
+        request: iot_20180120_models.QuerySoundCodeLabelBatchFailedResultRequest,
+    ) -> iot_20180120_models.QuerySoundCodeLabelBatchFailedResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_sound_code_label_batch_failed_result_with_options(request, runtime)
+
+    async def query_sound_code_label_batch_failed_result_async(
+        self,
+        request: iot_20180120_models.QuerySoundCodeLabelBatchFailedResultRequest,
+    ) -> iot_20180120_models.QuerySoundCodeLabelBatchFailedResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_sound_code_label_batch_failed_result_with_options_async(request, runtime)
+
+    def query_sound_code_label_batch_list_with_options(
+        self,
+        request: iot_20180120_models.QuerySoundCodeLabelBatchListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySoundCodeLabelBatchListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            body['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySoundCodeLabelBatchList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySoundCodeLabelBatchListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_sound_code_label_batch_list_with_options_async(
+        self,
+        request: iot_20180120_models.QuerySoundCodeLabelBatchListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySoundCodeLabelBatchListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            body['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySoundCodeLabelBatchList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySoundCodeLabelBatchListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_sound_code_label_batch_list(
+        self,
+        request: iot_20180120_models.QuerySoundCodeLabelBatchListRequest,
+    ) -> iot_20180120_models.QuerySoundCodeLabelBatchListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_sound_code_label_batch_list_with_options(request, runtime)
+
+    async def query_sound_code_label_batch_list_async(
+        self,
+        request: iot_20180120_models.QuerySoundCodeLabelBatchListRequest,
+    ) -> iot_20180120_models.QuerySoundCodeLabelBatchListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_sound_code_label_batch_list_with_options_async(request, runtime)
+
+    def query_sound_code_label_list_with_options(
+        self,
+        request: iot_20180120_models.QuerySoundCodeLabelListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySoundCodeLabelListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            body['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySoundCodeLabelList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySoundCodeLabelListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_sound_code_label_list_with_options_async(
+        self,
+        request: iot_20180120_models.QuerySoundCodeLabelListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySoundCodeLabelListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            body['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySoundCodeLabelList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySoundCodeLabelListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_sound_code_label_list(
+        self,
+        request: iot_20180120_models.QuerySoundCodeLabelListRequest,
+    ) -> iot_20180120_models.QuerySoundCodeLabelListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_sound_code_label_list_with_options(request, runtime)
+
+    async def query_sound_code_label_list_async(
+        self,
+        request: iot_20180120_models.QuerySoundCodeLabelListRequest,
+    ) -> iot_20180120_models.QuerySoundCodeLabelListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_sound_code_label_list_with_options_async(request, runtime)
+
     def query_sound_code_list_with_options(
         self,
         request: iot_20180120_models.QuerySoundCodeListRequest,
@@ -20029,6 +21473,84 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QuerySoundCodeListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_sound_code_list_with_options_async(request, runtime)
+
+    def query_sound_code_schedule_list_with_options(
+        self,
+        request: iot_20180120_models.QuerySoundCodeScheduleListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySoundCodeScheduleListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            body['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySoundCodeScheduleList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySoundCodeScheduleListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_sound_code_schedule_list_with_options_async(
+        self,
+        request: iot_20180120_models.QuerySoundCodeScheduleListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySoundCodeScheduleListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            body['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySoundCodeScheduleList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySoundCodeScheduleListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_sound_code_schedule_list(
+        self,
+        request: iot_20180120_models.QuerySoundCodeScheduleListRequest,
+    ) -> iot_20180120_models.QuerySoundCodeScheduleListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_sound_code_schedule_list_with_options(request, runtime)
+
+    async def query_sound_code_schedule_list_async(
+        self,
+        request: iot_20180120_models.QuerySoundCodeScheduleListRequest,
+    ) -> iot_20180120_models.QuerySoundCodeScheduleListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_sound_code_schedule_list_with_options_async(request, runtime)
 
     def query_speech_with_options(
         self,
@@ -21796,6 +23318,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.r_rpc_with_options_async(request, runtime)
 
+    def recognize_car_num_with_options(
+        self,
+        request: iot_20180120_models.RecognizeCarNumRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.RecognizeCarNumResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecognizeCarNum',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.RecognizeCarNumResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_car_num_with_options_async(
+        self,
+        request: iot_20180120_models.RecognizeCarNumRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.RecognizeCarNumResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecognizeCarNum',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.RecognizeCarNumResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_car_num(
+        self,
+        request: iot_20180120_models.RecognizeCarNumRequest,
+    ) -> iot_20180120_models.RecognizeCarNumResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_car_num_with_options(request, runtime)
+
+    async def recognize_car_num_async(
+        self,
+        request: iot_20180120_models.RecognizeCarNumRequest,
+    ) -> iot_20180120_models.RecognizeCarNumResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_car_num_with_options_async(request, runtime)
+
+    def recognize_picture_general_with_options(
+        self,
+        request: iot_20180120_models.RecognizePictureGeneralRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.RecognizePictureGeneralResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecognizePictureGeneral',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.RecognizePictureGeneralResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_picture_general_with_options_async(
+        self,
+        request: iot_20180120_models.RecognizePictureGeneralRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.RecognizePictureGeneralResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecognizePictureGeneral',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.RecognizePictureGeneralResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_picture_general(
+        self,
+        request: iot_20180120_models.RecognizePictureGeneralRequest,
+    ) -> iot_20180120_models.RecognizePictureGeneralResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_picture_general_with_options(request, runtime)
+
+    async def recognize_picture_general_async(
+        self,
+        request: iot_20180120_models.RecognizePictureGeneralRequest,
+    ) -> iot_20180120_models.RecognizePictureGeneralResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_picture_general_with_options_async(request, runtime)
+
     def refresh_device_tunnel_share_password_with_options(
         self,
         request: iot_20180120_models.RefreshDeviceTunnelSharePasswordRequest,
@@ -22599,6 +24261,80 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.ResetThingResponse:
         runtime = util_models.RuntimeOptions()
         return await self.reset_thing_with_options_async(request, runtime)
+
+    def retry_sound_code_label_batch_with_options(
+        self,
+        request: iot_20180120_models.RetrySoundCodeLabelBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.RetrySoundCodeLabelBatchResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.batch_code):
+            body['BatchCode'] = request.batch_code
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RetrySoundCodeLabelBatch',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.RetrySoundCodeLabelBatchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retry_sound_code_label_batch_with_options_async(
+        self,
+        request: iot_20180120_models.RetrySoundCodeLabelBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.RetrySoundCodeLabelBatchResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.batch_code):
+            body['BatchCode'] = request.batch_code
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RetrySoundCodeLabelBatch',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.RetrySoundCodeLabelBatchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retry_sound_code_label_batch(
+        self,
+        request: iot_20180120_models.RetrySoundCodeLabelBatchRequest,
+    ) -> iot_20180120_models.RetrySoundCodeLabelBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.retry_sound_code_label_batch_with_options(request, runtime)
+
+    async def retry_sound_code_label_batch_async(
+        self,
+        request: iot_20180120_models.RetrySoundCodeLabelBatchRequest,
+    ) -> iot_20180120_models.RetrySoundCodeLabelBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.retry_sound_code_label_batch_with_options_async(request, runtime)
 
     def reupgrade_otatask_with_options(
         self,
@@ -24448,6 +26184,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.unbind_driver_from_edge_instance_with_options_async(request, runtime)
 
+    def unbind_license_product_with_options(
+        self,
+        request: iot_20180120_models.UnbindLicenseProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.UnbindLicenseProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.license_code):
+            query['LicenseCode'] = request.license_code
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindLicenseProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.UnbindLicenseProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_license_product_with_options_async(
+        self,
+        request: iot_20180120_models.UnbindLicenseProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.UnbindLicenseProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.license_code):
+            query['LicenseCode'] = request.license_code
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindLicenseProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.UnbindLicenseProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_license_product(
+        self,
+        request: iot_20180120_models.UnbindLicenseProductRequest,
+    ) -> iot_20180120_models.UnbindLicenseProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.unbind_license_product_with_options(request, runtime)
+
+    async def unbind_license_product_async(
+        self,
+        request: iot_20180120_models.UnbindLicenseProductRequest,
+    ) -> iot_20180120_models.UnbindLicenseProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.unbind_license_product_with_options_async(request, runtime)
+
     def unbind_role_from_edge_instance_with_options(
         self,
         request: iot_20180120_models.UnbindRoleFromEdgeInstanceRequest,
@@ -26023,6 +27837,362 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.UpdateSceneRuleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_scene_rule_with_options_async(request, runtime)
+
+    def update_schedule_period_with_options(
+        self,
+        request: iot_20180120_models.UpdateSchedulePeriodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.UpdateSchedulePeriodResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.period_code):
+            body['PeriodCode'] = request.period_code
+        if not UtilClient.is_unset(request.sound_code_content):
+            body['SoundCodeContent'] = request.sound_code_content
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSchedulePeriod',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.UpdateSchedulePeriodResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_schedule_period_with_options_async(
+        self,
+        request: iot_20180120_models.UpdateSchedulePeriodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.UpdateSchedulePeriodResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.period_code):
+            body['PeriodCode'] = request.period_code
+        if not UtilClient.is_unset(request.sound_code_content):
+            body['SoundCodeContent'] = request.sound_code_content
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSchedulePeriod',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.UpdateSchedulePeriodResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_schedule_period(
+        self,
+        request: iot_20180120_models.UpdateSchedulePeriodRequest,
+    ) -> iot_20180120_models.UpdateSchedulePeriodResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_schedule_period_with_options(request, runtime)
+
+    async def update_schedule_period_async(
+        self,
+        request: iot_20180120_models.UpdateSchedulePeriodRequest,
+    ) -> iot_20180120_models.UpdateSchedulePeriodResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_schedule_period_with_options_async(request, runtime)
+
+    def update_sound_code_with_options(
+        self,
+        request: iot_20180120_models.UpdateSoundCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.UpdateSoundCodeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.sound_code):
+            body['SoundCode'] = request.sound_code
+        if not UtilClient.is_unset(request.sound_code_content):
+            body['SoundCodeContent'] = request.sound_code_content
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSoundCode',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.UpdateSoundCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_sound_code_with_options_async(
+        self,
+        request: iot_20180120_models.UpdateSoundCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.UpdateSoundCodeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.duration):
+            body['Duration'] = request.duration
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.sound_code):
+            body['SoundCode'] = request.sound_code
+        if not UtilClient.is_unset(request.sound_code_content):
+            body['SoundCodeContent'] = request.sound_code_content
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSoundCode',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.UpdateSoundCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_sound_code(
+        self,
+        request: iot_20180120_models.UpdateSoundCodeRequest,
+    ) -> iot_20180120_models.UpdateSoundCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_sound_code_with_options(request, runtime)
+
+    async def update_sound_code_async(
+        self,
+        request: iot_20180120_models.UpdateSoundCodeRequest,
+    ) -> iot_20180120_models.UpdateSoundCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_sound_code_with_options_async(request, runtime)
+
+    def update_sound_code_label_with_options(
+        self,
+        request: iot_20180120_models.UpdateSoundCodeLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.UpdateSoundCodeLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.label):
+            body['Label'] = request.label
+        if not UtilClient.is_unset(request.sound_code):
+            body['SoundCode'] = request.sound_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSoundCodeLabel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.UpdateSoundCodeLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_sound_code_label_with_options_async(
+        self,
+        request: iot_20180120_models.UpdateSoundCodeLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.UpdateSoundCodeLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.label):
+            body['Label'] = request.label
+        if not UtilClient.is_unset(request.sound_code):
+            body['SoundCode'] = request.sound_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSoundCodeLabel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.UpdateSoundCodeLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_sound_code_label(
+        self,
+        request: iot_20180120_models.UpdateSoundCodeLabelRequest,
+    ) -> iot_20180120_models.UpdateSoundCodeLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_sound_code_label_with_options(request, runtime)
+
+    async def update_sound_code_label_async(
+        self,
+        request: iot_20180120_models.UpdateSoundCodeLabelRequest,
+    ) -> iot_20180120_models.UpdateSoundCodeLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_sound_code_label_with_options_async(request, runtime)
+
+    def update_sound_code_schedule_with_options(
+        self,
+        request: iot_20180120_models.UpdateSoundCodeScheduleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.UpdateSoundCodeScheduleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSoundCodeSchedule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.UpdateSoundCodeScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_sound_code_schedule_with_options_async(
+        self,
+        request: iot_20180120_models.UpdateSoundCodeScheduleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.UpdateSoundCodeScheduleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.schedule_code):
+            body['ScheduleCode'] = request.schedule_code
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSoundCodeSchedule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.UpdateSoundCodeScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_sound_code_schedule(
+        self,
+        request: iot_20180120_models.UpdateSoundCodeScheduleRequest,
+    ) -> iot_20180120_models.UpdateSoundCodeScheduleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_sound_code_schedule_with_options(request, runtime)
+
+    async def update_sound_code_schedule_async(
+        self,
+        request: iot_20180120_models.UpdateSoundCodeScheduleRequest,
+    ) -> iot_20180120_models.UpdateSoundCodeScheduleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_sound_code_schedule_with_options_async(request, runtime)
 
     def update_speech_with_options(
         self,
