@@ -6716,6 +6716,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_deployment_with_options_async(request, runtime)
 
+    def get_extension_with_options(
+        self,
+        request: dataworks_public_20200518_models.GetExtensionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetExtensionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.extension_code):
+            query['ExtensionCode'] = request.extension_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetExtension',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetExtensionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_extension_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.GetExtensionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetExtensionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.extension_code):
+            query['ExtensionCode'] = request.extension_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetExtension',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetExtensionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_extension(
+        self,
+        request: dataworks_public_20200518_models.GetExtensionRequest,
+    ) -> dataworks_public_20200518_models.GetExtensionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_extension_with_options(request, runtime)
+
+    async def get_extension_async(
+        self,
+        request: dataworks_public_20200518_models.GetExtensionRequest,
+    ) -> dataworks_public_20200518_models.GetExtensionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_extension_with_options_async(request, runtime)
+
     def get_file_with_options(
         self,
         request: dataworks_public_20200518_models.GetFileRequest,
@@ -9570,6 +9640,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_op_sensitive_data_with_options_async(request, runtime)
 
+    def get_option_value_for_project_with_options(
+        self,
+        request: dataworks_public_20200518_models.GetOptionValueForProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetOptionValueForProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.extension_code):
+            body['ExtensionCode'] = request.extension_code
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetOptionValueForProject',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetOptionValueForProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_option_value_for_project_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.GetOptionValueForProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetOptionValueForProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.extension_code):
+            body['ExtensionCode'] = request.extension_code
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetOptionValueForProject',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetOptionValueForProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_option_value_for_project(
+        self,
+        request: dataworks_public_20200518_models.GetOptionValueForProjectRequest,
+    ) -> dataworks_public_20200518_models.GetOptionValueForProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_option_value_for_project_with_options(request, runtime)
+
+    async def get_option_value_for_project_async(
+        self,
+        request: dataworks_public_20200518_models.GetOptionValueForProjectRequest,
+    ) -> dataworks_public_20200518_models.GetOptionValueForProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_option_value_for_project_with_options_async(request, runtime)
+
     def get_permission_apply_order_detail_with_options(
         self,
         request: dataworks_public_20200518_models.GetPermissionApplyOrderDetailRequest,
@@ -10974,6 +11118,166 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_connections_with_options_async(request, runtime)
 
+    def list_current_tasks_for_resource_group_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListCurrentTasksForResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListCurrentTasksForResourceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_env):
+            body['ProjectEnv'] = request.project_env
+        if not UtilClient.is_unset(request.resource_group_identifier):
+            body['ResourceGroupIdentifier'] = request.resource_group_identifier
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListCurrentTasksForResourceGroup',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListCurrentTasksForResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_current_tasks_for_resource_group_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListCurrentTasksForResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListCurrentTasksForResourceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_env):
+            body['ProjectEnv'] = request.project_env
+        if not UtilClient.is_unset(request.resource_group_identifier):
+            body['ResourceGroupIdentifier'] = request.resource_group_identifier
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListCurrentTasksForResourceGroup',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListCurrentTasksForResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_current_tasks_for_resource_group(
+        self,
+        request: dataworks_public_20200518_models.ListCurrentTasksForResourceGroupRequest,
+    ) -> dataworks_public_20200518_models.ListCurrentTasksForResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_current_tasks_for_resource_group_with_options(request, runtime)
+
+    async def list_current_tasks_for_resource_group_async(
+        self,
+        request: dataworks_public_20200518_models.ListCurrentTasksForResourceGroupRequest,
+    ) -> dataworks_public_20200518_models.ListCurrentTasksForResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_current_tasks_for_resource_group_with_options_async(request, runtime)
+
+    def list_current_usage_for_resource_group_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListCurrentUsageForResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListCurrentUsageForResourceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_env):
+            body['ProjectEnv'] = request.project_env
+        if not UtilClient.is_unset(request.resource_group_identifier):
+            body['ResourceGroupIdentifier'] = request.resource_group_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListCurrentUsageForResourceGroup',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListCurrentUsageForResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_current_usage_for_resource_group_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListCurrentUsageForResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListCurrentUsageForResourceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_env):
+            body['ProjectEnv'] = request.project_env
+        if not UtilClient.is_unset(request.resource_group_identifier):
+            body['ResourceGroupIdentifier'] = request.resource_group_identifier
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListCurrentUsageForResourceGroup',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListCurrentUsageForResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_current_usage_for_resource_group(
+        self,
+        request: dataworks_public_20200518_models.ListCurrentUsageForResourceGroupRequest,
+    ) -> dataworks_public_20200518_models.ListCurrentUsageForResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_current_usage_for_resource_group_with_options(request, runtime)
+
+    async def list_current_usage_for_resource_group_async(
+        self,
+        request: dataworks_public_20200518_models.ListCurrentUsageForResourceGroupRequest,
+    ) -> dataworks_public_20200518_models.ListCurrentUsageForResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_current_usage_for_resource_group_with_options_async(request, runtime)
+
     def list_diproject_config_with_options(
         self,
         request: dataworks_public_20200518_models.ListDIProjectConfigRequest,
@@ -11924,6 +12228,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_deployments_with_options_async(request, runtime)
 
+    def list_extensions_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListExtensionsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExtensions',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListExtensionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_extensions_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListExtensionsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExtensions',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListExtensionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_extensions(
+        self,
+        request: dataworks_public_20200518_models.ListExtensionsRequest,
+    ) -> dataworks_public_20200518_models.ListExtensionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_extensions_with_options(request, runtime)
+
+    async def list_extensions_async(
+        self,
+        request: dataworks_public_20200518_models.ListExtensionsRequest,
+    ) -> dataworks_public_20200518_models.ListExtensionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_extensions_with_options_async(request, runtime)
+
     def list_file_type_with_options(
         self,
         request: dataworks_public_20200518_models.ListFileTypeRequest,
@@ -12291,6 +12661,96 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.ListFoldersResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_folders_with_options_async(request, runtime)
+
+    def list_history_tasks_for_resource_group_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListHistoryTasksForResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListHistoryTasksForResourceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_env):
+            body['ProjectEnv'] = request.project_env
+        if not UtilClient.is_unset(request.resource_group_identifier):
+            body['ResourceGroupIdentifier'] = request.resource_group_identifier
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListHistoryTasksForResourceGroup',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListHistoryTasksForResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_history_tasks_for_resource_group_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListHistoryTasksForResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListHistoryTasksForResourceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_env):
+            body['ProjectEnv'] = request.project_env
+        if not UtilClient.is_unset(request.resource_group_identifier):
+            body['ResourceGroupIdentifier'] = request.resource_group_identifier
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListHistoryTasksForResourceGroup',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListHistoryTasksForResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_history_tasks_for_resource_group(
+        self,
+        request: dataworks_public_20200518_models.ListHistoryTasksForResourceGroupRequest,
+    ) -> dataworks_public_20200518_models.ListHistoryTasksForResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_history_tasks_for_resource_group_with_options(request, runtime)
+
+    async def list_history_tasks_for_resource_group_async(
+        self,
+        request: dataworks_public_20200518_models.ListHistoryTasksForResourceGroupRequest,
+    ) -> dataworks_public_20200518_models.ListHistoryTasksForResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_history_tasks_for_resource_group_with_options_async(request, runtime)
 
     def list_instance_amount_with_options(
         self,
@@ -14333,6 +14793,88 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.ListTopicsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_topics_with_options_async(request, runtime)
+
+    def list_usage_for_resource_group_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListUsageForResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListUsageForResourceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.project_env):
+            body['ProjectEnv'] = request.project_env
+        if not UtilClient.is_unset(request.resource_group_identifier):
+            body['ResourceGroupIdentifier'] = request.resource_group_identifier
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListUsageForResourceGroup',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListUsageForResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_usage_for_resource_group_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListUsageForResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListUsageForResourceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.project_env):
+            body['ProjectEnv'] = request.project_env
+        if not UtilClient.is_unset(request.resource_group_identifier):
+            body['ResourceGroupIdentifier'] = request.resource_group_identifier
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListUsageForResourceGroup',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListUsageForResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_usage_for_resource_group(
+        self,
+        request: dataworks_public_20200518_models.ListUsageForResourceGroupRequest,
+    ) -> dataworks_public_20200518_models.ListUsageForResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_usage_for_resource_group_with_options(request, runtime)
+
+    async def list_usage_for_resource_group_async(
+        self,
+        request: dataworks_public_20200518_models.ListUsageForResourceGroupRequest,
+    ) -> dataworks_public_20200518_models.ListUsageForResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_usage_for_resource_group_with_options_async(request, runtime)
 
     def publish_data_service_api_with_options(
         self,
