@@ -1,3 +1,6 @@
+2022-05-07 Version: 3.2.3
+- Added diagnostic feature interface.
+
 2022-04-25 Version: 3.2.2
 - The Feature parameter of GetFeatureDetails is supported to be specified as TemplateScratch, which indicates the supported resource types for the template scratch.
 
