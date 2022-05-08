@@ -1,3 +1,6 @@
+2022-05-08 Version: 2.1.6
+- Add parameter of api SetDomainCertificate.
+
 2022-04-28 Version: 2.1.5
 - Add a new api ModifyApiConfiguration.
 
