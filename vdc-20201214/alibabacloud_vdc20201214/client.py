@@ -633,6 +633,94 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def describe_call_info(
+        self,
+        request: vdc_20201214_models.DescribeCallInfoRequest,
+    ) -> vdc_20201214_models.DescribeCallInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_call_info_with_options(request, headers, runtime)
+
+    async def describe_call_info_async(
+        self,
+        request: vdc_20201214_models.DescribeCallInfoRequest,
+    ) -> vdc_20201214_models.DescribeCallInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_call_info_with_options_async(request, headers, runtime)
+
+    def describe_call_info_with_options(
+        self,
+        request: vdc_20201214_models.DescribeCallInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> vdc_20201214_models.DescribeCallInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCallInfo',
+            version='2020-12-14',
+            protocol='HTTPS',
+            pathname=f'/api/call/describeCallInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vdc_20201214_models.DescribeCallInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_call_info_with_options_async(
+        self,
+        request: vdc_20201214_models.DescribeCallInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> vdc_20201214_models.DescribeCallInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCallInfo',
+            version='2020-12-14',
+            protocol='HTTPS',
+            pathname=f'/api/call/describeCallInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vdc_20201214_models.DescribeCallInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def describe_call_list(
         self,
         request: vdc_20201214_models.DescribeCallListRequest,
@@ -914,6 +1002,118 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             vdc_20201214_models.DescribeCallUserExpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_call_user_list(
+        self,
+        request: vdc_20201214_models.DescribeCallUserListRequest,
+    ) -> vdc_20201214_models.DescribeCallUserListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_call_user_list_with_options(request, headers, runtime)
+
+    async def describe_call_user_list_async(
+        self,
+        request: vdc_20201214_models.DescribeCallUserListRequest,
+    ) -> vdc_20201214_models.DescribeCallUserListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_call_user_list_with_options_async(request, headers, runtime)
+
+    def describe_call_user_list_with_options(
+        self,
+        request: vdc_20201214_models.DescribeCallUserListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> vdc_20201214_models.DescribeCallUserListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.ext_data_type):
+            query['ExtDataType'] = request.ext_data_type
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_exp_info):
+            query['QueryExpInfo'] = request.query_exp_info
+        if not UtilClient.is_unset(request.role_type):
+            query['RoleType'] = request.role_type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCallUserList',
+            version='2020-12-14',
+            protocol='HTTPS',
+            pathname=f'/api/call/describeCallUserList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vdc_20201214_models.DescribeCallUserListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_call_user_list_with_options_async(
+        self,
+        request: vdc_20201214_models.DescribeCallUserListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> vdc_20201214_models.DescribeCallUserListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.ext_data_type):
+            query['ExtDataType'] = request.ext_data_type
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_exp_info):
+            query['QueryExpInfo'] = request.query_exp_info
+        if not UtilClient.is_unset(request.role_type):
+            query['RoleType'] = request.role_type
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCallUserList',
+            version='2020-12-14',
+            protocol='HTTPS',
+            pathname=f'/api/call/describeCallUserList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vdc_20201214_models.DescribeCallUserListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
