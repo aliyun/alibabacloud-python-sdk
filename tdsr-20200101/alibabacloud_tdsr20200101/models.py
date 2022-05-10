@@ -3094,7 +3094,7 @@ class GetPackSceneTaskStatusRequest(TeaModel):
 class GetPackSceneTaskStatusResponseBodyData(TeaModel):
     def __init__(
         self,
-        progress: str = None,
+        progress: int = None,
         status: str = None,
     ):
         # 任务进度
@@ -3537,7 +3537,7 @@ class GetScenePackUrlResponseBodyData(TeaModel):
         self,
         expire: str = None,
         url: str = None,
-        valid: str = None,
+        valid: bool = None,
     ):
         # 失效日期
         self.expire = expire

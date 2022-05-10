@@ -1,3 +1,6 @@
+2022-05-10 Version: 3.0.10
+- Modify  Failed Type Within GetScenePackUrl And GetPackSceneTaskStatus  Interface.
+
 2022-05-09 Version: 3.0.9
 - Add Model Pack Interface.
 
