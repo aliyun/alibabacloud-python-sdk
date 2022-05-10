@@ -10,6 +10,13 @@ from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dts20200101 import models as dts_20200101_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_rpc import models as rpc_models
+from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
+from alibabacloud_openplatform20191219 import models as open_platform_models
+from alibabacloud_oss_sdk import models as oss_models
+from alibabacloud_tea_fileform import models as file_form_models
+from alibabacloud_oss_util import models as ossutil_models
+from alibabacloud_oss_sdk.client import Client as OSSClient
 
 
 class Client(OpenApiClient):
@@ -149,6 +156,8 @@ class Client(OpenApiClient):
             query['ErrorNotice'] = request.error_notice
         if not UtilClient.is_unset(request.error_phone):
             query['ErrorPhone'] = request.error_phone
+        if not UtilClient.is_unset(request.file_oss_url):
+            query['FileOssUrl'] = request.file_oss_url
         if not UtilClient.is_unset(request.job_type):
             query['JobType'] = request.job_type
         if not UtilClient.is_unset(request.owner_id):
@@ -259,6 +268,8 @@ class Client(OpenApiClient):
             query['ErrorNotice'] = request.error_notice
         if not UtilClient.is_unset(request.error_phone):
             query['ErrorPhone'] = request.error_phone
+        if not UtilClient.is_unset(request.file_oss_url):
+            query['FileOssUrl'] = request.file_oss_url
         if not UtilClient.is_unset(request.job_type):
             query['JobType'] = request.job_type
         if not UtilClient.is_unset(request.owner_id):
@@ -331,6 +342,148 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.ConfigureDtsJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.configure_dts_job_with_options_async(request, runtime)
+
+    def configure_dts_job_advance(
+        self,
+        request: dts_20200101_models.ConfigureDtsJobAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ConfigureDtsJobResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='Dts',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        configure_dts_job_req = dts_20200101_models.ConfigureDtsJobRequest()
+        OpenApiUtilClient.convert(request, configure_dts_job_req)
+        if not UtilClient.is_unset(request.file_oss_url_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.file_oss_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            configure_dts_job_req.file_oss_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        configure_dts_job_resp = self.configure_dts_job_with_options(configure_dts_job_req, runtime)
+        return configure_dts_job_resp
+
+    async def configure_dts_job_advance_async(
+        self,
+        request: dts_20200101_models.ConfigureDtsJobAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ConfigureDtsJobResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='Dts',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        configure_dts_job_req = dts_20200101_models.ConfigureDtsJobRequest()
+        OpenApiUtilClient.convert(request, configure_dts_job_req)
+        if not UtilClient.is_unset(request.file_oss_url_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.file_oss_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            configure_dts_job_req.file_oss_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        configure_dts_job_resp = await self.configure_dts_job_with_options_async(configure_dts_job_req, runtime)
+        return configure_dts_job_resp
 
     def configure_migration_job_with_options(
         self,
@@ -1558,6 +1711,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_consumer_group_with_options_async(request, runtime)
 
+    def create_dedicated_cluster_monitor_rule_with_options(
+        self,
+        request: dts_20200101_models.CreateDedicatedClusterMonitorRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.CreateDedicatedClusterMonitorRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cpu_alarm_threshold):
+            query['CpuAlarmThreshold'] = request.cpu_alarm_threshold
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.disk_alarm_threshold):
+            query['DiskAlarmThreshold'] = request.disk_alarm_threshold
+        if not UtilClient.is_unset(request.du_alarm_threshold):
+            query['DuAlarmThreshold'] = request.du_alarm_threshold
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mem_alarm_threshold):
+            query['MemAlarmThreshold'] = request.mem_alarm_threshold
+        if not UtilClient.is_unset(request.notice_switch):
+            query['NoticeSwitch'] = request.notice_switch
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phones):
+            query['Phones'] = request.phones
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDedicatedClusterMonitorRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.CreateDedicatedClusterMonitorRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dedicated_cluster_monitor_rule_with_options_async(
+        self,
+        request: dts_20200101_models.CreateDedicatedClusterMonitorRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.CreateDedicatedClusterMonitorRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cpu_alarm_threshold):
+            query['CpuAlarmThreshold'] = request.cpu_alarm_threshold
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.disk_alarm_threshold):
+            query['DiskAlarmThreshold'] = request.disk_alarm_threshold
+        if not UtilClient.is_unset(request.du_alarm_threshold):
+            query['DuAlarmThreshold'] = request.du_alarm_threshold
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mem_alarm_threshold):
+            query['MemAlarmThreshold'] = request.mem_alarm_threshold
+        if not UtilClient.is_unset(request.notice_switch):
+            query['NoticeSwitch'] = request.notice_switch
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phones):
+            query['Phones'] = request.phones
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDedicatedClusterMonitorRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.CreateDedicatedClusterMonitorRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dedicated_cluster_monitor_rule(
+        self,
+        request: dts_20200101_models.CreateDedicatedClusterMonitorRuleRequest,
+    ) -> dts_20200101_models.CreateDedicatedClusterMonitorRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_dedicated_cluster_monitor_rule_with_options(request, runtime)
+
+    async def create_dedicated_cluster_monitor_rule_async(
+        self,
+        request: dts_20200101_models.CreateDedicatedClusterMonitorRuleRequest,
+    ) -> dts_20200101_models.CreateDedicatedClusterMonitorRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dedicated_cluster_monitor_rule_with_options_async(request, runtime)
+
     def create_dts_instance_with_options(
         self,
         request: dts_20200101_models.CreateDtsInstanceRequest,
@@ -2678,6 +2937,210 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_synchronization_job_with_options_async(request, runtime)
 
+    def describe_cluster_operate_logs_with_options(
+        self,
+        request: dts_20200101_models.DescribeClusterOperateLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeClusterOperateLogsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_id):
+            body['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            body['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            body['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            body['OwnerID'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterOperateLogs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeClusterOperateLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_operate_logs_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeClusterOperateLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeClusterOperateLogsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_id):
+            body['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            body['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            body['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            body['OwnerID'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterOperateLogs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeClusterOperateLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_operate_logs(
+        self,
+        request: dts_20200101_models.DescribeClusterOperateLogsRequest,
+    ) -> dts_20200101_models.DescribeClusterOperateLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cluster_operate_logs_with_options(request, runtime)
+
+    async def describe_cluster_operate_logs_async(
+        self,
+        request: dts_20200101_models.DescribeClusterOperateLogsRequest,
+    ) -> dts_20200101_models.DescribeClusterOperateLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cluster_operate_logs_with_options_async(request, runtime)
+
+    def describe_cluster_used_utilization_with_options(
+        self,
+        request: dts_20200101_models.DescribeClusterUsedUtilizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeClusterUsedUtilizationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_id):
+            body['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            body['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            body['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.env):
+            body['Env'] = request.env
+        if not UtilClient.is_unset(request.metric_type):
+            body['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.owner_id):
+            body['OwnerID'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            body['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterUsedUtilization',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeClusterUsedUtilizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_used_utilization_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeClusterUsedUtilizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeClusterUsedUtilizationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_id):
+            body['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            body['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            body['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.env):
+            body['Env'] = request.env
+        if not UtilClient.is_unset(request.metric_type):
+            body['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.owner_id):
+            body['OwnerID'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            body['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterUsedUtilization',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeClusterUsedUtilizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_used_utilization(
+        self,
+        request: dts_20200101_models.DescribeClusterUsedUtilizationRequest,
+    ) -> dts_20200101_models.DescribeClusterUsedUtilizationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cluster_used_utilization_with_options(request, runtime)
+
+    async def describe_cluster_used_utilization_async(
+        self,
+        request: dts_20200101_models.DescribeClusterUsedUtilizationRequest,
+    ) -> dts_20200101_models.DescribeClusterUsedUtilizationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cluster_used_utilization_with_options_async(request, runtime)
+
     def describe_connection_status_with_options(
         self,
         request: dts_20200101_models.DescribeConnectionStatusRequest,
@@ -3094,6 +3557,162 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dtsipwith_options_async(request, runtime)
 
+    def describe_dedicated_cluster_with_options(
+        self,
+        request: dts_20200101_models.DescribeDedicatedClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeDedicatedClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDedicatedCluster',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeDedicatedClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dedicated_cluster_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeDedicatedClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeDedicatedClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDedicatedCluster',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeDedicatedClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dedicated_cluster(
+        self,
+        request: dts_20200101_models.DescribeDedicatedClusterRequest,
+    ) -> dts_20200101_models.DescribeDedicatedClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dedicated_cluster_with_options(request, runtime)
+
+    async def describe_dedicated_cluster_async(
+        self,
+        request: dts_20200101_models.DescribeDedicatedClusterRequest,
+    ) -> dts_20200101_models.DescribeDedicatedClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dedicated_cluster_with_options_async(request, runtime)
+
+    def describe_dedicated_cluster_monitor_rule_with_options(
+        self,
+        request: dts_20200101_models.DescribeDedicatedClusterMonitorRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeDedicatedClusterMonitorRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDedicatedClusterMonitorRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeDedicatedClusterMonitorRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dedicated_cluster_monitor_rule_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeDedicatedClusterMonitorRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeDedicatedClusterMonitorRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDedicatedClusterMonitorRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeDedicatedClusterMonitorRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dedicated_cluster_monitor_rule(
+        self,
+        request: dts_20200101_models.DescribeDedicatedClusterMonitorRuleRequest,
+    ) -> dts_20200101_models.DescribeDedicatedClusterMonitorRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dedicated_cluster_monitor_rule_with_options(request, runtime)
+
+    async def describe_dedicated_cluster_monitor_rule_async(
+        self,
+        request: dts_20200101_models.DescribeDedicatedClusterMonitorRuleRequest,
+    ) -> dts_20200101_models.DescribeDedicatedClusterMonitorRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dedicated_cluster_monitor_rule_with_options_async(request, runtime)
+
     def describe_dts_etl_job_version_info_with_options(
         self,
         request: dts_20200101_models.DescribeDtsEtlJobVersionInfoRequest,
@@ -3179,6 +3798,88 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.DescribeDtsEtlJobVersionInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_dts_etl_job_version_info_with_options_async(request, runtime)
+
+    def describe_dts_job_config_with_options(
+        self,
+        request: dts_20200101_models.DescribeDtsJobConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeDtsJobConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.module):
+            query['Module'] = request.module
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDtsJobConfig',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeDtsJobConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dts_job_config_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeDtsJobConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeDtsJobConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.module):
+            query['Module'] = request.module
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDtsJobConfig',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeDtsJobConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dts_job_config(
+        self,
+        request: dts_20200101_models.DescribeDtsJobConfigRequest,
+    ) -> dts_20200101_models.DescribeDtsJobConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dts_job_config_with_options(request, runtime)
+
+    async def describe_dts_job_config_async(
+        self,
+        request: dts_20200101_models.DescribeDtsJobConfigRequest,
+    ) -> dts_20200101_models.DescribeDtsJobConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dts_job_config_with_options_async(request, runtime)
 
     def describe_dts_job_detail_with_options(
         self,
@@ -3275,8 +3976,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dedicated_cluster_id):
             query['DedicatedClusterId'] = request.dedicated_cluster_id
-        if not UtilClient.is_unset(request.dedicated_cluster_node_id):
-            query['DedicatedClusterNodeId'] = request.dedicated_cluster_node_id
         if not UtilClient.is_unset(request.dts_job_id):
             query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.group_id):
@@ -3333,8 +4032,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dedicated_cluster_id):
             query['DedicatedClusterId'] = request.dedicated_cluster_id
-        if not UtilClient.is_unset(request.dedicated_cluster_node_id):
-            query['DedicatedClusterNodeId'] = request.dedicated_cluster_node_id
         if not UtilClient.is_unset(request.dts_job_id):
             query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.group_id):
@@ -3822,6 +4519,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_job_monitor_rule_with_options_async(request, runtime)
 
+    def describe_metric_list_with_options(
+        self,
+        request: dts_20200101_models.DescribeMetricListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeMetricListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_id):
+            body['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dts_job_id):
+            body['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.env):
+            body['Env'] = request.env
+        if not UtilClient.is_unset(request.metric_name):
+            body['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.metric_type):
+            body['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.owner_id):
+            body['OwnerID'] = request.owner_id
+        if not UtilClient.is_unset(request.param):
+            body['Param'] = request.param
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricList',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeMetricListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_metric_list_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeMetricListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeMetricListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_id):
+            body['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dts_job_id):
+            body['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.env):
+            body['Env'] = request.env
+        if not UtilClient.is_unset(request.metric_name):
+            body['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.metric_type):
+            body['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.owner_id):
+            body['OwnerID'] = request.owner_id
+        if not UtilClient.is_unset(request.param):
+            body['Param'] = request.param
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricList',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeMetricListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_metric_list(
+        self,
+        request: dts_20200101_models.DescribeMetricListRequest,
+    ) -> dts_20200101_models.DescribeMetricListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_metric_list_with_options(request, runtime)
+
+    async def describe_metric_list_async(
+        self,
+        request: dts_20200101_models.DescribeMetricListRequest,
+    ) -> dts_20200101_models.DescribeMetricListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_metric_list_with_options_async(request, runtime)
+
     def describe_migration_job_alert_with_options(
         self,
         request: dts_20200101_models.DescribeMigrationJobAlertRequest,
@@ -4185,6 +4992,92 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.DescribeMigrationJobsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_migration_jobs_with_options_async(request, runtime)
+
+    def describe_modify_config_log_with_options(
+        self,
+        request: dts_20200101_models.DescribeModifyConfigLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeModifyConfigLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeModifyConfigLog',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeModifyConfigLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_modify_config_log_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeModifyConfigLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeModifyConfigLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeModifyConfigLog',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeModifyConfigLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_modify_config_log(
+        self,
+        request: dts_20200101_models.DescribeModifyConfigLogRequest,
+    ) -> dts_20200101_models.DescribeModifyConfigLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_modify_config_log_with_options(request, runtime)
+
+    async def describe_modify_config_log_async(
+        self,
+        request: dts_20200101_models.DescribeModifyConfigLogRequest,
+    ) -> dts_20200101_models.DescribeModifyConfigLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_modify_config_log_with_options_async(request, runtime)
 
     def describe_pre_check_status_with_options(
         self,
@@ -5462,6 +6355,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.init_dts_rds_instance_with_options_async(request, runtime)
 
+    def list_dedicated_cluster_with_options(
+        self,
+        request: dts_20200101_models.ListDedicatedClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ListDedicatedClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.order_direction):
+            query['OrderDirection'] = request.order_direction
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDedicatedCluster',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ListDedicatedClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dedicated_cluster_with_options_async(
+        self,
+        request: dts_20200101_models.ListDedicatedClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ListDedicatedClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.order_direction):
+            query['OrderDirection'] = request.order_direction
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDedicatedCluster',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ListDedicatedClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dedicated_cluster(
+        self,
+        request: dts_20200101_models.ListDedicatedClusterRequest,
+    ) -> dts_20200101_models.ListDedicatedClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_dedicated_cluster_with_options(request, runtime)
+
+    async def list_dedicated_cluster_async(
+        self,
+        request: dts_20200101_models.ListDedicatedClusterRequest,
+    ) -> dts_20200101_models.ListDedicatedClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dedicated_cluster_with_options_async(request, runtime)
+
     def list_tag_resources_with_options(
         self,
         request: dts_20200101_models.ListTagResourcesRequest,
@@ -5830,6 +6825,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_consumption_timestamp_with_options_async(request, runtime)
 
+    def modify_dedicated_cluster_with_options(
+        self,
+        request: dts_20200101_models.ModifyDedicatedClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyDedicatedClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dedicated_cluster_name):
+            query['DedicatedClusterName'] = request.dedicated_cluster_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.oversold_ratio):
+            query['OversoldRatio'] = request.oversold_ratio
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDedicatedCluster',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyDedicatedClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dedicated_cluster_with_options_async(
+        self,
+        request: dts_20200101_models.ModifyDedicatedClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyDedicatedClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dedicated_cluster_name):
+            query['DedicatedClusterName'] = request.dedicated_cluster_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.oversold_ratio):
+            query['OversoldRatio'] = request.oversold_ratio
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDedicatedCluster',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyDedicatedClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dedicated_cluster(
+        self,
+        request: dts_20200101_models.ModifyDedicatedClusterRequest,
+    ) -> dts_20200101_models.ModifyDedicatedClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dedicated_cluster_with_options(request, runtime)
+
+    async def modify_dedicated_cluster_async(
+        self,
+        request: dts_20200101_models.ModifyDedicatedClusterRequest,
+    ) -> dts_20200101_models.ModifyDedicatedClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dedicated_cluster_with_options_async(request, runtime)
+
     def modify_dts_job_with_options(
         self,
         tmp_req: dts_20200101_models.ModifyDtsJobRequest,
@@ -5845,6 +6930,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dts_instance_id):
             query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.file_oss_url):
+            query['FileOssUrl'] = request.file_oss_url
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.synchronization_direction):
@@ -5893,6 +6980,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dts_instance_id):
             query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.file_oss_url):
+            query['FileOssUrl'] = request.file_oss_url
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.synchronization_direction):
@@ -5939,6 +7028,312 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.ModifyDtsJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_dts_job_with_options_async(request, runtime)
+
+    def modify_dts_job_advance(
+        self,
+        request: dts_20200101_models.ModifyDtsJobAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyDtsJobResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='Dts',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        modify_dts_job_req = dts_20200101_models.ModifyDtsJobRequest()
+        OpenApiUtilClient.convert(request, modify_dts_job_req)
+        if not UtilClient.is_unset(request.file_oss_url_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.file_oss_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            modify_dts_job_req.file_oss_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        modify_dts_job_resp = self.modify_dts_job_with_options(modify_dts_job_req, runtime)
+        return modify_dts_job_resp
+
+    async def modify_dts_job_advance_async(
+        self,
+        request: dts_20200101_models.ModifyDtsJobAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyDtsJobResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='Dts',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        modify_dts_job_req = dts_20200101_models.ModifyDtsJobRequest()
+        OpenApiUtilClient.convert(request, modify_dts_job_req)
+        if not UtilClient.is_unset(request.file_oss_url_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.file_oss_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            modify_dts_job_req.file_oss_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        modify_dts_job_resp = await self.modify_dts_job_with_options_async(modify_dts_job_req, runtime)
+        return modify_dts_job_resp
+
+    def modify_dts_job_dedicated_cluster_with_options(
+        self,
+        request: dts_20200101_models.ModifyDtsJobDedicatedClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyDtsJobDedicatedClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dts_job_ids):
+            query['DtsJobIds'] = request.dts_job_ids
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDtsJobDedicatedCluster',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyDtsJobDedicatedClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dts_job_dedicated_cluster_with_options_async(
+        self,
+        request: dts_20200101_models.ModifyDtsJobDedicatedClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyDtsJobDedicatedClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dts_job_ids):
+            query['DtsJobIds'] = request.dts_job_ids
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDtsJobDedicatedCluster',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyDtsJobDedicatedClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dts_job_dedicated_cluster(
+        self,
+        request: dts_20200101_models.ModifyDtsJobDedicatedClusterRequest,
+    ) -> dts_20200101_models.ModifyDtsJobDedicatedClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dts_job_dedicated_cluster_with_options(request, runtime)
+
+    async def modify_dts_job_dedicated_cluster_async(
+        self,
+        request: dts_20200101_models.ModifyDtsJobDedicatedClusterRequest,
+    ) -> dts_20200101_models.ModifyDtsJobDedicatedClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dts_job_dedicated_cluster_with_options_async(request, runtime)
+
+    def modify_dts_job_du_limit_with_options(
+        self,
+        request: dts_20200101_models.ModifyDtsJobDuLimitRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyDtsJobDuLimitResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.du_limit):
+            query['DuLimit'] = request.du_limit
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDtsJobDuLimit',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyDtsJobDuLimitResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dts_job_du_limit_with_options_async(
+        self,
+        request: dts_20200101_models.ModifyDtsJobDuLimitRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyDtsJobDuLimitResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.du_limit):
+            query['DuLimit'] = request.du_limit
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDtsJobDuLimit',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyDtsJobDuLimitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dts_job_du_limit(
+        self,
+        request: dts_20200101_models.ModifyDtsJobDuLimitRequest,
+    ) -> dts_20200101_models.ModifyDtsJobDuLimitResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dts_job_du_limit_with_options(request, runtime)
+
+    async def modify_dts_job_du_limit_async(
+        self,
+        request: dts_20200101_models.ModifyDtsJobDuLimitRequest,
+    ) -> dts_20200101_models.ModifyDtsJobDuLimitResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dts_job_du_limit_with_options_async(request, runtime)
 
     def modify_dts_job_name_with_options(
         self,
@@ -7201,6 +8596,92 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.StartSynchronizationJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.start_synchronization_job_with_options_async(request, runtime)
+
+    def stop_dedicated_cluster_with_options(
+        self,
+        request: dts_20200101_models.StopDedicatedClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.StopDedicatedClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dedicated_cluster_name):
+            query['DedicatedClusterName'] = request.dedicated_cluster_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopDedicatedCluster',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.StopDedicatedClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_dedicated_cluster_with_options_async(
+        self,
+        request: dts_20200101_models.StopDedicatedClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.StopDedicatedClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dedicated_cluster_name):
+            query['DedicatedClusterName'] = request.dedicated_cluster_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopDedicatedCluster',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.StopDedicatedClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_dedicated_cluster(
+        self,
+        request: dts_20200101_models.StopDedicatedClusterRequest,
+    ) -> dts_20200101_models.StopDedicatedClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_dedicated_cluster_with_options(request, runtime)
+
+    async def stop_dedicated_cluster_async(
+        self,
+        request: dts_20200101_models.StopDedicatedClusterRequest,
+    ) -> dts_20200101_models.StopDedicatedClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_dedicated_cluster_with_options_async(request, runtime)
 
     def stop_dts_job_with_options(
         self,
