@@ -1,3 +1,6 @@
+2022-05-10 Version: 2.9.3
+- Fix some bugs.
+
 2022-04-24 Version: 2.9.1
 - Supported CommentCount and LikeCount for GetLiveRoomUserStatistics.
 
