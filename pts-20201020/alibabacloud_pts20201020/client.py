@@ -1993,11 +1993,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pts20201020_models.ModifyPtsSceneResponse:
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.scene):
-            query['Scene'] = request.scene
+            body['Scene'] = request.scene
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifyPtsScene',
@@ -2021,11 +2021,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pts20201020_models.ModifyPtsSceneResponse:
         UtilClient.validate_model(request)
-        query = {}
+        body = {}
         if not UtilClient.is_unset(request.scene):
-            query['Scene'] = request.scene
+            body['Scene'] = request.scene
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifyPtsScene',

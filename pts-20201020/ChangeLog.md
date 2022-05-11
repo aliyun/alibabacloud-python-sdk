@@ -1,3 +1,6 @@
+2022-05-11 Version: 1.8.16
+- Adjust Param To Form-Data.
+
 2022-04-12 Version: 1.8.15
 - Add VpcInfo and Ajust Speed API.
 
