@@ -1187,8 +1187,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
-        if not UtilClient.is_unset(request.ak.issue.member):
-            body['ak'] = request.ak.issue.member
         if not UtilClient.is_unset(request.assigned_to):
             body['assignedTo'] = request.assigned_to
         if not UtilClient.is_unset(request.category):
@@ -1201,6 +1199,8 @@ class Client(OpenApiClient):
             body['fieldValueList'] = request.field_value_list
         if not UtilClient.is_unset(request.parent):
             body['parent'] = request.parent
+        if not UtilClient.is_unset(request.participant):
+            body['participant'] = request.participant
         if not UtilClient.is_unset(request.space):
             body['space'] = request.space
         if not UtilClient.is_unset(request.space_identifier):
@@ -1211,10 +1211,10 @@ class Client(OpenApiClient):
             body['sprint'] = request.sprint
         if not UtilClient.is_unset(request.subject):
             body['subject'] = request.subject
-        if not UtilClient.is_unset(request.workitem.tracker):
-            body['workitem'] = request.workitem.tracker
-        if not UtilClient.is_unset(request.workitem.verifier):
-            body['workitem'] = request.workitem.verifier
+        if not UtilClient.is_unset(request.tracker):
+            body['tracker'] = request.tracker
+        if not UtilClient.is_unset(request.verifier):
+            body['verifier'] = request.verifier
         if not UtilClient.is_unset(request.workitem_type):
             body['workitemType'] = request.workitem_type
         req = open_api_models.OpenApiRequest(
@@ -1247,8 +1247,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
-        if not UtilClient.is_unset(request.ak.issue.member):
-            body['ak'] = request.ak.issue.member
         if not UtilClient.is_unset(request.assigned_to):
             body['assignedTo'] = request.assigned_to
         if not UtilClient.is_unset(request.category):
@@ -1261,6 +1259,8 @@ class Client(OpenApiClient):
             body['fieldValueList'] = request.field_value_list
         if not UtilClient.is_unset(request.parent):
             body['parent'] = request.parent
+        if not UtilClient.is_unset(request.participant):
+            body['participant'] = request.participant
         if not UtilClient.is_unset(request.space):
             body['space'] = request.space
         if not UtilClient.is_unset(request.space_identifier):
@@ -1271,10 +1271,10 @@ class Client(OpenApiClient):
             body['sprint'] = request.sprint
         if not UtilClient.is_unset(request.subject):
             body['subject'] = request.subject
-        if not UtilClient.is_unset(request.workitem.tracker):
-            body['workitem'] = request.workitem.tracker
-        if not UtilClient.is_unset(request.workitem.verifier):
-            body['workitem'] = request.workitem.verifier
+        if not UtilClient.is_unset(request.tracker):
+            body['tracker'] = request.tracker
+        if not UtilClient.is_unset(request.verifier):
+            body['verifier'] = request.verifier
         if not UtilClient.is_unset(request.workitem_type):
             body['workitemType'] = request.workitem_type
         req = open_api_models.OpenApiRequest(
@@ -5637,6 +5637,8 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not UtilClient.is_unset(request.order_by):
             query['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.search_type):
+            query['searchType'] = request.search_type
         if not UtilClient.is_unset(request.space_identifier):
             query['spaceIdentifier'] = request.space_identifier
         if not UtilClient.is_unset(request.space_type):
@@ -5685,6 +5687,8 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not UtilClient.is_unset(request.order_by):
             query['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.search_type):
+            query['searchType'] = request.search_type
         if not UtilClient.is_unset(request.space_identifier):
             query['spaceIdentifier'] = request.space_identifier
         if not UtilClient.is_unset(request.space_type):
