@@ -787,6 +787,8 @@ class Client(OpenApiClient):
             query['DeleteProtection'] = request.delete_protection
         if not UtilClient.is_unset(request.duration):
             query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
         if not UtilClient.is_unset(request.load_balancer_name):
@@ -863,6 +865,8 @@ class Client(OpenApiClient):
             query['DeleteProtection'] = request.delete_protection
         if not UtilClient.is_unset(request.duration):
             query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
         if not UtilClient.is_unset(request.load_balancer_name):
@@ -5663,6 +5667,104 @@ class Client(OpenApiClient):
     ) -> slb_20140515_models.ListTagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def modify_load_balancer_instance_charge_type_with_options(
+        self,
+        request: slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLoadBalancerInstanceChargeType',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_load_balancer_instance_charge_type_with_options_async(
+        self,
+        request: slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLoadBalancerInstanceChargeType',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_load_balancer_instance_charge_type(
+        self,
+        request: slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeRequest,
+    ) -> slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_load_balancer_instance_charge_type_with_options(request, runtime)
+
+    async def modify_load_balancer_instance_charge_type_async(
+        self,
+        request: slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeRequest,
+    ) -> slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_load_balancer_instance_charge_type_with_options_async(request, runtime)
 
     def modify_load_balancer_instance_spec_with_options(
         self,
