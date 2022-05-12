@@ -4,6 +4,393 @@ from Tea.model import TeaModel
 from typing import Dict, List
 
 
+class AppUseTimeReportHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class AppUseTimeReportRequestDeviceInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
+        self.encode_key = encode_key
+        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
+        self.encode_type = encode_type
+        # 设备标识（deviceOpenId或deviceUnionId）
+        self.id = id
+        # 设备Id的类型  - OPEN_ID：默认的设备ID标识 - UNION_ID: 组织维度的设备ID标识，在猫精技能应用开放平台申请过组织后才会有
+        self.id_type = id_type
+        # 组织ID，如果IdType为UNION_ID时必填
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class AppUseTimeReportRequestPayload(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        is_privilege: int = None,
+        resource_id: str = None,
+        resource_type: int = None,
+        step_code: str = None,
+        vip_type: int = None,
+    ):
+        # 操作
+        self.action = action
+        # 是否会员专享权益：1-是  0-否
+        self.is_privilege = is_privilege
+        # 资源id
+        self.resource_id = resource_id
+        # resourceType
+        self.resource_type = resource_type
+        # 步进码
+        self.step_code = step_code
+        # 会员类型
+        self.vip_type = vip_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.is_privilege is not None:
+            result['IsPrivilege'] = self.is_privilege
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.step_code is not None:
+            result['StepCode'] = self.step_code
+        if self.vip_type is not None:
+            result['VipType'] = self.vip_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('IsPrivilege') is not None:
+            self.is_privilege = m.get('IsPrivilege')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('StepCode') is not None:
+            self.step_code = m.get('StepCode')
+        if m.get('VipType') is not None:
+            self.vip_type = m.get('VipType')
+        return self
+
+
+class AppUseTimeReportRequestUserInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
+        self.encode_key = encode_key
+        # 编码类型，获取猫精的用户标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
+        self.encode_type = encode_type
+        # 用户标识（userOpenId或userUnionId）
+        self.id = id
+        # 用户Id的类型  - OPEN_ID：默认的用户ID标识 - UNION_ID: 组织维度的用户ID标识，在猫精技能应用开放平台申请过组织后才会有
+        self.id_type = id_type
+        # 组织ID，如果IdType为UNION_ID时必填
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class AppUseTimeReportRequest(TeaModel):
+    def __init__(
+        self,
+        device_info: AppUseTimeReportRequestDeviceInfo = None,
+        payload: AppUseTimeReportRequestPayload = None,
+        user_info: AppUseTimeReportRequestUserInfo = None,
+    ):
+        # 设备标识信息
+        self.device_info = device_info
+        self.payload = payload
+        # 用户标识信息
+        self.user_info = user_info
+
+    def validate(self):
+        if self.device_info:
+            self.device_info.validate()
+        if self.payload:
+            self.payload.validate()
+        if self.user_info:
+            self.user_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_info is not None:
+            result['DeviceInfo'] = self.device_info.to_map()
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.user_info is not None:
+            result['UserInfo'] = self.user_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceInfo') is not None:
+            temp_model = AppUseTimeReportRequestDeviceInfo()
+            self.device_info = temp_model.from_map(m['DeviceInfo'])
+        if m.get('Payload') is not None:
+            temp_model = AppUseTimeReportRequestPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('UserInfo') is not None:
+            temp_model = AppUseTimeReportRequestUserInfo()
+            self.user_info = temp_model.from_map(m['UserInfo'])
+        return self
+
+
+class AppUseTimeReportShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        device_info_shrink: str = None,
+        payload_shrink: str = None,
+        user_info_shrink: str = None,
+    ):
+        # 设备标识信息
+        self.device_info_shrink = device_info_shrink
+        self.payload_shrink = payload_shrink
+        # 用户标识信息
+        self.user_info_shrink = user_info_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_info_shrink is not None:
+            result['DeviceInfo'] = self.device_info_shrink
+        if self.payload_shrink is not None:
+            result['Payload'] = self.payload_shrink
+        if self.user_info_shrink is not None:
+            result['UserInfo'] = self.user_info_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceInfo') is not None:
+            self.device_info_shrink = m.get('DeviceInfo')
+        if m.get('Payload') is not None:
+            self.payload_shrink = m.get('Payload')
+        if m.get('UserInfo') is not None:
+            self.user_info_shrink = m.get('UserInfo')
+        return self
+
+
+class AppUseTimeReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        ret_code: int = None,
+        ret_msg: str = None,
+        ret_value: bool = None,
+    ):
+        self.ret_code = ret_code
+        self.ret_msg = ret_msg
+        self.ret_value = ret_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        if self.ret_msg is not None:
+            result['RetMsg'] = self.ret_msg
+        if self.ret_value is not None:
+            result['RetValue'] = self.ret_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        if m.get('RetMsg') is not None:
+            self.ret_msg = m.get('RetMsg')
+        if m.get('RetValue') is not None:
+            self.ret_value = m.get('RetValue')
+        return self
+
+
+class AppUseTimeReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AppUseTimeReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AppUseTimeReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateReminderHeaders(TeaModel):
     def __init__(
         self,
@@ -442,13 +829,16 @@ class CreateReminderResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateReminderResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -461,6 +851,8 @@ class CreateReminderResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -469,6 +861,8 @@ class CreateReminderResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateReminderResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -799,13 +1193,16 @@ class DeleteReminderResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteReminderResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -818,6 +1215,8 @@ class DeleteReminderResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -826,8 +1225,408 @@ class DeleteReminderResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteReminderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAccountForAppHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class GetAccountForAppRequestDeviceInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
+        self.encode_key = encode_key
+        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
+        self.encode_type = encode_type
+        # 设备标识（deviceOpenId或deviceUnionId）
+        self.id = id
+        # 设备Id的类型 - OPEN_ID：默认的设备ID标识 - UNION_ID: 组织维度的设备ID标识，在猫精技能应用开放平台申请过组织后才会有
+        self.id_type = id_type
+        # 组织ID，如果IdType为UNION_ID时必填
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class GetAccountForAppRequestPayload(TeaModel):
+    def __init__(
+        self,
+        phone: str = None,
+    ):
+        self.phone = phone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.phone is not None:
+            result['Phone'] = self.phone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Phone') is not None:
+            self.phone = m.get('Phone')
+        return self
+
+
+class GetAccountForAppRequestUserInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
+        self.encode_key = encode_key
+        # 编码类型，获取猫精的用户标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
+        self.encode_type = encode_type
+        # 用户标识（userOpenId或userUnionId）
+        self.id = id
+        # 用户Id的类型 - OPEN_ID：默认的用户ID标识 - UNION_ID: 组织维度的用户ID标识，在猫精技能应用开放平台申请过组织后才会有
+        self.id_type = id_type
+        # 组织ID，如果IdType为UNION_ID时必填
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class GetAccountForAppRequest(TeaModel):
+    def __init__(
+        self,
+        device_info: GetAccountForAppRequestDeviceInfo = None,
+        payload: GetAccountForAppRequestPayload = None,
+        user_info: GetAccountForAppRequestUserInfo = None,
+    ):
+        # 设备标识信息
+        self.device_info = device_info
+        self.payload = payload
+        # 用户标识信息
+        self.user_info = user_info
+
+    def validate(self):
+        if self.device_info:
+            self.device_info.validate()
+        if self.payload:
+            self.payload.validate()
+        if self.user_info:
+            self.user_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_info is not None:
+            result['DeviceInfo'] = self.device_info.to_map()
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.user_info is not None:
+            result['UserInfo'] = self.user_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceInfo') is not None:
+            temp_model = GetAccountForAppRequestDeviceInfo()
+            self.device_info = temp_model.from_map(m['DeviceInfo'])
+        if m.get('Payload') is not None:
+            temp_model = GetAccountForAppRequestPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('UserInfo') is not None:
+            temp_model = GetAccountForAppRequestUserInfo()
+            self.user_info = temp_model.from_map(m['UserInfo'])
+        return self
+
+
+class GetAccountForAppShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        device_info_shrink: str = None,
+        payload_shrink: str = None,
+        user_info_shrink: str = None,
+    ):
+        # 设备标识信息
+        self.device_info_shrink = device_info_shrink
+        self.payload_shrink = payload_shrink
+        # 用户标识信息
+        self.user_info_shrink = user_info_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_info_shrink is not None:
+            result['DeviceInfo'] = self.device_info_shrink
+        if self.payload_shrink is not None:
+            result['Payload'] = self.payload_shrink
+        if self.user_info_shrink is not None:
+            result['UserInfo'] = self.user_info_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceInfo') is not None:
+            self.device_info_shrink = m.get('DeviceInfo')
+        if m.get('Payload') is not None:
+            self.payload_shrink = m.get('Payload')
+        if m.get('UserInfo') is not None:
+            self.user_info_shrink = m.get('UserInfo')
+        return self
+
+
+class GetAccountForAppResponseBodyRetValue(TeaModel):
+    def __init__(
+        self,
+        is_vip: bool = None,
+        str_vip_expire: str = None,
+        vip_expire_at: int = None,
+    ):
+        # 是否VIP
+        self.is_vip = is_vip
+        # 日期格式，到期时间
+        self.str_vip_expire = str_vip_expire
+        # 若以前开通过会员，返回会员失效时间，若从未开通过会员，此字段为0
+        self.vip_expire_at = vip_expire_at
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_vip is not None:
+            result['IsVip'] = self.is_vip
+        if self.str_vip_expire is not None:
+            result['StrVipExpire'] = self.str_vip_expire
+        if self.vip_expire_at is not None:
+            result['VipExpireAt'] = self.vip_expire_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsVip') is not None:
+            self.is_vip = m.get('IsVip')
+        if m.get('StrVipExpire') is not None:
+            self.str_vip_expire = m.get('StrVipExpire')
+        if m.get('VipExpireAt') is not None:
+            self.vip_expire_at = m.get('VipExpireAt')
+        return self
+
+
+class GetAccountForAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        ret_code: int = None,
+        ret_msg: str = None,
+        ret_value: GetAccountForAppResponseBodyRetValue = None,
+    ):
+        # 错误码
+        self.ret_code = ret_code
+        # 错误信息
+        self.ret_msg = ret_msg
+        # 用户信息
+        self.ret_value = ret_value
+
+    def validate(self):
+        if self.ret_value:
+            self.ret_value.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        if self.ret_msg is not None:
+            result['RetMsg'] = self.ret_msg
+        if self.ret_value is not None:
+            result['RetValue'] = self.ret_value.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        if m.get('RetMsg') is not None:
+            self.ret_msg = m.get('RetMsg')
+        if m.get('RetValue') is not None:
+            temp_model = GetAccountForAppResponseBodyRetValue()
+            self.ret_value = temp_model.from_map(m['RetValue'])
+        return self
+
+
+class GetAccountForAppResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAccountForAppResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAccountForAppResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1090,13 +1889,16 @@ class GetPhoneNumberResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetPhoneNumberResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1109,6 +1911,8 @@ class GetPhoneNumberResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1117,6 +1921,8 @@ class GetPhoneNumberResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetPhoneNumberResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1662,13 +2468,16 @@ class GetReminderResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetReminderResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1681,6 +2490,8 @@ class GetReminderResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1689,6 +2500,8 @@ class GetReminderResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetReminderResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2227,13 +3040,16 @@ class ListRemindersResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListRemindersResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2246,6 +3062,8 @@ class ListRemindersResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2254,8 +3072,356 @@ class ListRemindersResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListRemindersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PullCashierHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class PullCashierRequestDeviceInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
+        self.encode_key = encode_key
+        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
+        self.encode_type = encode_type
+        # 设备标识（deviceOpenId或deviceUnionId）
+        self.id = id
+        # 设备Id的类型 - OPEN_ID：默认的设备ID标识 - UNION_ID: 组织维度的设备ID标识，在猫精技能应用开放平台申请过组织后才会有
+        self.id_type = id_type
+        # 组织ID，如果IdType为UNION_ID时必填
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class PullCashierRequestPayload(TeaModel):
+    def __init__(self):
+        pass
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        return self
+
+
+class PullCashierRequestUserInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
+        self.encode_key = encode_key
+        # 编码类型，获取猫精的用户标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
+        self.encode_type = encode_type
+        # 用户标识（userOpenId或userUnionId）
+        self.id = id
+        # 用户Id的类型  - OPEN_ID：默认的用户ID标识 - UNION_ID: 组织维度的用户ID标识，在猫精技能应用开放平台申请过组织后才会有
+        self.id_type = id_type
+        # 组织ID，如果IdType为UNION_ID时必填
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class PullCashierRequest(TeaModel):
+    def __init__(
+        self,
+        device_info: PullCashierRequestDeviceInfo = None,
+        payload: PullCashierRequestPayload = None,
+        user_info: PullCashierRequestUserInfo = None,
+    ):
+        # 设备标识信息
+        self.device_info = device_info
+        self.payload = payload
+        # 用户标识信息
+        self.user_info = user_info
+
+    def validate(self):
+        if self.device_info:
+            self.device_info.validate()
+        if self.payload:
+            self.payload.validate()
+        if self.user_info:
+            self.user_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_info is not None:
+            result['DeviceInfo'] = self.device_info.to_map()
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.user_info is not None:
+            result['UserInfo'] = self.user_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceInfo') is not None:
+            temp_model = PullCashierRequestDeviceInfo()
+            self.device_info = temp_model.from_map(m['DeviceInfo'])
+        if m.get('Payload') is not None:
+            temp_model = PullCashierRequestPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('UserInfo') is not None:
+            temp_model = PullCashierRequestUserInfo()
+            self.user_info = temp_model.from_map(m['UserInfo'])
+        return self
+
+
+class PullCashierShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        device_info_shrink: str = None,
+        payload_shrink: str = None,
+        user_info_shrink: str = None,
+    ):
+        # 设备标识信息
+        self.device_info_shrink = device_info_shrink
+        self.payload_shrink = payload_shrink
+        # 用户标识信息
+        self.user_info_shrink = user_info_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_info_shrink is not None:
+            result['DeviceInfo'] = self.device_info_shrink
+        if self.payload_shrink is not None:
+            result['Payload'] = self.payload_shrink
+        if self.user_info_shrink is not None:
+            result['UserInfo'] = self.user_info_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceInfo') is not None:
+            self.device_info_shrink = m.get('DeviceInfo')
+        if m.get('Payload') is not None:
+            self.payload_shrink = m.get('Payload')
+        if m.get('UserInfo') is not None:
+            self.user_info_shrink = m.get('UserInfo')
+        return self
+
+
+class PullCashierResponseBody(TeaModel):
+    def __init__(
+        self,
+        ret_code: int = None,
+        ret_msg: str = None,
+        ret_value: bool = None,
+    ):
+        # 错误吗
+        self.ret_code = ret_code
+        # 错误信息
+        self.ret_msg = ret_msg
+        self.ret_value = ret_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        if self.ret_msg is not None:
+            result['RetMsg'] = self.ret_msg
+        if self.ret_value is not None:
+            result['RetValue'] = self.ret_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        if m.get('RetMsg') is not None:
+            self.ret_msg = m.get('RetMsg')
+        if m.get('RetValue') is not None:
+            self.ret_value = m.get('RetValue')
+        return self
+
+
+class PullCashierResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PullCashierResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PullCashierResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2505,11 +3671,14 @@ class PushNotificationsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
     ):
         self.headers = headers
+        self.status_code = status_code
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
 
     def to_map(self):
         _map = super().to_map()
@@ -2519,12 +3688,16 @@ class PushNotificationsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         return self
 
 
@@ -2883,11 +4056,14 @@ class SendNotificationsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
     ):
         self.headers = headers
+        self.status_code = status_code
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
 
     def to_map(self):
         _map = super().to_map()
@@ -2897,12 +4073,16 @@ class SendNotificationsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         return self
 
 
@@ -3351,13 +4531,16 @@ class UpdateReminderResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateReminderResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3370,6 +4553,8 @@ class UpdateReminderResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3378,8 +4563,397 @@ class UpdateReminderResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateReminderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class VideoAppReportHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class VideoAppReportRequestDeviceInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
+        self.encode_key = encode_key
+        # 编码类型，获取猫精的设备标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
+        self.encode_type = encode_type
+        # 设备标识（deviceOpenId或deviceUnionId）
+        self.id = id
+        # 设备Id的类型  - OPEN_ID：默认的设备ID标识 - UNION_ID: 组织维度的设备ID标识，在猫精技能应用开放平台申请过组织后才会有
+        self.id_type = id_type
+        # 组织ID，如果IdType为UNION_ID时必填
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class VideoAppReportRequestPayload(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        is_login: bool = None,
+        is_vip: bool = None,
+        login_nick: str = None,
+        phone: str = None,
+        pkg_name: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.is_login = is_login
+        self.is_vip = is_vip
+        self.login_nick = login_nick
+        self.phone = phone
+        self.pkg_name = pkg_name
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.is_login is not None:
+            result['isLogin'] = self.is_login
+        if self.is_vip is not None:
+            result['isVip'] = self.is_vip
+        if self.login_nick is not None:
+            result['loginNick'] = self.login_nick
+        if self.phone is not None:
+            result['phone'] = self.phone
+        if self.pkg_name is not None:
+            result['pkgName'] = self.pkg_name
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('isLogin') is not None:
+            self.is_login = m.get('isLogin')
+        if m.get('isVip') is not None:
+            self.is_vip = m.get('isVip')
+        if m.get('loginNick') is not None:
+            self.login_nick = m.get('loginNick')
+        if m.get('phone') is not None:
+            self.phone = m.get('phone')
+        if m.get('pkgName') is not None:
+            self.pkg_name = m.get('pkgName')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class VideoAppReportRequestUserInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        # 编码类型对应的值，编码类型是SKILL_ID时，其值为应用的Skill ID； 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
+        self.encode_key = encode_key
+        # 编码类型，获取猫精的用户标识的途径有多种，不同途径对应不同的编码类型 - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型 - SKILL_ID：技能ID，云端链路的编码类型
+        self.encode_type = encode_type
+        # 用户标识（userOpenId或userUnionId）
+        self.id = id
+        # 用户Id的类型  - OPEN_ID：默认的用户ID标识 - UNION_ID: 组织维度的用户ID标识，在猫精技能应用开放平台申请过组织后才会有
+        self.id_type = id_type
+        # 组织ID，如果IdType为UNION_ID时必填
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class VideoAppReportRequest(TeaModel):
+    def __init__(
+        self,
+        device_info: VideoAppReportRequestDeviceInfo = None,
+        payload: VideoAppReportRequestPayload = None,
+        user_info: VideoAppReportRequestUserInfo = None,
+    ):
+        # 设备标识信息
+        self.device_info = device_info
+        self.payload = payload
+        # 用户标识信息
+        self.user_info = user_info
+
+    def validate(self):
+        if self.device_info:
+            self.device_info.validate()
+        if self.payload:
+            self.payload.validate()
+        if self.user_info:
+            self.user_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_info is not None:
+            result['DeviceInfo'] = self.device_info.to_map()
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.user_info is not None:
+            result['UserInfo'] = self.user_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceInfo') is not None:
+            temp_model = VideoAppReportRequestDeviceInfo()
+            self.device_info = temp_model.from_map(m['DeviceInfo'])
+        if m.get('Payload') is not None:
+            temp_model = VideoAppReportRequestPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('UserInfo') is not None:
+            temp_model = VideoAppReportRequestUserInfo()
+            self.user_info = temp_model.from_map(m['UserInfo'])
+        return self
+
+
+class VideoAppReportShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        device_info_shrink: str = None,
+        payload_shrink: str = None,
+        user_info_shrink: str = None,
+    ):
+        # 设备标识信息
+        self.device_info_shrink = device_info_shrink
+        self.payload_shrink = payload_shrink
+        # 用户标识信息
+        self.user_info_shrink = user_info_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_info_shrink is not None:
+            result['DeviceInfo'] = self.device_info_shrink
+        if self.payload_shrink is not None:
+            result['Payload'] = self.payload_shrink
+        if self.user_info_shrink is not None:
+            result['UserInfo'] = self.user_info_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceInfo') is not None:
+            self.device_info_shrink = m.get('DeviceInfo')
+        if m.get('Payload') is not None:
+            self.payload_shrink = m.get('Payload')
+        if m.get('UserInfo') is not None:
+            self.user_info_shrink = m.get('UserInfo')
+        return self
+
+
+class VideoAppReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        ret_code: int = None,
+        ret_msg: str = None,
+        ret_value: bool = None,
+    ):
+        self.ret_code = ret_code
+        self.ret_msg = ret_msg
+        self.ret_value = ret_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        if self.ret_msg is not None:
+            result['RetMsg'] = self.ret_msg
+        if self.ret_value is not None:
+            result['RetValue'] = self.ret_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        if m.get('RetMsg') is not None:
+            self.ret_msg = m.get('RetMsg')
+        if m.get('RetValue') is not None:
+            self.ret_value = m.get('RetValue')
+        return self
+
+
+class VideoAppReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: VideoAppReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = VideoAppReportResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3527,11 +5101,14 @@ class WakeUpAppResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
     ):
         self.headers = headers
+        self.status_code = status_code
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
 
     def to_map(self):
         _map = super().to_map()
@@ -3541,12 +5118,16 @@ class WakeUpAppResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         return self
 
 
