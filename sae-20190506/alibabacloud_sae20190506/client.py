@@ -579,6 +579,8 @@ class Client(OpenApiClient):
             query['JarStartOptions'] = request.jar_start_options
         if not UtilClient.is_unset(request.jdk):
             query['Jdk'] = request.jdk
+        if not UtilClient.is_unset(request.kafka_configs):
+            query['KafkaConfigs'] = request.kafka_configs
         if not UtilClient.is_unset(request.kafka_endpoint):
             query['KafkaEndpoint'] = request.kafka_endpoint
         if not UtilClient.is_unset(request.kafka_instance_id):
@@ -613,6 +615,8 @@ class Client(OpenApiClient):
             query['PostStart'] = request.post_start
         if not UtilClient.is_unset(request.pre_stop):
             query['PreStop'] = request.pre_stop
+        if not UtilClient.is_unset(request.programming_language):
+            query['ProgrammingLanguage'] = request.programming_language
         if not UtilClient.is_unset(request.readiness):
             query['Readiness'] = request.readiness
         if not UtilClient.is_unset(request.replicas):
@@ -709,6 +713,8 @@ class Client(OpenApiClient):
             query['JarStartOptions'] = request.jar_start_options
         if not UtilClient.is_unset(request.jdk):
             query['Jdk'] = request.jdk
+        if not UtilClient.is_unset(request.kafka_configs):
+            query['KafkaConfigs'] = request.kafka_configs
         if not UtilClient.is_unset(request.kafka_endpoint):
             query['KafkaEndpoint'] = request.kafka_endpoint
         if not UtilClient.is_unset(request.kafka_instance_id):
@@ -743,6 +749,8 @@ class Client(OpenApiClient):
             query['PostStart'] = request.post_start
         if not UtilClient.is_unset(request.pre_stop):
             query['PreStop'] = request.pre_stop
+        if not UtilClient.is_unset(request.programming_language):
+            query['ProgrammingLanguage'] = request.programming_language
         if not UtilClient.is_unset(request.readiness):
             query['Readiness'] = request.readiness
         if not UtilClient.is_unset(request.replicas):
@@ -1121,6 +1129,10 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.listener_port):
             query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balance_type):
+            query['LoadBalanceType'] = request.load_balance_type
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.slb_id):
@@ -1165,6 +1177,10 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.listener_port):
             query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balance_type):
+            query['LoadBalanceType'] = request.load_balance_type
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.slb_id):
@@ -1793,6 +1809,8 @@ class Client(OpenApiClient):
             query['JarStartOptions'] = request.jar_start_options
         if not UtilClient.is_unset(request.jdk):
             query['Jdk'] = request.jdk
+        if not UtilClient.is_unset(request.kafka_configs):
+            query['KafkaConfigs'] = request.kafka_configs
         if not UtilClient.is_unset(request.kafka_endpoint):
             query['KafkaEndpoint'] = request.kafka_endpoint
         if not UtilClient.is_unset(request.kafka_instance_id):
@@ -1917,6 +1935,8 @@ class Client(OpenApiClient):
             query['JarStartOptions'] = request.jar_start_options
         if not UtilClient.is_unset(request.jdk):
             query['Jdk'] = request.jdk
+        if not UtilClient.is_unset(request.kafka_configs):
+            query['KafkaConfigs'] = request.kafka_configs
         if not UtilClient.is_unset(request.kafka_endpoint):
             query['KafkaEndpoint'] = request.kafka_endpoint
         if not UtilClient.is_unset(request.kafka_instance_id):
@@ -3916,90 +3936,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sae_20190506_models.DisableApplicationScalingRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def download_files(
-        self,
-        request: sae_20190506_models.DownloadFilesRequest,
-    ) -> sae_20190506_models.DownloadFilesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.download_files_with_options(request, headers, runtime)
-
-    async def download_files_async(
-        self,
-        request: sae_20190506_models.DownloadFilesRequest,
-    ) -> sae_20190506_models.DownloadFilesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.download_files_with_options_async(request, headers, runtime)
-
-    def download_files_with_options(
-        self,
-        request: sae_20190506_models.DownloadFilesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sae_20190506_models.DownloadFilesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.localpath):
-            query['Localpath'] = request.localpath
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DownloadFiles',
-            version='2019-05-06',
-            protocol='HTTPS',
-            pathname=f'/pop/v1/sam/app/downloadFiles',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sae_20190506_models.DownloadFilesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def download_files_with_options_async(
-        self,
-        request: sae_20190506_models.DownloadFilesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sae_20190506_models.DownloadFilesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.localpath):
-            query['Localpath'] = request.localpath
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DownloadFiles',
-            version='2019-05-06',
-            protocol='HTTPS',
-            pathname=f'/pop/v1/sam/app/downloadFiles',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sae_20190506_models.DownloadFilesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -6361,6 +6297,86 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def update_application_description(
+        self,
+        request: sae_20190506_models.UpdateApplicationDescriptionRequest,
+    ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_application_description_with_options(request, headers, runtime)
+
+    async def update_application_description_async(
+        self,
+        request: sae_20190506_models.UpdateApplicationDescriptionRequest,
+    ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_application_description_with_options_async(request, headers, runtime)
+
+    def update_application_description_with_options(
+        self,
+        request: sae_20190506_models.UpdateApplicationDescriptionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_description):
+            query['AppDescription'] = request.app_description
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationDescription',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/updateAppDescription',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateApplicationDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_application_description_with_options_async(
+        self,
+        request: sae_20190506_models.UpdateApplicationDescriptionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_description):
+            query['AppDescription'] = request.app_description
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationDescription',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/updateAppDescription',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateApplicationDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def update_application_scaling_rule(
         self,
         request: sae_20190506_models.UpdateApplicationScalingRuleRequest,
@@ -6454,6 +6470,86 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sae_20190506_models.UpdateApplicationScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_application_vswitches(
+        self,
+        request: sae_20190506_models.UpdateApplicationVswitchesRequest,
+    ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_application_vswitches_with_options(request, headers, runtime)
+
+    async def update_application_vswitches_async(
+        self,
+        request: sae_20190506_models.UpdateApplicationVswitchesRequest,
+    ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_application_vswitches_with_options_async(request, headers, runtime)
+
+    def update_application_vswitches_with_options(
+        self,
+        request: sae_20190506_models.UpdateApplicationVswitchesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationVswitches',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/updateAppVswitches',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateApplicationVswitchesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_application_vswitches_with_options_async(
+        self,
+        request: sae_20190506_models.UpdateApplicationVswitchesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationVswitches',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/updateAppVswitches',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateApplicationVswitchesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -6667,6 +6763,10 @@ class Client(OpenApiClient):
             query['IngressId'] = request.ingress_id
         if not UtilClient.is_unset(request.listener_port):
             query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balance_type):
+            query['LoadBalanceType'] = request.load_balance_type
         body = {}
         if not UtilClient.is_unset(request.rules):
             body['Rules'] = request.rules
@@ -6709,6 +6809,10 @@ class Client(OpenApiClient):
             query['IngressId'] = request.ingress_id
         if not UtilClient.is_unset(request.listener_port):
             query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balance_type):
+            query['LoadBalanceType'] = request.load_balance_type
         body = {}
         if not UtilClient.is_unset(request.rules):
             body['Rules'] = request.rules
@@ -6894,93 +6998,5 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sae_20190506_models.UpdateNamespaceVpcResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def upload_files(
-        self,
-        request: sae_20190506_models.UploadFilesRequest,
-    ) -> sae_20190506_models.UploadFilesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.upload_files_with_options(request, headers, runtime)
-
-    async def upload_files_async(
-        self,
-        request: sae_20190506_models.UploadFilesRequest,
-    ) -> sae_20190506_models.UploadFilesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.upload_files_with_options_async(request, headers, runtime)
-
-    def upload_files_with_options(
-        self,
-        request: sae_20190506_models.UploadFilesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sae_20190506_models.UploadFilesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.cloud_url):
-            query['CloudUrl'] = request.cloud_url
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.localpath):
-            query['Localpath'] = request.localpath
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UploadFiles',
-            version='2019-05-06',
-            protocol='HTTPS',
-            pathname=f'/pop/v1/sam/app/uploadFiles',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sae_20190506_models.UploadFilesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def upload_files_with_options_async(
-        self,
-        request: sae_20190506_models.UploadFilesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sae_20190506_models.UploadFilesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.cloud_url):
-            query['CloudUrl'] = request.cloud_url
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.localpath):
-            query['Localpath'] = request.localpath
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UploadFiles',
-            version='2019-05-06',
-            protocol='HTTPS',
-            pathname=f'/pop/v1/sam/app/uploadFiles',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sae_20190506_models.UploadFilesResponse(),
             await self.call_api_async(params, req, runtime)
         )

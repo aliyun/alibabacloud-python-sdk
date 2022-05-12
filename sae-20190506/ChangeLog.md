@@ -1,3 +1,6 @@
+2022-05-12 Version: 1.20.0
+- Support alb.
+
 2022-03-15 Version: 1.19.0
 - Support collect logs to kafka.
 
