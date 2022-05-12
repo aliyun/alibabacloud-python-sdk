@@ -3773,6 +3773,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeEmgVulItemResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.check_type):
+            query['CheckType'] = request.check_type
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.lang):
@@ -3811,6 +3813,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeEmgVulItemResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.check_type):
+            query['CheckType'] = request.check_type
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.lang):
