@@ -1,3 +1,6 @@
+2022-05-12 Version: 1.0.4
+- Supported New Features.
+
 2022-01-04 Version: 1.0.3
 - Supported New Features.
 

@@ -1160,6 +1160,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.send_address):
             request.send_address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.send_address), 'SendAddress', 'json')
         query = {}
+        if not UtilClient.is_unset(request.appoint_got_end_time):
+            query['AppointGotEndTime'] = request.appoint_got_end_time
+        if not UtilClient.is_unset(request.appoint_got_start_time):
+            query['AppointGotStartTime'] = request.appoint_got_start_time
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.consignee_address_shrink):
             query['ConsigneeAddress'] = request.consignee_address_shrink
         if not UtilClient.is_unset(request.consignee_mobile):
@@ -1220,6 +1226,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.send_address):
             request.send_address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.send_address), 'SendAddress', 'json')
         query = {}
+        if not UtilClient.is_unset(request.appoint_got_end_time):
+            query['AppointGotEndTime'] = request.appoint_got_end_time
+        if not UtilClient.is_unset(request.appoint_got_start_time):
+            query['AppointGotStartTime'] = request.appoint_got_start_time
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.consignee_address_shrink):
             query['ConsigneeAddress'] = request.consignee_address_shrink
         if not UtilClient.is_unset(request.consignee_mobile):

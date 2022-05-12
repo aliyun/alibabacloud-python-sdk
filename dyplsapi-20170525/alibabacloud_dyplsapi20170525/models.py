@@ -110,13 +110,16 @@ class AddAxnTrackNoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AddAxnTrackNoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -129,6 +132,8 @@ class AddAxnTrackNoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -137,6 +142,8 @@ class AddAxnTrackNoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddAxnTrackNoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -237,13 +244,16 @@ class AddSecretBlacklistResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AddSecretBlacklistResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -256,6 +266,8 @@ class AddSecretBlacklistResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -264,6 +276,8 @@ class AddSecretBlacklistResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddSecretBlacklistResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -489,13 +503,16 @@ class BindAxbResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BindAxbResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -508,6 +525,8 @@ class BindAxbResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -516,6 +535,8 @@ class BindAxbResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BindAxbResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -741,13 +762,16 @@ class BindAxgResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BindAxgResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -760,6 +784,8 @@ class BindAxgResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -768,6 +794,8 @@ class BindAxgResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BindAxgResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -999,13 +1027,16 @@ class BindAxnResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BindAxnResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1018,6 +1049,8 @@ class BindAxnResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1026,6 +1059,8 @@ class BindAxnResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BindAxnResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1251,13 +1286,16 @@ class BindAxnExtensionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BindAxnExtensionResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1270,6 +1308,8 @@ class BindAxnExtensionResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1278,6 +1318,8 @@ class BindAxnExtensionResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BindAxnExtensionResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1431,13 +1473,16 @@ class BuySecretNoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BuySecretNoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1450,6 +1495,8 @@ class BuySecretNoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1458,6 +1505,8 @@ class BuySecretNoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BuySecretNoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1611,13 +1660,16 @@ class CancelPickUpWaybillResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CancelPickUpWaybillResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1630,6 +1682,8 @@ class CancelPickUpWaybillResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1638,6 +1692,8 @@ class CancelPickUpWaybillResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CancelPickUpWaybillResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1750,13 +1806,16 @@ class ConfirmSendSmsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ConfirmSendSmsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1769,6 +1828,8 @@ class ConfirmSendSmsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1777,6 +1838,8 @@ class ConfirmSendSmsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ConfirmSendSmsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1895,13 +1958,16 @@ class CreateAxgGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateAxgGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1914,6 +1980,8 @@ class CreateAxgGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1922,6 +1990,8 @@ class CreateAxgGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAxgGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2072,6 +2142,9 @@ class CreatePickUpWaybillRequestSendAddress(TeaModel):
 class CreatePickUpWaybillRequest(TeaModel):
     def __init__(
         self,
+        appoint_got_end_time: str = None,
+        appoint_got_start_time: str = None,
+        biz_type: int = None,
         consignee_address: CreatePickUpWaybillRequestConsigneeAddress = None,
         consignee_mobile: str = None,
         consignee_name: str = None,
@@ -2086,6 +2159,9 @@ class CreatePickUpWaybillRequest(TeaModel):
         send_name: str = None,
         send_phone: str = None,
     ):
+        self.appoint_got_end_time = appoint_got_end_time
+        self.appoint_got_start_time = appoint_got_start_time
+        self.biz_type = biz_type
         self.consignee_address = consignee_address
         self.consignee_mobile = consignee_mobile
         self.consignee_name = consignee_name
@@ -2116,6 +2192,12 @@ class CreatePickUpWaybillRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.appoint_got_end_time is not None:
+            result['AppointGotEndTime'] = self.appoint_got_end_time
+        if self.appoint_got_start_time is not None:
+            result['AppointGotStartTime'] = self.appoint_got_start_time
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
         if self.consignee_address is not None:
             result['ConsigneeAddress'] = self.consignee_address.to_map()
         if self.consignee_mobile is not None:
@@ -2148,6 +2230,12 @@ class CreatePickUpWaybillRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppointGotEndTime') is not None:
+            self.appoint_got_end_time = m.get('AppointGotEndTime')
+        if m.get('AppointGotStartTime') is not None:
+            self.appoint_got_start_time = m.get('AppointGotStartTime')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
         if m.get('ConsigneeAddress') is not None:
             temp_model = CreatePickUpWaybillRequestConsigneeAddress()
             self.consignee_address = temp_model.from_map(m['ConsigneeAddress'])
@@ -2185,6 +2273,9 @@ class CreatePickUpWaybillRequest(TeaModel):
 class CreatePickUpWaybillShrinkRequest(TeaModel):
     def __init__(
         self,
+        appoint_got_end_time: str = None,
+        appoint_got_start_time: str = None,
+        biz_type: int = None,
         consignee_address_shrink: str = None,
         consignee_mobile: str = None,
         consignee_name: str = None,
@@ -2199,6 +2290,9 @@ class CreatePickUpWaybillShrinkRequest(TeaModel):
         send_name: str = None,
         send_phone: str = None,
     ):
+        self.appoint_got_end_time = appoint_got_end_time
+        self.appoint_got_start_time = appoint_got_start_time
+        self.biz_type = biz_type
         self.consignee_address_shrink = consignee_address_shrink
         self.consignee_mobile = consignee_mobile
         self.consignee_name = consignee_name
@@ -2222,6 +2316,12 @@ class CreatePickUpWaybillShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.appoint_got_end_time is not None:
+            result['AppointGotEndTime'] = self.appoint_got_end_time
+        if self.appoint_got_start_time is not None:
+            result['AppointGotStartTime'] = self.appoint_got_start_time
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
         if self.consignee_address_shrink is not None:
             result['ConsigneeAddress'] = self.consignee_address_shrink
         if self.consignee_mobile is not None:
@@ -2252,6 +2352,12 @@ class CreatePickUpWaybillShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppointGotEndTime') is not None:
+            self.appoint_got_end_time = m.get('AppointGotEndTime')
+        if m.get('AppointGotStartTime') is not None:
+            self.appoint_got_start_time = m.get('AppointGotStartTime')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
         if m.get('ConsigneeAddress') is not None:
             self.consignee_address_shrink = m.get('ConsigneeAddress')
         if m.get('ConsigneeMobile') is not None:
@@ -2287,12 +2393,14 @@ class CreatePickUpWaybillResponseBodyData(TeaModel):
         cp_code: str = None,
         error_code: str = None,
         error_msg: str = None,
+        got_code: str = None,
         mail_no: str = None,
         success: str = None,
     ):
         self.cp_code = cp_code
         self.error_code = error_code
         self.error_msg = error_msg
+        self.got_code = got_code
         self.mail_no = mail_no
         self.success = success
 
@@ -2311,6 +2419,8 @@ class CreatePickUpWaybillResponseBodyData(TeaModel):
             result['ErrorCode'] = self.error_code
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.got_code is not None:
+            result['GotCode'] = self.got_code
         if self.mail_no is not None:
             result['MailNo'] = self.mail_no
         if self.success is not None:
@@ -2325,6 +2435,8 @@ class CreatePickUpWaybillResponseBodyData(TeaModel):
             self.error_code = m.get('ErrorCode')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('GotCode') is not None:
+            self.got_code = m.get('GotCode')
         if m.get('MailNo') is not None:
             self.mail_no = m.get('MailNo')
         if m.get('Success') is not None:
@@ -2384,13 +2496,16 @@ class CreatePickUpWaybillResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreatePickUpWaybillResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2403,6 +2518,8 @@ class CreatePickUpWaybillResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2411,6 +2528,8 @@ class CreatePickUpWaybillResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreatePickUpWaybillResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2511,13 +2630,16 @@ class DeleteSecretBlacklistResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteSecretBlacklistResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2530,6 +2652,8 @@ class DeleteSecretBlacklistResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2538,6 +2662,8 @@ class DeleteSecretBlacklistResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSecretBlacklistResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2774,13 +2900,16 @@ class GetSecretAsrDetailResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetSecretAsrDetailResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2793,6 +2922,8 @@ class GetSecretAsrDetailResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2801,6 +2932,8 @@ class GetSecretAsrDetailResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSecretAsrDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2978,13 +3111,16 @@ class GetSubscriptionDetailResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetSubscriptionDetailResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2997,6 +3133,8 @@ class GetSubscriptionDetailResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3005,6 +3143,8 @@ class GetSubscriptionDetailResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSubscriptionDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3158,13 +3298,16 @@ class GetTotalPublicUrlResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetTotalPublicUrlResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3177,6 +3320,8 @@ class GetTotalPublicUrlResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3185,6 +3330,8 @@ class GetTotalPublicUrlResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTotalPublicUrlResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3285,13 +3432,16 @@ class LockSecretNoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: LockSecretNoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3304,6 +3454,8 @@ class LockSecretNoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3312,6 +3464,8 @@ class LockSecretNoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = LockSecretNoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3424,13 +3578,16 @@ class OperateAxgGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OperateAxgGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3443,6 +3600,8 @@ class OperateAxgGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3451,6 +3610,8 @@ class OperateAxgGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OperateAxgGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3563,13 +3724,16 @@ class OperateBlackNoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OperateBlackNoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3582,6 +3746,8 @@ class OperateBlackNoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3590,6 +3756,8 @@ class OperateBlackNoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OperateBlackNoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3743,13 +3911,16 @@ class QueryCallStatusResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QueryCallStatusResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3762,6 +3933,8 @@ class QueryCallStatusResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3770,6 +3943,8 @@ class QueryCallStatusResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryCallStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3929,13 +4104,16 @@ class QueryPhoneNoAByTrackNoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QueryPhoneNoAByTrackNoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3948,6 +4126,8 @@ class QueryPhoneNoAByTrackNoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3956,6 +4136,8 @@ class QueryPhoneNoAByTrackNoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryPhoneNoAByTrackNoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4074,13 +4256,16 @@ class QueryRecordFileDownloadUrlResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QueryRecordFileDownloadUrlResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4093,6 +4278,8 @@ class QueryRecordFileDownloadUrlResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4101,6 +4288,8 @@ class QueryRecordFileDownloadUrlResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryRecordFileDownloadUrlResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4266,13 +4455,16 @@ class QuerySecretNoDetailResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QuerySecretNoDetailResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4285,6 +4477,8 @@ class QuerySecretNoDetailResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4293,6 +4487,8 @@ class QuerySecretNoDetailResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QuerySecretNoDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4516,13 +4712,16 @@ class QuerySecretNoRemainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QuerySecretNoRemainResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4535,6 +4734,8 @@ class QuerySecretNoRemainResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4543,6 +4744,8 @@ class QuerySecretNoRemainResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QuerySecretNoRemainResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4649,13 +4852,16 @@ class QuerySubsIdResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QuerySubsIdResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4668,6 +4874,8 @@ class QuerySubsIdResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4676,6 +4884,8 @@ class QuerySubsIdResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QuerySubsIdResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4895,13 +5105,16 @@ class QuerySubscriptionDetailResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QuerySubscriptionDetailResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4914,6 +5127,8 @@ class QuerySubscriptionDetailResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4922,6 +5137,8 @@ class QuerySubscriptionDetailResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QuerySubscriptionDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5022,13 +5239,16 @@ class ReleaseSecretNoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ReleaseSecretNoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5041,6 +5261,8 @@ class ReleaseSecretNoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5049,6 +5271,8 @@ class ReleaseSecretNoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReleaseSecretNoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5167,13 +5391,16 @@ class UnbindSubscriptionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UnbindSubscriptionResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5186,6 +5413,8 @@ class UnbindSubscriptionResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5194,6 +5423,8 @@ class UnbindSubscriptionResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnbindSubscriptionResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5294,13 +5525,16 @@ class UnlockSecretNoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UnlockSecretNoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5313,6 +5547,8 @@ class UnlockSecretNoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5321,6 +5557,8 @@ class UnlockSecretNoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnlockSecretNoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5505,13 +5743,16 @@ class UpdateSubscriptionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateSubscriptionResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5524,6 +5765,8 @@ class UpdateSubscriptionResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5532,6 +5775,8 @@ class UpdateSubscriptionResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateSubscriptionResponseBody()
             self.body = temp_model.from_map(m['body'])
