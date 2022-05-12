@@ -3011,6 +3011,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_forward_entry_with_options_async(request, runtime)
 
+    def delete_image_with_options(
+        self,
+        request: ens_20171110_models.DeleteImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteImageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteImage',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_image_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteImageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteImage',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_image(
+        self,
+        request: ens_20171110_models.DeleteImageRequest,
+    ) -> ens_20171110_models.DeleteImageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_image_with_options(request, runtime)
+
+    async def delete_image_async(
+        self,
+        request: ens_20171110_models.DeleteImageRequest,
+    ) -> ens_20171110_models.DeleteImageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_image_with_options_async(request, runtime)
+
     def delete_key_pairs_with_options(
         self,
         request: ens_20171110_models.DeleteKeyPairsRequest,
@@ -3094,6 +3164,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.listener_port):
             query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
         if not UtilClient.is_unset(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
@@ -3124,6 +3196,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.listener_port):
             query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
         if not UtilClient.is_unset(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
@@ -11010,8 +11084,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11040,8 +11112,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13086,6 +13156,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.listener_port):
             query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
         if not UtilClient.is_unset(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
@@ -13116,6 +13188,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.listener_port):
             query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
         if not UtilClient.is_unset(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
@@ -13308,6 +13382,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.listener_port):
             query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
         if not UtilClient.is_unset(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
@@ -13338,6 +13414,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.listener_port):
             query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
         if not UtilClient.is_unset(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(

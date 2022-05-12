@@ -1,3 +1,6 @@
+2022-05-12 Version: 3.0.3
+- Support API DeleteImage.
+
 2022-04-08 Version: 3.0.2
 - Support API CreateInstance Use Param PasswordInherit.
 
