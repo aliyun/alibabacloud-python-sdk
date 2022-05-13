@@ -1,3 +1,6 @@
+2022-05-13 Version: 2.7.29
+- Add tag operation API.
+
 2022-05-06 Version: 2.7.28
 - Add flow API.
 
