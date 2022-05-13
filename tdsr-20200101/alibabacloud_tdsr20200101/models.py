@@ -1020,6 +1020,170 @@ class CheckUserPropertyResponse(TeaModel):
         return self
 
 
+class CopySceneRequest(TeaModel):
+    def __init__(
+        self,
+        scene_id: str = None,
+        scene_name: str = None,
+    ):
+        # 场景Id
+        self.scene_id = scene_id
+        # 新场景名称
+        self.scene_name = scene_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        return self
+
+
+class CopySceneResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # 任务ID
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CopySceneResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: CopySceneResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 返回码
+        self.code = code
+        self.data = data
+        # 错误消息
+        self.message = message
+        # 请求ID，与入参requestId对应
+        self.request_id = request_id
+        # 是否请求成功
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CopySceneResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CopySceneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CopySceneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CopySceneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DetailProjectRequest(TeaModel):
     def __init__(
         self,
@@ -2137,6 +2301,170 @@ class GetConnDataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetConnDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCopySceneTaskStatusRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # 任务ID
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetCopySceneTaskStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        progress: int = None,
+        status: str = None,
+    ):
+        # 任务进度
+        self.progress = progress
+        # 任务状态
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetCopySceneTaskStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetCopySceneTaskStatusResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 返回码
+        self.code = code
+        self.data = data
+        # 错误消息
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        # 是否请求成功
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetCopySceneTaskStatusResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetCopySceneTaskStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCopySceneTaskStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCopySceneTaskStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6181,6 +6509,7 @@ class ListSubSceneRequest(TeaModel):
         page_size: int = None,
         scene_id: str = None,
         show_layout_data: bool = None,
+        sort_field: str = None,
     ):
         # 页码
         self.page_num = page_num
@@ -6189,6 +6518,8 @@ class ListSubSceneRequest(TeaModel):
         # 场景ID
         self.scene_id = scene_id
         self.show_layout_data = show_layout_data
+        # 排序字段，默认：NAME（名称），SEQUENCE（自定义排序）
+        self.sort_field = sort_field
 
     def validate(self):
         pass
@@ -6207,6 +6538,8 @@ class ListSubSceneRequest(TeaModel):
             result['SceneId'] = self.scene_id
         if self.show_layout_data is not None:
             result['ShowLayoutData'] = self.show_layout_data
+        if self.sort_field is not None:
+            result['SortField'] = self.sort_field
         return result
 
     def from_map(self, m: dict = None):
@@ -6219,6 +6552,8 @@ class ListSubSceneRequest(TeaModel):
             self.scene_id = m.get('SceneId')
         if m.get('ShowLayoutData') is not None:
             self.show_layout_data = m.get('ShowLayoutData')
+        if m.get('SortField') is not None:
+            self.sort_field = m.get('SortField')
         return self
 
 
@@ -9125,11 +9460,13 @@ class UpdateSubSceneRequest(TeaModel):
         self,
         id: str = None,
         name: str = None,
+        view_point: List[float] = None,
     ):
         # 子场景ID
         self.id = id
         # 子场景名称
         self.name = name
+        self.view_point = view_point
 
     def validate(self):
         pass
@@ -9144,6 +9481,8 @@ class UpdateSubSceneRequest(TeaModel):
             result['Id'] = self.id
         if self.name is not None:
             result['Name'] = self.name
+        if self.view_point is not None:
+            result['ViewPoint'] = self.view_point
         return result
 
     def from_map(self, m: dict = None):
@@ -9152,6 +9491,49 @@ class UpdateSubSceneRequest(TeaModel):
             self.id = m.get('Id')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ViewPoint') is not None:
+            self.view_point = m.get('ViewPoint')
+        return self
+
+
+class UpdateSubSceneShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+        view_point_shrink: str = None,
+    ):
+        # 子场景ID
+        self.id = id
+        # 子场景名称
+        self.name = name
+        self.view_point_shrink = view_point_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.view_point_shrink is not None:
+            result['ViewPoint'] = self.view_point_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ViewPoint') is not None:
+            self.view_point_shrink = m.get('ViewPoint')
         return self
 
 
@@ -9244,6 +9626,167 @@ class UpdateSubSceneResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateSubSceneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSubSceneSeqRequest(TeaModel):
+    def __init__(
+        self,
+        scene_id: str = None,
+        sort_sub_scene_ids: List[str] = None,
+    ):
+        # 子场景ID
+        self.scene_id = scene_id
+        self.sort_sub_scene_ids = sort_sub_scene_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.sort_sub_scene_ids is not None:
+            result['SortSubSceneIds'] = self.sort_sub_scene_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SortSubSceneIds') is not None:
+            self.sort_sub_scene_ids = m.get('SortSubSceneIds')
+        return self
+
+
+class UpdateSubSceneSeqShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        scene_id: str = None,
+        sort_sub_scene_ids_shrink: str = None,
+    ):
+        # 子场景ID
+        self.scene_id = scene_id
+        self.sort_sub_scene_ids_shrink = sort_sub_scene_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.sort_sub_scene_ids_shrink is not None:
+            result['SortSubSceneIds'] = self.sort_sub_scene_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SortSubSceneIds') is not None:
+            self.sort_sub_scene_ids_shrink = m.get('SortSubSceneIds')
+        return self
+
+
+class UpdateSubSceneSeqResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 返回码
+        self.code = code
+        # 错误消息
+        self.message = message
+        # 请求ID，与入参requestId对应
+        self.request_id = request_id
+        # 是否请求成功
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateSubSceneSeqResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSubSceneSeqResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSubSceneSeqResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

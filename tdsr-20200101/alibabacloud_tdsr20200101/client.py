@@ -566,6 +566,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_user_property_with_options_async(request, runtime)
 
+    def copy_scene_with_options(
+        self,
+        request: tdsr_20200101_models.CopySceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.CopySceneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CopyScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.CopySceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def copy_scene_with_options_async(
+        self,
+        request: tdsr_20200101_models.CopySceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.CopySceneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_name):
+            query['SceneName'] = request.scene_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CopyScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.CopySceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def copy_scene(
+        self,
+        request: tdsr_20200101_models.CopySceneRequest,
+    ) -> tdsr_20200101_models.CopySceneResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.copy_scene_with_options(request, runtime)
+
+    async def copy_scene_async(
+        self,
+        request: tdsr_20200101_models.CopySceneRequest,
+    ) -> tdsr_20200101_models.CopySceneResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.copy_scene_with_options_async(request, runtime)
+
     def detail_project_with_options(
         self,
         request: tdsr_20200101_models.DetailProjectRequest,
@@ -1055,6 +1129,76 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetConnDataResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_conn_data_with_options_async(request, runtime)
+
+    def get_copy_scene_task_status_with_options(
+        self,
+        request: tdsr_20200101_models.GetCopySceneTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.GetCopySceneTaskStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCopySceneTaskStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.GetCopySceneTaskStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_copy_scene_task_status_with_options_async(
+        self,
+        request: tdsr_20200101_models.GetCopySceneTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.GetCopySceneTaskStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCopySceneTaskStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.GetCopySceneTaskStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_copy_scene_task_status(
+        self,
+        request: tdsr_20200101_models.GetCopySceneTaskStatusRequest,
+    ) -> tdsr_20200101_models.GetCopySceneTaskStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_copy_scene_task_status_with_options(request, runtime)
+
+    async def get_copy_scene_task_status_async(
+        self,
+        request: tdsr_20200101_models.GetCopySceneTaskStatusRequest,
+    ) -> tdsr_20200101_models.GetCopySceneTaskStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_copy_scene_task_status_with_options_async(request, runtime)
 
     def get_hotspot_config_with_options(
         self,
@@ -2641,6 +2785,8 @@ class Client(OpenApiClient):
             query['SceneId'] = request.scene_id
         if not UtilClient.is_unset(request.show_layout_data):
             query['ShowLayoutData'] = request.show_layout_data
+        if not UtilClient.is_unset(request.sort_field):
+            query['SortField'] = request.sort_field
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2675,6 +2821,8 @@ class Client(OpenApiClient):
             query['SceneId'] = request.scene_id
         if not UtilClient.is_unset(request.show_layout_data):
             query['ShowLayoutData'] = request.show_layout_data
+        if not UtilClient.is_unset(request.sort_field):
+            query['SortField'] = request.sort_field
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4178,15 +4326,21 @@ class Client(OpenApiClient):
 
     def update_sub_scene_with_options(
         self,
-        request: tdsr_20200101_models.UpdateSubSceneRequest,
+        tmp_req: tdsr_20200101_models.UpdateSubSceneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.UpdateSubSceneResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = tdsr_20200101_models.UpdateSubSceneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.view_point):
+            request.view_point_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.view_point, 'ViewPoint', 'json')
         query = {}
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.view_point_shrink):
+            query['ViewPoint'] = request.view_point_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4208,15 +4362,21 @@ class Client(OpenApiClient):
 
     async def update_sub_scene_with_options_async(
         self,
-        request: tdsr_20200101_models.UpdateSubSceneRequest,
+        tmp_req: tdsr_20200101_models.UpdateSubSceneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.UpdateSubSceneResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = tdsr_20200101_models.UpdateSubSceneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.view_point):
+            request.view_point_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.view_point, 'ViewPoint', 'json')
         query = {}
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.view_point_shrink):
+            query['ViewPoint'] = request.view_point_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4249,3 +4409,85 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.UpdateSubSceneResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_sub_scene_with_options_async(request, runtime)
+
+    def update_sub_scene_seq_with_options(
+        self,
+        tmp_req: tdsr_20200101_models.UpdateSubSceneSeqRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.UpdateSubSceneSeqResponse:
+        UtilClient.validate_model(tmp_req)
+        request = tdsr_20200101_models.UpdateSubSceneSeqShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sort_sub_scene_ids):
+            request.sort_sub_scene_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sort_sub_scene_ids, 'SortSubSceneIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.sort_sub_scene_ids_shrink):
+            query['SortSubSceneIds'] = request.sort_sub_scene_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSubSceneSeq',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.UpdateSubSceneSeqResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_sub_scene_seq_with_options_async(
+        self,
+        tmp_req: tdsr_20200101_models.UpdateSubSceneSeqRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.UpdateSubSceneSeqResponse:
+        UtilClient.validate_model(tmp_req)
+        request = tdsr_20200101_models.UpdateSubSceneSeqShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sort_sub_scene_ids):
+            request.sort_sub_scene_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sort_sub_scene_ids, 'SortSubSceneIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.sort_sub_scene_ids_shrink):
+            query['SortSubSceneIds'] = request.sort_sub_scene_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSubSceneSeq',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.UpdateSubSceneSeqResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_sub_scene_seq(
+        self,
+        request: tdsr_20200101_models.UpdateSubSceneSeqRequest,
+    ) -> tdsr_20200101_models.UpdateSubSceneSeqResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_sub_scene_seq_with_options(request, runtime)
+
+    async def update_sub_scene_seq_async(
+        self,
+        request: tdsr_20200101_models.UpdateSubSceneSeqRequest,
+    ) -> tdsr_20200101_models.UpdateSubSceneSeqResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_sub_scene_seq_with_options_async(request, runtime)

@@ -1,3 +1,6 @@
+2022-05-13 Version: 3.1.0
+- Modify  Some  Interface.
+
 2022-05-10 Version: 3.0.10
 - Modify  Failed Type Within GetScenePackUrl And GetPackSceneTaskStatus  Interface.
 
