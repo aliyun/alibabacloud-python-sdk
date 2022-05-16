@@ -1508,8 +1508,6 @@ class Client(OpenApiClient):
             query['AccessKey'] = request.access_key
         if not UtilClient.is_unset(request.game_id):
             query['GameId'] = request.game_id
-        if not UtilClient.is_unset(request.user_level):
-            query['UserLevel'] = request.user_level
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1540,8 +1538,6 @@ class Client(OpenApiClient):
             query['AccessKey'] = request.access_key
         if not UtilClient.is_unset(request.game_id):
             query['GameId'] = request.game_id
-        if not UtilClient.is_unset(request.user_level):
-            query['UserLevel'] = request.user_level
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1940,6 +1936,84 @@ class Client(OpenApiClient):
     ) -> cloud_game_api20200728_models.GetOutAccountBindDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_out_account_bind_detail_with_options_async(request, runtime)
+
+    def get_queuing_size_with_options(
+        self,
+        request: cloud_game_api20200728_models.GetQueuingSizeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_game_api20200728_models.GetQueuingSizeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.game_id):
+            query['GameId'] = request.game_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.user_level):
+            query['UserLevel'] = request.user_level
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetQueuingSize',
+            version='2020-07-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_game_api20200728_models.GetQueuingSizeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_queuing_size_with_options_async(
+        self,
+        request: cloud_game_api20200728_models.GetQueuingSizeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_game_api20200728_models.GetQueuingSizeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.game_id):
+            query['GameId'] = request.game_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.user_level):
+            query['UserLevel'] = request.user_level
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetQueuingSize',
+            version='2020-07-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_game_api20200728_models.GetQueuingSizeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_queuing_size(
+        self,
+        request: cloud_game_api20200728_models.GetQueuingSizeRequest,
+    ) -> cloud_game_api20200728_models.GetQueuingSizeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_queuing_size_with_options(request, runtime)
+
+    async def get_queuing_size_async(
+        self,
+        request: cloud_game_api20200728_models.GetQueuingSizeRequest,
+    ) -> cloud_game_api20200728_models.GetQueuingSizeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_queuing_size_with_options_async(request, runtime)
 
     def get_session_with_options(
         self,

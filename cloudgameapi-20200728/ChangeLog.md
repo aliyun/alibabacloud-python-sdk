@@ -1,3 +1,6 @@
+2022-05-16 Version: 2.5.1
+- Add GetGameStock.
+
 2022-04-27 Version: 2.5.0
 - Add SetGameAlive.
 
