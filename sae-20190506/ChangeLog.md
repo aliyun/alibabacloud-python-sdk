@@ -1,3 +1,6 @@
+2022-05-16 Version: 1.20.1
+- Support UpdateApplicationVswitches and DescribeComponents.
+
 2022-05-12 Version: 1.20.0
 - Support alb.
 
