@@ -1,3 +1,6 @@
+2022-05-16 Version: 1.0.11
+- Add Algorithm APIs.
+
 2022-04-20 Version: 1.0.10
 - Add Campaign APIs.
 
