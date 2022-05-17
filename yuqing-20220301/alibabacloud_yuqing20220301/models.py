@@ -199,9 +199,11 @@ class SearchCondition(TeaModel):
         exclude_message_type_list: List[str] = None,
         field_conditions: List[FieldCondition] = None,
         filter_id: int = None,
+        has_audio: bool = None,
         has_image: bool = None,
         has_video: bool = None,
         host_name_list: List[str] = None,
+        influence_level: int = None,
         keyword_tag_ids: List[int] = None,
         likes_level: int = None,
         media_library_id_list: List[str] = None,
@@ -214,6 +216,7 @@ class SearchCondition(TeaModel):
         pos_keyword_list: List[str] = None,
         pos_keyword_list_in_title: List[str] = None,
         project_id: int = None,
+        propagation_level: int = None,
         publish_time_end: int = None,
         publish_time_start: int = None,
         reads_level: int = None,
@@ -273,12 +276,16 @@ class SearchCondition(TeaModel):
         self.field_conditions = field_conditions
         # 高级筛选模板id
         self.filter_id = filter_id
+        # 是否含有音频
+        self.has_audio = has_audio
         # 文章是否含有图片
         self.has_image = has_image
         # 是否含有视频
         self.has_video = has_video
         # 网站域名
         self.host_name_list = host_name_list
+        # 影响力等级，1：低，2：中，3：高，4：低级别以上
+        self.influence_level = influence_level
         # 关键词标签Id列表
         self.keyword_tag_ids = keyword_tag_ids
         # 点赞级别，1：100以内，2：100-1k，3：1k-1w以内，4：1w-10w，5，10w+\
@@ -303,6 +310,8 @@ class SearchCondition(TeaModel):
         self.pos_keyword_list_in_title = pos_keyword_list_in_title
         # 舆情项目id
         self.project_id = project_id
+        # 传播度等级，1：低，2：中，3：高，4：低级别以上
+        self.propagation_level = propagation_level
         # 截止发布时间
         self.publish_time_end = publish_time_end
         # 起始发布时间
@@ -386,12 +395,16 @@ class SearchCondition(TeaModel):
                 result['fieldConditions'].append(k.to_map() if k else None)
         if self.filter_id is not None:
             result['filterId'] = self.filter_id
+        if self.has_audio is not None:
+            result['hasAudio'] = self.has_audio
         if self.has_image is not None:
             result['hasImage'] = self.has_image
         if self.has_video is not None:
             result['hasVideo'] = self.has_video
         if self.host_name_list is not None:
             result['hostNameList'] = self.host_name_list
+        if self.influence_level is not None:
+            result['influenceLevel'] = self.influence_level
         if self.keyword_tag_ids is not None:
             result['keywordTagIds'] = self.keyword_tag_ids
         if self.likes_level is not None:
@@ -416,6 +429,8 @@ class SearchCondition(TeaModel):
             result['posKeywordListInTitle'] = self.pos_keyword_list_in_title
         if self.project_id is not None:
             result['projectId'] = self.project_id
+        if self.propagation_level is not None:
+            result['propagationLevel'] = self.propagation_level
         if self.publish_time_end is not None:
             result['publishTimeEnd'] = self.publish_time_end
         if self.publish_time_start is not None:
@@ -491,12 +506,16 @@ class SearchCondition(TeaModel):
                 self.field_conditions.append(temp_model.from_map(k))
         if m.get('filterId') is not None:
             self.filter_id = m.get('filterId')
+        if m.get('hasAudio') is not None:
+            self.has_audio = m.get('hasAudio')
         if m.get('hasImage') is not None:
             self.has_image = m.get('hasImage')
         if m.get('hasVideo') is not None:
             self.has_video = m.get('hasVideo')
         if m.get('hostNameList') is not None:
             self.host_name_list = m.get('hostNameList')
+        if m.get('influenceLevel') is not None:
+            self.influence_level = m.get('influenceLevel')
         if m.get('keywordTagIds') is not None:
             self.keyword_tag_ids = m.get('keywordTagIds')
         if m.get('likesLevel') is not None:
@@ -521,6 +540,8 @@ class SearchCondition(TeaModel):
             self.pos_keyword_list_in_title = m.get('posKeywordListInTitle')
         if m.get('projectId') is not None:
             self.project_id = m.get('projectId')
+        if m.get('propagationLevel') is not None:
+            self.propagation_level = m.get('propagationLevel')
         if m.get('publishTimeEnd') is not None:
             self.publish_time_end = m.get('publishTimeEnd')
         if m.get('publishTimeStart') is not None:
@@ -547,49 +568,130 @@ class SearchCondition(TeaModel):
 class YuqingMessage(TeaModel):
     def __init__(
         self,
+        app_name: str = None,
+        app_score: int = None,
+        app_store_name: str = None,
+        at_author_names: List[str] = None,
+        audio_count: int = None,
         author_avatar_url: str = None,
         author_followers_count: int = None,
         author_friends_count: int = None,
+        author_gender: str = None,
         author_id: str = None,
+        author_likes_count: int = None,
         author_name: str = None,
+        author_profile_url: str = None,
         author_statuses_count: int = None,
-        author_verify_type: str = None,
+        author_verified: bool = None,
+        author_verify_type: int = None,
+        content_audio_text: str = None,
+        content_audio_urls: str = None,
+        content_image_text: str = None,
+        content_image_urls: str = None,
+        content_lang: str = None,
+        content_len: int = None,
+        content_video_text: str = None,
+        content_video_urls: str = None,
         create_time: int = None,
+        doc_answers_count: int = None,
+        doc_areas: List[str] = None,
+        doc_coin_count: int = None,
+        doc_comments_count: int = None,
         doc_content: str = None,
         doc_content_brief: str = None,
         doc_content_sign: str = None,
         doc_id: str = None,
+        doc_likes_count: int = None,
+        doc_play_count: int = None,
+        doc_reading_count: int = None,
+        doc_reads_count: int = None,
+        doc_reposts_count: int = None,
+        doc_reprint_name: str = None,
         doc_self_content_sign: str = None,
         doc_title: str = None,
         doc_url: str = None,
+        emotion_score: float = None,
         emotion_type: int = None,
         ext_info: Dict[str, str] = None,
+        fin_event_count: int = None,
         highlight_keywords: List[str] = None,
+        image_count: int = None,
+        influence_score: float = None,
+        media_hosts: List[str] = None,
+        media_influence_level: int = None,
+        media_name: str = None,
+        media_propagation_level: int = None,
         media_type: str = None,
         message_type: str = None,
         parent_doc_id: str = None,
+        propagation_score: float = None,
         publish_time: int = None,
         relevance_score: float = None,
+        repost_list: List[str] = None,
         similar_number: int = None,
+        topics: List[str] = None,
+        video_count: int = None,
         weibo_comment_id: str = None,
         weibo_mid: str = None,
     ):
+        # 应用名称
+        self.app_name = app_name
+        # 应用市场评分
+        self.app_score = app_score
+        # 应用市场名称
+        self.app_store_name = app_store_name
+        # 提及到的用户列表
+        self.at_author_names = at_author_names
+        # 音频数
+        self.audio_count = audio_count
         # 作者头像地址
         self.author_avatar_url = author_avatar_url
         # 粉丝数
         self.author_followers_count = author_followers_count
         # 好友数
         self.author_friends_count = author_friends_count
+        # 性别,f:女，m:男
+        self.author_gender = author_gender
         # 作者id
         self.author_id = author_id
+        # 作者收到的点赞数
+        self.author_likes_count = author_likes_count
         # 作者名称
         self.author_name = author_name
+        # 作者主页地址
+        self.author_profile_url = author_profile_url
         # 发文数
         self.author_statuses_count = author_statuses_count
-        # 作者认证类型
+        # 作者是否认证
+        self.author_verified = author_verified
+        # 作者认证等级，0:黄V，>0:蓝V
         self.author_verify_type = author_verify_type
+        # 音频识别出来的文本
+        self.content_audio_text = content_audio_text
+        # 音频列表地址
+        self.content_audio_urls = content_audio_urls
+        # 图片识别出来的文本
+        self.content_image_text = content_image_text
+        # 图片列表地址
+        self.content_image_urls = content_image_urls
+        # 语种
+        self.content_lang = content_lang
+        # 文本长度
+        self.content_len = content_len
+        # 视频识别出来的文本
+        self.content_video_text = content_video_text
+        # 视频列表地址
+        self.content_video_urls = content_video_urls
         # 舆情文章被抓取的时间戳
         self.create_time = create_time
+        # 回答数
+        self.doc_answers_count = doc_answers_count
+        # 提级地域列表
+        self.doc_areas = doc_areas
+        # 投币数
+        self.doc_coin_count = doc_coin_count
+        # 文章评论数
+        self.doc_comments_count = doc_comments_count
         # 文章正文内容
         self.doc_content = doc_content
         # 文章摘要
@@ -598,30 +700,66 @@ class YuqingMessage(TeaModel):
         self.doc_content_sign = doc_content_sign
         # 文章唯一docId
         self.doc_id = doc_id
+        # 文章点赞数
+        self.doc_likes_count = doc_likes_count
+        # 播放数
+        self.doc_play_count = doc_play_count
+        # 在读数
+        self.doc_reading_count = doc_reading_count
+        # 文章阅读数
+        self.doc_reads_count = doc_reads_count
+        # 文章点赞数
+        self.doc_reposts_count = doc_reposts_count
+        # 文章转载自
+        self.doc_reprint_name = doc_reprint_name
         # 文章自身的内容签名，转发微博计算的是转发内容的contentSign，与父微博无关
         self.doc_self_content_sign = doc_self_content_sign
         # 文章标题
         self.doc_title = doc_title
         # 原文地址
         self.doc_url = doc_url
+        # 情感得分
+        self.emotion_score = emotion_score
         # 情感的正负面，-1代表负面，1代表非负面
         self.emotion_type = emotion_type
         # 扩展字段值
         self.ext_info = ext_info
-        # 命中的搜索词列表
+        # 企业事件数
+        self.fin_event_count = fin_event_count
+        # 命中的关键词列表
         self.highlight_keywords = highlight_keywords
+        # 图片数
+        self.image_count = image_count
+        # 影响力得分，0-10
+        self.influence_score = influence_score
+        # 站点列表
+        self.media_hosts = media_hosts
+        # 影响力等级
+        self.media_influence_level = media_influence_level
+        # 媒体名称
+        self.media_name = media_name
+        # 传播等级
+        self.media_propagation_level = media_propagation_level
         # 媒体类型，枚举值
         self.media_type = media_type
         # 舆情消息类型:转发,评论/回复, 原文,群聊等
         self.message_type = message_type
         # 文章的父docId，如被转发的文章docId
         self.parent_doc_id = parent_doc_id
+        # 传播得分，0-10
+        self.propagation_score = propagation_score
         # 舆情文章的发布时间戳
         self.publish_time = publish_time
         # 相关性得分
         self.relevance_score = relevance_score
+        # 疑似首发列表
+        self.repost_list = repost_list
         # 相似文章数
         self.similar_number = similar_number
+        # 话题列表
+        self.topics = topics
+        # 视频数
+        self.video_count = video_count
         # 微博评论id
         self.weibo_comment_id = weibo_comment_id
         # 微博消息id
@@ -636,22 +774,64 @@ class YuqingMessage(TeaModel):
             return _map
 
         result = dict()
+        if self.app_name is not None:
+            result['appName'] = self.app_name
+        if self.app_score is not None:
+            result['appScore'] = self.app_score
+        if self.app_store_name is not None:
+            result['appStoreName'] = self.app_store_name
+        if self.at_author_names is not None:
+            result['atAuthorNames'] = self.at_author_names
+        if self.audio_count is not None:
+            result['audioCount'] = self.audio_count
         if self.author_avatar_url is not None:
             result['authorAvatarUrl'] = self.author_avatar_url
         if self.author_followers_count is not None:
             result['authorFollowersCount'] = self.author_followers_count
         if self.author_friends_count is not None:
             result['authorFriendsCount'] = self.author_friends_count
+        if self.author_gender is not None:
+            result['authorGender'] = self.author_gender
         if self.author_id is not None:
             result['authorId'] = self.author_id
+        if self.author_likes_count is not None:
+            result['authorLikesCount'] = self.author_likes_count
         if self.author_name is not None:
             result['authorName'] = self.author_name
+        if self.author_profile_url is not None:
+            result['authorProfileUrl'] = self.author_profile_url
         if self.author_statuses_count is not None:
             result['authorStatusesCount'] = self.author_statuses_count
+        if self.author_verified is not None:
+            result['authorVerified'] = self.author_verified
         if self.author_verify_type is not None:
             result['authorVerifyType'] = self.author_verify_type
+        if self.content_audio_text is not None:
+            result['contentAudioText'] = self.content_audio_text
+        if self.content_audio_urls is not None:
+            result['contentAudioUrls'] = self.content_audio_urls
+        if self.content_image_text is not None:
+            result['contentImageText'] = self.content_image_text
+        if self.content_image_urls is not None:
+            result['contentImageUrls'] = self.content_image_urls
+        if self.content_lang is not None:
+            result['contentLang'] = self.content_lang
+        if self.content_len is not None:
+            result['contentLen'] = self.content_len
+        if self.content_video_text is not None:
+            result['contentVideoText'] = self.content_video_text
+        if self.content_video_urls is not None:
+            result['contentVideoUrls'] = self.content_video_urls
         if self.create_time is not None:
             result['createTime'] = self.create_time
+        if self.doc_answers_count is not None:
+            result['docAnswersCount'] = self.doc_answers_count
+        if self.doc_areas is not None:
+            result['docAreas'] = self.doc_areas
+        if self.doc_coin_count is not None:
+            result['docCoinCount'] = self.doc_coin_count
+        if self.doc_comments_count is not None:
+            result['docCommentsCount'] = self.doc_comments_count
         if self.doc_content is not None:
             result['docContent'] = self.doc_content
         if self.doc_content_brief is not None:
@@ -660,30 +840,66 @@ class YuqingMessage(TeaModel):
             result['docContentSign'] = self.doc_content_sign
         if self.doc_id is not None:
             result['docId'] = self.doc_id
+        if self.doc_likes_count is not None:
+            result['docLikesCount'] = self.doc_likes_count
+        if self.doc_play_count is not None:
+            result['docPlayCount'] = self.doc_play_count
+        if self.doc_reading_count is not None:
+            result['docReadingCount'] = self.doc_reading_count
+        if self.doc_reads_count is not None:
+            result['docReadsCount'] = self.doc_reads_count
+        if self.doc_reposts_count is not None:
+            result['docRepostsCount'] = self.doc_reposts_count
+        if self.doc_reprint_name is not None:
+            result['docReprintName'] = self.doc_reprint_name
         if self.doc_self_content_sign is not None:
             result['docSelfContentSign'] = self.doc_self_content_sign
         if self.doc_title is not None:
             result['docTitle'] = self.doc_title
         if self.doc_url is not None:
             result['docUrl'] = self.doc_url
+        if self.emotion_score is not None:
+            result['emotionScore'] = self.emotion_score
         if self.emotion_type is not None:
             result['emotionType'] = self.emotion_type
         if self.ext_info is not None:
             result['extInfo'] = self.ext_info
+        if self.fin_event_count is not None:
+            result['finEventCount'] = self.fin_event_count
         if self.highlight_keywords is not None:
             result['highlightKeywords'] = self.highlight_keywords
+        if self.image_count is not None:
+            result['imageCount'] = self.image_count
+        if self.influence_score is not None:
+            result['influenceScore'] = self.influence_score
+        if self.media_hosts is not None:
+            result['mediaHosts'] = self.media_hosts
+        if self.media_influence_level is not None:
+            result['mediaInfluenceLevel'] = self.media_influence_level
+        if self.media_name is not None:
+            result['mediaName'] = self.media_name
+        if self.media_propagation_level is not None:
+            result['mediaPropagationLevel'] = self.media_propagation_level
         if self.media_type is not None:
             result['mediaType'] = self.media_type
         if self.message_type is not None:
             result['messageType'] = self.message_type
         if self.parent_doc_id is not None:
             result['parentDocId'] = self.parent_doc_id
+        if self.propagation_score is not None:
+            result['propagationScore'] = self.propagation_score
         if self.publish_time is not None:
             result['publishTime'] = self.publish_time
         if self.relevance_score is not None:
             result['relevanceScore'] = self.relevance_score
+        if self.repost_list is not None:
+            result['repostList'] = self.repost_list
         if self.similar_number is not None:
             result['similarNumber'] = self.similar_number
+        if self.topics is not None:
+            result['topics'] = self.topics
+        if self.video_count is not None:
+            result['videoCount'] = self.video_count
         if self.weibo_comment_id is not None:
             result['weiboCommentId'] = self.weibo_comment_id
         if self.weibo_mid is not None:
@@ -692,22 +908,64 @@ class YuqingMessage(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appName') is not None:
+            self.app_name = m.get('appName')
+        if m.get('appScore') is not None:
+            self.app_score = m.get('appScore')
+        if m.get('appStoreName') is not None:
+            self.app_store_name = m.get('appStoreName')
+        if m.get('atAuthorNames') is not None:
+            self.at_author_names = m.get('atAuthorNames')
+        if m.get('audioCount') is not None:
+            self.audio_count = m.get('audioCount')
         if m.get('authorAvatarUrl') is not None:
             self.author_avatar_url = m.get('authorAvatarUrl')
         if m.get('authorFollowersCount') is not None:
             self.author_followers_count = m.get('authorFollowersCount')
         if m.get('authorFriendsCount') is not None:
             self.author_friends_count = m.get('authorFriendsCount')
+        if m.get('authorGender') is not None:
+            self.author_gender = m.get('authorGender')
         if m.get('authorId') is not None:
             self.author_id = m.get('authorId')
+        if m.get('authorLikesCount') is not None:
+            self.author_likes_count = m.get('authorLikesCount')
         if m.get('authorName') is not None:
             self.author_name = m.get('authorName')
+        if m.get('authorProfileUrl') is not None:
+            self.author_profile_url = m.get('authorProfileUrl')
         if m.get('authorStatusesCount') is not None:
             self.author_statuses_count = m.get('authorStatusesCount')
+        if m.get('authorVerified') is not None:
+            self.author_verified = m.get('authorVerified')
         if m.get('authorVerifyType') is not None:
             self.author_verify_type = m.get('authorVerifyType')
+        if m.get('contentAudioText') is not None:
+            self.content_audio_text = m.get('contentAudioText')
+        if m.get('contentAudioUrls') is not None:
+            self.content_audio_urls = m.get('contentAudioUrls')
+        if m.get('contentImageText') is not None:
+            self.content_image_text = m.get('contentImageText')
+        if m.get('contentImageUrls') is not None:
+            self.content_image_urls = m.get('contentImageUrls')
+        if m.get('contentLang') is not None:
+            self.content_lang = m.get('contentLang')
+        if m.get('contentLen') is not None:
+            self.content_len = m.get('contentLen')
+        if m.get('contentVideoText') is not None:
+            self.content_video_text = m.get('contentVideoText')
+        if m.get('contentVideoUrls') is not None:
+            self.content_video_urls = m.get('contentVideoUrls')
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
+        if m.get('docAnswersCount') is not None:
+            self.doc_answers_count = m.get('docAnswersCount')
+        if m.get('docAreas') is not None:
+            self.doc_areas = m.get('docAreas')
+        if m.get('docCoinCount') is not None:
+            self.doc_coin_count = m.get('docCoinCount')
+        if m.get('docCommentsCount') is not None:
+            self.doc_comments_count = m.get('docCommentsCount')
         if m.get('docContent') is not None:
             self.doc_content = m.get('docContent')
         if m.get('docContentBrief') is not None:
@@ -716,30 +974,66 @@ class YuqingMessage(TeaModel):
             self.doc_content_sign = m.get('docContentSign')
         if m.get('docId') is not None:
             self.doc_id = m.get('docId')
+        if m.get('docLikesCount') is not None:
+            self.doc_likes_count = m.get('docLikesCount')
+        if m.get('docPlayCount') is not None:
+            self.doc_play_count = m.get('docPlayCount')
+        if m.get('docReadingCount') is not None:
+            self.doc_reading_count = m.get('docReadingCount')
+        if m.get('docReadsCount') is not None:
+            self.doc_reads_count = m.get('docReadsCount')
+        if m.get('docRepostsCount') is not None:
+            self.doc_reposts_count = m.get('docRepostsCount')
+        if m.get('docReprintName') is not None:
+            self.doc_reprint_name = m.get('docReprintName')
         if m.get('docSelfContentSign') is not None:
             self.doc_self_content_sign = m.get('docSelfContentSign')
         if m.get('docTitle') is not None:
             self.doc_title = m.get('docTitle')
         if m.get('docUrl') is not None:
             self.doc_url = m.get('docUrl')
+        if m.get('emotionScore') is not None:
+            self.emotion_score = m.get('emotionScore')
         if m.get('emotionType') is not None:
             self.emotion_type = m.get('emotionType')
         if m.get('extInfo') is not None:
             self.ext_info = m.get('extInfo')
+        if m.get('finEventCount') is not None:
+            self.fin_event_count = m.get('finEventCount')
         if m.get('highlightKeywords') is not None:
             self.highlight_keywords = m.get('highlightKeywords')
+        if m.get('imageCount') is not None:
+            self.image_count = m.get('imageCount')
+        if m.get('influenceScore') is not None:
+            self.influence_score = m.get('influenceScore')
+        if m.get('mediaHosts') is not None:
+            self.media_hosts = m.get('mediaHosts')
+        if m.get('mediaInfluenceLevel') is not None:
+            self.media_influence_level = m.get('mediaInfluenceLevel')
+        if m.get('mediaName') is not None:
+            self.media_name = m.get('mediaName')
+        if m.get('mediaPropagationLevel') is not None:
+            self.media_propagation_level = m.get('mediaPropagationLevel')
         if m.get('mediaType') is not None:
             self.media_type = m.get('mediaType')
         if m.get('messageType') is not None:
             self.message_type = m.get('messageType')
         if m.get('parentDocId') is not None:
             self.parent_doc_id = m.get('parentDocId')
+        if m.get('propagationScore') is not None:
+            self.propagation_score = m.get('propagationScore')
         if m.get('publishTime') is not None:
             self.publish_time = m.get('publishTime')
         if m.get('relevanceScore') is not None:
             self.relevance_score = m.get('relevanceScore')
+        if m.get('repostList') is not None:
+            self.repost_list = m.get('repostList')
         if m.get('similarNumber') is not None:
             self.similar_number = m.get('similarNumber')
+        if m.get('topics') is not None:
+            self.topics = m.get('topics')
+        if m.get('videoCount') is not None:
+            self.video_count = m.get('videoCount')
         if m.get('weiboCommentId') is not None:
             self.weibo_comment_id = m.get('weiboCommentId')
         if m.get('weiboMid') is not None:
