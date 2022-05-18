@@ -720,6 +720,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_similar_security_events_query_task_with_options_async(request, runtime)
 
+    def create_susp_event_note_with_options(
+        self,
+        request: sas_20181203_models.CreateSuspEventNoteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateSuspEventNoteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.note):
+            query['Note'] = request.note
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSuspEventNote',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateSuspEventNoteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_susp_event_note_with_options_async(
+        self,
+        request: sas_20181203_models.CreateSuspEventNoteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateSuspEventNoteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.note):
+            query['Note'] = request.note
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSuspEventNote',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateSuspEventNoteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_susp_event_note(
+        self,
+        request: sas_20181203_models.CreateSuspEventNoteRequest,
+    ) -> sas_20181203_models.CreateSuspEventNoteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_susp_event_note_with_options(request, runtime)
+
+    async def create_susp_event_note_async(
+        self,
+        request: sas_20181203_models.CreateSuspEventNoteRequest,
+    ) -> sas_20181203_models.CreateSuspEventNoteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_susp_event_note_with_options_async(request, runtime)
+
     def create_vul_auto_repair_config_with_options(
         self,
         request: sas_20181203_models.CreateVulAutoRepairConfigRequest,
@@ -6335,6 +6409,96 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeNoticeConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_notice_config_with_options_async(request, runtime)
+
+    def describe_once_task_with_options(
+        self,
+        request: sas_20181203_models.DescribeOnceTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeOnceTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time_query):
+            query['EndTimeQuery'] = request.end_time_query
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.root_task_id):
+            query['RootTaskId'] = request.root_task_id
+        if not UtilClient.is_unset(request.start_time_query):
+            query['StartTimeQuery'] = request.start_time_query
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOnceTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeOnceTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_once_task_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeOnceTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeOnceTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time_query):
+            query['EndTimeQuery'] = request.end_time_query
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.root_task_id):
+            query['RootTaskId'] = request.root_task_id
+        if not UtilClient.is_unset(request.start_time_query):
+            query['StartTimeQuery'] = request.start_time_query
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOnceTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeOnceTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_once_task(
+        self,
+        request: sas_20181203_models.DescribeOnceTaskRequest,
+    ) -> sas_20181203_models.DescribeOnceTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_once_task_with_options(request, runtime)
+
+    async def describe_once_task_async(
+        self,
+        request: sas_20181203_models.DescribeOnceTaskRequest,
+    ) -> sas_20181203_models.DescribeOnceTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_once_task_with_options_async(request, runtime)
 
     def describe_property_count_with_options(
         self,
