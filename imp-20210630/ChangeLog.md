@@ -1,3 +1,6 @@
+2022-05-18 Version: 2.9.4
+- Add UpdateShareScreenLayout API.
+
 2022-05-10 Version: 2.9.3
 - Fix some bugs.
 

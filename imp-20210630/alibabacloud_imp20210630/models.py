@@ -3957,6 +3957,316 @@ class DeleteSensitiveWordResponse(TeaModel):
         return self
 
 
+class DescribeMeterImpPlayBackTimeByLiveIdRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        end_ts: int = None,
+        live_id: str = None,
+        start_ts: int = None,
+    ):
+        self.app_id = app_id
+        self.end_ts = end_ts
+        self.live_id = live_id
+        self.start_ts = start_ts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.end_ts is not None:
+            result['EndTs'] = self.end_ts
+        if self.live_id is not None:
+            result['LiveId'] = self.live_id
+        if self.start_ts is not None:
+            result['StartTs'] = self.start_ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('EndTs') is not None:
+            self.end_ts = m.get('EndTs')
+        if m.get('LiveId') is not None:
+            self.live_id = m.get('LiveId')
+        if m.get('StartTs') is not None:
+            self.start_ts = m.get('StartTs')
+        return self
+
+
+class DescribeMeterImpPlayBackTimeByLiveIdResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        watch_time: int = None,
+    ):
+        self.watch_time = watch_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.watch_time is not None:
+            result['WatchTime'] = self.watch_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WatchTime') is not None:
+            self.watch_time = m.get('WatchTime')
+        return self
+
+
+class DescribeMeterImpPlayBackTimeByLiveIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeMeterImpPlayBackTimeByLiveIdResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeMeterImpPlayBackTimeByLiveIdResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeMeterImpPlayBackTimeByLiveIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMeterImpPlayBackTimeByLiveIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMeterImpPlayBackTimeByLiveIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeMeterImpWatchLiveTimeByLiveIdRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        live_id: str = None,
+    ):
+        self.app_id = app_id
+        self.live_id = live_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.live_id is not None:
+            result['LiveId'] = self.live_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('LiveId') is not None:
+            self.live_id = m.get('LiveId')
+        return self
+
+
+class DescribeMeterImpWatchLiveTimeByLiveIdResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        watch_time_in_latency: int = None,
+        watch_time_in_low_latency: int = None,
+    ):
+        self.watch_time_in_latency = watch_time_in_latency
+        self.watch_time_in_low_latency = watch_time_in_low_latency
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.watch_time_in_latency is not None:
+            result['WatchTimeInLatency'] = self.watch_time_in_latency
+        if self.watch_time_in_low_latency is not None:
+            result['WatchTimeInLowLatency'] = self.watch_time_in_low_latency
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WatchTimeInLatency') is not None:
+            self.watch_time_in_latency = m.get('WatchTimeInLatency')
+        if m.get('WatchTimeInLowLatency') is not None:
+            self.watch_time_in_low_latency = m.get('WatchTimeInLowLatency')
+        return self
+
+
+class DescribeMeterImpWatchLiveTimeByLiveIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeMeterImpWatchLiveTimeByLiveIdResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeMeterImpWatchLiveTimeByLiveIdResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeMeterImpWatchLiveTimeByLiveIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMeterImpWatchLiveTimeByLiveIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMeterImpWatchLiveTimeByLiveIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetAppRequest(TeaModel):
     def __init__(
         self,
