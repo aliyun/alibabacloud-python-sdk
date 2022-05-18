@@ -10,6 +10,7 @@ class AssociatePrincipalWithPortfolioRequest(TeaModel):
         portfolio_id: str = None,
         principal_id: str = None,
         principal_type: str = None,
+        region_id: str = None,
     ):
         # 产品组合ID
         self.portfolio_id = portfolio_id
@@ -17,6 +18,7 @@ class AssociatePrincipalWithPortfolioRequest(TeaModel):
         self.principal_id = principal_id
         # RAM实体类型
         self.principal_type = principal_type
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -33,6 +35,8 @@ class AssociatePrincipalWithPortfolioRequest(TeaModel):
             result['PrincipalId'] = self.principal_id
         if self.principal_type is not None:
             result['PrincipalType'] = self.principal_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -43,6 +47,8 @@ class AssociatePrincipalWithPortfolioRequest(TeaModel):
             self.principal_id = m.get('PrincipalId')
         if m.get('PrincipalType') is not None:
             self.principal_type = m.get('PrincipalType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -123,11 +129,13 @@ class AssociateProductWithPortfolioRequest(TeaModel):
         self,
         portfolio_id: str = None,
         product_id: str = None,
+        region_id: str = None,
     ):
         # 产品组合ID
         self.portfolio_id = portfolio_id
         # 产品ID
         self.product_id = product_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -142,6 +150,8 @@ class AssociateProductWithPortfolioRequest(TeaModel):
             result['PortfolioId'] = self.portfolio_id
         if self.product_id is not None:
             result['ProductId'] = self.product_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -150,6 +160,8 @@ class AssociateProductWithPortfolioRequest(TeaModel):
             self.portfolio_id = m.get('PortfolioId')
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -233,6 +245,7 @@ class CreateConstraintRequest(TeaModel):
         description: str = None,
         portfolio_id: str = None,
         product_id: str = None,
+        region_id: str = None,
     ):
         # 约束配置
         self.config = config
@@ -244,6 +257,7 @@ class CreateConstraintRequest(TeaModel):
         self.portfolio_id = portfolio_id
         # 约束对应的产品ID
         self.product_id = product_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -264,6 +278,8 @@ class CreateConstraintRequest(TeaModel):
             result['PortfolioId'] = self.portfolio_id
         if self.product_id is not None:
             result['ProductId'] = self.product_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -278,6 +294,8 @@ class CreateConstraintRequest(TeaModel):
             self.portfolio_id = m.get('PortfolioId')
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -366,6 +384,7 @@ class CreatePortfolioRequest(TeaModel):
         description: str = None,
         portfolio_name: str = None,
         provider_name: str = None,
+        region_id: str = None,
     ):
         # 产品组合描述
         self.description = description
@@ -373,6 +392,7 @@ class CreatePortfolioRequest(TeaModel):
         self.portfolio_name = portfolio_name
         # 提供者名称
         self.provider_name = provider_name
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -389,6 +409,8 @@ class CreatePortfolioRequest(TeaModel):
             result['PortfolioName'] = self.portfolio_name
         if self.provider_name is not None:
             result['ProviderName'] = self.provider_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -399,6 +421,8 @@ class CreatePortfolioRequest(TeaModel):
             self.portfolio_name = m.get('PortfolioName')
         if m.get('ProviderName') is not None:
             self.provider_name = m.get('ProviderName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -552,6 +576,7 @@ class CreateProductRequest(TeaModel):
         product_type: str = None,
         product_version_parameters: CreateProductRequestProductVersionParameters = None,
         provider_name: str = None,
+        region_id: str = None,
     ):
         # 产品描述
         self.description = description
@@ -563,6 +588,7 @@ class CreateProductRequest(TeaModel):
         self.product_version_parameters = product_version_parameters
         # 提供者名称
         self.provider_name = provider_name
+        self.region_id = region_id
 
     def validate(self):
         if self.product_version_parameters:
@@ -584,6 +610,8 @@ class CreateProductRequest(TeaModel):
             result['ProductVersionParameters'] = self.product_version_parameters.to_map()
         if self.provider_name is not None:
             result['ProviderName'] = self.provider_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -599,6 +627,8 @@ class CreateProductRequest(TeaModel):
             self.product_version_parameters = temp_model.from_map(m['ProductVersionParameters'])
         if m.get('ProviderName') is not None:
             self.provider_name = m.get('ProviderName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -610,6 +640,7 @@ class CreateProductShrinkRequest(TeaModel):
         product_type: str = None,
         product_version_parameters_shrink: str = None,
         provider_name: str = None,
+        region_id: str = None,
     ):
         # 产品描述
         self.description = description
@@ -621,6 +652,7 @@ class CreateProductShrinkRequest(TeaModel):
         self.product_version_parameters_shrink = product_version_parameters_shrink
         # 提供者名称
         self.provider_name = provider_name
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -641,6 +673,8 @@ class CreateProductShrinkRequest(TeaModel):
             result['ProductVersionParameters'] = self.product_version_parameters_shrink
         if self.provider_name is not None:
             result['ProviderName'] = self.provider_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -655,6 +689,8 @@ class CreateProductShrinkRequest(TeaModel):
             self.product_version_parameters_shrink = m.get('ProductVersionParameters')
         if m.get('ProviderName') is not None:
             self.provider_name = m.get('ProviderName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -751,6 +787,7 @@ class CreateProductVersionRequest(TeaModel):
         guidance: str = None,
         product_id: str = None,
         product_version_name: str = None,
+        region_id: str = None,
         template_type: str = None,
         template_url: str = None,
     ):
@@ -764,6 +801,7 @@ class CreateProductVersionRequest(TeaModel):
         self.product_id = product_id
         # 产品版本名称
         self.product_version_name = product_version_name
+        self.region_id = region_id
         # 模板类型
         self.template_type = template_type
         # 模板的OSS地址
@@ -788,6 +826,8 @@ class CreateProductVersionRequest(TeaModel):
             result['ProductId'] = self.product_id
         if self.product_version_name is not None:
             result['ProductVersionName'] = self.product_version_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
         if self.template_url is not None:
@@ -806,6 +846,8 @@ class CreateProductVersionRequest(TeaModel):
             self.product_id = m.get('ProductId')
         if m.get('ProductVersionName') is not None:
             self.product_version_name = m.get('ProductVersionName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
         if m.get('TemplateUrl') is not None:
@@ -895,9 +937,11 @@ class CreateProductVersionResponse(TeaModel):
 class CreateTemplateRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         template_body: str = None,
         template_type: str = None,
     ):
+        self.region_id = region_id
         # 模板内容
         self.template_body = template_body
         # 模板类型
@@ -912,6 +956,8 @@ class CreateTemplateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.template_body is not None:
             result['TemplateBody'] = self.template_body
         if self.template_type is not None:
@@ -920,6 +966,8 @@ class CreateTemplateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('TemplateBody') is not None:
             self.template_body = m.get('TemplateBody')
         if m.get('TemplateType') is not None:
@@ -1010,9 +1058,11 @@ class DeleteConstraintRequest(TeaModel):
     def __init__(
         self,
         constraint_id: str = None,
+        region_id: str = None,
     ):
         # 约束ID
         self.constraint_id = constraint_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1025,12 +1075,16 @@ class DeleteConstraintRequest(TeaModel):
         result = dict()
         if self.constraint_id is not None:
             result['ConstraintId'] = self.constraint_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ConstraintId') is not None:
             self.constraint_id = m.get('ConstraintId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1110,9 +1164,11 @@ class DeletePortfolioRequest(TeaModel):
     def __init__(
         self,
         portfolio_id: str = None,
+        region_id: str = None,
     ):
         # 产品组合ID
         self.portfolio_id = portfolio_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1125,12 +1181,16 @@ class DeletePortfolioRequest(TeaModel):
         result = dict()
         if self.portfolio_id is not None:
             result['PortfolioId'] = self.portfolio_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('PortfolioId') is not None:
             self.portfolio_id = m.get('PortfolioId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1210,9 +1270,11 @@ class DeleteProductRequest(TeaModel):
     def __init__(
         self,
         product_id: str = None,
+        region_id: str = None,
     ):
         # 产品ID
         self.product_id = product_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1225,12 +1287,16 @@ class DeleteProductRequest(TeaModel):
         result = dict()
         if self.product_id is not None:
             result['ProductId'] = self.product_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1310,9 +1376,11 @@ class DeleteProductVersionRequest(TeaModel):
     def __init__(
         self,
         product_version_id: str = None,
+        region_id: str = None,
     ):
         # 产品版本ID
         self.product_version_id = product_version_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1325,12 +1393,16 @@ class DeleteProductVersionRequest(TeaModel):
         result = dict()
         if self.product_version_id is not None:
             result['ProductVersionId'] = self.product_version_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ProductVersionId') is not None:
             self.product_version_id = m.get('ProductVersionId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1412,6 +1484,7 @@ class DisassociatePrincipalFromPortfolioRequest(TeaModel):
         portfolio_id: str = None,
         principal_id: str = None,
         principal_type: str = None,
+        region_id: str = None,
     ):
         # 产品组合ID
         self.portfolio_id = portfolio_id
@@ -1419,6 +1492,7 @@ class DisassociatePrincipalFromPortfolioRequest(TeaModel):
         self.principal_id = principal_id
         # RAM实体类型
         self.principal_type = principal_type
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1435,6 +1509,8 @@ class DisassociatePrincipalFromPortfolioRequest(TeaModel):
             result['PrincipalId'] = self.principal_id
         if self.principal_type is not None:
             result['PrincipalType'] = self.principal_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1445,6 +1521,8 @@ class DisassociatePrincipalFromPortfolioRequest(TeaModel):
             self.principal_id = m.get('PrincipalId')
         if m.get('PrincipalType') is not None:
             self.principal_type = m.get('PrincipalType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1525,11 +1603,13 @@ class DisassociateProductFromPortfolioRequest(TeaModel):
         self,
         portfolio_id: str = None,
         product_id: str = None,
+        region_id: str = None,
     ):
         # 产品组合ID
         self.portfolio_id = portfolio_id
         # 产品ID
         self.product_id = product_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1544,6 +1624,8 @@ class DisassociateProductFromPortfolioRequest(TeaModel):
             result['PortfolioId'] = self.portfolio_id
         if self.product_id is not None:
             result['ProductId'] = self.product_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1552,6 +1634,8 @@ class DisassociateProductFromPortfolioRequest(TeaModel):
             self.portfolio_id = m.get('PortfolioId')
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1974,6 +2058,181 @@ class GetPortfolioResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetPortfolioResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetProductRequest(TeaModel):
+    def __init__(
+        self,
+        product_id: str = None,
+        region_id: str = None,
+    ):
+        self.product_id = product_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetProductResponseBodyProductDetail(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        product_arn: str = None,
+        product_id: str = None,
+        product_name: str = None,
+        product_type: str = None,
+        provider_name: str = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.product_arn = product_arn
+        self.product_id = product_id
+        self.product_name = product_name
+        self.product_type = product_type
+        self.provider_name = provider_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.product_arn is not None:
+            result['ProductArn'] = self.product_arn
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.provider_name is not None:
+            result['ProviderName'] = self.provider_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ProductArn') is not None:
+            self.product_arn = m.get('ProductArn')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('ProviderName') is not None:
+            self.provider_name = m.get('ProviderName')
+        return self
+
+
+class GetProductResponseBody(TeaModel):
+    def __init__(
+        self,
+        product_detail: GetProductResponseBodyProductDetail = None,
+        request_id: str = None,
+    ):
+        self.product_detail = product_detail
+        self.request_id = request_id
+
+    def validate(self):
+        if self.product_detail:
+            self.product_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_detail is not None:
+            result['ProductDetail'] = self.product_detail.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductDetail') is not None:
+            temp_model = GetProductResponseBodyProductDetail()
+            self.product_detail = temp_model.from_map(m['ProductDetail'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetProductResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetProductResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetProductResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3155,6 +3414,7 @@ class LaunchProductRequest(TeaModel):
         product_id: str = None,
         product_version_id: str = None,
         provisioned_product_name: str = None,
+        region_id: str = None,
         stack_region_id: str = None,
     ):
         # 模板参数
@@ -3167,6 +3427,7 @@ class LaunchProductRequest(TeaModel):
         self.product_version_id = product_version_id
         # 实例名称
         self.provisioned_product_name = provisioned_product_name
+        self.region_id = region_id
         # ROS资源栈所属的地域ID
         self.stack_region_id = stack_region_id
 
@@ -3189,6 +3450,8 @@ class LaunchProductRequest(TeaModel):
             result['ProductVersionId'] = self.product_version_id
         if self.provisioned_product_name is not None:
             result['ProvisionedProductName'] = self.provisioned_product_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.stack_region_id is not None:
             result['StackRegionId'] = self.stack_region_id
         return result
@@ -3205,6 +3468,8 @@ class LaunchProductRequest(TeaModel):
             self.product_version_id = m.get('ProductVersionId')
         if m.get('ProvisionedProductName') is not None:
             self.provisioned_product_name = m.get('ProvisionedProductName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('StackRegionId') is not None:
             self.stack_region_id = m.get('StackRegionId')
         return self
@@ -4291,6 +4556,258 @@ class ListProductVersionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListProductVersionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListProductsRequestFilter(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListProductsRequest(TeaModel):
+    def __init__(
+        self,
+        filter: List[ListProductsRequestFilter] = None,
+        page_number: str = None,
+        page_size: str = None,
+        region_id: str = None,
+        sort_by: str = None,
+        sort_order: str = None,
+    ):
+        self.filter = filter
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.sort_by = sort_by
+        self.sort_order = sort_order
+
+    def validate(self):
+        if self.filter:
+            for k in self.filter:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Filter'] = []
+        if self.filter is not None:
+            for k in self.filter:
+                result['Filter'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.sort_order is not None:
+            result['SortOrder'] = self.sort_order
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.filter = []
+        if m.get('Filter') is not None:
+            for k in m.get('Filter'):
+                temp_model = ListProductsRequestFilter()
+                self.filter.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('SortOrder') is not None:
+            self.sort_order = m.get('SortOrder')
+        return self
+
+
+class ListProductsResponseBodyProductSummaries(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        has_default_launch_option: bool = None,
+        product_id: str = None,
+        product_name: str = None,
+        product_type: str = None,
+        provider_name: str = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.has_default_launch_option = has_default_launch_option
+        self.product_id = product_id
+        self.product_name = product_name
+        self.product_type = product_type
+        self.provider_name = provider_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.has_default_launch_option is not None:
+            result['HasDefaultLaunchOption'] = self.has_default_launch_option
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.provider_name is not None:
+            result['ProviderName'] = self.provider_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('HasDefaultLaunchOption') is not None:
+            self.has_default_launch_option = m.get('HasDefaultLaunchOption')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('ProviderName') is not None:
+            self.provider_name = m.get('ProviderName')
+        return self
+
+
+class ListProductsResponseBody(TeaModel):
+    def __init__(
+        self,
+        product_summaries: List[ListProductsResponseBodyProductSummaries] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.product_summaries = product_summaries
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.product_summaries:
+            for k in self.product_summaries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ProductSummaries'] = []
+        if self.product_summaries is not None:
+            for k in self.product_summaries:
+                result['ProductSummaries'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.product_summaries = []
+        if m.get('ProductSummaries') is not None:
+            for k in m.get('ProductSummaries'):
+                temp_model = ListProductsResponseBodyProductSummaries()
+                self.product_summaries.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListProductsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListProductsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListProductsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5640,13 +6157,226 @@ class ListTasksResponse(TeaModel):
         return self
 
 
+class SearchProductsAsAdminRequest(TeaModel):
+    def __init__(
+        self,
+        filters: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        portfolio_id: str = None,
+    ):
+        self.filters = filters
+        self.page_number = page_number
+        self.page_size = page_size
+        self.portfolio_id = portfolio_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filters is not None:
+            result['Filters'] = self.filters
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.portfolio_id is not None:
+            result['PortfolioId'] = self.portfolio_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Filters') is not None:
+            self.filters = m.get('Filters')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PortfolioId') is not None:
+            self.portfolio_id = m.get('PortfolioId')
+        return self
+
+
+class SearchProductsAsAdminResponseBodyProductDetails(TeaModel):
+    def __init__(
+        self,
+        arn: str = None,
+        create_time: str = None,
+        description: str = None,
+        id: str = None,
+        name: str = None,
+        provider: str = None,
+        template_type: str = None,
+    ):
+        self.arn = arn
+        self.create_time = create_time
+        self.description = description
+        self.id = id
+        self.name = name
+        self.provider = provider
+        self.template_type = template_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arn is not None:
+            result['Arn'] = self.arn
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.provider is not None:
+            result['Provider'] = self.provider
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arn') is not None:
+            self.arn = m.get('Arn')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
+        return self
+
+
+class SearchProductsAsAdminResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        product_details: List[SearchProductsAsAdminResponseBodyProductDetails] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.product_details = product_details
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.product_details:
+            for k in self.product_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['ProductDetails'] = []
+        if self.product_details is not None:
+            for k in self.product_details:
+                result['ProductDetails'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.product_details = []
+        if m.get('ProductDetails') is not None:
+            for k in m.get('ProductDetails'):
+                temp_model = SearchProductsAsAdminResponseBodyProductDetails()
+                self.product_details.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class SearchProductsAsAdminResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchProductsAsAdminResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchProductsAsAdminResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class TerminateProvisionedProductRequest(TeaModel):
     def __init__(
         self,
         provisioned_product_id: str = None,
+        region_id: str = None,
     ):
         # 实例ID
         self.provisioned_product_id = provisioned_product_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -5659,12 +6389,16 @@ class TerminateProvisionedProductRequest(TeaModel):
         result = dict()
         if self.provisioned_product_id is not None:
             result['ProvisionedProductId'] = self.provisioned_product_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ProvisionedProductId') is not None:
             self.provisioned_product_id = m.get('ProvisionedProductId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -5746,6 +6480,7 @@ class UpdateConstraintRequest(TeaModel):
         config: str = None,
         constraint_id: str = None,
         description: str = None,
+        region_id: str = None,
     ):
         # 约束配置
         self.config = config
@@ -5753,6 +6488,7 @@ class UpdateConstraintRequest(TeaModel):
         self.constraint_id = constraint_id
         # 约束描述
         self.description = description
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -5769,6 +6505,8 @@ class UpdateConstraintRequest(TeaModel):
             result['ConstraintId'] = self.constraint_id
         if self.description is not None:
             result['Description'] = self.description
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5779,6 +6517,8 @@ class UpdateConstraintRequest(TeaModel):
             self.constraint_id = m.get('ConstraintId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -5868,6 +6608,7 @@ class UpdatePortfolioRequest(TeaModel):
         portfolio_id: str = None,
         portfolio_name: str = None,
         provider_name: str = None,
+        region_id: str = None,
     ):
         # 产品组合描述
         self.description = description
@@ -5877,6 +6618,7 @@ class UpdatePortfolioRequest(TeaModel):
         self.portfolio_name = portfolio_name
         # 提供者名称
         self.provider_name = provider_name
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -5895,6 +6637,8 @@ class UpdatePortfolioRequest(TeaModel):
             result['PortfolioName'] = self.portfolio_name
         if self.provider_name is not None:
             result['ProviderName'] = self.provider_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5907,6 +6651,8 @@ class UpdatePortfolioRequest(TeaModel):
             self.portfolio_name = m.get('PortfolioName')
         if m.get('ProviderName') is not None:
             self.provider_name = m.get('ProviderName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -5996,6 +6742,7 @@ class UpdateProductRequest(TeaModel):
         product_id: str = None,
         product_name: str = None,
         provider_name: str = None,
+        region_id: str = None,
     ):
         # 产品描述
         self.description = description
@@ -6005,6 +6752,7 @@ class UpdateProductRequest(TeaModel):
         self.product_name = product_name
         # 提供者名称
         self.provider_name = provider_name
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -6023,6 +6771,8 @@ class UpdateProductRequest(TeaModel):
             result['ProductName'] = self.product_name
         if self.provider_name is not None:
             result['ProviderName'] = self.provider_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6035,6 +6785,8 @@ class UpdateProductRequest(TeaModel):
             self.product_name = m.get('ProductName')
         if m.get('ProviderName') is not None:
             self.provider_name = m.get('ProviderName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -6125,6 +6877,7 @@ class UpdateProductVersionRequest(TeaModel):
         guidance: str = None,
         product_version_id: str = None,
         product_version_name: str = None,
+        region_id: str = None,
     ):
         # 是否启用
         self.active = active
@@ -6136,6 +6889,7 @@ class UpdateProductVersionRequest(TeaModel):
         self.product_version_id = product_version_id
         # 产品版本名称
         self.product_version_name = product_version_name
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -6156,6 +6910,8 @@ class UpdateProductVersionRequest(TeaModel):
             result['ProductVersionId'] = self.product_version_id
         if self.product_version_name is not None:
             result['ProductVersionName'] = self.product_version_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6170,6 +6926,8 @@ class UpdateProductVersionRequest(TeaModel):
             self.product_version_id = m.get('ProductVersionId')
         if m.get('ProductVersionName') is not None:
             self.product_version_name = m.get('ProductVersionName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -6260,6 +7018,7 @@ class UpdateProvisionedProductRequest(TeaModel):
         product_id: str = None,
         product_version_id: str = None,
         provisioned_product_id: str = None,
+        region_id: str = None,
     ):
         # 用户输入
         self.inputs = inputs
@@ -6271,6 +7030,7 @@ class UpdateProvisionedProductRequest(TeaModel):
         self.product_version_id = product_version_id
         # 实例ID
         self.provisioned_product_id = provisioned_product_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -6291,6 +7051,8 @@ class UpdateProvisionedProductRequest(TeaModel):
             result['ProductVersionId'] = self.product_version_id
         if self.provisioned_product_id is not None:
             result['ProvisionedProductId'] = self.provisioned_product_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6305,6 +7067,8 @@ class UpdateProvisionedProductRequest(TeaModel):
             self.product_version_id = m.get('ProductVersionId')
         if m.get('ProvisionedProductId') is not None:
             self.provisioned_product_id = m.get('ProvisionedProductId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
