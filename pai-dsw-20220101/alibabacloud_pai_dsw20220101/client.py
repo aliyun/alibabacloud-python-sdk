@@ -79,6 +79,12 @@ class Client(OpenApiClient):
             body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
+        if not UtilClient.is_unset(request.requested_resource):
+            body['RequestedResource'] = request.requested_resource
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.user_vpc):
             body['UserVpc'] = request.user_vpc
         if not UtilClient.is_unset(request.workspace_id):
@@ -125,6 +131,12 @@ class Client(OpenApiClient):
             body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
+        if not UtilClient.is_unset(request.requested_resource):
+            body['RequestedResource'] = request.requested_resource
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.user_vpc):
             body['UserVpc'] = request.user_vpc
         if not UtilClient.is_unset(request.workspace_id):

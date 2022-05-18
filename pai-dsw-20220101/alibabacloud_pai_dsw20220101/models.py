@@ -96,6 +96,62 @@ class CreateInstanceRequestDatasets(TeaModel):
         return self
 
 
+class CreateInstanceRequestRequestedResource(TeaModel):
+    def __init__(
+        self,
+        cpu: str = None,
+        gpu: str = None,
+        gputype: str = None,
+        memory: str = None,
+        shared_memory: str = None,
+    ):
+        # cpu核数
+        self.cpu = cpu
+        # gpu数量
+        self.gpu = gpu
+        # gpu显卡类型
+        self.gputype = gputype
+        # memory大小
+        self.memory = memory
+        # shared memory大小
+        self.shared_memory = shared_memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.gpu is not None:
+            result['GPU'] = self.gpu
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.shared_memory is not None:
+            result['SharedMemory'] = self.shared_memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('GPU') is not None:
+            self.gpu = m.get('GPU')
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('SharedMemory') is not None:
+            self.shared_memory = m.get('SharedMemory')
+        return self
+
+
 class CreateInstanceRequestUserVpc(TeaModel):
     def __init__(
         self,
@@ -148,6 +204,9 @@ class CreateInstanceRequest(TeaModel):
         image_id: str = None,
         image_url: str = None,
         instance_name: str = None,
+        priority: int = None,
+        requested_resource: CreateInstanceRequestRequestedResource = None,
+        resource_id: str = None,
         user_vpc: CreateInstanceRequestUserVpc = None,
         workspace_id: str = None,
     ):
@@ -165,6 +224,12 @@ class CreateInstanceRequest(TeaModel):
         self.image_url = image_url
         # 实例名称
         self.instance_name = instance_name
+        # 优先级，在分配资源给实例时，优先级越高的实例越优先
+        self.priority = priority
+        # 资源配置，弹内或者轻量化时使用
+        self.requested_resource = requested_resource
+        # 资源Id,预付费时填写
+        self.resource_id = resource_id
         # user vpc配置
         self.user_vpc = user_vpc
         # 工作空间Id
@@ -175,6 +240,8 @@ class CreateInstanceRequest(TeaModel):
             for k in self.datasets:
                 if k:
                     k.validate()
+        if self.requested_resource:
+            self.requested_resource.validate()
         if self.user_vpc:
             self.user_vpc.validate()
 
@@ -200,6 +267,12 @@ class CreateInstanceRequest(TeaModel):
             result['ImageUrl'] = self.image_url
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.requested_resource is not None:
+            result['RequestedResource'] = self.requested_resource.to_map()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         if self.user_vpc is not None:
             result['UserVpc'] = self.user_vpc.to_map()
         if self.workspace_id is not None:
@@ -225,6 +298,13 @@ class CreateInstanceRequest(TeaModel):
             self.image_url = m.get('ImageUrl')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RequestedResource') is not None:
+            temp_model = CreateInstanceRequestRequestedResource()
+            self.requested_resource = temp_model.from_map(m['RequestedResource'])
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         if m.get('UserVpc') is not None:
             temp_model = CreateInstanceRequestUserVpc()
             self.user_vpc = temp_model.from_map(m['UserVpc'])
@@ -300,13 +380,16 @@ class CreateInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -319,6 +402,8 @@ class CreateInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -327,6 +412,8 @@ class CreateInstanceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -435,13 +522,16 @@ class CreateInstanceShutdownTimerResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateInstanceShutdownTimerResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -454,6 +544,8 @@ class CreateInstanceShutdownTimerResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -462,6 +554,8 @@ class CreateInstanceShutdownTimerResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateInstanceShutdownTimerResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -584,13 +678,16 @@ class CreateInstanceSnapshotResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateInstanceSnapshotResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -603,6 +700,8 @@ class CreateInstanceSnapshotResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -611,6 +710,8 @@ class CreateInstanceSnapshotResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateInstanceSnapshotResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -684,13 +785,16 @@ class DeleteInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -703,6 +807,8 @@ class DeleteInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -711,6 +817,8 @@ class DeleteInstanceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -784,13 +892,16 @@ class DeleteInstanceShutdownTimerResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteInstanceShutdownTimerResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -803,6 +914,8 @@ class DeleteInstanceShutdownTimerResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -811,6 +924,8 @@ class DeleteInstanceShutdownTimerResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteInstanceShutdownTimerResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -891,13 +1006,16 @@ class DeleteInstanceSnapshotResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteInstanceSnapshotResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -910,6 +1028,8 @@ class DeleteInstanceSnapshotResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -918,6 +1038,8 @@ class DeleteInstanceSnapshotResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteInstanceSnapshotResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1078,6 +1200,62 @@ class GetInstanceResponseBodyLatestSnapshot(TeaModel):
         return self
 
 
+class GetInstanceResponseBodyRequestedResource(TeaModel):
+    def __init__(
+        self,
+        cpu: str = None,
+        gpu: str = None,
+        gputype: str = None,
+        memory: str = None,
+        shared_memory: str = None,
+    ):
+        # cpu核数
+        self.cpu = cpu
+        # gpu数量
+        self.gpu = gpu
+        # gpu显卡类型
+        self.gputype = gputype
+        # memory大小
+        self.memory = memory
+        # shared memory大小
+        self.shared_memory = shared_memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.gpu is not None:
+            result['GPU'] = self.gpu
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.shared_memory is not None:
+            result['SharedMemory'] = self.shared_memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('GPU') is not None:
+            self.gpu = m.get('GPU')
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('SharedMemory') is not None:
+            self.shared_memory = m.get('SharedMemory')
+        return self
+
+
 class GetInstanceResponseBodyUserVpc(TeaModel):
     def __init__(
         self,
@@ -1144,9 +1322,12 @@ class GetInstanceResponseBody(TeaModel):
         latest_snapshot: GetInstanceResponseBodyLatestSnapshot = None,
         message: str = None,
         payment_type: str = None,
+        priority: int = None,
         reason_code: str = None,
         reason_message: str = None,
         request_id: str = None,
+        requested_resource: GetInstanceResponseBodyRequestedResource = None,
+        resource_id: str = None,
         status: str = None,
         success: bool = None,
         terminal_url: str = None,
@@ -1199,12 +1380,18 @@ class GetInstanceResponseBody(TeaModel):
         self.message = message
         # 支付类型
         self.payment_type = payment_type
+        # 优先级，在分配资源给实例时，优先级越高的实例越优先
+        self.priority = priority
         # 实例错误代码
         self.reason_code = reason_code
         # 实例错误原因
         self.reason_message = reason_message
         # 请求Id
         self.request_id = request_id
+        # 资源配置，弹内或者轻量化时使用
+        self.requested_resource = requested_resource
+        # 资源Id,预付费时填写
+        self.resource_id = resource_id
         # 实例状态
         self.status = status
         # 成功标志
@@ -1233,6 +1420,8 @@ class GetInstanceResponseBody(TeaModel):
             self.instance_shutdown_timer.validate()
         if self.latest_snapshot:
             self.latest_snapshot.validate()
+        if self.requested_resource:
+            self.requested_resource.validate()
         if self.user_vpc:
             self.user_vpc.validate()
 
@@ -1286,12 +1475,18 @@ class GetInstanceResponseBody(TeaModel):
             result['Message'] = self.message
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+        if self.priority is not None:
+            result['Priority'] = self.priority
         if self.reason_code is not None:
             result['ReasonCode'] = self.reason_code
         if self.reason_message is not None:
             result['ReasonMessage'] = self.reason_message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.requested_resource is not None:
+            result['RequestedResource'] = self.requested_resource.to_map()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         if self.status is not None:
             result['Status'] = self.status
         if self.success is not None:
@@ -1361,12 +1556,19 @@ class GetInstanceResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
         if m.get('ReasonCode') is not None:
             self.reason_code = m.get('ReasonCode')
         if m.get('ReasonMessage') is not None:
             self.reason_message = m.get('ReasonMessage')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('RequestedResource') is not None:
+            temp_model = GetInstanceResponseBodyRequestedResource()
+            self.requested_resource = temp_model.from_map(m['RequestedResource'])
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Success') is not None:
@@ -1393,13 +1595,16 @@ class GetInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1412,6 +1617,8 @@ class GetInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1420,6 +1627,8 @@ class GetInstanceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1521,13 +1730,16 @@ class GetInstanceShutdownTimerResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetInstanceShutdownTimerResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1540,6 +1752,8 @@ class GetInstanceShutdownTimerResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1548,6 +1762,8 @@ class GetInstanceShutdownTimerResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetInstanceShutdownTimerResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1684,13 +1900,16 @@ class GetInstanceSnapshotResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetInstanceSnapshotResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1703,6 +1922,8 @@ class GetInstanceSnapshotResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1711,6 +1932,8 @@ class GetInstanceSnapshotResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetInstanceSnapshotResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1784,13 +2007,16 @@ class GetUserConfigResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetUserConfigResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1803,6 +2029,8 @@ class GetUserConfigResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1811,6 +2039,8 @@ class GetUserConfigResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetUserConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1864,13 +2094,16 @@ class ListDemoCategoriesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListDemoCategoriesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1883,6 +2116,8 @@ class ListDemoCategoriesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1891,6 +2126,8 @@ class ListDemoCategoriesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDemoCategoriesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2060,13 +2297,16 @@ class ListDemosResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListDemosResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2079,6 +2319,8 @@ class ListDemosResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2087,6 +2329,8 @@ class ListDemosResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDemosResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2322,13 +2566,16 @@ class ListEcsSpecsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListEcsSpecsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2341,6 +2588,8 @@ class ListEcsSpecsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2349,6 +2598,8 @@ class ListEcsSpecsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListEcsSpecsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2573,13 +2824,16 @@ class ListInstanceSnapshotResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListInstanceSnapshotResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2592,6 +2846,8 @@ class ListInstanceSnapshotResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2600,6 +2856,8 @@ class ListInstanceSnapshotResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListInstanceSnapshotResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2701,13 +2959,16 @@ class ListInstanceStatisticsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListInstanceStatisticsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2720,6 +2981,8 @@ class ListInstanceStatisticsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2728,6 +2991,8 @@ class ListInstanceStatisticsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListInstanceStatisticsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2976,6 +3241,62 @@ class ListInstancesResponseBodyInstancesLatestSnapshot(TeaModel):
         return self
 
 
+class ListInstancesResponseBodyInstancesRequestedResource(TeaModel):
+    def __init__(
+        self,
+        cpu: str = None,
+        gpu: str = None,
+        gputype: str = None,
+        memory: str = None,
+        shared_memory: str = None,
+    ):
+        # cpu核数
+        self.cpu = cpu
+        # gpu数量
+        self.gpu = gpu
+        # gpu显卡类型
+        self.gputype = gputype
+        # memory大小
+        self.memory = memory
+        # shared memory大小
+        self.shared_memory = shared_memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.gpu is not None:
+            result['GPU'] = self.gpu
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.shared_memory is not None:
+            result['SharedMemory'] = self.shared_memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('GPU') is not None:
+            self.gpu = m.get('GPU')
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('SharedMemory') is not None:
+            self.shared_memory = m.get('SharedMemory')
+        return self
+
+
 class ListInstancesResponseBodyInstancesUserVpc(TeaModel):
     def __init__(
         self,
@@ -3039,8 +3360,11 @@ class ListInstancesResponseBodyInstances(TeaModel):
         jupyterlab_url: str = None,
         latest_snapshot: ListInstancesResponseBodyInstancesLatestSnapshot = None,
         payment_type: str = None,
+        priority: int = None,
         reason_code: str = None,
         reason_message: str = None,
+        requested_resource: ListInstancesResponseBodyInstancesRequestedResource = None,
+        resource_id: str = None,
         status: str = None,
         terminal_url: str = None,
         user_id: str = None,
@@ -3086,10 +3410,16 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.latest_snapshot = latest_snapshot
         # 支付类型
         self.payment_type = payment_type
+        # 优先级，在分配资源给实例时，优先级越高的实例越优先
+        self.priority = priority
         # 实例错误代码
         self.reason_code = reason_code
         # 实例错误原因
         self.reason_message = reason_message
+        # 资源配置，弹内或者轻量化时使用
+        self.requested_resource = requested_resource
+        # 资源Id,预付费时填写
+        self.resource_id = resource_id
         # 实例状态
         self.status = status
         # 终端url
@@ -3116,6 +3446,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.instance_shutdown_timer.validate()
         if self.latest_snapshot:
             self.latest_snapshot.validate()
+        if self.requested_resource:
+            self.requested_resource.validate()
         if self.user_vpc:
             self.user_vpc.validate()
 
@@ -3163,10 +3495,16 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['LatestSnapshot'] = self.latest_snapshot.to_map()
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+        if self.priority is not None:
+            result['Priority'] = self.priority
         if self.reason_code is not None:
             result['ReasonCode'] = self.reason_code
         if self.reason_message is not None:
             result['ReasonMessage'] = self.reason_message
+        if self.requested_resource is not None:
+            result['RequestedResource'] = self.requested_resource.to_map()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         if self.status is not None:
             result['Status'] = self.status
         if self.terminal_url is not None:
@@ -3228,10 +3566,17 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.latest_snapshot = temp_model.from_map(m['LatestSnapshot'])
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
         if m.get('ReasonCode') is not None:
             self.reason_code = m.get('ReasonCode')
         if m.get('ReasonMessage') is not None:
             self.reason_message = m.get('ReasonMessage')
+        if m.get('RequestedResource') is not None:
+            temp_model = ListInstancesResponseBodyInstancesRequestedResource()
+            self.requested_resource = temp_model.from_map(m['RequestedResource'])
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TerminalUrl') is not None:
@@ -3334,13 +3679,16 @@ class ListInstancesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListInstancesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3353,6 +3701,8 @@ class ListInstancesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3361,6 +3711,8 @@ class ListInstancesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListInstancesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3434,13 +3786,16 @@ class StartInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: StartInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3453,6 +3808,8 @@ class StartInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3461,6 +3818,8 @@ class StartInstanceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3562,13 +3921,16 @@ class StopInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: StopInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3581,6 +3943,8 @@ class StopInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3589,6 +3953,8 @@ class StopInstanceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3690,13 +4056,16 @@ class UpdateInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3709,6 +4078,8 @@ class UpdateInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3717,6 +4088,8 @@ class UpdateInstanceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
