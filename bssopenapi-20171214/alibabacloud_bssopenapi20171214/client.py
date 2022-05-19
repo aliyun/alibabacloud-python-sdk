@@ -6739,6 +6739,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.refund_instance_with_options_async(request, runtime)
 
+    def release_instance_with_options(
+        self,
+        request: bss_open_api_20171214_models.ReleaseInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.renew_status):
+            query['RenewStatus'] = request.renew_status
+        if not UtilClient.is_unset(request.subscription_type):
+            query['SubscriptionType'] = request.subscription_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseInstance',
+            version='2017-12-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.ReleaseInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_instance_with_options_async(
+        self,
+        request: bss_open_api_20171214_models.ReleaseInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.renew_status):
+            query['RenewStatus'] = request.renew_status
+        if not UtilClient.is_unset(request.subscription_type):
+            query['SubscriptionType'] = request.subscription_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseInstance',
+            version='2017-12-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.ReleaseInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_instance(
+        self,
+        request: bss_open_api_20171214_models.ReleaseInstanceRequest,
+    ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.release_instance_with_options(request, runtime)
+
+    async def release_instance_async(
+        self,
+        request: bss_open_api_20171214_models.ReleaseInstanceRequest,
+    ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.release_instance_with_options_async(request, runtime)
+
     def relieve_account_relation_with_options(
         self,
         request: bss_open_api_20171214_models.RelieveAccountRelationRequest,
@@ -7654,6 +7748,8 @@ class Client(OpenApiClient):
             query['BeginBillingCycle'] = request.begin_billing_cycle
         if not UtilClient.is_unset(request.bucket_owner_id):
             query['BucketOwnerId'] = request.bucket_owner_id
+        if not UtilClient.is_unset(request.bucket_path):
+            query['BucketPath'] = request.bucket_path
         if not UtilClient.is_unset(request.mult_account_rel_subscribe):
             query['MultAccountRelSubscribe'] = request.mult_account_rel_subscribe
         if not UtilClient.is_unset(request.subscribe_bucket):
@@ -7690,6 +7786,8 @@ class Client(OpenApiClient):
             query['BeginBillingCycle'] = request.begin_billing_cycle
         if not UtilClient.is_unset(request.bucket_owner_id):
             query['BucketOwnerId'] = request.bucket_owner_id
+        if not UtilClient.is_unset(request.bucket_path):
+            query['BucketPath'] = request.bucket_path
         if not UtilClient.is_unset(request.mult_account_rel_subscribe):
             query['MultAccountRelSubscribe'] = request.mult_account_rel_subscribe
         if not UtilClient.is_unset(request.subscribe_bucket):
