@@ -1,3 +1,6 @@
+2022-05-19 Version: 3.2.4
+- GetFeatureDetails supports ResourceCleaner.
+
 2022-05-07 Version: 3.2.3
 - Added diagnostic feature interface.
 
