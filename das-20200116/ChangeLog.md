@@ -1,3 +1,7 @@
+2022-05-20 Version: 2.0.18
+- Dbgateway support delete api.
+
+
 2022-04-28 Version: 2.0.17
 - EventCenter support event name filter.
 
