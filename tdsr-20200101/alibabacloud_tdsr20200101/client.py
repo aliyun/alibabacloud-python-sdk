@@ -2463,8 +2463,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.mode):
             query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.optimize_model_effect):
+            query['OptimizeModelEffect'] = request.optimize_model_effect
+        if not UtilClient.is_unset(request.optimize_wall_width):
+            query['OptimizeWallWidth'] = request.optimize_wall_width
+        if not UtilClient.is_unset(request.plan_style):
+            query['PlanStyle'] = request.plan_style
         if not UtilClient.is_unset(request.scene_id):
             query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.wall_height):
+            query['WallHeight'] = request.wall_height
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2493,8 +2501,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.mode):
             query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.optimize_model_effect):
+            query['OptimizeModelEffect'] = request.optimize_model_effect
+        if not UtilClient.is_unset(request.optimize_wall_width):
+            query['OptimizeWallWidth'] = request.optimize_wall_width
+        if not UtilClient.is_unset(request.plan_style):
+            query['PlanStyle'] = request.plan_style
         if not UtilClient.is_unset(request.scene_id):
             query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.wall_height):
+            query['WallHeight'] = request.wall_height
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
