@@ -645,6 +645,8 @@ class Client(OpenApiClient):
             body['Url'] = request.url
         if not UtilClient.is_unset(request.user_data):
             body['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.visible_message):
+            body['VisibleMessage'] = request.visible_message
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -693,6 +695,8 @@ class Client(OpenApiClient):
             body['Url'] = request.url
         if not UtilClient.is_unset(request.user_data):
             body['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.visible_message):
+            body['VisibleMessage'] = request.visible_message
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
