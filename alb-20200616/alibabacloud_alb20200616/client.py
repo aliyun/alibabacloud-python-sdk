@@ -888,6 +888,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.address_allocated_mode):
             query['AddressAllocatedMode'] = request.address_allocated_mode
+        if not UtilClient.is_unset(request.address_ip_version):
+            query['AddressIpVersion'] = request.address_ip_version
         if not UtilClient.is_unset(request.address_type):
             query['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.client_token):
@@ -938,6 +940,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.address_allocated_mode):
             query['AddressAllocatedMode'] = request.address_allocated_mode
+        if not UtilClient.is_unset(request.address_ip_version):
+            query['AddressIpVersion'] = request.address_ip_version
         if not UtilClient.is_unset(request.address_type):
             query['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.client_token):
