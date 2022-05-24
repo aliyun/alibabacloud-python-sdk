@@ -49,14 +49,44 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = bpstudio_20210931_models.CreateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.application_params):
+            request.application_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_params, 'ApplicationParams', 'json')
         if not UtilClient.is_unset(tmp_req.instances):
             request.instances_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instances, 'Instances', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.application_params_shrink):
+            body['ApplicationParams'] = request.application_params_shrink
+        if not UtilClient.is_unset(request.area_id):
+            body['AreaId'] = request.area_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instances_shrink):
+            body['Instances'] = request.instances_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.variables):
+            body['Variables'] = request.variables
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.CreateApplicationResponse(),
-            self.do_rpcrequest('CreateApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_application_with_options_async(
@@ -67,14 +97,44 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = bpstudio_20210931_models.CreateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.application_params):
+            request.application_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_params, 'ApplicationParams', 'json')
         if not UtilClient.is_unset(tmp_req.instances):
             request.instances_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instances, 'Instances', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.application_params_shrink):
+            body['ApplicationParams'] = request.application_params_shrink
+        if not UtilClient.is_unset(request.area_id):
+            body['AreaId'] = request.area_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instances_shrink):
+            body['Instances'] = request.instances_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.variables):
+            body['Variables'] = request.variables
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.CreateApplicationResponse(),
-            await self.do_rpcrequest_async('CreateApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_application(
@@ -97,12 +157,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.DeleteApplicationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.DeleteApplicationResponse(),
-            self.do_rpcrequest('DeleteApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_application_with_options_async(
@@ -111,12 +187,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.DeleteApplicationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.DeleteApplicationResponse(),
-            await self.do_rpcrequest_async('DeleteApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_application(
@@ -139,12 +231,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.DeployApplicationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        body = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeployApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.DeployApplicationResponse(),
-            self.do_rpcrequest('DeployApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def deploy_application_with_options_async(
@@ -153,12 +263,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.DeployApplicationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        body = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeployApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.DeployApplicationResponse(),
-            await self.do_rpcrequest_async('DeployApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def deploy_application(
@@ -181,12 +309,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetApplicationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.GetApplicationResponse(),
-            self.do_rpcrequest('GetApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_application_with_options_async(
@@ -195,12 +339,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetApplicationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.GetApplicationResponse(),
-            await self.do_rpcrequest_async('GetApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_application(
@@ -223,12 +383,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetTemplateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.region):
+            body['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTemplate',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.GetTemplateResponse(),
-            self.do_rpcrequest('GetTemplate', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_template_with_options_async(
@@ -237,12 +415,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetTemplateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.region):
+            body['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTemplate',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.GetTemplateResponse(),
-            await self.do_rpcrequest_async('GetTemplate', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_template(
@@ -265,12 +461,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetTokenResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetToken',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.GetTokenResponse(),
-            self.do_rpcrequest('GetToken', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_token_with_options_async(
@@ -279,12 +489,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetTokenResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetToken',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.GetTokenResponse(),
-            await self.do_rpcrequest_async('GetToken', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_token(
@@ -307,12 +531,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListApplicationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_type):
+            body['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.ListApplicationResponse(),
-            self.do_rpcrequest('ListApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_application_with_options_async(
@@ -321,12 +569,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListApplicationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_type):
+            body['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.ListApplicationResponse(),
-            await self.do_rpcrequest_async('ListApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_application(
@@ -349,12 +621,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListTemplateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_type):
+            body['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag_list):
+            body['TagList'] = request.tag_list
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTemplate',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.ListTemplateResponse(),
-            self.do_rpcrequest('ListTemplate', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_template_with_options_async(
@@ -363,12 +661,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListTemplateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_type):
+            body['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag_list):
+            body['TagList'] = request.tag_list
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTemplate',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.ListTemplateResponse(),
-            await self.do_rpcrequest_async('ListTemplate', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_template(
@@ -391,12 +715,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ReleaseApplicationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReleaseApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.ReleaseApplicationResponse(),
-            self.do_rpcrequest('ReleaseApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def release_application_with_options_async(
@@ -405,12 +745,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ReleaseApplicationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReleaseApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.ReleaseApplicationResponse(),
-            await self.do_rpcrequest_async('ReleaseApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def release_application(
@@ -433,12 +789,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ValidateApplicationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        body = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ValidateApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.ValidateApplicationResponse(),
-            self.do_rpcrequest('ValidateApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def validate_application_with_options_async(
@@ -447,12 +821,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ValidateApplicationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        body = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ValidateApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.ValidateApplicationResponse(),
-            await self.do_rpcrequest_async('ValidateApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def validate_application(
@@ -475,12 +867,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ValuateApplicationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ValuateApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.ValuateApplicationResponse(),
-            self.do_rpcrequest('ValuateApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def valuate_application_with_options_async(
@@ -489,12 +897,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ValuateApplicationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ValuateApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             bpstudio_20210931_models.ValuateApplicationResponse(),
-            await self.do_rpcrequest_async('ValuateApplication', '2021-09-31', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def valuate_application(
