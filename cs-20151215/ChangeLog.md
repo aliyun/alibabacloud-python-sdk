@@ -1,3 +1,6 @@
+2022-05-24 Version: 3.0.13
+- Update DescribeClusterResources.
+
 2022-04-11 Version: 3.0.12
 - Update CreateAutoscalingConfig.
 
