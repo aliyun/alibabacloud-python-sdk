@@ -1,3 +1,6 @@
+2022-05-24 Version: 1.0.12
+- Add Bandwidthpackage auto renewal Api.
+
 2022-04-19 Version: 1.0.11
 - Update Application Monitor Api.
 
