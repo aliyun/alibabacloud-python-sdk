@@ -502,8 +502,6 @@ class Client(OpenApiClient):
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         application_id = OpenApiUtilClient.get_encode_param(application_id)
         query = {}
-        if not UtilClient.is_unset(request.client_id):
-            query['client_id'] = request.client_id
         if not UtilClient.is_unset(request.scope):
             query['scope'] = request.scope
         req = open_api_models.OpenApiRequest(
@@ -538,8 +536,6 @@ class Client(OpenApiClient):
         instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         application_id = OpenApiUtilClient.get_encode_param(application_id)
         query = {}
-        if not UtilClient.is_unset(request.client_id):
-            query['client_id'] = request.client_id
         if not UtilClient.is_unset(request.scope):
             query['scope'] = request.scope
         req = open_api_models.OpenApiRequest(
