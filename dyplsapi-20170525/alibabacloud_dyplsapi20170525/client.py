@@ -21,6 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'central'
         self.check_config(config)
         self._endpoint = self.get_endpoint('dyplsapi', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1290,6 +1291,108 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.CreatePickUpWaybillResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_pick_up_waybill_with_options_async(request, runtime)
+
+    def create_pick_up_waybill_pre_query_with_options(
+        self,
+        tmp_req: dyplsapi_20170525_models.CreatePickUpWaybillPreQueryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.CreatePickUpWaybillPreQueryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.consignee_info):
+            request.consignee_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.consignee_info), 'ConsigneeInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.sender_info):
+            request.sender_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.sender_info), 'SenderInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.consignee_info_shrink):
+            query['ConsigneeInfo'] = request.consignee_info_shrink
+        if not UtilClient.is_unset(request.cp_code):
+            query['CpCode'] = request.cp_code
+        if not UtilClient.is_unset(request.order_channels):
+            query['OrderChannels'] = request.order_channels
+        if not UtilClient.is_unset(request.outer_order_code):
+            query['OuterOrderCode'] = request.outer_order_code
+        if not UtilClient.is_unset(request.pre_weight):
+            query['PreWeight'] = request.pre_weight
+        if not UtilClient.is_unset(request.sender_info_shrink):
+            query['SenderInfo'] = request.sender_info_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePickUpWaybillPreQuery',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_pick_up_waybill_pre_query_with_options_async(
+        self,
+        tmp_req: dyplsapi_20170525_models.CreatePickUpWaybillPreQueryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.CreatePickUpWaybillPreQueryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.consignee_info):
+            request.consignee_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.consignee_info), 'ConsigneeInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.sender_info):
+            request.sender_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.sender_info), 'SenderInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.consignee_info_shrink):
+            query['ConsigneeInfo'] = request.consignee_info_shrink
+        if not UtilClient.is_unset(request.cp_code):
+            query['CpCode'] = request.cp_code
+        if not UtilClient.is_unset(request.order_channels):
+            query['OrderChannels'] = request.order_channels
+        if not UtilClient.is_unset(request.outer_order_code):
+            query['OuterOrderCode'] = request.outer_order_code
+        if not UtilClient.is_unset(request.pre_weight):
+            query['PreWeight'] = request.pre_weight
+        if not UtilClient.is_unset(request.sender_info_shrink):
+            query['SenderInfo'] = request.sender_info_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePickUpWaybillPreQuery',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_pick_up_waybill_pre_query(
+        self,
+        request: dyplsapi_20170525_models.CreatePickUpWaybillPreQueryRequest,
+    ) -> dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_pick_up_waybill_pre_query_with_options(request, runtime)
+
+    async def create_pick_up_waybill_pre_query_async(
+        self,
+        request: dyplsapi_20170525_models.CreatePickUpWaybillPreQueryRequest,
+    ) -> dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_pick_up_waybill_pre_query_with_options_async(request, runtime)
 
     def delete_secret_blacklist_with_options(
         self,

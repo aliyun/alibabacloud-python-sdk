@@ -2536,6 +2536,647 @@ class CreatePickUpWaybillResponse(TeaModel):
         return self
 
 
+class CreatePickUpWaybillPreQueryRequestConsigneeInfoAddressInfo(TeaModel):
+    def __init__(
+        self,
+        address_detail: str = None,
+        area_name: str = None,
+        city_name: str = None,
+        province_name: str = None,
+        town_name: str = None,
+    ):
+        self.address_detail = address_detail
+        self.area_name = area_name
+        self.city_name = city_name
+        self.province_name = province_name
+        self.town_name = town_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_detail is not None:
+            result['AddressDetail'] = self.address_detail
+        if self.area_name is not None:
+            result['AreaName'] = self.area_name
+        if self.city_name is not None:
+            result['CityName'] = self.city_name
+        if self.province_name is not None:
+            result['ProvinceName'] = self.province_name
+        if self.town_name is not None:
+            result['TownName'] = self.town_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressDetail') is not None:
+            self.address_detail = m.get('AddressDetail')
+        if m.get('AreaName') is not None:
+            self.area_name = m.get('AreaName')
+        if m.get('CityName') is not None:
+            self.city_name = m.get('CityName')
+        if m.get('ProvinceName') is not None:
+            self.province_name = m.get('ProvinceName')
+        if m.get('TownName') is not None:
+            self.town_name = m.get('TownName')
+        return self
+
+
+class CreatePickUpWaybillPreQueryRequestConsigneeInfo(TeaModel):
+    def __init__(
+        self,
+        address_info: CreatePickUpWaybillPreQueryRequestConsigneeInfoAddressInfo = None,
+        mobile: str = None,
+        name: str = None,
+    ):
+        self.address_info = address_info
+        self.mobile = mobile
+        self.name = name
+
+    def validate(self):
+        if self.address_info:
+            self.address_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_info is not None:
+            result['AddressInfo'] = self.address_info.to_map()
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressInfo') is not None:
+            temp_model = CreatePickUpWaybillPreQueryRequestConsigneeInfoAddressInfo()
+            self.address_info = temp_model.from_map(m['AddressInfo'])
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreatePickUpWaybillPreQueryRequestSenderInfoAddressInfo(TeaModel):
+    def __init__(
+        self,
+        address_detail: str = None,
+        area_name: str = None,
+        city_name: str = None,
+        province_name: str = None,
+        town_name: str = None,
+    ):
+        self.address_detail = address_detail
+        self.area_name = area_name
+        self.city_name = city_name
+        self.province_name = province_name
+        self.town_name = town_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_detail is not None:
+            result['AddressDetail'] = self.address_detail
+        if self.area_name is not None:
+            result['AreaName'] = self.area_name
+        if self.city_name is not None:
+            result['CityName'] = self.city_name
+        if self.province_name is not None:
+            result['ProvinceName'] = self.province_name
+        if self.town_name is not None:
+            result['TownName'] = self.town_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressDetail') is not None:
+            self.address_detail = m.get('AddressDetail')
+        if m.get('AreaName') is not None:
+            self.area_name = m.get('AreaName')
+        if m.get('CityName') is not None:
+            self.city_name = m.get('CityName')
+        if m.get('ProvinceName') is not None:
+            self.province_name = m.get('ProvinceName')
+        if m.get('TownName') is not None:
+            self.town_name = m.get('TownName')
+        return self
+
+
+class CreatePickUpWaybillPreQueryRequestSenderInfo(TeaModel):
+    def __init__(
+        self,
+        address_info: CreatePickUpWaybillPreQueryRequestSenderInfoAddressInfo = None,
+        mobile: str = None,
+        name: str = None,
+    ):
+        self.address_info = address_info
+        self.mobile = mobile
+        self.name = name
+
+    def validate(self):
+        if self.address_info:
+            self.address_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_info is not None:
+            result['AddressInfo'] = self.address_info.to_map()
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressInfo') is not None:
+            temp_model = CreatePickUpWaybillPreQueryRequestSenderInfoAddressInfo()
+            self.address_info = temp_model.from_map(m['AddressInfo'])
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreatePickUpWaybillPreQueryRequest(TeaModel):
+    def __init__(
+        self,
+        consignee_info: CreatePickUpWaybillPreQueryRequestConsigneeInfo = None,
+        cp_code: str = None,
+        order_channels: str = None,
+        outer_order_code: str = None,
+        pre_weight: str = None,
+        sender_info: CreatePickUpWaybillPreQueryRequestSenderInfo = None,
+    ):
+        self.consignee_info = consignee_info
+        self.cp_code = cp_code
+        self.order_channels = order_channels
+        self.outer_order_code = outer_order_code
+        self.pre_weight = pre_weight
+        self.sender_info = sender_info
+
+    def validate(self):
+        if self.consignee_info:
+            self.consignee_info.validate()
+        if self.sender_info:
+            self.sender_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consignee_info is not None:
+            result['ConsigneeInfo'] = self.consignee_info.to_map()
+        if self.cp_code is not None:
+            result['CpCode'] = self.cp_code
+        if self.order_channels is not None:
+            result['OrderChannels'] = self.order_channels
+        if self.outer_order_code is not None:
+            result['OuterOrderCode'] = self.outer_order_code
+        if self.pre_weight is not None:
+            result['PreWeight'] = self.pre_weight
+        if self.sender_info is not None:
+            result['SenderInfo'] = self.sender_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsigneeInfo') is not None:
+            temp_model = CreatePickUpWaybillPreQueryRequestConsigneeInfo()
+            self.consignee_info = temp_model.from_map(m['ConsigneeInfo'])
+        if m.get('CpCode') is not None:
+            self.cp_code = m.get('CpCode')
+        if m.get('OrderChannels') is not None:
+            self.order_channels = m.get('OrderChannels')
+        if m.get('OuterOrderCode') is not None:
+            self.outer_order_code = m.get('OuterOrderCode')
+        if m.get('PreWeight') is not None:
+            self.pre_weight = m.get('PreWeight')
+        if m.get('SenderInfo') is not None:
+            temp_model = CreatePickUpWaybillPreQueryRequestSenderInfo()
+            self.sender_info = temp_model.from_map(m['SenderInfo'])
+        return self
+
+
+class CreatePickUpWaybillPreQueryShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        consignee_info_shrink: str = None,
+        cp_code: str = None,
+        order_channels: str = None,
+        outer_order_code: str = None,
+        pre_weight: str = None,
+        sender_info_shrink: str = None,
+    ):
+        self.consignee_info_shrink = consignee_info_shrink
+        self.cp_code = cp_code
+        self.order_channels = order_channels
+        self.outer_order_code = outer_order_code
+        self.pre_weight = pre_weight
+        self.sender_info_shrink = sender_info_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consignee_info_shrink is not None:
+            result['ConsigneeInfo'] = self.consignee_info_shrink
+        if self.cp_code is not None:
+            result['CpCode'] = self.cp_code
+        if self.order_channels is not None:
+            result['OrderChannels'] = self.order_channels
+        if self.outer_order_code is not None:
+            result['OuterOrderCode'] = self.outer_order_code
+        if self.pre_weight is not None:
+            result['PreWeight'] = self.pre_weight
+        if self.sender_info_shrink is not None:
+            result['SenderInfo'] = self.sender_info_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsigneeInfo') is not None:
+            self.consignee_info_shrink = m.get('ConsigneeInfo')
+        if m.get('CpCode') is not None:
+            self.cp_code = m.get('CpCode')
+        if m.get('OrderChannels') is not None:
+            self.order_channels = m.get('OrderChannels')
+        if m.get('OuterOrderCode') is not None:
+            self.outer_order_code = m.get('OuterOrderCode')
+        if m.get('PreWeight') is not None:
+            self.pre_weight = m.get('PreWeight')
+        if m.get('SenderInfo') is not None:
+            self.sender_info_shrink = m.get('SenderInfo')
+        return self
+
+
+class CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimesTimeList(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        select_disable_tip: str = None,
+        selectable: bool = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.select_disable_tip = select_disable_tip
+        self.selectable = selectable
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.select_disable_tip is not None:
+            result['SelectDisableTip'] = self.select_disable_tip
+        if self.selectable is not None:
+            result['Selectable'] = self.selectable
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('SelectDisableTip') is not None:
+            self.select_disable_tip = m.get('SelectDisableTip')
+        if m.get('Selectable') is not None:
+            self.selectable = m.get('Selectable')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        date_selectable: bool = None,
+        time_list: List[CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimesTimeList] = None,
+    ):
+        self.date = date
+        self.date_selectable = date_selectable
+        self.time_list = time_list
+
+    def validate(self):
+        if self.time_list:
+            for k in self.time_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.date_selectable is not None:
+            result['DateSelectable'] = self.date_selectable
+        result['TimeList'] = []
+        if self.time_list is not None:
+            for k in self.time_list:
+                result['TimeList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('DateSelectable') is not None:
+            self.date_selectable = m.get('DateSelectable')
+        self.time_list = []
+        if m.get('TimeList') is not None:
+            for k in m.get('TimeList'):
+                temp_model = CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimesTimeList()
+                self.time_list.append(temp_model.from_map(k))
+        return self
+
+
+class CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListRealTime(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        select_disable_tip: str = None,
+        selectable: bool = None,
+    ):
+        self.name = name
+        self.select_disable_tip = select_disable_tip
+        self.selectable = selectable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.select_disable_tip is not None:
+            result['SelectDisableTip'] = self.select_disable_tip
+        if self.selectable is not None:
+            result['Selectable'] = self.selectable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SelectDisableTip') is not None:
+            self.select_disable_tip = m.get('SelectDisableTip')
+        if m.get('Selectable') is not None:
+            self.selectable = m.get('Selectable')
+        return self
+
+
+class CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectList(TeaModel):
+    def __init__(
+        self,
+        appoint_times: List[CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes] = None,
+        pre_price: str = None,
+        real_time: CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListRealTime = None,
+    ):
+        self.appoint_times = appoint_times
+        self.pre_price = pre_price
+        self.real_time = real_time
+
+    def validate(self):
+        if self.appoint_times:
+            for k in self.appoint_times:
+                if k:
+                    k.validate()
+        if self.real_time:
+            self.real_time.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AppointTimes'] = []
+        if self.appoint_times is not None:
+            for k in self.appoint_times:
+                result['AppointTimes'].append(k.to_map() if k else None)
+        if self.pre_price is not None:
+            result['PrePrice'] = self.pre_price
+        if self.real_time is not None:
+            result['RealTime'] = self.real_time.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.appoint_times = []
+        if m.get('AppointTimes') is not None:
+            for k in m.get('AppointTimes'):
+                temp_model = CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes()
+                self.appoint_times.append(temp_model.from_map(k))
+        if m.get('PrePrice') is not None:
+            self.pre_price = m.get('PrePrice')
+        if m.get('RealTime') is not None:
+            temp_model = CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListRealTime()
+            self.real_time = temp_model.from_map(m['RealTime'])
+        return self
+
+
+class CreatePickUpWaybillPreQueryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        cp_time_select_list: List[CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectList] = None,
+        error_code: str = None,
+        error_msg: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.cp_time_select_list = cp_time_select_list
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.message = message
+        self.success = success
+
+    def validate(self):
+        if self.cp_time_select_list:
+            for k in self.cp_time_select_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['CpTimeSelectList'] = []
+        if self.cp_time_select_list is not None:
+            for k in self.cp_time_select_list:
+                result['CpTimeSelectList'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.cp_time_select_list = []
+        if m.get('CpTimeSelectList') is not None:
+            for k in m.get('CpTimeSelectList'):
+                temp_model = CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectList()
+                self.cp_time_select_list.append(temp_model.from_map(k))
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreatePickUpWaybillPreQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreatePickUpWaybillPreQueryResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CreatePickUpWaybillPreQueryResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreatePickUpWaybillPreQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePickUpWaybillPreQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePickUpWaybillPreQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteSecretBlacklistRequest(TeaModel):
     def __init__(
         self,
