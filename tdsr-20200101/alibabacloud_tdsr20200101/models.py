@@ -5225,6 +5225,177 @@ class GetSingleConnDataResponse(TeaModel):
         return self
 
 
+class GetSourcePackStatusRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # 任务ID
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetSourcePackStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        progress: int = None,
+        status: str = None,
+    ):
+        # 任务进度
+        self.progress = progress
+        # 任务状态
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetSourcePackStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetSourcePackStatusResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        url: str = None,
+    ):
+        # 返回码
+        self.code = code
+        self.data = data
+        # 错误消息
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        # 是否请求成功
+        self.success = success
+        # 压缩包的地址
+        self.url = url
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetSourcePackStatusResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class GetSourcePackStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSourcePackStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSourcePackStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSubSceneTaskStatusRequest(TeaModel):
     def __init__(
         self,
@@ -5706,7 +5877,7 @@ class LabelBuildRequest(TeaModel):
     def __init__(
         self,
         mode: str = None,
-        optimize_model_effect: str = None,
+        model_style: str = None,
         optimize_wall_width: str = None,
         plan_style: str = None,
         scene_id: str = None,
@@ -5714,9 +5885,9 @@ class LabelBuildRequest(TeaModel):
     ):
         # 重建模式：MANUAL：手动（云端），默认，SEMI_AUTOMATIC：半自动（移动端）
         self.mode = mode
-        # 模型效果 PASTER：切片模型（默认） DEPTH：深度模型 VIRTUAL：虚拟模型 MOBILE：移动重建模型
-        self.optimize_model_effect = optimize_model_effect
-        # 墙宽优化，SHUTDOWN:关闭（默认） STANDARD：标准 DEPTH：深度
+        # 模型效果 PATCH：切片模型（默认） DEPTH：深度模型 VIRTUAL：虚拟模型 MOBILE：移动重建模型
+        self.model_style = model_style
+        # 墙宽优化，OFF:关闭（默认） NORMAL：标准 ENHANCED：加强
         self.optimize_wall_width = optimize_wall_width
         # 户型图，DEFAULT（默认），STANDARD（标准）
         self.plan_style = plan_style
@@ -5736,8 +5907,8 @@ class LabelBuildRequest(TeaModel):
         result = dict()
         if self.mode is not None:
             result['Mode'] = self.mode
-        if self.optimize_model_effect is not None:
-            result['OptimizeModelEffect'] = self.optimize_model_effect
+        if self.model_style is not None:
+            result['ModelStyle'] = self.model_style
         if self.optimize_wall_width is not None:
             result['OptimizeWallWidth'] = self.optimize_wall_width
         if self.plan_style is not None:
@@ -5752,8 +5923,8 @@ class LabelBuildRequest(TeaModel):
         m = m or dict()
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
-        if m.get('OptimizeModelEffect') is not None:
-            self.optimize_model_effect = m.get('OptimizeModelEffect')
+        if m.get('ModelStyle') is not None:
+            self.model_style = m.get('ModelStyle')
         if m.get('OptimizeWallWidth') is not None:
             self.optimize_wall_width = m.get('OptimizeWallWidth')
         if m.get('PlanStyle') is not None:
@@ -7140,6 +7311,163 @@ class PackSceneResponse(TeaModel):
         return self
 
 
+class PackSourceRequest(TeaModel):
+    def __init__(
+        self,
+        scene_id: str = None,
+    ):
+        # 场景ID
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        return self
+
+
+class PackSourceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # 任务ID
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class PackSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: PackSourceResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 返回码
+        self.code = code
+        self.data = data
+        # 错误消息
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        # 是否请求成功
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = PackSourceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PackSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PackSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PackSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PredImageRequest(TeaModel):
     def __init__(
         self,
@@ -7717,6 +8045,7 @@ class PublishStatusResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
         success: bool = None,
+        sync_status: str = None,
     ):
         # 返回码
         self.code = code
@@ -7728,6 +8057,8 @@ class PublishStatusResponseBody(TeaModel):
         self.status = status
         # 是否请求成功
         self.success = success
+        # 文件同步状态
+        self.sync_status = sync_status
 
     def validate(self):
         pass
@@ -7748,6 +8079,8 @@ class PublishStatusResponseBody(TeaModel):
             result['Status'] = self.status
         if self.success is not None:
             result['Success'] = self.success
+        if self.sync_status is not None:
+            result['SyncStatus'] = self.sync_status
         return result
 
     def from_map(self, m: dict = None):
@@ -7762,6 +8095,8 @@ class PublishStatusResponseBody(TeaModel):
             self.status = m.get('Status')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('SyncStatus') is not None:
+            self.sync_status = m.get('SyncStatus')
         return self
 
 

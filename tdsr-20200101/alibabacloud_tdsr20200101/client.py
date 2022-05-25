@@ -2244,6 +2244,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_single_conn_data_with_options_async(request, runtime)
 
+    def get_source_pack_status_with_options(
+        self,
+        request: tdsr_20200101_models.GetSourcePackStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.GetSourcePackStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSourcePackStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.GetSourcePackStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_source_pack_status_with_options_async(
+        self,
+        request: tdsr_20200101_models.GetSourcePackStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.GetSourcePackStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSourcePackStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.GetSourcePackStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_source_pack_status(
+        self,
+        request: tdsr_20200101_models.GetSourcePackStatusRequest,
+    ) -> tdsr_20200101_models.GetSourcePackStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_source_pack_status_with_options(request, runtime)
+
+    async def get_source_pack_status_async(
+        self,
+        request: tdsr_20200101_models.GetSourcePackStatusRequest,
+    ) -> tdsr_20200101_models.GetSourcePackStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_source_pack_status_with_options_async(request, runtime)
+
     def get_sub_scene_task_status_with_options(
         self,
         request: tdsr_20200101_models.GetSubSceneTaskStatusRequest,
@@ -2463,8 +2533,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.mode):
             query['Mode'] = request.mode
-        if not UtilClient.is_unset(request.optimize_model_effect):
-            query['OptimizeModelEffect'] = request.optimize_model_effect
+        if not UtilClient.is_unset(request.model_style):
+            query['ModelStyle'] = request.model_style
         if not UtilClient.is_unset(request.optimize_wall_width):
             query['OptimizeWallWidth'] = request.optimize_wall_width
         if not UtilClient.is_unset(request.plan_style):
@@ -2501,8 +2571,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.mode):
             query['Mode'] = request.mode
-        if not UtilClient.is_unset(request.optimize_model_effect):
-            query['OptimizeModelEffect'] = request.optimize_model_effect
+        if not UtilClient.is_unset(request.model_style):
+            query['ModelStyle'] = request.model_style
         if not UtilClient.is_unset(request.optimize_wall_width):
             query['OptimizeWallWidth'] = request.optimize_wall_width
         if not UtilClient.is_unset(request.plan_style):
@@ -3015,6 +3085,76 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.PackSceneResponse:
         runtime = util_models.RuntimeOptions()
         return await self.pack_scene_with_options_async(request, runtime)
+
+    def pack_source_with_options(
+        self,
+        request: tdsr_20200101_models.PackSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.PackSourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PackSource',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.PackSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pack_source_with_options_async(
+        self,
+        request: tdsr_20200101_models.PackSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.PackSourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PackSource',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.PackSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pack_source(
+        self,
+        request: tdsr_20200101_models.PackSourceRequest,
+    ) -> tdsr_20200101_models.PackSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pack_source_with_options(request, runtime)
+
+    async def pack_source_async(
+        self,
+        request: tdsr_20200101_models.PackSourceRequest,
+    ) -> tdsr_20200101_models.PackSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pack_source_with_options_async(request, runtime)
 
     def pred_image_with_options(
         self,
