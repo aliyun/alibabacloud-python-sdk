@@ -81,13 +81,16 @@ class CancelTaskResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CancelTaskResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -100,6 +103,8 @@ class CancelTaskResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -108,6 +113,8 @@ class CancelTaskResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CancelTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -117,6 +124,7 @@ class CancelTaskResponse(TeaModel):
 class CreateTaskRequest(TeaModel):
     def __init__(
         self,
+        level: int = None,
         oss_bucket_name: str = None,
         oss_config_name: str = None,
         oss_endpoint: str = None,
@@ -126,6 +134,7 @@ class CreateTaskRequest(TeaModel):
         task_description: str = None,
         task_name: str = None,
     ):
+        self.level = level
         self.oss_bucket_name = oss_bucket_name
         self.oss_config_name = oss_config_name
         self.oss_endpoint = oss_endpoint
@@ -144,6 +153,8 @@ class CreateTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.level is not None:
+            result['Level'] = self.level
         if self.oss_bucket_name is not None:
             result['OssBucketName'] = self.oss_bucket_name
         if self.oss_config_name is not None:
@@ -164,6 +175,8 @@ class CreateTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
         if m.get('OssBucketName') is not None:
             self.oss_bucket_name = m.get('OssBucketName')
         if m.get('OssConfigName') is not None:
@@ -233,13 +246,16 @@ class CreateTaskResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateTaskResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -252,6 +268,8 @@ class CreateTaskResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -260,6 +278,8 @@ class CreateTaskResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -343,13 +363,16 @@ class DeleteOssConfigResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteOssConfigResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -362,6 +385,8 @@ class DeleteOssConfigResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -370,6 +395,8 @@ class DeleteOssConfigResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteOssConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -648,13 +675,16 @@ class DetectImageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectImageResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -667,6 +697,8 @@ class DetectImageResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -675,6 +707,8 @@ class DetectImageResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectImageResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -888,13 +922,16 @@ class GetOssConfigListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetOssConfigListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -907,6 +944,8 @@ class GetOssConfigListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -915,6 +954,8 @@ class GetOssConfigListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetOssConfigListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -957,6 +998,7 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
         gmt_modified: str = None,
         image_completed_total: int = None,
         image_total: int = None,
+        level: int = None,
         oss_access_key_id: str = None,
         oss_bucket_name: str = None,
         oss_endpoint: str = None,
@@ -974,6 +1016,7 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
         self.gmt_modified = gmt_modified
         self.image_completed_total = image_completed_total
         self.image_total = image_total
+        self.level = level
         self.oss_access_key_id = oss_access_key_id
         self.oss_bucket_name = oss_bucket_name
         self.oss_endpoint = oss_endpoint
@@ -1006,6 +1049,8 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
             result['ImageCompletedTotal'] = self.image_completed_total
         if self.image_total is not None:
             result['ImageTotal'] = self.image_total
+        if self.level is not None:
+            result['Level'] = self.level
         if self.oss_access_key_id is not None:
             result['OssAccessKeyId'] = self.oss_access_key_id
         if self.oss_bucket_name is not None:
@@ -1042,6 +1087,8 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
             self.image_completed_total = m.get('ImageCompletedTotal')
         if m.get('ImageTotal') is not None:
             self.image_total = m.get('ImageTotal')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
         if m.get('OssAccessKeyId') is not None:
             self.oss_access_key_id = m.get('OssAccessKeyId')
         if m.get('OssBucketName') is not None:
@@ -1123,13 +1170,16 @@ class GetTaskDetailResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetTaskDetailResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1142,6 +1192,8 @@ class GetTaskDetailResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1150,6 +1202,8 @@ class GetTaskDetailResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTaskDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1200,6 +1254,7 @@ class GetTaskListResponseBodyResponseTaskList(TeaModel):
         self,
         gmt_create: str = None,
         gmt_modified: str = None,
+        level: int = None,
         priority: str = None,
         task_description: str = None,
         task_name: str = None,
@@ -1208,6 +1263,7 @@ class GetTaskListResponseBodyResponseTaskList(TeaModel):
     ):
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
+        self.level = level
         self.priority = priority
         self.task_description = task_description
         self.task_name = task_name
@@ -1227,6 +1283,8 @@ class GetTaskListResponseBodyResponseTaskList(TeaModel):
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
+        if self.level is not None:
+            result['Level'] = self.level
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.task_description is not None:
@@ -1245,6 +1303,8 @@ class GetTaskListResponseBodyResponseTaskList(TeaModel):
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('TaskDescription') is not None:
@@ -1369,13 +1429,16 @@ class GetTaskListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetTaskListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1388,6 +1451,8 @@ class GetTaskListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1396,6 +1461,8 @@ class GetTaskListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTaskListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1503,13 +1570,16 @@ class SaveOssConfigResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SaveOssConfigResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1522,6 +1592,8 @@ class SaveOssConfigResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1530,6 +1602,8 @@ class SaveOssConfigResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SaveOssConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1619,13 +1693,16 @@ class UpdateTaskPriorityResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateTaskPriorityResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1638,6 +1715,8 @@ class UpdateTaskPriorityResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1646,6 +1725,8 @@ class UpdateTaskPriorityResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateTaskPriorityResponseBody()
             self.body = temp_model.from_map(m['body'])

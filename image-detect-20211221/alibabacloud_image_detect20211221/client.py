@@ -118,6 +118,8 @@ class Client(OpenApiClient):
     ) -> image_detect_20211221_models.CreateTaskResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
         if not UtilClient.is_unset(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
         if not UtilClient.is_unset(request.oss_config_name):
@@ -160,6 +162,8 @@ class Client(OpenApiClient):
     ) -> image_detect_20211221_models.CreateTaskResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
         if not UtilClient.is_unset(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
         if not UtilClient.is_unset(request.oss_config_name):
