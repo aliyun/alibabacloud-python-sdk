@@ -157,6 +157,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.sampling_size):
+            query['SamplingSize'] = request.sampling_size
         if not UtilClient.is_unset(request.service_region_id):
             query['ServiceRegionId'] = request.service_region_id
         if not UtilClient.is_unset(request.user_name):
@@ -211,6 +213,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.sampling_size):
+            query['SamplingSize'] = request.sampling_size
         if not UtilClient.is_unset(request.service_region_id):
             query['ServiceRegionId'] = request.service_region_id
         if not UtilClient.is_unset(request.user_name):
@@ -2953,6 +2957,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.sampling_size):
+            query['SamplingSize'] = request.sampling_size
         if not UtilClient.is_unset(request.service_region_id):
             query['ServiceRegionId'] = request.service_region_id
         if not UtilClient.is_unset(request.user_name):
@@ -3003,6 +3009,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.sampling_size):
+            query['SamplingSize'] = request.sampling_size
         if not UtilClient.is_unset(request.service_region_id):
             query['ServiceRegionId'] = request.service_region_id
         if not UtilClient.is_unset(request.user_name):
