@@ -213,6 +213,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.apply_metric_rule_template_with_options_async(request, runtime)
 
+    def batch_create_intant_site_monitor_with_options(
+        self,
+        request: cms_20190101_models.BatchCreateIntantSiteMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.BatchCreateIntantSiteMonitorResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_list):
+            query['TaskList'] = request.task_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchCreateIntantSiteMonitor',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.BatchCreateIntantSiteMonitorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_create_intant_site_monitor_with_options_async(
+        self,
+        request: cms_20190101_models.BatchCreateIntantSiteMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.BatchCreateIntantSiteMonitorResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_list):
+            query['TaskList'] = request.task_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchCreateIntantSiteMonitor',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.BatchCreateIntantSiteMonitorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_create_intant_site_monitor(
+        self,
+        request: cms_20190101_models.BatchCreateIntantSiteMonitorRequest,
+    ) -> cms_20190101_models.BatchCreateIntantSiteMonitorResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_create_intant_site_monitor_with_options(request, runtime)
+
+    async def batch_create_intant_site_monitor_async(
+        self,
+        request: cms_20190101_models.BatchCreateIntantSiteMonitorRequest,
+    ) -> cms_20190101_models.BatchCreateIntantSiteMonitorResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_create_intant_site_monitor_with_options_async(request, runtime)
+
     def create_cms_call_num_order_with_options(
         self,
         request: cms_20190101_models.CreateCmsCallNumOrderRequest,
@@ -882,6 +952,276 @@ class Client(OpenApiClient):
     ) -> cms_20190101_models.CreateHostAvailabilityResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_host_availability_with_options_async(request, runtime)
+
+    def create_hybrid_monitor_namespace_with_options(
+        self,
+        request: cms_20190101_models.CreateHybridMonitorNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.CreateHybridMonitorNamespaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.spec):
+            query['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHybridMonitorNamespace',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.CreateHybridMonitorNamespaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_hybrid_monitor_namespace_with_options_async(
+        self,
+        request: cms_20190101_models.CreateHybridMonitorNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.CreateHybridMonitorNamespaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.spec):
+            query['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHybridMonitorNamespace',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.CreateHybridMonitorNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_hybrid_monitor_namespace(
+        self,
+        request: cms_20190101_models.CreateHybridMonitorNamespaceRequest,
+    ) -> cms_20190101_models.CreateHybridMonitorNamespaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_hybrid_monitor_namespace_with_options(request, runtime)
+
+    async def create_hybrid_monitor_namespace_async(
+        self,
+        request: cms_20190101_models.CreateHybridMonitorNamespaceRequest,
+    ) -> cms_20190101_models.CreateHybridMonitorNamespaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_hybrid_monitor_namespace_with_options_async(request, runtime)
+
+    def create_hybrid_monitor_slsgroup_with_options(
+        self,
+        request: cms_20190101_models.CreateHybridMonitorSLSGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.CreateHybridMonitorSLSGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.slsgroup_config):
+            query['SLSGroupConfig'] = request.slsgroup_config
+        if not UtilClient.is_unset(request.slsgroup_description):
+            query['SLSGroupDescription'] = request.slsgroup_description
+        if not UtilClient.is_unset(request.slsgroup_name):
+            query['SLSGroupName'] = request.slsgroup_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHybridMonitorSLSGroup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.CreateHybridMonitorSLSGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_hybrid_monitor_slsgroup_with_options_async(
+        self,
+        request: cms_20190101_models.CreateHybridMonitorSLSGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.CreateHybridMonitorSLSGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.slsgroup_config):
+            query['SLSGroupConfig'] = request.slsgroup_config
+        if not UtilClient.is_unset(request.slsgroup_description):
+            query['SLSGroupDescription'] = request.slsgroup_description
+        if not UtilClient.is_unset(request.slsgroup_name):
+            query['SLSGroupName'] = request.slsgroup_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHybridMonitorSLSGroup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.CreateHybridMonitorSLSGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_hybrid_monitor_slsgroup(
+        self,
+        request: cms_20190101_models.CreateHybridMonitorSLSGroupRequest,
+    ) -> cms_20190101_models.CreateHybridMonitorSLSGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_hybrid_monitor_slsgroup_with_options(request, runtime)
+
+    async def create_hybrid_monitor_slsgroup_async(
+        self,
+        request: cms_20190101_models.CreateHybridMonitorSLSGroupRequest,
+    ) -> cms_20190101_models.CreateHybridMonitorSLSGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_hybrid_monitor_slsgroup_with_options_async(request, runtime)
+
+    def create_hybrid_monitor_task_with_options(
+        self,
+        request: cms_20190101_models.CreateHybridMonitorTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.CreateHybridMonitorTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attach_labels):
+            query['AttachLabels'] = request.attach_labels
+        if not UtilClient.is_unset(request.collect_interval):
+            query['CollectInterval'] = request.collect_interval
+        if not UtilClient.is_unset(request.collect_target_type):
+            query['CollectTargetType'] = request.collect_target_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.slsprocess_config):
+            query['SLSProcessConfig'] = request.slsprocess_config
+        if not UtilClient.is_unset(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
+        if not UtilClient.is_unset(request.target_user_id_list):
+            query['TargetUserIdList'] = request.target_user_id_list
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.yarmconfig):
+            query['YARMConfig'] = request.yarmconfig
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHybridMonitorTask',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.CreateHybridMonitorTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_hybrid_monitor_task_with_options_async(
+        self,
+        request: cms_20190101_models.CreateHybridMonitorTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.CreateHybridMonitorTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attach_labels):
+            query['AttachLabels'] = request.attach_labels
+        if not UtilClient.is_unset(request.collect_interval):
+            query['CollectInterval'] = request.collect_interval
+        if not UtilClient.is_unset(request.collect_target_type):
+            query['CollectTargetType'] = request.collect_target_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.slsprocess_config):
+            query['SLSProcessConfig'] = request.slsprocess_config
+        if not UtilClient.is_unset(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
+        if not UtilClient.is_unset(request.target_user_id_list):
+            query['TargetUserIdList'] = request.target_user_id_list
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.yarmconfig):
+            query['YARMConfig'] = request.yarmconfig
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHybridMonitorTask',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.CreateHybridMonitorTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_hybrid_monitor_task(
+        self,
+        request: cms_20190101_models.CreateHybridMonitorTaskRequest,
+    ) -> cms_20190101_models.CreateHybridMonitorTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_hybrid_monitor_task_with_options(request, runtime)
+
+    async def create_hybrid_monitor_task_async(
+        self,
+        request: cms_20190101_models.CreateHybridMonitorTaskRequest,
+    ) -> cms_20190101_models.CreateHybridMonitorTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_hybrid_monitor_task_with_options_async(request, runtime)
 
     def create_instant_site_monitor_with_options(
         self,
@@ -2418,6 +2758,224 @@ class Client(OpenApiClient):
     ) -> cms_20190101_models.DeleteHostAvailabilityResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_host_availability_with_options_async(request, runtime)
+
+    def delete_hybrid_monitor_namespace_with_options(
+        self,
+        request: cms_20190101_models.DeleteHybridMonitorNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DeleteHybridMonitorNamespaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHybridMonitorNamespace',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteHybridMonitorNamespaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_hybrid_monitor_namespace_with_options_async(
+        self,
+        request: cms_20190101_models.DeleteHybridMonitorNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DeleteHybridMonitorNamespaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHybridMonitorNamespace',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteHybridMonitorNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_hybrid_monitor_namespace(
+        self,
+        request: cms_20190101_models.DeleteHybridMonitorNamespaceRequest,
+    ) -> cms_20190101_models.DeleteHybridMonitorNamespaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_hybrid_monitor_namespace_with_options(request, runtime)
+
+    async def delete_hybrid_monitor_namespace_async(
+        self,
+        request: cms_20190101_models.DeleteHybridMonitorNamespaceRequest,
+    ) -> cms_20190101_models.DeleteHybridMonitorNamespaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_hybrid_monitor_namespace_with_options_async(request, runtime)
+
+    def delete_hybrid_monitor_slsgroup_with_options(
+        self,
+        request: cms_20190101_models.DeleteHybridMonitorSLSGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DeleteHybridMonitorSLSGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.slsgroup_name):
+            query['SLSGroupName'] = request.slsgroup_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHybridMonitorSLSGroup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteHybridMonitorSLSGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_hybrid_monitor_slsgroup_with_options_async(
+        self,
+        request: cms_20190101_models.DeleteHybridMonitorSLSGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DeleteHybridMonitorSLSGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.slsgroup_name):
+            query['SLSGroupName'] = request.slsgroup_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHybridMonitorSLSGroup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteHybridMonitorSLSGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_hybrid_monitor_slsgroup(
+        self,
+        request: cms_20190101_models.DeleteHybridMonitorSLSGroupRequest,
+    ) -> cms_20190101_models.DeleteHybridMonitorSLSGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_hybrid_monitor_slsgroup_with_options(request, runtime)
+
+    async def delete_hybrid_monitor_slsgroup_async(
+        self,
+        request: cms_20190101_models.DeleteHybridMonitorSLSGroupRequest,
+    ) -> cms_20190101_models.DeleteHybridMonitorSLSGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_hybrid_monitor_slsgroup_with_options_async(request, runtime)
+
+    def delete_hybrid_monitor_task_with_options(
+        self,
+        request: cms_20190101_models.DeleteHybridMonitorTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DeleteHybridMonitorTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHybridMonitorTask',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteHybridMonitorTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_hybrid_monitor_task_with_options_async(
+        self,
+        request: cms_20190101_models.DeleteHybridMonitorTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DeleteHybridMonitorTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHybridMonitorTask',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DeleteHybridMonitorTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_hybrid_monitor_task(
+        self,
+        request: cms_20190101_models.DeleteHybridMonitorTaskRequest,
+    ) -> cms_20190101_models.DeleteHybridMonitorTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_hybrid_monitor_task_with_options(request, runtime)
+
+    async def delete_hybrid_monitor_task_async(
+        self,
+        request: cms_20190101_models.DeleteHybridMonitorTaskRequest,
+    ) -> cms_20190101_models.DeleteHybridMonitorTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_hybrid_monitor_task_with_options_async(request, runtime)
 
     def delete_log_monitor_with_options(
         self,
@@ -4550,6 +5108,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.silence_time):
+            query['SilenceTime'] = request.silence_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4578,6 +5138,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.silence_time):
+            query['SilenceTime'] = request.silence_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5082,6 +5644,358 @@ class Client(OpenApiClient):
     ) -> cms_20190101_models.DescribeHostAvailabilityListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_host_availability_list_with_options_async(request, runtime)
+
+    def describe_hybrid_monitor_data_list_with_options(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorDataListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeHybridMonitorDataListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end):
+            query['End'] = request.end
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.prom_sql):
+            query['PromSQL'] = request.prom_sql
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridMonitorDataList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeHybridMonitorDataListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hybrid_monitor_data_list_with_options_async(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorDataListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeHybridMonitorDataListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end):
+            query['End'] = request.end
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.prom_sql):
+            query['PromSQL'] = request.prom_sql
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridMonitorDataList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeHybridMonitorDataListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hybrid_monitor_data_list(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorDataListRequest,
+    ) -> cms_20190101_models.DescribeHybridMonitorDataListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hybrid_monitor_data_list_with_options(request, runtime)
+
+    async def describe_hybrid_monitor_data_list_async(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorDataListRequest,
+    ) -> cms_20190101_models.DescribeHybridMonitorDataListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hybrid_monitor_data_list_with_options_async(request, runtime)
+
+    def describe_hybrid_monitor_namespace_list_with_options(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorNamespaceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeHybridMonitorNamespaceListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.show_task_statistic):
+            query['ShowTaskStatistic'] = request.show_task_statistic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridMonitorNamespaceList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeHybridMonitorNamespaceListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hybrid_monitor_namespace_list_with_options_async(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorNamespaceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeHybridMonitorNamespaceListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.show_task_statistic):
+            query['ShowTaskStatistic'] = request.show_task_statistic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridMonitorNamespaceList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeHybridMonitorNamespaceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hybrid_monitor_namespace_list(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorNamespaceListRequest,
+    ) -> cms_20190101_models.DescribeHybridMonitorNamespaceListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hybrid_monitor_namespace_list_with_options(request, runtime)
+
+    async def describe_hybrid_monitor_namespace_list_async(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorNamespaceListRequest,
+    ) -> cms_20190101_models.DescribeHybridMonitorNamespaceListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hybrid_monitor_namespace_list_with_options_async(request, runtime)
+
+    def describe_hybrid_monitor_slsgroup_with_options(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorSLSGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeHybridMonitorSLSGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.slsgroup_name):
+            query['SLSGroupName'] = request.slsgroup_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridMonitorSLSGroup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeHybridMonitorSLSGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hybrid_monitor_slsgroup_with_options_async(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorSLSGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeHybridMonitorSLSGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.slsgroup_name):
+            query['SLSGroupName'] = request.slsgroup_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridMonitorSLSGroup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeHybridMonitorSLSGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hybrid_monitor_slsgroup(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorSLSGroupRequest,
+    ) -> cms_20190101_models.DescribeHybridMonitorSLSGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hybrid_monitor_slsgroup_with_options(request, runtime)
+
+    async def describe_hybrid_monitor_slsgroup_async(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorSLSGroupRequest,
+    ) -> cms_20190101_models.DescribeHybridMonitorSLSGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hybrid_monitor_slsgroup_with_options_async(request, runtime)
+
+    def describe_hybrid_monitor_task_list_with_options(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorTaskListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeHybridMonitorTaskListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.include_aliyun_task):
+            query['IncludeAliyunTask'] = request.include_aliyun_task
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridMonitorTaskList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeHybridMonitorTaskListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hybrid_monitor_task_list_with_options_async(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorTaskListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeHybridMonitorTaskListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.include_aliyun_task):
+            query['IncludeAliyunTask'] = request.include_aliyun_task
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridMonitorTaskList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeHybridMonitorTaskListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hybrid_monitor_task_list(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorTaskListRequest,
+    ) -> cms_20190101_models.DescribeHybridMonitorTaskListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hybrid_monitor_task_list_with_options(request, runtime)
+
+    async def describe_hybrid_monitor_task_list_async(
+        self,
+        request: cms_20190101_models.DescribeHybridMonitorTaskListRequest,
+    ) -> cms_20190101_models.DescribeHybridMonitorTaskListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hybrid_monitor_task_list_with_options_async(request, runtime)
 
     def describe_log_monitor_attribute_with_options(
         self,
@@ -5948,6 +6862,10 @@ class Client(OpenApiClient):
             query['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -5986,6 +6904,10 @@ class Client(OpenApiClient):
             query['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -7355,100 +8277,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_project_meta_with_options_async(request, runtime)
 
-    def describe_site_instant_monitor_log_with_options(
-        self,
-        request: cms_20190101_models.DescribeSiteInstantMonitorLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cms_20190101_models.DescribeSiteInstantMonitorLogResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.filter):
-            query['Filter'] = request.filter
-        if not UtilClient.is_unset(request.length):
-            query['Length'] = request.length
-        if not UtilClient.is_unset(request.metric_name):
-            query['MetricName'] = request.metric_name
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.task_ids):
-            query['TaskIds'] = request.task_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeSiteInstantMonitorLog',
-            version='2019-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cms_20190101_models.DescribeSiteInstantMonitorLogResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_site_instant_monitor_log_with_options_async(
-        self,
-        request: cms_20190101_models.DescribeSiteInstantMonitorLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cms_20190101_models.DescribeSiteInstantMonitorLogResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.filter):
-            query['Filter'] = request.filter
-        if not UtilClient.is_unset(request.length):
-            query['Length'] = request.length
-        if not UtilClient.is_unset(request.metric_name):
-            query['MetricName'] = request.metric_name
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.task_ids):
-            query['TaskIds'] = request.task_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeSiteInstantMonitorLog',
-            version='2019-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cms_20190101_models.DescribeSiteInstantMonitorLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_site_instant_monitor_log(
-        self,
-        request: cms_20190101_models.DescribeSiteInstantMonitorLogRequest,
-    ) -> cms_20190101_models.DescribeSiteInstantMonitorLogResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_site_instant_monitor_log_with_options(request, runtime)
-
-    async def describe_site_instant_monitor_log_async(
-        self,
-        request: cms_20190101_models.DescribeSiteInstantMonitorLogRequest,
-    ) -> cms_20190101_models.DescribeSiteInstantMonitorLogResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_site_instant_monitor_log_with_options_async(request, runtime)
-
     def describe_site_monitor_attribute_with_options(
         self,
         request: cms_20190101_models.DescribeSiteMonitorAttributeRequest,
@@ -7620,6 +8448,88 @@ class Client(OpenApiClient):
     ) -> cms_20190101_models.DescribeSiteMonitorDataResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_site_monitor_data_with_options_async(request, runtime)
+
+    def describe_site_monitor_ispcity_list_with_options(
+        self,
+        request: cms_20190101_models.DescribeSiteMonitorISPCityListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeSiteMonitorISPCityListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.city):
+            query['City'] = request.city
+        if not UtilClient.is_unset(request.ipv4):
+            query['IPV4'] = request.ipv4
+        if not UtilClient.is_unset(request.ipv6):
+            query['IPV6'] = request.ipv6
+        if not UtilClient.is_unset(request.isp):
+            query['Isp'] = request.isp
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSiteMonitorISPCityList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSiteMonitorISPCityListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_site_monitor_ispcity_list_with_options_async(
+        self,
+        request: cms_20190101_models.DescribeSiteMonitorISPCityListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeSiteMonitorISPCityListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.city):
+            query['City'] = request.city
+        if not UtilClient.is_unset(request.ipv4):
+            query['IPV4'] = request.ipv4
+        if not UtilClient.is_unset(request.ipv6):
+            query['IPV6'] = request.ipv6
+        if not UtilClient.is_unset(request.isp):
+            query['Isp'] = request.isp
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSiteMonitorISPCityList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSiteMonitorISPCityListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_site_monitor_ispcity_list(
+        self,
+        request: cms_20190101_models.DescribeSiteMonitorISPCityListRequest,
+    ) -> cms_20190101_models.DescribeSiteMonitorISPCityListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_site_monitor_ispcity_list_with_options(request, runtime)
+
+    async def describe_site_monitor_ispcity_list_async(
+        self,
+        request: cms_20190101_models.DescribeSiteMonitorISPCityListRequest,
+    ) -> cms_20190101_models.DescribeSiteMonitorISPCityListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_site_monitor_ispcity_list_with_options_async(request, runtime)
 
     def describe_site_monitor_list_with_options(
         self,
@@ -8264,6 +9174,66 @@ class Client(OpenApiClient):
     ) -> cms_20190101_models.DescribeSystemEventHistogramResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_system_event_histogram_with_options_async(request, runtime)
+
+    def describe_system_event_meta_list_with_options(
+        self,
+        request: cms_20190101_models.DescribeSystemEventMetaListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeSystemEventMetaListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeSystemEventMetaList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSystemEventMetaListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_system_event_meta_list_with_options_async(
+        self,
+        request: cms_20190101_models.DescribeSystemEventMetaListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeSystemEventMetaListResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeSystemEventMetaList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSystemEventMetaListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_system_event_meta_list(
+        self,
+        request: cms_20190101_models.DescribeSystemEventMetaListRequest,
+    ) -> cms_20190101_models.DescribeSystemEventMetaListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_system_event_meta_list_with_options(request, runtime)
+
+    async def describe_system_event_meta_list_async(
+        self,
+        request: cms_20190101_models.DescribeSystemEventMetaListRequest,
+    ) -> cms_20190101_models.DescribeSystemEventMetaListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_system_event_meta_list_with_options_async(request, runtime)
 
     def describe_tag_key_list_with_options(
         self,
@@ -9518,6 +10488,252 @@ class Client(OpenApiClient):
     ) -> cms_20190101_models.ModifyHostInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_host_info_with_options_async(request, runtime)
+
+    def modify_hybrid_monitor_namespace_with_options(
+        self,
+        request: cms_20190101_models.ModifyHybridMonitorNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.ModifyHybridMonitorNamespaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.spec):
+            query['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyHybridMonitorNamespace',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyHybridMonitorNamespaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_hybrid_monitor_namespace_with_options_async(
+        self,
+        request: cms_20190101_models.ModifyHybridMonitorNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.ModifyHybridMonitorNamespaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.spec):
+            query['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyHybridMonitorNamespace',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyHybridMonitorNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_hybrid_monitor_namespace(
+        self,
+        request: cms_20190101_models.ModifyHybridMonitorNamespaceRequest,
+    ) -> cms_20190101_models.ModifyHybridMonitorNamespaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_hybrid_monitor_namespace_with_options(request, runtime)
+
+    async def modify_hybrid_monitor_namespace_async(
+        self,
+        request: cms_20190101_models.ModifyHybridMonitorNamespaceRequest,
+    ) -> cms_20190101_models.ModifyHybridMonitorNamespaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_hybrid_monitor_namespace_with_options_async(request, runtime)
+
+    def modify_hybrid_monitor_slsgroup_with_options(
+        self,
+        request: cms_20190101_models.ModifyHybridMonitorSLSGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.ModifyHybridMonitorSLSGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.slsgroup_config):
+            query['SLSGroupConfig'] = request.slsgroup_config
+        if not UtilClient.is_unset(request.slsgroup_description):
+            query['SLSGroupDescription'] = request.slsgroup_description
+        if not UtilClient.is_unset(request.slsgroup_name):
+            query['SLSGroupName'] = request.slsgroup_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyHybridMonitorSLSGroup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyHybridMonitorSLSGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_hybrid_monitor_slsgroup_with_options_async(
+        self,
+        request: cms_20190101_models.ModifyHybridMonitorSLSGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.ModifyHybridMonitorSLSGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.slsgroup_config):
+            query['SLSGroupConfig'] = request.slsgroup_config
+        if not UtilClient.is_unset(request.slsgroup_description):
+            query['SLSGroupDescription'] = request.slsgroup_description
+        if not UtilClient.is_unset(request.slsgroup_name):
+            query['SLSGroupName'] = request.slsgroup_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyHybridMonitorSLSGroup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyHybridMonitorSLSGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_hybrid_monitor_slsgroup(
+        self,
+        request: cms_20190101_models.ModifyHybridMonitorSLSGroupRequest,
+    ) -> cms_20190101_models.ModifyHybridMonitorSLSGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_hybrid_monitor_slsgroup_with_options(request, runtime)
+
+    async def modify_hybrid_monitor_slsgroup_async(
+        self,
+        request: cms_20190101_models.ModifyHybridMonitorSLSGroupRequest,
+    ) -> cms_20190101_models.ModifyHybridMonitorSLSGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_hybrid_monitor_slsgroup_with_options_async(request, runtime)
+
+    def modify_hybrid_monitor_task_with_options(
+        self,
+        request: cms_20190101_models.ModifyHybridMonitorTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.ModifyHybridMonitorTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attach_labels):
+            query['AttachLabels'] = request.attach_labels
+        if not UtilClient.is_unset(request.collect_interval):
+            query['CollectInterval'] = request.collect_interval
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.slsprocess_config):
+            query['SLSProcessConfig'] = request.slsprocess_config
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyHybridMonitorTask',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyHybridMonitorTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_hybrid_monitor_task_with_options_async(
+        self,
+        request: cms_20190101_models.ModifyHybridMonitorTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.ModifyHybridMonitorTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attach_labels):
+            query['AttachLabels'] = request.attach_labels
+        if not UtilClient.is_unset(request.collect_interval):
+            query['CollectInterval'] = request.collect_interval
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.slsprocess_config):
+            query['SLSProcessConfig'] = request.slsprocess_config
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyHybridMonitorTask',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.ModifyHybridMonitorTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_hybrid_monitor_task(
+        self,
+        request: cms_20190101_models.ModifyHybridMonitorTaskRequest,
+    ) -> cms_20190101_models.ModifyHybridMonitorTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_hybrid_monitor_task_with_options(request, runtime)
+
+    async def modify_hybrid_monitor_task_async(
+        self,
+        request: cms_20190101_models.ModifyHybridMonitorTaskRequest,
+    ) -> cms_20190101_models.ModifyHybridMonitorTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_hybrid_monitor_task_with_options_async(request, runtime)
 
     def modify_metric_rule_template_with_options(
         self,
@@ -10832,6 +12048,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.interval):
             query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
         if not UtilClient.is_unset(request.metric_name):
             query['MetricName'] = request.metric_name
         if not UtilClient.is_unset(request.namespace):
@@ -10894,6 +12112,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.interval):
             query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
         if not UtilClient.is_unset(request.metric_name):
             query['MetricName'] = request.metric_name
         if not UtilClient.is_unset(request.namespace):
@@ -11224,6 +12444,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.group_rules):
             query['GroupRules'] = request.group_rules
+        if not UtilClient.is_unset(request.is_async):
+            query['IsAsync'] = request.is_async
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11254,6 +12476,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.group_rules):
             query['GroupRules'] = request.group_rules
+        if not UtilClient.is_unset(request.is_async):
+            query['IsAsync'] = request.is_async
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11363,11 +12587,19 @@ class Client(OpenApiClient):
 
     def put_resource_metric_rule_with_options(
         self,
-        request: cms_20190101_models.PutResourceMetricRuleRequest,
+        tmp_req: cms_20190101_models.PutResourceMetricRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutResourceMetricRuleResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cms_20190101_models.PutResourceMetricRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.composite_expression):
+            request.composite_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.composite_expression), 'CompositeExpression', 'json')
+        if not UtilClient.is_unset(tmp_req.prometheus):
+            request.prometheus_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.prometheus), 'Prometheus', 'json')
         query = {}
+        if not UtilClient.is_unset(request.composite_expression_shrink):
+            query['CompositeExpression'] = request.composite_expression_shrink
         if not UtilClient.is_unset(request.contact_groups):
             query['ContactGroups'] = request.contact_groups
         if not UtilClient.is_unset(request.effective_interval):
@@ -11388,6 +12620,8 @@ class Client(OpenApiClient):
             query['NoEffectiveInterval'] = request.no_effective_interval
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
+        if not UtilClient.is_unset(request.prometheus_shrink):
+            query['Prometheus'] = request.prometheus_shrink
         if not UtilClient.is_unset(request.resources):
             query['Resources'] = request.resources
         if not UtilClient.is_unset(request.rule_id):
@@ -11421,11 +12655,19 @@ class Client(OpenApiClient):
 
     async def put_resource_metric_rule_with_options_async(
         self,
-        request: cms_20190101_models.PutResourceMetricRuleRequest,
+        tmp_req: cms_20190101_models.PutResourceMetricRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutResourceMetricRuleResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cms_20190101_models.PutResourceMetricRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.composite_expression):
+            request.composite_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.composite_expression), 'CompositeExpression', 'json')
+        if not UtilClient.is_unset(tmp_req.prometheus):
+            request.prometheus_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.prometheus), 'Prometheus', 'json')
         query = {}
+        if not UtilClient.is_unset(request.composite_expression_shrink):
+            query['CompositeExpression'] = request.composite_expression_shrink
         if not UtilClient.is_unset(request.contact_groups):
             query['ContactGroups'] = request.contact_groups
         if not UtilClient.is_unset(request.effective_interval):
@@ -11446,6 +12688,8 @@ class Client(OpenApiClient):
             query['NoEffectiveInterval'] = request.no_effective_interval
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
+        if not UtilClient.is_unset(request.prometheus_shrink):
+            query['Prometheus'] = request.prometheus_shrink
         if not UtilClient.is_unset(request.resources):
             query['Resources'] = request.resources
         if not UtilClient.is_unset(request.rule_id):

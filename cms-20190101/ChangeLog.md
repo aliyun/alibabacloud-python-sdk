@@ -1,3 +1,6 @@
+2022-05-26 Version: 2.0.5
+- Release python api.
+
 2022-01-21 Version: 2.0.4
 - AMP Version Change.
 

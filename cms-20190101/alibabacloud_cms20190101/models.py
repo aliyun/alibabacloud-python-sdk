@@ -133,13 +133,16 @@ class AddTagsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AddTagsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -152,6 +155,8 @@ class AddTagsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -160,6 +165,8 @@ class AddTagsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddTagsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -384,13 +391,16 @@ class ApplyMetricRuleTemplateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ApplyMetricRuleTemplateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -403,6 +413,8 @@ class ApplyMetricRuleTemplateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -411,8 +423,198 @@ class ApplyMetricRuleTemplateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ApplyMetricRuleTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BatchCreateIntantSiteMonitorRequestTaskList(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        isp_cities: str = None,
+        options_json: str = None,
+        task_name: str = None,
+        task_type: str = None,
+    ):
+        self.address = address
+        self.isp_cities = isp_cities
+        self.options_json = options_json
+        self.task_name = task_name
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.isp_cities is not None:
+            result['IspCities'] = self.isp_cities
+        if self.options_json is not None:
+            result['OptionsJson'] = self.options_json
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('IspCities') is not None:
+            self.isp_cities = m.get('IspCities')
+        if m.get('OptionsJson') is not None:
+            self.options_json = m.get('OptionsJson')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class BatchCreateIntantSiteMonitorRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        task_list: List[BatchCreateIntantSiteMonitorRequestTaskList] = None,
+    ):
+        self.region_id = region_id
+        self.task_list = task_list
+
+    def validate(self):
+        if self.task_list:
+            for k in self.task_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['TaskList'] = []
+        if self.task_list is not None:
+            for k in self.task_list:
+                result['TaskList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.task_list = []
+        if m.get('TaskList') is not None:
+            for k in m.get('TaskList'):
+                temp_model = BatchCreateIntantSiteMonitorRequestTaskList()
+                self.task_list.append(temp_model.from_map(k))
+        return self
+
+
+class BatchCreateIntantSiteMonitorResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class BatchCreateIntantSiteMonitorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchCreateIntantSiteMonitorResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchCreateIntantSiteMonitorResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -511,13 +713,16 @@ class CreateCmsCallNumOrderResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateCmsCallNumOrderResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -530,6 +735,8 @@ class CreateCmsCallNumOrderResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -538,6 +745,8 @@ class CreateCmsCallNumOrderResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateCmsCallNumOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -704,13 +913,16 @@ class CreateCmsOrderResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateCmsOrderResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -723,6 +935,8 @@ class CreateCmsOrderResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -731,6 +945,8 @@ class CreateCmsOrderResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateCmsOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -831,13 +1047,16 @@ class CreateCmsSmspackageOrderResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateCmsSmspackageOrderResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -850,6 +1069,8 @@ class CreateCmsSmspackageOrderResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -858,6 +1079,8 @@ class CreateCmsSmspackageOrderResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateCmsSmspackageOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1035,13 +1258,16 @@ class CreateDynamicTagGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateDynamicTagGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1054,6 +1280,8 @@ class CreateDynamicTagGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1062,6 +1290,8 @@ class CreateDynamicTagGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDynamicTagGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1072,11 +1302,13 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical(TeaModel)
     def __init__(
         self,
         comparison_operator: str = None,
+        pre_condition: str = None,
         statistics: str = None,
         threshold: str = None,
         times: int = None,
     ):
         self.comparison_operator = comparison_operator
+        self.pre_condition = pre_condition
         self.statistics = statistics
         self.threshold = threshold
         self.times = times
@@ -1092,6 +1324,8 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical(TeaModel)
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
+        if self.pre_condition is not None:
+            result['PreCondition'] = self.pre_condition
         if self.statistics is not None:
             result['Statistics'] = self.statistics
         if self.threshold is not None:
@@ -1104,6 +1338,8 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical(TeaModel)
         m = m or dict()
         if m.get('ComparisonOperator') is not None:
             self.comparison_operator = m.get('ComparisonOperator')
+        if m.get('PreCondition') is not None:
+            self.pre_condition = m.get('PreCondition')
         if m.get('Statistics') is not None:
             self.statistics = m.get('Statistics')
         if m.get('Threshold') is not None:
@@ -1117,11 +1353,13 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo(TeaModel):
     def __init__(
         self,
         comparison_operator: str = None,
+        pre_condition: str = None,
         statistics: str = None,
         threshold: str = None,
         times: int = None,
     ):
         self.comparison_operator = comparison_operator
+        self.pre_condition = pre_condition
         self.statistics = statistics
         self.threshold = threshold
         self.times = times
@@ -1137,6 +1375,8 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo(TeaModel):
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
+        if self.pre_condition is not None:
+            result['PreCondition'] = self.pre_condition
         if self.statistics is not None:
             result['Statistics'] = self.statistics
         if self.threshold is not None:
@@ -1149,6 +1389,8 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo(TeaModel):
         m = m or dict()
         if m.get('ComparisonOperator') is not None:
             self.comparison_operator = m.get('ComparisonOperator')
+        if m.get('PreCondition') is not None:
+            self.pre_condition = m.get('PreCondition')
         if m.get('Statistics') is not None:
             self.statistics = m.get('Statistics')
         if m.get('Threshold') is not None:
@@ -1162,11 +1404,13 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn(TeaModel):
     def __init__(
         self,
         comparison_operator: str = None,
+        pre_condition: str = None,
         statistics: str = None,
         threshold: str = None,
         times: int = None,
     ):
         self.comparison_operator = comparison_operator
+        self.pre_condition = pre_condition
         self.statistics = statistics
         self.threshold = threshold
         self.times = times
@@ -1182,6 +1426,8 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn(TeaModel):
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
+        if self.pre_condition is not None:
+            result['PreCondition'] = self.pre_condition
         if self.statistics is not None:
             result['Statistics'] = self.statistics
         if self.threshold is not None:
@@ -1194,6 +1440,8 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn(TeaModel):
         m = m or dict()
         if m.get('ComparisonOperator') is not None:
             self.comparison_operator = m.get('ComparisonOperator')
+        if m.get('PreCondition') is not None:
+            self.pre_condition = m.get('PreCondition')
         if m.get('Statistics') is not None:
             self.statistics = m.get('Statistics')
         if m.get('Threshold') is not None:
@@ -1253,15 +1501,50 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalations(TeaModel):
         return self
 
 
+class CreateGroupMetricRulesRequestGroupMetricRulesLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateGroupMetricRulesRequestGroupMetricRules(TeaModel):
     def __init__(
         self,
         escalations: CreateGroupMetricRulesRequestGroupMetricRulesEscalations = None,
         category: str = None,
+        contact_groups: str = None,
         dimensions: str = None,
         effective_interval: str = None,
         email_subject: str = None,
         interval: str = None,
+        labels: List[CreateGroupMetricRulesRequestGroupMetricRulesLabels] = None,
         metric_name: str = None,
         namespace: str = None,
         no_data_policy: str = None,
@@ -1274,10 +1557,12 @@ class CreateGroupMetricRulesRequestGroupMetricRules(TeaModel):
     ):
         self.escalations = escalations
         self.category = category
+        self.contact_groups = contact_groups
         self.dimensions = dimensions
         self.effective_interval = effective_interval
         self.email_subject = email_subject
         self.interval = interval
+        self.labels = labels
         self.metric_name = metric_name
         self.namespace = namespace
         self.no_data_policy = no_data_policy
@@ -1292,6 +1577,10 @@ class CreateGroupMetricRulesRequestGroupMetricRules(TeaModel):
         self.validate_required(self.escalations, 'escalations')
         if self.escalations:
             self.escalations.validate()
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1303,6 +1592,8 @@ class CreateGroupMetricRulesRequestGroupMetricRules(TeaModel):
             result['Escalations'] = self.escalations.to_map()
         if self.category is not None:
             result['Category'] = self.category
+        if self.contact_groups is not None:
+            result['ContactGroups'] = self.contact_groups
         if self.dimensions is not None:
             result['Dimensions'] = self.dimensions
         if self.effective_interval is not None:
@@ -1311,6 +1602,10 @@ class CreateGroupMetricRulesRequestGroupMetricRules(TeaModel):
             result['EmailSubject'] = self.email_subject
         if self.interval is not None:
             result['Interval'] = self.interval
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
         if self.namespace is not None:
@@ -1338,6 +1633,8 @@ class CreateGroupMetricRulesRequestGroupMetricRules(TeaModel):
             self.escalations = temp_model.from_map(m['Escalations'])
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('ContactGroups') is not None:
+            self.contact_groups = m.get('ContactGroups')
         if m.get('Dimensions') is not None:
             self.dimensions = m.get('Dimensions')
         if m.get('EffectiveInterval') is not None:
@@ -1346,6 +1643,11 @@ class CreateGroupMetricRulesRequestGroupMetricRules(TeaModel):
             self.email_subject = m.get('EmailSubject')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = CreateGroupMetricRulesRequestGroupMetricRulesLabels()
+                self.labels.append(temp_model.from_map(k))
         if m.get('MetricName') is not None:
             self.metric_name = m.get('MetricName')
         if m.get('Namespace') is not None:
@@ -1557,13 +1859,16 @@ class CreateGroupMetricRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateGroupMetricRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1576,6 +1881,8 @@ class CreateGroupMetricRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1584,6 +1891,8 @@ class CreateGroupMetricRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateGroupMetricRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1827,13 +2136,16 @@ class CreateGroupMonitoringAgentProcessResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateGroupMonitoringAgentProcessResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1846,6 +2158,8 @@ class CreateGroupMonitoringAgentProcessResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1854,6 +2168,8 @@ class CreateGroupMonitoringAgentProcessResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateGroupMonitoringAgentProcessResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2181,13 +2497,16 @@ class CreateHostAvailabilityResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateHostAvailabilityResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2200,6 +2519,8 @@ class CreateHostAvailabilityResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2208,8 +2529,834 @@ class CreateHostAvailabilityResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateHostAvailabilityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateHybridMonitorNamespaceRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        namespace: str = None,
+        region_id: str = None,
+        spec: str = None,
+    ):
+        self.description = description
+        self.namespace = namespace
+        self.region_id = region_id
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        return self
+
+
+class CreateHybridMonitorNamespaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateHybridMonitorNamespaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateHybridMonitorNamespaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateHybridMonitorNamespaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateHybridMonitorSLSGroupRequestSLSGroupConfig(TeaModel):
+    def __init__(
+        self,
+        slslogstore: str = None,
+        slsproject: str = None,
+        slsregion: str = None,
+        slsuser_id: str = None,
+    ):
+        self.slslogstore = slslogstore
+        self.slsproject = slsproject
+        self.slsregion = slsregion
+        self.slsuser_id = slsuser_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.slslogstore is not None:
+            result['SLSLogstore'] = self.slslogstore
+        if self.slsproject is not None:
+            result['SLSProject'] = self.slsproject
+        if self.slsregion is not None:
+            result['SLSRegion'] = self.slsregion
+        if self.slsuser_id is not None:
+            result['SLSUserId'] = self.slsuser_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SLSLogstore') is not None:
+            self.slslogstore = m.get('SLSLogstore')
+        if m.get('SLSProject') is not None:
+            self.slsproject = m.get('SLSProject')
+        if m.get('SLSRegion') is not None:
+            self.slsregion = m.get('SLSRegion')
+        if m.get('SLSUserId') is not None:
+            self.slsuser_id = m.get('SLSUserId')
+        return self
+
+
+class CreateHybridMonitorSLSGroupRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        slsgroup_config: List[CreateHybridMonitorSLSGroupRequestSLSGroupConfig] = None,
+        slsgroup_description: str = None,
+        slsgroup_name: str = None,
+    ):
+        self.region_id = region_id
+        self.slsgroup_config = slsgroup_config
+        self.slsgroup_description = slsgroup_description
+        self.slsgroup_name = slsgroup_name
+
+    def validate(self):
+        if self.slsgroup_config:
+            for k in self.slsgroup_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['SLSGroupConfig'] = []
+        if self.slsgroup_config is not None:
+            for k in self.slsgroup_config:
+                result['SLSGroupConfig'].append(k.to_map() if k else None)
+        if self.slsgroup_description is not None:
+            result['SLSGroupDescription'] = self.slsgroup_description
+        if self.slsgroup_name is not None:
+            result['SLSGroupName'] = self.slsgroup_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.slsgroup_config = []
+        if m.get('SLSGroupConfig') is not None:
+            for k in m.get('SLSGroupConfig'):
+                temp_model = CreateHybridMonitorSLSGroupRequestSLSGroupConfig()
+                self.slsgroup_config.append(temp_model.from_map(k))
+        if m.get('SLSGroupDescription') is not None:
+            self.slsgroup_description = m.get('SLSGroupDescription')
+        if m.get('SLSGroupName') is not None:
+            self.slsgroup_name = m.get('SLSGroupName')
+        return self
+
+
+class CreateHybridMonitorSLSGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateHybridMonitorSLSGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateHybridMonitorSLSGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateHybridMonitorSLSGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateHybridMonitorTaskRequestAttachLabels(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateHybridMonitorTaskRequestSLSProcessConfigExpress(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        express: str = None,
+    ):
+        self.alias = alias
+        self.express = express
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.express is not None:
+            result['Express'] = self.express
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('Express') is not None:
+            self.express = m.get('Express')
+        return self
+
+
+class CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        slskey_name: str = None,
+        value: str = None,
+    ):
+        self.operator = operator
+        self.slskey_name = slskey_name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.slskey_name is not None:
+            result['SLSKeyName'] = self.slskey_name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('SLSKeyName') is not None:
+            self.slskey_name = m.get('SLSKeyName')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateHybridMonitorTaskRequestSLSProcessConfigFilter(TeaModel):
+    def __init__(
+        self,
+        filters: List[CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters] = None,
+        relation: str = None,
+    ):
+        self.filters = filters
+        self.relation = relation
+
+    def validate(self):
+        if self.filters:
+            for k in self.filters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Filters'] = []
+        if self.filters is not None:
+            for k in self.filters:
+                result['Filters'].append(k.to_map() if k else None)
+        if self.relation is not None:
+            result['Relation'] = self.relation
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.filters = []
+        if m.get('Filters') is not None:
+            for k in m.get('Filters'):
+                temp_model = CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters()
+                self.filters.append(temp_model.from_map(k))
+        if m.get('Relation') is not None:
+            self.relation = m.get('Relation')
+        return self
+
+
+class CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        slskey_name: str = None,
+    ):
+        self.alias = alias
+        self.slskey_name = slskey_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.slskey_name is not None:
+            result['SLSKeyName'] = self.slskey_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('SLSKeyName') is not None:
+            self.slskey_name = m.get('SLSKeyName')
+        return self
+
+
+class CreateHybridMonitorTaskRequestSLSProcessConfigStatistics(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        function: str = None,
+        parameter_1: str = None,
+        parameter_2: str = None,
+        slskey_name: str = None,
+    ):
+        self.alias = alias
+        self.function = function
+        self.parameter_1 = parameter_1
+        self.parameter_2 = parameter_2
+        self.slskey_name = slskey_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.function is not None:
+            result['Function'] = self.function
+        if self.parameter_1 is not None:
+            result['Parameter1'] = self.parameter_1
+        if self.parameter_2 is not None:
+            result['Parameter2'] = self.parameter_2
+        if self.slskey_name is not None:
+            result['SLSKeyName'] = self.slskey_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('Function') is not None:
+            self.function = m.get('Function')
+        if m.get('Parameter1') is not None:
+            self.parameter_1 = m.get('Parameter1')
+        if m.get('Parameter2') is not None:
+            self.parameter_2 = m.get('Parameter2')
+        if m.get('SLSKeyName') is not None:
+            self.slskey_name = m.get('SLSKeyName')
+        return self
+
+
+class CreateHybridMonitorTaskRequestSLSProcessConfig(TeaModel):
+    def __init__(
+        self,
+        express: List[CreateHybridMonitorTaskRequestSLSProcessConfigExpress] = None,
+        filter: CreateHybridMonitorTaskRequestSLSProcessConfigFilter = None,
+        group_by: List[CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy] = None,
+        statistics: List[CreateHybridMonitorTaskRequestSLSProcessConfigStatistics] = None,
+    ):
+        self.express = express
+        self.filter = filter
+        self.group_by = group_by
+        self.statistics = statistics
+
+    def validate(self):
+        if self.express:
+            for k in self.express:
+                if k:
+                    k.validate()
+        if self.filter:
+            self.filter.validate()
+        if self.group_by:
+            for k in self.group_by:
+                if k:
+                    k.validate()
+        if self.statistics:
+            for k in self.statistics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Express'] = []
+        if self.express is not None:
+            for k in self.express:
+                result['Express'].append(k.to_map() if k else None)
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        result['GroupBy'] = []
+        if self.group_by is not None:
+            for k in self.group_by:
+                result['GroupBy'].append(k.to_map() if k else None)
+        result['Statistics'] = []
+        if self.statistics is not None:
+            for k in self.statistics:
+                result['Statistics'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.express = []
+        if m.get('Express') is not None:
+            for k in m.get('Express'):
+                temp_model = CreateHybridMonitorTaskRequestSLSProcessConfigExpress()
+                self.express.append(temp_model.from_map(k))
+        if m.get('Filter') is not None:
+            temp_model = CreateHybridMonitorTaskRequestSLSProcessConfigFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        self.group_by = []
+        if m.get('GroupBy') is not None:
+            for k in m.get('GroupBy'):
+                temp_model = CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy()
+                self.group_by.append(temp_model.from_map(k))
+        self.statistics = []
+        if m.get('Statistics') is not None:
+            for k in m.get('Statistics'):
+                temp_model = CreateHybridMonitorTaskRequestSLSProcessConfigStatistics()
+                self.statistics.append(temp_model.from_map(k))
+        return self
+
+
+class CreateHybridMonitorTaskRequest(TeaModel):
+    def __init__(
+        self,
+        attach_labels: List[CreateHybridMonitorTaskRequestAttachLabels] = None,
+        collect_interval: str = None,
+        collect_target_type: str = None,
+        description: str = None,
+        group_id: str = None,
+        namespace: str = None,
+        region_id: str = None,
+        slsprocess_config: CreateHybridMonitorTaskRequestSLSProcessConfig = None,
+        target_user_id: str = None,
+        target_user_id_list: str = None,
+        task_name: str = None,
+        task_type: str = None,
+        yarmconfig: str = None,
+    ):
+        self.attach_labels = attach_labels
+        self.collect_interval = collect_interval
+        self.collect_target_type = collect_target_type
+        self.description = description
+        self.group_id = group_id
+        self.namespace = namespace
+        self.region_id = region_id
+        self.slsprocess_config = slsprocess_config
+        self.target_user_id = target_user_id
+        self.target_user_id_list = target_user_id_list
+        self.task_name = task_name
+        self.task_type = task_type
+        self.yarmconfig = yarmconfig
+
+    def validate(self):
+        if self.attach_labels:
+            for k in self.attach_labels:
+                if k:
+                    k.validate()
+        if self.slsprocess_config:
+            self.slsprocess_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AttachLabels'] = []
+        if self.attach_labels is not None:
+            for k in self.attach_labels:
+                result['AttachLabels'].append(k.to_map() if k else None)
+        if self.collect_interval is not None:
+            result['CollectInterval'] = self.collect_interval
+        if self.collect_target_type is not None:
+            result['CollectTargetType'] = self.collect_target_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.slsprocess_config is not None:
+            result['SLSProcessConfig'] = self.slsprocess_config.to_map()
+        if self.target_user_id is not None:
+            result['TargetUserId'] = self.target_user_id
+        if self.target_user_id_list is not None:
+            result['TargetUserIdList'] = self.target_user_id_list
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.yarmconfig is not None:
+            result['YARMConfig'] = self.yarmconfig
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attach_labels = []
+        if m.get('AttachLabels') is not None:
+            for k in m.get('AttachLabels'):
+                temp_model = CreateHybridMonitorTaskRequestAttachLabels()
+                self.attach_labels.append(temp_model.from_map(k))
+        if m.get('CollectInterval') is not None:
+            self.collect_interval = m.get('CollectInterval')
+        if m.get('CollectTargetType') is not None:
+            self.collect_target_type = m.get('CollectTargetType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SLSProcessConfig') is not None:
+            temp_model = CreateHybridMonitorTaskRequestSLSProcessConfig()
+            self.slsprocess_config = temp_model.from_map(m['SLSProcessConfig'])
+        if m.get('TargetUserId') is not None:
+            self.target_user_id = m.get('TargetUserId')
+        if m.get('TargetUserIdList') is not None:
+            self.target_user_id_list = m.get('TargetUserIdList')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('YARMConfig') is not None:
+            self.yarmconfig = m.get('YARMConfig')
+        return self
+
+
+class CreateHybridMonitorTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateHybridMonitorTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateHybridMonitorTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateHybridMonitorTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2373,13 +3520,16 @@ class CreateInstantSiteMonitorResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateInstantSiteMonitorResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2392,6 +3542,8 @@ class CreateInstantSiteMonitorResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2400,6 +3552,8 @@ class CreateInstantSiteMonitorResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateInstantSiteMonitorResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2494,13 +3648,16 @@ class CreateMetricRuleResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateMetricRuleResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2513,6 +3670,8 @@ class CreateMetricRuleResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2521,6 +3680,8 @@ class CreateMetricRuleResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMetricRuleResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2892,13 +4053,16 @@ class CreateMetricRuleTemplateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateMetricRuleTemplateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2911,6 +4075,8 @@ class CreateMetricRuleTemplateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2919,6 +4085,8 @@ class CreateMetricRuleTemplateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMetricRuleTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3025,13 +4193,16 @@ class CreateMonitorAgentProcessResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateMonitorAgentProcessResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3044,6 +4215,8 @@ class CreateMonitorAgentProcessResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3052,6 +4225,8 @@ class CreateMonitorAgentProcessResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMonitorAgentProcessResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3152,13 +4327,16 @@ class CreateMonitorGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateMonitorGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3171,6 +4349,8 @@ class CreateMonitorGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3179,6 +4359,8 @@ class CreateMonitorGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMonitorGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3297,13 +4479,16 @@ class CreateMonitorGroupByResourceGroupIdResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateMonitorGroupByResourceGroupIdResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3316,6 +4501,8 @@ class CreateMonitorGroupByResourceGroupIdResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3324,6 +4511,8 @@ class CreateMonitorGroupByResourceGroupIdResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMonitorGroupByResourceGroupIdResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3471,13 +4660,16 @@ class CreateMonitorGroupInstancesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateMonitorGroupInstancesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3490,6 +4682,8 @@ class CreateMonitorGroupInstancesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3498,6 +4692,8 @@ class CreateMonitorGroupInstancesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMonitorGroupInstancesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3610,13 +4806,16 @@ class CreateMonitorGroupNotifyPolicyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateMonitorGroupNotifyPolicyResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3629,6 +4828,8 @@ class CreateMonitorGroupNotifyPolicyResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3637,6 +4838,8 @@ class CreateMonitorGroupNotifyPolicyResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMonitorGroupNotifyPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3743,13 +4946,16 @@ class CreateMonitoringAgentProcessResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateMonitoringAgentProcessResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3762,6 +4968,8 @@ class CreateMonitoringAgentProcessResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3770,6 +4978,8 @@ class CreateMonitoringAgentProcessResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMonitoringAgentProcessResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4094,13 +5304,16 @@ class CreateSiteMonitorResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateSiteMonitorResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4113,6 +5326,8 @@ class CreateSiteMonitorResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4121,6 +5336,8 @@ class CreateSiteMonitorResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSiteMonitorResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4203,13 +5420,16 @@ class DeleteContactResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteContactResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4222,6 +5442,8 @@ class DeleteContactResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4230,6 +5452,8 @@ class DeleteContactResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteContactResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4312,13 +5536,16 @@ class DeleteContactGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteContactGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4331,6 +5558,8 @@ class DeleteContactGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4339,6 +5568,8 @@ class DeleteContactGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteContactGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4439,13 +5670,16 @@ class DeleteCustomMetricResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteCustomMetricResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4458,6 +5692,8 @@ class DeleteCustomMetricResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4466,6 +5702,8 @@ class DeleteCustomMetricResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteCustomMetricResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4554,13 +5792,16 @@ class DeleteDynamicTagGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteDynamicTagGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4573,6 +5814,8 @@ class DeleteDynamicTagGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4581,6 +5824,8 @@ class DeleteDynamicTagGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDynamicTagGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4675,13 +5920,16 @@ class DeleteEventRuleTargetsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteEventRuleTargetsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4694,6 +5942,8 @@ class DeleteEventRuleTargetsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4702,6 +5952,8 @@ class DeleteEventRuleTargetsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteEventRuleTargetsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4784,13 +6036,16 @@ class DeleteEventRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteEventRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4803,6 +6058,8 @@ class DeleteEventRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4811,6 +6068,8 @@ class DeleteEventRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteEventRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4899,13 +6158,16 @@ class DeleteExporterOutputResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteExporterOutputResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4918,6 +6180,8 @@ class DeleteExporterOutputResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4926,6 +6190,8 @@ class DeleteExporterOutputResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteExporterOutputResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5014,13 +6280,16 @@ class DeleteExporterRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteExporterRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5033,6 +6302,8 @@ class DeleteExporterRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5041,6 +6312,8 @@ class DeleteExporterRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteExporterRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5135,13 +6408,16 @@ class DeleteGroupMonitoringAgentProcessResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteGroupMonitoringAgentProcessResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5154,6 +6430,8 @@ class DeleteGroupMonitoringAgentProcessResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5162,6 +6440,8 @@ class DeleteGroupMonitoringAgentProcessResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteGroupMonitoringAgentProcessResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5250,13 +6530,16 @@ class DeleteHostAvailabilityResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteHostAvailabilityResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5269,6 +6552,8 @@ class DeleteHostAvailabilityResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5277,8 +6562,388 @@ class DeleteHostAvailabilityResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteHostAvailabilityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteHybridMonitorNamespaceRequest(TeaModel):
+    def __init__(
+        self,
+        namespace: str = None,
+        region_id: str = None,
+    ):
+        self.namespace = namespace
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteHybridMonitorNamespaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteHybridMonitorNamespaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHybridMonitorNamespaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHybridMonitorNamespaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteHybridMonitorSLSGroupRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        slsgroup_name: str = None,
+    ):
+        self.region_id = region_id
+        self.slsgroup_name = slsgroup_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.slsgroup_name is not None:
+            result['SLSGroupName'] = self.slsgroup_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SLSGroupName') is not None:
+            self.slsgroup_name = m.get('SLSGroupName')
+        return self
+
+
+class DeleteHybridMonitorSLSGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteHybridMonitorSLSGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHybridMonitorSLSGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHybridMonitorSLSGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteHybridMonitorTaskRequest(TeaModel):
+    def __init__(
+        self,
+        namespace: str = None,
+        region_id: str = None,
+        target_user_id: str = None,
+        task_id: str = None,
+    ):
+        self.namespace = namespace
+        self.region_id = region_id
+        self.target_user_id = target_user_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.target_user_id is not None:
+            result['TargetUserId'] = self.target_user_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TargetUserId') is not None:
+            self.target_user_id = m.get('TargetUserId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class DeleteHybridMonitorTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteHybridMonitorTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHybridMonitorTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHybridMonitorTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5365,13 +7030,16 @@ class DeleteLogMonitorResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteLogMonitorResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5384,6 +7052,8 @@ class DeleteLogMonitorResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5392,6 +7062,8 @@ class DeleteLogMonitorResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteLogMonitorResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5480,13 +7152,16 @@ class DeleteMetricRuleResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteMetricRuleResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5499,6 +7174,8 @@ class DeleteMetricRuleResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5507,6 +7184,8 @@ class DeleteMetricRuleResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteMetricRuleResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5665,13 +7344,16 @@ class DeleteMetricRuleTargetsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteMetricRuleTargetsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5684,6 +7366,8 @@ class DeleteMetricRuleTargetsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5692,6 +7376,8 @@ class DeleteMetricRuleTargetsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteMetricRuleTargetsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5815,13 +7501,16 @@ class DeleteMetricRuleTemplateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteMetricRuleTemplateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5834,6 +7523,8 @@ class DeleteMetricRuleTemplateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5842,6 +7533,8 @@ class DeleteMetricRuleTemplateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteMetricRuleTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5930,13 +7623,16 @@ class DeleteMetricRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteMetricRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5949,6 +7645,8 @@ class DeleteMetricRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5957,6 +7655,8 @@ class DeleteMetricRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteMetricRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6150,13 +7850,16 @@ class DeleteMonitorGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteMonitorGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6169,6 +7872,8 @@ class DeleteMonitorGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6177,6 +7882,8 @@ class DeleteMonitorGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteMonitorGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6271,13 +7978,16 @@ class DeleteMonitorGroupDynamicRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteMonitorGroupDynamicRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6290,6 +8000,8 @@ class DeleteMonitorGroupDynamicRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6298,6 +8010,8 @@ class DeleteMonitorGroupDynamicRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteMonitorGroupDynamicRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6398,13 +8112,16 @@ class DeleteMonitorGroupInstancesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteMonitorGroupInstancesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6417,6 +8134,8 @@ class DeleteMonitorGroupInstancesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6425,6 +8144,8 @@ class DeleteMonitorGroupInstancesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteMonitorGroupInstancesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6525,13 +8246,16 @@ class DeleteMonitorGroupNotifyPolicyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteMonitorGroupNotifyPolicyResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6544,6 +8268,8 @@ class DeleteMonitorGroupNotifyPolicyResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6552,6 +8278,8 @@ class DeleteMonitorGroupNotifyPolicyResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteMonitorGroupNotifyPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6652,13 +8380,16 @@ class DeleteMonitoringAgentProcessResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteMonitoringAgentProcessResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6671,6 +8402,8 @@ class DeleteMonitoringAgentProcessResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6679,6 +8412,8 @@ class DeleteMonitoringAgentProcessResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteMonitoringAgentProcessResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6808,13 +8543,16 @@ class DeleteSiteMonitorsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteSiteMonitorsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6827,6 +8565,8 @@ class DeleteSiteMonitorsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6835,6 +8575,8 @@ class DeleteSiteMonitorsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSiteMonitorsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7422,13 +9164,16 @@ class DescribeActiveMetricRuleListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeActiveMetricRuleListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7441,6 +9186,8 @@ class DescribeActiveMetricRuleListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7449,6 +9196,8 @@ class DescribeActiveMetricRuleListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeActiveMetricRuleListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7948,13 +9697,16 @@ class DescribeAlertHistoryListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeAlertHistoryListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7967,6 +9719,8 @@ class DescribeAlertHistoryListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7975,6 +9729,8 @@ class DescribeAlertHistoryListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAlertHistoryListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8235,13 +9991,16 @@ class DescribeAlertLogCountResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeAlertLogCountResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8254,6 +10013,8 @@ class DescribeAlertLogCountResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8262,6 +10023,8 @@ class DescribeAlertLogCountResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAlertLogCountResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8487,13 +10250,16 @@ class DescribeAlertLogHistogramResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeAlertLogHistogramResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8506,6 +10272,8 @@ class DescribeAlertLogHistogramResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8514,6 +10282,8 @@ class DescribeAlertLogHistogramResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAlertLogHistogramResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9276,13 +11046,16 @@ class DescribeAlertLogListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeAlertLogListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9295,6 +11068,8 @@ class DescribeAlertLogListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9303,6 +11078,8 @@ class DescribeAlertLogListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAlertLogListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9372,24 +11149,20 @@ class DescribeAlertingMetricRuleResourcesRequest(TeaModel):
         return self
 
 
-class DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResource(TeaModel):
+class DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResourceExpressionListExpressionList(TeaModel):
     def __init__(
         self,
         comparison_operator: str = None,
-        expression: str = None,
-        level: int = None,
-        pre_condition: str = None,
-        tag: str = None,
+        metric_name: str = None,
+        period: str = None,
+        statistics: str = None,
         threshold: str = None,
-        times: int = None,
     ):
         self.comparison_operator = comparison_operator
-        self.expression = expression
-        self.level = level
-        self.pre_condition = pre_condition
-        self.tag = tag
+        self.metric_name = metric_name
+        self.period = period
+        self.statistics = statistics
         self.threshold = threshold
-        self.times = times
 
     def validate(self):
         pass
@@ -9402,8 +11175,107 @@ class DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalation
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.statistics is not None:
+            result['Statistics'] = self.statistics
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComparisonOperator') is not None:
+            self.comparison_operator = m.get('ComparisonOperator')
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('Statistics') is not None:
+            self.statistics = m.get('Statistics')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResourceExpressionList(TeaModel):
+    def __init__(
+        self,
+        expression_list: List[DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResourceExpressionListExpressionList] = None,
+    ):
+        self.expression_list = expression_list
+
+    def validate(self):
+        if self.expression_list:
+            for k in self.expression_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ExpressionList'] = []
+        if self.expression_list is not None:
+            for k in self.expression_list:
+                result['ExpressionList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.expression_list = []
+        if m.get('ExpressionList') is not None:
+            for k in m.get('ExpressionList'):
+                temp_model = DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResourceExpressionListExpressionList()
+                self.expression_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResource(TeaModel):
+    def __init__(
+        self,
+        comparison_operator: str = None,
+        expression: str = None,
+        expression_list: DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResourceExpressionList = None,
+        expression_list_join: str = None,
+        level: int = None,
+        pre_condition: str = None,
+        tag: str = None,
+        threshold: str = None,
+        times: int = None,
+    ):
+        self.comparison_operator = comparison_operator
+        self.expression = expression
+        self.expression_list = expression_list
+        self.expression_list_join = expression_list_join
+        self.level = level
+        self.pre_condition = pre_condition
+        self.tag = tag
+        self.threshold = threshold
+        self.times = times
+
+    def validate(self):
+        if self.expression_list:
+            self.expression_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comparison_operator is not None:
+            result['ComparisonOperator'] = self.comparison_operator
         if self.expression is not None:
             result['Expression'] = self.expression
+        if self.expression_list is not None:
+            result['ExpressionList'] = self.expression_list.to_map()
+        if self.expression_list_join is not None:
+            result['ExpressionListJoin'] = self.expression_list_join
         if self.level is not None:
             result['Level'] = self.level
         if self.pre_condition is not None:
@@ -9422,6 +11294,11 @@ class DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalation
             self.comparison_operator = m.get('ComparisonOperator')
         if m.get('Expression') is not None:
             self.expression = m.get('Expression')
+        if m.get('ExpressionList') is not None:
+            temp_model = DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResourceExpressionList()
+            self.expression_list = temp_model.from_map(m['ExpressionList'])
+        if m.get('ExpressionListJoin') is not None:
+            self.expression_list_join = m.get('ExpressionListJoin')
         if m.get('Level') is not None:
             self.level = m.get('Level')
         if m.get('PreCondition') is not None:
@@ -9699,13 +11576,16 @@ class DescribeAlertingMetricRuleResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeAlertingMetricRuleResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9718,6 +11598,8 @@ class DescribeAlertingMetricRuleResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9726,6 +11608,8 @@ class DescribeAlertingMetricRuleResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAlertingMetricRuleResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9997,13 +11881,16 @@ class DescribeContactGroupListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeContactGroupListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10016,6 +11903,8 @@ class DescribeContactGroupListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10024,6 +11913,8 @@ class DescribeContactGroupListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeContactGroupListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10379,13 +12270,16 @@ class DescribeContactListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeContactListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10398,6 +12292,8 @@ class DescribeContactListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10406,6 +12302,8 @@ class DescribeContactListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeContactListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10635,13 +12533,16 @@ class DescribeContactListByContactGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeContactListByContactGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10654,6 +12555,8 @@ class DescribeContactListByContactGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10662,6 +12565,8 @@ class DescribeContactListByContactGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeContactListByContactGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10886,13 +12791,16 @@ class DescribeCustomEventAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeCustomEventAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10905,6 +12813,8 @@ class DescribeCustomEventAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10913,6 +12823,8 @@ class DescribeCustomEventAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCustomEventAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11113,13 +13025,16 @@ class DescribeCustomEventCountResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeCustomEventCountResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11132,6 +13047,8 @@ class DescribeCustomEventCountResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11140,6 +13057,8 @@ class DescribeCustomEventCountResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCustomEventCountResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11346,13 +13265,16 @@ class DescribeCustomEventHistogramResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeCustomEventHistogramResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11365,6 +13287,8 @@ class DescribeCustomEventHistogramResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11373,6 +13297,8 @@ class DescribeCustomEventHistogramResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCustomEventHistogramResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11491,13 +13417,16 @@ class DescribeCustomMetricListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeCustomMetricListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11510,6 +13439,8 @@ class DescribeCustomMetricListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11518,6 +13449,8 @@ class DescribeCustomMetricListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCustomMetricListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11884,13 +13817,16 @@ class DescribeDynamicTagRuleListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDynamicTagRuleListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11903,6 +13839,8 @@ class DescribeDynamicTagRuleListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11911,6 +13849,8 @@ class DescribeDynamicTagRuleListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDynamicTagRuleListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11922,9 +13862,11 @@ class DescribeEventRuleAttributeRequest(TeaModel):
         self,
         region_id: str = None,
         rule_name: str = None,
+        silence_time: str = None,
     ):
         self.region_id = region_id
         self.rule_name = rule_name
+        self.silence_time = silence_time
 
     def validate(self):
         pass
@@ -11939,6 +13881,8 @@ class DescribeEventRuleAttributeRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.silence_time is not None:
+            result['SilenceTime'] = self.silence_time
         return result
 
     def from_map(self, m: dict = None):
@@ -11947,6 +13891,8 @@ class DescribeEventRuleAttributeRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('SilenceTime') is not None:
+            self.silence_time = m.get('SilenceTime')
         return self
 
 
@@ -12200,13 +14146,16 @@ class DescribeEventRuleAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeEventRuleAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12219,6 +14168,8 @@ class DescribeEventRuleAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12227,6 +14178,8 @@ class DescribeEventRuleAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeEventRuleAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -12436,6 +14389,7 @@ class DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatte
         level_list: DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternLevelList = None,
         name_list: DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternNameList = None,
         product: str = None,
+        sqlfilter: str = None,
     ):
         self.custom_filters = custom_filters
         self.event_type_list = event_type_list
@@ -12443,6 +14397,7 @@ class DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatte
         self.level_list = level_list
         self.name_list = name_list
         self.product = product
+        self.sqlfilter = sqlfilter
 
     def validate(self):
         if self.event_type_list:
@@ -12472,6 +14427,8 @@ class DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatte
             result['NameList'] = self.name_list.to_map()
         if self.product is not None:
             result['Product'] = self.product
+        if self.sqlfilter is not None:
+            result['SQLFilter'] = self.sqlfilter
         return result
 
     def from_map(self, m: dict = None):
@@ -12492,6 +14449,8 @@ class DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatte
             self.name_list = temp_model.from_map(m['NameList'])
         if m.get('Product') is not None:
             self.product = m.get('Product')
+        if m.get('SQLFilter') is not None:
+            self.sqlfilter = m.get('SQLFilter')
         return self
 
 
@@ -12693,13 +14652,16 @@ class DescribeEventRuleListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeEventRuleListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12712,6 +14674,8 @@ class DescribeEventRuleListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12720,6 +14684,8 @@ class DescribeEventRuleListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeEventRuleListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -12926,11 +14892,13 @@ class DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter(TeaModel)
         id: str = None,
         queue: str = None,
         region: str = None,
+        topic: str = None,
     ):
         self.arn = arn
         self.id = id
         self.queue = queue
         self.region = region
+        self.topic = topic
 
     def validate(self):
         pass
@@ -12949,6 +14917,8 @@ class DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter(TeaModel)
             result['Queue'] = self.queue
         if self.region is not None:
             result['Region'] = self.region
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
@@ -12961,6 +14931,8 @@ class DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter(TeaModel)
             self.queue = m.get('Queue')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
@@ -13359,13 +15331,16 @@ class DescribeEventRuleTargetListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeEventRuleTargetListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -13378,6 +15353,8 @@ class DescribeEventRuleTargetListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -13386,6 +15363,8 @@ class DescribeEventRuleTargetListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeEventRuleTargetListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -13627,13 +15606,16 @@ class DescribeExporterOutputListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeExporterOutputListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -13646,6 +15628,8 @@ class DescribeExporterOutputListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -13654,6 +15638,8 @@ class DescribeExporterOutputListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeExporterOutputListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -13907,13 +15893,16 @@ class DescribeExporterRuleListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeExporterRuleListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -13926,6 +15915,8 @@ class DescribeExporterRuleListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -13934,6 +15925,8 @@ class DescribeExporterRuleListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeExporterRuleListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -14347,13 +16340,16 @@ class DescribeGroupMonitoringAgentProcessResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeGroupMonitoringAgentProcessResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -14366,6 +16362,8 @@ class DescribeGroupMonitoringAgentProcessResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -14374,6 +16372,8 @@ class DescribeGroupMonitoringAgentProcessResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeGroupMonitoringAgentProcessResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -14871,13 +16871,16 @@ class DescribeHostAvailabilityListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeHostAvailabilityListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -14890,6 +16893,8 @@ class DescribeHostAvailabilityListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -14898,8 +16903,1442 @@ class DescribeHostAvailabilityListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeHostAvailabilityListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHybridMonitorDataListRequest(TeaModel):
+    def __init__(
+        self,
+        end: int = None,
+        namespace: str = None,
+        period: str = None,
+        prom_sql: str = None,
+        region_id: str = None,
+        start: int = None,
+    ):
+        self.end = end
+        self.namespace = namespace
+        self.period = period
+        self.prom_sql = prom_sql
+        self.region_id = region_id
+        self.start = start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['End'] = self.end
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.prom_sql is not None:
+            result['PromSQL'] = self.prom_sql
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start is not None:
+            result['Start'] = self.start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PromSQL') is not None:
+            self.prom_sql = m.get('PromSQL')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        return self
+
+
+class DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels(TeaModel):
+    def __init__(
+        self,
+        k: str = None,
+        v: str = None,
+    ):
+        self.k = k
+        self.v = v
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.k is not None:
+            result['K'] = self.k
+        if self.v is not None:
+            result['V'] = self.v
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('K') is not None:
+            self.k = m.get('K')
+        if m.get('V') is not None:
+            self.v = m.get('V')
+        return self
+
+
+class DescribeHybridMonitorDataListResponseBodyTimeSeriesValues(TeaModel):
+    def __init__(
+        self,
+        ts: str = None,
+        v: str = None,
+    ):
+        self.ts = ts
+        self.v = v
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ts is not None:
+            result['Ts'] = self.ts
+        if self.v is not None:
+            result['V'] = self.v
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ts') is not None:
+            self.ts = m.get('Ts')
+        if m.get('V') is not None:
+            self.v = m.get('V')
+        return self
+
+
+class DescribeHybridMonitorDataListResponseBodyTimeSeries(TeaModel):
+    def __init__(
+        self,
+        labels: List[DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels] = None,
+        metric_name: str = None,
+        values: List[DescribeHybridMonitorDataListResponseBodyTimeSeriesValues] = None,
+    ):
+        self.labels = labels
+        self.metric_name = metric_name
+        self.values = values
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+        if self.values:
+            for k in self.values:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        result['Values'] = []
+        if self.values is not None:
+            for k in self.values:
+                result['Values'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        self.values = []
+        if m.get('Values') is not None:
+            for k in m.get('Values'):
+                temp_model = DescribeHybridMonitorDataListResponseBodyTimeSeriesValues()
+                self.values.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeHybridMonitorDataListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+        time_series: List[DescribeHybridMonitorDataListResponseBodyTimeSeries] = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time_series = time_series
+
+    def validate(self):
+        if self.time_series:
+            for k in self.time_series:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        result['TimeSeries'] = []
+        if self.time_series is not None:
+            for k in self.time_series:
+                result['TimeSeries'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        self.time_series = []
+        if m.get('TimeSeries') is not None:
+            for k in m.get('TimeSeries'):
+                temp_model = DescribeHybridMonitorDataListResponseBodyTimeSeries()
+                self.time_series.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeHybridMonitorDataListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHybridMonitorDataListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHybridMonitorDataListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHybridMonitorNamespaceListRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        namespace: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        show_task_statistic: bool = None,
+    ):
+        self.keyword = keyword
+        self.namespace = namespace
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.show_task_statistic = show_task_statistic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.show_task_statistic is not None:
+            result['ShowTaskStatistic'] = self.show_task_statistic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ShowTaskStatistic') is not None:
+            self.show_task_statistic = m.get('ShowTaskStatistic')
+        return self
+
+
+class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList(TeaModel):
+    def __init__(
+        self,
+        list: List[str] = None,
+        period: int = None,
+    ):
+        self.list = list
+        self.period = period
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.list is not None:
+            result['List'] = self.list
+        if self.period is not None:
+            result['Period'] = self.period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('List') is not None:
+            self.list = m.get('List')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        return self
+
+
+class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList(TeaModel):
+    def __init__(
+        self,
+        metric_list: List[DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList] = None,
+        namespace: str = None,
+    ):
+        self.metric_list = metric_list
+        self.namespace = namespace
+
+    def validate(self):
+        if self.metric_list:
+            for k in self.metric_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MetricList'] = []
+        if self.metric_list is not None:
+            for k in self.metric_list:
+                result['MetricList'].append(k.to_map() if k else None)
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.metric_list = []
+        if m.get('MetricList') is not None:
+            for k in m.get('MetricList'):
+                temp_model = DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList()
+                self.metric_list.append(temp_model.from_map(k))
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        return self
+
+
+class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList(TeaModel):
+    def __init__(
+        self,
+        namespace_list: List[DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList] = None,
+        user_id: int = None,
+        yamlconfig: str = None,
+    ):
+        self.namespace_list = namespace_list
+        self.user_id = user_id
+        self.yamlconfig = yamlconfig
+
+    def validate(self):
+        if self.namespace_list:
+            for k in self.namespace_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NamespaceList'] = []
+        if self.namespace_list is not None:
+            for k in self.namespace_list:
+                result['NamespaceList'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.yamlconfig is not None:
+            result['YAMLConfig'] = self.yamlconfig
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.namespace_list = []
+        if m.get('NamespaceList') is not None:
+            for k in m.get('NamespaceList'):
+                temp_model = DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList()
+                self.namespace_list.append(temp_model.from_map(k))
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('YAMLConfig') is not None:
+            self.yamlconfig = m.get('YAMLConfig')
+        return self
+
+
+class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail(TeaModel):
+    def __init__(
+        self,
+        spec: str = None,
+    ):
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        return self
+
+
+class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace(TeaModel):
+    def __init__(
+        self,
+        aliyun_product_metric_list: List[DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList] = None,
+        create_time: str = None,
+        description: str = None,
+        detail: DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail = None,
+        id: str = None,
+        is_delete: int = None,
+        modify_time: str = None,
+        namespace: str = None,
+        not_aliyun_task_number: int = None,
+    ):
+        self.aliyun_product_metric_list = aliyun_product_metric_list
+        self.create_time = create_time
+        self.description = description
+        self.detail = detail
+        self.id = id
+        self.is_delete = is_delete
+        self.modify_time = modify_time
+        self.namespace = namespace
+        self.not_aliyun_task_number = not_aliyun_task_number
+
+    def validate(self):
+        if self.aliyun_product_metric_list:
+            for k in self.aliyun_product_metric_list:
+                if k:
+                    k.validate()
+        if self.detail:
+            self.detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AliyunProductMetricList'] = []
+        if self.aliyun_product_metric_list is not None:
+            for k in self.aliyun_product_metric_list:
+                result['AliyunProductMetricList'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.detail is not None:
+            result['Detail'] = self.detail.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.is_delete is not None:
+            result['IsDelete'] = self.is_delete
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.not_aliyun_task_number is not None:
+            result['NotAliyunTaskNumber'] = self.not_aliyun_task_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.aliyun_product_metric_list = []
+        if m.get('AliyunProductMetricList') is not None:
+            for k in m.get('AliyunProductMetricList'):
+                temp_model = DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList()
+                self.aliyun_product_metric_list.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Detail') is not None:
+            temp_model = DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail()
+            self.detail = temp_model.from_map(m['Detail'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IsDelete') is not None:
+            self.is_delete = m.get('IsDelete')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NotAliyunTaskNumber') is not None:
+            self.not_aliyun_task_number = m.get('NotAliyunTaskNumber')
+        return self
+
+
+class DescribeHybridMonitorNamespaceListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        describe_hybrid_monitor_namespace: List[DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace] = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: str = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.describe_hybrid_monitor_namespace = describe_hybrid_monitor_namespace
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.describe_hybrid_monitor_namespace:
+            for k in self.describe_hybrid_monitor_namespace:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['DescribeHybridMonitorNamespace'] = []
+        if self.describe_hybrid_monitor_namespace is not None:
+            for k in self.describe_hybrid_monitor_namespace:
+                result['DescribeHybridMonitorNamespace'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.describe_hybrid_monitor_namespace = []
+        if m.get('DescribeHybridMonitorNamespace') is not None:
+            for k in m.get('DescribeHybridMonitorNamespace'):
+                temp_model = DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace()
+                self.describe_hybrid_monitor_namespace.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribeHybridMonitorNamespaceListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHybridMonitorNamespaceListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHybridMonitorNamespaceListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHybridMonitorSLSGroupRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        region_id: str = None,
+        slsgroup_name: str = None,
+    ):
+        self.keyword = keyword
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.slsgroup_name = slsgroup_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.slsgroup_name is not None:
+            result['SLSGroupName'] = self.slsgroup_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SLSGroupName') is not None:
+            self.slsgroup_name = m.get('SLSGroupName')
+        return self
+
+
+class DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig(TeaModel):
+    def __init__(
+        self,
+        slslogstore: str = None,
+        slsproject: str = None,
+        slsregion: str = None,
+        slsuser_id: str = None,
+    ):
+        self.slslogstore = slslogstore
+        self.slsproject = slsproject
+        self.slsregion = slsregion
+        self.slsuser_id = slsuser_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.slslogstore is not None:
+            result['SLSLogstore'] = self.slslogstore
+        if self.slsproject is not None:
+            result['SLSProject'] = self.slsproject
+        if self.slsregion is not None:
+            result['SLSRegion'] = self.slsregion
+        if self.slsuser_id is not None:
+            result['SLSUserId'] = self.slsuser_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SLSLogstore') is not None:
+            self.slslogstore = m.get('SLSLogstore')
+        if m.get('SLSProject') is not None:
+            self.slsproject = m.get('SLSProject')
+        if m.get('SLSRegion') is not None:
+            self.slsregion = m.get('SLSRegion')
+        if m.get('SLSUserId') is not None:
+            self.slsuser_id = m.get('SLSUserId')
+        return self
+
+
+class DescribeHybridMonitorSLSGroupResponseBodyList(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        slsgroup_config: List[DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig] = None,
+        slsgroup_description: str = None,
+        slsgroup_name: int = None,
+        update_time: str = None,
+    ):
+        self.create_time = create_time
+        self.slsgroup_config = slsgroup_config
+        self.slsgroup_description = slsgroup_description
+        self.slsgroup_name = slsgroup_name
+        self.update_time = update_time
+
+    def validate(self):
+        if self.slsgroup_config:
+            for k in self.slsgroup_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['SLSGroupConfig'] = []
+        if self.slsgroup_config is not None:
+            for k in self.slsgroup_config:
+                result['SLSGroupConfig'].append(k.to_map() if k else None)
+        if self.slsgroup_description is not None:
+            result['SLSGroupDescription'] = self.slsgroup_description
+        if self.slsgroup_name is not None:
+            result['SLSGroupName'] = self.slsgroup_name
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.slsgroup_config = []
+        if m.get('SLSGroupConfig') is not None:
+            for k in m.get('SLSGroupConfig'):
+                temp_model = DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig()
+                self.slsgroup_config.append(temp_model.from_map(k))
+        if m.get('SLSGroupDescription') is not None:
+            self.slsgroup_description = m.get('SLSGroupDescription')
+        if m.get('SLSGroupName') is not None:
+            self.slsgroup_name = m.get('SLSGroupName')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class DescribeHybridMonitorSLSGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        list: List[DescribeHybridMonitorSLSGroupResponseBodyList] = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: str = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.list = list
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = DescribeHybridMonitorSLSGroupResponseBodyList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribeHybridMonitorSLSGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHybridMonitorSLSGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHybridMonitorSLSGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHybridMonitorTaskListRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        include_aliyun_task: bool = None,
+        keyword: str = None,
+        namespace: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        task_id: str = None,
+        task_type: str = None,
+    ):
+        self.group_id = group_id
+        self.include_aliyun_task = include_aliyun_task
+        self.keyword = keyword
+        self.namespace = namespace
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.task_id = task_id
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.include_aliyun_task is not None:
+            result['IncludeAliyunTask'] = self.include_aliyun_task
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('IncludeAliyunTask') is not None:
+            self.include_aliyun_task = m.get('IncludeAliyunTask')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress(TeaModel):
+    def __init__(
+        self,
+        function: str = None,
+        name: str = None,
+        value: str = None,
+    ):
+        self.function = function
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.function is not None:
+            result['Function'] = self.function
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Function') is not None:
+            self.function = m.get('Function')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeHybridMonitorTaskListResponseBodyTaskList(TeaModel):
+    def __init__(
+        self,
+        attach_labels: List[DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels] = None,
+        collect_interval: int = None,
+        collect_target_endpoint: str = None,
+        collect_target_path: str = None,
+        collect_target_type: str = None,
+        collect_timout: int = None,
+        create_time: str = None,
+        description: str = None,
+        extra_info: str = None,
+        group_id: str = None,
+        instances: List[str] = None,
+        log_file_path: str = None,
+        log_process: str = None,
+        log_sample: str = None,
+        log_split: str = None,
+        match_express: List[DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress] = None,
+        match_express_relation: str = None,
+        namespace: str = None,
+        network_type: str = None,
+        slsprocess: str = None,
+        target_user_id: str = None,
+        task_id: str = None,
+        task_name: str = None,
+        task_type: str = None,
+        upload_region: str = None,
+        yarmconfig: str = None,
+    ):
+        self.attach_labels = attach_labels
+        self.collect_interval = collect_interval
+        self.collect_target_endpoint = collect_target_endpoint
+        self.collect_target_path = collect_target_path
+        self.collect_target_type = collect_target_type
+        self.collect_timout = collect_timout
+        self.create_time = create_time
+        self.description = description
+        self.extra_info = extra_info
+        self.group_id = group_id
+        self.instances = instances
+        self.log_file_path = log_file_path
+        self.log_process = log_process
+        self.log_sample = log_sample
+        self.log_split = log_split
+        self.match_express = match_express
+        self.match_express_relation = match_express_relation
+        self.namespace = namespace
+        self.network_type = network_type
+        self.slsprocess = slsprocess
+        self.target_user_id = target_user_id
+        self.task_id = task_id
+        self.task_name = task_name
+        self.task_type = task_type
+        self.upload_region = upload_region
+        self.yarmconfig = yarmconfig
+
+    def validate(self):
+        if self.attach_labels:
+            for k in self.attach_labels:
+                if k:
+                    k.validate()
+        if self.match_express:
+            for k in self.match_express:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AttachLabels'] = []
+        if self.attach_labels is not None:
+            for k in self.attach_labels:
+                result['AttachLabels'].append(k.to_map() if k else None)
+        if self.collect_interval is not None:
+            result['CollectInterval'] = self.collect_interval
+        if self.collect_target_endpoint is not None:
+            result['CollectTargetEndpoint'] = self.collect_target_endpoint
+        if self.collect_target_path is not None:
+            result['CollectTargetPath'] = self.collect_target_path
+        if self.collect_target_type is not None:
+            result['CollectTargetType'] = self.collect_target_type
+        if self.collect_timout is not None:
+            result['CollectTimout'] = self.collect_timout
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.instances is not None:
+            result['Instances'] = self.instances
+        if self.log_file_path is not None:
+            result['LogFilePath'] = self.log_file_path
+        if self.log_process is not None:
+            result['LogProcess'] = self.log_process
+        if self.log_sample is not None:
+            result['LogSample'] = self.log_sample
+        if self.log_split is not None:
+            result['LogSplit'] = self.log_split
+        result['MatchExpress'] = []
+        if self.match_express is not None:
+            for k in self.match_express:
+                result['MatchExpress'].append(k.to_map() if k else None)
+        if self.match_express_relation is not None:
+            result['MatchExpressRelation'] = self.match_express_relation
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.slsprocess is not None:
+            result['SLSProcess'] = self.slsprocess
+        if self.target_user_id is not None:
+            result['TargetUserId'] = self.target_user_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.upload_region is not None:
+            result['UploadRegion'] = self.upload_region
+        if self.yarmconfig is not None:
+            result['YARMConfig'] = self.yarmconfig
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attach_labels = []
+        if m.get('AttachLabels') is not None:
+            for k in m.get('AttachLabels'):
+                temp_model = DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels()
+                self.attach_labels.append(temp_model.from_map(k))
+        if m.get('CollectInterval') is not None:
+            self.collect_interval = m.get('CollectInterval')
+        if m.get('CollectTargetEndpoint') is not None:
+            self.collect_target_endpoint = m.get('CollectTargetEndpoint')
+        if m.get('CollectTargetPath') is not None:
+            self.collect_target_path = m.get('CollectTargetPath')
+        if m.get('CollectTargetType') is not None:
+            self.collect_target_type = m.get('CollectTargetType')
+        if m.get('CollectTimout') is not None:
+            self.collect_timout = m.get('CollectTimout')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExtraInfo') is not None:
+            self.extra_info = m.get('ExtraInfo')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Instances') is not None:
+            self.instances = m.get('Instances')
+        if m.get('LogFilePath') is not None:
+            self.log_file_path = m.get('LogFilePath')
+        if m.get('LogProcess') is not None:
+            self.log_process = m.get('LogProcess')
+        if m.get('LogSample') is not None:
+            self.log_sample = m.get('LogSample')
+        if m.get('LogSplit') is not None:
+            self.log_split = m.get('LogSplit')
+        self.match_express = []
+        if m.get('MatchExpress') is not None:
+            for k in m.get('MatchExpress'):
+                temp_model = DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress()
+                self.match_express.append(temp_model.from_map(k))
+        if m.get('MatchExpressRelation') is not None:
+            self.match_express_relation = m.get('MatchExpressRelation')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('SLSProcess') is not None:
+            self.slsprocess = m.get('SLSProcess')
+        if m.get('TargetUserId') is not None:
+            self.target_user_id = m.get('TargetUserId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('UploadRegion') is not None:
+            self.upload_region = m.get('UploadRegion')
+        if m.get('YARMConfig') is not None:
+            self.yarmconfig = m.get('YARMConfig')
+        return self
+
+
+class DescribeHybridMonitorTaskListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: str = None,
+        task_list: List[DescribeHybridMonitorTaskListResponseBodyTaskList] = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.task_list = task_list
+        self.total = total
+
+    def validate(self):
+        if self.task_list:
+            for k in self.task_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        result['TaskList'] = []
+        if self.task_list is not None:
+            for k in self.task_list:
+                result['TaskList'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        self.task_list = []
+        if m.get('TaskList') is not None:
+            for k in m.get('TaskList'):
+                temp_model = DescribeHybridMonitorTaskListResponseBodyTaskList()
+                self.task_list.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribeHybridMonitorTaskListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHybridMonitorTaskListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHybridMonitorTaskListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15200,13 +18639,16 @@ class DescribeLogMonitorAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeLogMonitorAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -15219,6 +18661,8 @@ class DescribeLogMonitorAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -15227,6 +18671,8 @@ class DescribeLogMonitorAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeLogMonitorAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -15487,13 +18933,16 @@ class DescribeLogMonitorListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeLogMonitorListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -15506,6 +18955,8 @@ class DescribeLogMonitorListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -15514,6 +18965,8 @@ class DescribeLogMonitorListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeLogMonitorListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -15650,13 +19103,16 @@ class DescribeMetricDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMetricDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -15669,6 +19125,8 @@ class DescribeMetricDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -15677,6 +19135,8 @@ class DescribeMetricDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMetricDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -15831,13 +19291,16 @@ class DescribeMetricLastResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMetricLastResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -15850,6 +19313,8 @@ class DescribeMetricLastResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -15858,6 +19323,8 @@ class DescribeMetricLastResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMetricLastResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -16012,13 +19479,16 @@ class DescribeMetricListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMetricListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -16031,6 +19501,8 @@ class DescribeMetricListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -16039,6 +19511,8 @@ class DescribeMetricListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMetricListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -16269,13 +19743,16 @@ class DescribeMetricMetaListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMetricMetaListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -16288,6 +19765,8 @@ class DescribeMetricMetaListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -16296,6 +19775,8 @@ class DescribeMetricMetaListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMetricMetaListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -16449,13 +19930,16 @@ class DescribeMetricRuleCountResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMetricRuleCountResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -16468,6 +19952,8 @@ class DescribeMetricRuleCountResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -16476,6 +19962,8 @@ class DescribeMetricRuleCountResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMetricRuleCountResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -16566,6 +20054,145 @@ class DescribeMetricRuleListRequest(TeaModel):
             self.rule_ids = m.get('RuleIds')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        return self
+
+
+class DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList(TeaModel):
+    def __init__(
+        self,
+        comparison_operator: str = None,
+        metric_name: str = None,
+        period: int = None,
+        statistics: str = None,
+        threshold: str = None,
+    ):
+        self.comparison_operator = comparison_operator
+        self.metric_name = metric_name
+        self.period = period
+        self.statistics = statistics
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comparison_operator is not None:
+            result['ComparisonOperator'] = self.comparison_operator
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.statistics is not None:
+            result['Statistics'] = self.statistics
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComparisonOperator') is not None:
+            self.comparison_operator = m.get('ComparisonOperator')
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('Statistics') is not None:
+            self.statistics = m.get('Statistics')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionList(TeaModel):
+    def __init__(
+        self,
+        expression_list: List[DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList] = None,
+    ):
+        self.expression_list = expression_list
+
+    def validate(self):
+        if self.expression_list:
+            for k in self.expression_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ExpressionList'] = []
+        if self.expression_list is not None:
+            for k in self.expression_list:
+                result['ExpressionList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.expression_list = []
+        if m.get('ExpressionList') is not None:
+            for k in m.get('ExpressionList'):
+                temp_model = DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList()
+                self.expression_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression(TeaModel):
+    def __init__(
+        self,
+        expression_list: DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionList = None,
+        expression_list_join: str = None,
+        expression_raw: str = None,
+        level: str = None,
+        times: int = None,
+    ):
+        self.expression_list = expression_list
+        self.expression_list_join = expression_list_join
+        self.expression_raw = expression_raw
+        self.level = level
+        self.times = times
+
+    def validate(self):
+        if self.expression_list:
+            self.expression_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expression_list is not None:
+            result['ExpressionList'] = self.expression_list.to_map()
+        if self.expression_list_join is not None:
+            result['ExpressionListJoin'] = self.expression_list_join
+        if self.expression_raw is not None:
+            result['ExpressionRaw'] = self.expression_raw
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.times is not None:
+            result['Times'] = self.times
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpressionList') is not None:
+            temp_model = DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionList()
+            self.expression_list = temp_model.from_map(m['ExpressionList'])
+        if m.get('ExpressionListJoin') is not None:
+            self.expression_list_join = m.get('ExpressionListJoin')
+        if m.get('ExpressionRaw') is not None:
+            self.expression_raw = m.get('ExpressionRaw')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Times') is not None:
+            self.times = m.get('Times')
         return self
 
 
@@ -16837,10 +20464,126 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarmLabels(TeaModel):
         return self
 
 
+class DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotationsAnnotations(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotations(TeaModel):
+    def __init__(
+        self,
+        annotations: List[DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotationsAnnotations] = None,
+    ):
+        self.annotations = annotations
+
+    def validate(self):
+        if self.annotations:
+            for k in self.annotations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Annotations'] = []
+        if self.annotations is not None:
+            for k in self.annotations:
+                result['Annotations'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.annotations = []
+        if m.get('Annotations') is not None:
+            for k in m.get('Annotations'):
+                temp_model = DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotationsAnnotations()
+                self.annotations.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus(TeaModel):
+    def __init__(
+        self,
+        annotations: DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotations = None,
+        level: str = None,
+        prom_ql: str = None,
+        times: int = None,
+    ):
+        self.annotations = annotations
+        self.level = level
+        self.prom_ql = prom_ql
+        self.times = times
+
+    def validate(self):
+        if self.annotations:
+            self.annotations.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotations is not None:
+            result['Annotations'] = self.annotations.to_map()
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.prom_ql is not None:
+            result['PromQL'] = self.prom_ql
+        if self.times is not None:
+            result['Times'] = self.times
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Annotations') is not None:
+            temp_model = DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotations()
+            self.annotations = temp_model.from_map(m['Annotations'])
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('PromQL') is not None:
+            self.prom_ql = m.get('PromQL')
+        if m.get('Times') is not None:
+            self.times = m.get('Times')
+        return self
+
+
 class DescribeMetricRuleListResponseBodyAlarmsAlarm(TeaModel):
     def __init__(
         self,
         alert_state: str = None,
+        composite_expression: DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression = None,
         contact_groups: str = None,
         dimensions: str = None,
         effective_interval: str = None,
@@ -16855,6 +20598,7 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarm(TeaModel):
         no_data_policy: str = None,
         no_effective_interval: str = None,
         period: str = None,
+        prometheus: DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus = None,
         resources: str = None,
         rule_id: str = None,
         rule_name: str = None,
@@ -16863,6 +20607,7 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarm(TeaModel):
         webhook: str = None,
     ):
         self.alert_state = alert_state
+        self.composite_expression = composite_expression
         self.contact_groups = contact_groups
         self.dimensions = dimensions
         self.effective_interval = effective_interval
@@ -16877,6 +20622,7 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarm(TeaModel):
         self.no_data_policy = no_data_policy
         self.no_effective_interval = no_effective_interval
         self.period = period
+        self.prometheus = prometheus
         self.resources = resources
         self.rule_id = rule_id
         self.rule_name = rule_name
@@ -16885,10 +20631,14 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarm(TeaModel):
         self.webhook = webhook
 
     def validate(self):
+        if self.composite_expression:
+            self.composite_expression.validate()
         if self.escalations:
             self.escalations.validate()
         if self.labels:
             self.labels.validate()
+        if self.prometheus:
+            self.prometheus.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -16898,6 +20648,8 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarm(TeaModel):
         result = dict()
         if self.alert_state is not None:
             result['AlertState'] = self.alert_state
+        if self.composite_expression is not None:
+            result['CompositeExpression'] = self.composite_expression.to_map()
         if self.contact_groups is not None:
             result['ContactGroups'] = self.contact_groups
         if self.dimensions is not None:
@@ -16926,6 +20678,8 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarm(TeaModel):
             result['NoEffectiveInterval'] = self.no_effective_interval
         if self.period is not None:
             result['Period'] = self.period
+        if self.prometheus is not None:
+            result['Prometheus'] = self.prometheus.to_map()
         if self.resources is not None:
             result['Resources'] = self.resources
         if self.rule_id is not None:
@@ -16944,6 +20698,9 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarm(TeaModel):
         m = m or dict()
         if m.get('AlertState') is not None:
             self.alert_state = m.get('AlertState')
+        if m.get('CompositeExpression') is not None:
+            temp_model = DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression()
+            self.composite_expression = temp_model.from_map(m['CompositeExpression'])
         if m.get('ContactGroups') is not None:
             self.contact_groups = m.get('ContactGroups')
         if m.get('Dimensions') is not None:
@@ -16974,6 +20731,9 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarm(TeaModel):
             self.no_effective_interval = m.get('NoEffectiveInterval')
         if m.get('Period') is not None:
             self.period = m.get('Period')
+        if m.get('Prometheus') is not None:
+            temp_model = DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus()
+            self.prometheus = temp_model.from_map(m['Prometheus'])
         if m.get('Resources') is not None:
             self.resources = m.get('Resources')
         if m.get('RuleId') is not None:
@@ -17087,13 +20847,16 @@ class DescribeMetricRuleListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMetricRuleListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -17106,6 +20869,8 @@ class DescribeMetricRuleListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -17114,6 +20879,8 @@ class DescribeMetricRuleListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMetricRuleListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -17158,10 +20925,12 @@ class DescribeMetricRuleTargetsResponseBodyTargetsTarget(TeaModel):
         self,
         arn: str = None,
         id: str = None,
+        json_params: str = None,
         level: str = None,
     ):
         self.arn = arn
         self.id = id
+        self.json_params = json_params
         self.level = level
 
     def validate(self):
@@ -17177,6 +20946,8 @@ class DescribeMetricRuleTargetsResponseBodyTargetsTarget(TeaModel):
             result['Arn'] = self.arn
         if self.id is not None:
             result['Id'] = self.id
+        if self.json_params is not None:
+            result['JsonParams'] = self.json_params
         if self.level is not None:
             result['Level'] = self.level
         return result
@@ -17187,6 +20958,8 @@ class DescribeMetricRuleTargetsResponseBodyTargetsTarget(TeaModel):
             self.arn = m.get('Arn')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('JsonParams') is not None:
+            self.json_params = m.get('JsonParams')
         if m.get('Level') is not None:
             self.level = m.get('Level')
         return self
@@ -17284,13 +21057,16 @@ class DescribeMetricRuleTargetsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMetricRuleTargetsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -17303,6 +21079,8 @@ class DescribeMetricRuleTargetsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -17311,6 +21089,8 @@ class DescribeMetricRuleTargetsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMetricRuleTargetsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -17754,13 +21534,16 @@ class DescribeMetricRuleTemplateAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMetricRuleTemplateAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -17773,6 +21556,8 @@ class DescribeMetricRuleTemplateAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -17781,6 +21566,8 @@ class DescribeMetricRuleTemplateAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMetricRuleTemplateAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -17793,6 +21580,8 @@ class DescribeMetricRuleTemplateListRequest(TeaModel):
         history: bool = None,
         keyword: str = None,
         name: str = None,
+        order: bool = None,
+        order_by: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
@@ -17801,6 +21590,8 @@ class DescribeMetricRuleTemplateListRequest(TeaModel):
         self.history = history
         self.keyword = keyword
         self.name = name
+        self.order = order
+        self.order_by = order_by
         self.page_number = page_number
         self.page_size = page_size
         self.region_id = region_id
@@ -17821,6 +21612,10 @@ class DescribeMetricRuleTemplateListRequest(TeaModel):
             result['Keyword'] = self.keyword
         if self.name is not None:
             result['Name'] = self.name
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -17839,6 +21634,10 @@ class DescribeMetricRuleTemplateListRequest(TeaModel):
             self.keyword = m.get('Keyword')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -18087,13 +21886,16 @@ class DescribeMetricRuleTemplateListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMetricRuleTemplateListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -18106,6 +21908,8 @@ class DescribeMetricRuleTemplateListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -18114,6 +21918,8 @@ class DescribeMetricRuleTemplateListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMetricRuleTemplateListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -18262,13 +22068,16 @@ class DescribeMetricTopResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMetricTopResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -18281,6 +22090,8 @@ class DescribeMetricTopResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -18289,6 +22100,8 @@ class DescribeMetricTopResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMetricTopResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -18488,13 +22301,16 @@ class DescribeMonitorGroupCategoriesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMonitorGroupCategoriesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -18507,6 +22323,8 @@ class DescribeMonitorGroupCategoriesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -18515,6 +22333,8 @@ class DescribeMonitorGroupCategoriesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMonitorGroupCategoriesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -18761,13 +22581,16 @@ class DescribeMonitorGroupDynamicRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMonitorGroupDynamicRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -18780,6 +22603,8 @@ class DescribeMonitorGroupDynamicRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -18788,6 +22613,8 @@ class DescribeMonitorGroupDynamicRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMonitorGroupDynamicRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -19190,13 +23017,16 @@ class DescribeMonitorGroupInstanceAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMonitorGroupInstanceAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -19209,6 +23039,8 @@ class DescribeMonitorGroupInstanceAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -19217,6 +23049,8 @@ class DescribeMonitorGroupInstanceAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMonitorGroupInstanceAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -19447,13 +23281,16 @@ class DescribeMonitorGroupInstancesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMonitorGroupInstancesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -19466,6 +23303,8 @@ class DescribeMonitorGroupInstancesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -19474,6 +23313,8 @@ class DescribeMonitorGroupInstancesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMonitorGroupInstancesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -19680,13 +23521,16 @@ class DescribeMonitorGroupNotifyPolicyListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMonitorGroupNotifyPolicyListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -19699,6 +23543,8 @@ class DescribeMonitorGroupNotifyPolicyListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -19707,6 +23553,8 @@ class DescribeMonitorGroupNotifyPolicyListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMonitorGroupNotifyPolicyListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -20233,13 +24081,16 @@ class DescribeMonitorGroupsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMonitorGroupsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -20252,6 +24103,8 @@ class DescribeMonitorGroupsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -20260,6 +24113,8 @@ class DescribeMonitorGroupsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMonitorGroupsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -20862,13 +24717,16 @@ class DescribeMonitorResourceQuotaAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMonitorResourceQuotaAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -20881,6 +24739,8 @@ class DescribeMonitorResourceQuotaAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -20889,6 +24749,8 @@ class DescribeMonitorResourceQuotaAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMonitorResourceQuotaAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -20983,13 +24845,16 @@ class DescribeMonitoringAgentAccessKeyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMonitoringAgentAccessKeyResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -21002,6 +24867,8 @@ class DescribeMonitoringAgentAccessKeyResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -21010,6 +24877,8 @@ class DescribeMonitoringAgentAccessKeyResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMonitoringAgentAccessKeyResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -21110,13 +24979,16 @@ class DescribeMonitoringAgentConfigResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMonitoringAgentConfigResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -21129,6 +25001,8 @@ class DescribeMonitoringAgentConfigResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -21137,6 +25011,8 @@ class DescribeMonitoringAgentConfigResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMonitoringAgentConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -21445,13 +25321,16 @@ class DescribeMonitoringAgentHostsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMonitoringAgentHostsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -21464,6 +25343,8 @@ class DescribeMonitoringAgentHostsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -21472,6 +25353,8 @@ class DescribeMonitoringAgentHostsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMonitoringAgentHostsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -21660,13 +25543,16 @@ class DescribeMonitoringAgentProcessesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMonitoringAgentProcessesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -21679,6 +25565,8 @@ class DescribeMonitoringAgentProcessesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -21687,6 +25575,8 @@ class DescribeMonitoringAgentProcessesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMonitoringAgentProcessesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -21857,13 +25747,16 @@ class DescribeMonitoringAgentStatusesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMonitoringAgentStatusesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -21876,6 +25769,8 @@ class DescribeMonitoringAgentStatusesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -21884,6 +25779,8 @@ class DescribeMonitoringAgentStatusesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMonitoringAgentStatusesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -21978,13 +25875,16 @@ class DescribeMonitoringConfigResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeMonitoringConfigResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -21997,6 +25897,8 @@ class DescribeMonitoringConfigResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -22005,6 +25907,8 @@ class DescribeMonitoringConfigResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMonitoringConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -22134,13 +26038,16 @@ class DescribeProductResourceTagKeyListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeProductResourceTagKeyListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -22153,6 +26060,8 @@ class DescribeProductResourceTagKeyListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -22161,6 +26070,8 @@ class DescribeProductResourceTagKeyListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeProductResourceTagKeyListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -22419,13 +26330,16 @@ class DescribeProductsOfActiveMetricRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeProductsOfActiveMetricRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -22438,6 +26352,8 @@ class DescribeProductsOfActiveMetricRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -22446,6 +26362,8 @@ class DescribeProductsOfActiveMetricRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeProductsOfActiveMetricRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -22640,13 +26558,16 @@ class DescribeProjectMetaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeProjectMetaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -22659,6 +26580,8 @@ class DescribeProjectMetaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -22667,171 +26590,10 @@ class DescribeProjectMetaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeProjectMetaResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeSiteInstantMonitorLogRequest(TeaModel):
-    def __init__(
-        self,
-        end_time: str = None,
-        filter: str = None,
-        length: int = None,
-        metric_name: str = None,
-        next_token: str = None,
-        region_id: str = None,
-        start_time: str = None,
-        task_ids: str = None,
-    ):
-        self.end_time = end_time
-        self.filter = filter
-        self.length = length
-        self.metric_name = metric_name
-        self.next_token = next_token
-        self.region_id = region_id
-        self.start_time = start_time
-        self.task_ids = task_ids
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.filter is not None:
-            result['Filter'] = self.filter
-        if self.length is not None:
-            result['Length'] = self.length
-        if self.metric_name is not None:
-            result['MetricName'] = self.metric_name
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.task_ids is not None:
-            result['TaskIds'] = self.task_ids
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('Filter') is not None:
-            self.filter = m.get('Filter')
-        if m.get('Length') is not None:
-            self.length = m.get('Length')
-        if m.get('MetricName') is not None:
-            self.metric_name = m.get('MetricName')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('TaskIds') is not None:
-            self.task_ids = m.get('TaskIds')
-        return self
-
-
-class DescribeSiteInstantMonitorLogResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        next_token: str = None,
-        request_id: str = None,
-        success: str = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.next_token = next_token
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class DescribeSiteInstantMonitorLogResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeSiteInstantMonitorLogResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeSiteInstantMonitorLogResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23120,6 +26882,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         failure_rate: float = None,
         header: str = None,
         http_method: str = None,
+        is_base_64encode: str = None,
         match_rule: int = None,
         password: str = None,
         ping_num: int = None,
@@ -23142,6 +26905,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         self.failure_rate = failure_rate
         self.header = header
         self.http_method = http_method
+        self.is_base_64encode = is_base_64encode
         self.match_rule = match_rule
         self.password = password
         self.ping_num = ping_num
@@ -23183,6 +26947,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             result['header'] = self.header
         if self.http_method is not None:
             result['http_method'] = self.http_method
+        if self.is_base_64encode is not None:
+            result['isBase64Encode'] = self.is_base_64encode
         if self.match_rule is not None:
             result['match_rule'] = self.match_rule
         if self.password is not None:
@@ -23229,6 +26995,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             self.header = m.get('header')
         if m.get('http_method') is not None:
             self.http_method = m.get('http_method')
+        if m.get('isBase64Encode') is not None:
+            self.is_base_64encode = m.get('isBase64Encode')
         if m.get('match_rule') is not None:
             self.match_rule = m.get('match_rule')
         if m.get('password') is not None:
@@ -23394,13 +27162,16 @@ class DescribeSiteMonitorAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSiteMonitorAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -23413,6 +27184,8 @@ class DescribeSiteMonitorAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -23421,6 +27194,8 @@ class DescribeSiteMonitorAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSiteMonitorAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -23563,13 +27338,16 @@ class DescribeSiteMonitorDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSiteMonitorDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -23582,6 +27360,8 @@ class DescribeSiteMonitorDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -23590,8 +27370,345 @@ class DescribeSiteMonitorDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSiteMonitorDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSiteMonitorISPCityListRequest(TeaModel):
+    def __init__(
+        self,
+        city: str = None,
+        ipv4: bool = None,
+        ipv6: bool = None,
+        isp: str = None,
+        region_id: str = None,
+    ):
+        self.city = city
+        self.ipv4 = ipv4
+        self.ipv6 = ipv6
+        self.isp = isp
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city is not None:
+            result['City'] = self.city
+        if self.ipv4 is not None:
+            result['IPV4'] = self.ipv4
+        if self.ipv6 is not None:
+            result['IPV6'] = self.ipv6
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('IPV4') is not None:
+            self.ipv4 = m.get('IPV4')
+        if m.get('IPV6') is not None:
+            self.ipv6 = m.get('IPV6')
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCityIPPool(TeaModel):
+    def __init__(
+        self,
+        ippool: List[str] = None,
+    ):
+        self.ippool = ippool
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ippool is not None:
+            result['IPPool'] = self.ippool
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IPPool') is not None:
+            self.ippool = m.get('IPPool')
+        return self
+
+
+class DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCity(TeaModel):
+    def __init__(
+        self,
+        area_en: str = None,
+        area_zh_c_n: str = None,
+        city: str = None,
+        city_name_en: str = None,
+        city_name_zh_c_n: str = None,
+        country: str = None,
+        country_en: str = None,
+        country_zh_c_n: str = None,
+        ippool: DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCityIPPool = None,
+        ipv4probe_count: str = None,
+        ipv6probe_count: str = None,
+        isp: str = None,
+        isp_name_en: str = None,
+        isp_name_zh_c_n: str = None,
+        region: str = None,
+        region_en: str = None,
+        region_zh_c_n: str = None,
+    ):
+        self.area_en = area_en
+        self.area_zh_c_n = area_zh_c_n
+        self.city = city
+        self.city_name_en = city_name_en
+        self.city_name_zh_c_n = city_name_zh_c_n
+        self.country = country
+        self.country_en = country_en
+        self.country_zh_c_n = country_zh_c_n
+        self.ippool = ippool
+        self.ipv4probe_count = ipv4probe_count
+        self.ipv6probe_count = ipv6probe_count
+        self.isp = isp
+        self.isp_name_en = isp_name_en
+        self.isp_name_zh_c_n = isp_name_zh_c_n
+        self.region = region
+        self.region_en = region_en
+        self.region_zh_c_n = region_zh_c_n
+
+    def validate(self):
+        if self.ippool:
+            self.ippool.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.area_en is not None:
+            result['Area.en'] = self.area_en
+        if self.area_zh_c_n is not None:
+            result['Area.zh_CN'] = self.area_zh_c_n
+        if self.city is not None:
+            result['City'] = self.city
+        if self.city_name_en is not None:
+            result['CityName.en'] = self.city_name_en
+        if self.city_name_zh_c_n is not None:
+            result['CityName.zh_CN'] = self.city_name_zh_c_n
+        if self.country is not None:
+            result['Country'] = self.country
+        if self.country_en is not None:
+            result['Country.en'] = self.country_en
+        if self.country_zh_c_n is not None:
+            result['Country.zh_CN'] = self.country_zh_c_n
+        if self.ippool is not None:
+            result['IPPool'] = self.ippool.to_map()
+        if self.ipv4probe_count is not None:
+            result['IPV4ProbeCount'] = self.ipv4probe_count
+        if self.ipv6probe_count is not None:
+            result['IPV6ProbeCount'] = self.ipv6probe_count
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        if self.isp_name_en is not None:
+            result['IspName.en'] = self.isp_name_en
+        if self.isp_name_zh_c_n is not None:
+            result['IspName.zh_CN'] = self.isp_name_zh_c_n
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_en is not None:
+            result['Region.en'] = self.region_en
+        if self.region_zh_c_n is not None:
+            result['Region.zh_CN'] = self.region_zh_c_n
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Area.en') is not None:
+            self.area_en = m.get('Area.en')
+        if m.get('Area.zh_CN') is not None:
+            self.area_zh_c_n = m.get('Area.zh_CN')
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('CityName.en') is not None:
+            self.city_name_en = m.get('CityName.en')
+        if m.get('CityName.zh_CN') is not None:
+            self.city_name_zh_c_n = m.get('CityName.zh_CN')
+        if m.get('Country') is not None:
+            self.country = m.get('Country')
+        if m.get('Country.en') is not None:
+            self.country_en = m.get('Country.en')
+        if m.get('Country.zh_CN') is not None:
+            self.country_zh_c_n = m.get('Country.zh_CN')
+        if m.get('IPPool') is not None:
+            temp_model = DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCityIPPool()
+            self.ippool = temp_model.from_map(m['IPPool'])
+        if m.get('IPV4ProbeCount') is not None:
+            self.ipv4probe_count = m.get('IPV4ProbeCount')
+        if m.get('IPV6ProbeCount') is not None:
+            self.ipv6probe_count = m.get('IPV6ProbeCount')
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        if m.get('IspName.en') is not None:
+            self.isp_name_en = m.get('IspName.en')
+        if m.get('IspName.zh_CN') is not None:
+            self.isp_name_zh_c_n = m.get('IspName.zh_CN')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Region.en') is not None:
+            self.region_en = m.get('Region.en')
+        if m.get('Region.zh_CN') is not None:
+            self.region_zh_c_n = m.get('Region.zh_CN')
+        return self
+
+
+class DescribeSiteMonitorISPCityListResponseBodyIspCityList(TeaModel):
+    def __init__(
+        self,
+        isp_city: List[DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCity] = None,
+    ):
+        self.isp_city = isp_city
+
+    def validate(self):
+        if self.isp_city:
+            for k in self.isp_city:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IspCity'] = []
+        if self.isp_city is not None:
+            for k in self.isp_city:
+                result['IspCity'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.isp_city = []
+        if m.get('IspCity') is not None:
+            for k in m.get('IspCity'):
+                temp_model = DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCity()
+                self.isp_city.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSiteMonitorISPCityListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        isp_city_list: DescribeSiteMonitorISPCityListResponseBodyIspCityList = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.isp_city_list = isp_city_list
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.isp_city_list:
+            self.isp_city_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.isp_city_list is not None:
+            result['IspCityList'] = self.isp_city_list.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('IspCityList') is not None:
+            temp_model = DescribeSiteMonitorISPCityListResponseBodyIspCityList()
+            self.isp_city_list = temp_model.from_map(m['IspCityList'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeSiteMonitorISPCityListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSiteMonitorISPCityListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSiteMonitorISPCityListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23981,13 +28098,16 @@ class DescribeSiteMonitorListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSiteMonitorListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -24000,6 +28120,8 @@ class DescribeSiteMonitorListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -24008,6 +28130,8 @@ class DescribeSiteMonitorListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSiteMonitorListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -24156,13 +28280,16 @@ class DescribeSiteMonitorLogResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSiteMonitorLogResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -24175,6 +28302,8 @@ class DescribeSiteMonitorLogResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -24183,6 +28312,8 @@ class DescribeSiteMonitorLogResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSiteMonitorLogResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -24330,13 +28461,16 @@ class DescribeSiteMonitorQuotaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSiteMonitorQuotaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -24349,6 +28483,8 @@ class DescribeSiteMonitorQuotaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -24357,6 +28493,8 @@ class DescribeSiteMonitorQuotaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSiteMonitorQuotaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -24469,13 +28607,16 @@ class DescribeSiteMonitorStatisticsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSiteMonitorStatisticsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -24488,6 +28629,8 @@ class DescribeSiteMonitorStatisticsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -24496,6 +28639,8 @@ class DescribeSiteMonitorStatisticsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSiteMonitorStatisticsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -24768,13 +28913,16 @@ class DescribeSystemEventAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSystemEventAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -24787,6 +28935,8 @@ class DescribeSystemEventAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -24795,6 +28945,8 @@ class DescribeSystemEventAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSystemEventAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -25061,13 +29213,16 @@ class DescribeSystemEventCountResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSystemEventCountResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -25080,6 +29235,8 @@ class DescribeSystemEventCountResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -25088,6 +29245,8 @@ class DescribeSystemEventCountResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSystemEventCountResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -25306,13 +29465,16 @@ class DescribeSystemEventHistogramResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSystemEventHistogramResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -25325,6 +29487,8 @@ class DescribeSystemEventHistogramResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -25333,8 +29497,238 @@ class DescribeSystemEventHistogramResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSystemEventHistogramResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSystemEventMetaListRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeSystemEventMetaListResponseBodyDataResource(TeaModel):
+    def __init__(
+        self,
+        event_type: str = None,
+        level: str = None,
+        name: str = None,
+        name_desc: str = None,
+        name_desc_en: str = None,
+        product: str = None,
+        status: str = None,
+        status_desc: str = None,
+    ):
+        self.event_type = event_type
+        self.level = level
+        self.name = name
+        self.name_desc = name_desc
+        self.name_desc_en = name_desc_en
+        self.product = product
+        self.status = status
+        self.status_desc = status_desc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_type is not None:
+            result['EventType'] = self.event_type
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.name_desc is not None:
+            result['NameDesc'] = self.name_desc
+        if self.name_desc_en is not None:
+            result['NameDesc.En'] = self.name_desc_en
+        if self.product is not None:
+            result['Product'] = self.product
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_desc is not None:
+            result['StatusDesc'] = self.status_desc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventType') is not None:
+            self.event_type = m.get('EventType')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NameDesc') is not None:
+            self.name_desc = m.get('NameDesc')
+        if m.get('NameDesc.En') is not None:
+            self.name_desc_en = m.get('NameDesc.En')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusDesc') is not None:
+            self.status_desc = m.get('StatusDesc')
+        return self
+
+
+class DescribeSystemEventMetaListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        resource: List[DescribeSystemEventMetaListResponseBodyDataResource] = None,
+    ):
+        self.resource = resource
+
+    def validate(self):
+        if self.resource:
+            for k in self.resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Resource'] = []
+        if self.resource is not None:
+            for k in self.resource:
+                result['Resource'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.resource = []
+        if m.get('Resource') is not None:
+            for k in m.get('Resource'):
+                temp_model = DescribeSystemEventMetaListResponseBodyDataResource()
+                self.resource.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSystemEventMetaListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: DescribeSystemEventMetaListResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeSystemEventMetaListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeSystemEventMetaListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSystemEventMetaListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSystemEventMetaListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25462,13 +29856,16 @@ class DescribeTagKeyListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeTagKeyListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -25481,6 +29878,8 @@ class DescribeTagKeyListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -25489,6 +29888,8 @@ class DescribeTagKeyListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeTagKeyListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -25624,13 +30025,16 @@ class DescribeTagValueListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeTagValueListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -25643,6 +30047,8 @@ class DescribeTagValueListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -25651,6 +30057,8 @@ class DescribeTagValueListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeTagValueListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -25844,13 +30252,16 @@ class DescribeUnhealthyHostAvailabilityResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeUnhealthyHostAvailabilityResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -25863,6 +30274,8 @@ class DescribeUnhealthyHostAvailabilityResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -25871,6 +30284,8 @@ class DescribeUnhealthyHostAvailabilityResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeUnhealthyHostAvailabilityResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -25959,13 +30374,16 @@ class DisableActiveMetricRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DisableActiveMetricRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -25978,6 +30396,8 @@ class DisableActiveMetricRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -25986,6 +30406,8 @@ class DisableActiveMetricRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableActiveMetricRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -26074,13 +30496,16 @@ class DisableEventRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DisableEventRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -26093,6 +30518,8 @@ class DisableEventRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -26101,6 +30528,8 @@ class DisableEventRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableEventRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -26189,13 +30618,16 @@ class DisableHostAvailabilityResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DisableHostAvailabilityResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -26208,6 +30640,8 @@ class DisableHostAvailabilityResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -26216,6 +30650,8 @@ class DisableHostAvailabilityResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableHostAvailabilityResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -26304,13 +30740,16 @@ class DisableMetricRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DisableMetricRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -26323,6 +30762,8 @@ class DisableMetricRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -26331,6 +30772,8 @@ class DisableMetricRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableMetricRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -26454,13 +30897,16 @@ class DisableSiteMonitorsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DisableSiteMonitorsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -26473,6 +30919,8 @@ class DisableSiteMonitorsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -26481,6 +30929,8 @@ class DisableSiteMonitorsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableSiteMonitorsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -26569,13 +31019,16 @@ class EnableActiveMetricRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: EnableActiveMetricRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -26588,6 +31041,8 @@ class EnableActiveMetricRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -26596,6 +31051,8 @@ class EnableActiveMetricRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableActiveMetricRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -26684,13 +31141,16 @@ class EnableEventRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: EnableEventRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -26703,6 +31163,8 @@ class EnableEventRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -26711,6 +31173,8 @@ class EnableEventRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableEventRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -26799,13 +31263,16 @@ class EnableHostAvailabilityResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: EnableHostAvailabilityResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -26818,6 +31285,8 @@ class EnableHostAvailabilityResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -26826,6 +31295,8 @@ class EnableHostAvailabilityResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableHostAvailabilityResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -26914,13 +31385,16 @@ class EnableMetricRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: EnableMetricRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -26933,6 +31407,8 @@ class EnableMetricRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -26941,6 +31417,8 @@ class EnableMetricRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableMetricRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -27064,13 +31542,16 @@ class EnableSiteMonitorsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: EnableSiteMonitorsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -27083,6 +31564,8 @@ class EnableSiteMonitorsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -27091,6 +31574,8 @@ class EnableSiteMonitorsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableSiteMonitorsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -27191,13 +31676,16 @@ class InstallMonitoringAgentResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: InstallMonitoringAgentResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -27210,6 +31698,8 @@ class InstallMonitoringAgentResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -27218,6 +31708,8 @@ class InstallMonitoringAgentResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = InstallMonitoringAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -27407,13 +31899,16 @@ class ModifyGroupMonitoringAgentProcessResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyGroupMonitoringAgentProcessResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -27426,6 +31921,8 @@ class ModifyGroupMonitoringAgentProcessResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -27434,6 +31931,8 @@ class ModifyGroupMonitoringAgentProcessResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyGroupMonitoringAgentProcessResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -27755,13 +32254,16 @@ class ModifyHostAvailabilityResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyHostAvailabilityResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -27774,6 +32276,8 @@ class ModifyHostAvailabilityResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -27782,6 +32286,8 @@ class ModifyHostAvailabilityResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyHostAvailabilityResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -27876,13 +32382,16 @@ class ModifyHostInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyHostInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -27895,6 +32404,8 @@ class ModifyHostInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -27903,8 +32414,798 @@ class ModifyHostInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyHostInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyHybridMonitorNamespaceRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        namespace: str = None,
+        region_id: str = None,
+        spec: str = None,
+    ):
+        self.description = description
+        self.namespace = namespace
+        self.region_id = region_id
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        return self
+
+
+class ModifyHybridMonitorNamespaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyHybridMonitorNamespaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyHybridMonitorNamespaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyHybridMonitorNamespaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyHybridMonitorSLSGroupRequestSLSGroupConfig(TeaModel):
+    def __init__(
+        self,
+        slslogstore: str = None,
+        slsproject: str = None,
+        slsregion: str = None,
+        slsuser_id: str = None,
+    ):
+        self.slslogstore = slslogstore
+        self.slsproject = slsproject
+        self.slsregion = slsregion
+        self.slsuser_id = slsuser_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.slslogstore is not None:
+            result['SLSLogstore'] = self.slslogstore
+        if self.slsproject is not None:
+            result['SLSProject'] = self.slsproject
+        if self.slsregion is not None:
+            result['SLSRegion'] = self.slsregion
+        if self.slsuser_id is not None:
+            result['SLSUserId'] = self.slsuser_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SLSLogstore') is not None:
+            self.slslogstore = m.get('SLSLogstore')
+        if m.get('SLSProject') is not None:
+            self.slsproject = m.get('SLSProject')
+        if m.get('SLSRegion') is not None:
+            self.slsregion = m.get('SLSRegion')
+        if m.get('SLSUserId') is not None:
+            self.slsuser_id = m.get('SLSUserId')
+        return self
+
+
+class ModifyHybridMonitorSLSGroupRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        slsgroup_config: List[ModifyHybridMonitorSLSGroupRequestSLSGroupConfig] = None,
+        slsgroup_description: str = None,
+        slsgroup_name: str = None,
+    ):
+        self.region_id = region_id
+        self.slsgroup_config = slsgroup_config
+        self.slsgroup_description = slsgroup_description
+        self.slsgroup_name = slsgroup_name
+
+    def validate(self):
+        if self.slsgroup_config:
+            for k in self.slsgroup_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['SLSGroupConfig'] = []
+        if self.slsgroup_config is not None:
+            for k in self.slsgroup_config:
+                result['SLSGroupConfig'].append(k.to_map() if k else None)
+        if self.slsgroup_description is not None:
+            result['SLSGroupDescription'] = self.slsgroup_description
+        if self.slsgroup_name is not None:
+            result['SLSGroupName'] = self.slsgroup_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.slsgroup_config = []
+        if m.get('SLSGroupConfig') is not None:
+            for k in m.get('SLSGroupConfig'):
+                temp_model = ModifyHybridMonitorSLSGroupRequestSLSGroupConfig()
+                self.slsgroup_config.append(temp_model.from_map(k))
+        if m.get('SLSGroupDescription') is not None:
+            self.slsgroup_description = m.get('SLSGroupDescription')
+        if m.get('SLSGroupName') is not None:
+            self.slsgroup_name = m.get('SLSGroupName')
+        return self
+
+
+class ModifyHybridMonitorSLSGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyHybridMonitorSLSGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyHybridMonitorSLSGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyHybridMonitorSLSGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyHybridMonitorTaskRequestAttachLabels(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ModifyHybridMonitorTaskRequestSLSProcessConfigExpress(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        express: str = None,
+    ):
+        self.alias = alias
+        self.express = express
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.express is not None:
+            result['Express'] = self.express
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('Express') is not None:
+            self.express = m.get('Express')
+        return self
+
+
+class ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        slskey_name: str = None,
+        value: str = None,
+    ):
+        self.operator = operator
+        self.slskey_name = slskey_name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.slskey_name is not None:
+            result['SLSKeyName'] = self.slskey_name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('SLSKeyName') is not None:
+            self.slskey_name = m.get('SLSKeyName')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ModifyHybridMonitorTaskRequestSLSProcessConfigFilter(TeaModel):
+    def __init__(
+        self,
+        filters: List[ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters] = None,
+        relation: str = None,
+    ):
+        self.filters = filters
+        self.relation = relation
+
+    def validate(self):
+        if self.filters:
+            for k in self.filters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Filters'] = []
+        if self.filters is not None:
+            for k in self.filters:
+                result['Filters'].append(k.to_map() if k else None)
+        if self.relation is not None:
+            result['Relation'] = self.relation
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.filters = []
+        if m.get('Filters') is not None:
+            for k in m.get('Filters'):
+                temp_model = ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters()
+                self.filters.append(temp_model.from_map(k))
+        if m.get('Relation') is not None:
+            self.relation = m.get('Relation')
+        return self
+
+
+class ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        slskey_name: str = None,
+    ):
+        self.alias = alias
+        self.slskey_name = slskey_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.slskey_name is not None:
+            result['SLSKeyName'] = self.slskey_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('SLSKeyName') is not None:
+            self.slskey_name = m.get('SLSKeyName')
+        return self
+
+
+class ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        function: str = None,
+        parameter_1: str = None,
+        parameter_2: str = None,
+        slskey_name: str = None,
+    ):
+        self.alias = alias
+        self.function = function
+        self.parameter_1 = parameter_1
+        self.parameter_2 = parameter_2
+        self.slskey_name = slskey_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.function is not None:
+            result['Function'] = self.function
+        if self.parameter_1 is not None:
+            result['Parameter1'] = self.parameter_1
+        if self.parameter_2 is not None:
+            result['Parameter2'] = self.parameter_2
+        if self.slskey_name is not None:
+            result['SLSKeyName'] = self.slskey_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('Function') is not None:
+            self.function = m.get('Function')
+        if m.get('Parameter1') is not None:
+            self.parameter_1 = m.get('Parameter1')
+        if m.get('Parameter2') is not None:
+            self.parameter_2 = m.get('Parameter2')
+        if m.get('SLSKeyName') is not None:
+            self.slskey_name = m.get('SLSKeyName')
+        return self
+
+
+class ModifyHybridMonitorTaskRequestSLSProcessConfig(TeaModel):
+    def __init__(
+        self,
+        express: List[ModifyHybridMonitorTaskRequestSLSProcessConfigExpress] = None,
+        filter: ModifyHybridMonitorTaskRequestSLSProcessConfigFilter = None,
+        group_by: List[ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy] = None,
+        statistics: List[ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics] = None,
+    ):
+        self.express = express
+        self.filter = filter
+        self.group_by = group_by
+        self.statistics = statistics
+
+    def validate(self):
+        if self.express:
+            for k in self.express:
+                if k:
+                    k.validate()
+        if self.filter:
+            self.filter.validate()
+        if self.group_by:
+            for k in self.group_by:
+                if k:
+                    k.validate()
+        if self.statistics:
+            for k in self.statistics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Express'] = []
+        if self.express is not None:
+            for k in self.express:
+                result['Express'].append(k.to_map() if k else None)
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        result['GroupBy'] = []
+        if self.group_by is not None:
+            for k in self.group_by:
+                result['GroupBy'].append(k.to_map() if k else None)
+        result['Statistics'] = []
+        if self.statistics is not None:
+            for k in self.statistics:
+                result['Statistics'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.express = []
+        if m.get('Express') is not None:
+            for k in m.get('Express'):
+                temp_model = ModifyHybridMonitorTaskRequestSLSProcessConfigExpress()
+                self.express.append(temp_model.from_map(k))
+        if m.get('Filter') is not None:
+            temp_model = ModifyHybridMonitorTaskRequestSLSProcessConfigFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        self.group_by = []
+        if m.get('GroupBy') is not None:
+            for k in m.get('GroupBy'):
+                temp_model = ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy()
+                self.group_by.append(temp_model.from_map(k))
+        self.statistics = []
+        if m.get('Statistics') is not None:
+            for k in m.get('Statistics'):
+                temp_model = ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics()
+                self.statistics.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyHybridMonitorTaskRequest(TeaModel):
+    def __init__(
+        self,
+        attach_labels: List[ModifyHybridMonitorTaskRequestAttachLabels] = None,
+        collect_interval: str = None,
+        description: str = None,
+        region_id: str = None,
+        slsprocess_config: ModifyHybridMonitorTaskRequestSLSProcessConfig = None,
+        task_id: str = None,
+        task_name: str = None,
+    ):
+        self.attach_labels = attach_labels
+        self.collect_interval = collect_interval
+        self.description = description
+        self.region_id = region_id
+        self.slsprocess_config = slsprocess_config
+        self.task_id = task_id
+        self.task_name = task_name
+
+    def validate(self):
+        if self.attach_labels:
+            for k in self.attach_labels:
+                if k:
+                    k.validate()
+        if self.slsprocess_config:
+            self.slsprocess_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AttachLabels'] = []
+        if self.attach_labels is not None:
+            for k in self.attach_labels:
+                result['AttachLabels'].append(k.to_map() if k else None)
+        if self.collect_interval is not None:
+            result['CollectInterval'] = self.collect_interval
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.slsprocess_config is not None:
+            result['SLSProcessConfig'] = self.slsprocess_config.to_map()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attach_labels = []
+        if m.get('AttachLabels') is not None:
+            for k in m.get('AttachLabels'):
+                temp_model = ModifyHybridMonitorTaskRequestAttachLabels()
+                self.attach_labels.append(temp_model.from_map(k))
+        if m.get('CollectInterval') is not None:
+            self.collect_interval = m.get('CollectInterval')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SLSProcessConfig') is not None:
+            temp_model = ModifyHybridMonitorTaskRequestSLSProcessConfig()
+            self.slsprocess_config = temp_model.from_map(m['SLSProcessConfig'])
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        return self
+
+
+class ModifyHybridMonitorTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyHybridMonitorTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyHybridMonitorTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyHybridMonitorTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28280,13 +33581,16 @@ class ModifyMetricRuleTemplateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyMetricRuleTemplateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -28299,6 +33603,8 @@ class ModifyMetricRuleTemplateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -28307,6 +33613,8 @@ class ModifyMetricRuleTemplateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyMetricRuleTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -28407,13 +33715,16 @@ class ModifyMonitorGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyMonitorGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -28426,6 +33737,8 @@ class ModifyMonitorGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -28434,6 +33747,8 @@ class ModifyMonitorGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyMonitorGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -28581,13 +33896,16 @@ class ModifyMonitorGroupInstancesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyMonitorGroupInstancesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -28600,6 +33918,8 @@ class ModifyMonitorGroupInstancesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -28608,6 +33928,8 @@ class ModifyMonitorGroupInstancesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyMonitorGroupInstancesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -28773,13 +34095,16 @@ class ModifySiteMonitorResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySiteMonitorResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -28792,6 +34117,8 @@ class ModifySiteMonitorResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -28800,6 +34127,8 @@ class ModifySiteMonitorResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySiteMonitorResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -28843,13 +34172,16 @@ class OpenCmsServiceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OpenCmsServiceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -28862,6 +34194,8 @@ class OpenCmsServiceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -28870,6 +34204,8 @@ class OpenCmsServiceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OpenCmsServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -29017,13 +34353,16 @@ class PutContactResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutContactResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -29036,6 +34375,8 @@ class PutContactResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -29044,6 +34385,8 @@ class PutContactResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutContactResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -29144,13 +34487,16 @@ class PutContactGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutContactGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -29163,6 +34509,8 @@ class PutContactGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -29171,6 +34519,8 @@ class PutContactGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutContactGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -29306,13 +34656,16 @@ class PutCustomEventResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutCustomEventResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -29325,6 +34678,8 @@ class PutCustomEventResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -29333,6 +34688,8 @@ class PutCustomEventResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutCustomEventResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -29475,13 +34832,16 @@ class PutCustomEventRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutCustomEventRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -29494,6 +34854,8 @@ class PutCustomEventRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -29502,6 +34864,8 @@ class PutCustomEventRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutCustomEventRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -29655,13 +35019,16 @@ class PutCustomMetricResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutCustomMetricResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -29674,6 +35041,8 @@ class PutCustomMetricResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -29682,6 +35051,8 @@ class PutCustomMetricResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutCustomMetricResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -29854,13 +35225,16 @@ class PutCustomMetricRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutCustomMetricRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -29873,6 +35247,8 @@ class PutCustomMetricRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -29881,6 +35257,8 @@ class PutCustomMetricRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutCustomMetricRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -29895,6 +35273,7 @@ class PutEventRuleRequestEventPattern(TeaModel):
         level_list: List[str] = None,
         name_list: List[str] = None,
         product: str = None,
+        sqlfilter: str = None,
         status_list: List[str] = None,
     ):
         self.custom_filters = custom_filters
@@ -29902,6 +35281,7 @@ class PutEventRuleRequestEventPattern(TeaModel):
         self.level_list = level_list
         self.name_list = name_list
         self.product = product
+        self.sqlfilter = sqlfilter
         self.status_list = status_list
 
     def validate(self):
@@ -29923,6 +35303,8 @@ class PutEventRuleRequestEventPattern(TeaModel):
             result['NameList'] = self.name_list
         if self.product is not None:
             result['Product'] = self.product
+        if self.sqlfilter is not None:
+            result['SQLFilter'] = self.sqlfilter
         if self.status_list is not None:
             result['StatusList'] = self.status_list
         return result
@@ -29939,6 +35321,8 @@ class PutEventRuleRequestEventPattern(TeaModel):
             self.name_list = m.get('NameList')
         if m.get('Product') is not None:
             self.product = m.get('Product')
+        if m.get('SQLFilter') is not None:
+            self.sqlfilter = m.get('SQLFilter')
         if m.get('StatusList') is not None:
             self.status_list = m.get('StatusList')
         return self
@@ -30076,13 +35460,16 @@ class PutEventRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutEventRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -30095,6 +35482,8 @@ class PutEventRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -30103,6 +35492,8 @@ class PutEventRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutEventRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -30199,10 +35590,12 @@ class PutEventRuleTargetsRequestMnsParameters(TeaModel):
         id: str = None,
         queue: str = None,
         region: str = None,
+        topic: str = None,
     ):
         self.id = id
         self.queue = queue
         self.region = region
+        self.topic = topic
 
     def validate(self):
         pass
@@ -30219,6 +35612,8 @@ class PutEventRuleTargetsRequestMnsParameters(TeaModel):
             result['Queue'] = self.queue
         if self.region is not None:
             result['Region'] = self.region
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
@@ -30229,6 +35624,8 @@ class PutEventRuleTargetsRequestMnsParameters(TeaModel):
             self.queue = m.get('Queue')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
@@ -30238,6 +35635,7 @@ class PutEventRuleTargetsRequestOpenApiParameters(TeaModel):
         action: str = None,
         arn: str = None,
         id: str = None,
+        json_params: str = None,
         product: str = None,
         region: str = None,
         role: str = None,
@@ -30246,6 +35644,7 @@ class PutEventRuleTargetsRequestOpenApiParameters(TeaModel):
         self.action = action
         self.arn = arn
         self.id = id
+        self.json_params = json_params
         self.product = product
         self.region = region
         self.role = role
@@ -30266,6 +35665,8 @@ class PutEventRuleTargetsRequestOpenApiParameters(TeaModel):
             result['Arn'] = self.arn
         if self.id is not None:
             result['Id'] = self.id
+        if self.json_params is not None:
+            result['JsonParams'] = self.json_params
         if self.product is not None:
             result['Product'] = self.product
         if self.region is not None:
@@ -30284,6 +35685,8 @@ class PutEventRuleTargetsRequestOpenApiParameters(TeaModel):
             self.arn = m.get('Arn')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('JsonParams') is not None:
+            self.json_params = m.get('JsonParams')
         if m.get('Product') is not None:
             self.product = m.get('Product')
         if m.get('Region') is not None:
@@ -30816,13 +36219,16 @@ class PutEventRuleTargetsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutEventRuleTargetsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -30835,6 +36241,8 @@ class PutEventRuleTargetsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -30843,6 +36251,8 @@ class PutEventRuleTargetsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutEventRuleTargetsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -30949,13 +36359,16 @@ class PutExporterOutputResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutExporterOutputResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -30968,6 +36381,8 @@ class PutExporterOutputResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -30976,6 +36391,8 @@ class PutExporterOutputResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutExporterOutputResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -31094,13 +36511,16 @@ class PutExporterRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutExporterRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -31113,6 +36533,8 @@ class PutExporterRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -31121,6 +36543,8 @@ class PutExporterRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutExporterRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -31312,6 +36736,39 @@ class PutGroupMetricRuleRequestEscalations(TeaModel):
         return self
 
 
+class PutGroupMetricRuleRequestLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class PutGroupMetricRuleRequest(TeaModel):
     def __init__(
         self,
@@ -31324,6 +36781,7 @@ class PutGroupMetricRuleRequest(TeaModel):
         extra_dimension_json: str = None,
         group_id: str = None,
         interval: str = None,
+        labels: List[PutGroupMetricRuleRequestLabels] = None,
         metric_name: str = None,
         namespace: str = None,
         no_data_policy: str = None,
@@ -31343,6 +36801,7 @@ class PutGroupMetricRuleRequest(TeaModel):
         self.extra_dimension_json = extra_dimension_json
         self.group_id = group_id
         self.interval = interval
+        self.labels = labels
         self.metric_name = metric_name
         self.namespace = namespace
         self.no_data_policy = no_data_policy
@@ -31356,6 +36815,10 @@ class PutGroupMetricRuleRequest(TeaModel):
     def validate(self):
         if self.escalations:
             self.escalations.validate()
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -31381,6 +36844,10 @@ class PutGroupMetricRuleRequest(TeaModel):
             result['GroupId'] = self.group_id
         if self.interval is not None:
             result['Interval'] = self.interval
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
         if self.namespace is not None:
@@ -31422,6 +36889,11 @@ class PutGroupMetricRuleRequest(TeaModel):
             self.group_id = m.get('GroupId')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = PutGroupMetricRuleRequestLabels()
+                self.labels.append(temp_model.from_map(k))
         if m.get('MetricName') is not None:
             self.metric_name = m.get('MetricName')
         if m.get('Namespace') is not None:
@@ -31527,13 +36999,16 @@ class PutGroupMetricRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutGroupMetricRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -31546,6 +37021,8 @@ class PutGroupMetricRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -31554,6 +37031,8 @@ class PutGroupMetricRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutGroupMetricRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -31788,13 +37267,16 @@ class PutHybridMonitorMetricDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutHybridMonitorMetricDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -31807,6 +37289,8 @@ class PutHybridMonitorMetricDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -31815,6 +37299,8 @@ class PutHybridMonitorMetricDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutHybridMonitorMetricDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -32118,13 +37604,16 @@ class PutLogMonitorResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutLogMonitorResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -32137,6 +37626,8 @@ class PutLogMonitorResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -32145,6 +37636,8 @@ class PutLogMonitorResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutLogMonitorResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -32156,10 +37649,12 @@ class PutMetricRuleTargetsRequestTargets(TeaModel):
         self,
         arn: str = None,
         id: str = None,
+        json_params: str = None,
         level: str = None,
     ):
         self.arn = arn
         self.id = id
+        self.json_params = json_params
         self.level = level
 
     def validate(self):
@@ -32175,6 +37670,8 @@ class PutMetricRuleTargetsRequestTargets(TeaModel):
             result['Arn'] = self.arn
         if self.id is not None:
             result['Id'] = self.id
+        if self.json_params is not None:
+            result['JsonParams'] = self.json_params
         if self.level is not None:
             result['Level'] = self.level
         return result
@@ -32185,6 +37682,8 @@ class PutMetricRuleTargetsRequestTargets(TeaModel):
             self.arn = m.get('Arn')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('JsonParams') is not None:
+            self.json_params = m.get('JsonParams')
         if m.get('Level') is not None:
             self.level = m.get('Level')
         return self
@@ -32397,13 +37896,16 @@ class PutMetricRuleTargetsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutMetricRuleTargetsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -32416,6 +37918,8 @@ class PutMetricRuleTargetsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -32424,6 +37928,8 @@ class PutMetricRuleTargetsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutMetricRuleTargetsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -32521,10 +38027,12 @@ class PutMonitorGroupDynamicRuleRequest(TeaModel):
         self,
         group_id: int = None,
         group_rules: List[PutMonitorGroupDynamicRuleRequestGroupRules] = None,
+        is_async: bool = None,
         region_id: str = None,
     ):
         self.group_id = group_id
         self.group_rules = group_rules
+        self.is_async = is_async
         self.region_id = region_id
 
     def validate(self):
@@ -32545,6 +38053,8 @@ class PutMonitorGroupDynamicRuleRequest(TeaModel):
         if self.group_rules is not None:
             for k in self.group_rules:
                 result['GroupRules'].append(k.to_map() if k else None)
+        if self.is_async is not None:
+            result['IsAsync'] = self.is_async
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -32558,6 +38068,8 @@ class PutMonitorGroupDynamicRuleRequest(TeaModel):
             for k in m.get('GroupRules'):
                 temp_model = PutMonitorGroupDynamicRuleRequestGroupRules()
                 self.group_rules.append(temp_model.from_map(k))
+        if m.get('IsAsync') is not None:
+            self.is_async = m.get('IsAsync')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -32612,13 +38124,16 @@ class PutMonitorGroupDynamicRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutMonitorGroupDynamicRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -32631,6 +38146,8 @@ class PutMonitorGroupDynamicRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -32639,6 +38156,8 @@ class PutMonitorGroupDynamicRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutMonitorGroupDynamicRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -32733,13 +38252,16 @@ class PutMonitoringConfigResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutMonitoringConfigResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -32752,6 +38274,8 @@ class PutMonitoringConfigResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -32760,6 +38284,8 @@ class PutMonitoringConfigResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutMonitoringConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -32951,6 +38477,116 @@ class PutResourceMetricRuleRequestEscalations(TeaModel):
         return self
 
 
+class PutResourceMetricRuleRequestCompositeExpressionExpressionList(TeaModel):
+    def __init__(
+        self,
+        comparison_operator: str = None,
+        metric_name: str = None,
+        period: int = None,
+        statistics: str = None,
+        threshold: str = None,
+    ):
+        self.comparison_operator = comparison_operator
+        self.metric_name = metric_name
+        self.period = period
+        self.statistics = statistics
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comparison_operator is not None:
+            result['ComparisonOperator'] = self.comparison_operator
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.statistics is not None:
+            result['Statistics'] = self.statistics
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComparisonOperator') is not None:
+            self.comparison_operator = m.get('ComparisonOperator')
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('Statistics') is not None:
+            self.statistics = m.get('Statistics')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class PutResourceMetricRuleRequestCompositeExpression(TeaModel):
+    def __init__(
+        self,
+        expression_list: List[PutResourceMetricRuleRequestCompositeExpressionExpressionList] = None,
+        expression_list_join: str = None,
+        expression_raw: str = None,
+        level: str = None,
+        times: int = None,
+    ):
+        self.expression_list = expression_list
+        self.expression_list_join = expression_list_join
+        self.expression_raw = expression_raw
+        self.level = level
+        self.times = times
+
+    def validate(self):
+        if self.expression_list:
+            for k in self.expression_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ExpressionList'] = []
+        if self.expression_list is not None:
+            for k in self.expression_list:
+                result['ExpressionList'].append(k.to_map() if k else None)
+        if self.expression_list_join is not None:
+            result['ExpressionListJoin'] = self.expression_list_join
+        if self.expression_raw is not None:
+            result['ExpressionRaw'] = self.expression_raw
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.times is not None:
+            result['Times'] = self.times
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.expression_list = []
+        if m.get('ExpressionList') is not None:
+            for k in m.get('ExpressionList'):
+                temp_model = PutResourceMetricRuleRequestCompositeExpressionExpressionList()
+                self.expression_list.append(temp_model.from_map(k))
+        if m.get('ExpressionListJoin') is not None:
+            self.expression_list_join = m.get('ExpressionListJoin')
+        if m.get('ExpressionRaw') is not None:
+            self.expression_raw = m.get('ExpressionRaw')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Times') is not None:
+            self.times = m.get('Times')
+        return self
+
+
 class PutResourceMetricRuleRequestLabels(TeaModel):
     def __init__(
         self,
@@ -32984,10 +38620,97 @@ class PutResourceMetricRuleRequestLabels(TeaModel):
         return self
 
 
+class PutResourceMetricRuleRequestPrometheusAnnotations(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class PutResourceMetricRuleRequestPrometheus(TeaModel):
+    def __init__(
+        self,
+        annotations: List[PutResourceMetricRuleRequestPrometheusAnnotations] = None,
+        level: str = None,
+        prom_ql: str = None,
+        times: int = None,
+    ):
+        self.annotations = annotations
+        self.level = level
+        self.prom_ql = prom_ql
+        self.times = times
+
+    def validate(self):
+        if self.annotations:
+            for k in self.annotations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Annotations'] = []
+        if self.annotations is not None:
+            for k in self.annotations:
+                result['Annotations'].append(k.to_map() if k else None)
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.prom_ql is not None:
+            result['PromQL'] = self.prom_ql
+        if self.times is not None:
+            result['Times'] = self.times
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.annotations = []
+        if m.get('Annotations') is not None:
+            for k in m.get('Annotations'):
+                temp_model = PutResourceMetricRuleRequestPrometheusAnnotations()
+                self.annotations.append(temp_model.from_map(k))
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('PromQL') is not None:
+            self.prom_ql = m.get('PromQL')
+        if m.get('Times') is not None:
+            self.times = m.get('Times')
+        return self
+
+
 class PutResourceMetricRuleRequest(TeaModel):
     def __init__(
         self,
         escalations: PutResourceMetricRuleRequestEscalations = None,
+        composite_expression: PutResourceMetricRuleRequestCompositeExpression = None,
         contact_groups: str = None,
         effective_interval: str = None,
         email_subject: str = None,
@@ -32998,6 +38721,7 @@ class PutResourceMetricRuleRequest(TeaModel):
         no_data_policy: str = None,
         no_effective_interval: str = None,
         period: str = None,
+        prometheus: PutResourceMetricRuleRequestPrometheus = None,
         resources: str = None,
         rule_id: str = None,
         rule_name: str = None,
@@ -33005,6 +38729,7 @@ class PutResourceMetricRuleRequest(TeaModel):
         webhook: str = None,
     ):
         self.escalations = escalations
+        self.composite_expression = composite_expression
         self.contact_groups = contact_groups
         self.effective_interval = effective_interval
         self.email_subject = email_subject
@@ -33015,6 +38740,7 @@ class PutResourceMetricRuleRequest(TeaModel):
         self.no_data_policy = no_data_policy
         self.no_effective_interval = no_effective_interval
         self.period = period
+        self.prometheus = prometheus
         self.resources = resources
         self.rule_id = rule_id
         self.rule_name = rule_name
@@ -33024,10 +38750,14 @@ class PutResourceMetricRuleRequest(TeaModel):
     def validate(self):
         if self.escalations:
             self.escalations.validate()
+        if self.composite_expression:
+            self.composite_expression.validate()
         if self.labels:
             for k in self.labels:
                 if k:
                     k.validate()
+        if self.prometheus:
+            self.prometheus.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -33037,6 +38767,8 @@ class PutResourceMetricRuleRequest(TeaModel):
         result = dict()
         if self.escalations is not None:
             result['Escalations'] = self.escalations.to_map()
+        if self.composite_expression is not None:
+            result['CompositeExpression'] = self.composite_expression.to_map()
         if self.contact_groups is not None:
             result['ContactGroups'] = self.contact_groups
         if self.effective_interval is not None:
@@ -33059,6 +38791,8 @@ class PutResourceMetricRuleRequest(TeaModel):
             result['NoEffectiveInterval'] = self.no_effective_interval
         if self.period is not None:
             result['Period'] = self.period
+        if self.prometheus is not None:
+            result['Prometheus'] = self.prometheus.to_map()
         if self.resources is not None:
             result['Resources'] = self.resources
         if self.rule_id is not None:
@@ -33076,6 +38810,9 @@ class PutResourceMetricRuleRequest(TeaModel):
         if m.get('Escalations') is not None:
             temp_model = PutResourceMetricRuleRequestEscalations()
             self.escalations = temp_model.from_map(m['Escalations'])
+        if m.get('CompositeExpression') is not None:
+            temp_model = PutResourceMetricRuleRequestCompositeExpression()
+            self.composite_expression = temp_model.from_map(m['CompositeExpression'])
         if m.get('ContactGroups') is not None:
             self.contact_groups = m.get('ContactGroups')
         if m.get('EffectiveInterval') is not None:
@@ -33099,6 +38836,367 @@ class PutResourceMetricRuleRequest(TeaModel):
             self.no_effective_interval = m.get('NoEffectiveInterval')
         if m.get('Period') is not None:
             self.period = m.get('Period')
+        if m.get('Prometheus') is not None:
+            temp_model = PutResourceMetricRuleRequestPrometheus()
+            self.prometheus = temp_model.from_map(m['Prometheus'])
+        if m.get('Resources') is not None:
+            self.resources = m.get('Resources')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SilenceTime') is not None:
+            self.silence_time = m.get('SilenceTime')
+        if m.get('Webhook') is not None:
+            self.webhook = m.get('Webhook')
+        return self
+
+
+class PutResourceMetricRuleShrinkRequestEscalationsCritical(TeaModel):
+    def __init__(
+        self,
+        comparison_operator: str = None,
+        statistics: str = None,
+        threshold: str = None,
+        times: int = None,
+    ):
+        self.comparison_operator = comparison_operator
+        self.statistics = statistics
+        self.threshold = threshold
+        self.times = times
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comparison_operator is not None:
+            result['ComparisonOperator'] = self.comparison_operator
+        if self.statistics is not None:
+            result['Statistics'] = self.statistics
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        if self.times is not None:
+            result['Times'] = self.times
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComparisonOperator') is not None:
+            self.comparison_operator = m.get('ComparisonOperator')
+        if m.get('Statistics') is not None:
+            self.statistics = m.get('Statistics')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        if m.get('Times') is not None:
+            self.times = m.get('Times')
+        return self
+
+
+class PutResourceMetricRuleShrinkRequestEscalationsInfo(TeaModel):
+    def __init__(
+        self,
+        comparison_operator: str = None,
+        statistics: str = None,
+        threshold: str = None,
+        times: int = None,
+    ):
+        self.comparison_operator = comparison_operator
+        self.statistics = statistics
+        self.threshold = threshold
+        self.times = times
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comparison_operator is not None:
+            result['ComparisonOperator'] = self.comparison_operator
+        if self.statistics is not None:
+            result['Statistics'] = self.statistics
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        if self.times is not None:
+            result['Times'] = self.times
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComparisonOperator') is not None:
+            self.comparison_operator = m.get('ComparisonOperator')
+        if m.get('Statistics') is not None:
+            self.statistics = m.get('Statistics')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        if m.get('Times') is not None:
+            self.times = m.get('Times')
+        return self
+
+
+class PutResourceMetricRuleShrinkRequestEscalationsWarn(TeaModel):
+    def __init__(
+        self,
+        comparison_operator: str = None,
+        statistics: str = None,
+        threshold: str = None,
+        times: int = None,
+    ):
+        self.comparison_operator = comparison_operator
+        self.statistics = statistics
+        self.threshold = threshold
+        self.times = times
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comparison_operator is not None:
+            result['ComparisonOperator'] = self.comparison_operator
+        if self.statistics is not None:
+            result['Statistics'] = self.statistics
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        if self.times is not None:
+            result['Times'] = self.times
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComparisonOperator') is not None:
+            self.comparison_operator = m.get('ComparisonOperator')
+        if m.get('Statistics') is not None:
+            self.statistics = m.get('Statistics')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        if m.get('Times') is not None:
+            self.times = m.get('Times')
+        return self
+
+
+class PutResourceMetricRuleShrinkRequestEscalations(TeaModel):
+    def __init__(
+        self,
+        critical: PutResourceMetricRuleShrinkRequestEscalationsCritical = None,
+        info: PutResourceMetricRuleShrinkRequestEscalationsInfo = None,
+        warn: PutResourceMetricRuleShrinkRequestEscalationsWarn = None,
+    ):
+        self.critical = critical
+        self.info = info
+        self.warn = warn
+
+    def validate(self):
+        self.validate_required(self.critical, 'critical')
+        if self.critical:
+            self.critical.validate()
+        self.validate_required(self.info, 'info')
+        if self.info:
+            self.info.validate()
+        self.validate_required(self.warn, 'warn')
+        if self.warn:
+            self.warn.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.critical is not None:
+            result['Critical'] = self.critical.to_map()
+        if self.info is not None:
+            result['Info'] = self.info.to_map()
+        if self.warn is not None:
+            result['Warn'] = self.warn.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Critical') is not None:
+            temp_model = PutResourceMetricRuleShrinkRequestEscalationsCritical()
+            self.critical = temp_model.from_map(m['Critical'])
+        if m.get('Info') is not None:
+            temp_model = PutResourceMetricRuleShrinkRequestEscalationsInfo()
+            self.info = temp_model.from_map(m['Info'])
+        if m.get('Warn') is not None:
+            temp_model = PutResourceMetricRuleShrinkRequestEscalationsWarn()
+            self.warn = temp_model.from_map(m['Warn'])
+        return self
+
+
+class PutResourceMetricRuleShrinkRequestLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class PutResourceMetricRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        escalations: PutResourceMetricRuleShrinkRequestEscalations = None,
+        composite_expression_shrink: str = None,
+        contact_groups: str = None,
+        effective_interval: str = None,
+        email_subject: str = None,
+        interval: str = None,
+        labels: List[PutResourceMetricRuleShrinkRequestLabels] = None,
+        metric_name: str = None,
+        namespace: str = None,
+        no_data_policy: str = None,
+        no_effective_interval: str = None,
+        period: str = None,
+        prometheus_shrink: str = None,
+        resources: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        silence_time: int = None,
+        webhook: str = None,
+    ):
+        self.escalations = escalations
+        self.composite_expression_shrink = composite_expression_shrink
+        self.contact_groups = contact_groups
+        self.effective_interval = effective_interval
+        self.email_subject = email_subject
+        self.interval = interval
+        self.labels = labels
+        self.metric_name = metric_name
+        self.namespace = namespace
+        self.no_data_policy = no_data_policy
+        self.no_effective_interval = no_effective_interval
+        self.period = period
+        self.prometheus_shrink = prometheus_shrink
+        self.resources = resources
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.silence_time = silence_time
+        self.webhook = webhook
+
+    def validate(self):
+        if self.escalations:
+            self.escalations.validate()
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.escalations is not None:
+            result['Escalations'] = self.escalations.to_map()
+        if self.composite_expression_shrink is not None:
+            result['CompositeExpression'] = self.composite_expression_shrink
+        if self.contact_groups is not None:
+            result['ContactGroups'] = self.contact_groups
+        if self.effective_interval is not None:
+            result['EffectiveInterval'] = self.effective_interval
+        if self.email_subject is not None:
+            result['EmailSubject'] = self.email_subject
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.no_data_policy is not None:
+            result['NoDataPolicy'] = self.no_data_policy
+        if self.no_effective_interval is not None:
+            result['NoEffectiveInterval'] = self.no_effective_interval
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.prometheus_shrink is not None:
+            result['Prometheus'] = self.prometheus_shrink
+        if self.resources is not None:
+            result['Resources'] = self.resources
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.silence_time is not None:
+            result['SilenceTime'] = self.silence_time
+        if self.webhook is not None:
+            result['Webhook'] = self.webhook
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Escalations') is not None:
+            temp_model = PutResourceMetricRuleShrinkRequestEscalations()
+            self.escalations = temp_model.from_map(m['Escalations'])
+        if m.get('CompositeExpression') is not None:
+            self.composite_expression_shrink = m.get('CompositeExpression')
+        if m.get('ContactGroups') is not None:
+            self.contact_groups = m.get('ContactGroups')
+        if m.get('EffectiveInterval') is not None:
+            self.effective_interval = m.get('EffectiveInterval')
+        if m.get('EmailSubject') is not None:
+            self.email_subject = m.get('EmailSubject')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = PutResourceMetricRuleShrinkRequestLabels()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NoDataPolicy') is not None:
+            self.no_data_policy = m.get('NoDataPolicy')
+        if m.get('NoEffectiveInterval') is not None:
+            self.no_effective_interval = m.get('NoEffectiveInterval')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('Prometheus') is not None:
+            self.prometheus_shrink = m.get('Prometheus')
         if m.get('Resources') is not None:
             self.resources = m.get('Resources')
         if m.get('RuleId') is not None:
@@ -33161,13 +39259,16 @@ class PutResourceMetricRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutResourceMetricRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -33180,6 +39281,8 @@ class PutResourceMetricRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -33188,6 +39291,8 @@ class PutResourceMetricRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutResourceMetricRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -33198,11 +39303,13 @@ class PutResourceMetricRulesRequestRulesEscalationsCritical(TeaModel):
     def __init__(
         self,
         comparison_operator: str = None,
+        pre_condition: str = None,
         statistics: str = None,
         threshold: str = None,
         times: int = None,
     ):
         self.comparison_operator = comparison_operator
+        self.pre_condition = pre_condition
         self.statistics = statistics
         self.threshold = threshold
         self.times = times
@@ -33218,6 +39325,8 @@ class PutResourceMetricRulesRequestRulesEscalationsCritical(TeaModel):
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
+        if self.pre_condition is not None:
+            result['PreCondition'] = self.pre_condition
         if self.statistics is not None:
             result['Statistics'] = self.statistics
         if self.threshold is not None:
@@ -33230,6 +39339,8 @@ class PutResourceMetricRulesRequestRulesEscalationsCritical(TeaModel):
         m = m or dict()
         if m.get('ComparisonOperator') is not None:
             self.comparison_operator = m.get('ComparisonOperator')
+        if m.get('PreCondition') is not None:
+            self.pre_condition = m.get('PreCondition')
         if m.get('Statistics') is not None:
             self.statistics = m.get('Statistics')
         if m.get('Threshold') is not None:
@@ -33243,11 +39354,13 @@ class PutResourceMetricRulesRequestRulesEscalationsInfo(TeaModel):
     def __init__(
         self,
         comparison_operator: str = None,
+        pre_condition: str = None,
         statistics: str = None,
         threshold: str = None,
         times: int = None,
     ):
         self.comparison_operator = comparison_operator
+        self.pre_condition = pre_condition
         self.statistics = statistics
         self.threshold = threshold
         self.times = times
@@ -33263,6 +39376,8 @@ class PutResourceMetricRulesRequestRulesEscalationsInfo(TeaModel):
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
+        if self.pre_condition is not None:
+            result['PreCondition'] = self.pre_condition
         if self.statistics is not None:
             result['Statistics'] = self.statistics
         if self.threshold is not None:
@@ -33275,6 +39390,8 @@ class PutResourceMetricRulesRequestRulesEscalationsInfo(TeaModel):
         m = m or dict()
         if m.get('ComparisonOperator') is not None:
             self.comparison_operator = m.get('ComparisonOperator')
+        if m.get('PreCondition') is not None:
+            self.pre_condition = m.get('PreCondition')
         if m.get('Statistics') is not None:
             self.statistics = m.get('Statistics')
         if m.get('Threshold') is not None:
@@ -33288,11 +39405,13 @@ class PutResourceMetricRulesRequestRulesEscalationsWarn(TeaModel):
     def __init__(
         self,
         comparison_operator: str = None,
+        pre_condition: str = None,
         statistics: str = None,
         threshold: str = None,
         times: int = None,
     ):
         self.comparison_operator = comparison_operator
+        self.pre_condition = pre_condition
         self.statistics = statistics
         self.threshold = threshold
         self.times = times
@@ -33308,6 +39427,8 @@ class PutResourceMetricRulesRequestRulesEscalationsWarn(TeaModel):
         result = dict()
         if self.comparison_operator is not None:
             result['ComparisonOperator'] = self.comparison_operator
+        if self.pre_condition is not None:
+            result['PreCondition'] = self.pre_condition
         if self.statistics is not None:
             result['Statistics'] = self.statistics
         if self.threshold is not None:
@@ -33320,6 +39441,8 @@ class PutResourceMetricRulesRequestRulesEscalationsWarn(TeaModel):
         m = m or dict()
         if m.get('ComparisonOperator') is not None:
             self.comparison_operator = m.get('ComparisonOperator')
+        if m.get('PreCondition') is not None:
+            self.pre_condition = m.get('PreCondition')
         if m.get('Statistics') is not None:
             self.statistics = m.get('Statistics')
         if m.get('Threshold') is not None:
@@ -33379,6 +39502,39 @@ class PutResourceMetricRulesRequestRulesEscalations(TeaModel):
         return self
 
 
+class PutResourceMetricRulesRequestRulesLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class PutResourceMetricRulesRequestRules(TeaModel):
     def __init__(
         self,
@@ -33387,6 +39543,7 @@ class PutResourceMetricRulesRequestRules(TeaModel):
         effective_interval: str = None,
         email_subject: str = None,
         interval: str = None,
+        labels: List[PutResourceMetricRulesRequestRulesLabels] = None,
         metric_name: str = None,
         namespace: str = None,
         no_data_policy: str = None,
@@ -33403,6 +39560,7 @@ class PutResourceMetricRulesRequestRules(TeaModel):
         self.effective_interval = effective_interval
         self.email_subject = email_subject
         self.interval = interval
+        self.labels = labels
         self.metric_name = metric_name
         self.namespace = namespace
         self.no_data_policy = no_data_policy
@@ -33418,6 +39576,10 @@ class PutResourceMetricRulesRequestRules(TeaModel):
         self.validate_required(self.escalations, 'escalations')
         if self.escalations:
             self.escalations.validate()
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -33435,6 +39597,10 @@ class PutResourceMetricRulesRequestRules(TeaModel):
             result['EmailSubject'] = self.email_subject
         if self.interval is not None:
             result['Interval'] = self.interval
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
         if self.namespace is not None:
@@ -33470,6 +39636,11 @@ class PutResourceMetricRulesRequestRules(TeaModel):
             self.email_subject = m.get('EmailSubject')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = PutResourceMetricRulesRequestRulesLabels()
+                self.labels.append(temp_model.from_map(k))
         if m.get('MetricName') is not None:
             self.metric_name = m.get('MetricName')
         if m.get('Namespace') is not None:
@@ -33694,13 +39865,16 @@ class PutResourceMetricRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PutResourceMetricRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -33713,6 +39887,8 @@ class PutResourceMetricRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -33721,6 +39897,8 @@ class PutResourceMetricRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutResourceMetricRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -33891,13 +40069,16 @@ class RemoveTagsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RemoveTagsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -33910,6 +40091,8 @@ class RemoveTagsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -33918,6 +40101,8 @@ class RemoveTagsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RemoveTagsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -34024,13 +40209,16 @@ class SendDryRunSystemEventResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SendDryRunSystemEventResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -34043,6 +40231,8 @@ class SendDryRunSystemEventResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -34051,6 +40241,8 @@ class SendDryRunSystemEventResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SendDryRunSystemEventResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -34139,13 +40331,16 @@ class UninstallMonitoringAgentResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UninstallMonitoringAgentResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -34158,6 +40353,8 @@ class UninstallMonitoringAgentResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -34166,6 +40363,8 @@ class UninstallMonitoringAgentResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UninstallMonitoringAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
