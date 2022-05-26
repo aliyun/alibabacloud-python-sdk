@@ -196,22 +196,52 @@ class CreateTaskRequest(TeaModel):
         return self
 
 
+class CreateTaskResponseBodyResponse(TeaModel):
+    def __init__(
+        self,
+        task_uid: str = None,
+    ):
+        self.task_uid = task_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_uid is not None:
+            result['TaskUid'] = self.task_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskUid') is not None:
+            self.task_uid = m.get('TaskUid')
+        return self
+
+
 class CreateTaskResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         request_id: str = None,
+        response: CreateTaskResponseBodyResponse = None,
         success: str = None,
     ):
         self.code = code
         self.message = message
         # Id of the request
         self.request_id = request_id
+        self.response = response
         self.success = success
 
     def validate(self):
-        pass
+        if self.response:
+            self.response.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -225,6 +255,8 @@ class CreateTaskResponseBody(TeaModel):
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.response is not None:
+            result['Response'] = self.response.to_map()
         if self.success is not None:
             result['Success'] = self.success
         return result
@@ -237,6 +269,9 @@ class CreateTaskResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Response') is not None:
+            temp_model = CreateTaskResponseBodyResponse()
+            self.response = temp_model.from_map(m['Response'])
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self

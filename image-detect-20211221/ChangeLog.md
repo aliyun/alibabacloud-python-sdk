@@ -1,3 +1,6 @@
+2022-05-26 Version: 1.0.6
+- Update API CreateTask.
+
 2022-05-25 Version: 1.0.5
 - Update API CreateTask.
 - Update API GetTaskList.
