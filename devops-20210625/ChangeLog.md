@@ -1,3 +1,6 @@
+2022-05-26 Version: 1.1.16
+- Update Projex Workitem API.
+
 2022-05-12 Version: 1.1.15
 - Update Projex Workitem API.
 

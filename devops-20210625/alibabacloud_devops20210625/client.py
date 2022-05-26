@@ -5595,6 +5595,80 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def list_workitem_time(
+        self,
+        organization_id: str,
+        workitem_id: str,
+    ) -> devops_20210625_models.ListWorkitemTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_workitem_time_with_options(organization_id, workitem_id, headers, runtime)
+
+    async def list_workitem_time_async(
+        self,
+        organization_id: str,
+        workitem_id: str,
+    ) -> devops_20210625_models.ListWorkitemTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_workitem_time_with_options_async(organization_id, workitem_id, headers, runtime)
+
+    def list_workitem_time_with_options(
+        self,
+        organization_id: str,
+        workitem_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListWorkitemTimeResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        workitem_id = OpenApiUtilClient.get_encode_param(workitem_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListWorkitemTime',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/workitems/{workitem_id}/time/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListWorkitemTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workitem_time_with_options_async(
+        self,
+        organization_id: str,
+        workitem_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListWorkitemTimeResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        workitem_id = OpenApiUtilClient.get_encode_param(workitem_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListWorkitemTime',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/workitems/{workitem_id}/time/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListWorkitemTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def list_workitems(
         self,
         organization_id: str,

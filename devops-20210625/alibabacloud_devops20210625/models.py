@@ -15141,6 +15141,212 @@ class ListWorkItemWorkFlowStatusResponse(TeaModel):
         return self
 
 
+class ListWorkitemTimeResponseBodyWorkitemTime(TeaModel):
+    def __init__(
+        self,
+        actual_time: int = None,
+        description: str = None,
+        gmt_create: int = None,
+        gmt_end: int = None,
+        gmt_modified: int = None,
+        gmt_start: int = None,
+        identifier: str = None,
+        record_user: str = None,
+        type: str = None,
+        workitem_identifier: str = None,
+    ):
+        # 实际工时，小时为单位
+        self.actual_time = actual_time
+        # 工时描述信息
+        self.description = description
+        # 工时记录的创建时间
+        self.gmt_create = gmt_create
+        # 结束时间
+        self.gmt_end = gmt_end
+        # 工时记录的修改时间
+        self.gmt_modified = gmt_modified
+        # 开始时间
+        self.gmt_start = gmt_start
+        # 工时唯一标识
+        self.identifier = identifier
+        # 登记人的account Id
+        self.record_user = record_user
+        # 工时类型
+        self.type = type
+        # 工作项id，唯一标识
+        self.workitem_identifier = workitem_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actual_time is not None:
+            result['actualTime'] = self.actual_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_end is not None:
+            result['gmtEnd'] = self.gmt_end
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.gmt_start is not None:
+            result['gmtStart'] = self.gmt_start
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.record_user is not None:
+            result['recordUser'] = self.record_user
+        if self.type is not None:
+            result['type'] = self.type
+        if self.workitem_identifier is not None:
+            result['workitemIdentifier'] = self.workitem_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('actualTime') is not None:
+            self.actual_time = m.get('actualTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtEnd') is not None:
+            self.gmt_end = m.get('gmtEnd')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('gmtStart') is not None:
+            self.gmt_start = m.get('gmtStart')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('recordUser') is not None:
+            self.record_user = m.get('recordUser')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('workitemIdentifier') is not None:
+            self.workitem_identifier = m.get('workitemIdentifier')
+        return self
+
+
+class ListWorkitemTimeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        error_code: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+        workitem_time: List[ListWorkitemTimeResponseBodyWorkitemTime] = None,
+    ):
+        # 接口返回code
+        self.code = code
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_msg = error_msg
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true或者false
+        self.success = success
+        # 工时信息
+        self.workitem_time = workitem_time
+
+    def validate(self):
+        if self.workitem_time:
+            for k in self.workitem_time:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        result['workitemTime'] = []
+        if self.workitem_time is not None:
+            for k in self.workitem_time:
+                result['workitemTime'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        self.workitem_time = []
+        if m.get('workitemTime') is not None:
+            for k in m.get('workitemTime'):
+                temp_model = ListWorkitemTimeResponseBodyWorkitemTime()
+                self.workitem_time.append(temp_model.from_map(k))
+        return self
+
+
+class ListWorkitemTimeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWorkitemTimeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWorkitemTimeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListWorkitemsRequest(TeaModel):
     def __init__(
         self,
