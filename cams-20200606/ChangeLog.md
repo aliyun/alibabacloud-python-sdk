@@ -1,3 +1,6 @@
+2022-05-26 Version: 1.0.8
+- Support Python 3.
+
 2022-04-15 Version: 1.0.7
 - Added WabaId input parameter.
 

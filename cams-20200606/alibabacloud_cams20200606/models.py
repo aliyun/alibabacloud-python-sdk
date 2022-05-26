@@ -198,13 +198,16 @@ class CheckChatappContactsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CheckChatappContactsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -217,6 +220,8 @@ class CheckChatappContactsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -225,188 +230,10 @@ class CheckChatappContactsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CheckChatappContactsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CheckContactsRequest(TeaModel):
-    def __init__(
-        self,
-        channel_type: str = None,
-        contacts: str = None,
-        from_: str = None,
-        owner_id: int = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-    ):
-        self.channel_type = channel_type
-        self.contacts = contacts
-        self.from_ = from_
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.channel_type is not None:
-            result['ChannelType'] = self.channel_type
-        if self.contacts is not None:
-            result['Contacts'] = self.contacts
-        if self.from_ is not None:
-            result['From'] = self.from_
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChannelType') is not None:
-            self.channel_type = m.get('ChannelType')
-        if m.get('Contacts') is not None:
-            self.contacts = m.get('Contacts')
-        if m.get('From') is not None:
-            self.from_ = m.get('From')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class CheckContactsResponseBodyContacts(TeaModel):
-    def __init__(
-        self,
-        phone_number: str = None,
-        status: str = None,
-    ):
-        self.phone_number = phone_number
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.phone_number is not None:
-            result['PhoneNumber'] = self.phone_number
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PhoneNumber') is not None:
-            self.phone_number = m.get('PhoneNumber')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class CheckContactsResponseBody(TeaModel):
-    def __init__(
-        self,
-        contacts: List[CheckContactsResponseBodyContacts] = None,
-        request_id: str = None,
-        result_code: str = None,
-        result_message: str = None,
-    ):
-        self.contacts = contacts
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_message = result_message
-
-    def validate(self):
-        if self.contacts:
-            for k in self.contacts:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Contacts'] = []
-        if self.contacts is not None:
-            for k in self.contacts:
-                result['Contacts'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_message is not None:
-            result['ResultMessage'] = self.result_message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.contacts = []
-        if m.get('Contacts') is not None:
-            for k in m.get('Contacts'):
-                temp_model = CheckContactsResponseBodyContacts()
-                self.contacts.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultMessage') is not None:
-            self.result_message = m.get('ResultMessage')
-        return self
-
-
-class CheckContactsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: CheckContactsResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = CheckContactsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -783,13 +610,16 @@ class CreateChatappTemplateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateChatappTemplateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -802,6 +632,8 @@ class CreateChatappTemplateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -810,6 +642,8 @@ class CreateChatappTemplateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateChatappTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -897,13 +731,16 @@ class DeleteChatappTemplateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteChatappTemplateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -916,6 +753,8 @@ class DeleteChatappTemplateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -924,6 +763,8 @@ class DeleteChatappTemplateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteChatappTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1037,6 +878,7 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
         buttons: List[GetChatappTemplateDetailResponseBodyDataComponentsButtons] = None,
         caption: str = None,
         file_name: str = None,
+        format: str = None,
         text: str = None,
         type: str = None,
         url: str = None,
@@ -1048,6 +890,8 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
         self.caption = caption
         # 文件名称，当Type为Header，且Format为DOCUMENT时可以给文件指定名称
         self.file_name = file_name
+        # 格式
+        self.format = format
         # 所发送消息的文本
         self.text = text
         # 组件类型
@@ -1075,6 +919,8 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
             result['Caption'] = self.caption
         if self.file_name is not None:
             result['FileName'] = self.file_name
+        if self.format is not None:
+            result['Format'] = self.format
         if self.text is not None:
             result['Text'] = self.text
         if self.type is not None:
@@ -1094,6 +940,8 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
             self.caption = m.get('Caption')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
         if m.get('Text') is not None:
             self.text = m.get('Text')
         if m.get('Type') is not None:
@@ -1235,13 +1083,16 @@ class GetChatappTemplateDetailResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetChatappTemplateDetailResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1254,6 +1105,8 @@ class GetChatappTemplateDetailResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1262,6 +1115,8 @@ class GetChatappTemplateDetailResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetChatappTemplateDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1529,13 +1384,16 @@ class ListChatappTemplateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListChatappTemplateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1548,6 +1406,8 @@ class ListChatappTemplateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1556,6 +1416,8 @@ class ListChatappTemplateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListChatappTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1808,13 +1670,16 @@ class SendChatappMessageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SendChatappMessageResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1827,6 +1692,8 @@ class SendChatappMessageResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1835,248 +1702,10 @@ class SendChatappMessageResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SendChatappMessageResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SendMessageRequest(TeaModel):
-    def __init__(
-        self,
-        caption: str = None,
-        channel_type: str = None,
-        file_name: str = None,
-        from_: str = None,
-        link: str = None,
-        message_type: str = None,
-        owner_id: int = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-        template_body_params: str = None,
-        template_button_params: str = None,
-        template_code: str = None,
-        template_header_params: str = None,
-        text: str = None,
-        to: str = None,
-        type: str = None,
-    ):
-        self.caption = caption
-        self.channel_type = channel_type
-        self.file_name = file_name
-        self.from_ = from_
-        self.link = link
-        self.message_type = message_type
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-        self.template_body_params = template_body_params
-        self.template_button_params = template_button_params
-        self.template_code = template_code
-        self.template_header_params = template_header_params
-        self.text = text
-        self.to = to
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.caption is not None:
-            result['Caption'] = self.caption
-        if self.channel_type is not None:
-            result['ChannelType'] = self.channel_type
-        if self.file_name is not None:
-            result['FileName'] = self.file_name
-        if self.from_ is not None:
-            result['From'] = self.from_
-        if self.link is not None:
-            result['Link'] = self.link
-        if self.message_type is not None:
-            result['MessageType'] = self.message_type
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.template_body_params is not None:
-            result['TemplateBodyParams'] = self.template_body_params
-        if self.template_button_params is not None:
-            result['TemplateButtonParams'] = self.template_button_params
-        if self.template_code is not None:
-            result['TemplateCode'] = self.template_code
-        if self.template_header_params is not None:
-            result['TemplateHeaderParams'] = self.template_header_params
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.to is not None:
-            result['To'] = self.to
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Caption') is not None:
-            self.caption = m.get('Caption')
-        if m.get('ChannelType') is not None:
-            self.channel_type = m.get('ChannelType')
-        if m.get('FileName') is not None:
-            self.file_name = m.get('FileName')
-        if m.get('From') is not None:
-            self.from_ = m.get('From')
-        if m.get('Link') is not None:
-            self.link = m.get('Link')
-        if m.get('MessageType') is not None:
-            self.message_type = m.get('MessageType')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('TemplateBodyParams') is not None:
-            self.template_body_params = m.get('TemplateBodyParams')
-        if m.get('TemplateButtonParams') is not None:
-            self.template_button_params = m.get('TemplateButtonParams')
-        if m.get('TemplateCode') is not None:
-            self.template_code = m.get('TemplateCode')
-        if m.get('TemplateHeaderParams') is not None:
-            self.template_header_params = m.get('TemplateHeaderParams')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('To') is not None:
-            self.to = m.get('To')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class SendMessageResponseBodyModule(TeaModel):
-    def __init__(
-        self,
-        from_id: str = None,
-        message_id: str = None,
-        to_id: str = None,
-    ):
-        self.from_id = from_id
-        self.message_id = message_id
-        self.to_id = to_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.from_id is not None:
-            result['FromId'] = self.from_id
-        if self.message_id is not None:
-            result['MessageId'] = self.message_id
-        if self.to_id is not None:
-            result['ToId'] = self.to_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FromId') is not None:
-            self.from_id = m.get('FromId')
-        if m.get('MessageId') is not None:
-            self.message_id = m.get('MessageId')
-        if m.get('ToId') is not None:
-            self.to_id = m.get('ToId')
-        return self
-
-
-class SendMessageResponseBody(TeaModel):
-    def __init__(
-        self,
-        module: SendMessageResponseBodyModule = None,
-        request_id: str = None,
-        result_code: str = None,
-        result_message: str = None,
-    ):
-        self.module = module
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_message = result_message
-
-    def validate(self):
-        if self.module:
-            self.module.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.module is not None:
-            result['Module'] = self.module.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_message is not None:
-            result['ResultMessage'] = self.result_message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Module') is not None:
-            temp_model = SendMessageResponseBodyModule()
-            self.module = temp_model.from_map(m['Module'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultMessage') is not None:
-            self.result_message = m.get('ResultMessage')
-        return self
-
-
-class SendMessageResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: SendMessageResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = SendMessageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
