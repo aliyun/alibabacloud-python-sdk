@@ -1959,6 +1959,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_slr_and_sls_project_with_options_async(request, runtime)
 
+    def create_wasm_with_options(
+        self,
+        request: dcdn_20180115_models.CreateWasmRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CreateWasmResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWasm',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateWasmResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_wasm_with_options_async(
+        self,
+        request: dcdn_20180115_models.CreateWasmRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CreateWasmResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWasm',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateWasmResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_wasm(
+        self,
+        request: dcdn_20180115_models.CreateWasmRequest,
+    ) -> dcdn_20180115_models.CreateWasmResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_wasm_with_options(request, runtime)
+
+    async def create_wasm_async(
+        self,
+        request: dcdn_20180115_models.CreateWasmRequest,
+    ) -> dcdn_20180115_models.CreateWasmResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_wasm_with_options_async(request, runtime)
+
     def delete_dcdn_deliver_task_with_options(
         self,
         request: dcdn_20180115_models.DeleteDcdnDeliverTaskRequest,
@@ -2918,6 +3000,166 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DeleteRoutineConfEnvsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_routine_conf_envs_with_options_async(request, runtime)
+
+    def delete_wasm_with_options(
+        self,
+        request: dcdn_20180115_models.DeleteWasmRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteWasmResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteWasm',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteWasmResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_wasm_with_options_async(
+        self,
+        request: dcdn_20180115_models.DeleteWasmRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteWasmResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteWasm',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteWasmResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_wasm(
+        self,
+        request: dcdn_20180115_models.DeleteWasmRequest,
+    ) -> dcdn_20180115_models.DeleteWasmResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_wasm_with_options(request, runtime)
+
+    async def delete_wasm_async(
+        self,
+        request: dcdn_20180115_models.DeleteWasmRequest,
+    ) -> dcdn_20180115_models.DeleteWasmResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_wasm_with_options_async(request, runtime)
+
+    def delete_wasm_code_revision_with_options(
+        self,
+        request: dcdn_20180115_models.DeleteWasmCodeRevisionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteWasmCodeRevisionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.select_code_revision):
+            body['SelectCodeRevision'] = request.select_code_revision
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteWasmCodeRevision',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteWasmCodeRevisionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_wasm_code_revision_with_options_async(
+        self,
+        request: dcdn_20180115_models.DeleteWasmCodeRevisionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteWasmCodeRevisionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.select_code_revision):
+            body['SelectCodeRevision'] = request.select_code_revision
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteWasmCodeRevision',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteWasmCodeRevisionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_wasm_code_revision(
+        self,
+        request: dcdn_20180115_models.DeleteWasmCodeRevisionRequest,
+    ) -> dcdn_20180115_models.DeleteWasmCodeRevisionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_wasm_code_revision_with_options(request, runtime)
+
+    async def delete_wasm_code_revision_async(
+        self,
+        request: dcdn_20180115_models.DeleteWasmCodeRevisionRequest,
+    ) -> dcdn_20180115_models.DeleteWasmCodeRevisionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_wasm_code_revision_with_options_async(request, runtime)
 
     def describe_dcdn_acl_fields_with_options(
         self,
@@ -12097,6 +12339,154 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_logservice_status_with_options_async(request, runtime)
 
+    def describe_wasm_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeWasmRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeWasmResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeWasm',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeWasmResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_wasm_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeWasmRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeWasmResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeWasm',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeWasmResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_wasm(
+        self,
+        request: dcdn_20180115_models.DescribeWasmRequest,
+    ) -> dcdn_20180115_models.DescribeWasmResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_wasm_with_options(request, runtime)
+
+    async def describe_wasm_async(
+        self,
+        request: dcdn_20180115_models.DescribeWasmRequest,
+    ) -> dcdn_20180115_models.DescribeWasmResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_wasm_with_options_async(request, runtime)
+
+    def describe_wasm_user_info_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeWasmUserInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeWasmUserInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWasmUserInfo',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeWasmUserInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_wasm_user_info_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeWasmUserInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeWasmUserInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWasmUserInfo',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeWasmUserInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_wasm_user_info(
+        self,
+        request: dcdn_20180115_models.DescribeWasmUserInfoRequest,
+    ) -> dcdn_20180115_models.DescribeWasmUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_wasm_user_info_with_options(request, runtime)
+
+    async def describe_wasm_user_info_async(
+        self,
+        request: dcdn_20180115_models.DescribeWasmUserInfoRequest,
+    ) -> dcdn_20180115_models.DescribeWasmUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_wasm_user_info_with_options_async(request, runtime)
+
     def edit_routine_conf_with_options(
         self,
         tmp_req: dcdn_20180115_models.EditRoutineConfRequest,
@@ -12190,6 +12580,88 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.EditRoutineConfResponse:
         runtime = util_models.RuntimeOptions()
         return await self.edit_routine_conf_with_options_async(request, runtime)
+
+    def edit_wasm_conf_with_options(
+        self,
+        request: dcdn_20180115_models.EditWasmConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.EditWasmConfResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EditWasmConf',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.EditWasmConfResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def edit_wasm_conf_with_options_async(
+        self,
+        request: dcdn_20180115_models.EditWasmConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.EditWasmConfResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EditWasmConf',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.EditWasmConfResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def edit_wasm_conf(
+        self,
+        request: dcdn_20180115_models.EditWasmConfRequest,
+    ) -> dcdn_20180115_models.EditWasmConfResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.edit_wasm_conf_with_options(request, runtime)
+
+    async def edit_wasm_conf_async(
+        self,
+        request: dcdn_20180115_models.EditWasmConfRequest,
+    ) -> dcdn_20180115_models.EditWasmConfResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.edit_wasm_conf_with_options_async(request, runtime)
 
     def list_dcdn_real_time_delivery_project_with_options(
         self,
@@ -13558,92 +14030,6 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.SetDcdnDomainStagingConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.set_dcdn_domain_staging_config_with_options_async(request, runtime)
-
-    def set_dcdn_full_domains_block_ipwith_options(
-        self,
-        request: dcdn_20180115_models.SetDcdnFullDomainsBlockIPRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        body = {}
-        if not UtilClient.is_unset(request.block_interval):
-            body['BlockInterval'] = request.block_interval
-        if not UtilClient.is_unset(request.iplist):
-            body['IPList'] = request.iplist
-        if not UtilClient.is_unset(request.operation_type):
-            body['OperationType'] = request.operation_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SetDcdnFullDomainsBlockIP',
-            version='2018-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def set_dcdn_full_domains_block_ipwith_options_async(
-        self,
-        request: dcdn_20180115_models.SetDcdnFullDomainsBlockIPRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        body = {}
-        if not UtilClient.is_unset(request.block_interval):
-            body['BlockInterval'] = request.block_interval
-        if not UtilClient.is_unset(request.iplist):
-            body['IPList'] = request.iplist
-        if not UtilClient.is_unset(request.operation_type):
-            body['OperationType'] = request.operation_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SetDcdnFullDomainsBlockIP',
-            version='2018-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def set_dcdn_full_domains_block_ip(
-        self,
-        request: dcdn_20180115_models.SetDcdnFullDomainsBlockIPRequest,
-    ) -> dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.set_dcdn_full_domains_block_ipwith_options(request, runtime)
-
-    async def set_dcdn_full_domains_block_ip_async(
-        self,
-        request: dcdn_20180115_models.SetDcdnFullDomainsBlockIPRequest,
-    ) -> dcdn_20180115_models.SetDcdnFullDomainsBlockIPResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.set_dcdn_full_domains_block_ipwith_options_async(request, runtime)
 
     def set_dcdn_user_config_with_options(
         self,
