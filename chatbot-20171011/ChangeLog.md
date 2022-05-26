@@ -1,3 +1,6 @@
+2022-05-26 Version: 2.0.6
+- Add DeletePerspective.
+
 2022-04-19 Version: 2.0.5
 - CreateKnowledge add parameter OutlineId.
 
