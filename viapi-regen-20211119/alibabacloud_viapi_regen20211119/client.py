@@ -1,0 +1,3260 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from typing import Dict
+from Tea.core import TeaCore
+
+from alibabacloud_tea_openapi.client import Client as OpenApiClient
+from alibabacloud_tea_openapi import models as open_api_models
+from alibabacloud_tea_util.client import Client as UtilClient
+from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
+from alibabacloud_viapi_regen20211119 import models as viapi_regen_20211119_models
+from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+
+
+class Client(OpenApiClient):
+    """
+    *\
+    """
+    def __init__(
+        self, 
+        config: open_api_models.Config,
+    ):
+        super().__init__(config)
+        self._endpoint_rule = ''
+        self.check_config(config)
+        self._endpoint = self.get_endpoint('viapi-regen', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
+
+    def get_endpoint(
+        self,
+        product_id: str,
+        region_id: str,
+        endpoint_rule: str,
+        network: str,
+        suffix: str,
+        endpoint_map: Dict[str, str],
+        endpoint: str,
+    ) -> str:
+        if not UtilClient.empty(endpoint):
+            return endpoint
+        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+            return endpoint_map.get(region_id)
+        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def create_dataset_with_options(
+        self,
+        request: viapi_regen_20211119_models.CreateDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CreateDatasetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CreateDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dataset_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.CreateDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CreateDatasetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CreateDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dataset(
+        self,
+        request: viapi_regen_20211119_models.CreateDatasetRequest,
+    ) -> viapi_regen_20211119_models.CreateDatasetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_dataset_with_options(request, runtime)
+
+    async def create_dataset_async(
+        self,
+        request: viapi_regen_20211119_models.CreateDatasetRequest,
+    ) -> viapi_regen_20211119_models.CreateDatasetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dataset_with_options_async(request, runtime)
+
+    def create_labelset_with_options(
+        self,
+        request: viapi_regen_20211119_models.CreateLabelsetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CreateLabelsetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.object_key):
+            body['ObjectKey'] = request.object_key
+        if not UtilClient.is_unset(request.tag_settings):
+            body['TagSettings'] = request.tag_settings
+        if not UtilClient.is_unset(request.tag_user_list):
+            body['TagUserList'] = request.tag_user_list
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.user_oss_url):
+            body['UserOssUrl'] = request.user_oss_url
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLabelset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CreateLabelsetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_labelset_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.CreateLabelsetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CreateLabelsetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.object_key):
+            body['ObjectKey'] = request.object_key
+        if not UtilClient.is_unset(request.tag_settings):
+            body['TagSettings'] = request.tag_settings
+        if not UtilClient.is_unset(request.tag_user_list):
+            body['TagUserList'] = request.tag_user_list
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.user_oss_url):
+            body['UserOssUrl'] = request.user_oss_url
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLabelset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CreateLabelsetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_labelset(
+        self,
+        request: viapi_regen_20211119_models.CreateLabelsetRequest,
+    ) -> viapi_regen_20211119_models.CreateLabelsetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_labelset_with_options(request, runtime)
+
+    async def create_labelset_async(
+        self,
+        request: viapi_regen_20211119_models.CreateLabelsetRequest,
+    ) -> viapi_regen_20211119_models.CreateLabelsetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_labelset_with_options_async(request, runtime)
+
+    def create_service_with_options(
+        self,
+        request: viapi_regen_20211119_models.CreateServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CreateServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.train_task_id):
+            body['TrainTaskId'] = request.train_task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateService',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CreateServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.CreateServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CreateServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.train_task_id):
+            body['TrainTaskId'] = request.train_task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateService',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CreateServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service(
+        self,
+        request: viapi_regen_20211119_models.CreateServiceRequest,
+    ) -> viapi_regen_20211119_models.CreateServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_service_with_options(request, runtime)
+
+    async def create_service_async(
+        self,
+        request: viapi_regen_20211119_models.CreateServiceRequest,
+    ) -> viapi_regen_20211119_models.CreateServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_service_with_options_async(request, runtime)
+
+    def create_tag_task_with_options(
+        self,
+        request: viapi_regen_20211119_models.CreateTagTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CreateTagTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labelset_id):
+            body['LabelsetId'] = request.labelset_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTagTask',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CreateTagTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tag_task_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.CreateTagTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CreateTagTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labelset_id):
+            body['LabelsetId'] = request.labelset_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTagTask',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CreateTagTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tag_task(
+        self,
+        request: viapi_regen_20211119_models.CreateTagTaskRequest,
+    ) -> viapi_regen_20211119_models.CreateTagTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_tag_task_with_options(request, runtime)
+
+    async def create_tag_task_async(
+        self,
+        request: viapi_regen_20211119_models.CreateTagTaskRequest,
+    ) -> viapi_regen_20211119_models.CreateTagTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_tag_task_with_options_async(request, runtime)
+
+    def create_train_task_with_options(
+        self,
+        request: viapi_regen_20211119_models.CreateTrainTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CreateTrainTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.label_id):
+            body['LabelId'] = request.label_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.train_mode):
+            body['TrainMode'] = request.train_mode
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTrainTask',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CreateTrainTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_train_task_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.CreateTrainTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CreateTrainTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.label_id):
+            body['LabelId'] = request.label_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.train_mode):
+            body['TrainMode'] = request.train_mode
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTrainTask',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CreateTrainTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_train_task(
+        self,
+        request: viapi_regen_20211119_models.CreateTrainTaskRequest,
+    ) -> viapi_regen_20211119_models.CreateTrainTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_train_task_with_options(request, runtime)
+
+    async def create_train_task_async(
+        self,
+        request: viapi_regen_20211119_models.CreateTrainTaskRequest,
+    ) -> viapi_regen_20211119_models.CreateTrainTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_train_task_with_options_async(request, runtime)
+
+    def create_workspace_with_options(
+        self,
+        request: viapi_regen_20211119_models.CreateWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CreateWorkspaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWorkspace',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CreateWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workspace_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.CreateWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CreateWorkspaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWorkspace',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CreateWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_workspace(
+        self,
+        request: viapi_regen_20211119_models.CreateWorkspaceRequest,
+    ) -> viapi_regen_20211119_models.CreateWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_workspace_with_options(request, runtime)
+
+    async def create_workspace_async(
+        self,
+        request: viapi_regen_20211119_models.CreateWorkspaceRequest,
+    ) -> viapi_regen_20211119_models.CreateWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_workspace_with_options_async(request, runtime)
+
+    def debug_service_with_options(
+        self,
+        request: viapi_regen_20211119_models.DebugServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DebugServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.param):
+            body['Param'] = request.param
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DebugService',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DebugServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def debug_service_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.DebugServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DebugServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.param):
+            body['Param'] = request.param
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DebugService',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DebugServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def debug_service(
+        self,
+        request: viapi_regen_20211119_models.DebugServiceRequest,
+    ) -> viapi_regen_20211119_models.DebugServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.debug_service_with_options(request, runtime)
+
+    async def debug_service_async(
+        self,
+        request: viapi_regen_20211119_models.DebugServiceRequest,
+    ) -> viapi_regen_20211119_models.DebugServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.debug_service_with_options_async(request, runtime)
+
+    def delete_dataset_with_options(
+        self,
+        request: viapi_regen_20211119_models.DeleteDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DeleteDatasetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DeleteDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dataset_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.DeleteDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DeleteDatasetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DeleteDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dataset(
+        self,
+        request: viapi_regen_20211119_models.DeleteDatasetRequest,
+    ) -> viapi_regen_20211119_models.DeleteDatasetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dataset_with_options(request, runtime)
+
+    async def delete_dataset_async(
+        self,
+        request: viapi_regen_20211119_models.DeleteDatasetRequest,
+    ) -> viapi_regen_20211119_models.DeleteDatasetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dataset_with_options_async(request, runtime)
+
+    def delete_labelset_with_options(
+        self,
+        request: viapi_regen_20211119_models.DeleteLabelsetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DeleteLabelsetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteLabelset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DeleteLabelsetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_labelset_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.DeleteLabelsetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DeleteLabelsetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteLabelset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DeleteLabelsetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_labelset(
+        self,
+        request: viapi_regen_20211119_models.DeleteLabelsetRequest,
+    ) -> viapi_regen_20211119_models.DeleteLabelsetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_labelset_with_options(request, runtime)
+
+    async def delete_labelset_async(
+        self,
+        request: viapi_regen_20211119_models.DeleteLabelsetRequest,
+    ) -> viapi_regen_20211119_models.DeleteLabelsetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_labelset_with_options_async(request, runtime)
+
+    def delete_labelset_data_with_options(
+        self,
+        request: viapi_regen_20211119_models.DeleteLabelsetDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DeleteLabelsetDataResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.label_id):
+            body['LabelId'] = request.label_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteLabelsetData',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DeleteLabelsetDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_labelset_data_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.DeleteLabelsetDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DeleteLabelsetDataResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.label_id):
+            body['LabelId'] = request.label_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteLabelsetData',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DeleteLabelsetDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_labelset_data(
+        self,
+        request: viapi_regen_20211119_models.DeleteLabelsetDataRequest,
+    ) -> viapi_regen_20211119_models.DeleteLabelsetDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_labelset_data_with_options(request, runtime)
+
+    async def delete_labelset_data_async(
+        self,
+        request: viapi_regen_20211119_models.DeleteLabelsetDataRequest,
+    ) -> viapi_regen_20211119_models.DeleteLabelsetDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_labelset_data_with_options_async(request, runtime)
+
+    def delete_service_with_options(
+        self,
+        request: viapi_regen_20211119_models.DeleteServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DeleteServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteService',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DeleteServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_service_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.DeleteServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DeleteServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteService',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DeleteServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_service(
+        self,
+        request: viapi_regen_20211119_models.DeleteServiceRequest,
+    ) -> viapi_regen_20211119_models.DeleteServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_service_with_options(request, runtime)
+
+    async def delete_service_async(
+        self,
+        request: viapi_regen_20211119_models.DeleteServiceRequest,
+    ) -> viapi_regen_20211119_models.DeleteServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_service_with_options_async(request, runtime)
+
+    def delete_train_task_with_options(
+        self,
+        request: viapi_regen_20211119_models.DeleteTrainTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DeleteTrainTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTrainTask',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DeleteTrainTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_train_task_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.DeleteTrainTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DeleteTrainTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTrainTask',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DeleteTrainTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_train_task(
+        self,
+        request: viapi_regen_20211119_models.DeleteTrainTaskRequest,
+    ) -> viapi_regen_20211119_models.DeleteTrainTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_train_task_with_options(request, runtime)
+
+    async def delete_train_task_async(
+        self,
+        request: viapi_regen_20211119_models.DeleteTrainTaskRequest,
+    ) -> viapi_regen_20211119_models.DeleteTrainTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_train_task_with_options_async(request, runtime)
+
+    def delete_workspace_with_options(
+        self,
+        request: viapi_regen_20211119_models.DeleteWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DeleteWorkspaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteWorkspace',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DeleteWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_workspace_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.DeleteWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DeleteWorkspaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteWorkspace',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DeleteWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_workspace(
+        self,
+        request: viapi_regen_20211119_models.DeleteWorkspaceRequest,
+    ) -> viapi_regen_20211119_models.DeleteWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_workspace_with_options(request, runtime)
+
+    async def delete_workspace_async(
+        self,
+        request: viapi_regen_20211119_models.DeleteWorkspaceRequest,
+    ) -> viapi_regen_20211119_models.DeleteWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_workspace_with_options_async(request, runtime)
+
+    def download_file_name_list_with_options(
+        self,
+        request: viapi_regen_20211119_models.DownloadFileNameListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DownloadFileNameListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.identity):
+            body['Identity'] = request.identity
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DownloadFileNameList',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DownloadFileNameListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_file_name_list_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.DownloadFileNameListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DownloadFileNameListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.identity):
+            body['Identity'] = request.identity
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DownloadFileNameList',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DownloadFileNameListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_file_name_list(
+        self,
+        request: viapi_regen_20211119_models.DownloadFileNameListRequest,
+    ) -> viapi_regen_20211119_models.DownloadFileNameListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.download_file_name_list_with_options(request, runtime)
+
+    async def download_file_name_list_async(
+        self,
+        request: viapi_regen_20211119_models.DownloadFileNameListRequest,
+    ) -> viapi_regen_20211119_models.DownloadFileNameListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.download_file_name_list_with_options_async(request, runtime)
+
+    def download_label_file_with_options(
+        self,
+        request: viapi_regen_20211119_models.DownloadLabelFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DownloadLabelFileResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.label_id):
+            body['LabelId'] = request.label_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DownloadLabelFile',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DownloadLabelFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_label_file_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.DownloadLabelFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DownloadLabelFileResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.label_id):
+            body['LabelId'] = request.label_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DownloadLabelFile',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DownloadLabelFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_label_file(
+        self,
+        request: viapi_regen_20211119_models.DownloadLabelFileRequest,
+    ) -> viapi_regen_20211119_models.DownloadLabelFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.download_label_file_with_options(request, runtime)
+
+    async def download_label_file_async(
+        self,
+        request: viapi_regen_20211119_models.DownloadLabelFileRequest,
+    ) -> viapi_regen_20211119_models.DownloadLabelFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.download_label_file_with_options_async(request, runtime)
+
+    def download_template_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DownloadTemplateResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DownloadTemplate',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DownloadTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_template_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DownloadTemplateResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DownloadTemplate',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DownloadTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_template(self) -> viapi_regen_20211119_models.DownloadTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.download_template_with_options(runtime)
+
+    async def download_template_async(self) -> viapi_regen_20211119_models.DownloadTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.download_template_with_options_async(runtime)
+
+    def get_dataset_with_options(
+        self,
+        request: viapi_regen_20211119_models.GetDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetDatasetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDataset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dataset_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.GetDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetDatasetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDataset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dataset(
+        self,
+        request: viapi_regen_20211119_models.GetDatasetRequest,
+    ) -> viapi_regen_20211119_models.GetDatasetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_dataset_with_options(request, runtime)
+
+    async def get_dataset_async(
+        self,
+        request: viapi_regen_20211119_models.GetDatasetRequest,
+    ) -> viapi_regen_20211119_models.GetDatasetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dataset_with_options_async(request, runtime)
+
+    def get_diff_count_labelset_and_dataset_with_options(
+        self,
+        request: viapi_regen_20211119_models.GetDiffCountLabelsetAndDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetDiffCountLabelsetAndDatasetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labelset_id):
+            body['LabelsetId'] = request.labelset_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDiffCountLabelsetAndDataset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetDiffCountLabelsetAndDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_diff_count_labelset_and_dataset_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.GetDiffCountLabelsetAndDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetDiffCountLabelsetAndDatasetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labelset_id):
+            body['LabelsetId'] = request.labelset_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDiffCountLabelsetAndDataset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetDiffCountLabelsetAndDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_diff_count_labelset_and_dataset(
+        self,
+        request: viapi_regen_20211119_models.GetDiffCountLabelsetAndDatasetRequest,
+    ) -> viapi_regen_20211119_models.GetDiffCountLabelsetAndDatasetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_diff_count_labelset_and_dataset_with_options(request, runtime)
+
+    async def get_diff_count_labelset_and_dataset_async(
+        self,
+        request: viapi_regen_20211119_models.GetDiffCountLabelsetAndDatasetRequest,
+    ) -> viapi_regen_20211119_models.GetDiffCountLabelsetAndDatasetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_diff_count_labelset_and_dataset_with_options_async(request, runtime)
+
+    def get_label_detail_with_options(
+        self,
+        request: viapi_regen_20211119_models.GetLabelDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetLabelDetailResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetLabelDetail',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetLabelDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_label_detail_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.GetLabelDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetLabelDetailResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetLabelDetail',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetLabelDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_label_detail(
+        self,
+        request: viapi_regen_20211119_models.GetLabelDetailRequest,
+    ) -> viapi_regen_20211119_models.GetLabelDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_label_detail_with_options(request, runtime)
+
+    async def get_label_detail_async(
+        self,
+        request: viapi_regen_20211119_models.GetLabelDetailRequest,
+    ) -> viapi_regen_20211119_models.GetLabelDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_label_detail_with_options_async(request, runtime)
+
+    def get_labelset_with_options(
+        self,
+        request: viapi_regen_20211119_models.GetLabelsetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetLabelsetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetLabelset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetLabelsetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_labelset_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.GetLabelsetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetLabelsetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetLabelset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetLabelsetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_labelset(
+        self,
+        request: viapi_regen_20211119_models.GetLabelsetRequest,
+    ) -> viapi_regen_20211119_models.GetLabelsetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_labelset_with_options(request, runtime)
+
+    async def get_labelset_async(
+        self,
+        request: viapi_regen_20211119_models.GetLabelsetRequest,
+    ) -> viapi_regen_20211119_models.GetLabelsetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_labelset_with_options_async(request, runtime)
+
+    def get_service_with_options(
+        self,
+        request: viapi_regen_20211119_models.GetServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetService',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.GetServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetService',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service(
+        self,
+        request: viapi_regen_20211119_models.GetServiceRequest,
+    ) -> viapi_regen_20211119_models.GetServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_service_with_options(request, runtime)
+
+    async def get_service_async(
+        self,
+        request: viapi_regen_20211119_models.GetServiceRequest,
+    ) -> viapi_regen_20211119_models.GetServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_service_with_options_async(request, runtime)
+
+    def get_train_model_with_options(
+        self,
+        request: viapi_regen_20211119_models.GetTrainModelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetTrainModelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTrainModel',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetTrainModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_train_model_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.GetTrainModelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetTrainModelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTrainModel',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetTrainModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_train_model(
+        self,
+        request: viapi_regen_20211119_models.GetTrainModelRequest,
+    ) -> viapi_regen_20211119_models.GetTrainModelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_train_model_with_options(request, runtime)
+
+    async def get_train_model_async(
+        self,
+        request: viapi_regen_20211119_models.GetTrainModelRequest,
+    ) -> viapi_regen_20211119_models.GetTrainModelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_train_model_with_options_async(request, runtime)
+
+    def get_train_task_with_options(
+        self,
+        request: viapi_regen_20211119_models.GetTrainTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetTrainTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTrainTask',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetTrainTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_train_task_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.GetTrainTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetTrainTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTrainTask',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetTrainTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_train_task(
+        self,
+        request: viapi_regen_20211119_models.GetTrainTaskRequest,
+    ) -> viapi_regen_20211119_models.GetTrainTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_train_task_with_options(request, runtime)
+
+    async def get_train_task_async(
+        self,
+        request: viapi_regen_20211119_models.GetTrainTaskRequest,
+    ) -> viapi_regen_20211119_models.GetTrainTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_train_task_with_options_async(request, runtime)
+
+    def get_train_task_estimated_time_with_options(
+        self,
+        request: viapi_regen_20211119_models.GetTrainTaskEstimatedTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetTrainTaskEstimatedTimeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTrainTaskEstimatedTime',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetTrainTaskEstimatedTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_train_task_estimated_time_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.GetTrainTaskEstimatedTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetTrainTaskEstimatedTimeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTrainTaskEstimatedTime',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetTrainTaskEstimatedTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_train_task_estimated_time(
+        self,
+        request: viapi_regen_20211119_models.GetTrainTaskEstimatedTimeRequest,
+    ) -> viapi_regen_20211119_models.GetTrainTaskEstimatedTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_train_task_estimated_time_with_options(request, runtime)
+
+    async def get_train_task_estimated_time_async(
+        self,
+        request: viapi_regen_20211119_models.GetTrainTaskEstimatedTimeRequest,
+    ) -> viapi_regen_20211119_models.GetTrainTaskEstimatedTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_train_task_estimated_time_with_options_async(request, runtime)
+
+    def get_upload_policy_with_options(
+        self,
+        request: viapi_regen_20211119_models.GetUploadPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetUploadPolicyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUploadPolicy',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetUploadPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_upload_policy_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.GetUploadPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetUploadPolicyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUploadPolicy',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetUploadPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_upload_policy(
+        self,
+        request: viapi_regen_20211119_models.GetUploadPolicyRequest,
+    ) -> viapi_regen_20211119_models.GetUploadPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_upload_policy_with_options(request, runtime)
+
+    async def get_upload_policy_async(
+        self,
+        request: viapi_regen_20211119_models.GetUploadPolicyRequest,
+    ) -> viapi_regen_20211119_models.GetUploadPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_upload_policy_with_options_async(request, runtime)
+
+    def get_workspace_with_options(
+        self,
+        request: viapi_regen_20211119_models.GetWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetWorkspaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetWorkspace',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workspace_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.GetWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetWorkspaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetWorkspace',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workspace(
+        self,
+        request: viapi_regen_20211119_models.GetWorkspaceRequest,
+    ) -> viapi_regen_20211119_models.GetWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_workspace_with_options(request, runtime)
+
+    async def get_workspace_async(
+        self,
+        request: viapi_regen_20211119_models.GetWorkspaceRequest,
+    ) -> viapi_regen_20211119_models.GetWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_workspace_with_options_async(request, runtime)
+
+    def list_dataset_datas_with_options(
+        self,
+        request: viapi_regen_20211119_models.ListDatasetDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListDatasetDatasResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.identity):
+            body['Identity'] = request.identity
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDatasetDatas',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListDatasetDatasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dataset_datas_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.ListDatasetDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListDatasetDatasResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.identity):
+            body['Identity'] = request.identity
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDatasetDatas',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListDatasetDatasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dataset_datas(
+        self,
+        request: viapi_regen_20211119_models.ListDatasetDatasRequest,
+    ) -> viapi_regen_20211119_models.ListDatasetDatasResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_dataset_datas_with_options(request, runtime)
+
+    async def list_dataset_datas_async(
+        self,
+        request: viapi_regen_20211119_models.ListDatasetDatasRequest,
+    ) -> viapi_regen_20211119_models.ListDatasetDatasResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dataset_datas_with_options_async(request, runtime)
+
+    def list_datasets_with_options(
+        self,
+        request: viapi_regen_20211119_models.ListDatasetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListDatasetsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDatasets',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListDatasetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_datasets_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.ListDatasetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListDatasetsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDatasets',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListDatasetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_datasets(
+        self,
+        request: viapi_regen_20211119_models.ListDatasetsRequest,
+    ) -> viapi_regen_20211119_models.ListDatasetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_datasets_with_options(request, runtime)
+
+    async def list_datasets_async(
+        self,
+        request: viapi_regen_20211119_models.ListDatasetsRequest,
+    ) -> viapi_regen_20211119_models.ListDatasetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_datasets_with_options_async(request, runtime)
+
+    def list_labelset_datas_with_options(
+        self,
+        request: viapi_regen_20211119_models.ListLabelsetDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListLabelsetDatasResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.label_id):
+            body['LabelId'] = request.label_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListLabelsetDatas',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListLabelsetDatasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_labelset_datas_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.ListLabelsetDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListLabelsetDatasResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.label_id):
+            body['LabelId'] = request.label_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListLabelsetDatas',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListLabelsetDatasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_labelset_datas(
+        self,
+        request: viapi_regen_20211119_models.ListLabelsetDatasRequest,
+    ) -> viapi_regen_20211119_models.ListLabelsetDatasResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_labelset_datas_with_options(request, runtime)
+
+    async def list_labelset_datas_async(
+        self,
+        request: viapi_regen_20211119_models.ListLabelsetDatasRequest,
+    ) -> viapi_regen_20211119_models.ListLabelsetDatasResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_labelset_datas_with_options_async(request, runtime)
+
+    def list_labelsets_with_options(
+        self,
+        request: viapi_regen_20211119_models.ListLabelsetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListLabelsetsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListLabelsets',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListLabelsetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_labelsets_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.ListLabelsetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListLabelsetsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListLabelsets',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListLabelsetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_labelsets(
+        self,
+        request: viapi_regen_20211119_models.ListLabelsetsRequest,
+    ) -> viapi_regen_20211119_models.ListLabelsetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_labelsets_with_options(request, runtime)
+
+    async def list_labelsets_async(
+        self,
+        request: viapi_regen_20211119_models.ListLabelsetsRequest,
+    ) -> viapi_regen_20211119_models.ListLabelsetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_labelsets_with_options_async(request, runtime)
+
+    def list_services_with_options(
+        self,
+        request: viapi_regen_20211119_models.ListServicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListServicesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListServices',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_services_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.ListServicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListServicesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListServices',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_services(
+        self,
+        request: viapi_regen_20211119_models.ListServicesRequest,
+    ) -> viapi_regen_20211119_models.ListServicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_services_with_options(request, runtime)
+
+    async def list_services_async(
+        self,
+        request: viapi_regen_20211119_models.ListServicesRequest,
+    ) -> viapi_regen_20211119_models.ListServicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_services_with_options_async(request, runtime)
+
+    def list_train_tasks_with_options(
+        self,
+        request: viapi_regen_20211119_models.ListTrainTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListTrainTasksResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTrainTasks',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListTrainTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_train_tasks_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.ListTrainTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListTrainTasksResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTrainTasks',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListTrainTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_train_tasks(
+        self,
+        request: viapi_regen_20211119_models.ListTrainTasksRequest,
+    ) -> viapi_regen_20211119_models.ListTrainTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_train_tasks_with_options(request, runtime)
+
+    async def list_train_tasks_async(
+        self,
+        request: viapi_regen_20211119_models.ListTrainTasksRequest,
+    ) -> viapi_regen_20211119_models.ListTrainTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_train_tasks_with_options_async(request, runtime)
+
+    def list_workspaces_with_options(
+        self,
+        request: viapi_regen_20211119_models.ListWorkspacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListWorkspacesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListWorkspaces',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListWorkspacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workspaces_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.ListWorkspacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListWorkspacesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListWorkspaces',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListWorkspacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workspaces(
+        self,
+        request: viapi_regen_20211119_models.ListWorkspacesRequest,
+    ) -> viapi_regen_20211119_models.ListWorkspacesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_workspaces_with_options(request, runtime)
+
+    async def list_workspaces_async(
+        self,
+        request: viapi_regen_20211119_models.ListWorkspacesRequest,
+    ) -> viapi_regen_20211119_models.ListWorkspacesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_workspaces_with_options_async(request, runtime)
+
+    def set_dataset_user_oss_path_with_options(
+        self,
+        request: viapi_regen_20211119_models.SetDatasetUserOssPathRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.SetDatasetUserOssPathResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.user_oss_url):
+            body['UserOssUrl'] = request.user_oss_url
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetDatasetUserOssPath',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.SetDatasetUserOssPathResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_dataset_user_oss_path_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.SetDatasetUserOssPathRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.SetDatasetUserOssPathResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.user_oss_url):
+            body['UserOssUrl'] = request.user_oss_url
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetDatasetUserOssPath',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.SetDatasetUserOssPathResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_dataset_user_oss_path(
+        self,
+        request: viapi_regen_20211119_models.SetDatasetUserOssPathRequest,
+    ) -> viapi_regen_20211119_models.SetDatasetUserOssPathResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_dataset_user_oss_path_with_options(request, runtime)
+
+    async def set_dataset_user_oss_path_async(
+        self,
+        request: viapi_regen_20211119_models.SetDatasetUserOssPathRequest,
+    ) -> viapi_regen_20211119_models.SetDatasetUserOssPathResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_dataset_user_oss_path_with_options_async(request, runtime)
+
+    def start_service_with_options(
+        self,
+        request: viapi_regen_20211119_models.StartServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.StartServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartService',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.StartServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_service_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.StartServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.StartServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartService',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.StartServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_service(
+        self,
+        request: viapi_regen_20211119_models.StartServiceRequest,
+    ) -> viapi_regen_20211119_models.StartServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_service_with_options(request, runtime)
+
+    async def start_service_async(
+        self,
+        request: viapi_regen_20211119_models.StartServiceRequest,
+    ) -> viapi_regen_20211119_models.StartServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_service_with_options_async(request, runtime)
+
+    def start_train_task_with_options(
+        self,
+        request: viapi_regen_20211119_models.StartTrainTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.StartTrainTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartTrainTask',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.StartTrainTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_train_task_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.StartTrainTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.StartTrainTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartTrainTask',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.StartTrainTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_train_task(
+        self,
+        request: viapi_regen_20211119_models.StartTrainTaskRequest,
+    ) -> viapi_regen_20211119_models.StartTrainTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_train_task_with_options(request, runtime)
+
+    async def start_train_task_async(
+        self,
+        request: viapi_regen_20211119_models.StartTrainTaskRequest,
+    ) -> viapi_regen_20211119_models.StartTrainTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_train_task_with_options_async(request, runtime)
+
+    def stop_service_with_options(
+        self,
+        request: viapi_regen_20211119_models.StopServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.StopServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopService',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.StopServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_service_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.StopServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.StopServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopService',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.StopServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_service(
+        self,
+        request: viapi_regen_20211119_models.StopServiceRequest,
+    ) -> viapi_regen_20211119_models.StopServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_service_with_options(request, runtime)
+
+    async def stop_service_async(
+        self,
+        request: viapi_regen_20211119_models.StopServiceRequest,
+    ) -> viapi_regen_20211119_models.StopServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_service_with_options_async(request, runtime)
+
+    def stop_train_task_with_options(
+        self,
+        request: viapi_regen_20211119_models.StopTrainTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.StopTrainTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopTrainTask',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.StopTrainTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_train_task_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.StopTrainTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.StopTrainTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopTrainTask',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.StopTrainTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_train_task(
+        self,
+        request: viapi_regen_20211119_models.StopTrainTaskRequest,
+    ) -> viapi_regen_20211119_models.StopTrainTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_train_task_with_options(request, runtime)
+
+    async def stop_train_task_async(
+        self,
+        request: viapi_regen_20211119_models.StopTrainTaskRequest,
+    ) -> viapi_regen_20211119_models.StopTrainTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_train_task_with_options_async(request, runtime)
+
+    def update_dataset_with_options(
+        self,
+        request: viapi_regen_20211119_models.UpdateDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.UpdateDatasetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.UpdateDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dataset_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.UpdateDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.UpdateDatasetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.UpdateDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dataset(
+        self,
+        request: viapi_regen_20211119_models.UpdateDatasetRequest,
+    ) -> viapi_regen_20211119_models.UpdateDatasetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_dataset_with_options(request, runtime)
+
+    async def update_dataset_async(
+        self,
+        request: viapi_regen_20211119_models.UpdateDatasetRequest,
+    ) -> viapi_regen_20211119_models.UpdateDatasetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dataset_with_options_async(request, runtime)
+
+    def update_labelset_with_options(
+        self,
+        request: viapi_regen_20211119_models.UpdateLabelsetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.UpdateLabelsetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.object_key):
+            body['ObjectKey'] = request.object_key
+        if not UtilClient.is_unset(request.user_oss_url):
+            body['UserOssUrl'] = request.user_oss_url
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLabelset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.UpdateLabelsetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_labelset_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.UpdateLabelsetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.UpdateLabelsetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.object_key):
+            body['ObjectKey'] = request.object_key
+        if not UtilClient.is_unset(request.user_oss_url):
+            body['UserOssUrl'] = request.user_oss_url
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLabelset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.UpdateLabelsetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_labelset(
+        self,
+        request: viapi_regen_20211119_models.UpdateLabelsetRequest,
+    ) -> viapi_regen_20211119_models.UpdateLabelsetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_labelset_with_options(request, runtime)
+
+    async def update_labelset_async(
+        self,
+        request: viapi_regen_20211119_models.UpdateLabelsetRequest,
+    ) -> viapi_regen_20211119_models.UpdateLabelsetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_labelset_with_options_async(request, runtime)
+
+    def update_service_with_options(
+        self,
+        request: viapi_regen_20211119_models.UpdateServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.UpdateServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateService',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.UpdateServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_service_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.UpdateServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.UpdateServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateService',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.UpdateServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_service(
+        self,
+        request: viapi_regen_20211119_models.UpdateServiceRequest,
+    ) -> viapi_regen_20211119_models.UpdateServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_service_with_options(request, runtime)
+
+    async def update_service_async(
+        self,
+        request: viapi_regen_20211119_models.UpdateServiceRequest,
+    ) -> viapi_regen_20211119_models.UpdateServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_service_with_options_async(request, runtime)
+
+    def update_train_task_with_options(
+        self,
+        request: viapi_regen_20211119_models.UpdateTrainTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.UpdateTrainTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTrainTask',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.UpdateTrainTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_train_task_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.UpdateTrainTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.UpdateTrainTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTrainTask',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.UpdateTrainTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_train_task(
+        self,
+        request: viapi_regen_20211119_models.UpdateTrainTaskRequest,
+    ) -> viapi_regen_20211119_models.UpdateTrainTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_train_task_with_options(request, runtime)
+
+    async def update_train_task_async(
+        self,
+        request: viapi_regen_20211119_models.UpdateTrainTaskRequest,
+    ) -> viapi_regen_20211119_models.UpdateTrainTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_train_task_with_options_async(request, runtime)
+
+    def update_workspace_with_options(
+        self,
+        request: viapi_regen_20211119_models.UpdateWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.UpdateWorkspaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWorkspace',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.UpdateWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_workspace_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.UpdateWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.UpdateWorkspaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWorkspace',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.UpdateWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_workspace(
+        self,
+        request: viapi_regen_20211119_models.UpdateWorkspaceRequest,
+    ) -> viapi_regen_20211119_models.UpdateWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_workspace_with_options(request, runtime)
+
+    async def update_workspace_async(
+        self,
+        request: viapi_regen_20211119_models.UpdateWorkspaceRequest,
+    ) -> viapi_regen_20211119_models.UpdateWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_workspace_with_options_async(request, runtime)
