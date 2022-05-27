@@ -81,13 +81,16 @@ class AddDiskReplicaPairResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AddDiskReplicaPairResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -100,6 +103,8 @@ class AddDiskReplicaPairResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -108,6 +113,8 @@ class AddDiskReplicaPairResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddDiskReplicaPairResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -220,13 +227,16 @@ class CreateDiskReplicaGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateDiskReplicaGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -239,6 +249,8 @@ class CreateDiskReplicaGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -247,6 +259,8 @@ class CreateDiskReplicaGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDiskReplicaGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -401,13 +415,16 @@ class CreateDiskReplicaPairResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateDiskReplicaPairResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -420,6 +437,8 @@ class CreateDiskReplicaPairResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -428,6 +447,8 @@ class CreateDiskReplicaPairResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDiskReplicaPairResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -505,13 +526,16 @@ class DeleteDiskReplicaGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteDiskReplicaGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -524,6 +548,8 @@ class DeleteDiskReplicaGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -532,6 +558,8 @@ class DeleteDiskReplicaGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDiskReplicaGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -609,13 +637,16 @@ class DeleteDiskReplicaPairResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteDiskReplicaPairResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -628,6 +659,8 @@ class DeleteDiskReplicaPairResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -636,6 +669,8 @@ class DeleteDiskReplicaPairResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDiskReplicaPairResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -847,13 +882,16 @@ class DescribeDiskReplicaGroupsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDiskReplicaGroupsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -866,6 +904,8 @@ class DescribeDiskReplicaGroupsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -874,119 +914,10 @@ class DescribeDiskReplicaGroupsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDiskReplicaGroupsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeDiskReplicaPairProgressRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-        replica_pair_id: str = None,
-    ):
-        self.region_id = region_id
-        self.replica_pair_id = replica_pair_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.replica_pair_id is not None:
-            result['ReplicaPairId'] = self.replica_pair_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ReplicaPairId') is not None:
-            self.replica_pair_id = m.get('ReplicaPairId')
-        return self
-
-
-class DescribeDiskReplicaPairProgressResponseBody(TeaModel):
-    def __init__(
-        self,
-        progress: int = None,
-        recover_point: int = None,
-        request_id: str = None,
-    ):
-        # 同步进度
-        self.progress = progress
-        # 最近一次恢复点的时间戳。有条件返回，复制对start后，才会返回该字段。
-        self.recover_point = recover_point
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.progress is not None:
-            result['Progress'] = self.progress
-        if self.recover_point is not None:
-            result['RecoverPoint'] = self.recover_point
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Progress') is not None:
-            self.progress = m.get('Progress')
-        if m.get('RecoverPoint') is not None:
-            self.recover_point = m.get('RecoverPoint')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeDiskReplicaPairProgressResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeDiskReplicaPairProgressResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeDiskReplicaPairProgressResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1001,12 +932,20 @@ class DescribeDiskReplicaPairsRequest(TeaModel):
         replica_group_id: str = None,
         site: str = None,
     ):
+        # 分页查询时每页的最大条目数。取值范围：1~500
+        # 
+        # 默认值：10
         self.max_results = max_results
+        # 查询凭证（Token）。取值为上一次调用该接口返回的NextToken参数值，初次调用接口时无需设置该参数。
         self.next_token = next_token
+        # 异步复制关系ID列表。您可以指定一个或多个异步复制关系ID进行查询。格式为：pair-cn-dsa****,pair-cn-asd****。
+        # 
+        # 默认值为空，表示查询当前地域下所有的异步复制关系。
         self.pair_ids = pair_ids
         self.region_id = region_id
+        # 所属复制组id。
         self.replica_group_id = replica_group_id
-        # production或backup，表示数据从主或备站点获取，默认为production。
+        # production或backup，表示获取本地为主站点或备站点的复制对数据，默认为production。
         self.site = site
 
     def validate(self):
@@ -1059,6 +998,7 @@ class DescribeDiskReplicaPairsResponseBodyReplicaPairs(TeaModel):
         destination_disk_id: str = None,
         destination_region: str = None,
         destination_zone_id: str = None,
+        expired_time: int = None,
         last_recover_point: int = None,
         pair_name: str = None,
         primary_region: str = None,
@@ -1076,34 +1016,65 @@ class DescribeDiskReplicaPairsResponseBodyReplicaPairs(TeaModel):
         status: str = None,
         status_message: str = None,
     ):
+        # 异步复制时使用的带宽。单位为Kbps。
         self.bandwidth = bandwidth
+        # 付费类型。PREPAY：预付费；POSTPAY：后付费。
         self.charge_type = charge_type
-        # 创建时间。1970年1月1日0点0分以来的毫秒数
+        # 创建时间。1970年1月1日0点0分以来的秒数。
         self.create_time = create_time
         self.description = description
         self.destination_disk_id = destination_disk_id
         self.destination_region = destination_region
+        # 从盘所属的可用区。
         self.destination_zone_id = destination_zone_id
+        self.expired_time = expired_time
+        # 最近一次异步复制操作完成的时间。该参数以时间戳的形式提供返回值。单位为秒。
         self.last_recover_point = last_recover_point
         self.pair_name = pair_name
-        # pair的初始源地域
+        # 复制对的初始源地域。
         self.primary_region = primary_region
-        # pair的初始源可用区
+        # 复制对的初始源可用区。
         self.primary_zone = primary_zone
+        # 复制对的RPO值。单位为秒。
         self.rpo = rpo
+        # 所属复制组id。
         self.replica_group_id = replica_group_id
+        # 所属复制组名称。
         self.replica_group_name = replica_group_name
         self.replica_pair_id = replica_pair_id
-        # pair信息的后端站点来源，production或backup
+        # 复制对信息的后端站点来源，production或backup。
         self.site = site
         self.source_disk_id = source_disk_id
         self.source_region = source_region
+        # 主盘所属的可用区。
         self.source_zone_id = source_zone_id
-        # pair的初始目的地域
+        # 复制对的初始目的地域。
         self.standby_region = standby_region
-        # pair的初始目的可用区
+        # 复制对的初始目的可用区。
         self.standby_zone = standby_zone
+        # 异步复制关系的状态。可能值：
+        # 
+        # - invalid：失效。该状态表示异步复制关系存在异常。
+        # - creating：创建中。
+        # - created：已创建。
+        # - create_failed：创建失败。
+        # - initial_syncing：初始同步中。异步复制在创建并启动后，主盘数据初次异步复制到从盘的过程中，将处于该状态。
+        # - syncing：同步中。主盘和从盘之间非第一次进行异步复制数据时，将处于该状态。
+        # - manual_syncing：单次同步中。单次同步，同步完成后恢复到stopped状态。如果是第一次单次同步，则同步中也显示为状态manual_syncing。
+        # - normal：正常。当异步复制的当前周期内数据复制完成时，将处于该状态。
+        # - stopping：停止中。
+        # - stopped：已停止。
+        # - stop_failed：停止失败。
+        # - failovering：故障切换中。
+        # - failovered：故障切换完成。
+        # - failover_failed：故障切换失败。
+        # - reprotecting：反向复制操作中。
+        # - reprotect_failed：反向复制失败。
+        # - deleting：删除中。
+        # - delete_failed：删除失败。
+        # - deleted：已删除。
         self.status = status
+        # 复制对的状态提示信息。比如invalid时，可能值：DeviceRemoved：主盘或者从盘被删除。DeviceKeyChanged：主盘或从盘的DeviceKey映射发生变化。
         self.status_message = status_message
 
     def validate(self):
@@ -1129,6 +1100,8 @@ class DescribeDiskReplicaPairsResponseBodyReplicaPairs(TeaModel):
             result['DestinationRegion'] = self.destination_region
         if self.destination_zone_id is not None:
             result['DestinationZoneId'] = self.destination_zone_id
+        if self.expired_time is not None:
+            result['ExpiredTime'] = self.expired_time
         if self.last_recover_point is not None:
             result['LastRecoverPoint'] = self.last_recover_point
         if self.pair_name is not None:
@@ -1179,6 +1152,8 @@ class DescribeDiskReplicaPairsResponseBodyReplicaPairs(TeaModel):
             self.destination_region = m.get('DestinationRegion')
         if m.get('DestinationZoneId') is not None:
             self.destination_zone_id = m.get('DestinationZoneId')
+        if m.get('ExpiredTime') is not None:
+            self.expired_time = m.get('ExpiredTime')
         if m.get('LastRecoverPoint') is not None:
             self.last_recover_point = m.get('LastRecoverPoint')
         if m.get('PairName') is not None:
@@ -1266,13 +1241,16 @@ class DescribeDiskReplicaPairsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDiskReplicaPairsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1285,6 +1263,8 @@ class DescribeDiskReplicaPairsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1293,6 +1273,8 @@ class DescribeDiskReplicaPairsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDiskReplicaPairsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1470,13 +1452,16 @@ class DescribeRegionsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeRegionsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1489,6 +1474,8 @@ class DescribeRegionsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1497,6 +1484,8 @@ class DescribeRegionsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRegionsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1574,13 +1563,16 @@ class FailoverDiskReplicaGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: FailoverDiskReplicaGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1593,6 +1585,8 @@ class FailoverDiskReplicaGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1601,6 +1595,8 @@ class FailoverDiskReplicaGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = FailoverDiskReplicaGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1678,13 +1674,16 @@ class FailoverDiskReplicaPairResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: FailoverDiskReplicaPairResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1697,6 +1696,8 @@ class FailoverDiskReplicaPairResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1705,6 +1706,8 @@ class FailoverDiskReplicaPairResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = FailoverDiskReplicaPairResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1800,13 +1803,16 @@ class ModifyDiskReplicaGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyDiskReplicaGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1819,6 +1825,8 @@ class ModifyDiskReplicaGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1827,6 +1835,8 @@ class ModifyDiskReplicaGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDiskReplicaGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1928,13 +1938,16 @@ class ModifyDiskReplicaPairResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyDiskReplicaPairResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1947,6 +1960,8 @@ class ModifyDiskReplicaPairResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1955,6 +1970,8 @@ class ModifyDiskReplicaPairResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDiskReplicaPairResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2038,13 +2055,16 @@ class RemoveDiskReplicaPairResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RemoveDiskReplicaPairResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2057,6 +2077,8 @@ class RemoveDiskReplicaPairResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2065,6 +2087,8 @@ class RemoveDiskReplicaPairResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RemoveDiskReplicaPairResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2154,13 +2178,16 @@ class ReprotectDiskReplicaGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ReprotectDiskReplicaGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2173,6 +2200,8 @@ class ReprotectDiskReplicaGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2181,6 +2210,8 @@ class ReprotectDiskReplicaGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReprotectDiskReplicaGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2258,13 +2289,16 @@ class ReprotectDiskReplicaPairResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ReprotectDiskReplicaPairResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2277,6 +2311,8 @@ class ReprotectDiskReplicaPairResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2285,6 +2321,8 @@ class ReprotectDiskReplicaPairResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReprotectDiskReplicaPairResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2368,13 +2406,16 @@ class StartDiskReplicaGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: StartDiskReplicaGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2387,6 +2428,8 @@ class StartDiskReplicaGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2395,6 +2438,8 @@ class StartDiskReplicaGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartDiskReplicaGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2478,13 +2523,16 @@ class StartDiskReplicaPairResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: StartDiskReplicaPairResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2497,6 +2545,8 @@ class StartDiskReplicaPairResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2505,6 +2555,8 @@ class StartDiskReplicaPairResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartDiskReplicaPairResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2582,13 +2634,16 @@ class StopDiskReplicaGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: StopDiskReplicaGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2601,6 +2656,8 @@ class StopDiskReplicaGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2609,6 +2666,8 @@ class StopDiskReplicaGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopDiskReplicaGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2686,13 +2745,16 @@ class StopDiskReplicaPairResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: StopDiskReplicaPairResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2705,6 +2767,8 @@ class StopDiskReplicaPairResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2713,6 +2777,8 @@ class StopDiskReplicaPairResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopDiskReplicaPairResponseBody()
             self.body = temp_model.from_map(m['body'])
