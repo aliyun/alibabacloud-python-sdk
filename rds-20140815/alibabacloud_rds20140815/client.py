@@ -287,6 +287,8 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.AllocateInstancePublicConnectionResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.babelfish_port):
+            query['BabelfishPort'] = request.babelfish_port
         if not UtilClient.is_unset(request.connection_string_prefix):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -329,6 +331,8 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.AllocateInstancePublicConnectionResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.babelfish_port):
+            query['BabelfishPort'] = request.babelfish_port
         if not UtilClient.is_unset(request.connection_string_prefix):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -2046,15 +2050,21 @@ class Client(OpenApiClient):
 
     def create_dbinstance_with_options(
         self,
-        request: rds_20140815_models.CreateDBInstanceRequest,
+        tmp_req: rds_20140815_models.CreateDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CreateDBInstanceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.CreateDBInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.serverless_config):
+            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.serverless_config), 'ServerlessConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.babelfish_config):
+            query['BabelfishConfig'] = request.babelfish_config
         if not UtilClient.is_unset(request.business_info):
             query['BusinessInfo'] = request.business_info
         if not UtilClient.is_unset(request.category):
@@ -2111,6 +2121,8 @@ class Client(OpenApiClient):
             query['RoleARN'] = request.role_arn
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.serverless_config_shrink):
+            query['ServerlessConfig'] = request.serverless_config_shrink
         if not UtilClient.is_unset(request.storage_auto_scale):
             query['StorageAutoScale'] = request.storage_auto_scale
         if not UtilClient.is_unset(request.storage_threshold):
@@ -2164,15 +2176,21 @@ class Client(OpenApiClient):
 
     async def create_dbinstance_with_options_async(
         self,
-        request: rds_20140815_models.CreateDBInstanceRequest,
+        tmp_req: rds_20140815_models.CreateDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CreateDBInstanceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.CreateDBInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.serverless_config):
+            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.serverless_config), 'ServerlessConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.babelfish_config):
+            query['BabelfishConfig'] = request.babelfish_config
         if not UtilClient.is_unset(request.business_info):
             query['BusinessInfo'] = request.business_info
         if not UtilClient.is_unset(request.category):
@@ -2229,6 +2247,8 @@ class Client(OpenApiClient):
             query['RoleARN'] = request.role_arn
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.serverless_config_shrink):
+            query['ServerlessConfig'] = request.serverless_config_shrink
         if not UtilClient.is_unset(request.storage_auto_scale):
             query['StorageAutoScale'] = request.storage_auto_scale
         if not UtilClient.is_unset(request.storage_threshold):
@@ -3067,92 +3087,6 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.CreateMigrateTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_migrate_task_with_options_async(request, runtime)
-
-    def create_notify_with_options(
-        self,
-        request: rds_20140815_models.CreateNotifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.CreateNotifyResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.idempotent_id):
-            body['IdempotentId'] = request.idempotent_id
-        if not UtilClient.is_unset(request.level):
-            body['Level'] = request.level
-        if not UtilClient.is_unset(request.notify_element):
-            body['NotifyElement'] = request.notify_element
-        if not UtilClient.is_unset(request.template_name):
-            body['TemplateName'] = request.template_name
-        if not UtilClient.is_unset(request.type):
-            body['Type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateNotify',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.CreateNotifyResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_notify_with_options_async(
-        self,
-        request: rds_20140815_models.CreateNotifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.CreateNotifyResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.idempotent_id):
-            body['IdempotentId'] = request.idempotent_id
-        if not UtilClient.is_unset(request.level):
-            body['Level'] = request.level
-        if not UtilClient.is_unset(request.notify_element):
-            body['NotifyElement'] = request.notify_element
-        if not UtilClient.is_unset(request.template_name):
-            body['TemplateName'] = request.template_name
-        if not UtilClient.is_unset(request.type):
-            body['Type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateNotify',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.CreateNotifyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_notify(
-        self,
-        request: rds_20140815_models.CreateNotifyRequest,
-    ) -> rds_20140815_models.CreateNotifyResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_notify_with_options(request, runtime)
-
-    async def create_notify_async(
-        self,
-        request: rds_20140815_models.CreateNotifyRequest,
-    ) -> rds_20140815_models.CreateNotifyResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_notify_with_options_async(request, runtime)
 
     def create_online_database_task_with_options(
         self,
@@ -4979,96 +4913,6 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeAvailableCrossRegionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_available_cross_region_with_options_async(request, runtime)
-
-    def describe_available_dedicated_host_classes_with_options(
-        self,
-        request: rds_20140815_models.DescribeAvailableDedicatedHostClassesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.DescribeAvailableDedicatedHostClassesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.storage_type):
-            query['StorageType'] = request.storage_type
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAvailableDedicatedHostClasses',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.DescribeAvailableDedicatedHostClassesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_available_dedicated_host_classes_with_options_async(
-        self,
-        request: rds_20140815_models.DescribeAvailableDedicatedHostClassesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.DescribeAvailableDedicatedHostClassesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.storage_type):
-            query['StorageType'] = request.storage_type
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAvailableDedicatedHostClasses',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.DescribeAvailableDedicatedHostClassesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_available_dedicated_host_classes(
-        self,
-        request: rds_20140815_models.DescribeAvailableDedicatedHostClassesRequest,
-    ) -> rds_20140815_models.DescribeAvailableDedicatedHostClassesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_available_dedicated_host_classes_with_options(request, runtime)
-
-    async def describe_available_dedicated_host_classes_async(
-        self,
-        request: rds_20140815_models.DescribeAvailableDedicatedHostClassesRequest,
-    ) -> rds_20140815_models.DescribeAvailableDedicatedHostClassesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_available_dedicated_host_classes_with_options_async(request, runtime)
 
     def describe_available_metrics_with_options(
         self,
@@ -15241,6 +15085,8 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.ModifyDBInstanceConnectionStringResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.babelfish_port):
+            query['BabelfishPort'] = request.babelfish_port
         if not UtilClient.is_unset(request.connection_string_prefix):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.current_connection_string):
@@ -15285,6 +15131,8 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.ModifyDBInstanceConnectionStringResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.babelfish_port):
+            query['BabelfishPort'] = request.babelfish_port
         if not UtilClient.is_unset(request.connection_string_prefix):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.current_connection_string):
