@@ -47,9 +47,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.AssociatePrincipalWithPortfolioResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.portfolio_id):
             body['PortfolioId'] = request.portfolio_id
@@ -58,7 +55,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.principal_type):
             body['PrincipalType'] = request.principal_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -83,9 +79,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.AssociatePrincipalWithPortfolioResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.portfolio_id):
             body['PortfolioId'] = request.portfolio_id
@@ -94,7 +87,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.principal_type):
             body['PrincipalType'] = request.principal_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -133,16 +125,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.AssociateProductWithPortfolioResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.portfolio_id):
             body['PortfolioId'] = request.portfolio_id
         if not UtilClient.is_unset(request.product_id):
             body['ProductId'] = request.product_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -167,16 +155,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.AssociateProductWithPortfolioResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.portfolio_id):
             body['PortfolioId'] = request.portfolio_id
         if not UtilClient.is_unset(request.product_id):
             body['ProductId'] = request.product_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -215,9 +199,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.CreateConstraintResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.config):
             body['Config'] = request.config
@@ -230,7 +211,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.product_id):
             body['ProductId'] = request.product_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -255,9 +235,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.CreateConstraintResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.config):
             body['Config'] = request.config
@@ -270,7 +247,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.product_id):
             body['ProductId'] = request.product_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -309,9 +285,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.CreatePortfolioResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -320,7 +293,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.provider_name):
             body['ProviderName'] = request.provider_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -345,9 +317,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.CreatePortfolioResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -356,7 +325,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.provider_name):
             body['ProviderName'] = request.provider_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -399,9 +367,6 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.product_version_parameters):
             request.product_version_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.product_version_parameters), 'ProductVersionParameters', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -414,7 +379,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.provider_name):
             body['ProviderName'] = request.provider_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -443,9 +407,6 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.product_version_parameters):
             request.product_version_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.product_version_parameters), 'ProductVersionParameters', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -458,7 +419,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.provider_name):
             body['ProviderName'] = request.provider_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -497,9 +457,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.CreateProductVersionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.active):
             body['Active'] = request.active
@@ -516,7 +473,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.template_url):
             body['TemplateUrl'] = request.template_url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -541,9 +497,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.CreateProductVersionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.active):
             body['Active'] = request.active
@@ -560,7 +513,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.template_url):
             body['TemplateUrl'] = request.template_url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -599,16 +551,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.CreateTemplateResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.template_body):
             body['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_type):
             body['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -633,16 +581,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.CreateTemplateResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.template_body):
             body['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_type):
             body['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -681,14 +625,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.DeleteConstraintResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.constraint_id):
             body['ConstraintId'] = request.constraint_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -713,14 +653,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.DeleteConstraintResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.constraint_id):
             body['ConstraintId'] = request.constraint_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -759,14 +695,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.DeletePortfolioResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.portfolio_id):
             body['PortfolioId'] = request.portfolio_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -791,14 +723,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.DeletePortfolioResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.portfolio_id):
             body['PortfolioId'] = request.portfolio_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -837,14 +765,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.DeleteProductResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.product_id):
             body['ProductId'] = request.product_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -869,14 +793,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.DeleteProductResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.product_id):
             body['ProductId'] = request.product_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -915,14 +835,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.DeleteProductVersionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.product_version_id):
             body['ProductVersionId'] = request.product_version_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -947,14 +863,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.DeleteProductVersionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.product_version_id):
             body['ProductVersionId'] = request.product_version_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -993,9 +905,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.DisassociatePrincipalFromPortfolioResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.portfolio_id):
             body['PortfolioId'] = request.portfolio_id
@@ -1004,7 +913,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.principal_type):
             body['PrincipalType'] = request.principal_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1029,9 +937,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.DisassociatePrincipalFromPortfolioResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.portfolio_id):
             body['PortfolioId'] = request.portfolio_id
@@ -1040,7 +945,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.principal_type):
             body['PrincipalType'] = request.principal_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1079,16 +983,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.DisassociateProductFromPortfolioResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.portfolio_id):
             body['PortfolioId'] = request.portfolio_id
         if not UtilClient.is_unset(request.product_id):
             body['ProductId'] = request.product_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1113,16 +1013,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.DisassociateProductFromPortfolioResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.portfolio_id):
             body['PortfolioId'] = request.portfolio_id
         if not UtilClient.is_unset(request.product_id):
             body['ProductId'] = request.product_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1294,72 +1190,6 @@ class Client(OpenApiClient):
     ) -> servicecatalog_20210901_models.GetPortfolioResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_portfolio_with_options_async(request, runtime)
-
-    def get_product_with_options(
-        self,
-        request: servicecatalog_20210901_models.GetProductRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicecatalog_20210901_models.GetProductResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetProduct',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicecatalog_20210901_models.GetProductResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_product_with_options_async(
-        self,
-        request: servicecatalog_20210901_models.GetProductRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicecatalog_20210901_models.GetProductResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetProduct',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicecatalog_20210901_models.GetProductResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_product(
-        self,
-        request: servicecatalog_20210901_models.GetProductRequest,
-    ) -> servicecatalog_20210901_models.GetProductResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_product_with_options(request, runtime)
-
-    async def get_product_async(
-        self,
-        request: servicecatalog_20210901_models.GetProductRequest,
-    ) -> servicecatalog_20210901_models.GetProductResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_product_with_options_async(request, runtime)
 
     def get_product_as_admin_with_options(
         self,
@@ -1791,12 +1621,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.LaunchProductResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.inputs):
-            body['Inputs'] = request.inputs
+        if not UtilClient.is_unset(request.parameters):
+            body['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.portfolio_id):
             body['PortfolioId'] = request.portfolio_id
         if not UtilClient.is_unset(request.product_id):
@@ -1808,7 +1635,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.stack_region_id):
             body['StackRegionId'] = request.stack_region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1833,12 +1659,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.LaunchProductResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.inputs):
-            body['Inputs'] = request.inputs
+        if not UtilClient.is_unset(request.parameters):
+            body['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.portfolio_id):
             body['PortfolioId'] = request.portfolio_id
         if not UtilClient.is_unset(request.product_id):
@@ -1850,7 +1673,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.stack_region_id):
             body['StackRegionId'] = request.stack_region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2256,72 +2078,6 @@ class Client(OpenApiClient):
     ) -> servicecatalog_20210901_models.ListProductVersionsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_product_versions_with_options_async(request, runtime)
-
-    def list_products_with_options(
-        self,
-        request: servicecatalog_20210901_models.ListProductsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicecatalog_20210901_models.ListProductsResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListProducts',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicecatalog_20210901_models.ListProductsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_products_with_options_async(
-        self,
-        request: servicecatalog_20210901_models.ListProductsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicecatalog_20210901_models.ListProductsResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListProducts',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicecatalog_20210901_models.ListProductsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_products(
-        self,
-        request: servicecatalog_20210901_models.ListProductsRequest,
-    ) -> servicecatalog_20210901_models.ListProductsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_products_with_options(request, runtime)
-
-    async def list_products_async(
-        self,
-        request: servicecatalog_20210901_models.ListProductsRequest,
-    ) -> servicecatalog_20210901_models.ListProductsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_products_with_options_async(request, runtime)
 
     def list_products_as_admin_with_options(
         self,
@@ -2729,102 +2485,16 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tasks_with_options_async(request, runtime)
 
-    def search_products_as_admin_with_options(
-        self,
-        request: servicecatalog_20210901_models.SearchProductsAsAdminRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicecatalog_20210901_models.SearchProductsAsAdminResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.filters):
-            body['Filters'] = request.filters
-        if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.portfolio_id):
-            body['PortfolioId'] = request.portfolio_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SearchProductsAsAdmin',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicecatalog_20210901_models.SearchProductsAsAdminResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def search_products_as_admin_with_options_async(
-        self,
-        request: servicecatalog_20210901_models.SearchProductsAsAdminRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicecatalog_20210901_models.SearchProductsAsAdminResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.filters):
-            body['Filters'] = request.filters
-        if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.portfolio_id):
-            body['PortfolioId'] = request.portfolio_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SearchProductsAsAdmin',
-            version='2021-09-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicecatalog_20210901_models.SearchProductsAsAdminResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def search_products_as_admin(
-        self,
-        request: servicecatalog_20210901_models.SearchProductsAsAdminRequest,
-    ) -> servicecatalog_20210901_models.SearchProductsAsAdminResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.search_products_as_admin_with_options(request, runtime)
-
-    async def search_products_as_admin_async(
-        self,
-        request: servicecatalog_20210901_models.SearchProductsAsAdminRequest,
-    ) -> servicecatalog_20210901_models.SearchProductsAsAdminResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.search_products_as_admin_with_options_async(request, runtime)
-
     def terminate_provisioned_product_with_options(
         self,
         request: servicecatalog_20210901_models.TerminateProvisionedProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.TerminateProvisionedProductResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.provisioned_product_id):
             body['ProvisionedProductId'] = request.provisioned_product_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2849,14 +2519,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.TerminateProvisionedProductResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.provisioned_product_id):
             body['ProvisionedProductId'] = request.provisioned_product_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2895,9 +2561,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.UpdateConstraintResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.config):
             body['Config'] = request.config
@@ -2906,7 +2569,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2931,9 +2593,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.UpdateConstraintResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.config):
             body['Config'] = request.config
@@ -2942,7 +2601,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2981,9 +2639,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.UpdatePortfolioResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -2994,7 +2649,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.provider_name):
             body['ProviderName'] = request.provider_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3019,9 +2673,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.UpdatePortfolioResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -3032,7 +2683,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.provider_name):
             body['ProviderName'] = request.provider_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3071,9 +2721,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.UpdateProductResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -3084,7 +2731,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.provider_name):
             body['ProviderName'] = request.provider_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3109,9 +2755,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.UpdateProductResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -3122,7 +2765,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.provider_name):
             body['ProviderName'] = request.provider_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3161,9 +2803,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.UpdateProductVersionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.active):
             body['Active'] = request.active
@@ -3176,7 +2815,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.product_version_name):
             body['ProductVersionName'] = request.product_version_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3201,9 +2839,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.UpdateProductVersionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.active):
             body['Active'] = request.active
@@ -3216,7 +2851,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.product_version_name):
             body['ProductVersionName'] = request.product_version_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3255,12 +2889,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.UpdateProvisionedProductResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.inputs):
-            body['Inputs'] = request.inputs
+        if not UtilClient.is_unset(request.parameters):
+            body['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.portfolio_id):
             body['PortfolioId'] = request.portfolio_id
         if not UtilClient.is_unset(request.product_id):
@@ -3270,7 +2901,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.provisioned_product_id):
             body['ProvisionedProductId'] = request.provisioned_product_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3295,12 +2925,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicecatalog_20210901_models.UpdateProvisionedProductResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         body = {}
-        if not UtilClient.is_unset(request.inputs):
-            body['Inputs'] = request.inputs
+        if not UtilClient.is_unset(request.parameters):
+            body['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.portfolio_id):
             body['PortfolioId'] = request.portfolio_id
         if not UtilClient.is_unset(request.product_id):
@@ -3310,7 +2937,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.provisioned_product_id):
             body['ProvisionedProductId'] = request.provisioned_product_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
