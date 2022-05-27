@@ -1,3 +1,6 @@
+2022-05-27 Version: 3.1.3
+- Add  Model CoverUrl.
+
 2022-05-25 Version: 3.1.2
 - Add  Rebuild Params with Rebuild  Interface And Pack Scene Origin Image Interface.
 
