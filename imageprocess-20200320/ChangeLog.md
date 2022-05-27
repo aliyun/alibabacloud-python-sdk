@@ -1,3 +1,6 @@
+2022-05-27 Version: 2.0.11
+- Release DetectLymph DetectPanc.
+
 2022-04-08 Version: 2.0.10
 - Release FeedbackSession.
 

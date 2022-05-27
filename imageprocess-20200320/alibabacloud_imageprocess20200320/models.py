@@ -294,13 +294,16 @@ class AnalyzeChestVesselResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AnalyzeChestVesselResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -313,6 +316,8 @@ class AnalyzeChestVesselResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -321,6 +326,8 @@ class AnalyzeChestVesselResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AnalyzeChestVesselResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -413,14 +420,16 @@ class CalcCACSRequest(TeaModel):
         return self
 
 
-class CalcCACSResponseBodyData(TeaModel):
+class CalcCACSResponseBodyDataDetections(TeaModel):
     def __init__(
         self,
-        result_url: str = None,
-        score: str = None,
+        calcium_id: int = None,
+        calcium_score: float = None,
+        calcium_volume: float = None,
     ):
-        self.result_url = result_url
-        self.score = score
+        self.calcium_id = calcium_id
+        self.calcium_score = calcium_score
+        self.calcium_volume = calcium_volume
 
     def validate(self):
         pass
@@ -431,18 +440,75 @@ class CalcCACSResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        if self.result_url is not None:
-            result['ResultUrl'] = self.result_url
-        if self.score is not None:
-            result['Score'] = self.score
+        if self.calcium_id is not None:
+            result['CalciumId'] = self.calcium_id
+        if self.calcium_score is not None:
+            result['CalciumScore'] = self.calcium_score
+        if self.calcium_volume is not None:
+            result['CalciumVolume'] = self.calcium_volume
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CalciumId') is not None:
+            self.calcium_id = m.get('CalciumId')
+        if m.get('CalciumScore') is not None:
+            self.calcium_score = m.get('CalciumScore')
+        if m.get('CalciumVolume') is not None:
+            self.calcium_volume = m.get('CalciumVolume')
+        return self
+
+
+class CalcCACSResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        detections: List[CalcCACSResponseBodyDataDetections] = None,
+        result_url: str = None,
+        score: str = None,
+        volume_score: str = None,
+    ):
+        self.detections = detections
+        self.result_url = result_url
+        self.score = score
+        self.volume_score = volume_score
+
+    def validate(self):
+        if self.detections:
+            for k in self.detections:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Detections'] = []
+        if self.detections is not None:
+            for k in self.detections:
+                result['Detections'].append(k.to_map() if k else None)
+        if self.result_url is not None:
+            result['ResultUrl'] = self.result_url
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.volume_score is not None:
+            result['VolumeScore'] = self.volume_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detections = []
+        if m.get('Detections') is not None:
+            for k in m.get('Detections'):
+                temp_model = CalcCACSResponseBodyDataDetections()
+                self.detections.append(temp_model.from_map(k))
         if m.get('ResultUrl') is not None:
             self.result_url = m.get('ResultUrl')
         if m.get('Score') is not None:
             self.score = m.get('Score')
+        if m.get('VolumeScore') is not None:
+            self.volume_score = m.get('VolumeScore')
         return self
 
 
@@ -485,13 +551,16 @@ class CalcCACSResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CalcCACSResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -504,6 +573,8 @@ class CalcCACSResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -512,6 +583,8 @@ class CalcCACSResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CalcCACSResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -780,13 +853,16 @@ class ClassifyFNFResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ClassifyFNFResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -799,6 +875,8 @@ class ClassifyFNFResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -807,6 +885,8 @@ class ClassifyFNFResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ClassifyFNFResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -983,13 +1063,16 @@ class DetectCovid19CadResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectCovid19CadResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1002,6 +1085,8 @@ class DetectCovid19CadResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1010,6 +1095,8 @@ class DetectCovid19CadResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectCovid19CadResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1284,13 +1371,16 @@ class DetectHipKeypointXRayResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectHipKeypointXRayResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1303,6 +1393,8 @@ class DetectHipKeypointXRayResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1311,6 +1403,8 @@ class DetectHipKeypointXRayResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectHipKeypointXRayResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1585,13 +1679,16 @@ class DetectKneeKeypointXRayResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectKneeKeypointXRayResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1604,6 +1701,8 @@ class DetectKneeKeypointXRayResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1612,6 +1711,8 @@ class DetectKneeKeypointXRayResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectKneeKeypointXRayResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1809,13 +1910,16 @@ class DetectKneeXRayResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectKneeXRayResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1828,6 +1932,8 @@ class DetectKneeXRayResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1836,6 +1942,8 @@ class DetectKneeXRayResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectKneeXRayResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2166,13 +2274,16 @@ class DetectLungNoduleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectLungNoduleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2185,6 +2296,8 @@ class DetectLungNoduleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2193,8 +2306,472 @@ class DetectLungNoduleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectLungNoduleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DetectLymphRequestURLList(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+    ):
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class DetectLymphRequest(TeaModel):
+    def __init__(
+        self,
+        data_source_type: str = None,
+        urllist: List[DetectLymphRequestURLList] = None,
+    ):
+        self.data_source_type = data_source_type
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = DetectLymphRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class DetectLymphResponseBodyDataLesions(TeaModel):
+    def __init__(
+        self,
+        boxes: List[float] = None,
+        diametermm: List[float] = None,
+        key_slice: int = None,
+        recist: List[List[float]] = None,
+        score: float = None,
+    ):
+        self.boxes = boxes
+        self.diametermm = diametermm
+        self.key_slice = key_slice
+        self.recist = recist
+        self.score = score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.boxes is not None:
+            result['Boxes'] = self.boxes
+        if self.diametermm is not None:
+            result['Diametermm'] = self.diametermm
+        if self.key_slice is not None:
+            result['KeySlice'] = self.key_slice
+        if self.recist is not None:
+            result['Recist'] = self.recist
+        if self.score is not None:
+            result['Score'] = self.score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Boxes') is not None:
+            self.boxes = m.get('Boxes')
+        if m.get('Diametermm') is not None:
+            self.diametermm = m.get('Diametermm')
+        if m.get('KeySlice') is not None:
+            self.key_slice = m.get('KeySlice')
+        if m.get('Recist') is not None:
+            self.recist = m.get('Recist')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        return self
+
+
+class DetectLymphResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        lesions: List[DetectLymphResponseBodyDataLesions] = None,
+    ):
+        self.lesions = lesions
+
+    def validate(self):
+        if self.lesions:
+            for k in self.lesions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Lesions'] = []
+        if self.lesions is not None:
+            for k in self.lesions:
+                result['Lesions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.lesions = []
+        if m.get('Lesions') is not None:
+            for k in m.get('Lesions'):
+                temp_model = DetectLymphResponseBodyDataLesions()
+                self.lesions.append(temp_model.from_map(k))
+        return self
+
+
+class DetectLymphResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DetectLymphResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DetectLymphResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DetectLymphResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DetectLymphResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DetectLymphResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DetectPancRequestURLList(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+    ):
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class DetectPancRequest(TeaModel):
+    def __init__(
+        self,
+        data_source_type: str = None,
+        urllist: List[DetectPancRequestURLList] = None,
+    ):
+        self.data_source_type = data_source_type
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = DetectPancRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class DetectPancResponseBodyDataLesion(TeaModel):
+    def __init__(
+        self,
+        mask: str = None,
+        non_pdac_vol: str = None,
+        panc_vol: str = None,
+        pdac_vol: str = None,
+        possibilities: List[str] = None,
+    ):
+        self.mask = mask
+        self.non_pdac_vol = non_pdac_vol
+        self.panc_vol = panc_vol
+        self.pdac_vol = pdac_vol
+        self.possibilities = possibilities
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mask is not None:
+            result['Mask'] = self.mask
+        if self.non_pdac_vol is not None:
+            result['NonPdacVol'] = self.non_pdac_vol
+        if self.panc_vol is not None:
+            result['PancVol'] = self.panc_vol
+        if self.pdac_vol is not None:
+            result['PdacVol'] = self.pdac_vol
+        if self.possibilities is not None:
+            result['Possibilities'] = self.possibilities
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Mask') is not None:
+            self.mask = m.get('Mask')
+        if m.get('NonPdacVol') is not None:
+            self.non_pdac_vol = m.get('NonPdacVol')
+        if m.get('PancVol') is not None:
+            self.panc_vol = m.get('PancVol')
+        if m.get('PdacVol') is not None:
+            self.pdac_vol = m.get('PdacVol')
+        if m.get('Possibilities') is not None:
+            self.possibilities = m.get('Possibilities')
+        return self
+
+
+class DetectPancResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        lesion: DetectPancResponseBodyDataLesion = None,
+    ):
+        self.lesion = lesion
+
+    def validate(self):
+        if self.lesion:
+            self.lesion.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lesion is not None:
+            result['Lesion'] = self.lesion.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lesion') is not None:
+            temp_model = DetectPancResponseBodyDataLesion()
+            self.lesion = temp_model.from_map(m['Lesion'])
+        return self
+
+
+class DetectPancResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DetectPancResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DetectPancResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DetectPancResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DetectPancResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DetectPancResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2440,13 +3017,16 @@ class DetectRibFractureResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectRibFractureResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2459,6 +3039,8 @@ class DetectRibFractureResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2467,6 +3049,8 @@ class DetectRibFractureResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectRibFractureResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2617,13 +3201,16 @@ class DetectSkinDiseaseResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectSkinDiseaseResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2636,6 +3223,8 @@ class DetectSkinDiseaseResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2644,6 +3233,8 @@ class DetectSkinDiseaseResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectSkinDiseaseResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2897,13 +3488,16 @@ class DetectSpineMRIResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectSpineMRIResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2916,6 +3510,8 @@ class DetectSpineMRIResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2924,6 +3520,8 @@ class DetectSpineMRIResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectSpineMRIResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2995,13 +3593,16 @@ class FeedbackSessionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: FeedbackSessionResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3014,6 +3615,8 @@ class FeedbackSessionResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3022,6 +3625,8 @@ class FeedbackSessionResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = FeedbackSessionResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3145,13 +3750,16 @@ class GetAsyncJobResultResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAsyncJobResultResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3164,6 +3772,8 @@ class GetAsyncJobResultResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3172,6 +3782,8 @@ class GetAsyncJobResultResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAsyncJobResultResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3378,13 +3990,16 @@ class RunCTRegistrationResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RunCTRegistrationResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3397,6 +4012,8 @@ class RunCTRegistrationResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3405,6 +4022,8 @@ class RunCTRegistrationResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RunCTRegistrationResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3683,13 +4302,16 @@ class RunMedQAResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RunMedQAResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3702,6 +4324,8 @@ class RunMedQAResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3710,6 +4334,8 @@ class RunMedQAResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RunMedQAResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4475,13 +5101,16 @@ class ScreenChestCTResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ScreenChestCTResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4494,6 +5123,8 @@ class ScreenChestCTResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4502,6 +5133,8 @@ class ScreenChestCTResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ScreenChestCTResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4619,13 +5252,16 @@ class TranslateMedResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: TranslateMedResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4638,6 +5274,8 @@ class TranslateMedResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4646,6 +5284,8 @@ class TranslateMedResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TranslateMedResponseBody()
             self.body = temp_model.from_map(m['body'])

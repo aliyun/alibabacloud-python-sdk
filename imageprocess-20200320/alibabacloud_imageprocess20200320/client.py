@@ -1296,6 +1296,154 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detect_lung_nodule_with_options_async(request, runtime)
 
+    def detect_lymph_with_options(
+        self,
+        request: imageprocess_20200320_models.DetectLymphRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.DetectLymphResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectLymph',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.DetectLymphResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detect_lymph_with_options_async(
+        self,
+        request: imageprocess_20200320_models.DetectLymphRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.DetectLymphResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectLymph',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.DetectLymphResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detect_lymph(
+        self,
+        request: imageprocess_20200320_models.DetectLymphRequest,
+    ) -> imageprocess_20200320_models.DetectLymphResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_lymph_with_options(request, runtime)
+
+    async def detect_lymph_async(
+        self,
+        request: imageprocess_20200320_models.DetectLymphRequest,
+    ) -> imageprocess_20200320_models.DetectLymphResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_lymph_with_options_async(request, runtime)
+
+    def detect_panc_with_options(
+        self,
+        request: imageprocess_20200320_models.DetectPancRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.DetectPancResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectPanc',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.DetectPancResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detect_panc_with_options_async(
+        self,
+        request: imageprocess_20200320_models.DetectPancRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.DetectPancResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectPanc',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.DetectPancResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detect_panc(
+        self,
+        request: imageprocess_20200320_models.DetectPancRequest,
+    ) -> imageprocess_20200320_models.DetectPancResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_panc_with_options(request, runtime)
+
+    async def detect_panc_async(
+        self,
+        request: imageprocess_20200320_models.DetectPancRequest,
+    ) -> imageprocess_20200320_models.DetectPancResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_panc_with_options_async(request, runtime)
+
     def detect_rib_fracture_with_options(
         self,
         request: imageprocess_20200320_models.DetectRibFractureRequest,
