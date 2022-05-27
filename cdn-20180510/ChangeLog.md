@@ -1,3 +1,6 @@
+2022-05-27 Version: 1.0.11
+ - Update SetDcdnFullDomainsBlockIP.
+
 2022-04-28 Version: 1.0.10
 - Update RollbackStagingConfig.
 
