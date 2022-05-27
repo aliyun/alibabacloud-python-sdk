@@ -1402,6 +1402,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_vpc_honey_pot_with_options_async(request, runtime)
 
+    def describe_access_key_leak_detail_with_options(
+        self,
+        request: sas_20181203_models.DescribeAccessKeyLeakDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAccessKeyLeakDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessKeyLeakDetail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAccessKeyLeakDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_access_key_leak_detail_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeAccessKeyLeakDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAccessKeyLeakDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessKeyLeakDetail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAccessKeyLeakDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_access_key_leak_detail(
+        self,
+        request: sas_20181203_models.DescribeAccessKeyLeakDetailRequest,
+    ) -> sas_20181203_models.DescribeAccessKeyLeakDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_access_key_leak_detail_with_options(request, runtime)
+
+    async def describe_access_key_leak_detail_async(
+        self,
+        request: sas_20181203_models.DescribeAccessKeyLeakDetailRequest,
+    ) -> sas_20181203_models.DescribeAccessKeyLeakDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_access_key_leak_detail_with_options_async(request, runtime)
+
     def describe_accesskey_leak_list_with_options(
         self,
         request: sas_20181203_models.DescribeAccesskeyLeakListRequest,
@@ -1723,6 +1793,8 @@ class Client(OpenApiClient):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.tactic_id):
             query['TacticId'] = request.tactic_id
+        if not UtilClient.is_unset(request.unique_info):
+            query['UniqueInfo'] = request.unique_info
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1777,6 +1849,8 @@ class Client(OpenApiClient):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.tactic_id):
             query['TacticId'] = request.tactic_id
+        if not UtilClient.is_unset(request.unique_info):
+            query['UniqueInfo'] = request.unique_info
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
