@@ -49,17 +49,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = bpstudio_20210931_models.CreateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.application_params):
-            request.application_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_params, 'ApplicationParams', 'json')
+        if not UtilClient.is_unset(tmp_req.configuration):
+            request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
         if not UtilClient.is_unset(tmp_req.instances):
             request.instances_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instances, 'Instances', 'json')
+        if not UtilClient.is_unset(tmp_req.variables):
+            request.variables_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
         body = {}
-        if not UtilClient.is_unset(request.application_params_shrink):
-            body['ApplicationParams'] = request.application_params_shrink
         if not UtilClient.is_unset(request.area_id):
             body['AreaId'] = request.area_id
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.configuration_shrink):
+            body['Configuration'] = request.configuration_shrink
         if not UtilClient.is_unset(request.instances_shrink):
             body['Instances'] = request.instances_shrink
         if not UtilClient.is_unset(request.name):
@@ -68,8 +70,8 @@ class Client(OpenApiClient):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.variables):
-            body['Variables'] = request.variables
+        if not UtilClient.is_unset(request.variables_shrink):
+            body['Variables'] = request.variables_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -97,17 +99,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = bpstudio_20210931_models.CreateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.application_params):
-            request.application_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_params, 'ApplicationParams', 'json')
+        if not UtilClient.is_unset(tmp_req.configuration):
+            request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
         if not UtilClient.is_unset(tmp_req.instances):
             request.instances_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instances, 'Instances', 'json')
+        if not UtilClient.is_unset(tmp_req.variables):
+            request.variables_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
         body = {}
-        if not UtilClient.is_unset(request.application_params_shrink):
-            body['ApplicationParams'] = request.application_params_shrink
         if not UtilClient.is_unset(request.area_id):
             body['AreaId'] = request.area_id
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.configuration_shrink):
+            body['Configuration'] = request.configuration_shrink
         if not UtilClient.is_unset(request.instances_shrink):
             body['Instances'] = request.instances_shrink
         if not UtilClient.is_unset(request.name):
@@ -116,8 +120,8 @@ class Client(OpenApiClient):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.variables):
-            body['Variables'] = request.variables
+        if not UtilClient.is_unset(request.variables_shrink):
+            body['Variables'] = request.variables_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
