@@ -2360,6 +2360,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_webhook_with_options_async(request, runtime)
 
+    def delete_asmintegration_with_options(
+        self,
+        request: arms20190808_models.DeleteASMIntegrationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.DeleteASMIntegrationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteASMIntegration',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.DeleteASMIntegrationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_asmintegration_with_options_async(
+        self,
+        request: arms20190808_models.DeleteASMIntegrationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.DeleteASMIntegrationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteASMIntegration',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.DeleteASMIntegrationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_asmintegration(
+        self,
+        request: arms20190808_models.DeleteASMIntegrationRequest,
+    ) -> arms20190808_models.DeleteASMIntegrationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_asmintegration_with_options(request, runtime)
+
+    async def delete_asmintegration_async(
+        self,
+        request: arms20190808_models.DeleteASMIntegrationRequest,
+    ) -> arms20190808_models.DeleteASMIntegrationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_asmintegration_with_options_async(request, runtime)
+
     def delete_alert_contact_with_options(
         self,
         request: arms20190808_models.DeleteAlertContactRequest,
@@ -4394,6 +4468,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.explore_trace_with_options_async(request, runtime)
 
+    def get_asmintegration_state_with_options(
+        self,
+        request: arms20190808_models.GetASMIntegrationStateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetASMIntegrationStateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetASMIntegrationState',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetASMIntegrationStateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_asmintegration_state_with_options_async(
+        self,
+        request: arms20190808_models.GetASMIntegrationStateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetASMIntegrationStateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetASMIntegrationState',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetASMIntegrationStateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_asmintegration_state(
+        self,
+        request: arms20190808_models.GetASMIntegrationStateRequest,
+    ) -> arms20190808_models.GetASMIntegrationStateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_asmintegration_state_with_options(request, runtime)
+
+    async def get_asmintegration_state_async(
+        self,
+        request: arms20190808_models.GetASMIntegrationStateRequest,
+    ) -> arms20190808_models.GetASMIntegrationStateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_asmintegration_state_with_options_async(request, runtime)
+
     def get_agent_download_url_with_options(
         self,
         request: arms20190808_models.GetAgentDownloadUrlRequest,
@@ -4647,6 +4795,72 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.GetAppApiByPageResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_app_api_by_page_with_options_async(request, runtime)
+
+    def get_arms_agent_down_load_url_with_options(
+        self,
+        request: arms20190808_models.GetArmsAgentDownLoadUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetArmsAgentDownLoadUrlResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetArmsAgentDownLoadUrl',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetArmsAgentDownLoadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_arms_agent_down_load_url_with_options_async(
+        self,
+        request: arms20190808_models.GetArmsAgentDownLoadUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetArmsAgentDownLoadUrlResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetArmsAgentDownLoadUrl',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetArmsAgentDownLoadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_arms_agent_down_load_url(
+        self,
+        request: arms20190808_models.GetArmsAgentDownLoadUrlRequest,
+    ) -> arms20190808_models.GetArmsAgentDownLoadUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_arms_agent_down_load_url_with_options(request, runtime)
+
+    async def get_arms_agent_down_load_url_async(
+        self,
+        request: arms20190808_models.GetArmsAgentDownLoadUrlRequest,
+    ) -> arms20190808_models.GetArmsAgentDownLoadUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_arms_agent_down_load_url_with_options_async(request, runtime)
 
     def get_auth_token_with_options(
         self,
@@ -8010,6 +8224,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.open_xtrace_default_slrwith_options_async(request, runtime)
 
+    def prom_vpc_exporter_manager_with_options(
+        self,
+        request: arms20190808_models.PromVpcExporterManagerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.PromVpcExporterManagerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.exporter_config):
+            query['ExporterConfig'] = request.exporter_config
+        if not UtilClient.is_unset(request.exporter_type):
+            query['ExporterType'] = request.exporter_type
+        if not UtilClient.is_unset(request.method):
+            query['Method'] = request.method
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PromVpcExporterManager',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.PromVpcExporterManagerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def prom_vpc_exporter_manager_with_options_async(
+        self,
+        request: arms20190808_models.PromVpcExporterManagerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.PromVpcExporterManagerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.exporter_config):
+            query['ExporterConfig'] = request.exporter_config
+        if not UtilClient.is_unset(request.exporter_type):
+            query['ExporterType'] = request.exporter_type
+        if not UtilClient.is_unset(request.method):
+            query['Method'] = request.method
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PromVpcExporterManager',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.PromVpcExporterManagerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def prom_vpc_exporter_manager(
+        self,
+        request: arms20190808_models.PromVpcExporterManagerRequest,
+    ) -> arms20190808_models.PromVpcExporterManagerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.prom_vpc_exporter_manager_with_options(request, runtime)
+
+    async def prom_vpc_exporter_manager_async(
+        self,
+        request: arms20190808_models.PromVpcExporterManagerRequest,
+    ) -> arms20190808_models.PromVpcExporterManagerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.prom_vpc_exporter_manager_with_options_async(request, runtime)
+
     def query_dataset_with_options(
         self,
         request: arms20190808_models.QueryDatasetRequest,
@@ -9019,6 +9319,104 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.SearchAlertHistoriesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.search_alert_histories_with_options_async(request, runtime)
+
+    def search_alert_historys_with_options(
+        self,
+        request: arms20190808_models.SearchAlertHistorysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.SearchAlertHistorysResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alert_id):
+            query['AlertId'] = request.alert_id
+        if not UtilClient.is_unset(request.alert_type):
+            query['AlertType'] = request.alert_type
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.proxy_user_id):
+            query['ProxyUserId'] = request.proxy_user_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchAlertHistorys',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.SearchAlertHistorysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_alert_historys_with_options_async(
+        self,
+        request: arms20190808_models.SearchAlertHistorysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.SearchAlertHistorysResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alert_id):
+            query['AlertId'] = request.alert_id
+        if not UtilClient.is_unset(request.alert_type):
+            query['AlertType'] = request.alert_type
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.proxy_user_id):
+            query['ProxyUserId'] = request.proxy_user_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchAlertHistorys',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.SearchAlertHistorysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_alert_historys(
+        self,
+        request: arms20190808_models.SearchAlertHistorysRequest,
+    ) -> arms20190808_models.SearchAlertHistorysResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.search_alert_historys_with_options(request, runtime)
+
+    async def search_alert_historys_async(
+        self,
+        request: arms20190808_models.SearchAlertHistorysRequest,
+    ) -> arms20190808_models.SearchAlertHistorysResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.search_alert_historys_with_options_async(request, runtime)
 
     def search_alert_rules_with_options(
         self,

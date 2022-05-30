@@ -5386,6 +5386,117 @@ class CreateWebhookResponse(TeaModel):
         return self
 
 
+class DeleteASMIntegrationRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        region_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteASMIntegrationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        state: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class DeleteASMIntegrationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteASMIntegrationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteASMIntegrationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAlertContactRequest(TeaModel):
     def __init__(
         self,
@@ -9100,8 +9211,8 @@ class DescribeWebhookContactsRequest(TeaModel):
 class DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook(TeaModel):
     def __init__(
         self,
-        biz_headers: str = None,
-        biz_params: str = None,
+        biz_headers: Dict[str, Any] = None,
+        biz_params: Dict[str, Any] = None,
         body: str = None,
         method: str = None,
         recover_body: str = None,
@@ -9735,6 +9846,117 @@ class ExploreTraceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExploreTraceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetASMIntegrationStateRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        region_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetASMIntegrationStateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        state: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class GetASMIntegrationStateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetASMIntegrationStateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetASMIntegrationStateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10785,6 +11007,110 @@ class GetAppApiByPageResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAppApiByPageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetArmsAgentDownLoadUrlRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetArmsAgentDownLoadUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        arms_agent_download_url: str = None,
+        request_id: str = None,
+    ):
+        self.arms_agent_download_url = arms_agent_download_url
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arms_agent_download_url is not None:
+            result['ArmsAgentDownloadUrl'] = self.arms_agent_download_url
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArmsAgentDownloadUrl') is not None:
+            self.arms_agent_download_url = m.get('ArmsAgentDownloadUrl')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetArmsAgentDownLoadUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetArmsAgentDownLoadUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetArmsAgentDownLoadUrlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19513,6 +19839,134 @@ class OpenXtraceDefaultSLRResponse(TeaModel):
         return self
 
 
+class PromVpcExporterManagerRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        exporter_config: str = None,
+        exporter_type: str = None,
+        method: str = None,
+        region_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.exporter_config = exporter_config
+        self.exporter_type = exporter_type
+        self.method = method
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.exporter_config is not None:
+            result['ExporterConfig'] = self.exporter_config
+        if self.exporter_type is not None:
+            result['ExporterType'] = self.exporter_type
+        if self.method is not None:
+            result['Method'] = self.method
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ExporterConfig') is not None:
+            self.exporter_config = m.get('ExporterConfig')
+        if m.get('ExporterType') is not None:
+            self.exporter_type = m.get('ExporterType')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class PromVpcExporterManagerResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        token: str = None,
+    ):
+        self.request_id = request_id
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class PromVpcExporterManagerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PromVpcExporterManagerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PromVpcExporterManagerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryDatasetRequestDimensions(TeaModel):
     def __init__(
         self,
@@ -21990,6 +22444,276 @@ class SearchAlertHistoriesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SearchAlertHistoriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SearchAlertHistorysRequest(TeaModel):
+    def __init__(
+        self,
+        alert_id: int = None,
+        alert_type: int = None,
+        current_page: int = None,
+        end_time: int = None,
+        page_size: int = None,
+        proxy_user_id: str = None,
+        region_id: str = None,
+        start_time: int = None,
+    ):
+        self.alert_id = alert_id
+        self.alert_type = alert_type
+        self.current_page = current_page
+        self.end_time = end_time
+        self.page_size = page_size
+        self.proxy_user_id = proxy_user_id
+        self.region_id = region_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_id is not None:
+            result['AlertId'] = self.alert_id
+        if self.alert_type is not None:
+            result['AlertType'] = self.alert_type
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.proxy_user_id is not None:
+            result['ProxyUserId'] = self.proxy_user_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertId') is not None:
+            self.alert_id = m.get('AlertId')
+        if m.get('AlertType') is not None:
+            self.alert_type = m.get('AlertType')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProxyUserId') is not None:
+            self.proxy_user_id = m.get('ProxyUserId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class SearchAlertHistorysResponseBodyPageBeanAlertHistory(TeaModel):
+    def __init__(
+        self,
+        alarm_content: str = None,
+        alarm_response_code: str = None,
+        alarm_time: int = None,
+        alarm_type: int = None,
+        alert_id: int = None,
+        id: int = None,
+        phones: str = None,
+        tenant: str = None,
+    ):
+        self.alarm_content = alarm_content
+        self.alarm_response_code = alarm_response_code
+        self.alarm_time = alarm_time
+        self.alarm_type = alarm_type
+        self.alert_id = alert_id
+        self.id = id
+        self.phones = phones
+        self.tenant = tenant
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alarm_content is not None:
+            result['AlarmContent'] = self.alarm_content
+        if self.alarm_response_code is not None:
+            result['AlarmResponseCode'] = self.alarm_response_code
+        if self.alarm_time is not None:
+            result['AlarmTime'] = self.alarm_time
+        if self.alarm_type is not None:
+            result['AlarmType'] = self.alarm_type
+        if self.alert_id is not None:
+            result['AlertId'] = self.alert_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.phones is not None:
+            result['Phones'] = self.phones
+        if self.tenant is not None:
+            result['Tenant'] = self.tenant
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlarmContent') is not None:
+            self.alarm_content = m.get('AlarmContent')
+        if m.get('AlarmResponseCode') is not None:
+            self.alarm_response_code = m.get('AlarmResponseCode')
+        if m.get('AlarmTime') is not None:
+            self.alarm_time = m.get('AlarmTime')
+        if m.get('AlarmType') is not None:
+            self.alarm_type = m.get('AlarmType')
+        if m.get('AlertId') is not None:
+            self.alert_id = m.get('AlertId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Phones') is not None:
+            self.phones = m.get('Phones')
+        if m.get('Tenant') is not None:
+            self.tenant = m.get('Tenant')
+        return self
+
+
+class SearchAlertHistorysResponseBodyPageBean(TeaModel):
+    def __init__(
+        self,
+        alert_history: List[SearchAlertHistorysResponseBodyPageBeanAlertHistory] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.alert_history = alert_history
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.alert_history:
+            for k in self.alert_history:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AlertHistory'] = []
+        if self.alert_history is not None:
+            for k in self.alert_history:
+                result['AlertHistory'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.alert_history = []
+        if m.get('AlertHistory') is not None:
+            for k in m.get('AlertHistory'):
+                temp_model = SearchAlertHistorysResponseBodyPageBeanAlertHistory()
+                self.alert_history.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class SearchAlertHistorysResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_bean: SearchAlertHistorysResponseBodyPageBean = None,
+        request_id: str = None,
+    ):
+        self.page_bean = page_bean
+        self.request_id = request_id
+
+    def validate(self):
+        if self.page_bean:
+            self.page_bean.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_bean is not None:
+            result['PageBean'] = self.page_bean.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageBean') is not None:
+            temp_model = SearchAlertHistorysResponseBodyPageBean()
+            self.page_bean = temp_model.from_map(m['PageBean'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SearchAlertHistorysResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchAlertHistorysResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchAlertHistorysResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
