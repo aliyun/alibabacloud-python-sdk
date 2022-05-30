@@ -5026,6 +5026,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_ips_with_options_async(request, runtime)
 
+    def rebalance_dbinstance_with_options(
+        self,
+        request: gpdb_20160503_models.RebalanceDBInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.RebalanceDBInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebalanceDBInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.RebalanceDBInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rebalance_dbinstance_with_options_async(
+        self,
+        request: gpdb_20160503_models.RebalanceDBInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.RebalanceDBInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebalanceDBInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.RebalanceDBInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rebalance_dbinstance(
+        self,
+        request: gpdb_20160503_models.RebalanceDBInstanceRequest,
+    ) -> gpdb_20160503_models.RebalanceDBInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.rebalance_dbinstance_with_options(request, runtime)
+
+    async def rebalance_dbinstance_async(
+        self,
+        request: gpdb_20160503_models.RebalanceDBInstanceRequest,
+    ) -> gpdb_20160503_models.RebalanceDBInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.rebalance_dbinstance_with_options_async(request, runtime)
+
     def release_instance_public_connection_with_options(
         self,
         request: gpdb_20160503_models.ReleaseInstancePublicConnectionRequest,
