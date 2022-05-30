@@ -6240,6 +6240,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_data_service_api_with_options_async(request, runtime)
 
+    def get_data_service_api_test_with_options(
+        self,
+        request: dataworks_public_20200518_models.GetDataServiceApiTestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDataServiceApiTestResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceApiTest',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDataServiceApiTestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_api_test_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.GetDataServiceApiTestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDataServiceApiTestResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceApiTest',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDataServiceApiTestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_api_test(
+        self,
+        request: dataworks_public_20200518_models.GetDataServiceApiTestRequest,
+    ) -> dataworks_public_20200518_models.GetDataServiceApiTestResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_api_test_with_options(request, runtime)
+
+    async def get_data_service_api_test_async(
+        self,
+        request: dataworks_public_20200518_models.GetDataServiceApiTestRequest,
+    ) -> dataworks_public_20200518_models.GetDataServiceApiTestResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_api_test_with_options_async(request, runtime)
+
     def get_data_service_application_with_options(
         self,
         request: dataworks_public_20200518_models.GetDataServiceApplicationRequest,
@@ -6715,6 +6781,92 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetDeploymentResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_deployment_with_options_async(request, runtime)
+
+    def get_duty_roster_with_options(
+        self,
+        request: dataworks_public_20200518_models.GetDutyRosterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDutyRosterResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.begin_time):
+            body['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.duty_roster_identifier):
+            body['DutyRosterIdentifier'] = request.duty_roster_identifier
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.user_type):
+            body['UserType'] = request.user_type
+        if not UtilClient.is_unset(request.watchkeeper):
+            body['Watchkeeper'] = request.watchkeeper
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDutyRoster',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDutyRosterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_duty_roster_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.GetDutyRosterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetDutyRosterResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.begin_time):
+            body['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.duty_roster_identifier):
+            body['DutyRosterIdentifier'] = request.duty_roster_identifier
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.user_type):
+            body['UserType'] = request.user_type
+        if not UtilClient.is_unset(request.watchkeeper):
+            body['Watchkeeper'] = request.watchkeeper
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDutyRoster',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetDutyRosterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_duty_roster(
+        self,
+        request: dataworks_public_20200518_models.GetDutyRosterRequest,
+    ) -> dataworks_public_20200518_models.GetDutyRosterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_duty_roster_with_options(request, runtime)
+
+    async def get_duty_roster_async(
+        self,
+        request: dataworks_public_20200518_models.GetDutyRosterRequest,
+    ) -> dataworks_public_20200518_models.GetDutyRosterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_duty_roster_with_options_async(request, runtime)
 
     def get_extension_with_options(
         self,
@@ -11520,6 +11672,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_data_service_api_authorities_with_options_async(request, runtime)
 
+    def list_data_service_api_test_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListDataServiceApiTestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListDataServiceApiTestResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataServiceApiTest',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListDataServiceApiTestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_service_api_test_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListDataServiceApiTestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListDataServiceApiTestResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataServiceApiTest',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListDataServiceApiTestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_service_api_test(
+        self,
+        request: dataworks_public_20200518_models.ListDataServiceApiTestRequest,
+    ) -> dataworks_public_20200518_models.ListDataServiceApiTestResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_service_api_test_with_options(request, runtime)
+
+    async def list_data_service_api_test_async(
+        self,
+        request: dataworks_public_20200518_models.ListDataServiceApiTestRequest,
+    ) -> dataworks_public_20200518_models.ListDataServiceApiTestResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_service_api_test_with_options_async(request, runtime)
+
     def list_data_service_apis_with_options(
         self,
         request: dataworks_public_20200518_models.ListDataServiceApisRequest,
@@ -12227,6 +12445,88 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.ListDeploymentsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_deployments_with_options_async(request, runtime)
+
+    def list_duty_rosters_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListDutyRostersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListDutyRostersResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.duty_roster_name):
+            body['DutyRosterName'] = request.duty_roster_name
+        if not UtilClient.is_unset(request.duty_roster_owner):
+            body['DutyRosterOwner'] = request.duty_roster_owner
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDutyRosters',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListDutyRostersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_duty_rosters_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListDutyRostersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListDutyRostersResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.duty_roster_name):
+            body['DutyRosterName'] = request.duty_roster_name
+        if not UtilClient.is_unset(request.duty_roster_owner):
+            body['DutyRosterOwner'] = request.duty_roster_owner
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDutyRosters',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListDutyRostersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_duty_rosters(
+        self,
+        request: dataworks_public_20200518_models.ListDutyRostersRequest,
+    ) -> dataworks_public_20200518_models.ListDutyRostersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_duty_rosters_with_options(request, runtime)
+
+    async def list_duty_rosters_async(
+        self,
+        request: dataworks_public_20200518_models.ListDutyRostersRequest,
+    ) -> dataworks_public_20200518_models.ListDutyRostersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_duty_rosters_with_options_async(request, runtime)
 
     def list_extensions_with_options(
         self,
@@ -16913,6 +17213,100 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.TerminateDISyncInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.terminate_disync_instance_with_options_async(request, runtime)
+
+    def test_data_service_api_with_options(
+        self,
+        request: dataworks_public_20200518_models.TestDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.TestDataServiceApiResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        body = {}
+        if not UtilClient.is_unset(request.body_content):
+            body['BodyContent'] = request.body_content
+        if not UtilClient.is_unset(request.body_params):
+            body['BodyParams'] = request.body_params
+        if not UtilClient.is_unset(request.head_params):
+            body['HeadParams'] = request.head_params
+        if not UtilClient.is_unset(request.path_params):
+            body['PathParams'] = request.path_params
+        if not UtilClient.is_unset(request.query_param):
+            body['QueryParam'] = request.query_param
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TestDataServiceApi',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.TestDataServiceApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def test_data_service_api_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.TestDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.TestDataServiceApiResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        body = {}
+        if not UtilClient.is_unset(request.body_content):
+            body['BodyContent'] = request.body_content
+        if not UtilClient.is_unset(request.body_params):
+            body['BodyParams'] = request.body_params
+        if not UtilClient.is_unset(request.head_params):
+            body['HeadParams'] = request.head_params
+        if not UtilClient.is_unset(request.path_params):
+            body['PathParams'] = request.path_params
+        if not UtilClient.is_unset(request.query_param):
+            body['QueryParam'] = request.query_param
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TestDataServiceApi',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.TestDataServiceApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def test_data_service_api(
+        self,
+        request: dataworks_public_20200518_models.TestDataServiceApiRequest,
+    ) -> dataworks_public_20200518_models.TestDataServiceApiResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.test_data_service_api_with_options(request, runtime)
+
+    async def test_data_service_api_async(
+        self,
+        request: dataworks_public_20200518_models.TestDataServiceApiRequest,
+    ) -> dataworks_public_20200518_models.TestDataServiceApiResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.test_data_service_api_with_options_async(request, runtime)
 
     def test_network_connection_with_options(
         self,
