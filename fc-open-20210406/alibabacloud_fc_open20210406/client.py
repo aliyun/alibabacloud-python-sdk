@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
-from typing import Dict
+from requests import Request
+from typing import Dict, Any
 from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -10,6 +11,7 @@ from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_fc_open20210406 import models as fc__open_20210406_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_gateway_fc_util.client import Client as FCUtilClient
 
 
 class Client(OpenApiClient):
@@ -604,6 +606,8 @@ class Client(OpenApiClient):
             body['serviceName'] = request.service_name
         if not UtilClient.is_unset(request.tracing_config):
             body['tracingConfig'] = request.tracing_config
+        if not UtilClient.is_unset(request.vendor_config):
+            body['vendorConfig'] = request.vendor_config
         if not UtilClient.is_unset(request.vpc_config):
             body['vpcConfig'] = request.vpc_config
         real_headers = {}
@@ -657,6 +661,8 @@ class Client(OpenApiClient):
             body['serviceName'] = request.service_name
         if not UtilClient.is_unset(request.tracing_config):
             body['tracingConfig'] = request.tracing_config
+        if not UtilClient.is_unset(request.vendor_config):
+            body['vendorConfig'] = request.vendor_config
         if not UtilClient.is_unset(request.vpc_config):
             body['vpcConfig'] = request.vpc_config
         real_headers = {}
@@ -6100,7 +6106,7 @@ class Client(OpenApiClient):
             version='2021-04-06',
             protocol='HTTPS',
             pathname=f'/2021-04-06/tag',
-            method='DELETE',
+            method='PUT',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
@@ -6143,7 +6149,7 @@ class Client(OpenApiClient):
             version='2021-04-06',
             protocol='HTTPS',
             pathname=f'/2021-04-06/tag',
-            method='DELETE',
+            method='PUT',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
@@ -6602,6 +6608,8 @@ class Client(OpenApiClient):
             body['role'] = request.role
         if not UtilClient.is_unset(request.tracing_config):
             body['tracingConfig'] = request.tracing_config
+        if not UtilClient.is_unset(request.vendor_config):
+            body['vendorConfig'] = request.vendor_config
         if not UtilClient.is_unset(request.vpc_config):
             body['vpcConfig'] = request.vpc_config
         real_headers = {}
@@ -6657,6 +6665,8 @@ class Client(OpenApiClient):
             body['role'] = request.role
         if not UtilClient.is_unset(request.tracing_config):
             body['tracingConfig'] = request.tracing_config
+        if not UtilClient.is_unset(request.vendor_config):
+            body['vendorConfig'] = request.vendor_config
         if not UtilClient.is_unset(request.vpc_config):
             body['vpcConfig'] = request.vpc_config
         real_headers = {}
@@ -6817,3 +6827,115 @@ class Client(OpenApiClient):
             fc__open_20210406_models.UpdateTriggerResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def invoke_httptrigger(
+        self,
+        url: str,
+        method: str,
+        body: bytes,
+        headers: Dict[str, str],
+    ) -> Any:
+        cred = self._credential
+        return FCUtilClient.invoke_httptrigger(cred, url, method, body, headers)
+
+    async def invoke_httptrigger_async(
+        self,
+        url: str,
+        method: str,
+        body: bytes,
+        headers: Dict[str, str],
+    ) -> Any:
+        cred = self._credential
+        return FCUtilClient.invoke_httptrigger(cred, url, method, body, headers)
+
+    def invoke_anonymous_httptrigger(
+        self,
+        url: str,
+        method: str,
+        body: bytes,
+        headers: Dict[str, str],
+    ) -> Any:
+        return FCUtilClient.invoke_anonymous_httptrigger(url, method, body, headers)
+
+    async def invoke_anonymous_httptrigger_async(
+        self,
+        url: str,
+        method: str,
+        body: bytes,
+        headers: Dict[str, str],
+    ) -> Any:
+        return FCUtilClient.invoke_anonymous_httptrigger(url, method, body, headers)
+
+    def send_httprequest_with_authorization(
+        self,
+        req: Request,
+    ) -> Any:
+        cred = self._credential
+        return FCUtilClient.send_httprequest_with_authorization(cred, req)
+
+    async def send_httprequest_with_authorization_async(
+        self,
+        req: Request,
+    ) -> Any:
+        cred = self._credential
+        return FCUtilClient.send_httprequest_with_authorization(cred, req)
+
+    def send_httprequest(
+        self,
+        req: Request,
+    ) -> Any:
+        return FCUtilClient.send_httprequest(req)
+
+    async def send_httprequest_async(
+        self,
+        req: Request,
+    ) -> Any:
+        return FCUtilClient.send_httprequest(req)
+
+    def sign_request(
+        self,
+        req: Request,
+    ) -> Any:
+        cred = self._credential
+        return FCUtilClient.sign_request(cred, req)
+
+    async def sign_request_async(
+        self,
+        req: Request,
+    ) -> Any:
+        cred = self._credential
+        return FCUtilClient.sign_request(cred, req)
+
+    def sign_request_with_content_md5(
+        self,
+        req: Request,
+        content_md5: str,
+    ) -> Any:
+        cred = self._credential
+        return FCUtilClient.sign_request_with_content_md5(cred, req, content_md5)
+
+    async def sign_request_with_content_md5_async(
+        self,
+        req: Request,
+        content_md5: str,
+    ) -> Any:
+        cred = self._credential
+        return FCUtilClient.sign_request_with_content_md5(cred, req, content_md5)
+
+    def build_httprequest(
+        self,
+        url: str,
+        method: str,
+        body: bytes,
+        headers: Dict[str, str],
+    ) -> Any:
+        return FCUtilClient.build_httprequest(url, method, body, headers)
+
+    async def build_httprequest_async(
+        self,
+        url: str,
+        method: str,
+        body: bytes,
+        headers: Dict[str, str],
+    ) -> Any:
+        return FCUtilClient.build_httprequest(url, method, body, headers)

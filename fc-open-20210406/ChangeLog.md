@@ -1,3 +1,6 @@
+2022-05-31 Version: 1.1.0
+- Support http trigger invocation.
+
 2022-04-14 Version: 1.0.10
 - Fix auth bug.
 
