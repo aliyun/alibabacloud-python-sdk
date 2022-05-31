@@ -658,9 +658,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateDetectVideoLabelsTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notify_endpoint):
             query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
@@ -700,9 +704,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateDetectVideoLabelsTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notify_endpoint):
             query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
@@ -960,6 +968,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateMediaConvertTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -967,8 +977,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.targets):
             request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
         query = {}
-        if not UtilClient.is_unset(request.dataset_name):
-            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notify_endpoint):
             query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
@@ -1010,6 +1020,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateMediaConvertTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -1017,8 +1029,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.targets):
             request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
         query = {}
-        if not UtilClient.is_unset(request.dataset_name):
-            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notify_endpoint):
             query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
@@ -1074,15 +1086,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateOfficeConversionTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.assume_role_chain):
-            request.assume_role_chain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.assume_role_chain), 'AssumeRoleChain', 'json')
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         if not UtilClient.is_unset(tmp_req.trim_policy):
             request.trim_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.trim_policy), 'TrimPolicy', 'json')
         query = {}
-        if not UtilClient.is_unset(request.assume_role_chain_shrink):
-            query['AssumeRoleChain'] = request.assume_role_chain_shrink
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.end_page):
             query['EndPage'] = request.end_page
         if not UtilClient.is_unset(request.first_page):
@@ -1093,6 +1105,8 @@ class Client(OpenApiClient):
             query['FitToWidth'] = request.fit_to_width
         if not UtilClient.is_unset(request.hold_line_feed):
             query['HoldLineFeed'] = request.hold_line_feed
+        if not UtilClient.is_unset(request.image_dpi):
+            query['ImageDPI'] = request.image_dpi
         if not UtilClient.is_unset(request.long_picture):
             query['LongPicture'] = request.long_picture
         if not UtilClient.is_unset(request.long_text):
@@ -1105,6 +1119,8 @@ class Client(OpenApiClient):
             query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.pages):
+            query['Pages'] = request.pages
         if not UtilClient.is_unset(request.paper_horizontal):
             query['PaperHorizontal'] = request.paper_horizontal
         if not UtilClient.is_unset(request.paper_size):
@@ -1166,15 +1182,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateOfficeConversionTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.assume_role_chain):
-            request.assume_role_chain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.assume_role_chain), 'AssumeRoleChain', 'json')
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         if not UtilClient.is_unset(tmp_req.trim_policy):
             request.trim_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.trim_policy), 'TrimPolicy', 'json')
         query = {}
-        if not UtilClient.is_unset(request.assume_role_chain_shrink):
-            query['AssumeRoleChain'] = request.assume_role_chain_shrink
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.end_page):
             query['EndPage'] = request.end_page
         if not UtilClient.is_unset(request.first_page):
@@ -1185,6 +1201,8 @@ class Client(OpenApiClient):
             query['FitToWidth'] = request.fit_to_width
         if not UtilClient.is_unset(request.hold_line_feed):
             query['HoldLineFeed'] = request.hold_line_feed
+        if not UtilClient.is_unset(request.image_dpi):
+            query['ImageDPI'] = request.image_dpi
         if not UtilClient.is_unset(request.long_picture):
             query['LongPicture'] = request.long_picture
         if not UtilClient.is_unset(request.long_text):
@@ -1197,6 +1215,8 @@ class Client(OpenApiClient):
             query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.pages):
+            query['Pages'] = request.pages
         if not UtilClient.is_unset(request.paper_horizontal):
             query['PaperHorizontal'] = request.paper_horizontal
         if not UtilClient.is_unset(request.paper_size):
@@ -1978,13 +1998,19 @@ class Client(OpenApiClient):
 
     def detect_image_cropping_with_options(
         self,
-        request: imm_20200930_models.DetectImageCroppingRequest,
+        tmp_req: imm_20200930_models.DetectImageCroppingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageCroppingResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.DetectImageCroppingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.aspect_ratios):
             query['AspectRatios'] = request.aspect_ratios
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
@@ -2010,13 +2036,19 @@ class Client(OpenApiClient):
 
     async def detect_image_cropping_with_options_async(
         self,
-        request: imm_20200930_models.DetectImageCroppingRequest,
+        tmp_req: imm_20200930_models.DetectImageCroppingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageCroppingResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.DetectImageCroppingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.aspect_ratios):
             query['AspectRatios'] = request.aspect_ratios
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
@@ -2056,11 +2088,17 @@ class Client(OpenApiClient):
 
     def detect_image_faces_with_options(
         self,
-        request: imm_20200930_models.DetectImageFacesRequest,
+        tmp_req: imm_20200930_models.DetectImageFacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageFacesResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.DetectImageFacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
@@ -2086,11 +2124,17 @@ class Client(OpenApiClient):
 
     async def detect_image_faces_with_options_async(
         self,
-        request: imm_20200930_models.DetectImageFacesRequest,
+        tmp_req: imm_20200930_models.DetectImageFacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageFacesResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.DetectImageFacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
@@ -2130,11 +2174,17 @@ class Client(OpenApiClient):
 
     def detect_image_labels_with_options(
         self,
-        request: imm_20200930_models.DetectImageLabelsRequest,
+        tmp_req: imm_20200930_models.DetectImageLabelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageLabelsResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.DetectImageLabelsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
@@ -2162,11 +2212,17 @@ class Client(OpenApiClient):
 
     async def detect_image_labels_with_options_async(
         self,
-        request: imm_20200930_models.DetectImageLabelsRequest,
+        tmp_req: imm_20200930_models.DetectImageLabelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageLabelsResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.DetectImageLabelsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
@@ -2208,11 +2264,17 @@ class Client(OpenApiClient):
 
     def detect_image_score_with_options(
         self,
-        request: imm_20200930_models.DetectImageScoreRequest,
+        tmp_req: imm_20200930_models.DetectImageScoreRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageScoreResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.DetectImageScoreShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
@@ -2238,11 +2300,17 @@ class Client(OpenApiClient):
 
     async def detect_image_score_with_options_async(
         self,
-        request: imm_20200930_models.DetectImageScoreRequest,
+        tmp_req: imm_20200930_models.DetectImageScoreRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageScoreResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.DetectImageScoreShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
@@ -2758,11 +2826,17 @@ class Client(OpenApiClient):
 
     def get_media_meta_with_options(
         self,
-        request: imm_20200930_models.GetMediaMetaRequest,
+        tmp_req: imm_20200930_models.GetMediaMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetMediaMetaResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.GetMediaMetaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
@@ -2788,11 +2862,17 @@ class Client(OpenApiClient):
 
     async def get_media_meta_with_options_async(
         self,
-        request: imm_20200930_models.GetMediaMetaRequest,
+        tmp_req: imm_20200930_models.GetMediaMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetMediaMetaResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.GetMediaMetaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
@@ -3138,8 +3218,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.GetWebofficeURLShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.assume_role_chain):
-            request.assume_role_chain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.assume_role_chain), 'AssumeRoleChain', 'json')
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.permission):
             request.permission_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.permission), 'Permission', 'json')
         if not UtilClient.is_unset(tmp_req.user):
@@ -3147,10 +3227,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.watermark):
             request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.watermark), 'Watermark', 'json')
         query = {}
-        if not UtilClient.is_unset(request.assume_role_chain_shrink):
-            query['AssumeRoleChain'] = request.assume_role_chain_shrink
         if not UtilClient.is_unset(request.cache_preview):
             query['CachePreview'] = request.cache_preview
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.external_uploaded):
             query['ExternalUploaded'] = request.external_uploaded
         if not UtilClient.is_unset(request.filename):
@@ -3206,8 +3286,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.GetWebofficeURLShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.assume_role_chain):
-            request.assume_role_chain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.assume_role_chain), 'AssumeRoleChain', 'json')
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.permission):
             request.permission_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.permission), 'Permission', 'json')
         if not UtilClient.is_unset(tmp_req.user):
@@ -3215,10 +3295,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.watermark):
             request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.watermark), 'Watermark', 'json')
         query = {}
-        if not UtilClient.is_unset(request.assume_role_chain_shrink):
-            query['AssumeRoleChain'] = request.assume_role_chain_shrink
         if not UtilClient.is_unset(request.cache_preview):
             query['CachePreview'] = request.cache_preview
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.external_uploaded):
             query['ExternalUploaded'] = request.external_uploaded
         if not UtilClient.is_unset(request.filename):
@@ -4088,13 +4168,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.RefreshWebofficeTokenShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.assume_role_chain):
-            request.assume_role_chain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.assume_role_chain), 'AssumeRoleChain', 'json')
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['AccessToken'] = request.access_token
-        if not UtilClient.is_unset(request.assume_role_chain_shrink):
-            query['AssumeRoleChain'] = request.assume_role_chain_shrink
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.refresh_token):
@@ -4126,13 +4206,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.RefreshWebofficeTokenShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.assume_role_chain):
-            request.assume_role_chain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.assume_role_chain), 'AssumeRoleChain', 'json')
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['AccessToken'] = request.access_token
-        if not UtilClient.is_unset(request.assume_role_chain_shrink):
-            query['AssumeRoleChain'] = request.assume_role_chain_shrink
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.refresh_token):

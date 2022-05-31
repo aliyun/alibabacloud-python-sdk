@@ -547,6 +547,98 @@ class ClusterForReq(TeaModel):
         return self
 
 
+class CredentialConfigChain(TeaModel):
+    def __init__(
+        self,
+        assume_role_for: str = None,
+        role: str = None,
+        role_type: str = None,
+    ):
+        # 授权对象
+        self.assume_role_for = assume_role_for
+        # 授权角色
+        self.role = role
+        # 授权方类型
+        self.role_type = role_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assume_role_for is not None:
+            result['AssumeRoleFor'] = self.assume_role_for
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.role_type is not None:
+            result['RoleType'] = self.role_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssumeRoleFor') is not None:
+            self.assume_role_for = m.get('AssumeRoleFor')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
+        return self
+
+
+class CredentialConfig(TeaModel):
+    def __init__(
+        self,
+        chain: List[CredentialConfigChain] = None,
+        policy: str = None,
+        service_role: str = None,
+    ):
+        # 授权链
+        self.chain = chain
+        # 权限策略
+        self.policy = policy
+        # 服务角色
+        self.service_role = service_role
+
+    def validate(self):
+        if self.chain:
+            for k in self.chain:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Chain'] = []
+        if self.chain is not None:
+            for k in self.chain:
+                result['Chain'].append(k.to_map() if k else None)
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.service_role is not None:
+            result['ServiceRole'] = self.service_role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.chain = []
+        if m.get('Chain') is not None:
+            for k in m.get('Chain'):
+                temp_model = CredentialConfigChain()
+                self.chain.append(temp_model.from_map(k))
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('ServiceRole') is not None:
+            self.service_role = m.get('ServiceRole')
+        return self
+
+
 class CroppingSuggestion(TeaModel):
     def __init__(
         self,
@@ -1509,6 +1601,7 @@ class File(TeaModel):
         artist: str = None,
         audio_covers: List[Image] = None,
         audio_streams: List[AudioStream] = None,
+        bitrate: int = None,
         cache_control: str = None,
         composer: str = None,
         content_disposition: str = None,
@@ -1523,6 +1616,7 @@ class File(TeaModel):
         dataset_name: str = None,
         document_content: str = None,
         document_language: str = None,
+        duration: float = None,
         etag: str = None,
         exif: str = None,
         figure_count: int = None,
@@ -1532,6 +1626,8 @@ class File(TeaModel):
         file_hash: str = None,
         file_modified_time: str = None,
         filename: str = None,
+        format_long_name: str = None,
+        format_name: str = None,
         image_height: int = None,
         image_score: ImageScore = None,
         image_width: int = None,
@@ -1558,12 +1654,15 @@ class File(TeaModel):
         page_count: int = None,
         performer: str = None,
         produce_time: str = None,
+        program_count: int = None,
         project_name: str = None,
         server_side_data_encryption: str = None,
         server_side_encryption: str = None,
         server_side_encryption_customer_algorithm: str = None,
         server_side_encryption_key_id: str = None,
         size: int = None,
+        start_time: str = None,
+        stream_count: int = None,
         subtitles: List[SubtitleStream] = None,
         timezone: str = None,
         title: str = None,
@@ -1591,6 +1690,8 @@ class File(TeaModel):
         self.audio_covers = audio_covers
         # AudioStreams
         self.audio_streams = audio_streams
+        # Bitrate
+        self.bitrate = bitrate
         # CacheControl
         self.cache_control = cache_control
         # Composer
@@ -1619,6 +1720,8 @@ class File(TeaModel):
         self.document_content = document_content
         # DocumentLanguage
         self.document_language = document_language
+        # Duration
+        self.duration = duration
         # ETag
         self.etag = etag
         # EXIF
@@ -1637,6 +1740,10 @@ class File(TeaModel):
         self.file_modified_time = file_modified_time
         # Filename
         self.filename = filename
+        # FormatLongName
+        self.format_long_name = format_long_name
+        # FormatName
+        self.format_name = format_name
         # ImageHeight
         self.image_height = image_height
         self.image_score = image_score
@@ -1688,6 +1795,8 @@ class File(TeaModel):
         self.performer = performer
         # ProduceTime
         self.produce_time = produce_time
+        # ProgramCount
+        self.program_count = program_count
         # ProjectName
         self.project_name = project_name
         # ServerSideDataEncryption
@@ -1700,6 +1809,10 @@ class File(TeaModel):
         self.server_side_encryption_key_id = server_side_encryption_key_id
         # Size
         self.size = size
+        # StartTime
+        self.start_time = start_time
+        # StreamCount
+        self.stream_count = stream_count
         # Subtitles
         self.subtitles = subtitles
         # Timezone
@@ -1789,6 +1902,8 @@ class File(TeaModel):
         if self.audio_streams is not None:
             for k in self.audio_streams:
                 result['AudioStreams'].append(k.to_map() if k else None)
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
         if self.cache_control is not None:
             result['CacheControl'] = self.cache_control
         if self.composer is not None:
@@ -1819,6 +1934,8 @@ class File(TeaModel):
             result['DocumentContent'] = self.document_content
         if self.document_language is not None:
             result['DocumentLanguage'] = self.document_language
+        if self.duration is not None:
+            result['Duration'] = self.duration
         if self.etag is not None:
             result['ETag'] = self.etag
         if self.exif is not None:
@@ -1839,6 +1956,10 @@ class File(TeaModel):
             result['FileModifiedTime'] = self.file_modified_time
         if self.filename is not None:
             result['Filename'] = self.filename
+        if self.format_long_name is not None:
+            result['FormatLongName'] = self.format_long_name
+        if self.format_name is not None:
+            result['FormatName'] = self.format_name
         if self.image_height is not None:
             result['ImageHeight'] = self.image_height
         if self.image_score is not None:
@@ -1895,6 +2016,8 @@ class File(TeaModel):
             result['Performer'] = self.performer
         if self.produce_time is not None:
             result['ProduceTime'] = self.produce_time
+        if self.program_count is not None:
+            result['ProgramCount'] = self.program_count
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.server_side_data_encryption is not None:
@@ -1907,6 +2030,10 @@ class File(TeaModel):
             result['ServerSideEncryptionKeyId'] = self.server_side_encryption_key_id
         if self.size is not None:
             result['Size'] = self.size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.stream_count is not None:
+            result['StreamCount'] = self.stream_count
         result['Subtitles'] = []
         if self.subtitles is not None:
             for k in self.subtitles:
@@ -1960,6 +2087,8 @@ class File(TeaModel):
             for k in m.get('AudioStreams'):
                 temp_model = AudioStream()
                 self.audio_streams.append(temp_model.from_map(k))
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
         if m.get('CacheControl') is not None:
             self.cache_control = m.get('CacheControl')
         if m.get('Composer') is not None:
@@ -1991,6 +2120,8 @@ class File(TeaModel):
             self.document_content = m.get('DocumentContent')
         if m.get('DocumentLanguage') is not None:
             self.document_language = m.get('DocumentLanguage')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
         if m.get('ETag') is not None:
             self.etag = m.get('ETag')
         if m.get('EXIF') is not None:
@@ -2012,6 +2143,10 @@ class File(TeaModel):
             self.file_modified_time = m.get('FileModifiedTime')
         if m.get('Filename') is not None:
             self.filename = m.get('Filename')
+        if m.get('FormatLongName') is not None:
+            self.format_long_name = m.get('FormatLongName')
+        if m.get('FormatName') is not None:
+            self.format_name = m.get('FormatName')
         if m.get('ImageHeight') is not None:
             self.image_height = m.get('ImageHeight')
         if m.get('ImageScore') is not None:
@@ -2071,6 +2206,8 @@ class File(TeaModel):
             self.performer = m.get('Performer')
         if m.get('ProduceTime') is not None:
             self.produce_time = m.get('ProduceTime')
+        if m.get('ProgramCount') is not None:
+            self.program_count = m.get('ProgramCount')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('ServerSideDataEncryption') is not None:
@@ -2083,6 +2220,10 @@ class File(TeaModel):
             self.server_side_encryption_key_id = m.get('ServerSideEncryptionKeyId')
         if m.get('Size') is not None:
             self.size = m.get('Size')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StreamCount') is not None:
+            self.stream_count = m.get('StreamCount')
         self.subtitles = []
         if m.get('Subtitles') is not None:
             for k in m.get('Subtitles'):
@@ -2542,6 +2683,41 @@ class KeyValuePair(TeaModel):
             self.key = m.get('Key')
         if m.get('Value') is not None:
             self.value = m.get('Value')
+        return self
+
+
+class PresetReference(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        type: str = None,
+    ):
+        # 名称
+        self.name = name
+        # 类型
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -3344,13 +3520,16 @@ class AttachOSSBucketResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AttachOSSBucketResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3363,6 +3542,8 @@ class AttachOSSBucketResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3371,6 +3552,8 @@ class AttachOSSBucketResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AttachOSSBucketResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3487,13 +3670,16 @@ class BatchDeleteFileMetaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BatchDeleteFileMetaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3506,6 +3692,8 @@ class BatchDeleteFileMetaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3514,6 +3702,8 @@ class BatchDeleteFileMetaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchDeleteFileMetaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3644,13 +3834,16 @@ class BatchGetFileMetaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BatchGetFileMetaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3663,6 +3856,8 @@ class BatchGetFileMetaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3671,6 +3866,8 @@ class BatchGetFileMetaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchGetFileMetaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3825,13 +4022,16 @@ class BatchIndexFileMetaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BatchIndexFileMetaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3844,6 +4044,8 @@ class BatchIndexFileMetaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3852,6 +4054,8 @@ class BatchIndexFileMetaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchIndexFileMetaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4029,13 +4233,16 @@ class BatchUpdateFileMetaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BatchUpdateFileMetaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4048,6 +4255,8 @@ class BatchUpdateFileMetaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4056,6 +4265,8 @@ class BatchUpdateFileMetaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchUpdateFileMetaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4144,13 +4355,16 @@ class CreateBindingResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateBindingResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4163,6 +4377,8 @@ class CreateBindingResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4171,6 +4387,8 @@ class CreateBindingResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateBindingResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4301,13 +4519,16 @@ class CreateDatasetResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateDatasetResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4320,6 +4541,8 @@ class CreateDatasetResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4328,6 +4551,8 @@ class CreateDatasetResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDatasetResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4337,6 +4562,7 @@ class CreateDatasetResponse(TeaModel):
 class CreateDetectVideoLabelsTaskRequest(TeaModel):
     def __init__(
         self,
+        credential_config: CredentialConfig = None,
         notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
@@ -4344,6 +4570,7 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
+        self.credential_config = credential_config
         # NotifyEndpoint
         self.notify_endpoint = notify_endpoint
         # NotifyTopicName
@@ -4357,7 +4584,8 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
         self.user_data = user_data
 
     def validate(self):
-        pass
+        if self.credential_config:
+            self.credential_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4365,6 +4593,8 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
         if self.notify_endpoint is not None:
             result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
@@ -4381,6 +4611,9 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
         if m.get('NotifyEndpoint') is not None:
             self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
@@ -4399,6 +4632,7 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
 class CreateDetectVideoLabelsTaskShrinkRequest(TeaModel):
     def __init__(
         self,
+        credential_config_shrink: str = None,
         notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
@@ -4406,6 +4640,7 @@ class CreateDetectVideoLabelsTaskShrinkRequest(TeaModel):
         tags_shrink: str = None,
         user_data: str = None,
     ):
+        self.credential_config_shrink = credential_config_shrink
         # NotifyEndpoint
         self.notify_endpoint = notify_endpoint
         # NotifyTopicName
@@ -4427,6 +4662,8 @@ class CreateDetectVideoLabelsTaskShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
         if self.notify_endpoint is not None:
             result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
@@ -4443,6 +4680,8 @@ class CreateDetectVideoLabelsTaskShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
         if m.get('NotifyEndpoint') is not None:
             self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
@@ -4504,13 +4743,16 @@ class CreateDetectVideoLabelsTaskResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateDetectVideoLabelsTaskResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4523,6 +4765,8 @@ class CreateDetectVideoLabelsTaskResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4531,6 +4775,8 @@ class CreateDetectVideoLabelsTaskResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDetectVideoLabelsTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4695,13 +4941,16 @@ class CreateFigureClusteringTaskResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateFigureClusteringTaskResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4714,6 +4963,8 @@ class CreateFigureClusteringTaskResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4722,6 +4973,8 @@ class CreateFigureClusteringTaskResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateFigureClusteringTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4914,13 +5167,16 @@ class CreateFigureClustersMergingTaskResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateFigureClustersMergingTaskResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4933,6 +5189,8 @@ class CreateFigureClustersMergingTaskResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4941,6 +5199,8 @@ class CreateFigureClustersMergingTaskResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateFigureClustersMergingTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5070,16 +5330,20 @@ class CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio(TeaModel):
     def __init__(
         self,
         bitrate: int = None,
+        bitrate_option: str = None,
         channel: int = None,
         codec: str = None,
         quality: int = None,
         sample_rate: int = None,
+        sample_rate_option: str = None,
     ):
         self.bitrate = bitrate
+        self.bitrate_option = bitrate_option
         self.channel = channel
         self.codec = codec
         self.quality = quality
         self.sample_rate = sample_rate
+        self.sample_rate_option = sample_rate_option
 
     def validate(self):
         pass
@@ -5092,6 +5356,8 @@ class CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio(TeaModel):
         result = dict()
         if self.bitrate is not None:
             result['Bitrate'] = self.bitrate
+        if self.bitrate_option is not None:
+            result['BitrateOption'] = self.bitrate_option
         if self.channel is not None:
             result['Channel'] = self.channel
         if self.codec is not None:
@@ -5100,12 +5366,16 @@ class CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio(TeaModel):
             result['Quality'] = self.quality
         if self.sample_rate is not None:
             result['SampleRate'] = self.sample_rate
+        if self.sample_rate_option is not None:
+            result['SampleRateOption'] = self.sample_rate_option
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Bitrate') is not None:
             self.bitrate = m.get('Bitrate')
+        if m.get('BitrateOption') is not None:
+            self.bitrate_option = m.get('BitrateOption')
         if m.get('Channel') is not None:
             self.channel = m.get('Channel')
         if m.get('Codec') is not None:
@@ -5114,6 +5384,8 @@ class CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio(TeaModel):
             self.quality = m.get('Quality')
         if m.get('SampleRate') is not None:
             self.sample_rate = m.get('SampleRate')
+        if m.get('SampleRateOption') is not None:
+            self.sample_rate_option = m.get('SampleRateOption')
         return self
 
 
@@ -5378,9 +5650,11 @@ class CreateMediaConvertTaskRequestTargetsSegment(TeaModel):
         self,
         duration: float = None,
         format: str = None,
+        start_number: int = None,
     ):
         self.duration = duration
         self.format = format
+        self.start_number = start_number
 
     def validate(self):
         pass
@@ -5395,6 +5669,8 @@ class CreateMediaConvertTaskRequestTargetsSegment(TeaModel):
             result['Duration'] = self.duration
         if self.format is not None:
             result['Format'] = self.format
+        if self.start_number is not None:
+            result['StartNumber'] = self.start_number
         return result
 
     def from_map(self, m: dict = None):
@@ -5403,6 +5679,8 @@ class CreateMediaConvertTaskRequestTargetsSegment(TeaModel):
             self.duration = m.get('Duration')
         if m.get('Format') is not None:
             self.format = m.get('Format')
+        if m.get('StartNumber') is not None:
+            self.start_number = m.get('StartNumber')
         return self
 
 
@@ -5710,30 +5988,36 @@ class CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo(TeaModel):
         adaptive_resolution_direction: bool = None,
         bframes: int = None,
         bitrate: int = None,
+        bitrate_option: str = None,
         buffer_size: int = None,
         crf: float = None,
         codec: str = None,
         frame_rate: float = None,
+        frame_rate_option: str = None,
         gopsize: int = None,
         max_bitrate: int = None,
         pixel_format: str = None,
         refs: int = None,
         resolution: str = None,
+        resolution_option: str = None,
         rotation: int = None,
         scale_type: str = None,
     ):
         self.adaptive_resolution_direction = adaptive_resolution_direction
         self.bframes = bframes
         self.bitrate = bitrate
+        self.bitrate_option = bitrate_option
         self.buffer_size = buffer_size
         self.crf = crf
         self.codec = codec
         self.frame_rate = frame_rate
+        self.frame_rate_option = frame_rate_option
         self.gopsize = gopsize
         self.max_bitrate = max_bitrate
         self.pixel_format = pixel_format
         self.refs = refs
         self.resolution = resolution
+        self.resolution_option = resolution_option
         self.rotation = rotation
         self.scale_type = scale_type
 
@@ -5752,6 +6036,8 @@ class CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo(TeaModel):
             result['BFrames'] = self.bframes
         if self.bitrate is not None:
             result['Bitrate'] = self.bitrate
+        if self.bitrate_option is not None:
+            result['BitrateOption'] = self.bitrate_option
         if self.buffer_size is not None:
             result['BufferSize'] = self.buffer_size
         if self.crf is not None:
@@ -5760,6 +6046,8 @@ class CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo(TeaModel):
             result['Codec'] = self.codec
         if self.frame_rate is not None:
             result['FrameRate'] = self.frame_rate
+        if self.frame_rate_option is not None:
+            result['FrameRateOption'] = self.frame_rate_option
         if self.gopsize is not None:
             result['GOPSize'] = self.gopsize
         if self.max_bitrate is not None:
@@ -5770,6 +6058,8 @@ class CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo(TeaModel):
             result['Refs'] = self.refs
         if self.resolution is not None:
             result['Resolution'] = self.resolution
+        if self.resolution_option is not None:
+            result['ResolutionOption'] = self.resolution_option
         if self.rotation is not None:
             result['Rotation'] = self.rotation
         if self.scale_type is not None:
@@ -5784,6 +6074,8 @@ class CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo(TeaModel):
             self.bframes = m.get('BFrames')
         if m.get('Bitrate') is not None:
             self.bitrate = m.get('Bitrate')
+        if m.get('BitrateOption') is not None:
+            self.bitrate_option = m.get('BitrateOption')
         if m.get('BufferSize') is not None:
             self.buffer_size = m.get('BufferSize')
         if m.get('CRF') is not None:
@@ -5792,6 +6084,8 @@ class CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo(TeaModel):
             self.codec = m.get('Codec')
         if m.get('FrameRate') is not None:
             self.frame_rate = m.get('FrameRate')
+        if m.get('FrameRateOption') is not None:
+            self.frame_rate_option = m.get('FrameRateOption')
         if m.get('GOPSize') is not None:
             self.gopsize = m.get('GOPSize')
         if m.get('MaxBitrate') is not None:
@@ -5802,6 +6096,8 @@ class CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo(TeaModel):
             self.refs = m.get('Refs')
         if m.get('Resolution') is not None:
             self.resolution = m.get('Resolution')
+        if m.get('ResolutionOption') is not None:
+            self.resolution_option = m.get('ResolutionOption')
         if m.get('Rotation') is not None:
             self.rotation = m.get('Rotation')
         if m.get('ScaleType') is not None:
@@ -5859,7 +6155,7 @@ class CreateMediaConvertTaskRequestTargets(TeaModel):
         audio: CreateMediaConvertTaskRequestTargetsAudio = None,
         container: str = None,
         image: CreateMediaConvertTaskRequestTargetsImage = None,
-        preset_id: str = None,
+        preset: PresetReference = None,
         segment: CreateMediaConvertTaskRequestTargetsSegment = None,
         speed: float = None,
         subtitle: CreateMediaConvertTaskRequestTargetsSubtitle = None,
@@ -5869,7 +6165,7 @@ class CreateMediaConvertTaskRequestTargets(TeaModel):
         self.audio = audio
         self.container = container
         self.image = image
-        self.preset_id = preset_id
+        self.preset = preset
         self.segment = segment
         self.speed = speed
         self.subtitle = subtitle
@@ -5881,6 +6177,8 @@ class CreateMediaConvertTaskRequestTargets(TeaModel):
             self.audio.validate()
         if self.image:
             self.image.validate()
+        if self.preset:
+            self.preset.validate()
         if self.segment:
             self.segment.validate()
         if self.subtitle:
@@ -5900,8 +6198,8 @@ class CreateMediaConvertTaskRequestTargets(TeaModel):
             result['Container'] = self.container
         if self.image is not None:
             result['Image'] = self.image.to_map()
-        if self.preset_id is not None:
-            result['PresetId'] = self.preset_id
+        if self.preset is not None:
+            result['Preset'] = self.preset.to_map()
         if self.segment is not None:
             result['Segment'] = self.segment.to_map()
         if self.speed is not None:
@@ -5924,8 +6222,9 @@ class CreateMediaConvertTaskRequestTargets(TeaModel):
         if m.get('Image') is not None:
             temp_model = CreateMediaConvertTaskRequestTargetsImage()
             self.image = temp_model.from_map(m['Image'])
-        if m.get('PresetId') is not None:
-            self.preset_id = m.get('PresetId')
+        if m.get('Preset') is not None:
+            temp_model = PresetReference()
+            self.preset = temp_model.from_map(m['Preset'])
         if m.get('Segment') is not None:
             temp_model = CreateMediaConvertTaskRequestTargetsSegment()
             self.segment = temp_model.from_map(m['Segment'])
@@ -5945,7 +6244,7 @@ class CreateMediaConvertTaskRequestTargets(TeaModel):
 class CreateMediaConvertTaskRequest(TeaModel):
     def __init__(
         self,
-        dataset_name: str = None,
+        credential_config: CredentialConfig = None,
         notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
@@ -5954,7 +6253,7 @@ class CreateMediaConvertTaskRequest(TeaModel):
         targets: List[CreateMediaConvertTaskRequestTargets] = None,
         user_data: str = None,
     ):
-        self.dataset_name = dataset_name
+        self.credential_config = credential_config
         self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
@@ -5964,6 +6263,8 @@ class CreateMediaConvertTaskRequest(TeaModel):
         self.user_data = user_data
 
     def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
         if self.sources:
             for k in self.sources:
                 if k:
@@ -5979,8 +6280,8 @@ class CreateMediaConvertTaskRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.dataset_name is not None:
-            result['DatasetName'] = self.dataset_name
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
         if self.notify_endpoint is not None:
             result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
@@ -6003,8 +6304,9 @@ class CreateMediaConvertTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DatasetName') is not None:
-            self.dataset_name = m.get('DatasetName')
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
         if m.get('NotifyEndpoint') is not None:
             self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
@@ -6031,7 +6333,7 @@ class CreateMediaConvertTaskRequest(TeaModel):
 class CreateMediaConvertTaskShrinkRequest(TeaModel):
     def __init__(
         self,
-        dataset_name: str = None,
+        credential_config_shrink: str = None,
         notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
@@ -6040,7 +6342,7 @@ class CreateMediaConvertTaskShrinkRequest(TeaModel):
         targets_shrink: str = None,
         user_data: str = None,
     ):
-        self.dataset_name = dataset_name
+        self.credential_config_shrink = credential_config_shrink
         self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
@@ -6058,8 +6360,8 @@ class CreateMediaConvertTaskShrinkRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.dataset_name is not None:
-            result['DatasetName'] = self.dataset_name
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
         if self.notify_endpoint is not None:
             result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
@@ -6078,8 +6380,8 @@ class CreateMediaConvertTaskShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DatasetName') is not None:
-            self.dataset_name = m.get('DatasetName')
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
         if m.get('NotifyEndpoint') is not None:
             self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
@@ -6141,13 +6443,16 @@ class CreateMediaConvertTaskResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateMediaConvertTaskResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6160,6 +6465,8 @@ class CreateMediaConvertTaskResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6168,6 +6475,8 @@ class CreateMediaConvertTaskResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMediaConvertTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6177,18 +6486,20 @@ class CreateMediaConvertTaskResponse(TeaModel):
 class CreateOfficeConversionTaskRequest(TeaModel):
     def __init__(
         self,
-        assume_role_chain: AssumeRoleChain = None,
+        credential_config: CredentialConfig = None,
         end_page: int = None,
         first_page: bool = None,
         fit_to_height: bool = None,
         fit_to_width: bool = None,
         hold_line_feed: bool = None,
+        image_dpi: int = None,
         long_picture: bool = None,
         long_text: bool = None,
         max_sheet_column: int = None,
         max_sheet_row: int = None,
         notify_endpoint: str = None,
         notify_topic_name: str = None,
+        pages: str = None,
         paper_horizontal: bool = None,
         paper_size: str = None,
         password: str = None,
@@ -6207,8 +6518,7 @@ class CreateOfficeConversionTaskRequest(TeaModel):
         trim_policy: TrimPolicy = None,
         user_data: str = None,
     ):
-        # 链式授权
-        self.assume_role_chain = assume_role_chain
+        self.credential_config = credential_config
         # 转换终止页，包含终止页，默认转换到最后一页，表格转图片时需要指定 SheetIndex 才有效
         self.end_page = end_page
         # 表格转图片参数，是否只返回表格的第一张图片，默认为否
@@ -6219,6 +6529,8 @@ class CreateOfficeConversionTaskRequest(TeaModel):
         self.fit_to_width = fit_to_width
         # 转文本时是否保留文档中的换行符，默认不保留
         self.hold_line_feed = hold_line_feed
+        # 输出图片 DPI，允许范围 96-600，默认 96
+        self.image_dpi = image_dpi
         # 转图片时是否转换成一张长图，最多支持将 20 页合成一张长图，超过可能报错，默认为不转成长图
         self.long_picture = long_picture
         # 转文本时是否转换成长文本，默认每页是个独立的文本
@@ -6231,6 +6543,8 @@ class CreateOfficeConversionTaskRequest(TeaModel):
         self.notify_endpoint = notify_endpoint
         # mns 消息通知 topic
         self.notify_topic_name = notify_topic_name
+        # 指定转换页码，优先级高于 StartPage/EndPage，格式：多个页码用 “," 拼接，连续页码用 "-" 连接，样例参考: 1,2-4,7
+        self.pages = pages
         # 表格转图片纸张是否水平放置，默认为否
         self.paper_horizontal = paper_horizontal
         # 表格转图片纸张大小，支持 A4/A2/A0，默认A4，配合 FitToHeight 或 FitToWidth 一起使用才有效
@@ -6267,8 +6581,8 @@ class CreateOfficeConversionTaskRequest(TeaModel):
         self.user_data = user_data
 
     def validate(self):
-        if self.assume_role_chain:
-            self.assume_role_chain.validate()
+        if self.credential_config:
+            self.credential_config.validate()
         if self.trim_policy:
             self.trim_policy.validate()
 
@@ -6278,8 +6592,8 @@ class CreateOfficeConversionTaskRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.assume_role_chain is not None:
-            result['AssumeRoleChain'] = self.assume_role_chain.to_map()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
         if self.end_page is not None:
             result['EndPage'] = self.end_page
         if self.first_page is not None:
@@ -6290,6 +6604,8 @@ class CreateOfficeConversionTaskRequest(TeaModel):
             result['FitToWidth'] = self.fit_to_width
         if self.hold_line_feed is not None:
             result['HoldLineFeed'] = self.hold_line_feed
+        if self.image_dpi is not None:
+            result['ImageDPI'] = self.image_dpi
         if self.long_picture is not None:
             result['LongPicture'] = self.long_picture
         if self.long_text is not None:
@@ -6302,6 +6618,8 @@ class CreateOfficeConversionTaskRequest(TeaModel):
             result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
+        if self.pages is not None:
+            result['Pages'] = self.pages
         if self.paper_horizontal is not None:
             result['PaperHorizontal'] = self.paper_horizontal
         if self.paper_size is not None:
@@ -6340,9 +6658,9 @@ class CreateOfficeConversionTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AssumeRoleChain') is not None:
-            temp_model = AssumeRoleChain()
-            self.assume_role_chain = temp_model.from_map(m['AssumeRoleChain'])
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
         if m.get('EndPage') is not None:
             self.end_page = m.get('EndPage')
         if m.get('FirstPage') is not None:
@@ -6353,6 +6671,8 @@ class CreateOfficeConversionTaskRequest(TeaModel):
             self.fit_to_width = m.get('FitToWidth')
         if m.get('HoldLineFeed') is not None:
             self.hold_line_feed = m.get('HoldLineFeed')
+        if m.get('ImageDPI') is not None:
+            self.image_dpi = m.get('ImageDPI')
         if m.get('LongPicture') is not None:
             self.long_picture = m.get('LongPicture')
         if m.get('LongText') is not None:
@@ -6365,6 +6685,8 @@ class CreateOfficeConversionTaskRequest(TeaModel):
             self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('Pages') is not None:
+            self.pages = m.get('Pages')
         if m.get('PaperHorizontal') is not None:
             self.paper_horizontal = m.get('PaperHorizontal')
         if m.get('PaperSize') is not None:
@@ -6406,18 +6728,20 @@ class CreateOfficeConversionTaskRequest(TeaModel):
 class CreateOfficeConversionTaskShrinkRequest(TeaModel):
     def __init__(
         self,
-        assume_role_chain_shrink: str = None,
+        credential_config_shrink: str = None,
         end_page: int = None,
         first_page: bool = None,
         fit_to_height: bool = None,
         fit_to_width: bool = None,
         hold_line_feed: bool = None,
+        image_dpi: int = None,
         long_picture: bool = None,
         long_text: bool = None,
         max_sheet_column: int = None,
         max_sheet_row: int = None,
         notify_endpoint: str = None,
         notify_topic_name: str = None,
+        pages: str = None,
         paper_horizontal: bool = None,
         paper_size: str = None,
         password: str = None,
@@ -6436,8 +6760,7 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
         trim_policy_shrink: str = None,
         user_data: str = None,
     ):
-        # 链式授权
-        self.assume_role_chain_shrink = assume_role_chain_shrink
+        self.credential_config_shrink = credential_config_shrink
         # 转换终止页，包含终止页，默认转换到最后一页，表格转图片时需要指定 SheetIndex 才有效
         self.end_page = end_page
         # 表格转图片参数，是否只返回表格的第一张图片，默认为否
@@ -6448,6 +6771,8 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
         self.fit_to_width = fit_to_width
         # 转文本时是否保留文档中的换行符，默认不保留
         self.hold_line_feed = hold_line_feed
+        # 输出图片 DPI，允许范围 96-600，默认 96
+        self.image_dpi = image_dpi
         # 转图片时是否转换成一张长图，最多支持将 20 页合成一张长图，超过可能报错，默认为不转成长图
         self.long_picture = long_picture
         # 转文本时是否转换成长文本，默认每页是个独立的文本
@@ -6460,6 +6785,8 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
         self.notify_endpoint = notify_endpoint
         # mns 消息通知 topic
         self.notify_topic_name = notify_topic_name
+        # 指定转换页码，优先级高于 StartPage/EndPage，格式：多个页码用 “," 拼接，连续页码用 "-" 连接，样例参考: 1,2-4,7
+        self.pages = pages
         # 表格转图片纸张是否水平放置，默认为否
         self.paper_horizontal = paper_horizontal
         # 表格转图片纸张大小，支持 A4/A2/A0，默认A4，配合 FitToHeight 或 FitToWidth 一起使用才有效
@@ -6504,8 +6831,8 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.assume_role_chain_shrink is not None:
-            result['AssumeRoleChain'] = self.assume_role_chain_shrink
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
         if self.end_page is not None:
             result['EndPage'] = self.end_page
         if self.first_page is not None:
@@ -6516,6 +6843,8 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
             result['FitToWidth'] = self.fit_to_width
         if self.hold_line_feed is not None:
             result['HoldLineFeed'] = self.hold_line_feed
+        if self.image_dpi is not None:
+            result['ImageDPI'] = self.image_dpi
         if self.long_picture is not None:
             result['LongPicture'] = self.long_picture
         if self.long_text is not None:
@@ -6528,6 +6857,8 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
             result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
+        if self.pages is not None:
+            result['Pages'] = self.pages
         if self.paper_horizontal is not None:
             result['PaperHorizontal'] = self.paper_horizontal
         if self.paper_size is not None:
@@ -6566,8 +6897,8 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AssumeRoleChain') is not None:
-            self.assume_role_chain_shrink = m.get('AssumeRoleChain')
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
         if m.get('EndPage') is not None:
             self.end_page = m.get('EndPage')
         if m.get('FirstPage') is not None:
@@ -6578,6 +6909,8 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
             self.fit_to_width = m.get('FitToWidth')
         if m.get('HoldLineFeed') is not None:
             self.hold_line_feed = m.get('HoldLineFeed')
+        if m.get('ImageDPI') is not None:
+            self.image_dpi = m.get('ImageDPI')
         if m.get('LongPicture') is not None:
             self.long_picture = m.get('LongPicture')
         if m.get('LongText') is not None:
@@ -6590,6 +6923,8 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
             self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('Pages') is not None:
+            self.pages = m.get('Pages')
         if m.get('PaperHorizontal') is not None:
             self.paper_horizontal = m.get('PaperHorizontal')
         if m.get('PaperSize') is not None:
@@ -6672,13 +7007,16 @@ class CreateOfficeConversionTaskResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateOfficeConversionTaskResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6691,6 +7029,8 @@ class CreateOfficeConversionTaskResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6699,6 +7039,8 @@ class CreateOfficeConversionTaskResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateOfficeConversionTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6839,13 +7181,16 @@ class CreateProjectResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateProjectResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6858,6 +7203,8 @@ class CreateProjectResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6866,6 +7213,8 @@ class CreateProjectResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateProjectResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7150,13 +7499,16 @@ class CreateStoryResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateStoryResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7169,6 +7521,8 @@ class CreateStoryResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7177,6 +7531,8 @@ class CreateStoryResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateStoryResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7261,13 +7617,16 @@ class DeleteBindingResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteBindingResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7280,6 +7639,8 @@ class DeleteBindingResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7288,6 +7649,8 @@ class DeleteBindingResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteBindingResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7359,13 +7722,16 @@ class DeleteDatasetResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteDatasetResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7378,6 +7744,8 @@ class DeleteDatasetResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7386,6 +7754,8 @@ class DeleteDatasetResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDatasetResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7463,13 +7833,16 @@ class DeleteFileMetaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteFileMetaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7482,6 +7855,8 @@ class DeleteFileMetaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7490,6 +7865,8 @@ class DeleteFileMetaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteFileMetaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7556,13 +7933,16 @@ class DeleteProjectResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteProjectResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7575,6 +7955,8 @@ class DeleteProjectResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7583,6 +7965,8 @@ class DeleteProjectResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteProjectResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7659,13 +8043,16 @@ class DeleteStoryResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteStoryResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7678,6 +8065,8 @@ class DeleteStoryResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7686,6 +8075,8 @@ class DeleteStoryResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteStoryResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7751,13 +8142,16 @@ class DetachOSSBucketResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetachOSSBucketResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7770,6 +8164,8 @@ class DetachOSSBucketResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7778,6 +8174,8 @@ class DetachOSSBucketResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetachOSSBucketResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7788,10 +8186,61 @@ class DetectImageCroppingRequest(TeaModel):
     def __init__(
         self,
         aspect_ratios: str = None,
+        credential_config: CredentialConfig = None,
         project_name: str = None,
         source_uri: str = None,
     ):
         self.aspect_ratios = aspect_ratios
+        self.credential_config = credential_config
+        # 项目名称
+        self.project_name = project_name
+        # SourceURI
+        self.source_uri = source_uri
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aspect_ratios is not None:
+            result['AspectRatios'] = self.aspect_ratios
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AspectRatios') is not None:
+            self.aspect_ratios = m.get('AspectRatios')
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        return self
+
+
+class DetectImageCroppingShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        aspect_ratios: str = None,
+        credential_config_shrink: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+    ):
+        self.aspect_ratios = aspect_ratios
+        self.credential_config_shrink = credential_config_shrink
         # 项目名称
         self.project_name = project_name
         # SourceURI
@@ -7808,6 +8257,8 @@ class DetectImageCroppingRequest(TeaModel):
         result = dict()
         if self.aspect_ratios is not None:
             result['AspectRatios'] = self.aspect_ratios
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.source_uri is not None:
@@ -7818,6 +8269,8 @@ class DetectImageCroppingRequest(TeaModel):
         m = m or dict()
         if m.get('AspectRatios') is not None:
             self.aspect_ratios = m.get('AspectRatios')
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('SourceURI') is not None:
@@ -7872,13 +8325,16 @@ class DetectImageCroppingResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectImageCroppingResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7891,6 +8347,8 @@ class DetectImageCroppingResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7899,6 +8357,8 @@ class DetectImageCroppingResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectImageCroppingResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7908,9 +8368,53 @@ class DetectImageCroppingResponse(TeaModel):
 class DetectImageFacesRequest(TeaModel):
     def __init__(
         self,
+        credential_config: CredentialConfig = None,
         project_name: str = None,
         source_uri: str = None,
     ):
+        self.credential_config = credential_config
+        # 项目名称
+        self.project_name = project_name
+        self.source_uri = source_uri
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        return self
+
+
+class DetectImageFacesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config_shrink: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+    ):
+        self.credential_config_shrink = credential_config_shrink
         # 项目名称
         self.project_name = project_name
         self.source_uri = source_uri
@@ -7924,6 +8428,8 @@ class DetectImageFacesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.source_uri is not None:
@@ -7932,6 +8438,8 @@ class DetectImageFacesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('SourceURI') is not None:
@@ -7985,13 +8493,16 @@ class DetectImageFacesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectImageFacesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8004,6 +8515,8 @@ class DetectImageFacesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8012,6 +8525,8 @@ class DetectImageFacesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectImageFacesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8021,10 +8536,62 @@ class DetectImageFacesResponse(TeaModel):
 class DetectImageLabelsRequest(TeaModel):
     def __init__(
         self,
+        credential_config: CredentialConfig = None,
         project_name: str = None,
         source_uri: str = None,
         threshold: float = None,
     ):
+        self.credential_config = credential_config
+        # 项目名称
+        self.project_name = project_name
+        # SourceURI
+        self.source_uri = source_uri
+        # Threshold
+        self.threshold = threshold
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class DetectImageLabelsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config_shrink: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+        threshold: float = None,
+    ):
+        self.credential_config_shrink = credential_config_shrink
         # 项目名称
         self.project_name = project_name
         # SourceURI
@@ -8041,6 +8608,8 @@ class DetectImageLabelsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.source_uri is not None:
@@ -8051,6 +8620,8 @@ class DetectImageLabelsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('SourceURI') is not None:
@@ -8107,13 +8678,16 @@ class DetectImageLabelsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectImageLabelsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8126,6 +8700,8 @@ class DetectImageLabelsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8134,6 +8710,8 @@ class DetectImageLabelsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectImageLabelsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8143,9 +8721,53 @@ class DetectImageLabelsResponse(TeaModel):
 class DetectImageScoreRequest(TeaModel):
     def __init__(
         self,
+        credential_config: CredentialConfig = None,
         project_name: str = None,
         source_uri: str = None,
     ):
+        self.credential_config = credential_config
+        # 项目名称
+        self.project_name = project_name
+        self.source_uri = source_uri
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        return self
+
+
+class DetectImageScoreShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config_shrink: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+    ):
+        self.credential_config_shrink = credential_config_shrink
         # 项目名称
         self.project_name = project_name
         self.source_uri = source_uri
@@ -8159,6 +8781,8 @@ class DetectImageScoreRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.source_uri is not None:
@@ -8167,6 +8791,8 @@ class DetectImageScoreRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('SourceURI') is not None:
@@ -8241,13 +8867,16 @@ class DetectImageScoreResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectImageScoreResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8260,6 +8889,8 @@ class DetectImageScoreResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8268,6 +8899,8 @@ class DetectImageScoreResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectImageScoreResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8383,13 +9016,16 @@ class FuzzyQueryResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: FuzzyQueryResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8402,6 +9038,8 @@ class FuzzyQueryResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8410,6 +9048,8 @@ class FuzzyQueryResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = FuzzyQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8495,13 +9135,16 @@ class GetBindingResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetBindingResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8514,6 +9157,8 @@ class GetBindingResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8522,6 +9167,8 @@ class GetBindingResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetBindingResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8606,13 +9253,16 @@ class GetDatasetResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetDatasetResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8625,6 +9275,8 @@ class GetDatasetResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8633,6 +9285,8 @@ class GetDatasetResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDatasetResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8798,13 +9452,16 @@ class GetDetectVideoLabelsResultResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetDetectVideoLabelsResultResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8817,6 +9474,8 @@ class GetDetectVideoLabelsResultResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8825,6 +9484,8 @@ class GetDetectVideoLabelsResultResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDetectVideoLabelsResultResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8910,13 +9571,16 @@ class GetFigureClusterResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetFigureClusterResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8929,6 +9593,8 @@ class GetFigureClusterResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8937,6 +9603,8 @@ class GetFigureClusterResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetFigureClusterResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9029,13 +9697,16 @@ class GetFileMetaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetFileMetaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9048,6 +9719,8 @@ class GetFileMetaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9056,6 +9729,8 @@ class GetFileMetaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetFileMetaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9065,9 +9740,52 @@ class GetFileMetaResponse(TeaModel):
 class GetMediaMetaRequest(TeaModel):
     def __init__(
         self,
+        credential_config: CredentialConfig = None,
         project_name: str = None,
         source_uri: str = None,
     ):
+        self.credential_config = credential_config
+        self.project_name = project_name
+        self.source_uri = source_uri
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        return self
+
+
+class GetMediaMetaShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config_shrink: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+    ):
+        self.credential_config_shrink = credential_config_shrink
         self.project_name = project_name
         self.source_uri = source_uri
 
@@ -9080,6 +9798,8 @@ class GetMediaMetaRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.source_uri is not None:
@@ -9088,6 +9808,8 @@ class GetMediaMetaRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('SourceURI') is not None:
@@ -9299,13 +10021,16 @@ class GetMediaMetaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetMediaMetaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9318,6 +10043,8 @@ class GetMediaMetaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9326,6 +10053,8 @@ class GetMediaMetaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetMediaMetaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9397,13 +10126,16 @@ class GetOSSBucketAttachmentResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetOSSBucketAttachmentResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9416,6 +10148,8 @@ class GetOSSBucketAttachmentResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9424,6 +10158,8 @@ class GetOSSBucketAttachmentResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetOSSBucketAttachmentResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9505,13 +10241,16 @@ class GetProjectResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetProjectResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9524,6 +10263,8 @@ class GetProjectResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9532,6 +10273,8 @@ class GetProjectResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetProjectResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9617,13 +10360,16 @@ class GetStoryResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetStoryResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9636,6 +10382,8 @@ class GetStoryResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9644,6 +10392,8 @@ class GetStoryResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetStoryResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9800,13 +10550,16 @@ class GetTaskResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetTaskResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9819,6 +10572,8 @@ class GetTaskResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9827,6 +10582,8 @@ class GetTaskResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9836,8 +10593,8 @@ class GetTaskResponse(TeaModel):
 class GetWebofficeURLRequest(TeaModel):
     def __init__(
         self,
-        assume_role_chain: AssumeRoleChain = None,
         cache_preview: bool = None,
+        credential_config: CredentialConfig = None,
         external_uploaded: bool = None,
         filename: str = None,
         hidecmb: bool = None,
@@ -9853,10 +10610,9 @@ class GetWebofficeURLRequest(TeaModel):
         user_data: str = None,
         watermark: WebofficeWatermark = None,
     ):
-        # 链式授权
-        self.assume_role_chain = assume_role_chain
         # 缓存预览标识
         self.cache_preview = cache_preview
+        self.credential_config = credential_config
         # 是否支持外部上传
         self.external_uploaded = external_uploaded
         # 文件名，必须带文件名后缀，默认是 SourceUri 的最后一级
@@ -9887,8 +10643,8 @@ class GetWebofficeURLRequest(TeaModel):
         self.watermark = watermark
 
     def validate(self):
-        if self.assume_role_chain:
-            self.assume_role_chain.validate()
+        if self.credential_config:
+            self.credential_config.validate()
         if self.permission:
             self.permission.validate()
         if self.user:
@@ -9902,10 +10658,10 @@ class GetWebofficeURLRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.assume_role_chain is not None:
-            result['AssumeRoleChain'] = self.assume_role_chain.to_map()
         if self.cache_preview is not None:
             result['CachePreview'] = self.cache_preview
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
         if self.external_uploaded is not None:
             result['ExternalUploaded'] = self.external_uploaded
         if self.filename is not None:
@@ -9938,11 +10694,11 @@ class GetWebofficeURLRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AssumeRoleChain') is not None:
-            temp_model = AssumeRoleChain()
-            self.assume_role_chain = temp_model.from_map(m['AssumeRoleChain'])
         if m.get('CachePreview') is not None:
             self.cache_preview = m.get('CachePreview')
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
         if m.get('ExternalUploaded') is not None:
             self.external_uploaded = m.get('ExternalUploaded')
         if m.get('Filename') is not None:
@@ -9980,8 +10736,8 @@ class GetWebofficeURLRequest(TeaModel):
 class GetWebofficeURLShrinkRequest(TeaModel):
     def __init__(
         self,
-        assume_role_chain_shrink: str = None,
         cache_preview: bool = None,
+        credential_config_shrink: str = None,
         external_uploaded: bool = None,
         filename: str = None,
         hidecmb: bool = None,
@@ -9997,10 +10753,9 @@ class GetWebofficeURLShrinkRequest(TeaModel):
         user_data: str = None,
         watermark_shrink: str = None,
     ):
-        # 链式授权
-        self.assume_role_chain_shrink = assume_role_chain_shrink
         # 缓存预览标识
         self.cache_preview = cache_preview
+        self.credential_config_shrink = credential_config_shrink
         # 是否支持外部上传
         self.external_uploaded = external_uploaded
         # 文件名，必须带文件名后缀，默认是 SourceUri 的最后一级
@@ -10039,10 +10794,10 @@ class GetWebofficeURLShrinkRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.assume_role_chain_shrink is not None:
-            result['AssumeRoleChain'] = self.assume_role_chain_shrink
         if self.cache_preview is not None:
             result['CachePreview'] = self.cache_preview
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
         if self.external_uploaded is not None:
             result['ExternalUploaded'] = self.external_uploaded
         if self.filename is not None:
@@ -10075,10 +10830,10 @@ class GetWebofficeURLShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AssumeRoleChain') is not None:
-            self.assume_role_chain_shrink = m.get('AssumeRoleChain')
         if m.get('CachePreview') is not None:
             self.cache_preview = m.get('CachePreview')
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
         if m.get('ExternalUploaded') is not None:
             self.external_uploaded = m.get('ExternalUploaded')
         if m.get('Filename') is not None:
@@ -10177,13 +10932,16 @@ class GetWebofficeURLResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetWebofficeURLResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10196,6 +10954,8 @@ class GetWebofficeURLResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10204,6 +10964,8 @@ class GetWebofficeURLResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWebofficeURLResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10352,13 +11114,16 @@ class IndexFileMetaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: IndexFileMetaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10371,6 +11136,8 @@ class IndexFileMetaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10379,6 +11146,8 @@ class IndexFileMetaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = IndexFileMetaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10483,13 +11252,16 @@ class ListBindingsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListBindingsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10502,6 +11274,8 @@ class ListBindingsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10510,6 +11284,8 @@ class ListBindingsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListBindingsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10617,13 +11393,16 @@ class ListDatasetsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListDatasetsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10636,6 +11415,8 @@ class ListDatasetsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10644,6 +11425,8 @@ class ListDatasetsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDatasetsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10746,13 +11529,16 @@ class ListProjectsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListProjectsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10765,6 +11551,8 @@ class ListProjectsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10773,6 +11561,8 @@ class ListProjectsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListProjectsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11020,13 +11810,16 @@ class ListTasksResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListTasksResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11039,6 +11832,8 @@ class ListTasksResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11047,6 +11842,8 @@ class ListTasksResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTasksResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11160,13 +11957,16 @@ class MergeFigureClustersResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: MergeFigureClustersResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11179,6 +11979,8 @@ class MergeFigureClustersResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11187,6 +11989,8 @@ class MergeFigureClustersResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = MergeFigureClustersResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11310,13 +12114,16 @@ class QueryFigureClustersResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QueryFigureClustersResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11329,6 +12136,8 @@ class QueryFigureClustersResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11337,6 +12146,8 @@ class QueryFigureClustersResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryFigureClustersResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11637,13 +12448,16 @@ class QueryStoriesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QueryStoriesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11656,6 +12470,8 @@ class QueryStoriesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11664,6 +12480,8 @@ class QueryStoriesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryStoriesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11674,22 +12492,21 @@ class RefreshWebofficeTokenRequest(TeaModel):
     def __init__(
         self,
         access_token: str = None,
-        assume_role_chain: AssumeRoleChain = None,
+        credential_config: CredentialConfig = None,
         project_name: str = None,
         refresh_token: str = None,
     ):
         # access token
         self.access_token = access_token
-        # 链式授权
-        self.assume_role_chain = assume_role_chain
+        self.credential_config = credential_config
         # 项目名称
         self.project_name = project_name
         # refresh token
         self.refresh_token = refresh_token
 
     def validate(self):
-        if self.assume_role_chain:
-            self.assume_role_chain.validate()
+        if self.credential_config:
+            self.credential_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11699,8 +12516,8 @@ class RefreshWebofficeTokenRequest(TeaModel):
         result = dict()
         if self.access_token is not None:
             result['AccessToken'] = self.access_token
-        if self.assume_role_chain is not None:
-            result['AssumeRoleChain'] = self.assume_role_chain.to_map()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.refresh_token is not None:
@@ -11711,9 +12528,9 @@ class RefreshWebofficeTokenRequest(TeaModel):
         m = m or dict()
         if m.get('AccessToken') is not None:
             self.access_token = m.get('AccessToken')
-        if m.get('AssumeRoleChain') is not None:
-            temp_model = AssumeRoleChain()
-            self.assume_role_chain = temp_model.from_map(m['AssumeRoleChain'])
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('RefreshToken') is not None:
@@ -11725,14 +12542,13 @@ class RefreshWebofficeTokenShrinkRequest(TeaModel):
     def __init__(
         self,
         access_token: str = None,
-        assume_role_chain_shrink: str = None,
+        credential_config_shrink: str = None,
         project_name: str = None,
         refresh_token: str = None,
     ):
         # access token
         self.access_token = access_token
-        # 链式授权
-        self.assume_role_chain_shrink = assume_role_chain_shrink
+        self.credential_config_shrink = credential_config_shrink
         # 项目名称
         self.project_name = project_name
         # refresh token
@@ -11749,8 +12565,8 @@ class RefreshWebofficeTokenShrinkRequest(TeaModel):
         result = dict()
         if self.access_token is not None:
             result['AccessToken'] = self.access_token
-        if self.assume_role_chain_shrink is not None:
-            result['AssumeRoleChain'] = self.assume_role_chain_shrink
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.refresh_token is not None:
@@ -11761,8 +12577,8 @@ class RefreshWebofficeTokenShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AccessToken') is not None:
             self.access_token = m.get('AccessToken')
-        if m.get('AssumeRoleChain') is not None:
-            self.assume_role_chain_shrink = m.get('AssumeRoleChain')
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('RefreshToken') is not None:
@@ -11830,13 +12646,16 @@ class RefreshWebofficeTokenResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RefreshWebofficeTokenResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11849,6 +12668,8 @@ class RefreshWebofficeTokenResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11857,6 +12678,8 @@ class RefreshWebofficeTokenResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RefreshWebofficeTokenResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11934,13 +12757,16 @@ class ResumeBindingResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ResumeBindingResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11953,6 +12779,8 @@ class ResumeBindingResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11961,6 +12789,8 @@ class ResumeBindingResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ResumeBindingResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -12185,13 +13015,16 @@ class SemanticQueryResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SemanticQueryResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12204,6 +13037,8 @@ class SemanticQueryResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12212,6 +13047,8 @@ class SemanticQueryResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SemanticQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -12591,13 +13428,16 @@ class SimpleQueryResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SimpleQueryResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12610,6 +13450,8 @@ class SimpleQueryResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12618,6 +13460,8 @@ class SimpleQueryResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SimpleQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -12701,13 +13545,16 @@ class StopBindingResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: StopBindingResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12720,6 +13567,8 @@ class StopBindingResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12728,6 +13577,8 @@ class StopBindingResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopBindingResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -12858,13 +13709,16 @@ class UpdateDatasetResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateDatasetResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12877,6 +13731,8 @@ class UpdateDatasetResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12885,6 +13741,8 @@ class UpdateDatasetResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateDatasetResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -13003,13 +13861,16 @@ class UpdateFigureClusterResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateFigureClusterResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -13022,6 +13883,8 @@ class UpdateFigureClusterResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -13030,6 +13893,8 @@ class UpdateFigureClusterResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateFigureClusterResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -13148,13 +14013,16 @@ class UpdateFileMetaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateFileMetaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -13167,6 +14035,8 @@ class UpdateFileMetaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -13175,6 +14045,8 @@ class UpdateFileMetaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateFileMetaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -13326,13 +14198,16 @@ class UpdateProjectResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateProjectResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -13345,6 +14220,8 @@ class UpdateProjectResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -13353,6 +14230,8 @@ class UpdateProjectResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateProjectResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -13504,13 +14383,16 @@ class UpdateStoryResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateStoryResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -13523,6 +14405,8 @@ class UpdateStoryResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -13531,6 +14415,8 @@ class UpdateStoryResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateStoryResponseBody()
             self.body = temp_model.from_map(m['body'])
