@@ -373,6 +373,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_aggregate_compliance_pack_with_options_async(request, runtime)
 
+    def create_aggregate_config_delivery_channel_with_options(
+        self,
+        request: config_20200907_models.CreateAggregateConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CreateAggregateConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.configuration_item_change_notification):
+            query['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
+        if not UtilClient.is_unset(request.configuration_snapshot):
+            query['ConfigurationSnapshot'] = request.configuration_snapshot
+        if not UtilClient.is_unset(request.delivery_channel_condition):
+            query['DeliveryChannelCondition'] = request.delivery_channel_condition
+        if not UtilClient.is_unset(request.delivery_channel_name):
+            query['DeliveryChannelName'] = request.delivery_channel_name
+        if not UtilClient.is_unset(request.delivery_channel_target_arn):
+            query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.delivery_channel_type):
+            query['DeliveryChannelType'] = request.delivery_channel_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.non_compliant_notification):
+            query['NonCompliantNotification'] = request.non_compliant_notification
+        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
+            query['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAggregateConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CreateAggregateConfigDeliveryChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aggregate_config_delivery_channel_with_options_async(
+        self,
+        request: config_20200907_models.CreateAggregateConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CreateAggregateConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.configuration_item_change_notification):
+            query['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
+        if not UtilClient.is_unset(request.configuration_snapshot):
+            query['ConfigurationSnapshot'] = request.configuration_snapshot
+        if not UtilClient.is_unset(request.delivery_channel_condition):
+            query['DeliveryChannelCondition'] = request.delivery_channel_condition
+        if not UtilClient.is_unset(request.delivery_channel_name):
+            query['DeliveryChannelName'] = request.delivery_channel_name
+        if not UtilClient.is_unset(request.delivery_channel_target_arn):
+            query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.delivery_channel_type):
+            query['DeliveryChannelType'] = request.delivery_channel_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.non_compliant_notification):
+            query['NonCompliantNotification'] = request.non_compliant_notification
+        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
+            query['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAggregateConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CreateAggregateConfigDeliveryChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aggregate_config_delivery_channel(
+        self,
+        request: config_20200907_models.CreateAggregateConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.CreateAggregateConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_aggregate_config_delivery_channel_with_options(request, runtime)
+
+    async def create_aggregate_config_delivery_channel_async(
+        self,
+        request: config_20200907_models.CreateAggregateConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.CreateAggregateConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_aggregate_config_delivery_channel_with_options_async(request, runtime)
+
     def create_aggregate_config_rule_with_options(
         self,
         tmp_req: config_20200907_models.CreateAggregateConfigRuleRequest,
@@ -820,6 +930,112 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.CreateCompliancePackResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_compliance_pack_with_options_async(request, runtime)
+
+    def create_config_delivery_channel_with_options(
+        self,
+        request: config_20200907_models.CreateConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CreateConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.configuration_item_change_notification):
+            query['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
+        if not UtilClient.is_unset(request.configuration_snapshot):
+            query['ConfigurationSnapshot'] = request.configuration_snapshot
+        if not UtilClient.is_unset(request.delivery_channel_condition):
+            query['DeliveryChannelCondition'] = request.delivery_channel_condition
+        if not UtilClient.is_unset(request.delivery_channel_name):
+            query['DeliveryChannelName'] = request.delivery_channel_name
+        if not UtilClient.is_unset(request.delivery_channel_target_arn):
+            query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.delivery_channel_type):
+            query['DeliveryChannelType'] = request.delivery_channel_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.non_compliant_notification):
+            query['NonCompliantNotification'] = request.non_compliant_notification
+        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
+            query['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CreateConfigDeliveryChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_config_delivery_channel_with_options_async(
+        self,
+        request: config_20200907_models.CreateConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CreateConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.configuration_item_change_notification):
+            query['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
+        if not UtilClient.is_unset(request.configuration_snapshot):
+            query['ConfigurationSnapshot'] = request.configuration_snapshot
+        if not UtilClient.is_unset(request.delivery_channel_condition):
+            query['DeliveryChannelCondition'] = request.delivery_channel_condition
+        if not UtilClient.is_unset(request.delivery_channel_name):
+            query['DeliveryChannelName'] = request.delivery_channel_name
+        if not UtilClient.is_unset(request.delivery_channel_target_arn):
+            query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.delivery_channel_type):
+            query['DeliveryChannelType'] = request.delivery_channel_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.non_compliant_notification):
+            query['NonCompliantNotification'] = request.non_compliant_notification
+        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
+            query['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CreateConfigDeliveryChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_config_delivery_channel(
+        self,
+        request: config_20200907_models.CreateConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.CreateConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_config_delivery_channel_with_options(request, runtime)
+
+    async def create_config_delivery_channel_async(
+        self,
+        request: config_20200907_models.CreateConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.CreateConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_config_delivery_channel_with_options_async(request, runtime)
 
     def create_config_rule_with_options(
         self,
@@ -2307,6 +2523,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_aggregate_compliance_pack_report_with_options_async(request, runtime)
 
+    def get_aggregate_config_delivery_channel_with_options(
+        self,
+        request: config_20200907_models.GetAggregateConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetAggregateConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            query['DeliveryChannelId'] = request.delivery_channel_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAggregateConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetAggregateConfigDeliveryChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aggregate_config_delivery_channel_with_options_async(
+        self,
+        request: config_20200907_models.GetAggregateConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetAggregateConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            query['DeliveryChannelId'] = request.delivery_channel_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAggregateConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetAggregateConfigDeliveryChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aggregate_config_delivery_channel(
+        self,
+        request: config_20200907_models.GetAggregateConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.GetAggregateConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_aggregate_config_delivery_channel_with_options(request, runtime)
+
+    async def get_aggregate_config_delivery_channel_async(
+        self,
+        request: config_20200907_models.GetAggregateConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.GetAggregateConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_aggregate_config_delivery_channel_with_options_async(request, runtime)
+
     def get_aggregate_config_rule_with_options(
         self,
         request: config_20200907_models.GetAggregateConfigRuleRequest,
@@ -3411,6 +3701,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_compliance_pack_report_with_options_async(request, runtime)
 
+    def get_config_delivery_channel_with_options(
+        self,
+        request: config_20200907_models.GetConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            query['DeliveryChannelId'] = request.delivery_channel_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetConfigDeliveryChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_config_delivery_channel_with_options_async(
+        self,
+        request: config_20200907_models.GetConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            query['DeliveryChannelId'] = request.delivery_channel_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetConfigDeliveryChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_config_delivery_channel(
+        self,
+        request: config_20200907_models.GetConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.GetConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_config_delivery_channel_with_options(request, runtime)
+
+    async def get_config_delivery_channel_async(
+        self,
+        request: config_20200907_models.GetConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.GetConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_config_delivery_channel_with_options_async(request, runtime)
+
     def get_config_rule_with_options(
         self,
         request: config_20200907_models.GetConfigRuleRequest,
@@ -4354,6 +4714,8 @@ class Client(OpenApiClient):
             body['AggregatorId'] = request.aggregator_id
         if not UtilClient.is_unset(request.config_rule_id):
             body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.ignore_date):
+            body['IgnoreDate'] = request.ignore_date
         if not UtilClient.is_unset(request.reason):
             body['Reason'] = request.reason
         if not UtilClient.is_unset(request.resources_shrink):
@@ -4392,6 +4754,8 @@ class Client(OpenApiClient):
             body['AggregatorId'] = request.aggregator_id
         if not UtilClient.is_unset(request.config_rule_id):
             body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.ignore_date):
+            body['IgnoreDate'] = request.ignore_date
         if not UtilClient.is_unset(request.reason):
             body['Reason'] = request.reason
         if not UtilClient.is_unset(request.resources_shrink):
@@ -4442,6 +4806,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.config_rule_id):
             body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.ignore_date):
+            body['IgnoreDate'] = request.ignore_date
         if not UtilClient.is_unset(request.reason):
             body['Reason'] = request.reason
         if not UtilClient.is_unset(request.resources_shrink):
@@ -4478,6 +4844,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.config_rule_id):
             body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.ignore_date):
+            body['IgnoreDate'] = request.ignore_date
         if not UtilClient.is_unset(request.reason):
             body['Reason'] = request.reason
         if not UtilClient.is_unset(request.resources_shrink):
@@ -4580,6 +4948,80 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.ListAggregateCompliancePacksResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_aggregate_compliance_packs_with_options_async(request, runtime)
+
+    def list_aggregate_config_delivery_channels_with_options(
+        self,
+        request: config_20200907_models.ListAggregateConfigDeliveryChannelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateConfigDeliveryChannelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.delivery_channel_ids):
+            query['DeliveryChannelIds'] = request.delivery_channel_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateConfigDeliveryChannels',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateConfigDeliveryChannelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aggregate_config_delivery_channels_with_options_async(
+        self,
+        request: config_20200907_models.ListAggregateConfigDeliveryChannelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateConfigDeliveryChannelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.delivery_channel_ids):
+            query['DeliveryChannelIds'] = request.delivery_channel_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateConfigDeliveryChannels',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateConfigDeliveryChannelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aggregate_config_delivery_channels(
+        self,
+        request: config_20200907_models.ListAggregateConfigDeliveryChannelsRequest,
+    ) -> config_20200907_models.ListAggregateConfigDeliveryChannelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_aggregate_config_delivery_channels_with_options(request, runtime)
+
+    async def list_aggregate_config_delivery_channels_async(
+        self,
+        request: config_20200907_models.ListAggregateConfigDeliveryChannelsRequest,
+    ) -> config_20200907_models.ListAggregateConfigDeliveryChannelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aggregate_config_delivery_channels_with_options_async(request, runtime)
 
     def list_aggregate_config_rule_evaluation_results_with_options(
         self,
@@ -5177,6 +5619,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_compliance_packs_with_options_async(request, runtime)
 
+    def list_config_delivery_channels_with_options(
+        self,
+        request: config_20200907_models.ListConfigDeliveryChannelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListConfigDeliveryChannelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delivery_channel_ids):
+            query['DeliveryChannelIds'] = request.delivery_channel_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConfigDeliveryChannels',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListConfigDeliveryChannelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_config_delivery_channels_with_options_async(
+        self,
+        request: config_20200907_models.ListConfigDeliveryChannelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListConfigDeliveryChannelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delivery_channel_ids):
+            query['DeliveryChannelIds'] = request.delivery_channel_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConfigDeliveryChannels',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListConfigDeliveryChannelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_config_delivery_channels(
+        self,
+        request: config_20200907_models.ListConfigDeliveryChannelsRequest,
+    ) -> config_20200907_models.ListConfigDeliveryChannelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_config_delivery_channels_with_options(request, runtime)
+
+    async def list_config_delivery_channels_async(
+        self,
+        request: config_20200907_models.ListConfigDeliveryChannelsRequest,
+    ) -> config_20200907_models.ListConfigDeliveryChannelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_config_delivery_channels_with_options_async(request, runtime)
+
     def list_config_rule_evaluation_results_with_options(
         self,
         request: config_20200907_models.ListConfigRuleEvaluationResultsRequest,
@@ -5649,6 +6161,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_resource_evaluation_results_with_options_async(request, runtime)
 
+    def list_tag_resources_with_options(
+        self,
+        request: config_20200907_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: config_20200907_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: config_20200907_models.ListTagResourcesRequest,
+    ) -> config_20200907_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: config_20200907_models.ListTagResourcesRequest,
+    ) -> config_20200907_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
+
     def revert_aggregate_evaluation_results_with_options(
         self,
         tmp_req: config_20200907_models.RevertAggregateEvaluationResultsRequest,
@@ -6043,6 +6641,174 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_remediation_with_options_async(request, runtime)
 
+    def tag_resources_with_options(
+        self,
+        request: config_20200907_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: config_20200907_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: config_20200907_models.TagResourcesRequest,
+    ) -> config_20200907_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: config_20200907_models.TagResourcesRequest,
+    ) -> config_20200907_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: config_20200907_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: config_20200907_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: config_20200907_models.UntagResourcesRequest,
+    ) -> config_20200907_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: config_20200907_models.UntagResourcesRequest,
+    ) -> config_20200907_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
+
     def update_aggregate_compliance_pack_with_options(
         self,
         tmp_req: config_20200907_models.UpdateAggregateCompliancePackRequest,
@@ -6144,6 +6910,120 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.UpdateAggregateCompliancePackResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_aggregate_compliance_pack_with_options_async(request, runtime)
+
+    def update_aggregate_config_delivery_channel_with_options(
+        self,
+        request: config_20200907_models.UpdateAggregateConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.UpdateAggregateConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.configuration_item_change_notification):
+            query['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
+        if not UtilClient.is_unset(request.configuration_snapshot):
+            query['ConfigurationSnapshot'] = request.configuration_snapshot
+        if not UtilClient.is_unset(request.delivery_channel_condition):
+            query['DeliveryChannelCondition'] = request.delivery_channel_condition
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            query['DeliveryChannelId'] = request.delivery_channel_id
+        if not UtilClient.is_unset(request.delivery_channel_name):
+            query['DeliveryChannelName'] = request.delivery_channel_name
+        if not UtilClient.is_unset(request.delivery_channel_target_arn):
+            query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.non_compliant_notification):
+            query['NonCompliantNotification'] = request.non_compliant_notification
+        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
+            query['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAggregateConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.UpdateAggregateConfigDeliveryChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_aggregate_config_delivery_channel_with_options_async(
+        self,
+        request: config_20200907_models.UpdateAggregateConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.UpdateAggregateConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.configuration_item_change_notification):
+            query['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
+        if not UtilClient.is_unset(request.configuration_snapshot):
+            query['ConfigurationSnapshot'] = request.configuration_snapshot
+        if not UtilClient.is_unset(request.delivery_channel_condition):
+            query['DeliveryChannelCondition'] = request.delivery_channel_condition
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            query['DeliveryChannelId'] = request.delivery_channel_id
+        if not UtilClient.is_unset(request.delivery_channel_name):
+            query['DeliveryChannelName'] = request.delivery_channel_name
+        if not UtilClient.is_unset(request.delivery_channel_target_arn):
+            query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.non_compliant_notification):
+            query['NonCompliantNotification'] = request.non_compliant_notification
+        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
+            query['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAggregateConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.UpdateAggregateConfigDeliveryChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_aggregate_config_delivery_channel(
+        self,
+        request: config_20200907_models.UpdateAggregateConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.UpdateAggregateConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_aggregate_config_delivery_channel_with_options(request, runtime)
+
+    async def update_aggregate_config_delivery_channel_async(
+        self,
+        request: config_20200907_models.UpdateAggregateConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.UpdateAggregateConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_aggregate_config_delivery_channel_with_options_async(request, runtime)
 
     def update_aggregate_config_rule_with_options(
         self,
@@ -6584,6 +7464,116 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.UpdateCompliancePackResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_compliance_pack_with_options_async(request, runtime)
+
+    def update_config_delivery_channel_with_options(
+        self,
+        request: config_20200907_models.UpdateConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.UpdateConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.configuration_item_change_notification):
+            query['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
+        if not UtilClient.is_unset(request.configuration_snapshot):
+            query['ConfigurationSnapshot'] = request.configuration_snapshot
+        if not UtilClient.is_unset(request.delivery_channel_condition):
+            query['DeliveryChannelCondition'] = request.delivery_channel_condition
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            query['DeliveryChannelId'] = request.delivery_channel_id
+        if not UtilClient.is_unset(request.delivery_channel_name):
+            query['DeliveryChannelName'] = request.delivery_channel_name
+        if not UtilClient.is_unset(request.delivery_channel_target_arn):
+            query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.non_compliant_notification):
+            query['NonCompliantNotification'] = request.non_compliant_notification
+        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
+            query['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.UpdateConfigDeliveryChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_config_delivery_channel_with_options_async(
+        self,
+        request: config_20200907_models.UpdateConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.UpdateConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.configuration_item_change_notification):
+            query['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
+        if not UtilClient.is_unset(request.configuration_snapshot):
+            query['ConfigurationSnapshot'] = request.configuration_snapshot
+        if not UtilClient.is_unset(request.delivery_channel_condition):
+            query['DeliveryChannelCondition'] = request.delivery_channel_condition
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            query['DeliveryChannelId'] = request.delivery_channel_id
+        if not UtilClient.is_unset(request.delivery_channel_name):
+            query['DeliveryChannelName'] = request.delivery_channel_name
+        if not UtilClient.is_unset(request.delivery_channel_target_arn):
+            query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.non_compliant_notification):
+            query['NonCompliantNotification'] = request.non_compliant_notification
+        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
+            query['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.UpdateConfigDeliveryChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_config_delivery_channel(
+        self,
+        request: config_20200907_models.UpdateConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.UpdateConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_config_delivery_channel_with_options(request, runtime)
+
+    async def update_config_delivery_channel_async(
+        self,
+        request: config_20200907_models.UpdateConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.UpdateConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_config_delivery_channel_with_options_async(request, runtime)
 
     def update_config_rule_with_options(
         self,

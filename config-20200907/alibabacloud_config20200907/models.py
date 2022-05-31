@@ -221,13 +221,16 @@ class ActiveAggregateConfigRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ActiveAggregateConfigRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -240,6 +243,8 @@ class ActiveAggregateConfigRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -248,6 +253,8 @@ class ActiveAggregateConfigRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ActiveAggregateConfigRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -406,13 +413,16 @@ class AttachAggregateConfigRuleToCompliancePackResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AttachAggregateConfigRuleToCompliancePackResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -425,6 +435,8 @@ class AttachAggregateConfigRuleToCompliancePackResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -433,6 +445,8 @@ class AttachAggregateConfigRuleToCompliancePackResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AttachAggregateConfigRuleToCompliancePackResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -585,13 +599,16 @@ class AttachConfigRuleToCompliancePackResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AttachConfigRuleToCompliancePackResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -604,6 +621,8 @@ class AttachConfigRuleToCompliancePackResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -612,6 +631,8 @@ class AttachConfigRuleToCompliancePackResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AttachConfigRuleToCompliancePackResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -887,13 +908,16 @@ class CreateAggregateCompliancePackResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateAggregateCompliancePackResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -906,6 +930,8 @@ class CreateAggregateCompliancePackResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -914,8 +940,174 @@ class CreateAggregateCompliancePackResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAggregateCompliancePackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAggregateConfigDeliveryChannelRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        client_token: str = None,
+        configuration_item_change_notification: bool = None,
+        configuration_snapshot: bool = None,
+        delivery_channel_condition: str = None,
+        delivery_channel_name: str = None,
+        delivery_channel_target_arn: str = None,
+        delivery_channel_type: str = None,
+        description: str = None,
+        non_compliant_notification: bool = None,
+        oversized_data_osstarget_arn: str = None,
+    ):
+        self.aggregator_id = aggregator_id
+        self.client_token = client_token
+        self.configuration_item_change_notification = configuration_item_change_notification
+        self.configuration_snapshot = configuration_snapshot
+        self.delivery_channel_condition = delivery_channel_condition
+        self.delivery_channel_name = delivery_channel_name
+        self.delivery_channel_target_arn = delivery_channel_target_arn
+        self.delivery_channel_type = delivery_channel_type
+        self.description = description
+        self.non_compliant_notification = non_compliant_notification
+        self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.configuration_item_change_notification is not None:
+            result['ConfigurationItemChangeNotification'] = self.configuration_item_change_notification
+        if self.configuration_snapshot is not None:
+            result['ConfigurationSnapshot'] = self.configuration_snapshot
+        if self.delivery_channel_condition is not None:
+            result['DeliveryChannelCondition'] = self.delivery_channel_condition
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.delivery_channel_target_arn is not None:
+            result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
+        if self.delivery_channel_type is not None:
+            result['DeliveryChannelType'] = self.delivery_channel_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.non_compliant_notification is not None:
+            result['NonCompliantNotification'] = self.non_compliant_notification
+        if self.oversized_data_osstarget_arn is not None:
+            result['OversizedDataOSSTargetArn'] = self.oversized_data_osstarget_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigurationItemChangeNotification') is not None:
+            self.configuration_item_change_notification = m.get('ConfigurationItemChangeNotification')
+        if m.get('ConfigurationSnapshot') is not None:
+            self.configuration_snapshot = m.get('ConfigurationSnapshot')
+        if m.get('DeliveryChannelCondition') is not None:
+            self.delivery_channel_condition = m.get('DeliveryChannelCondition')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('DeliveryChannelTargetArn') is not None:
+            self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
+        if m.get('DeliveryChannelType') is not None:
+            self.delivery_channel_type = m.get('DeliveryChannelType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('NonCompliantNotification') is not None:
+            self.non_compliant_notification = m.get('NonCompliantNotification')
+        if m.get('OversizedDataOSSTargetArn') is not None:
+            self.oversized_data_osstarget_arn = m.get('OversizedDataOSSTargetArn')
+        return self
+
+
+class CreateAggregateConfigDeliveryChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_id: str = None,
+        request_id: str = None,
+    ):
+        self.delivery_channel_id = delivery_channel_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateAggregateConfigDeliveryChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAggregateConfigDeliveryChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAggregateConfigDeliveryChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1239,13 +1431,16 @@ class CreateAggregateConfigRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateAggregateConfigRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1258,6 +1453,8 @@ class CreateAggregateConfigRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1266,6 +1463,8 @@ class CreateAggregateConfigRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAggregateConfigRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1378,13 +1577,16 @@ class CreateAggregateRemediationResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateAggregateRemediationResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1397,6 +1599,8 @@ class CreateAggregateRemediationResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1405,6 +1609,8 @@ class CreateAggregateRemediationResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAggregateRemediationResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1597,13 +1803,16 @@ class CreateAggregatorResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateAggregatorResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1616,6 +1825,8 @@ class CreateAggregatorResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1624,6 +1835,8 @@ class CreateAggregatorResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAggregatorResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1887,13 +2100,16 @@ class CreateCompliancePackResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateCompliancePackResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1906,6 +2122,8 @@ class CreateCompliancePackResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1914,8 +2132,168 @@ class CreateCompliancePackResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateCompliancePackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateConfigDeliveryChannelRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        configuration_item_change_notification: bool = None,
+        configuration_snapshot: bool = None,
+        delivery_channel_condition: str = None,
+        delivery_channel_name: str = None,
+        delivery_channel_target_arn: str = None,
+        delivery_channel_type: str = None,
+        description: str = None,
+        non_compliant_notification: bool = None,
+        oversized_data_osstarget_arn: str = None,
+    ):
+        self.client_token = client_token
+        self.configuration_item_change_notification = configuration_item_change_notification
+        self.configuration_snapshot = configuration_snapshot
+        self.delivery_channel_condition = delivery_channel_condition
+        self.delivery_channel_name = delivery_channel_name
+        self.delivery_channel_target_arn = delivery_channel_target_arn
+        self.delivery_channel_type = delivery_channel_type
+        self.description = description
+        self.non_compliant_notification = non_compliant_notification
+        self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.configuration_item_change_notification is not None:
+            result['ConfigurationItemChangeNotification'] = self.configuration_item_change_notification
+        if self.configuration_snapshot is not None:
+            result['ConfigurationSnapshot'] = self.configuration_snapshot
+        if self.delivery_channel_condition is not None:
+            result['DeliveryChannelCondition'] = self.delivery_channel_condition
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.delivery_channel_target_arn is not None:
+            result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
+        if self.delivery_channel_type is not None:
+            result['DeliveryChannelType'] = self.delivery_channel_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.non_compliant_notification is not None:
+            result['NonCompliantNotification'] = self.non_compliant_notification
+        if self.oversized_data_osstarget_arn is not None:
+            result['OversizedDataOSSTargetArn'] = self.oversized_data_osstarget_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigurationItemChangeNotification') is not None:
+            self.configuration_item_change_notification = m.get('ConfigurationItemChangeNotification')
+        if m.get('ConfigurationSnapshot') is not None:
+            self.configuration_snapshot = m.get('ConfigurationSnapshot')
+        if m.get('DeliveryChannelCondition') is not None:
+            self.delivery_channel_condition = m.get('DeliveryChannelCondition')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('DeliveryChannelTargetArn') is not None:
+            self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
+        if m.get('DeliveryChannelType') is not None:
+            self.delivery_channel_type = m.get('DeliveryChannelType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('NonCompliantNotification') is not None:
+            self.non_compliant_notification = m.get('NonCompliantNotification')
+        if m.get('OversizedDataOSSTargetArn') is not None:
+            self.oversized_data_osstarget_arn = m.get('OversizedDataOSSTargetArn')
+        return self
+
+
+class CreateConfigDeliveryChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_id: str = None,
+        request_id: str = None,
+    ):
+        self.delivery_channel_id = delivery_channel_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateConfigDeliveryChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateConfigDeliveryChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateConfigDeliveryChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2191,13 +2569,16 @@ class CreateConfigRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateConfigRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2210,6 +2591,8 @@ class CreateConfigRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2218,6 +2601,8 @@ class CreateConfigRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateConfigRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2324,13 +2709,16 @@ class CreateRemediationResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateRemediationResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2343,6 +2731,8 @@ class CreateRemediationResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2351,6 +2741,8 @@ class CreateRemediationResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateRemediationResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2503,13 +2895,16 @@ class DeactiveAggregateConfigRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeactiveAggregateConfigRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2522,6 +2917,8 @@ class DeactiveAggregateConfigRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2530,6 +2927,8 @@ class DeactiveAggregateConfigRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeactiveAggregateConfigRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2676,13 +3075,16 @@ class DeactiveConfigRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeactiveConfigRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2695,6 +3097,8 @@ class DeactiveConfigRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2703,6 +3107,8 @@ class DeactiveConfigRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeactiveConfigRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2867,13 +3273,16 @@ class DeleteAggregateCompliancePacksResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteAggregateCompliancePacksResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2886,6 +3295,8 @@ class DeleteAggregateCompliancePacksResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2894,6 +3305,8 @@ class DeleteAggregateCompliancePacksResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAggregateCompliancePacksResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3046,13 +3459,16 @@ class DeleteAggregateConfigRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteAggregateConfigRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3065,6 +3481,8 @@ class DeleteAggregateConfigRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3073,6 +3491,8 @@ class DeleteAggregateConfigRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAggregateConfigRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3196,13 +3616,16 @@ class DeleteAggregateRemediationsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteAggregateRemediationsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3215,6 +3638,8 @@ class DeleteAggregateRemediationsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3223,6 +3648,8 @@ class DeleteAggregateRemediationsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAggregateRemediationsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3375,13 +3802,16 @@ class DeleteAggregatorsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteAggregatorsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3394,6 +3824,8 @@ class DeleteAggregatorsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3402,6 +3834,8 @@ class DeleteAggregatorsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAggregatorsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3560,13 +3994,16 @@ class DeleteCompliancePacksResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteCompliancePacksResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3579,6 +4016,8 @@ class DeleteCompliancePacksResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3587,6 +4026,8 @@ class DeleteCompliancePacksResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteCompliancePacksResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3704,13 +4145,16 @@ class DeleteRemediationsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteRemediationsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3723,6 +4167,8 @@ class DeleteRemediationsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3731,6 +4177,8 @@ class DeleteRemediationsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteRemediationsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3889,13 +4337,16 @@ class DetachAggregateConfigRuleToCompliancePackResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetachAggregateConfigRuleToCompliancePackResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3908,6 +4359,8 @@ class DetachAggregateConfigRuleToCompliancePackResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3916,6 +4369,8 @@ class DetachAggregateConfigRuleToCompliancePackResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetachAggregateConfigRuleToCompliancePackResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4068,13 +4523,16 @@ class DetachConfigRuleToCompliancePackResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetachConfigRuleToCompliancePackResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4087,6 +4545,8 @@ class DetachConfigRuleToCompliancePackResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4095,6 +4555,8 @@ class DetachConfigRuleToCompliancePackResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetachConfigRuleToCompliancePackResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4177,13 +4639,16 @@ class GenerateAggregateCompliancePackReportResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GenerateAggregateCompliancePackReportResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4196,6 +4661,8 @@ class GenerateAggregateCompliancePackReportResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4204,6 +4671,8 @@ class GenerateAggregateCompliancePackReportResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GenerateAggregateCompliancePackReportResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4292,13 +4761,16 @@ class GenerateAggregateConfigRulesReportResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GenerateAggregateConfigRulesReportResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4311,6 +4783,8 @@ class GenerateAggregateConfigRulesReportResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4319,6 +4793,8 @@ class GenerateAggregateConfigRulesReportResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GenerateAggregateConfigRulesReportResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4395,13 +4871,16 @@ class GenerateCompliancePackReportResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GenerateCompliancePackReportResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4414,6 +4893,8 @@ class GenerateCompliancePackReportResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4422,6 +4903,8 @@ class GenerateCompliancePackReportResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GenerateCompliancePackReportResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4498,13 +4981,16 @@ class GenerateConfigRulesReportResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GenerateConfigRulesReportResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4517,6 +5003,8 @@ class GenerateConfigRulesReportResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4525,6 +5013,8 @@ class GenerateConfigRulesReportResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GenerateConfigRulesReportResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4695,13 +5185,16 @@ class GetAggregateAccountComplianceByPackResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateAccountComplianceByPackResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4714,6 +5207,8 @@ class GetAggregateAccountComplianceByPackResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4722,6 +5217,8 @@ class GetAggregateAccountComplianceByPackResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateAccountComplianceByPackResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4993,13 +5490,16 @@ class GetAggregateCompliancePackResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateCompliancePackResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5012,6 +5512,8 @@ class GetAggregateCompliancePackResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5020,6 +5522,8 @@ class GetAggregateCompliancePackResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateCompliancePackResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5149,13 +5653,16 @@ class GetAggregateCompliancePackReportResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateCompliancePackReportResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5168,6 +5675,8 @@ class GetAggregateCompliancePackReportResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5176,8 +5685,227 @@ class GetAggregateCompliancePackReportResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateCompliancePackReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAggregateConfigDeliveryChannelRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        delivery_channel_id: str = None,
+    ):
+        self.aggregator_id = aggregator_id
+        self.delivery_channel_id = delivery_channel_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        return self
+
+
+class GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        aggregator_id: str = None,
+        configuration_item_change_notification: bool = None,
+        configuration_snapshot: bool = None,
+        delivery_channel_assume_role_arn: str = None,
+        delivery_channel_condition: str = None,
+        delivery_channel_id: str = None,
+        delivery_channel_name: str = None,
+        delivery_channel_target_arn: str = None,
+        delivery_channel_type: str = None,
+        description: str = None,
+        non_compliant_notification: bool = None,
+        oversized_data_osstarget_arn: str = None,
+        status: int = None,
+    ):
+        self.account_id = account_id
+        self.aggregator_id = aggregator_id
+        self.configuration_item_change_notification = configuration_item_change_notification
+        self.configuration_snapshot = configuration_snapshot
+        self.delivery_channel_assume_role_arn = delivery_channel_assume_role_arn
+        self.delivery_channel_condition = delivery_channel_condition
+        self.delivery_channel_id = delivery_channel_id
+        self.delivery_channel_name = delivery_channel_name
+        self.delivery_channel_target_arn = delivery_channel_target_arn
+        self.delivery_channel_type = delivery_channel_type
+        self.description = description
+        self.non_compliant_notification = non_compliant_notification
+        self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.configuration_item_change_notification is not None:
+            result['ConfigurationItemChangeNotification'] = self.configuration_item_change_notification
+        if self.configuration_snapshot is not None:
+            result['ConfigurationSnapshot'] = self.configuration_snapshot
+        if self.delivery_channel_assume_role_arn is not None:
+            result['DeliveryChannelAssumeRoleArn'] = self.delivery_channel_assume_role_arn
+        if self.delivery_channel_condition is not None:
+            result['DeliveryChannelCondition'] = self.delivery_channel_condition
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.delivery_channel_target_arn is not None:
+            result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
+        if self.delivery_channel_type is not None:
+            result['DeliveryChannelType'] = self.delivery_channel_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.non_compliant_notification is not None:
+            result['NonCompliantNotification'] = self.non_compliant_notification
+        if self.oversized_data_osstarget_arn is not None:
+            result['OversizedDataOSSTargetArn'] = self.oversized_data_osstarget_arn
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('ConfigurationItemChangeNotification') is not None:
+            self.configuration_item_change_notification = m.get('ConfigurationItemChangeNotification')
+        if m.get('ConfigurationSnapshot') is not None:
+            self.configuration_snapshot = m.get('ConfigurationSnapshot')
+        if m.get('DeliveryChannelAssumeRoleArn') is not None:
+            self.delivery_channel_assume_role_arn = m.get('DeliveryChannelAssumeRoleArn')
+        if m.get('DeliveryChannelCondition') is not None:
+            self.delivery_channel_condition = m.get('DeliveryChannelCondition')
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('DeliveryChannelTargetArn') is not None:
+            self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
+        if m.get('DeliveryChannelType') is not None:
+            self.delivery_channel_type = m.get('DeliveryChannelType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('NonCompliantNotification') is not None:
+            self.non_compliant_notification = m.get('NonCompliantNotification')
+        if m.get('OversizedDataOSSTargetArn') is not None:
+            self.oversized_data_osstarget_arn = m.get('OversizedDataOSSTargetArn')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetAggregateConfigDeliveryChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channel: GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel = None,
+        request_id: str = None,
+    ):
+        self.delivery_channel = delivery_channel
+        self.request_id = request_id
+
+    def validate(self):
+        if self.delivery_channel:
+            self.delivery_channel.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel is not None:
+            result['DeliveryChannel'] = self.delivery_channel.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannel') is not None:
+            temp_model = GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel()
+            self.delivery_channel = temp_model.from_map(m['DeliveryChannel'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetAggregateConfigDeliveryChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAggregateConfigDeliveryChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAggregateConfigDeliveryChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5764,13 +6492,16 @@ class GetAggregateConfigRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateConfigRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5783,6 +6514,8 @@ class GetAggregateConfigRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5791,6 +6524,8 @@ class GetAggregateConfigRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateConfigRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5961,13 +6696,16 @@ class GetAggregateConfigRuleComplianceByPackResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateConfigRuleComplianceByPackResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5980,6 +6718,8 @@ class GetAggregateConfigRuleComplianceByPackResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5988,6 +6728,8 @@ class GetAggregateConfigRuleComplianceByPackResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateConfigRuleComplianceByPackResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6105,13 +6847,16 @@ class GetAggregateConfigRuleSummaryByRiskLevelResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateConfigRuleSummaryByRiskLevelResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6124,6 +6869,8 @@ class GetAggregateConfigRuleSummaryByRiskLevelResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6132,6 +6879,8 @@ class GetAggregateConfigRuleSummaryByRiskLevelResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateConfigRuleSummaryByRiskLevelResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6267,13 +7016,16 @@ class GetAggregateConfigRulesReportResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateConfigRulesReportResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6286,6 +7038,8 @@ class GetAggregateConfigRulesReportResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6294,6 +7048,8 @@ class GetAggregateConfigRulesReportResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateConfigRulesReportResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6477,13 +7233,16 @@ class GetAggregateDiscoveredResourceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateDiscoveredResourceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6496,6 +7255,8 @@ class GetAggregateDiscoveredResourceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6504,6 +7265,8 @@ class GetAggregateDiscoveredResourceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateDiscoveredResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6668,13 +7431,16 @@ class GetAggregateResourceComplianceByConfigRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateResourceComplianceByConfigRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6687,6 +7453,8 @@ class GetAggregateResourceComplianceByConfigRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6695,6 +7463,8 @@ class GetAggregateResourceComplianceByConfigRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateResourceComplianceByConfigRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6812,13 +7582,16 @@ class GetAggregateResourceComplianceByPackResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateResourceComplianceByPackResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6831,6 +7604,8 @@ class GetAggregateResourceComplianceByPackResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6839,6 +7614,8 @@ class GetAggregateResourceComplianceByPackResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateResourceComplianceByPackResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7026,13 +7803,16 @@ class GetAggregateResourceComplianceGroupByRegionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateResourceComplianceGroupByRegionResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7045,6 +7825,8 @@ class GetAggregateResourceComplianceGroupByRegionResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7053,6 +7835,8 @@ class GetAggregateResourceComplianceGroupByRegionResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateResourceComplianceGroupByRegionResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7240,13 +8024,16 @@ class GetAggregateResourceComplianceGroupByResourceTypeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateResourceComplianceGroupByResourceTypeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7259,6 +8046,8 @@ class GetAggregateResourceComplianceGroupByResourceTypeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7267,6 +8056,8 @@ class GetAggregateResourceComplianceGroupByResourceTypeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateResourceComplianceGroupByResourceTypeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7527,13 +8318,16 @@ class GetAggregateResourceComplianceTimelineResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateResourceComplianceTimelineResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7546,6 +8340,8 @@ class GetAggregateResourceComplianceTimelineResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7554,6 +8350,8 @@ class GetAggregateResourceComplianceTimelineResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateResourceComplianceTimelineResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7808,13 +8606,16 @@ class GetAggregateResourceConfigurationTimelineResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateResourceConfigurationTimelineResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7827,6 +8628,8 @@ class GetAggregateResourceConfigurationTimelineResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7835,6 +8638,8 @@ class GetAggregateResourceConfigurationTimelineResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateResourceConfigurationTimelineResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7966,13 +8771,16 @@ class GetAggregateResourceCountsGroupByRegionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateResourceCountsGroupByRegionResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7985,6 +8793,8 @@ class GetAggregateResourceCountsGroupByRegionResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7993,6 +8803,8 @@ class GetAggregateResourceCountsGroupByRegionResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateResourceCountsGroupByRegionResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8124,13 +8936,16 @@ class GetAggregateResourceCountsGroupByResourceTypeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregateResourceCountsGroupByResourceTypeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8143,6 +8958,8 @@ class GetAggregateResourceCountsGroupByResourceTypeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8151,6 +8968,8 @@ class GetAggregateResourceCountsGroupByResourceTypeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregateResourceCountsGroupByResourceTypeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8351,13 +9170,16 @@ class GetAggregatorResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAggregatorResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8370,6 +9192,8 @@ class GetAggregatorResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8378,6 +9202,8 @@ class GetAggregatorResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAggregatorResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8637,13 +9463,16 @@ class GetCompliancePackResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetCompliancePackResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8656,6 +9485,8 @@ class GetCompliancePackResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8664,6 +9495,8 @@ class GetCompliancePackResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCompliancePackResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8787,13 +9620,16 @@ class GetCompliancePackReportResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetCompliancePackReportResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8806,6 +9642,8 @@ class GetCompliancePackReportResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8814,8 +9652,215 @@ class GetCompliancePackReportResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCompliancePackReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetConfigDeliveryChannelRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_id: str = None,
+    ):
+        self.delivery_channel_id = delivery_channel_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        return self
+
+
+class GetConfigDeliveryChannelResponseBodyDeliveryChannel(TeaModel):
+    def __init__(
+        self,
+        account_id: int = None,
+        configuration_item_change_notification: bool = None,
+        configuration_snapshot: bool = None,
+        delivery_channel_assume_role_arn: str = None,
+        delivery_channel_condition: str = None,
+        delivery_channel_id: str = None,
+        delivery_channel_name: str = None,
+        delivery_channel_target_arn: str = None,
+        delivery_channel_type: str = None,
+        description: str = None,
+        non_compliant_notification: bool = None,
+        oversized_data_osstarget_arn: str = None,
+        status: int = None,
+    ):
+        self.account_id = account_id
+        self.configuration_item_change_notification = configuration_item_change_notification
+        self.configuration_snapshot = configuration_snapshot
+        self.delivery_channel_assume_role_arn = delivery_channel_assume_role_arn
+        self.delivery_channel_condition = delivery_channel_condition
+        self.delivery_channel_id = delivery_channel_id
+        self.delivery_channel_name = delivery_channel_name
+        self.delivery_channel_target_arn = delivery_channel_target_arn
+        self.delivery_channel_type = delivery_channel_type
+        self.description = description
+        self.non_compliant_notification = non_compliant_notification
+        self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.configuration_item_change_notification is not None:
+            result['ConfigurationItemChangeNotification'] = self.configuration_item_change_notification
+        if self.configuration_snapshot is not None:
+            result['ConfigurationSnapshot'] = self.configuration_snapshot
+        if self.delivery_channel_assume_role_arn is not None:
+            result['DeliveryChannelAssumeRoleArn'] = self.delivery_channel_assume_role_arn
+        if self.delivery_channel_condition is not None:
+            result['DeliveryChannelCondition'] = self.delivery_channel_condition
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.delivery_channel_target_arn is not None:
+            result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
+        if self.delivery_channel_type is not None:
+            result['DeliveryChannelType'] = self.delivery_channel_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.non_compliant_notification is not None:
+            result['NonCompliantNotification'] = self.non_compliant_notification
+        if self.oversized_data_osstarget_arn is not None:
+            result['OversizedDataOSSTargetArn'] = self.oversized_data_osstarget_arn
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('ConfigurationItemChangeNotification') is not None:
+            self.configuration_item_change_notification = m.get('ConfigurationItemChangeNotification')
+        if m.get('ConfigurationSnapshot') is not None:
+            self.configuration_snapshot = m.get('ConfigurationSnapshot')
+        if m.get('DeliveryChannelAssumeRoleArn') is not None:
+            self.delivery_channel_assume_role_arn = m.get('DeliveryChannelAssumeRoleArn')
+        if m.get('DeliveryChannelCondition') is not None:
+            self.delivery_channel_condition = m.get('DeliveryChannelCondition')
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('DeliveryChannelTargetArn') is not None:
+            self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
+        if m.get('DeliveryChannelType') is not None:
+            self.delivery_channel_type = m.get('DeliveryChannelType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('NonCompliantNotification') is not None:
+            self.non_compliant_notification = m.get('NonCompliantNotification')
+        if m.get('OversizedDataOSSTargetArn') is not None:
+            self.oversized_data_osstarget_arn = m.get('OversizedDataOSSTargetArn')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetConfigDeliveryChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channel: GetConfigDeliveryChannelResponseBodyDeliveryChannel = None,
+        request_id: str = None,
+    ):
+        self.delivery_channel = delivery_channel
+        self.request_id = request_id
+
+    def validate(self):
+        if self.delivery_channel:
+            self.delivery_channel.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel is not None:
+            result['DeliveryChannel'] = self.delivery_channel.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannel') is not None:
+            temp_model = GetConfigDeliveryChannelResponseBodyDeliveryChannel()
+            self.delivery_channel = temp_model.from_map(m['DeliveryChannel'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetConfigDeliveryChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetConfigDeliveryChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetConfigDeliveryChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9360,13 +10405,16 @@ class GetConfigRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetConfigRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9379,6 +10427,8 @@ class GetConfigRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9387,6 +10437,8 @@ class GetConfigRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetConfigRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9551,13 +10603,16 @@ class GetConfigRuleComplianceByPackResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetConfigRuleComplianceByPackResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9570,6 +10625,8 @@ class GetConfigRuleComplianceByPackResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9578,6 +10635,8 @@ class GetConfigRuleComplianceByPackResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetConfigRuleComplianceByPackResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9668,13 +10727,16 @@ class GetConfigRuleSummaryByRiskLevelResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetConfigRuleSummaryByRiskLevelResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9687,6 +10749,8 @@ class GetConfigRuleSummaryByRiskLevelResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9695,6 +10759,8 @@ class GetConfigRuleSummaryByRiskLevelResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetConfigRuleSummaryByRiskLevelResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9818,13 +10884,16 @@ class GetConfigRulesReportResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetConfigRulesReportResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9837,6 +10906,8 @@ class GetConfigRulesReportResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9845,6 +10916,8 @@ class GetConfigRulesReportResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetConfigRulesReportResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10016,13 +11089,16 @@ class GetDiscoveredResourceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetDiscoveredResourceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10035,6 +11111,8 @@ class GetDiscoveredResourceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10043,6 +11121,8 @@ class GetDiscoveredResourceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDiscoveredResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10154,13 +11234,16 @@ class GetDiscoveredResourceCountsGroupByRegionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetDiscoveredResourceCountsGroupByRegionResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10173,6 +11256,8 @@ class GetDiscoveredResourceCountsGroupByRegionResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10181,6 +11266,8 @@ class GetDiscoveredResourceCountsGroupByRegionResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDiscoveredResourceCountsGroupByRegionResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10292,13 +11379,16 @@ class GetDiscoveredResourceCountsGroupByResourceTypeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetDiscoveredResourceCountsGroupByResourceTypeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10311,6 +11401,8 @@ class GetDiscoveredResourceCountsGroupByResourceTypeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10319,6 +11411,8 @@ class GetDiscoveredResourceCountsGroupByResourceTypeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDiscoveredResourceCountsGroupByResourceTypeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10415,13 +11509,13 @@ class GetManagedRuleResponseBodyManagedRuleSourceDetails(TeaModel):
 class GetManagedRuleResponseBodyManagedRule(TeaModel):
     def __init__(
         self,
-        compulsory_input_parameter_details: List[str] = None,
+        compulsory_input_parameter_details: Dict[str, Any] = None,
         config_rule_name: str = None,
         description: str = None,
         help_urls: str = None,
         identifier: str = None,
         labels: List[str] = None,
-        optional_input_parameter_details: List[str] = None,
+        optional_input_parameter_details: Dict[str, Any] = None,
         risk_level: int = None,
         scope: GetManagedRuleResponseBodyManagedRuleScope = None,
         source_details: List[GetManagedRuleResponseBodyManagedRuleSourceDetails] = None,
@@ -10543,13 +11637,16 @@ class GetManagedRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetManagedRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10562,6 +11659,8 @@ class GetManagedRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10570,6 +11669,8 @@ class GetManagedRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetManagedRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10722,13 +11823,16 @@ class GetResourceComplianceByConfigRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetResourceComplianceByConfigRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10741,6 +11845,8 @@ class GetResourceComplianceByConfigRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10749,6 +11855,8 @@ class GetResourceComplianceByConfigRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetResourceComplianceByConfigRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10860,13 +11968,16 @@ class GetResourceComplianceByPackResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetResourceComplianceByPackResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10879,6 +11990,8 @@ class GetResourceComplianceByPackResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10887,6 +12000,8 @@ class GetResourceComplianceByPackResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetResourceComplianceByPackResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11068,13 +12183,16 @@ class GetResourceComplianceGroupByRegionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetResourceComplianceGroupByRegionResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11087,6 +12205,8 @@ class GetResourceComplianceGroupByRegionResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11095,6 +12215,8 @@ class GetResourceComplianceGroupByRegionResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetResourceComplianceGroupByRegionResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11276,13 +12398,16 @@ class GetResourceComplianceGroupByResourceTypeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetResourceComplianceGroupByResourceTypeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11295,6 +12420,8 @@ class GetResourceComplianceGroupByResourceTypeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11303,6 +12430,8 @@ class GetResourceComplianceGroupByResourceTypeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetResourceComplianceGroupByResourceTypeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11551,13 +12680,16 @@ class GetResourceComplianceTimelineResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetResourceComplianceTimelineResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11570,6 +12702,8 @@ class GetResourceComplianceTimelineResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11578,6 +12712,8 @@ class GetResourceComplianceTimelineResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetResourceComplianceTimelineResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11832,13 +12968,16 @@ class GetResourceConfigurationTimelineResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetResourceConfigurationTimelineResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11851,6 +12990,8 @@ class GetResourceConfigurationTimelineResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11859,6 +13000,8 @@ class GetResourceConfigurationTimelineResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetResourceConfigurationTimelineResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11915,11 +13058,13 @@ class IgnoreAggregateEvaluationResultsRequest(TeaModel):
         self,
         aggregator_id: str = None,
         config_rule_id: str = None,
+        ignore_date: str = None,
         reason: str = None,
         resources: List[IgnoreAggregateEvaluationResultsRequestResources] = None,
     ):
         self.aggregator_id = aggregator_id
         self.config_rule_id = config_rule_id
+        self.ignore_date = ignore_date
         self.reason = reason
         self.resources = resources
 
@@ -11939,6 +13084,8 @@ class IgnoreAggregateEvaluationResultsRequest(TeaModel):
             result['AggregatorId'] = self.aggregator_id
         if self.config_rule_id is not None:
             result['ConfigRuleId'] = self.config_rule_id
+        if self.ignore_date is not None:
+            result['IgnoreDate'] = self.ignore_date
         if self.reason is not None:
             result['Reason'] = self.reason
         result['Resources'] = []
@@ -11953,6 +13100,8 @@ class IgnoreAggregateEvaluationResultsRequest(TeaModel):
             self.aggregator_id = m.get('AggregatorId')
         if m.get('ConfigRuleId') is not None:
             self.config_rule_id = m.get('ConfigRuleId')
+        if m.get('IgnoreDate') is not None:
+            self.ignore_date = m.get('IgnoreDate')
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
         self.resources = []
@@ -11968,11 +13117,13 @@ class IgnoreAggregateEvaluationResultsShrinkRequest(TeaModel):
         self,
         aggregator_id: str = None,
         config_rule_id: str = None,
+        ignore_date: str = None,
         reason: str = None,
         resources_shrink: str = None,
     ):
         self.aggregator_id = aggregator_id
         self.config_rule_id = config_rule_id
+        self.ignore_date = ignore_date
         self.reason = reason
         self.resources_shrink = resources_shrink
 
@@ -11989,6 +13140,8 @@ class IgnoreAggregateEvaluationResultsShrinkRequest(TeaModel):
             result['AggregatorId'] = self.aggregator_id
         if self.config_rule_id is not None:
             result['ConfigRuleId'] = self.config_rule_id
+        if self.ignore_date is not None:
+            result['IgnoreDate'] = self.ignore_date
         if self.reason is not None:
             result['Reason'] = self.reason
         if self.resources_shrink is not None:
@@ -12001,6 +13154,8 @@ class IgnoreAggregateEvaluationResultsShrinkRequest(TeaModel):
             self.aggregator_id = m.get('AggregatorId')
         if m.get('ConfigRuleId') is not None:
             self.config_rule_id = m.get('ConfigRuleId')
+        if m.get('IgnoreDate') is not None:
+            self.ignore_date = m.get('IgnoreDate')
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
         if m.get('Resources') is not None:
@@ -12039,13 +13194,16 @@ class IgnoreAggregateEvaluationResultsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: IgnoreAggregateEvaluationResultsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12058,6 +13216,8 @@ class IgnoreAggregateEvaluationResultsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12066,6 +13226,8 @@ class IgnoreAggregateEvaluationResultsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = IgnoreAggregateEvaluationResultsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -12121,10 +13283,12 @@ class IgnoreEvaluationResultsRequest(TeaModel):
     def __init__(
         self,
         config_rule_id: str = None,
+        ignore_date: str = None,
         reason: str = None,
         resources: List[IgnoreEvaluationResultsRequestResources] = None,
     ):
         self.config_rule_id = config_rule_id
+        self.ignore_date = ignore_date
         self.reason = reason
         self.resources = resources
 
@@ -12142,6 +13306,8 @@ class IgnoreEvaluationResultsRequest(TeaModel):
         result = dict()
         if self.config_rule_id is not None:
             result['ConfigRuleId'] = self.config_rule_id
+        if self.ignore_date is not None:
+            result['IgnoreDate'] = self.ignore_date
         if self.reason is not None:
             result['Reason'] = self.reason
         result['Resources'] = []
@@ -12154,6 +13320,8 @@ class IgnoreEvaluationResultsRequest(TeaModel):
         m = m or dict()
         if m.get('ConfigRuleId') is not None:
             self.config_rule_id = m.get('ConfigRuleId')
+        if m.get('IgnoreDate') is not None:
+            self.ignore_date = m.get('IgnoreDate')
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
         self.resources = []
@@ -12168,10 +13336,12 @@ class IgnoreEvaluationResultsShrinkRequest(TeaModel):
     def __init__(
         self,
         config_rule_id: str = None,
+        ignore_date: str = None,
         reason: str = None,
         resources_shrink: str = None,
     ):
         self.config_rule_id = config_rule_id
+        self.ignore_date = ignore_date
         self.reason = reason
         self.resources_shrink = resources_shrink
 
@@ -12186,6 +13356,8 @@ class IgnoreEvaluationResultsShrinkRequest(TeaModel):
         result = dict()
         if self.config_rule_id is not None:
             result['ConfigRuleId'] = self.config_rule_id
+        if self.ignore_date is not None:
+            result['IgnoreDate'] = self.ignore_date
         if self.reason is not None:
             result['Reason'] = self.reason
         if self.resources_shrink is not None:
@@ -12196,6 +13368,8 @@ class IgnoreEvaluationResultsShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('ConfigRuleId') is not None:
             self.config_rule_id = m.get('ConfigRuleId')
+        if m.get('IgnoreDate') is not None:
+            self.ignore_date = m.get('IgnoreDate')
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
         if m.get('Resources') is not None:
@@ -12234,13 +13408,16 @@ class IgnoreEvaluationResultsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: IgnoreEvaluationResultsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12253,6 +13430,8 @@ class IgnoreEvaluationResultsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12261,6 +13440,8 @@ class IgnoreEvaluationResultsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = IgnoreEvaluationResultsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -12479,13 +13660,16 @@ class ListAggregateCompliancePacksResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListAggregateCompliancePacksResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12498,6 +13682,8 @@ class ListAggregateCompliancePacksResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12506,8 +13692,233 @@ class ListAggregateCompliancePacksResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAggregateCompliancePacksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAggregateConfigDeliveryChannelsRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        delivery_channel_ids: str = None,
+    ):
+        self.aggregator_id = aggregator_id
+        self.delivery_channel_ids = delivery_channel_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.delivery_channel_ids is not None:
+            result['DeliveryChannelIds'] = self.delivery_channel_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('DeliveryChannelIds') is not None:
+            self.delivery_channel_ids = m.get('DeliveryChannelIds')
+        return self
+
+
+class ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels(TeaModel):
+    def __init__(
+        self,
+        account_id: int = None,
+        aggregator_id: str = None,
+        configuration_item_change_notification: bool = None,
+        configuration_snapshot: bool = None,
+        delivery_channel_assume_role_arn: str = None,
+        delivery_channel_condition: str = None,
+        delivery_channel_id: str = None,
+        delivery_channel_name: str = None,
+        delivery_channel_target_arn: str = None,
+        delivery_channel_type: str = None,
+        description: str = None,
+        non_compliant_notification: bool = None,
+        oversized_data_osstarget_arn: str = None,
+        status: int = None,
+    ):
+        self.account_id = account_id
+        self.aggregator_id = aggregator_id
+        self.configuration_item_change_notification = configuration_item_change_notification
+        self.configuration_snapshot = configuration_snapshot
+        self.delivery_channel_assume_role_arn = delivery_channel_assume_role_arn
+        self.delivery_channel_condition = delivery_channel_condition
+        self.delivery_channel_id = delivery_channel_id
+        self.delivery_channel_name = delivery_channel_name
+        self.delivery_channel_target_arn = delivery_channel_target_arn
+        self.delivery_channel_type = delivery_channel_type
+        self.description = description
+        self.non_compliant_notification = non_compliant_notification
+        self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.configuration_item_change_notification is not None:
+            result['ConfigurationItemChangeNotification'] = self.configuration_item_change_notification
+        if self.configuration_snapshot is not None:
+            result['ConfigurationSnapshot'] = self.configuration_snapshot
+        if self.delivery_channel_assume_role_arn is not None:
+            result['DeliveryChannelAssumeRoleArn'] = self.delivery_channel_assume_role_arn
+        if self.delivery_channel_condition is not None:
+            result['DeliveryChannelCondition'] = self.delivery_channel_condition
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.delivery_channel_target_arn is not None:
+            result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
+        if self.delivery_channel_type is not None:
+            result['DeliveryChannelType'] = self.delivery_channel_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.non_compliant_notification is not None:
+            result['NonCompliantNotification'] = self.non_compliant_notification
+        if self.oversized_data_osstarget_arn is not None:
+            result['OversizedDataOSSTargetArn'] = self.oversized_data_osstarget_arn
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('ConfigurationItemChangeNotification') is not None:
+            self.configuration_item_change_notification = m.get('ConfigurationItemChangeNotification')
+        if m.get('ConfigurationSnapshot') is not None:
+            self.configuration_snapshot = m.get('ConfigurationSnapshot')
+        if m.get('DeliveryChannelAssumeRoleArn') is not None:
+            self.delivery_channel_assume_role_arn = m.get('DeliveryChannelAssumeRoleArn')
+        if m.get('DeliveryChannelCondition') is not None:
+            self.delivery_channel_condition = m.get('DeliveryChannelCondition')
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('DeliveryChannelTargetArn') is not None:
+            self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
+        if m.get('DeliveryChannelType') is not None:
+            self.delivery_channel_type = m.get('DeliveryChannelType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('NonCompliantNotification') is not None:
+            self.non_compliant_notification = m.get('NonCompliantNotification')
+        if m.get('OversizedDataOSSTargetArn') is not None:
+            self.oversized_data_osstarget_arn = m.get('OversizedDataOSSTargetArn')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListAggregateConfigDeliveryChannelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channels: List[ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels] = None,
+        request_id: str = None,
+    ):
+        self.delivery_channels = delivery_channels
+        self.request_id = request_id
+
+    def validate(self):
+        if self.delivery_channels:
+            for k in self.delivery_channels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DeliveryChannels'] = []
+        if self.delivery_channels is not None:
+            for k in self.delivery_channels:
+                result['DeliveryChannels'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.delivery_channels = []
+        if m.get('DeliveryChannels') is not None:
+            for k in m.get('DeliveryChannels'):
+                temp_model = ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels()
+                self.delivery_channels.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListAggregateConfigDeliveryChannelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAggregateConfigDeliveryChannelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAggregateConfigDeliveryChannelsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12582,6 +13993,7 @@ class ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvalu
         config_rule_arn: str = None,
         config_rule_id: str = None,
         config_rule_name: str = None,
+        ignore_date: str = None,
         region_id: str = None,
         resource_id: str = None,
         resource_name: str = None,
@@ -12592,6 +14004,7 @@ class ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvalu
         self.config_rule_arn = config_rule_arn
         self.config_rule_id = config_rule_id
         self.config_rule_name = config_rule_name
+        self.ignore_date = ignore_date
         self.region_id = region_id
         self.resource_id = resource_id
         self.resource_name = resource_name
@@ -12615,6 +14028,8 @@ class ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvalu
             result['ConfigRuleId'] = self.config_rule_id
         if self.config_rule_name is not None:
             result['ConfigRuleName'] = self.config_rule_name
+        if self.ignore_date is not None:
+            result['IgnoreDate'] = self.ignore_date
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_id is not None:
@@ -12637,6 +14052,8 @@ class ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvalu
             self.config_rule_id = m.get('ConfigRuleId')
         if m.get('ConfigRuleName') is not None:
             self.config_rule_name = m.get('ConfigRuleName')
+        if m.get('IgnoreDate') is not None:
+            self.ignore_date = m.get('IgnoreDate')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceId') is not None:
@@ -12842,13 +14259,16 @@ class ListAggregateConfigRuleEvaluationResultsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListAggregateConfigRuleEvaluationResultsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12861,6 +14281,8 @@ class ListAggregateConfigRuleEvaluationResultsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12869,6 +14291,8 @@ class ListAggregateConfigRuleEvaluationResultsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAggregateConfigRuleEvaluationResultsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -13224,13 +14648,16 @@ class ListAggregateConfigRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListAggregateConfigRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -13243,6 +14670,8 @@ class ListAggregateConfigRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -13251,6 +14680,8 @@ class ListAggregateConfigRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAggregateConfigRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -13413,12 +14844,12 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles(Tea
         discovered_resource_profile_list: List[ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList] = None,
         max_results: int = None,
         next_token: str = None,
-        previous_token: str = None,
+        total_count: int = None,
     ):
         self.discovered_resource_profile_list = discovered_resource_profile_list
         self.max_results = max_results
         self.next_token = next_token
-        self.previous_token = previous_token
+        self.total_count = total_count
 
     def validate(self):
         if self.discovered_resource_profile_list:
@@ -13440,8 +14871,8 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles(Tea
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
-        if self.previous_token is not None:
-            result['PreviousToken'] = self.previous_token
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -13455,8 +14886,8 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles(Tea
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
-        if m.get('PreviousToken') is not None:
-            self.previous_token = m.get('PreviousToken')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -13499,13 +14930,16 @@ class ListAggregateDiscoveredResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListAggregateDiscoveredResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -13518,6 +14952,8 @@ class ListAggregateDiscoveredResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -13526,6 +14962,8 @@ class ListAggregateDiscoveredResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAggregateDiscoveredResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -13575,7 +15013,7 @@ class ListAggregateRemediationsResponseBodyRemediations(TeaModel):
         last_successful_invocation_id: str = None,
         last_successful_invocation_time: int = None,
         last_successful_invocation_type: str = None,
-        remediation_dynamic_params: str = None,
+        remediaiton_origin_params: str = None,
         remediation_id: str = None,
         remediation_source_type: str = None,
         remediation_template_id: str = None,
@@ -13588,7 +15026,7 @@ class ListAggregateRemediationsResponseBodyRemediations(TeaModel):
         self.last_successful_invocation_id = last_successful_invocation_id
         self.last_successful_invocation_time = last_successful_invocation_time
         self.last_successful_invocation_type = last_successful_invocation_type
-        self.remediation_dynamic_params = remediation_dynamic_params
+        self.remediaiton_origin_params = remediaiton_origin_params
         self.remediation_id = remediation_id
         self.remediation_source_type = remediation_source_type
         self.remediation_template_id = remediation_template_id
@@ -13617,8 +15055,8 @@ class ListAggregateRemediationsResponseBodyRemediations(TeaModel):
             result['LastSuccessfulInvocationTime'] = self.last_successful_invocation_time
         if self.last_successful_invocation_type is not None:
             result['LastSuccessfulInvocationType'] = self.last_successful_invocation_type
-        if self.remediation_dynamic_params is not None:
-            result['RemediationDynamicParams'] = self.remediation_dynamic_params
+        if self.remediaiton_origin_params is not None:
+            result['RemediaitonOriginParams'] = self.remediaiton_origin_params
         if self.remediation_id is not None:
             result['RemediationId'] = self.remediation_id
         if self.remediation_source_type is not None:
@@ -13645,8 +15083,8 @@ class ListAggregateRemediationsResponseBodyRemediations(TeaModel):
             self.last_successful_invocation_time = m.get('LastSuccessfulInvocationTime')
         if m.get('LastSuccessfulInvocationType') is not None:
             self.last_successful_invocation_type = m.get('LastSuccessfulInvocationType')
-        if m.get('RemediationDynamicParams') is not None:
-            self.remediation_dynamic_params = m.get('RemediationDynamicParams')
+        if m.get('RemediaitonOriginParams') is not None:
+            self.remediaiton_origin_params = m.get('RemediaitonOriginParams')
         if m.get('RemediationId') is not None:
             self.remediation_id = m.get('RemediationId')
         if m.get('RemediationSourceType') is not None:
@@ -13703,13 +15141,16 @@ class ListAggregateRemediationsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListAggregateRemediationsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -13722,6 +15163,8 @@ class ListAggregateRemediationsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -13730,6 +15173,8 @@ class ListAggregateRemediationsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAggregateRemediationsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -13805,6 +15250,7 @@ class ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluat
         config_rule_arn: str = None,
         config_rule_id: str = None,
         config_rule_name: str = None,
+        ignore_date: str = None,
         region_id: str = None,
         resource_id: str = None,
         resource_name: str = None,
@@ -13813,6 +15259,7 @@ class ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluat
         self.config_rule_arn = config_rule_arn
         self.config_rule_id = config_rule_id
         self.config_rule_name = config_rule_name
+        self.ignore_date = ignore_date
         self.region_id = region_id
         self.resource_id = resource_id
         self.resource_name = resource_name
@@ -13833,6 +15280,8 @@ class ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluat
             result['ConfigRuleId'] = self.config_rule_id
         if self.config_rule_name is not None:
             result['ConfigRuleName'] = self.config_rule_name
+        if self.ignore_date is not None:
+            result['IgnoreDate'] = self.ignore_date
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_id is not None:
@@ -13851,6 +15300,8 @@ class ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluat
             self.config_rule_id = m.get('ConfigRuleId')
         if m.get('ConfigRuleName') is not None:
             self.config_rule_name = m.get('ConfigRuleName')
+        if m.get('IgnoreDate') is not None:
+            self.ignore_date = m.get('IgnoreDate')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceId') is not None:
@@ -14054,13 +15505,16 @@ class ListAggregateResourceEvaluationResultsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListAggregateResourceEvaluationResultsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -14073,6 +15527,8 @@ class ListAggregateResourceEvaluationResultsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -14081,6 +15537,8 @@ class ListAggregateResourceEvaluationResultsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAggregateResourceEvaluationResultsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -14269,13 +15727,16 @@ class ListAggregatorsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListAggregatorsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -14288,6 +15749,8 @@ class ListAggregatorsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -14296,6 +15759,8 @@ class ListAggregatorsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAggregatorsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -14590,13 +16055,16 @@ class ListCompliancePackTemplatesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListCompliancePackTemplatesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -14609,6 +16077,8 @@ class ListCompliancePackTemplatesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -14617,6 +16087,8 @@ class ListCompliancePackTemplatesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListCompliancePackTemplatesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -14823,13 +16295,16 @@ class ListCompliancePacksResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListCompliancePacksResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -14842,6 +16317,8 @@ class ListCompliancePacksResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -14850,8 +16327,221 @@ class ListCompliancePacksResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListCompliancePacksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListConfigDeliveryChannelsRequest(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_ids: str = None,
+    ):
+        self.delivery_channel_ids = delivery_channel_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_ids is not None:
+            result['DeliveryChannelIds'] = self.delivery_channel_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelIds') is not None:
+            self.delivery_channel_ids = m.get('DeliveryChannelIds')
+        return self
+
+
+class ListConfigDeliveryChannelsResponseBodyDeliveryChannels(TeaModel):
+    def __init__(
+        self,
+        account_id: int = None,
+        configuration_item_change_notification: bool = None,
+        configuration_snapshot: bool = None,
+        delivery_channel_assume_role_arn: str = None,
+        delivery_channel_condition: str = None,
+        delivery_channel_id: str = None,
+        delivery_channel_name: str = None,
+        delivery_channel_target_arn: str = None,
+        delivery_channel_type: str = None,
+        description: str = None,
+        non_compliant_notification: bool = None,
+        oversized_data_osstarget_arn: str = None,
+        status: int = None,
+    ):
+        self.account_id = account_id
+        self.configuration_item_change_notification = configuration_item_change_notification
+        self.configuration_snapshot = configuration_snapshot
+        self.delivery_channel_assume_role_arn = delivery_channel_assume_role_arn
+        self.delivery_channel_condition = delivery_channel_condition
+        self.delivery_channel_id = delivery_channel_id
+        self.delivery_channel_name = delivery_channel_name
+        self.delivery_channel_target_arn = delivery_channel_target_arn
+        self.delivery_channel_type = delivery_channel_type
+        self.description = description
+        self.non_compliant_notification = non_compliant_notification
+        self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.configuration_item_change_notification is not None:
+            result['ConfigurationItemChangeNotification'] = self.configuration_item_change_notification
+        if self.configuration_snapshot is not None:
+            result['ConfigurationSnapshot'] = self.configuration_snapshot
+        if self.delivery_channel_assume_role_arn is not None:
+            result['DeliveryChannelAssumeRoleArn'] = self.delivery_channel_assume_role_arn
+        if self.delivery_channel_condition is not None:
+            result['DeliveryChannelCondition'] = self.delivery_channel_condition
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.delivery_channel_target_arn is not None:
+            result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
+        if self.delivery_channel_type is not None:
+            result['DeliveryChannelType'] = self.delivery_channel_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.non_compliant_notification is not None:
+            result['NonCompliantNotification'] = self.non_compliant_notification
+        if self.oversized_data_osstarget_arn is not None:
+            result['OversizedDataOSSTargetArn'] = self.oversized_data_osstarget_arn
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('ConfigurationItemChangeNotification') is not None:
+            self.configuration_item_change_notification = m.get('ConfigurationItemChangeNotification')
+        if m.get('ConfigurationSnapshot') is not None:
+            self.configuration_snapshot = m.get('ConfigurationSnapshot')
+        if m.get('DeliveryChannelAssumeRoleArn') is not None:
+            self.delivery_channel_assume_role_arn = m.get('DeliveryChannelAssumeRoleArn')
+        if m.get('DeliveryChannelCondition') is not None:
+            self.delivery_channel_condition = m.get('DeliveryChannelCondition')
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('DeliveryChannelTargetArn') is not None:
+            self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
+        if m.get('DeliveryChannelType') is not None:
+            self.delivery_channel_type = m.get('DeliveryChannelType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('NonCompliantNotification') is not None:
+            self.non_compliant_notification = m.get('NonCompliantNotification')
+        if m.get('OversizedDataOSSTargetArn') is not None:
+            self.oversized_data_osstarget_arn = m.get('OversizedDataOSSTargetArn')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListConfigDeliveryChannelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channels: List[ListConfigDeliveryChannelsResponseBodyDeliveryChannels] = None,
+        request_id: str = None,
+    ):
+        self.delivery_channels = delivery_channels
+        self.request_id = request_id
+
+    def validate(self):
+        if self.delivery_channels:
+            for k in self.delivery_channels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DeliveryChannels'] = []
+        if self.delivery_channels is not None:
+            for k in self.delivery_channels:
+                result['DeliveryChannels'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.delivery_channels = []
+        if m.get('DeliveryChannels') is not None:
+            for k in m.get('DeliveryChannels'):
+                temp_model = ListConfigDeliveryChannelsResponseBodyDeliveryChannels()
+                self.delivery_channels.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListConfigDeliveryChannelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListConfigDeliveryChannelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListConfigDeliveryChannelsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14914,6 +16604,7 @@ class ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResu
         config_rule_arn: str = None,
         config_rule_id: str = None,
         config_rule_name: str = None,
+        ignore_date: str = None,
         region_id: str = None,
         resource_id: str = None,
         resource_name: str = None,
@@ -14924,6 +16615,7 @@ class ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResu
         self.config_rule_arn = config_rule_arn
         self.config_rule_id = config_rule_id
         self.config_rule_name = config_rule_name
+        self.ignore_date = ignore_date
         self.region_id = region_id
         self.resource_id = resource_id
         self.resource_name = resource_name
@@ -14947,6 +16639,8 @@ class ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResu
             result['ConfigRuleId'] = self.config_rule_id
         if self.config_rule_name is not None:
             result['ConfigRuleName'] = self.config_rule_name
+        if self.ignore_date is not None:
+            result['IgnoreDate'] = self.ignore_date
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_id is not None:
@@ -14969,6 +16663,8 @@ class ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResu
             self.config_rule_id = m.get('ConfigRuleId')
         if m.get('ConfigRuleName') is not None:
             self.config_rule_name = m.get('ConfigRuleName')
+        if m.get('IgnoreDate') is not None:
+            self.ignore_date = m.get('IgnoreDate')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceId') is not None:
@@ -15174,13 +16870,16 @@ class ListConfigRuleEvaluationResultsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListConfigRuleEvaluationResultsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -15193,6 +16892,8 @@ class ListConfigRuleEvaluationResultsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -15201,6 +16902,8 @@ class ListConfigRuleEvaluationResultsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListConfigRuleEvaluationResultsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -15345,12 +17048,12 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles(TeaModel):
         discovered_resource_profile_list: List[ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList] = None,
         max_results: int = None,
         next_token: str = None,
-        previous_token: str = None,
+        total_count: int = None,
     ):
         self.discovered_resource_profile_list = discovered_resource_profile_list
         self.max_results = max_results
         self.next_token = next_token
-        self.previous_token = previous_token
+        self.total_count = total_count
 
     def validate(self):
         if self.discovered_resource_profile_list:
@@ -15372,8 +17075,8 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
-        if self.previous_token is not None:
-            result['PreviousToken'] = self.previous_token
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -15387,8 +17090,8 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
-        if m.get('PreviousToken') is not None:
-            self.previous_token = m.get('PreviousToken')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -15431,13 +17134,16 @@ class ListDiscoveredResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListDiscoveredResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -15450,6 +17156,8 @@ class ListDiscoveredResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -15458,6 +17166,8 @@ class ListDiscoveredResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDiscoveredResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -15664,13 +17374,16 @@ class ListManagedRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListManagedRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -15683,6 +17396,8 @@ class ListManagedRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -15691,6 +17406,8 @@ class ListManagedRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListManagedRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -15820,13 +17537,16 @@ class ListRemediationTemplatesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListRemediationTemplatesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -15839,6 +17559,8 @@ class ListRemediationTemplatesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -15847,6 +17569,8 @@ class ListRemediationTemplatesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListRemediationTemplatesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -15889,7 +17613,6 @@ class ListRemediationsResponseBodyRemediations(TeaModel):
         last_successful_invocation_id: str = None,
         last_successful_invocation_time: int = None,
         last_successful_invocation_type: str = None,
-        remediation_dynamic_params: str = None,
         remediation_id: str = None,
         remediation_origin_params: str = None,
         remediation_source_type: str = None,
@@ -15902,7 +17625,6 @@ class ListRemediationsResponseBodyRemediations(TeaModel):
         self.last_successful_invocation_id = last_successful_invocation_id
         self.last_successful_invocation_time = last_successful_invocation_time
         self.last_successful_invocation_type = last_successful_invocation_type
-        self.remediation_dynamic_params = remediation_dynamic_params
         self.remediation_id = remediation_id
         self.remediation_origin_params = remediation_origin_params
         self.remediation_source_type = remediation_source_type
@@ -15930,8 +17652,6 @@ class ListRemediationsResponseBodyRemediations(TeaModel):
             result['LastSuccessfulInvocationTime'] = self.last_successful_invocation_time
         if self.last_successful_invocation_type is not None:
             result['LastSuccessfulInvocationType'] = self.last_successful_invocation_type
-        if self.remediation_dynamic_params is not None:
-            result['RemediationDynamicParams'] = self.remediation_dynamic_params
         if self.remediation_id is not None:
             result['RemediationId'] = self.remediation_id
         if self.remediation_origin_params is not None:
@@ -15958,8 +17678,6 @@ class ListRemediationsResponseBodyRemediations(TeaModel):
             self.last_successful_invocation_time = m.get('LastSuccessfulInvocationTime')
         if m.get('LastSuccessfulInvocationType') is not None:
             self.last_successful_invocation_type = m.get('LastSuccessfulInvocationType')
-        if m.get('RemediationDynamicParams') is not None:
-            self.remediation_dynamic_params = m.get('RemediationDynamicParams')
         if m.get('RemediationId') is not None:
             self.remediation_id = m.get('RemediationId')
         if m.get('RemediationOriginParams') is not None:
@@ -16018,13 +17736,16 @@ class ListRemediationsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListRemediationsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -16037,6 +17758,8 @@ class ListRemediationsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -16045,6 +17768,8 @@ class ListRemediationsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListRemediationsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -16114,6 +17839,7 @@ class ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResult
         config_rule_arn: str = None,
         config_rule_id: str = None,
         config_rule_name: str = None,
+        ignore_date: str = None,
         region_id: str = None,
         resource_id: str = None,
         resource_name: str = None,
@@ -16122,6 +17848,7 @@ class ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResult
         self.config_rule_arn = config_rule_arn
         self.config_rule_id = config_rule_id
         self.config_rule_name = config_rule_name
+        self.ignore_date = ignore_date
         self.region_id = region_id
         self.resource_id = resource_id
         self.resource_name = resource_name
@@ -16142,6 +17869,8 @@ class ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResult
             result['ConfigRuleId'] = self.config_rule_id
         if self.config_rule_name is not None:
             result['ConfigRuleName'] = self.config_rule_name
+        if self.ignore_date is not None:
+            result['IgnoreDate'] = self.ignore_date
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_id is not None:
@@ -16160,6 +17889,8 @@ class ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResult
             self.config_rule_id = m.get('ConfigRuleId')
         if m.get('ConfigRuleName') is not None:
             self.config_rule_name = m.get('ConfigRuleName')
+        if m.get('IgnoreDate') is not None:
+            self.ignore_date = m.get('IgnoreDate')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceId') is not None:
@@ -16363,13 +18094,16 @@ class ListResourceEvaluationResultsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListResourceEvaluationResultsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -16382,6 +18116,8 @@ class ListResourceEvaluationResultsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -16390,8 +18126,280 @@ class ListResourceEvaluationResultsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListResourceEvaluationResultsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # 标签键
+        self.key = key
+        # 标签值
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[ListTagResourcesRequestTag] = None,
+    ):
+        # 下一个查询开始Token
+        self.next_token = next_token
+        # 地域
+        self.region_id = region_id
+        # 资源ID,最多 50个子项
+        self.resource_id = resource_id
+        # 资源类型
+        self.resource_type = resource_type
+        # 标签列表，最多包含20个子项
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        # 资源ID
+        self.resource_id = resource_id
+        # 资源类型
+        self.resource_type = resource_type
+        # 标签键
+        self.tag_key = tag_key
+        # 标签值
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        tag_resource: List[ListTagResourcesResponseBodyTagResourcesTagResource] = None,
+    ):
+        self.tag_resource = tag_resource
+
+    def validate(self):
+        if self.tag_resource:
+            for k in self.tag_resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TagResource'] = []
+        if self.tag_resource is not None:
+            for k in self.tag_resource:
+                result['TagResource'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag_resource = []
+        if m.get('TagResource') is not None:
+            for k in m.get('TagResource'):
+                temp_model = ListTagResourcesResponseBodyTagResourcesTagResource()
+                self.tag_resource.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: ListTagResourcesResponseBodyTagResources = None,
+    ):
+        # 下一个查询开始Token，NextToken为空说明没有下一个
+        self.next_token = next_token
+        self.request_id = request_id
+        # 资源列表
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            self.tag_resources.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tag_resources is not None:
+            result['TagResources'] = self.tag_resources.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TagResources') is not None:
+            temp_model = ListTagResourcesResponseBodyTagResources()
+            self.tag_resources = temp_model.from_map(m['TagResources'])
+        return self
+
+
+class ListTagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16558,13 +18566,16 @@ class RevertAggregateEvaluationResultsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RevertAggregateEvaluationResultsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -16577,6 +18588,8 @@ class RevertAggregateEvaluationResultsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -16585,6 +18598,8 @@ class RevertAggregateEvaluationResultsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RevertAggregateEvaluationResultsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -16741,13 +18756,16 @@ class RevertEvaluationResultsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RevertEvaluationResultsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -16760,6 +18778,8 @@ class RevertEvaluationResultsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -16768,6 +18788,8 @@ class RevertEvaluationResultsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RevertEvaluationResultsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -16856,13 +18878,16 @@ class StartAggregateConfigRuleEvaluationResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: StartAggregateConfigRuleEvaluationResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -16875,6 +18900,8 @@ class StartAggregateConfigRuleEvaluationResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -16883,6 +18910,8 @@ class StartAggregateConfigRuleEvaluationResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartAggregateConfigRuleEvaluationResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -16959,13 +18988,16 @@ class StartAggregateRemediationResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: StartAggregateRemediationResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -16978,6 +19010,8 @@ class StartAggregateRemediationResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -16986,6 +19020,8 @@ class StartAggregateRemediationResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartAggregateRemediationResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -17056,13 +19092,16 @@ class StartRemediationResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: StartRemediationResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -17075,6 +19114,8 @@ class StartRemediationResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -17083,8 +19124,300 @@ class StartRemediationResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartRemediationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # 标签键
+        self.key = key
+        # 标签值
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        # 地域
+        self.region_id = region_id
+        # 资源ID,最多 50个子项
+        self.resource_id = resource_id
+        # 资源类型
+        self.resource_type = resource_type
+        # 标签列表，最多包含20个子项
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UntagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag_key: List[str] = None,
+    ):
+        # 是否全部删除，只针对TagKey.N为空时有效。 取值范围： true  false True False  默认是 false
+        self.all = all
+        # 地域
+        self.region_id = region_id
+        # 资源ID，最多50个子项
+        self.resource_id = resource_id
+        # 资源类型
+        self.resource_type = resource_type
+        # 标签键，最多20个子项
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class UntagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UntagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UntagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UntagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17358,13 +19691,16 @@ class UpdateAggregateCompliancePackResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateAggregateCompliancePackResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -17377,6 +19713,8 @@ class UpdateAggregateCompliancePackResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -17385,8 +19723,180 @@ class UpdateAggregateCompliancePackResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAggregateCompliancePackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAggregateConfigDeliveryChannelRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        client_token: str = None,
+        configuration_item_change_notification: bool = None,
+        configuration_snapshot: bool = None,
+        delivery_channel_condition: str = None,
+        delivery_channel_id: str = None,
+        delivery_channel_name: str = None,
+        delivery_channel_target_arn: str = None,
+        description: str = None,
+        non_compliant_notification: bool = None,
+        oversized_data_osstarget_arn: str = None,
+        status: int = None,
+    ):
+        self.aggregator_id = aggregator_id
+        self.client_token = client_token
+        self.configuration_item_change_notification = configuration_item_change_notification
+        self.configuration_snapshot = configuration_snapshot
+        self.delivery_channel_condition = delivery_channel_condition
+        self.delivery_channel_id = delivery_channel_id
+        self.delivery_channel_name = delivery_channel_name
+        self.delivery_channel_target_arn = delivery_channel_target_arn
+        self.description = description
+        self.non_compliant_notification = non_compliant_notification
+        self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.configuration_item_change_notification is not None:
+            result['ConfigurationItemChangeNotification'] = self.configuration_item_change_notification
+        if self.configuration_snapshot is not None:
+            result['ConfigurationSnapshot'] = self.configuration_snapshot
+        if self.delivery_channel_condition is not None:
+            result['DeliveryChannelCondition'] = self.delivery_channel_condition
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.delivery_channel_target_arn is not None:
+            result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.non_compliant_notification is not None:
+            result['NonCompliantNotification'] = self.non_compliant_notification
+        if self.oversized_data_osstarget_arn is not None:
+            result['OversizedDataOSSTargetArn'] = self.oversized_data_osstarget_arn
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigurationItemChangeNotification') is not None:
+            self.configuration_item_change_notification = m.get('ConfigurationItemChangeNotification')
+        if m.get('ConfigurationSnapshot') is not None:
+            self.configuration_snapshot = m.get('ConfigurationSnapshot')
+        if m.get('DeliveryChannelCondition') is not None:
+            self.delivery_channel_condition = m.get('DeliveryChannelCondition')
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('DeliveryChannelTargetArn') is not None:
+            self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('NonCompliantNotification') is not None:
+            self.non_compliant_notification = m.get('NonCompliantNotification')
+        if m.get('OversizedDataOSSTargetArn') is not None:
+            self.oversized_data_osstarget_arn = m.get('OversizedDataOSSTargetArn')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateAggregateConfigDeliveryChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_id: str = None,
+        request_id: str = None,
+    ):
+        self.delivery_channel_id = delivery_channel_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateAggregateConfigDeliveryChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAggregateConfigDeliveryChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAggregateConfigDeliveryChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17698,13 +20208,16 @@ class UpdateAggregateConfigRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateAggregateConfigRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -17717,6 +20230,8 @@ class UpdateAggregateConfigRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -17725,6 +20240,8 @@ class UpdateAggregateConfigRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAggregateConfigRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -17831,13 +20348,16 @@ class UpdateAggregateRemediationResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateAggregateRemediationResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -17850,6 +20370,8 @@ class UpdateAggregateRemediationResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -17858,6 +20380,8 @@ class UpdateAggregateRemediationResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAggregateRemediationResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -18050,13 +20574,16 @@ class UpdateAggregatorResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateAggregatorResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -18069,6 +20596,8 @@ class UpdateAggregatorResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -18077,6 +20606,8 @@ class UpdateAggregatorResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAggregatorResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -18340,13 +20871,16 @@ class UpdateCompliancePackResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateCompliancePackResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -18359,6 +20893,8 @@ class UpdateCompliancePackResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -18367,8 +20903,174 @@ class UpdateCompliancePackResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateCompliancePackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateConfigDeliveryChannelRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        configuration_item_change_notification: bool = None,
+        configuration_snapshot: bool = None,
+        delivery_channel_condition: str = None,
+        delivery_channel_id: str = None,
+        delivery_channel_name: str = None,
+        delivery_channel_target_arn: str = None,
+        description: str = None,
+        non_compliant_notification: bool = None,
+        oversized_data_osstarget_arn: str = None,
+        status: int = None,
+    ):
+        self.client_token = client_token
+        self.configuration_item_change_notification = configuration_item_change_notification
+        self.configuration_snapshot = configuration_snapshot
+        self.delivery_channel_condition = delivery_channel_condition
+        self.delivery_channel_id = delivery_channel_id
+        self.delivery_channel_name = delivery_channel_name
+        self.delivery_channel_target_arn = delivery_channel_target_arn
+        self.description = description
+        self.non_compliant_notification = non_compliant_notification
+        self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.configuration_item_change_notification is not None:
+            result['ConfigurationItemChangeNotification'] = self.configuration_item_change_notification
+        if self.configuration_snapshot is not None:
+            result['ConfigurationSnapshot'] = self.configuration_snapshot
+        if self.delivery_channel_condition is not None:
+            result['DeliveryChannelCondition'] = self.delivery_channel_condition
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.delivery_channel_name is not None:
+            result['DeliveryChannelName'] = self.delivery_channel_name
+        if self.delivery_channel_target_arn is not None:
+            result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.non_compliant_notification is not None:
+            result['NonCompliantNotification'] = self.non_compliant_notification
+        if self.oversized_data_osstarget_arn is not None:
+            result['OversizedDataOSSTargetArn'] = self.oversized_data_osstarget_arn
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigurationItemChangeNotification') is not None:
+            self.configuration_item_change_notification = m.get('ConfigurationItemChangeNotification')
+        if m.get('ConfigurationSnapshot') is not None:
+            self.configuration_snapshot = m.get('ConfigurationSnapshot')
+        if m.get('DeliveryChannelCondition') is not None:
+            self.delivery_channel_condition = m.get('DeliveryChannelCondition')
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('DeliveryChannelName') is not None:
+            self.delivery_channel_name = m.get('DeliveryChannelName')
+        if m.get('DeliveryChannelTargetArn') is not None:
+            self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('NonCompliantNotification') is not None:
+            self.non_compliant_notification = m.get('NonCompliantNotification')
+        if m.get('OversizedDataOSSTargetArn') is not None:
+            self.oversized_data_osstarget_arn = m.get('OversizedDataOSSTargetArn')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateConfigDeliveryChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        delivery_channel_id: str = None,
+        request_id: str = None,
+    ):
+        self.delivery_channel_id = delivery_channel_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_channel_id is not None:
+            result['DeliveryChannelId'] = self.delivery_channel_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryChannelId') is not None:
+            self.delivery_channel_id = m.get('DeliveryChannelId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateConfigDeliveryChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateConfigDeliveryChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateConfigDeliveryChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18632,13 +21334,16 @@ class UpdateConfigRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateConfigRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -18651,6 +21356,8 @@ class UpdateConfigRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -18659,6 +21366,8 @@ class UpdateConfigRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateConfigRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
