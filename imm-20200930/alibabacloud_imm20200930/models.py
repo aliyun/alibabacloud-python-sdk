@@ -5207,6 +5207,268 @@ class CreateFigureClustersMergingTaskResponse(TeaModel):
         return self
 
 
+class CreateImageModerationTaskRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config: CredentialConfig = None,
+        interval: int = None,
+        max_frames: int = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        reviewer: str = None,
+        scenes: List[str] = None,
+        source_uri: str = None,
+        tags: Dict[str, Any] = None,
+        user_data: str = None,
+    ):
+        self.credential_config = credential_config
+        self.interval = interval
+        self.max_frames = max_frames
+        self.notify_endpoint = notify_endpoint
+        self.notify_topic_name = notify_topic_name
+        # 项目名称
+        self.project_name = project_name
+        self.reviewer = reviewer
+        self.scenes = scenes
+        self.source_uri = source_uri
+        self.tags = tags
+        self.user_data = user_data
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.max_frames is not None:
+            result['MaxFrames'] = self.max_frames
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.reviewer is not None:
+            result['Reviewer'] = self.reviewer
+        if self.scenes is not None:
+            result['Scenes'] = self.scenes
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('MaxFrames') is not None:
+            self.max_frames = m.get('MaxFrames')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Reviewer') is not None:
+            self.reviewer = m.get('Reviewer')
+        if m.get('Scenes') is not None:
+            self.scenes = m.get('Scenes')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateImageModerationTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config_shrink: str = None,
+        interval: int = None,
+        max_frames: int = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        reviewer: str = None,
+        scenes_shrink: str = None,
+        source_uri: str = None,
+        tags_shrink: str = None,
+        user_data: str = None,
+    ):
+        self.credential_config_shrink = credential_config_shrink
+        self.interval = interval
+        self.max_frames = max_frames
+        self.notify_endpoint = notify_endpoint
+        self.notify_topic_name = notify_topic_name
+        # 项目名称
+        self.project_name = project_name
+        self.reviewer = reviewer
+        self.scenes_shrink = scenes_shrink
+        self.source_uri = source_uri
+        self.tags_shrink = tags_shrink
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.max_frames is not None:
+            result['MaxFrames'] = self.max_frames
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.reviewer is not None:
+            result['Reviewer'] = self.reviewer
+        if self.scenes_shrink is not None:
+            result['Scenes'] = self.scenes_shrink
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('MaxFrames') is not None:
+            self.max_frames = m.get('MaxFrames')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Reviewer') is not None:
+            self.reviewer = m.get('Reviewer')
+        if m.get('Scenes') is not None:
+            self.scenes_shrink = m.get('Scenes')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateImageModerationTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        # RequestId
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateImageModerationTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateImageModerationTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateImageModerationTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateMediaConvertTaskRequestSourcesSubtitles(TeaModel):
     def __init__(
         self,
@@ -7539,6 +7801,268 @@ class CreateStoryResponse(TeaModel):
         return self
 
 
+class CreateVideoModerationTaskRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config: CredentialConfig = None,
+        interval: int = None,
+        max_frames: int = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        reviewer: str = None,
+        scenes: List[str] = None,
+        source_uri: str = None,
+        tags: Dict[str, Any] = None,
+        user_data: str = None,
+    ):
+        self.credential_config = credential_config
+        self.interval = interval
+        self.max_frames = max_frames
+        self.notify_endpoint = notify_endpoint
+        self.notify_topic_name = notify_topic_name
+        # 项目名称
+        self.project_name = project_name
+        self.reviewer = reviewer
+        self.scenes = scenes
+        self.source_uri = source_uri
+        self.tags = tags
+        self.user_data = user_data
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.max_frames is not None:
+            result['MaxFrames'] = self.max_frames
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.reviewer is not None:
+            result['Reviewer'] = self.reviewer
+        if self.scenes is not None:
+            result['Scenes'] = self.scenes
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('MaxFrames') is not None:
+            self.max_frames = m.get('MaxFrames')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Reviewer') is not None:
+            self.reviewer = m.get('Reviewer')
+        if m.get('Scenes') is not None:
+            self.scenes = m.get('Scenes')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateVideoModerationTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config_shrink: str = None,
+        interval: int = None,
+        max_frames: int = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        reviewer: str = None,
+        scenes_shrink: str = None,
+        source_uri: str = None,
+        tags_shrink: str = None,
+        user_data: str = None,
+    ):
+        self.credential_config_shrink = credential_config_shrink
+        self.interval = interval
+        self.max_frames = max_frames
+        self.notify_endpoint = notify_endpoint
+        self.notify_topic_name = notify_topic_name
+        # 项目名称
+        self.project_name = project_name
+        self.reviewer = reviewer
+        self.scenes_shrink = scenes_shrink
+        self.source_uri = source_uri
+        self.tags_shrink = tags_shrink
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.max_frames is not None:
+            result['MaxFrames'] = self.max_frames
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.reviewer is not None:
+            result['Reviewer'] = self.reviewer
+        if self.scenes_shrink is not None:
+            result['Scenes'] = self.scenes_shrink
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('MaxFrames') is not None:
+            self.max_frames = m.get('MaxFrames')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Reviewer') is not None:
+            self.reviewer = m.get('Reviewer')
+        if m.get('Scenes') is not None:
+            self.scenes_shrink = m.get('Scenes')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateVideoModerationTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        # RequestId
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateVideoModerationTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVideoModerationTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVideoModerationTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteBindingRequest(TeaModel):
     def __init__(
         self,
@@ -8903,6 +9427,118 @@ class DetectImageScoreResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectImageScoreResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DetectTextAnomalyRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        project_name: str = None,
+    ):
+        self.content = content
+        # 项目名称
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class DetectTextAnomalyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        suggestion: str = None,
+    ):
+        # RequestId
+        self.request_id = request_id
+        self.suggestion = suggestion
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.suggestion is not None:
+            result['Suggestion'] = self.suggestion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Suggestion') is not None:
+            self.suggestion = m.get('Suggestion')
+        return self
+
+
+class DetectTextAnomalyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DetectTextAnomalyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DetectTextAnomalyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

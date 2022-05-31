@@ -960,6 +960,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_figure_clusters_merging_task_with_options_async(request, runtime)
 
+    def create_image_moderation_task_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateImageModerationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateImageModerationTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateImageModerationTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.scenes):
+            request.scenes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scenes, 'Scenes', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.max_frames):
+            query['MaxFrames'] = request.max_frames
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.reviewer):
+            query['Reviewer'] = request.reviewer
+        if not UtilClient.is_unset(request.scenes_shrink):
+            query['Scenes'] = request.scenes_shrink
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateImageModerationTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateImageModerationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_image_moderation_task_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateImageModerationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateImageModerationTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateImageModerationTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.scenes):
+            request.scenes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scenes, 'Scenes', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.max_frames):
+            query['MaxFrames'] = request.max_frames
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.reviewer):
+            query['Reviewer'] = request.reviewer
+        if not UtilClient.is_unset(request.scenes_shrink):
+            query['Scenes'] = request.scenes_shrink
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateImageModerationTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateImageModerationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_image_moderation_task(
+        self,
+        request: imm_20200930_models.CreateImageModerationTaskRequest,
+    ) -> imm_20200930_models.CreateImageModerationTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_image_moderation_task_with_options(request, runtime)
+
+    async def create_image_moderation_task_async(
+        self,
+        request: imm_20200930_models.CreateImageModerationTaskRequest,
+    ) -> imm_20200930_models.CreateImageModerationTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_image_moderation_task_with_options_async(request, runtime)
+
     def create_media_convert_task_with_options(
         self,
         tmp_req: imm_20200930_models.CreateMediaConvertTaskRequest,
@@ -1543,6 +1669,132 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.CreateStoryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_story_with_options_async(request, runtime)
+
+    def create_video_moderation_task_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateVideoModerationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateVideoModerationTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateVideoModerationTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.scenes):
+            request.scenes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scenes, 'Scenes', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.max_frames):
+            query['MaxFrames'] = request.max_frames
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.reviewer):
+            query['Reviewer'] = request.reviewer
+        if not UtilClient.is_unset(request.scenes_shrink):
+            query['Scenes'] = request.scenes_shrink
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVideoModerationTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateVideoModerationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_video_moderation_task_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateVideoModerationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateVideoModerationTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateVideoModerationTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.scenes):
+            request.scenes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scenes, 'Scenes', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.max_frames):
+            query['MaxFrames'] = request.max_frames
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.reviewer):
+            query['Reviewer'] = request.reviewer
+        if not UtilClient.is_unset(request.scenes_shrink):
+            query['Scenes'] = request.scenes_shrink
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVideoModerationTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateVideoModerationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_video_moderation_task(
+        self,
+        request: imm_20200930_models.CreateVideoModerationTaskRequest,
+    ) -> imm_20200930_models.CreateVideoModerationTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_video_moderation_task_with_options(request, runtime)
+
+    async def create_video_moderation_task_async(
+        self,
+        request: imm_20200930_models.CreateVideoModerationTaskRequest,
+    ) -> imm_20200930_models.CreateVideoModerationTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_video_moderation_task_with_options_async(request, runtime)
 
     def delete_binding_with_options(
         self,
@@ -2347,6 +2599,80 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.DetectImageScoreResponse:
         runtime = util_models.RuntimeOptions()
         return await self.detect_image_score_with_options_async(request, runtime)
+
+    def detect_text_anomaly_with_options(
+        self,
+        request: imm_20200930_models.DetectTextAnomalyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetectTextAnomalyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectTextAnomaly',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetectTextAnomalyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detect_text_anomaly_with_options_async(
+        self,
+        request: imm_20200930_models.DetectTextAnomalyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetectTextAnomalyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectTextAnomaly',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetectTextAnomalyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detect_text_anomaly(
+        self,
+        request: imm_20200930_models.DetectTextAnomalyRequest,
+    ) -> imm_20200930_models.DetectTextAnomalyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_text_anomaly_with_options(request, runtime)
+
+    async def detect_text_anomaly_async(
+        self,
+        request: imm_20200930_models.DetectTextAnomalyRequest,
+    ) -> imm_20200930_models.DetectTextAnomalyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_text_anomaly_with_options_async(request, runtime)
 
     def fuzzy_query_with_options(
         self,
