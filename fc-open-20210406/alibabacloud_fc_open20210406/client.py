@@ -6836,7 +6836,8 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
     ) -> Any:
         cred = self._credential
-        return FCUtilClient.invoke_httptrigger(cred, url, method, body, headers)
+        util_client = FCUtilClient(cred)
+        return util_client.invoke_httptrigger(url, method, body, headers)
 
     async def invoke_httptrigger_async(
         self,
@@ -6846,7 +6847,8 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
     ) -> Any:
         cred = self._credential
-        return FCUtilClient.invoke_httptrigger(cred, url, method, body, headers)
+        util_client = FCUtilClient(cred)
+        return await util_client.invoke_httptrigger_async(url, method, body, headers)
 
     def invoke_anonymous_httptrigger(
         self,
@@ -6855,7 +6857,9 @@ class Client(OpenApiClient):
         body: bytes,
         headers: Dict[str, str],
     ) -> Any:
-        return FCUtilClient.invoke_anonymous_httptrigger(url, method, body, headers)
+        cred = self._credential
+        util_client = FCUtilClient(cred)
+        return util_client.invoke_anonymous_httptrigger(url, method, body, headers)
 
     async def invoke_anonymous_httptrigger_async(
         self,
@@ -6864,47 +6868,57 @@ class Client(OpenApiClient):
         body: bytes,
         headers: Dict[str, str],
     ) -> Any:
-        return FCUtilClient.invoke_anonymous_httptrigger(url, method, body, headers)
+        cred = self._credential
+        util_client = FCUtilClient(cred)
+        return await util_client.invoke_anonymous_httptrigger_async(url, method, body, headers)
 
     def send_httprequest_with_authorization(
         self,
         req: Request,
     ) -> Any:
         cred = self._credential
-        return FCUtilClient.send_httprequest_with_authorization(cred, req)
+        util_client = FCUtilClient(cred)
+        return util_client.send_httprequest_with_authorization(req)
 
     async def send_httprequest_with_authorization_async(
         self,
         req: Request,
     ) -> Any:
         cred = self._credential
-        return FCUtilClient.send_httprequest_with_authorization(cred, req)
+        util_client = FCUtilClient(cred)
+        return await util_client.send_httprequest_with_authorization_async(req)
 
     def send_httprequest(
         self,
         req: Request,
     ) -> Any:
-        return FCUtilClient.send_httprequest(req)
+        cred = self._credential
+        util_client = FCUtilClient(cred)
+        return util_client.send_httprequest(req)
 
     async def send_httprequest_async(
         self,
         req: Request,
     ) -> Any:
-        return FCUtilClient.send_httprequest(req)
+        cred = self._credential
+        util_client = FCUtilClient(cred)
+        return await util_client.send_httprequest_async(req)
 
     def sign_request(
         self,
         req: Request,
     ) -> Any:
         cred = self._credential
-        return FCUtilClient.sign_request(cred, req)
+        util_client = FCUtilClient(cred)
+        return util_client.sign_request(req)
 
     async def sign_request_async(
         self,
         req: Request,
     ) -> Any:
         cred = self._credential
-        return FCUtilClient.sign_request(cred, req)
+        util_client = FCUtilClient(cred)
+        return await util_client.sign_request_async(req)
 
     def sign_request_with_content_md5(
         self,
@@ -6912,7 +6926,8 @@ class Client(OpenApiClient):
         content_md5: str,
     ) -> Any:
         cred = self._credential
-        return FCUtilClient.sign_request_with_content_md5(cred, req, content_md5)
+        util_client = FCUtilClient(cred)
+        return util_client.sign_request_with_content_md5(req, content_md5)
 
     async def sign_request_with_content_md5_async(
         self,
@@ -6920,7 +6935,8 @@ class Client(OpenApiClient):
         content_md5: str,
     ) -> Any:
         cred = self._credential
-        return FCUtilClient.sign_request_with_content_md5(cred, req, content_md5)
+        util_client = FCUtilClient(cred)
+        return await util_client.sign_request_with_content_md5_async(req, content_md5)
 
     def build_httprequest(
         self,
@@ -6929,7 +6945,9 @@ class Client(OpenApiClient):
         body: bytes,
         headers: Dict[str, str],
     ) -> Any:
-        return FCUtilClient.build_httprequest(url, method, body, headers)
+        cred = self._credential
+        util_client = FCUtilClient(cred)
+        return util_client.build_httprequest(url, method, body, headers)
 
     async def build_httprequest_async(
         self,
@@ -6938,4 +6956,6 @@ class Client(OpenApiClient):
         body: bytes,
         headers: Dict[str, str],
     ) -> Any:
-        return FCUtilClient.build_httprequest(url, method, body, headers)
+        cred = self._credential
+        util_client = FCUtilClient(cred)
+        return await util_client.build_httprequest_async(url, method, body, headers)
