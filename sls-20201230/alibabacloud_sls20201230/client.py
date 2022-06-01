@@ -175,12 +175,16 @@ class Client(OpenApiClient):
             body['enable_tracking'] = request.enable_tracking
         if not UtilClient.is_unset(request.encrypt_conf):
             body['encrypt_conf'] = request.encrypt_conf
+        if not UtilClient.is_unset(request.hot_ttl):
+            body['hot_ttl'] = request.hot_ttl
         if not UtilClient.is_unset(request.logstore_name):
             body['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.max_split_shard):
             body['maxSplitShard'] = request.max_split_shard
         if not UtilClient.is_unset(request.shard_count):
             body['shardCount'] = request.shard_count
+        if not UtilClient.is_unset(request.telemetry_type):
+            body['telemetryType'] = request.telemetry_type
         if not UtilClient.is_unset(request.ttl):
             body['ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
@@ -223,12 +227,16 @@ class Client(OpenApiClient):
             body['enable_tracking'] = request.enable_tracking
         if not UtilClient.is_unset(request.encrypt_conf):
             body['encrypt_conf'] = request.encrypt_conf
+        if not UtilClient.is_unset(request.hot_ttl):
+            body['hot_ttl'] = request.hot_ttl
         if not UtilClient.is_unset(request.logstore_name):
             body['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.max_split_shard):
             body['maxSplitShard'] = request.max_split_shard
         if not UtilClient.is_unset(request.shard_count):
             body['shardCount'] = request.shard_count
+        if not UtilClient.is_unset(request.telemetry_type):
+            body['telemetryType'] = request.telemetry_type
         if not UtilClient.is_unset(request.ttl):
             body['ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
@@ -334,27 +342,32 @@ class Client(OpenApiClient):
 
     def create_saved_search(
         self,
+        project: str,
         request: sls_20201230_models.CreateSavedSearchRequest,
     ) -> sls_20201230_models.CreateSavedSearchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_saved_search_with_options(request, headers, runtime)
+        return self.create_saved_search_with_options(project, request, headers, runtime)
 
     async def create_saved_search_async(
         self,
+        project: str,
         request: sls_20201230_models.CreateSavedSearchRequest,
     ) -> sls_20201230_models.CreateSavedSearchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_saved_search_with_options_async(request, headers, runtime)
+        return await self.create_saved_search_with_options_async(project, request, headers, runtime)
 
     def create_saved_search_with_options(
         self,
+        project: str,
         request: sls_20201230_models.CreateSavedSearchRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateSavedSearchResponse:
         UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
         body = {}
         if not UtilClient.is_unset(request.display_name):
             body['displayName'] = request.display_name
@@ -367,6 +380,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.topic):
             body['topic'] = request.topic
         req = open_api_models.OpenApiRequest(
+            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -388,11 +402,14 @@ class Client(OpenApiClient):
 
     async def create_saved_search_with_options_async(
         self,
+        project: str,
         request: sls_20201230_models.CreateSavedSearchRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateSavedSearchResponse:
         UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
         body = {}
         if not UtilClient.is_unset(request.display_name):
             body['displayName'] = request.display_name
@@ -405,6 +422,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.topic):
             body['topic'] = request.topic
         req = open_api_models.OpenApiRequest(
+            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1379,14 +1397,16 @@ class Client(OpenApiClient):
             body['enable_tracking'] = request.enable_tracking
         if not UtilClient.is_unset(request.encrypt_conf):
             body['encrypt_conf'] = request.encrypt_conf
-        if not UtilClient.is_unset(request.logstore):
-            body['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.hot_ttl):
+            body['hot_ttl'] = request.hot_ttl
         if not UtilClient.is_unset(request.logstore_name):
             body['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.max_split_shard):
             body['maxSplitShard'] = request.max_split_shard
         if not UtilClient.is_unset(request.shard_count):
             body['shardCount'] = request.shard_count
+        if not UtilClient.is_unset(request.telemetry_type):
+            body['telemetryType'] = request.telemetry_type
         if not UtilClient.is_unset(request.ttl):
             body['ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
@@ -1431,14 +1451,16 @@ class Client(OpenApiClient):
             body['enable_tracking'] = request.enable_tracking
         if not UtilClient.is_unset(request.encrypt_conf):
             body['encrypt_conf'] = request.encrypt_conf
-        if not UtilClient.is_unset(request.logstore):
-            body['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.hot_ttl):
+            body['hot_ttl'] = request.hot_ttl
         if not UtilClient.is_unset(request.logstore_name):
             body['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.max_split_shard):
             body['maxSplitShard'] = request.max_split_shard
         if not UtilClient.is_unset(request.shard_count):
             body['shardCount'] = request.shard_count
+        if not UtilClient.is_unset(request.telemetry_type):
+            body['telemetryType'] = request.telemetry_type
         if not UtilClient.is_unset(request.ttl):
             body['ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
