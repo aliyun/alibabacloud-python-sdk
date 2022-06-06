@@ -1,3 +1,6 @@
+2022-06-06 Version: 1.1.6
+- Phase IV.
+
 2022-04-26 Version: 1.1.5
 - HealthCode and TravelCard.
 
