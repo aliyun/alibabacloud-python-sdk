@@ -944,6 +944,212 @@ class CreateHostGroupResponse(TeaModel):
         return self
 
 
+class CreateOAuthTokenRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        client_secret: str = None,
+        code: str = None,
+        grant_type: str = None,
+        login: str = None,
+        scope: str = None,
+    ):
+        # clientId
+        self.client_id = client_id
+        # client_secret
+        self.client_secret = client_secret
+        # 当前grantType=code时必传
+        self.code = code
+        # 授权类型：code，token
+        self.grant_type = grant_type
+        # code = token时必传
+        self.login = login
+        # 授权范围.例如：read:repo,write:repo
+        self.scope = scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['clientId'] = self.client_id
+        if self.client_secret is not None:
+            result['clientSecret'] = self.client_secret
+        if self.code is not None:
+            result['code'] = self.code
+        if self.grant_type is not None:
+            result['grantType'] = self.grant_type
+        if self.login is not None:
+            result['login'] = self.login
+        if self.scope is not None:
+            result['scope'] = self.scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clientId') is not None:
+            self.client_id = m.get('clientId')
+        if m.get('clientSecret') is not None:
+            self.client_secret = m.get('clientSecret')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('grantType') is not None:
+            self.grant_type = m.get('grantType')
+        if m.get('login') is not None:
+            self.login = m.get('login')
+        if m.get('scope') is not None:
+            self.scope = m.get('scope')
+        return self
+
+
+class CreateOAuthTokenResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        id: str = None,
+        scope: str = None,
+        token_type: str = None,
+    ):
+        self.access_token = access_token
+        self.id = id
+        self.scope = scope
+        self.token_type = token_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.id is not None:
+            result['id'] = self.id
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.token_type is not None:
+            result['tokenType'] = self.token_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('scope') is not None:
+            self.scope = m.get('scope')
+        if m.get('tokenType') is not None:
+            self.token_type = m.get('tokenType')
+        return self
+
+
+class CreateOAuthTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: CreateOAuthTokenResponseBodyResult = None,
+        success: str = None,
+    ):
+        self.error_code = error_code
+        # Id of the request
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = CreateOAuthTokenResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateOAuthTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOAuthTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOAuthTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateProjectRequest(TeaModel):
     def __init__(
         self,

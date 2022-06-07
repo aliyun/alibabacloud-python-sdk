@@ -551,6 +551,102 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def create_oauth_token(
+        self,
+        request: devops_20210625_models.CreateOAuthTokenRequest,
+    ) -> devops_20210625_models.CreateOAuthTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_oauth_token_with_options(request, headers, runtime)
+
+    async def create_oauth_token_async(
+        self,
+        request: devops_20210625_models.CreateOAuthTokenRequest,
+    ) -> devops_20210625_models.CreateOAuthTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_oauth_token_with_options_async(request, headers, runtime)
+
+    def create_oauth_token_with_options(
+        self,
+        request: devops_20210625_models.CreateOAuthTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateOAuthTokenResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_id):
+            body['clientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_secret):
+            body['clientSecret'] = request.client_secret
+        if not UtilClient.is_unset(request.code):
+            body['code'] = request.code
+        if not UtilClient.is_unset(request.grant_type):
+            body['grantType'] = request.grant_type
+        if not UtilClient.is_unset(request.login):
+            body['login'] = request.login
+        if not UtilClient.is_unset(request.scope):
+            body['scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOAuthToken',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/login/oauth/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateOAuthTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_oauth_token_with_options_async(
+        self,
+        request: devops_20210625_models.CreateOAuthTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateOAuthTokenResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_id):
+            body['clientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_secret):
+            body['clientSecret'] = request.client_secret
+        if not UtilClient.is_unset(request.code):
+            body['code'] = request.code
+        if not UtilClient.is_unset(request.grant_type):
+            body['grantType'] = request.grant_type
+        if not UtilClient.is_unset(request.login):
+            body['login'] = request.login
+        if not UtilClient.is_unset(request.scope):
+            body['scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOAuthToken',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/login/oauth/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateOAuthTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def create_project(
         self,
         organization_id: str,
