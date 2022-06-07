@@ -4,16 +4,16 @@ from Tea.model import TeaModel
 from typing import Dict
 
 
-class GetCheckDuplicationChMedicalRequest(TeaModel):
+class GetBrandChEcomRequest(TeaModel):
     def __init__(
         self,
+        image_url: str = None,
         service_code: str = None,
-        origin_q: str = None,
-        origin_t: str = None,
+        text: str = None,
     ):
+        self.image_url = image_url
         self.service_code = service_code
-        self.origin_q = origin_q
-        self.origin_t = origin_t
+        self.text = text
 
     def validate(self):
         pass
@@ -24,33 +24,33 @@ class GetCheckDuplicationChMedicalRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
-        if self.origin_q is not None:
-            result['OriginQ'] = self.origin_q
-        if self.origin_t is not None:
-            result['OriginT'] = self.origin_t
+        if self.text is not None:
+            result['Text'] = self.text
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
-        if m.get('OriginQ') is not None:
-            self.origin_q = m.get('OriginQ')
-        if m.get('OriginT') is not None:
-            self.origin_t = m.get('OriginT')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
         return self
 
 
-class GetCheckDuplicationChMedicalResponseBody(TeaModel):
+class GetBrandChEcomResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -61,32 +61,35 @@ class GetCheckDuplicationChMedicalResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
-class GetCheckDuplicationChMedicalResponse(TeaModel):
+class GetBrandChEcomResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: GetCheckDuplicationChMedicalResponseBody = None,
+        status_code: int = None,
+        body: GetBrandChEcomResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -99,6 +102,8 @@ class GetCheckDuplicationChMedicalResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -107,6 +112,240 @@ class GetCheckDuplicationChMedicalResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetBrandChEcomResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCateChEcomRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        service_code: str = None,
+        text: str = None,
+    ):
+        self.image_url = image_url
+        self.service_code = service_code
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class GetCateChEcomResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetCateChEcomResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCateChEcomResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCateChEcomResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCheckDuplicationChMedicalRequest(TeaModel):
+    def __init__(
+        self,
+        origin_q: str = None,
+        origin_t: str = None,
+        service_code: str = None,
+    ):
+        self.origin_q = origin_q
+        self.origin_t = origin_t
+        self.service_code = service_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.origin_q is not None:
+            result['OriginQ'] = self.origin_q
+        if self.origin_t is not None:
+            result['OriginT'] = self.origin_t
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OriginQ') is not None:
+            self.origin_q = m.get('OriginQ')
+        if m.get('OriginT') is not None:
+            self.origin_t = m.get('OriginT')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        return self
+
+
+class GetCheckDuplicationChMedicalResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetCheckDuplicationChMedicalResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCheckDuplicationChMedicalResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCheckDuplicationChMedicalResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -116,11 +355,11 @@ class GetCheckDuplicationChMedicalResponse(TeaModel):
 class GetDiagnosisChMedicalRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
         name: str = None,
+        service_code: str = None,
     ):
-        self.service_code = service_code
         self.name = name
+        self.service_code = service_code
 
     def validate(self):
         pass
@@ -131,29 +370,29 @@ class GetDiagnosisChMedicalRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
         if self.name is not None:
             result['Name'] = self.name
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
         return self
 
 
 class GetDiagnosisChMedicalResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -164,18 +403,18 @@ class GetDiagnosisChMedicalResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -183,13 +422,16 @@ class GetDiagnosisChMedicalResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetDiagnosisChMedicalResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -202,6 +444,8 @@ class GetDiagnosisChMedicalResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -210,6 +454,8 @@ class GetDiagnosisChMedicalResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDiagnosisChMedicalResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -252,11 +498,11 @@ class GetDpChEcomRequest(TeaModel):
 class GetDpChEcomResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -267,18 +513,18 @@ class GetDpChEcomResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -286,13 +532,16 @@ class GetDpChEcomResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetDpChEcomResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -305,6 +554,8 @@ class GetDpChEcomResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -313,6 +564,8 @@ class GetDpChEcomResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDpChEcomResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -355,11 +608,11 @@ class GetDpChGeneralCTBRequest(TeaModel):
 class GetDpChGeneralCTBResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -370,18 +623,18 @@ class GetDpChGeneralCTBResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -389,13 +642,16 @@ class GetDpChGeneralCTBResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetDpChGeneralCTBResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -408,6 +664,8 @@ class GetDpChGeneralCTBResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -416,6 +674,8 @@ class GetDpChGeneralCTBResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDpChGeneralCTBResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -458,11 +718,11 @@ class GetDpChGeneralStanfordRequest(TeaModel):
 class GetDpChGeneralStanfordResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -473,18 +733,18 @@ class GetDpChGeneralStanfordResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -492,13 +752,16 @@ class GetDpChGeneralStanfordResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetDpChGeneralStanfordResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -511,6 +774,8 @@ class GetDpChGeneralStanfordResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -519,6 +784,8 @@ class GetDpChGeneralStanfordResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDpChGeneralStanfordResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -561,11 +828,11 @@ class GetEcChGeneralRequest(TeaModel):
 class GetEcChGeneralResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -576,18 +843,18 @@ class GetEcChGeneralResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -595,13 +862,16 @@ class GetEcChGeneralResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetEcChGeneralResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -614,6 +884,8 @@ class GetEcChGeneralResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -622,6 +894,8 @@ class GetEcChGeneralResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetEcChGeneralResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -664,11 +938,11 @@ class GetEcEnGeneralRequest(TeaModel):
 class GetEcEnGeneralResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -679,18 +953,18 @@ class GetEcEnGeneralResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -698,13 +972,16 @@ class GetEcEnGeneralResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetEcEnGeneralResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -717,6 +994,8 @@ class GetEcEnGeneralResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -725,8 +1004,126 @@ class GetEcEnGeneralResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetEcEnGeneralResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetItemPubChEcomRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        service_code: str = None,
+        text: str = None,
+    ):
+        self.image_url = image_url
+        self.service_code = service_code
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class GetItemPubChEcomResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetItemPubChEcomResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetItemPubChEcomResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetItemPubChEcomResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -767,11 +1164,11 @@ class GetKeywordChEcomRequest(TeaModel):
 class GetKeywordChEcomResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -782,18 +1179,18 @@ class GetKeywordChEcomResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -801,13 +1198,16 @@ class GetKeywordChEcomResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetKeywordChEcomResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -820,6 +1220,8 @@ class GetKeywordChEcomResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -828,6 +1230,8 @@ class GetKeywordChEcomResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetKeywordChEcomResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -870,11 +1274,11 @@ class GetKeywordEnEcomRequest(TeaModel):
 class GetKeywordEnEcomResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -885,18 +1289,18 @@ class GetKeywordEnEcomResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -904,13 +1308,16 @@ class GetKeywordEnEcomResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetKeywordEnEcomResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -923,6 +1330,8 @@ class GetKeywordEnEcomResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -931,6 +1340,8 @@ class GetKeywordEnEcomResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetKeywordEnEcomResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -940,15 +1351,15 @@ class GetKeywordEnEcomResponse(TeaModel):
 class GetMedicineChMedicalRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
-        name: str = None,
         factory: str = None,
+        name: str = None,
+        service_code: str = None,
         specification: str = None,
         unit: str = None,
     ):
-        self.service_code = service_code
-        self.name = name
         self.factory = factory
+        self.name = name
+        self.service_code = service_code
         self.specification = specification
         self.unit = unit
 
@@ -961,12 +1372,12 @@ class GetMedicineChMedicalRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.name is not None:
-            result['Name'] = self.name
         if self.factory is not None:
             result['Factory'] = self.factory
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
         if self.specification is not None:
             result['Specification'] = self.specification
         if self.unit is not None:
@@ -975,12 +1386,12 @@ class GetMedicineChMedicalRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         if m.get('Factory') is not None:
             self.factory = m.get('Factory')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
         if m.get('Specification') is not None:
             self.specification = m.get('Specification')
         if m.get('Unit') is not None:
@@ -991,11 +1402,11 @@ class GetMedicineChMedicalRequest(TeaModel):
 class GetMedicineChMedicalResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1006,18 +1417,18 @@ class GetMedicineChMedicalResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1025,13 +1436,16 @@ class GetMedicineChMedicalResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetMedicineChMedicalResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1044,6 +1458,8 @@ class GetMedicineChMedicalResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1052,6 +1468,8 @@ class GetMedicineChMedicalResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetMedicineChMedicalResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1061,13 +1479,13 @@ class GetMedicineChMedicalResponse(TeaModel):
 class GetNerChEcomRequest(TeaModel):
     def __init__(
         self,
+        lexer_id: str = None,
         service_code: str = None,
         text: str = None,
-        lexer_id: str = None,
     ):
+        self.lexer_id = lexer_id
         self.service_code = service_code
         self.text = text
-        self.lexer_id = lexer_id
 
     def validate(self):
         pass
@@ -1078,33 +1496,33 @@ class GetNerChEcomRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.lexer_id is not None:
+            result['LexerId'] = self.lexer_id
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
         if self.text is not None:
             result['Text'] = self.text
-        if self.lexer_id is not None:
-            result['LexerId'] = self.lexer_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('LexerId') is not None:
+            self.lexer_id = m.get('LexerId')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
         if m.get('Text') is not None:
             self.text = m.get('Text')
-        if m.get('LexerId') is not None:
-            self.lexer_id = m.get('LexerId')
         return self
 
 
 class GetNerChEcomResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1115,18 +1533,18 @@ class GetNerChEcomResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1134,13 +1552,16 @@ class GetNerChEcomResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetNerChEcomResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1153,6 +1574,8 @@ class GetNerChEcomResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1161,6 +1584,8 @@ class GetNerChEcomResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetNerChEcomResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1203,11 +1628,11 @@ class GetNerChMedicalRequest(TeaModel):
 class GetNerChMedicalResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1218,18 +1643,18 @@ class GetNerChMedicalResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1237,13 +1662,16 @@ class GetNerChMedicalResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetNerChMedicalResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1256,6 +1684,8 @@ class GetNerChMedicalResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1264,6 +1694,8 @@ class GetNerChMedicalResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetNerChMedicalResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1273,13 +1705,13 @@ class GetNerChMedicalResponse(TeaModel):
 class GetNerCustomizedChEcomRequest(TeaModel):
     def __init__(
         self,
+        lexer_id: str = None,
         service_code: str = None,
         text: str = None,
-        lexer_id: str = None,
     ):
+        self.lexer_id = lexer_id
         self.service_code = service_code
         self.text = text
-        self.lexer_id = lexer_id
 
     def validate(self):
         pass
@@ -1290,33 +1722,33 @@ class GetNerCustomizedChEcomRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.lexer_id is not None:
+            result['LexerId'] = self.lexer_id
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
         if self.text is not None:
             result['Text'] = self.text
-        if self.lexer_id is not None:
-            result['LexerId'] = self.lexer_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('LexerId') is not None:
+            self.lexer_id = m.get('LexerId')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
         if m.get('Text') is not None:
             self.text = m.get('Text')
-        if m.get('LexerId') is not None:
-            self.lexer_id = m.get('LexerId')
         return self
 
 
 class GetNerCustomizedChEcomResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1327,18 +1759,18 @@ class GetNerCustomizedChEcomResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1346,13 +1778,16 @@ class GetNerCustomizedChEcomResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetNerCustomizedChEcomResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1365,6 +1800,8 @@ class GetNerCustomizedChEcomResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1373,6 +1810,8 @@ class GetNerCustomizedChEcomResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetNerCustomizedChEcomResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1382,13 +1821,13 @@ class GetNerCustomizedChEcomResponse(TeaModel):
 class GetNerCustomizedSeaEcomRequest(TeaModel):
     def __init__(
         self,
+        language: str = None,
         service_code: str = None,
         text: str = None,
-        language: str = None,
     ):
+        self.language = language
         self.service_code = service_code
         self.text = text
-        self.language = language
 
     def validate(self):
         pass
@@ -1399,33 +1838,33 @@ class GetNerCustomizedSeaEcomRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.language is not None:
+            result['Language'] = self.language
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
         if self.text is not None:
             result['Text'] = self.text
-        if self.language is not None:
-            result['Language'] = self.language
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
         if m.get('Text') is not None:
             self.text = m.get('Text')
-        if m.get('Language') is not None:
-            self.language = m.get('Language')
         return self
 
 
 class GetNerCustomizedSeaEcomResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1436,18 +1875,18 @@ class GetNerCustomizedSeaEcomResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1455,13 +1894,16 @@ class GetNerCustomizedSeaEcomResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetNerCustomizedSeaEcomResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1474,6 +1916,8 @@ class GetNerCustomizedSeaEcomResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1482,6 +1926,8 @@ class GetNerCustomizedSeaEcomResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetNerCustomizedSeaEcomResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1491,11 +1937,11 @@ class GetNerCustomizedSeaEcomResponse(TeaModel):
 class GetOperationChMedicalRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
         name: str = None,
+        service_code: str = None,
     ):
-        self.service_code = service_code
         self.name = name
+        self.service_code = service_code
 
     def validate(self):
         pass
@@ -1506,29 +1952,29 @@ class GetOperationChMedicalRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
         if self.name is not None:
             result['Name'] = self.name
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
         return self
 
 
 class GetOperationChMedicalResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1539,18 +1985,18 @@ class GetOperationChMedicalResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1558,13 +2004,16 @@ class GetOperationChMedicalResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetOperationChMedicalResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1577,6 +2026,8 @@ class GetOperationChMedicalResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1585,6 +2036,8 @@ class GetOperationChMedicalResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetOperationChMedicalResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1594,15 +2047,15 @@ class GetOperationChMedicalResponse(TeaModel):
 class GetPosChEcomRequest(TeaModel):
     def __init__(
         self,
+        out_type: str = None,
         service_code: str = None,
         text: str = None,
         tokenizer_id: str = None,
-        out_type: str = None,
     ):
+        self.out_type = out_type
         self.service_code = service_code
         self.text = text
         self.tokenizer_id = tokenizer_id
-        self.out_type = out_type
 
     def validate(self):
         pass
@@ -1613,37 +2066,37 @@ class GetPosChEcomRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.out_type is not None:
+            result['OutType'] = self.out_type
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
         if self.text is not None:
             result['Text'] = self.text
         if self.tokenizer_id is not None:
             result['TokenizerId'] = self.tokenizer_id
-        if self.out_type is not None:
-            result['OutType'] = self.out_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OutType') is not None:
+            self.out_type = m.get('OutType')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
         if m.get('Text') is not None:
             self.text = m.get('Text')
         if m.get('TokenizerId') is not None:
             self.tokenizer_id = m.get('TokenizerId')
-        if m.get('OutType') is not None:
-            self.out_type = m.get('OutType')
         return self
 
 
 class GetPosChEcomResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1654,18 +2107,18 @@ class GetPosChEcomResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1673,13 +2126,16 @@ class GetPosChEcomResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetPosChEcomResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1692,6 +2148,8 @@ class GetPosChEcomResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1700,6 +2158,8 @@ class GetPosChEcomResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetPosChEcomResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1709,15 +2169,133 @@ class GetPosChEcomResponse(TeaModel):
 class GetPosChGeneralRequest(TeaModel):
     def __init__(
         self,
+        out_type: str = None,
         service_code: str = None,
         text: str = None,
         tokenizer_id: str = None,
-        out_type: str = None,
     ):
+        self.out_type = out_type
         self.service_code = service_code
         self.text = text
         self.tokenizer_id = tokenizer_id
-        self.out_type = out_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.out_type is not None:
+            result['OutType'] = self.out_type
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.tokenizer_id is not None:
+            result['TokenizerId'] = self.tokenizer_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OutType') is not None:
+            self.out_type = m.get('OutType')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('TokenizerId') is not None:
+            self.tokenizer_id = m.get('TokenizerId')
+        return self
+
+
+class GetPosChGeneralResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetPosChGeneralResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPosChGeneralResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPosChGeneralResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPriceChEcomRequest(TeaModel):
+    def __init__(
+        self,
+        service_code: str = None,
+        text: str = None,
+    ):
+        self.service_code = service_code
+        self.text = text
 
     def validate(self):
         pass
@@ -1732,10 +2310,6 @@ class GetPosChGeneralRequest(TeaModel):
             result['ServiceCode'] = self.service_code
         if self.text is not None:
             result['Text'] = self.text
-        if self.tokenizer_id is not None:
-            result['TokenizerId'] = self.tokenizer_id
-        if self.out_type is not None:
-            result['OutType'] = self.out_type
         return result
 
     def from_map(self, m: dict = None):
@@ -1744,21 +2318,17 @@ class GetPosChGeneralRequest(TeaModel):
             self.service_code = m.get('ServiceCode')
         if m.get('Text') is not None:
             self.text = m.get('Text')
-        if m.get('TokenizerId') is not None:
-            self.tokenizer_id = m.get('TokenizerId')
-        if m.get('OutType') is not None:
-            self.out_type = m.get('OutType')
         return self
 
 
-class GetPosChGeneralResponseBody(TeaModel):
+class GetPriceChEcomResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1769,32 +2339,35 @@ class GetPosChGeneralResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
-class GetPosChGeneralResponse(TeaModel):
+class GetPriceChEcomResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: GetPosChGeneralResponseBody = None,
+        status_code: int = None,
+        body: GetPriceChEcomResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1807,6 +2380,8 @@ class GetPosChGeneralResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1815,8 +2390,10 @@ class GetPosChGeneralResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = GetPosChGeneralResponseBody()
+            temp_model = GetPriceChEcomResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1857,11 +2434,11 @@ class GetSaChGeneralRequest(TeaModel):
 class GetSaChGeneralResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1872,18 +2449,18 @@ class GetSaChGeneralResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1891,13 +2468,16 @@ class GetSaChGeneralResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetSaChGeneralResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1910,6 +2490,8 @@ class GetSaChGeneralResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1918,6 +2500,8 @@ class GetSaChGeneralResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSaChGeneralResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1927,13 +2511,13 @@ class GetSaChGeneralResponse(TeaModel):
 class GetSaSeaEcomRequest(TeaModel):
     def __init__(
         self,
+        language: str = None,
         service_code: str = None,
         text: str = None,
-        language: str = None,
     ):
+        self.language = language
         self.service_code = service_code
         self.text = text
-        self.language = language
 
     def validate(self):
         pass
@@ -1944,33 +2528,33 @@ class GetSaSeaEcomRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.language is not None:
+            result['Language'] = self.language
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
         if self.text is not None:
             result['Text'] = self.text
-        if self.language is not None:
-            result['Language'] = self.language
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
         if m.get('Text') is not None:
             self.text = m.get('Text')
-        if m.get('Language') is not None:
-            self.language = m.get('Language')
         return self
 
 
 class GetSaSeaEcomResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1981,18 +2565,18 @@ class GetSaSeaEcomResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2000,13 +2584,16 @@ class GetSaSeaEcomResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetSaSeaEcomResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2019,6 +2606,8 @@ class GetSaSeaEcomResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2027,6 +2616,8 @@ class GetSaSeaEcomResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSaSeaEcomResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2036,13 +2627,13 @@ class GetSaSeaEcomResponse(TeaModel):
 class GetSimilarityChMedicalRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
         origin_q: str = None,
         origin_t: str = None,
+        service_code: str = None,
     ):
-        self.service_code = service_code
         self.origin_q = origin_q
         self.origin_t = origin_t
+        self.service_code = service_code
 
     def validate(self):
         pass
@@ -2053,33 +2644,33 @@ class GetSimilarityChMedicalRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
         if self.origin_q is not None:
             result['OriginQ'] = self.origin_q
         if self.origin_t is not None:
             result['OriginT'] = self.origin_t
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
         if m.get('OriginQ') is not None:
             self.origin_q = m.get('OriginQ')
         if m.get('OriginT') is not None:
             self.origin_t = m.get('OriginT')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
         return self
 
 
 class GetSimilarityChMedicalResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -2090,18 +2681,18 @@ class GetSimilarityChMedicalResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2109,13 +2700,16 @@ class GetSimilarityChMedicalResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetSimilarityChMedicalResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2128,6 +2722,8 @@ class GetSimilarityChMedicalResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2136,6 +2732,8 @@ class GetSimilarityChMedicalResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSimilarityChMedicalResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2178,11 +2776,11 @@ class GetSummaryChEcomRequest(TeaModel):
 class GetSummaryChEcomResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -2193,18 +2791,18 @@ class GetSummaryChEcomResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2212,13 +2810,16 @@ class GetSummaryChEcomResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetSummaryChEcomResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2231,6 +2832,8 @@ class GetSummaryChEcomResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2239,6 +2842,8 @@ class GetSummaryChEcomResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSummaryChEcomResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2281,11 +2886,11 @@ class GetTcChEcomRequest(TeaModel):
 class GetTcChEcomResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -2296,18 +2901,18 @@ class GetTcChEcomResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2315,13 +2920,16 @@ class GetTcChEcomResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetTcChEcomResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2334,6 +2942,8 @@ class GetTcChEcomResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2342,6 +2952,8 @@ class GetTcChEcomResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTcChEcomResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2384,11 +2996,11 @@ class GetTcChGeneralRequest(TeaModel):
 class GetTcChGeneralResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -2399,18 +3011,18 @@ class GetTcChGeneralResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2418,13 +3030,16 @@ class GetTcChGeneralResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetTcChGeneralResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2437,6 +3052,8 @@ class GetTcChGeneralResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2445,6 +3062,8 @@ class GetTcChGeneralResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTcChGeneralResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2454,14 +3073,14 @@ class GetTcChGeneralResponse(TeaModel):
 class GetTsChEcomRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
         origin_q: str = None,
         origin_t: str = None,
+        service_code: str = None,
         type: str = None,
     ):
-        self.service_code = service_code
         self.origin_q = origin_q
         self.origin_t = origin_t
+        self.service_code = service_code
         self.type = type
 
     def validate(self):
@@ -2473,24 +3092,24 @@ class GetTsChEcomRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
         if self.origin_q is not None:
             result['OriginQ'] = self.origin_q
         if self.origin_t is not None:
             result['OriginT'] = self.origin_t
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
         if self.type is not None:
             result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
         if m.get('OriginQ') is not None:
             self.origin_q = m.get('OriginQ')
         if m.get('OriginT') is not None:
             self.origin_t = m.get('OriginT')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -2499,11 +3118,11 @@ class GetTsChEcomRequest(TeaModel):
 class GetTsChEcomResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -2514,18 +3133,18 @@ class GetTsChEcomResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2533,13 +3152,16 @@ class GetTsChEcomResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetTsChEcomResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2552,6 +3174,8 @@ class GetTsChEcomResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2560,6 +3184,8 @@ class GetTsChEcomResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTsChEcomResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2569,19 +3195,19 @@ class GetTsChEcomResponse(TeaModel):
 class GetWeChCommentRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
-        text: str = None,
-        size: str = None,
-        type: str = None,
         operation: str = None,
+        service_code: str = None,
+        size: str = None,
+        text: str = None,
         tokenizer_id: str = None,
+        type: str = None,
     ):
-        self.service_code = service_code
-        self.text = text
-        self.size = size
-        self.type = type
         self.operation = operation
+        self.service_code = service_code
+        self.size = size
+        self.text = text
         self.tokenizer_id = tokenizer_id
+        self.type = type
 
     def validate(self):
         pass
@@ -2592,45 +3218,45 @@ class GetWeChCommentRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.size is not None:
-            result['Size'] = self.size
-        if self.type is not None:
-            result['Type'] = self.type
         if self.operation is not None:
             result['Operation'] = self.operation
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.text is not None:
+            result['Text'] = self.text
         if self.tokenizer_id is not None:
             result['TokenizerId'] = self.tokenizer_id
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('Size') is not None:
-            self.size = m.get('Size')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
         if m.get('Operation') is not None:
             self.operation = m.get('Operation')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
         if m.get('TokenizerId') is not None:
             self.tokenizer_id = m.get('TokenizerId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
 class GetWeChCommentResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -2641,18 +3267,18 @@ class GetWeChCommentResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2660,13 +3286,16 @@ class GetWeChCommentResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetWeChCommentResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2679,6 +3308,8 @@ class GetWeChCommentResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2687,6 +3318,8 @@ class GetWeChCommentResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWeChCommentResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2696,19 +3329,19 @@ class GetWeChCommentResponse(TeaModel):
 class GetWeChEcomRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
-        text: str = None,
-        size: str = None,
-        type: str = None,
         operation: str = None,
+        service_code: str = None,
+        size: str = None,
+        text: str = None,
         tokenizer_id: str = None,
+        type: str = None,
     ):
-        self.service_code = service_code
-        self.text = text
-        self.size = size
-        self.type = type
         self.operation = operation
+        self.service_code = service_code
+        self.size = size
+        self.text = text
         self.tokenizer_id = tokenizer_id
+        self.type = type
 
     def validate(self):
         pass
@@ -2719,45 +3352,45 @@ class GetWeChEcomRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.size is not None:
-            result['Size'] = self.size
-        if self.type is not None:
-            result['Type'] = self.type
         if self.operation is not None:
             result['Operation'] = self.operation
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.text is not None:
+            result['Text'] = self.text
         if self.tokenizer_id is not None:
             result['TokenizerId'] = self.tokenizer_id
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('Size') is not None:
-            self.size = m.get('Size')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
         if m.get('Operation') is not None:
             self.operation = m.get('Operation')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
         if m.get('TokenizerId') is not None:
             self.tokenizer_id = m.get('TokenizerId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
 class GetWeChEcomResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -2768,18 +3401,18 @@ class GetWeChEcomResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2787,13 +3420,16 @@ class GetWeChEcomResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetWeChEcomResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2806,6 +3442,8 @@ class GetWeChEcomResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2814,6 +3452,8 @@ class GetWeChEcomResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWeChEcomResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2823,19 +3463,19 @@ class GetWeChEcomResponse(TeaModel):
 class GetWeChEntertainmentRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
-        text: str = None,
-        size: str = None,
-        type: str = None,
         operation: str = None,
+        service_code: str = None,
+        size: str = None,
+        text: str = None,
         tokenizer_id: str = None,
+        type: str = None,
     ):
-        self.service_code = service_code
-        self.text = text
-        self.size = size
-        self.type = type
         self.operation = operation
+        self.service_code = service_code
+        self.size = size
+        self.text = text
         self.tokenizer_id = tokenizer_id
+        self.type = type
 
     def validate(self):
         pass
@@ -2846,45 +3486,45 @@ class GetWeChEntertainmentRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.size is not None:
-            result['Size'] = self.size
-        if self.type is not None:
-            result['Type'] = self.type
         if self.operation is not None:
             result['Operation'] = self.operation
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.text is not None:
+            result['Text'] = self.text
         if self.tokenizer_id is not None:
             result['TokenizerId'] = self.tokenizer_id
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('Size') is not None:
-            self.size = m.get('Size')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
         if m.get('Operation') is not None:
             self.operation = m.get('Operation')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
         if m.get('TokenizerId') is not None:
             self.tokenizer_id = m.get('TokenizerId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
 class GetWeChEntertainmentResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -2895,18 +3535,18 @@ class GetWeChEntertainmentResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2914,13 +3554,16 @@ class GetWeChEntertainmentResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetWeChEntertainmentResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2933,6 +3576,8 @@ class GetWeChEntertainmentResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2941,6 +3586,8 @@ class GetWeChEntertainmentResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWeChEntertainmentResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2950,17 +3597,17 @@ class GetWeChEntertainmentResponse(TeaModel):
 class GetWeChGeneralRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
-        text: str = None,
-        size: str = None,
-        type: str = None,
         operation: str = None,
+        service_code: str = None,
+        size: str = None,
+        text: str = None,
+        type: str = None,
     ):
-        self.service_code = service_code
-        self.text = text
-        self.size = size
-        self.type = type
         self.operation = operation
+        self.service_code = service_code
+        self.size = size
+        self.text = text
+        self.type = type
 
     def validate(self):
         pass
@@ -2971,41 +3618,41 @@ class GetWeChGeneralRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.size is not None:
-            result['Size'] = self.size
-        if self.type is not None:
-            result['Type'] = self.type
         if self.operation is not None:
             result['Operation'] = self.operation
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('Size') is not None:
-            self.size = m.get('Size')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
         if m.get('Operation') is not None:
             self.operation = m.get('Operation')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
 class GetWeChGeneralResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -3016,18 +3663,18 @@ class GetWeChGeneralResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3035,13 +3682,16 @@ class GetWeChGeneralResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetWeChGeneralResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3054,6 +3704,8 @@ class GetWeChGeneralResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3062,6 +3714,8 @@ class GetWeChGeneralResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWeChGeneralResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3071,19 +3725,19 @@ class GetWeChGeneralResponse(TeaModel):
 class GetWeChSearchRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
-        text: str = None,
-        size: str = None,
-        type: str = None,
         operation: str = None,
+        service_code: str = None,
+        size: str = None,
+        text: str = None,
         tokenizer_id: str = None,
+        type: str = None,
     ):
-        self.service_code = service_code
-        self.text = text
-        self.size = size
-        self.type = type
         self.operation = operation
+        self.service_code = service_code
+        self.size = size
+        self.text = text
         self.tokenizer_id = tokenizer_id
+        self.type = type
 
     def validate(self):
         pass
@@ -3094,45 +3748,45 @@ class GetWeChSearchRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.size is not None:
-            result['Size'] = self.size
-        if self.type is not None:
-            result['Type'] = self.type
         if self.operation is not None:
             result['Operation'] = self.operation
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.text is not None:
+            result['Text'] = self.text
         if self.tokenizer_id is not None:
             result['TokenizerId'] = self.tokenizer_id
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('Size') is not None:
-            self.size = m.get('Size')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
         if m.get('Operation') is not None:
             self.operation = m.get('Operation')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
         if m.get('TokenizerId') is not None:
             self.tokenizer_id = m.get('TokenizerId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
 class GetWeChSearchResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -3143,18 +3797,18 @@ class GetWeChSearchResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3162,13 +3816,16 @@ class GetWeChSearchResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetWeChSearchResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3181,6 +3838,8 @@ class GetWeChSearchResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3189,6 +3848,8 @@ class GetWeChSearchResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWeChSearchResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3198,15 +3859,15 @@ class GetWeChSearchResponse(TeaModel):
 class GetWsChGeneralRequest(TeaModel):
     def __init__(
         self,
-        tokenizer_id: str = None,
-        text: str = None,
         out_type: str = None,
         service_code: str = None,
+        text: str = None,
+        tokenizer_id: str = None,
     ):
-        self.tokenizer_id = tokenizer_id
-        self.text = text
         self.out_type = out_type
         self.service_code = service_code
+        self.text = text
+        self.tokenizer_id = tokenizer_id
 
     def validate(self):
         pass
@@ -3217,37 +3878,37 @@ class GetWsChGeneralRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.tokenizer_id is not None:
-            result['TokenizerId'] = self.tokenizer_id
-        if self.text is not None:
-            result['Text'] = self.text
         if self.out_type is not None:
             result['OutType'] = self.out_type
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.tokenizer_id is not None:
+            result['TokenizerId'] = self.tokenizer_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TokenizerId') is not None:
-            self.tokenizer_id = m.get('TokenizerId')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
         if m.get('OutType') is not None:
             self.out_type = m.get('OutType')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('TokenizerId') is not None:
+            self.tokenizer_id = m.get('TokenizerId')
         return self
 
 
 class GetWsChGeneralResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -3258,18 +3919,18 @@ class GetWsChGeneralResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3277,13 +3938,16 @@ class GetWsChGeneralResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetWsChGeneralResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3296,6 +3960,8 @@ class GetWsChGeneralResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3304,6 +3970,8 @@ class GetWsChGeneralResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWsChGeneralResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3313,15 +3981,15 @@ class GetWsChGeneralResponse(TeaModel):
 class GetWsCustomizedChEcomCommentRequest(TeaModel):
     def __init__(
         self,
-        tokenizer_id: str = None,
-        text: str = None,
         out_type: str = None,
         service_code: str = None,
+        text: str = None,
+        tokenizer_id: str = None,
     ):
-        self.tokenizer_id = tokenizer_id
-        self.text = text
         self.out_type = out_type
         self.service_code = service_code
+        self.text = text
+        self.tokenizer_id = tokenizer_id
 
     def validate(self):
         pass
@@ -3332,37 +4000,37 @@ class GetWsCustomizedChEcomCommentRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.tokenizer_id is not None:
-            result['TokenizerId'] = self.tokenizer_id
-        if self.text is not None:
-            result['Text'] = self.text
         if self.out_type is not None:
             result['OutType'] = self.out_type
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.tokenizer_id is not None:
+            result['TokenizerId'] = self.tokenizer_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TokenizerId') is not None:
-            self.tokenizer_id = m.get('TokenizerId')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
         if m.get('OutType') is not None:
             self.out_type = m.get('OutType')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('TokenizerId') is not None:
+            self.tokenizer_id = m.get('TokenizerId')
         return self
 
 
 class GetWsCustomizedChEcomCommentResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -3373,18 +4041,18 @@ class GetWsCustomizedChEcomCommentResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3392,13 +4060,16 @@ class GetWsCustomizedChEcomCommentResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetWsCustomizedChEcomCommentResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3411,6 +4082,8 @@ class GetWsCustomizedChEcomCommentResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3419,6 +4092,8 @@ class GetWsCustomizedChEcomCommentResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWsCustomizedChEcomCommentResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3428,15 +4103,15 @@ class GetWsCustomizedChEcomCommentResponse(TeaModel):
 class GetWsCustomizedChEcomContentRequest(TeaModel):
     def __init__(
         self,
-        tokenizer_id: str = None,
-        text: str = None,
         out_type: str = None,
         service_code: str = None,
+        text: str = None,
+        tokenizer_id: str = None,
     ):
-        self.tokenizer_id = tokenizer_id
-        self.text = text
         self.out_type = out_type
         self.service_code = service_code
+        self.text = text
+        self.tokenizer_id = tokenizer_id
 
     def validate(self):
         pass
@@ -3447,37 +4122,37 @@ class GetWsCustomizedChEcomContentRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.tokenizer_id is not None:
-            result['TokenizerId'] = self.tokenizer_id
-        if self.text is not None:
-            result['Text'] = self.text
         if self.out_type is not None:
             result['OutType'] = self.out_type
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.tokenizer_id is not None:
+            result['TokenizerId'] = self.tokenizer_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TokenizerId') is not None:
-            self.tokenizer_id = m.get('TokenizerId')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
         if m.get('OutType') is not None:
             self.out_type = m.get('OutType')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('TokenizerId') is not None:
+            self.tokenizer_id = m.get('TokenizerId')
         return self
 
 
 class GetWsCustomizedChEcomContentResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -3488,18 +4163,18 @@ class GetWsCustomizedChEcomContentResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3507,13 +4182,16 @@ class GetWsCustomizedChEcomContentResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetWsCustomizedChEcomContentResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3526,6 +4204,8 @@ class GetWsCustomizedChEcomContentResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3534,6 +4214,8 @@ class GetWsCustomizedChEcomContentResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWsCustomizedChEcomContentResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3543,15 +4225,15 @@ class GetWsCustomizedChEcomContentResponse(TeaModel):
 class GetWsCustomizedChEcomTitleRequest(TeaModel):
     def __init__(
         self,
-        tokenizer_id: str = None,
-        text: str = None,
         out_type: str = None,
         service_code: str = None,
+        text: str = None,
+        tokenizer_id: str = None,
     ):
-        self.tokenizer_id = tokenizer_id
-        self.text = text
         self.out_type = out_type
         self.service_code = service_code
+        self.text = text
+        self.tokenizer_id = tokenizer_id
 
     def validate(self):
         pass
@@ -3562,37 +4244,37 @@ class GetWsCustomizedChEcomTitleRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.tokenizer_id is not None:
-            result['TokenizerId'] = self.tokenizer_id
-        if self.text is not None:
-            result['Text'] = self.text
         if self.out_type is not None:
             result['OutType'] = self.out_type
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.tokenizer_id is not None:
+            result['TokenizerId'] = self.tokenizer_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TokenizerId') is not None:
-            self.tokenizer_id = m.get('TokenizerId')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
         if m.get('OutType') is not None:
             self.out_type = m.get('OutType')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('TokenizerId') is not None:
+            self.tokenizer_id = m.get('TokenizerId')
         return self
 
 
 class GetWsCustomizedChEcomTitleResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -3603,18 +4285,18 @@ class GetWsCustomizedChEcomTitleResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3622,13 +4304,16 @@ class GetWsCustomizedChEcomTitleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetWsCustomizedChEcomTitleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3641,6 +4326,8 @@ class GetWsCustomizedChEcomTitleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3649,6 +4336,8 @@ class GetWsCustomizedChEcomTitleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWsCustomizedChEcomTitleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3658,15 +4347,15 @@ class GetWsCustomizedChEcomTitleResponse(TeaModel):
 class GetWsCustomizedChEntertainmentRequest(TeaModel):
     def __init__(
         self,
-        tokenizer_id: str = None,
-        text: str = None,
         out_type: str = None,
         service_code: str = None,
+        text: str = None,
+        tokenizer_id: str = None,
     ):
-        self.tokenizer_id = tokenizer_id
-        self.text = text
         self.out_type = out_type
         self.service_code = service_code
+        self.text = text
+        self.tokenizer_id = tokenizer_id
 
     def validate(self):
         pass
@@ -3677,37 +4366,37 @@ class GetWsCustomizedChEntertainmentRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.tokenizer_id is not None:
-            result['TokenizerId'] = self.tokenizer_id
-        if self.text is not None:
-            result['Text'] = self.text
         if self.out_type is not None:
             result['OutType'] = self.out_type
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.tokenizer_id is not None:
+            result['TokenizerId'] = self.tokenizer_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TokenizerId') is not None:
-            self.tokenizer_id = m.get('TokenizerId')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
         if m.get('OutType') is not None:
             self.out_type = m.get('OutType')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('TokenizerId') is not None:
+            self.tokenizer_id = m.get('TokenizerId')
         return self
 
 
 class GetWsCustomizedChEntertainmentResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -3718,18 +4407,18 @@ class GetWsCustomizedChEntertainmentResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3737,13 +4426,16 @@ class GetWsCustomizedChEntertainmentResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetWsCustomizedChEntertainmentResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3756,6 +4448,8 @@ class GetWsCustomizedChEntertainmentResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3764,6 +4458,8 @@ class GetWsCustomizedChEntertainmentResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWsCustomizedChEntertainmentResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3773,15 +4469,15 @@ class GetWsCustomizedChEntertainmentResponse(TeaModel):
 class GetWsCustomizedChGeneralRequest(TeaModel):
     def __init__(
         self,
-        tokenizer_id: str = None,
-        text: str = None,
         out_type: str = None,
         service_code: str = None,
+        text: str = None,
+        tokenizer_id: str = None,
     ):
-        self.tokenizer_id = tokenizer_id
-        self.text = text
         self.out_type = out_type
         self.service_code = service_code
+        self.text = text
+        self.tokenizer_id = tokenizer_id
 
     def validate(self):
         pass
@@ -3792,37 +4488,37 @@ class GetWsCustomizedChGeneralRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.tokenizer_id is not None:
-            result['TokenizerId'] = self.tokenizer_id
-        if self.text is not None:
-            result['Text'] = self.text
         if self.out_type is not None:
             result['OutType'] = self.out_type
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.tokenizer_id is not None:
+            result['TokenizerId'] = self.tokenizer_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TokenizerId') is not None:
-            self.tokenizer_id = m.get('TokenizerId')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
         if m.get('OutType') is not None:
             self.out_type = m.get('OutType')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('TokenizerId') is not None:
+            self.tokenizer_id = m.get('TokenizerId')
         return self
 
 
 class GetWsCustomizedChGeneralResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -3833,18 +4529,18 @@ class GetWsCustomizedChGeneralResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3852,13 +4548,16 @@ class GetWsCustomizedChGeneralResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetWsCustomizedChGeneralResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3871,6 +4570,8 @@ class GetWsCustomizedChGeneralResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3879,6 +4580,8 @@ class GetWsCustomizedChGeneralResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWsCustomizedChGeneralResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3888,15 +4591,15 @@ class GetWsCustomizedChGeneralResponse(TeaModel):
 class GetWsCustomizedChO2ORequest(TeaModel):
     def __init__(
         self,
-        tokenizer_id: str = None,
-        text: str = None,
         out_type: str = None,
         service_code: str = None,
+        text: str = None,
+        tokenizer_id: str = None,
     ):
-        self.tokenizer_id = tokenizer_id
-        self.text = text
         self.out_type = out_type
         self.service_code = service_code
+        self.text = text
+        self.tokenizer_id = tokenizer_id
 
     def validate(self):
         pass
@@ -3907,37 +4610,37 @@ class GetWsCustomizedChO2ORequest(TeaModel):
             return _map
 
         result = dict()
-        if self.tokenizer_id is not None:
-            result['TokenizerId'] = self.tokenizer_id
-        if self.text is not None:
-            result['Text'] = self.text
         if self.out_type is not None:
             result['OutType'] = self.out_type
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.tokenizer_id is not None:
+            result['TokenizerId'] = self.tokenizer_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TokenizerId') is not None:
-            self.tokenizer_id = m.get('TokenizerId')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
         if m.get('OutType') is not None:
             self.out_type = m.get('OutType')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('TokenizerId') is not None:
+            self.tokenizer_id = m.get('TokenizerId')
         return self
 
 
 class GetWsCustomizedChO2OResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -3948,18 +4651,18 @@ class GetWsCustomizedChO2OResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3967,13 +4670,16 @@ class GetWsCustomizedChO2OResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetWsCustomizedChO2OResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3986,6 +4692,8 @@ class GetWsCustomizedChO2OResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3994,6 +4702,8 @@ class GetWsCustomizedChO2OResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWsCustomizedChO2OResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4003,13 +4713,13 @@ class GetWsCustomizedChO2OResponse(TeaModel):
 class GetWsCustomizedSeaEcomRequest(TeaModel):
     def __init__(
         self,
+        language: str = None,
         service_code: str = None,
         text: str = None,
-        language: str = None,
     ):
+        self.language = language
         self.service_code = service_code
         self.text = text
-        self.language = language
 
     def validate(self):
         pass
@@ -4020,33 +4730,33 @@ class GetWsCustomizedSeaEcomRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.language is not None:
+            result['Language'] = self.language
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
         if self.text is not None:
             result['Text'] = self.text
-        if self.language is not None:
-            result['Language'] = self.language
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
         if m.get('Text') is not None:
             self.text = m.get('Text')
-        if m.get('Language') is not None:
-            self.language = m.get('Language')
         return self
 
 
 class GetWsCustomizedSeaEcomResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -4057,18 +4767,18 @@ class GetWsCustomizedSeaEcomResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4076,13 +4786,16 @@ class GetWsCustomizedSeaEcomResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetWsCustomizedSeaEcomResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4095,6 +4808,8 @@ class GetWsCustomizedSeaEcomResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4103,6 +4818,8 @@ class GetWsCustomizedSeaEcomResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWsCustomizedSeaEcomResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4112,13 +4829,13 @@ class GetWsCustomizedSeaEcomResponse(TeaModel):
 class GetWsCustomizedSeaGeneralRequest(TeaModel):
     def __init__(
         self,
+        language: str = None,
         service_code: str = None,
         text: str = None,
-        language: str = None,
     ):
+        self.language = language
         self.service_code = service_code
         self.text = text
-        self.language = language
 
     def validate(self):
         pass
@@ -4129,33 +4846,33 @@ class GetWsCustomizedSeaGeneralRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.language is not None:
+            result['Language'] = self.language
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
         if self.text is not None:
             result['Text'] = self.text
-        if self.language is not None:
-            result['Language'] = self.language
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
         if m.get('Text') is not None:
             self.text = m.get('Text')
-        if m.get('Language') is not None:
-            self.language = m.get('Language')
         return self
 
 
 class GetWsCustomizedSeaGeneralResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -4166,18 +4883,18 @@ class GetWsCustomizedSeaGeneralResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4185,13 +4902,16 @@ class GetWsCustomizedSeaGeneralResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetWsCustomizedSeaGeneralResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4204,6 +4924,8 @@ class GetWsCustomizedSeaGeneralResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4212,6 +4934,8 @@ class GetWsCustomizedSeaGeneralResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWsCustomizedSeaGeneralResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4221,11 +4945,11 @@ class GetWsCustomizedSeaGeneralResponse(TeaModel):
 class OpenAlinlpServiceResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         order_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.order_id = order_id
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -4236,18 +4960,18 @@ class OpenAlinlpServiceResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4255,13 +4979,16 @@ class OpenAlinlpServiceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OpenAlinlpServiceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4274,6 +5001,8 @@ class OpenAlinlpServiceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4282,6 +5011,8 @@ class OpenAlinlpServiceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OpenAlinlpServiceResponseBody()
             self.body = temp_model.from_map(m['body'])

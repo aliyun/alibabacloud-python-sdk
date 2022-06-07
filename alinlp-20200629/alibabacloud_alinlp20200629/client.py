@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_alinlp20200629 import models as alinlp_20200629_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -40,14 +41,177 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def get_brand_ch_ecom_with_options(
+        self,
+        request: alinlp_20200629_models.GetBrandChEcomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.GetBrandChEcomResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetBrandChEcom',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.GetBrandChEcomResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_brand_ch_ecom_with_options_async(
+        self,
+        request: alinlp_20200629_models.GetBrandChEcomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.GetBrandChEcomResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetBrandChEcom',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.GetBrandChEcomResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_brand_ch_ecom(
+        self,
+        request: alinlp_20200629_models.GetBrandChEcomRequest,
+    ) -> alinlp_20200629_models.GetBrandChEcomResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_brand_ch_ecom_with_options(request, runtime)
+
+    async def get_brand_ch_ecom_async(
+        self,
+        request: alinlp_20200629_models.GetBrandChEcomRequest,
+    ) -> alinlp_20200629_models.GetBrandChEcomResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_brand_ch_ecom_with_options_async(request, runtime)
+
+    def get_cate_ch_ecom_with_options(
+        self,
+        request: alinlp_20200629_models.GetCateChEcomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.GetCateChEcomResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCateChEcom',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.GetCateChEcomResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cate_ch_ecom_with_options_async(
+        self,
+        request: alinlp_20200629_models.GetCateChEcomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.GetCateChEcomResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCateChEcom',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.GetCateChEcomResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cate_ch_ecom(
+        self,
+        request: alinlp_20200629_models.GetCateChEcomRequest,
+    ) -> alinlp_20200629_models.GetCateChEcomResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_cate_ch_ecom_with_options(request, runtime)
+
+    async def get_cate_ch_ecom_async(
+        self,
+        request: alinlp_20200629_models.GetCateChEcomRequest,
+    ) -> alinlp_20200629_models.GetCateChEcomResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_cate_ch_ecom_with_options_async(request, runtime)
+
     def get_check_duplication_ch_medical_with_options(
         self,
         request: alinlp_20200629_models.GetCheckDuplicationChMedicalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetCheckDuplicationChMedicalResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.origin_q):
+            body['OriginQ'] = request.origin_q
+        if not UtilClient.is_unset(request.origin_t):
+            body['OriginT'] = request.origin_t
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetCheckDuplicationChMedical',
@@ -71,8 +235,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetCheckDuplicationChMedicalResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.origin_q):
+            body['OriginQ'] = request.origin_q
+        if not UtilClient.is_unset(request.origin_t):
+            body['OriginT'] = request.origin_t
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetCheckDuplicationChMedical',
@@ -110,8 +281,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetDiagnosisChMedicalResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetDiagnosisChMedical',
@@ -135,8 +311,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetDiagnosisChMedicalResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetDiagnosisChMedical',
@@ -174,8 +355,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetDpChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetDpChEcom',
@@ -199,8 +385,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetDpChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetDpChEcom',
@@ -238,8 +429,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetDpChGeneralCTBResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetDpChGeneralCTB',
@@ -263,8 +459,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetDpChGeneralCTBResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetDpChGeneralCTB',
@@ -302,8 +503,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetDpChGeneralStanfordResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetDpChGeneralStanford',
@@ -327,8 +533,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetDpChGeneralStanfordResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetDpChGeneralStanford',
@@ -366,8 +577,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetEcChGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetEcChGeneral',
@@ -391,8 +607,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetEcChGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetEcChGeneral',
@@ -430,8 +651,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetEcEnGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetEcEnGeneral',
@@ -455,8 +681,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetEcEnGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetEcEnGeneral',
@@ -488,14 +719,97 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_ec_en_general_with_options_async(request, runtime)
 
+    def get_item_pub_ch_ecom_with_options(
+        self,
+        request: alinlp_20200629_models.GetItemPubChEcomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.GetItemPubChEcomResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetItemPubChEcom',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.GetItemPubChEcomResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_item_pub_ch_ecom_with_options_async(
+        self,
+        request: alinlp_20200629_models.GetItemPubChEcomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.GetItemPubChEcomResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetItemPubChEcom',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.GetItemPubChEcomResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_item_pub_ch_ecom(
+        self,
+        request: alinlp_20200629_models.GetItemPubChEcomRequest,
+    ) -> alinlp_20200629_models.GetItemPubChEcomResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_item_pub_ch_ecom_with_options(request, runtime)
+
+    async def get_item_pub_ch_ecom_async(
+        self,
+        request: alinlp_20200629_models.GetItemPubChEcomRequest,
+    ) -> alinlp_20200629_models.GetItemPubChEcomResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_item_pub_ch_ecom_with_options_async(request, runtime)
+
     def get_keyword_ch_ecom_with_options(
         self,
         request: alinlp_20200629_models.GetKeywordChEcomRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetKeywordChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetKeywordChEcom',
@@ -519,8 +833,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetKeywordChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetKeywordChEcom',
@@ -558,8 +877,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetKeywordEnEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetKeywordEnEcom',
@@ -583,8 +907,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetKeywordEnEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetKeywordEnEcom',
@@ -622,8 +951,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetMedicineChMedicalResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.factory):
+            body['Factory'] = request.factory
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.specification):
+            body['Specification'] = request.specification
+        if not UtilClient.is_unset(request.unit):
+            body['Unit'] = request.unit
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetMedicineChMedical',
@@ -647,8 +987,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetMedicineChMedicalResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.factory):
+            body['Factory'] = request.factory
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.specification):
+            body['Specification'] = request.specification
+        if not UtilClient.is_unset(request.unit):
+            body['Unit'] = request.unit
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetMedicineChMedical',
@@ -686,8 +1037,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetNerChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.lexer_id):
+            body['LexerId'] = request.lexer_id
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetNerChEcom',
@@ -711,8 +1069,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetNerChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.lexer_id):
+            body['LexerId'] = request.lexer_id
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetNerChEcom',
@@ -750,8 +1115,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetNerChMedicalResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetNerChMedical',
@@ -775,8 +1145,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetNerChMedicalResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetNerChMedical',
@@ -814,8 +1189,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetNerCustomizedChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.lexer_id):
+            body['LexerId'] = request.lexer_id
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetNerCustomizedChEcom',
@@ -839,8 +1221,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetNerCustomizedChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.lexer_id):
+            body['LexerId'] = request.lexer_id
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetNerCustomizedChEcom',
@@ -878,8 +1267,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetNerCustomizedSeaEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetNerCustomizedSeaEcom',
@@ -903,8 +1299,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetNerCustomizedSeaEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetNerCustomizedSeaEcom',
@@ -942,8 +1345,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetOperationChMedicalResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetOperationChMedical',
@@ -967,8 +1375,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetOperationChMedicalResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetOperationChMedical',
@@ -1006,8 +1419,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetPosChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetPosChEcom',
@@ -1031,8 +1453,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetPosChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetPosChEcom',
@@ -1070,8 +1501,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetPosChGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetPosChGeneral',
@@ -1095,8 +1535,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetPosChGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetPosChGeneral',
@@ -1128,14 +1577,93 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_pos_ch_general_with_options_async(request, runtime)
 
+    def get_price_ch_ecom_with_options(
+        self,
+        request: alinlp_20200629_models.GetPriceChEcomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.GetPriceChEcomResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetPriceChEcom',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.GetPriceChEcomResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_price_ch_ecom_with_options_async(
+        self,
+        request: alinlp_20200629_models.GetPriceChEcomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.GetPriceChEcomResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetPriceChEcom',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.GetPriceChEcomResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_price_ch_ecom(
+        self,
+        request: alinlp_20200629_models.GetPriceChEcomRequest,
+    ) -> alinlp_20200629_models.GetPriceChEcomResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_price_ch_ecom_with_options(request, runtime)
+
+    async def get_price_ch_ecom_async(
+        self,
+        request: alinlp_20200629_models.GetPriceChEcomRequest,
+    ) -> alinlp_20200629_models.GetPriceChEcomResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_price_ch_ecom_with_options_async(request, runtime)
+
     def get_sa_ch_general_with_options(
         self,
         request: alinlp_20200629_models.GetSaChGeneralRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetSaChGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetSaChGeneral',
@@ -1159,8 +1687,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetSaChGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetSaChGeneral',
@@ -1198,8 +1731,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetSaSeaEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetSaSeaEcom',
@@ -1223,8 +1763,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetSaSeaEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetSaSeaEcom',
@@ -1262,8 +1809,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetSimilarityChMedicalResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.origin_q):
+            body['OriginQ'] = request.origin_q
+        if not UtilClient.is_unset(request.origin_t):
+            body['OriginT'] = request.origin_t
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetSimilarityChMedical',
@@ -1287,8 +1841,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetSimilarityChMedicalResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.origin_q):
+            body['OriginQ'] = request.origin_q
+        if not UtilClient.is_unset(request.origin_t):
+            body['OriginT'] = request.origin_t
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetSimilarityChMedical',
@@ -1326,8 +1887,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetSummaryChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetSummaryChEcom',
@@ -1351,8 +1917,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetSummaryChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetSummaryChEcom',
@@ -1390,8 +1961,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetTcChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetTcChEcom',
@@ -1415,8 +1991,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetTcChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetTcChEcom',
@@ -1454,8 +2035,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetTcChGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetTcChGeneral',
@@ -1479,8 +2065,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetTcChGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetTcChGeneral',
@@ -1518,8 +2109,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetTsChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.origin_q):
+            body['OriginQ'] = request.origin_q
+        if not UtilClient.is_unset(request.origin_t):
+            body['OriginT'] = request.origin_t
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetTsChEcom',
@@ -1543,8 +2143,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetTsChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.origin_q):
+            body['OriginQ'] = request.origin_q
+        if not UtilClient.is_unset(request.origin_t):
+            body['OriginT'] = request.origin_t
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetTsChEcom',
@@ -1582,8 +2191,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWeChCommentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWeChComment',
@@ -1607,8 +2229,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWeChCommentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWeChComment',
@@ -1646,8 +2281,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWeChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWeChEcom',
@@ -1671,8 +2319,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWeChEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWeChEcom',
@@ -1710,8 +2371,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWeChEntertainmentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWeChEntertainment',
@@ -1735,8 +2409,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWeChEntertainmentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWeChEntertainment',
@@ -1774,8 +2461,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWeChGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWeChGeneral',
@@ -1799,8 +2497,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWeChGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWeChGeneral',
@@ -1838,8 +2547,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWeChSearchResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWeChSearch',
@@ -1863,8 +2585,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWeChSearchResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWeChSearch',
@@ -1902,8 +2637,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsChGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsChGeneral',
@@ -1927,8 +2671,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsChGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsChGeneral',
@@ -1966,8 +2719,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedChEcomCommentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedChEcomComment',
@@ -1991,8 +2753,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedChEcomCommentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedChEcomComment',
@@ -2030,8 +2801,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedChEcomContentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedChEcomContent',
@@ -2055,8 +2835,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedChEcomContentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedChEcomContent',
@@ -2094,8 +2883,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedChEcomTitleResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedChEcomTitle',
@@ -2119,8 +2917,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedChEcomTitleResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedChEcomTitle',
@@ -2158,8 +2965,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedChEntertainmentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedChEntertainment',
@@ -2183,8 +2999,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedChEntertainmentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedChEntertainment',
@@ -2222,8 +3047,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedChGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedChGeneral',
@@ -2247,8 +3081,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedChGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedChGeneral',
@@ -2286,8 +3129,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedChO2OResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedChO2O',
@@ -2311,8 +3163,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedChO2OResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_type):
+            body['OutType'] = request.out_type
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.tokenizer_id):
+            body['TokenizerId'] = request.tokenizer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedChO2O',
@@ -2350,8 +3211,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedSeaEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedSeaEcom',
@@ -2375,8 +3243,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedSeaEcomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedSeaEcom',
@@ -2414,8 +3289,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedSeaGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedSeaGeneral',
@@ -2439,8 +3321,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alinlp_20200629_models.GetWsCustomizedSeaGeneralResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetWsCustomizedSeaGeneral',
@@ -2485,7 +3374,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2506,7 +3395,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
