@@ -21,6 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-1': 'ice.aliyuncs.com',
@@ -106,8 +107,10 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.AddEditingProjectMaterialsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaterialMaps'] = request.material_maps
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.material_maps):
+            query['MaterialMaps'] = request.material_maps
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -134,8 +137,10 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.AddEditingProjectMaterialsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaterialMaps'] = request.material_maps
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.material_maps):
+            query['MaterialMaps'] = request.material_maps
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -176,7 +181,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.AddFavoritePublicMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -203,7 +209,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.AddFavoritePublicMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -244,14 +251,22 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.AddTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['CoverUrl'] = request.cover_url
-        query['Name'] = request.name
-        query['PreviewMedia'] = request.preview_media
-        query['RelatedMediaids'] = request.related_mediaids
-        query['Source'] = request.source
-        query['Status'] = request.status
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverUrl'] = request.cover_url
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.preview_media):
+            query['PreviewMedia'] = request.preview_media
+        if not UtilClient.is_unset(request.related_mediaids):
+            query['RelatedMediaids'] = request.related_mediaids
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -278,14 +293,22 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.AddTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['CoverUrl'] = request.cover_url
-        query['Name'] = request.name
-        query['PreviewMedia'] = request.preview_media
-        query['RelatedMediaids'] = request.related_mediaids
-        query['Source'] = request.source
-        query['Status'] = request.status
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverUrl'] = request.cover_url
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.preview_media):
+            query['PreviewMedia'] = request.preview_media
+        if not UtilClient.is_unset(request.related_mediaids):
+            query['RelatedMediaids'] = request.related_mediaids
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -326,8 +349,10 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.BatchGetMediaInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AdditionType'] = request.addition_type
-        query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.addition_type):
+            query['AdditionType'] = request.addition_type
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -354,8 +379,10 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.BatchGetMediaInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AdditionType'] = request.addition_type
-        query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.addition_type):
+            query['AdditionType'] = request.addition_type
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -396,7 +423,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.CancelFavoritePublicMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -423,7 +451,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.CancelFavoritePublicMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -464,15 +493,24 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.CreateEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessConfig'] = request.business_config
-        query['ClipsParam'] = request.clips_param
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['MaterialMaps'] = request.material_maps
-        query['ProjectType'] = request.project_type
-        query['TemplateId'] = request.template_id
-        query['Timeline'] = request.timeline
-        query['Title'] = request.title
+        if not UtilClient.is_unset(request.business_config):
+            query['BusinessConfig'] = request.business_config
+        if not UtilClient.is_unset(request.clips_param):
+            query['ClipsParam'] = request.clips_param
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.material_maps):
+            query['MaterialMaps'] = request.material_maps
+        if not UtilClient.is_unset(request.project_type):
+            query['ProjectType'] = request.project_type
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.timeline):
+            query['Timeline'] = request.timeline
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -499,15 +537,24 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.CreateEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessConfig'] = request.business_config
-        query['ClipsParam'] = request.clips_param
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['MaterialMaps'] = request.material_maps
-        query['ProjectType'] = request.project_type
-        query['TemplateId'] = request.template_id
-        query['Timeline'] = request.timeline
-        query['Title'] = request.title
+        if not UtilClient.is_unset(request.business_config):
+            query['BusinessConfig'] = request.business_config
+        if not UtilClient.is_unset(request.clips_param):
+            query['ClipsParam'] = request.clips_param
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.material_maps):
+            query['MaterialMaps'] = request.material_maps
+        if not UtilClient.is_unset(request.project_type):
+            query['ProjectType'] = request.project_type
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.timeline):
+            query['Timeline'] = request.timeline
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -548,9 +595,12 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeleteEditingProjectMaterialsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaterialIds'] = request.material_ids
-        query['MaterialType'] = request.material_type
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.material_ids):
+            query['MaterialIds'] = request.material_ids
+        if not UtilClient.is_unset(request.material_type):
+            query['MaterialType'] = request.material_type
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -577,9 +627,12 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeleteEditingProjectMaterialsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaterialIds'] = request.material_ids
-        query['MaterialType'] = request.material_type
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.material_ids):
+            query['MaterialIds'] = request.material_ids
+        if not UtilClient.is_unset(request.material_type):
+            query['MaterialType'] = request.material_type
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -620,7 +673,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeleteEditingProjectsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectIds'] = request.project_ids
+        if not UtilClient.is_unset(request.project_ids):
+            query['ProjectIds'] = request.project_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -647,7 +701,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeleteEditingProjectsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectIds'] = request.project_ids
+        if not UtilClient.is_unset(request.project_ids):
+            query['ProjectIds'] = request.project_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -688,8 +743,10 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeleteMediaInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InputURLs'] = request.input_urls
-        query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.input_urls):
+            query['InputURLs'] = request.input_urls
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -716,8 +773,10 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeleteMediaInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InputURLs'] = request.input_urls
-        query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.input_urls):
+            query['InputURLs'] = request.input_urls
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -758,7 +817,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeleteSmartJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -785,7 +845,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeleteSmartJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -885,19 +946,24 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_template_with_options_async(request, runtime)
 
-    def describe_ice_product_status_with_options(
+    def get_client_config_with_options(
         self,
-        request: ice20201109_models.DescribeIceProductStatusRequest,
+        request: ice20201109_models.GetClientConfigRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeIceProductStatusResponse:
+    ) -> ice20201109_models.GetClientConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.bundle_id):
+            query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.pkg_name):
+            query['PkgName'] = request.pkg_name
+        if not UtilClient.is_unset(request.pkg_signature):
+            query['PkgSignature'] = request.pkg_signature
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribeIceProductStatus',
+            action='GetClientConfig',
             version='2020-11-09',
             protocol='HTTPS',
             pathname='/',
@@ -908,23 +974,28 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ice20201109_models.DescribeIceProductStatusResponse(),
+            ice20201109_models.GetClientConfigResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def describe_ice_product_status_with_options_async(
+    async def get_client_config_with_options_async(
         self,
-        request: ice20201109_models.DescribeIceProductStatusRequest,
+        request: ice20201109_models.GetClientConfigRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeIceProductStatusResponse:
+    ) -> ice20201109_models.GetClientConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.bundle_id):
+            query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.pkg_name):
+            query['PkgName'] = request.pkg_name
+        if not UtilClient.is_unset(request.pkg_signature):
+            query['PkgSignature'] = request.pkg_signature
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribeIceProductStatus',
+            action='GetClientConfig',
             version='2020-11-09',
             protocol='HTTPS',
             pathname='/',
@@ -935,169 +1006,28 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ice20201109_models.DescribeIceProductStatusResponse(),
+            ice20201109_models.GetClientConfigResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_ice_product_status(
+    def get_client_config(
         self,
-        request: ice20201109_models.DescribeIceProductStatusRequest,
-    ) -> ice20201109_models.DescribeIceProductStatusResponse:
+        request: ice20201109_models.GetClientConfigRequest,
+    ) -> ice20201109_models.GetClientConfigResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_ice_product_status_with_options(request, runtime)
+        return self.get_client_config_with_options(request, runtime)
 
-    async def describe_ice_product_status_async(
+    async def get_client_config_async(
         self,
-        request: ice20201109_models.DescribeIceProductStatusRequest,
-    ) -> ice20201109_models.DescribeIceProductStatusResponse:
+        request: ice20201109_models.GetClientConfigRequest,
+    ) -> ice20201109_models.GetClientConfigResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_ice_product_status_with_options_async(request, runtime)
-
-    def describe_material_package_info_with_options(
-        self,
-        request: ice20201109_models.DescribeMaterialPackageInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeMaterialPackageInfoResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['MaterialPackageId'] = request.material_package_id
-        query['MaterialPackageType'] = request.material_package_type
-        query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeMaterialPackageInfo',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeMaterialPackageInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_material_package_info_with_options_async(
-        self,
-        request: ice20201109_models.DescribeMaterialPackageInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeMaterialPackageInfoResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['MaterialPackageId'] = request.material_package_id
-        query['MaterialPackageType'] = request.material_package_type
-        query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeMaterialPackageInfo',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeMaterialPackageInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_material_package_info(
-        self,
-        request: ice20201109_models.DescribeMaterialPackageInfoRequest,
-    ) -> ice20201109_models.DescribeMaterialPackageInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_material_package_info_with_options(request, runtime)
-
-    async def describe_material_package_info_async(
-        self,
-        request: ice20201109_models.DescribeMaterialPackageInfoRequest,
-    ) -> ice20201109_models.DescribeMaterialPackageInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_material_package_info_with_options_async(request, runtime)
-
-    def describe_related_authorization_status_with_options(
-        self,
-        request: ice20201109_models.DescribeRelatedAuthorizationStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeRelatedAuthorizationStatusResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeRelatedAuthorizationStatus',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeRelatedAuthorizationStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_related_authorization_status_with_options_async(
-        self,
-        request: ice20201109_models.DescribeRelatedAuthorizationStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeRelatedAuthorizationStatusResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeRelatedAuthorizationStatus',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeRelatedAuthorizationStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_related_authorization_status(
-        self,
-        request: ice20201109_models.DescribeRelatedAuthorizationStatusRequest,
-    ) -> ice20201109_models.DescribeRelatedAuthorizationStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_related_authorization_status_with_options(request, runtime)
-
-    async def describe_related_authorization_status_async(
-        self,
-        request: ice20201109_models.DescribeRelatedAuthorizationStatusRequest,
-    ) -> ice20201109_models.DescribeRelatedAuthorizationStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_related_authorization_status_with_options_async(request, runtime)
+        return await self.get_client_config_with_options_async(request, runtime)
 
     def get_default_storage_location_with_options(
         self,
-        request: ice20201109_models.GetDefaultStorageLocationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetDefaultStorageLocationResponse:
-        UtilClient.validate_model(request)
-        query = {}
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetDefaultStorageLocation',
@@ -1117,11 +1047,8 @@ class Client(OpenApiClient):
 
     async def get_default_storage_location_with_options_async(
         self,
-        request: ice20201109_models.GetDefaultStorageLocationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetDefaultStorageLocationResponse:
-        UtilClient.validate_model(request)
-        query = {}
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetDefaultStorageLocation',
@@ -1139,19 +1066,13 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_default_storage_location(
-        self,
-        request: ice20201109_models.GetDefaultStorageLocationRequest,
-    ) -> ice20201109_models.GetDefaultStorageLocationResponse:
+    def get_default_storage_location(self) -> ice20201109_models.GetDefaultStorageLocationResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_default_storage_location_with_options(request, runtime)
+        return self.get_default_storage_location_with_options(runtime)
 
-    async def get_default_storage_location_async(
-        self,
-        request: ice20201109_models.GetDefaultStorageLocationRequest,
-    ) -> ice20201109_models.GetDefaultStorageLocationResponse:
+    async def get_default_storage_location_async(self) -> ice20201109_models.GetDefaultStorageLocationResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_default_storage_location_with_options_async(request, runtime)
+        return await self.get_default_storage_location_with_options_async(runtime)
 
     def get_editing_project_with_options(
         self,
@@ -1160,7 +1081,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1187,7 +1109,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1228,7 +1151,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1255,7 +1179,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1291,11 +1216,8 @@ class Client(OpenApiClient):
 
     def get_event_callback_with_options(
         self,
-        request: ice20201109_models.GetEventCallbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetEventCallbackResponse:
-        UtilClient.validate_model(request)
-        query = {}
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetEventCallback',
@@ -1315,11 +1237,8 @@ class Client(OpenApiClient):
 
     async def get_event_callback_with_options_async(
         self,
-        request: ice20201109_models.GetEventCallbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetEventCallbackResponse:
-        UtilClient.validate_model(request)
-        query = {}
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetEventCallback',
@@ -1337,19 +1256,13 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_event_callback(
-        self,
-        request: ice20201109_models.GetEventCallbackRequest,
-    ) -> ice20201109_models.GetEventCallbackResponse:
+    def get_event_callback(self) -> ice20201109_models.GetEventCallbackResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_event_callback_with_options(request, runtime)
+        return self.get_event_callback_with_options(runtime)
 
-    async def get_event_callback_async(
-        self,
-        request: ice20201109_models.GetEventCallbackRequest,
-    ) -> ice20201109_models.GetEventCallbackResponse:
+    async def get_event_callback_async(self) -> ice20201109_models.GetEventCallbackResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_event_callback_with_options_async(request, runtime)
+        return await self.get_event_callback_with_options_async(runtime)
 
     def get_live_editing_index_file_with_options(
         self,
@@ -1424,7 +1337,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetLiveEditingJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1451,7 +1365,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetLiveEditingJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1492,9 +1407,12 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetMediaInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InputURL'] = request.input_url
-        query['MediaId'] = request.media_id
-        query['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.input_url):
+            query['InputURL'] = request.input_url
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.output_type):
+            query['OutputType'] = request.output_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1521,9 +1439,12 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetMediaInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InputURL'] = request.input_url
-        query['MediaId'] = request.media_id
-        query['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.input_url):
+            query['InputURL'] = request.input_url
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.output_type):
+            query['OutputType'] = request.output_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1630,7 +1551,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetPublicMediaInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1657,7 +1579,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetPublicMediaInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1896,8 +1819,10 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.ListAllPublicMediaTagsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessType'] = request.business_type
-        query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1907,7 +1832,7 @@ class Client(OpenApiClient):
             protocol='HTTPS',
             pathname='/',
             method='POST',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='RPC',
             req_body_type='formData',
             body_type='json'
@@ -1924,8 +1849,10 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.ListAllPublicMediaTagsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessType'] = request.business_type
-        query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1935,7 +1862,7 @@ class Client(OpenApiClient):
             protocol='HTTPS',
             pathname='/',
             method='POST',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='RPC',
             req_body_type='formData',
             body_type='json'
@@ -1966,17 +1893,30 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.ListMediaBasicInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessType'] = request.business_type
-        query['Category'] = request.category
-        query['EndTime'] = request.end_time
-        query['IncludeFileBasicInfo'] = request.include_file_basic_info
-        query['MaxResults'] = request.max_results
-        query['MediaType'] = request.media_type
-        query['NextToken'] = request.next_token
-        query['SortBy'] = request.sort_by
-        query['Source'] = request.source
-        query['StartTime'] = request.start_time
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.include_file_basic_info):
+            query['IncludeFileBasicInfo'] = request.include_file_basic_info
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2003,17 +1943,30 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.ListMediaBasicInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessType'] = request.business_type
-        query['Category'] = request.category
-        query['EndTime'] = request.end_time
-        query['IncludeFileBasicInfo'] = request.include_file_basic_info
-        query['MaxResults'] = request.max_results
-        query['MediaType'] = request.media_type
-        query['NextToken'] = request.next_token
-        query['SortBy'] = request.sort_by
-        query['Source'] = request.source
-        query['StartTime'] = request.start_time
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.include_file_basic_info):
+            query['IncludeFileBasicInfo'] = request.include_file_basic_info
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2047,74 +2000,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_media_basic_infos_with_options_async(request, runtime)
 
-    def list_media_producing_jobs_with_options(
-        self,
-        request: ice20201109_models.ListMediaProducingJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.ListMediaProducingJobsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListMediaProducingJobs',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.ListMediaProducingJobsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_media_producing_jobs_with_options_async(
-        self,
-        request: ice20201109_models.ListMediaProducingJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.ListMediaProducingJobsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListMediaProducingJobs',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.ListMediaProducingJobsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_media_producing_jobs(
-        self,
-        request: ice20201109_models.ListMediaProducingJobsRequest,
-    ) -> ice20201109_models.ListMediaProducingJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_media_producing_jobs_with_options(request, runtime)
-
-    async def list_media_producing_jobs_async(
-        self,
-        request: ice20201109_models.ListMediaProducingJobsRequest,
-    ) -> ice20201109_models.ListMediaProducingJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_media_producing_jobs_with_options_async(request, runtime)
-
     def list_public_media_basic_infos_with_options(
         self,
         request: ice20201109_models.ListPublicMediaBasicInfosRequest,
@@ -2122,10 +2007,14 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.ListPublicMediaBasicInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IncludeFileBasicInfo'] = request.include_file_basic_info
-        query['MaxResults'] = request.max_results
-        query['MediaTagId'] = request.media_tag_id
-        query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.include_file_basic_info):
+            query['IncludeFileBasicInfo'] = request.include_file_basic_info
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.media_tag_id):
+            query['MediaTagId'] = request.media_tag_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2135,7 +2024,7 @@ class Client(OpenApiClient):
             protocol='HTTPS',
             pathname='/',
             method='POST',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='RPC',
             req_body_type='formData',
             body_type='json'
@@ -2152,10 +2041,14 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.ListPublicMediaBasicInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IncludeFileBasicInfo'] = request.include_file_basic_info
-        query['MaxResults'] = request.max_results
-        query['MediaTagId'] = request.media_tag_id
-        query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.include_file_basic_info):
+            query['IncludeFileBasicInfo'] = request.include_file_basic_info
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.media_tag_id):
+            query['MediaTagId'] = request.media_tag_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2165,7 +2058,7 @@ class Client(OpenApiClient):
             protocol='HTTPS',
             pathname='/',
             method='POST',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='RPC',
             req_body_type='formData',
             body_type='json'
@@ -2255,72 +2148,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_smart_jobs_with_options_async(request, runtime)
 
-    def list_sys_templates_with_options(
-        self,
-        request: ice20201109_models.ListSysTemplatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.ListSysTemplatesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListSysTemplates',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.ListSysTemplatesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_sys_templates_with_options_async(
-        self,
-        request: ice20201109_models.ListSysTemplatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.ListSysTemplatesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListSysTemplates',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.ListSysTemplatesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_sys_templates(
-        self,
-        request: ice20201109_models.ListSysTemplatesRequest,
-    ) -> ice20201109_models.ListSysTemplatesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_sys_templates_with_options(request, runtime)
-
-    async def list_sys_templates_async(
-        self,
-        request: ice20201109_models.ListSysTemplatesRequest,
-    ) -> ice20201109_models.ListSysTemplatesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_sys_templates_with_options_async(request, runtime)
-
     def list_templates_with_options(
         self,
         request: ice20201109_models.ListTemplatesRequest,
@@ -2328,11 +2155,20 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CreateSource'] = request.create_source
-        query['Keyword'] = request.keyword
-        query['SortType'] = request.sort_type
-        query['Status'] = request.status
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.create_source):
+            query['CreateSource'] = request.create_source
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2359,11 +2195,20 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CreateSource'] = request.create_source
-        query['Keyword'] = request.keyword
-        query['SortType'] = request.sort_type
-        query['Status'] = request.status
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.create_source):
+            query['CreateSource'] = request.create_source
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2404,19 +2249,32 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.RegisterMediaInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessType'] = request.business_type
-        query['Category'] = request.category
-        query['ClientToken'] = request.client_token
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['DynamicMetaDataList'] = request.dynamic_meta_data_list
-        query['InputURL'] = request.input_url
-        query['MediaTags'] = request.media_tags
-        query['MediaType'] = request.media_type
-        query['Overwrite'] = request.overwrite
-        query['RegisterConfig'] = request.register_config
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dynamic_meta_data_list):
+            query['DynamicMetaDataList'] = request.dynamic_meta_data_list
+        if not UtilClient.is_unset(request.input_url):
+            query['InputURL'] = request.input_url
+        if not UtilClient.is_unset(request.media_tags):
+            query['MediaTags'] = request.media_tags
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.overwrite):
+            query['Overwrite'] = request.overwrite
+        if not UtilClient.is_unset(request.register_config):
+            query['RegisterConfig'] = request.register_config
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2443,19 +2301,32 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.RegisterMediaInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessType'] = request.business_type
-        query['Category'] = request.category
-        query['ClientToken'] = request.client_token
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['DynamicMetaDataList'] = request.dynamic_meta_data_list
-        query['InputURL'] = request.input_url
-        query['MediaTags'] = request.media_tags
-        query['MediaType'] = request.media_type
-        query['Overwrite'] = request.overwrite
-        query['RegisterConfig'] = request.register_config
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dynamic_meta_data_list):
+            query['DynamicMetaDataList'] = request.dynamic_meta_data_list
+        if not UtilClient.is_unset(request.input_url):
+            query['InputURL'] = request.input_url
+        if not UtilClient.is_unset(request.media_tags):
+            query['MediaTags'] = request.media_tags
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.overwrite):
+            query['Overwrite'] = request.overwrite
+        if not UtilClient.is_unset(request.register_config):
+            query['RegisterConfig'] = request.register_config
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2496,15 +2367,24 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SearchEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CreateSource'] = request.create_source
-        query['EndTime'] = request.end_time
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ProjectType'] = request.project_type
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
-        query['Status'] = request.status
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.create_source):
+            query['CreateSource'] = request.create_source
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_type):
+            query['ProjectType'] = request.project_type
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2531,15 +2411,24 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SearchEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CreateSource'] = request.create_source
-        query['EndTime'] = request.end_time
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ProjectType'] = request.project_type
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
-        query['Status'] = request.status
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.create_source):
+            query['CreateSource'] = request.create_source
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_type):
+            query['ProjectType'] = request.project_type
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2580,14 +2469,22 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SearchPublicMediaInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Authorized'] = request.authorized
-        query['DynamicMetaDataMatchFields'] = request.dynamic_meta_data_match_fields
-        query['EntityId'] = request.entity_id
-        query['Favorite'] = request.favorite
-        query['MediaIds'] = request.media_ids
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.authorized):
+            query['Authorized'] = request.authorized
+        if not UtilClient.is_unset(request.dynamic_meta_data_match_fields):
+            query['DynamicMetaDataMatchFields'] = request.dynamic_meta_data_match_fields
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.favorite):
+            query['Favorite'] = request.favorite
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2614,14 +2511,22 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SearchPublicMediaInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Authorized'] = request.authorized
-        query['DynamicMetaDataMatchFields'] = request.dynamic_meta_data_match_fields
-        query['EntityId'] = request.entity_id
-        query['Favorite'] = request.favorite
-        query['MediaIds'] = request.media_ids
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.authorized):
+            query['Authorized'] = request.authorized
+        if not UtilClient.is_unset(request.dynamic_meta_data_match_fields):
+            query['DynamicMetaDataMatchFields'] = request.dynamic_meta_data_match_fields
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.favorite):
+            query['Favorite'] = request.favorite
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2655,6 +2560,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.search_public_media_info_with_options_async(request, runtime)
 
+    def set_client_config_with_options(
+        self,
+        request: ice20201109_models.SetClientConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SetClientConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bundle_id):
+            query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.client_upload_bucket):
+            query['ClientUploadBucket'] = request.client_upload_bucket
+        if not UtilClient.is_unset(request.client_upload_path):
+            query['ClientUploadPath'] = request.client_upload_path
+        if not UtilClient.is_unset(request.client_upload_storage_type):
+            query['ClientUploadStorageType'] = request.client_upload_storage_type
+        if not UtilClient.is_unset(request.pkg_name):
+            query['PkgName'] = request.pkg_name
+        if not UtilClient.is_unset(request.pkg_signature):
+            query['PkgSignature'] = request.pkg_signature
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetClientConfig',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SetClientConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_client_config_with_options_async(
+        self,
+        request: ice20201109_models.SetClientConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SetClientConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bundle_id):
+            query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.client_upload_bucket):
+            query['ClientUploadBucket'] = request.client_upload_bucket
+        if not UtilClient.is_unset(request.client_upload_path):
+            query['ClientUploadPath'] = request.client_upload_path
+        if not UtilClient.is_unset(request.client_upload_storage_type):
+            query['ClientUploadStorageType'] = request.client_upload_storage_type
+        if not UtilClient.is_unset(request.pkg_name):
+            query['PkgName'] = request.pkg_name
+        if not UtilClient.is_unset(request.pkg_signature):
+            query['PkgSignature'] = request.pkg_signature
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetClientConfig',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SetClientConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_client_config(
+        self,
+        request: ice20201109_models.SetClientConfigRequest,
+    ) -> ice20201109_models.SetClientConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_client_config_with_options(request, runtime)
+
+    async def set_client_config_async(
+        self,
+        request: ice20201109_models.SetClientConfigRequest,
+    ) -> ice20201109_models.SetClientConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_client_config_with_options_async(request, runtime)
+
     def set_default_storage_location_with_options(
         self,
         request: ice20201109_models.SetDefaultStorageLocationRequest,
@@ -2662,9 +2657,12 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SetDefaultStorageLocationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bucket'] = request.bucket
-        query['Path'] = request.path
-        query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.bucket):
+            query['Bucket'] = request.bucket
+        if not UtilClient.is_unset(request.path):
+            query['Path'] = request.path
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2691,9 +2689,12 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SetDefaultStorageLocationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bucket'] = request.bucket
-        query['Path'] = request.path
-        query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.bucket):
+            query['Bucket'] = request.bucket
+        if not UtilClient.is_unset(request.path):
+            query['Path'] = request.path
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2734,8 +2735,10 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SetEventCallbackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CallbackQueueName'] = request.callback_queue_name
-        query['EventTypeList'] = request.event_type_list
+        if not UtilClient.is_unset(request.callback_queue_name):
+            query['CallbackQueueName'] = request.callback_queue_name
+        if not UtilClient.is_unset(request.event_type_list):
+            query['EventTypeList'] = request.event_type_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2762,8 +2765,10 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SetEventCallbackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CallbackQueueName'] = request.callback_queue_name
-        query['EventTypeList'] = request.event_type_list
+        if not UtilClient.is_unset(request.callback_queue_name):
+            query['CallbackQueueName'] = request.callback_queue_name
+        if not UtilClient.is_unset(request.event_type_list):
+            query['EventTypeList'] = request.event_type_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2804,12 +2809,18 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitASRJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Description'] = request.description
-        query['Duration'] = request.duration
-        query['InputFile'] = request.input_file
-        query['StartTime'] = request.start_time
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.input_file):
+            query['InputFile'] = request.input_file
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2836,12 +2847,18 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitASRJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Description'] = request.description
-        query['Duration'] = request.duration
-        query['InputFile'] = request.input_file
-        query['StartTime'] = request.start_time
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.input_file):
+            query['InputFile'] = request.input_file
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2882,13 +2899,20 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitAudioProduceJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Description'] = request.description
-        query['EditingConfig'] = request.editing_config
-        query['InputConfig'] = request.input_config
-        query['OutputConfig'] = request.output_config
-        query['Overwrite'] = request.overwrite
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.editing_config):
+            query['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            query['InputConfig'] = request.input_config
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.overwrite):
+            query['Overwrite'] = request.overwrite
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2915,13 +2939,20 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitAudioProduceJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Description'] = request.description
-        query['EditingConfig'] = request.editing_config
-        query['InputConfig'] = request.input_config
-        query['OutputConfig'] = request.output_config
-        query['Overwrite'] = request.overwrite
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.editing_config):
+            query['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            query['InputConfig'] = request.input_config
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.overwrite):
+            query['Overwrite'] = request.overwrite
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2955,88 +2986,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_audio_produce_job_with_options_async(request, runtime)
 
-    def submit_delogo_job_with_options(
-        self,
-        request: ice20201109_models.SubmitDelogoJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitDelogoJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['InputFile'] = request.input_file
-        query['InputType'] = request.input_type
-        query['OutputConfig'] = request.output_config
-        query['OutputMediaTarget'] = request.output_media_target
-        query['Overwrite'] = request.overwrite
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitDelogoJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitDelogoJobResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def submit_delogo_job_with_options_async(
-        self,
-        request: ice20201109_models.SubmitDelogoJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitDelogoJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['InputFile'] = request.input_file
-        query['InputType'] = request.input_type
-        query['OutputConfig'] = request.output_config
-        query['OutputMediaTarget'] = request.output_media_target
-        query['Overwrite'] = request.overwrite
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitDelogoJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitDelogoJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def submit_delogo_job(
-        self,
-        request: ice20201109_models.SubmitDelogoJobRequest,
-    ) -> ice20201109_models.SubmitDelogoJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.submit_delogo_job_with_options(request, runtime)
-
-    async def submit_delogo_job_async(
-        self,
-        request: ice20201109_models.SubmitDelogoJobRequest,
-    ) -> ice20201109_models.SubmitDelogoJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.submit_delogo_job_with_options_async(request, runtime)
-
     def submit_dynamic_chart_job_with_options(
         self,
         request: ice20201109_models.SubmitDynamicChartJobRequest,
@@ -3044,19 +2993,32 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitDynamicChartJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AxisParams'] = request.axis_params
-        query['Background'] = request.background
-        query['ChartConfig'] = request.chart_config
-        query['ChartTitle'] = request.chart_title
-        query['ChartType'] = request.chart_type
-        query['DataSource'] = request.data_source
-        query['Description'] = request.description
-        query['Input'] = request.input
-        query['OutputConfig'] = request.output_config
-        query['Subtitle'] = request.subtitle
-        query['Title'] = request.title
-        query['Unit'] = request.unit
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.axis_params):
+            query['AxisParams'] = request.axis_params
+        if not UtilClient.is_unset(request.background):
+            query['Background'] = request.background
+        if not UtilClient.is_unset(request.chart_config):
+            query['ChartConfig'] = request.chart_config
+        if not UtilClient.is_unset(request.chart_title):
+            query['ChartTitle'] = request.chart_title
+        if not UtilClient.is_unset(request.chart_type):
+            query['ChartType'] = request.chart_type
+        if not UtilClient.is_unset(request.data_source):
+            query['DataSource'] = request.data_source
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.subtitle):
+            query['Subtitle'] = request.subtitle
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.unit):
+            query['Unit'] = request.unit
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3083,19 +3045,32 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitDynamicChartJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AxisParams'] = request.axis_params
-        query['Background'] = request.background
-        query['ChartConfig'] = request.chart_config
-        query['ChartTitle'] = request.chart_title
-        query['ChartType'] = request.chart_type
-        query['DataSource'] = request.data_source
-        query['Description'] = request.description
-        query['Input'] = request.input
-        query['OutputConfig'] = request.output_config
-        query['Subtitle'] = request.subtitle
-        query['Title'] = request.title
-        query['Unit'] = request.unit
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.axis_params):
+            query['AxisParams'] = request.axis_params
+        if not UtilClient.is_unset(request.background):
+            query['Background'] = request.background
+        if not UtilClient.is_unset(request.chart_config):
+            query['ChartConfig'] = request.chart_config
+        if not UtilClient.is_unset(request.chart_title):
+            query['ChartTitle'] = request.chart_title
+        if not UtilClient.is_unset(request.chart_type):
+            query['ChartType'] = request.chart_type
+        if not UtilClient.is_unset(request.data_source):
+            query['DataSource'] = request.data_source
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.subtitle):
+            query['Subtitle'] = request.subtitle
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.unit):
+            query['Unit'] = request.unit
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3129,154 +3104,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_dynamic_chart_job_with_options_async(request, runtime)
 
-    def submit_h2vjob_with_options(
-        self,
-        request: ice20201109_models.SubmitH2VJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitH2VJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['InputFile'] = request.input_file
-        query['InputType'] = request.input_type
-        query['OutputConfig'] = request.output_config
-        query['OutputMediaTarget'] = request.output_media_target
-        query['Overwrite'] = request.overwrite
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitH2VJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitH2VJobResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def submit_h2vjob_with_options_async(
-        self,
-        request: ice20201109_models.SubmitH2VJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitH2VJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['InputFile'] = request.input_file
-        query['InputType'] = request.input_type
-        query['OutputConfig'] = request.output_config
-        query['OutputMediaTarget'] = request.output_media_target
-        query['Overwrite'] = request.overwrite
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitH2VJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitH2VJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def submit_h2vjob(
-        self,
-        request: ice20201109_models.SubmitH2VJobRequest,
-    ) -> ice20201109_models.SubmitH2VJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.submit_h2vjob_with_options(request, runtime)
-
-    async def submit_h2vjob_async(
-        self,
-        request: ice20201109_models.SubmitH2VJobRequest,
-    ) -> ice20201109_models.SubmitH2VJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.submit_h2vjob_with_options_async(request, runtime)
-
-    def submit_key_word_cut_job_with_options(
-        self,
-        request: ice20201109_models.SubmitKeyWordCutJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitKeyWordCutJobResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitKeyWordCutJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitKeyWordCutJobResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def submit_key_word_cut_job_with_options_async(
-        self,
-        request: ice20201109_models.SubmitKeyWordCutJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitKeyWordCutJobResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitKeyWordCutJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitKeyWordCutJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def submit_key_word_cut_job(
-        self,
-        request: ice20201109_models.SubmitKeyWordCutJobRequest,
-    ) -> ice20201109_models.SubmitKeyWordCutJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.submit_key_word_cut_job_with_options(request, runtime)
-
-    async def submit_key_word_cut_job_async(
-        self,
-        request: ice20201109_models.SubmitKeyWordCutJobRequest,
-    ) -> ice20201109_models.SubmitKeyWordCutJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.submit_key_word_cut_job_with_options_async(request, runtime)
-
     def submit_live_editing_job_with_options(
         self,
         request: ice20201109_models.SubmitLiveEditingJobRequest,
@@ -3284,13 +3111,20 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitLiveEditingJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Clips'] = request.clips
-        query['LiveStreamConfig'] = request.live_stream_config
-        query['MediaProduceConfig'] = request.media_produce_config
-        query['OutputMediaConfig'] = request.output_media_config
-        query['OutputMediaTarget'] = request.output_media_target
-        query['ProjectId'] = request.project_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.clips):
+            query['Clips'] = request.clips
+        if not UtilClient.is_unset(request.live_stream_config):
+            query['LiveStreamConfig'] = request.live_stream_config
+        if not UtilClient.is_unset(request.media_produce_config):
+            query['MediaProduceConfig'] = request.media_produce_config
+        if not UtilClient.is_unset(request.output_media_config):
+            query['OutputMediaConfig'] = request.output_media_config
+        if not UtilClient.is_unset(request.output_media_target):
+            query['OutputMediaTarget'] = request.output_media_target
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3317,13 +3151,20 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitLiveEditingJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Clips'] = request.clips
-        query['LiveStreamConfig'] = request.live_stream_config
-        query['MediaProduceConfig'] = request.media_produce_config
-        query['OutputMediaConfig'] = request.output_media_config
-        query['OutputMediaTarget'] = request.output_media_target
-        query['ProjectId'] = request.project_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.clips):
+            query['Clips'] = request.clips
+        if not UtilClient.is_unset(request.live_stream_config):
+            query['LiveStreamConfig'] = request.live_stream_config
+        if not UtilClient.is_unset(request.media_produce_config):
+            query['MediaProduceConfig'] = request.media_produce_config
+        if not UtilClient.is_unset(request.output_media_config):
+            query['OutputMediaConfig'] = request.output_media_config
+        if not UtilClient.is_unset(request.output_media_target):
+            query['OutputMediaTarget'] = request.output_media_target
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3357,88 +3198,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_live_editing_job_with_options_async(request, runtime)
 
-    def submit_matting_job_with_options(
-        self,
-        request: ice20201109_models.SubmitMattingJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitMattingJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['InputFile'] = request.input_file
-        query['InputType'] = request.input_type
-        query['OutputConfig'] = request.output_config
-        query['OutputMediaTarget'] = request.output_media_target
-        query['Overwrite'] = request.overwrite
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitMattingJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitMattingJobResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def submit_matting_job_with_options_async(
-        self,
-        request: ice20201109_models.SubmitMattingJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitMattingJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['InputFile'] = request.input_file
-        query['InputType'] = request.input_type
-        query['OutputConfig'] = request.output_config
-        query['OutputMediaTarget'] = request.output_media_target
-        query['Overwrite'] = request.overwrite
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitMattingJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitMattingJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def submit_matting_job(
-        self,
-        request: ice20201109_models.SubmitMattingJobRequest,
-    ) -> ice20201109_models.SubmitMattingJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.submit_matting_job_with_options(request, runtime)
-
-    async def submit_matting_job_async(
-        self,
-        request: ice20201109_models.SubmitMattingJobRequest,
-    ) -> ice20201109_models.SubmitMattingJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.submit_matting_job_with_options_async(request, runtime)
-
     def submit_media_producing_job_with_options(
         self,
         request: ice20201109_models.SubmitMediaProducingJobRequest,
@@ -3446,17 +3205,28 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitMediaProducingJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['ClipsParam'] = request.clips_param
-        query['EditingProduceConfig'] = request.editing_produce_config
-        query['OutputMediaConfig'] = request.output_media_config
-        query['OutputMediaTarget'] = request.output_media_target
-        query['ProjectId'] = request.project_id
-        query['ProjectMetadata'] = request.project_metadata
-        query['Source'] = request.source
-        query['TemplateId'] = request.template_id
-        query['Timeline'] = request.timeline
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.clips_param):
+            query['ClipsParam'] = request.clips_param
+        if not UtilClient.is_unset(request.editing_produce_config):
+            query['EditingProduceConfig'] = request.editing_produce_config
+        if not UtilClient.is_unset(request.output_media_config):
+            query['OutputMediaConfig'] = request.output_media_config
+        if not UtilClient.is_unset(request.output_media_target):
+            query['OutputMediaTarget'] = request.output_media_target
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_metadata):
+            query['ProjectMetadata'] = request.project_metadata
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.timeline):
+            query['Timeline'] = request.timeline
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3483,17 +3253,28 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitMediaProducingJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['ClipsParam'] = request.clips_param
-        query['EditingProduceConfig'] = request.editing_produce_config
-        query['OutputMediaConfig'] = request.output_media_config
-        query['OutputMediaTarget'] = request.output_media_target
-        query['ProjectId'] = request.project_id
-        query['ProjectMetadata'] = request.project_metadata
-        query['Source'] = request.source
-        query['TemplateId'] = request.template_id
-        query['Timeline'] = request.timeline
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.clips_param):
+            query['ClipsParam'] = request.clips_param
+        if not UtilClient.is_unset(request.editing_produce_config):
+            query['EditingProduceConfig'] = request.editing_produce_config
+        if not UtilClient.is_unset(request.output_media_config):
+            query['OutputMediaConfig'] = request.output_media_config
+        if not UtilClient.is_unset(request.output_media_target):
+            query['OutputMediaTarget'] = request.output_media_target
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_metadata):
+            query['ProjectMetadata'] = request.project_metadata
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.timeline):
+            query['Timeline'] = request.timeline
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3527,72 +3308,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_media_producing_job_with_options_async(request, runtime)
 
-    def submit_pptcut_job_with_options(
-        self,
-        request: ice20201109_models.SubmitPPTCutJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitPPTCutJobResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitPPTCutJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitPPTCutJobResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def submit_pptcut_job_with_options_async(
-        self,
-        request: ice20201109_models.SubmitPPTCutJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitPPTCutJobResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitPPTCutJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitPPTCutJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def submit_pptcut_job(
-        self,
-        request: ice20201109_models.SubmitPPTCutJobRequest,
-    ) -> ice20201109_models.SubmitPPTCutJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.submit_pptcut_job_with_options(request, runtime)
-
-    async def submit_pptcut_job_async(
-        self,
-        request: ice20201109_models.SubmitPPTCutJobRequest,
-    ) -> ice20201109_models.SubmitPPTCutJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.submit_pptcut_job_with_options_async(request, runtime)
-
     def submit_subtitle_produce_job_with_options(
         self,
         request: ice20201109_models.SubmitSubtitleProduceJobRequest,
@@ -3600,14 +3315,22 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitSubtitleProduceJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Description'] = request.description
-        query['EditingConfig'] = request.editing_config
-        query['InputConfig'] = request.input_config
-        query['IsAsync'] = request.is_async
-        query['OutputConfig'] = request.output_config
-        query['Title'] = request.title
-        query['Type'] = request.type
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.editing_config):
+            query['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            query['InputConfig'] = request.input_config
+        if not UtilClient.is_unset(request.is_async):
+            query['IsAsync'] = request.is_async
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3634,14 +3357,22 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitSubtitleProduceJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Description'] = request.description
-        query['EditingConfig'] = request.editing_config
-        query['InputConfig'] = request.input_config
-        query['IsAsync'] = request.is_async
-        query['OutputConfig'] = request.output_config
-        query['Title'] = request.title
-        query['Type'] = request.type
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.editing_config):
+            query['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            query['InputConfig'] = request.input_config
+        if not UtilClient.is_unset(request.is_async):
+            query['IsAsync'] = request.is_async
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3682,14 +3413,22 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.UpdateEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessStatus'] = request.business_status
-        query['ClipsParam'] = request.clips_param
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['ProjectId'] = request.project_id
-        query['TemplateId'] = request.template_id
-        query['Timeline'] = request.timeline
-        query['Title'] = request.title
+        if not UtilClient.is_unset(request.business_status):
+            query['BusinessStatus'] = request.business_status
+        if not UtilClient.is_unset(request.clips_param):
+            query['ClipsParam'] = request.clips_param
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.timeline):
+            query['Timeline'] = request.timeline
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3716,14 +3455,22 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.UpdateEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessStatus'] = request.business_status
-        query['ClipsParam'] = request.clips_param
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['ProjectId'] = request.project_id
-        query['TemplateId'] = request.template_id
-        query['Timeline'] = request.timeline
-        query['Title'] = request.title
+        if not UtilClient.is_unset(request.business_status):
+            query['BusinessStatus'] = request.business_status
+        if not UtilClient.is_unset(request.clips_param):
+            query['ClipsParam'] = request.clips_param
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.timeline):
+            query['Timeline'] = request.timeline
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3764,18 +3511,30 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.UpdateMediaInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppendDynamicMeta'] = request.append_dynamic_meta
-        query['AppendTags'] = request.append_tags
-        query['BusinessType'] = request.business_type
-        query['Category'] = request.category
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['DynamicMetaDataList'] = request.dynamic_meta_data_list
-        query['InputURL'] = request.input_url
-        query['MediaId'] = request.media_id
-        query['MediaTags'] = request.media_tags
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.append_dynamic_meta):
+            query['AppendDynamicMeta'] = request.append_dynamic_meta
+        if not UtilClient.is_unset(request.append_tags):
+            query['AppendTags'] = request.append_tags
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dynamic_meta_data_list):
+            query['DynamicMetaDataList'] = request.dynamic_meta_data_list
+        if not UtilClient.is_unset(request.input_url):
+            query['InputURL'] = request.input_url
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_tags):
+            query['MediaTags'] = request.media_tags
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3802,18 +3561,30 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.UpdateMediaInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppendDynamicMeta'] = request.append_dynamic_meta
-        query['AppendTags'] = request.append_tags
-        query['BusinessType'] = request.business_type
-        query['Category'] = request.category
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['DynamicMetaDataList'] = request.dynamic_meta_data_list
-        query['InputURL'] = request.input_url
-        query['MediaId'] = request.media_id
-        query['MediaTags'] = request.media_tags
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.append_dynamic_meta):
+            query['AppendDynamicMeta'] = request.append_dynamic_meta
+        if not UtilClient.is_unset(request.append_tags):
+            query['AppendTags'] = request.append_tags
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dynamic_meta_data_list):
+            query['DynamicMetaDataList'] = request.dynamic_meta_data_list
+        if not UtilClient.is_unset(request.input_url):
+            query['InputURL'] = request.input_url
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_tags):
+            query['MediaTags'] = request.media_tags
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3854,8 +3625,10 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.UpdateSmartJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FEExtend'] = request.feextend
-        query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.feextend):
+            query['FEExtend'] = request.feextend
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3882,8 +3655,10 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.UpdateSmartJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FEExtend'] = request.feextend
-        query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.feextend):
+            query['FEExtend'] = request.feextend
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3924,14 +3699,22 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['CoverUrl'] = request.cover_url
-        query['Name'] = request.name
-        query['PreviewMedia'] = request.preview_media
-        query['RelatedMediaids'] = request.related_mediaids
-        query['Source'] = request.source
-        query['Status'] = request.status
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverUrl'] = request.cover_url
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.preview_media):
+            query['PreviewMedia'] = request.preview_media
+        if not UtilClient.is_unset(request.related_mediaids):
+            query['RelatedMediaids'] = request.related_mediaids
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3958,14 +3741,22 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['CoverUrl'] = request.cover_url
-        query['Name'] = request.name
-        query['PreviewMedia'] = request.preview_media
-        query['RelatedMediaids'] = request.related_mediaids
-        query['Source'] = request.source
-        query['Status'] = request.status
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverUrl'] = request.cover_url
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.preview_media):
+            query['PreviewMedia'] = request.preview_media
+        if not UtilClient.is_unset(request.related_mediaids):
+            query['RelatedMediaids'] = request.related_mediaids
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

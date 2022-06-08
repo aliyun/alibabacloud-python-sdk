@@ -1,3 +1,6 @@
+2022-06-08 Version: 1.2.0
+- Add page params in ListTemplates API.
+
 2021-12-23 Version: 1.1.6
 - Add a new API called SubmitDynamicChartJob, which produce chart video throuth xlsx file.
 
