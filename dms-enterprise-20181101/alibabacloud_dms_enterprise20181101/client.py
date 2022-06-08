@@ -41,6 +41,106 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_desensitization_rule_with_options(
+        self,
+        request: dms_enterprise_20181101_models.AddDesensitizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.AddDesensitizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_type):
+            query['FunctionType'] = request.function_type
+        if not UtilClient.is_unset(request.rule_description):
+            query['RuleDescription'] = request.rule_description
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.function_params):
+            body_flat['FunctionParams'] = request.function_params
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddDesensitizationRule',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.AddDesensitizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_desensitization_rule_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.AddDesensitizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.AddDesensitizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_type):
+            query['FunctionType'] = request.function_type
+        if not UtilClient.is_unset(request.rule_description):
+            query['RuleDescription'] = request.rule_description
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.function_params):
+            body_flat['FunctionParams'] = request.function_params
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddDesensitizationRule',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.AddDesensitizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_desensitization_rule(
+        self,
+        request: dms_enterprise_20181101_models.AddDesensitizationRuleRequest,
+    ) -> dms_enterprise_20181101_models.AddDesensitizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_desensitization_rule_with_options(request, runtime)
+
+    async def add_desensitization_rule_async(
+        self,
+        request: dms_enterprise_20181101_models.AddDesensitizationRuleRequest,
+    ) -> dms_enterprise_20181101_models.AddDesensitizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_desensitization_rule_with_options_async(request, runtime)
+
     def add_lh_members_with_options(
         self,
         tmp_req: dms_enterprise_20181101_models.AddLhMembersRequest,
@@ -6713,6 +6813,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_databases_with_options_async(request, runtime)
 
+    def list_desensitization_rule_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListDesensitizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDesensitizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.func_type):
+            query['FuncType'] = request.func_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDesensitizationRule',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDesensitizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_desensitization_rule_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDesensitizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDesensitizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.func_type):
+            query['FuncType'] = request.func_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDesensitizationRule',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDesensitizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_desensitization_rule(
+        self,
+        request: dms_enterprise_20181101_models.ListDesensitizationRuleRequest,
+    ) -> dms_enterprise_20181101_models.ListDesensitizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_desensitization_rule_with_options(request, runtime)
+
+    async def list_desensitization_rule_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDesensitizationRuleRequest,
+    ) -> dms_enterprise_20181101_models.ListDesensitizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_desensitization_rule_with_options_async(request, runtime)
+
     def list_indexes_with_options(
         self,
         request: dms_enterprise_20181101_models.ListIndexesRequest,
@@ -8940,6 +9134,104 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ModifyDataCorrectExecSQLResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_data_correct_exec_sqlwith_options_async(request, runtime)
+
+    def modify_desensitization_strategy_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ModifyDesensitizationStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ModifyDesensitizationStrategyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.is_logic):
+            query['IsLogic'] = request.is_logic
+        if not UtilClient.is_unset(request.is_reset):
+            query['IsReset'] = request.is_reset
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDesensitizationStrategy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ModifyDesensitizationStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_desensitization_strategy_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ModifyDesensitizationStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ModifyDesensitizationStrategyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.is_logic):
+            query['IsLogic'] = request.is_logic
+        if not UtilClient.is_unset(request.is_reset):
+            query['IsReset'] = request.is_reset
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDesensitizationStrategy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ModifyDesensitizationStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_desensitization_strategy(
+        self,
+        request: dms_enterprise_20181101_models.ModifyDesensitizationStrategyRequest,
+    ) -> dms_enterprise_20181101_models.ModifyDesensitizationStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_desensitization_strategy_with_options(request, runtime)
+
+    async def modify_desensitization_strategy_async(
+        self,
+        request: dms_enterprise_20181101_models.ModifyDesensitizationStrategyRequest,
+    ) -> dms_enterprise_20181101_models.ModifyDesensitizationStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_desensitization_strategy_with_options_async(request, runtime)
 
     def offline_task_flow_with_options(
         self,
