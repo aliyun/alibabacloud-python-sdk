@@ -125,6 +125,7 @@ class CreateTaskRequest(TeaModel):
     def __init__(
         self,
         level: int = None,
+        mq_config_name: str = None,
         oss_bucket_name: str = None,
         oss_config_name: str = None,
         oss_endpoint: str = None,
@@ -135,6 +136,7 @@ class CreateTaskRequest(TeaModel):
         task_name: str = None,
     ):
         self.level = level
+        self.mq_config_name = mq_config_name
         self.oss_bucket_name = oss_bucket_name
         self.oss_config_name = oss_config_name
         self.oss_endpoint = oss_endpoint
@@ -155,6 +157,8 @@ class CreateTaskRequest(TeaModel):
         result = dict()
         if self.level is not None:
             result['Level'] = self.level
+        if self.mq_config_name is not None:
+            result['MqConfigName'] = self.mq_config_name
         if self.oss_bucket_name is not None:
             result['OssBucketName'] = self.oss_bucket_name
         if self.oss_config_name is not None:
@@ -177,6 +181,8 @@ class CreateTaskRequest(TeaModel):
         m = m or dict()
         if m.get('Level') is not None:
             self.level = m.get('Level')
+        if m.get('MqConfigName') is not None:
+            self.mq_config_name = m.get('MqConfigName')
         if m.get('OssBucketName') is not None:
             self.oss_bucket_name = m.get('OssBucketName')
         if m.get('OssConfigName') is not None:
@@ -317,6 +323,123 @@ class CreateTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteMqConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config_name: str = None,
+    ):
+        self.config_name = config_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        return self
+
+
+class DeleteMqConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteMqConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteMqConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteMqConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -750,6 +873,247 @@ class DetectImageResponse(TeaModel):
         return self
 
 
+class GetMqConfigListRequest(TeaModel):
+    def __init__(
+        self,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GetMqConfigListResponseBodyResponseList(TeaModel):
+    def __init__(
+        self,
+        config_name: str = None,
+        gmt_create: str = None,
+        mq_access_key: str = None,
+        mq_endpoint: str = None,
+        mq_group_id: str = None,
+        mq_topic: str = None,
+    ):
+        self.config_name = config_name
+        self.gmt_create = gmt_create
+        self.mq_access_key = mq_access_key
+        self.mq_endpoint = mq_endpoint
+        self.mq_group_id = mq_group_id
+        self.mq_topic = mq_topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.mq_access_key is not None:
+            result['MqAccessKey'] = self.mq_access_key
+        if self.mq_endpoint is not None:
+            result['MqEndpoint'] = self.mq_endpoint
+        if self.mq_group_id is not None:
+            result['MqGroupId'] = self.mq_group_id
+        if self.mq_topic is not None:
+            result['MqTopic'] = self.mq_topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('MqAccessKey') is not None:
+            self.mq_access_key = m.get('MqAccessKey')
+        if m.get('MqEndpoint') is not None:
+            self.mq_endpoint = m.get('MqEndpoint')
+        if m.get('MqGroupId') is not None:
+            self.mq_group_id = m.get('MqGroupId')
+        if m.get('MqTopic') is not None:
+            self.mq_topic = m.get('MqTopic')
+        return self
+
+
+class GetMqConfigListResponseBodyResponse(TeaModel):
+    def __init__(
+        self,
+        list: List[GetMqConfigListResponseBodyResponseList] = None,
+        page_index: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.list = list
+        self.page_index = page_index
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = GetMqConfigListResponseBodyResponseList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetMqConfigListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        response: GetMqConfigListResponseBodyResponse = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.response = response
+        self.success = success
+
+    def validate(self):
+        if self.response:
+            self.response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.response is not None:
+            result['Response'] = self.response.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Response') is not None:
+            temp_model = GetMqConfigListResponseBodyResponse()
+            self.response = temp_model.from_map(m['Response'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetMqConfigListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMqConfigListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMqConfigListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetOssConfigListRequest(TeaModel):
     def __init__(
         self,
@@ -1034,8 +1398,14 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
         image_completed_total: int = None,
         image_total: int = None,
         level: int = None,
+        mq_access_key: str = None,
+        mq_config_name: str = None,
+        mq_endpoint: str = None,
+        mq_group_id: str = None,
+        mq_topic: str = None,
         oss_access_key_id: str = None,
         oss_bucket_name: str = None,
+        oss_config_name: str = None,
         oss_endpoint: str = None,
         oss_input_path: str = None,
         oss_output_path: str = None,
@@ -1052,8 +1422,14 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
         self.image_completed_total = image_completed_total
         self.image_total = image_total
         self.level = level
+        self.mq_access_key = mq_access_key
+        self.mq_config_name = mq_config_name
+        self.mq_endpoint = mq_endpoint
+        self.mq_group_id = mq_group_id
+        self.mq_topic = mq_topic
         self.oss_access_key_id = oss_access_key_id
         self.oss_bucket_name = oss_bucket_name
+        self.oss_config_name = oss_config_name
         self.oss_endpoint = oss_endpoint
         self.oss_input_path = oss_input_path
         self.oss_output_path = oss_output_path
@@ -1086,10 +1462,22 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
             result['ImageTotal'] = self.image_total
         if self.level is not None:
             result['Level'] = self.level
+        if self.mq_access_key is not None:
+            result['MqAccessKey'] = self.mq_access_key
+        if self.mq_config_name is not None:
+            result['MqConfigName'] = self.mq_config_name
+        if self.mq_endpoint is not None:
+            result['MqEndpoint'] = self.mq_endpoint
+        if self.mq_group_id is not None:
+            result['MqGroupId'] = self.mq_group_id
+        if self.mq_topic is not None:
+            result['MqTopic'] = self.mq_topic
         if self.oss_access_key_id is not None:
             result['OssAccessKeyId'] = self.oss_access_key_id
         if self.oss_bucket_name is not None:
             result['OssBucketName'] = self.oss_bucket_name
+        if self.oss_config_name is not None:
+            result['OssConfigName'] = self.oss_config_name
         if self.oss_endpoint is not None:
             result['OssEndpoint'] = self.oss_endpoint
         if self.oss_input_path is not None:
@@ -1124,10 +1512,22 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
             self.image_total = m.get('ImageTotal')
         if m.get('Level') is not None:
             self.level = m.get('Level')
+        if m.get('MqAccessKey') is not None:
+            self.mq_access_key = m.get('MqAccessKey')
+        if m.get('MqConfigName') is not None:
+            self.mq_config_name = m.get('MqConfigName')
+        if m.get('MqEndpoint') is not None:
+            self.mq_endpoint = m.get('MqEndpoint')
+        if m.get('MqGroupId') is not None:
+            self.mq_group_id = m.get('MqGroupId')
+        if m.get('MqTopic') is not None:
+            self.mq_topic = m.get('MqTopic')
         if m.get('OssAccessKeyId') is not None:
             self.oss_access_key_id = m.get('OssAccessKeyId')
         if m.get('OssBucketName') is not None:
             self.oss_bucket_name = m.get('OssBucketName')
+        if m.get('OssConfigName') is not None:
+            self.oss_config_name = m.get('OssConfigName')
         if m.get('OssEndpoint') is not None:
             self.oss_endpoint = m.get('OssEndpoint')
         if m.get('OssInputPath') is not None:
@@ -1500,6 +1900,153 @@ class GetTaskListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTaskListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SaveMqConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config_name: str = None,
+        mq_access_key: str = None,
+        mq_access_secret: str = None,
+        mq_endpoint: str = None,
+        mq_group_id: str = None,
+        mq_topic: str = None,
+    ):
+        self.config_name = config_name
+        self.mq_access_key = mq_access_key
+        self.mq_access_secret = mq_access_secret
+        self.mq_endpoint = mq_endpoint
+        self.mq_group_id = mq_group_id
+        self.mq_topic = mq_topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        if self.mq_access_key is not None:
+            result['MqAccessKey'] = self.mq_access_key
+        if self.mq_access_secret is not None:
+            result['MqAccessSecret'] = self.mq_access_secret
+        if self.mq_endpoint is not None:
+            result['MqEndpoint'] = self.mq_endpoint
+        if self.mq_group_id is not None:
+            result['MqGroupId'] = self.mq_group_id
+        if self.mq_topic is not None:
+            result['MqTopic'] = self.mq_topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        if m.get('MqAccessKey') is not None:
+            self.mq_access_key = m.get('MqAccessKey')
+        if m.get('MqAccessSecret') is not None:
+            self.mq_access_secret = m.get('MqAccessSecret')
+        if m.get('MqEndpoint') is not None:
+            self.mq_endpoint = m.get('MqEndpoint')
+        if m.get('MqGroupId') is not None:
+            self.mq_group_id = m.get('MqGroupId')
+        if m.get('MqTopic') is not None:
+            self.mq_topic = m.get('MqTopic')
+        return self
+
+
+class SaveMqConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SaveMqConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SaveMqConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SaveMqConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

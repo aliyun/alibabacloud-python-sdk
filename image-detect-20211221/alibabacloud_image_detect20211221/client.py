@@ -120,6 +120,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.level):
             query['Level'] = request.level
+        if not UtilClient.is_unset(request.mq_config_name):
+            query['MqConfigName'] = request.mq_config_name
         if not UtilClient.is_unset(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
         if not UtilClient.is_unset(request.oss_config_name):
@@ -164,6 +166,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.level):
             query['Level'] = request.level
+        if not UtilClient.is_unset(request.mq_config_name):
+            query['MqConfigName'] = request.mq_config_name
         if not UtilClient.is_unset(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
         if not UtilClient.is_unset(request.oss_config_name):
@@ -212,6 +216,76 @@ class Client(OpenApiClient):
     ) -> image_detect_20211221_models.CreateTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_task_with_options_async(request, runtime)
+
+    def delete_mq_config_with_options(
+        self,
+        request: image_detect_20211221_models.DeleteMqConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> image_detect_20211221_models.DeleteMqConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMqConfig',
+            version='2021-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            image_detect_20211221_models.DeleteMqConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_mq_config_with_options_async(
+        self,
+        request: image_detect_20211221_models.DeleteMqConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> image_detect_20211221_models.DeleteMqConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMqConfig',
+            version='2021-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            image_detect_20211221_models.DeleteMqConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_mq_config(
+        self,
+        request: image_detect_20211221_models.DeleteMqConfigRequest,
+    ) -> image_detect_20211221_models.DeleteMqConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_mq_config_with_options(request, runtime)
+
+    async def delete_mq_config_async(
+        self,
+        request: image_detect_20211221_models.DeleteMqConfigRequest,
+    ) -> image_detect_20211221_models.DeleteMqConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_mq_config_with_options_async(request, runtime)
 
     def delete_oss_config_with_options(
         self,
@@ -352,6 +426,72 @@ class Client(OpenApiClient):
     ) -> image_detect_20211221_models.DetectImageResponse:
         runtime = util_models.RuntimeOptions()
         return await self.detect_image_with_options_async(request, runtime)
+
+    def get_mq_config_list_with_options(
+        self,
+        request: image_detect_20211221_models.GetMqConfigListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> image_detect_20211221_models.GetMqConfigListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMqConfigList',
+            version='2021-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            image_detect_20211221_models.GetMqConfigListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mq_config_list_with_options_async(
+        self,
+        request: image_detect_20211221_models.GetMqConfigListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> image_detect_20211221_models.GetMqConfigListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMqConfigList',
+            version='2021-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            image_detect_20211221_models.GetMqConfigListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mq_config_list(
+        self,
+        request: image_detect_20211221_models.GetMqConfigListRequest,
+    ) -> image_detect_20211221_models.GetMqConfigListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_mq_config_list_with_options(request, runtime)
+
+    async def get_mq_config_list_async(
+        self,
+        request: image_detect_20211221_models.GetMqConfigListRequest,
+    ) -> image_detect_20211221_models.GetMqConfigListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_mq_config_list_with_options_async(request, runtime)
 
     def get_oss_config_list_with_options(
         self,
@@ -578,6 +718,96 @@ class Client(OpenApiClient):
     ) -> image_detect_20211221_models.GetTaskListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_task_list_with_options_async(request, runtime)
+
+    def save_mq_config_with_options(
+        self,
+        request: image_detect_20211221_models.SaveMqConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> image_detect_20211221_models.SaveMqConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.mq_access_key):
+            query['MqAccessKey'] = request.mq_access_key
+        if not UtilClient.is_unset(request.mq_access_secret):
+            query['MqAccessSecret'] = request.mq_access_secret
+        if not UtilClient.is_unset(request.mq_endpoint):
+            query['MqEndpoint'] = request.mq_endpoint
+        if not UtilClient.is_unset(request.mq_group_id):
+            query['MqGroupId'] = request.mq_group_id
+        if not UtilClient.is_unset(request.mq_topic):
+            query['MqTopic'] = request.mq_topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveMqConfig',
+            version='2021-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            image_detect_20211221_models.SaveMqConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_mq_config_with_options_async(
+        self,
+        request: image_detect_20211221_models.SaveMqConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> image_detect_20211221_models.SaveMqConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.mq_access_key):
+            query['MqAccessKey'] = request.mq_access_key
+        if not UtilClient.is_unset(request.mq_access_secret):
+            query['MqAccessSecret'] = request.mq_access_secret
+        if not UtilClient.is_unset(request.mq_endpoint):
+            query['MqEndpoint'] = request.mq_endpoint
+        if not UtilClient.is_unset(request.mq_group_id):
+            query['MqGroupId'] = request.mq_group_id
+        if not UtilClient.is_unset(request.mq_topic):
+            query['MqTopic'] = request.mq_topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveMqConfig',
+            version='2021-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            image_detect_20211221_models.SaveMqConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_mq_config(
+        self,
+        request: image_detect_20211221_models.SaveMqConfigRequest,
+    ) -> image_detect_20211221_models.SaveMqConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.save_mq_config_with_options(request, runtime)
+
+    async def save_mq_config_async(
+        self,
+        request: image_detect_20211221_models.SaveMqConfigRequest,
+    ) -> image_detect_20211221_models.SaveMqConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.save_mq_config_with_options_async(request, runtime)
 
     def save_oss_config_with_options(
         self,
