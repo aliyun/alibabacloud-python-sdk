@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -46,11 +47,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.AsymmetricDecryptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_version_id):
+            query['KeyVersionId'] = request.key_version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.AsymmetricDecryptResponse().from_map(
-            self.do_rpcrequest('AsymmetricDecrypt', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AsymmetricDecrypt',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.AsymmetricDecryptResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def asymmetric_decrypt_with_options_async(
@@ -59,11 +81,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.AsymmetricDecryptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_version_id):
+            query['KeyVersionId'] = request.key_version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.AsymmetricDecryptResponse().from_map(
-            await self.do_rpcrequest_async('AsymmetricDecrypt', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AsymmetricDecrypt',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.AsymmetricDecryptResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def asymmetric_decrypt(
@@ -86,11 +129,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.AsymmetricEncryptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_version_id):
+            query['KeyVersionId'] = request.key_version_id
+        if not UtilClient.is_unset(request.plaintext):
+            query['Plaintext'] = request.plaintext
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.AsymmetricEncryptResponse().from_map(
-            self.do_rpcrequest('AsymmetricEncrypt', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AsymmetricEncrypt',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.AsymmetricEncryptResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def asymmetric_encrypt_with_options_async(
@@ -99,11 +163,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.AsymmetricEncryptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_version_id):
+            query['KeyVersionId'] = request.key_version_id
+        if not UtilClient.is_unset(request.plaintext):
+            query['Plaintext'] = request.plaintext
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.AsymmetricEncryptResponse().from_map(
-            await self.do_rpcrequest_async('AsymmetricEncrypt', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AsymmetricEncrypt',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.AsymmetricEncryptResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def asymmetric_encrypt(
@@ -126,11 +211,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.AsymmetricSignResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.digest):
+            query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_version_id):
+            query['KeyVersionId'] = request.key_version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.AsymmetricSignResponse().from_map(
-            self.do_rpcrequest('AsymmetricSign', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AsymmetricSign',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.AsymmetricSignResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def asymmetric_sign_with_options_async(
@@ -139,11 +245,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.AsymmetricSignResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.digest):
+            query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_version_id):
+            query['KeyVersionId'] = request.key_version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.AsymmetricSignResponse().from_map(
-            await self.do_rpcrequest_async('AsymmetricSign', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AsymmetricSign',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.AsymmetricSignResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def asymmetric_sign(
@@ -166,11 +293,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.AsymmetricVerifyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.digest):
+            query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_version_id):
+            query['KeyVersionId'] = request.key_version_id
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.AsymmetricVerifyResponse().from_map(
-            self.do_rpcrequest('AsymmetricVerify', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AsymmetricVerify',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.AsymmetricVerifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def asymmetric_verify_with_options_async(
@@ -179,11 +329,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.AsymmetricVerifyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.digest):
+            query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_version_id):
+            query['KeyVersionId'] = request.key_version_id
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.AsymmetricVerifyResponse().from_map(
-            await self.do_rpcrequest_async('AsymmetricVerify', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AsymmetricVerify',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.AsymmetricVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def asymmetric_verify(
@@ -206,11 +379,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CancelKeyDeletionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CancelKeyDeletionResponse().from_map(
-            self.do_rpcrequest('CancelKeyDeletion', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CancelKeyDeletion',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CancelKeyDeletionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_key_deletion_with_options_async(
@@ -219,11 +407,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CancelKeyDeletionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CancelKeyDeletionResponse().from_map(
-            await self.do_rpcrequest_async('CancelKeyDeletion', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CancelKeyDeletion',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CancelKeyDeletionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_key_deletion(
@@ -246,11 +449,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CertificatePrivateKeyDecryptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CertificatePrivateKeyDecryptResponse().from_map(
-            self.do_rpcrequest('CertificatePrivateKeyDecrypt', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CertificatePrivateKeyDecrypt',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CertificatePrivateKeyDecryptResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def certificate_private_key_decrypt_with_options_async(
@@ -259,11 +481,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CertificatePrivateKeyDecryptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CertificatePrivateKeyDecryptResponse().from_map(
-            await self.do_rpcrequest_async('CertificatePrivateKeyDecrypt', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CertificatePrivateKeyDecrypt',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CertificatePrivateKeyDecryptResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def certificate_private_key_decrypt(
@@ -286,11 +527,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CertificatePrivateKeySignResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CertificatePrivateKeySignResponse().from_map(
-            self.do_rpcrequest('CertificatePrivateKeySign', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CertificatePrivateKeySign',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CertificatePrivateKeySignResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def certificate_private_key_sign_with_options_async(
@@ -299,11 +561,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CertificatePrivateKeySignResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CertificatePrivateKeySignResponse().from_map(
-            await self.do_rpcrequest_async('CertificatePrivateKeySign', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CertificatePrivateKeySign',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CertificatePrivateKeySignResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def certificate_private_key_sign(
@@ -326,11 +609,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CertificatePublicKeyEncryptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.plaintext):
+            query['Plaintext'] = request.plaintext
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CertificatePublicKeyEncryptResponse().from_map(
-            self.do_rpcrequest('CertificatePublicKeyEncrypt', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CertificatePublicKeyEncrypt',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CertificatePublicKeyEncryptResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def certificate_public_key_encrypt_with_options_async(
@@ -339,11 +641,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CertificatePublicKeyEncryptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.plaintext):
+            query['Plaintext'] = request.plaintext
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CertificatePublicKeyEncryptResponse().from_map(
-            await self.do_rpcrequest_async('CertificatePublicKeyEncrypt', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CertificatePublicKeyEncrypt',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CertificatePublicKeyEncryptResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def certificate_public_key_encrypt(
@@ -366,11 +687,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CertificatePublicKeyVerifyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.signature_value):
+            query['SignatureValue'] = request.signature_value
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CertificatePublicKeyVerifyResponse().from_map(
-            self.do_rpcrequest('CertificatePublicKeyVerify', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CertificatePublicKeyVerify',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CertificatePublicKeyVerifyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def certificate_public_key_verify_with_options_async(
@@ -379,11 +723,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CertificatePublicKeyVerifyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.signature_value):
+            query['SignatureValue'] = request.signature_value
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CertificatePublicKeyVerifyResponse().from_map(
-            await self.do_rpcrequest_async('CertificatePublicKeyVerify', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CertificatePublicKeyVerify',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CertificatePublicKeyVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def certificate_public_key_verify(
@@ -406,11 +773,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CreateAliasResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CreateAliasResponse().from_map(
-            self.do_rpcrequest('CreateAlias', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAlias',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateAliasResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_alias_with_options_async(
@@ -419,11 +803,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CreateAliasResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CreateAliasResponse().from_map(
-            await self.do_rpcrequest_async('CreateAlias', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAlias',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateAliasResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_alias(
@@ -450,11 +851,32 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.subject_alternative_names):
             request.subject_alternative_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.subject_alternative_names, 'SubjectAlternativeNames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.exportable_private_key):
+            query['ExportablePrivateKey'] = request.exportable_private_key
+        if not UtilClient.is_unset(request.key_spec):
+            query['KeySpec'] = request.key_spec
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        if not UtilClient.is_unset(request.subject_alternative_names_shrink):
+            query['SubjectAlternativeNames'] = request.subject_alternative_names_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CreateCertificateResponse().from_map(
-            self.do_rpcrequest('CreateCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateCertificate',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateCertificateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_certificate_with_options_async(
@@ -467,11 +889,32 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.subject_alternative_names):
             request.subject_alternative_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.subject_alternative_names, 'SubjectAlternativeNames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.exportable_private_key):
+            query['ExportablePrivateKey'] = request.exportable_private_key
+        if not UtilClient.is_unset(request.key_spec):
+            query['KeySpec'] = request.key_spec
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        if not UtilClient.is_unset(request.subject_alternative_names_shrink):
+            query['SubjectAlternativeNames'] = request.subject_alternative_names_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CreateCertificateResponse().from_map(
-            await self.do_rpcrequest_async('CreateCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateCertificate',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_certificate(
@@ -494,11 +937,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CreateKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_automatic_rotation):
+            query['EnableAutomaticRotation'] = request.enable_automatic_rotation
+        if not UtilClient.is_unset(request.key_spec):
+            query['KeySpec'] = request.key_spec
+        if not UtilClient.is_unset(request.key_usage):
+            query['KeyUsage'] = request.key_usage
+        if not UtilClient.is_unset(request.origin):
+            query['Origin'] = request.origin
+        if not UtilClient.is_unset(request.protection_level):
+            query['ProtectionLevel'] = request.protection_level
+        if not UtilClient.is_unset(request.rotation_interval):
+            query['RotationInterval'] = request.rotation_interval
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CreateKeyResponse().from_map(
-            self.do_rpcrequest('CreateKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateKeyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_key_with_options_async(
@@ -507,11 +977,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CreateKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_automatic_rotation):
+            query['EnableAutomaticRotation'] = request.enable_automatic_rotation
+        if not UtilClient.is_unset(request.key_spec):
+            query['KeySpec'] = request.key_spec
+        if not UtilClient.is_unset(request.key_usage):
+            query['KeyUsage'] = request.key_usage
+        if not UtilClient.is_unset(request.origin):
+            query['Origin'] = request.origin
+        if not UtilClient.is_unset(request.protection_level):
+            query['ProtectionLevel'] = request.protection_level
+        if not UtilClient.is_unset(request.rotation_interval):
+            query['RotationInterval'] = request.rotation_interval
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CreateKeyResponse().from_map(
-            await self.do_rpcrequest_async('CreateKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateKeyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_key(
@@ -534,11 +1031,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CreateKeyVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CreateKeyVersionResponse().from_map(
-            self.do_rpcrequest('CreateKeyVersion', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateKeyVersion',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateKeyVersionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_key_version_with_options_async(
@@ -547,11 +1059,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.CreateKeyVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CreateKeyVersionResponse().from_map(
-            await self.do_rpcrequest_async('CreateKeyVersion', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateKeyVersion',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateKeyVersionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_key_version(
@@ -578,11 +1105,46 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.extended_config):
             request.extended_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extended_config, 'ExtendedConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_automatic_rotation):
+            query['EnableAutomaticRotation'] = request.enable_automatic_rotation
+        if not UtilClient.is_unset(request.encryption_key_id):
+            query['EncryptionKeyId'] = request.encryption_key_id
+        if not UtilClient.is_unset(request.extended_config_shrink):
+            query['ExtendedConfig'] = request.extended_config_shrink
+        if not UtilClient.is_unset(request.rotation_interval):
+            query['RotationInterval'] = request.rotation_interval
+        if not UtilClient.is_unset(request.secret_data):
+            query['SecretData'] = request.secret_data
+        if not UtilClient.is_unset(request.secret_data_type):
+            query['SecretDataType'] = request.secret_data_type
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.secret_type):
+            query['SecretType'] = request.secret_type
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CreateSecretResponse().from_map(
-            self.do_rpcrequest('CreateSecret', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateSecret',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateSecretResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_secret_with_options_async(
@@ -595,11 +1157,46 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.extended_config):
             request.extended_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extended_config, 'ExtendedConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_automatic_rotation):
+            query['EnableAutomaticRotation'] = request.enable_automatic_rotation
+        if not UtilClient.is_unset(request.encryption_key_id):
+            query['EncryptionKeyId'] = request.encryption_key_id
+        if not UtilClient.is_unset(request.extended_config_shrink):
+            query['ExtendedConfig'] = request.extended_config_shrink
+        if not UtilClient.is_unset(request.rotation_interval):
+            query['RotationInterval'] = request.rotation_interval
+        if not UtilClient.is_unset(request.secret_data):
+            query['SecretData'] = request.secret_data
+        if not UtilClient.is_unset(request.secret_data_type):
+            query['SecretDataType'] = request.secret_data_type
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.secret_type):
+            query['SecretType'] = request.secret_type
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.CreateSecretResponse().from_map(
-            await self.do_rpcrequest_async('CreateSecret', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateSecret',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.CreateSecretResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_secret(
@@ -626,11 +1223,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.encryption_context_shrink):
+            query['EncryptionContext'] = request.encryption_context_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DecryptResponse().from_map(
-            self.do_rpcrequest('Decrypt', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='Decrypt',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DecryptResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def decrypt_with_options_async(
@@ -643,11 +1257,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.encryption_context_shrink):
+            query['EncryptionContext'] = request.encryption_context_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DecryptResponse().from_map(
-            await self.do_rpcrequest_async('Decrypt', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='Decrypt',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DecryptResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def decrypt(
@@ -670,11 +1301,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DeleteAliasResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DeleteAliasResponse().from_map(
-            self.do_rpcrequest('DeleteAlias', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteAlias',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeleteAliasResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_alias_with_options_async(
@@ -683,11 +1329,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DeleteAliasResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DeleteAliasResponse().from_map(
-            await self.do_rpcrequest_async('DeleteAlias', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteAlias',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeleteAliasResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_alias(
@@ -710,11 +1371,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DeleteCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DeleteCertificateResponse().from_map(
-            self.do_rpcrequest('DeleteCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteCertificate',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeleteCertificateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_certificate_with_options_async(
@@ -723,11 +1399,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DeleteCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DeleteCertificateResponse().from_map(
-            await self.do_rpcrequest_async('DeleteCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteCertificate',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeleteCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_certificate(
@@ -750,11 +1441,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DeleteKeyMaterialResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DeleteKeyMaterialResponse().from_map(
-            self.do_rpcrequest('DeleteKeyMaterial', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteKeyMaterial',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeleteKeyMaterialResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_key_material_with_options_async(
@@ -763,11 +1469,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DeleteKeyMaterialResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DeleteKeyMaterialResponse().from_map(
-            await self.do_rpcrequest_async('DeleteKeyMaterial', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteKeyMaterial',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeleteKeyMaterialResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_key_material(
@@ -790,11 +1511,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DeleteSecretResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force_delete_without_recovery):
+            query['ForceDeleteWithoutRecovery'] = request.force_delete_without_recovery
+        if not UtilClient.is_unset(request.recovery_window_in_days):
+            query['RecoveryWindowInDays'] = request.recovery_window_in_days
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DeleteSecretResponse().from_map(
-            self.do_rpcrequest('DeleteSecret', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteSecret',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeleteSecretResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_secret_with_options_async(
@@ -803,11 +1543,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DeleteSecretResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force_delete_without_recovery):
+            query['ForceDeleteWithoutRecovery'] = request.force_delete_without_recovery
+        if not UtilClient.is_unset(request.recovery_window_in_days):
+            query['RecoveryWindowInDays'] = request.recovery_window_in_days
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DeleteSecretResponse().from_map(
-            await self.do_rpcrequest_async('DeleteSecret', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteSecret',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DeleteSecretResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_secret(
@@ -829,8 +1588,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DescribeAccountKmsStatusResponse:
         req = open_api_models.OpenApiRequest()
-        return kms_20160120_models.DescribeAccountKmsStatusResponse().from_map(
-            self.do_rpcrequest('DescribeAccountKmsStatus', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAccountKmsStatus',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeAccountKmsStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_account_kms_status_with_options_async(
@@ -838,8 +1609,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DescribeAccountKmsStatusResponse:
         req = open_api_models.OpenApiRequest()
-        return kms_20160120_models.DescribeAccountKmsStatusResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAccountKmsStatus', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAccountKmsStatus',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeAccountKmsStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_account_kms_status(self) -> kms_20160120_models.DescribeAccountKmsStatusResponse:
@@ -856,11 +1639,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DescribeCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DescribeCertificateResponse().from_map(
-            self.do_rpcrequest('DescribeCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeCertificate',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeCertificateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_certificate_with_options_async(
@@ -869,11 +1667,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DescribeCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DescribeCertificateResponse().from_map(
-            await self.do_rpcrequest_async('DescribeCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeCertificate',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_certificate(
@@ -896,11 +1709,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DescribeKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DescribeKeyResponse().from_map(
-            self.do_rpcrequest('DescribeKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeKeyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_key_with_options_async(
@@ -909,11 +1737,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DescribeKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DescribeKeyResponse().from_map(
-            await self.do_rpcrequest_async('DescribeKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeKeyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_key(
@@ -936,11 +1779,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DescribeKeyVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_version_id):
+            query['KeyVersionId'] = request.key_version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DescribeKeyVersionResponse().from_map(
-            self.do_rpcrequest('DescribeKeyVersion', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeKeyVersion',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeKeyVersionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_key_version_with_options_async(
@@ -949,11 +1809,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DescribeKeyVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_version_id):
+            query['KeyVersionId'] = request.key_version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DescribeKeyVersionResponse().from_map(
-            await self.do_rpcrequest_async('DescribeKeyVersion', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeKeyVersion',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeKeyVersionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_key_version(
@@ -975,8 +1852,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DescribeRegionsResponse:
         req = open_api_models.OpenApiRequest()
-        return kms_20160120_models.DescribeRegionsResponse().from_map(
-            self.do_rpcrequest('DescribeRegions', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -984,8 +1873,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DescribeRegionsResponse:
         req = open_api_models.OpenApiRequest()
-        return kms_20160120_models.DescribeRegionsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRegions', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(self) -> kms_20160120_models.DescribeRegionsResponse:
@@ -1002,11 +1903,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DescribeSecretResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fetch_tags):
+            query['FetchTags'] = request.fetch_tags
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DescribeSecretResponse().from_map(
-            self.do_rpcrequest('DescribeSecret', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSecret',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeSecretResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_secret_with_options_async(
@@ -1015,11 +1933,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DescribeSecretResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fetch_tags):
+            query['FetchTags'] = request.fetch_tags
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DescribeSecretResponse().from_map(
-            await self.do_rpcrequest_async('DescribeSecret', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSecret',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DescribeSecretResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_secret(
@@ -1036,43 +1971,32 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_secret_with_options_async(request, runtime)
 
-    def describe_service_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.DescribeServiceResponse:
-        req = open_api_models.OpenApiRequest()
-        return kms_20160120_models.DescribeServiceResponse().from_map(
-            self.do_rpcrequest('DescribeService', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_service_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.DescribeServiceResponse:
-        req = open_api_models.OpenApiRequest()
-        return kms_20160120_models.DescribeServiceResponse().from_map(
-            await self.do_rpcrequest_async('DescribeService', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_service(self) -> kms_20160120_models.DescribeServiceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_service_with_options(runtime)
-
-    async def describe_service_async(self) -> kms_20160120_models.DescribeServiceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_service_with_options_async(runtime)
-
     def disable_key_with_options(
         self,
         request: kms_20160120_models.DisableKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DisableKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DisableKeyResponse().from_map(
-            self.do_rpcrequest('DisableKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DisableKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DisableKeyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def disable_key_with_options_async(
@@ -1081,11 +2005,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.DisableKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.DisableKeyResponse().from_map(
-            await self.do_rpcrequest_async('DisableKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DisableKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.DisableKeyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_key(
@@ -1108,11 +2047,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.EnableKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.EnableKeyResponse().from_map(
-            self.do_rpcrequest('EnableKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EnableKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.EnableKeyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def enable_key_with_options_async(
@@ -1121,11 +2075,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.EnableKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.EnableKeyResponse().from_map(
-            await self.do_rpcrequest_async('EnableKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EnableKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.EnableKeyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_key(
@@ -1152,11 +2121,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.encryption_context_shrink):
+            query['EncryptionContext'] = request.encryption_context_shrink
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.plaintext):
+            query['Plaintext'] = request.plaintext
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.EncryptResponse().from_map(
-            self.do_rpcrequest('Encrypt', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='Encrypt',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.EncryptResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def encrypt_with_options_async(
@@ -1169,11 +2157,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.encryption_context_shrink):
+            query['EncryptionContext'] = request.encryption_context_shrink
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.plaintext):
+            query['Plaintext'] = request.plaintext
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.EncryptResponse().from_map(
-            await self.do_rpcrequest_async('Encrypt', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='Encrypt',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.EncryptResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def encrypt(
@@ -1190,46 +2197,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.encrypt_with_options_async(request, runtime)
 
-    def export_certificate_with_options(
-        self,
-        request: kms_20160120_models.ExportCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.ExportCertificateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return kms_20160120_models.ExportCertificateResponse().from_map(
-            self.do_rpcrequest('ExportCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def export_certificate_with_options_async(
-        self,
-        request: kms_20160120_models.ExportCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.ExportCertificateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return kms_20160120_models.ExportCertificateResponse().from_map(
-            await self.do_rpcrequest_async('ExportCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def export_certificate(
-        self,
-        request: kms_20160120_models.ExportCertificateRequest,
-    ) -> kms_20160120_models.ExportCertificateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.export_certificate_with_options(request, runtime)
-
-    async def export_certificate_async(
-        self,
-        request: kms_20160120_models.ExportCertificateRequest,
-    ) -> kms_20160120_models.ExportCertificateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.export_certificate_with_options_async(request, runtime)
-
     def export_data_key_with_options(
         self,
         tmp_req: kms_20160120_models.ExportDataKeyRequest,
@@ -1240,11 +2207,34 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.encryption_context_shrink):
+            query['EncryptionContext'] = request.encryption_context_shrink
+        if not UtilClient.is_unset(request.public_key_blob):
+            query['PublicKeyBlob'] = request.public_key_blob
+        if not UtilClient.is_unset(request.wrapping_algorithm):
+            query['WrappingAlgorithm'] = request.wrapping_algorithm
+        if not UtilClient.is_unset(request.wrapping_key_spec):
+            query['WrappingKeySpec'] = request.wrapping_key_spec
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ExportDataKeyResponse().from_map(
-            self.do_rpcrequest('ExportDataKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ExportDataKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ExportDataKeyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def export_data_key_with_options_async(
@@ -1257,11 +2247,34 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.encryption_context_shrink):
+            query['EncryptionContext'] = request.encryption_context_shrink
+        if not UtilClient.is_unset(request.public_key_blob):
+            query['PublicKeyBlob'] = request.public_key_blob
+        if not UtilClient.is_unset(request.wrapping_algorithm):
+            query['WrappingAlgorithm'] = request.wrapping_algorithm
+        if not UtilClient.is_unset(request.wrapping_key_spec):
+            query['WrappingKeySpec'] = request.wrapping_key_spec
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ExportDataKeyResponse().from_map(
-            await self.do_rpcrequest_async('ExportDataKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ExportDataKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ExportDataKeyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def export_data_key(
@@ -1288,11 +2301,38 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.encryption_context_shrink):
+            query['EncryptionContext'] = request.encryption_context_shrink
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_spec):
+            query['KeySpec'] = request.key_spec
+        if not UtilClient.is_unset(request.number_of_bytes):
+            query['NumberOfBytes'] = request.number_of_bytes
+        if not UtilClient.is_unset(request.public_key_blob):
+            query['PublicKeyBlob'] = request.public_key_blob
+        if not UtilClient.is_unset(request.wrapping_algorithm):
+            query['WrappingAlgorithm'] = request.wrapping_algorithm
+        if not UtilClient.is_unset(request.wrapping_key_spec):
+            query['WrappingKeySpec'] = request.wrapping_key_spec
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GenerateAndExportDataKeyResponse().from_map(
-            self.do_rpcrequest('GenerateAndExportDataKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GenerateAndExportDataKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GenerateAndExportDataKeyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def generate_and_export_data_key_with_options_async(
@@ -1305,11 +2345,38 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.encryption_context_shrink):
+            query['EncryptionContext'] = request.encryption_context_shrink
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_spec):
+            query['KeySpec'] = request.key_spec
+        if not UtilClient.is_unset(request.number_of_bytes):
+            query['NumberOfBytes'] = request.number_of_bytes
+        if not UtilClient.is_unset(request.public_key_blob):
+            query['PublicKeyBlob'] = request.public_key_blob
+        if not UtilClient.is_unset(request.wrapping_algorithm):
+            query['WrappingAlgorithm'] = request.wrapping_algorithm
+        if not UtilClient.is_unset(request.wrapping_key_spec):
+            query['WrappingKeySpec'] = request.wrapping_key_spec
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GenerateAndExportDataKeyResponse().from_map(
-            await self.do_rpcrequest_async('GenerateAndExportDataKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GenerateAndExportDataKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GenerateAndExportDataKeyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def generate_and_export_data_key(
@@ -1336,11 +2403,32 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.encryption_context_shrink):
+            query['EncryptionContext'] = request.encryption_context_shrink
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_spec):
+            query['KeySpec'] = request.key_spec
+        if not UtilClient.is_unset(request.number_of_bytes):
+            query['NumberOfBytes'] = request.number_of_bytes
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GenerateDataKeyResponse().from_map(
-            self.do_rpcrequest('GenerateDataKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GenerateDataKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GenerateDataKeyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def generate_data_key_with_options_async(
@@ -1353,11 +2441,32 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.encryption_context_shrink):
+            query['EncryptionContext'] = request.encryption_context_shrink
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_spec):
+            query['KeySpec'] = request.key_spec
+        if not UtilClient.is_unset(request.number_of_bytes):
+            query['NumberOfBytes'] = request.number_of_bytes
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GenerateDataKeyResponse().from_map(
-            await self.do_rpcrequest_async('GenerateDataKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GenerateDataKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GenerateDataKeyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def generate_data_key(
@@ -1384,11 +2493,32 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.encryption_context_shrink):
+            query['EncryptionContext'] = request.encryption_context_shrink
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_spec):
+            query['KeySpec'] = request.key_spec
+        if not UtilClient.is_unset(request.number_of_bytes):
+            query['NumberOfBytes'] = request.number_of_bytes
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GenerateDataKeyWithoutPlaintextResponse().from_map(
-            self.do_rpcrequest('GenerateDataKeyWithoutPlaintext', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GenerateDataKeyWithoutPlaintext',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GenerateDataKeyWithoutPlaintextResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def generate_data_key_without_plaintext_with_options_async(
@@ -1401,11 +2531,32 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.encryption_context_shrink):
+            query['EncryptionContext'] = request.encryption_context_shrink
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_spec):
+            query['KeySpec'] = request.key_spec
+        if not UtilClient.is_unset(request.number_of_bytes):
+            query['NumberOfBytes'] = request.number_of_bytes
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GenerateDataKeyWithoutPlaintextResponse().from_map(
-            await self.do_rpcrequest_async('GenerateDataKeyWithoutPlaintext', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GenerateDataKeyWithoutPlaintext',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GenerateDataKeyWithoutPlaintextResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def generate_data_key_without_plaintext(
@@ -1428,11 +2579,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.GetCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GetCertificateResponse().from_map(
-            self.do_rpcrequest('GetCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetCertificate',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetCertificateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_certificate_with_options_async(
@@ -1441,11 +2607,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.GetCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GetCertificateResponse().from_map(
-            await self.do_rpcrequest_async('GetCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetCertificate',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_certificate(
@@ -1468,11 +2649,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.GetParametersForImportResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.wrapping_algorithm):
+            query['WrappingAlgorithm'] = request.wrapping_algorithm
+        if not UtilClient.is_unset(request.wrapping_key_spec):
+            query['WrappingKeySpec'] = request.wrapping_key_spec
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GetParametersForImportResponse().from_map(
-            self.do_rpcrequest('GetParametersForImport', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetParametersForImport',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetParametersForImportResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_parameters_for_import_with_options_async(
@@ -1481,11 +2681,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.GetParametersForImportResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.wrapping_algorithm):
+            query['WrappingAlgorithm'] = request.wrapping_algorithm
+        if not UtilClient.is_unset(request.wrapping_key_spec):
+            query['WrappingKeySpec'] = request.wrapping_key_spec
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GetParametersForImportResponse().from_map(
-            await self.do_rpcrequest_async('GetParametersForImport', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetParametersForImport',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetParametersForImportResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_parameters_for_import(
@@ -1508,11 +2727,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.GetPublicKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_version_id):
+            query['KeyVersionId'] = request.key_version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GetPublicKeyResponse().from_map(
-            self.do_rpcrequest('GetPublicKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetPublicKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetPublicKeyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_public_key_with_options_async(
@@ -1521,11 +2757,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.GetPublicKeyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_version_id):
+            query['KeyVersionId'] = request.key_version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GetPublicKeyResponse().from_map(
-            await self.do_rpcrequest_async('GetPublicKey', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetPublicKey',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetPublicKeyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_public_key(
@@ -1548,11 +2801,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.GetRandomPasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.exclude_characters):
+            query['ExcludeCharacters'] = request.exclude_characters
+        if not UtilClient.is_unset(request.exclude_lowercase):
+            query['ExcludeLowercase'] = request.exclude_lowercase
+        if not UtilClient.is_unset(request.exclude_numbers):
+            query['ExcludeNumbers'] = request.exclude_numbers
+        if not UtilClient.is_unset(request.exclude_punctuation):
+            query['ExcludePunctuation'] = request.exclude_punctuation
+        if not UtilClient.is_unset(request.exclude_uppercase):
+            query['ExcludeUppercase'] = request.exclude_uppercase
+        if not UtilClient.is_unset(request.password_length):
+            query['PasswordLength'] = request.password_length
+        if not UtilClient.is_unset(request.require_each_included_type):
+            query['RequireEachIncludedType'] = request.require_each_included_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GetRandomPasswordResponse().from_map(
-            self.do_rpcrequest('GetRandomPassword', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetRandomPassword',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetRandomPasswordResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_random_password_with_options_async(
@@ -1561,11 +2841,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.GetRandomPasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.exclude_characters):
+            query['ExcludeCharacters'] = request.exclude_characters
+        if not UtilClient.is_unset(request.exclude_lowercase):
+            query['ExcludeLowercase'] = request.exclude_lowercase
+        if not UtilClient.is_unset(request.exclude_numbers):
+            query['ExcludeNumbers'] = request.exclude_numbers
+        if not UtilClient.is_unset(request.exclude_punctuation):
+            query['ExcludePunctuation'] = request.exclude_punctuation
+        if not UtilClient.is_unset(request.exclude_uppercase):
+            query['ExcludeUppercase'] = request.exclude_uppercase
+        if not UtilClient.is_unset(request.password_length):
+            query['PasswordLength'] = request.password_length
+        if not UtilClient.is_unset(request.require_each_included_type):
+            query['RequireEachIncludedType'] = request.require_each_included_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GetRandomPasswordResponse().from_map(
-            await self.do_rpcrequest_async('GetRandomPassword', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetRandomPassword',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetRandomPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_random_password(
@@ -1588,11 +2895,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.GetSecretValueResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fetch_extended_config):
+            query['FetchExtendedConfig'] = request.fetch_extended_config
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.version_stage):
+            query['VersionStage'] = request.version_stage
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GetSecretValueResponse().from_map(
-            self.do_rpcrequest('GetSecretValue', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetSecretValue',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetSecretValueResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_secret_value_with_options_async(
@@ -1601,11 +2929,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.GetSecretValueResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fetch_extended_config):
+            query['FetchExtendedConfig'] = request.fetch_extended_config
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.version_stage):
+            query['VersionStage'] = request.version_stage
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.GetSecretValueResponse().from_map(
-            await self.do_rpcrequest_async('GetSecretValue', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetSecretValue',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.GetSecretValueResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_secret_value(
@@ -1622,97 +2971,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_secret_value_with_options_async(request, runtime)
 
-    def import_certificate_with_options(
-        self,
-        request: kms_20160120_models.ImportCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.ImportCertificateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return kms_20160120_models.ImportCertificateResponse().from_map(
-            self.do_rpcrequest('ImportCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def import_certificate_with_options_async(
-        self,
-        request: kms_20160120_models.ImportCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.ImportCertificateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return kms_20160120_models.ImportCertificateResponse().from_map(
-            await self.do_rpcrequest_async('ImportCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def import_certificate(
-        self,
-        request: kms_20160120_models.ImportCertificateRequest,
-    ) -> kms_20160120_models.ImportCertificateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.import_certificate_with_options(request, runtime)
-
-    async def import_certificate_async(
-        self,
-        request: kms_20160120_models.ImportCertificateRequest,
-    ) -> kms_20160120_models.ImportCertificateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.import_certificate_with_options_async(request, runtime)
-
-    def import_encryption_certificate_with_options(
-        self,
-        request: kms_20160120_models.ImportEncryptionCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.ImportEncryptionCertificateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return kms_20160120_models.ImportEncryptionCertificateResponse().from_map(
-            self.do_rpcrequest('ImportEncryptionCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def import_encryption_certificate_with_options_async(
-        self,
-        request: kms_20160120_models.ImportEncryptionCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.ImportEncryptionCertificateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return kms_20160120_models.ImportEncryptionCertificateResponse().from_map(
-            await self.do_rpcrequest_async('ImportEncryptionCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def import_encryption_certificate(
-        self,
-        request: kms_20160120_models.ImportEncryptionCertificateRequest,
-    ) -> kms_20160120_models.ImportEncryptionCertificateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.import_encryption_certificate_with_options(request, runtime)
-
-    async def import_encryption_certificate_async(
-        self,
-        request: kms_20160120_models.ImportEncryptionCertificateRequest,
-    ) -> kms_20160120_models.ImportEncryptionCertificateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.import_encryption_certificate_with_options_async(request, runtime)
-
     def import_key_material_with_options(
         self,
         request: kms_20160120_models.ImportKeyMaterialRequest,
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ImportKeyMaterialResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.encrypted_key_material):
+            query['EncryptedKeyMaterial'] = request.encrypted_key_material
+        if not UtilClient.is_unset(request.import_token):
+            query['ImportToken'] = request.import_token
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_material_expire_unix):
+            query['KeyMaterialExpireUnix'] = request.key_material_expire_unix
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ImportKeyMaterialResponse().from_map(
-            self.do_rpcrequest('ImportKeyMaterial', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ImportKeyMaterial',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ImportKeyMaterialResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def import_key_material_with_options_async(
@@ -1721,11 +3011,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ImportKeyMaterialResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.encrypted_key_material):
+            query['EncryptedKeyMaterial'] = request.encrypted_key_material
+        if not UtilClient.is_unset(request.import_token):
+            query['ImportToken'] = request.import_token
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_material_expire_unix):
+            query['KeyMaterialExpireUnix'] = request.key_material_expire_unix
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ImportKeyMaterialResponse().from_map(
-            await self.do_rpcrequest_async('ImportKeyMaterial', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ImportKeyMaterial',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ImportKeyMaterialResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def import_key_material(
@@ -1748,11 +3059,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ListAliasesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ListAliasesResponse().from_map(
-            self.do_rpcrequest('ListAliases', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAliases',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListAliasesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_aliases_with_options_async(
@@ -1761,11 +3089,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ListAliasesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ListAliasesResponse().from_map(
-            await self.do_rpcrequest_async('ListAliases', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAliases',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListAliasesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_aliases(
@@ -1788,11 +3133,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ListAliasesByKeyIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ListAliasesByKeyIdResponse().from_map(
-            self.do_rpcrequest('ListAliasesByKeyId', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAliasesByKeyId',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListAliasesByKeyIdResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_aliases_by_key_id_with_options_async(
@@ -1801,11 +3165,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ListAliasesByKeyIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ListAliasesByKeyIdResponse().from_map(
-            await self.do_rpcrequest_async('ListAliasesByKeyId', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListAliasesByKeyId',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListAliasesByKeyIdResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_aliases_by_key_id(
@@ -1822,97 +3205,36 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_aliases_by_key_id_with_options_async(request, runtime)
 
-    def list_certificates_with_options(
-        self,
-        request: kms_20160120_models.ListCertificatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.ListCertificatesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return kms_20160120_models.ListCertificatesResponse().from_map(
-            self.do_rpcrequest('ListCertificates', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_certificates_with_options_async(
-        self,
-        request: kms_20160120_models.ListCertificatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.ListCertificatesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return kms_20160120_models.ListCertificatesResponse().from_map(
-            await self.do_rpcrequest_async('ListCertificates', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_certificates(
-        self,
-        request: kms_20160120_models.ListCertificatesRequest,
-    ) -> kms_20160120_models.ListCertificatesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_certificates_with_options(request, runtime)
-
-    async def list_certificates_async(
-        self,
-        request: kms_20160120_models.ListCertificatesRequest,
-    ) -> kms_20160120_models.ListCertificatesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_certificates_with_options_async(request, runtime)
-
-    def list_keys_with_options(
-        self,
-        request: kms_20160120_models.ListKeysRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.ListKeysResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return kms_20160120_models.ListKeysResponse().from_map(
-            self.do_rpcrequest('ListKeys', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_keys_with_options_async(
-        self,
-        request: kms_20160120_models.ListKeysRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.ListKeysResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return kms_20160120_models.ListKeysResponse().from_map(
-            await self.do_rpcrequest_async('ListKeys', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_keys(
-        self,
-        request: kms_20160120_models.ListKeysRequest,
-    ) -> kms_20160120_models.ListKeysResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_keys_with_options(request, runtime)
-
-    async def list_keys_async(
-        self,
-        request: kms_20160120_models.ListKeysRequest,
-    ) -> kms_20160120_models.ListKeysResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_keys_with_options_async(request, runtime)
-
     def list_key_versions_with_options(
         self,
         request: kms_20160120_models.ListKeyVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ListKeyVersionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ListKeyVersionsResponse().from_map(
-            self.do_rpcrequest('ListKeyVersions', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListKeyVersions',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListKeyVersionsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_key_versions_with_options_async(
@@ -1921,11 +3243,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ListKeyVersionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ListKeyVersionsResponse().from_map(
-            await self.do_rpcrequest_async('ListKeyVersions', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListKeyVersions',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListKeyVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_key_versions(
@@ -1942,17 +3283,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_key_versions_with_options_async(request, runtime)
 
+    def list_keys_with_options(
+        self,
+        request: kms_20160120_models.ListKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListKeysResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListKeys',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_keys_with_options_async(
+        self,
+        request: kms_20160120_models.ListKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListKeysResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListKeys',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_keys(
+        self,
+        request: kms_20160120_models.ListKeysRequest,
+    ) -> kms_20160120_models.ListKeysResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_keys_with_options(request, runtime)
+
+    async def list_keys_async(
+        self,
+        request: kms_20160120_models.ListKeysRequest,
+    ) -> kms_20160120_models.ListKeysResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_keys_with_options_async(request, runtime)
+
     def list_resource_tags_with_options(
         self,
         request: kms_20160120_models.ListResourceTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ListResourceTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ListResourceTagsResponse().from_map(
-            self.do_rpcrequest('ListResourceTags', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListResourceTags',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListResourceTagsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_resource_tags_with_options_async(
@@ -1961,11 +3395,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ListResourceTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ListResourceTagsResponse().from_map(
-            await self.do_rpcrequest_async('ListResourceTags', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListResourceTags',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListResourceTagsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_resource_tags(
@@ -1982,57 +3431,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_resource_tags_with_options_async(request, runtime)
 
-    def list_secrets_with_options(
-        self,
-        request: kms_20160120_models.ListSecretsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.ListSecretsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return kms_20160120_models.ListSecretsResponse().from_map(
-            self.do_rpcrequest('ListSecrets', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_secrets_with_options_async(
-        self,
-        request: kms_20160120_models.ListSecretsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> kms_20160120_models.ListSecretsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return kms_20160120_models.ListSecretsResponse().from_map(
-            await self.do_rpcrequest_async('ListSecrets', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_secrets(
-        self,
-        request: kms_20160120_models.ListSecretsRequest,
-    ) -> kms_20160120_models.ListSecretsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_secrets_with_options(request, runtime)
-
-    async def list_secrets_async(
-        self,
-        request: kms_20160120_models.ListSecretsRequest,
-    ) -> kms_20160120_models.ListSecretsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_secrets_with_options_async(request, runtime)
-
     def list_secret_version_ids_with_options(
         self,
         request: kms_20160120_models.ListSecretVersionIdsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ListSecretVersionIdsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.include_deprecated):
+            query['IncludeDeprecated'] = request.include_deprecated
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ListSecretVersionIdsResponse().from_map(
-            self.do_rpcrequest('ListSecretVersionIds', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSecretVersionIds',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListSecretVersionIdsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_secret_version_ids_with_options_async(
@@ -2041,11 +3471,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ListSecretVersionIdsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.include_deprecated):
+            query['IncludeDeprecated'] = request.include_deprecated
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ListSecretVersionIdsResponse().from_map(
-            await self.do_rpcrequest_async('ListSecretVersionIds', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListSecretVersionIds',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListSecretVersionIdsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_secret_version_ids(
@@ -2062,13 +3513,107 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_secret_version_ids_with_options_async(request, runtime)
 
+    def list_secrets_with_options(
+        self,
+        request: kms_20160120_models.ListSecretsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListSecretsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fetch_tags):
+            query['FetchTags'] = request.fetch_tags
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSecrets',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListSecretsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_secrets_with_options_async(
+        self,
+        request: kms_20160120_models.ListSecretsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.ListSecretsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fetch_tags):
+            query['FetchTags'] = request.fetch_tags
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSecrets',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ListSecretsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_secrets(
+        self,
+        request: kms_20160120_models.ListSecretsRequest,
+    ) -> kms_20160120_models.ListSecretsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_secrets_with_options(request, runtime)
+
+    async def list_secrets_async(
+        self,
+        request: kms_20160120_models.ListSecretsRequest,
+    ) -> kms_20160120_models.ListSecretsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_secrets_with_options_async(request, runtime)
+
     def open_kms_service_with_options(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.OpenKmsServiceResponse:
         req = open_api_models.OpenApiRequest()
-        return kms_20160120_models.OpenKmsServiceResponse().from_map(
-            self.do_rpcrequest('OpenKmsService', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='OpenKmsService',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.OpenKmsServiceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def open_kms_service_with_options_async(
@@ -2076,8 +3621,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.OpenKmsServiceResponse:
         req = open_api_models.OpenApiRequest()
-        return kms_20160120_models.OpenKmsServiceResponse().from_map(
-            await self.do_rpcrequest_async('OpenKmsService', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='OpenKmsService',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.OpenKmsServiceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def open_kms_service(self) -> kms_20160120_models.OpenKmsServiceResponse:
@@ -2094,11 +3651,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.PutSecretValueResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.secret_data):
+            query['SecretData'] = request.secret_data
+        if not UtilClient.is_unset(request.secret_data_type):
+            query['SecretDataType'] = request.secret_data_type
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.version_stages):
+            query['VersionStages'] = request.version_stages
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.PutSecretValueResponse().from_map(
-            self.do_rpcrequest('PutSecretValue', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PutSecretValue',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.PutSecretValueResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def put_secret_value_with_options_async(
@@ -2107,11 +3687,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.PutSecretValueResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.secret_data):
+            query['SecretData'] = request.secret_data
+        if not UtilClient.is_unset(request.secret_data_type):
+            query['SecretDataType'] = request.secret_data_type
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.version_stages):
+            query['VersionStages'] = request.version_stages
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.PutSecretValueResponse().from_map(
-            await self.do_rpcrequest_async('PutSecretValue', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PutSecretValue',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.PutSecretValueResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def put_secret_value(
@@ -2136,15 +3739,42 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = kms_20160120_models.ReEncryptShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.source_encryption_context):
-            request.source_encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_encryption_context, 'SourceEncryptionContext', 'json')
         if not UtilClient.is_unset(tmp_req.destination_encryption_context):
             request.destination_encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.destination_encryption_context, 'DestinationEncryptionContext', 'json')
+        if not UtilClient.is_unset(tmp_req.source_encryption_context):
+            request.source_encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_encryption_context, 'SourceEncryptionContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.destination_encryption_context_shrink):
+            query['DestinationEncryptionContext'] = request.destination_encryption_context_shrink
+        if not UtilClient.is_unset(request.destination_key_id):
+            query['DestinationKeyId'] = request.destination_key_id
+        if not UtilClient.is_unset(request.source_encryption_algorithm):
+            query['SourceEncryptionAlgorithm'] = request.source_encryption_algorithm
+        if not UtilClient.is_unset(request.source_encryption_context_shrink):
+            query['SourceEncryptionContext'] = request.source_encryption_context_shrink
+        if not UtilClient.is_unset(request.source_key_id):
+            query['SourceKeyId'] = request.source_key_id
+        if not UtilClient.is_unset(request.source_key_version_id):
+            query['SourceKeyVersionId'] = request.source_key_version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ReEncryptResponse().from_map(
-            self.do_rpcrequest('ReEncrypt', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ReEncrypt',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ReEncryptResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def re_encrypt_with_options_async(
@@ -2155,15 +3785,42 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = kms_20160120_models.ReEncryptShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.source_encryption_context):
-            request.source_encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_encryption_context, 'SourceEncryptionContext', 'json')
         if not UtilClient.is_unset(tmp_req.destination_encryption_context):
             request.destination_encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.destination_encryption_context, 'DestinationEncryptionContext', 'json')
+        if not UtilClient.is_unset(tmp_req.source_encryption_context):
+            request.source_encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_encryption_context, 'SourceEncryptionContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.destination_encryption_context_shrink):
+            query['DestinationEncryptionContext'] = request.destination_encryption_context_shrink
+        if not UtilClient.is_unset(request.destination_key_id):
+            query['DestinationKeyId'] = request.destination_key_id
+        if not UtilClient.is_unset(request.source_encryption_algorithm):
+            query['SourceEncryptionAlgorithm'] = request.source_encryption_algorithm
+        if not UtilClient.is_unset(request.source_encryption_context_shrink):
+            query['SourceEncryptionContext'] = request.source_encryption_context_shrink
+        if not UtilClient.is_unset(request.source_key_id):
+            query['SourceKeyId'] = request.source_key_id
+        if not UtilClient.is_unset(request.source_key_version_id):
+            query['SourceKeyVersionId'] = request.source_key_version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ReEncryptResponse().from_map(
-            await self.do_rpcrequest_async('ReEncrypt', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ReEncrypt',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ReEncryptResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def re_encrypt(
@@ -2186,11 +3843,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.RestoreSecretResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.RestoreSecretResponse().from_map(
-            self.do_rpcrequest('RestoreSecret', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RestoreSecret',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.RestoreSecretResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def restore_secret_with_options_async(
@@ -2199,11 +3871,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.RestoreSecretResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.RestoreSecretResponse().from_map(
-            await self.do_rpcrequest_async('RestoreSecret', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RestoreSecret',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.RestoreSecretResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def restore_secret(
@@ -2226,11 +3913,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.RotateSecretResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.RotateSecretResponse().from_map(
-            self.do_rpcrequest('RotateSecret', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RotateSecret',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.RotateSecretResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def rotate_secret_with_options_async(
@@ -2239,11 +3943,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.RotateSecretResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.RotateSecretResponse().from_map(
-            await self.do_rpcrequest_async('RotateSecret', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RotateSecret',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.RotateSecretResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def rotate_secret(
@@ -2266,11 +3987,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ScheduleKeyDeletionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.pending_window_in_days):
+            query['PendingWindowInDays'] = request.pending_window_in_days
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ScheduleKeyDeletionResponse().from_map(
-            self.do_rpcrequest('ScheduleKeyDeletion', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ScheduleKeyDeletion',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ScheduleKeyDeletionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def schedule_key_deletion_with_options_async(
@@ -2279,11 +4017,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.ScheduleKeyDeletionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.pending_window_in_days):
+            query['PendingWindowInDays'] = request.pending_window_in_days
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.ScheduleKeyDeletionResponse().from_map(
-            await self.do_rpcrequest_async('ScheduleKeyDeletion', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ScheduleKeyDeletion',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.ScheduleKeyDeletionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def schedule_key_deletion(
@@ -2300,17 +4055,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.schedule_key_deletion_with_options_async(request, runtime)
 
+    def set_deletion_protection_with_options(
+        self,
+        request: kms_20160120_models.SetDeletionProtectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.SetDeletionProtectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deletion_protection_description):
+            query['DeletionProtectionDescription'] = request.deletion_protection_description
+        if not UtilClient.is_unset(request.enable_deletion_protection):
+            query['EnableDeletionProtection'] = request.enable_deletion_protection
+        if not UtilClient.is_unset(request.protected_resource_arn):
+            query['ProtectedResourceArn'] = request.protected_resource_arn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDeletionProtection',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.SetDeletionProtectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_deletion_protection_with_options_async(
+        self,
+        request: kms_20160120_models.SetDeletionProtectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.SetDeletionProtectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deletion_protection_description):
+            query['DeletionProtectionDescription'] = request.deletion_protection_description
+        if not UtilClient.is_unset(request.enable_deletion_protection):
+            query['EnableDeletionProtection'] = request.enable_deletion_protection
+        if not UtilClient.is_unset(request.protected_resource_arn):
+            query['ProtectedResourceArn'] = request.protected_resource_arn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDeletionProtection',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.SetDeletionProtectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_deletion_protection(
+        self,
+        request: kms_20160120_models.SetDeletionProtectionRequest,
+    ) -> kms_20160120_models.SetDeletionProtectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_deletion_protection_with_options(request, runtime)
+
+    async def set_deletion_protection_async(
+        self,
+        request: kms_20160120_models.SetDeletionProtectionRequest,
+    ) -> kms_20160120_models.SetDeletionProtectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_deletion_protection_with_options_async(request, runtime)
+
     def tag_resource_with_options(
         self,
         request: kms_20160120_models.TagResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.TagResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.TagResourceResponse().from_map(
-            self.do_rpcrequest('TagResource', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='TagResource',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.TagResourceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def tag_resource_with_options_async(
@@ -2319,11 +4173,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.TagResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.TagResourceResponse().from_map(
-            await self.do_rpcrequest_async('TagResource', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='TagResource',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.TagResourceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_resource(
@@ -2346,11 +4221,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UntagResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.tag_keys):
+            query['TagKeys'] = request.tag_keys
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UntagResourceResponse().from_map(
-            self.do_rpcrequest('UntagResource', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UntagResource',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UntagResourceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def untag_resource_with_options_async(
@@ -2359,11 +4255,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UntagResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.tag_keys):
+            query['TagKeys'] = request.tag_keys
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UntagResourceResponse().from_map(
-            await self.do_rpcrequest_async('UntagResource', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UntagResource',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UntagResourceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def untag_resource(
@@ -2386,11 +4303,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UpdateAliasResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UpdateAliasResponse().from_map(
-            self.do_rpcrequest('UpdateAlias', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAlias',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateAliasResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_alias_with_options_async(
@@ -2399,11 +4333,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UpdateAliasResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UpdateAliasResponse().from_map(
-            await self.do_rpcrequest_async('UpdateAlias', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAlias',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateAliasResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_alias(
@@ -2426,11 +4377,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UpdateCertificateStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UpdateCertificateStatusResponse().from_map(
-            self.do_rpcrequest('UpdateCertificateStatus', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateCertificateStatus',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateCertificateStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_certificate_status_with_options_async(
@@ -2439,11 +4407,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UpdateCertificateStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UpdateCertificateStatusResponse().from_map(
-            await self.do_rpcrequest_async('UpdateCertificateStatus', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateCertificateStatus',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateCertificateStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_certificate_status(
@@ -2466,11 +4451,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UpdateKeyDescriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UpdateKeyDescriptionResponse().from_map(
-            self.do_rpcrequest('UpdateKeyDescription', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateKeyDescription',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateKeyDescriptionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_key_description_with_options_async(
@@ -2479,11 +4481,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UpdateKeyDescriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UpdateKeyDescriptionResponse().from_map(
-            await self.do_rpcrequest_async('UpdateKeyDescription', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateKeyDescription',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateKeyDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_key_description(
@@ -2506,11 +4525,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UpdateRotationPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable_automatic_rotation):
+            query['EnableAutomaticRotation'] = request.enable_automatic_rotation
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.rotation_interval):
+            query['RotationInterval'] = request.rotation_interval
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UpdateRotationPolicyResponse().from_map(
-            self.do_rpcrequest('UpdateRotationPolicy', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateRotationPolicy',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateRotationPolicyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_rotation_policy_with_options_async(
@@ -2519,11 +4557,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UpdateRotationPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable_automatic_rotation):
+            query['EnableAutomaticRotation'] = request.enable_automatic_rotation
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.rotation_interval):
+            query['RotationInterval'] = request.rotation_interval
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UpdateRotationPolicyResponse().from_map(
-            await self.do_rpcrequest_async('UpdateRotationPolicy', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateRotationPolicy',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateRotationPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_rotation_policy(
@@ -2540,17 +4597,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_rotation_policy_with_options_async(request, runtime)
 
+    def update_secret_with_options(
+        self,
+        request: kms_20160120_models.UpdateSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.UpdateSecretResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.extended_config):
+            query['ExtendedConfig'] = request.extended_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSecret',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_secret_with_options_async(
+        self,
+        request: kms_20160120_models.UpdateSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> kms_20160120_models.UpdateSecretResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.extended_config):
+            query['ExtendedConfig'] = request.extended_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSecret',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_secret(
+        self,
+        request: kms_20160120_models.UpdateSecretRequest,
+    ) -> kms_20160120_models.UpdateSecretResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_secret_with_options(request, runtime)
+
+    async def update_secret_async(
+        self,
+        request: kms_20160120_models.UpdateSecretRequest,
+    ) -> kms_20160120_models.UpdateSecretResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_secret_with_options_async(request, runtime)
+
     def update_secret_rotation_policy_with_options(
         self,
         request: kms_20160120_models.UpdateSecretRotationPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UpdateSecretRotationPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable_automatic_rotation):
+            query['EnableAutomaticRotation'] = request.enable_automatic_rotation
+        if not UtilClient.is_unset(request.rotation_interval):
+            query['RotationInterval'] = request.rotation_interval
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UpdateSecretRotationPolicyResponse().from_map(
-            self.do_rpcrequest('UpdateSecretRotationPolicy', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateSecretRotationPolicy',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateSecretRotationPolicyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_secret_rotation_policy_with_options_async(
@@ -2559,11 +4713,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UpdateSecretRotationPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable_automatic_rotation):
+            query['EnableAutomaticRotation'] = request.enable_automatic_rotation
+        if not UtilClient.is_unset(request.rotation_interval):
+            query['RotationInterval'] = request.rotation_interval
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UpdateSecretRotationPolicyResponse().from_map(
-            await self.do_rpcrequest_async('UpdateSecretRotationPolicy', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateSecretRotationPolicy',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateSecretRotationPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_secret_rotation_policy(
@@ -2586,11 +4759,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UpdateSecretVersionStageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.move_to_version):
+            query['MoveToVersion'] = request.move_to_version
+        if not UtilClient.is_unset(request.remove_from_version):
+            query['RemoveFromVersion'] = request.remove_from_version
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.version_stage):
+            query['VersionStage'] = request.version_stage
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UpdateSecretVersionStageResponse().from_map(
-            self.do_rpcrequest('UpdateSecretVersionStage', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateSecretVersionStage',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateSecretVersionStageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_secret_version_stage_with_options_async(
@@ -2599,11 +4793,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UpdateSecretVersionStageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.move_to_version):
+            query['MoveToVersion'] = request.move_to_version
+        if not UtilClient.is_unset(request.remove_from_version):
+            query['RemoveFromVersion'] = request.remove_from_version
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.version_stage):
+            query['VersionStage'] = request.version_stage
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UpdateSecretVersionStageResponse().from_map(
-            await self.do_rpcrequest_async('UpdateSecretVersionStage', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateSecretVersionStage',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UpdateSecretVersionStageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_secret_version_stage(
@@ -2626,11 +4841,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UploadCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate):
+            query['Certificate'] = request.certificate
+        if not UtilClient.is_unset(request.certificate_chain):
+            query['CertificateChain'] = request.certificate_chain
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UploadCertificateResponse().from_map(
-            self.do_rpcrequest('UploadCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UploadCertificate',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UploadCertificateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def upload_certificate_with_options_async(
@@ -2639,11 +4873,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> kms_20160120_models.UploadCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certificate):
+            query['Certificate'] = request.certificate
+        if not UtilClient.is_unset(request.certificate_chain):
+            query['CertificateChain'] = request.certificate_chain
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return kms_20160120_models.UploadCertificateResponse().from_map(
-            await self.do_rpcrequest_async('UploadCertificate', '2016-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UploadCertificate',
+            version='2016-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            kms_20160120_models.UploadCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def upload_certificate(
