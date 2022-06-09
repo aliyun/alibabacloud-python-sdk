@@ -1,3 +1,7 @@
+2022-06-09 Version: 1.1.9
+- Update ConsoleApiProxy .
+
+
 2022-06-09 Version: 1.1.8
 - Update ConsoleProxy .
 - ADD ConsoleApiProxy .
