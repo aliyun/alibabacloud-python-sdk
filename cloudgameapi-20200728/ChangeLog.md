@@ -1,3 +1,7 @@
+2022-06-09 Version: 2.5.2
+- Add StartGameLive.
+- Add StopGameLive.
+
 2022-05-16 Version: 2.5.1
 - Add GetGameStock.
 
