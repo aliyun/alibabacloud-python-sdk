@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any
+from typing import List, Dict
 
 
 class ConsoleBody(TeaModel):
@@ -1214,13 +1214,13 @@ class CloseProductResponse(TeaModel):
 class ConsoleApiProxyRequest(TeaModel):
     def __init__(
         self,
-        body: Dict[str, Any] = None,
+        body: ConsoleBody = None,
     ):
-        # A short description of struct
         self.body = body
 
     def validate(self):
-        pass
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1229,13 +1229,14 @@ class ConsoleApiProxyRequest(TeaModel):
 
         result = dict()
         if self.body is not None:
-            result['body'] = self.body
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('body') is not None:
-            self.body = m.get('body')
+            temp_model = ConsoleBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 

@@ -148,12 +148,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.ConsoleApiProxyResponse:
         UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.body):
-            body['body'] = request.body
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
         )
         params = open_api_models.Params(
             action='ConsoleApiProxy',
@@ -178,12 +175,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yuqing_20220301_models.ConsoleApiProxyResponse:
         UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.body):
-            body['body'] = request.body
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
         )
         params = open_api_models.Params(
             action='ConsoleApiProxy',
