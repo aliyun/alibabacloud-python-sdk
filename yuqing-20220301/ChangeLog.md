@@ -1,3 +1,8 @@
+2022-06-09 Version: 1.1.8
+- Update ConsoleProxy .
+- ADD ConsoleApiProxy .
+
+
 2022-05-17 Version: 1.1.4
 - Update SearchCondition .
 - Update YuqingMessage .

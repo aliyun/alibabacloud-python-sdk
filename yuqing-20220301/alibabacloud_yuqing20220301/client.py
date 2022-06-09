@@ -125,6 +125,82 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def console_api_proxy(
+        self,
+        request: yuqing_20220301_models.ConsoleApiProxyRequest,
+    ) -> yuqing_20220301_models.ConsoleApiProxyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.console_api_proxy_with_options(request, headers, runtime)
+
+    async def console_api_proxy_async(
+        self,
+        request: yuqing_20220301_models.ConsoleApiProxyRequest,
+    ) -> yuqing_20220301_models.ConsoleApiProxyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.console_api_proxy_with_options_async(request, headers, runtime)
+
+    def console_api_proxy_with_options(
+        self,
+        request: yuqing_20220301_models.ConsoleApiProxyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20220301_models.ConsoleApiProxyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['body'] = request.body
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConsoleApiProxy',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/aliyun/openApi/',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20220301_models.ConsoleApiProxyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def console_api_proxy_with_options_async(
+        self,
+        request: yuqing_20220301_models.ConsoleApiProxyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20220301_models.ConsoleApiProxyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['body'] = request.body
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConsoleApiProxy',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/aliyun/openApi/',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20220301_models.ConsoleApiProxyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def console_proxy(
         self,
         request: yuqing_20220301_models.ConsoleProxyRequest,

@@ -1,7 +1,63 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import List, Dict, Any
+
+
+class ConsoleBody(TeaModel):
+    def __init__(
+        self,
+        app_code: str = None,
+        interface_name: str = None,
+        param_json: str = None,
+        request_id: str = None,
+        team_hash_id: str = None,
+    ):
+        # appCode
+        self.app_code = app_code
+        # interfaceName
+        self.interface_name = interface_name
+        # paramJson
+        self.param_json = param_json
+        # requestId
+        self.request_id = request_id
+        # teamHashId
+        self.team_hash_id = team_hash_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_code is not None:
+            result['appCode'] = self.app_code
+        if self.interface_name is not None:
+            result['interfaceName'] = self.interface_name
+        if self.param_json is not None:
+            result['paramJson'] = self.param_json
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.team_hash_id is not None:
+            result['teamHashId'] = self.team_hash_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appCode') is not None:
+            self.app_code = m.get('appCode')
+        if m.get('interfaceName') is not None:
+            self.interface_name = m.get('interfaceName')
+        if m.get('paramJson') is not None:
+            self.param_json = m.get('paramJson')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('teamHashId') is not None:
+            self.team_hash_id = m.get('teamHashId')
+        return self
 
 
 class FieldCondition(TeaModel):
@@ -1151,6 +1207,112 @@ class CloseProductResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CloseProductResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ConsoleApiProxyRequest(TeaModel):
+    def __init__(
+        self,
+        body: Dict[str, Any] = None,
+    ):
+        # A short description of struct
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class ConsoleApiProxyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_json: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.result_json = result_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result_json is not None:
+            result['resultJson'] = self.result_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('resultJson') is not None:
+            self.result_json = m.get('resultJson')
+        return self
+
+
+class ConsoleApiProxyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConsoleApiProxyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConsoleApiProxyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
