@@ -3034,6 +3034,8 @@ class Client(OpenApiClient):
             query['ChangeSetId'] = request.change_set_id
         if not UtilClient.is_unset(request.include_permission):
             query['IncludePermission'] = request.include_permission
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.stack_group_name):
@@ -3076,6 +3078,8 @@ class Client(OpenApiClient):
             query['ChangeSetId'] = request.change_set_id
         if not UtilClient.is_unset(request.include_permission):
             query['IncludePermission'] = request.include_permission
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.stack_group_name):
@@ -4892,6 +4896,8 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -4930,6 +4936,8 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):

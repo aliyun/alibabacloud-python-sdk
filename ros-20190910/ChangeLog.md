@@ -1,3 +1,7 @@
+2022-06-09 Version: 3.2.5
+- The parameter of GetStack, ListTemplates adds IncludeTags.
+- The response of GetStack, ListTemplates adds Tags.
+
 2022-05-19 Version: 3.2.4
 - GetFeatureDetails supports ResourceCleaner.
 

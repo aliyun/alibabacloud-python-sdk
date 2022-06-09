@@ -4562,6 +4562,80 @@ class GetFeatureDetailsRequest(TeaModel):
         return self
 
 
+class GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes(TeaModel):
+    def __init__(
+        self,
+        resource_type: str = None,
+        side_effects: List[str] = None,
+        supported_filters: List[str] = None,
+    ):
+        self.resource_type = resource_type
+        self.side_effects = side_effects
+        self.supported_filters = supported_filters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.side_effects is not None:
+            result['SideEffects'] = self.side_effects
+        if self.supported_filters is not None:
+            result['SupportedFilters'] = self.supported_filters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('SideEffects') is not None:
+            self.side_effects = m.get('SideEffects')
+        if m.get('SupportedFilters') is not None:
+            self.supported_filters = m.get('SupportedFilters')
+        return self
+
+
+class GetFeatureDetailsResponseBodyResourceCleaner(TeaModel):
+    def __init__(
+        self,
+        supported_resource_types: List[GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes] = None,
+    ):
+        self.supported_resource_types = supported_resource_types
+
+    def validate(self):
+        if self.supported_resource_types:
+            for k in self.supported_resource_types:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SupportedResourceTypes'] = []
+        if self.supported_resource_types is not None:
+            for k in self.supported_resource_types:
+                result['SupportedResourceTypes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.supported_resource_types = []
+        if m.get('SupportedResourceTypes') is not None:
+            for k in m.get('SupportedResourceTypes'):
+                temp_model = GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes()
+                self.supported_resource_types.append(temp_model.from_map(k))
+        return self
+
+
 class GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes(TeaModel):
     def __init__(
         self,
@@ -4827,14 +4901,18 @@ class GetFeatureDetailsResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        resource_cleaner: GetFeatureDetailsResponseBodyResourceCleaner = None,
         template_scratch: GetFeatureDetailsResponseBodyTemplateScratch = None,
         terraform: GetFeatureDetailsResponseBodyTerraform = None,
     ):
         self.request_id = request_id
+        self.resource_cleaner = resource_cleaner
         self.template_scratch = template_scratch
         self.terraform = terraform
 
     def validate(self):
+        if self.resource_cleaner:
+            self.resource_cleaner.validate()
         if self.template_scratch:
             self.template_scratch.validate()
         if self.terraform:
@@ -4848,6 +4926,8 @@ class GetFeatureDetailsResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_cleaner is not None:
+            result['ResourceCleaner'] = self.resource_cleaner.to_map()
         if self.template_scratch is not None:
             result['TemplateScratch'] = self.template_scratch.to_map()
         if self.terraform is not None:
@@ -4858,6 +4938,9 @@ class GetFeatureDetailsResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceCleaner') is not None:
+            temp_model = GetFeatureDetailsResponseBodyResourceCleaner()
+            self.resource_cleaner = temp_model.from_map(m['ResourceCleaner'])
         if m.get('TemplateScratch') is not None:
             temp_model = GetFeatureDetailsResponseBodyTemplateScratch()
             self.template_scratch = temp_model.from_map(m['TemplateScratch'])
@@ -7581,6 +7664,7 @@ class GetTemplateRequest(TeaModel):
         self,
         change_set_id: str = None,
         include_permission: str = None,
+        include_tags: str = None,
         region_id: str = None,
         stack_group_name: str = None,
         stack_id: str = None,
@@ -7590,6 +7674,7 @@ class GetTemplateRequest(TeaModel):
     ):
         self.change_set_id = change_set_id
         self.include_permission = include_permission
+        self.include_tags = include_tags
         self.region_id = region_id
         self.stack_group_name = stack_group_name
         self.stack_id = stack_id
@@ -7610,6 +7695,8 @@ class GetTemplateRequest(TeaModel):
             result['ChangeSetId'] = self.change_set_id
         if self.include_permission is not None:
             result['IncludePermission'] = self.include_permission
+        if self.include_tags is not None:
+            result['IncludeTags'] = self.include_tags
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.stack_group_name is not None:
@@ -7630,6 +7717,8 @@ class GetTemplateRequest(TeaModel):
             self.change_set_id = m.get('ChangeSetId')
         if m.get('IncludePermission') is not None:
             self.include_permission = m.get('IncludePermission')
+        if m.get('IncludeTags') is not None:
+            self.include_tags = m.get('IncludeTags')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('StackGroupName') is not None:
@@ -7696,6 +7785,39 @@ class GetTemplateResponseBodyPermissions(TeaModel):
         return self
 
 
+class GetTemplateResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetTemplateResponseBody(TeaModel):
     def __init__(
         self,
@@ -7711,6 +7833,7 @@ class GetTemplateResponseBody(TeaModel):
         share_type: str = None,
         stack_group_name: str = None,
         stack_id: str = None,
+        tags: List[GetTemplateResponseBodyTags] = None,
         template_arn: str = None,
         template_body: str = None,
         template_id: str = None,
@@ -7730,6 +7853,7 @@ class GetTemplateResponseBody(TeaModel):
         self.share_type = share_type
         self.stack_group_name = stack_group_name
         self.stack_id = stack_id
+        self.tags = tags
         self.template_arn = template_arn
         self.template_body = template_body
         self.template_id = template_id
@@ -7740,6 +7864,10 @@ class GetTemplateResponseBody(TeaModel):
     def validate(self):
         if self.permissions:
             for k in self.permissions:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -7775,6 +7903,10 @@ class GetTemplateResponseBody(TeaModel):
             result['StackGroupName'] = self.stack_group_name
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.template_arn is not None:
             result['TemplateARN'] = self.template_arn
         if self.template_body is not None:
@@ -7818,6 +7950,11 @@ class GetTemplateResponseBody(TeaModel):
             self.stack_group_name = m.get('StackGroupName')
         if m.get('StackId') is not None:
             self.stack_id = m.get('StackId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetTemplateResponseBodyTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TemplateARN') is not None:
             self.template_arn = m.get('TemplateARN')
         if m.get('TemplateBody') is not None:
@@ -12856,6 +12993,7 @@ class ListTemplatesRequestTag(TeaModel):
 class ListTemplatesRequest(TeaModel):
     def __init__(
         self,
+        include_tags: str = None,
         page_number: int = None,
         page_size: int = None,
         resource_group_id: str = None,
@@ -12863,6 +13001,7 @@ class ListTemplatesRequest(TeaModel):
         tag: List[ListTemplatesRequestTag] = None,
         template_name: str = None,
     ):
+        self.include_tags = include_tags
         self.page_number = page_number
         self.page_size = page_size
         self.resource_group_id = resource_group_id
@@ -12882,6 +13021,8 @@ class ListTemplatesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.include_tags is not None:
+            result['IncludeTags'] = self.include_tags
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -12900,6 +13041,8 @@ class ListTemplatesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IncludeTags') is not None:
+            self.include_tags = m.get('IncludeTags')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -12918,6 +13061,39 @@ class ListTemplatesRequest(TeaModel):
         return self
 
 
+class ListTemplatesResponseBodyTemplatesTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListTemplatesResponseBodyTemplates(TeaModel):
     def __init__(
         self,
@@ -12926,6 +13102,7 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         owner_id: str = None,
         resource_group_id: str = None,
         share_type: str = None,
+        tags: List[ListTemplatesResponseBodyTemplatesTags] = None,
         template_arn: str = None,
         template_id: str = None,
         template_name: str = None,
@@ -12937,6 +13114,7 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         self.owner_id = owner_id
         self.resource_group_id = resource_group_id
         self.share_type = share_type
+        self.tags = tags
         self.template_arn = template_arn
         self.template_id = template_id
         self.template_name = template_name
@@ -12944,7 +13122,10 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         self.update_time = update_time
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12962,6 +13143,10 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.share_type is not None:
             result['ShareType'] = self.share_type
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.template_arn is not None:
             result['TemplateARN'] = self.template_arn
         if self.template_id is not None:
@@ -12986,6 +13171,11 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ShareType') is not None:
             self.share_type = m.get('ShareType')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListTemplatesResponseBodyTemplatesTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TemplateARN') is not None:
             self.template_arn = m.get('TemplateARN')
         if m.get('TemplateId') is not None:
