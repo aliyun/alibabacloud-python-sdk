@@ -108,6 +108,7 @@ class AppUseTimeReportRequestPayload(TeaModel):
         resource_type: int = None,
         step_code: str = None,
         vip_type: int = None,
+        origin_uuid: str = None,
     ):
         # 操作
         self.action = action
@@ -121,6 +122,7 @@ class AppUseTimeReportRequestPayload(TeaModel):
         self.step_code = step_code
         # 会员类型
         self.vip_type = vip_type
+        self.origin_uuid = origin_uuid
 
     def validate(self):
         pass
@@ -143,6 +145,8 @@ class AppUseTimeReportRequestPayload(TeaModel):
             result['StepCode'] = self.step_code
         if self.vip_type is not None:
             result['VipType'] = self.vip_type
+        if self.origin_uuid is not None:
+            result['originUuid'] = self.origin_uuid
         return result
 
     def from_map(self, m: dict = None):
@@ -159,6 +163,8 @@ class AppUseTimeReportRequestPayload(TeaModel):
             self.step_code = m.get('StepCode')
         if m.get('VipType') is not None:
             self.vip_type = m.get('VipType')
+        if m.get('originUuid') is not None:
+            self.origin_uuid = m.get('originUuid')
         return self
 
 
@@ -3176,8 +3182,11 @@ class PullCashierRequestDeviceInfo(TeaModel):
 
 
 class PullCashierRequestPayload(TeaModel):
-    def __init__(self):
-        pass
+    def __init__(
+        self,
+        origin_uuid: str = None,
+    ):
+        self.origin_uuid = origin_uuid
 
     def validate(self):
         pass
@@ -3188,10 +3197,14 @@ class PullCashierRequestPayload(TeaModel):
             return _map
 
         result = dict()
+        if self.origin_uuid is not None:
+            result['originUuid'] = self.origin_uuid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('originUuid') is not None:
+            self.origin_uuid = m.get('originUuid')
         return self
 
 
@@ -4673,6 +4686,7 @@ class VideoAppReportRequestPayload(TeaModel):
         is_login: bool = None,
         is_vip: bool = None,
         login_nick: str = None,
+        origin_uuid: str = None,
         phone: str = None,
         pkg_name: str = None,
         start_time: int = None,
@@ -4681,6 +4695,7 @@ class VideoAppReportRequestPayload(TeaModel):
         self.is_login = is_login
         self.is_vip = is_vip
         self.login_nick = login_nick
+        self.origin_uuid = origin_uuid
         self.phone = phone
         self.pkg_name = pkg_name
         self.start_time = start_time
@@ -4702,6 +4717,8 @@ class VideoAppReportRequestPayload(TeaModel):
             result['isVip'] = self.is_vip
         if self.login_nick is not None:
             result['loginNick'] = self.login_nick
+        if self.origin_uuid is not None:
+            result['originUuid'] = self.origin_uuid
         if self.phone is not None:
             result['phone'] = self.phone
         if self.pkg_name is not None:
@@ -4720,6 +4737,8 @@ class VideoAppReportRequestPayload(TeaModel):
             self.is_vip = m.get('isVip')
         if m.get('loginNick') is not None:
             self.login_nick = m.get('loginNick')
+        if m.get('originUuid') is not None:
+            self.origin_uuid = m.get('originUuid')
         if m.get('phone') is not None:
             self.phone = m.get('phone')
         if m.get('pkgName') is not None:
