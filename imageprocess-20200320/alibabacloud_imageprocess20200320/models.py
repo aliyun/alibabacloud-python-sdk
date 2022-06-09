@@ -4377,12 +4377,14 @@ class ScreenChestCTRequest(TeaModel):
         org_id: str = None,
         org_name: str = None,
         urllist: List[ScreenChestCTRequestURLList] = None,
+        verbose: int = None,
     ):
         self.data_format = data_format
         self.mask = mask
         self.org_id = org_id
         self.org_name = org_name
         self.urllist = urllist
+        self.verbose = verbose
 
     def validate(self):
         if self.urllist:
@@ -4408,6 +4410,8 @@ class ScreenChestCTRequest(TeaModel):
         if self.urllist is not None:
             for k in self.urllist:
                 result['URLList'].append(k.to_map() if k else None)
+        if self.verbose is not None:
+            result['Verbose'] = self.verbose
         return result
 
     def from_map(self, m: dict = None):
@@ -4425,6 +4429,8 @@ class ScreenChestCTRequest(TeaModel):
             for k in m.get('URLList'):
                 temp_model = ScreenChestCTRequestURLList()
                 self.urllist.append(temp_model.from_map(k))
+        if m.get('Verbose') is not None:
+            self.verbose = m.get('Verbose')
         return self
 
 
@@ -5000,6 +5006,7 @@ class ScreenChestCTResponseBodyData(TeaModel):
         detect_rib_fracture: ScreenChestCTResponseBodyDataDetectRibFracture = None,
         error_message: str = None,
         lung_nodule: ScreenChestCTResponseBodyDataLungNodule = None,
+        urllist: Dict[str, Any] = None,
     ):
         self.analyze_chest_vessel = analyze_chest_vessel
         self.cacs = cacs
@@ -5007,6 +5014,7 @@ class ScreenChestCTResponseBodyData(TeaModel):
         self.detect_rib_fracture = detect_rib_fracture
         self.error_message = error_message
         self.lung_nodule = lung_nodule
+        self.urllist = urllist
 
     def validate(self):
         if self.analyze_chest_vessel:
@@ -5038,6 +5046,8 @@ class ScreenChestCTResponseBodyData(TeaModel):
             result['ErrorMessage'] = self.error_message
         if self.lung_nodule is not None:
             result['LungNodule'] = self.lung_nodule.to_map()
+        if self.urllist is not None:
+            result['URLList'] = self.urllist
         return result
 
     def from_map(self, m: dict = None):
@@ -5059,6 +5069,8 @@ class ScreenChestCTResponseBodyData(TeaModel):
         if m.get('LungNodule') is not None:
             temp_model = ScreenChestCTResponseBodyDataLungNodule()
             self.lung_nodule = temp_model.from_map(m['LungNodule'])
+        if m.get('URLList') is not None:
+            self.urllist = m.get('URLList')
         return self
 
 

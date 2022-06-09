@@ -2181,6 +2181,8 @@ class Client(OpenApiClient):
             body['OrgName'] = request.org_name
         if not UtilClient.is_unset(request.urllist):
             body['URLList'] = request.urllist
+        if not UtilClient.is_unset(request.verbose):
+            body['Verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2217,6 +2219,8 @@ class Client(OpenApiClient):
             body['OrgName'] = request.org_name
         if not UtilClient.is_unset(request.urllist):
             body['URLList'] = request.urllist
+        if not UtilClient.is_unset(request.verbose):
+            body['Verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
