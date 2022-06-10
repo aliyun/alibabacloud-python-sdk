@@ -1,3 +1,6 @@
+2022-06-10 Version: 1.1.2
+- Add http trigger url.
+
 2022-06-01 Version: 1.1.1
 - Fix authentication issue.
 

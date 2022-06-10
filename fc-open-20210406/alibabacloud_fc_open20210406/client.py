@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
-from requests import Request
-from typing import Dict, Any
+from typing import Dict
 from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -11,7 +10,6 @@ from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_fc_open20210406 import models as fc__open_20210406_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
-from alibabacloud_gateway_fc_util.client import Client as FCUtilClient
 
 
 class Client(OpenApiClient):
@@ -606,8 +604,6 @@ class Client(OpenApiClient):
             body['serviceName'] = request.service_name
         if not UtilClient.is_unset(request.tracing_config):
             body['tracingConfig'] = request.tracing_config
-        if not UtilClient.is_unset(request.vendor_config):
-            body['vendorConfig'] = request.vendor_config
         if not UtilClient.is_unset(request.vpc_config):
             body['vpcConfig'] = request.vpc_config
         real_headers = {}
@@ -661,8 +657,6 @@ class Client(OpenApiClient):
             body['serviceName'] = request.service_name
         if not UtilClient.is_unset(request.tracing_config):
             body['tracingConfig'] = request.tracing_config
-        if not UtilClient.is_unset(request.vendor_config):
-            body['vendorConfig'] = request.vendor_config
         if not UtilClient.is_unset(request.vpc_config):
             body['vpcConfig'] = request.vpc_config
         real_headers = {}
@@ -3972,6 +3966,112 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def list_instances(
+        self,
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.ListInstancesRequest,
+    ) -> fc__open_20210406_models.ListInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = fc__open_20210406_models.ListInstancesHeaders()
+        return self.list_instances_with_options(service_name, function_name, request, headers, runtime)
+
+    async def list_instances_async(
+        self,
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.ListInstancesRequest,
+    ) -> fc__open_20210406_models.ListInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = fc__open_20210406_models.ListInstancesHeaders()
+        return await self.list_instances_with_options_async(service_name, function_name, request, headers, runtime)
+
+    def list_instances_with_options(
+        self,
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.ListInstancesRequest,
+        headers: fc__open_20210406_models.ListInstancesHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> fc__open_20210406_models.ListInstancesResponse:
+        UtilClient.validate_model(request)
+        service_name = OpenApiUtilClient.get_encode_param(service_name)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            query['instanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.limit):
+            query['limit'] = request.limit
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_fc_account_id):
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/instances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc__open_20210406_models.ListInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instances_with_options_async(
+        self,
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.ListInstancesRequest,
+        headers: fc__open_20210406_models.ListInstancesHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> fc__open_20210406_models.ListInstancesResponse:
+        UtilClient.validate_model(request)
+        service_name = OpenApiUtilClient.get_encode_param(service_name)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            query['instanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.limit):
+            query['limit'] = request.limit
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_fc_account_id):
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/instances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc__open_20210406_models.ListInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def list_layer_versions(
         self,
         layer_name: str,
@@ -6608,8 +6708,6 @@ class Client(OpenApiClient):
             body['role'] = request.role
         if not UtilClient.is_unset(request.tracing_config):
             body['tracingConfig'] = request.tracing_config
-        if not UtilClient.is_unset(request.vendor_config):
-            body['vendorConfig'] = request.vendor_config
         if not UtilClient.is_unset(request.vpc_config):
             body['vpcConfig'] = request.vpc_config
         real_headers = {}
@@ -6665,8 +6763,6 @@ class Client(OpenApiClient):
             body['role'] = request.role
         if not UtilClient.is_unset(request.tracing_config):
             body['tracingConfig'] = request.tracing_config
-        if not UtilClient.is_unset(request.vendor_config):
-            body['vendorConfig'] = request.vendor_config
         if not UtilClient.is_unset(request.vpc_config):
             body['vpcConfig'] = request.vpc_config
         real_headers = {}
@@ -6827,135 +6923,3 @@ class Client(OpenApiClient):
             fc__open_20210406_models.UpdateTriggerResponse(),
             await self.call_api_async(params, req, runtime)
         )
-
-    def invoke_httptrigger(
-        self,
-        url: str,
-        method: str,
-        body: bytes,
-        headers: Dict[str, str],
-    ) -> Any:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return util_client.invoke_httptrigger(url, method, body, headers)
-
-    async def invoke_httptrigger_async(
-        self,
-        url: str,
-        method: str,
-        body: bytes,
-        headers: Dict[str, str],
-    ) -> Any:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return await util_client.invoke_httptrigger_async(url, method, body, headers)
-
-    def invoke_anonymous_httptrigger(
-        self,
-        url: str,
-        method: str,
-        body: bytes,
-        headers: Dict[str, str],
-    ) -> Any:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return util_client.invoke_anonymous_httptrigger(url, method, body, headers)
-
-    async def invoke_anonymous_httptrigger_async(
-        self,
-        url: str,
-        method: str,
-        body: bytes,
-        headers: Dict[str, str],
-    ) -> Any:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return await util_client.invoke_anonymous_httptrigger_async(url, method, body, headers)
-
-    def send_httprequest_with_authorization(
-        self,
-        req: Request,
-    ) -> Any:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return util_client.send_httprequest_with_authorization(req)
-
-    async def send_httprequest_with_authorization_async(
-        self,
-        req: Request,
-    ) -> Any:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return await util_client.send_httprequest_with_authorization_async(req)
-
-    def send_httprequest(
-        self,
-        req: Request,
-    ) -> Any:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return util_client.send_httprequest(req)
-
-    async def send_httprequest_async(
-        self,
-        req: Request,
-    ) -> Any:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return await util_client.send_httprequest_async(req)
-
-    def sign_request(
-        self,
-        req: Request,
-    ) -> Any:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return util_client.sign_request(req)
-
-    async def sign_request_async(
-        self,
-        req: Request,
-    ) -> Any:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return await util_client.sign_request_async(req)
-
-    def sign_request_with_content_md5(
-        self,
-        req: Request,
-        content_md5: str,
-    ) -> Any:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return util_client.sign_request_with_content_md5(req, content_md5)
-
-    async def sign_request_with_content_md5_async(
-        self,
-        req: Request,
-        content_md5: str,
-    ) -> Any:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return await util_client.sign_request_with_content_md5_async(req, content_md5)
-
-    def build_httprequest(
-        self,
-        url: str,
-        method: str,
-        body: bytes,
-        headers: Dict[str, str],
-    ) -> Any:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return util_client.build_httprequest(url, method, body, headers)
-
-    async def build_httprequest_async(
-        self,
-        url: str,
-        method: str,
-        body: bytes,
-        headers: Dict[str, str],
-    ) -> Any:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return await util_client.build_httprequest_async(url, method, body, headers)
