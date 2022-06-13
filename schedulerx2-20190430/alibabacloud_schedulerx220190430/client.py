@@ -441,6 +441,8 @@ class Client(OpenApiClient):
             body['QueueSize'] = request.queue_size
         if not UtilClient.is_unset(request.send_channel):
             body['SendChannel'] = request.send_channel
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         if not UtilClient.is_unset(request.task_attempt_interval):
             body['TaskAttemptInterval'] = request.task_attempt_interval
         if not UtilClient.is_unset(request.task_max_attempt):
@@ -533,6 +535,8 @@ class Client(OpenApiClient):
             body['QueueSize'] = request.queue_size
         if not UtilClient.is_unset(request.send_channel):
             body['SendChannel'] = request.send_channel
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         if not UtilClient.is_unset(request.task_attempt_interval):
             body['TaskAttemptInterval'] = request.task_attempt_interval
         if not UtilClient.is_unset(request.task_max_attempt):
@@ -594,8 +598,6 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
         if not UtilClient.is_unset(request.uid):
             query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
@@ -630,8 +632,6 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
         if not UtilClient.is_unset(request.uid):
             query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
