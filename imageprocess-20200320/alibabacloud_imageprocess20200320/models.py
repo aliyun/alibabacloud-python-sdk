@@ -4598,14 +4598,16 @@ class ScreenChestCTResponseBodyDataAnalyzeChestVessel(TeaModel):
         return self
 
 
-class ScreenChestCTResponseBodyDataCACS(TeaModel):
+class ScreenChestCTResponseBodyDataCACSDetections(TeaModel):
     def __init__(
         self,
-        result_url: str = None,
-        score: str = None,
+        calcium_id: int = None,
+        calcium_score: float = None,
+        calcium_volume: float = None,
     ):
-        self.result_url = result_url
-        self.score = score
+        self.calcium_id = calcium_id
+        self.calcium_score = calcium_score
+        self.calcium_volume = calcium_volume
 
     def validate(self):
         pass
@@ -4616,18 +4618,75 @@ class ScreenChestCTResponseBodyDataCACS(TeaModel):
             return _map
 
         result = dict()
-        if self.result_url is not None:
-            result['ResultUrl'] = self.result_url
-        if self.score is not None:
-            result['Score'] = self.score
+        if self.calcium_id is not None:
+            result['CalciumId'] = self.calcium_id
+        if self.calcium_score is not None:
+            result['CalciumScore'] = self.calcium_score
+        if self.calcium_volume is not None:
+            result['CalciumVolume'] = self.calcium_volume
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CalciumId') is not None:
+            self.calcium_id = m.get('CalciumId')
+        if m.get('CalciumScore') is not None:
+            self.calcium_score = m.get('CalciumScore')
+        if m.get('CalciumVolume') is not None:
+            self.calcium_volume = m.get('CalciumVolume')
+        return self
+
+
+class ScreenChestCTResponseBodyDataCACS(TeaModel):
+    def __init__(
+        self,
+        detections: List[ScreenChestCTResponseBodyDataCACSDetections] = None,
+        result_url: str = None,
+        score: str = None,
+        volume_score: str = None,
+    ):
+        self.detections = detections
+        self.result_url = result_url
+        self.score = score
+        self.volume_score = volume_score
+
+    def validate(self):
+        if self.detections:
+            for k in self.detections:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Detections'] = []
+        if self.detections is not None:
+            for k in self.detections:
+                result['Detections'].append(k.to_map() if k else None)
+        if self.result_url is not None:
+            result['ResultUrl'] = self.result_url
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.volume_score is not None:
+            result['VolumeScore'] = self.volume_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detections = []
+        if m.get('Detections') is not None:
+            for k in m.get('Detections'):
+                temp_model = ScreenChestCTResponseBodyDataCACSDetections()
+                self.detections.append(temp_model.from_map(k))
         if m.get('ResultUrl') is not None:
             self.result_url = m.get('ResultUrl')
         if m.get('Score') is not None:
             self.score = m.get('Score')
+        if m.get('VolumeScore') is not None:
+            self.volume_score = m.get('VolumeScore')
         return self
 
 
@@ -4679,6 +4738,172 @@ class ScreenChestCTResponseBodyDataCovid(TeaModel):
             self.normal_probability = m.get('NormalProbability')
         if m.get('OtherProbability') is not None:
             self.other_probability = m.get('OtherProbability')
+        return self
+
+
+class ScreenChestCTResponseBodyDataDetectLymphLesions(TeaModel):
+    def __init__(
+        self,
+        boxes: List[float] = None,
+        diametermm: List[float] = None,
+        key_slice: int = None,
+        recist: List[List[float]] = None,
+        score: float = None,
+    ):
+        self.boxes = boxes
+        self.diametermm = diametermm
+        self.key_slice = key_slice
+        self.recist = recist
+        self.score = score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.boxes is not None:
+            result['Boxes'] = self.boxes
+        if self.diametermm is not None:
+            result['Diametermm'] = self.diametermm
+        if self.key_slice is not None:
+            result['KeySlice'] = self.key_slice
+        if self.recist is not None:
+            result['Recist'] = self.recist
+        if self.score is not None:
+            result['Score'] = self.score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Boxes') is not None:
+            self.boxes = m.get('Boxes')
+        if m.get('Diametermm') is not None:
+            self.diametermm = m.get('Diametermm')
+        if m.get('KeySlice') is not None:
+            self.key_slice = m.get('KeySlice')
+        if m.get('Recist') is not None:
+            self.recist = m.get('Recist')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        return self
+
+
+class ScreenChestCTResponseBodyDataDetectLymph(TeaModel):
+    def __init__(
+        self,
+        lesions: List[ScreenChestCTResponseBodyDataDetectLymphLesions] = None,
+    ):
+        self.lesions = lesions
+
+    def validate(self):
+        if self.lesions:
+            for k in self.lesions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Lesions'] = []
+        if self.lesions is not None:
+            for k in self.lesions:
+                result['Lesions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.lesions = []
+        if m.get('Lesions') is not None:
+            for k in m.get('Lesions'):
+                temp_model = ScreenChestCTResponseBodyDataDetectLymphLesions()
+                self.lesions.append(temp_model.from_map(k))
+        return self
+
+
+class ScreenChestCTResponseBodyDataDetectPdacLesion(TeaModel):
+    def __init__(
+        self,
+        mask: str = None,
+        non_pdac_vol: str = None,
+        panc_vol: str = None,
+        pdac_vol: str = None,
+        possibilities: List[str] = None,
+    ):
+        self.mask = mask
+        self.non_pdac_vol = non_pdac_vol
+        self.panc_vol = panc_vol
+        self.pdac_vol = pdac_vol
+        self.possibilities = possibilities
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mask is not None:
+            result['Mask'] = self.mask
+        if self.non_pdac_vol is not None:
+            result['NonPdacVol'] = self.non_pdac_vol
+        if self.panc_vol is not None:
+            result['PancVol'] = self.panc_vol
+        if self.pdac_vol is not None:
+            result['PdacVol'] = self.pdac_vol
+        if self.possibilities is not None:
+            result['Possibilities'] = self.possibilities
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Mask') is not None:
+            self.mask = m.get('Mask')
+        if m.get('NonPdacVol') is not None:
+            self.non_pdac_vol = m.get('NonPdacVol')
+        if m.get('PancVol') is not None:
+            self.panc_vol = m.get('PancVol')
+        if m.get('PdacVol') is not None:
+            self.pdac_vol = m.get('PdacVol')
+        if m.get('Possibilities') is not None:
+            self.possibilities = m.get('Possibilities')
+        return self
+
+
+class ScreenChestCTResponseBodyDataDetectPdac(TeaModel):
+    def __init__(
+        self,
+        lesion: ScreenChestCTResponseBodyDataDetectPdacLesion = None,
+    ):
+        self.lesion = lesion
+
+    def validate(self):
+        if self.lesion:
+            self.lesion.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lesion is not None:
+            result['Lesion'] = self.lesion.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lesion') is not None:
+            temp_model = ScreenChestCTResponseBodyDataDetectPdacLesion()
+            self.lesion = temp_model.from_map(m['Lesion'])
         return self
 
 
@@ -5003,6 +5228,8 @@ class ScreenChestCTResponseBodyData(TeaModel):
         analyze_chest_vessel: ScreenChestCTResponseBodyDataAnalyzeChestVessel = None,
         cacs: ScreenChestCTResponseBodyDataCACS = None,
         covid: ScreenChestCTResponseBodyDataCovid = None,
+        detect_lymph: ScreenChestCTResponseBodyDataDetectLymph = None,
+        detect_pdac: ScreenChestCTResponseBodyDataDetectPdac = None,
         detect_rib_fracture: ScreenChestCTResponseBodyDataDetectRibFracture = None,
         error_message: str = None,
         lung_nodule: ScreenChestCTResponseBodyDataLungNodule = None,
@@ -5011,6 +5238,8 @@ class ScreenChestCTResponseBodyData(TeaModel):
         self.analyze_chest_vessel = analyze_chest_vessel
         self.cacs = cacs
         self.covid = covid
+        self.detect_lymph = detect_lymph
+        self.detect_pdac = detect_pdac
         self.detect_rib_fracture = detect_rib_fracture
         self.error_message = error_message
         self.lung_nodule = lung_nodule
@@ -5023,6 +5252,10 @@ class ScreenChestCTResponseBodyData(TeaModel):
             self.cacs.validate()
         if self.covid:
             self.covid.validate()
+        if self.detect_lymph:
+            self.detect_lymph.validate()
+        if self.detect_pdac:
+            self.detect_pdac.validate()
         if self.detect_rib_fracture:
             self.detect_rib_fracture.validate()
         if self.lung_nodule:
@@ -5040,6 +5273,10 @@ class ScreenChestCTResponseBodyData(TeaModel):
             result['CACS'] = self.cacs.to_map()
         if self.covid is not None:
             result['Covid'] = self.covid.to_map()
+        if self.detect_lymph is not None:
+            result['DetectLymph'] = self.detect_lymph.to_map()
+        if self.detect_pdac is not None:
+            result['DetectPdac'] = self.detect_pdac.to_map()
         if self.detect_rib_fracture is not None:
             result['DetectRibFracture'] = self.detect_rib_fracture.to_map()
         if self.error_message is not None:
@@ -5061,6 +5298,12 @@ class ScreenChestCTResponseBodyData(TeaModel):
         if m.get('Covid') is not None:
             temp_model = ScreenChestCTResponseBodyDataCovid()
             self.covid = temp_model.from_map(m['Covid'])
+        if m.get('DetectLymph') is not None:
+            temp_model = ScreenChestCTResponseBodyDataDetectLymph()
+            self.detect_lymph = temp_model.from_map(m['DetectLymph'])
+        if m.get('DetectPdac') is not None:
+            temp_model = ScreenChestCTResponseBodyDataDetectPdac()
+            self.detect_pdac = temp_model.from_map(m['DetectPdac'])
         if m.get('DetectRibFracture') is not None:
             temp_model = ScreenChestCTResponseBodyDataDetectRibFracture()
             self.detect_rib_fracture = temp_model.from_map(m['DetectRibFracture'])
