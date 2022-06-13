@@ -8473,6 +8473,7 @@ class ListDsMenusRequest(TeaModel):
         agent_key: str = None,
         instance_id: str = None,
         robot_env: int = None,
+        source: int = None,
         tags: str = None,
     ):
         # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
@@ -8481,6 +8482,9 @@ class ListDsMenusRequest(TeaModel):
         self.instance_id = instance_id
         # 1-正式环境，2-测试环境（默认）
         self.robot_env = robot_env
+        # 业务来源标识：
+        # 1-集团内部aliyun域名；2-外部使用4service域名（默认）
+        self.source = source
         # 功能标识，为空表示所有；支持的tag有：Dialog / Intent / Entity / Var / TaskCenter；传入多个时通过英文逗号分隔
         self.tags = tags
 
@@ -8499,6 +8503,8 @@ class ListDsMenusRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.robot_env is not None:
             result['RobotEnv'] = self.robot_env
+        if self.source is not None:
+            result['Source'] = self.source
         if self.tags is not None:
             result['Tags'] = self.tags
         return result
@@ -8511,6 +8517,8 @@ class ListDsMenusRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RobotEnv') is not None:
             self.robot_env = m.get('RobotEnv')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
         return self

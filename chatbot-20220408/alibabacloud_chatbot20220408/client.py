@@ -3970,6 +3970,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.robot_env):
             query['RobotEnv'] = request.robot_env
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
@@ -4004,6 +4006,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.robot_env):
             query['RobotEnv'] = request.robot_env
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
