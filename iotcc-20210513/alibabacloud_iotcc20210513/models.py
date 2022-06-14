@@ -985,6 +985,7 @@ class CreateGroupAuthorizationRuleRequest(TeaModel):
         policy: str = None,
         region_id: str = None,
         source_cidrs: List[str] = None,
+        type: str = None,
     ):
         self.authorization_rule_description = authorization_rule_description
         self.authorization_rule_name = authorization_rule_name
@@ -996,6 +997,7 @@ class CreateGroupAuthorizationRuleRequest(TeaModel):
         self.policy = policy
         self.region_id = region_id
         self.source_cidrs = source_cidrs
+        self.type = type
 
     def validate(self):
         pass
@@ -1026,6 +1028,8 @@ class CreateGroupAuthorizationRuleRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.source_cidrs is not None:
             result['SourceCidrs'] = self.source_cidrs
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -1050,6 +1054,8 @@ class CreateGroupAuthorizationRuleRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('SourceCidrs') is not None:
             self.source_cidrs = m.get('SourceCidrs')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -1305,6 +1311,7 @@ class CreateIoTCloudConnectorRequest(TeaModel):
         io_tcloud_connector_name: str = None,
         region_id: str = None,
         resource_uid: int = None,
+        type: str = None,
         wildcard_domain_enabled: bool = None,
     ):
         self.apn = apn
@@ -1315,6 +1322,7 @@ class CreateIoTCloudConnectorRequest(TeaModel):
         self.io_tcloud_connector_name = io_tcloud_connector_name
         self.region_id = region_id
         self.resource_uid = resource_uid
+        self.type = type
         self.wildcard_domain_enabled = wildcard_domain_enabled
 
     def validate(self):
@@ -1342,6 +1350,8 @@ class CreateIoTCloudConnectorRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_uid is not None:
             result['ResourceUid'] = self.resource_uid
+        if self.type is not None:
+            result['Type'] = self.type
         if self.wildcard_domain_enabled is not None:
             result['WildcardDomainEnabled'] = self.wildcard_domain_enabled
         return result
@@ -1364,6 +1374,8 @@ class CreateIoTCloudConnectorRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceUid') is not None:
             self.resource_uid = m.get('ResourceUid')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('WildcardDomainEnabled') is not None:
             self.wildcard_domain_enabled = m.get('WildcardDomainEnabled')
         return self
@@ -1576,12 +1588,14 @@ class CreateIoTCloudConnectorGroupRequest(TeaModel):
         dry_run: bool = None,
         name: str = None,
         region_id: str = None,
+        type: str = None,
     ):
         self.client_token = client_token
         self.description = description
         self.dry_run = dry_run
         self.name = name
         self.region_id = region_id
+        self.type = type
 
     def validate(self):
         pass
@@ -1602,6 +1616,8 @@ class CreateIoTCloudConnectorGroupRequest(TeaModel):
             result['Name'] = self.name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -1616,6 +1632,8 @@ class CreateIoTCloudConnectorGroupRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -6104,6 +6122,7 @@ class ListGroupAuthorizationRulesRequest(TeaModel):
         next_token: str = None,
         policy: List[str] = None,
         region_id: str = None,
+        type: str = None,
     ):
         self.authorization_rule_ids = authorization_rule_ids
         self.authorization_rule_name = authorization_rule_name
@@ -6115,6 +6134,7 @@ class ListGroupAuthorizationRulesRequest(TeaModel):
         self.next_token = next_token
         self.policy = policy
         self.region_id = region_id
+        self.type = type
 
     def validate(self):
         pass
@@ -6145,6 +6165,8 @@ class ListGroupAuthorizationRulesRequest(TeaModel):
             result['Policy'] = self.policy
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -6169,6 +6191,8 @@ class ListGroupAuthorizationRulesRequest(TeaModel):
             self.policy = m.get('Policy')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -6184,6 +6208,7 @@ class ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules(TeaModel):
         io_tcloud_connector_group_id: str = None,
         policy: str = None,
         source_cidrs: List[str] = None,
+        type: str = None,
     ):
         self.authorization_rule_description = authorization_rule_description
         self.authorization_rule_id = authorization_rule_id
@@ -6194,6 +6219,7 @@ class ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules(TeaModel):
         self.io_tcloud_connector_group_id = io_tcloud_connector_group_id
         self.policy = policy
         self.source_cidrs = source_cidrs
+        self.type = type
 
     def validate(self):
         pass
@@ -6222,6 +6248,8 @@ class ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules(TeaModel):
             result['Policy'] = self.policy
         if self.source_cidrs is not None:
             result['SourceCidrs'] = self.source_cidrs
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -6244,6 +6272,8 @@ class ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules(TeaModel):
             self.policy = m.get('Policy')
         if m.get('SourceCidrs') is not None:
             self.source_cidrs = m.get('SourceCidrs')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -6969,6 +6999,7 @@ class ListIoTCloudConnectorGroupsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         region_id: str = None,
+        type: str = None,
     ):
         self.io_tcloud_connector_group_ids = io_tcloud_connector_group_ids
         self.io_tcloud_connector_group_name = io_tcloud_connector_group_name
@@ -6976,6 +7007,7 @@ class ListIoTCloudConnectorGroupsRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.region_id = region_id
+        self.type = type
 
     def validate(self):
         pass
@@ -6998,6 +7030,8 @@ class ListIoTCloudConnectorGroupsRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -7014,6 +7048,8 @@ class ListIoTCloudConnectorGroupsRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -7089,6 +7125,7 @@ class ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups(TeaModel):
         io_tcloud_connector_group_status: str = None,
         io_tcloud_connectors: List[ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors] = None,
         name: str = None,
+        type: str = None,
     ):
         self.create_time = create_time
         self.description = description
@@ -7096,6 +7133,7 @@ class ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups(TeaModel):
         self.io_tcloud_connector_group_status = io_tcloud_connector_group_status
         self.io_tcloud_connectors = io_tcloud_connectors
         self.name = name
+        self.type = type
 
     def validate(self):
         if self.io_tcloud_connectors:
@@ -7123,6 +7161,8 @@ class ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups(TeaModel):
                 result['IoTCloudConnectors'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -7142,6 +7182,8 @@ class ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups(TeaModel):
                 self.io_tcloud_connectors.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -7351,6 +7393,7 @@ class ListIoTCloudConnectorsResponseBodyIoTCloudConnectors(TeaModel):
         mode: str = None,
         modify_time: int = None,
         rate_limit: int = None,
+        type: str = None,
         v_switch_list: List[str] = None,
         vpc_id: str = None,
         wildcard_domain_enabled: bool = None,
@@ -7368,6 +7411,7 @@ class ListIoTCloudConnectorsResponseBodyIoTCloudConnectors(TeaModel):
         self.mode = mode
         self.modify_time = modify_time
         self.rate_limit = rate_limit
+        self.type = type
         self.v_switch_list = v_switch_list
         self.vpc_id = vpc_id
         self.wildcard_domain_enabled = wildcard_domain_enabled
@@ -7407,6 +7451,8 @@ class ListIoTCloudConnectorsResponseBodyIoTCloudConnectors(TeaModel):
             result['ModifyTime'] = self.modify_time
         if self.rate_limit is not None:
             result['RateLimit'] = self.rate_limit
+        if self.type is not None:
+            result['Type'] = self.type
         if self.v_switch_list is not None:
             result['VSwitchList'] = self.v_switch_list
         if self.vpc_id is not None:
@@ -7443,6 +7489,8 @@ class ListIoTCloudConnectorsResponseBodyIoTCloudConnectors(TeaModel):
             self.modify_time = m.get('ModifyTime')
         if m.get('RateLimit') is not None:
             self.rate_limit = m.get('RateLimit')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('VSwitchList') is not None:
             self.v_switch_list = m.get('VSwitchList')
         if m.get('VpcId') is not None:

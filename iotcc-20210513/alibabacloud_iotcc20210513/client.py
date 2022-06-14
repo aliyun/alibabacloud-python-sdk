@@ -734,6 +734,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.source_cidrs):
             query['SourceCidrs'] = request.source_cidrs
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -780,6 +782,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.source_cidrs):
             query['SourceCidrs'] = request.source_cidrs
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -938,6 +942,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_uid):
             query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         if not UtilClient.is_unset(request.wildcard_domain_enabled):
             query['WildcardDomainEnabled'] = request.wildcard_domain_enabled
         req = open_api_models.OpenApiRequest(
@@ -982,6 +988,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_uid):
             query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         if not UtilClient.is_unset(request.wildcard_domain_enabled):
             query['WildcardDomainEnabled'] = request.wildcard_domain_enabled
         req = open_api_models.OpenApiRequest(
@@ -1116,6 +1124,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1152,6 +1162,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3676,6 +3688,8 @@ class Client(OpenApiClient):
             query['Policy'] = request.policy
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3722,6 +3736,8 @@ class Client(OpenApiClient):
             query['Policy'] = request.policy
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4052,6 +4068,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4090,6 +4108,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
