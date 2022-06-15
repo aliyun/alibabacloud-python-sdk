@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import Dict, List
 
 
 class AccelerationInfo(TeaModel):
@@ -71,6 +71,83 @@ class AsyncConfigMeta(TeaModel):
             self.qualifier = m.get('qualifier')
         if m.get('serviceName') is not None:
             self.service_name = m.get('serviceName')
+        return self
+
+
+class AvailableAZ(TeaModel):
+    def __init__(
+        self,
+        available_azs: str = None,
+    ):
+        # az
+        self.available_azs = available_azs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available_azs is not None:
+            result['availableAZs'] = self.available_azs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('availableAZs') is not None:
+            self.available_azs = m.get('availableAZs')
+        return self
+
+
+class CDNEventsTriggerConfig(TeaModel):
+    def __init__(
+        self,
+        event_name: str = None,
+        event_version: str = None,
+        filter: Dict[str, List[str]] = None,
+        notes: str = None,
+    ):
+        # eventName
+        self.event_name = event_name
+        # eventVersion
+        self.event_version = event_version
+        # filter
+        self.filter = filter
+        # notes
+        self.notes = notes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_name is not None:
+            result['eventName'] = self.event_name
+        if self.event_version is not None:
+            result['eventVersion'] = self.event_version
+        if self.filter is not None:
+            result['filter'] = self.filter
+        if self.notes is not None:
+            result['notes'] = self.notes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('eventName') is not None:
+            self.event_name = m.get('eventName')
+        if m.get('eventVersion') is not None:
+            self.event_version = m.get('eventVersion')
+        if m.get('filter') is not None:
+            self.filter = m.get('filter')
+        if m.get('notes') is not None:
+            self.notes = m.get('notes')
         return self
 
 
@@ -464,6 +541,111 @@ class DestinationConfig(TeaModel):
         return self
 
 
+class Error(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息描述
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        return self
+
+
+class ErrorInfo(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        stack_trace: str = None,
+    ):
+        # 错误信息
+        self.error_message = error_message
+        # 错误堆栈
+        self.stack_trace = stack_trace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.stack_trace is not None:
+            result['stackTrace'] = self.stack_trace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('stackTrace') is not None:
+            self.stack_trace = m.get('stackTrace')
+        return self
+
+
+class HTTPTriggerConfig(TeaModel):
+    def __init__(
+        self,
+        auth_type: str = None,
+        methods: List[str] = None,
+    ):
+        # 认证类型
+        self.auth_type = auth_type
+        # 允许的HTTP方法列表
+        self.methods = methods
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
+        if self.methods is not None:
+            result['methods'] = self.methods
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
+        if m.get('methods') is not None:
+            self.methods = m.get('methods')
+        return self
+
+
 class LifecycleHook(TeaModel):
     def __init__(
         self,
@@ -562,6 +744,76 @@ class JaegerConfig(TeaModel):
         m = m or dict()
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
+        return self
+
+
+class JobConfig(TeaModel):
+    def __init__(
+        self,
+        max_retry_time: int = None,
+        trigger_interval: int = None,
+    ):
+        # maxRetryTime
+        self.max_retry_time = max_retry_time
+        # triggerInterval
+        self.trigger_interval = trigger_interval
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_retry_time is not None:
+            result['maxRetryTime'] = self.max_retry_time
+        if self.trigger_interval is not None:
+            result['triggerInterval'] = self.trigger_interval
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxRetryTime') is not None:
+            self.max_retry_time = m.get('maxRetryTime')
+        if m.get('triggerInterval') is not None:
+            self.trigger_interval = m.get('triggerInterval')
+        return self
+
+
+class JobLogConfig(TeaModel):
+    def __init__(
+        self,
+        logstore: str = None,
+        project: str = None,
+    ):
+        # logstore
+        self.logstore = logstore
+        # project
+        self.project = project
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.project is not None:
+            result['project'] = self.project
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('project') is not None:
+            self.project = m.get('project')
         return self
 
 
@@ -749,6 +1001,181 @@ class LogConfig(TeaModel):
         return self
 
 
+class SourceConfig(TeaModel):
+    def __init__(
+        self,
+        logstore: str = None,
+    ):
+        # logstore
+        self.logstore = logstore
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        return self
+
+
+class LogTriggerConfig(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        function_parameter: Dict[str, str] = None,
+        job_config: JobConfig = None,
+        log_config: JobLogConfig = None,
+        source_config: SourceConfig = None,
+    ):
+        # enable
+        self.enable = enable
+        # functionParameter
+        self.function_parameter = function_parameter
+        self.job_config = job_config
+        self.log_config = log_config
+        self.source_config = source_config
+
+    def validate(self):
+        if self.job_config:
+            self.job_config.validate()
+        if self.log_config:
+            self.log_config.validate()
+        if self.source_config:
+            self.source_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.function_parameter is not None:
+            result['functionParameter'] = self.function_parameter
+        if self.job_config is not None:
+            result['jobConfig'] = self.job_config.to_map()
+        if self.log_config is not None:
+            result['logConfig'] = self.log_config.to_map()
+        if self.source_config is not None:
+            result['sourceConfig'] = self.source_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('functionParameter') is not None:
+            self.function_parameter = m.get('functionParameter')
+        if m.get('jobConfig') is not None:
+            temp_model = JobConfig()
+            self.job_config = temp_model.from_map(m['jobConfig'])
+        if m.get('logConfig') is not None:
+            temp_model = JobLogConfig()
+            self.log_config = temp_model.from_map(m['logConfig'])
+        if m.get('sourceConfig') is not None:
+            temp_model = SourceConfig()
+            self.source_config = temp_model.from_map(m['sourceConfig'])
+        return self
+
+
+class MeteringConfig(TeaModel):
+    def __init__(
+        self,
+        log_config: LogConfig = None,
+        payer_id: str = None,
+        role: str = None,
+    ):
+        # 日志仓库
+        self.log_config = log_config
+        # 支付用户
+        self.payer_id = payer_id
+        # 权限
+        self.role = role
+
+    def validate(self):
+        if self.log_config:
+            self.log_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log_config is not None:
+            result['logConfig'] = self.log_config.to_map()
+        if self.payer_id is not None:
+            result['payerId'] = self.payer_id
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logConfig') is not None:
+            temp_model = LogConfig()
+            self.log_config = temp_model.from_map(m['logConfig'])
+        if m.get('payerId') is not None:
+            self.payer_id = m.get('payerId')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class MnsTopicTriggerConfig(TeaModel):
+    def __init__(
+        self,
+        filter_tag: str = None,
+        notify_content_format: str = None,
+        notify_strategy: str = None,
+    ):
+        # filterTag
+        self.filter_tag = filter_tag
+        # notifyContentFormat
+        self.notify_content_format = notify_content_format
+        # notifyStrategy
+        self.notify_strategy = notify_strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_tag is not None:
+            result['filterTag'] = self.filter_tag
+        if self.notify_content_format is not None:
+            result['notifyContentFormat'] = self.notify_content_format
+        if self.notify_strategy is not None:
+            result['notifyStrategy'] = self.notify_strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filterTag') is not None:
+            self.filter_tag = m.get('filterTag')
+        if m.get('notifyContentFormat') is not None:
+            self.notify_content_format = m.get('notifyContentFormat')
+        if m.get('notifyStrategy') is not None:
+            self.notify_strategy = m.get('notifyStrategy')
+        return self
+
+
 class NASConfigMountPoints(TeaModel):
     def __init__(
         self,
@@ -831,6 +1258,106 @@ class NASConfig(TeaModel):
                 self.mount_points.append(temp_model.from_map(k))
         if m.get('userId') is not None:
             self.user_id = m.get('userId')
+        return self
+
+
+class OSSTriggerKey(TeaModel):
+    def __init__(
+        self,
+        prefix: str = None,
+        suffix: str = None,
+    ):
+        # prefix
+        self.prefix = prefix
+        # suffix
+        self.suffix = suffix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prefix is not None:
+            result['prefix'] = self.prefix
+        if self.suffix is not None:
+            result['suffix'] = self.suffix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('prefix') is not None:
+            self.prefix = m.get('prefix')
+        if m.get('suffix') is not None:
+            self.suffix = m.get('suffix')
+        return self
+
+
+class OSSTriggerFilter(TeaModel):
+    def __init__(
+        self,
+        key: OSSTriggerKey = None,
+    ):
+        self.key = key
+
+    def validate(self):
+        if self.key:
+            self.key.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            temp_model = OSSTriggerKey()
+            self.key = temp_model.from_map(m['key'])
+        return self
+
+
+class OSSTriggerConfig(TeaModel):
+    def __init__(
+        self,
+        events: List[str] = None,
+        filter: OSSTriggerFilter = None,
+    ):
+        # events
+        self.events = events
+        self.filter = filter
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.events is not None:
+            result['events'] = self.events
+        if self.filter is not None:
+            result['filter'] = self.filter.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('events') is not None:
+            self.events = m.get('events')
+        if m.get('filter') is not None:
+            temp_model = OSSTriggerFilter()
+            self.filter = temp_model.from_map(m['filter'])
         return self
 
 
@@ -1020,6 +1547,125 @@ class PathConfig(TeaModel):
             self.qualifier = m.get('qualifier')
         if m.get('serviceName') is not None:
             self.service_name = m.get('serviceName')
+        return self
+
+
+class PreFreeze(TeaModel):
+    def __init__(
+        self,
+        handler: str = None,
+        timeout: int = None,
+    ):
+        # preFreeze handler name
+        self.handler = handler
+        # handler timeout
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.handler is not None:
+            result['handler'] = self.handler
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('handler') is not None:
+            self.handler = m.get('handler')
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        return self
+
+
+class PreStop(TeaModel):
+    def __init__(
+        self,
+        handler: str = None,
+        timeout: int = None,
+    ):
+        # PreStop handler
+        self.handler = handler
+        # PreStop hander timeout
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.handler is not None:
+            result['handler'] = self.handler
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('handler') is not None:
+            self.handler = m.get('handler')
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        return self
+
+
+class RdsTriggerConfig(TeaModel):
+    def __init__(
+        self,
+        concurrency: int = None,
+        event_format: str = None,
+        retry: int = None,
+        subscription_objects: List[str] = None,
+    ):
+        # concurrency
+        self.concurrency = concurrency
+        # eventFormat
+        self.event_format = event_format
+        # retry
+        self.retry = retry
+        # subscriptionObjects
+        self.subscription_objects = subscription_objects
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.concurrency is not None:
+            result['concurrency'] = self.concurrency
+        if self.event_format is not None:
+            result['eventFormat'] = self.event_format
+        if self.retry is not None:
+            result['retry'] = self.retry
+        if self.subscription_objects is not None:
+            result['subscriptionObjects'] = self.subscription_objects
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('concurrency') is not None:
+            self.concurrency = m.get('concurrency')
+        if m.get('eventFormat') is not None:
+            self.event_format = m.get('eventFormat')
+        if m.get('retry') is not None:
+            self.retry = m.get('retry')
+        if m.get('subscriptionObjects') is not None:
+            self.subscription_objects = m.get('subscriptionObjects')
         return self
 
 
@@ -1438,22 +2084,22 @@ class TargetTrackingPolicies(TeaModel):
         return self
 
 
-class TracingConfig(TeaModel):
+class TimeTriggerConfig(TeaModel):
     def __init__(
         self,
-        jaeger_config: JaegerConfig = None,
-        params: Dict[str, str] = None,
-        type: str = None,
+        cron_expression: str = None,
+        enable: bool = None,
+        payload: str = None,
     ):
-        self.jaeger_config = jaeger_config
-        # 链路追踪参数
-        self.params = params
-        # 链路追踪类型
-        self.type = type
+        # cronExpression
+        self.cron_expression = cron_expression
+        # enable
+        self.enable = enable
+        # payload
+        self.payload = payload
 
     def validate(self):
-        if self.jaeger_config:
-            self.jaeger_config.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1461,8 +2107,45 @@ class TracingConfig(TeaModel):
             return _map
 
         result = dict()
-        if self.jaeger_config is not None:
-            result['jaegerConfig'] = self.jaeger_config.to_map()
+        if self.cron_expression is not None:
+            result['cronExpression'] = self.cron_expression
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.payload is not None:
+            result['payload'] = self.payload
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cronExpression') is not None:
+            self.cron_expression = m.get('cronExpression')
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('payload') is not None:
+            self.payload = m.get('payload')
+        return self
+
+
+class TracingConfig(TeaModel):
+    def __init__(
+        self,
+        params: Dict[str, str] = None,
+        type: str = None,
+    ):
+        # 链路追踪参数。当协议类型为 Jaeger 时，参数为 map[string]string，其中 key 为 "endpoint"，value 为您的链路追踪内网接入点。例如 endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/otlp/traces
+        self.params = params
+        # 链路追踪协议类型，目前只支持 Jaeger
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.params is not None:
             result['params'] = self.params
         if self.type is not None:
@@ -1471,9 +2154,6 @@ class TracingConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('jaegerConfig') is not None:
-            temp_model = JaegerConfig()
-            self.jaeger_config = temp_model.from_map(m['jaegerConfig'])
         if m.get('params') is not None:
             self.params = m.get('params')
         if m.get('type') is not None:
@@ -1527,6 +2207,35 @@ class VPCConfig(TeaModel):
             self.v_switch_ids = m.get('vSwitchIds')
         if m.get('vpcId') is not None:
             self.vpc_id = m.get('vpcId')
+        return self
+
+
+class VendorConfig(TeaModel):
+    def __init__(
+        self,
+        metering_config: MeteringConfig = None,
+    ):
+        self.metering_config = metering_config
+
+    def validate(self):
+        if self.metering_config:
+            self.metering_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metering_config is not None:
+            result['meteringConfig'] = self.metering_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('meteringConfig') is not None:
+            temp_model = MeteringConfig()
+            self.metering_config = temp_model.from_map(m['meteringConfig'])
         return self
 
 
@@ -7939,6 +8648,199 @@ class ListFunctionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListFunctionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListInstancesHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_fc_account_id: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_fc_account_id = x_fc_account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_fc_account_id is not None:
+            result['X-Fc-Account-Id'] = self.x_fc_account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('X-Fc-Account-Id') is not None:
+            self.x_fc_account_id = m.get('X-Fc-Account-Id')
+        return self
+
+
+class ListInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+        limit: int = None,
+        qualifier: str = None,
+    ):
+        # 实例ID
+        self.instance_ids = instance_ids
+        # 限定此次返回资源的数量，取值范围[0,1000]。
+        # 
+        # 返回结果可以小于指定的数量，但不能多于指定的数量。
+        self.limit = limit
+        # 服务的版本或别名。默认是LATEST。
+        # 
+        # 此处的qualifier同InvokeFunction的qualifier含义一致，即调用ListInstances时指定qualifier=test查询出来的实例，就是调用InvokeFunction时qualifier=test链路上的实例。
+        self.qualifier = qualifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['instanceIds'] = self.instance_ids
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceIds') is not None:
+            self.instance_ids = m.get('instanceIds')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        return self
+
+
+class ListInstancesResponseBodyInstances(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        version_id: str = None,
+    ):
+        # 实例ID。
+        self.instance_id = instance_id
+        # 实例所属的服务版本。如果是LATEST别名下的函数实例，则返回版本号为0。
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.version_id is not None:
+            result['versionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('versionId') is not None:
+            self.version_id = m.get('versionId')
+        return self
+
+
+class ListInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instances: List[ListInstancesResponseBodyInstances] = None,
+    ):
+        self.instances = instances
+
+    def validate(self):
+        if self.instances:
+            for k in self.instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['instances'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instances = []
+        if m.get('instances') is not None:
+            for k in m.get('instances'):
+                temp_model = ListInstancesResponseBodyInstances()
+                self.instances.append(temp_model.from_map(k))
+        return self
+
+
+class ListInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListInstancesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
