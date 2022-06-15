@@ -107,6 +107,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.read_only_count):
+            query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -157,6 +159,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.read_only_count):
+            query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -939,6 +943,8 @@ class Client(OpenApiClient):
             query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.shard_count):
+            query['ShardCount'] = request.shard_count
         if not UtilClient.is_unset(request.src_dbinstance_id):
             query['SrcDBInstanceId'] = request.src_dbinstance_id
         if not UtilClient.is_unset(request.tag):
@@ -1037,6 +1043,8 @@ class Client(OpenApiClient):
             query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.shard_count):
+            query['ShardCount'] = request.shard_count
         if not UtilClient.is_unset(request.src_dbinstance_id):
             query['SrcDBInstanceId'] = request.src_dbinstance_id
         if not UtilClient.is_unset(request.tag):
@@ -1605,6 +1613,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.read_only_count):
+            query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -1647,6 +1657,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.read_only_count):
+            query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -7935,6 +7947,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.read_only_count):
+            query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -7995,6 +8009,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.read_only_count):
+            query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
