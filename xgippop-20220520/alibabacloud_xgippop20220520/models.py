@@ -384,6 +384,113 @@ class CreateApplicationInfoResponse(TeaModel):
         return self
 
 
+class GetAliyunXgipTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        rt: int = None,
+        success: bool = None,
+    ):
+        # 结果码
+        self.code = code
+        # 结果
+        self.data = data
+        # 结果描述
+        self.message = message
+        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
+        self.request_id = request_id
+        # 服务端处理耗时，ms
+        self.rt = rt
+        # 是否成功
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rt is not None:
+            result['Rt'] = self.rt
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rt') is not None:
+            self.rt = m.get('Rt')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAliyunXgipTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAliyunXgipTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAliyunXgipTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetApplicationRequest(TeaModel):
     def __init__(
         self,
@@ -998,203 +1105,6 @@ class GetFreeFlowProductListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetFreeFlowProductListResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetFreeFlowStatusRequest(TeaModel):
-    def __init__(
-        self,
-        ali_uid: int = None,
-        app_id: str = None,
-        flow_product_id: str = None,
-        mobile_number: str = None,
-        net_type: str = None,
-        operator: str = None,
-        private_ip: str = None,
-        pseudo_code: str = None,
-        public_ip: str = None,
-        token: str = None,
-    ):
-        self.ali_uid = ali_uid
-        # 应用ID
-        self.app_id = app_id
-        # 免流产品ID
-        self.flow_product_id = flow_product_id
-        # C端手机号
-        self.mobile_number = mobile_number
-        # 网络类型，如3G、4G、5G
-        self.net_type = net_type
-        # 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
-        self.operator = operator
-        # 手机端私网ip地址
-        self.private_ip = private_ip
-        # C端手机在运营商侧端伪码，如："75D35971BD"
-        self.pseudo_code = pseudo_code
-        # 手机端公网ip地址
-        self.public_ip = public_ip
-        # 通过云通信获取的token
-        self.token = token
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ali_uid is not None:
-            result['AliUid'] = self.ali_uid
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.flow_product_id is not None:
-            result['FlowProductId'] = self.flow_product_id
-        if self.mobile_number is not None:
-            result['MobileNumber'] = self.mobile_number
-        if self.net_type is not None:
-            result['NetType'] = self.net_type
-        if self.operator is not None:
-            result['Operator'] = self.operator
-        if self.private_ip is not None:
-            result['PrivateIP'] = self.private_ip
-        if self.pseudo_code is not None:
-            result['PseudoCode'] = self.pseudo_code
-        if self.public_ip is not None:
-            result['PublicIP'] = self.public_ip
-        if self.token is not None:
-            result['Token'] = self.token
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AliUid') is not None:
-            self.ali_uid = m.get('AliUid')
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('FlowProductId') is not None:
-            self.flow_product_id = m.get('FlowProductId')
-        if m.get('MobileNumber') is not None:
-            self.mobile_number = m.get('MobileNumber')
-        if m.get('NetType') is not None:
-            self.net_type = m.get('NetType')
-        if m.get('Operator') is not None:
-            self.operator = m.get('Operator')
-        if m.get('PrivateIP') is not None:
-            self.private_ip = m.get('PrivateIP')
-        if m.get('PseudoCode') is not None:
-            self.pseudo_code = m.get('PseudoCode')
-        if m.get('PublicIP') is not None:
-            self.public_ip = m.get('PublicIP')
-        if m.get('Token') is not None:
-            self.token = m.get('Token')
-        return self
-
-
-class GetFreeFlowStatusResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: Any = None,
-        message: str = None,
-        request_id: str = None,
-        rt: int = None,
-        success: bool = None,
-    ):
-        # 结果码
-        self.code = code
-        # 结果
-        self.data = data
-        # 结果描述
-        self.message = message
-        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
-        self.request_id = request_id
-        # 服务端处理耗时，ms
-        self.rt = rt
-        # 是否成功
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.rt is not None:
-            result['Rt'] = self.rt
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Rt') is not None:
-            self.rt = m.get('Rt')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class GetFreeFlowStatusResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetFreeFlowStatusResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetFreeFlowStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2592,6 +2502,274 @@ class SaveApplicationInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SaveApplicationInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SdkValidateStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        credential_type: str = None,
+        credential_value: str = None,
+        operator: str = None,
+        token: str = None,
+    ):
+        # 应用名称
+        self.app_id = app_id
+        # 凭证类型
+        self.credential_type = credential_type
+        # mobile=150xxxx4661
+        self.credential_value = credential_value
+        # 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
+        self.operator = operator
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.credential_type is not None:
+            result['CredentialType'] = self.credential_type
+        if self.credential_value is not None:
+            result['CredentialValue'] = self.credential_value
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('CredentialType') is not None:
+            self.credential_type = m.get('CredentialType')
+        if m.get('CredentialValue') is not None:
+            self.credential_value = m.get('CredentialValue')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class SdkValidateStatusResponseBodyDataAppExtPopList(TeaModel):
+    def __init__(
+        self,
+        ext_id: int = None,
+        flow_ip: List[str] = None,
+        flow_url: List[str] = None,
+        original_ip_list: List[str] = None,
+        original_url_list: List[str] = None,
+    ):
+        self.ext_id = ext_id
+        # cdn ip
+        self.flow_ip = flow_ip
+        # cdn 域名信息
+        self.flow_url = flow_url
+        # 业务方ip集合
+        self.original_ip_list = original_ip_list
+        # 业务方域名集合
+        self.original_url_list = original_url_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_id is not None:
+            result['ExtId'] = self.ext_id
+        if self.flow_ip is not None:
+            result['FlowIp'] = self.flow_ip
+        if self.flow_url is not None:
+            result['FlowUrl'] = self.flow_url
+        if self.original_ip_list is not None:
+            result['OriginalIpList'] = self.original_ip_list
+        if self.original_url_list is not None:
+            result['OriginalUrlList'] = self.original_url_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtId') is not None:
+            self.ext_id = m.get('ExtId')
+        if m.get('FlowIp') is not None:
+            self.flow_ip = m.get('FlowIp')
+        if m.get('FlowUrl') is not None:
+            self.flow_url = m.get('FlowUrl')
+        if m.get('OriginalIpList') is not None:
+            self.original_ip_list = m.get('OriginalIpList')
+        if m.get('OriginalUrlList') is not None:
+            self.original_url_list = m.get('OriginalUrlList')
+        return self
+
+
+class SdkValidateStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_ext_pop_list: List[SdkValidateStatusResponseBodyDataAppExtPopList] = None,
+        free_flow: bool = None,
+        pseudo_code: str = None,
+    ):
+        self.app_ext_pop_list = app_ext_pop_list
+        # 是否处于免流状态，取值范围为true/false
+        self.free_flow = free_flow
+        # 伪码
+        self.pseudo_code = pseudo_code
+
+    def validate(self):
+        if self.app_ext_pop_list:
+            for k in self.app_ext_pop_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AppExtPopList'] = []
+        if self.app_ext_pop_list is not None:
+            for k in self.app_ext_pop_list:
+                result['AppExtPopList'].append(k.to_map() if k else None)
+        if self.free_flow is not None:
+            result['FreeFlow'] = self.free_flow
+        if self.pseudo_code is not None:
+            result['PseudoCode'] = self.pseudo_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.app_ext_pop_list = []
+        if m.get('AppExtPopList') is not None:
+            for k in m.get('AppExtPopList'):
+                temp_model = SdkValidateStatusResponseBodyDataAppExtPopList()
+                self.app_ext_pop_list.append(temp_model.from_map(k))
+        if m.get('FreeFlow') is not None:
+            self.free_flow = m.get('FreeFlow')
+        if m.get('PseudoCode') is not None:
+            self.pseudo_code = m.get('PseudoCode')
+        return self
+
+
+class SdkValidateStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SdkValidateStatusResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        rt: int = None,
+        success: bool = None,
+    ):
+        # 结果码
+        self.code = code
+        # 结果
+        self.data = data
+        # 结果描述
+        self.message = message
+        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
+        self.request_id = request_id
+        # 服务端处理耗时，ms
+        self.rt = rt
+        # 是否成功
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rt is not None:
+            result['Rt'] = self.rt
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SdkValidateStatusResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rt') is not None:
+            self.rt = m.get('Rt')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SdkValidateStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SdkValidateStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SdkValidateStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
