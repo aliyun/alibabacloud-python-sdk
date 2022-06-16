@@ -1,3 +1,6 @@
+2022-06-16 Version: 1.0.13
+- Add InvalidPhoneNumberFilter, PhoneNumberEncrypt openApi .
+
 2022-06-16 Version: 1.0.12
 - Support Service of number analysis.
 
