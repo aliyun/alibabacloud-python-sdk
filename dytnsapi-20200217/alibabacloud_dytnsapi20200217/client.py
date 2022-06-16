@@ -749,13 +749,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.phone_number_encrypt_with_options_async(request, runtime)
 
-    def pvr_callback_fcuwith_options(
+    def three_elements_verification_with_options(
         self,
+        request: dytnsapi_20200217_models.ThreeElementsVerificationRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
-        req = open_api_models.OpenApiRequest()
+    ) -> dytnsapi_20200217_models.ThreeElementsVerificationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.cert_code):
+            query['CertCode'] = request.cert_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
-            action='PvrCallbackFCU',
+            action='ThreeElementsVerification',
             version='2020-02-17',
             protocol='HTTPS',
             pathname='/',
@@ -763,20 +784,41 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
-            dytnsapi_20200217_models.PvrCallbackFCUResponse(),
+            dytnsapi_20200217_models.ThreeElementsVerificationResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def pvr_callback_fcuwith_options_async(
+    async def three_elements_verification_with_options_async(
         self,
+        request: dytnsapi_20200217_models.ThreeElementsVerificationRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
-        req = open_api_models.OpenApiRequest()
+    ) -> dytnsapi_20200217_models.ThreeElementsVerificationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.cert_code):
+            query['CertCode'] = request.cert_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
-            action='PvrCallbackFCU',
+            action='ThreeElementsVerification',
             version='2020-02-17',
             protocol='HTTPS',
             pathname='/',
@@ -784,17 +826,117 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
-            dytnsapi_20200217_models.PvrCallbackFCUResponse(),
+            dytnsapi_20200217_models.ThreeElementsVerificationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def pvr_callback_fcu(self) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
+    def three_elements_verification(
+        self,
+        request: dytnsapi_20200217_models.ThreeElementsVerificationRequest,
+    ) -> dytnsapi_20200217_models.ThreeElementsVerificationResponse:
         runtime = util_models.RuntimeOptions()
-        return self.pvr_callback_fcuwith_options(runtime)
+        return self.three_elements_verification_with_options(request, runtime)
 
-    async def pvr_callback_fcu_async(self) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
+    async def three_elements_verification_async(
+        self,
+        request: dytnsapi_20200217_models.ThreeElementsVerificationRequest,
+    ) -> dytnsapi_20200217_models.ThreeElementsVerificationResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.pvr_callback_fcuwith_options_async(runtime)
+        return await self.three_elements_verification_with_options_async(request, runtime)
+
+    def two_elements_verification_with_options(
+        self,
+        request: dytnsapi_20200217_models.TwoElementsVerificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.TwoElementsVerificationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TwoElementsVerification',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.TwoElementsVerificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def two_elements_verification_with_options_async(
+        self,
+        request: dytnsapi_20200217_models.TwoElementsVerificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.TwoElementsVerificationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TwoElementsVerification',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.TwoElementsVerificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def two_elements_verification(
+        self,
+        request: dytnsapi_20200217_models.TwoElementsVerificationRequest,
+    ) -> dytnsapi_20200217_models.TwoElementsVerificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.two_elements_verification_with_options(request, runtime)
+
+    async def two_elements_verification_async(
+        self,
+        request: dytnsapi_20200217_models.TwoElementsVerificationRequest,
+    ) -> dytnsapi_20200217_models.TwoElementsVerificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.two_elements_verification_with_options_async(request, runtime)
