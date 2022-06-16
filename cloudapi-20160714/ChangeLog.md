@@ -1,3 +1,6 @@
+2022-06-16 Version: 2.1.7
+- Add response paramof api DescribeInstances.
+
 2022-05-08 Version: 2.1.6
 - Add parameter of api SetDomainCertificate.
 
