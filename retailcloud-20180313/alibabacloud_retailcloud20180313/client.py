@@ -104,11 +104,12 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.AddClusterNodeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterInstanceId'] = request.cluster_instance_id
-        query['EcsInstanceIdList'] = request.ecs_instance_id_list
+        if not UtilClient.is_unset(request.cluster_instance_id):
+            query['ClusterInstanceId'] = request.cluster_instance_id
+        if not UtilClient.is_unset(request.ecs_instance_id_list):
+            query['EcsInstanceIdList'] = request.ecs_instance_id_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddClusterNode',
@@ -118,7 +119,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -133,11 +134,12 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.AddClusterNodeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterInstanceId'] = request.cluster_instance_id
-        query['EcsInstanceIdList'] = request.ecs_instance_id_list
+        if not UtilClient.is_unset(request.cluster_instance_id):
+            query['ClusterInstanceId'] = request.cluster_instance_id
+        if not UtilClient.is_unset(request.ecs_instance_id_list):
+            query['EcsInstanceIdList'] = request.ecs_instance_id_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddClusterNode',
@@ -147,7 +149,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -176,12 +178,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.AllocatePodConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvId'] = request.env_id
-        query['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.request_id):
+            query['RequestId'] = request.request_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AllocatePodConfig',
@@ -191,7 +195,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -206,12 +210,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.AllocatePodConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvId'] = request.env_id
-        query['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.request_id):
+            query['RequestId'] = request.request_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AllocatePodConfig',
@@ -221,7 +227,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -250,13 +256,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.BatchAddServersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RegionId'] = request.region_id
-        query['Sign'] = request.sign
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sign):
+            query['Sign'] = request.sign
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchAddServers',
@@ -266,7 +275,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -281,13 +290,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.BatchAddServersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RegionId'] = request.region_id
-        query['Sign'] = request.sign
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sign):
+            query['Sign'] = request.sign
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchAddServers',
@@ -297,7 +309,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -326,12 +338,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.BindGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['BizCode'] = request.biz_code
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindGroup',
@@ -341,7 +355,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -356,12 +370,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.BindGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['BizCode'] = request.biz_code
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindGroup',
@@ -371,7 +387,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -400,13 +416,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.BindNodeLabelResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['InstanceId'] = request.instance_id
-        query['LabelKey'] = request.label_key
-        query['LabelValue'] = request.label_value
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.label_key):
+            query['LabelKey'] = request.label_key
+        if not UtilClient.is_unset(request.label_value):
+            query['LabelValue'] = request.label_value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindNodeLabel',
@@ -416,7 +435,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -431,13 +450,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.BindNodeLabelResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['InstanceId'] = request.instance_id
-        query['LabelKey'] = request.label_key
-        query['LabelValue'] = request.label_value
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.label_key):
+            query['LabelKey'] = request.label_key
+        if not UtilClient.is_unset(request.label_value):
+            query['LabelValue'] = request.label_value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindNodeLabel',
@@ -447,7 +469,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -476,10 +498,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CloseDeployOrderResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeployOrderId'] = request.deploy_order_id
+        if not UtilClient.is_unset(request.deploy_order_id):
+            query['DeployOrderId'] = request.deploy_order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CloseDeployOrder',
@@ -489,7 +511,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -504,10 +526,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CloseDeployOrderResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeployOrderId'] = request.deploy_order_id
+        if not UtilClient.is_unset(request.deploy_order_id):
+            query['DeployOrderId'] = request.deploy_order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CloseDeployOrder',
@@ -517,7 +539,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -545,8 +567,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.CreateAccountResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            body['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.account_type):
+            body['AccountType'] = request.account_type
+        if not UtilClient.is_unset(request.db_instance_id):
+            body['DbInstanceId'] = request.db_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAccount',
@@ -570,8 +601,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.CreateAccountResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            body['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.account_type):
+            body['AccountType'] = request.account_type
+        if not UtilClient.is_unset(request.db_instance_id):
+            body['DbInstanceId'] = request.db_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAccount',
@@ -609,8 +649,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.CreateAppResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.biz_code):
+            body['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_title):
+            body['BizTitle'] = request.biz_title
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.middle_ware_id_list):
+            body['MiddleWareIdList'] = request.middle_ware_id_list
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.operating_system):
+            body['OperatingSystem'] = request.operating_system
+        if not UtilClient.is_unset(request.service_type):
+            body['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.state_type):
+            body['StateType'] = request.state_type
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.user_roles):
+            body['UserRoles'] = request.user_roles
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateApp',
@@ -634,8 +699,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.CreateAppResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.biz_code):
+            body['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.biz_title):
+            body['BizTitle'] = request.biz_title
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.middle_ware_id_list):
+            body['MiddleWareIdList'] = request.middle_ware_id_list
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.operating_system):
+            body['OperatingSystem'] = request.operating_system
+        if not UtilClient.is_unset(request.service_type):
+            body['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.state_type):
+            body['StateType'] = request.state_type
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.user_roles):
+            body['UserRoles'] = request.user_roles
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateApp',
@@ -673,8 +763,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.CreateAppGroupResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.biz_code):
+            body['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAppGroup',
@@ -698,8 +793,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.CreateAppGroupResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.biz_code):
+            body['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAppGroup',
@@ -738,13 +838,20 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateAppMonitorsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AlarmTemplateId'] = request.alarm_template_id
-        query['EnvType'] = request.env_type
-        query['MainUserId'] = request.main_user_id
-        query['SilenceTime'] = request.silence_time
+        if not UtilClient.is_unset(request.alarm_template_id):
+            query['AlarmTemplateId'] = request.alarm_template_id
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.main_user_id):
+            query['MainUserId'] = request.main_user_id
+        if not UtilClient.is_unset(request.silence_time):
+            query['SilenceTime'] = request.silence_time
+        body = {}
+        if not UtilClient.is_unset(request.app_ids):
+            body['AppIds'] = request.app_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAppMonitors',
@@ -769,13 +876,20 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateAppMonitorsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AlarmTemplateId'] = request.alarm_template_id
-        query['EnvType'] = request.env_type
-        query['MainUserId'] = request.main_user_id
-        query['SilenceTime'] = request.silence_time
+        if not UtilClient.is_unset(request.alarm_template_id):
+            query['AlarmTemplateId'] = request.alarm_template_id
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.main_user_id):
+            query['MainUserId'] = request.main_user_id
+        if not UtilClient.is_unset(request.silence_time):
+            query['SilenceTime'] = request.silence_time
+        body = {}
+        if not UtilClient.is_unset(request.app_ids):
+            body['AppIds'] = request.app_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAppMonitors',
@@ -814,12 +928,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateAppResourceAllocResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppEnvId'] = request.app_env_id
-        query['AppId'] = request.app_id
-        query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.app_env_id):
+            query['AppEnvId'] = request.app_env_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateAppResourceAlloc',
@@ -829,7 +945,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -844,12 +960,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateAppResourceAllocResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppEnvId'] = request.app_env_id
-        query['AppId'] = request.app_id
-        query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.app_env_id):
+            query['AppEnvId'] = request.app_env_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateAppResourceAlloc',
@@ -859,7 +977,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -888,29 +1006,48 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateClusterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessCode'] = request.business_code
-        query['CloudMonitorFlags'] = request.cloud_monitor_flags
-        query['ClusterEnvType'] = request.cluster_env_type
-        query['ClusterId'] = request.cluster_id
-        query['ClusterTitle'] = request.cluster_title
-        query['ClusterType'] = request.cluster_type
-        query['CreateWithArmsIntegration'] = request.create_with_arms_integration
-        query['CreateWithLogIntegration'] = request.create_with_log_integration
-        query['KeyPair'] = request.key_pair
-        query['NetPlug'] = request.net_plug
-        query['Password'] = request.password
-        query['PodCIDR'] = request.pod_cidr
-        query['PrivateZone'] = request.private_zone
-        query['PublicSlb'] = request.public_slb
-        query['RegionId'] = request.region_id
-        query['RegionName'] = request.region_name
-        query['ServiceCIDR'] = request.service_cidr
-        query['SnatEntry'] = request.snat_entry
-        query['VpcId'] = request.vpc_id
-        query['Vswitchids'] = request.vswitchids
+        if not UtilClient.is_unset(request.business_code):
+            query['BusinessCode'] = request.business_code
+        if not UtilClient.is_unset(request.cloud_monitor_flags):
+            query['CloudMonitorFlags'] = request.cloud_monitor_flags
+        if not UtilClient.is_unset(request.cluster_env_type):
+            query['ClusterEnvType'] = request.cluster_env_type
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_title):
+            query['ClusterTitle'] = request.cluster_title
+        if not UtilClient.is_unset(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.create_with_arms_integration):
+            query['CreateWithArmsIntegration'] = request.create_with_arms_integration
+        if not UtilClient.is_unset(request.create_with_log_integration):
+            query['CreateWithLogIntegration'] = request.create_with_log_integration
+        if not UtilClient.is_unset(request.key_pair):
+            query['KeyPair'] = request.key_pair
+        if not UtilClient.is_unset(request.net_plug):
+            query['NetPlug'] = request.net_plug
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.pod_cidr):
+            query['PodCIDR'] = request.pod_cidr
+        if not UtilClient.is_unset(request.private_zone):
+            query['PrivateZone'] = request.private_zone
+        if not UtilClient.is_unset(request.public_slb):
+            query['PublicSlb'] = request.public_slb
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_name):
+            query['RegionName'] = request.region_name
+        if not UtilClient.is_unset(request.service_cidr):
+            query['ServiceCIDR'] = request.service_cidr
+        if not UtilClient.is_unset(request.snat_entry):
+            query['SnatEntry'] = request.snat_entry
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitchids):
+            query['Vswitchids'] = request.vswitchids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateCluster',
@@ -920,7 +1057,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -935,29 +1072,48 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateClusterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessCode'] = request.business_code
-        query['CloudMonitorFlags'] = request.cloud_monitor_flags
-        query['ClusterEnvType'] = request.cluster_env_type
-        query['ClusterId'] = request.cluster_id
-        query['ClusterTitle'] = request.cluster_title
-        query['ClusterType'] = request.cluster_type
-        query['CreateWithArmsIntegration'] = request.create_with_arms_integration
-        query['CreateWithLogIntegration'] = request.create_with_log_integration
-        query['KeyPair'] = request.key_pair
-        query['NetPlug'] = request.net_plug
-        query['Password'] = request.password
-        query['PodCIDR'] = request.pod_cidr
-        query['PrivateZone'] = request.private_zone
-        query['PublicSlb'] = request.public_slb
-        query['RegionId'] = request.region_id
-        query['RegionName'] = request.region_name
-        query['ServiceCIDR'] = request.service_cidr
-        query['SnatEntry'] = request.snat_entry
-        query['VpcId'] = request.vpc_id
-        query['Vswitchids'] = request.vswitchids
+        if not UtilClient.is_unset(request.business_code):
+            query['BusinessCode'] = request.business_code
+        if not UtilClient.is_unset(request.cloud_monitor_flags):
+            query['CloudMonitorFlags'] = request.cloud_monitor_flags
+        if not UtilClient.is_unset(request.cluster_env_type):
+            query['ClusterEnvType'] = request.cluster_env_type
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_title):
+            query['ClusterTitle'] = request.cluster_title
+        if not UtilClient.is_unset(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.create_with_arms_integration):
+            query['CreateWithArmsIntegration'] = request.create_with_arms_integration
+        if not UtilClient.is_unset(request.create_with_log_integration):
+            query['CreateWithLogIntegration'] = request.create_with_log_integration
+        if not UtilClient.is_unset(request.key_pair):
+            query['KeyPair'] = request.key_pair
+        if not UtilClient.is_unset(request.net_plug):
+            query['NetPlug'] = request.net_plug
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.pod_cidr):
+            query['PodCIDR'] = request.pod_cidr
+        if not UtilClient.is_unset(request.private_zone):
+            query['PrivateZone'] = request.private_zone
+        if not UtilClient.is_unset(request.public_slb):
+            query['PublicSlb'] = request.public_slb
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_name):
+            query['RegionName'] = request.region_name
+        if not UtilClient.is_unset(request.service_cidr):
+            query['ServiceCIDR'] = request.service_cidr
+        if not UtilClient.is_unset(request.snat_entry):
+            query['SnatEntry'] = request.snat_entry
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitchids):
+            query['Vswitchids'] = request.vswitchids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateCluster',
@@ -967,7 +1123,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -995,8 +1151,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.CreateDbResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.character_set_name):
+            body['CharacterSetName'] = request.character_set_name
+        if not UtilClient.is_unset(request.db_description):
+            body['DbDescription'] = request.db_description
+        if not UtilClient.is_unset(request.db_instance_id):
+            body['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateDb',
@@ -1020,8 +1185,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.CreateDbResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.character_set_name):
+            body['CharacterSetName'] = request.character_set_name
+        if not UtilClient.is_unset(request.db_description):
+            body['DbDescription'] = request.db_description
+        if not UtilClient.is_unset(request.db_instance_id):
+            body['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateDb',
@@ -1060,19 +1234,28 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateDeployConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['CodePath'] = request.code_path
-        query['ConfigMap'] = request.config_map
-        query['ConfigMapList'] = request.config_map_list
-        query['CronJob'] = request.cron_job
-        query['Deployment'] = request.deployment
-        query['EnvType'] = request.env_type
-        query['Name'] = request.name
-        query['SecretList'] = request.secret_list
-        query['StatefulSet'] = request.stateful_set
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.code_path):
+            query['CodePath'] = request.code_path
+        if not UtilClient.is_unset(request.config_map):
+            query['ConfigMap'] = request.config_map
+        if not UtilClient.is_unset(request.config_map_list):
+            query['ConfigMapList'] = request.config_map_list
+        if not UtilClient.is_unset(request.cron_job):
+            query['CronJob'] = request.cron_job
+        if not UtilClient.is_unset(request.deployment):
+            query['Deployment'] = request.deployment
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.secret_list):
+            query['SecretList'] = request.secret_list
+        if not UtilClient.is_unset(request.stateful_set):
+            query['StatefulSet'] = request.stateful_set
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateDeployConfig',
@@ -1082,7 +1265,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1097,19 +1280,28 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateDeployConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['CodePath'] = request.code_path
-        query['ConfigMap'] = request.config_map
-        query['ConfigMapList'] = request.config_map_list
-        query['CronJob'] = request.cron_job
-        query['Deployment'] = request.deployment
-        query['EnvType'] = request.env_type
-        query['Name'] = request.name
-        query['SecretList'] = request.secret_list
-        query['StatefulSet'] = request.stateful_set
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.code_path):
+            query['CodePath'] = request.code_path
+        if not UtilClient.is_unset(request.config_map):
+            query['ConfigMap'] = request.config_map
+        if not UtilClient.is_unset(request.config_map_list):
+            query['ConfigMapList'] = request.config_map_list
+        if not UtilClient.is_unset(request.cron_job):
+            query['CronJob'] = request.cron_job
+        if not UtilClient.is_unset(request.deployment):
+            query['Deployment'] = request.deployment
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.secret_list):
+            query['SecretList'] = request.secret_list
+        if not UtilClient.is_unset(request.stateful_set):
+            query['StatefulSet'] = request.stateful_set
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateDeployConfig',
@@ -1119,7 +1311,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1148,15 +1340,20 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateEciConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppEnvId'] = request.app_env_id
-        query['EipBandwidth'] = request.eip_bandwidth
-        query['EnableEciSchedulePolicy'] = request.enable_eci_schedule_policy
-        query['MirrorCache'] = request.mirror_cache
-        query['NormalInstanceLimit'] = request.normal_instance_limit
-        query['ScheduleVirtualNode'] = request.schedule_virtual_node
+        if not UtilClient.is_unset(request.app_env_id):
+            query['AppEnvId'] = request.app_env_id
+        if not UtilClient.is_unset(request.eip_bandwidth):
+            query['EipBandwidth'] = request.eip_bandwidth
+        if not UtilClient.is_unset(request.enable_eci_schedule_policy):
+            query['EnableEciSchedulePolicy'] = request.enable_eci_schedule_policy
+        if not UtilClient.is_unset(request.mirror_cache):
+            query['MirrorCache'] = request.mirror_cache
+        if not UtilClient.is_unset(request.normal_instance_limit):
+            query['NormalInstanceLimit'] = request.normal_instance_limit
+        if not UtilClient.is_unset(request.schedule_virtual_node):
+            query['ScheduleVirtualNode'] = request.schedule_virtual_node
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateEciConfig',
@@ -1166,7 +1363,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1181,15 +1378,20 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateEciConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppEnvId'] = request.app_env_id
-        query['EipBandwidth'] = request.eip_bandwidth
-        query['EnableEciSchedulePolicy'] = request.enable_eci_schedule_policy
-        query['MirrorCache'] = request.mirror_cache
-        query['NormalInstanceLimit'] = request.normal_instance_limit
-        query['ScheduleVirtualNode'] = request.schedule_virtual_node
+        if not UtilClient.is_unset(request.app_env_id):
+            query['AppEnvId'] = request.app_env_id
+        if not UtilClient.is_unset(request.eip_bandwidth):
+            query['EipBandwidth'] = request.eip_bandwidth
+        if not UtilClient.is_unset(request.enable_eci_schedule_policy):
+            query['EnableEciSchedulePolicy'] = request.enable_eci_schedule_policy
+        if not UtilClient.is_unset(request.mirror_cache):
+            query['MirrorCache'] = request.mirror_cache
+        if not UtilClient.is_unset(request.normal_instance_limit):
+            query['NormalInstanceLimit'] = request.normal_instance_limit
+        if not UtilClient.is_unset(request.schedule_virtual_node):
+            query['ScheduleVirtualNode'] = request.schedule_virtual_node
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateEciConfig',
@@ -1199,7 +1401,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1228,16 +1430,22 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateEnvironmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['AppSchemaId'] = request.app_schema_id
-        query['ClusterId'] = request.cluster_id
-        query['EnvName'] = request.env_name
-        query['EnvType'] = request.env_type
-        query['Region'] = request.region
-        query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_schema_id):
+            query['AppSchemaId'] = request.app_schema_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.env_name):
+            query['EnvName'] = request.env_name
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.replicas):
+            query['Replicas'] = request.replicas
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateEnvironment',
@@ -1247,7 +1455,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1262,16 +1470,22 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateEnvironmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['AppSchemaId'] = request.app_schema_id
-        query['ClusterId'] = request.cluster_id
-        query['EnvName'] = request.env_name
-        query['EnvType'] = request.env_type
-        query['Region'] = request.region
-        query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_schema_id):
+            query['AppSchemaId'] = request.app_schema_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.env_name):
+            query['EnvName'] = request.env_name
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.replicas):
+            query['Replicas'] = request.replicas
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateEnvironment',
@@ -1281,7 +1495,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1310,12 +1524,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateNodeLabelResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['LabelKey'] = request.label_key
-        query['LabelValue'] = request.label_value
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.label_key):
+            query['LabelKey'] = request.label_key
+        if not UtilClient.is_unset(request.label_value):
+            query['LabelValue'] = request.label_value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateNodeLabel',
@@ -1325,7 +1541,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1340,12 +1556,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateNodeLabelResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['LabelKey'] = request.label_key
-        query['LabelValue'] = request.label_value
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.label_key):
+            query['LabelKey'] = request.label_key
+        if not UtilClient.is_unset(request.label_value):
+            query['LabelValue'] = request.label_value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateNodeLabel',
@@ -1355,7 +1573,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1383,8 +1601,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.CreatePersistentVolumeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.access_modes):
+            body['AccessModes'] = request.access_modes
+        if not UtilClient.is_unset(request.capacity):
+            body['Capacity'] = request.capacity
+        if not UtilClient.is_unset(request.cluster_instance_id):
+            body['ClusterInstanceId'] = request.cluster_instance_id
+        if not UtilClient.is_unset(request.mount_dir):
+            body['MountDir'] = request.mount_dir
+        if not UtilClient.is_unset(request.mount_target_domain):
+            body['MountTargetDomain'] = request.mount_target_domain
+        if not UtilClient.is_unset(request.nfsversion):
+            body['NFSVersion'] = request.nfsversion
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.reclaim_policy):
+            body['ReclaimPolicy'] = request.reclaim_policy
+        if not UtilClient.is_unset(request.storage_class):
+            body['StorageClass'] = request.storage_class
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreatePersistentVolume',
@@ -1408,8 +1645,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.CreatePersistentVolumeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.access_modes):
+            body['AccessModes'] = request.access_modes
+        if not UtilClient.is_unset(request.capacity):
+            body['Capacity'] = request.capacity
+        if not UtilClient.is_unset(request.cluster_instance_id):
+            body['ClusterInstanceId'] = request.cluster_instance_id
+        if not UtilClient.is_unset(request.mount_dir):
+            body['MountDir'] = request.mount_dir
+        if not UtilClient.is_unset(request.mount_target_domain):
+            body['MountTargetDomain'] = request.mount_target_domain
+        if not UtilClient.is_unset(request.nfsversion):
+            body['NFSVersion'] = request.nfsversion
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.reclaim_policy):
+            body['ReclaimPolicy'] = request.reclaim_policy
+        if not UtilClient.is_unset(request.storage_class):
+            body['StorageClass'] = request.storage_class
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreatePersistentVolume',
@@ -1448,15 +1704,20 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreatePersistentVolumeClaimResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessModes'] = request.access_modes
-        query['AppId'] = request.app_id
-        query['Capacity'] = request.capacity
-        query['EnvId'] = request.env_id
-        query['Name'] = request.name
-        query['StorageClass'] = request.storage_class
+        if not UtilClient.is_unset(request.access_modes):
+            query['AccessModes'] = request.access_modes
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.capacity):
+            query['Capacity'] = request.capacity
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.storage_class):
+            query['StorageClass'] = request.storage_class
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreatePersistentVolumeClaim',
@@ -1466,7 +1727,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1481,15 +1742,20 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreatePersistentVolumeClaimResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessModes'] = request.access_modes
-        query['AppId'] = request.app_id
-        query['Capacity'] = request.capacity
-        query['EnvId'] = request.env_id
-        query['Name'] = request.name
-        query['StorageClass'] = request.storage_class
+        if not UtilClient.is_unset(request.access_modes):
+            query['AccessModes'] = request.access_modes
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.capacity):
+            query['Capacity'] = request.capacity
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.storage_class):
+            query['StorageClass'] = request.storage_class
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreatePersistentVolumeClaim',
@@ -1499,7 +1765,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1528,14 +1794,22 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EnvId'] = request.env_id
-        query['Headless'] = request.headless
-        query['K8sServiceId'] = request.k_8s_service_id
-        query['Name'] = request.name
-        query['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.headless):
+            query['Headless'] = request.headless
+        if not UtilClient.is_unset(request.k_8s_service_id):
+            query['K8sServiceId'] = request.k_8s_service_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
+        body = {}
+        if not UtilClient.is_unset(request.port_mappings):
+            body['PortMappings'] = request.port_mappings
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateService',
@@ -1560,14 +1834,22 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EnvId'] = request.env_id
-        query['Headless'] = request.headless
-        query['K8sServiceId'] = request.k_8s_service_id
-        query['Name'] = request.name
-        query['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.headless):
+            query['Headless'] = request.headless
+        if not UtilClient.is_unset(request.k_8s_service_id):
+            query['K8sServiceId'] = request.k_8s_service_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
+        body = {}
+        if not UtilClient.is_unset(request.port_mappings):
+            body['PortMappings'] = request.port_mappings
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateService',
@@ -1606,19 +1888,28 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateSlbAPResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CookieTimeout'] = request.cookie_timeout
-        query['EnvId'] = request.env_id
-        query['EstablishedTimeout'] = request.established_timeout
-        query['ListenerPort'] = request.listener_port
-        query['Name'] = request.name
-        query['Protocol'] = request.protocol
-        query['RealServerPort'] = request.real_server_port
-        query['SlbId'] = request.slb_id
-        query['SslCertId'] = request.ssl_cert_id
-        query['StickySession'] = request.sticky_session
+        if not UtilClient.is_unset(request.cookie_timeout):
+            query['CookieTimeout'] = request.cookie_timeout
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.established_timeout):
+            query['EstablishedTimeout'] = request.established_timeout
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.real_server_port):
+            query['RealServerPort'] = request.real_server_port
+        if not UtilClient.is_unset(request.slb_id):
+            query['SlbId'] = request.slb_id
+        if not UtilClient.is_unset(request.ssl_cert_id):
+            query['SslCertId'] = request.ssl_cert_id
+        if not UtilClient.is_unset(request.sticky_session):
+            query['StickySession'] = request.sticky_session
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSlbAP',
@@ -1628,7 +1919,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1643,19 +1934,28 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.CreateSlbAPResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CookieTimeout'] = request.cookie_timeout
-        query['EnvId'] = request.env_id
-        query['EstablishedTimeout'] = request.established_timeout
-        query['ListenerPort'] = request.listener_port
-        query['Name'] = request.name
-        query['Protocol'] = request.protocol
-        query['RealServerPort'] = request.real_server_port
-        query['SlbId'] = request.slb_id
-        query['SslCertId'] = request.ssl_cert_id
-        query['StickySession'] = request.sticky_session
+        if not UtilClient.is_unset(request.cookie_timeout):
+            query['CookieTimeout'] = request.cookie_timeout
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.established_timeout):
+            query['EstablishedTimeout'] = request.established_timeout
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.real_server_port):
+            query['RealServerPort'] = request.real_server_port
+        if not UtilClient.is_unset(request.slb_id):
+            query['SlbId'] = request.slb_id
+        if not UtilClient.is_unset(request.ssl_cert_id):
+            query['SslCertId'] = request.ssl_cert_id
+        if not UtilClient.is_unset(request.sticky_session):
+            query['StickySession'] = request.sticky_session
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSlbAP',
@@ -1665,7 +1965,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1705,7 +2005,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1731,7 +2031,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1760,12 +2060,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteAppEnvironmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvId'] = request.env_id
-        query['Force'] = request.force
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAppEnvironment',
@@ -1775,7 +2077,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1790,12 +2092,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteAppEnvironmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvId'] = request.env_id
-        query['Force'] = request.force
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAppEnvironment',
@@ -1805,7 +2109,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1834,11 +2138,12 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteAppGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Force'] = request.force
-        query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAppGroup',
@@ -1848,7 +2153,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1863,11 +2168,12 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteAppGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Force'] = request.force
-        query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAppGroup',
@@ -1877,7 +2183,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1906,10 +2212,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteAppResourceAllocResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppEnvId'] = request.app_env_id
+        if not UtilClient.is_unset(request.app_env_id):
+            query['AppEnvId'] = request.app_env_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAppResourceAlloc',
@@ -1919,7 +2225,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1934,10 +2240,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteAppResourceAllocResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppEnvId'] = request.app_env_id
+        if not UtilClient.is_unset(request.app_env_id):
+            query['AppEnvId'] = request.app_env_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAppResourceAlloc',
@@ -1947,7 +2253,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1976,10 +2282,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteClusterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterInstanceId'] = request.cluster_instance_id
+        if not UtilClient.is_unset(request.cluster_instance_id):
+            query['ClusterInstanceId'] = request.cluster_instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCluster',
@@ -1989,7 +2295,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2004,10 +2310,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteClusterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterInstanceId'] = request.cluster_instance_id
+        if not UtilClient.is_unset(request.cluster_instance_id):
+            query['ClusterInstanceId'] = request.cluster_instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCluster',
@@ -2017,7 +2323,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2045,8 +2351,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.DeleteDatabaseResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            body['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbname):
+            body['DBName'] = request.dbname
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteDatabase',
@@ -2070,8 +2381,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.DeleteDatabaseResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            body['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbname):
+            body['DBName'] = request.dbname
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteDatabase',
@@ -2110,10 +2426,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteDeployConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SchemaId'] = request.schema_id
+        if not UtilClient.is_unset(request.schema_id):
+            query['SchemaId'] = request.schema_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDeployConfig',
@@ -2123,7 +2439,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2138,10 +2454,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteDeployConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SchemaId'] = request.schema_id
+        if not UtilClient.is_unset(request.schema_id):
+            query['SchemaId'] = request.schema_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDeployConfig',
@@ -2151,7 +2467,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2180,13 +2496,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteNodeLabelResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['Force'] = request.force
-        query['LabelKey'] = request.label_key
-        query['LabelValue'] = request.label_value
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.label_key):
+            query['LabelKey'] = request.label_key
+        if not UtilClient.is_unset(request.label_value):
+            query['LabelValue'] = request.label_value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteNodeLabel',
@@ -2196,7 +2515,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2211,13 +2530,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteNodeLabelResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['Force'] = request.force
-        query['LabelKey'] = request.label_key
-        query['LabelValue'] = request.label_value
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.label_key):
+            query['LabelKey'] = request.label_key
+        if not UtilClient.is_unset(request.label_value):
+            query['LabelValue'] = request.label_value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteNodeLabel',
@@ -2227,7 +2549,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2255,8 +2577,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.DeletePersistentVolumeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_instance_id):
+            body['ClusterInstanceId'] = request.cluster_instance_id
+        if not UtilClient.is_unset(request.persistent_volume_name):
+            body['PersistentVolumeName'] = request.persistent_volume_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeletePersistentVolume',
@@ -2280,8 +2607,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.DeletePersistentVolumeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_instance_id):
+            body['ClusterInstanceId'] = request.cluster_instance_id
+        if not UtilClient.is_unset(request.persistent_volume_name):
+            body['PersistentVolumeName'] = request.persistent_volume_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeletePersistentVolume',
@@ -2320,12 +2652,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeletePersistentVolumeClaimResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvId'] = request.env_id
-        query['PersistentVolumeClaimName'] = request.persistent_volume_claim_name
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.persistent_volume_claim_name):
+            query['PersistentVolumeClaimName'] = request.persistent_volume_claim_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeletePersistentVolumeClaim',
@@ -2335,7 +2669,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2350,12 +2684,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeletePersistentVolumeClaimResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvId'] = request.env_id
-        query['PersistentVolumeClaimName'] = request.persistent_volume_claim_name
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.persistent_volume_claim_name):
+            query['PersistentVolumeClaimName'] = request.persistent_volume_claim_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeletePersistentVolumeClaim',
@@ -2365,7 +2701,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2393,8 +2729,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.DeleteRdsAccountResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.db_instance_id):
+            body['DbInstanceId'] = request.db_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteRdsAccount',
@@ -2418,8 +2759,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.DeleteRdsAccountResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.db_instance_id):
+            body['DbInstanceId'] = request.db_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteRdsAccount',
@@ -2458,10 +2804,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteService',
@@ -2471,7 +2817,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2486,10 +2832,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteService',
@@ -2499,7 +2845,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2528,10 +2874,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteSlbAPResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SlbAPId'] = request.slb_apid
+        if not UtilClient.is_unset(request.slb_apid):
+            query['SlbAPId'] = request.slb_apid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSlbAP',
@@ -2541,7 +2887,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2556,10 +2902,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeleteSlbAPResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SlbAPId'] = request.slb_apid
+        if not UtilClient.is_unset(request.slb_apid):
+            query['SlbAPId'] = request.slb_apid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSlbAP',
@@ -2569,7 +2915,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2598,21 +2944,32 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeployAppResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ArmsFlag'] = request.arms_flag
-        query['ContainerImageList'] = request.container_image_list
-        query['DefaultPacketOfAppGroup'] = request.default_packet_of_app_group
-        query['DeployPacketId'] = request.deploy_packet_id
-        query['DeployPacketUrl'] = request.deploy_packet_url
-        query['Description'] = request.description
-        query['EnvId'] = request.env_id
-        query['InitContainerImageList'] = request.init_container_image_list
-        query['Name'] = request.name
-        query['PauseType'] = request.pause_type
-        query['TotalPartitions'] = request.total_partitions
-        query['UpdateStrategyType'] = request.update_strategy_type
+        if not UtilClient.is_unset(request.arms_flag):
+            query['ArmsFlag'] = request.arms_flag
+        if not UtilClient.is_unset(request.container_image_list):
+            query['ContainerImageList'] = request.container_image_list
+        if not UtilClient.is_unset(request.default_packet_of_app_group):
+            query['DefaultPacketOfAppGroup'] = request.default_packet_of_app_group
+        if not UtilClient.is_unset(request.deploy_packet_id):
+            query['DeployPacketId'] = request.deploy_packet_id
+        if not UtilClient.is_unset(request.deploy_packet_url):
+            query['DeployPacketUrl'] = request.deploy_packet_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.init_container_image_list):
+            query['InitContainerImageList'] = request.init_container_image_list
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.pause_type):
+            query['PauseType'] = request.pause_type
+        if not UtilClient.is_unset(request.total_partitions):
+            query['TotalPartitions'] = request.total_partitions
+        if not UtilClient.is_unset(request.update_strategy_type):
+            query['UpdateStrategyType'] = request.update_strategy_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeployApp',
@@ -2622,7 +2979,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2637,21 +2994,32 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DeployAppResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ArmsFlag'] = request.arms_flag
-        query['ContainerImageList'] = request.container_image_list
-        query['DefaultPacketOfAppGroup'] = request.default_packet_of_app_group
-        query['DeployPacketId'] = request.deploy_packet_id
-        query['DeployPacketUrl'] = request.deploy_packet_url
-        query['Description'] = request.description
-        query['EnvId'] = request.env_id
-        query['InitContainerImageList'] = request.init_container_image_list
-        query['Name'] = request.name
-        query['PauseType'] = request.pause_type
-        query['TotalPartitions'] = request.total_partitions
-        query['UpdateStrategyType'] = request.update_strategy_type
+        if not UtilClient.is_unset(request.arms_flag):
+            query['ArmsFlag'] = request.arms_flag
+        if not UtilClient.is_unset(request.container_image_list):
+            query['ContainerImageList'] = request.container_image_list
+        if not UtilClient.is_unset(request.default_packet_of_app_group):
+            query['DefaultPacketOfAppGroup'] = request.default_packet_of_app_group
+        if not UtilClient.is_unset(request.deploy_packet_id):
+            query['DeployPacketId'] = request.deploy_packet_id
+        if not UtilClient.is_unset(request.deploy_packet_url):
+            query['DeployPacketUrl'] = request.deploy_packet_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.init_container_image_list):
+            query['InitContainerImageList'] = request.init_container_image_list
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.pause_type):
+            query['PauseType'] = request.pause_type
+        if not UtilClient.is_unset(request.total_partitions):
+            query['TotalPartitions'] = request.total_partitions
+        if not UtilClient.is_unset(request.update_strategy_type):
+            query['UpdateStrategyType'] = request.update_strategy_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeployApp',
@@ -2661,7 +3029,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2690,10 +3058,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribeAppDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeAppDetail',
@@ -2703,7 +3071,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2718,10 +3086,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribeAppDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeAppDetail',
@@ -2731,7 +3099,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2753,6 +3121,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_app_detail_with_options_async(request, runtime)
 
+    def describe_app_env_deploy_baseline_with_options(
+        self,
+        request: retailcloud_20180313_models.DescribeAppEnvDeployBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> retailcloud_20180313_models.DescribeAppEnvDeployBaselineResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppEnvDeployBaseline',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            retailcloud_20180313_models.DescribeAppEnvDeployBaselineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_app_env_deploy_baseline_with_options_async(
+        self,
+        request: retailcloud_20180313_models.DescribeAppEnvDeployBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> retailcloud_20180313_models.DescribeAppEnvDeployBaselineResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppEnvDeployBaseline',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            retailcloud_20180313_models.DescribeAppEnvDeployBaselineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_app_env_deploy_baseline(
+        self,
+        request: retailcloud_20180313_models.DescribeAppEnvDeployBaselineRequest,
+    ) -> retailcloud_20180313_models.DescribeAppEnvDeployBaselineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_app_env_deploy_baseline_with_options(request, runtime)
+
+    async def describe_app_env_deploy_baseline_async(
+        self,
+        request: retailcloud_20180313_models.DescribeAppEnvDeployBaselineRequest,
+    ) -> retailcloud_20180313_models.DescribeAppEnvDeployBaselineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_app_env_deploy_baseline_with_options_async(request, runtime)
+
     def describe_app_environment_detail_with_options(
         self,
         request: retailcloud_20180313_models.DescribeAppEnvironmentDetailRequest,
@@ -2771,7 +3213,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2797,7 +3239,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2819,6 +3261,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_app_environment_detail_with_options_async(request, runtime)
 
+    def describe_app_group_deploy_setting_with_options(
+        self,
+        request: retailcloud_20180313_models.DescribeAppGroupDeploySettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> retailcloud_20180313_models.DescribeAppGroupDeploySettingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_group_id):
+            query['AppGroupId'] = request.app_group_id
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppGroupDeploySetting',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            retailcloud_20180313_models.DescribeAppGroupDeploySettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_app_group_deploy_setting_with_options_async(
+        self,
+        request: retailcloud_20180313_models.DescribeAppGroupDeploySettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> retailcloud_20180313_models.DescribeAppGroupDeploySettingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_group_id):
+            query['AppGroupId'] = request.app_group_id
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppGroupDeploySetting',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            retailcloud_20180313_models.DescribeAppGroupDeploySettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_app_group_deploy_setting(
+        self,
+        request: retailcloud_20180313_models.DescribeAppGroupDeploySettingRequest,
+    ) -> retailcloud_20180313_models.DescribeAppGroupDeploySettingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_app_group_deploy_setting_with_options(request, runtime)
+
+    async def describe_app_group_deploy_setting_async(
+        self,
+        request: retailcloud_20180313_models.DescribeAppGroupDeploySettingRequest,
+    ) -> retailcloud_20180313_models.DescribeAppGroupDeploySettingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_app_group_deploy_setting_with_options_async(request, runtime)
+
     def describe_app_monitor_metric_with_options(
         self,
         request: retailcloud_20180313_models.DescribeAppMonitorMetricRequest,
@@ -2826,17 +3342,24 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribeAppMonitorMetricResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['DeployOrderId'] = request.deploy_order_id
-        query['EndTime'] = request.end_time
-        query['EnvId'] = request.env_id
-        query['Metric'] = request.metric
-        query['PodName'] = request.pod_name
-        query['StartTime'] = request.start_time
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.deploy_order_id):
+            query['DeployOrderId'] = request.deploy_order_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.metric):
+            query['Metric'] = request.metric
+        if not UtilClient.is_unset(request.pod_name):
+            query['PodName'] = request.pod_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeAppMonitorMetric',
@@ -2846,7 +3369,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2861,17 +3384,24 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribeAppMonitorMetricResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['DeployOrderId'] = request.deploy_order_id
-        query['EndTime'] = request.end_time
-        query['EnvId'] = request.env_id
-        query['Metric'] = request.metric
-        query['PodName'] = request.pod_name
-        query['StartTime'] = request.start_time
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.deploy_order_id):
+            query['DeployOrderId'] = request.deploy_order_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.metric):
+            query['Metric'] = request.metric
+        if not UtilClient.is_unset(request.pod_name):
+            query['PodName'] = request.pod_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeAppMonitorMetric',
@@ -2881,7 +3411,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2921,7 +3451,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2947,7 +3477,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2976,10 +3506,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribeClusterDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterInstanceId'] = request.cluster_instance_id
+        if not UtilClient.is_unset(request.cluster_instance_id):
+            query['ClusterInstanceId'] = request.cluster_instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeClusterDetail',
@@ -2989,7 +3519,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3004,10 +3534,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribeClusterDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterInstanceId'] = request.cluster_instance_id
+        if not UtilClient.is_unset(request.cluster_instance_id):
+            query['ClusterInstanceId'] = request.cluster_instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeClusterDetail',
@@ -3017,7 +3547,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3057,7 +3587,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3083,7 +3613,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3112,10 +3642,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribeDeployOrderDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeployOrderId'] = request.deploy_order_id
+        if not UtilClient.is_unset(request.deploy_order_id):
+            query['DeployOrderId'] = request.deploy_order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDeployOrderDetail',
@@ -3125,7 +3655,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3140,10 +3670,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribeDeployOrderDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeployOrderId'] = request.deploy_order_id
+        if not UtilClient.is_unset(request.deploy_order_id):
+            query['DeployOrderId'] = request.deploy_order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDeployOrderDetail',
@@ -3153,7 +3683,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3193,7 +3723,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3219,7 +3749,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3248,18 +3778,26 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribeEventMonitorListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EndTime'] = request.end_time
-        query['EnvId'] = request.env_id
-        query['EventLevel'] = request.event_level
-        query['EventType'] = request.event_type
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['PodName'] = request.pod_name
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.event_level):
+            query['EventLevel'] = request.event_level
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pod_name):
+            query['PodName'] = request.pod_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeEventMonitorList',
@@ -3269,7 +3807,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3284,18 +3822,26 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribeEventMonitorListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EndTime'] = request.end_time
-        query['EnvId'] = request.env_id
-        query['EventLevel'] = request.event_level
-        query['EventType'] = request.event_type
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['PodName'] = request.pod_name
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.event_level):
+            query['EventLevel'] = request.event_level
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pod_name):
+            query['PodName'] = request.pod_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeEventMonitorList',
@@ -3305,7 +3851,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3345,7 +3891,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3371,7 +3917,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3400,13 +3946,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribePodContainerLogListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvId'] = request.env_id
-        query['Line'] = request.line
-        query['PodName'] = request.pod_name
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
+        if not UtilClient.is_unset(request.pod_name):
+            query['PodName'] = request.pod_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePodContainerLogList',
@@ -3416,7 +3965,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3431,13 +3980,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribePodContainerLogListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvId'] = request.env_id
-        query['Line'] = request.line
-        query['PodName'] = request.pod_name
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
+        if not UtilClient.is_unset(request.pod_name):
+            query['PodName'] = request.pod_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePodContainerLogList',
@@ -3447,7 +3999,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3476,11 +4028,12 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribePodEventsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppInstId'] = request.app_inst_id
-        query['DeployOrderId'] = request.deploy_order_id
+        if not UtilClient.is_unset(request.app_inst_id):
+            query['AppInstId'] = request.app_inst_id
+        if not UtilClient.is_unset(request.deploy_order_id):
+            query['DeployOrderId'] = request.deploy_order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePodEvents',
@@ -3490,7 +4043,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3505,11 +4058,12 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribePodEventsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppInstId'] = request.app_inst_id
-        query['DeployOrderId'] = request.deploy_order_id
+        if not UtilClient.is_unset(request.app_inst_id):
+            query['AppInstId'] = request.app_inst_id
+        if not UtilClient.is_unset(request.deploy_order_id):
+            query['DeployOrderId'] = request.deploy_order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePodEvents',
@@ -3519,7 +4073,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3547,8 +4101,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.DescribePodLogResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_inst_id):
+            body['AppInstId'] = request.app_inst_id
+        if not UtilClient.is_unset(request.deploy_order_id):
+            body['DeployOrderId'] = request.deploy_order_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DescribePodLog',
@@ -3572,8 +4131,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.DescribePodLogResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_inst_id):
+            body['AppInstId'] = request.app_inst_id
+        if not UtilClient.is_unset(request.deploy_order_id):
+            body['DeployOrderId'] = request.deploy_order_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DescribePodLog',
@@ -3623,7 +4187,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3649,7 +4213,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3678,10 +4242,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribeServiceDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeServiceDetail',
@@ -3691,7 +4255,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3706,10 +4270,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribeServiceDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeServiceDetail',
@@ -3719,7 +4283,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3748,10 +4312,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribeSlbAPDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SlbAPId'] = request.slb_apid
+        if not UtilClient.is_unset(request.slb_apid):
+            query['SlbAPId'] = request.slb_apid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSlbAPDetail',
@@ -3761,7 +4325,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3776,10 +4340,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.DescribeSlbAPDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SlbAPId'] = request.slb_apid
+        if not UtilClient.is_unset(request.slb_apid):
+            query['SlbAPId'] = request.slb_apid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSlbAPDetail',
@@ -3789,7 +4353,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3817,8 +4381,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.GetInstTransInfoResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aliyun_commodity_code):
+            body['aliyunCommodityCode'] = request.aliyun_commodity_code
+        if not UtilClient.is_unset(request.aliyun_equip_id):
+            body['aliyunEquipId'] = request.aliyun_equip_id
+        if not UtilClient.is_unset(request.aliyun_uid):
+            body['aliyunUid'] = request.aliyun_uid
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetInstTransInfo',
@@ -3842,8 +4413,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.GetInstTransInfoResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aliyun_commodity_code):
+            body['aliyunCommodityCode'] = request.aliyun_commodity_code
+        if not UtilClient.is_unset(request.aliyun_equip_id):
+            body['aliyunEquipId'] = request.aliyun_equip_id
+        if not UtilClient.is_unset(request.aliyun_uid):
+            body['aliyunUid'] = request.aliyun_uid
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetInstTransInfo',
@@ -3881,8 +4459,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.GetRdsBackUpResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.backup_id):
+            body['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_type):
+            body['BackupType'] = request.backup_type
+        if not UtilClient.is_unset(request.db_instance_id):
+            body['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetRdsBackUp',
@@ -3906,8 +4495,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.GetRdsBackUpResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.backup_id):
+            body['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_type):
+            body['BackupType'] = request.backup_type
+        if not UtilClient.is_unset(request.db_instance_id):
+            body['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetRdsBackUp',
@@ -3945,8 +4545,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.GrantDbToAccountResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_privilege):
+            body['AccountPrivilege'] = request.account_privilege
+        if not UtilClient.is_unset(request.db_instance_id):
+            body['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GrantDbToAccount',
@@ -3970,8 +4579,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.GrantDbToAccountResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_privilege):
+            body['AccountPrivilege'] = request.account_privilege
+        if not UtilClient.is_unset(request.db_instance_id):
+            body['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GrantDbToAccount',
@@ -4021,7 +4639,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4047,7 +4665,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4087,7 +4705,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4113,7 +4731,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4153,7 +4771,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4179,7 +4797,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4208,12 +4826,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListAppGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BizCode'] = request.biz_code
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAppGroup',
@@ -4223,7 +4843,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4238,12 +4858,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListAppGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BizCode'] = request.biz_code
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAppGroup',
@@ -4253,7 +4875,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4282,13 +4904,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListAppGroupMappingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BizCode'] = request.biz_code
-        query['Name'] = request.name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAppGroupMapping',
@@ -4298,7 +4923,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4313,13 +4938,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListAppGroupMappingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BizCode'] = request.biz_code
-        query['Name'] = request.name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAppGroupMapping',
@@ -4329,7 +4957,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4357,8 +4985,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.ListAppInstanceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            body['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListAppInstance',
@@ -4382,8 +5019,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.ListAppInstanceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            body['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListAppInstance',
@@ -4433,7 +5079,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4459,7 +5105,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4499,7 +5145,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4525,7 +5171,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4565,7 +5211,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4591,7 +5237,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4631,7 +5277,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4657,7 +5303,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4686,13 +5332,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListDeployConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvType'] = request.env_type
-        query['Id'] = request.id
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDeployConfig',
@@ -4702,7 +5351,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4717,13 +5366,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListDeployConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvType'] = request.env_type
-        query['Id'] = request.id
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDeployConfig',
@@ -4733,7 +5385,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4762,27 +5414,50 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListDeployOrdersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['DeployCategory'] = request.deploy_category
-        query['DeployType'] = request.deploy_type
-        query['EndTimeGreaterThan'] = request.end_time_greater_than
-        query['EndTimeGreaterThanOrEqualTo'] = request.end_time_greater_than_or_equal_to
-        query['EndTimeLessThan'] = request.end_time_less_than
-        query['EndTimeLessThanOrEqualTo'] = request.end_time_less_than_or_equal_to
-        query['EnvId'] = request.env_id
-        query['EnvType'] = request.env_type
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['PartitionType'] = request.partition_type
-        query['PauseType'] = request.pause_type
-        query['StartTimeGreaterThan'] = request.start_time_greater_than
-        query['StartTimeGreaterThanOrEqualTo'] = request.start_time_greater_than_or_equal_to
-        query['StartTimeLessThan'] = request.start_time_less_than
-        query['StartTimeLessThanOrEqualTo'] = request.start_time_less_than_or_equal_to
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.deploy_category):
+            query['DeployCategory'] = request.deploy_category
+        if not UtilClient.is_unset(request.deploy_type):
+            query['DeployType'] = request.deploy_type
+        if not UtilClient.is_unset(request.end_time_greater_than):
+            query['EndTimeGreaterThan'] = request.end_time_greater_than
+        if not UtilClient.is_unset(request.end_time_greater_than_or_equal_to):
+            query['EndTimeGreaterThanOrEqualTo'] = request.end_time_greater_than_or_equal_to
+        if not UtilClient.is_unset(request.end_time_less_than):
+            query['EndTimeLessThan'] = request.end_time_less_than
+        if not UtilClient.is_unset(request.end_time_less_than_or_equal_to):
+            query['EndTimeLessThanOrEqualTo'] = request.end_time_less_than_or_equal_to
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.partition_type):
+            query['PartitionType'] = request.partition_type
+        if not UtilClient.is_unset(request.pause_type):
+            query['PauseType'] = request.pause_type
+        if not UtilClient.is_unset(request.start_time_greater_than):
+            query['StartTimeGreaterThan'] = request.start_time_greater_than
+        if not UtilClient.is_unset(request.start_time_greater_than_or_equal_to):
+            query['StartTimeGreaterThanOrEqualTo'] = request.start_time_greater_than_or_equal_to
+        if not UtilClient.is_unset(request.start_time_less_than):
+            query['StartTimeLessThan'] = request.start_time_less_than
+        if not UtilClient.is_unset(request.start_time_less_than_or_equal_to):
+            query['StartTimeLessThanOrEqualTo'] = request.start_time_less_than_or_equal_to
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        body = {}
+        if not UtilClient.is_unset(request.result_list):
+            body['ResultList'] = request.result_list
+        if not UtilClient.is_unset(request.status_list):
+            body['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListDeployOrders',
@@ -4807,27 +5482,50 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListDeployOrdersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['DeployCategory'] = request.deploy_category
-        query['DeployType'] = request.deploy_type
-        query['EndTimeGreaterThan'] = request.end_time_greater_than
-        query['EndTimeGreaterThanOrEqualTo'] = request.end_time_greater_than_or_equal_to
-        query['EndTimeLessThan'] = request.end_time_less_than
-        query['EndTimeLessThanOrEqualTo'] = request.end_time_less_than_or_equal_to
-        query['EnvId'] = request.env_id
-        query['EnvType'] = request.env_type
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['PartitionType'] = request.partition_type
-        query['PauseType'] = request.pause_type
-        query['StartTimeGreaterThan'] = request.start_time_greater_than
-        query['StartTimeGreaterThanOrEqualTo'] = request.start_time_greater_than_or_equal_to
-        query['StartTimeLessThan'] = request.start_time_less_than
-        query['StartTimeLessThanOrEqualTo'] = request.start_time_less_than_or_equal_to
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.deploy_category):
+            query['DeployCategory'] = request.deploy_category
+        if not UtilClient.is_unset(request.deploy_type):
+            query['DeployType'] = request.deploy_type
+        if not UtilClient.is_unset(request.end_time_greater_than):
+            query['EndTimeGreaterThan'] = request.end_time_greater_than
+        if not UtilClient.is_unset(request.end_time_greater_than_or_equal_to):
+            query['EndTimeGreaterThanOrEqualTo'] = request.end_time_greater_than_or_equal_to
+        if not UtilClient.is_unset(request.end_time_less_than):
+            query['EndTimeLessThan'] = request.end_time_less_than
+        if not UtilClient.is_unset(request.end_time_less_than_or_equal_to):
+            query['EndTimeLessThanOrEqualTo'] = request.end_time_less_than_or_equal_to
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.partition_type):
+            query['PartitionType'] = request.partition_type
+        if not UtilClient.is_unset(request.pause_type):
+            query['PauseType'] = request.pause_type
+        if not UtilClient.is_unset(request.start_time_greater_than):
+            query['StartTimeGreaterThan'] = request.start_time_greater_than
+        if not UtilClient.is_unset(request.start_time_greater_than_or_equal_to):
+            query['StartTimeGreaterThanOrEqualTo'] = request.start_time_greater_than_or_equal_to
+        if not UtilClient.is_unset(request.start_time_less_than):
+            query['StartTimeLessThan'] = request.start_time_less_than
+        if not UtilClient.is_unset(request.start_time_less_than_or_equal_to):
+            query['StartTimeLessThanOrEqualTo'] = request.start_time_less_than_or_equal_to
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        body = {}
+        if not UtilClient.is_unset(request.result_list):
+            body['ResultList'] = request.result_list
+        if not UtilClient.is_unset(request.status_list):
+            body['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListDeployOrders',
@@ -4877,7 +5575,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4903,7 +5601,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4943,7 +5641,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4969,7 +5667,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4998,13 +5696,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListNodeLabelsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['LabelKey'] = request.label_key
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.label_key):
+            query['LabelKey'] = request.label_key
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListNodeLabels',
@@ -5014,7 +5715,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5029,13 +5730,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListNodeLabelsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['LabelKey'] = request.label_key
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.label_key):
+            query['LabelKey'] = request.label_key
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListNodeLabels',
@@ -5045,7 +5749,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5073,8 +5777,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.ListPersistentVolumeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_instance_id):
+            body['ClusterInstanceId'] = request.cluster_instance_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListPersistentVolume',
@@ -5098,8 +5809,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.ListPersistentVolumeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_instance_id):
+            body['ClusterInstanceId'] = request.cluster_instance_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListPersistentVolume',
@@ -5138,13 +5856,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListPersistentVolumeClaimResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvId'] = request.env_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPersistentVolumeClaim',
@@ -5154,7 +5875,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5169,13 +5890,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListPersistentVolumeClaimResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvId'] = request.env_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPersistentVolumeClaim',
@@ -5185,7 +5909,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5214,12 +5938,20 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListPodsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeployOrderId'] = request.deploy_order_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.deploy_order_id):
+            query['DeployOrderId'] = request.deploy_order_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        body = {}
+        if not UtilClient.is_unset(request.result_list):
+            body['ResultList'] = request.result_list
+        if not UtilClient.is_unset(request.status_list):
+            body['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListPods',
@@ -5244,12 +5976,20 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListPodsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeployOrderId'] = request.deploy_order_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.deploy_order_id):
+            query['DeployOrderId'] = request.deploy_order_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        body = {}
+        if not UtilClient.is_unset(request.result_list):
+            body['ResultList'] = request.result_list
+        if not UtilClient.is_unset(request.status_list):
+            body['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListPods',
@@ -5288,15 +6028,20 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListServicesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvId'] = request.env_id
-        query['Name'] = request.name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListServices',
@@ -5306,7 +6051,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5321,15 +6066,20 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListServicesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvId'] = request.env_id
-        query['Name'] = request.name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListServices',
@@ -5339,7 +6089,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5368,16 +6118,26 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListSlbAPsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvId'] = request.env_id
-        query['Name'] = request.name
-        query['NetworkMode'] = request.network_mode
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SlbId'] = request.slb_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.network_mode):
+            query['NetworkMode'] = request.network_mode
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.slb_id):
+            query['SlbId'] = request.slb_id
+        body = {}
+        if not UtilClient.is_unset(request.protocol_list):
+            body['ProtocolList'] = request.protocol_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListSlbAPs',
@@ -5402,16 +6162,26 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ListSlbAPsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['EnvId'] = request.env_id
-        query['Name'] = request.name
-        query['NetworkMode'] = request.network_mode
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SlbId'] = request.slb_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.network_mode):
+            query['NetworkMode'] = request.network_mode
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.slb_id):
+            query['SlbId'] = request.slb_id
+        body = {}
+        if not UtilClient.is_unset(request.protocol_list):
+            body['ProtocolList'] = request.protocol_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListSlbAPs',
@@ -5461,7 +6231,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5487,7 +6257,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5516,11 +6286,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ModifyServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        body = {}
+        if not UtilClient.is_unset(request.port_mappings):
+            body['PortMappings'] = request.port_mappings
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifyService',
@@ -5545,11 +6320,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ModifyServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        body = {}
+        if not UtilClient.is_unset(request.port_mappings):
+            body['PortMappings'] = request.port_mappings
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifyService',
@@ -5588,16 +6368,22 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ModifySlbAPResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CookieTimeout'] = request.cookie_timeout
-        query['EstablishedTimeout'] = request.established_timeout
-        query['Name'] = request.name
-        query['RealServerPort'] = request.real_server_port
-        query['SlbAPId'] = request.slb_apid
-        query['SslCertId'] = request.ssl_cert_id
-        query['StickySession'] = request.sticky_session
+        if not UtilClient.is_unset(request.cookie_timeout):
+            query['CookieTimeout'] = request.cookie_timeout
+        if not UtilClient.is_unset(request.established_timeout):
+            query['EstablishedTimeout'] = request.established_timeout
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.real_server_port):
+            query['RealServerPort'] = request.real_server_port
+        if not UtilClient.is_unset(request.slb_apid):
+            query['SlbAPId'] = request.slb_apid
+        if not UtilClient.is_unset(request.ssl_cert_id):
+            query['SslCertId'] = request.ssl_cert_id
+        if not UtilClient.is_unset(request.sticky_session):
+            query['StickySession'] = request.sticky_session
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifySlbAP',
@@ -5607,7 +6393,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5622,16 +6408,22 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ModifySlbAPResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CookieTimeout'] = request.cookie_timeout
-        query['EstablishedTimeout'] = request.established_timeout
-        query['Name'] = request.name
-        query['RealServerPort'] = request.real_server_port
-        query['SlbAPId'] = request.slb_apid
-        query['SslCertId'] = request.ssl_cert_id
-        query['StickySession'] = request.sticky_session
+        if not UtilClient.is_unset(request.cookie_timeout):
+            query['CookieTimeout'] = request.cookie_timeout
+        if not UtilClient.is_unset(request.established_timeout):
+            query['EstablishedTimeout'] = request.established_timeout
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.real_server_port):
+            query['RealServerPort'] = request.real_server_port
+        if not UtilClient.is_unset(request.slb_apid):
+            query['SlbAPId'] = request.slb_apid
+        if not UtilClient.is_unset(request.ssl_cert_id):
+            query['SslCertId'] = request.ssl_cert_id
+        if not UtilClient.is_unset(request.sticky_session):
+            query['StickySession'] = request.sticky_session
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifySlbAP',
@@ -5641,7 +6433,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5663,6 +6455,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_slb_apwith_options_async(request, runtime)
 
+    def offline_app_environment_with_options(
+        self,
+        request: retailcloud_20180313_models.OfflineAppEnvironmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> retailcloud_20180313_models.OfflineAppEnvironmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.delete_pvc):
+            query['DeletePvc'] = request.delete_pvc
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OfflineAppEnvironment',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            retailcloud_20180313_models.OfflineAppEnvironmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def offline_app_environment_with_options_async(
+        self,
+        request: retailcloud_20180313_models.OfflineAppEnvironmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> retailcloud_20180313_models.OfflineAppEnvironmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.delete_pvc):
+            query['DeletePvc'] = request.delete_pvc
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OfflineAppEnvironment',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            retailcloud_20180313_models.OfflineAppEnvironmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def offline_app_environment(
+        self,
+        request: retailcloud_20180313_models.OfflineAppEnvironmentRequest,
+    ) -> retailcloud_20180313_models.OfflineAppEnvironmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.offline_app_environment_with_options(request, runtime)
+
+    async def offline_app_environment_async(
+        self,
+        request: retailcloud_20180313_models.OfflineAppEnvironmentRequest,
+    ) -> retailcloud_20180313_models.OfflineAppEnvironmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.offline_app_environment_with_options_async(request, runtime)
+
     def query_cluster_detail_with_options(
         self,
         request: retailcloud_20180313_models.QueryClusterDetailRequest,
@@ -5681,7 +6551,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5707,7 +6577,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5736,12 +6606,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.RebuildAppInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['AppInstanceId'] = request.app_instance_id
-        query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_instance_id):
+            query['AppInstanceId'] = request.app_instance_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RebuildAppInstance',
@@ -5751,7 +6623,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5766,12 +6638,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.RebuildAppInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['AppInstanceId'] = request.app_instance_id
-        query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_instance_id):
+            query['AppInstanceId'] = request.app_instance_id
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RebuildAppInstance',
@@ -5781,7 +6655,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5810,11 +6684,12 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.RemoveClusterNodeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterInstanceId'] = request.cluster_instance_id
-        query['EcsInstanceIdList'] = request.ecs_instance_id_list
+        if not UtilClient.is_unset(request.cluster_instance_id):
+            query['ClusterInstanceId'] = request.cluster_instance_id
+        if not UtilClient.is_unset(request.ecs_instance_id_list):
+            query['EcsInstanceIdList'] = request.ecs_instance_id_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RemoveClusterNode',
@@ -5824,7 +6699,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5839,11 +6714,12 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.RemoveClusterNodeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterInstanceId'] = request.cluster_instance_id
-        query['EcsInstanceIdList'] = request.ecs_instance_id_list
+        if not UtilClient.is_unset(request.cluster_instance_id):
+            query['ClusterInstanceId'] = request.cluster_instance_id
+        if not UtilClient.is_unset(request.ecs_instance_id_list):
+            query['EcsInstanceIdList'] = request.ecs_instance_id_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RemoveClusterNode',
@@ -5853,7 +6729,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5881,8 +6757,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.ResetAccountPasswordResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            body['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.db_instance_id):
+            body['DbInstanceId'] = request.db_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ResetAccountPassword',
@@ -5906,8 +6789,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.ResetAccountPasswordResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            body['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.db_instance_id):
+            body['DbInstanceId'] = request.db_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ResetAccountPassword',
@@ -5945,8 +6835,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.ResourceStatusNotifyResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data):
+            body['data'] = request.data
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ResourceStatusNotify',
@@ -5970,8 +6863,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.ResourceStatusNotifyResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data):
+            body['data'] = request.data
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ResourceStatusNotify',
@@ -6003,6 +6899,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.resource_status_notify_with_options_async(request, runtime)
 
+    def restart_app_instance_with_options(
+        self,
+        request: retailcloud_20180313_models.RestartAppInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> retailcloud_20180313_models.RestartAppInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_instance_id_list):
+            query['AppInstanceIdList'] = request.app_instance_id_list
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartAppInstance',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            retailcloud_20180313_models.RestartAppInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_app_instance_with_options_async(
+        self,
+        request: retailcloud_20180313_models.RestartAppInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> retailcloud_20180313_models.RestartAppInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_instance_id_list):
+            query['AppInstanceIdList'] = request.app_instance_id_list
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartAppInstance',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            retailcloud_20180313_models.RestartAppInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_app_instance(
+        self,
+        request: retailcloud_20180313_models.RestartAppInstanceRequest,
+    ) -> retailcloud_20180313_models.RestartAppInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.restart_app_instance_with_options(request, runtime)
+
+    async def restart_app_instance_async(
+        self,
+        request: retailcloud_20180313_models.RestartAppInstanceRequest,
+    ) -> retailcloud_20180313_models.RestartAppInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.restart_app_instance_with_options_async(request, runtime)
+
     def resume_deploy_with_options(
         self,
         request: retailcloud_20180313_models.ResumeDeployRequest,
@@ -6010,10 +6984,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ResumeDeployResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeployOrderId'] = request.deploy_order_id
+        if not UtilClient.is_unset(request.deploy_order_id):
+            query['DeployOrderId'] = request.deploy_order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ResumeDeploy',
@@ -6023,7 +6997,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6038,10 +7012,10 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ResumeDeployResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeployOrderId'] = request.deploy_order_id
+        if not UtilClient.is_unset(request.deploy_order_id):
+            query['DeployOrderId'] = request.deploy_order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ResumeDeploy',
@@ -6051,7 +7025,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6080,12 +7054,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ScaleAppResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EnvId'] = request.env_id
-        query['Replicas'] = request.replicas
-        query['TotalPartitions'] = request.total_partitions
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.replicas):
+            query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.total_partitions):
+            query['TotalPartitions'] = request.total_partitions
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ScaleApp',
@@ -6095,7 +7071,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6110,12 +7086,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.ScaleAppResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EnvId'] = request.env_id
-        query['Replicas'] = request.replicas
-        query['TotalPartitions'] = request.total_partitions
+        if not UtilClient.is_unset(request.env_id):
+            query['EnvId'] = request.env_id
+        if not UtilClient.is_unset(request.replicas):
+            query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.total_partitions):
+            query['TotalPartitions'] = request.total_partitions
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ScaleApp',
@@ -6125,7 +7103,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6154,11 +7132,12 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.SetDeployPauseTypeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeployOrderId'] = request.deploy_order_id
-        query['DeployPauseType'] = request.deploy_pause_type
+        if not UtilClient.is_unset(request.deploy_order_id):
+            query['DeployOrderId'] = request.deploy_order_id
+        if not UtilClient.is_unset(request.deploy_pause_type):
+            query['DeployPauseType'] = request.deploy_pause_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDeployPauseType',
@@ -6168,7 +7147,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6183,11 +7162,12 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.SetDeployPauseTypeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeployOrderId'] = request.deploy_order_id
-        query['DeployPauseType'] = request.deploy_pause_type
+        if not UtilClient.is_unset(request.deploy_order_id):
+            query['DeployOrderId'] = request.deploy_order_id
+        if not UtilClient.is_unset(request.deploy_pause_type):
+            query['DeployPauseType'] = request.deploy_pause_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDeployPauseType',
@@ -6197,7 +7177,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6226,12 +7206,18 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.SubmitInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CallerUid'] = request.caller_uid
-        query['MainUserId'] = request.main_user_id
-        query['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.caller_uid):
+            query['CallerUid'] = request.caller_uid
+        if not UtilClient.is_unset(request.main_user_id):
+            query['MainUserId'] = request.main_user_id
+        if not UtilClient.is_unset(request.request_id):
+            query['RequestId'] = request.request_id
+        body = {}
+        if not UtilClient.is_unset(request.ecs_desc_list):
+            body['EcsDescList'] = request.ecs_desc_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SubmitInfo',
@@ -6256,12 +7242,18 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.SubmitInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CallerUid'] = request.caller_uid
-        query['MainUserId'] = request.main_user_id
-        query['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.caller_uid):
+            query['CallerUid'] = request.caller_uid
+        if not UtilClient.is_unset(request.main_user_id):
+            query['MainUserId'] = request.main_user_id
+        if not UtilClient.is_unset(request.request_id):
+            query['RequestId'] = request.request_id
+        body = {}
+        if not UtilClient.is_unset(request.ecs_desc_list):
+            body['EcsDescList'] = request.ecs_desc_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SubmitInfo',
@@ -6300,15 +7292,20 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.SyncPodInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PodName'] = request.pod_name
-        query['Reason'] = request.reason
-        query['RequestId'] = request.request_id
-        query['SideCarType'] = request.side_car_type
-        query['Status'] = request.status
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.pod_name):
+            query['PodName'] = request.pod_name
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.request_id):
+            query['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.side_car_type):
+            query['SideCarType'] = request.side_car_type
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SyncPodInfo',
@@ -6318,7 +7315,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6333,15 +7330,20 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.SyncPodInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PodName'] = request.pod_name
-        query['Reason'] = request.reason
-        query['RequestId'] = request.request_id
-        query['SideCarType'] = request.side_car_type
-        query['Status'] = request.status
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.pod_name):
+            query['PodName'] = request.pod_name
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.request_id):
+            query['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.side_car_type):
+            query['SideCarType'] = request.side_car_type
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SyncPodInfo',
@@ -6351,7 +7353,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6380,12 +7382,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.UnbindGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['BizCode'] = request.biz_code
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnbindGroup',
@@ -6395,7 +7399,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6410,12 +7414,14 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.UnbindGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['BizCode'] = request.biz_code
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnbindGroup',
@@ -6425,7 +7431,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6454,13 +7460,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.UnbindNodeLabelResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['InstanceId'] = request.instance_id
-        query['LabelKey'] = request.label_key
-        query['LabelValue'] = request.label_value
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.label_key):
+            query['LabelKey'] = request.label_key
+        if not UtilClient.is_unset(request.label_value):
+            query['LabelValue'] = request.label_value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnbindNodeLabel',
@@ -6470,7 +7479,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6485,13 +7494,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.UnbindNodeLabelResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['InstanceId'] = request.instance_id
-        query['LabelKey'] = request.label_key
-        query['LabelValue'] = request.label_value
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.label_key):
+            query['LabelKey'] = request.label_key
+        if not UtilClient.is_unset(request.label_value):
+            query['LabelValue'] = request.label_value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnbindNodeLabel',
@@ -6501,7 +7513,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6529,8 +7541,25 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.UpdateAppResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.biz_title):
+            body['BizTitle'] = request.biz_title
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.middle_ware_id_list):
+            body['MiddleWareIdList'] = request.middle_ware_id_list
+        if not UtilClient.is_unset(request.operating_system):
+            body['OperatingSystem'] = request.operating_system
+        if not UtilClient.is_unset(request.service_type):
+            body['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.user_roles):
+            body['UserRoles'] = request.user_roles
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateApp',
@@ -6554,8 +7583,25 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.UpdateAppResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.biz_title):
+            body['BizTitle'] = request.biz_title
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.middle_ware_id_list):
+            body['MiddleWareIdList'] = request.middle_ware_id_list
+        if not UtilClient.is_unset(request.operating_system):
+            body['OperatingSystem'] = request.operating_system
+        if not UtilClient.is_unset(request.service_type):
+            body['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.user_roles):
+            body['UserRoles'] = request.user_roles
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateApp',
@@ -6593,8 +7639,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.UpdateAppMonitorsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.main_user_id):
+            body['MainUserId'] = request.main_user_id
+        if not UtilClient.is_unset(request.monitor_ids):
+            body['MonitorIds'] = request.monitor_ids
+        if not UtilClient.is_unset(request.silence_time):
+            body['SilenceTime'] = request.silence_time
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAppMonitors',
@@ -6618,8 +7673,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> retailcloud_20180313_models.UpdateAppMonitorsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.main_user_id):
+            body['MainUserId'] = request.main_user_id
+        if not UtilClient.is_unset(request.monitor_ids):
+            body['MonitorIds'] = request.monitor_ids
+        if not UtilClient.is_unset(request.silence_time):
+            body['SilenceTime'] = request.silence_time
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAppMonitors',
@@ -6658,18 +7722,26 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.UpdateDeployConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['CodePath'] = request.code_path
-        query['ConfigMap'] = request.config_map
-        query['ConfigMapList'] = request.config_map_list
-        query['CronJob'] = request.cron_job
-        query['Deployment'] = request.deployment
-        query['Id'] = request.id
-        query['SecretList'] = request.secret_list
-        query['StatefulSet'] = request.stateful_set
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.code_path):
+            query['CodePath'] = request.code_path
+        if not UtilClient.is_unset(request.config_map):
+            query['ConfigMap'] = request.config_map
+        if not UtilClient.is_unset(request.config_map_list):
+            query['ConfigMapList'] = request.config_map_list
+        if not UtilClient.is_unset(request.cron_job):
+            query['CronJob'] = request.cron_job
+        if not UtilClient.is_unset(request.deployment):
+            query['Deployment'] = request.deployment
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.secret_list):
+            query['SecretList'] = request.secret_list
+        if not UtilClient.is_unset(request.stateful_set):
+            query['StatefulSet'] = request.stateful_set
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDeployConfig',
@@ -6679,7 +7751,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6694,18 +7766,26 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.UpdateDeployConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['CodePath'] = request.code_path
-        query['ConfigMap'] = request.config_map
-        query['ConfigMapList'] = request.config_map_list
-        query['CronJob'] = request.cron_job
-        query['Deployment'] = request.deployment
-        query['Id'] = request.id
-        query['SecretList'] = request.secret_list
-        query['StatefulSet'] = request.stateful_set
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.code_path):
+            query['CodePath'] = request.code_path
+        if not UtilClient.is_unset(request.config_map):
+            query['ConfigMap'] = request.config_map
+        if not UtilClient.is_unset(request.config_map_list):
+            query['ConfigMapList'] = request.config_map_list
+        if not UtilClient.is_unset(request.cron_job):
+            query['CronJob'] = request.cron_job
+        if not UtilClient.is_unset(request.deployment):
+            query['Deployment'] = request.deployment
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.secret_list):
+            query['SecretList'] = request.secret_list
+        if not UtilClient.is_unset(request.stateful_set):
+            query['StatefulSet'] = request.stateful_set
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDeployConfig',
@@ -6715,7 +7795,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6744,15 +7824,20 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.UpdateEciConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppEnvId'] = request.app_env_id
-        query['EipBandwidth'] = request.eip_bandwidth
-        query['EnableEciSchedulePolicy'] = request.enable_eci_schedule_policy
-        query['MirrorCache'] = request.mirror_cache
-        query['NormalInstanceLimit'] = request.normal_instance_limit
-        query['ScheduleVirtualNode'] = request.schedule_virtual_node
+        if not UtilClient.is_unset(request.app_env_id):
+            query['AppEnvId'] = request.app_env_id
+        if not UtilClient.is_unset(request.eip_bandwidth):
+            query['EipBandwidth'] = request.eip_bandwidth
+        if not UtilClient.is_unset(request.enable_eci_schedule_policy):
+            query['EnableEciSchedulePolicy'] = request.enable_eci_schedule_policy
+        if not UtilClient.is_unset(request.mirror_cache):
+            query['MirrorCache'] = request.mirror_cache
+        if not UtilClient.is_unset(request.normal_instance_limit):
+            query['NormalInstanceLimit'] = request.normal_instance_limit
+        if not UtilClient.is_unset(request.schedule_virtual_node):
+            query['ScheduleVirtualNode'] = request.schedule_virtual_node
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateEciConfig',
@@ -6762,7 +7847,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6777,15 +7862,20 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.UpdateEciConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppEnvId'] = request.app_env_id
-        query['EipBandwidth'] = request.eip_bandwidth
-        query['EnableEciSchedulePolicy'] = request.enable_eci_schedule_policy
-        query['MirrorCache'] = request.mirror_cache
-        query['NormalInstanceLimit'] = request.normal_instance_limit
-        query['ScheduleVirtualNode'] = request.schedule_virtual_node
+        if not UtilClient.is_unset(request.app_env_id):
+            query['AppEnvId'] = request.app_env_id
+        if not UtilClient.is_unset(request.eip_bandwidth):
+            query['EipBandwidth'] = request.eip_bandwidth
+        if not UtilClient.is_unset(request.enable_eci_schedule_policy):
+            query['EnableEciSchedulePolicy'] = request.enable_eci_schedule_policy
+        if not UtilClient.is_unset(request.mirror_cache):
+            query['MirrorCache'] = request.mirror_cache
+        if not UtilClient.is_unset(request.normal_instance_limit):
+            query['NormalInstanceLimit'] = request.normal_instance_limit
+        if not UtilClient.is_unset(request.schedule_virtual_node):
+            query['ScheduleVirtualNode'] = request.schedule_virtual_node
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateEciConfig',
@@ -6795,7 +7885,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6824,13 +7914,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.UpdateEnvironmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppEnvId'] = request.app_env_id
-        query['AppId'] = request.app_id
-        query['AppSchemaId'] = request.app_schema_id
-        query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.app_env_id):
+            query['AppEnvId'] = request.app_env_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_schema_id):
+            query['AppSchemaId'] = request.app_schema_id
+        if not UtilClient.is_unset(request.replicas):
+            query['Replicas'] = request.replicas
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateEnvironment',
@@ -6840,7 +7933,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6855,13 +7948,16 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.UpdateEnvironmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppEnvId'] = request.app_env_id
-        query['AppId'] = request.app_id
-        query['AppSchemaId'] = request.app_schema_id
-        query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.app_env_id):
+            query['AppEnvId'] = request.app_env_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_schema_id):
+            query['AppSchemaId'] = request.app_schema_id
+        if not UtilClient.is_unset(request.replicas):
+            query['Replicas'] = request.replicas
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateEnvironment',
@@ -6871,7 +7967,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6892,3 +7988,97 @@ class Client(OpenApiClient):
     ) -> retailcloud_20180313_models.UpdateEnvironmentResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_environment_with_options_async(request, runtime)
+
+    def update_normal_deploy_config_with_options(
+        self,
+        tmp_req: retailcloud_20180313_models.UpdateNormalDeployConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> retailcloud_20180313_models.UpdateNormalDeployConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = retailcloud_20180313_models.UpdateNormalDeployConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.container_resource_limit):
+            request.container_resource_limit_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.container_resource_limit), 'ContainerResourceLimit', 'json')
+        if not UtilClient.is_unset(tmp_req.container_resource_request):
+            request.container_resource_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.container_resource_request), 'ContainerResourceRequest', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.container_resource_limit_shrink):
+            query['ContainerResourceLimit'] = request.container_resource_limit_shrink
+        if not UtilClient.is_unset(request.container_resource_request_shrink):
+            query['ContainerResourceRequest'] = request.container_resource_request_shrink
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNormalDeployConfig',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            retailcloud_20180313_models.UpdateNormalDeployConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_normal_deploy_config_with_options_async(
+        self,
+        tmp_req: retailcloud_20180313_models.UpdateNormalDeployConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> retailcloud_20180313_models.UpdateNormalDeployConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = retailcloud_20180313_models.UpdateNormalDeployConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.container_resource_limit):
+            request.container_resource_limit_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.container_resource_limit), 'ContainerResourceLimit', 'json')
+        if not UtilClient.is_unset(tmp_req.container_resource_request):
+            request.container_resource_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.container_resource_request), 'ContainerResourceRequest', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.container_resource_limit_shrink):
+            query['ContainerResourceLimit'] = request.container_resource_limit_shrink
+        if not UtilClient.is_unset(request.container_resource_request_shrink):
+            query['ContainerResourceRequest'] = request.container_resource_request_shrink
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNormalDeployConfig',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            retailcloud_20180313_models.UpdateNormalDeployConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_normal_deploy_config(
+        self,
+        request: retailcloud_20180313_models.UpdateNormalDeployConfigRequest,
+    ) -> retailcloud_20180313_models.UpdateNormalDeployConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_normal_deploy_config_with_options(request, runtime)
+
+    async def update_normal_deploy_config_async(
+        self,
+        request: retailcloud_20180313_models.UpdateNormalDeployConfigRequest,
+    ) -> retailcloud_20180313_models.UpdateNormalDeployConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_normal_deploy_config_with_options_async(request, runtime)
