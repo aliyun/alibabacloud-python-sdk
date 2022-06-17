@@ -1,3 +1,6 @@
+2022-06-17 Version: 1.0.8
+- Update API GetTaskDetail.
+
 2022-06-08 Version: 1.0.7
 - Add API SaveMqConfig.
 - Add API GetMqConfigList.

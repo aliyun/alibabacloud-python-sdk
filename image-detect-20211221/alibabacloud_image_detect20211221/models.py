@@ -1388,9 +1388,56 @@ class GetTaskDetailRequest(TeaModel):
         return self
 
 
+class GetTaskDetailResponseBodyResponseDeduplicateProcessInfos(TeaModel):
+    def __init__(
+        self,
+        flag: bool = None,
+        json_num: int = None,
+        result_num: int = None,
+        video_name: str = None,
+    ):
+        self.flag = flag
+        self.json_num = json_num
+        self.result_num = result_num
+        self.video_name = video_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flag is not None:
+            result['Flag'] = self.flag
+        if self.json_num is not None:
+            result['JsonNum'] = self.json_num
+        if self.result_num is not None:
+            result['ResultNum'] = self.result_num
+        if self.video_name is not None:
+            result['VideoName'] = self.video_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Flag') is not None:
+            self.flag = m.get('Flag')
+        if m.get('JsonNum') is not None:
+            self.json_num = m.get('JsonNum')
+        if m.get('ResultNum') is not None:
+            self.result_num = m.get('ResultNum')
+        if m.get('VideoName') is not None:
+            self.video_name = m.get('VideoName')
+        return self
+
+
 class GetTaskDetailResponseBodyResponse(TeaModel):
     def __init__(
         self,
+        deduplicate_process_infos: List[GetTaskDetailResponseBodyResponseDeduplicateProcessInfos] = None,
+        deduplicate_result_oss_path: str = None,
         error_code: int = None,
         exception_message: str = None,
         gmt_create: str = None,
@@ -1398,6 +1445,7 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
         image_completed_total: int = None,
         image_total: int = None,
         level: int = None,
+        mid_result_oss_path: str = None,
         mq_access_key: str = None,
         mq_config_name: str = None,
         mq_endpoint: str = None,
@@ -1415,6 +1463,8 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
         task_status: str = None,
         task_uid: str = None,
     ):
+        self.deduplicate_process_infos = deduplicate_process_infos
+        self.deduplicate_result_oss_path = deduplicate_result_oss_path
         self.error_code = error_code
         self.exception_message = exception_message
         self.gmt_create = gmt_create
@@ -1422,6 +1472,7 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
         self.image_completed_total = image_completed_total
         self.image_total = image_total
         self.level = level
+        self.mid_result_oss_path = mid_result_oss_path
         self.mq_access_key = mq_access_key
         self.mq_config_name = mq_config_name
         self.mq_endpoint = mq_endpoint
@@ -1440,7 +1491,10 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
         self.task_uid = task_uid
 
     def validate(self):
-        pass
+        if self.deduplicate_process_infos:
+            for k in self.deduplicate_process_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1448,6 +1502,12 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
             return _map
 
         result = dict()
+        result['DeduplicateProcessInfos'] = []
+        if self.deduplicate_process_infos is not None:
+            for k in self.deduplicate_process_infos:
+                result['DeduplicateProcessInfos'].append(k.to_map() if k else None)
+        if self.deduplicate_result_oss_path is not None:
+            result['DeduplicateResultOssPath'] = self.deduplicate_result_oss_path
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
         if self.exception_message is not None:
@@ -1462,6 +1522,8 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
             result['ImageTotal'] = self.image_total
         if self.level is not None:
             result['Level'] = self.level
+        if self.mid_result_oss_path is not None:
+            result['MidResultOssPath'] = self.mid_result_oss_path
         if self.mq_access_key is not None:
             result['MqAccessKey'] = self.mq_access_key
         if self.mq_config_name is not None:
@@ -1498,6 +1560,13 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.deduplicate_process_infos = []
+        if m.get('DeduplicateProcessInfos') is not None:
+            for k in m.get('DeduplicateProcessInfos'):
+                temp_model = GetTaskDetailResponseBodyResponseDeduplicateProcessInfos()
+                self.deduplicate_process_infos.append(temp_model.from_map(k))
+        if m.get('DeduplicateResultOssPath') is not None:
+            self.deduplicate_result_oss_path = m.get('DeduplicateResultOssPath')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
         if m.get('ExceptionMessage') is not None:
@@ -1512,6 +1581,8 @@ class GetTaskDetailResponseBodyResponse(TeaModel):
             self.image_total = m.get('ImageTotal')
         if m.get('Level') is not None:
             self.level = m.get('Level')
+        if m.get('MidResultOssPath') is not None:
+            self.mid_result_oss_path = m.get('MidResultOssPath')
         if m.get('MqAccessKey') is not None:
             self.mq_access_key = m.get('MqAccessKey')
         if m.get('MqConfigName') is not None:
