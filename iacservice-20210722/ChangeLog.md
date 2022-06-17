@@ -1,3 +1,6 @@
+2022-06-17 Version: 1.0.5
+- Unirest python v6 for user.
+
 2021-10-20 Version: 1.0.4
 - Unirest python v5 for user.
 
