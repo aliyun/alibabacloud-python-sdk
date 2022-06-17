@@ -1,3 +1,6 @@
+2022-06-17 Version: 2.0.10
+- Upgrade Service for CARDSMS.
+
 2022-01-24 Version: 2.0.9
 - Generated python 2017-05-25 for Dysmsapi.
 

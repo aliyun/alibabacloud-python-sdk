@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 class AddShortUrlRequest(TeaModel):
@@ -151,13 +151,16 @@ class AddShortUrlResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AddShortUrlResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -170,6 +173,8 @@ class AddShortUrlResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -178,6 +183,8 @@ class AddShortUrlResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddShortUrlResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -337,13 +344,16 @@ class AddSmsSignResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AddSmsSignResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -356,6 +366,8 @@ class AddSmsSignResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -364,6 +376,8 @@ class AddSmsSignResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddSmsSignResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -482,13 +496,16 @@ class AddSmsTemplateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AddSmsTemplateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -501,6 +518,8 @@ class AddSmsTemplateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -509,8 +528,328 @@ class AddSmsTemplateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddSmsTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CheckMobilesCardSupportRequest(TeaModel):
+    def __init__(
+        self,
+        mobiles: List[Dict[str, Any]] = None,
+        template_code: str = None,
+    ):
+        self.mobiles = mobiles
+        self.template_code = template_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mobiles is not None:
+            result['Mobiles'] = self.mobiles
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Mobiles') is not None:
+            self.mobiles = m.get('Mobiles')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        return self
+
+
+class CheckMobilesCardSupportResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[Dict[str, Any]] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CheckMobilesCardSupportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckMobilesCardSupportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckMobilesCardSupportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateCardSmsTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        memo: str = None,
+        template: Dict[str, Any] = None,
+        template_name: str = None,
+    ):
+        self.memo = memo
+        self.template = template
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.memo is not None:
+            result['Memo'] = self.memo
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Memo') is not None:
+            self.memo = m.get('Memo')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class CreateCardSmsTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        memo: str = None,
+        template_shrink: str = None,
+        template_name: str = None,
+    ):
+        self.memo = memo
+        self.template_shrink = template_shrink
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.memo is not None:
+            result['Memo'] = self.memo
+        if self.template_shrink is not None:
+            result['Template'] = self.template_shrink
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Memo') is not None:
+            self.memo = m.get('Memo')
+        if m.get('Template') is not None:
+            self.template_shrink = m.get('Template')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class CreateCardSmsTemplateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        template_code: str = None,
+    ):
+        self.template_code = template_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        return self
+
+
+class CreateCardSmsTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateCardSmsTemplateResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateCardSmsTemplateResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateCardSmsTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCardSmsTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCardSmsTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -603,13 +942,16 @@ class DeleteShortUrlResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteShortUrlResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -622,6 +964,8 @@ class DeleteShortUrlResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -630,6 +974,8 @@ class DeleteShortUrlResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteShortUrlResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -730,13 +1076,16 @@ class DeleteSmsSignResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteSmsSignResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -749,6 +1098,8 @@ class DeleteSmsSignResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -757,6 +1108,8 @@ class DeleteSmsSignResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSmsSignResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -857,13 +1210,16 @@ class DeleteSmsTemplateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteSmsTemplateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -876,6 +1232,8 @@ class DeleteSmsTemplateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -884,8 +1242,532 @@ class DeleteSmsTemplateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSmsTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCardSmsLinkRequest(TeaModel):
+    def __init__(
+        self,
+        card_template_code: str = None,
+        card_template_param_json: str = None,
+        out_id: str = None,
+        phone_number_json: str = None,
+        sign_name_json: str = None,
+    ):
+        self.card_template_code = card_template_code
+        self.card_template_param_json = card_template_param_json
+        self.out_id = out_id
+        self.phone_number_json = phone_number_json
+        self.sign_name_json = sign_name_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_template_code is not None:
+            result['CardTemplateCode'] = self.card_template_code
+        if self.card_template_param_json is not None:
+            result['CardTemplateParamJson'] = self.card_template_param_json
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.phone_number_json is not None:
+            result['PhoneNumberJson'] = self.phone_number_json
+        if self.sign_name_json is not None:
+            result['SignNameJson'] = self.sign_name_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CardTemplateCode') is not None:
+            self.card_template_code = m.get('CardTemplateCode')
+        if m.get('CardTemplateParamJson') is not None:
+            self.card_template_param_json = m.get('CardTemplateParamJson')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('PhoneNumberJson') is not None:
+            self.phone_number_json = m.get('PhoneNumberJson')
+        if m.get('SignNameJson') is not None:
+            self.sign_name_json = m.get('SignNameJson')
+        return self
+
+
+class GetCardSmsLinkResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        card_phone_numbers: str = None,
+        card_sign_names: str = None,
+        card_sms_links: str = None,
+        card_tmp_state: int = None,
+        not_media_mobiles: str = None,
+    ):
+        self.card_phone_numbers = card_phone_numbers
+        self.card_sign_names = card_sign_names
+        self.card_sms_links = card_sms_links
+        self.card_tmp_state = card_tmp_state
+        self.not_media_mobiles = not_media_mobiles
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_phone_numbers is not None:
+            result['CardPhoneNumbers'] = self.card_phone_numbers
+        if self.card_sign_names is not None:
+            result['CardSignNames'] = self.card_sign_names
+        if self.card_sms_links is not None:
+            result['CardSmsLinks'] = self.card_sms_links
+        if self.card_tmp_state is not None:
+            result['CardTmpState'] = self.card_tmp_state
+        if self.not_media_mobiles is not None:
+            result['NotMediaMobiles'] = self.not_media_mobiles
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CardPhoneNumbers') is not None:
+            self.card_phone_numbers = m.get('CardPhoneNumbers')
+        if m.get('CardSignNames') is not None:
+            self.card_sign_names = m.get('CardSignNames')
+        if m.get('CardSmsLinks') is not None:
+            self.card_sms_links = m.get('CardSmsLinks')
+        if m.get('CardTmpState') is not None:
+            self.card_tmp_state = m.get('CardTmpState')
+        if m.get('NotMediaMobiles') is not None:
+            self.not_media_mobiles = m.get('NotMediaMobiles')
+        return self
+
+
+class GetCardSmsLinkResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetCardSmsLinkResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetCardSmsLinkResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetCardSmsLinkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCardSmsLinkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCardSmsLinkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMediaResourceIdRequest(TeaModel):
+    def __init__(
+        self,
+        extend_info: str = None,
+        file_size: int = None,
+        memo: str = None,
+        oss_key: str = None,
+        resource_type: int = None,
+    ):
+        self.extend_info = extend_info
+        self.file_size = file_size
+        self.memo = memo
+        self.oss_key = oss_key
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extend_info is not None:
+            result['ExtendInfo'] = self.extend_info
+        if self.file_size is not None:
+            result['FileSize'] = self.file_size
+        if self.memo is not None:
+            result['Memo'] = self.memo
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtendInfo') is not None:
+            self.extend_info = m.get('ExtendInfo')
+        if m.get('FileSize') is not None:
+            self.file_size = m.get('FileSize')
+        if m.get('Memo') is not None:
+            self.memo = m.get('Memo')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class GetMediaResourceIdResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        resource_id: int = None,
+    ):
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class GetMediaResourceIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetMediaResourceIdResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetMediaResourceIdResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetMediaResourceIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMediaResourceIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMediaResourceIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetOSSInfoForCardTemplateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        ali_uid: str = None,
+        bucket: str = None,
+        expire_time: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+        start_path: str = None,
+    ):
+        self.access_key_id = access_key_id
+        self.ali_uid = ali_uid
+        self.bucket = bucket
+        self.expire_time = expire_time
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+        self.start_path = start_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        if self.start_path is not None:
+            result['StartPath'] = self.start_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        if m.get('StartPath') is not None:
+            self.start_path = m.get('StartPath')
+        return self
+
+
+class GetOSSInfoForCardTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetOSSInfoForCardTemplateResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetOSSInfoForCardTemplateResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetOSSInfoForCardTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOSSInfoForCardTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOSSInfoForCardTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1143,13 +2025,16 @@ class ListTagResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListTagResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1162,6 +2047,8 @@ class ListTagResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1170,6 +2057,8 @@ class ListTagResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1329,13 +2218,16 @@ class ModifySmsSignResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySmsSignResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1348,6 +2240,8 @@ class ModifySmsSignResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1356,6 +2250,8 @@ class ModifySmsSignResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySmsSignResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1480,13 +2376,16 @@ class ModifySmsTemplateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySmsTemplateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1499,6 +2398,8 @@ class ModifySmsTemplateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1507,8 +2408,283 @@ class ModifySmsTemplateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySmsTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryCardSmsTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        template_code: str = None,
+    ):
+        self.template_code = template_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        return self
+
+
+class QueryCardSmsTemplateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        templates: List[Dict[str, Any]] = None,
+    ):
+        self.templates = templates
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.templates is not None:
+            result['Templates'] = self.templates
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Templates') is not None:
+            self.templates = m.get('Templates')
+        return self
+
+
+class QueryCardSmsTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: QueryCardSmsTemplateResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryCardSmsTemplateResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryCardSmsTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryCardSmsTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryCardSmsTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryCardSmsTemplateReportRequest(TeaModel):
+    def __init__(
+        self,
+        end_date: str = None,
+        start_date: str = None,
+        template_codes: List[str] = None,
+    ):
+        self.end_date = end_date
+        self.start_date = start_date
+        self.template_codes = template_codes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.template_codes is not None:
+            result['TemplateCodes'] = self.template_codes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('TemplateCodes') is not None:
+            self.template_codes = m.get('TemplateCodes')
+        return self
+
+
+class QueryCardSmsTemplateReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[Dict[str, Any]] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryCardSmsTemplateReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryCardSmsTemplateReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryCardSmsTemplateReportResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1743,13 +2919,16 @@ class QuerySendDetailsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QuerySendDetailsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1762,6 +2941,8 @@ class QuerySendDetailsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1770,6 +2951,8 @@ class QuerySendDetailsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QuerySendDetailsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1988,13 +3171,16 @@ class QuerySendStatisticsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QuerySendStatisticsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2007,6 +3193,8 @@ class QuerySendStatisticsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2015,6 +3203,8 @@ class QuerySendStatisticsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QuerySendStatisticsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2186,13 +3376,16 @@ class QueryShortUrlResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QueryShortUrlResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2205,6 +3398,8 @@ class QueryShortUrlResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2213,6 +3408,8 @@ class QueryShortUrlResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryShortUrlResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2331,13 +3528,16 @@ class QuerySmsSignResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QuerySmsSignResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2350,6 +3550,8 @@ class QuerySmsSignResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2358,6 +3560,8 @@ class QuerySmsSignResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QuerySmsSignResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2570,13 +3774,16 @@ class QuerySmsSignListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QuerySmsSignListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2589,6 +3796,8 @@ class QuerySmsSignListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2597,6 +3806,8 @@ class QuerySmsSignListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QuerySmsSignListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2733,13 +3944,16 @@ class QuerySmsTemplateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QuerySmsTemplateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2752,6 +3966,8 @@ class QuerySmsTemplateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2760,6 +3976,8 @@ class QuerySmsTemplateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QuerySmsTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2984,13 +4202,16 @@ class QuerySmsTemplateListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QuerySmsTemplateListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3003,6 +4224,8 @@ class QuerySmsTemplateListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3011,8 +4234,245 @@ class QuerySmsTemplateListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QuerySmsTemplateListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SendBatchCardSmsRequest(TeaModel):
+    def __init__(
+        self,
+        card_template_code: str = None,
+        card_template_param_json: str = None,
+        digital_template_code: str = None,
+        digital_template_param_json: str = None,
+        fallback_type: str = None,
+        out_id: str = None,
+        phone_number_json: str = None,
+        sign_name_json: str = None,
+        sms_template_code: str = None,
+        sms_template_param_json: str = None,
+        sms_up_extend_code_json: str = None,
+    ):
+        self.card_template_code = card_template_code
+        self.card_template_param_json = card_template_param_json
+        self.digital_template_code = digital_template_code
+        self.digital_template_param_json = digital_template_param_json
+        self.fallback_type = fallback_type
+        self.out_id = out_id
+        self.phone_number_json = phone_number_json
+        self.sign_name_json = sign_name_json
+        self.sms_template_code = sms_template_code
+        self.sms_template_param_json = sms_template_param_json
+        self.sms_up_extend_code_json = sms_up_extend_code_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_template_code is not None:
+            result['CardTemplateCode'] = self.card_template_code
+        if self.card_template_param_json is not None:
+            result['CardTemplateParamJson'] = self.card_template_param_json
+        if self.digital_template_code is not None:
+            result['DigitalTemplateCode'] = self.digital_template_code
+        if self.digital_template_param_json is not None:
+            result['DigitalTemplateParamJson'] = self.digital_template_param_json
+        if self.fallback_type is not None:
+            result['FallbackType'] = self.fallback_type
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.phone_number_json is not None:
+            result['PhoneNumberJson'] = self.phone_number_json
+        if self.sign_name_json is not None:
+            result['SignNameJson'] = self.sign_name_json
+        if self.sms_template_code is not None:
+            result['SmsTemplateCode'] = self.sms_template_code
+        if self.sms_template_param_json is not None:
+            result['SmsTemplateParamJson'] = self.sms_template_param_json
+        if self.sms_up_extend_code_json is not None:
+            result['SmsUpExtendCodeJson'] = self.sms_up_extend_code_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CardTemplateCode') is not None:
+            self.card_template_code = m.get('CardTemplateCode')
+        if m.get('CardTemplateParamJson') is not None:
+            self.card_template_param_json = m.get('CardTemplateParamJson')
+        if m.get('DigitalTemplateCode') is not None:
+            self.digital_template_code = m.get('DigitalTemplateCode')
+        if m.get('DigitalTemplateParamJson') is not None:
+            self.digital_template_param_json = m.get('DigitalTemplateParamJson')
+        if m.get('FallbackType') is not None:
+            self.fallback_type = m.get('FallbackType')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('PhoneNumberJson') is not None:
+            self.phone_number_json = m.get('PhoneNumberJson')
+        if m.get('SignNameJson') is not None:
+            self.sign_name_json = m.get('SignNameJson')
+        if m.get('SmsTemplateCode') is not None:
+            self.sms_template_code = m.get('SmsTemplateCode')
+        if m.get('SmsTemplateParamJson') is not None:
+            self.sms_template_param_json = m.get('SmsTemplateParamJson')
+        if m.get('SmsUpExtendCodeJson') is not None:
+            self.sms_up_extend_code_json = m.get('SmsUpExtendCodeJson')
+        return self
+
+
+class SendBatchCardSmsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        biz_card_id: str = None,
+        biz_digital_id: str = None,
+        biz_sms_id: str = None,
+        card_tmp_state: int = None,
+        media_mobiles: str = None,
+        not_media_mobiles: str = None,
+    ):
+        self.biz_card_id = biz_card_id
+        self.biz_digital_id = biz_digital_id
+        self.biz_sms_id = biz_sms_id
+        self.card_tmp_state = card_tmp_state
+        self.media_mobiles = media_mobiles
+        self.not_media_mobiles = not_media_mobiles
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_card_id is not None:
+            result['BizCardId'] = self.biz_card_id
+        if self.biz_digital_id is not None:
+            result['BizDigitalId'] = self.biz_digital_id
+        if self.biz_sms_id is not None:
+            result['BizSmsId'] = self.biz_sms_id
+        if self.card_tmp_state is not None:
+            result['CardTmpState'] = self.card_tmp_state
+        if self.media_mobiles is not None:
+            result['MediaMobiles'] = self.media_mobiles
+        if self.not_media_mobiles is not None:
+            result['NotMediaMobiles'] = self.not_media_mobiles
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCardId') is not None:
+            self.biz_card_id = m.get('BizCardId')
+        if m.get('BizDigitalId') is not None:
+            self.biz_digital_id = m.get('BizDigitalId')
+        if m.get('BizSmsId') is not None:
+            self.biz_sms_id = m.get('BizSmsId')
+        if m.get('CardTmpState') is not None:
+            self.card_tmp_state = m.get('CardTmpState')
+        if m.get('MediaMobiles') is not None:
+            self.media_mobiles = m.get('MediaMobiles')
+        if m.get('NotMediaMobiles') is not None:
+            self.not_media_mobiles = m.get('NotMediaMobiles')
+        return self
+
+
+class SendBatchCardSmsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SendBatchCardSmsResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SendBatchCardSmsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SendBatchCardSmsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SendBatchCardSmsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SendBatchCardSmsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3135,13 +4595,16 @@ class SendBatchSmsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SendBatchSmsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3154,6 +4617,8 @@ class SendBatchSmsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3162,8 +4627,286 @@ class SendBatchSmsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SendBatchSmsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SendCardSmsRequestCardObjects(TeaModel):
+    def __init__(
+        self,
+        custom_url: str = None,
+        dync_params: str = None,
+        mobile: str = None,
+    ):
+        self.custom_url = custom_url
+        self.dync_params = dync_params
+        self.mobile = mobile
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_url is not None:
+            result['customUrl'] = self.custom_url
+        if self.dync_params is not None:
+            result['dyncParams'] = self.dync_params
+        if self.mobile is not None:
+            result['mobile'] = self.mobile
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('customUrl') is not None:
+            self.custom_url = m.get('customUrl')
+        if m.get('dyncParams') is not None:
+            self.dync_params = m.get('dyncParams')
+        if m.get('mobile') is not None:
+            self.mobile = m.get('mobile')
+        return self
+
+
+class SendCardSmsRequest(TeaModel):
+    def __init__(
+        self,
+        card_objects: List[SendCardSmsRequestCardObjects] = None,
+        card_template_code: str = None,
+        digital_template_code: str = None,
+        digital_template_param: str = None,
+        fallback_type: str = None,
+        out_id: str = None,
+        sign_name: str = None,
+        sms_template_code: str = None,
+        sms_template_param: str = None,
+        sms_up_extend_code: str = None,
+    ):
+        self.card_objects = card_objects
+        self.card_template_code = card_template_code
+        self.digital_template_code = digital_template_code
+        self.digital_template_param = digital_template_param
+        self.fallback_type = fallback_type
+        self.out_id = out_id
+        self.sign_name = sign_name
+        self.sms_template_code = sms_template_code
+        self.sms_template_param = sms_template_param
+        self.sms_up_extend_code = sms_up_extend_code
+
+    def validate(self):
+        if self.card_objects:
+            for k in self.card_objects:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CardObjects'] = []
+        if self.card_objects is not None:
+            for k in self.card_objects:
+                result['CardObjects'].append(k.to_map() if k else None)
+        if self.card_template_code is not None:
+            result['CardTemplateCode'] = self.card_template_code
+        if self.digital_template_code is not None:
+            result['DigitalTemplateCode'] = self.digital_template_code
+        if self.digital_template_param is not None:
+            result['DigitalTemplateParam'] = self.digital_template_param
+        if self.fallback_type is not None:
+            result['FallbackType'] = self.fallback_type
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.sign_name is not None:
+            result['SignName'] = self.sign_name
+        if self.sms_template_code is not None:
+            result['SmsTemplateCode'] = self.sms_template_code
+        if self.sms_template_param is not None:
+            result['SmsTemplateParam'] = self.sms_template_param
+        if self.sms_up_extend_code is not None:
+            result['SmsUpExtendCode'] = self.sms_up_extend_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.card_objects = []
+        if m.get('CardObjects') is not None:
+            for k in m.get('CardObjects'):
+                temp_model = SendCardSmsRequestCardObjects()
+                self.card_objects.append(temp_model.from_map(k))
+        if m.get('CardTemplateCode') is not None:
+            self.card_template_code = m.get('CardTemplateCode')
+        if m.get('DigitalTemplateCode') is not None:
+            self.digital_template_code = m.get('DigitalTemplateCode')
+        if m.get('DigitalTemplateParam') is not None:
+            self.digital_template_param = m.get('DigitalTemplateParam')
+        if m.get('FallbackType') is not None:
+            self.fallback_type = m.get('FallbackType')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('SignName') is not None:
+            self.sign_name = m.get('SignName')
+        if m.get('SmsTemplateCode') is not None:
+            self.sms_template_code = m.get('SmsTemplateCode')
+        if m.get('SmsTemplateParam') is not None:
+            self.sms_template_param = m.get('SmsTemplateParam')
+        if m.get('SmsUpExtendCode') is not None:
+            self.sms_up_extend_code = m.get('SmsUpExtendCode')
+        return self
+
+
+class SendCardSmsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        biz_card_id: str = None,
+        biz_digital_id: str = None,
+        biz_sms_id: str = None,
+        card_tmp_state: int = None,
+        media_mobiles: str = None,
+        not_media_mobiles: str = None,
+    ):
+        self.biz_card_id = biz_card_id
+        self.biz_digital_id = biz_digital_id
+        self.biz_sms_id = biz_sms_id
+        self.card_tmp_state = card_tmp_state
+        self.media_mobiles = media_mobiles
+        self.not_media_mobiles = not_media_mobiles
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_card_id is not None:
+            result['BizCardId'] = self.biz_card_id
+        if self.biz_digital_id is not None:
+            result['BizDigitalId'] = self.biz_digital_id
+        if self.biz_sms_id is not None:
+            result['BizSmsId'] = self.biz_sms_id
+        if self.card_tmp_state is not None:
+            result['CardTmpState'] = self.card_tmp_state
+        if self.media_mobiles is not None:
+            result['MediaMobiles'] = self.media_mobiles
+        if self.not_media_mobiles is not None:
+            result['NotMediaMobiles'] = self.not_media_mobiles
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCardId') is not None:
+            self.biz_card_id = m.get('BizCardId')
+        if m.get('BizDigitalId') is not None:
+            self.biz_digital_id = m.get('BizDigitalId')
+        if m.get('BizSmsId') is not None:
+            self.biz_sms_id = m.get('BizSmsId')
+        if m.get('CardTmpState') is not None:
+            self.card_tmp_state = m.get('CardTmpState')
+        if m.get('MediaMobiles') is not None:
+            self.media_mobiles = m.get('MediaMobiles')
+        if m.get('NotMediaMobiles') is not None:
+            self.not_media_mobiles = m.get('NotMediaMobiles')
+        return self
+
+
+class SendCardSmsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SendCardSmsResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SendCardSmsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SendCardSmsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SendCardSmsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SendCardSmsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3292,13 +5035,16 @@ class SendSmsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SendSmsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3311,6 +5057,8 @@ class SendSmsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3319,6 +5067,8 @@ class SendSmsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SendSmsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3478,13 +5228,16 @@ class TagResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: TagResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3497,6 +5250,8 @@ class TagResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3505,6 +5260,8 @@ class TagResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3629,13 +5386,16 @@ class UntagResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UntagResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3648,6 +5408,8 @@ class UntagResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3656,6 +5418,8 @@ class UntagResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
