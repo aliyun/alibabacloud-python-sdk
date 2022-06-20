@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_imageenhan20190930.
 
-Created on 26/09/2021
+Created on 20/06/2022
 
 @author: Alibaba Cloud SDK
 """
@@ -43,8 +43,8 @@ REQUIRES = [
     "alibabacloud_openplatform20191219>=1.1.1, <2.0.0",
     "alibabacloud_oss_util>=0.0.5, <1.0.0",
     "alibabacloud_tea_fileform>=0.0.3, <1.0.0",
-    "alibabacloud_tea_openapi>=0.2.7, <1.0.0",
-    "alibabacloud_openapi_util>=0.1.5, <1.0.0",
+    "alibabacloud_tea_openapi>=0.3.3, <1.0.0",
+    "alibabacloud_openapi_util>=0.1.6, <1.0.0",
     "alibabacloud_endpoint_util>=0.0.3, <1.0.0"
 ]
 
