@@ -879,48 +879,6 @@ class ChatShrinkRequest(TeaModel):
         return self
 
 
-class ChatResponseBodyMessagesCardList(TeaModel):
-    def __init__(
-        self,
-        answer_source: str = None,
-        msg_type: str = None,
-        platform: str = None,
-    ):
-        # 区分答案类型：cardAnswer
-        self.answer_source = answer_source
-        # 消息类型：card
-        self.msg_type = msg_type
-        # 平台类型：beebot
-        self.platform = platform
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.answer_source is not None:
-            result['AnswerSource'] = self.answer_source
-        if self.msg_type is not None:
-            result['MsgType'] = self.msg_type
-        if self.platform is not None:
-            result['Platform'] = self.platform
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AnswerSource') is not None:
-            self.answer_source = m.get('AnswerSource')
-        if m.get('MsgType') is not None:
-            self.msg_type = m.get('MsgType')
-        if m.get('Platform') is not None:
-            self.platform = m.get('Platform')
-        return self
-
-
 class ChatResponseBodyMessagesKnowledgeRelatedKnowledges(TeaModel):
     def __init__(
         self,
@@ -1298,7 +1256,6 @@ class ChatResponseBodyMessages(TeaModel):
         self,
         answer_source: str = None,
         answer_type: str = None,
-        card_list: List[ChatResponseBodyMessagesCardList] = None,
         knowledge: ChatResponseBodyMessagesKnowledge = None,
         recommends: List[ChatResponseBodyMessagesRecommends] = None,
         text: ChatResponseBodyMessagesText = None,
@@ -1309,8 +1266,6 @@ class ChatResponseBodyMessages(TeaModel):
         self.answer_source = answer_source
         # 本条消息的类型
         self.answer_type = answer_type
-        # 当AnswerType为CardAnswer时，此字段包含机器人返回的Card的列表
-        self.card_list = card_list
         # 当AnswerType为Knowledge时，此字段包含机器人返回的Knowledge对象
         self.knowledge = knowledge
         # 当AnswerType为Recommend时，此字段包含机器人返回的Recommend的列表
@@ -1323,10 +1278,6 @@ class ChatResponseBodyMessages(TeaModel):
         self.voice_title = voice_title
 
     def validate(self):
-        if self.card_list:
-            for k in self.card_list:
-                if k:
-                    k.validate()
         if self.knowledge:
             self.knowledge.validate()
         if self.recommends:
@@ -1346,10 +1297,6 @@ class ChatResponseBodyMessages(TeaModel):
             result['AnswerSource'] = self.answer_source
         if self.answer_type is not None:
             result['AnswerType'] = self.answer_type
-        result['CardList'] = []
-        if self.card_list is not None:
-            for k in self.card_list:
-                result['CardList'].append(k.to_map() if k else None)
         if self.knowledge is not None:
             result['Knowledge'] = self.knowledge.to_map()
         result['Recommends'] = []
@@ -1370,11 +1317,6 @@ class ChatResponseBodyMessages(TeaModel):
             self.answer_source = m.get('AnswerSource')
         if m.get('AnswerType') is not None:
             self.answer_type = m.get('AnswerType')
-        self.card_list = []
-        if m.get('CardList') is not None:
-            for k in m.get('CardList'):
-                temp_model = ChatResponseBodyMessagesCardList()
-                self.card_list.append(temp_model.from_map(k))
         if m.get('Knowledge') is not None:
             temp_model = ChatResponseBodyMessagesKnowledge()
             self.knowledge = temp_model.from_map(m['Knowledge'])
@@ -2141,6 +2083,60 @@ class CreateDSEntityValueRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Synonyms') is not None:
             self.synonyms = m.get('Synonyms')
+        return self
+
+
+class CreateDSEntityValueShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        content: str = None,
+        entity_id: int = None,
+        instance_id: str = None,
+        synonyms_shrink: str = None,
+    ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
+        self.content = content
+        # 实体ID，修改实体成员时可为空
+        self.entity_id = entity_id
+        # 机器人ID
+        self.instance_id = instance_id
+        self.synonyms_shrink = synonyms_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.entity_id is not None:
+            result['EntityId'] = self.entity_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.synonyms_shrink is not None:
+            result['Synonyms'] = self.synonyms_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('EntityId') is not None:
+            self.entity_id = m.get('EntityId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Synonyms') is not None:
+            self.synonyms_shrink = m.get('Synonyms')
         return self
 
 
@@ -8467,199 +8463,6 @@ class ListDSEntityValueResponse(TeaModel):
         return self
 
 
-class ListDsMenusRequest(TeaModel):
-    def __init__(
-        self,
-        agent_key: str = None,
-        instance_id: str = None,
-        robot_env: int = None,
-        source: int = None,
-        tags: str = None,
-    ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-        self.agent_key = agent_key
-        # 机器人ID
-        self.instance_id = instance_id
-        # 1-正式环境，2-测试环境（默认）
-        self.robot_env = robot_env
-        # 业务来源标识：
-        # 1-集团内部aliyun域名；2-外部使用4service域名（默认）
-        self.source = source
-        # 功能标识，为空表示所有；支持的tag有：Dialog / Intent / Entity / Var / TaskCenter；传入多个时通过英文逗号分隔
-        self.tags = tags
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.agent_key is not None:
-            result['AgentKey'] = self.agent_key
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.robot_env is not None:
-            result['RobotEnv'] = self.robot_env
-        if self.source is not None:
-            result['Source'] = self.source
-        if self.tags is not None:
-            result['Tags'] = self.tags
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AgentKey') is not None:
-            self.agent_key = m.get('AgentKey')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('RobotEnv') is not None:
-            self.robot_env = m.get('RobotEnv')
-        if m.get('Source') is not None:
-            self.source = m.get('Source')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
-        return self
-
-
-class ListDsMenusResponseBodyMenus(TeaModel):
-    def __init__(
-        self,
-        tag: str = None,
-        title: str = None,
-        title_en: str = None,
-        url: str = None,
-    ):
-        self.tag = tag
-        self.title = title
-        self.title_en = title_en
-        self.url = url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.tag is not None:
-            result['Tag'] = self.tag
-        if self.title is not None:
-            result['Title'] = self.title
-        if self.title_en is not None:
-            result['TitleEn'] = self.title_en
-        if self.url is not None:
-            result['Url'] = self.url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Tag') is not None:
-            self.tag = m.get('Tag')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
-        if m.get('TitleEn') is not None:
-            self.title_en = m.get('TitleEn')
-        if m.get('Url') is not None:
-            self.url = m.get('Url')
-        return self
-
-
-class ListDsMenusResponseBody(TeaModel):
-    def __init__(
-        self,
-        ext: str = None,
-        menus: List[ListDsMenusResponseBodyMenus] = None,
-        request_id: str = None,
-    ):
-        self.ext = ext
-        self.menus = menus
-        self.request_id = request_id
-
-    def validate(self):
-        if self.menus:
-            for k in self.menus:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ext is not None:
-            result['Ext'] = self.ext
-        result['Menus'] = []
-        if self.menus is not None:
-            for k in self.menus:
-                result['Menus'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Ext') is not None:
-            self.ext = m.get('Ext')
-        self.menus = []
-        if m.get('Menus') is not None:
-            for k in m.get('Menus'):
-                temp_model = ListDsMenusResponseBodyMenus()
-                self.menus.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ListDsMenusResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListDsMenusResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListDsMenusResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -8900,6 +8703,8 @@ class ListIntentRequest(TeaModel):
         agent_key: str = None,
         instance_id: str = None,
         intent_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
     ):
         # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
@@ -8907,6 +8712,8 @@ class ListIntentRequest(TeaModel):
         self.instance_id = instance_id
         # 意图名称
         self.intent_name = intent_name
+        self.page_number = page_number
+        self.page_size = page_size
 
     def validate(self):
         pass
@@ -8923,6 +8730,10 @@ class ListIntentRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.intent_name is not None:
             result['IntentName'] = self.intent_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         return result
 
     def from_map(self, m: dict = None):
@@ -8933,6 +8744,10 @@ class ListIntentRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('IntentName') is not None:
             self.intent_name = m.get('IntentName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         return self
 
 
@@ -11662,6 +11477,69 @@ class UpdateDSEntityValueRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Synonyms') is not None:
             self.synonyms = m.get('Synonyms')
+        return self
+
+
+class UpdateDSEntityValueShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        content: str = None,
+        entity_id: int = None,
+        entity_value_id: int = None,
+        instance_id: str = None,
+        synonyms_shrink: str = None,
+    ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
+        # 实体类型为synonyms时，表示实体归一化值；当实体类型为regex时，表示正则表达式文本
+        self.content = content
+        # 实体ID，修改实体成员时可为空
+        self.entity_id = entity_id
+        # 实体成员ID，创建实体成员时为空
+        self.entity_value_id = entity_value_id
+        # 机器人ID
+        self.instance_id = instance_id
+        # 实体同义词
+        self.synonyms_shrink = synonyms_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.entity_id is not None:
+            result['EntityId'] = self.entity_id
+        if self.entity_value_id is not None:
+            result['EntityValueId'] = self.entity_value_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.synonyms_shrink is not None:
+            result['Synonyms'] = self.synonyms_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('EntityId') is not None:
+            self.entity_id = m.get('EntityId')
+        if m.get('EntityValueId') is not None:
+            self.entity_value_id = m.get('EntityValueId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Synonyms') is not None:
+            self.synonyms_shrink = m.get('Synonyms')
         return self
 
 
