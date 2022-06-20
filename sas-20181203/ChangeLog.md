@@ -1,3 +1,6 @@
+2022-06-20 Version: 1.1.15
+- Add EventId when listQuery EventInfo.
+
 2022-05-27 Version: 1.1.14
 - Generated python 2018-12-03 for Sas.
 

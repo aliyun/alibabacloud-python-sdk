@@ -10699,6 +10699,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         if not UtilClient.is_unset(request.necessity):
             query['Necessity'] = request.necessity
         if not UtilClient.is_unset(request.page_size):
@@ -10749,6 +10751,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         if not UtilClient.is_unset(request.necessity):
             query['Necessity'] = request.necessity
         if not UtilClient.is_unset(request.page_size):
@@ -14870,6 +14874,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.operate_vuls_with_options_async(request, runtime)
 
+    def operation_cancel_ignore_susp_event_with_options(
+        self,
+        request: sas_20181203_models.OperationCancelIgnoreSuspEventRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OperationCancelIgnoreSuspEventResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.security_event_ids):
+            query['SecurityEventIds'] = request.security_event_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperationCancelIgnoreSuspEvent',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OperationCancelIgnoreSuspEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operation_cancel_ignore_susp_event_with_options_async(
+        self,
+        request: sas_20181203_models.OperationCancelIgnoreSuspEventRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OperationCancelIgnoreSuspEventResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.security_event_ids):
+            query['SecurityEventIds'] = request.security_event_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperationCancelIgnoreSuspEvent',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OperationCancelIgnoreSuspEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operation_cancel_ignore_susp_event(
+        self,
+        request: sas_20181203_models.OperationCancelIgnoreSuspEventRequest,
+    ) -> sas_20181203_models.OperationCancelIgnoreSuspEventResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.operation_cancel_ignore_susp_event_with_options(request, runtime)
+
+    async def operation_cancel_ignore_susp_event_async(
+        self,
+        request: sas_20181203_models.OperationCancelIgnoreSuspEventRequest,
+    ) -> sas_20181203_models.OperationCancelIgnoreSuspEventResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.operation_cancel_ignore_susp_event_with_options_async(request, runtime)
+
     def operation_susp_events_with_options(
         self,
         request: sas_20181203_models.OperationSuspEventsRequest,
@@ -15393,6 +15467,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.QueryGroupedSecurityEventMarkMissListResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.disposal_way):
+            query['DisposalWay'] = request.disposal_way
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         body = {}
@@ -15435,6 +15511,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.QueryGroupedSecurityEventMarkMissListResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.disposal_way):
+            query['DisposalWay'] = request.disposal_way
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         body = {}
