@@ -1,3 +1,6 @@
+2022-06-20 Version: 1.1.7
+- Phase IV.
+
 2022-06-06 Version: 1.1.6
 - Phase IV.
 

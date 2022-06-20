@@ -2120,9 +2120,11 @@ class RecognizeCosmeticProduceLicenseResponse(TeaModel):
 class RecognizeCovidTestReportRequest(TeaModel):
     def __init__(
         self,
+        multiple_result: bool = None,
         url: str = None,
         body: BinaryIO = None,
     ):
+        self.multiple_result = multiple_result
         # 图片链接（长度不超 2048，不支持 base64）
         self.url = url
         # 图片二进制字节流，最大10MB
@@ -2137,6 +2139,8 @@ class RecognizeCovidTestReportRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.multiple_result is not None:
+            result['MultipleResult'] = self.multiple_result
         if self.url is not None:
             result['Url'] = self.url
         if self.body is not None:
@@ -2145,6 +2149,8 @@ class RecognizeCovidTestReportRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MultipleResult') is not None:
+            self.multiple_result = m.get('MultipleResult')
         if m.get('Url') is not None:
             self.url = m.get('Url')
         if m.get('body') is not None:

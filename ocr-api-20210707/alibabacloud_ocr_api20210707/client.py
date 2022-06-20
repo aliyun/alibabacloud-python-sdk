@@ -1292,6 +1292,8 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeCovidTestReportResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.multiple_result):
+            query['MultipleResult'] = request.multiple_result
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
@@ -1322,6 +1324,8 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeCovidTestReportResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.multiple_result):
+            query['MultipleResult'] = request.multiple_result
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
