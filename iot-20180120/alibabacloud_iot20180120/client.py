@@ -734,6 +734,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_check_device_names_with_options_async(request, runtime)
 
+    def batch_check_import_device_with_options(
+        self,
+        request: iot_20180120_models.BatchCheckImportDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchCheckImportDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_list):
+            query['DeviceList'] = request.device_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchCheckImportDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchCheckImportDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_check_import_device_with_options_async(
+        self,
+        request: iot_20180120_models.BatchCheckImportDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchCheckImportDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_list):
+            query['DeviceList'] = request.device_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchCheckImportDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchCheckImportDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_check_import_device(
+        self,
+        request: iot_20180120_models.BatchCheckImportDeviceRequest,
+    ) -> iot_20180120_models.BatchCheckImportDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_check_import_device_with_options(request, runtime)
+
+    async def batch_check_import_device_async(
+        self,
+        request: iot_20180120_models.BatchCheckImportDeviceRequest,
+    ) -> iot_20180120_models.BatchCheckImportDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_check_import_device_with_options_async(request, runtime)
+
     def batch_clear_edge_instance_device_config_with_options(
         self,
         request: iot_20180120_models.BatchClearEdgeInstanceDeviceConfigRequest,
@@ -1763,6 +1841,84 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.BatchGetEdgeInstanceDriverConfigsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.batch_get_edge_instance_driver_configs_with_options_async(request, runtime)
+
+    def batch_import_device_with_options(
+        self,
+        request: iot_20180120_models.BatchImportDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchImportDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_list):
+            query['DeviceList'] = request.device_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchImportDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchImportDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_import_device_with_options_async(
+        self,
+        request: iot_20180120_models.BatchImportDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchImportDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_list):
+            query['DeviceList'] = request.device_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchImportDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchImportDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_import_device(
+        self,
+        request: iot_20180120_models.BatchImportDeviceRequest,
+    ) -> iot_20180120_models.BatchImportDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_import_device_with_options(request, runtime)
+
+    async def batch_import_device_async(
+        self,
+        request: iot_20180120_models.BatchImportDeviceRequest,
+    ) -> iot_20180120_models.BatchImportDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_import_device_with_options_async(request, runtime)
 
     def batch_pub_with_options(
         self,
@@ -3535,6 +3691,88 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.CancelReleaseProductResponse:
         runtime = util_models.RuntimeOptions()
         return await self.cancel_release_product_with_options_async(request, runtime)
+
+    def check_bind_license_device_progress_with_options(
+        self,
+        request: iot_20180120_models.CheckBindLicenseDeviceProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CheckBindLicenseDeviceProgressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_progress_id):
+            query['CheckProgressId'] = request.check_progress_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.license_code):
+            query['LicenseCode'] = request.license_code
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckBindLicenseDeviceProgress',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CheckBindLicenseDeviceProgressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_bind_license_device_progress_with_options_async(
+        self,
+        request: iot_20180120_models.CheckBindLicenseDeviceProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CheckBindLicenseDeviceProgressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_progress_id):
+            query['CheckProgressId'] = request.check_progress_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.license_code):
+            query['LicenseCode'] = request.license_code
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckBindLicenseDeviceProgress',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CheckBindLicenseDeviceProgressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_bind_license_device_progress(
+        self,
+        request: iot_20180120_models.CheckBindLicenseDeviceProgressRequest,
+    ) -> iot_20180120_models.CheckBindLicenseDeviceProgressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_bind_license_device_progress_with_options(request, runtime)
+
+    async def check_bind_license_device_progress_async(
+        self,
+        request: iot_20180120_models.CheckBindLicenseDeviceProgressRequest,
+    ) -> iot_20180120_models.CheckBindLicenseDeviceProgressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_bind_license_device_progress_with_options_async(request, runtime)
 
     def clear_edge_instance_driver_configs_with_options(
         self,
@@ -13000,6 +13238,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.gis_search_device_trace_with_options_async(request, runtime)
 
+    def import_device_with_options(
+        self,
+        request: iot_20180120_models.ImportDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ImportDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.device_secret):
+            query['DeviceSecret'] = request.device_secret
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.nickname):
+            query['Nickname'] = request.nickname
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ImportDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_device_with_options_async(
+        self,
+        request: iot_20180120_models.ImportDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ImportDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.device_secret):
+            query['DeviceSecret'] = request.device_secret
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.nickname):
+            query['Nickname'] = request.nickname
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ImportDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_device(
+        self,
+        request: iot_20180120_models.ImportDeviceRequest,
+    ) -> iot_20180120_models.ImportDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.import_device_with_options(request, runtime)
+
+    async def import_device_async(
+        self,
+        request: iot_20180120_models.ImportDeviceRequest,
+    ) -> iot_20180120_models.ImportDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.import_device_with_options_async(request, runtime)
+
     def import_thing_model_tsl_with_options(
         self,
         request: iot_20180120_models.ImportThingModelTslRequest,
@@ -15365,10 +15693,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.correlation_data):
             query['CorrelationData'] = request.correlation_data
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
-        if not UtilClient.is_unset(request.message_content):
-            query['MessageContent'] = request.message_content
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
         if not UtilClient.is_unset(request.qos):
@@ -15379,8 +15707,12 @@ class Client(OpenApiClient):
             query['TopicFullName'] = request.topic_full_name
         if not UtilClient.is_unset(request.user_prop):
             query['UserProp'] = request.user_prop
+        body = {}
+        if not UtilClient.is_unset(request.message_content):
+            body['MessageContent'] = request.message_content
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='Pub',
@@ -15407,10 +15739,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.correlation_data):
             query['CorrelationData'] = request.correlation_data
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
-        if not UtilClient.is_unset(request.message_content):
-            query['MessageContent'] = request.message_content
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
         if not UtilClient.is_unset(request.qos):
@@ -15421,8 +15753,12 @@ class Client(OpenApiClient):
             query['TopicFullName'] = request.topic_full_name
         if not UtilClient.is_unset(request.user_prop):
             query['UserProp'] = request.user_prop
+        body = {}
+        if not UtilClient.is_unset(request.message_content):
+            body['MessageContent'] = request.message_content
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='Pub',
@@ -20086,6 +20422,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_edge_instance_scene_rule_with_options_async(request, runtime)
 
+    def query_imported_device_by_apply_id_with_options(
+        self,
+        request: iot_20180120_models.QueryImportedDeviceByApplyIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryImportedDeviceByApplyIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apply_id):
+            query['ApplyId'] = request.apply_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryImportedDeviceByApplyId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryImportedDeviceByApplyIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_imported_device_by_apply_id_with_options_async(
+        self,
+        request: iot_20180120_models.QueryImportedDeviceByApplyIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryImportedDeviceByApplyIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apply_id):
+            query['ApplyId'] = request.apply_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryImportedDeviceByApplyId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryImportedDeviceByApplyIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_imported_device_by_apply_id(
+        self,
+        request: iot_20180120_models.QueryImportedDeviceByApplyIdRequest,
+    ) -> iot_20180120_models.QueryImportedDeviceByApplyIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_imported_device_by_apply_id_with_options(request, runtime)
+
+    async def query_imported_device_by_apply_id_async(
+        self,
+        request: iot_20180120_models.QueryImportedDeviceByApplyIdRequest,
+    ) -> iot_20180120_models.QueryImportedDeviceByApplyIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_imported_device_by_apply_id_with_options_async(request, runtime)
+
     def query_job_with_options(
         self,
         request: iot_20180120_models.QueryJobRequest,
@@ -20225,6 +20643,104 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QueryJobStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_job_statistics_with_options_async(request, runtime)
+
+    def query_license_device_list_with_options(
+        self,
+        request: iot_20180120_models.QueryLicenseDeviceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryLicenseDeviceListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.license_code):
+            query['LicenseCode'] = request.license_code
+        if not UtilClient.is_unset(request.page_id):
+            query['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryLicenseDeviceList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryLicenseDeviceListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_license_device_list_with_options_async(
+        self,
+        request: iot_20180120_models.QueryLicenseDeviceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryLicenseDeviceListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.license_code):
+            query['LicenseCode'] = request.license_code
+        if not UtilClient.is_unset(request.page_id):
+            query['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryLicenseDeviceList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryLicenseDeviceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_license_device_list(
+        self,
+        request: iot_20180120_models.QueryLicenseDeviceListRequest,
+    ) -> iot_20180120_models.QueryLicenseDeviceListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_license_device_list_with_options(request, runtime)
+
+    async def query_license_device_list_async(
+        self,
+        request: iot_20180120_models.QueryLicenseDeviceListRequest,
+    ) -> iot_20180120_models.QueryLicenseDeviceListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_license_device_list_with_options_async(request, runtime)
 
     def query_lo_ra_join_permissions_with_options(
         self,
