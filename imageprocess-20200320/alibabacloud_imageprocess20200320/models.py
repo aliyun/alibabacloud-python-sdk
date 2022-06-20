@@ -423,10 +423,12 @@ class CalcCACSRequest(TeaModel):
 class CalcCACSResponseBodyDataDetections(TeaModel):
     def __init__(
         self,
+        calcium_center: List[int] = None,
         calcium_id: int = None,
         calcium_score: float = None,
         calcium_volume: float = None,
     ):
+        self.calcium_center = calcium_center
         self.calcium_id = calcium_id
         self.calcium_score = calcium_score
         self.calcium_volume = calcium_volume
@@ -440,6 +442,8 @@ class CalcCACSResponseBodyDataDetections(TeaModel):
             return _map
 
         result = dict()
+        if self.calcium_center is not None:
+            result['CalciumCenter'] = self.calcium_center
         if self.calcium_id is not None:
             result['CalciumId'] = self.calcium_id
         if self.calcium_score is not None:
@@ -450,6 +454,8 @@ class CalcCACSResponseBodyDataDetections(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CalciumCenter') is not None:
+            self.calcium_center = m.get('CalciumCenter')
         if m.get('CalciumId') is not None:
             self.calcium_id = m.get('CalciumId')
         if m.get('CalciumScore') is not None:
@@ -4601,10 +4607,12 @@ class ScreenChestCTResponseBodyDataAnalyzeChestVessel(TeaModel):
 class ScreenChestCTResponseBodyDataCACSDetections(TeaModel):
     def __init__(
         self,
+        calcium_center: List[int] = None,
         calcium_id: int = None,
         calcium_score: float = None,
         calcium_volume: float = None,
     ):
+        self.calcium_center = calcium_center
         self.calcium_id = calcium_id
         self.calcium_score = calcium_score
         self.calcium_volume = calcium_volume
@@ -4618,6 +4626,8 @@ class ScreenChestCTResponseBodyDataCACSDetections(TeaModel):
             return _map
 
         result = dict()
+        if self.calcium_center is not None:
+            result['CalciumCenter'] = self.calcium_center
         if self.calcium_id is not None:
             result['CalciumId'] = self.calcium_id
         if self.calcium_score is not None:
@@ -4628,6 +4638,8 @@ class ScreenChestCTResponseBodyDataCACSDetections(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CalciumCenter') is not None:
+            self.calcium_center = m.get('CalciumCenter')
         if m.get('CalciumId') is not None:
             self.calcium_id = m.get('CalciumId')
         if m.get('CalciumScore') is not None:
