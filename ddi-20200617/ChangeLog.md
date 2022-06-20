@@ -1,3 +1,6 @@
+2022-06-20 Version: 1.1.1
+- Add modifyFlowForWeb.
+
 2022-05-13 Version: 2.7.29
 - Add tag operation API.
 

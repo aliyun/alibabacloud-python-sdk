@@ -2094,11 +2094,15 @@ class DeleteFlowCategoryRequest(TeaModel):
 class DeleteFlowCategoryResponseBody(TeaModel):
     def __init__(
         self,
-        data: bool = None,
+        flow_id: str = None,
+        job_id: str = None,
         request_id: str = None,
+        result: bool = None,
     ):
-        self.data = data
+        self.flow_id = flow_id
+        self.job_id = job_id
         self.request_id = request_id
+        self.result = result
 
     def validate(self):
         pass
@@ -2109,18 +2113,26 @@ class DeleteFlowCategoryResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
         return self
 
 
@@ -7853,6 +7865,224 @@ class ListTagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyFlowForWebRequest(TeaModel):
+    def __init__(
+        self,
+        alert_conf: str = None,
+        alert_ding_ding_group_biz_id: str = None,
+        alert_user_group_biz_id: str = None,
+        cluster_id: str = None,
+        create_cluster: bool = None,
+        cron_expr: str = None,
+        description: str = None,
+        end_schedule: int = None,
+        graph: str = None,
+        host_name: str = None,
+        id: str = None,
+        name: str = None,
+        namespace: str = None,
+        parent_category: str = None,
+        parent_flow_list: str = None,
+        periodic: bool = None,
+        project_id: str = None,
+        region_id: str = None,
+        start_schedule: int = None,
+        status: str = None,
+    ):
+        self.alert_conf = alert_conf
+        self.alert_ding_ding_group_biz_id = alert_ding_ding_group_biz_id
+        self.alert_user_group_biz_id = alert_user_group_biz_id
+        self.cluster_id = cluster_id
+        self.create_cluster = create_cluster
+        self.cron_expr = cron_expr
+        self.description = description
+        self.end_schedule = end_schedule
+        self.graph = graph
+        self.host_name = host_name
+        self.id = id
+        self.name = name
+        self.namespace = namespace
+        self.parent_category = parent_category
+        self.parent_flow_list = parent_flow_list
+        self.periodic = periodic
+        self.project_id = project_id
+        self.region_id = region_id
+        self.start_schedule = start_schedule
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_conf is not None:
+            result['AlertConf'] = self.alert_conf
+        if self.alert_ding_ding_group_biz_id is not None:
+            result['AlertDingDingGroupBizId'] = self.alert_ding_ding_group_biz_id
+        if self.alert_user_group_biz_id is not None:
+            result['AlertUserGroupBizId'] = self.alert_user_group_biz_id
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.create_cluster is not None:
+            result['CreateCluster'] = self.create_cluster
+        if self.cron_expr is not None:
+            result['CronExpr'] = self.cron_expr
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.end_schedule is not None:
+            result['EndSchedule'] = self.end_schedule
+        if self.graph is not None:
+            result['Graph'] = self.graph
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.parent_category is not None:
+            result['ParentCategory'] = self.parent_category
+        if self.parent_flow_list is not None:
+            result['ParentFlowList'] = self.parent_flow_list
+        if self.periodic is not None:
+            result['Periodic'] = self.periodic
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_schedule is not None:
+            result['StartSchedule'] = self.start_schedule
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertConf') is not None:
+            self.alert_conf = m.get('AlertConf')
+        if m.get('AlertDingDingGroupBizId') is not None:
+            self.alert_ding_ding_group_biz_id = m.get('AlertDingDingGroupBizId')
+        if m.get('AlertUserGroupBizId') is not None:
+            self.alert_user_group_biz_id = m.get('AlertUserGroupBizId')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('CreateCluster') is not None:
+            self.create_cluster = m.get('CreateCluster')
+        if m.get('CronExpr') is not None:
+            self.cron_expr = m.get('CronExpr')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndSchedule') is not None:
+            self.end_schedule = m.get('EndSchedule')
+        if m.get('Graph') is not None:
+            self.graph = m.get('Graph')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('ParentCategory') is not None:
+            self.parent_category = m.get('ParentCategory')
+        if m.get('ParentFlowList') is not None:
+            self.parent_flow_list = m.get('ParentFlowList')
+        if m.get('Periodic') is not None:
+            self.periodic = m.get('Periodic')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartSchedule') is not None:
+            self.start_schedule = m.get('StartSchedule')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ModifyFlowForWebResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyFlowForWebResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyFlowForWebResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyFlowForWebResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -2479,6 +2479,152 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
+    def modify_flow_for_web_with_options(
+        self,
+        request: ddi_20200617_models.ModifyFlowForWebRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddi_20200617_models.ModifyFlowForWebResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alert_conf):
+            query['AlertConf'] = request.alert_conf
+        if not UtilClient.is_unset(request.alert_ding_ding_group_biz_id):
+            query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
+        if not UtilClient.is_unset(request.alert_user_group_biz_id):
+            query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.create_cluster):
+            query['CreateCluster'] = request.create_cluster
+        if not UtilClient.is_unset(request.cron_expr):
+            query['CronExpr'] = request.cron_expr
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.end_schedule):
+            query['EndSchedule'] = request.end_schedule
+        if not UtilClient.is_unset(request.graph):
+            query['Graph'] = request.graph
+        if not UtilClient.is_unset(request.host_name):
+            query['HostName'] = request.host_name
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.parent_category):
+            query['ParentCategory'] = request.parent_category
+        if not UtilClient.is_unset(request.parent_flow_list):
+            query['ParentFlowList'] = request.parent_flow_list
+        if not UtilClient.is_unset(request.periodic):
+            query['Periodic'] = request.periodic
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_schedule):
+            query['StartSchedule'] = request.start_schedule
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyFlowForWeb',
+            version='2020-06-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddi_20200617_models.ModifyFlowForWebResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_flow_for_web_with_options_async(
+        self,
+        request: ddi_20200617_models.ModifyFlowForWebRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddi_20200617_models.ModifyFlowForWebResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alert_conf):
+            query['AlertConf'] = request.alert_conf
+        if not UtilClient.is_unset(request.alert_ding_ding_group_biz_id):
+            query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
+        if not UtilClient.is_unset(request.alert_user_group_biz_id):
+            query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.create_cluster):
+            query['CreateCluster'] = request.create_cluster
+        if not UtilClient.is_unset(request.cron_expr):
+            query['CronExpr'] = request.cron_expr
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.end_schedule):
+            query['EndSchedule'] = request.end_schedule
+        if not UtilClient.is_unset(request.graph):
+            query['Graph'] = request.graph
+        if not UtilClient.is_unset(request.host_name):
+            query['HostName'] = request.host_name
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.parent_category):
+            query['ParentCategory'] = request.parent_category
+        if not UtilClient.is_unset(request.parent_flow_list):
+            query['ParentFlowList'] = request.parent_flow_list
+        if not UtilClient.is_unset(request.periodic):
+            query['Periodic'] = request.periodic
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_schedule):
+            query['StartSchedule'] = request.start_schedule
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyFlowForWeb',
+            version='2020-06-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddi_20200617_models.ModifyFlowForWebResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_flow_for_web(
+        self,
+        request: ddi_20200617_models.ModifyFlowForWebRequest,
+    ) -> ddi_20200617_models.ModifyFlowForWebResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_flow_for_web_with_options(request, runtime)
+
+    async def modify_flow_for_web_async(
+        self,
+        request: ddi_20200617_models.ModifyFlowForWebRequest,
+    ) -> ddi_20200617_models.ModifyFlowForWebResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_flow_for_web_with_options_async(request, runtime)
+
     def modify_flow_job_with_options(
         self,
         request: ddi_20200617_models.ModifyFlowJobRequest,
