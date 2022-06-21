@@ -267,6 +267,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_network_interface_to_instance_with_options_async(request, runtime)
 
+    def assign_private_ip_addresses_with_options(
+        self,
+        request: ens_20171110_models.AssignPrivateIpAddressesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.AssignPrivateIpAddressesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssignPrivateIpAddresses',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.AssignPrivateIpAddressesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def assign_private_ip_addresses_with_options_async(
+        self,
+        request: ens_20171110_models.AssignPrivateIpAddressesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.AssignPrivateIpAddressesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssignPrivateIpAddresses',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.AssignPrivateIpAddressesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def assign_private_ip_addresses(
+        self,
+        request: ens_20171110_models.AssignPrivateIpAddressesRequest,
+    ) -> ens_20171110_models.AssignPrivateIpAddressesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.assign_private_ip_addresses_with_options(request, runtime)
+
+    async def assign_private_ip_addresses_async(
+        self,
+        request: ens_20171110_models.AssignPrivateIpAddressesRequest,
+    ) -> ens_20171110_models.AssignPrivateIpAddressesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.assign_private_ip_addresses_with_options_async(request, runtime)
+
     def associate_ens_eip_address_with_options(
         self,
         request: ens_20171110_models.AssociateEnsEipAddressRequest,
@@ -434,8 +508,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.scripts):
             query['Scripts'] = request.scripts
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -466,8 +538,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.scripts):
             query['Scripts'] = request.scripts
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -770,6 +840,88 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.CreateApplicationResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_application_with_options_async(request, runtime)
+
+    def create_classic_network_with_options(
+        self,
+        request: ens_20171110_models.CreateClassicNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateClassicNetworkResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cidr_block):
+            query['CidrBlock'] = request.cidr_block
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.network_name):
+            query['NetworkName'] = request.network_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateClassicNetwork',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateClassicNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_classic_network_with_options_async(
+        self,
+        request: ens_20171110_models.CreateClassicNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateClassicNetworkResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cidr_block):
+            query['CidrBlock'] = request.cidr_block
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.network_name):
+            query['NetworkName'] = request.network_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateClassicNetwork',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateClassicNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_classic_network(
+        self,
+        request: ens_20171110_models.CreateClassicNetworkRequest,
+    ) -> ens_20171110_models.CreateClassicNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_classic_network_with_options(request, runtime)
+
+    async def create_classic_network_async(
+        self,
+        request: ens_20171110_models.CreateClassicNetworkRequest,
+    ) -> ens_20171110_models.CreateClassicNetworkResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_classic_network_with_options_async(request, runtime)
 
     def create_disk_with_options(
         self,
@@ -2588,8 +2740,6 @@ class Client(OpenApiClient):
             query['NetworkId'] = request.network_id
         if not UtilClient.is_unset(request.v_switch_name):
             query['VSwitchName'] = request.v_switch_name
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2626,8 +2776,6 @@ class Client(OpenApiClient):
             query['NetworkId'] = request.network_id
         if not UtilClient.is_unset(request.v_switch_name):
             query['VSwitchName'] = request.v_switch_name
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9376,8 +9524,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9408,8 +9554,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10602,8 +10746,6 @@ class Client(OpenApiClient):
             query['SystemDiskSize'] = request.system_disk_size
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10658,8 +10800,6 @@ class Client(OpenApiClient):
             query['SystemDiskSize'] = request.system_disk_size
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12102,6 +12242,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.public_ip_identification):
+            query['PublicIpIdentification'] = request.public_ip_identification
         if not UtilClient.is_unset(request.schedule_area_level):
             query['ScheduleAreaLevel'] = request.schedule_area_level
         if not UtilClient.is_unset(request.scheduling_price_strategy):
@@ -12188,6 +12330,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.public_ip_identification):
+            query['PublicIpIdentification'] = request.public_ip_identification
         if not UtilClient.is_unset(request.schedule_area_level):
             query['ScheduleAreaLevel'] = request.schedule_area_level
         if not UtilClient.is_unset(request.scheduling_price_strategy):
@@ -13520,6 +13664,80 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.UnAssociateEnsEipAddressResponse:
         runtime = util_models.RuntimeOptions()
         return await self.un_associate_ens_eip_address_with_options_async(request, runtime)
+
+    def unassign_private_ip_addresses_with_options(
+        self,
+        request: ens_20171110_models.UnassignPrivateIpAddressesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.UnassignPrivateIpAddressesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnassignPrivateIpAddresses',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.UnassignPrivateIpAddressesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unassign_private_ip_addresses_with_options_async(
+        self,
+        request: ens_20171110_models.UnassignPrivateIpAddressesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.UnassignPrivateIpAddressesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnassignPrivateIpAddresses',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.UnassignPrivateIpAddressesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unassign_private_ip_addresses(
+        self,
+        request: ens_20171110_models.UnassignPrivateIpAddressesRequest,
+    ) -> ens_20171110_models.UnassignPrivateIpAddressesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.unassign_private_ip_addresses_with_options(request, runtime)
+
+    async def unassign_private_ip_addresses_async(
+        self,
+        request: ens_20171110_models.UnassignPrivateIpAddressesRequest,
+    ) -> ens_20171110_models.UnassignPrivateIpAddressesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.unassign_private_ip_addresses_with_options_async(request, runtime)
 
     def upgrade_application_with_options(
         self,

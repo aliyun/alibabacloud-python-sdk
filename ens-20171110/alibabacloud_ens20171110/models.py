@@ -1077,6 +1077,152 @@ class AddNetworkInterfaceToInstanceResponse(TeaModel):
         return self
 
 
+class AssignPrivateIpAddressesRequest(TeaModel):
+    def __init__(
+        self,
+        network_interface_id: str = None,
+        v_switch_id: str = None,
+    ):
+        self.network_interface_id = network_interface_id
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet(TeaModel):
+    def __init__(
+        self,
+        network_interface_id: str = None,
+        private_ip_set: List[str] = None,
+    ):
+        self.network_interface_id = network_interface_id
+        self.private_ip_set = private_ip_set
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        if self.private_ip_set is not None:
+            result['PrivateIpSet'] = self.private_ip_set
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        if m.get('PrivateIpSet') is not None:
+            self.private_ip_set = m.get('PrivateIpSet')
+        return self
+
+
+class AssignPrivateIpAddressesResponseBody(TeaModel):
+    def __init__(
+        self,
+        assigned_private_ip_addresses_set: AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet = None,
+        request_id: str = None,
+    ):
+        self.assigned_private_ip_addresses_set = assigned_private_ip_addresses_set
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.assigned_private_ip_addresses_set:
+            self.assigned_private_ip_addresses_set.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assigned_private_ip_addresses_set is not None:
+            result['AssignedPrivateIpAddressesSet'] = self.assigned_private_ip_addresses_set.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssignedPrivateIpAddressesSet') is not None:
+            temp_model = AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet()
+            self.assigned_private_ip_addresses_set = temp_model.from_map(m['AssignedPrivateIpAddressesSet'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AssignPrivateIpAddressesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssignPrivateIpAddressesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssignPrivateIpAddressesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AssociateEnsEipAddressRequest(TeaModel):
     def __init__(
         self,
@@ -1309,11 +1455,9 @@ class AttachEnsInstancesRequest(TeaModel):
         self,
         instance_id: str = None,
         scripts: str = None,
-        version: str = None,
     ):
         self.instance_id = instance_id
         self.scripts = scripts
-        self.version = version
 
     def validate(self):
         pass
@@ -1328,8 +1472,6 @@ class AttachEnsInstancesRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.scripts is not None:
             result['Scripts'] = self.scripts
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -1338,8 +1480,6 @@ class AttachEnsInstancesRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Scripts') is not None:
             self.scripts = m.get('Scripts')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -1800,6 +1940,129 @@ class CreateApplicationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateClassicNetworkRequest(TeaModel):
+    def __init__(
+        self,
+        cidr_block: str = None,
+        description: str = None,
+        ens_region_id: str = None,
+        network_name: str = None,
+    ):
+        self.cidr_block = cidr_block
+        self.description = description
+        self.ens_region_id = ens_region_id
+        self.network_name = network_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.network_name is not None:
+            result['NetworkName'] = self.network_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('NetworkName') is not None:
+            self.network_name = m.get('NetworkName')
+        return self
+
+
+class CreateClassicNetworkResponseBody(TeaModel):
+    def __init__(
+        self,
+        network_id: str = None,
+        request_id: str = None,
+    ):
+        self.network_id = network_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateClassicNetworkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateClassicNetworkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateClassicNetworkResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4724,14 +4987,12 @@ class CreateVSwitchRequest(TeaModel):
         ens_region_id: str = None,
         network_id: str = None,
         v_switch_name: str = None,
-        version: str = None,
     ):
         self.cidr_block = cidr_block
         self.description = description
         self.ens_region_id = ens_region_id
         self.network_id = network_id
         self.v_switch_name = v_switch_name
-        self.version = version
 
     def validate(self):
         pass
@@ -4752,8 +5013,6 @@ class CreateVSwitchRequest(TeaModel):
             result['NetworkId'] = self.network_id
         if self.v_switch_name is not None:
             result['VSwitchName'] = self.v_switch_name
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -4768,8 +5027,6 @@ class CreateVSwitchRequest(TeaModel):
             self.network_id = m.get('NetworkId')
         if m.get('VSwitchName') is not None:
             self.v_switch_name = m.get('VSwitchName')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -19449,6 +19706,74 @@ class DescribeNetworkInterfacesRequest(TeaModel):
         return self
 
 
+class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet(TeaModel):
+    def __init__(
+        self,
+        primary: bool = None,
+        private_ip_address: str = None,
+    ):
+        self.primary = primary
+        self.private_ip_address = private_ip_address
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.primary is not None:
+            result['Primary'] = self.primary
+        if self.private_ip_address is not None:
+            result['PrivateIpAddress'] = self.private_ip_address
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Primary') is not None:
+            self.primary = m.get('Primary')
+        if m.get('PrivateIpAddress') is not None:
+            self.private_ip_address = m.get('PrivateIpAddress')
+        return self
+
+
+class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSets(TeaModel):
+    def __init__(
+        self,
+        private_ip_set: List[DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet] = None,
+    ):
+        self.private_ip_set = private_ip_set
+
+    def validate(self):
+        if self.private_ip_set:
+            for k in self.private_ip_set:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PrivateIpSet'] = []
+        if self.private_ip_set is not None:
+            for k in self.private_ip_set:
+                result['PrivateIpSet'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.private_ip_set = []
+        if m.get('PrivateIpSet') is not None:
+            for k in m.get('PrivateIpSet'):
+                temp_model = DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet()
+                self.private_ip_set.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet(TeaModel):
     def __init__(
         self,
@@ -19459,6 +19784,7 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         network_interface_id: str = None,
         primary_ip: str = None,
         primary_ip_type: str = None,
+        private_ip_sets: DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSets = None,
         status: str = None,
         v_switch_id: str = None,
     ):
@@ -19469,11 +19795,13 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         self.network_interface_id = network_interface_id
         self.primary_ip = primary_ip
         self.primary_ip_type = primary_ip_type
+        self.private_ip_sets = private_ip_sets
         self.status = status
         self.v_switch_id = v_switch_id
 
     def validate(self):
-        pass
+        if self.private_ip_sets:
+            self.private_ip_sets.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -19495,6 +19823,8 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
             result['PrimaryIp'] = self.primary_ip
         if self.primary_ip_type is not None:
             result['PrimaryIpType'] = self.primary_ip_type
+        if self.private_ip_sets is not None:
+            result['PrivateIpSets'] = self.private_ip_sets.to_map()
         if self.status is not None:
             result['Status'] = self.status
         if self.v_switch_id is not None:
@@ -19517,6 +19847,9 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
             self.primary_ip = m.get('PrimaryIp')
         if m.get('PrimaryIpType') is not None:
             self.primary_ip_type = m.get('PrimaryIpType')
+        if m.get('PrivateIpSets') is not None:
+            temp_model = DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSets()
+            self.private_ip_sets = temp_model.from_map(m['PrivateIpSets'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('VSwitchId') is not None:
@@ -23714,11 +24047,9 @@ class JoinSecurityGroupRequest(TeaModel):
         self,
         instance_id: str = None,
         security_group_id: str = None,
-        version: str = None,
     ):
         self.instance_id = instance_id
         self.security_group_id = security_group_id
-        self.version = version
 
     def validate(self):
         pass
@@ -23733,8 +24064,6 @@ class JoinSecurityGroupRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -23743,8 +24072,6 @@ class JoinSecurityGroupRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -25613,7 +25940,6 @@ class PreCreateEnsServiceRequest(TeaModel):
         scheduling_strategy: str = None,
         system_disk_size: str = None,
         user_data: str = None,
-        version: str = None,
     ):
         self.bandwidth_type = bandwidth_type
         self.buy_resources_detail = buy_resources_detail
@@ -25629,7 +25955,6 @@ class PreCreateEnsServiceRequest(TeaModel):
         self.scheduling_strategy = scheduling_strategy
         self.system_disk_size = system_disk_size
         self.user_data = user_data
-        self.version = version
 
     def validate(self):
         pass
@@ -25668,8 +25993,6 @@ class PreCreateEnsServiceRequest(TeaModel):
             result['SystemDiskSize'] = self.system_disk_size
         if self.user_data is not None:
             result['UserData'] = self.user_data
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -25702,8 +26025,6 @@ class PreCreateEnsServiceRequest(TeaModel):
             self.system_disk_size = m.get('SystemDiskSize')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -28221,6 +28542,7 @@ class RunInstancesRequest(TeaModel):
         period: int = None,
         period_unit: str = None,
         private_ip_address: str = None,
+        public_ip_identification: bool = None,
         schedule_area_level: str = None,
         scheduling_price_strategy: str = None,
         scheduling_strategy: str = None,
@@ -28270,6 +28592,7 @@ class RunInstancesRequest(TeaModel):
         self.period_unit = period_unit
         # 私网ip
         self.private_ip_address = private_ip_address
+        self.public_ip_identification = public_ip_identification
         # 调度层级
         self.schedule_area_level = schedule_area_level
         # 调度价格策略
@@ -28341,6 +28664,8 @@ class RunInstancesRequest(TeaModel):
             result['PeriodUnit'] = self.period_unit
         if self.private_ip_address is not None:
             result['PrivateIpAddress'] = self.private_ip_address
+        if self.public_ip_identification is not None:
+            result['PublicIpIdentification'] = self.public_ip_identification
         if self.schedule_area_level is not None:
             result['ScheduleAreaLevel'] = self.schedule_area_level
         if self.scheduling_price_strategy is not None:
@@ -28402,6 +28727,8 @@ class RunInstancesRequest(TeaModel):
             self.period_unit = m.get('PeriodUnit')
         if m.get('PrivateIpAddress') is not None:
             self.private_ip_address = m.get('PrivateIpAddress')
+        if m.get('PublicIpIdentification') is not None:
+            self.public_ip_identification = m.get('PublicIpIdentification')
         if m.get('ScheduleAreaLevel') is not None:
             self.schedule_area_level = m.get('ScheduleAreaLevel')
         if m.get('SchedulingPriceStrategy') is not None:
@@ -28444,6 +28771,7 @@ class RunInstancesShrinkRequest(TeaModel):
         period: int = None,
         period_unit: str = None,
         private_ip_address: str = None,
+        public_ip_identification: bool = None,
         schedule_area_level: str = None,
         scheduling_price_strategy: str = None,
         scheduling_strategy: str = None,
@@ -28493,6 +28821,7 @@ class RunInstancesShrinkRequest(TeaModel):
         self.period_unit = period_unit
         # 私网ip
         self.private_ip_address = private_ip_address
+        self.public_ip_identification = public_ip_identification
         # 调度层级
         self.schedule_area_level = schedule_area_level
         # 调度价格策略
@@ -28557,6 +28886,8 @@ class RunInstancesShrinkRequest(TeaModel):
             result['PeriodUnit'] = self.period_unit
         if self.private_ip_address is not None:
             result['PrivateIpAddress'] = self.private_ip_address
+        if self.public_ip_identification is not None:
+            result['PublicIpIdentification'] = self.public_ip_identification
         if self.schedule_area_level is not None:
             result['ScheduleAreaLevel'] = self.schedule_area_level
         if self.scheduling_price_strategy is not None:
@@ -28615,6 +28946,8 @@ class RunInstancesShrinkRequest(TeaModel):
             self.period_unit = m.get('PeriodUnit')
         if m.get('PrivateIpAddress') is not None:
             self.private_ip_address = m.get('PrivateIpAddress')
+        if m.get('PublicIpIdentification') is not None:
+            self.public_ip_identification = m.get('PublicIpIdentification')
         if m.get('ScheduleAreaLevel') is not None:
             self.schedule_area_level = m.get('ScheduleAreaLevel')
         if m.get('SchedulingPriceStrategy') is not None:
@@ -30901,6 +31234,111 @@ class UnAssociateEnsEipAddressResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnAssociateEnsEipAddressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnassignPrivateIpAddressesRequest(TeaModel):
+    def __init__(
+        self,
+        network_interface_id: str = None,
+        private_ip_address: List[str] = None,
+    ):
+        self.network_interface_id = network_interface_id
+        self.private_ip_address = private_ip_address
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        if self.private_ip_address is not None:
+            result['PrivateIpAddress'] = self.private_ip_address
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        if m.get('PrivateIpAddress') is not None:
+            self.private_ip_address = m.get('PrivateIpAddress')
+        return self
+
+
+class UnassignPrivateIpAddressesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UnassignPrivateIpAddressesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnassignPrivateIpAddressesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnassignPrivateIpAddressesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
