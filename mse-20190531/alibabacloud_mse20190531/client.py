@@ -7082,6 +7082,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_slb_with_options_async(request, runtime)
 
+    def list_instances_with_options(
+        self,
+        request: mse_20190531_models.ListInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListInstancesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instances_with_options_async(
+        self,
+        request: mse_20190531_models.ListInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListInstancesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instances(
+        self,
+        request: mse_20190531_models.ListInstancesRequest,
+    ) -> mse_20190531_models.ListInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_instances_with_options(request, runtime)
+
+    async def list_instances_async(
+        self,
+        request: mse_20190531_models.ListInstancesRequest,
+    ) -> mse_20190531_models.ListInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instances_with_options_async(request, runtime)
+
     def list_listeners_by_config_with_options(
         self,
         request: mse_20190531_models.ListListenersByConfigRequest,
@@ -7765,6 +7831,72 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.ListServiceSourceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_service_source_with_options_async(request, runtime)
+
+    def list_vgroups_with_options(
+        self,
+        request: mse_20190531_models.ListVgroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListVgroupsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVgroups',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListVgroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_vgroups_with_options_async(
+        self,
+        request: mse_20190531_models.ListVgroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListVgroupsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVgroups',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListVgroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_vgroups(
+        self,
+        request: mse_20190531_models.ListVgroupsRequest,
+    ) -> mse_20190531_models.ListVgroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_vgroups_with_options(request, runtime)
+
+    async def list_vgroups_async(
+        self,
+        request: mse_20190531_models.ListVgroupsRequest,
+    ) -> mse_20190531_models.ListVgroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_vgroups_with_options_async(request, runtime)
 
     def list_znode_children_with_options(
         self,

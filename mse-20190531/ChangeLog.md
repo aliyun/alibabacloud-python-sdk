@@ -1,3 +1,7 @@
+2022-06-21 Version: 3.0.23
+- Add Seata List Cluster open.
+- Add Seata List Group.
+
 2022-06-20 Version: 3.0.22
 - Add UpdateGatewaySpec open.
 - Add UpdateClusterSpec open.
