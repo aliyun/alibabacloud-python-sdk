@@ -4889,7 +4889,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateCompliancePacksResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4898,7 +4906,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -4915,7 +4923,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateCompliancePacksResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4924,7 +4940,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -5095,7 +5111,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateConfigRulesResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.compliance_type):
+            query['ComplianceType'] = request.compliance_type
+        if not UtilClient.is_unset(request.config_rule_name):
+            query['ConfigRuleName'] = request.config_rule_name
+        if not UtilClient.is_unset(request.config_rule_state):
+            query['ConfigRuleState'] = request.config_rule_state
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5104,7 +5134,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -5121,7 +5151,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateConfigRulesResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.compliance_type):
+            query['ComplianceType'] = request.compliance_type
+        if not UtilClient.is_unset(request.config_rule_name):
+            query['ConfigRuleName'] = request.config_rule_name
+        if not UtilClient.is_unset(request.config_rule_state):
+            query['ConfigRuleState'] = request.config_rule_state
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5130,7 +5174,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -5427,7 +5471,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregatorsResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5436,7 +5484,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -5453,7 +5501,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregatorsResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5462,7 +5514,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -5559,7 +5611,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListCompliancePacksResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5568,7 +5626,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -5585,7 +5643,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListCompliancePacksResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5594,7 +5658,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -6161,92 +6225,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_resource_evaluation_results_with_options_async(request, runtime)
 
-    def list_tag_resources_with_options(
-        self,
-        request: config_20200907_models.ListTagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> config_20200907_models.ListTagResourcesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
-            query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
-            query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2020-09-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            config_20200907_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_tag_resources_with_options_async(
-        self,
-        request: config_20200907_models.ListTagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> config_20200907_models.ListTagResourcesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
-            query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
-            query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2020-09-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            config_20200907_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_tag_resources(
-        self,
-        request: config_20200907_models.ListTagResourcesRequest,
-    ) -> config_20200907_models.ListTagResourcesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_tag_resources_with_options(request, runtime)
-
-    async def list_tag_resources_async(
-        self,
-        request: config_20200907_models.ListTagResourcesRequest,
-    ) -> config_20200907_models.ListTagResourcesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_tag_resources_with_options_async(request, runtime)
-
     def revert_aggregate_evaluation_results_with_options(
         self,
         tmp_req: config_20200907_models.RevertAggregateEvaluationResultsRequest,
@@ -6640,174 +6618,6 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.StartRemediationResponse:
         runtime = util_models.RuntimeOptions()
         return await self.start_remediation_with_options_async(request, runtime)
-
-    def tag_resources_with_options(
-        self,
-        request: config_20200907_models.TagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> config_20200907_models.TagResourcesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
-            query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
-            query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2020-09-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            config_20200907_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def tag_resources_with_options_async(
-        self,
-        request: config_20200907_models.TagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> config_20200907_models.TagResourcesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
-            query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
-            query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2020-09-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            config_20200907_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def tag_resources(
-        self,
-        request: config_20200907_models.TagResourcesRequest,
-    ) -> config_20200907_models.TagResourcesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.tag_resources_with_options(request, runtime)
-
-    async def tag_resources_async(
-        self,
-        request: config_20200907_models.TagResourcesRequest,
-    ) -> config_20200907_models.TagResourcesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.tag_resources_with_options_async(request, runtime)
-
-    def untag_resources_with_options(
-        self,
-        request: config_20200907_models.UntagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> config_20200907_models.UntagResourcesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.all):
-            query['All'] = request.all
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
-            query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_key):
-            query['TagKey'] = request.tag_key
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UntagResources',
-            version='2020-09-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            config_20200907_models.UntagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def untag_resources_with_options_async(
-        self,
-        request: config_20200907_models.UntagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> config_20200907_models.UntagResourcesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.all):
-            query['All'] = request.all
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
-            query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_key):
-            query['TagKey'] = request.tag_key
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UntagResources',
-            version='2020-09-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            config_20200907_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def untag_resources(
-        self,
-        request: config_20200907_models.UntagResourcesRequest,
-    ) -> config_20200907_models.UntagResourcesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.untag_resources_with_options(request, runtime)
-
-    async def untag_resources_async(
-        self,
-        request: config_20200907_models.UntagResourcesRequest,
-    ) -> config_20200907_models.UntagResourcesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.untag_resources_with_options_async(request, runtime)
 
     def update_aggregate_compliance_pack_with_options(
         self,
