@@ -1,3 +1,6 @@
+2022-06-23 Version: 2.1.5
+- App manage open api.
+
 2022-06-23 Version: 2.1.4
 - Supported open api for console.
 
