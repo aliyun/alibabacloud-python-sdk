@@ -1,3 +1,6 @@
+2022-06-23 Version: 1.1.16
+- Add open file detect api.
+
 2022-06-20 Version: 1.1.15
 - Add EventId when listQuery EventInfo.
 

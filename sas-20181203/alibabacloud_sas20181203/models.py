@@ -670,6 +670,352 @@ class CreateBackupPolicyResponse(TeaModel):
         return self
 
 
+class CreateFileDetectRequest(TeaModel):
+    def __init__(
+        self,
+        hash_key: str = None,
+        oss_key: str = None,
+        source_ip: str = None,
+        type: int = None,
+    ):
+        self.hash_key = hash_key
+        self.oss_key = oss_key
+        self.source_ip = source_ip
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hash_key is not None:
+            result['HashKey'] = self.hash_key
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HashKey') is not None:
+            self.hash_key = m.get('HashKey')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateFileDetectResponseBody(TeaModel):
+    def __init__(
+        self,
+        hash_key: str = None,
+        request_id: str = None,
+    ):
+        self.hash_key = hash_key
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hash_key is not None:
+            result['HashKey'] = self.hash_key
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HashKey') is not None:
+            self.hash_key = m.get('HashKey')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateFileDetectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFileDetectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFileDetectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateFileDetectUploadUrlRequest(TeaModel):
+    def __init__(
+        self,
+        hash_key_list: List[str] = None,
+        type: int = None,
+    ):
+        self.hash_key_list = hash_key_list
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hash_key_list is not None:
+            result['HashKeyList'] = self.hash_key_list
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HashKeyList') is not None:
+            self.hash_key_list = m.get('HashKeyList')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateFileDetectUploadUrlResponseBodyUploadUrlListContext(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        oss_key: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.oss_key = oss_key
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class CreateFileDetectUploadUrlResponseBodyUploadUrlList(TeaModel):
+    def __init__(
+        self,
+        context: CreateFileDetectUploadUrlResponseBodyUploadUrlListContext = None,
+        expire: str = None,
+        file_exist: bool = None,
+        hash_key: str = None,
+        internal_url: str = None,
+        public_url: str = None,
+    ):
+        self.context = context
+        self.expire = expire
+        self.file_exist = file_exist
+        self.hash_key = hash_key
+        self.internal_url = internal_url
+        self.public_url = public_url
+
+    def validate(self):
+        if self.context:
+            self.context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['Context'] = self.context.to_map()
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.file_exist is not None:
+            result['FileExist'] = self.file_exist
+        if self.hash_key is not None:
+            result['HashKey'] = self.hash_key
+        if self.internal_url is not None:
+            result['InternalUrl'] = self.internal_url
+        if self.public_url is not None:
+            result['PublicUrl'] = self.public_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            temp_model = CreateFileDetectUploadUrlResponseBodyUploadUrlListContext()
+            self.context = temp_model.from_map(m['Context'])
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('FileExist') is not None:
+            self.file_exist = m.get('FileExist')
+        if m.get('HashKey') is not None:
+            self.hash_key = m.get('HashKey')
+        if m.get('InternalUrl') is not None:
+            self.internal_url = m.get('InternalUrl')
+        if m.get('PublicUrl') is not None:
+            self.public_url = m.get('PublicUrl')
+        return self
+
+
+class CreateFileDetectUploadUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        upload_url_list: List[CreateFileDetectUploadUrlResponseBodyUploadUrlList] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.upload_url_list = upload_url_list
+
+    def validate(self):
+        if self.upload_url_list:
+            for k in self.upload_url_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['UploadUrlList'] = []
+        if self.upload_url_list is not None:
+            for k in self.upload_url_list:
+                result['UploadUrlList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.upload_url_list = []
+        if m.get('UploadUrlList') is not None:
+            for k in m.get('UploadUrlList'):
+                temp_model = CreateFileDetectUploadUrlResponseBodyUploadUrlList()
+                self.upload_url_list.append(temp_model.from_map(k))
+        return self
+
+
+class CreateFileDetectUploadUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFileDetectUploadUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFileDetectUploadUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateOrUpdateAssetGroupRequest(TeaModel):
     def __init__(
         self,
@@ -3311,6 +3657,7 @@ class DescribeAlarmEventListRequest(TeaModel):
         source_ip: str = None,
         tactic_id: str = None,
         unique_info: str = None,
+        uuids: str = None,
     ):
         self.alarm_event_name = alarm_event_name
         self.alarm_event_type = alarm_event_type
@@ -3327,6 +3674,7 @@ class DescribeAlarmEventListRequest(TeaModel):
         self.source_ip = source_ip
         self.tactic_id = tactic_id
         self.unique_info = unique_info
+        self.uuids = uuids
 
     def validate(self):
         pass
@@ -3367,6 +3715,8 @@ class DescribeAlarmEventListRequest(TeaModel):
             result['TacticId'] = self.tactic_id
         if self.unique_info is not None:
             result['UniqueInfo'] = self.unique_info
+        if self.uuids is not None:
+            result['Uuids'] = self.uuids
         return result
 
     def from_map(self, m: dict = None):
@@ -3401,6 +3751,8 @@ class DescribeAlarmEventListRequest(TeaModel):
             self.tactic_id = m.get('TacticId')
         if m.get('UniqueInfo') is not None:
             self.unique_info = m.get('UniqueInfo')
+        if m.get('Uuids') is not None:
+            self.uuids = m.get('Uuids')
         return self
 
 
@@ -5011,8 +5363,12 @@ class DescribeAssetDetailByUuidsResponse(TeaModel):
 class DescribeAssetSummaryResponseBodyAssetsSummary(TeaModel):
     def __init__(
         self,
+        total_asset_all_region: int = None,
+        total_core_all_region: int = None,
         total_core_num: int = None,
     ):
+        self.total_asset_all_region = total_asset_all_region
+        self.total_core_all_region = total_core_all_region
         self.total_core_num = total_core_num
 
     def validate(self):
@@ -5024,12 +5380,20 @@ class DescribeAssetSummaryResponseBodyAssetsSummary(TeaModel):
             return _map
 
         result = dict()
+        if self.total_asset_all_region is not None:
+            result['TotalAssetAllRegion'] = self.total_asset_all_region
+        if self.total_core_all_region is not None:
+            result['TotalCoreAllRegion'] = self.total_core_all_region
         if self.total_core_num is not None:
             result['TotalCoreNum'] = self.total_core_num
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TotalAssetAllRegion') is not None:
+            self.total_asset_all_region = m.get('TotalAssetAllRegion')
+        if m.get('TotalCoreAllRegion') is not None:
+            self.total_core_all_region = m.get('TotalCoreAllRegion')
         if m.get('TotalCoreNum') is not None:
             self.total_core_num = m.get('TotalCoreNum')
         return self
@@ -25752,6 +26116,8 @@ class DescribeSuspEventsRequest(TeaModel):
         levels: str = None,
         name: str = None,
         operate_error_code_list: List[str] = None,
+        operate_time_end: int = None,
+        operate_time_start: int = None,
         page_size: str = None,
         parent_event_types: str = None,
         remark: str = None,
@@ -25777,6 +26143,10 @@ class DescribeSuspEventsRequest(TeaModel):
         self.levels = levels
         self.name = name
         self.operate_error_code_list = operate_error_code_list
+        # 处理时间结束时间
+        self.operate_time_end = operate_time_end
+        # 处理时间开始时间
+        self.operate_time_start = operate_time_start
         self.page_size = page_size
         self.parent_event_types = parent_event_types
         self.remark = remark
@@ -25825,6 +26195,10 @@ class DescribeSuspEventsRequest(TeaModel):
             result['Name'] = self.name
         if self.operate_error_code_list is not None:
             result['OperateErrorCodeList'] = self.operate_error_code_list
+        if self.operate_time_end is not None:
+            result['OperateTimeEnd'] = self.operate_time_end
+        if self.operate_time_start is not None:
+            result['OperateTimeStart'] = self.operate_time_start
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.parent_event_types is not None:
@@ -25877,6 +26251,10 @@ class DescribeSuspEventsRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('OperateErrorCodeList') is not None:
             self.operate_error_code_list = m.get('OperateErrorCodeList')
+        if m.get('OperateTimeEnd') is not None:
+            self.operate_time_end = m.get('OperateTimeEnd')
+        if m.get('OperateTimeStart') is not None:
+            self.operate_time_start = m.get('OperateTimeStart')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('ParentEventTypes') is not None:
@@ -27260,11 +27638,13 @@ class DescribeVersionConfigResponseBody(TeaModel):
         honeypot_capacity: int = None,
         image_scan_capacity: int = None,
         instance_id: str = None,
+        is_new_container_version: bool = None,
         is_over_balance: bool = None,
         is_trial_version: int = None,
         last_trail_end_time: int = None,
         mvauth_count: int = None,
         mvunused_auth_count: int = None,
+        open_time: int = None,
         release_time: int = None,
         request_id: str = None,
         sas_log: int = None,
@@ -27284,11 +27664,13 @@ class DescribeVersionConfigResponseBody(TeaModel):
         self.honeypot_capacity = honeypot_capacity
         self.image_scan_capacity = image_scan_capacity
         self.instance_id = instance_id
+        self.is_new_container_version = is_new_container_version
         self.is_over_balance = is_over_balance
         self.is_trial_version = is_trial_version
         self.last_trail_end_time = last_trail_end_time
         self.mvauth_count = mvauth_count
         self.mvunused_auth_count = mvunused_auth_count
+        self.open_time = open_time
         self.release_time = release_time
         self.request_id = request_id
         self.sas_log = sas_log
@@ -27325,6 +27707,8 @@ class DescribeVersionConfigResponseBody(TeaModel):
             result['ImageScanCapacity'] = self.image_scan_capacity
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.is_new_container_version is not None:
+            result['IsNewContainerVersion'] = self.is_new_container_version
         if self.is_over_balance is not None:
             result['IsOverBalance'] = self.is_over_balance
         if self.is_trial_version is not None:
@@ -27335,6 +27719,8 @@ class DescribeVersionConfigResponseBody(TeaModel):
             result['MVAuthCount'] = self.mvauth_count
         if self.mvunused_auth_count is not None:
             result['MVUnusedAuthCount'] = self.mvunused_auth_count
+        if self.open_time is not None:
+            result['OpenTime'] = self.open_time
         if self.release_time is not None:
             result['ReleaseTime'] = self.release_time
         if self.request_id is not None:
@@ -27375,6 +27761,8 @@ class DescribeVersionConfigResponseBody(TeaModel):
             self.image_scan_capacity = m.get('ImageScanCapacity')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('IsNewContainerVersion') is not None:
+            self.is_new_container_version = m.get('IsNewContainerVersion')
         if m.get('IsOverBalance') is not None:
             self.is_over_balance = m.get('IsOverBalance')
         if m.get('IsTrialVersion') is not None:
@@ -27385,6 +27773,8 @@ class DescribeVersionConfigResponseBody(TeaModel):
             self.mvauth_count = m.get('MVAuthCount')
         if m.get('MVUnusedAuthCount') is not None:
             self.mvunused_auth_count = m.get('MVUnusedAuthCount')
+        if m.get('OpenTime') is not None:
+            self.open_time = m.get('OpenTime')
         if m.get('ReleaseTime') is not None:
             self.release_time = m.get('ReleaseTime')
         if m.get('RequestId') is not None:
@@ -30827,6 +31217,199 @@ class GetBackupStorageCountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetBackupStorageCountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetFileDetectResultRequest(TeaModel):
+    def __init__(
+        self,
+        hash_key_list: List[str] = None,
+        source_ip: str = None,
+        type: int = None,
+    ):
+        self.hash_key_list = hash_key_list
+        self.source_ip = source_ip
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hash_key_list is not None:
+            result['HashKeyList'] = self.hash_key_list
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HashKeyList') is not None:
+            self.hash_key_list = m.get('HashKeyList')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetFileDetectResultResponseBodyResultListExt(TeaModel):
+    def __init__(
+        self,
+        virus_name: str = None,
+    ):
+        self.virus_name = virus_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.virus_name is not None:
+            result['VirusName'] = self.virus_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VirusName') is not None:
+            self.virus_name = m.get('VirusName')
+        return self
+
+
+class GetFileDetectResultResponseBodyResultList(TeaModel):
+    def __init__(
+        self,
+        ext: GetFileDetectResultResponseBodyResultListExt = None,
+        hash_key: str = None,
+        result: int = None,
+    ):
+        self.ext = ext
+        self.hash_key = hash_key
+        self.result = result
+
+    def validate(self):
+        if self.ext:
+            self.ext.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext is not None:
+            result['Ext'] = self.ext.to_map()
+        if self.hash_key is not None:
+            result['HashKey'] = self.hash_key
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ext') is not None:
+            temp_model = GetFileDetectResultResponseBodyResultListExt()
+            self.ext = temp_model.from_map(m['Ext'])
+        if m.get('HashKey') is not None:
+            self.hash_key = m.get('HashKey')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class GetFileDetectResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_list: List[GetFileDetectResultResponseBodyResultList] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.result_list = result_list
+
+    def validate(self):
+        if self.result_list:
+            for k in self.result_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResultList'] = []
+        if self.result_list is not None:
+            for k in self.result_list:
+                result['ResultList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result_list = []
+        if m.get('ResultList') is not None:
+            for k in m.get('ResultList'):
+                temp_model = GetFileDetectResultResponseBodyResultList()
+                self.result_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetFileDetectResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetFileDetectResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetFileDetectResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
