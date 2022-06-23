@@ -41,236 +41,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def add_member_with_options(
-        self,
-        request: imp_20210630_models.AddMemberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.AddMemberResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.conference_id):
-            body['ConferenceId'] = request.conference_id
-        if not UtilClient.is_unset(request.from_user_id):
-            body['FromUserId'] = request.from_user_id
-        if not UtilClient.is_unset(request.to_user_id):
-            body['ToUserId'] = request.to_user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AddMember',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.AddMemberResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def add_member_with_options_async(
-        self,
-        request: imp_20210630_models.AddMemberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.AddMemberResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.conference_id):
-            body['ConferenceId'] = request.conference_id
-        if not UtilClient.is_unset(request.from_user_id):
-            body['FromUserId'] = request.from_user_id
-        if not UtilClient.is_unset(request.to_user_id):
-            body['ToUserId'] = request.to_user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AddMember',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.AddMemberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def add_member(
-        self,
-        request: imp_20210630_models.AddMemberRequest,
-    ) -> imp_20210630_models.AddMemberResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.add_member_with_options(request, runtime)
-
-    async def add_member_async(
-        self,
-        request: imp_20210630_models.AddMemberRequest,
-    ) -> imp_20210630_models.AddMemberResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.add_member_with_options_async(request, runtime)
-
-    def agree_link_mic_with_options(
-        self,
-        request: imp_20210630_models.AgreeLinkMicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.AgreeLinkMicResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.conference_id):
-            body['ConferenceId'] = request.conference_id
-        if not UtilClient.is_unset(request.from_user_id):
-            body['FromUserId'] = request.from_user_id
-        if not UtilClient.is_unset(request.to_user_id):
-            body['ToUserId'] = request.to_user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AgreeLinkMic',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.AgreeLinkMicResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def agree_link_mic_with_options_async(
-        self,
-        request: imp_20210630_models.AgreeLinkMicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.AgreeLinkMicResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.conference_id):
-            body['ConferenceId'] = request.conference_id
-        if not UtilClient.is_unset(request.from_user_id):
-            body['FromUserId'] = request.from_user_id
-        if not UtilClient.is_unset(request.to_user_id):
-            body['ToUserId'] = request.to_user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AgreeLinkMic',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.AgreeLinkMicResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def agree_link_mic(
-        self,
-        request: imp_20210630_models.AgreeLinkMicRequest,
-    ) -> imp_20210630_models.AgreeLinkMicResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.agree_link_mic_with_options(request, runtime)
-
-    async def agree_link_mic_async(
-        self,
-        request: imp_20210630_models.AgreeLinkMicRequest,
-    ) -> imp_20210630_models.AgreeLinkMicResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.agree_link_mic_with_options_async(request, runtime)
-
-    def apply_link_mic_with_options(
-        self,
-        request: imp_20210630_models.ApplyLinkMicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ApplyLinkMicResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.conference_id):
-            body['ConferenceId'] = request.conference_id
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ApplyLinkMic',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ApplyLinkMicResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def apply_link_mic_with_options_async(
-        self,
-        request: imp_20210630_models.ApplyLinkMicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ApplyLinkMicResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.conference_id):
-            body['ConferenceId'] = request.conference_id
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ApplyLinkMic',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ApplyLinkMicResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def apply_link_mic(
-        self,
-        request: imp_20210630_models.ApplyLinkMicRequest,
-    ) -> imp_20210630_models.ApplyLinkMicResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.apply_link_mic_with_options(request, runtime)
-
-    async def apply_link_mic_async(
-        self,
-        request: imp_20210630_models.ApplyLinkMicRequest,
-    ) -> imp_20210630_models.ApplyLinkMicResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.apply_link_mic_with_options_async(request, runtime)
-
     def ban_all_comment_with_options(
         self,
         request: imp_20210630_models.BanAllCommentRequest,
@@ -434,80 +204,6 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.BanCommentResponse:
         runtime = util_models.RuntimeOptions()
         return await self.ban_comment_with_options_async(request, runtime)
-
-    def cancel_apply_link_mic_with_options(
-        self,
-        request: imp_20210630_models.CancelApplyLinkMicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.conference_id):
-            body['ConferenceId'] = request.conference_id
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CancelApplyLinkMic',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CancelApplyLinkMicResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def cancel_apply_link_mic_with_options_async(
-        self,
-        request: imp_20210630_models.CancelApplyLinkMicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.conference_id):
-            body['ConferenceId'] = request.conference_id
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CancelApplyLinkMic',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CancelApplyLinkMicResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def cancel_apply_link_mic(
-        self,
-        request: imp_20210630_models.CancelApplyLinkMicRequest,
-    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.cancel_apply_link_mic_with_options(request, runtime)
-
-    async def cancel_apply_link_mic_async(
-        self,
-        request: imp_20210630_models.CancelApplyLinkMicRequest,
-    ) -> imp_20210630_models.CancelApplyLinkMicResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.cancel_apply_link_mic_with_options_async(request, runtime)
 
     def cancel_ban_all_comment_with_options(
         self,
@@ -747,170 +443,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_user_admin_with_options_async(request, runtime)
 
-    def create_app_with_options(
-        self,
-        request: imp_20210630_models.CreateAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CreateAppResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_name):
-            body['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.app_template_id):
-            body['AppTemplateId'] = request.app_template_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateApp',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CreateAppResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_app_with_options_async(
-        self,
-        request: imp_20210630_models.CreateAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CreateAppResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_name):
-            body['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.app_template_id):
-            body['AppTemplateId'] = request.app_template_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateApp',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CreateAppResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_app(
-        self,
-        request: imp_20210630_models.CreateAppRequest,
-    ) -> imp_20210630_models.CreateAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_app_with_options(request, runtime)
-
-    async def create_app_async(
-        self,
-        request: imp_20210630_models.CreateAppRequest,
-    ) -> imp_20210630_models.CreateAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_app_with_options_async(request, runtime)
-
-    def create_app_template_with_options(
-        self,
-        tmp_req: imp_20210630_models.CreateAppTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CreateAppTemplateResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.CreateAppTemplateShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.component_list):
-            request.component_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_list, 'ComponentList', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.app_template_name):
-            body['AppTemplateName'] = request.app_template_name
-        if not UtilClient.is_unset(request.component_list_shrink):
-            body['ComponentList'] = request.component_list_shrink
-        if not UtilClient.is_unset(request.integration_mode):
-            body['IntegrationMode'] = request.integration_mode
-        if not UtilClient.is_unset(request.scene):
-            body['Scene'] = request.scene
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateAppTemplate',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CreateAppTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_app_template_with_options_async(
-        self,
-        tmp_req: imp_20210630_models.CreateAppTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CreateAppTemplateResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.CreateAppTemplateShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.component_list):
-            request.component_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_list, 'ComponentList', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.app_template_name):
-            body['AppTemplateName'] = request.app_template_name
-        if not UtilClient.is_unset(request.component_list_shrink):
-            body['ComponentList'] = request.component_list_shrink
-        if not UtilClient.is_unset(request.integration_mode):
-            body['IntegrationMode'] = request.integration_mode
-        if not UtilClient.is_unset(request.scene):
-            body['Scene'] = request.scene
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateAppTemplate',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CreateAppTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_app_template(
-        self,
-        request: imp_20210630_models.CreateAppTemplateRequest,
-    ) -> imp_20210630_models.CreateAppTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_app_template_with_options(request, runtime)
-
-    async def create_app_template_async(
-        self,
-        request: imp_20210630_models.CreateAppTemplateRequest,
-    ) -> imp_20210630_models.CreateAppTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_app_template_with_options_async(request, runtime)
-
     def create_class_with_options(
         self,
         request: imp_20210630_models.CreateClassRequest,
@@ -992,88 +524,6 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.CreateClassResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_class_with_options_async(request, runtime)
-
-    def create_conference_with_options(
-        self,
-        request: imp_20210630_models.CreateConferenceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CreateConferenceResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.room_id):
-            body['RoomId'] = request.room_id
-        if not UtilClient.is_unset(request.title):
-            body['Title'] = request.title
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateConference',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CreateConferenceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_conference_with_options_async(
-        self,
-        request: imp_20210630_models.CreateConferenceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.CreateConferenceResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.room_id):
-            body['RoomId'] = request.room_id
-        if not UtilClient.is_unset(request.title):
-            body['Title'] = request.title
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateConference',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.CreateConferenceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_conference(
-        self,
-        request: imp_20210630_models.CreateConferenceRequest,
-    ) -> imp_20210630_models.CreateConferenceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_conference_with_options(request, runtime)
-
-    async def create_conference_async(
-        self,
-        request: imp_20210630_models.CreateConferenceRequest,
-    ) -> imp_20210630_models.CreateConferenceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_conference_with_options_async(request, runtime)
 
     def create_live_with_options(
         self,
@@ -1192,6 +642,8 @@ class Client(OpenApiClient):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.cover_url):
             body['CoverUrl'] = request.cover_url
+        if not UtilClient.is_unset(request.enable_link_mic):
+            body['EnableLinkMic'] = request.enable_link_mic
         if not UtilClient.is_unset(request.extension_shrink):
             body['Extension'] = request.extension_shrink
         if not UtilClient.is_unset(request.notice):
@@ -1238,6 +690,8 @@ class Client(OpenApiClient):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.cover_url):
             body['CoverUrl'] = request.cover_url
+        if not UtilClient.is_unset(request.enable_link_mic):
+            body['EnableLinkMic'] = request.enable_link_mic
         if not UtilClient.is_unset(request.extension_shrink):
             body['Extension'] = request.extension_shrink
         if not UtilClient.is_unset(request.notice):
@@ -1462,146 +916,6 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.CreateSensitiveWordResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_sensitive_word_with_options_async(request, runtime)
-
-    def delete_app_with_options(
-        self,
-        request: imp_20210630_models.DeleteAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.DeleteAppResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteApp',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.DeleteAppResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_app_with_options_async(
-        self,
-        request: imp_20210630_models.DeleteAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.DeleteAppResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteApp',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.DeleteAppResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_app(
-        self,
-        request: imp_20210630_models.DeleteAppRequest,
-    ) -> imp_20210630_models.DeleteAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_app_with_options(request, runtime)
-
-    async def delete_app_async(
-        self,
-        request: imp_20210630_models.DeleteAppRequest,
-    ) -> imp_20210630_models.DeleteAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_app_with_options_async(request, runtime)
-
-    def delete_app_template_with_options(
-        self,
-        request: imp_20210630_models.DeleteAppTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.DeleteAppTemplateResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_template_id):
-            body['AppTemplateId'] = request.app_template_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteAppTemplate',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.DeleteAppTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_app_template_with_options_async(
-        self,
-        request: imp_20210630_models.DeleteAppTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.DeleteAppTemplateResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_template_id):
-            body['AppTemplateId'] = request.app_template_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteAppTemplate',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.DeleteAppTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_app_template(
-        self,
-        request: imp_20210630_models.DeleteAppTemplateRequest,
-    ) -> imp_20210630_models.DeleteAppTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_app_template_with_options(request, runtime)
-
-    async def delete_app_template_async(
-        self,
-        request: imp_20210630_models.DeleteAppTemplateRequest,
-    ) -> imp_20210630_models.DeleteAppTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_app_template_with_options_async(request, runtime)
 
     def delete_class_with_options(
         self,
@@ -2311,146 +1625,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_meter_imp_watch_live_time_by_live_id_with_options_async(request, runtime)
 
-    def get_app_with_options(
-        self,
-        request: imp_20210630_models.GetAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetAppResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetApp',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetAppResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_app_with_options_async(
-        self,
-        request: imp_20210630_models.GetAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetAppResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetApp',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetAppResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_app(
-        self,
-        request: imp_20210630_models.GetAppRequest,
-    ) -> imp_20210630_models.GetAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_app_with_options(request, runtime)
-
-    async def get_app_async(
-        self,
-        request: imp_20210630_models.GetAppRequest,
-    ) -> imp_20210630_models.GetAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_app_with_options_async(request, runtime)
-
-    def get_app_template_with_options(
-        self,
-        request: imp_20210630_models.GetAppTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetAppTemplateResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_template_id):
-            body['AppTemplateId'] = request.app_template_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetAppTemplate',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetAppTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_app_template_with_options_async(
-        self,
-        request: imp_20210630_models.GetAppTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetAppTemplateResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_template_id):
-            body['AppTemplateId'] = request.app_template_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetAppTemplate',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetAppTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_app_template(
-        self,
-        request: imp_20210630_models.GetAppTemplateRequest,
-    ) -> imp_20210630_models.GetAppTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_app_template_with_options(request, runtime)
-
-    async def get_app_template_async(
-        self,
-        request: imp_20210630_models.GetAppTemplateRequest,
-    ) -> imp_20210630_models.GetAppTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_app_template_with_options_async(request, runtime)
-
     def get_auth_token_with_options(
         self,
         request: imp_20210630_models.GetAuthTokenRequest,
@@ -2759,76 +1933,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_conference_with_options_async(request, runtime)
 
-    def get_domain_owner_verify_content_with_options(
-        self,
-        request: imp_20210630_models.GetDomainOwnerVerifyContentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetDomainOwnerVerifyContentResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.live_domain_name):
-            body['LiveDomainName'] = request.live_domain_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetDomainOwnerVerifyContent',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetDomainOwnerVerifyContentResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_domain_owner_verify_content_with_options_async(
-        self,
-        request: imp_20210630_models.GetDomainOwnerVerifyContentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetDomainOwnerVerifyContentResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.live_domain_name):
-            body['LiveDomainName'] = request.live_domain_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetDomainOwnerVerifyContent',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetDomainOwnerVerifyContentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_domain_owner_verify_content(
-        self,
-        request: imp_20210630_models.GetDomainOwnerVerifyContentRequest,
-    ) -> imp_20210630_models.GetDomainOwnerVerifyContentResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_domain_owner_verify_content_with_options(request, runtime)
-
-    async def get_domain_owner_verify_content_async(
-        self,
-        request: imp_20210630_models.GetDomainOwnerVerifyContentRequest,
-    ) -> imp_20210630_models.GetDomainOwnerVerifyContentResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_domain_owner_verify_content_with_options_async(request, runtime)
-
     def get_live_with_options(
         self,
         request: imp_20210630_models.GetLiveRequest,
@@ -2898,92 +2002,6 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.GetLiveResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_live_with_options_async(request, runtime)
-
-    def get_live_domain_status_with_options(
-        self,
-        tmp_req: imp_20210630_models.GetLiveDomainStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetLiveDomainStatusResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.GetLiveDomainStatusShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.live_domain_list):
-            request.live_domain_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.live_domain_list, 'LiveDomainList', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.live_domain_list_shrink):
-            body['LiveDomainList'] = request.live_domain_list_shrink
-        if not UtilClient.is_unset(request.live_domain_type):
-            body['LiveDomainType'] = request.live_domain_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetLiveDomainStatus',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetLiveDomainStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_live_domain_status_with_options_async(
-        self,
-        tmp_req: imp_20210630_models.GetLiveDomainStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetLiveDomainStatusResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.GetLiveDomainStatusShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.live_domain_list):
-            request.live_domain_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.live_domain_list, 'LiveDomainList', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.live_domain_list_shrink):
-            body['LiveDomainList'] = request.live_domain_list_shrink
-        if not UtilClient.is_unset(request.live_domain_type):
-            body['LiveDomainType'] = request.live_domain_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetLiveDomainStatus',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetLiveDomainStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_live_domain_status(
-        self,
-        request: imp_20210630_models.GetLiveDomainStatusRequest,
-    ) -> imp_20210630_models.GetLiveDomainStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_live_domain_status_with_options(request, runtime)
-
-    async def get_live_domain_status_async(
-        self,
-        request: imp_20210630_models.GetLiveDomainStatusRequest,
-    ) -> imp_20210630_models.GetLiveDomainStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_live_domain_status_with_options_async(request, runtime)
 
     def get_live_record_with_options(
         self,
@@ -3367,76 +2385,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_room_with_options_async(request, runtime)
 
-    def get_standard_room_https_certificate_with_options(
-        self,
-        request: imp_20210630_models.GetStandardRoomHttpsCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetStandardRoomHttpsCertificateResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.certificate_id):
-            body['CertificateId'] = request.certificate_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetStandardRoomHttpsCertificate',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetStandardRoomHttpsCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_standard_room_https_certificate_with_options_async(
-        self,
-        request: imp_20210630_models.GetStandardRoomHttpsCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.GetStandardRoomHttpsCertificateResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.certificate_id):
-            body['CertificateId'] = request.certificate_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetStandardRoomHttpsCertificate',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.GetStandardRoomHttpsCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_standard_room_https_certificate(
-        self,
-        request: imp_20210630_models.GetStandardRoomHttpsCertificateRequest,
-    ) -> imp_20210630_models.GetStandardRoomHttpsCertificateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_standard_room_https_certificate_with_options(request, runtime)
-
-    async def get_standard_room_https_certificate_async(
-        self,
-        request: imp_20210630_models.GetStandardRoomHttpsCertificateRequest,
-    ) -> imp_20210630_models.GetStandardRoomHttpsCertificateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_standard_room_https_certificate_with_options_async(request, runtime)
-
     def get_standard_room_jump_url_with_options(
         self,
         request: imp_20210630_models.GetStandardRoomJumpUrlRequest,
@@ -3617,244 +2565,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.kick_room_user_with_options_async(request, runtime)
 
-    def list_app_templates_with_options(
-        self,
-        request: imp_20210630_models.ListAppTemplatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListAppTemplatesResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListAppTemplates',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListAppTemplatesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_app_templates_with_options_async(
-        self,
-        request: imp_20210630_models.ListAppTemplatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListAppTemplatesResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListAppTemplates',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListAppTemplatesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_app_templates(
-        self,
-        request: imp_20210630_models.ListAppTemplatesRequest,
-    ) -> imp_20210630_models.ListAppTemplatesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_app_templates_with_options(request, runtime)
-
-    async def list_app_templates_async(
-        self,
-        request: imp_20210630_models.ListAppTemplatesRequest,
-    ) -> imp_20210630_models.ListAppTemplatesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_app_templates_with_options_async(request, runtime)
-
-    def list_apply_link_mic_users_with_options(
-        self,
-        request: imp_20210630_models.ListApplyLinkMicUsersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListApplyLinkMicUsersResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.conference_id):
-            body['ConferenceId'] = request.conference_id
-        if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListApplyLinkMicUsers',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListApplyLinkMicUsersResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_apply_link_mic_users_with_options_async(
-        self,
-        request: imp_20210630_models.ListApplyLinkMicUsersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListApplyLinkMicUsersResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.conference_id):
-            body['ConferenceId'] = request.conference_id
-        if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListApplyLinkMicUsers',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListApplyLinkMicUsersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_apply_link_mic_users(
-        self,
-        request: imp_20210630_models.ListApplyLinkMicUsersRequest,
-    ) -> imp_20210630_models.ListApplyLinkMicUsersResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_apply_link_mic_users_with_options(request, runtime)
-
-    async def list_apply_link_mic_users_async(
-        self,
-        request: imp_20210630_models.ListApplyLinkMicUsersRequest,
-    ) -> imp_20210630_models.ListApplyLinkMicUsersResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_apply_link_mic_users_with_options_async(request, runtime)
-
-    def list_apps_with_options(
-        self,
-        request: imp_20210630_models.ListAppsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListAppsResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_ids):
-            body['AppIds'] = request.app_ids
-        if not UtilClient.is_unset(request.integration_mode):
-            body['IntegrationMode'] = request.integration_mode
-        if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.status):
-            body['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListApps',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListAppsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_apps_with_options_async(
-        self,
-        request: imp_20210630_models.ListAppsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListAppsResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_ids):
-            body['AppIds'] = request.app_ids
-        if not UtilClient.is_unset(request.integration_mode):
-            body['IntegrationMode'] = request.integration_mode
-        if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.status):
-            body['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListApps',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListAppsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_apps(
-        self,
-        request: imp_20210630_models.ListAppsRequest,
-    ) -> imp_20210630_models.ListAppsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_apps_with_options(request, runtime)
-
-    async def list_apps_async(
-        self,
-        request: imp_20210630_models.ListAppsRequest,
-    ) -> imp_20210630_models.ListAppsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_apps_with_options_async(request, runtime)
-
     def list_classes_with_options(
         self,
         request: imp_20210630_models.ListClassesRequest,
@@ -4026,80 +2736,6 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.ListCommentsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_comments_with_options_async(request, runtime)
-
-    def list_components_with_options(
-        self,
-        request: imp_20210630_models.ListComponentsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListComponentsResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.app_template_id):
-            body['AppTemplateId'] = request.app_template_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListComponents',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListComponentsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_components_with_options_async(
-        self,
-        request: imp_20210630_models.ListComponentsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.ListComponentsResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.app_template_id):
-            body['AppTemplateId'] = request.app_template_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ListComponents',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.ListComponentsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_components(
-        self,
-        request: imp_20210630_models.ListComponentsRequest,
-    ) -> imp_20210630_models.ListComponentsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_components_with_options(request, runtime)
-
-    async def list_components_async(
-        self,
-        request: imp_20210630_models.ListComponentsRequest,
-    ) -> imp_20210630_models.ListComponentsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_components_with_options_async(request, runtime)
 
     def list_conference_users_with_options(
         self,
@@ -4512,6 +3148,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4540,6 +3180,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4724,84 +3368,6 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.PublishLiveRoomResponse:
         runtime = util_models.RuntimeOptions()
         return await self.publish_live_room_with_options_async(request, runtime)
-
-    def reject_link_mic_with_options(
-        self,
-        request: imp_20210630_models.RejectLinkMicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.RejectLinkMicResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.conference_id):
-            body['ConferenceId'] = request.conference_id
-        if not UtilClient.is_unset(request.from_user_id):
-            body['FromUserId'] = request.from_user_id
-        if not UtilClient.is_unset(request.to_user_id):
-            body['ToUserId'] = request.to_user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='RejectLinkMic',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.RejectLinkMicResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def reject_link_mic_with_options_async(
-        self,
-        request: imp_20210630_models.RejectLinkMicRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.RejectLinkMicResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.conference_id):
-            body['ConferenceId'] = request.conference_id
-        if not UtilClient.is_unset(request.from_user_id):
-            body['FromUserId'] = request.from_user_id
-        if not UtilClient.is_unset(request.to_user_id):
-            body['ToUserId'] = request.to_user_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='RejectLinkMic',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.RejectLinkMicResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def reject_link_mic(
-        self,
-        request: imp_20210630_models.RejectLinkMicRequest,
-    ) -> imp_20210630_models.RejectLinkMicResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.reject_link_mic_with_options(request, runtime)
-
-    async def reject_link_mic_async(
-        self,
-        request: imp_20210630_models.RejectLinkMicRequest,
-    ) -> imp_20210630_models.RejectLinkMicResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.reject_link_mic_with_options_async(request, runtime)
 
     def remove_member_with_options(
         self,
@@ -5461,252 +4027,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_live_room_with_options_async(request, runtime)
 
-    def update_app_with_options(
-        self,
-        request: imp_20210630_models.UpdateAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.UpdateAppResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.app_name):
-            body['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.app_status):
-            body['AppStatus'] = request.app_status
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateApp',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.UpdateAppResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_app_with_options_async(
-        self,
-        request: imp_20210630_models.UpdateAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.UpdateAppResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.app_name):
-            body['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.app_status):
-            body['AppStatus'] = request.app_status
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateApp',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.UpdateAppResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_app(
-        self,
-        request: imp_20210630_models.UpdateAppRequest,
-    ) -> imp_20210630_models.UpdateAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_app_with_options(request, runtime)
-
-    async def update_app_async(
-        self,
-        request: imp_20210630_models.UpdateAppRequest,
-    ) -> imp_20210630_models.UpdateAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_app_with_options_async(request, runtime)
-
-    def update_app_template_with_options(
-        self,
-        tmp_req: imp_20210630_models.UpdateAppTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.UpdateAppTemplateResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.UpdateAppTemplateShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.component_list):
-            request.component_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_list, 'ComponentList', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.app_template_id):
-            body['AppTemplateId'] = request.app_template_id
-        if not UtilClient.is_unset(request.app_template_name):
-            body['AppTemplateName'] = request.app_template_name
-        if not UtilClient.is_unset(request.component_list_shrink):
-            body['ComponentList'] = request.component_list_shrink
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateAppTemplate',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.UpdateAppTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_app_template_with_options_async(
-        self,
-        tmp_req: imp_20210630_models.UpdateAppTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.UpdateAppTemplateResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.UpdateAppTemplateShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.component_list):
-            request.component_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_list, 'ComponentList', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.app_template_id):
-            body['AppTemplateId'] = request.app_template_id
-        if not UtilClient.is_unset(request.app_template_name):
-            body['AppTemplateName'] = request.app_template_name
-        if not UtilClient.is_unset(request.component_list_shrink):
-            body['ComponentList'] = request.component_list_shrink
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateAppTemplate',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.UpdateAppTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_app_template(
-        self,
-        request: imp_20210630_models.UpdateAppTemplateRequest,
-    ) -> imp_20210630_models.UpdateAppTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_app_template_with_options(request, runtime)
-
-    async def update_app_template_async(
-        self,
-        request: imp_20210630_models.UpdateAppTemplateRequest,
-    ) -> imp_20210630_models.UpdateAppTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_app_template_with_options_async(request, runtime)
-
-    def update_app_template_config_with_options(
-        self,
-        tmp_req: imp_20210630_models.UpdateAppTemplateConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.UpdateAppTemplateConfigResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.UpdateAppTemplateConfigShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.config_list):
-            request.config_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_list, 'ConfigList', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.app_template_id):
-            body['AppTemplateId'] = request.app_template_id
-        if not UtilClient.is_unset(request.config_list_shrink):
-            body['ConfigList'] = request.config_list_shrink
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateAppTemplateConfig',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.UpdateAppTemplateConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_app_template_config_with_options_async(
-        self,
-        tmp_req: imp_20210630_models.UpdateAppTemplateConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.UpdateAppTemplateConfigResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imp_20210630_models.UpdateAppTemplateConfigShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.config_list):
-            request.config_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_list, 'ConfigList', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.app_template_id):
-            body['AppTemplateId'] = request.app_template_id
-        if not UtilClient.is_unset(request.config_list_shrink):
-            body['ConfigList'] = request.config_list_shrink
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateAppTemplateConfig',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.UpdateAppTemplateConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_app_template_config(
-        self,
-        request: imp_20210630_models.UpdateAppTemplateConfigRequest,
-    ) -> imp_20210630_models.UpdateAppTemplateConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_app_template_config_with_options(request, runtime)
-
-    async def update_app_template_config_async(
-        self,
-        request: imp_20210630_models.UpdateAppTemplateConfigRequest,
-    ) -> imp_20210630_models.UpdateAppTemplateConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_app_template_config_with_options_async(request, runtime)
-
     def update_class_with_options(
         self,
         request: imp_20210630_models.UpdateClassRequest,
@@ -5792,80 +4112,6 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.UpdateClassResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_class_with_options_async(request, runtime)
-
-    def update_conference_with_options(
-        self,
-        request: imp_20210630_models.UpdateConferenceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.UpdateConferenceResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.conference_id):
-            body['ConferenceId'] = request.conference_id
-        if not UtilClient.is_unset(request.title):
-            body['Title'] = request.title
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateConference',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.UpdateConferenceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_conference_with_options_async(
-        self,
-        request: imp_20210630_models.UpdateConferenceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.UpdateConferenceResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.conference_id):
-            body['ConferenceId'] = request.conference_id
-        if not UtilClient.is_unset(request.title):
-            body['Title'] = request.title
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateConference',
-            version='2021-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imp_20210630_models.UpdateConferenceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_conference(
-        self,
-        request: imp_20210630_models.UpdateConferenceRequest,
-    ) -> imp_20210630_models.UpdateConferenceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_conference_with_options(request, runtime)
-
-    async def update_conference_async(
-        self,
-        request: imp_20210630_models.UpdateConferenceRequest,
-    ) -> imp_20210630_models.UpdateConferenceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_conference_with_options_async(request, runtime)
 
     def update_live_with_options(
         self,
@@ -6153,20 +4399,32 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_room_with_options_async(request, runtime)
 
-    def verify_domain_owner_with_options(
+    def update_share_screen_layout_with_options(
         self,
-        request: imp_20210630_models.VerifyDomainOwnerRequest,
+        request: imp_20210630_models.UpdateShareScreenLayoutRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+    ) -> imp_20210630_models.UpdateShareScreenLayoutResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.live_domain_name):
-            body['LiveDomainName'] = request.live_domain_name
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.class_id):
+            body['ClassId'] = request.class_id
+        if not UtilClient.is_unset(request.enable_overlay):
+            body['EnableOverlay'] = request.enable_overlay
+        if not UtilClient.is_unset(request.overlay_height):
+            body['OverlayHeight'] = request.overlay_height
+        if not UtilClient.is_unset(request.overlay_width):
+            body['OverlayWidth'] = request.overlay_width
+        if not UtilClient.is_unset(request.overlay_x):
+            body['OverlayX'] = request.overlay_x
+        if not UtilClient.is_unset(request.overlay_y):
+            body['OverlayY'] = request.overlay_y
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='VerifyDomainOwner',
+            action='UpdateShareScreenLayout',
             version='2021-06-30',
             protocol='HTTPS',
             pathname='/',
@@ -6177,24 +4435,36 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            imp_20210630_models.VerifyDomainOwnerResponse(),
+            imp_20210630_models.UpdateShareScreenLayoutResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def verify_domain_owner_with_options_async(
+    async def update_share_screen_layout_with_options_async(
         self,
-        request: imp_20210630_models.VerifyDomainOwnerRequest,
+        request: imp_20210630_models.UpdateShareScreenLayoutRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+    ) -> imp_20210630_models.UpdateShareScreenLayoutResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.live_domain_name):
-            body['LiveDomainName'] = request.live_domain_name
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.class_id):
+            body['ClassId'] = request.class_id
+        if not UtilClient.is_unset(request.enable_overlay):
+            body['EnableOverlay'] = request.enable_overlay
+        if not UtilClient.is_unset(request.overlay_height):
+            body['OverlayHeight'] = request.overlay_height
+        if not UtilClient.is_unset(request.overlay_width):
+            body['OverlayWidth'] = request.overlay_width
+        if not UtilClient.is_unset(request.overlay_x):
+            body['OverlayX'] = request.overlay_x
+        if not UtilClient.is_unset(request.overlay_y):
+            body['OverlayY'] = request.overlay_y
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='VerifyDomainOwner',
+            action='UpdateShareScreenLayout',
             version='2021-06-30',
             protocol='HTTPS',
             pathname='/',
@@ -6205,20 +4475,20 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            imp_20210630_models.VerifyDomainOwnerResponse(),
+            imp_20210630_models.UpdateShareScreenLayoutResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def verify_domain_owner(
+    def update_share_screen_layout(
         self,
-        request: imp_20210630_models.VerifyDomainOwnerRequest,
-    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+        request: imp_20210630_models.UpdateShareScreenLayoutRequest,
+    ) -> imp_20210630_models.UpdateShareScreenLayoutResponse:
         runtime = util_models.RuntimeOptions()
-        return self.verify_domain_owner_with_options(request, runtime)
+        return self.update_share_screen_layout_with_options(request, runtime)
 
-    async def verify_domain_owner_async(
+    async def update_share_screen_layout_async(
         self,
-        request: imp_20210630_models.VerifyDomainOwnerRequest,
-    ) -> imp_20210630_models.VerifyDomainOwnerResponse:
+        request: imp_20210630_models.UpdateShareScreenLayoutRequest,
+    ) -> imp_20210630_models.UpdateShareScreenLayoutResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.verify_domain_owner_with_options_async(request, runtime)
+        return await self.update_share_screen_layout_with_options_async(request, runtime)

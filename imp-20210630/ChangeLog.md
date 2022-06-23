@@ -1,3 +1,6 @@
+2022-06-23 Version: 2.9.5
+- Update GetLiveRoom API.
+
 2022-05-18 Version: 2.9.4
 - Add UpdateShareScreenLayout API.
 
