@@ -1338,8 +1338,10 @@ class GetAccountForAppRequestPayload(TeaModel):
     def __init__(
         self,
         phone: str = None,
+        origin_uuid: str = None,
     ):
         self.phone = phone
+        self.origin_uuid = origin_uuid
 
     def validate(self):
         pass
@@ -1352,12 +1354,16 @@ class GetAccountForAppRequestPayload(TeaModel):
         result = dict()
         if self.phone is not None:
             result['Phone'] = self.phone
+        if self.origin_uuid is not None:
+            result['originUuid'] = self.origin_uuid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Phone') is not None:
             self.phone = m.get('Phone')
+        if m.get('originUuid') is not None:
+            self.origin_uuid = m.get('originUuid')
         return self
 
 
