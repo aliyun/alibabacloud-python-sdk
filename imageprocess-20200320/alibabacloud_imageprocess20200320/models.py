@@ -4986,13 +4986,17 @@ class ScreenChestCTResponseBodyDataDetectRibFracture(TeaModel):
     def __init__(
         self,
         detections: List[ScreenChestCTResponseBodyDataDetectRibFractureDetections] = None,
+        fracture_mask_url: str = None,
         origin: List[float] = None,
         result_url: str = None,
+        rib_segment_mask_url: str = None,
         spacing: List[float] = None,
     ):
         self.detections = detections
+        self.fracture_mask_url = fracture_mask_url
         self.origin = origin
         self.result_url = result_url
+        self.rib_segment_mask_url = rib_segment_mask_url
         self.spacing = spacing
 
     def validate(self):
@@ -5011,10 +5015,14 @@ class ScreenChestCTResponseBodyDataDetectRibFracture(TeaModel):
         if self.detections is not None:
             for k in self.detections:
                 result['Detections'].append(k.to_map() if k else None)
+        if self.fracture_mask_url is not None:
+            result['FractureMaskURL'] = self.fracture_mask_url
         if self.origin is not None:
             result['Origin'] = self.origin
         if self.result_url is not None:
             result['ResultURL'] = self.result_url
+        if self.rib_segment_mask_url is not None:
+            result['RibSegmentMaskURL'] = self.rib_segment_mask_url
         if self.spacing is not None:
             result['Spacing'] = self.spacing
         return result
@@ -5026,10 +5034,14 @@ class ScreenChestCTResponseBodyDataDetectRibFracture(TeaModel):
             for k in m.get('Detections'):
                 temp_model = ScreenChestCTResponseBodyDataDetectRibFractureDetections()
                 self.detections.append(temp_model.from_map(k))
+        if m.get('FractureMaskURL') is not None:
+            self.fracture_mask_url = m.get('FractureMaskURL')
         if m.get('Origin') is not None:
             self.origin = m.get('Origin')
         if m.get('ResultURL') is not None:
             self.result_url = m.get('ResultURL')
+        if m.get('RibSegmentMaskURL') is not None:
+            self.rib_segment_mask_url = m.get('RibSegmentMaskURL')
         if m.get('Spacing') is not None:
             self.spacing = m.get('Spacing')
         return self
