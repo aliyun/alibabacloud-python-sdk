@@ -1,3 +1,6 @@
+2022-06-24 Version: 2.2.0
+- Add apis for access control of instance.
+
 2022-06-16 Version: 2.1.7
 - Add response paramof api DescribeInstances.
 

@@ -120,6 +120,116 @@ class AbolishApiResponse(TeaModel):
         return self
 
 
+class AddAccessControlListEntryRequest(TeaModel):
+    def __init__(
+        self,
+        acl_entrys: str = None,
+        acl_id: str = None,
+        security_token: str = None,
+    ):
+        self.acl_entrys = acl_entrys
+        self.acl_id = acl_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_entrys is not None:
+            result['AclEntrys'] = self.acl_entrys
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclEntrys') is not None:
+            self.acl_entrys = m.get('AclEntrys')
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class AddAccessControlListEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddAccessControlListEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddAccessControlListEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddAccessControlListEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddIpControlPolicyItemRequest(TeaModel):
     def __init__(
         self,
@@ -808,6 +918,110 @@ class BatchDeployApisResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchDeployApisResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAccessControlListRequest(TeaModel):
+    def __init__(
+        self,
+        acl_name: str = None,
+        security_token: str = None,
+    ):
+        self.acl_name = acl_name
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_name is not None:
+            result['AclName'] = self.acl_name
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclName') is not None:
+            self.acl_name = m.get('AclName')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class CreateAccessControlListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateAccessControlListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAccessControlListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAccessControlListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3144,6 +3358,110 @@ class CreateTrafficControlResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateTrafficControlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAccessControlListRequest(TeaModel):
+    def __init__(
+        self,
+        acl_id: str = None,
+        security_token: str = None,
+    ):
+        self.acl_id = acl_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DeleteAccessControlListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAccessControlListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAccessControlListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAccessControlListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5608,6 +5926,414 @@ class DescribeAbolishApiTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAbolishApiTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAccessControlListAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        acl_id: str = None,
+        security_token: str = None,
+    ):
+        self.acl_id = acl_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry(TeaModel):
+    def __init__(
+        self,
+        acl_entry_comment: str = None,
+        acl_entry_ip: str = None,
+    ):
+        self.acl_entry_comment = acl_entry_comment
+        self.acl_entry_ip = acl_entry_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_entry_comment is not None:
+            result['AclEntryComment'] = self.acl_entry_comment
+        if self.acl_entry_ip is not None:
+            result['AclEntryIp'] = self.acl_entry_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclEntryComment') is not None:
+            self.acl_entry_comment = m.get('AclEntryComment')
+        if m.get('AclEntryIp') is not None:
+            self.acl_entry_ip = m.get('AclEntryIp')
+        return self
+
+
+class DescribeAccessControlListAttributeResponseBodyAclEntrys(TeaModel):
+    def __init__(
+        self,
+        acl_entry: List[DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry] = None,
+    ):
+        self.acl_entry = acl_entry
+
+    def validate(self):
+        if self.acl_entry:
+            for k in self.acl_entry:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AclEntry'] = []
+        if self.acl_entry is not None:
+            for k in self.acl_entry:
+                result['AclEntry'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.acl_entry = []
+        if m.get('AclEntry') is not None:
+            for k in m.get('AclEntry'):
+                temp_model = DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry()
+                self.acl_entry.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAccessControlListAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        acl_entrys: DescribeAccessControlListAttributeResponseBodyAclEntrys = None,
+        acl_id: str = None,
+        acl_name: str = None,
+        is_used: str = None,
+        request_id: str = None,
+    ):
+        self.acl_entrys = acl_entrys
+        self.acl_id = acl_id
+        self.acl_name = acl_name
+        self.is_used = is_used
+        self.request_id = request_id
+
+    def validate(self):
+        if self.acl_entrys:
+            self.acl_entrys.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_entrys is not None:
+            result['AclEntrys'] = self.acl_entrys.to_map()
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        if self.acl_name is not None:
+            result['AclName'] = self.acl_name
+        if self.is_used is not None:
+            result['IsUsed'] = self.is_used
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclEntrys') is not None:
+            temp_model = DescribeAccessControlListAttributeResponseBodyAclEntrys()
+            self.acl_entrys = temp_model.from_map(m['AclEntrys'])
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
+        if m.get('AclName') is not None:
+            self.acl_name = m.get('AclName')
+        if m.get('IsUsed') is not None:
+            self.is_used = m.get('IsUsed')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAccessControlListAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAccessControlListAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAccessControlListAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAccessControlListsRequest(TeaModel):
+    def __init__(
+        self,
+        acl_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        security_token: str = None,
+    ):
+        self.acl_name = acl_name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_name is not None:
+            result['AclName'] = self.acl_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclName') is not None:
+            self.acl_name = m.get('AclName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeAccessControlListsResponseBodyAclsAcl(TeaModel):
+    def __init__(
+        self,
+        acl_id: str = None,
+        acl_name: str = None,
+    ):
+        self.acl_id = acl_id
+        self.acl_name = acl_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        if self.acl_name is not None:
+            result['AclName'] = self.acl_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
+        if m.get('AclName') is not None:
+            self.acl_name = m.get('AclName')
+        return self
+
+
+class DescribeAccessControlListsResponseBodyAcls(TeaModel):
+    def __init__(
+        self,
+        acl: List[DescribeAccessControlListsResponseBodyAclsAcl] = None,
+    ):
+        self.acl = acl
+
+    def validate(self):
+        if self.acl:
+            for k in self.acl:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Acl'] = []
+        if self.acl is not None:
+            for k in self.acl:
+                result['Acl'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.acl = []
+        if m.get('Acl') is not None:
+            for k in m.get('Acl'):
+                temp_model = DescribeAccessControlListsResponseBodyAclsAcl()
+                self.acl.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAccessControlListsResponseBody(TeaModel):
+    def __init__(
+        self,
+        acls: DescribeAccessControlListsResponseBodyAcls = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.acls = acls
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.acls:
+            self.acls.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acls is not None:
+            result['Acls'] = self.acls.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Acls') is not None:
+            temp_model = DescribeAccessControlListsResponseBodyAcls()
+            self.acls = temp_model.from_map(m['Acls'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeAccessControlListsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAccessControlListsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAccessControlListsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19096,6 +19822,10 @@ class DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttribu
 class DescribeInstancesResponseBodyInstancesInstanceAttribute(TeaModel):
     def __init__(
         self,
+        acl_id: str = None,
+        acl_name: str = None,
+        acl_status: str = None,
+        acl_type: str = None,
         classic_egress_address: str = None,
         created_time: str = None,
         egress_ipv_6enable: bool = None,
@@ -19122,6 +19852,10 @@ class DescribeInstancesResponseBodyInstancesInstanceAttribute(TeaModel):
         zone_id: str = None,
         zone_local_name: str = None,
     ):
+        self.acl_id = acl_id
+        self.acl_name = acl_name
+        self.acl_status = acl_status
+        self.acl_type = acl_type
         self.classic_egress_address = classic_egress_address
         self.created_time = created_time
         self.egress_ipv_6enable = egress_ipv_6enable
@@ -19158,6 +19892,14 @@ class DescribeInstancesResponseBodyInstancesInstanceAttribute(TeaModel):
             return _map
 
         result = dict()
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        if self.acl_name is not None:
+            result['AclName'] = self.acl_name
+        if self.acl_status is not None:
+            result['AclStatus'] = self.acl_status
+        if self.acl_type is not None:
+            result['AclType'] = self.acl_type
         if self.classic_egress_address is not None:
             result['ClassicEgressAddress'] = self.classic_egress_address
         if self.created_time is not None:
@@ -19212,6 +19954,14 @@ class DescribeInstancesResponseBodyInstancesInstanceAttribute(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
+        if m.get('AclName') is not None:
+            self.acl_name = m.get('AclName')
+        if m.get('AclStatus') is not None:
+            self.acl_status = m.get('AclStatus')
+        if m.get('AclType') is not None:
+            self.acl_type = m.get('AclType')
         if m.get('ClassicEgressAddress') is not None:
             self.classic_egress_address = m.get('ClassicEgressAddress')
         if m.get('CreatedTime') is not None:
@@ -24684,6 +25434,116 @@ class DetachPluginResponse(TeaModel):
         return self
 
 
+class DisableInstanceAccessControlRequest(TeaModel):
+    def __init__(
+        self,
+        acl_id: str = None,
+        instance_id: str = None,
+        security_token: str = None,
+    ):
+        self.acl_id = acl_id
+        self.instance_id = instance_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DisableInstanceAccessControlResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableInstanceAccessControlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableInstanceAccessControlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableInstanceAccessControlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DryRunSwaggerRequest(TeaModel):
     def __init__(
         self,
@@ -25220,6 +26080,122 @@ class DryRunSwaggerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DryRunSwaggerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableInstanceAccessControlRequest(TeaModel):
+    def __init__(
+        self,
+        acl_id: str = None,
+        acl_type: str = None,
+        instance_id: str = None,
+        security_token: str = None,
+    ):
+        self.acl_id = acl_id
+        self.acl_type = acl_type
+        self.instance_id = instance_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        if self.acl_type is not None:
+            result['AclType'] = self.acl_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
+        if m.get('AclType') is not None:
+            self.acl_type = m.get('AclType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class EnableInstanceAccessControlResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableInstanceAccessControlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableInstanceAccessControlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableInstanceAccessControlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28577,6 +29553,116 @@ class ReactivateDomainResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReactivateDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RemoveAccessControlListEntryRequest(TeaModel):
+    def __init__(
+        self,
+        acl_entrys: str = None,
+        acl_id: str = None,
+        security_token: str = None,
+    ):
+        self.acl_entrys = acl_entrys
+        self.acl_id = acl_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_entrys is not None:
+            result['AclEntrys'] = self.acl_entrys
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclEntrys') is not None:
+            self.acl_entrys = m.get('AclEntrys')
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class RemoveAccessControlListEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RemoveAccessControlListEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveAccessControlListEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveAccessControlListEntryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
