@@ -6776,6 +6776,7 @@ class CreateOfficeConversionTaskRequest(TeaModel):
         start_page: int = None,
         tags: Dict[str, Any] = None,
         target_type: str = None,
+        target_uri: str = None,
         target_uriprefix: str = None,
         trim_policy: TrimPolicy = None,
         user_data: str = None,
@@ -6835,6 +6836,8 @@ class CreateOfficeConversionTaskRequest(TeaModel):
         self.tags = tags
         # 输出文件格式
         self.target_type = target_type
+        # 文档转换输出地址模式
+        self.target_uri = target_uri
         # 文档转换输出文件地址前缀
         self.target_uriprefix = target_uriprefix
         # 表格瘦身
@@ -6910,6 +6913,8 @@ class CreateOfficeConversionTaskRequest(TeaModel):
             result['Tags'] = self.tags
         if self.target_type is not None:
             result['TargetType'] = self.target_type
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
         if self.target_uriprefix is not None:
             result['TargetURIPrefix'] = self.target_uriprefix
         if self.trim_policy is not None:
@@ -6977,6 +6982,8 @@ class CreateOfficeConversionTaskRequest(TeaModel):
             self.tags = m.get('Tags')
         if m.get('TargetType') is not None:
             self.target_type = m.get('TargetType')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
         if m.get('TargetURIPrefix') is not None:
             self.target_uriprefix = m.get('TargetURIPrefix')
         if m.get('TrimPolicy') is not None:
@@ -7018,6 +7025,7 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
         start_page: int = None,
         tags_shrink: str = None,
         target_type: str = None,
+        target_uri: str = None,
         target_uriprefix: str = None,
         trim_policy_shrink: str = None,
         user_data: str = None,
@@ -7077,6 +7085,8 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
         self.tags_shrink = tags_shrink
         # 输出文件格式
         self.target_type = target_type
+        # 文档转换输出地址模式
+        self.target_uri = target_uri
         # 文档转换输出文件地址前缀
         self.target_uriprefix = target_uriprefix
         # 表格瘦身
@@ -7149,6 +7159,8 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
             result['Tags'] = self.tags_shrink
         if self.target_type is not None:
             result['TargetType'] = self.target_type
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
         if self.target_uriprefix is not None:
             result['TargetURIPrefix'] = self.target_uriprefix
         if self.trim_policy_shrink is not None:
@@ -7215,6 +7227,8 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
             self.tags_shrink = m.get('Tags')
         if m.get('TargetType') is not None:
             self.target_type = m.get('TargetType')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
         if m.get('TargetURIPrefix') is not None:
             self.target_uriprefix = m.get('TargetURIPrefix')
         if m.get('TrimPolicy') is not None:

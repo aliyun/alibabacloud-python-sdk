@@ -1275,6 +1275,8 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.target_type):
             query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
         if not UtilClient.is_unset(request.target_uriprefix):
             query['TargetURIPrefix'] = request.target_uriprefix
         if not UtilClient.is_unset(request.trim_policy_shrink):
@@ -1371,6 +1373,8 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.target_type):
             query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
         if not UtilClient.is_unset(request.target_uriprefix):
             query['TargetURIPrefix'] = request.target_uriprefix
         if not UtilClient.is_unset(request.trim_policy_shrink):
