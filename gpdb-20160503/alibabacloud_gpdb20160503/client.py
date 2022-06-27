@@ -1406,6 +1406,358 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_attribute_with_options_async(request, runtime)
 
+    def describe_dbinstance_data_bloat_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceDataBloatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstanceDataBloatResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceDataBloat',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstanceDataBloatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_data_bloat_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceDataBloatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstanceDataBloatResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceDataBloat',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstanceDataBloatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_data_bloat(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceDataBloatRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstanceDataBloatResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_data_bloat_with_options(request, runtime)
+
+    async def describe_dbinstance_data_bloat_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceDataBloatRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstanceDataBloatResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_data_bloat_with_options_async(request, runtime)
+
+    def describe_dbinstance_data_skew_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceDataSkewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstanceDataSkewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceDataSkew',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstanceDataSkewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_data_skew_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceDataSkewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstanceDataSkewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceDataSkew',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstanceDataSkewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_data_skew(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceDataSkewRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstanceDataSkewResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_data_skew_with_options(request, runtime)
+
+    async def describe_dbinstance_data_skew_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceDataSkewRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstanceDataSkewResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_data_skew_with_options_async(request, runtime)
+
+    def describe_dbinstance_diagnosis_summary_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.role_preferd):
+            query['RolePreferd'] = request.role_preferd
+        if not UtilClient.is_unset(request.start_status):
+            query['StartStatus'] = request.start_status
+        if not UtilClient.is_unset(request.sync_mode):
+            query['SyncMode'] = request.sync_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceDiagnosisSummary',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_diagnosis_summary_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.role_preferd):
+            query['RolePreferd'] = request.role_preferd
+        if not UtilClient.is_unset(request.start_status):
+            query['StartStatus'] = request.start_status
+        if not UtilClient.is_unset(request.sync_mode):
+            query['SyncMode'] = request.sync_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceDiagnosisSummary',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_diagnosis_summary(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_diagnosis_summary_with_options(request, runtime)
+
+    async def describe_dbinstance_diagnosis_summary_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_diagnosis_summary_with_options_async(request, runtime)
+
+    def describe_dbinstance_error_log_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceErrorLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstanceErrorLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.keywords):
+            query['Keywords'] = request.keywords
+        if not UtilClient.is_unset(request.log_level):
+            query['LogLevel'] = request.log_level
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceErrorLog',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstanceErrorLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_error_log_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceErrorLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstanceErrorLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.keywords):
+            query['Keywords'] = request.keywords
+        if not UtilClient.is_unset(request.log_level):
+            query['LogLevel'] = request.log_level
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceErrorLog',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstanceErrorLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_error_log(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceErrorLogRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstanceErrorLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_error_log_with_options(request, runtime)
+
+    async def describe_dbinstance_error_log_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceErrorLogRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstanceErrorLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_error_log_with_options_async(request, runtime)
+
     def describe_dbinstance_iparray_list_with_options(
         self,
         request: gpdb_20160503_models.DescribeDBInstanceIPArrayListRequest,
@@ -1475,6 +1827,84 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.DescribeDBInstanceIPArrayListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_iparray_list_with_options_async(request, runtime)
+
+    def describe_dbinstance_index_usage_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceIndexUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceIndexUsage',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_index_usage_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceIndexUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceIndexUsage',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_index_usage(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceIndexUsageRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_index_usage_with_options(request, runtime)
+
+    async def describe_dbinstance_index_usage_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstanceIndexUsageRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_index_usage_with_options_async(request, runtime)
 
     def describe_dbinstance_net_info_with_options(
         self,
@@ -2269,6 +2699,420 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.DescribeDataSharePerformanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_share_performance_with_options_async(request, runtime)
+
+    def describe_diagnosis_dimensions_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisDimensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDiagnosisDimensionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosisDimensions',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDiagnosisDimensionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_diagnosis_dimensions_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisDimensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDiagnosisDimensionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosisDimensions',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDiagnosisDimensionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_diagnosis_dimensions(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisDimensionsRequest,
+    ) -> gpdb_20160503_models.DescribeDiagnosisDimensionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_diagnosis_dimensions_with_options(request, runtime)
+
+    async def describe_diagnosis_dimensions_async(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisDimensionsRequest,
+    ) -> gpdb_20160503_models.DescribeDiagnosisDimensionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_diagnosis_dimensions_with_options_async(request, runtime)
+
+    def describe_diagnosis_monitor_performance_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.query_condition):
+            query['QueryCondition'] = request.query_condition
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosisMonitorPerformance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_diagnosis_monitor_performance_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.query_condition):
+            query['QueryCondition'] = request.query_condition
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosisMonitorPerformance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_diagnosis_monitor_performance(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceRequest,
+    ) -> gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_diagnosis_monitor_performance_with_options(request, runtime)
+
+    async def describe_diagnosis_monitor_performance_async(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceRequest,
+    ) -> gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_diagnosis_monitor_performance_with_options_async(request, runtime)
+
+    def describe_diagnosis_records_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDiagnosisRecordsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_condition):
+            query['QueryCondition'] = request.query_condition
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosisRecords',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDiagnosisRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_diagnosis_records_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDiagnosisRecordsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_condition):
+            query['QueryCondition'] = request.query_condition
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosisRecords',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDiagnosisRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_diagnosis_records(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisRecordsRequest,
+    ) -> gpdb_20160503_models.DescribeDiagnosisRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_diagnosis_records_with_options(request, runtime)
+
+    async def describe_diagnosis_records_async(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisRecordsRequest,
+    ) -> gpdb_20160503_models.DescribeDiagnosisRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_diagnosis_records_with_options_async(request, runtime)
+
+    def describe_diagnosis_sqlinfo_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisSQLInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.query_id):
+            query['QueryID'] = request.query_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosisSQLInfo',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_diagnosis_sqlinfo_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisSQLInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.query_id):
+            query['QueryID'] = request.query_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosisSQLInfo',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_diagnosis_sqlinfo(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisSQLInfoRequest,
+    ) -> gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_diagnosis_sqlinfo_with_options(request, runtime)
+
+    async def describe_diagnosis_sqlinfo_async(
+        self,
+        request: gpdb_20160503_models.DescribeDiagnosisSQLInfoRequest,
+    ) -> gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_diagnosis_sqlinfo_with_options_async(request, runtime)
+
+    def describe_download_records_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDownloadRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDownloadRecordsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDownloadRecords',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDownloadRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_download_records_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDownloadRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDownloadRecordsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDownloadRecords',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDownloadRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_download_records(
+        self,
+        request: gpdb_20160503_models.DescribeDownloadRecordsRequest,
+    ) -> gpdb_20160503_models.DescribeDownloadRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_download_records_with_options(request, runtime)
+
+    async def describe_download_records_async(
+        self,
+        request: gpdb_20160503_models.DescribeDownloadRecordsRequest,
+    ) -> gpdb_20160503_models.DescribeDownloadRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_download_records_with_options_async(request, runtime)
 
     def describe_health_status_with_options(
         self,
@@ -4049,6 +4893,100 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.DescribeUserEncryptionKeyListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_encryption_key_list_with_options_async(request, runtime)
+
+    def download_diagnosis_records_with_options(
+        self,
+        request: gpdb_20160503_models.DownloadDiagnosisRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DownloadDiagnosisRecordsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.query_condition):
+            query['QueryCondition'] = request.query_condition
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadDiagnosisRecords',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DownloadDiagnosisRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_diagnosis_records_with_options_async(
+        self,
+        request: gpdb_20160503_models.DownloadDiagnosisRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DownloadDiagnosisRecordsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.query_condition):
+            query['QueryCondition'] = request.query_condition
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadDiagnosisRecords',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DownloadDiagnosisRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_diagnosis_records(
+        self,
+        request: gpdb_20160503_models.DownloadDiagnosisRecordsRequest,
+    ) -> gpdb_20160503_models.DownloadDiagnosisRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.download_diagnosis_records_with_options(request, runtime)
+
+    async def download_diagnosis_records_async(
+        self,
+        request: gpdb_20160503_models.DownloadDiagnosisRecordsRequest,
+    ) -> gpdb_20160503_models.DownloadDiagnosisRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.download_diagnosis_records_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,

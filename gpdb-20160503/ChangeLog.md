@@ -1,3 +1,6 @@
+2022-06-27 Version: 1.1.9
+- Support diagnose instance.
+
 2022-05-30 Version: 1.1.8
 - Support rebalance instance.
 
