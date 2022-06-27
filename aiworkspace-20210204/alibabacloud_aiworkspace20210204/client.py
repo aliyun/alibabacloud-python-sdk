@@ -871,6 +871,378 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def create_model(
+        self,
+        request: aiwork_space_20210204_models.CreateModelRequest,
+    ) -> aiwork_space_20210204_models.CreateModelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_model_with_options(request, headers, runtime)
+
+    async def create_model_async(
+        self,
+        request: aiwork_space_20210204_models.CreateModelRequest,
+    ) -> aiwork_space_20210204_models.CreateModelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_model_with_options_async(request, headers, runtime)
+
+    def create_model_with_options(
+        self,
+        request: aiwork_space_20210204_models.CreateModelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateModelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.model_description):
+            body['ModelDescription'] = request.model_description
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateModel',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_model_with_options_async(
+        self,
+        request: aiwork_space_20210204_models.CreateModelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateModelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.model_description):
+            body['ModelDescription'] = request.model_description
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateModel',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_model_labels(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.CreateModelLabelsRequest,
+    ) -> aiwork_space_20210204_models.CreateModelLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_model_labels_with_options(model_id, request, headers, runtime)
+
+    async def create_model_labels_async(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.CreateModelLabelsRequest,
+    ) -> aiwork_space_20210204_models.CreateModelLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_model_labels_with_options_async(model_id, request, headers, runtime)
+
+    def create_model_labels_with_options(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.CreateModelLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateModelLabelsResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        body = {}
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateModelLabels',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/labels',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateModelLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_model_labels_with_options_async(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.CreateModelLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateModelLabelsResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        body = {}
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateModelLabels',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/labels',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateModelLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_model_version(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.CreateModelVersionRequest,
+    ) -> aiwork_space_20210204_models.CreateModelVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_model_version_with_options(model_id, request, headers, runtime)
+
+    async def create_model_version_async(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.CreateModelVersionRequest,
+    ) -> aiwork_space_20210204_models.CreateModelVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_model_version_with_options_async(model_id, request, headers, runtime)
+
+    def create_model_version_with_options(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.CreateModelVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateModelVersionResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        body = {}
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.framework_type):
+            body['FrameworkType'] = request.framework_type
+        if not UtilClient.is_unset(request.inference_spec):
+            body['InferenceSpec'] = request.inference_spec
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.options):
+            body['Options'] = request.options
+        if not UtilClient.is_unset(request.uri):
+            body['Uri'] = request.uri
+        if not UtilClient.is_unset(request.version_description):
+            body['VersionDescription'] = request.version_description
+        if not UtilClient.is_unset(request.version_name):
+            body['VersionName'] = request.version_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateModelVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/versions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateModelVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_model_version_with_options_async(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.CreateModelVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateModelVersionResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        body = {}
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.framework_type):
+            body['FrameworkType'] = request.framework_type
+        if not UtilClient.is_unset(request.inference_spec):
+            body['InferenceSpec'] = request.inference_spec
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.options):
+            body['Options'] = request.options
+        if not UtilClient.is_unset(request.uri):
+            body['Uri'] = request.uri
+        if not UtilClient.is_unset(request.version_description):
+            body['VersionDescription'] = request.version_description
+        if not UtilClient.is_unset(request.version_name):
+            body['VersionName'] = request.version_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateModelVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/versions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateModelVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_model_version_labels(
+        self,
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.CreateModelVersionLabelsRequest,
+    ) -> aiwork_space_20210204_models.CreateModelVersionLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_model_version_labels_with_options(model_id, version_name, request, headers, runtime)
+
+    async def create_model_version_labels_async(
+        self,
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.CreateModelVersionLabelsRequest,
+    ) -> aiwork_space_20210204_models.CreateModelVersionLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_model_version_labels_with_options_async(model_id, version_name, request, headers, runtime)
+
+    def create_model_version_labels_with_options(
+        self,
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.CreateModelVersionLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateModelVersionLabelsResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        version_name = OpenApiUtilClient.get_encode_param(version_name)
+        body = {}
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateModelVersionLabels',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/versions/{version_name}/labels',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateModelVersionLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_model_version_labels_with_options_async(
+        self,
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.CreateModelVersionLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateModelVersionLabelsResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        version_name = OpenApiUtilClient.get_encode_param(version_name)
+        body = {}
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateModelVersionLabels',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/versions/{version_name}/labels',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateModelVersionLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def create_product_orders(
         self,
         request: aiwork_space_20210204_models.CreateProductOrdersRequest,
@@ -1553,6 +1925,318 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def delete_model(
+        self,
+        model_id: str,
+    ) -> aiwork_space_20210204_models.DeleteModelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_model_with_options(model_id, headers, runtime)
+
+    async def delete_model_async(
+        self,
+        model_id: str,
+    ) -> aiwork_space_20210204_models.DeleteModelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_model_with_options_async(model_id, headers, runtime)
+
+    def delete_model_with_options(
+        self,
+        model_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteModelResponse:
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteModel',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_model_with_options_async(
+        self,
+        model_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteModelResponse:
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteModel',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_model_labels(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.DeleteModelLabelsRequest,
+    ) -> aiwork_space_20210204_models.DeleteModelLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_model_labels_with_options(model_id, request, headers, runtime)
+
+    async def delete_model_labels_async(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.DeleteModelLabelsRequest,
+    ) -> aiwork_space_20210204_models.DeleteModelLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_model_labels_with_options_async(model_id, request, headers, runtime)
+
+    def delete_model_labels_with_options(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.DeleteModelLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteModelLabelsResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        query = {}
+        if not UtilClient.is_unset(request.keys):
+            query['Keys'] = request.keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteModelLabels',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/labels',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteModelLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_model_labels_with_options_async(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.DeleteModelLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteModelLabelsResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        query = {}
+        if not UtilClient.is_unset(request.keys):
+            query['Keys'] = request.keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteModelLabels',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/labels',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteModelLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_model_version(
+        self,
+        model_id: str,
+        version_name: str,
+    ) -> aiwork_space_20210204_models.DeleteModelVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_model_version_with_options(model_id, version_name, headers, runtime)
+
+    async def delete_model_version_async(
+        self,
+        model_id: str,
+        version_name: str,
+    ) -> aiwork_space_20210204_models.DeleteModelVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_model_version_with_options_async(model_id, version_name, headers, runtime)
+
+    def delete_model_version_with_options(
+        self,
+        model_id: str,
+        version_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteModelVersionResponse:
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        version_name = OpenApiUtilClient.get_encode_param(version_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteModelVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/versions/{version_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteModelVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_model_version_with_options_async(
+        self,
+        model_id: str,
+        version_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteModelVersionResponse:
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        version_name = OpenApiUtilClient.get_encode_param(version_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteModelVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/versions/{version_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteModelVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_model_version_labels(
+        self,
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.DeleteModelVersionLabelsRequest,
+    ) -> aiwork_space_20210204_models.DeleteModelVersionLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_model_version_labels_with_options(model_id, version_name, request, headers, runtime)
+
+    async def delete_model_version_labels_async(
+        self,
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.DeleteModelVersionLabelsRequest,
+    ) -> aiwork_space_20210204_models.DeleteModelVersionLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_model_version_labels_with_options_async(model_id, version_name, request, headers, runtime)
+
+    def delete_model_version_labels_with_options(
+        self,
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.DeleteModelVersionLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteModelVersionLabelsResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        version_name = OpenApiUtilClient.get_encode_param(version_name)
+        query = {}
+        if not UtilClient.is_unset(request.keys):
+            query['Keys'] = request.keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteModelVersionLabels',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/versions/{version_name}/labels',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteModelVersionLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_model_version_labels_with_options_async(
+        self,
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.DeleteModelVersionLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteModelVersionLabelsResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        version_name = OpenApiUtilClient.get_encode_param(version_name)
+        query = {}
+        if not UtilClient.is_unset(request.keys):
+            query['Keys'] = request.keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteModelVersionLabels',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/versions/{version_name}/labels',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteModelVersionLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def delete_workspace(
         self,
         workspace_id: str,
@@ -1618,6 +2302,94 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             aiwork_space_20210204_models.DeleteWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_workspace_resource(
+        self,
+        resource_group_name: str,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.DeleteWorkspaceResourceRequest,
+    ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_workspace_resource_with_options(resource_group_name, workspace_id, request, headers, runtime)
+
+    async def delete_workspace_resource_async(
+        self,
+        resource_group_name: str,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.DeleteWorkspaceResourceRequest,
+    ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_workspace_resource_with_options_async(resource_group_name, workspace_id, request, headers, runtime)
+
+    def delete_workspace_resource_with_options(
+        self,
+        resource_group_name: str,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.DeleteWorkspaceResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
+        UtilClient.validate_model(request)
+        resource_group_name = OpenApiUtilClient.get_encode_param(resource_group_name)
+        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
+        query = {}
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWorkspaceResource',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{workspace_id}/resources/{resource_group_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteWorkspaceResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_workspace_resource_with_options_async(
+        self,
+        resource_group_name: str,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.DeleteWorkspaceResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
+        UtilClient.validate_model(request)
+        resource_group_name = OpenApiUtilClient.get_encode_param(resource_group_name)
+        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
+        query = {}
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWorkspaceResource',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{workspace_id}/resources/{resource_group_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteWorkspaceResourceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -1909,23 +2681,35 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_default_workspace(self) -> aiwork_space_20210204_models.GetDefaultWorkspaceResponse:
+    def get_default_workspace(
+        self,
+        request: aiwork_space_20210204_models.GetDefaultWorkspaceRequest,
+    ) -> aiwork_space_20210204_models.GetDefaultWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_default_workspace_with_options(headers, runtime)
+        return self.get_default_workspace_with_options(request, headers, runtime)
 
-    async def get_default_workspace_async(self) -> aiwork_space_20210204_models.GetDefaultWorkspaceResponse:
+    async def get_default_workspace_async(
+        self,
+        request: aiwork_space_20210204_models.GetDefaultWorkspaceRequest,
+    ) -> aiwork_space_20210204_models.GetDefaultWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_default_workspace_with_options_async(headers, runtime)
+        return await self.get_default_workspace_with_options_async(request, headers, runtime)
 
     def get_default_workspace_with_options(
         self,
+        request: aiwork_space_20210204_models.GetDefaultWorkspaceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDefaultWorkspaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetDefaultWorkspace',
@@ -1945,11 +2729,17 @@ class Client(OpenApiClient):
 
     async def get_default_workspace_with_options_async(
         self,
+        request: aiwork_space_20210204_models.GetDefaultWorkspaceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDefaultWorkspaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetDefaultWorkspace',
@@ -2207,6 +2997,148 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def get_model(
+        self,
+        model_id: str,
+    ) -> aiwork_space_20210204_models.GetModelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_model_with_options(model_id, headers, runtime)
+
+    async def get_model_async(
+        self,
+        model_id: str,
+    ) -> aiwork_space_20210204_models.GetModelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_model_with_options_async(model_id, headers, runtime)
+
+    def get_model_with_options(
+        self,
+        model_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetModelResponse:
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetModel',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.GetModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_model_with_options_async(
+        self,
+        model_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetModelResponse:
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetModel',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.GetModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_model_version(
+        self,
+        model_id: str,
+        version_name: str,
+    ) -> aiwork_space_20210204_models.GetModelVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_model_version_with_options(model_id, version_name, headers, runtime)
+
+    async def get_model_version_async(
+        self,
+        model_id: str,
+        version_name: str,
+    ) -> aiwork_space_20210204_models.GetModelVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_model_version_with_options_async(model_id, version_name, headers, runtime)
+
+    def get_model_version_with_options(
+        self,
+        model_id: str,
+        version_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetModelVersionResponse:
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        version_name = OpenApiUtilClient.get_encode_param(version_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetModelVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/versions/{version_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.GetModelVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_model_version_with_options_async(
+        self,
+        model_id: str,
+        version_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetModelVersionResponse:
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        version_name = OpenApiUtilClient.get_encode_param(version_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetModelVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/versions/{version_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.GetModelVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def get_permission(
         self,
         workspace_id: str,
@@ -2378,28 +3310,36 @@ class Client(OpenApiClient):
     def get_workspace(
         self,
         workspace_id: str,
+        request: aiwork_space_20210204_models.GetWorkspaceRequest,
     ) -> aiwork_space_20210204_models.GetWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_workspace_with_options(workspace_id, headers, runtime)
+        return self.get_workspace_with_options(workspace_id, request, headers, runtime)
 
     async def get_workspace_async(
         self,
         workspace_id: str,
+        request: aiwork_space_20210204_models.GetWorkspaceRequest,
     ) -> aiwork_space_20210204_models.GetWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_workspace_with_options_async(workspace_id, headers, runtime)
+        return await self.get_workspace_with_options_async(workspace_id, request, headers, runtime)
 
     def get_workspace_with_options(
         self,
         workspace_id: str,
+        request: aiwork_space_20210204_models.GetWorkspaceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetWorkspaceResponse:
+        UtilClient.validate_model(request)
         workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
+        query = {}
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetWorkspace',
@@ -2420,12 +3360,18 @@ class Client(OpenApiClient):
     async def get_workspace_with_options_async(
         self,
         workspace_id: str,
+        request: aiwork_space_20210204_models.GetWorkspaceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetWorkspaceResponse:
+        UtilClient.validate_model(request)
         workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
+        query = {}
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetWorkspace',
@@ -3175,6 +4121,216 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def list_model_versions(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.ListModelVersionsRequest,
+    ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_model_versions_with_options(model_id, request, headers, runtime)
+
+    async def list_model_versions_async(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.ListModelVersionsRequest,
+    ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_model_versions_with_options_async(model_id, request, headers, runtime)
+
+    def list_model_versions_with_options(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.ListModelVersionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        query = {}
+        if not UtilClient.is_unset(request.format_type):
+            query['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.framework_type):
+            query['FrameworkType'] = request.framework_type
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.versionl_name):
+            query['VersionlName'] = request.versionl_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListModelVersions',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/versions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.ListModelVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_model_versions_with_options_async(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.ListModelVersionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        query = {}
+        if not UtilClient.is_unset(request.format_type):
+            query['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.framework_type):
+            query['FrameworkType'] = request.framework_type
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.versionl_name):
+            query['VersionlName'] = request.versionl_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListModelVersions',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/versions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.ListModelVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_models(
+        self,
+        request: aiwork_space_20210204_models.ListModelsRequest,
+    ) -> aiwork_space_20210204_models.ListModelsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_models_with_options(request, headers, runtime)
+
+    async def list_models_async(
+        self,
+        request: aiwork_space_20210204_models.ListModelsRequest,
+    ) -> aiwork_space_20210204_models.ListModelsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_models_with_options_async(request, headers, runtime)
+
+    def list_models_with_options(
+        self,
+        request: aiwork_space_20210204_models.ListModelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListModelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.model_name):
+            query['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListModels',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.ListModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_models_with_options_async(
+        self,
+        request: aiwork_space_20210204_models.ListModelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListModelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.model_name):
+            query['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListModels',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.ListModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def list_operation_logs(
         self,
         workspace_id: str,
@@ -3457,6 +4613,8 @@ class Client(OpenApiClient):
             query['ProductCodes'] = request.product_codes
         if not UtilClient.is_unset(request.service_codes):
             query['ServiceCodes'] = request.service_codes
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3489,6 +4647,8 @@ class Client(OpenApiClient):
             query['ProductCodes'] = request.product_codes
         if not UtilClient.is_unset(request.service_codes):
             query['ServiceCodes'] = request.service_codes
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4637,6 +5797,268 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def update_default_workspace(
+        self,
+        request: aiwork_space_20210204_models.UpdateDefaultWorkspaceRequest,
+    ) -> aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_default_workspace_with_options(request, headers, runtime)
+
+    async def update_default_workspace_async(
+        self,
+        request: aiwork_space_20210204_models.UpdateDefaultWorkspaceRequest,
+    ) -> aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_default_workspace_with_options_async(request, headers, runtime)
+
+    def update_default_workspace_with_options(
+        self,
+        request: aiwork_space_20210204_models.UpdateDefaultWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.default_workspace_id):
+            body['DefaultWorkspaceId'] = request.default_workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDefaultWorkspace',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/defaultWorkspaces',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_default_workspace_with_options_async(
+        self,
+        request: aiwork_space_20210204_models.UpdateDefaultWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.default_workspace_id):
+            body['DefaultWorkspaceId'] = request.default_workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDefaultWorkspace',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/defaultWorkspaces',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_model(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.UpdateModelRequest,
+    ) -> aiwork_space_20210204_models.UpdateModelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_model_with_options(model_id, request, headers, runtime)
+
+    async def update_model_async(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.UpdateModelRequest,
+    ) -> aiwork_space_20210204_models.UpdateModelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_model_with_options_async(model_id, request, headers, runtime)
+
+    def update_model_with_options(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.UpdateModelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateModelResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.model_description):
+            body['ModelDescription'] = request.model_description
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateModel',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_model_with_options_async(
+        self,
+        model_id: str,
+        request: aiwork_space_20210204_models.UpdateModelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateModelResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.model_description):
+            body['ModelDescription'] = request.model_description
+        if not UtilClient.is_unset(request.model_name):
+            body['ModelName'] = request.model_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateModel',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_model_version(
+        self,
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.UpdateModelVersionRequest,
+    ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_model_version_with_options(model_id, version_name, request, headers, runtime)
+
+    async def update_model_version_async(
+        self,
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.UpdateModelVersionRequest,
+    ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_model_version_with_options_async(model_id, version_name, request, headers, runtime)
+
+    def update_model_version_with_options(
+        self,
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.UpdateModelVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        version_name = OpenApiUtilClient.get_encode_param(version_name)
+        body = {}
+        if not UtilClient.is_unset(request.inference_spec):
+            body['InferenceSpec'] = request.inference_spec
+        if not UtilClient.is_unset(request.options):
+            body['Options'] = request.options
+        if not UtilClient.is_unset(request.version_description):
+            body['VersionDescription'] = request.version_description
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateModelVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/versions/{version_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateModelVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_model_version_with_options_async(
+        self,
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.UpdateModelVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
+        UtilClient.validate_model(request)
+        model_id = OpenApiUtilClient.get_encode_param(model_id)
+        version_name = OpenApiUtilClient.get_encode_param(version_name)
+        body = {}
+        if not UtilClient.is_unset(request.inference_spec):
+            body['InferenceSpec'] = request.inference_spec
+        if not UtilClient.is_unset(request.options):
+            body['Options'] = request.options
+        if not UtilClient.is_unset(request.version_description):
+            body['VersionDescription'] = request.version_description
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateModelVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/models/{model_id}/versions/{version_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateModelVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def update_workspace(
         self,
         workspace_id: str,
@@ -4757,6 +6179,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.is_default):
             body['IsDefault'] = request.is_default
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -4791,6 +6215,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.is_default):
             body['IsDefault'] = request.is_default
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
