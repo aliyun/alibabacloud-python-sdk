@@ -401,6 +401,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_phone_number_online_time_with_options_async(request, runtime)
 
+    def describe_phone_number_operator_attribute_with_options(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePhoneNumberOperatorAttribute',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_phone_number_operator_attribute_with_options_async(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePhoneNumberOperatorAttribute',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_phone_number_operator_attribute(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeRequest,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_phone_number_operator_attribute_with_options(request, runtime)
+
+    async def describe_phone_number_operator_attribute_async(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeRequest,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_phone_number_operator_attribute_with_options_async(request, runtime)
+
     def describe_phone_number_resale_with_options(
         self,
         request: dytnsapi_20200217_models.DescribePhoneNumberResaleRequest,
@@ -748,56 +838,6 @@ class Client(OpenApiClient):
     ) -> dytnsapi_20200217_models.PhoneNumberEncryptResponse:
         runtime = util_models.RuntimeOptions()
         return await self.phone_number_encrypt_with_options_async(request, runtime)
-
-    def pvr_callback_fcuwith_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='PvrCallbackFCU',
-            version='2020-02-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            dytnsapi_20200217_models.PvrCallbackFCUResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def pvr_callback_fcuwith_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='PvrCallbackFCU',
-            version='2020-02-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            dytnsapi_20200217_models.PvrCallbackFCUResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def pvr_callback_fcu(self) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.pvr_callback_fcuwith_options(runtime)
-
-    async def pvr_callback_fcu_async(self) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.pvr_callback_fcuwith_options_async(runtime)
 
     def three_elements_verification_with_options(
         self,

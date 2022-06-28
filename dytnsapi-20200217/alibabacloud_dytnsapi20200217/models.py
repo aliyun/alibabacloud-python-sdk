@@ -758,6 +758,211 @@ class DescribePhoneNumberOnlineTimeResponse(TeaModel):
         return self
 
 
+class DescribePhoneNumberOperatorAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        auth_code: str = None,
+        input_number: str = None,
+        mask: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.auth_code = auth_code
+        self.input_number = input_number
+        self.mask = mask
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_code is not None:
+            result['AuthCode'] = self.auth_code
+        if self.input_number is not None:
+            result['InputNumber'] = self.input_number
+        if self.mask is not None:
+            result['Mask'] = self.mask
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthCode') is not None:
+            self.auth_code = m.get('AuthCode')
+        if m.get('InputNumber') is not None:
+            self.input_number = m.get('InputNumber')
+        if m.get('Mask') is not None:
+            self.mask = m.get('Mask')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribePhoneNumberOperatorAttributeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        basic_carrier: str = None,
+        carrier: str = None,
+        city: str = None,
+        is_number_portability: bool = None,
+        number_segment: int = None,
+        province: str = None,
+    ):
+        self.basic_carrier = basic_carrier
+        self.carrier = carrier
+        self.city = city
+        self.is_number_portability = is_number_portability
+        self.number_segment = number_segment
+        self.province = province
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.basic_carrier is not None:
+            result['BasicCarrier'] = self.basic_carrier
+        if self.carrier is not None:
+            result['Carrier'] = self.carrier
+        if self.city is not None:
+            result['City'] = self.city
+        if self.is_number_portability is not None:
+            result['IsNumberPortability'] = self.is_number_portability
+        if self.number_segment is not None:
+            result['NumberSegment'] = self.number_segment
+        if self.province is not None:
+            result['Province'] = self.province
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BasicCarrier') is not None:
+            self.basic_carrier = m.get('BasicCarrier')
+        if m.get('Carrier') is not None:
+            self.carrier = m.get('Carrier')
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('IsNumberPortability') is not None:
+            self.is_number_portability = m.get('IsNumberPortability')
+        if m.get('NumberSegment') is not None:
+            self.number_segment = m.get('NumberSegment')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        return self
+
+
+class DescribePhoneNumberOperatorAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribePhoneNumberOperatorAttributeResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribePhoneNumberOperatorAttributeResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribePhoneNumberOperatorAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribePhoneNumberOperatorAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribePhoneNumberOperatorAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribePhoneNumberResaleRequest(TeaModel):
     def __init__(
         self,
@@ -1500,40 +1705,6 @@ class PhoneNumberEncryptResponse(TeaModel):
         return self
 
 
-class PvrCallbackFCUResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
 class ThreeElementsVerificationRequest(TeaModel):
     def __init__(
         self,
@@ -1640,7 +1811,7 @@ class ThreeElementsVerificationResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
-        data: List[ThreeElementsVerificationResponseBodyData] = None,
+        data: ThreeElementsVerificationResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
@@ -1651,9 +1822,7 @@ class ThreeElementsVerificationResponseBody(TeaModel):
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1663,10 +1832,8 @@ class ThreeElementsVerificationResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -1677,11 +1844,9 @@ class ThreeElementsVerificationResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = ThreeElementsVerificationResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = ThreeElementsVerificationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -1833,7 +1998,7 @@ class TwoElementsVerificationResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
-        data: List[TwoElementsVerificationResponseBodyData] = None,
+        data: TwoElementsVerificationResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
@@ -1844,9 +2009,7 @@ class TwoElementsVerificationResponseBody(TeaModel):
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1856,10 +2019,8 @@ class TwoElementsVerificationResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -1870,11 +2031,9 @@ class TwoElementsVerificationResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = TwoElementsVerificationResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = TwoElementsVerificationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
