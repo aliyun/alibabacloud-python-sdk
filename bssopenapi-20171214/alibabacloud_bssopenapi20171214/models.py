@@ -20577,6 +20577,7 @@ class QuerySavingsPlansDeductLogResponseBodyDataItems(TeaModel):
         discount_rate: str = None,
         end_time: str = None,
         instance_id: str = None,
+        owner_id: int = None,
         savings_type: str = None,
         start_time: str = None,
         user_id: int = None,
@@ -20589,6 +20590,7 @@ class QuerySavingsPlansDeductLogResponseBodyDataItems(TeaModel):
         self.discount_rate = discount_rate
         self.end_time = end_time
         self.instance_id = instance_id
+        self.owner_id = owner_id
         self.savings_type = savings_type
         self.start_time = start_time
         self.user_id = user_id
@@ -20618,6 +20620,8 @@ class QuerySavingsPlansDeductLogResponseBodyDataItems(TeaModel):
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.savings_type is not None:
             result['SavingsType'] = self.savings_type
         if self.start_time is not None:
@@ -20644,6 +20648,8 @@ class QuerySavingsPlansDeductLogResponseBodyDataItems(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('SavingsType') is not None:
             self.savings_type = m.get('SavingsType')
         if m.get('StartTime') is not None:
