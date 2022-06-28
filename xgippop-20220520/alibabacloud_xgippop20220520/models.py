@@ -2344,6 +2344,237 @@ class OrderFreeFlowProductResponse(TeaModel):
         return self
 
 
+class OrderQosProductRequest(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        channel_id: str = None,
+        ipv_6: str = None,
+        instance_id: str = None,
+        ip_type: str = None,
+        mobile_number: str = None,
+        operator: str = None,
+        private_ipv_4: str = None,
+        product_id: str = None,
+        provice: str = None,
+        public_ipv_4: str = None,
+        qos_request_id: str = None,
+        target_ip_list: List[str] = None,
+        token: str = None,
+        unit_num: int = None,
+    ):
+        self.ali_uid = ali_uid
+        # 渠道ID
+        self.channel_id = channel_id
+        # C端v6 IP（移动场景下可以携带）
+        self.ipv_6 = ipv_6
+        # 实例ID
+        self.instance_id = instance_id
+        # IP类型
+        self.ip_type = ip_type
+        # C端手机号
+        self.mobile_number = mobile_number
+        # 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
+        self.operator = operator
+        # C端用户私网IP（联通场景下必须携带)
+        self.private_ipv_4 = private_ipv_4
+        # 产品ID
+        self.product_id = product_id
+        self.provice = provice
+        # C端用户公网IP（联通场景下必须携带）
+        self.public_ipv_4 = public_ipv_4
+        # 客户侧生成的QoS请求ID，需要保证请求幂等性，确保不同请求间该参数值唯一
+        self.qos_request_id = qos_request_id
+        # 移动场景目前ip
+        self.target_ip_list = target_ip_list
+        # token获取
+        self.token = token
+        # 请求次数
+        self.unit_num = unit_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.ipv_6 is not None:
+            result['IPv6'] = self.ipv_6
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ip_type is not None:
+            result['IpType'] = self.ip_type
+        if self.mobile_number is not None:
+            result['MobileNumber'] = self.mobile_number
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.private_ipv_4 is not None:
+            result['PrivateIpv4'] = self.private_ipv_4
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.provice is not None:
+            result['Provice'] = self.provice
+        if self.public_ipv_4 is not None:
+            result['PublicIpv4'] = self.public_ipv_4
+        if self.qos_request_id is not None:
+            result['QosRequestId'] = self.qos_request_id
+        if self.target_ip_list is not None:
+            result['TargetIpList'] = self.target_ip_list
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.unit_num is not None:
+            result['UnitNum'] = self.unit_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('IPv6') is not None:
+            self.ipv_6 = m.get('IPv6')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IpType') is not None:
+            self.ip_type = m.get('IpType')
+        if m.get('MobileNumber') is not None:
+            self.mobile_number = m.get('MobileNumber')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('PrivateIpv4') is not None:
+            self.private_ipv_4 = m.get('PrivateIpv4')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('Provice') is not None:
+            self.provice = m.get('Provice')
+        if m.get('PublicIpv4') is not None:
+            self.public_ipv_4 = m.get('PublicIpv4')
+        if m.get('QosRequestId') is not None:
+            self.qos_request_id = m.get('QosRequestId')
+        if m.get('TargetIpList') is not None:
+            self.target_ip_list = m.get('TargetIpList')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('UnitNum') is not None:
+            self.unit_num = m.get('UnitNum')
+        return self
+
+
+class OrderQosProductResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        rt: int = None,
+        success: bool = None,
+    ):
+        # 结果码
+        self.code = code
+        # 结果
+        self.data = data
+        # 结果描述
+        self.message = message
+        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
+        self.request_id = request_id
+        # 服务端处理耗时，ms
+        self.rt = rt
+        # 是否成功
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rt is not None:
+            result['Rt'] = self.rt
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rt') is not None:
+            self.rt = m.get('Rt')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class OrderQosProductResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OrderQosProductResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OrderQosProductResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SaveApplicationInfoRequest(TeaModel):
     def __init__(
         self,
@@ -2770,6 +3001,147 @@ class SdkValidateStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SdkValidateStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ValidControllerAuthorRequest(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        item_code: str = None,
+    ):
+        self.ali_uid = ali_uid
+        # 商品code
+        self.item_code = item_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.item_code is not None:
+            result['ItemCode'] = self.item_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('ItemCode') is not None:
+            self.item_code = m.get('ItemCode')
+        return self
+
+
+class ValidControllerAuthorResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        rt: int = None,
+        success: bool = None,
+    ):
+        # 结果码
+        self.code = code
+        # 结果
+        self.data = data
+        # 结果描述
+        self.message = message
+        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
+        self.request_id = request_id
+        # 服务端处理耗时，ms
+        self.rt = rt
+        # 是否成功
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rt is not None:
+            result['Rt'] = self.rt
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rt') is not None:
+            self.rt = m.get('Rt')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ValidControllerAuthorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ValidControllerAuthorResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ValidControllerAuthorResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
