@@ -1,3 +1,6 @@
+2022-06-29 Version: 1.1.1
+- Support provisioned product plan.
+
 2022-05-27 Version: 1.1.0
 - Change the format of Parameters and Outputs.
 

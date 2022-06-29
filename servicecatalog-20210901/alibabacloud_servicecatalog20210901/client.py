@@ -545,6 +545,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_product_version_with_options_async(request, runtime)
 
+    def create_provisioned_product_plan_with_options(
+        self,
+        request: servicecatalog_20210901_models.CreateProvisionedProductPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.CreateProvisionedProductPlanResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.parameters):
+            body['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.plan_name):
+            body['PlanName'] = request.plan_name
+        if not UtilClient.is_unset(request.plan_type):
+            body['PlanType'] = request.plan_type
+        if not UtilClient.is_unset(request.portfolio_id):
+            body['PortfolioId'] = request.portfolio_id
+        if not UtilClient.is_unset(request.product_id):
+            body['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.product_version_id):
+            body['ProductVersionId'] = request.product_version_id
+        if not UtilClient.is_unset(request.provisioned_product_name):
+            body['ProvisionedProductName'] = request.provisioned_product_name
+        if not UtilClient.is_unset(request.stack_region_id):
+            body['StackRegionId'] = request.stack_region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateProvisionedProductPlan',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.CreateProvisionedProductPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_provisioned_product_plan_with_options_async(
+        self,
+        request: servicecatalog_20210901_models.CreateProvisionedProductPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.CreateProvisionedProductPlanResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.parameters):
+            body['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.plan_name):
+            body['PlanName'] = request.plan_name
+        if not UtilClient.is_unset(request.plan_type):
+            body['PlanType'] = request.plan_type
+        if not UtilClient.is_unset(request.portfolio_id):
+            body['PortfolioId'] = request.portfolio_id
+        if not UtilClient.is_unset(request.product_id):
+            body['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.product_version_id):
+            body['ProductVersionId'] = request.product_version_id
+        if not UtilClient.is_unset(request.provisioned_product_name):
+            body['ProvisionedProductName'] = request.provisioned_product_name
+        if not UtilClient.is_unset(request.stack_region_id):
+            body['StackRegionId'] = request.stack_region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateProvisionedProductPlan',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.CreateProvisionedProductPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_provisioned_product_plan(
+        self,
+        request: servicecatalog_20210901_models.CreateProvisionedProductPlanRequest,
+    ) -> servicecatalog_20210901_models.CreateProvisionedProductPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_provisioned_product_plan_with_options(request, runtime)
+
+    async def create_provisioned_product_plan_async(
+        self,
+        request: servicecatalog_20210901_models.CreateProvisionedProductPlanRequest,
+    ) -> servicecatalog_20210901_models.CreateProvisionedProductPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_provisioned_product_plan_with_options_async(request, runtime)
+
     def create_template_with_options(
         self,
         request: servicecatalog_20210901_models.CreateTemplateRequest,
@@ -1051,6 +1149,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disassociate_product_from_portfolio_with_options_async(request, runtime)
 
+    def execute_provisioned_product_plan_with_options(
+        self,
+        request: servicecatalog_20210901_models.ExecuteProvisionedProductPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.ExecuteProvisionedProductPlanResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.plan_id):
+            body['PlanId'] = request.plan_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteProvisionedProductPlan',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.ExecuteProvisionedProductPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_provisioned_product_plan_with_options_async(
+        self,
+        request: servicecatalog_20210901_models.ExecuteProvisionedProductPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.ExecuteProvisionedProductPlanResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.plan_id):
+            body['PlanId'] = request.plan_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteProvisionedProductPlan',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.ExecuteProvisionedProductPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_provisioned_product_plan(
+        self,
+        request: servicecatalog_20210901_models.ExecuteProvisionedProductPlanRequest,
+    ) -> servicecatalog_20210901_models.ExecuteProvisionedProductPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.execute_provisioned_product_plan_with_options(request, runtime)
+
+    async def execute_provisioned_product_plan_async(
+        self,
+        request: servicecatalog_20210901_models.ExecuteProvisionedProductPlanRequest,
+    ) -> servicecatalog_20210901_models.ExecuteProvisionedProductPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.execute_provisioned_product_plan_with_options_async(request, runtime)
+
     def get_constraint_with_options(
         self,
         request: servicecatalog_20210901_models.GetConstraintRequest,
@@ -1470,6 +1638,76 @@ class Client(OpenApiClient):
     ) -> servicecatalog_20210901_models.GetProvisionedProductResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_provisioned_product_with_options_async(request, runtime)
+
+    def get_provisioned_product_plan_with_options(
+        self,
+        request: servicecatalog_20210901_models.GetProvisionedProductPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.GetProvisionedProductPlanResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.plan_id):
+            body['PlanId'] = request.plan_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetProvisionedProductPlan',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.GetProvisionedProductPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_provisioned_product_plan_with_options_async(
+        self,
+        request: servicecatalog_20210901_models.GetProvisionedProductPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.GetProvisionedProductPlanResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.plan_id):
+            body['PlanId'] = request.plan_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetProvisionedProductPlan',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.GetProvisionedProductPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_provisioned_product_plan(
+        self,
+        request: servicecatalog_20210901_models.GetProvisionedProductPlanRequest,
+    ) -> servicecatalog_20210901_models.GetProvisionedProductPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_provisioned_product_plan_with_options(request, runtime)
+
+    async def get_provisioned_product_plan_async(
+        self,
+        request: servicecatalog_20210901_models.GetProvisionedProductPlanRequest,
+    ) -> servicecatalog_20210901_models.GetProvisionedProductPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_provisioned_product_plan_with_options_async(request, runtime)
 
     def get_task_with_options(
         self,

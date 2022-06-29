@@ -892,6 +892,194 @@ class CreateProductVersionResponse(TeaModel):
         return self
 
 
+class CreateProvisionedProductPlanRequestParameters(TeaModel):
+    def __init__(
+        self,
+        parameter_key: str = None,
+        parameter_value: str = None,
+    ):
+        self.parameter_key = parameter_key
+        self.parameter_value = parameter_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameter_key is not None:
+            result['ParameterKey'] = self.parameter_key
+        if self.parameter_value is not None:
+            result['ParameterValue'] = self.parameter_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterKey') is not None:
+            self.parameter_key = m.get('ParameterKey')
+        if m.get('ParameterValue') is not None:
+            self.parameter_value = m.get('ParameterValue')
+        return self
+
+
+class CreateProvisionedProductPlanRequest(TeaModel):
+    def __init__(
+        self,
+        parameters: List[CreateProvisionedProductPlanRequestParameters] = None,
+        plan_name: str = None,
+        plan_type: str = None,
+        portfolio_id: str = None,
+        product_id: str = None,
+        product_version_id: str = None,
+        provisioned_product_name: str = None,
+        stack_region_id: str = None,
+    ):
+        self.parameters = parameters
+        self.plan_name = plan_name
+        self.plan_type = plan_type
+        self.portfolio_id = portfolio_id
+        self.product_id = product_id
+        self.product_version_id = product_version_id
+        self.provisioned_product_name = provisioned_product_name
+        self.stack_region_id = stack_region_id
+
+    def validate(self):
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        if self.plan_name is not None:
+            result['PlanName'] = self.plan_name
+        if self.plan_type is not None:
+            result['PlanType'] = self.plan_type
+        if self.portfolio_id is not None:
+            result['PortfolioId'] = self.portfolio_id
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.product_version_id is not None:
+            result['ProductVersionId'] = self.product_version_id
+        if self.provisioned_product_name is not None:
+            result['ProvisionedProductName'] = self.provisioned_product_name
+        if self.stack_region_id is not None:
+            result['StackRegionId'] = self.stack_region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = CreateProvisionedProductPlanRequestParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('PlanName') is not None:
+            self.plan_name = m.get('PlanName')
+        if m.get('PlanType') is not None:
+            self.plan_type = m.get('PlanType')
+        if m.get('PortfolioId') is not None:
+            self.portfolio_id = m.get('PortfolioId')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('ProductVersionId') is not None:
+            self.product_version_id = m.get('ProductVersionId')
+        if m.get('ProvisionedProductName') is not None:
+            self.provisioned_product_name = m.get('ProvisionedProductName')
+        if m.get('StackRegionId') is not None:
+            self.stack_region_id = m.get('StackRegionId')
+        return self
+
+
+class CreateProvisionedProductPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        plan_id: str = None,
+        request_id: str = None,
+    ):
+        self.plan_id = plan_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.plan_id is not None:
+            result['PlanId'] = self.plan_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PlanId') is not None:
+            self.plan_id = m.get('PlanId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateProvisionedProductPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateProvisionedProductPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateProvisionedProductPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateTemplateRequest(TeaModel):
     def __init__(
         self,
@@ -1623,6 +1811,111 @@ class DisassociateProductFromPortfolioResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisassociateProductFromPortfolioResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteProvisionedProductPlanRequest(TeaModel):
+    def __init__(
+        self,
+        plan_id: str = None,
+    ):
+        self.plan_id = plan_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.plan_id is not None:
+            result['PlanId'] = self.plan_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PlanId') is not None:
+            self.plan_id = m.get('PlanId')
+        return self
+
+
+class ExecuteProvisionedProductPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        plan_id: str = None,
+        request_id: str = None,
+    ):
+        self.plan_id = plan_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.plan_id is not None:
+            result['PlanId'] = self.plan_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PlanId') is not None:
+            self.plan_id = m.get('PlanId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ExecuteProvisionedProductPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteProvisionedProductPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteProvisionedProductPlanResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2799,6 +3092,265 @@ class GetProvisionedProductResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetProvisionedProductResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetProvisionedProductPlanRequest(TeaModel):
+    def __init__(
+        self,
+        plan_id: str = None,
+    ):
+        self.plan_id = plan_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.plan_id is not None:
+            result['PlanId'] = self.plan_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PlanId') is not None:
+            self.plan_id = m.get('PlanId')
+        return self
+
+
+class GetProvisionedProductPlanResponseBodyPlanDetailParameters(TeaModel):
+    def __init__(
+        self,
+        parameter_key: str = None,
+        parameter_value: str = None,
+    ):
+        self.parameter_key = parameter_key
+        self.parameter_value = parameter_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameter_key is not None:
+            result['ParameterKey'] = self.parameter_key
+        if self.parameter_value is not None:
+            result['ParameterValue'] = self.parameter_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterKey') is not None:
+            self.parameter_key = m.get('ParameterKey')
+        if m.get('ParameterValue') is not None:
+            self.parameter_value = m.get('ParameterValue')
+        return self
+
+
+class GetProvisionedProductPlanResponseBodyPlanDetail(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        parameters: List[GetProvisionedProductPlanResponseBodyPlanDetailParameters] = None,
+        plan_id: str = None,
+        plan_name: str = None,
+        plan_type: str = None,
+        portfolio_id: str = None,
+        product_id: str = None,
+        product_version_id: str = None,
+        provisioned_product_id: str = None,
+        provisioned_product_name: str = None,
+        stack_id: str = None,
+        stack_region_id: str = None,
+        status: str = None,
+        status_message: str = None,
+        update_time: str = None,
+    ):
+        self.create_time = create_time
+        self.parameters = parameters
+        self.plan_id = plan_id
+        self.plan_name = plan_name
+        self.plan_type = plan_type
+        self.portfolio_id = portfolio_id
+        self.product_id = product_id
+        self.product_version_id = product_version_id
+        self.provisioned_product_id = provisioned_product_id
+        self.provisioned_product_name = provisioned_product_name
+        self.stack_id = stack_id
+        self.stack_region_id = stack_region_id
+        self.status = status
+        self.status_message = status_message
+        self.update_time = update_time
+
+    def validate(self):
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        if self.plan_id is not None:
+            result['PlanId'] = self.plan_id
+        if self.plan_name is not None:
+            result['PlanName'] = self.plan_name
+        if self.plan_type is not None:
+            result['PlanType'] = self.plan_type
+        if self.portfolio_id is not None:
+            result['PortfolioId'] = self.portfolio_id
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.product_version_id is not None:
+            result['ProductVersionId'] = self.product_version_id
+        if self.provisioned_product_id is not None:
+            result['ProvisionedProductId'] = self.provisioned_product_id
+        if self.provisioned_product_name is not None:
+            result['ProvisionedProductName'] = self.provisioned_product_name
+        if self.stack_id is not None:
+            result['StackId'] = self.stack_id
+        if self.stack_region_id is not None:
+            result['StackRegionId'] = self.stack_region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_message is not None:
+            result['StatusMessage'] = self.status_message
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = GetProvisionedProductPlanResponseBodyPlanDetailParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('PlanId') is not None:
+            self.plan_id = m.get('PlanId')
+        if m.get('PlanName') is not None:
+            self.plan_name = m.get('PlanName')
+        if m.get('PlanType') is not None:
+            self.plan_type = m.get('PlanType')
+        if m.get('PortfolioId') is not None:
+            self.portfolio_id = m.get('PortfolioId')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('ProductVersionId') is not None:
+            self.product_version_id = m.get('ProductVersionId')
+        if m.get('ProvisionedProductId') is not None:
+            self.provisioned_product_id = m.get('ProvisionedProductId')
+        if m.get('ProvisionedProductName') is not None:
+            self.provisioned_product_name = m.get('ProvisionedProductName')
+        if m.get('StackId') is not None:
+            self.stack_id = m.get('StackId')
+        if m.get('StackRegionId') is not None:
+            self.stack_region_id = m.get('StackRegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusMessage') is not None:
+            self.status_message = m.get('StatusMessage')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetProvisionedProductPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        plan_detail: GetProvisionedProductPlanResponseBodyPlanDetail = None,
+        request_id: str = None,
+    ):
+        self.plan_detail = plan_detail
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.plan_detail:
+            self.plan_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.plan_detail is not None:
+            result['PlanDetail'] = self.plan_detail.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PlanDetail') is not None:
+            temp_model = GetProvisionedProductPlanResponseBodyPlanDetail()
+            self.plan_detail = temp_model.from_map(m['PlanDetail'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetProvisionedProductPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetProvisionedProductPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetProvisionedProductPlanResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
