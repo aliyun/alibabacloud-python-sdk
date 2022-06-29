@@ -4011,6 +4011,10 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_fc_account_id):
             real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
+        if not UtilClient.is_unset(headers.x_fc_date):
+            real_headers['X-Fc-Date'] = UtilClient.to_jsonstring(headers.x_fc_date)
+        if not UtilClient.is_unset(headers.x_fc_trace_id):
+            real_headers['X-Fc-Trace-Id'] = UtilClient.to_jsonstring(headers.x_fc_trace_id)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
@@ -4054,6 +4058,10 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_fc_account_id):
             real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
+        if not UtilClient.is_unset(headers.x_fc_date):
+            real_headers['X-Fc-Date'] = UtilClient.to_jsonstring(headers.x_fc_date)
+        if not UtilClient.is_unset(headers.x_fc_trace_id):
+            real_headers['X-Fc-Trace-Id'] = UtilClient.to_jsonstring(headers.x_fc_trace_id)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query)

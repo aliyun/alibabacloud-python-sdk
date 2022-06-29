@@ -1,3 +1,6 @@
+2022-06-29 Version: 1.1.5
+- Add EventBridgeTriggerConfig struct.
+
 2022-06-15 Version: 1.1.4
 - Fix missing ListInstances.
 - Fix some missing TriggerConfig structures.
