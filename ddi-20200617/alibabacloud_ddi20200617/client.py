@@ -1353,6 +1353,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_flow_project_user_with_options_async(request, runtime)
 
+    def delete_libraries_with_options(
+        self,
+        request: ddi_20200617_models.DeleteLibrariesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddi_20200617_models.DeleteLibrariesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.library_biz_id_list):
+            query['LibraryBizIdList'] = request.library_biz_id_list
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLibraries',
+            version='2020-06-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddi_20200617_models.DeleteLibrariesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_libraries_with_options_async(
+        self,
+        request: ddi_20200617_models.DeleteLibrariesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddi_20200617_models.DeleteLibrariesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.library_biz_id_list):
+            query['LibraryBizIdList'] = request.library_biz_id_list
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLibraries',
+            version='2020-06-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddi_20200617_models.DeleteLibrariesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_libraries(
+        self,
+        request: ddi_20200617_models.DeleteLibrariesRequest,
+    ) -> ddi_20200617_models.DeleteLibrariesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_libraries_with_options(request, runtime)
+
+    async def delete_libraries_async(
+        self,
+        request: ddi_20200617_models.DeleteLibrariesRequest,
+    ) -> ddi_20200617_models.DeleteLibrariesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_libraries_with_options_async(request, runtime)
+
     def describe_cluster_v2with_options(
         self,
         request: ddi_20200617_models.DescribeClusterV2Request,
@@ -1984,6 +2062,88 @@ class Client(OpenApiClient):
     ) -> ddi_20200617_models.DescribeLibraryInstallTaskDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_library_install_task_detail_with_options_async(request, runtime)
+
+    def install_libraries_with_options(
+        self,
+        request: ddi_20200617_models.InstallLibrariesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddi_20200617_models.InstallLibrariesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_biz_id_list):
+            query['ClusterBizIdList'] = request.cluster_biz_id_list
+        if not UtilClient.is_unset(request.library_biz_id):
+            query['LibraryBizId'] = request.library_biz_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InstallLibraries',
+            version='2020-06-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddi_20200617_models.InstallLibrariesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def install_libraries_with_options_async(
+        self,
+        request: ddi_20200617_models.InstallLibrariesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddi_20200617_models.InstallLibrariesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_biz_id_list):
+            query['ClusterBizIdList'] = request.cluster_biz_id_list
+        if not UtilClient.is_unset(request.library_biz_id):
+            query['LibraryBizId'] = request.library_biz_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InstallLibraries',
+            version='2020-06-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddi_20200617_models.InstallLibrariesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def install_libraries(
+        self,
+        request: ddi_20200617_models.InstallLibrariesRequest,
+    ) -> ddi_20200617_models.InstallLibrariesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.install_libraries_with_options(request, runtime)
+
+    async def install_libraries_async(
+        self,
+        request: ddi_20200617_models.InstallLibrariesRequest,
+    ) -> ddi_20200617_models.InstallLibrariesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.install_libraries_with_options_async(request, runtime)
 
     def kill_flow_job_with_options(
         self,
@@ -2674,6 +2834,112 @@ class Client(OpenApiClient):
     ) -> ddi_20200617_models.ListFlowProjectsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_flow_projects_with_options_async(request, runtime)
+
+    def list_libraries_with_options(
+        self,
+        request: ddi_20200617_models.ListLibrariesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddi_20200617_models.ListLibrariesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_biz_id):
+            query['ClusterBizId'] = request.cluster_biz_id
+        if not UtilClient.is_unset(request.current_size):
+            query['CurrentSize'] = request.current_size
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.order_field):
+            query['OrderField'] = request.order_field
+        if not UtilClient.is_unset(request.order_mode):
+            query['OrderMode'] = request.order_mode
+        if not UtilClient.is_unset(request.page_count):
+            query['PageCount'] = request.page_count
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLibraries',
+            version='2020-06-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddi_20200617_models.ListLibrariesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_libraries_with_options_async(
+        self,
+        request: ddi_20200617_models.ListLibrariesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddi_20200617_models.ListLibrariesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_biz_id):
+            query['ClusterBizId'] = request.cluster_biz_id
+        if not UtilClient.is_unset(request.current_size):
+            query['CurrentSize'] = request.current_size
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.order_field):
+            query['OrderField'] = request.order_field
+        if not UtilClient.is_unset(request.order_mode):
+            query['OrderMode'] = request.order_mode
+        if not UtilClient.is_unset(request.page_count):
+            query['PageCount'] = request.page_count
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLibraries',
+            version='2020-06-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddi_20200617_models.ListLibrariesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_libraries(
+        self,
+        request: ddi_20200617_models.ListLibrariesRequest,
+    ) -> ddi_20200617_models.ListLibrariesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_libraries_with_options(request, runtime)
+
+    async def list_libraries_async(
+        self,
+        request: ddi_20200617_models.ListLibrariesRequest,
+    ) -> ddi_20200617_models.ListLibrariesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_libraries_with_options_async(request, runtime)
 
     def list_library_install_tasks_with_options(
         self,
@@ -3834,6 +4100,88 @@ class Client(OpenApiClient):
     ) -> ddi_20200617_models.TagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
+
+    def uninstall_libraries_with_options(
+        self,
+        request: ddi_20200617_models.UninstallLibrariesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddi_20200617_models.UninstallLibrariesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_biz_id_list):
+            query['ClusterBizIdList'] = request.cluster_biz_id_list
+        if not UtilClient.is_unset(request.library_biz_id):
+            query['LibraryBizId'] = request.library_biz_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UninstallLibraries',
+            version='2020-06-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddi_20200617_models.UninstallLibrariesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def uninstall_libraries_with_options_async(
+        self,
+        request: ddi_20200617_models.UninstallLibrariesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddi_20200617_models.UninstallLibrariesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_biz_id_list):
+            query['ClusterBizIdList'] = request.cluster_biz_id_list
+        if not UtilClient.is_unset(request.library_biz_id):
+            query['LibraryBizId'] = request.library_biz_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UninstallLibraries',
+            version='2020-06-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddi_20200617_models.UninstallLibrariesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def uninstall_libraries(
+        self,
+        request: ddi_20200617_models.UninstallLibrariesRequest,
+    ) -> ddi_20200617_models.UninstallLibrariesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.uninstall_libraries_with_options(request, runtime)
+
+    async def uninstall_libraries_async(
+        self,
+        request: ddi_20200617_models.UninstallLibrariesRequest,
+    ) -> ddi_20200617_models.UninstallLibrariesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.uninstall_libraries_with_options_async(request, runtime)
 
     def untag_resources_with_options(
         self,

@@ -2564,6 +2564,122 @@ class DeleteFlowProjectUserResponse(TeaModel):
         return self
 
 
+class DeleteLibrariesRequest(TeaModel):
+    def __init__(
+        self,
+        library_biz_id_list: List[str] = None,
+        region_id: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.library_biz_id_list = library_biz_id_list
+        self.region_id = region_id
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.library_biz_id_list is not None:
+            result['LibraryBizIdList'] = self.library_biz_id_list
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LibraryBizIdList') is not None:
+            self.library_biz_id_list = m.get('LibraryBizIdList')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DeleteLibrariesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteLibrariesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteLibrariesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteLibrariesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeClusterV2Request(TeaModel):
     def __init__(
         self,
@@ -5659,6 +5775,128 @@ class DescribeLibraryInstallTaskDetailResponse(TeaModel):
         return self
 
 
+class InstallLibrariesRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_biz_id_list: List[str] = None,
+        library_biz_id: str = None,
+        region_id: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.cluster_biz_id_list = cluster_biz_id_list
+        self.library_biz_id = library_biz_id
+        self.region_id = region_id
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_biz_id_list is not None:
+            result['ClusterBizIdList'] = self.cluster_biz_id_list
+        if self.library_biz_id is not None:
+            result['LibraryBizId'] = self.library_biz_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterBizIdList') is not None:
+            self.cluster_biz_id_list = m.get('ClusterBizIdList')
+        if m.get('LibraryBizId') is not None:
+            self.library_biz_id = m.get('LibraryBizId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class InstallLibrariesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class InstallLibrariesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InstallLibrariesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InstallLibrariesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class KillFlowJobRequest(TeaModel):
     def __init__(
         self,
@@ -8108,6 +8346,306 @@ class ListFlowProjectsResponse(TeaModel):
         return self
 
 
+class ListLibrariesRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_biz_id: str = None,
+        current_size: int = None,
+        limit: int = None,
+        order_field: str = None,
+        order_mode: str = None,
+        page_count: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.cluster_biz_id = cluster_biz_id
+        self.current_size = current_size
+        self.limit = limit
+        self.order_field = order_field
+        self.order_mode = order_mode
+        self.page_count = page_count
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_biz_id is not None:
+            result['ClusterBizId'] = self.cluster_biz_id
+        if self.current_size is not None:
+            result['CurrentSize'] = self.current_size
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.order_field is not None:
+            result['OrderField'] = self.order_field
+        if self.order_mode is not None:
+            result['OrderMode'] = self.order_mode
+        if self.page_count is not None:
+            result['PageCount'] = self.page_count
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterBizId') is not None:
+            self.cluster_biz_id = m.get('ClusterBizId')
+        if m.get('CurrentSize') is not None:
+            self.current_size = m.get('CurrentSize')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('OrderField') is not None:
+            self.order_field = m.get('OrderField')
+        if m.get('OrderMode') is not None:
+            self.order_mode = m.get('OrderMode')
+        if m.get('PageCount') is not None:
+            self.page_count = m.get('PageCount')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ListLibrariesResponseBodyItemsItem(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        create_time: int = None,
+        library_version: str = None,
+        name: str = None,
+        properties: str = None,
+        scope: str = None,
+        source_location: str = None,
+        source_type: str = None,
+        type: str = None,
+        user_id: str = None,
+    ):
+        self.biz_id = biz_id
+        self.create_time = create_time
+        self.library_version = library_version
+        self.name = name
+        self.properties = properties
+        self.scope = scope
+        self.source_location = source_location
+        self.source_type = source_type
+        self.type = type
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.library_version is not None:
+            result['LibraryVersion'] = self.library_version
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.properties is not None:
+            result['Properties'] = self.properties
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        if self.source_location is not None:
+            result['SourceLocation'] = self.source_location
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('LibraryVersion') is not None:
+            self.library_version = m.get('LibraryVersion')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Properties') is not None:
+            self.properties = m.get('Properties')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        if m.get('SourceLocation') is not None:
+            self.source_location = m.get('SourceLocation')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListLibrariesResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        item: List[ListLibrariesResponseBodyItemsItem] = None,
+    ):
+        self.item = item
+
+    def validate(self):
+        if self.item:
+            for k in self.item:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Item'] = []
+        if self.item is not None:
+            for k in self.item:
+                result['Item'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.item = []
+        if m.get('Item') is not None:
+            for k in m.get('Item'):
+                temp_model = ListLibrariesResponseBodyItemsItem()
+                self.item.append(temp_model.from_map(k))
+        return self
+
+
+class ListLibrariesResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: ListLibrariesResponseBodyItems = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.items = items
+        self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            self.items.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.items is not None:
+            result['Items'] = self.items.to_map()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Items') is not None:
+            temp_model = ListLibrariesResponseBodyItems()
+            self.items = temp_model.from_map(m['Items'])
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListLibrariesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListLibrariesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListLibrariesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListLibraryInstallTasksRequest(TeaModel):
     def __init__(
         self,
@@ -10435,6 +10973,128 @@ class TagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UninstallLibrariesRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_biz_id_list: List[str] = None,
+        library_biz_id: str = None,
+        region_id: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.cluster_biz_id_list = cluster_biz_id_list
+        self.library_biz_id = library_biz_id
+        self.region_id = region_id
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_biz_id_list is not None:
+            result['ClusterBizIdList'] = self.cluster_biz_id_list
+        if self.library_biz_id is not None:
+            result['LibraryBizId'] = self.library_biz_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterBizIdList') is not None:
+            self.cluster_biz_id_list = m.get('ClusterBizIdList')
+        if m.get('LibraryBizId') is not None:
+            self.library_biz_id = m.get('LibraryBizId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class UninstallLibrariesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UninstallLibrariesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UninstallLibrariesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UninstallLibrariesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
