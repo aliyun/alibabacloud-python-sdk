@@ -3721,14 +3721,20 @@ class QuerySmsSignListResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
+        current_page: int = None,
         message: str = None,
+        page_size: int = None,
         request_id: str = None,
         sms_sign_list: List[QuerySmsSignListResponseBodySmsSignList] = None,
+        total_count: int = None,
     ):
         self.code = code
+        self.current_page = current_page
         self.message = message
+        self.page_size = page_size
         self.request_id = request_id
         self.sms_sign_list = sms_sign_list
+        self.total_count = total_count
 
     def validate(self):
         if self.sms_sign_list:
@@ -3744,22 +3750,32 @@ class QuerySmsSignListResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
         if self.message is not None:
             result['Message'] = self.message
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         result['SmsSignList'] = []
         if self.sms_sign_list is not None:
             for k in self.sms_sign_list:
                 result['SmsSignList'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         self.sms_sign_list = []
@@ -3767,6 +3783,8 @@ class QuerySmsSignListResponseBody(TeaModel):
             for k in m.get('SmsSignList'):
                 temp_model = QuerySmsSignListResponseBodySmsSignList()
                 self.sms_sign_list.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -4149,14 +4167,20 @@ class QuerySmsTemplateListResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
+        current_page: int = None,
         message: str = None,
+        page_size: int = None,
         request_id: str = None,
         sms_template_list: List[QuerySmsTemplateListResponseBodySmsTemplateList] = None,
+        total_count: int = None,
     ):
         self.code = code
+        self.current_page = current_page
         self.message = message
+        self.page_size = page_size
         self.request_id = request_id
         self.sms_template_list = sms_template_list
+        self.total_count = total_count
 
     def validate(self):
         if self.sms_template_list:
@@ -4172,22 +4196,32 @@ class QuerySmsTemplateListResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
         if self.message is not None:
             result['Message'] = self.message
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         result['SmsTemplateList'] = []
         if self.sms_template_list is not None:
             for k in self.sms_template_list:
                 result['SmsTemplateList'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         self.sms_template_list = []
@@ -4195,6 +4229,8 @@ class QuerySmsTemplateListResponseBody(TeaModel):
             for k in m.get('SmsTemplateList'):
                 temp_model = QuerySmsTemplateListResponseBodySmsTemplateList()
                 self.sms_template_list.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
