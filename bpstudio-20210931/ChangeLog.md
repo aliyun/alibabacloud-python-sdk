@@ -1,3 +1,6 @@
+2022-06-29 Version: 1.0.7
+- Add Remark.
+
 2022-05-29 Version: 1.0.5
 - Support Template Variable.
 - Support Application Configuration.

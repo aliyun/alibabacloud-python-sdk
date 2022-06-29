@@ -650,6 +650,7 @@ class GetApplicationResponseBodyDataPriceList(TeaModel):
         price: float = None,
         price_unit: str = None,
         region: str = None,
+        remark: str = None,
         resource_code: str = None,
         specification: str = None,
     ):
@@ -673,6 +674,7 @@ class GetApplicationResponseBodyDataPriceList(TeaModel):
         self.price_unit = price_unit
         # 区域
         self.region = region
+        self.remark = remark
         # 产品code
         self.resource_code = resource_code
         # 规格
@@ -707,6 +709,8 @@ class GetApplicationResponseBodyDataPriceList(TeaModel):
             result['PriceUnit'] = self.price_unit
         if self.region is not None:
             result['Region'] = self.region
+        if self.remark is not None:
+            result['Remark'] = self.remark
         if self.resource_code is not None:
             result['ResourceCode'] = self.resource_code
         if self.specification is not None:
@@ -735,6 +739,8 @@ class GetApplicationResponseBodyDataPriceList(TeaModel):
             self.price_unit = m.get('PriceUnit')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         if m.get('ResourceCode') is not None:
             self.resource_code = m.get('ResourceCode')
         if m.get('Specification') is not None:
