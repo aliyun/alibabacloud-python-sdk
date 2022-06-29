@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import BinaryIO, List
+from typing import Dict, BinaryIO, List
 
 
 class CompareFaceVerifyRequest(TeaModel):
@@ -109,7 +109,7 @@ class CompareFaceVerifyRequest(TeaModel):
         return self
 
 
-class CompareFaceVerifyResponseResultObject(TeaModel):
+class CompareFaceVerifyResponseBodyResultObject(TeaModel):
     def __init__(
         self,
         certify_id: str = None,
@@ -121,9 +121,7 @@ class CompareFaceVerifyResponseResultObject(TeaModel):
         self.verify_score = verify_score
 
     def validate(self):
-        self.validate_required(self.certify_id, 'certify_id')
-        self.validate_required(self.passed, 'passed')
-        self.validate_required(self.verify_score, 'verify_score')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -150,13 +148,13 @@ class CompareFaceVerifyResponseResultObject(TeaModel):
         return self
 
 
-class CompareFaceVerifyResponse(TeaModel):
+class CompareFaceVerifyResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         request_id: str = None,
-        result_object: CompareFaceVerifyResponseResultObject = None,
+        result_object: CompareFaceVerifyResponseBodyResultObject = None,
     ):
         self.code = code
         self.message = message
@@ -164,10 +162,6 @@ class CompareFaceVerifyResponse(TeaModel):
         self.result_object = result_object
 
     def validate(self):
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.message, 'message')
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.result_object, 'result_object')
         if self.result_object:
             self.result_object.validate()
 
@@ -196,8 +190,52 @@ class CompareFaceVerifyResponse(TeaModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ResultObject') is not None:
-            temp_model = CompareFaceVerifyResponseResultObject()
+            temp_model = CompareFaceVerifyResponseBodyResultObject()
             self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class CompareFaceVerifyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CompareFaceVerifyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CompareFaceVerifyResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -246,7 +284,7 @@ class CompareFacesRequest(TeaModel):
         return self
 
 
-class CompareFacesResponseData(TeaModel):
+class CompareFacesResponseBodyData(TeaModel):
     def __init__(
         self,
         confidence_thresholds: str = None,
@@ -256,8 +294,7 @@ class CompareFacesResponseData(TeaModel):
         self.similarity_score = similarity_score
 
     def validate(self):
-        self.validate_required(self.confidence_thresholds, 'confidence_thresholds')
-        self.validate_required(self.similarity_score, 'similarity_score')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -280,27 +317,22 @@ class CompareFacesResponseData(TeaModel):
         return self
 
 
-class CompareFacesResponse(TeaModel):
+class CompareFacesResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
+        data: CompareFacesResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
-        data: CompareFacesResponseData = None,
     ):
         self.code = code
+        self.data = data
         self.message = message
         self.request_id = request_id
         self.success = success
-        self.data = data
 
     def validate(self):
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.message, 'message')
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.success, 'success')
-        self.validate_required(self.data, 'data')
         if self.data:
             self.data.validate()
 
@@ -312,29 +344,73 @@ class CompareFacesResponse(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CompareFacesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
-        if m.get('Data') is not None:
-            temp_model = CompareFacesResponseData()
-            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class CompareFacesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CompareFacesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CompareFacesResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -347,6 +423,7 @@ class ContrastFaceVerifyRequest(TeaModel):
         certify_id: str = None,
         crop: str = None,
         device_token: str = None,
+        encrypt_type: str = None,
         face_contrast_file: str = None,
         face_contrast_picture: str = None,
         face_contrast_picture_url: str = None,
@@ -366,6 +443,7 @@ class ContrastFaceVerifyRequest(TeaModel):
         self.certify_id = certify_id
         self.crop = crop
         self.device_token = device_token
+        self.encrypt_type = encrypt_type
         self.face_contrast_file = face_contrast_file
         self.face_contrast_picture = face_contrast_picture
         self.face_contrast_picture_url = face_contrast_picture_url
@@ -400,6 +478,8 @@ class ContrastFaceVerifyRequest(TeaModel):
             result['Crop'] = self.crop
         if self.device_token is not None:
             result['DeviceToken'] = self.device_token
+        if self.encrypt_type is not None:
+            result['EncryptType'] = self.encrypt_type
         if self.face_contrast_file is not None:
             result['FaceContrastFile'] = self.face_contrast_file
         if self.face_contrast_picture is not None:
@@ -440,6 +520,8 @@ class ContrastFaceVerifyRequest(TeaModel):
             self.crop = m.get('Crop')
         if m.get('DeviceToken') is not None:
             self.device_token = m.get('DeviceToken')
+        if m.get('EncryptType') is not None:
+            self.encrypt_type = m.get('EncryptType')
         if m.get('FaceContrastFile') is not None:
             self.face_contrast_file = m.get('FaceContrastFile')
         if m.get('FaceContrastPicture') is not None:
@@ -467,112 +549,6 @@ class ContrastFaceVerifyRequest(TeaModel):
         return self
 
 
-class ContrastFaceVerifyResponseResultObject(TeaModel):
-    def __init__(
-        self,
-        certify_id: str = None,
-        identity_info: str = None,
-        material_info: str = None,
-        passed: str = None,
-        sub_code: str = None,
-    ):
-        self.certify_id = certify_id
-        self.identity_info = identity_info
-        self.material_info = material_info
-        self.passed = passed
-        self.sub_code = sub_code
-
-    def validate(self):
-        self.validate_required(self.certify_id, 'certify_id')
-        self.validate_required(self.identity_info, 'identity_info')
-        self.validate_required(self.material_info, 'material_info')
-        self.validate_required(self.passed, 'passed')
-        self.validate_required(self.sub_code, 'sub_code')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.certify_id is not None:
-            result['CertifyId'] = self.certify_id
-        if self.identity_info is not None:
-            result['IdentityInfo'] = self.identity_info
-        if self.material_info is not None:
-            result['MaterialInfo'] = self.material_info
-        if self.passed is not None:
-            result['Passed'] = self.passed
-        if self.sub_code is not None:
-            result['SubCode'] = self.sub_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CertifyId') is not None:
-            self.certify_id = m.get('CertifyId')
-        if m.get('IdentityInfo') is not None:
-            self.identity_info = m.get('IdentityInfo')
-        if m.get('MaterialInfo') is not None:
-            self.material_info = m.get('MaterialInfo')
-        if m.get('Passed') is not None:
-            self.passed = m.get('Passed')
-        if m.get('SubCode') is not None:
-            self.sub_code = m.get('SubCode')
-        return self
-
-
-class ContrastFaceVerifyResponse(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        message: str = None,
-        request_id: str = None,
-        result_object: ContrastFaceVerifyResponseResultObject = None,
-    ):
-        self.code = code
-        self.message = message
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.message, 'message')
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.result_object, 'result_object')
-        if self.result_object:
-            self.result_object.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_object is not None:
-            result['ResultObject'] = self.result_object.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultObject') is not None:
-            temp_model = ContrastFaceVerifyResponseResultObject()
-            self.result_object = temp_model.from_map(m['ResultObject'])
-        return self
-
-
 class ContrastFaceVerifyAdvanceRequest(TeaModel):
     def __init__(
         self,
@@ -583,6 +559,7 @@ class ContrastFaceVerifyAdvanceRequest(TeaModel):
         certify_id: str = None,
         crop: str = None,
         device_token: str = None,
+        encrypt_type: str = None,
         face_contrast_picture: str = None,
         face_contrast_picture_url: str = None,
         ip: str = None,
@@ -602,6 +579,7 @@ class ContrastFaceVerifyAdvanceRequest(TeaModel):
         self.certify_id = certify_id
         self.crop = crop
         self.device_token = device_token
+        self.encrypt_type = encrypt_type
         self.face_contrast_picture = face_contrast_picture
         self.face_contrast_picture_url = face_contrast_picture_url
         self.ip = ip
@@ -637,6 +615,8 @@ class ContrastFaceVerifyAdvanceRequest(TeaModel):
             result['Crop'] = self.crop
         if self.device_token is not None:
             result['DeviceToken'] = self.device_token
+        if self.encrypt_type is not None:
+            result['EncryptType'] = self.encrypt_type
         if self.face_contrast_picture is not None:
             result['FaceContrastPicture'] = self.face_contrast_picture
         if self.face_contrast_picture_url is not None:
@@ -677,6 +657,8 @@ class ContrastFaceVerifyAdvanceRequest(TeaModel):
             self.crop = m.get('Crop')
         if m.get('DeviceToken') is not None:
             self.device_token = m.get('DeviceToken')
+        if m.get('EncryptType') is not None:
+            self.encrypt_type = m.get('EncryptType')
         if m.get('FaceContrastPicture') is not None:
             self.face_contrast_picture = m.get('FaceContrastPicture')
         if m.get('FaceContrastPictureUrl') is not None:
@@ -699,6 +681,148 @@ class ContrastFaceVerifyAdvanceRequest(TeaModel):
             self.scene_id = m.get('SceneId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        return self
+
+
+class ContrastFaceVerifyResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        certify_id: str = None,
+        identity_info: str = None,
+        material_info: str = None,
+        passed: str = None,
+        sub_code: str = None,
+    ):
+        self.certify_id = certify_id
+        self.identity_info = identity_info
+        self.material_info = material_info
+        self.passed = passed
+        self.sub_code = sub_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        if self.identity_info is not None:
+            result['IdentityInfo'] = self.identity_info
+        if self.material_info is not None:
+            result['MaterialInfo'] = self.material_info
+        if self.passed is not None:
+            result['Passed'] = self.passed
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        if m.get('IdentityInfo') is not None:
+            self.identity_info = m.get('IdentityInfo')
+        if m.get('MaterialInfo') is not None:
+            self.material_info = m.get('MaterialInfo')
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
+        return self
+
+
+class ContrastFaceVerifyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: ContrastFaceVerifyResponseBodyResultObject = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = ContrastFaceVerifyResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class ContrastFaceVerifyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ContrastFaceVerifyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ContrastFaceVerifyResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -747,7 +871,7 @@ class CreateAuthKeyRequest(TeaModel):
         return self
 
 
-class CreateAuthKeyResponse(TeaModel):
+class CreateAuthKeyResponseBody(TeaModel):
     def __init__(
         self,
         auth_key: str = None,
@@ -757,8 +881,7 @@ class CreateAuthKeyResponse(TeaModel):
         self.request_id = request_id
 
     def validate(self):
-        self.validate_required(self.auth_key, 'auth_key')
-        self.validate_required(self.request_id, 'request_id')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -781,6 +904,50 @@ class CreateAuthKeyResponse(TeaModel):
         return self
 
 
+class CreateAuthKeyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAuthKeyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAuthKeyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateVerifySettingRequest(TeaModel):
     def __init__(
         self,
@@ -799,9 +966,7 @@ class CreateVerifySettingRequest(TeaModel):
         self.solution = solution
 
     def validate(self):
-        self.validate_required(self.biz_name, 'biz_name')
-        self.validate_required(self.biz_type, 'biz_type')
-        self.validate_required(self.solution, 'solution')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -840,7 +1005,7 @@ class CreateVerifySettingRequest(TeaModel):
         return self
 
 
-class CreateVerifySettingResponse(TeaModel):
+class CreateVerifySettingResponseBody(TeaModel):
     def __init__(
         self,
         biz_name: str = None,
@@ -856,11 +1021,7 @@ class CreateVerifySettingResponse(TeaModel):
         self.step_list = step_list
 
     def validate(self):
-        self.validate_required(self.biz_name, 'biz_name')
-        self.validate_required(self.biz_type, 'biz_type')
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.solution, 'solution')
-        self.validate_required(self.step_list, 'step_list')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -892,6 +1053,50 @@ class CreateVerifySettingResponse(TeaModel):
             self.solution = m.get('Solution')
         if m.get('StepList') is not None:
             self.step_list = m.get('StepList')
+        return self
+
+
+class CreateVerifySettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVerifySettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVerifySettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -958,7 +1163,7 @@ class DescribeDeviceInfoRequest(TeaModel):
         return self
 
 
-class DescribeDeviceInfoResponseDeviceInfoListDeviceInfo(TeaModel):
+class DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo(TeaModel):
     def __init__(
         self,
         begin_day: str = None,
@@ -974,11 +1179,7 @@ class DescribeDeviceInfoResponseDeviceInfoListDeviceInfo(TeaModel):
         self.user_device_id = user_device_id
 
     def validate(self):
-        self.validate_required(self.begin_day, 'begin_day')
-        self.validate_required(self.biz_type, 'biz_type')
-        self.validate_required(self.device_id, 'device_id')
-        self.validate_required(self.expired_day, 'expired_day')
-        self.validate_required(self.user_device_id, 'user_device_id')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1013,15 +1214,14 @@ class DescribeDeviceInfoResponseDeviceInfoListDeviceInfo(TeaModel):
         return self
 
 
-class DescribeDeviceInfoResponseDeviceInfoList(TeaModel):
+class DescribeDeviceInfoResponseBodyDeviceInfoList(TeaModel):
     def __init__(
         self,
-        device_info: List[DescribeDeviceInfoResponseDeviceInfoListDeviceInfo] = None,
+        device_info: List[DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo] = None,
     ):
         self.device_info = device_info
 
     def validate(self):
-        self.validate_required(self.device_info, 'device_info')
         if self.device_info:
             for k in self.device_info:
                 if k:
@@ -1044,32 +1244,27 @@ class DescribeDeviceInfoResponseDeviceInfoList(TeaModel):
         self.device_info = []
         if m.get('DeviceInfo') is not None:
             for k in m.get('DeviceInfo'):
-                temp_model = DescribeDeviceInfoResponseDeviceInfoListDeviceInfo()
+                temp_model = DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo()
                 self.device_info.append(temp_model.from_map(k))
         return self
 
 
-class DescribeDeviceInfoResponse(TeaModel):
+class DescribeDeviceInfoResponseBody(TeaModel):
     def __init__(
         self,
         current_page: int = None,
+        device_info_list: DescribeDeviceInfoResponseBodyDeviceInfoList = None,
         page_size: int = None,
         request_id: str = None,
         total_count: int = None,
-        device_info_list: DescribeDeviceInfoResponseDeviceInfoList = None,
     ):
         self.current_page = current_page
+        self.device_info_list = device_info_list
         self.page_size = page_size
         self.request_id = request_id
         self.total_count = total_count
-        self.device_info_list = device_info_list
 
     def validate(self):
-        self.validate_required(self.current_page, 'current_page')
-        self.validate_required(self.page_size, 'page_size')
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.total_count, 'total_count')
-        self.validate_required(self.device_info_list, 'device_info_list')
         if self.device_info_list:
             self.device_info_list.validate()
 
@@ -1081,29 +1276,73 @@ class DescribeDeviceInfoResponse(TeaModel):
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
+        if self.device_info_list is not None:
+            result['DeviceInfoList'] = self.device_info_list.to_map()
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
-        if self.device_info_list is not None:
-            result['DeviceInfoList'] = self.device_info_list.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+        if m.get('DeviceInfoList') is not None:
+            temp_model = DescribeDeviceInfoResponseBodyDeviceInfoList()
+            self.device_info_list = temp_model.from_map(m['DeviceInfoList'])
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
-        if m.get('DeviceInfoList') is not None:
-            temp_model = DescribeDeviceInfoResponseDeviceInfoList()
-            self.device_info_list = temp_model.from_map(m['DeviceInfoList'])
+        return self
+
+
+class DescribeDeviceInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDeviceInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDeviceInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -1146,7 +1385,7 @@ class DescribeFaceVerifyRequest(TeaModel):
         return self
 
 
-class DescribeFaceVerifyResponseResultObject(TeaModel):
+class DescribeFaceVerifyResponseBodyResultObject(TeaModel):
     def __init__(
         self,
         device_token: str = None,
@@ -1162,11 +1401,7 @@ class DescribeFaceVerifyResponseResultObject(TeaModel):
         self.sub_code = sub_code
 
     def validate(self):
-        self.validate_required(self.device_token, 'device_token')
-        self.validate_required(self.identity_info, 'identity_info')
-        self.validate_required(self.material_info, 'material_info')
-        self.validate_required(self.passed, 'passed')
-        self.validate_required(self.sub_code, 'sub_code')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1201,13 +1436,13 @@ class DescribeFaceVerifyResponseResultObject(TeaModel):
         return self
 
 
-class DescribeFaceVerifyResponse(TeaModel):
+class DescribeFaceVerifyResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         request_id: str = None,
-        result_object: DescribeFaceVerifyResponseResultObject = None,
+        result_object: DescribeFaceVerifyResponseBodyResultObject = None,
     ):
         self.code = code
         self.message = message
@@ -1215,10 +1450,6 @@ class DescribeFaceVerifyResponse(TeaModel):
         self.result_object = result_object
 
     def validate(self):
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.message, 'message')
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.result_object, 'result_object')
         if self.result_object:
             self.result_object.validate()
 
@@ -1247,17 +1478,28 @@ class DescribeFaceVerifyResponse(TeaModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ResultObject') is not None:
-            temp_model = DescribeFaceVerifyResponseResultObject()
+            temp_model = DescribeFaceVerifyResponseBodyResultObject()
             self.result_object = temp_model.from_map(m['ResultObject'])
         return self
 
 
-class DescribeOssUploadTokenRequest(TeaModel):
-    def __init__(self):
-        pass
+class DescribeFaceVerifyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeFaceVerifyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
 
     def validate(self):
-        pass
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1265,14 +1507,27 @@ class DescribeOssUploadTokenRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeFaceVerifyResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
-class DescribeOssUploadTokenResponseOssUploadToken(TeaModel):
+class DescribeOssUploadTokenResponseBodyOssUploadToken(TeaModel):
     def __init__(
         self,
         bucket: str = None,
@@ -1292,13 +1547,7 @@ class DescribeOssUploadTokenResponseOssUploadToken(TeaModel):
         self.token = token
 
     def validate(self):
-        self.validate_required(self.bucket, 'bucket')
-        self.validate_required(self.end_point, 'end_point')
-        self.validate_required(self.expired, 'expired')
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.path, 'path')
-        self.validate_required(self.secret, 'secret')
-        self.validate_required(self.token, 'token')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1341,18 +1590,16 @@ class DescribeOssUploadTokenResponseOssUploadToken(TeaModel):
         return self
 
 
-class DescribeOssUploadTokenResponse(TeaModel):
+class DescribeOssUploadTokenResponseBody(TeaModel):
     def __init__(
         self,
+        oss_upload_token: DescribeOssUploadTokenResponseBodyOssUploadToken = None,
         request_id: str = None,
-        oss_upload_token: DescribeOssUploadTokenResponseOssUploadToken = None,
     ):
-        self.request_id = request_id
         self.oss_upload_token = oss_upload_token
+        self.request_id = request_id
 
     def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.oss_upload_token, 'oss_upload_token')
         if self.oss_upload_token:
             self.oss_upload_token.validate()
 
@@ -1362,19 +1609,63 @@ class DescribeOssUploadTokenResponse(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.oss_upload_token is not None:
             result['OssUploadToken'] = self.oss_upload_token.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OssUploadToken') is not None:
+            temp_model = DescribeOssUploadTokenResponseBodyOssUploadToken()
+            self.oss_upload_token = temp_model.from_map(m['OssUploadToken'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('OssUploadToken') is not None:
-            temp_model = DescribeOssUploadTokenResponseOssUploadToken()
-            self.oss_upload_token = temp_model.from_map(m['OssUploadToken'])
+        return self
+
+
+class DescribeOssUploadTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeOssUploadTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeOssUploadTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -1388,8 +1679,7 @@ class DescribeVerifyResultRequest(TeaModel):
         self.biz_type = biz_type
 
     def validate(self):
-        self.validate_required(self.biz_id, 'biz_id')
-        self.validate_required(self.biz_type, 'biz_type')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1412,7 +1702,7 @@ class DescribeVerifyResultRequest(TeaModel):
         return self
 
 
-class DescribeVerifyResultResponseMaterialIdCardInfo(TeaModel):
+class DescribeVerifyResultResponseBodyMaterialIdCardInfo(TeaModel):
     def __init__(
         self,
         address: str = None,
@@ -1438,16 +1728,7 @@ class DescribeVerifyResultResponseMaterialIdCardInfo(TeaModel):
         self.start_date = start_date
 
     def validate(self):
-        self.validate_required(self.address, 'address')
-        self.validate_required(self.authority, 'authority')
-        self.validate_required(self.back_image_url, 'back_image_url')
-        self.validate_required(self.birth, 'birth')
-        self.validate_required(self.end_date, 'end_date')
-        self.validate_required(self.front_image_url, 'front_image_url')
-        self.validate_required(self.name, 'name')
-        self.validate_required(self.nationality, 'nationality')
-        self.validate_required(self.number, 'number')
-        self.validate_required(self.start_date, 'start_date')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1502,38 +1783,30 @@ class DescribeVerifyResultResponseMaterialIdCardInfo(TeaModel):
         return self
 
 
-class DescribeVerifyResultResponseMaterial(TeaModel):
+class DescribeVerifyResultResponseBodyMaterial(TeaModel):
     def __init__(
         self,
         face_global_url: str = None,
         face_image_url: str = None,
         face_mask: bool = None,
         face_quality: str = None,
+        id_card_info: DescribeVerifyResultResponseBodyMaterialIdCardInfo = None,
         id_card_name: str = None,
         id_card_number: str = None,
-        id_card_info: DescribeVerifyResultResponseMaterialIdCardInfo = None,
         video_urls: List[str] = None,
     ):
         self.face_global_url = face_global_url
         self.face_image_url = face_image_url
         self.face_mask = face_mask
         self.face_quality = face_quality
+        self.id_card_info = id_card_info
         self.id_card_name = id_card_name
         self.id_card_number = id_card_number
-        self.id_card_info = id_card_info
         self.video_urls = video_urls
 
     def validate(self):
-        self.validate_required(self.face_global_url, 'face_global_url')
-        self.validate_required(self.face_image_url, 'face_image_url')
-        self.validate_required(self.face_mask, 'face_mask')
-        self.validate_required(self.face_quality, 'face_quality')
-        self.validate_required(self.id_card_name, 'id_card_name')
-        self.validate_required(self.id_card_number, 'id_card_number')
-        self.validate_required(self.id_card_info, 'id_card_info')
         if self.id_card_info:
             self.id_card_info.validate()
-        self.validate_required(self.video_urls, 'video_urls')
 
     def to_map(self):
         _map = super().to_map()
@@ -1549,12 +1822,12 @@ class DescribeVerifyResultResponseMaterial(TeaModel):
             result['FaceMask'] = self.face_mask
         if self.face_quality is not None:
             result['FaceQuality'] = self.face_quality
+        if self.id_card_info is not None:
+            result['IdCardInfo'] = self.id_card_info.to_map()
         if self.id_card_name is not None:
             result['IdCardName'] = self.id_card_name
         if self.id_card_number is not None:
             result['IdCardNumber'] = self.id_card_number
-        if self.id_card_info is not None:
-            result['IdCardInfo'] = self.id_card_info.to_map()
         if self.video_urls is not None:
             result['VideoUrls'] = self.video_urls
         return result
@@ -1569,42 +1842,36 @@ class DescribeVerifyResultResponseMaterial(TeaModel):
             self.face_mask = m.get('FaceMask')
         if m.get('FaceQuality') is not None:
             self.face_quality = m.get('FaceQuality')
+        if m.get('IdCardInfo') is not None:
+            temp_model = DescribeVerifyResultResponseBodyMaterialIdCardInfo()
+            self.id_card_info = temp_model.from_map(m['IdCardInfo'])
         if m.get('IdCardName') is not None:
             self.id_card_name = m.get('IdCardName')
         if m.get('IdCardNumber') is not None:
             self.id_card_number = m.get('IdCardNumber')
-        if m.get('IdCardInfo') is not None:
-            temp_model = DescribeVerifyResultResponseMaterialIdCardInfo()
-            self.id_card_info = temp_model.from_map(m['IdCardInfo'])
         if m.get('VideoUrls') is not None:
             self.video_urls = m.get('VideoUrls')
         return self
 
 
-class DescribeVerifyResultResponse(TeaModel):
+class DescribeVerifyResultResponseBody(TeaModel):
     def __init__(
         self,
         authority_comparision_score: float = None,
         face_comparison_score: float = None,
         id_card_face_comparison_score: float = None,
+        material: DescribeVerifyResultResponseBodyMaterial = None,
         request_id: str = None,
         verify_status: int = None,
-        material: DescribeVerifyResultResponseMaterial = None,
     ):
         self.authority_comparision_score = authority_comparision_score
         self.face_comparison_score = face_comparison_score
         self.id_card_face_comparison_score = id_card_face_comparison_score
+        self.material = material
         self.request_id = request_id
         self.verify_status = verify_status
-        self.material = material
 
     def validate(self):
-        self.validate_required(self.authority_comparision_score, 'authority_comparision_score')
-        self.validate_required(self.face_comparison_score, 'face_comparison_score')
-        self.validate_required(self.id_card_face_comparison_score, 'id_card_face_comparison_score')
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.verify_status, 'verify_status')
-        self.validate_required(self.material, 'material')
         if self.material:
             self.material.validate()
 
@@ -1620,12 +1887,12 @@ class DescribeVerifyResultResponse(TeaModel):
             result['FaceComparisonScore'] = self.face_comparison_score
         if self.id_card_face_comparison_score is not None:
             result['IdCardFaceComparisonScore'] = self.id_card_face_comparison_score
+        if self.material is not None:
+            result['Material'] = self.material.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.verify_status is not None:
             result['VerifyStatus'] = self.verify_status
-        if self.material is not None:
-            result['Material'] = self.material.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -1636,13 +1903,57 @@ class DescribeVerifyResultResponse(TeaModel):
             self.face_comparison_score = m.get('FaceComparisonScore')
         if m.get('IdCardFaceComparisonScore') is not None:
             self.id_card_face_comparison_score = m.get('IdCardFaceComparisonScore')
+        if m.get('Material') is not None:
+            temp_model = DescribeVerifyResultResponseBodyMaterial()
+            self.material = temp_model.from_map(m['Material'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('VerifyStatus') is not None:
             self.verify_status = m.get('VerifyStatus')
-        if m.get('Material') is not None:
-            temp_model = DescribeVerifyResultResponseMaterial()
-            self.material = temp_model.from_map(m['Material'])
+        return self
+
+
+class DescribeVerifyResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVerifyResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVerifyResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -1654,7 +1965,7 @@ class DescribeVerifySDKRequest(TeaModel):
         self.task_id = task_id
 
     def validate(self):
-        self.validate_required(self.task_id, 'task_id')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1673,7 +1984,7 @@ class DescribeVerifySDKRequest(TeaModel):
         return self
 
 
-class DescribeVerifySDKResponse(TeaModel):
+class DescribeVerifySDKResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
@@ -1683,8 +1994,7 @@ class DescribeVerifySDKResponse(TeaModel):
         self.sdk_url = sdk_url
 
     def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.sdk_url, 'sdk_url')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1704,6 +2014,50 @@ class DescribeVerifySDKResponse(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('SdkUrl') is not None:
             self.sdk_url = m.get('SdkUrl')
+        return self
+
+
+class DescribeVerifySDKResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVerifySDKResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVerifySDKResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -1743,8 +2097,7 @@ class DescribeVerifyTokenRequest(TeaModel):
         self.user_regist_time = user_regist_time
 
     def validate(self):
-        self.validate_required(self.biz_id, 'biz_id')
-        self.validate_required(self.biz_type, 'biz_type')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1819,7 +2172,7 @@ class DescribeVerifyTokenRequest(TeaModel):
         return self
 
 
-class DescribeVerifyTokenResponseOssUploadToken(TeaModel):
+class DescribeVerifyTokenResponseBodyOssUploadToken(TeaModel):
     def __init__(
         self,
         bucket: str = None,
@@ -1839,13 +2192,7 @@ class DescribeVerifyTokenResponseOssUploadToken(TeaModel):
         self.token = token
 
     def validate(self):
-        self.validate_required(self.bucket, 'bucket')
-        self.validate_required(self.end_point, 'end_point')
-        self.validate_required(self.expired, 'expired')
-        self.validate_required(self.key, 'key')
-        self.validate_required(self.path, 'path')
-        self.validate_required(self.secret, 'secret')
-        self.validate_required(self.token, 'token')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1888,24 +2235,20 @@ class DescribeVerifyTokenResponseOssUploadToken(TeaModel):
         return self
 
 
-class DescribeVerifyTokenResponse(TeaModel):
+class DescribeVerifyTokenResponseBody(TeaModel):
     def __init__(
         self,
+        oss_upload_token: DescribeVerifyTokenResponseBodyOssUploadToken = None,
         request_id: str = None,
         verify_page_url: str = None,
         verify_token: str = None,
-        oss_upload_token: DescribeVerifyTokenResponseOssUploadToken = None,
     ):
+        self.oss_upload_token = oss_upload_token
         self.request_id = request_id
         self.verify_page_url = verify_page_url
         self.verify_token = verify_token
-        self.oss_upload_token = oss_upload_token
 
     def validate(self):
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.verify_page_url, 'verify_page_url')
-        self.validate_required(self.verify_token, 'verify_token')
-        self.validate_required(self.oss_upload_token, 'oss_upload_token')
         if self.oss_upload_token:
             self.oss_upload_token.validate()
 
@@ -1915,27 +2258,71 @@ class DescribeVerifyTokenResponse(TeaModel):
             return _map
 
         result = dict()
+        if self.oss_upload_token is not None:
+            result['OssUploadToken'] = self.oss_upload_token.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.verify_page_url is not None:
             result['VerifyPageUrl'] = self.verify_page_url
         if self.verify_token is not None:
             result['VerifyToken'] = self.verify_token
-        if self.oss_upload_token is not None:
-            result['OssUploadToken'] = self.oss_upload_token.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OssUploadToken') is not None:
+            temp_model = DescribeVerifyTokenResponseBodyOssUploadToken()
+            self.oss_upload_token = temp_model.from_map(m['OssUploadToken'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('VerifyPageUrl') is not None:
             self.verify_page_url = m.get('VerifyPageUrl')
         if m.get('VerifyToken') is not None:
             self.verify_token = m.get('VerifyToken')
-        if m.get('OssUploadToken') is not None:
-            temp_model = DescribeVerifyTokenResponseOssUploadToken()
-            self.oss_upload_token = temp_model.from_map(m['OssUploadToken'])
+        return self
+
+
+class DescribeVerifyTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVerifyTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVerifyTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -1949,7 +2336,7 @@ class DetectFaceAttributesRequest(TeaModel):
         self.material_value = material_value
 
     def validate(self):
-        self.validate_required(self.material_value, 'material_value')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1972,7 +2359,7 @@ class DetectFaceAttributesRequest(TeaModel):
         return self
 
 
-class DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose(TeaModel):
+class DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose(TeaModel):
     def __init__(
         self,
         pitch_angle: float = None,
@@ -1984,9 +2371,7 @@ class DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttri
         self.yaw_angle = yaw_angle
 
     def validate(self):
-        self.validate_required(self.pitch_angle, 'pitch_angle')
-        self.validate_required(self.roll_angle, 'roll_angle')
-        self.validate_required(self.yaw_angle, 'yaw_angle')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -2013,7 +2398,7 @@ class DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttri
         return self
 
 
-class DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling(TeaModel):
+class DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling(TeaModel):
     def __init__(
         self,
         threshold: float = None,
@@ -2023,8 +2408,7 @@ class DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttri
         self.value = value
 
     def validate(self):
-        self.validate_required(self.threshold, 'threshold')
-        self.validate_required(self.value, 'value')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -2047,38 +2431,30 @@ class DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttri
         return self
 
 
-class DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes(TeaModel):
+class DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes(TeaModel):
     def __init__(
         self,
         blur: float = None,
         facequal: float = None,
         facetype: str = None,
         glasses: str = None,
+        headpose: DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose = None,
         integrity: int = None,
         respirator: str = None,
-        headpose: DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose = None,
-        smiling: DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling = None,
+        smiling: DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling = None,
     ):
         self.blur = blur
         self.facequal = facequal
         self.facetype = facetype
         self.glasses = glasses
+        self.headpose = headpose
         self.integrity = integrity
         self.respirator = respirator
-        self.headpose = headpose
         self.smiling = smiling
 
     def validate(self):
-        self.validate_required(self.blur, 'blur')
-        self.validate_required(self.facequal, 'facequal')
-        self.validate_required(self.facetype, 'facetype')
-        self.validate_required(self.glasses, 'glasses')
-        self.validate_required(self.integrity, 'integrity')
-        self.validate_required(self.respirator, 'respirator')
-        self.validate_required(self.headpose, 'headpose')
         if self.headpose:
             self.headpose.validate()
-        self.validate_required(self.smiling, 'smiling')
         if self.smiling:
             self.smiling.validate()
 
@@ -2096,12 +2472,12 @@ class DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttri
             result['Facetype'] = self.facetype
         if self.glasses is not None:
             result['Glasses'] = self.glasses
+        if self.headpose is not None:
+            result['Headpose'] = self.headpose.to_map()
         if self.integrity is not None:
             result['Integrity'] = self.integrity
         if self.respirator is not None:
             result['Respirator'] = self.respirator
-        if self.headpose is not None:
-            result['Headpose'] = self.headpose.to_map()
         if self.smiling is not None:
             result['Smiling'] = self.smiling.to_map()
         return result
@@ -2116,20 +2492,20 @@ class DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttri
             self.facetype = m.get('Facetype')
         if m.get('Glasses') is not None:
             self.glasses = m.get('Glasses')
+        if m.get('Headpose') is not None:
+            temp_model = DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose()
+            self.headpose = temp_model.from_map(m['Headpose'])
         if m.get('Integrity') is not None:
             self.integrity = m.get('Integrity')
         if m.get('Respirator') is not None:
             self.respirator = m.get('Respirator')
-        if m.get('Headpose') is not None:
-            temp_model = DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose()
-            self.headpose = temp_model.from_map(m['Headpose'])
         if m.get('Smiling') is not None:
-            temp_model = DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling()
+            temp_model = DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling()
             self.smiling = temp_model.from_map(m['Smiling'])
         return self
 
 
-class DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect(TeaModel):
+class DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect(TeaModel):
     def __init__(
         self,
         height: int = None,
@@ -2143,10 +2519,7 @@ class DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect(
         self.width = width
 
     def validate(self):
-        self.validate_required(self.height, 'height')
-        self.validate_required(self.left, 'left')
-        self.validate_required(self.top, 'top')
-        self.validate_required(self.width, 'width')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -2177,20 +2550,18 @@ class DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect(
         return self
 
 
-class DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfo(TeaModel):
+class DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo(TeaModel):
     def __init__(
         self,
-        face_attributes: DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes = None,
-        face_rect: DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect = None,
+        face_attributes: DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes = None,
+        face_rect: DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect = None,
     ):
         self.face_attributes = face_attributes
         self.face_rect = face_rect
 
     def validate(self):
-        self.validate_required(self.face_attributes, 'face_attributes')
         if self.face_attributes:
             self.face_attributes.validate()
-        self.validate_required(self.face_rect, 'face_rect')
         if self.face_rect:
             self.face_rect.validate()
 
@@ -2209,23 +2580,22 @@ class DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfo(TeaModel
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('FaceAttributes') is not None:
-            temp_model = DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceAttributes()
+            temp_model = DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes()
             self.face_attributes = temp_model.from_map(m['FaceAttributes'])
         if m.get('FaceRect') is not None:
-            temp_model = DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfoFaceRect()
+            temp_model = DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect()
             self.face_rect = temp_model.from_map(m['FaceRect'])
         return self
 
 
-class DetectFaceAttributesResponseDataFaceInfos(TeaModel):
+class DetectFaceAttributesResponseBodyDataFaceInfos(TeaModel):
     def __init__(
         self,
-        face_attributes_detect_info: List[DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfo] = None,
+        face_attributes_detect_info: List[DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo] = None,
     ):
         self.face_attributes_detect_info = face_attributes_detect_info
 
     def validate(self):
-        self.validate_required(self.face_attributes_detect_info, 'face_attributes_detect_info')
         if self.face_attributes_detect_info:
             for k in self.face_attributes_detect_info:
                 if k:
@@ -2248,26 +2618,23 @@ class DetectFaceAttributesResponseDataFaceInfos(TeaModel):
         self.face_attributes_detect_info = []
         if m.get('FaceAttributesDetectInfo') is not None:
             for k in m.get('FaceAttributesDetectInfo'):
-                temp_model = DetectFaceAttributesResponseDataFaceInfosFaceAttributesDetectInfo()
+                temp_model = DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo()
                 self.face_attributes_detect_info.append(temp_model.from_map(k))
         return self
 
 
-class DetectFaceAttributesResponseData(TeaModel):
+class DetectFaceAttributesResponseBodyData(TeaModel):
     def __init__(
         self,
+        face_infos: DetectFaceAttributesResponseBodyDataFaceInfos = None,
         img_height: int = None,
         img_width: int = None,
-        face_infos: DetectFaceAttributesResponseDataFaceInfos = None,
     ):
+        self.face_infos = face_infos
         self.img_height = img_height
         self.img_width = img_width
-        self.face_infos = face_infos
 
     def validate(self):
-        self.validate_required(self.img_height, 'img_height')
-        self.validate_required(self.img_width, 'img_width')
-        self.validate_required(self.face_infos, 'face_infos')
         if self.face_infos:
             self.face_infos.validate()
 
@@ -2277,47 +2644,42 @@ class DetectFaceAttributesResponseData(TeaModel):
             return _map
 
         result = dict()
+        if self.face_infos is not None:
+            result['FaceInfos'] = self.face_infos.to_map()
         if self.img_height is not None:
             result['ImgHeight'] = self.img_height
         if self.img_width is not None:
             result['ImgWidth'] = self.img_width
-        if self.face_infos is not None:
-            result['FaceInfos'] = self.face_infos.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FaceInfos') is not None:
+            temp_model = DetectFaceAttributesResponseBodyDataFaceInfos()
+            self.face_infos = temp_model.from_map(m['FaceInfos'])
         if m.get('ImgHeight') is not None:
             self.img_height = m.get('ImgHeight')
         if m.get('ImgWidth') is not None:
             self.img_width = m.get('ImgWidth')
-        if m.get('FaceInfos') is not None:
-            temp_model = DetectFaceAttributesResponseDataFaceInfos()
-            self.face_infos = temp_model.from_map(m['FaceInfos'])
         return self
 
 
-class DetectFaceAttributesResponse(TeaModel):
+class DetectFaceAttributesResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
+        data: DetectFaceAttributesResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
-        data: DetectFaceAttributesResponseData = None,
     ):
         self.code = code
+        self.data = data
         self.message = message
         self.request_id = request_id
         self.success = success
-        self.data = data
 
     def validate(self):
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.message, 'message')
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.success, 'success')
-        self.validate_required(self.data, 'data')
         if self.data:
             self.data.validate()
 
@@ -2329,29 +2691,73 @@ class DetectFaceAttributesResponse(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DetectFaceAttributesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
-        if m.get('Data') is not None:
-            temp_model = DetectFaceAttributesResponseData()
-            self.data = temp_model.from_map(m['Data'])
+        return self
+
+
+class DetectFaceAttributesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DetectFaceAttributesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DetectFaceAttributesResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -2367,6 +2773,7 @@ class InitFaceVerifyRequest(TeaModel):
         certify_id: str = None,
         certify_url_type: str = None,
         crop: str = None,
+        encrypt_type: str = None,
         face_contrast_picture: str = None,
         face_contrast_picture_url: str = None,
         ip: str = None,
@@ -2390,6 +2797,7 @@ class InitFaceVerifyRequest(TeaModel):
         self.certify_id = certify_id
         self.certify_url_type = certify_url_type
         self.crop = crop
+        self.encrypt_type = encrypt_type
         self.face_contrast_picture = face_contrast_picture
         self.face_contrast_picture_url = face_contrast_picture_url
         self.ip = ip
@@ -2431,6 +2839,8 @@ class InitFaceVerifyRequest(TeaModel):
             result['CertifyUrlType'] = self.certify_url_type
         if self.crop is not None:
             result['Crop'] = self.crop
+        if self.encrypt_type is not None:
+            result['EncryptType'] = self.encrypt_type
         if self.face_contrast_picture is not None:
             result['FaceContrastPicture'] = self.face_contrast_picture
         if self.face_contrast_picture_url is not None:
@@ -2479,6 +2889,8 @@ class InitFaceVerifyRequest(TeaModel):
             self.certify_url_type = m.get('CertifyUrlType')
         if m.get('Crop') is not None:
             self.crop = m.get('Crop')
+        if m.get('EncryptType') is not None:
+            self.encrypt_type = m.get('EncryptType')
         if m.get('FaceContrastPicture') is not None:
             self.face_contrast_picture = m.get('FaceContrastPicture')
         if m.get('FaceContrastPictureUrl') is not None:
@@ -2508,7 +2920,7 @@ class InitFaceVerifyRequest(TeaModel):
         return self
 
 
-class InitFaceVerifyResponseResultObject(TeaModel):
+class InitFaceVerifyResponseBodyResultObject(TeaModel):
     def __init__(
         self,
         certify_id: str = None,
@@ -2518,8 +2930,7 @@ class InitFaceVerifyResponseResultObject(TeaModel):
         self.certify_url = certify_url
 
     def validate(self):
-        self.validate_required(self.certify_id, 'certify_id')
-        self.validate_required(self.certify_url, 'certify_url')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -2542,13 +2953,13 @@ class InitFaceVerifyResponseResultObject(TeaModel):
         return self
 
 
-class InitFaceVerifyResponse(TeaModel):
+class InitFaceVerifyResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         request_id: str = None,
-        result_object: InitFaceVerifyResponseResultObject = None,
+        result_object: InitFaceVerifyResponseBodyResultObject = None,
     ):
         self.code = code
         self.message = message
@@ -2556,10 +2967,6 @@ class InitFaceVerifyResponse(TeaModel):
         self.result_object = result_object
 
     def validate(self):
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.message, 'message')
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.result_object, 'result_object')
         if self.result_object:
             self.result_object.validate()
 
@@ -2588,8 +2995,52 @@ class InitFaceVerifyResponse(TeaModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ResultObject') is not None:
-            temp_model = InitFaceVerifyResponseResultObject()
+            temp_model = InitFaceVerifyResponseBodyResultObject()
             self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class InitFaceVerifyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InitFaceVerifyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InitFaceVerifyResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -2698,7 +3149,7 @@ class LivenessFaceVerifyRequest(TeaModel):
         return self
 
 
-class LivenessFaceVerifyResponseResultObject(TeaModel):
+class LivenessFaceVerifyResponseBodyResultObject(TeaModel):
     def __init__(
         self,
         certify_id: str = None,
@@ -2712,10 +3163,7 @@ class LivenessFaceVerifyResponseResultObject(TeaModel):
         self.sub_code = sub_code
 
     def validate(self):
-        self.validate_required(self.certify_id, 'certify_id')
-        self.validate_required(self.material_info, 'material_info')
-        self.validate_required(self.passed, 'passed')
-        self.validate_required(self.sub_code, 'sub_code')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -2746,13 +3194,13 @@ class LivenessFaceVerifyResponseResultObject(TeaModel):
         return self
 
 
-class LivenessFaceVerifyResponse(TeaModel):
+class LivenessFaceVerifyResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         request_id: str = None,
-        result_object: LivenessFaceVerifyResponseResultObject = None,
+        result_object: LivenessFaceVerifyResponseBodyResultObject = None,
     ):
         self.code = code
         self.message = message
@@ -2760,10 +3208,6 @@ class LivenessFaceVerifyResponse(TeaModel):
         self.result_object = result_object
 
     def validate(self):
-        self.validate_required(self.code, 'code')
-        self.validate_required(self.message, 'message')
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.result_object, 'result_object')
         if self.result_object:
             self.result_object.validate()
 
@@ -2792,8 +3236,52 @@ class LivenessFaceVerifyResponse(TeaModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ResultObject') is not None:
-            temp_model = LivenessFaceVerifyResponseResultObject()
+            temp_model = LivenessFaceVerifyResponseBodyResultObject()
             self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class LivenessFaceVerifyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: LivenessFaceVerifyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = LivenessFaceVerifyResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -2813,7 +3301,7 @@ class ModifyDeviceInfoRequest(TeaModel):
         self.user_device_id = user_device_id
 
     def validate(self):
-        self.validate_required(self.device_id, 'device_id')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -2848,7 +3336,7 @@ class ModifyDeviceInfoRequest(TeaModel):
         return self
 
 
-class ModifyDeviceInfoResponse(TeaModel):
+class ModifyDeviceInfoResponseBody(TeaModel):
     def __init__(
         self,
         begin_day: str = None,
@@ -2866,12 +3354,7 @@ class ModifyDeviceInfoResponse(TeaModel):
         self.user_device_id = user_device_id
 
     def validate(self):
-        self.validate_required(self.begin_day, 'begin_day')
-        self.validate_required(self.biz_type, 'biz_type')
-        self.validate_required(self.device_id, 'device_id')
-        self.validate_required(self.expired_day, 'expired_day')
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.user_device_id, 'user_device_id')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -2910,6 +3393,50 @@ class ModifyDeviceInfoResponse(TeaModel):
         return self
 
 
+class ModifyDeviceInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDeviceInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDeviceInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class VerifyMaterialRequest(TeaModel):
     def __init__(
         self,
@@ -2932,11 +3459,7 @@ class VerifyMaterialRequest(TeaModel):
         self.user_id = user_id
 
     def validate(self):
-        self.validate_required(self.biz_id, 'biz_id')
-        self.validate_required(self.biz_type, 'biz_type')
-        self.validate_required(self.face_image_url, 'face_image_url')
-        self.validate_required(self.id_card_number, 'id_card_number')
-        self.validate_required(self.name, 'name')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -2983,7 +3506,7 @@ class VerifyMaterialRequest(TeaModel):
         return self
 
 
-class VerifyMaterialResponseMaterialIdCardInfo(TeaModel):
+class VerifyMaterialResponseBodyMaterialIdCardInfo(TeaModel):
     def __init__(
         self,
         address: str = None,
@@ -3009,16 +3532,7 @@ class VerifyMaterialResponseMaterialIdCardInfo(TeaModel):
         self.start_date = start_date
 
     def validate(self):
-        self.validate_required(self.address, 'address')
-        self.validate_required(self.authority, 'authority')
-        self.validate_required(self.back_image_url, 'back_image_url')
-        self.validate_required(self.birth, 'birth')
-        self.validate_required(self.end_date, 'end_date')
-        self.validate_required(self.front_image_url, 'front_image_url')
-        self.validate_required(self.name, 'name')
-        self.validate_required(self.nationality, 'nationality')
-        self.validate_required(self.number, 'number')
-        self.validate_required(self.start_date, 'start_date')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -3073,33 +3587,26 @@ class VerifyMaterialResponseMaterialIdCardInfo(TeaModel):
         return self
 
 
-class VerifyMaterialResponseMaterial(TeaModel):
+class VerifyMaterialResponseBodyMaterial(TeaModel):
     def __init__(
         self,
         face_global_url: str = None,
         face_image_url: str = None,
         face_mask: str = None,
         face_quality: str = None,
+        id_card_info: VerifyMaterialResponseBodyMaterialIdCardInfo = None,
         id_card_name: str = None,
         id_card_number: str = None,
-        id_card_info: VerifyMaterialResponseMaterialIdCardInfo = None,
     ):
         self.face_global_url = face_global_url
         self.face_image_url = face_image_url
         self.face_mask = face_mask
         self.face_quality = face_quality
+        self.id_card_info = id_card_info
         self.id_card_name = id_card_name
         self.id_card_number = id_card_number
-        self.id_card_info = id_card_info
 
     def validate(self):
-        self.validate_required(self.face_global_url, 'face_global_url')
-        self.validate_required(self.face_image_url, 'face_image_url')
-        self.validate_required(self.face_mask, 'face_mask')
-        self.validate_required(self.face_quality, 'face_quality')
-        self.validate_required(self.id_card_name, 'id_card_name')
-        self.validate_required(self.id_card_number, 'id_card_number')
-        self.validate_required(self.id_card_info, 'id_card_info')
         if self.id_card_info:
             self.id_card_info.validate()
 
@@ -3117,12 +3624,12 @@ class VerifyMaterialResponseMaterial(TeaModel):
             result['FaceMask'] = self.face_mask
         if self.face_quality is not None:
             result['FaceQuality'] = self.face_quality
+        if self.id_card_info is not None:
+            result['IdCardInfo'] = self.id_card_info.to_map()
         if self.id_card_name is not None:
             result['IdCardName'] = self.id_card_name
         if self.id_card_number is not None:
             result['IdCardNumber'] = self.id_card_number
-        if self.id_card_info is not None:
-            result['IdCardInfo'] = self.id_card_info.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -3135,40 +3642,34 @@ class VerifyMaterialResponseMaterial(TeaModel):
             self.face_mask = m.get('FaceMask')
         if m.get('FaceQuality') is not None:
             self.face_quality = m.get('FaceQuality')
+        if m.get('IdCardInfo') is not None:
+            temp_model = VerifyMaterialResponseBodyMaterialIdCardInfo()
+            self.id_card_info = temp_model.from_map(m['IdCardInfo'])
         if m.get('IdCardName') is not None:
             self.id_card_name = m.get('IdCardName')
         if m.get('IdCardNumber') is not None:
             self.id_card_number = m.get('IdCardNumber')
-        if m.get('IdCardInfo') is not None:
-            temp_model = VerifyMaterialResponseMaterialIdCardInfo()
-            self.id_card_info = temp_model.from_map(m['IdCardInfo'])
         return self
 
 
-class VerifyMaterialResponse(TeaModel):
+class VerifyMaterialResponseBody(TeaModel):
     def __init__(
         self,
         authority_comparision_score: float = None,
         id_card_face_comparison_score: float = None,
+        material: VerifyMaterialResponseBodyMaterial = None,
         request_id: str = None,
         verify_status: int = None,
         verify_token: str = None,
-        material: VerifyMaterialResponseMaterial = None,
     ):
         self.authority_comparision_score = authority_comparision_score
         self.id_card_face_comparison_score = id_card_face_comparison_score
+        self.material = material
         self.request_id = request_id
         self.verify_status = verify_status
         self.verify_token = verify_token
-        self.material = material
 
     def validate(self):
-        self.validate_required(self.authority_comparision_score, 'authority_comparision_score')
-        self.validate_required(self.id_card_face_comparison_score, 'id_card_face_comparison_score')
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.verify_status, 'verify_status')
-        self.validate_required(self.verify_token, 'verify_token')
-        self.validate_required(self.material, 'material')
         if self.material:
             self.material.validate()
 
@@ -3182,14 +3683,14 @@ class VerifyMaterialResponse(TeaModel):
             result['AuthorityComparisionScore'] = self.authority_comparision_score
         if self.id_card_face_comparison_score is not None:
             result['IdCardFaceComparisonScore'] = self.id_card_face_comparison_score
+        if self.material is not None:
+            result['Material'] = self.material.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.verify_status is not None:
             result['VerifyStatus'] = self.verify_status
         if self.verify_token is not None:
             result['VerifyToken'] = self.verify_token
-        if self.material is not None:
-            result['Material'] = self.material.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -3198,15 +3699,59 @@ class VerifyMaterialResponse(TeaModel):
             self.authority_comparision_score = m.get('AuthorityComparisionScore')
         if m.get('IdCardFaceComparisonScore') is not None:
             self.id_card_face_comparison_score = m.get('IdCardFaceComparisonScore')
+        if m.get('Material') is not None:
+            temp_model = VerifyMaterialResponseBodyMaterial()
+            self.material = temp_model.from_map(m['Material'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('VerifyStatus') is not None:
             self.verify_status = m.get('VerifyStatus')
         if m.get('VerifyToken') is not None:
             self.verify_token = m.get('VerifyToken')
-        if m.get('Material') is not None:
-            temp_model = VerifyMaterialResponseMaterial()
-            self.material = temp_model.from_map(m['Material'])
+        return self
+
+
+class VerifyMaterialResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: VerifyMaterialResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = VerifyMaterialResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
