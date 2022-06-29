@@ -1,3 +1,6 @@
+2022-06-29 Version: 2.2.1
+- Add an input param, IsHttpRedirectToHttps, of api, SetDomain.
+
 2022-06-24 Version: 2.2.0
 - Add apis for access control of instance.
 

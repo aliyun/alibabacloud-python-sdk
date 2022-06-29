@@ -31557,12 +31557,14 @@ class SetDomainRequest(TeaModel):
         domain_name: str = None,
         group_id: str = None,
         is_force: bool = None,
+        is_http_redirect_to_https: bool = None,
     ):
         self.bind_stage_name = bind_stage_name
         self.custom_domain_type = custom_domain_type
         self.domain_name = domain_name
         self.group_id = group_id
         self.is_force = is_force
+        self.is_http_redirect_to_https = is_http_redirect_to_https
 
     def validate(self):
         pass
@@ -31583,6 +31585,8 @@ class SetDomainRequest(TeaModel):
             result['GroupId'] = self.group_id
         if self.is_force is not None:
             result['IsForce'] = self.is_force
+        if self.is_http_redirect_to_https is not None:
+            result['IsHttpRedirectToHttps'] = self.is_http_redirect_to_https
         return result
 
     def from_map(self, m: dict = None):
@@ -31597,6 +31601,8 @@ class SetDomainRequest(TeaModel):
             self.group_id = m.get('GroupId')
         if m.get('IsForce') is not None:
             self.is_force = m.get('IsForce')
+        if m.get('IsHttpRedirectToHttps') is not None:
+            self.is_http_redirect_to_https = m.get('IsHttpRedirectToHttps')
         return self
 
 
