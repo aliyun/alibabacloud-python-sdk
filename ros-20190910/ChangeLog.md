@@ -1,3 +1,8 @@
+2022-06-30 Version: 3.2.6
+- ValidateTemplate returns ResourceTypes.
+- GetStackResource supports ResourceAttributes.
+- GetStack supports LogOption and returns ResourceLogs.
+
 2022-06-09 Version: 3.2.5
 - The parameter of GetStack, ListTemplates adds IncludeTags.
 - The response of GetStack, ListTemplates adds Tags.
