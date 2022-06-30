@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 class CreateAdaptationRequestAdaptTarget(TeaModel):
@@ -121,18 +121,10 @@ class CreateAdaptationResponseBody(TeaModel):
     def __init__(
         self,
         adapt_apply_id: int = None,
-        code: str = None,
-        http_code: int = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.adapt_apply_id = adapt_apply_id
-        self.code = code
-        self.http_code = http_code
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -145,32 +137,16 @@ class CreateAdaptationResponseBody(TeaModel):
         result = dict()
         if self.adapt_apply_id is not None:
             result['AdaptApplyId'] = self.adapt_apply_id
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AdaptApplyId') is not None:
             self.adapt_apply_id = m.get('AdaptApplyId')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -255,18 +231,10 @@ class CreateAppResponseBody(TeaModel):
     def __init__(
         self,
         app_id: str = None,
-        code: str = None,
-        http_code: int = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.app_id = app_id
-        self.code = code
-        self.http_code = http_code
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -279,32 +247,16 @@ class CreateAppResponseBody(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -352,6 +304,86 @@ class CreateAppResponse(TeaModel):
         return self
 
 
+class CreateAppSessionRequestResultStoreStoreInfo(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateAppSessionRequestResultStore(TeaModel):
+    def __init__(
+        self,
+        need: bool = None,
+        store_info: List[CreateAppSessionRequestResultStoreStoreInfo] = None,
+        type: str = None,
+    ):
+        self.need = need
+        self.store_info = store_info
+        self.type = type
+
+    def validate(self):
+        if self.store_info:
+            for k in self.store_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.need is not None:
+            result['Need'] = self.need
+        result['StoreInfo'] = []
+        if self.store_info is not None:
+            for k in self.store_info:
+                result['StoreInfo'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Need') is not None:
+            self.need = m.get('Need')
+        self.store_info = []
+        if m.get('StoreInfo') is not None:
+            for k in m.get('StoreInfo'):
+                temp_model = CreateAppSessionRequestResultStoreStoreInfo()
+                self.store_info.append(temp_model.from_map(k))
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class CreateAppSessionRequestStartParameters(TeaModel):
     def __init__(
         self,
@@ -360,7 +392,39 @@ class CreateAppSessionRequestStartParameters(TeaModel):
     ):
         # key
         self.key = key
-        # value
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateAppSessionRequestStartParametersV2(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: Any = None,
+    ):
+        self.key = key
         self.value = value
 
     def validate(self):
@@ -428,8 +492,11 @@ class CreateAppSessionRequest(TeaModel):
         client_ip: str = None,
         custom_session_id: str = None,
         custom_user_id: str = None,
+        dataset_id: str = None,
         enable_postpaid: bool = None,
+        result_store: CreateAppSessionRequestResultStore = None,
         start_parameters: List[CreateAppSessionRequestStartParameters] = None,
+        start_parameters_v2: List[CreateAppSessionRequestStartParametersV2] = None,
         system_info: List[CreateAppSessionRequestSystemInfo] = None,
         timeout: int = None,
     ):
@@ -443,9 +510,208 @@ class CreateAppSessionRequest(TeaModel):
         self.custom_session_id = custom_session_id
         # 自定义用户id
         self.custom_user_id = custom_user_id
+        self.dataset_id = dataset_id
         self.enable_postpaid = enable_postpaid
+        self.result_store = result_store
         # 启动参数
         self.start_parameters = start_parameters
+        self.start_parameters_v2 = start_parameters_v2
+        # 系统信息：如端侧机型等信息
+        self.system_info = system_info
+        self.timeout = timeout
+
+    def validate(self):
+        if self.result_store:
+            self.result_store.validate()
+        if self.start_parameters:
+            for k in self.start_parameters:
+                if k:
+                    k.validate()
+        if self.start_parameters_v2:
+            for k in self.start_parameters_v2:
+                if k:
+                    k.validate()
+        if self.system_info:
+            for k in self.system_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.custom_session_id is not None:
+            result['CustomSessionId'] = self.custom_session_id
+        if self.custom_user_id is not None:
+            result['CustomUserId'] = self.custom_user_id
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
+        if self.enable_postpaid is not None:
+            result['EnablePostpaid'] = self.enable_postpaid
+        if self.result_store is not None:
+            result['ResultStore'] = self.result_store.to_map()
+        result['StartParameters'] = []
+        if self.start_parameters is not None:
+            for k in self.start_parameters:
+                result['StartParameters'].append(k.to_map() if k else None)
+        result['StartParametersV2'] = []
+        if self.start_parameters_v2 is not None:
+            for k in self.start_parameters_v2:
+                result['StartParametersV2'].append(k.to_map() if k else None)
+        result['SystemInfo'] = []
+        if self.system_info is not None:
+            for k in self.system_info:
+                result['SystemInfo'].append(k.to_map() if k else None)
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('CustomSessionId') is not None:
+            self.custom_session_id = m.get('CustomSessionId')
+        if m.get('CustomUserId') is not None:
+            self.custom_user_id = m.get('CustomUserId')
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
+        if m.get('EnablePostpaid') is not None:
+            self.enable_postpaid = m.get('EnablePostpaid')
+        if m.get('ResultStore') is not None:
+            temp_model = CreateAppSessionRequestResultStore()
+            self.result_store = temp_model.from_map(m['ResultStore'])
+        self.start_parameters = []
+        if m.get('StartParameters') is not None:
+            for k in m.get('StartParameters'):
+                temp_model = CreateAppSessionRequestStartParameters()
+                self.start_parameters.append(temp_model.from_map(k))
+        self.start_parameters_v2 = []
+        if m.get('StartParametersV2') is not None:
+            for k in m.get('StartParametersV2'):
+                temp_model = CreateAppSessionRequestStartParametersV2()
+                self.start_parameters_v2.append(temp_model.from_map(k))
+        self.system_info = []
+        if m.get('SystemInfo') is not None:
+            for k in m.get('SystemInfo'):
+                temp_model = CreateAppSessionRequestSystemInfo()
+                self.system_info.append(temp_model.from_map(k))
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
+class CreateAppSessionShrinkRequestStartParameters(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # key
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateAppSessionShrinkRequestSystemInfo(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateAppSessionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_version: str = None,
+        client_ip: str = None,
+        custom_session_id: str = None,
+        custom_user_id: str = None,
+        dataset_id: str = None,
+        enable_postpaid: bool = None,
+        result_store_shrink: str = None,
+        start_parameters: List[CreateAppSessionShrinkRequestStartParameters] = None,
+        start_parameters_v2shrink: str = None,
+        system_info: List[CreateAppSessionShrinkRequestSystemInfo] = None,
+        timeout: int = None,
+    ):
+        # 应用ID
+        self.app_id = app_id
+        # 应用版本
+        self.app_version = app_version
+        # 客户端ip
+        self.client_ip = client_ip
+        # 自定义会话id
+        self.custom_session_id = custom_session_id
+        # 自定义用户id
+        self.custom_user_id = custom_user_id
+        self.dataset_id = dataset_id
+        self.enable_postpaid = enable_postpaid
+        self.result_store_shrink = result_store_shrink
+        # 启动参数
+        self.start_parameters = start_parameters
+        self.start_parameters_v2shrink = start_parameters_v2shrink
         # 系统信息：如端侧机型等信息
         self.system_info = system_info
         self.timeout = timeout
@@ -476,12 +742,18 @@ class CreateAppSessionRequest(TeaModel):
             result['CustomSessionId'] = self.custom_session_id
         if self.custom_user_id is not None:
             result['CustomUserId'] = self.custom_user_id
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
         if self.enable_postpaid is not None:
             result['EnablePostpaid'] = self.enable_postpaid
+        if self.result_store_shrink is not None:
+            result['ResultStore'] = self.result_store_shrink
         result['StartParameters'] = []
         if self.start_parameters is not None:
             for k in self.start_parameters:
                 result['StartParameters'].append(k.to_map() if k else None)
+        if self.start_parameters_v2shrink is not None:
+            result['StartParametersV2'] = self.start_parameters_v2shrink
         result['SystemInfo'] = []
         if self.system_info is not None:
             for k in self.system_info:
@@ -502,17 +774,23 @@ class CreateAppSessionRequest(TeaModel):
             self.custom_session_id = m.get('CustomSessionId')
         if m.get('CustomUserId') is not None:
             self.custom_user_id = m.get('CustomUserId')
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
         if m.get('EnablePostpaid') is not None:
             self.enable_postpaid = m.get('EnablePostpaid')
+        if m.get('ResultStore') is not None:
+            self.result_store_shrink = m.get('ResultStore')
         self.start_parameters = []
         if m.get('StartParameters') is not None:
             for k in m.get('StartParameters'):
-                temp_model = CreateAppSessionRequestStartParameters()
+                temp_model = CreateAppSessionShrinkRequestStartParameters()
                 self.start_parameters.append(temp_model.from_map(k))
+        if m.get('StartParametersV2') is not None:
+            self.start_parameters_v2shrink = m.get('StartParametersV2')
         self.system_info = []
         if m.get('SystemInfo') is not None:
             for k in m.get('SystemInfo'):
-                temp_model = CreateAppSessionRequestSystemInfo()
+                temp_model = CreateAppSessionShrinkRequestSystemInfo()
                 self.system_info.append(temp_model.from_map(k))
         if m.get('Timeout') is not None:
             self.timeout = m.get('Timeout')
@@ -656,18 +934,10 @@ class CreateAppVersionResponseBody(TeaModel):
     def __init__(
         self,
         app_version_id: str = None,
-        code: str = None,
-        http_code: int = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.app_version_id = app_version_id
-        self.code = code
-        self.http_code = http_code
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -680,32 +950,16 @@ class CreateAppVersionResponseBody(TeaModel):
         result = dict()
         if self.app_version_id is not None:
             result['AppVersionId'] = self.app_version_id
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AppVersionId') is not None:
             self.app_version_id = m.get('AppVersionId')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -753,6 +1007,148 @@ class CreateAppVersionResponse(TeaModel):
         return self
 
 
+class CreateDatasetDeployTaskRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        custom_param: str = None,
+        need_unzip: bool = None,
+        oss_bucket: str = None,
+        oss_file_path: str = None,
+        oss_region_id: str = None,
+        source_type: str = None,
+    ):
+        self.client_token = client_token
+        self.custom_param = custom_param
+        self.need_unzip = need_unzip
+        self.oss_bucket = oss_bucket
+        self.oss_file_path = oss_file_path
+        self.oss_region_id = oss_region_id
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.custom_param is not None:
+            result['CustomParam'] = self.custom_param
+        if self.need_unzip is not None:
+            result['NeedUnzip'] = self.need_unzip
+        if self.oss_bucket is not None:
+            result['OssBucket'] = self.oss_bucket
+        if self.oss_file_path is not None:
+            result['OssFilePath'] = self.oss_file_path
+        if self.oss_region_id is not None:
+            result['OssRegionId'] = self.oss_region_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('CustomParam') is not None:
+            self.custom_param = m.get('CustomParam')
+        if m.get('NeedUnzip') is not None:
+            self.need_unzip = m.get('NeedUnzip')
+        if m.get('OssBucket') is not None:
+            self.oss_bucket = m.get('OssBucket')
+        if m.get('OssFilePath') is not None:
+            self.oss_file_path = m.get('OssFilePath')
+        if m.get('OssRegionId') is not None:
+            self.oss_region_id = m.get('OssRegionId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class CreateDatasetDeployTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        # 请求id
+        self.request_id = request_id
+        # 应用版本
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateDatasetDeployTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDatasetDeployTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDatasetDeployTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAppRequest(TeaModel):
     def __init__(
         self,
@@ -784,18 +1180,10 @@ class DeleteAppResponseBody(TeaModel):
     def __init__(
         self,
         app_id: str = None,
-        code: str = None,
-        http_code: int = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.app_id = app_id
-        self.code = code
-        self.http_code = http_code
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -808,32 +1196,16 @@ class DeleteAppResponseBody(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -912,18 +1284,10 @@ class DeleteAppVersionResponseBody(TeaModel):
     def __init__(
         self,
         app_version_id: str = None,
-        code: str = None,
-        http_code: int = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.app_version_id = app_version_id
-        self.code = code
-        self.http_code = http_code
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -936,32 +1300,16 @@ class DeleteAppVersionResponseBody(TeaModel):
         result = dict()
         if self.app_version_id is not None:
             result['AppVersionId'] = self.app_version_id
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AppVersionId') is not None:
             self.app_version_id = m.get('AppVersionId')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -1094,25 +1442,17 @@ class GetAdaptationResponseBody(TeaModel):
         adapt_target: GetAdaptationResponseBodyAdaptTarget = None,
         app_id: str = None,
         app_version_id: str = None,
-        code: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
-        http_code: int = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.adapt_apply_id = adapt_apply_id
         self.adapt_target = adapt_target
         self.app_id = app_id
         self.app_version_id = app_version_id
-        self.code = code
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
-        self.http_code = http_code
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         if self.adapt_target:
@@ -1132,20 +1472,12 @@ class GetAdaptationResponseBody(TeaModel):
             result['AppId'] = self.app_id
         if self.app_version_id is not None:
             result['AppVersionId'] = self.app_version_id
-        if self.code is not None:
-            result['Code'] = self.code
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -1159,20 +1491,12 @@ class GetAdaptationResponseBody(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AppVersionId') is not None:
             self.app_version_id = m.get('AppVersionId')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -1253,26 +1577,18 @@ class GetAppResponseBody(TeaModel):
         app_id: str = None,
         app_name: str = None,
         app_type: str = None,
-        code: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
-        http_code: int = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
         version_adapt_num: int = None,
         version_total_num: int = None,
     ):
         self.app_id = app_id
         self.app_name = app_name
         self.app_type = app_type
-        self.code = code
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
-        self.http_code = http_code
-        self.message = message
         self.request_id = request_id
-        self.success = success
         self.version_adapt_num = version_adapt_num
         self.version_total_num = version_total_num
 
@@ -1291,20 +1607,12 @@ class GetAppResponseBody(TeaModel):
             result['AppName'] = self.app_name
         if self.app_type is not None:
             result['AppType'] = self.app_type
-        if self.code is not None:
-            result['Code'] = self.code
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         if self.version_adapt_num is not None:
             result['VersionAdaptNum'] = self.version_adapt_num
         if self.version_total_num is not None:
@@ -1319,20 +1627,12 @@ class GetAppResponseBody(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('VersionAdaptNum') is not None:
             self.version_adapt_num = m.get('VersionAdaptNum')
         if m.get('VersionTotalNum') is not None:
@@ -1561,7 +1861,6 @@ class GetAppVersionResponseBody(TeaModel):
         app_version_name: str = None,
         app_version_status: str = None,
         app_version_status_memo: str = None,
-        code: str = None,
         consume_cu: float = None,
         file_address: str = None,
         file_size: int = None,
@@ -1569,17 +1868,13 @@ class GetAppVersionResponseBody(TeaModel):
         file_upload_type: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
-        http_code: int = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.app_id = app_id
         self.app_version_id = app_version_id
         self.app_version_name = app_version_name
         self.app_version_status = app_version_status
         self.app_version_status_memo = app_version_status_memo
-        self.code = code
         self.consume_cu = consume_cu
         self.file_address = file_address
         self.file_size = file_size
@@ -1587,10 +1882,7 @@ class GetAppVersionResponseBody(TeaModel):
         self.file_upload_type = file_upload_type
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
-        self.http_code = http_code
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -1611,8 +1903,6 @@ class GetAppVersionResponseBody(TeaModel):
             result['AppVersionStatus'] = self.app_version_status
         if self.app_version_status_memo is not None:
             result['AppVersionStatusMemo'] = self.app_version_status_memo
-        if self.code is not None:
-            result['Code'] = self.code
         if self.consume_cu is not None:
             result['ConsumeCu'] = self.consume_cu
         if self.file_address is not None:
@@ -1627,14 +1917,8 @@ class GetAppVersionResponseBody(TeaModel):
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -1649,8 +1933,6 @@ class GetAppVersionResponseBody(TeaModel):
             self.app_version_status = m.get('AppVersionStatus')
         if m.get('AppVersionStatusMemo') is not None:
             self.app_version_status_memo = m.get('AppVersionStatusMemo')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('ConsumeCu') is not None:
             self.consume_cu = m.get('ConsumeCu')
         if m.get('FileAddress') is not None:
@@ -1665,14 +1947,8 @@ class GetAppVersionResponseBody(TeaModel):
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -1716,6 +1992,125 @@ class GetAppVersionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAppVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDatasetRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_id: str = None,
+    ):
+        self.dataset_id = dataset_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
+        return self
+
+
+class GetDatasetResponseBody(TeaModel):
+    def __init__(
+        self,
+        custom_param: str = None,
+        dataset_id: str = None,
+        dataset_size: int = None,
+        request_id: str = None,
+    ):
+        # 应用id
+        self.custom_param = custom_param
+        # 自定义会话id
+        self.dataset_id = dataset_id
+        self.dataset_size = dataset_size
+        # 请求id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_param is not None:
+            result['CustomParam'] = self.custom_param
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
+        if self.dataset_size is not None:
+            result['DatasetSize'] = self.dataset_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomParam') is not None:
+            self.custom_param = m.get('CustomParam')
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
+        if m.get('DatasetSize') is not None:
+            self.dataset_size = m.get('DatasetSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDatasetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDatasetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDatasetResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1826,19 +2221,11 @@ class ListAppResponseBody(TeaModel):
     def __init__(
         self,
         apps: List[ListAppResponseBodyApps] = None,
-        code: str = None,
-        http_code: int = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
         total: int = None,
     ):
         self.apps = apps
-        self.code = code
-        self.http_code = http_code
-        self.message = message
         self.request_id = request_id
-        self.success = success
         self.total = total
 
     def validate(self):
@@ -1857,16 +2244,8 @@ class ListAppResponseBody(TeaModel):
         if self.apps is not None:
             for k in self.apps:
                 result['Apps'].append(k.to_map() if k else None)
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         if self.total is not None:
             result['Total'] = self.total
         return result
@@ -1878,16 +2257,8 @@ class ListAppResponseBody(TeaModel):
             for k in m.get('Apps'):
                 temp_model = ListAppResponseBodyApps()
                 self.apps.append(temp_model.from_map(k))
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('Total') is not None:
             self.total = m.get('Total')
         return self
@@ -2206,7 +2577,6 @@ class ListAppVersionResponseBodyVersions(TeaModel):
         file_upload_type: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
-        tenant_id: int = None,
     ):
         self.app_id = app_id
         self.app_version_id = app_version_id
@@ -2220,7 +2590,6 @@ class ListAppVersionResponseBodyVersions(TeaModel):
         self.file_upload_type = file_upload_type
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
-        self.tenant_id = tenant_id
 
     def validate(self):
         pass
@@ -2255,8 +2624,6 @@ class ListAppVersionResponseBodyVersions(TeaModel):
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2285,27 +2652,17 @@ class ListAppVersionResponseBodyVersions(TeaModel):
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
         return self
 
 
 class ListAppVersionResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        http_code: int = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
         total: int = None,
         versions: List[ListAppVersionResponseBodyVersions] = None,
     ):
-        self.code = code
-        self.http_code = http_code
-        self.message = message
         self.request_id = request_id
-        self.success = success
         self.total = total
         self.versions = versions
 
@@ -2321,16 +2678,8 @@ class ListAppVersionResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         if self.total is not None:
             result['Total'] = self.total
         result['Versions'] = []
@@ -2341,16 +2690,8 @@ class ListAppVersionResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('Total') is not None:
             self.total = m.get('Total')
         self.versions = []
@@ -2442,18 +2783,10 @@ class ModifyAppResponseBody(TeaModel):
     def __init__(
         self,
         app_id: str = None,
-        code: str = None,
-        http_code: int = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.app_id = app_id
-        self.code = code
-        self.http_code = http_code
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -2466,32 +2799,16 @@ class ModifyAppResponseBody(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -2576,18 +2893,10 @@ class ModifyAppVersionResponseBody(TeaModel):
     def __init__(
         self,
         app_version_id: str = None,
-        code: str = None,
-        http_code: int = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
         self.app_version_id = app_version_id
-        self.code = code
-        self.http_code = http_code
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -2600,32 +2909,16 @@ class ModifyAppVersionResponseBody(TeaModel):
         result = dict()
         if self.app_version_id is not None:
             result['AppVersionId'] = self.app_version_id
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.http_code is not None:
-            result['HttpCode'] = self.http_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AppVersionId') is not None:
             self.app_version_id = m.get('AppVersionId')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('HttpCode') is not None:
-            self.http_code = m.get('HttpCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 

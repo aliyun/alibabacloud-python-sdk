@@ -1,3 +1,6 @@
+2022-06-30 Version: 2.1.6
+- App manage open api.
+
 2022-06-23 Version: 2.1.5
 - App manage open api.
 

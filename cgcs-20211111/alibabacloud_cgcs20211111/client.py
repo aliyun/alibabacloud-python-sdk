@@ -199,10 +199,16 @@ class Client(OpenApiClient):
 
     def create_app_session_with_options(
         self,
-        request: cgcs20211111_models.CreateAppSessionRequest,
+        tmp_req: cgcs20211111_models.CreateAppSessionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cgcs20211111_models.CreateAppSessionResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cgcs20211111_models.CreateAppSessionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.result_store):
+            request.result_store_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.result_store), 'ResultStore', 'json')
+        if not UtilClient.is_unset(tmp_req.start_parameters_v2):
+            request.start_parameters_v2shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.start_parameters_v2, 'StartParametersV2', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
@@ -214,10 +220,16 @@ class Client(OpenApiClient):
             query['CustomSessionId'] = request.custom_session_id
         if not UtilClient.is_unset(request.custom_user_id):
             query['CustomUserId'] = request.custom_user_id
+        if not UtilClient.is_unset(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
         if not UtilClient.is_unset(request.enable_postpaid):
             query['EnablePostpaid'] = request.enable_postpaid
+        if not UtilClient.is_unset(request.result_store_shrink):
+            query['ResultStore'] = request.result_store_shrink
         if not UtilClient.is_unset(request.start_parameters):
             query['StartParameters'] = request.start_parameters
+        if not UtilClient.is_unset(request.start_parameters_v2shrink):
+            query['StartParametersV2'] = request.start_parameters_v2shrink
         if not UtilClient.is_unset(request.system_info):
             query['SystemInfo'] = request.system_info
         if not UtilClient.is_unset(request.timeout):
@@ -243,10 +255,16 @@ class Client(OpenApiClient):
 
     async def create_app_session_with_options_async(
         self,
-        request: cgcs20211111_models.CreateAppSessionRequest,
+        tmp_req: cgcs20211111_models.CreateAppSessionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cgcs20211111_models.CreateAppSessionResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cgcs20211111_models.CreateAppSessionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.result_store):
+            request.result_store_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.result_store), 'ResultStore', 'json')
+        if not UtilClient.is_unset(tmp_req.start_parameters_v2):
+            request.start_parameters_v2shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.start_parameters_v2, 'StartParametersV2', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
@@ -258,10 +276,16 @@ class Client(OpenApiClient):
             query['CustomSessionId'] = request.custom_session_id
         if not UtilClient.is_unset(request.custom_user_id):
             query['CustomUserId'] = request.custom_user_id
+        if not UtilClient.is_unset(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
         if not UtilClient.is_unset(request.enable_postpaid):
             query['EnablePostpaid'] = request.enable_postpaid
+        if not UtilClient.is_unset(request.result_store_shrink):
+            query['ResultStore'] = request.result_store_shrink
         if not UtilClient.is_unset(request.start_parameters):
             query['StartParameters'] = request.start_parameters
+        if not UtilClient.is_unset(request.start_parameters_v2shrink):
+            query['StartParametersV2'] = request.start_parameters_v2shrink
         if not UtilClient.is_unset(request.system_info):
             query['SystemInfo'] = request.system_info
         if not UtilClient.is_unset(request.timeout):
@@ -372,6 +396,100 @@ class Client(OpenApiClient):
     ) -> cgcs20211111_models.CreateAppVersionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_app_version_with_options_async(request, runtime)
+
+    def create_dataset_deploy_task_with_options(
+        self,
+        request: cgcs20211111_models.CreateDatasetDeployTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.CreateDatasetDeployTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.custom_param):
+            query['CustomParam'] = request.custom_param
+        if not UtilClient.is_unset(request.need_unzip):
+            query['NeedUnzip'] = request.need_unzip
+        if not UtilClient.is_unset(request.oss_bucket):
+            query['OssBucket'] = request.oss_bucket
+        if not UtilClient.is_unset(request.oss_file_path):
+            query['OssFilePath'] = request.oss_file_path
+        if not UtilClient.is_unset(request.oss_region_id):
+            query['OssRegionId'] = request.oss_region_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDatasetDeployTask',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.CreateDatasetDeployTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dataset_deploy_task_with_options_async(
+        self,
+        request: cgcs20211111_models.CreateDatasetDeployTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.CreateDatasetDeployTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.custom_param):
+            query['CustomParam'] = request.custom_param
+        if not UtilClient.is_unset(request.need_unzip):
+            query['NeedUnzip'] = request.need_unzip
+        if not UtilClient.is_unset(request.oss_bucket):
+            query['OssBucket'] = request.oss_bucket
+        if not UtilClient.is_unset(request.oss_file_path):
+            query['OssFilePath'] = request.oss_file_path
+        if not UtilClient.is_unset(request.oss_region_id):
+            query['OssRegionId'] = request.oss_region_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDatasetDeployTask',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.CreateDatasetDeployTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dataset_deploy_task(
+        self,
+        request: cgcs20211111_models.CreateDatasetDeployTaskRequest,
+    ) -> cgcs20211111_models.CreateDatasetDeployTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_dataset_deploy_task_with_options(request, runtime)
+
+    async def create_dataset_deploy_task_async(
+        self,
+        request: cgcs20211111_models.CreateDatasetDeployTaskRequest,
+    ) -> cgcs20211111_models.CreateDatasetDeployTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dataset_deploy_task_with_options_async(request, runtime)
 
     def delete_app_with_options(
         self,
@@ -800,6 +918,76 @@ class Client(OpenApiClient):
     ) -> cgcs20211111_models.GetAppVersionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_app_version_with_options_async(request, runtime)
+
+    def get_dataset_with_options(
+        self,
+        request: cgcs20211111_models.GetDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.GetDatasetResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataset',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.GetDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dataset_with_options_async(
+        self,
+        request: cgcs20211111_models.GetDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.GetDatasetResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataset',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.GetDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dataset(
+        self,
+        request: cgcs20211111_models.GetDatasetRequest,
+    ) -> cgcs20211111_models.GetDatasetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_dataset_with_options(request, runtime)
+
+    async def get_dataset_async(
+        self,
+        request: cgcs20211111_models.GetDatasetRequest,
+    ) -> cgcs20211111_models.GetDatasetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dataset_with_options_async(request, runtime)
 
     def list_app_with_options(
         self,
