@@ -7128,9 +7128,18 @@ class Client(OpenApiClient):
 
     def list_face_dbs_with_options(
         self,
+        request: facebody_20191230_models.ListFaceDbsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.ListFaceDbsResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.offset):
+            body['Offset'] = request.offset
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
         params = open_api_models.Params(
             action='ListFaceDbs',
             version='2019-12-30',
@@ -7149,9 +7158,18 @@ class Client(OpenApiClient):
 
     async def list_face_dbs_with_options_async(
         self,
+        request: facebody_20191230_models.ListFaceDbsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.ListFaceDbsResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.offset):
+            body['Offset'] = request.offset
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
         params = open_api_models.Params(
             action='ListFaceDbs',
             version='2019-12-30',
@@ -7168,13 +7186,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_face_dbs(self) -> facebody_20191230_models.ListFaceDbsResponse:
+    def list_face_dbs(
+        self,
+        request: facebody_20191230_models.ListFaceDbsRequest,
+    ) -> facebody_20191230_models.ListFaceDbsResponse:
         runtime = util_models.RuntimeOptions()
-        return self.list_face_dbs_with_options(runtime)
+        return self.list_face_dbs_with_options(request, runtime)
 
-    async def list_face_dbs_async(self) -> facebody_20191230_models.ListFaceDbsResponse:
+    async def list_face_dbs_async(
+        self,
+        request: facebody_20191230_models.ListFaceDbsRequest,
+    ) -> facebody_20191230_models.ListFaceDbsResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.list_face_dbs_with_options_async(runtime)
+        return await self.list_face_dbs_with_options_async(request, runtime)
 
     def list_face_entities_with_options(
         self,
