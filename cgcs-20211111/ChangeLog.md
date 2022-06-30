@@ -1,3 +1,6 @@
+2022-06-30 Version: 2.2.0
+- Support cluster resource .
+
 2022-06-30 Version: 2.1.6
 - App manage open api.
 
