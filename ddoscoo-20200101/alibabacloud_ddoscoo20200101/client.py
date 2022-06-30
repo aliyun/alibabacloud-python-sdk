@@ -48,12 +48,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.AddAutoCcBlacklistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Blacklist'] = request.blacklist
-        query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.blacklist):
+            query['Blacklist'] = request.blacklist
+        if not UtilClient.is_unset(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddAutoCcBlacklist',
@@ -63,7 +65,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -78,12 +80,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.AddAutoCcBlacklistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Blacklist'] = request.blacklist
-        query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.blacklist):
+            query['Blacklist'] = request.blacklist
+        if not UtilClient.is_unset(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddAutoCcBlacklist',
@@ -93,7 +97,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -122,12 +126,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.AddAutoCcWhitelistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Whitelist'] = request.whitelist
-        query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.whitelist):
+            query['Whitelist'] = request.whitelist
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddAutoCcWhitelist',
@@ -137,7 +143,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -152,12 +158,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.AddAutoCcWhitelistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Whitelist'] = request.whitelist
-        query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.whitelist):
+            query['Whitelist'] = request.whitelist
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddAutoCcWhitelist',
@@ -167,7 +175,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -196,15 +204,20 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.AssociateWebCertResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['CertId'] = request.cert_id
-        query['CertName'] = request.cert_name
-        query['Cert'] = request.cert
-        query['Key'] = request.key
+        if not UtilClient.is_unset(request.cert):
+            query['Cert'] = request.cert
+        if not UtilClient.is_unset(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AssociateWebCert',
@@ -214,7 +227,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -229,15 +242,20 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.AssociateWebCertResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['CertId'] = request.cert_id
-        query['CertName'] = request.cert_name
-        query['Cert'] = request.cert
-        query['Key'] = request.key
+        if not UtilClient.is_unset(request.cert):
+            query['Cert'] = request.cert
+        if not UtilClient.is_unset(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AssociateWebCert',
@@ -247,7 +265,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -276,12 +294,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.AttachSceneDefenseObjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyId'] = request.policy_id
-        query['ObjectType'] = request.object_type
-        query['Objects'] = request.objects
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        if not UtilClient.is_unset(request.objects):
+            query['Objects'] = request.objects
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachSceneDefenseObject',
@@ -291,7 +311,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -306,12 +326,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.AttachSceneDefenseObjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyId'] = request.policy_id
-        query['ObjectType'] = request.object_type
-        query['Objects'] = request.objects
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        if not UtilClient.is_unset(request.objects):
+            query['Objects'] = request.objects
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachSceneDefenseObject',
@@ -321,7 +343,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -350,12 +372,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ConfigL7RsPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ConfigL7RsPolicy',
@@ -365,7 +389,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -380,12 +404,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ConfigL7RsPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ConfigL7RsPolicy',
@@ -395,7 +421,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -417,6 +443,220 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.config_l7rs_policy_with_options_async(request, runtime)
 
+    def config_layer_4remark_with_options(
+        self,
+        request: ddoscoo_20200101_models.ConfigLayer4RemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigLayer4RemarkResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listeners):
+            query['Listeners'] = request.listeners
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigLayer4Remark',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ConfigLayer4RemarkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_layer_4remark_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigLayer4RemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigLayer4RemarkResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listeners):
+            query['Listeners'] = request.listeners
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigLayer4Remark',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ConfigLayer4RemarkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_layer_4remark(
+        self,
+        request: ddoscoo_20200101_models.ConfigLayer4RemarkRequest,
+    ) -> ddoscoo_20200101_models.ConfigLayer4RemarkResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.config_layer_4remark_with_options(request, runtime)
+
+    async def config_layer_4remark_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigLayer4RemarkRequest,
+    ) -> ddoscoo_20200101_models.ConfigLayer4RemarkResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.config_layer_4remark_with_options_async(request, runtime)
+
+    def config_layer_4rule_bak_mode_with_options(
+        self,
+        request: ddoscoo_20200101_models.ConfigLayer4RuleBakModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigLayer4RuleBakModeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bak_mode):
+            query['BakMode'] = request.bak_mode
+        if not UtilClient.is_unset(request.listeners):
+            query['Listeners'] = request.listeners
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigLayer4RuleBakMode',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ConfigLayer4RuleBakModeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_layer_4rule_bak_mode_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigLayer4RuleBakModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigLayer4RuleBakModeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bak_mode):
+            query['BakMode'] = request.bak_mode
+        if not UtilClient.is_unset(request.listeners):
+            query['Listeners'] = request.listeners
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigLayer4RuleBakMode',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ConfigLayer4RuleBakModeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_layer_4rule_bak_mode(
+        self,
+        request: ddoscoo_20200101_models.ConfigLayer4RuleBakModeRequest,
+    ) -> ddoscoo_20200101_models.ConfigLayer4RuleBakModeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.config_layer_4rule_bak_mode_with_options(request, runtime)
+
+    async def config_layer_4rule_bak_mode_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigLayer4RuleBakModeRequest,
+    ) -> ddoscoo_20200101_models.ConfigLayer4RuleBakModeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.config_layer_4rule_bak_mode_with_options_async(request, runtime)
+
+    def config_layer_4rule_policy_with_options(
+        self,
+        request: ddoscoo_20200101_models.ConfigLayer4RulePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigLayer4RulePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listeners):
+            query['Listeners'] = request.listeners
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigLayer4RulePolicy',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ConfigLayer4RulePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_layer_4rule_policy_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigLayer4RulePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigLayer4RulePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listeners):
+            query['Listeners'] = request.listeners
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigLayer4RulePolicy',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ConfigLayer4RulePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_layer_4rule_policy(
+        self,
+        request: ddoscoo_20200101_models.ConfigLayer4RulePolicyRequest,
+    ) -> ddoscoo_20200101_models.ConfigLayer4RulePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.config_layer_4rule_policy_with_options(request, runtime)
+
+    async def config_layer_4rule_policy_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigLayer4RulePolicyRequest,
+    ) -> ddoscoo_20200101_models.ConfigLayer4RulePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.config_layer_4rule_policy_with_options_async(request, runtime)
+
     def config_network_region_block_with_options(
         self,
         request: ddoscoo_20200101_models.ConfigNetworkRegionBlockRequest,
@@ -424,11 +664,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ConfigNetworkRegionBlockResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ConfigNetworkRegionBlock',
@@ -438,7 +679,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -453,11 +694,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ConfigNetworkRegionBlockResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ConfigNetworkRegionBlock',
@@ -467,7 +709,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -496,10 +738,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ConfigNetworkRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NetworkRules'] = request.network_rules
+        if not UtilClient.is_unset(request.network_rules):
+            query['NetworkRules'] = request.network_rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ConfigNetworkRules',
@@ -509,7 +751,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -524,10 +766,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ConfigNetworkRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NetworkRules'] = request.network_rules
+        if not UtilClient.is_unset(request.network_rules):
+            query['NetworkRules'] = request.network_rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ConfigNetworkRules',
@@ -537,7 +779,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -559,6 +801,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.config_network_rules_with_options_async(request, runtime)
 
+    def config_udp_reflect_with_options(
+        self,
+        request: ddoscoo_20200101_models.ConfigUdpReflectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigUdpReflectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigUdpReflect',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ConfigUdpReflectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_udp_reflect_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigUdpReflectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigUdpReflectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigUdpReflect',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ConfigUdpReflectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_udp_reflect(
+        self,
+        request: ddoscoo_20200101_models.ConfigUdpReflectRequest,
+    ) -> ddoscoo_20200101_models.ConfigUdpReflectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.config_udp_reflect_with_options(request, runtime)
+
+    async def config_udp_reflect_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigUdpReflectRequest,
+    ) -> ddoscoo_20200101_models.ConfigUdpReflectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.config_udp_reflect_with_options_async(request, runtime)
+
     def config_web_cctemplate_with_options(
         self,
         request: ddoscoo_20200101_models.ConfigWebCCTemplateRequest,
@@ -566,12 +886,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ConfigWebCCTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Template'] = request.template
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template):
+            query['Template'] = request.template
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ConfigWebCCTemplate',
@@ -581,7 +903,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -596,12 +918,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ConfigWebCCTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Template'] = request.template
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template):
+            query['Template'] = request.template
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ConfigWebCCTemplate',
@@ -611,7 +935,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -640,13 +964,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ConfigWebIpSetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['BlackList'] = request.black_list
-        query['WhiteList'] = request.white_list
+        if not UtilClient.is_unset(request.black_list):
+            query['BlackList'] = request.black_list
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.white_list):
+            query['WhiteList'] = request.white_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ConfigWebIpSet',
@@ -656,7 +983,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -671,13 +998,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ConfigWebIpSetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['BlackList'] = request.black_list
-        query['WhiteList'] = request.white_list
+        if not UtilClient.is_unset(request.black_list):
+            query['BlackList'] = request.black_list
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.white_list):
+            query['WhiteList'] = request.white_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ConfigWebIpSet',
@@ -687,7 +1017,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -716,12 +1046,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.CreateAsyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['TaskType'] = request.task_type
-        query['TaskParams'] = request.task_params
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.task_params):
+            query['TaskParams'] = request.task_params
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateAsyncTask',
@@ -731,7 +1063,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -746,12 +1078,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.CreateAsyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['TaskType'] = request.task_type
-        query['TaskParams'] = request.task_params
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.task_params):
+            query['TaskParams'] = request.task_params
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateAsyncTask',
@@ -761,7 +1095,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -783,6 +1117,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_async_task_with_options_async(request, runtime)
 
+    def create_domain_resource_with_options(
+        self,
+        request: ddoscoo_20200101_models.CreateDomainResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.CreateDomainResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.https_ext):
+            query['HttpsExt'] = request.https_ext
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.proxy_types):
+            query['ProxyTypes'] = request.proxy_types
+        if not UtilClient.is_unset(request.real_servers):
+            query['RealServers'] = request.real_servers
+        if not UtilClient.is_unset(request.rs_type):
+            query['RsType'] = request.rs_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDomainResource',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.CreateDomainResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_domain_resource_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.CreateDomainResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.CreateDomainResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.https_ext):
+            query['HttpsExt'] = request.https_ext
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.proxy_types):
+            query['ProxyTypes'] = request.proxy_types
+        if not UtilClient.is_unset(request.real_servers):
+            query['RealServers'] = request.real_servers
+        if not UtilClient.is_unset(request.rs_type):
+            query['RsType'] = request.rs_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDomainResource',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.CreateDomainResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_domain_resource(
+        self,
+        request: ddoscoo_20200101_models.CreateDomainResourceRequest,
+    ) -> ddoscoo_20200101_models.CreateDomainResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_domain_resource_with_options(request, runtime)
+
+    async def create_domain_resource_async(
+        self,
+        request: ddoscoo_20200101_models.CreateDomainResourceRequest,
+    ) -> ddoscoo_20200101_models.CreateDomainResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_domain_resource_with_options_async(request, runtime)
+
     def create_network_rules_with_options(
         self,
         request: ddoscoo_20200101_models.CreateNetworkRulesRequest,
@@ -790,10 +1214,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.CreateNetworkRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NetworkRules'] = request.network_rules
+        if not UtilClient.is_unset(request.network_rules):
+            query['NetworkRules'] = request.network_rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateNetworkRules',
@@ -803,7 +1227,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -818,10 +1242,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.CreateNetworkRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NetworkRules'] = request.network_rules
+        if not UtilClient.is_unset(request.network_rules):
+            query['NetworkRules'] = request.network_rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateNetworkRules',
@@ -831,7 +1255,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -853,6 +1277,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_network_rules_with_options_async(request, runtime)
 
+    def create_port_with_options(
+        self,
+        request: ddoscoo_20200101_models.CreatePortRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.CreatePortResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_port):
+            query['BackendPort'] = request.backend_port
+        if not UtilClient.is_unset(request.frontend_port):
+            query['FrontendPort'] = request.frontend_port
+        if not UtilClient.is_unset(request.frontend_protocol):
+            query['FrontendProtocol'] = request.frontend_protocol
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.real_servers):
+            query['RealServers'] = request.real_servers
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePort',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.CreatePortResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_port_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.CreatePortRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.CreatePortResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_port):
+            query['BackendPort'] = request.backend_port
+        if not UtilClient.is_unset(request.frontend_port):
+            query['FrontendPort'] = request.frontend_port
+        if not UtilClient.is_unset(request.frontend_protocol):
+            query['FrontendProtocol'] = request.frontend_protocol
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.real_servers):
+            query['RealServers'] = request.real_servers
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePort',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.CreatePortResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_port(
+        self,
+        request: ddoscoo_20200101_models.CreatePortRequest,
+    ) -> ddoscoo_20200101_models.CreatePortResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_port_with_options(request, runtime)
+
+    async def create_port_async(
+        self,
+        request: ddoscoo_20200101_models.CreatePortRequest,
+    ) -> ddoscoo_20200101_models.CreatePortResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_port_with_options_async(request, runtime)
+
     def create_scene_defense_policy_with_options(
         self,
         request: ddoscoo_20200101_models.CreateSceneDefensePolicyRequest,
@@ -860,13 +1370,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.CreateSceneDefensePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['Template'] = request.template
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.template):
+            query['Template'] = request.template
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSceneDefensePolicy',
@@ -876,7 +1389,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -891,13 +1404,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.CreateSceneDefensePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['Template'] = request.template
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.template):
+            query['Template'] = request.template
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSceneDefensePolicy',
@@ -907,7 +1423,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -936,14 +1452,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.CreateSchedulerRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Rules'] = request.rules
-        query['RuleName'] = request.rule_name
-        query['RuleType'] = request.rule_type
-        query['Param'] = request.param
+        if not UtilClient.is_unset(request.param):
+            query['Param'] = request.param
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSchedulerRule',
@@ -953,7 +1473,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -968,14 +1488,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.CreateSchedulerRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Rules'] = request.rules
-        query['RuleName'] = request.rule_name
-        query['RuleType'] = request.rule_type
-        query['Param'] = request.param
+        if not UtilClient.is_unset(request.param):
+            query['Param'] = request.param
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSchedulerRule',
@@ -985,7 +1509,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1014,14 +1538,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.CreateTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceType'] = request.resource_type
-        query['ResourceIds'] = request.resource_ids
-        query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateTagResources',
@@ -1031,7 +1559,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1046,14 +1574,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.CreateTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceType'] = request.resource_type
-        query['ResourceIds'] = request.resource_ids
-        query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateTagResources',
@@ -1063,7 +1595,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1092,18 +1624,26 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.CreateWebCCRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Name'] = request.name
-        query['Act'] = request.act
-        query['Count'] = request.count
-        query['Interval'] = request.interval
-        query['Mode'] = request.mode
-        query['Ttl'] = request.ttl
-        query['Uri'] = request.uri
+        if not UtilClient.is_unset(request.act):
+            query['Act'] = request.act
+        if not UtilClient.is_unset(request.count):
+            query['Count'] = request.count
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.uri):
+            query['Uri'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateWebCCRule',
@@ -1113,7 +1653,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1128,18 +1668,26 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.CreateWebCCRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Name'] = request.name
-        query['Act'] = request.act
-        query['Count'] = request.count
-        query['Interval'] = request.interval
-        query['Mode'] = request.mode
-        query['Ttl'] = request.ttl
-        query['Uri'] = request.uri
+        if not UtilClient.is_unset(request.act):
+            query['Act'] = request.act
+        if not UtilClient.is_unset(request.count):
+            query['Count'] = request.count
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.uri):
+            query['Uri'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateWebCCRule',
@@ -1149,7 +1697,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1178,16 +1726,22 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.CreateWebRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['RsType'] = request.rs_type
-        query['Rules'] = request.rules
-        query['HttpsExt'] = request.https_ext
-        query['DefenseId'] = request.defense_id
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.defense_id):
+            query['DefenseId'] = request.defense_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.https_ext):
+            query['HttpsExt'] = request.https_ext
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rs_type):
+            query['RsType'] = request.rs_type
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateWebRule',
@@ -1197,7 +1751,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1212,16 +1766,22 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.CreateWebRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['RsType'] = request.rs_type
-        query['Rules'] = request.rules
-        query['HttpsExt'] = request.https_ext
-        query['DefenseId'] = request.defense_id
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.defense_id):
+            query['DefenseId'] = request.defense_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.https_ext):
+            query['HttpsExt'] = request.https_ext
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rs_type):
+            query['RsType'] = request.rs_type
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateWebRule',
@@ -1231,7 +1791,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1260,11 +1820,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteAsyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAsyncTask',
@@ -1274,7 +1835,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1289,11 +1850,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteAsyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAsyncTask',
@@ -1303,7 +1865,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1332,11 +1894,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteAutoCcBlacklistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Blacklist'] = request.blacklist
+        if not UtilClient.is_unset(request.blacklist):
+            query['Blacklist'] = request.blacklist
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAutoCcBlacklist',
@@ -1346,7 +1909,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1361,11 +1924,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteAutoCcBlacklistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Blacklist'] = request.blacklist
+        if not UtilClient.is_unset(request.blacklist):
+            query['Blacklist'] = request.blacklist
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAutoCcBlacklist',
@@ -1375,7 +1939,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1404,11 +1968,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteAutoCcWhitelistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Whitelist'] = request.whitelist
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.whitelist):
+            query['Whitelist'] = request.whitelist
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAutoCcWhitelist',
@@ -1418,7 +1983,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1433,11 +1998,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteAutoCcWhitelistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Whitelist'] = request.whitelist
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.whitelist):
+            query['Whitelist'] = request.whitelist
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAutoCcWhitelist',
@@ -1447,7 +2013,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1469,6 +2035,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_auto_cc_whitelist_with_options_async(request, runtime)
 
+    def delete_domain_resource_with_options(
+        self,
+        request: ddoscoo_20200101_models.DeleteDomainResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DeleteDomainResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDomainResource',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DeleteDomainResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_domain_resource_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DeleteDomainResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DeleteDomainResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDomainResource',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DeleteDomainResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_domain_resource(
+        self,
+        request: ddoscoo_20200101_models.DeleteDomainResourceRequest,
+    ) -> ddoscoo_20200101_models.DeleteDomainResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_domain_resource_with_options(request, runtime)
+
+    async def delete_domain_resource_async(
+        self,
+        request: ddoscoo_20200101_models.DeleteDomainResourceRequest,
+    ) -> ddoscoo_20200101_models.DeleteDomainResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_domain_resource_with_options_async(request, runtime)
+
     def delete_network_rule_with_options(
         self,
         request: ddoscoo_20200101_models.DeleteNetworkRuleRequest,
@@ -1476,10 +2112,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteNetworkRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NetworkRule'] = request.network_rule
+        if not UtilClient.is_unset(request.network_rule):
+            query['NetworkRule'] = request.network_rule
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteNetworkRule',
@@ -1489,7 +2125,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1504,10 +2140,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteNetworkRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NetworkRule'] = request.network_rule
+        if not UtilClient.is_unset(request.network_rule):
+            query['NetworkRule'] = request.network_rule
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteNetworkRule',
@@ -1517,7 +2153,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1539,6 +2175,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_network_rule_with_options_async(request, runtime)
 
+    def delete_port_with_options(
+        self,
+        request: ddoscoo_20200101_models.DeletePortRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DeletePortResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_port):
+            query['BackendPort'] = request.backend_port
+        if not UtilClient.is_unset(request.frontend_port):
+            query['FrontendPort'] = request.frontend_port
+        if not UtilClient.is_unset(request.frontend_protocol):
+            query['FrontendProtocol'] = request.frontend_protocol
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.real_servers):
+            query['RealServers'] = request.real_servers
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePort',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DeletePortResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_port_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DeletePortRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DeletePortResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_port):
+            query['BackendPort'] = request.backend_port
+        if not UtilClient.is_unset(request.frontend_port):
+            query['FrontendPort'] = request.frontend_port
+        if not UtilClient.is_unset(request.frontend_protocol):
+            query['FrontendProtocol'] = request.frontend_protocol
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.real_servers):
+            query['RealServers'] = request.real_servers
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePort',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DeletePortResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_port(
+        self,
+        request: ddoscoo_20200101_models.DeletePortRequest,
+    ) -> ddoscoo_20200101_models.DeletePortResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_port_with_options(request, runtime)
+
+    async def delete_port_async(
+        self,
+        request: ddoscoo_20200101_models.DeletePortRequest,
+    ) -> ddoscoo_20200101_models.DeletePortResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_port_with_options_async(request, runtime)
+
     def delete_scene_defense_policy_with_options(
         self,
         request: ddoscoo_20200101_models.DeleteSceneDefensePolicyRequest,
@@ -1546,10 +2268,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteSceneDefensePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSceneDefensePolicy',
@@ -1559,7 +2281,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1574,10 +2296,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteSceneDefensePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSceneDefensePolicy',
@@ -1587,7 +2309,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1616,11 +2338,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteSchedulerRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSchedulerRule',
@@ -1630,7 +2353,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1645,11 +2368,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteSchedulerRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSchedulerRule',
@@ -1659,7 +2383,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1688,15 +2412,20 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceType'] = request.resource_type
-        query['All'] = request.all
-        query['ResourceIds'] = request.resource_ids
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteTagResources',
@@ -1706,7 +2435,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1721,15 +2450,20 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceType'] = request.resource_type
-        query['All'] = request.all
-        query['ResourceIds'] = request.resource_ids
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteTagResources',
@@ -1739,7 +2473,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1761,80 +2495,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_tag_resources_with_options_async(request, runtime)
 
-    def delete_web_cache_custom_rule_with_options(
-        self,
-        request: ddoscoo_20200101_models.DeleteWebCacheCustomRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ddoscoo_20200101_models.DeleteWebCacheCustomRuleResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['RuleNames'] = request.rule_names
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteWebCacheCustomRule',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ddoscoo_20200101_models.DeleteWebCacheCustomRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_web_cache_custom_rule_with_options_async(
-        self,
-        request: ddoscoo_20200101_models.DeleteWebCacheCustomRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ddoscoo_20200101_models.DeleteWebCacheCustomRuleResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['RuleNames'] = request.rule_names
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteWebCacheCustomRule',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ddoscoo_20200101_models.DeleteWebCacheCustomRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_web_cache_custom_rule(
-        self,
-        request: ddoscoo_20200101_models.DeleteWebCacheCustomRuleRequest,
-    ) -> ddoscoo_20200101_models.DeleteWebCacheCustomRuleResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_web_cache_custom_rule_with_options(request, runtime)
-
-    async def delete_web_cache_custom_rule_async(
-        self,
-        request: ddoscoo_20200101_models.DeleteWebCacheCustomRuleRequest,
-    ) -> ddoscoo_20200101_models.DeleteWebCacheCustomRuleResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_web_cache_custom_rule_with_options_async(request, runtime)
-
     def delete_web_ccrule_with_options(
         self,
         request: ddoscoo_20200101_models.DeleteWebCCRuleRequest,
@@ -1842,12 +2502,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteWebCCRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteWebCCRule',
@@ -1857,7 +2519,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1872,12 +2534,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteWebCCRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteWebCCRule',
@@ -1887,7 +2551,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1909,6 +2573,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_web_ccrule_with_options_async(request, runtime)
 
+    def delete_web_cache_custom_rule_with_options(
+        self,
+        request: ddoscoo_20200101_models.DeleteWebCacheCustomRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DeleteWebCacheCustomRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_names):
+            query['RuleNames'] = request.rule_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWebCacheCustomRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DeleteWebCacheCustomRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_web_cache_custom_rule_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DeleteWebCacheCustomRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DeleteWebCacheCustomRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_names):
+            query['RuleNames'] = request.rule_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWebCacheCustomRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DeleteWebCacheCustomRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_web_cache_custom_rule(
+        self,
+        request: ddoscoo_20200101_models.DeleteWebCacheCustomRuleRequest,
+    ) -> ddoscoo_20200101_models.DeleteWebCacheCustomRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_web_cache_custom_rule_with_options(request, runtime)
+
+    async def delete_web_cache_custom_rule_async(
+        self,
+        request: ddoscoo_20200101_models.DeleteWebCacheCustomRuleRequest,
+    ) -> ddoscoo_20200101_models.DeleteWebCacheCustomRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_web_cache_custom_rule_with_options_async(request, runtime)
+
     def delete_web_precise_access_rule_with_options(
         self,
         request: ddoscoo_20200101_models.DeleteWebPreciseAccessRuleRequest,
@@ -1916,12 +2658,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteWebPreciseAccessRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['RuleNames'] = request.rule_names
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_names):
+            query['RuleNames'] = request.rule_names
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteWebPreciseAccessRule',
@@ -1931,7 +2675,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1946,12 +2690,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteWebPreciseAccessRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['RuleNames'] = request.rule_names
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_names):
+            query['RuleNames'] = request.rule_names
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteWebPreciseAccessRule',
@@ -1961,7 +2707,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1990,11 +2736,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteWebRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteWebRule',
@@ -2004,7 +2751,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2019,11 +2766,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DeleteWebRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteWebRule',
@@ -2033,7 +2781,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2062,12 +2810,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeAsyncTasksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeAsyncTasks',
@@ -2077,7 +2827,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2092,12 +2842,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeAsyncTasksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeAsyncTasks',
@@ -2107,7 +2859,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2129,6 +2881,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_async_tasks_with_options_async(request, runtime)
 
+    def describe_attack_analysis_max_qps_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeAttackAnalysisMaxQpsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeAttackAnalysisMaxQpsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAttackAnalysisMaxQps',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeAttackAnalysisMaxQpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_attack_analysis_max_qps_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeAttackAnalysisMaxQpsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeAttackAnalysisMaxQpsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAttackAnalysisMaxQps',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeAttackAnalysisMaxQpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_attack_analysis_max_qps(
+        self,
+        request: ddoscoo_20200101_models.DescribeAttackAnalysisMaxQpsRequest,
+    ) -> ddoscoo_20200101_models.DescribeAttackAnalysisMaxQpsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_attack_analysis_max_qps_with_options(request, runtime)
+
+    async def describe_attack_analysis_max_qps_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeAttackAnalysisMaxQpsRequest,
+    ) -> ddoscoo_20200101_models.DescribeAttackAnalysisMaxQpsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_attack_analysis_max_qps_with_options_async(request, runtime)
+
     def describe_auto_cc_blacklist_with_options(
         self,
         request: ddoscoo_20200101_models.DescribeAutoCcBlacklistRequest,
@@ -2136,13 +2962,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeAutoCcBlacklistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['KeyWord'] = request.key_word
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeAutoCcBlacklist',
@@ -2152,7 +2981,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2167,13 +2996,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeAutoCcBlacklistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['KeyWord'] = request.key_word
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeAutoCcBlacklist',
@@ -2183,7 +3015,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2212,11 +3044,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeAutoCcListCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeAutoCcListCount',
@@ -2226,7 +3059,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2241,11 +3074,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeAutoCcListCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeAutoCcListCount',
@@ -2255,7 +3089,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2284,13 +3118,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeAutoCcWhitelistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['KeyWord'] = request.key_word
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeAutoCcWhitelist',
@@ -2300,7 +3137,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2315,13 +3152,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeAutoCcWhitelistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['KeyWord'] = request.key_word
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeAutoCcWhitelist',
@@ -2331,7 +3171,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2360,11 +3200,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeBackSourceCidrResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Line'] = request.line
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBackSourceCidr',
@@ -2374,7 +3215,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2389,11 +3230,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeBackSourceCidrResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Line'] = request.line
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBackSourceCidr',
@@ -2403,7 +3245,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2432,10 +3274,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeBlackholeStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBlackholeStatus',
@@ -2445,7 +3287,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2460,10 +3302,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeBlackholeStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBlackholeStatus',
@@ -2473,7 +3315,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2502,11 +3344,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeBlockStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBlockStatus',
@@ -2516,7 +3359,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2531,11 +3374,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeBlockStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBlockStatus',
@@ -2545,7 +3389,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2574,11 +3418,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeCertsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCerts',
@@ -2588,7 +3433,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2603,11 +3448,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeCertsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCerts',
@@ -2617,7 +3463,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2646,11 +3492,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeCnameReusesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCnameReuses',
@@ -2660,7 +3507,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2675,11 +3522,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeCnameReusesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCnameReuses',
@@ -2689,7 +3537,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2711,6 +3559,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cname_reuses_with_options_async(request, runtime)
 
+    def describe_ddo_sevents_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeDDoSEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDDoSEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDDoSEvents',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDDoSEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ddo_sevents_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDDoSEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDDoSEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDDoSEvents',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDDoSEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ddo_sevents(
+        self,
+        request: ddoscoo_20200101_models.DescribeDDoSEventsRequest,
+    ) -> ddoscoo_20200101_models.DescribeDDoSEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ddo_sevents_with_options(request, runtime)
+
+    async def describe_ddo_sevents_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDDoSEventsRequest,
+    ) -> ddoscoo_20200101_models.DescribeDDoSEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ddo_sevents_with_options_async(request, runtime)
+
     def describe_ddos_all_event_list_with_options(
         self,
         request: ddoscoo_20200101_models.DescribeDDosAllEventListRequest,
@@ -2718,14 +3656,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDDosAllEventListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EventType'] = request.event_type
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDDosAllEventList',
@@ -2735,7 +3677,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2750,14 +3692,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDDosAllEventListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EventType'] = request.event_type
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDDosAllEventList',
@@ -2767,7 +3713,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2796,12 +3742,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDDosEventAreaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EventType'] = request.event_type
-        query['StartTime'] = request.start_time
-        query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDDosEventArea',
@@ -2811,7 +3759,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2826,12 +3774,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDDosEventAreaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EventType'] = request.event_type
-        query['StartTime'] = request.start_time
-        query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDDosEventArea',
@@ -2841,7 +3791,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2870,12 +3820,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDDosEventAttackTypeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EventType'] = request.event_type
-        query['StartTime'] = request.start_time
-        query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDDosEventAttackType',
@@ -2885,7 +3837,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2900,12 +3852,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDDosEventAttackTypeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EventType'] = request.event_type
-        query['StartTime'] = request.start_time
-        query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDDosEventAttackType',
@@ -2915,7 +3869,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2944,12 +3898,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDDosEventIspResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EventType'] = request.event_type
-        query['StartTime'] = request.start_time
-        query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDDosEventIsp',
@@ -2959,7 +3915,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2974,12 +3930,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDDosEventIspResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EventType'] = request.event_type
-        query['StartTime'] = request.start_time
-        query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDDosEventIsp',
@@ -2989,7 +3947,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3018,11 +3976,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDDosEventMaxResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDDosEventMax',
@@ -3032,7 +3991,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3047,11 +4006,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDDosEventMaxResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDDosEventMax',
@@ -3061,7 +4021,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3083,86 +4043,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ddos_event_max_with_options_async(request, runtime)
 
-    def describe_ddo_sevents_with_options(
-        self,
-        request: ddoscoo_20200101_models.DescribeDDoSEventsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ddoscoo_20200101_models.DescribeDDoSEventsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['PageSize'] = request.page_size
-        query['PageNumber'] = request.page_number
-        query['InstanceIds'] = request.instance_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeDDoSEvents',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ddoscoo_20200101_models.DescribeDDoSEventsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_ddo_sevents_with_options_async(
-        self,
-        request: ddoscoo_20200101_models.DescribeDDoSEventsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ddoscoo_20200101_models.DescribeDDoSEventsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['PageSize'] = request.page_size
-        query['PageNumber'] = request.page_number
-        query['InstanceIds'] = request.instance_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeDDoSEvents',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ddoscoo_20200101_models.DescribeDDoSEventsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_ddo_sevents(
-        self,
-        request: ddoscoo_20200101_models.DescribeDDoSEventsRequest,
-    ) -> ddoscoo_20200101_models.DescribeDDoSEventsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_ddo_sevents_with_options(request, runtime)
-
-    async def describe_ddo_sevents_async(
-        self,
-        request: ddoscoo_20200101_models.DescribeDDoSEventsRequest,
-    ) -> ddoscoo_20200101_models.DescribeDDoSEventsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_ddo_sevents_with_options_async(request, runtime)
-
     def describe_ddos_event_src_ip_with_options(
         self,
         request: ddoscoo_20200101_models.DescribeDDosEventSrcIpRequest,
@@ -3170,13 +4050,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDDosEventSrcIpResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EventType'] = request.event_type
-        query['StartTime'] = request.start_time
-        query['Ip'] = request.ip
-        query['Range'] = request.range
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.range):
+            query['Range'] = request.range
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDDosEventSrcIp',
@@ -3186,7 +4069,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3201,13 +4084,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDDosEventSrcIpResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EventType'] = request.event_type
-        query['StartTime'] = request.start_time
-        query['Ip'] = request.ip
-        query['Range'] = request.range
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.range):
+            query['Range'] = request.range
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDDosEventSrcIp',
@@ -3217,7 +4103,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3246,10 +4132,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDefenseCountStatisticsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDefenseCountStatistics',
@@ -3259,7 +4145,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3274,10 +4160,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDefenseCountStatisticsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDefenseCountStatistics',
@@ -3287,7 +4173,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3316,15 +4202,20 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDefenseRecordsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['InstanceId'] = request.instance_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDefenseRecords',
@@ -3334,7 +4225,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3349,15 +4240,20 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDefenseRecordsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['InstanceId'] = request.instance_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDefenseRecords',
@@ -3367,7 +4263,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3396,15 +4292,20 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainAttackEventsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Domain'] = request.domain
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainAttackEvents',
@@ -3414,7 +4315,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3429,15 +4330,20 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainAttackEventsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Domain'] = request.domain
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainAttackEvents',
@@ -3447,7 +4353,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3476,13 +4382,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainOverviewResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainOverview',
@@ -3492,7 +4401,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3507,13 +4416,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainOverviewResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainOverview',
@@ -3523,7 +4435,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3552,14 +4464,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainQPSListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainQPSList',
@@ -3569,7 +4485,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3584,14 +4500,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainQPSListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainQPSList',
@@ -3601,7 +4521,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3630,13 +4550,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainQpsWithCacheResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainQpsWithCache',
@@ -3646,7 +4569,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3661,13 +4584,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainQpsWithCacheResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainQpsWithCache',
@@ -3677,7 +4603,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3699,77 +4625,91 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_qps_with_cache_with_options_async(request, runtime)
 
-    def describe_domains_with_options(
+    def describe_domain_resource_with_options(
         self,
-        request: ddoscoo_20200101_models.DescribeDomainsRequest,
+        request: ddoscoo_20200101_models.DescribeDomainResourceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ddoscoo_20200101_models.DescribeDomainsResponse:
+    ) -> ddoscoo_20200101_models.DescribeDomainResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_domain_pattern):
+            query['QueryDomainPattern'] = request.query_domain_pattern
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribeDomains',
+            action='DescribeDomainResource',
             version='2020-01-01',
             protocol='HTTPS',
             pathname='/',
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            ddoscoo_20200101_models.DescribeDomainsResponse(),
+            ddoscoo_20200101_models.DescribeDomainResourceResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def describe_domains_with_options_async(
+    async def describe_domain_resource_with_options_async(
         self,
-        request: ddoscoo_20200101_models.DescribeDomainsRequest,
+        request: ddoscoo_20200101_models.DescribeDomainResourceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ddoscoo_20200101_models.DescribeDomainsResponse:
+    ) -> ddoscoo_20200101_models.DescribeDomainResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_domain_pattern):
+            query['QueryDomainPattern'] = request.query_domain_pattern
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribeDomains',
+            action='DescribeDomainResource',
             version='2020-01-01',
             protocol='HTTPS',
             pathname='/',
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            ddoscoo_20200101_models.DescribeDomainsResponse(),
+            ddoscoo_20200101_models.DescribeDomainResourceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_domains(
+    def describe_domain_resource(
         self,
-        request: ddoscoo_20200101_models.DescribeDomainsRequest,
-    ) -> ddoscoo_20200101_models.DescribeDomainsResponse:
+        request: ddoscoo_20200101_models.DescribeDomainResourceRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainResourceResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_domains_with_options(request, runtime)
+        return self.describe_domain_resource_with_options(request, runtime)
 
-    async def describe_domains_async(
+    async def describe_domain_resource_async(
         self,
-        request: ddoscoo_20200101_models.DescribeDomainsRequest,
-    ) -> ddoscoo_20200101_models.DescribeDomainsResponse:
+        request: ddoscoo_20200101_models.DescribeDomainResourceRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainResourceResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_domains_with_options_async(request, runtime)
+        return await self.describe_domain_resource_with_options_async(request, runtime)
 
     def describe_domain_status_code_count_with_options(
         self,
@@ -3778,13 +4718,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainStatusCodeCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainStatusCodeCount',
@@ -3794,7 +4737,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3809,13 +4752,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainStatusCodeCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainStatusCodeCount',
@@ -3825,7 +4771,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3854,15 +4800,20 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainStatusCodeListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['Domain'] = request.domain
-        query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainStatusCodeList',
@@ -3872,7 +4823,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3887,15 +4838,20 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainStatusCodeListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['Domain'] = request.domain
-        query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainStatusCodeList',
@@ -3905,7 +4861,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3934,12 +4890,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainTopAttackListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainTopAttackList',
@@ -3949,7 +4907,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3964,12 +4922,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainTopAttackListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainTopAttackList',
@@ -3979,7 +4939,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4008,13 +4968,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainViewSourceCountriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainViewSourceCountries',
@@ -4024,7 +4987,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4039,13 +5002,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainViewSourceCountriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainViewSourceCountries',
@@ -4055,7 +5021,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4084,13 +5050,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainViewSourceProvincesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainViewSourceProvinces',
@@ -4100,7 +5069,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4115,13 +5084,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainViewSourceProvincesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainViewSourceProvinces',
@@ -4131,7 +5103,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4160,14 +5132,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainViewTopCostTimeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Domain'] = request.domain
-        query['Top'] = request.top
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.top):
+            query['Top'] = request.top
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainViewTopCostTime',
@@ -4177,7 +5153,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4192,14 +5168,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainViewTopCostTimeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Domain'] = request.domain
-        query['Top'] = request.top
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.top):
+            query['Top'] = request.top
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainViewTopCostTime',
@@ -4209,7 +5189,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4238,14 +5218,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainViewTopUrlResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Domain'] = request.domain
-        query['Top'] = request.top
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.top):
+            query['Top'] = request.top
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainViewTopUrl',
@@ -4255,7 +5239,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4270,14 +5254,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeDomainViewTopUrlResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['Domain'] = request.domain
-        query['Top'] = request.top
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.top):
+            query['Top'] = request.top
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainViewTopUrl',
@@ -4287,7 +5275,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4309,6 +5297,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_view_top_url_with_options_async(request, runtime)
 
+    def describe_domains_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomains',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domains_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomains',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domains(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainsRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domains_with_options(request, runtime)
+
+    async def describe_domains_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainsRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domains_with_options_async(request, runtime)
+
     def describe_elastic_bandwidth_spec_with_options(
         self,
         request: ddoscoo_20200101_models.DescribeElasticBandwidthSpecRequest,
@@ -4316,10 +5378,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeElasticBandwidthSpecResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeElasticBandwidthSpec',
@@ -4329,7 +5391,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4344,10 +5406,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeElasticBandwidthSpecResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeElasticBandwidthSpec',
@@ -4357,7 +5419,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4386,10 +5448,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeHealthCheckListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NetworkRules'] = request.network_rules
+        if not UtilClient.is_unset(request.network_rules):
+            query['NetworkRules'] = request.network_rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeHealthCheckList',
@@ -4399,7 +5461,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4414,10 +5476,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeHealthCheckListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NetworkRules'] = request.network_rules
+        if not UtilClient.is_unset(request.network_rules):
+            query['NetworkRules'] = request.network_rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeHealthCheckList',
@@ -4427,7 +5489,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4456,10 +5518,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeHealthCheckStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NetworkRules'] = request.network_rules
+        if not UtilClient.is_unset(request.network_rules):
+            query['NetworkRules'] = request.network_rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeHealthCheckStatus',
@@ -4469,7 +5531,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4484,10 +5546,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeHealthCheckStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NetworkRules'] = request.network_rules
+        if not UtilClient.is_unset(request.network_rules):
+            query['NetworkRules'] = request.network_rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeHealthCheckStatus',
@@ -4497,7 +5559,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4526,10 +5588,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeInstanceDetailsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeInstanceDetails',
@@ -4539,7 +5601,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4554,10 +5616,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeInstanceDetailsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeInstanceDetails',
@@ -4567,7 +5629,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4596,12 +5658,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeInstanceIdsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Edition'] = request.edition
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeInstanceIds',
@@ -4611,7 +5675,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4626,12 +5690,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeInstanceIdsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Edition'] = request.edition
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeInstanceIds',
@@ -4641,7 +5707,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4663,98 +5729,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_ids_with_options_async(request, runtime)
 
-    def describe_instances_with_options(
-        self,
-        request: ddoscoo_20200101_models.DescribeInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ddoscoo_20200101_models.DescribeInstancesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Ip'] = request.ip
-        query['Remark'] = request.remark
-        query['Edition'] = request.edition
-        query['Enabled'] = request.enabled
-        query['ExpireStartTime'] = request.expire_start_time
-        query['ExpireEndTime'] = request.expire_end_time
-        query['InstanceIds'] = request.instance_ids
-        query['Status'] = request.status
-        query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeInstances',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ddoscoo_20200101_models.DescribeInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_instances_with_options_async(
-        self,
-        request: ddoscoo_20200101_models.DescribeInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ddoscoo_20200101_models.DescribeInstancesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Ip'] = request.ip
-        query['Remark'] = request.remark
-        query['Edition'] = request.edition
-        query['Enabled'] = request.enabled
-        query['ExpireStartTime'] = request.expire_start_time
-        query['ExpireEndTime'] = request.expire_end_time
-        query['InstanceIds'] = request.instance_ids
-        query['Status'] = request.status
-        query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeInstances',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ddoscoo_20200101_models.DescribeInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_instances(
-        self,
-        request: ddoscoo_20200101_models.DescribeInstancesRequest,
-    ) -> ddoscoo_20200101_models.DescribeInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_instances_with_options(request, runtime)
-
-    async def describe_instances_async(
-        self,
-        request: ddoscoo_20200101_models.DescribeInstancesRequest,
-    ) -> ddoscoo_20200101_models.DescribeInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_instances_with_options_async(request, runtime)
-
     def describe_instance_specs_with_options(
         self,
         request: ddoscoo_20200101_models.DescribeInstanceSpecsRequest,
@@ -4762,10 +5736,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeInstanceSpecsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeInstanceSpecs',
@@ -4775,7 +5749,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4790,10 +5764,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeInstanceSpecsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeInstanceSpecs',
@@ -4803,7 +5777,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4832,10 +5806,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeInstanceStatisticsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeInstanceStatistics',
@@ -4845,7 +5819,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4860,10 +5834,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeInstanceStatisticsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeInstanceStatistics',
@@ -4873,7 +5847,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4902,11 +5876,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeInstanceStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeInstanceStatus',
@@ -4916,7 +5891,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4931,11 +5906,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeInstanceStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeInstanceStatus',
@@ -4945,7 +5921,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4967,6 +5943,120 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_status_with_options_async(request, runtime)
 
+    def describe_instances_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.expire_end_time):
+            query['ExpireEndTime'] = request.expire_end_time
+        if not UtilClient.is_unset(request.expire_start_time):
+            query['ExpireStartTime'] = request.expire_start_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstances',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instances_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.expire_end_time):
+            query['ExpireEndTime'] = request.expire_end_time
+        if not UtilClient.is_unset(request.expire_start_time):
+            query['ExpireStartTime'] = request.expire_start_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstances',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instances(
+        self,
+        request: ddoscoo_20200101_models.DescribeInstancesRequest,
+    ) -> ddoscoo_20200101_models.DescribeInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instances_with_options(request, runtime)
+
+    async def describe_instances_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeInstancesRequest,
+    ) -> ddoscoo_20200101_models.DescribeInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instances_with_options_async(request, runtime)
+
     def describe_l7rs_policy_with_options(
         self,
         request: ddoscoo_20200101_models.DescribeL7RsPolicyRequest,
@@ -4974,12 +6064,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeL7RsPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['RealServers'] = request.real_servers
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.real_servers):
+            query['RealServers'] = request.real_servers
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeL7RsPolicy',
@@ -4989,7 +6081,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5004,12 +6096,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeL7RsPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['RealServers'] = request.real_servers
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.real_servers):
+            query['RealServers'] = request.real_servers
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeL7RsPolicy',
@@ -5019,7 +6113,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5041,6 +6135,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_l7rs_policy_with_options_async(request, runtime)
 
+    def describe_layer_4rule_policy_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeLayer4RulePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeLayer4RulePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listeners):
+            query['Listeners'] = request.listeners
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLayer4RulePolicy',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeLayer4RulePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_layer_4rule_policy_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeLayer4RulePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeLayer4RulePolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listeners):
+            query['Listeners'] = request.listeners
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLayer4RulePolicy',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeLayer4RulePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_layer_4rule_policy(
+        self,
+        request: ddoscoo_20200101_models.DescribeLayer4RulePolicyRequest,
+    ) -> ddoscoo_20200101_models.DescribeLayer4RulePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_layer_4rule_policy_with_options(request, runtime)
+
+    async def describe_layer_4rule_policy_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeLayer4RulePolicyRequest,
+    ) -> ddoscoo_20200101_models.DescribeLayer4RulePolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_layer_4rule_policy_with_options_async(request, runtime)
+
     def describe_log_store_exist_status_with_options(
         self,
         request: ddoscoo_20200101_models.DescribeLogStoreExistStatusRequest,
@@ -5048,10 +6212,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeLogStoreExistStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeLogStoreExistStatus',
@@ -5061,7 +6225,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5076,10 +6240,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeLogStoreExistStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeLogStoreExistStatus',
@@ -5089,7 +6253,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5118,10 +6282,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeNetworkRegionBlockResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeNetworkRegionBlock',
@@ -5131,7 +6295,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5146,10 +6310,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeNetworkRegionBlockResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeNetworkRegionBlock',
@@ -5159,7 +6323,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5188,10 +6352,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeNetworkRuleAttributesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NetworkRules'] = request.network_rules
+        if not UtilClient.is_unset(request.network_rules):
+            query['NetworkRules'] = request.network_rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeNetworkRuleAttributes',
@@ -5201,7 +6365,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5216,10 +6380,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeNetworkRuleAttributesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NetworkRules'] = request.network_rules
+        if not UtilClient.is_unset(request.network_rules):
+            query['NetworkRules'] = request.network_rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeNetworkRuleAttributes',
@@ -5229,7 +6393,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5258,14 +6422,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeNetworkRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ForwardProtocol'] = request.forward_protocol
-        query['FrontendPort'] = request.frontend_port
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.forward_protocol):
+            query['ForwardProtocol'] = request.forward_protocol
+        if not UtilClient.is_unset(request.frontend_port):
+            query['FrontendPort'] = request.frontend_port
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeNetworkRules',
@@ -5275,7 +6443,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5290,14 +6458,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeNetworkRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ForwardProtocol'] = request.forward_protocol
-        query['FrontendPort'] = request.frontend_port
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.forward_protocol):
+            query['ForwardProtocol'] = request.forward_protocol
+        if not UtilClient.is_unset(request.frontend_port):
+            query['FrontendPort'] = request.frontend_port
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeNetworkRules',
@@ -5307,7 +6479,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5336,16 +6508,22 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeOpEntitiesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EntityType'] = request.entity_type
-        query['EntityObject'] = request.entity_object
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.entity_object):
+            query['EntityObject'] = request.entity_object
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeOpEntities',
@@ -5355,7 +6533,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5370,16 +6548,22 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeOpEntitiesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EntityType'] = request.entity_type
-        query['EntityObject'] = request.entity_object
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.entity_object):
+            query['EntityObject'] = request.entity_object
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeOpEntities',
@@ -5389,7 +6573,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5411,6 +6595,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_op_entities_with_options_async(request, runtime)
 
+    def describe_port_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribePortRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribePortResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.frontend_port):
+            query['FrontendPort'] = request.frontend_port
+        if not UtilClient.is_unset(request.frontend_protocol):
+            query['FrontendProtocol'] = request.frontend_protocol
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePort',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribePortResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_port_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribePortRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribePortResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.frontend_port):
+            query['FrontendPort'] = request.frontend_port
+        if not UtilClient.is_unset(request.frontend_protocol):
+            query['FrontendProtocol'] = request.frontend_protocol
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePort',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribePortResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_port(
+        self,
+        request: ddoscoo_20200101_models.DescribePortRequest,
+    ) -> ddoscoo_20200101_models.DescribePortResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_port_with_options(request, runtime)
+
+    async def describe_port_async(
+        self,
+        request: ddoscoo_20200101_models.DescribePortRequest,
+    ) -> ddoscoo_20200101_models.DescribePortResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_port_with_options_async(request, runtime)
+
     def describe_port_attack_max_flow_with_options(
         self,
         request: ddoscoo_20200101_models.DescribePortAttackMaxFlowRequest,
@@ -5418,13 +6688,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortAttackMaxFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortAttackMaxFlow',
@@ -5434,7 +6707,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5449,13 +6722,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortAttackMaxFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortAttackMaxFlow',
@@ -5465,7 +6741,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5494,10 +6770,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortAutoCcStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortAutoCcStatus',
@@ -5507,7 +6783,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5522,10 +6798,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortAutoCcStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortAutoCcStatus',
@@ -5535,7 +6811,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5564,14 +6840,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortConnsCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['Port'] = request.port
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortConnsCount',
@@ -5581,7 +6861,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5596,14 +6876,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortConnsCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['Port'] = request.port
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortConnsCount',
@@ -5613,7 +6897,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5642,15 +6926,20 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortConnsListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['Interval'] = request.interval
-        query['Port'] = request.port
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortConnsList',
@@ -5660,7 +6949,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5675,15 +6964,20 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortConnsListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['Interval'] = request.interval
-        query['Port'] = request.port
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortConnsList',
@@ -5693,7 +6987,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5722,14 +7016,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortFlowListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['Interval'] = request.interval
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortFlowList',
@@ -5739,7 +7037,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5754,14 +7052,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortFlowListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['Interval'] = request.interval
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortFlowList',
@@ -5771,7 +7073,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5800,13 +7102,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortMaxConnsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortMaxConns',
@@ -5816,7 +7121,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5831,13 +7136,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortMaxConnsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortMaxConns',
@@ -5847,7 +7155,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5876,13 +7184,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortViewSourceCountriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortViewSourceCountries',
@@ -5892,7 +7203,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5907,13 +7218,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortViewSourceCountriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortViewSourceCountries',
@@ -5923,7 +7237,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5952,13 +7266,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortViewSourceIspsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortViewSourceIsps',
@@ -5968,7 +7285,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5983,13 +7300,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortViewSourceIspsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortViewSourceIsps',
@@ -5999,7 +7319,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6028,13 +7348,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortViewSourceProvincesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortViewSourceProvinces',
@@ -6044,7 +7367,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6059,13 +7382,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribePortViewSourceProvincesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['EndTime'] = request.end_time
-        query['StartTime'] = request.start_time
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePortViewSourceProvinces',
@@ -6075,7 +7401,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6104,11 +7430,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeSceneDefenseObjectsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyId'] = request.policy_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSceneDefenseObjects',
@@ -6118,7 +7445,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6133,11 +7460,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeSceneDefenseObjectsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyId'] = request.policy_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSceneDefenseObjects',
@@ -6147,7 +7475,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6176,12 +7504,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeSceneDefensePoliciesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Template'] = request.template
-        query['Status'] = request.status
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.template):
+            query['Template'] = request.template
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSceneDefensePolicies',
@@ -6191,7 +7521,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6206,12 +7536,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeSceneDefensePoliciesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Template'] = request.template
-        query['Status'] = request.status
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.template):
+            query['Template'] = request.template
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSceneDefensePolicies',
@@ -6221,7 +7553,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6250,13 +7582,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeSchedulerRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['RuleName'] = request.rule_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSchedulerRules',
@@ -6266,7 +7601,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6281,13 +7616,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeSchedulerRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['RuleName'] = request.rule_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSchedulerRules',
@@ -6297,7 +7635,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6326,10 +7664,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeSlsAuthStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSlsAuthStatus',
@@ -6339,7 +7677,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6354,10 +7692,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeSlsAuthStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSlsAuthStatus',
@@ -6367,7 +7705,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6396,10 +7734,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeSlsLogstoreInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSlsLogstoreInfo',
@@ -6409,7 +7747,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6424,10 +7762,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeSlsLogstoreInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSlsLogstoreInfo',
@@ -6437,7 +7775,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6466,10 +7804,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeSlsOpenStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSlsOpenStatus',
@@ -6479,7 +7817,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6494,10 +7832,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeSlsOpenStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSlsOpenStatus',
@@ -6507,7 +7845,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6536,11 +7874,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeStsGrantStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Role'] = request.role
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeStsGrantStatus',
@@ -6550,7 +7889,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6565,11 +7904,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeStsGrantStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Role'] = request.role
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeStsGrantStatus',
@@ -6579,7 +7919,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6601,6 +7941,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_sts_grant_status_with_options_async(request, runtime)
 
+    def describe_system_log_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeSystemLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeSystemLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.entity_object):
+            query['EntityObject'] = request.entity_object
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSystemLog',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeSystemLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_system_log_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeSystemLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeSystemLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.entity_object):
+            query['EntityObject'] = request.entity_object
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSystemLog',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeSystemLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_system_log(
+        self,
+        request: ddoscoo_20200101_models.DescribeSystemLogRequest,
+    ) -> ddoscoo_20200101_models.DescribeSystemLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_system_log_with_options(request, runtime)
+
+    async def describe_system_log_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeSystemLogRequest,
+    ) -> ddoscoo_20200101_models.DescribeSystemLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_system_log_with_options_async(request, runtime)
+
     def describe_tag_keys_with_options(
         self,
         request: ddoscoo_20200101_models.DescribeTagKeysRequest,
@@ -6608,14 +8038,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeTagKeysResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceType'] = request.resource_type
-        query['PageSize'] = request.page_size
-        query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeTagKeys',
@@ -6625,7 +8059,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6640,14 +8074,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeTagKeysResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceType'] = request.resource_type
-        query['PageSize'] = request.page_size
-        query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeTagKeys',
@@ -6657,7 +8095,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6686,15 +8124,20 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceType'] = request.resource_type
-        query['NextToken'] = request.next_token
-        query['ResourceIds'] = request.resource_ids
-        query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeTagResources',
@@ -6704,7 +8147,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6719,15 +8162,20 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceType'] = request.resource_type
-        query['NextToken'] = request.next_token
-        query['ResourceIds'] = request.resource_ids
-        query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeTagResources',
@@ -6737,7 +8185,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6759,6 +8207,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_tag_resources_with_options_async(request, runtime)
 
+    def describe_udp_reflect_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeUdpReflectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeUdpReflectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUdpReflect',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeUdpReflectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_udp_reflect_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeUdpReflectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeUdpReflectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUdpReflect',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeUdpReflectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_udp_reflect(
+        self,
+        request: ddoscoo_20200101_models.DescribeUdpReflectRequest,
+    ) -> ddoscoo_20200101_models.DescribeUdpReflectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_udp_reflect_with_options(request, runtime)
+
+    async def describe_udp_reflect_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeUdpReflectRequest,
+    ) -> ddoscoo_20200101_models.DescribeUdpReflectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_udp_reflect_with_options_async(request, runtime)
+
     def describe_un_blackhole_count_with_options(
         self,
         request: ddoscoo_20200101_models.DescribeUnBlackholeCountRequest,
@@ -6766,10 +8288,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeUnBlackholeCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUnBlackholeCount',
@@ -6779,7 +8301,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6794,10 +8316,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeUnBlackholeCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUnBlackholeCount',
@@ -6807,7 +8329,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6836,10 +8358,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeUnBlockCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUnBlockCount',
@@ -6849,7 +8371,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6864,10 +8386,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeUnBlockCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUnBlockCount',
@@ -6877,7 +8399,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6906,12 +8428,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebAccessLogDispatchStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebAccessLogDispatchStatus',
@@ -6921,7 +8445,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6936,12 +8460,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebAccessLogDispatchStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebAccessLogDispatchStatus',
@@ -6951,7 +8477,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6980,10 +8506,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebAccessLogEmptyCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebAccessLogEmptyCount',
@@ -6993,7 +8519,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7008,10 +8534,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebAccessLogEmptyCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebAccessLogEmptyCount',
@@ -7021,7 +8547,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7050,11 +8576,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebAccessLogStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebAccessLogStatus',
@@ -7064,7 +8591,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7079,11 +8606,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebAccessLogStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebAccessLogStatus',
@@ -7093,7 +8621,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7122,10 +8650,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebAccessModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebAccessMode',
@@ -7135,7 +8663,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7150,10 +8678,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebAccessModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebAccessMode',
@@ -7163,7 +8691,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7192,11 +8720,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebAreaBlockConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebAreaBlockConfigs',
@@ -7206,7 +8735,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7221,11 +8750,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebAreaBlockConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebAreaBlockConfigs',
@@ -7235,7 +8765,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7257,6 +8787,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_web_area_block_configs_with_options_async(request, runtime)
 
+    def describe_web_ccrules_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeWebCCRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeWebCCRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebCCRules',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeWebCCRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_web_ccrules_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeWebCCRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeWebCCRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebCCRules',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeWebCCRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_web_ccrules(
+        self,
+        request: ddoscoo_20200101_models.DescribeWebCCRulesRequest,
+    ) -> ddoscoo_20200101_models.DescribeWebCCRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_web_ccrules_with_options(request, runtime)
+
+    async def describe_web_ccrules_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeWebCCRulesRequest,
+    ) -> ddoscoo_20200101_models.DescribeWebCCRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_web_ccrules_with_options_async(request, runtime)
+
     def describe_web_cache_configs_with_options(
         self,
         request: ddoscoo_20200101_models.DescribeWebCacheConfigsRequest,
@@ -7264,11 +8876,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebCacheConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebCacheConfigs',
@@ -7278,7 +8891,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7293,11 +8906,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebCacheConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebCacheConfigs',
@@ -7307,7 +8921,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7336,11 +8950,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebCcProtectSwitchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebCcProtectSwitch',
@@ -7350,7 +8965,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7365,11 +8980,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebCcProtectSwitchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebCcProtectSwitch',
@@ -7379,7 +8995,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7401,82 +9017,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_web_cc_protect_switch_with_options_async(request, runtime)
 
-    def describe_web_ccrules_with_options(
-        self,
-        request: ddoscoo_20200101_models.DescribeWebCCRulesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ddoscoo_20200101_models.DescribeWebCCRulesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeWebCCRules',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ddoscoo_20200101_models.DescribeWebCCRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_web_ccrules_with_options_async(
-        self,
-        request: ddoscoo_20200101_models.DescribeWebCCRulesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ddoscoo_20200101_models.DescribeWebCCRulesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeWebCCRules',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ddoscoo_20200101_models.DescribeWebCCRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_web_ccrules(
-        self,
-        request: ddoscoo_20200101_models.DescribeWebCCRulesRequest,
-    ) -> ddoscoo_20200101_models.DescribeWebCCRulesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_web_ccrules_with_options(request, runtime)
-
-    async def describe_web_ccrules_async(
-        self,
-        request: ddoscoo_20200101_models.DescribeWebCCRulesRequest,
-    ) -> ddoscoo_20200101_models.DescribeWebCCRulesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_web_ccrules_with_options_async(request, runtime)
-
     def describe_web_custom_ports_with_options(
         self,
         request: ddoscoo_20200101_models.DescribeWebCustomPortsRequest,
@@ -7484,10 +9024,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebCustomPortsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebCustomPorts',
@@ -7497,7 +9037,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7512,10 +9052,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebCustomPortsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebCustomPorts',
@@ -7525,7 +9065,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7554,11 +9094,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebInstanceRelationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebInstanceRelations',
@@ -7568,7 +9109,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7583,11 +9124,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebInstanceRelationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebInstanceRelations',
@@ -7597,7 +9139,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7626,11 +9168,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebPreciseAccessRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebPreciseAccessRule',
@@ -7640,7 +9183,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7655,11 +9198,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebPreciseAccessRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebPreciseAccessRule',
@@ -7669,7 +9213,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7698,15 +9242,22 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['QueryDomainPattern'] = request.query_domain_pattern
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.cname):
+            query['Cname'] = request.cname
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_domain_pattern):
+            query['QueryDomainPattern'] = request.query_domain_pattern
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebRules',
@@ -7716,7 +9267,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7731,15 +9282,22 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DescribeWebRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['QueryDomainPattern'] = request.query_domain_pattern
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.cname):
+            query['Cname'] = request.cname
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_domain_pattern):
+            query['QueryDomainPattern'] = request.query_domain_pattern
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeWebRules',
@@ -7749,7 +9307,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7778,12 +9336,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DetachSceneDefenseObjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyId'] = request.policy_id
-        query['ObjectType'] = request.object_type
-        query['Objects'] = request.objects
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        if not UtilClient.is_unset(request.objects):
+            query['Objects'] = request.objects
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachSceneDefenseObject',
@@ -7793,7 +9353,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7808,12 +9368,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DetachSceneDefenseObjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyId'] = request.policy_id
-        query['ObjectType'] = request.object_type
-        query['Objects'] = request.objects
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        if not UtilClient.is_unset(request.objects):
+            query['Objects'] = request.objects
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachSceneDefenseObject',
@@ -7823,7 +9385,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7852,10 +9414,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DisableSceneDefensePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DisableSceneDefensePolicy',
@@ -7865,7 +9427,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7880,10 +9442,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DisableSceneDefensePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DisableSceneDefensePolicy',
@@ -7893,7 +9455,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7922,11 +9484,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DisableWebAccessLogConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DisableWebAccessLogConfig',
@@ -7936,7 +9499,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7951,11 +9514,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DisableWebAccessLogConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DisableWebAccessLogConfig',
@@ -7965,7 +9529,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7994,11 +9558,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DisableWebCCResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DisableWebCC',
@@ -8008,7 +9573,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8023,11 +9588,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DisableWebCCResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DisableWebCC',
@@ -8037,7 +9603,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8066,11 +9632,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DisableWebCCRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DisableWebCCRule',
@@ -8080,7 +9647,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8095,11 +9662,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.DisableWebCCRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DisableWebCCRule',
@@ -8109,7 +9677,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8138,10 +9706,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.EmptyAutoCcBlacklistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EmptyAutoCcBlacklist',
@@ -8151,7 +9719,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8166,10 +9734,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.EmptyAutoCcBlacklistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EmptyAutoCcBlacklist',
@@ -8179,7 +9747,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8208,10 +9776,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.EmptyAutoCcWhitelistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EmptyAutoCcWhitelist',
@@ -8221,7 +9789,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8236,10 +9804,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.EmptyAutoCcWhitelistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EmptyAutoCcWhitelist',
@@ -8249,7 +9817,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8278,10 +9846,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.EmptySlsLogstoreResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EmptySlsLogstore',
@@ -8291,7 +9859,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8306,10 +9874,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.EmptySlsLogstoreResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EmptySlsLogstore',
@@ -8319,7 +9887,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8348,10 +9916,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.EnableSceneDefensePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EnableSceneDefensePolicy',
@@ -8361,7 +9929,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8376,10 +9944,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.EnableSceneDefensePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EnableSceneDefensePolicy',
@@ -8389,7 +9957,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8418,11 +9986,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.EnableWebAccessLogConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EnableWebAccessLogConfig',
@@ -8432,7 +10001,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8447,11 +10016,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.EnableWebAccessLogConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EnableWebAccessLogConfig',
@@ -8461,7 +10031,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8490,11 +10060,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.EnableWebCCResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EnableWebCC',
@@ -8504,7 +10075,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8519,11 +10090,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.EnableWebCCResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EnableWebCC',
@@ -8533,7 +10105,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8562,11 +10134,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.EnableWebCCRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EnableWebCCRule',
@@ -8576,7 +10149,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8591,11 +10164,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.EnableWebCCRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EnableWebCCRule',
@@ -8605,7 +10179,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8634,11 +10208,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyBlackholeStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BlackholeStatus'] = request.blackhole_status
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.blackhole_status):
+            query['BlackholeStatus'] = request.blackhole_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyBlackholeStatus',
@@ -8648,7 +10223,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8663,11 +10238,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyBlackholeStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BlackholeStatus'] = request.blackhole_status
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.blackhole_status):
+            query['BlackholeStatus'] = request.blackhole_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyBlackholeStatus',
@@ -8677,7 +10253,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8706,13 +10282,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyBlockStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Status'] = request.status
-        query['Duration'] = request.duration
-        query['InstanceId'] = request.instance_id
-        query['Lines'] = request.lines
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lines):
+            query['Lines'] = request.lines
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyBlockStatus',
@@ -8722,7 +10301,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8737,13 +10316,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyBlockStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Status'] = request.status
-        query['Duration'] = request.duration
-        query['InstanceId'] = request.instance_id
-        query['Lines'] = request.lines
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lines):
+            query['Lines'] = request.lines
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyBlockStatus',
@@ -8753,7 +10335,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8782,13 +10364,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyCnameReuseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Cname'] = request.cname
-        query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.cname):
+            query['Cname'] = request.cname
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyCnameReuse',
@@ -8798,7 +10383,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8813,13 +10398,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyCnameReuseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Cname'] = request.cname
-        query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.cname):
+            query['Cname'] = request.cname
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyCnameReuse',
@@ -8829,7 +10417,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8851,6 +10439,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_cname_reuse_with_options_async(request, runtime)
 
+    def modify_domain_resource_with_options(
+        self,
+        request: ddoscoo_20200101_models.ModifyDomainResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ModifyDomainResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.https_ext):
+            query['HttpsExt'] = request.https_ext
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.proxy_types):
+            query['ProxyTypes'] = request.proxy_types
+        if not UtilClient.is_unset(request.real_servers):
+            query['RealServers'] = request.real_servers
+        if not UtilClient.is_unset(request.rs_type):
+            query['RsType'] = request.rs_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDomainResource',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ModifyDomainResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_domain_resource_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.ModifyDomainResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ModifyDomainResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.https_ext):
+            query['HttpsExt'] = request.https_ext
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.proxy_types):
+            query['ProxyTypes'] = request.proxy_types
+        if not UtilClient.is_unset(request.real_servers):
+            query['RealServers'] = request.real_servers
+        if not UtilClient.is_unset(request.rs_type):
+            query['RsType'] = request.rs_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDomainResource',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ModifyDomainResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_domain_resource(
+        self,
+        request: ddoscoo_20200101_models.ModifyDomainResourceRequest,
+    ) -> ddoscoo_20200101_models.ModifyDomainResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_domain_resource_with_options(request, runtime)
+
+    async def modify_domain_resource_async(
+        self,
+        request: ddoscoo_20200101_models.ModifyDomainResourceRequest,
+    ) -> ddoscoo_20200101_models.ModifyDomainResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_domain_resource_with_options_async(request, runtime)
+
     def modify_elastic_band_width_with_options(
         self,
         request: ddoscoo_20200101_models.ModifyElasticBandWidthRequest,
@@ -8858,11 +10536,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyElasticBandWidthResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ElasticBandwidth'] = request.elastic_bandwidth
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.elastic_bandwidth):
+            query['ElasticBandwidth'] = request.elastic_bandwidth
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyElasticBandWidth',
@@ -8872,7 +10551,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8887,11 +10566,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyElasticBandWidthResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ElasticBandwidth'] = request.elastic_bandwidth
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.elastic_bandwidth):
+            query['ElasticBandwidth'] = request.elastic_bandwidth
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyElasticBandWidth',
@@ -8901,7 +10581,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8930,11 +10610,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyFullLogTtlResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Ttl'] = request.ttl
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyFullLogTtl',
@@ -8944,7 +10625,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8959,11 +10640,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyFullLogTtlResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Ttl'] = request.ttl
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyFullLogTtl',
@@ -8973,7 +10655,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9002,13 +10684,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyHealthCheckConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ForwardProtocol'] = request.forward_protocol
-        query['FrontendPort'] = request.frontend_port
-        query['HealthCheck'] = request.health_check
+        if not UtilClient.is_unset(request.forward_protocol):
+            query['ForwardProtocol'] = request.forward_protocol
+        if not UtilClient.is_unset(request.frontend_port):
+            query['FrontendPort'] = request.frontend_port
+        if not UtilClient.is_unset(request.health_check):
+            query['HealthCheck'] = request.health_check
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyHealthCheckConfig',
@@ -9018,7 +10703,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9033,13 +10718,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyHealthCheckConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ForwardProtocol'] = request.forward_protocol
-        query['FrontendPort'] = request.frontend_port
-        query['HealthCheck'] = request.health_check
+        if not UtilClient.is_unset(request.forward_protocol):
+            query['ForwardProtocol'] = request.forward_protocol
+        if not UtilClient.is_unset(request.frontend_port):
+            query['FrontendPort'] = request.frontend_port
+        if not UtilClient.is_unset(request.health_check):
+            query['HealthCheck'] = request.health_check
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyHealthCheckConfig',
@@ -9049,7 +10737,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9078,12 +10766,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyHttp2EnableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyHttp2Enable',
@@ -9093,7 +10783,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9108,12 +10798,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyHttp2EnableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyHttp2Enable',
@@ -9123,7 +10815,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9152,11 +10844,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyInstanceRemarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyInstanceRemark',
@@ -9166,7 +10859,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9181,11 +10874,12 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyInstanceRemarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyInstanceRemark',
@@ -9195,7 +10889,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9224,13 +10918,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyNetworkRuleAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ForwardProtocol'] = request.forward_protocol
-        query['FrontendPort'] = request.frontend_port
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.forward_protocol):
+            query['ForwardProtocol'] = request.forward_protocol
+        if not UtilClient.is_unset(request.frontend_port):
+            query['FrontendPort'] = request.frontend_port
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyNetworkRuleAttribute',
@@ -9240,7 +10937,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9255,13 +10952,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyNetworkRuleAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ForwardProtocol'] = request.forward_protocol
-        query['FrontendPort'] = request.frontend_port
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.forward_protocol):
+            query['ForwardProtocol'] = request.forward_protocol
+        if not UtilClient.is_unset(request.frontend_port):
+            query['FrontendPort'] = request.frontend_port
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyNetworkRuleAttribute',
@@ -9271,7 +10971,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9293,6 +10993,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_network_rule_attribute_with_options_async(request, runtime)
 
+    def modify_port_with_options(
+        self,
+        request: ddoscoo_20200101_models.ModifyPortRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ModifyPortResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_port):
+            query['BackendPort'] = request.backend_port
+        if not UtilClient.is_unset(request.frontend_port):
+            query['FrontendPort'] = request.frontend_port
+        if not UtilClient.is_unset(request.frontend_protocol):
+            query['FrontendProtocol'] = request.frontend_protocol
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.real_servers):
+            query['RealServers'] = request.real_servers
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPort',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ModifyPortResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_port_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.ModifyPortRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ModifyPortResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_port):
+            query['BackendPort'] = request.backend_port
+        if not UtilClient.is_unset(request.frontend_port):
+            query['FrontendPort'] = request.frontend_port
+        if not UtilClient.is_unset(request.frontend_protocol):
+            query['FrontendProtocol'] = request.frontend_protocol
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.real_servers):
+            query['RealServers'] = request.real_servers
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPort',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ModifyPortResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_port(
+        self,
+        request: ddoscoo_20200101_models.ModifyPortRequest,
+    ) -> ddoscoo_20200101_models.ModifyPortResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_port_with_options(request, runtime)
+
+    async def modify_port_async(
+        self,
+        request: ddoscoo_20200101_models.ModifyPortRequest,
+    ) -> ddoscoo_20200101_models.ModifyPortResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_port_with_options_async(request, runtime)
+
     def modify_port_auto_cc_status_with_options(
         self,
         request: ddoscoo_20200101_models.ModifyPortAutoCcStatusRequest,
@@ -9300,12 +11086,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyPortAutoCcStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Switch'] = request.switch
-        query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.switch):
+            query['Switch'] = request.switch
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyPortAutoCcStatus',
@@ -9315,7 +11103,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9330,12 +11118,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyPortAutoCcStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Switch'] = request.switch
-        query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.switch):
+            query['Switch'] = request.switch
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyPortAutoCcStatus',
@@ -9345,7 +11135,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9374,14 +11164,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifySceneDefensePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyId'] = request.policy_id
-        query['Name'] = request.name
-        query['Template'] = request.template
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.template):
+            query['Template'] = request.template
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifySceneDefensePolicy',
@@ -9391,7 +11185,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9406,14 +11200,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifySceneDefensePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyId'] = request.policy_id
-        query['Name'] = request.name
-        query['Template'] = request.template
-        query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.template):
+            query['Template'] = request.template
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifySceneDefensePolicy',
@@ -9423,7 +11221,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9452,14 +11250,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifySchedulerRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Rules'] = request.rules
-        query['RuleName'] = request.rule_name
-        query['RuleType'] = request.rule_type
-        query['Param'] = request.param
+        if not UtilClient.is_unset(request.param):
+            query['Param'] = request.param
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifySchedulerRule',
@@ -9469,7 +11271,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9484,14 +11286,18 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifySchedulerRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Rules'] = request.rules
-        query['RuleName'] = request.rule_name
-        query['RuleType'] = request.rule_type
-        query['Param'] = request.param
+        if not UtilClient.is_unset(request.param):
+            query['Param'] = request.param
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifySchedulerRule',
@@ -9501,7 +11307,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9530,12 +11336,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyTlsConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyTlsConfig',
@@ -9545,7 +11353,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9560,12 +11368,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyTlsConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyTlsConfig',
@@ -9575,7 +11385,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9597,78 +11407,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_tls_config_with_options_async(request, runtime)
 
-    def modify_web_access_mode_with_options(
-        self,
-        request: ddoscoo_20200101_models.ModifyWebAccessModeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ddoscoo_20200101_models.ModifyWebAccessModeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Domain'] = request.domain
-        query['AccessMode'] = request.access_mode
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyWebAccessMode',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ddoscoo_20200101_models.ModifyWebAccessModeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_web_access_mode_with_options_async(
-        self,
-        request: ddoscoo_20200101_models.ModifyWebAccessModeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ddoscoo_20200101_models.ModifyWebAccessModeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Domain'] = request.domain
-        query['AccessMode'] = request.access_mode
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyWebAccessMode',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ddoscoo_20200101_models.ModifyWebAccessModeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_web_access_mode(
-        self,
-        request: ddoscoo_20200101_models.ModifyWebAccessModeRequest,
-    ) -> ddoscoo_20200101_models.ModifyWebAccessModeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_web_access_mode_with_options(request, runtime)
-
-    async def modify_web_access_mode_async(
-        self,
-        request: ddoscoo_20200101_models.ModifyWebAccessModeRequest,
-    ) -> ddoscoo_20200101_models.ModifyWebAccessModeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_web_access_mode_with_options_async(request, runtime)
-
     def modify_web_aiprotect_mode_with_options(
         self,
         request: ddoscoo_20200101_models.ModifyWebAIProtectModeRequest,
@@ -9676,12 +11414,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebAIProtectModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebAIProtectMode',
@@ -9691,7 +11431,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9706,12 +11446,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebAIProtectModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebAIProtectMode',
@@ -9721,7 +11463,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9750,12 +11492,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebAIProtectSwitchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebAIProtectSwitch',
@@ -9765,7 +11509,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9780,12 +11524,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebAIProtectSwitchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebAIProtectSwitch',
@@ -9795,7 +11541,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9817,6 +11563,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_web_aiprotect_switch_with_options_async(request, runtime)
 
+    def modify_web_access_mode_with_options(
+        self,
+        request: ddoscoo_20200101_models.ModifyWebAccessModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ModifyWebAccessModeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_mode):
+            query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyWebAccessMode',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ModifyWebAccessModeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_web_access_mode_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.ModifyWebAccessModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ModifyWebAccessModeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_mode):
+            query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyWebAccessMode',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ModifyWebAccessModeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_web_access_mode(
+        self,
+        request: ddoscoo_20200101_models.ModifyWebAccessModeRequest,
+    ) -> ddoscoo_20200101_models.ModifyWebAccessModeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_web_access_mode_with_options(request, runtime)
+
+    async def modify_web_access_mode_async(
+        self,
+        request: ddoscoo_20200101_models.ModifyWebAccessModeRequest,
+    ) -> ddoscoo_20200101_models.ModifyWebAccessModeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_web_access_mode_with_options_async(request, runtime)
+
     def modify_web_area_block_with_options(
         self,
         request: ddoscoo_20200101_models.ModifyWebAreaBlockRequest,
@@ -9824,12 +11644,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebAreaBlockResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebAreaBlock',
@@ -9839,7 +11661,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9854,12 +11676,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebAreaBlockResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebAreaBlock',
@@ -9869,7 +11693,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9898,12 +11722,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebAreaBlockSwitchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebAreaBlockSwitch',
@@ -9913,7 +11739,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9928,12 +11754,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebAreaBlockSwitchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebAreaBlockSwitch',
@@ -9943,7 +11771,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9965,6 +11793,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_web_area_block_switch_with_options_async(request, runtime)
 
+    def modify_web_ccrule_with_options(
+        self,
+        request: ddoscoo_20200101_models.ModifyWebCCRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ModifyWebCCRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.act):
+            query['Act'] = request.act
+        if not UtilClient.is_unset(request.count):
+            query['Count'] = request.count
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.uri):
+            query['Uri'] = request.uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyWebCCRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ModifyWebCCRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_web_ccrule_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.ModifyWebCCRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ModifyWebCCRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.act):
+            query['Act'] = request.act
+        if not UtilClient.is_unset(request.count):
+            query['Count'] = request.count
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.uri):
+            query['Uri'] = request.uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyWebCCRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ModifyWebCCRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_web_ccrule(
+        self,
+        request: ddoscoo_20200101_models.ModifyWebCCRuleRequest,
+    ) -> ddoscoo_20200101_models.ModifyWebCCRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_web_ccrule_with_options(request, runtime)
+
+    async def modify_web_ccrule_async(
+        self,
+        request: ddoscoo_20200101_models.ModifyWebCCRuleRequest,
+    ) -> ddoscoo_20200101_models.ModifyWebCCRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_web_ccrule_with_options_async(request, runtime)
+
     def modify_web_cache_custom_rule_with_options(
         self,
         request: ddoscoo_20200101_models.ModifyWebCacheCustomRuleRequest,
@@ -9972,12 +11902,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebCacheCustomRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Rules'] = request.rules
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebCacheCustomRule',
@@ -9987,7 +11919,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10002,12 +11934,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebCacheCustomRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Rules'] = request.rules
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebCacheCustomRule',
@@ -10017,7 +11951,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10046,12 +11980,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebCacheModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebCacheMode',
@@ -10061,7 +11997,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10076,12 +12012,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebCacheModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebCacheMode',
@@ -10091,7 +12029,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10120,12 +12058,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebCacheSwitchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebCacheSwitch',
@@ -10135,7 +12075,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10150,12 +12090,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebCacheSwitchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebCacheSwitch',
@@ -10165,7 +12107,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10187,92 +12129,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_web_cache_switch_with_options_async(request, runtime)
 
-    def modify_web_ccrule_with_options(
-        self,
-        request: ddoscoo_20200101_models.ModifyWebCCRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ddoscoo_20200101_models.ModifyWebCCRuleResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Name'] = request.name
-        query['Act'] = request.act
-        query['Count'] = request.count
-        query['Interval'] = request.interval
-        query['Mode'] = request.mode
-        query['Ttl'] = request.ttl
-        query['Uri'] = request.uri
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyWebCCRule',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ddoscoo_20200101_models.ModifyWebCCRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_web_ccrule_with_options_async(
-        self,
-        request: ddoscoo_20200101_models.ModifyWebCCRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ddoscoo_20200101_models.ModifyWebCCRuleResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Name'] = request.name
-        query['Act'] = request.act
-        query['Count'] = request.count
-        query['Interval'] = request.interval
-        query['Mode'] = request.mode
-        query['Ttl'] = request.ttl
-        query['Uri'] = request.uri
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyWebCCRule',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ddoscoo_20200101_models.ModifyWebCCRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_web_ccrule(
-        self,
-        request: ddoscoo_20200101_models.ModifyWebCCRuleRequest,
-    ) -> ddoscoo_20200101_models.ModifyWebCCRuleResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_web_ccrule_with_options(request, runtime)
-
-    async def modify_web_ccrule_async(
-        self,
-        request: ddoscoo_20200101_models.ModifyWebCCRuleRequest,
-    ) -> ddoscoo_20200101_models.ModifyWebCCRuleResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_web_ccrule_with_options_async(request, runtime)
-
     def modify_web_ip_set_switch_with_options(
         self,
         request: ddoscoo_20200101_models.ModifyWebIpSetSwitchRequest,
@@ -10280,12 +12136,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebIpSetSwitchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebIpSetSwitch',
@@ -10295,7 +12153,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10310,12 +12168,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebIpSetSwitchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebIpSetSwitch',
@@ -10325,7 +12185,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10354,13 +12214,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebPreciseAccessRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Rules'] = request.rules
-        query['Expires'] = request.expires
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.expires):
+            query['Expires'] = request.expires
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebPreciseAccessRule',
@@ -10370,7 +12233,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10385,13 +12248,16 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebPreciseAccessRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Rules'] = request.rules
-        query['Expires'] = request.expires
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.expires):
+            query['Expires'] = request.expires
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebPreciseAccessRule',
@@ -10401,7 +12267,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10430,12 +12296,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebPreciseAccessSwitchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebPreciseAccessSwitch',
@@ -10445,7 +12313,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10460,12 +12328,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebPreciseAccessSwitchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['Config'] = request.config
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebPreciseAccessSwitch',
@@ -10475,7 +12345,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10504,16 +12374,22 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['ProxyTypes'] = request.proxy_types
-        query['RsType'] = request.rs_type
-        query['HttpsExt'] = request.https_ext
-        query['RealServers'] = request.real_servers
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.https_ext):
+            query['HttpsExt'] = request.https_ext
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.proxy_types):
+            query['ProxyTypes'] = request.proxy_types
+        if not UtilClient.is_unset(request.real_servers):
+            query['RealServers'] = request.real_servers
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rs_type):
+            query['RsType'] = request.rs_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebRule',
@@ -10523,7 +12399,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10538,16 +12414,22 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ModifyWebRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Domain'] = request.domain
-        query['ProxyTypes'] = request.proxy_types
-        query['RsType'] = request.rs_type
-        query['HttpsExt'] = request.https_ext
-        query['RealServers'] = request.real_servers
-        query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.https_ext):
+            query['HttpsExt'] = request.https_ext
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.proxy_types):
+            query['ProxyTypes'] = request.proxy_types
+        if not UtilClient.is_unset(request.real_servers):
+            query['RealServers'] = request.real_servers
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rs_type):
+            query['RsType'] = request.rs_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyWebRule',
@@ -10557,7 +12439,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10586,10 +12468,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ReleaseInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReleaseInstance',
@@ -10599,7 +12481,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10614,10 +12496,10 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.ReleaseInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReleaseInstance',
@@ -10627,7 +12509,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10656,12 +12538,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.SwitchSchedulerRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RuleName'] = request.rule_name
-        query['RuleType'] = request.rule_type
-        query['SwitchData'] = request.switch_data
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.switch_data):
+            query['SwitchData'] = request.switch_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SwitchSchedulerRule',
@@ -10671,7 +12555,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10686,12 +12570,14 @@ class Client(OpenApiClient):
     ) -> ddoscoo_20200101_models.SwitchSchedulerRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RuleName'] = request.rule_name
-        query['RuleType'] = request.rule_type
-        query['SwitchData'] = request.switch_data
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.switch_data):
+            query['SwitchData'] = request.switch_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SwitchSchedulerRule',
@@ -10701,7 +12587,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
