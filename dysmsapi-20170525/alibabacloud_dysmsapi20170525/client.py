@@ -418,6 +418,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.template):
             request.template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template, 'Template', 'json')
         query = {}
+        if not UtilClient.is_unset(request.factorys):
+            query['Factorys'] = request.factorys
         if not UtilClient.is_unset(request.memo):
             query['Memo'] = request.memo
         if not UtilClient.is_unset(request.template_shrink):
@@ -454,6 +456,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.template):
             request.template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template, 'Template', 'json')
         query = {}
+        if not UtilClient.is_unset(request.factorys):
+            query['Factorys'] = request.factorys
         if not UtilClient.is_unset(request.memo):
             query['Memo'] = request.memo
         if not UtilClient.is_unset(request.template_shrink):
@@ -750,10 +754,18 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.GetCardSmsLinkResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.card_code_type):
+            query['CardCodeType'] = request.card_code_type
+        if not UtilClient.is_unset(request.card_link_type):
+            query['CardLinkType'] = request.card_link_type
         if not UtilClient.is_unset(request.card_template_code):
             query['CardTemplateCode'] = request.card_template_code
         if not UtilClient.is_unset(request.card_template_param_json):
             query['CardTemplateParamJson'] = request.card_template_param_json
+        if not UtilClient.is_unset(request.custom_short_code_json):
+            query['CustomShortCodeJson'] = request.custom_short_code_json
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
         if not UtilClient.is_unset(request.out_id):
             query['OutId'] = request.out_id
         if not UtilClient.is_unset(request.phone_number_json):
@@ -786,10 +798,18 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.GetCardSmsLinkResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.card_code_type):
+            query['CardCodeType'] = request.card_code_type
+        if not UtilClient.is_unset(request.card_link_type):
+            query['CardLinkType'] = request.card_link_type
         if not UtilClient.is_unset(request.card_template_code):
             query['CardTemplateCode'] = request.card_template_code
         if not UtilClient.is_unset(request.card_template_param_json):
             query['CardTemplateParamJson'] = request.card_template_param_json
+        if not UtilClient.is_unset(request.custom_short_code_json):
+            query['CustomShortCodeJson'] = request.custom_short_code_json
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
         if not UtilClient.is_unset(request.out_id):
             query['OutId'] = request.out_id
         if not UtilClient.is_unset(request.phone_number_json):

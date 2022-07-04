@@ -661,10 +661,12 @@ class CheckMobilesCardSupportResponse(TeaModel):
 class CreateCardSmsTemplateRequest(TeaModel):
     def __init__(
         self,
+        factorys: str = None,
         memo: str = None,
         template: Dict[str, Any] = None,
         template_name: str = None,
     ):
+        self.factorys = factorys
         self.memo = memo
         self.template = template
         self.template_name = template_name
@@ -678,6 +680,8 @@ class CreateCardSmsTemplateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.factorys is not None:
+            result['Factorys'] = self.factorys
         if self.memo is not None:
             result['Memo'] = self.memo
         if self.template is not None:
@@ -688,6 +692,8 @@ class CreateCardSmsTemplateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Factorys') is not None:
+            self.factorys = m.get('Factorys')
         if m.get('Memo') is not None:
             self.memo = m.get('Memo')
         if m.get('Template') is not None:
@@ -700,10 +706,12 @@ class CreateCardSmsTemplateRequest(TeaModel):
 class CreateCardSmsTemplateShrinkRequest(TeaModel):
     def __init__(
         self,
+        factorys: str = None,
         memo: str = None,
         template_shrink: str = None,
         template_name: str = None,
     ):
+        self.factorys = factorys
         self.memo = memo
         self.template_shrink = template_shrink
         self.template_name = template_name
@@ -717,6 +725,8 @@ class CreateCardSmsTemplateShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.factorys is not None:
+            result['Factorys'] = self.factorys
         if self.memo is not None:
             result['Memo'] = self.memo
         if self.template_shrink is not None:
@@ -727,6 +737,8 @@ class CreateCardSmsTemplateShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Factorys') is not None:
+            self.factorys = m.get('Factorys')
         if m.get('Memo') is not None:
             self.memo = m.get('Memo')
         if m.get('Template') is not None:
@@ -1253,14 +1265,22 @@ class DeleteSmsTemplateResponse(TeaModel):
 class GetCardSmsLinkRequest(TeaModel):
     def __init__(
         self,
+        card_code_type: int = None,
+        card_link_type: int = None,
         card_template_code: str = None,
         card_template_param_json: str = None,
+        custom_short_code_json: str = None,
+        domain: str = None,
         out_id: str = None,
         phone_number_json: str = None,
         sign_name_json: str = None,
     ):
+        self.card_code_type = card_code_type
+        self.card_link_type = card_link_type
         self.card_template_code = card_template_code
         self.card_template_param_json = card_template_param_json
+        self.custom_short_code_json = custom_short_code_json
+        self.domain = domain
         self.out_id = out_id
         self.phone_number_json = phone_number_json
         self.sign_name_json = sign_name_json
@@ -1274,10 +1294,18 @@ class GetCardSmsLinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.card_code_type is not None:
+            result['CardCodeType'] = self.card_code_type
+        if self.card_link_type is not None:
+            result['CardLinkType'] = self.card_link_type
         if self.card_template_code is not None:
             result['CardTemplateCode'] = self.card_template_code
         if self.card_template_param_json is not None:
             result['CardTemplateParamJson'] = self.card_template_param_json
+        if self.custom_short_code_json is not None:
+            result['CustomShortCodeJson'] = self.custom_short_code_json
+        if self.domain is not None:
+            result['Domain'] = self.domain
         if self.out_id is not None:
             result['OutId'] = self.out_id
         if self.phone_number_json is not None:
@@ -1288,10 +1316,18 @@ class GetCardSmsLinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CardCodeType') is not None:
+            self.card_code_type = m.get('CardCodeType')
+        if m.get('CardLinkType') is not None:
+            self.card_link_type = m.get('CardLinkType')
         if m.get('CardTemplateCode') is not None:
             self.card_template_code = m.get('CardTemplateCode')
         if m.get('CardTemplateParamJson') is not None:
             self.card_template_param_json = m.get('CardTemplateParamJson')
+        if m.get('CustomShortCodeJson') is not None:
+            self.custom_short_code_json = m.get('CustomShortCodeJson')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
         if m.get('OutId') is not None:
             self.out_id = m.get('OutId')
         if m.get('PhoneNumberJson') is not None:

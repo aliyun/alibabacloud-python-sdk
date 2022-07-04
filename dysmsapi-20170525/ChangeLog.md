@@ -1,3 +1,6 @@
+2022-07-04 Version: 2.0.13
+- Upgrade Service for CardSms.
+
 2022-06-29 Version: 2.0.12
 - Upgrade Service for Template and Sign.
 
