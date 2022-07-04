@@ -374,19 +374,19 @@ class Client(OpenApiClient):
             body['AddressIpVersion'] = request.address_ip_version
         if not UtilClient.is_unset(request.address_type):
             body['AddressType'] = request.address_type
-        body_flat = {}
-        if not UtilClient.is_unset(request.billing_config):
-            body_flat['BillingConfig'] = request.billing_config
+        if not UtilClient.is_unset(request.bandwidth_package_id):
+            body['BandwidthPackageId'] = request.bandwidth_package_id
         if not UtilClient.is_unset(request.biz_flag):
             body['BizFlag'] = request.biz_flag
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.common_bandwidth_package_id):
-            body['CommonBandwidthPackageId'] = request.common_bandwidth_package_id
         if not UtilClient.is_unset(request.cross_zone_enabled):
             body['CrossZoneEnabled'] = request.cross_zone_enabled
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
+        body_flat = {}
+        if not UtilClient.is_unset(request.load_balancer_billing_config):
+            body_flat['LoadBalancerBillingConfig'] = request.load_balancer_billing_config
         if not UtilClient.is_unset(request.load_balancer_name):
             body['LoadBalancerName'] = request.load_balancer_name
         if not UtilClient.is_unset(request.load_balancer_type):
@@ -395,8 +395,8 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.security_groups):
-            body['SecurityGroups'] = request.security_groups
+        if not UtilClient.is_unset(request.security_group_ids):
+            body['SecurityGroupIds'] = request.security_group_ids
         if not UtilClient.is_unset(request.traffic_affinity_enabled):
             body['TrafficAffinityEnabled'] = request.traffic_affinity_enabled
         if not UtilClient.is_unset(request.vpc_id):
@@ -435,19 +435,19 @@ class Client(OpenApiClient):
             body['AddressIpVersion'] = request.address_ip_version
         if not UtilClient.is_unset(request.address_type):
             body['AddressType'] = request.address_type
-        body_flat = {}
-        if not UtilClient.is_unset(request.billing_config):
-            body_flat['BillingConfig'] = request.billing_config
+        if not UtilClient.is_unset(request.bandwidth_package_id):
+            body['BandwidthPackageId'] = request.bandwidth_package_id
         if not UtilClient.is_unset(request.biz_flag):
             body['BizFlag'] = request.biz_flag
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.common_bandwidth_package_id):
-            body['CommonBandwidthPackageId'] = request.common_bandwidth_package_id
         if not UtilClient.is_unset(request.cross_zone_enabled):
             body['CrossZoneEnabled'] = request.cross_zone_enabled
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
+        body_flat = {}
+        if not UtilClient.is_unset(request.load_balancer_billing_config):
+            body_flat['LoadBalancerBillingConfig'] = request.load_balancer_billing_config
         if not UtilClient.is_unset(request.load_balancer_name):
             body['LoadBalancerName'] = request.load_balancer_name
         if not UtilClient.is_unset(request.load_balancer_type):
@@ -456,8 +456,8 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.security_groups):
-            body['SecurityGroups'] = request.security_groups
+        if not UtilClient.is_unset(request.security_group_ids):
+            body['SecurityGroupIds'] = request.security_group_ids
         if not UtilClient.is_unset(request.traffic_affinity_enabled):
             body['TrafficAffinityEnabled'] = request.traffic_affinity_enabled
         if not UtilClient.is_unset(request.vpc_id):
@@ -3308,8 +3308,8 @@ class Client(OpenApiClient):
             body['LoadBalancerName'] = request.load_balancer_name
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.security_groups):
-            body['SecurityGroups'] = request.security_groups
+        if not UtilClient.is_unset(request.security_group_ids):
+            body['SecurityGroupIds'] = request.security_group_ids
         if not UtilClient.is_unset(request.traffic_affinity_enabled):
             body['TrafficAffinityEnabled'] = request.traffic_affinity_enabled
         req = open_api_models.OpenApiRequest(
@@ -3352,8 +3352,8 @@ class Client(OpenApiClient):
             body['LoadBalancerName'] = request.load_balancer_name
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.security_groups):
-            body['SecurityGroups'] = request.security_groups
+        if not UtilClient.is_unset(request.security_group_ids):
+            body['SecurityGroupIds'] = request.security_group_ids
         if not UtilClient.is_unset(request.traffic_affinity_enabled):
             body['TrafficAffinityEnabled'] = request.traffic_affinity_enabled
         req = open_api_models.OpenApiRequest(

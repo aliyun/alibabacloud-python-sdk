@@ -13,7 +13,6 @@ class AddServersToServerGroupRequestServers(TeaModel):
         server_ip: str = None,
         server_type: str = None,
         weight: int = None,
-        zone_id: str = None,
     ):
         # 服务器描述信息
         self.description = description
@@ -27,8 +26,6 @@ class AddServersToServerGroupRequestServers(TeaModel):
         self.server_type = server_type
         # 后端权重
         self.weight = weight
-        # 服务器对应的zoneId
-        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -51,8 +48,6 @@ class AddServersToServerGroupRequestServers(TeaModel):
             result['ServerType'] = self.server_type
         if self.weight is not None:
             result['Weight'] = self.weight
-        if self.zone_id is not None:
-            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -69,8 +64,6 @@ class AddServersToServerGroupRequestServers(TeaModel):
             self.server_type = m.get('ServerType')
         if m.get('Weight') is not None:
             self.weight = m.get('Weight')
-        if m.get('ZoneId') is not None:
-            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -691,25 +684,13 @@ class CreateListenerResponse(TeaModel):
         return self
 
 
-class CreateLoadBalancerRequestBillingConfig(TeaModel):
+class CreateLoadBalancerRequestLoadBalancerBillingConfig(TeaModel):
     def __init__(
         self,
-        auto_pay: bool = None,
-        internet_charge_type: str = None,
         pay_type: str = None,
-        period: int = None,
-        pricing_cycle: str = None,
-        specification: str = None,
     ):
-        self.auto_pay = auto_pay
-        # PayByTraffic, PayByBandwidth, PayByLcu, PayBy95, PayByOld95, PayBy96
-        self.internet_charge_type = internet_charge_type
         # PrePay, PostPay
         self.pay_type = pay_type
-        self.period = period
-        # Month, Year, Day
-        self.pricing_cycle = pricing_cycle
-        self.specification = specification
 
     def validate(self):
         pass
@@ -720,34 +701,14 @@ class CreateLoadBalancerRequestBillingConfig(TeaModel):
             return _map
 
         result = dict()
-        if self.auto_pay is not None:
-            result['AutoPay'] = self.auto_pay
-        if self.internet_charge_type is not None:
-            result['InternetChargeType'] = self.internet_charge_type
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
-        if self.period is not None:
-            result['Period'] = self.period
-        if self.pricing_cycle is not None:
-            result['PricingCycle'] = self.pricing_cycle
-        if self.specification is not None:
-            result['Specification'] = self.specification
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AutoPay') is not None:
-            self.auto_pay = m.get('AutoPay')
-        if m.get('InternetChargeType') is not None:
-            self.internet_charge_type = m.get('InternetChargeType')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
-        if m.get('Period') is not None:
-            self.period = m.get('Period')
-        if m.get('PricingCycle') is not None:
-            self.pricing_cycle = m.get('PricingCycle')
-        if m.get('Specification') is not None:
-            self.specification = m.get('Specification')
         return self
 
 
@@ -803,41 +764,41 @@ class CreateLoadBalancerRequest(TeaModel):
         self,
         address_ip_version: str = None,
         address_type: str = None,
-        billing_config: CreateLoadBalancerRequestBillingConfig = None,
+        bandwidth_package_id: str = None,
         biz_flag: str = None,
         client_token: str = None,
-        common_bandwidth_package_id: str = None,
         cross_zone_enabled: bool = None,
         dry_run: bool = None,
+        load_balancer_billing_config: CreateLoadBalancerRequestLoadBalancerBillingConfig = None,
         load_balancer_name: str = None,
         load_balancer_type: str = None,
         region_id: str = None,
         resource_group_id: str = None,
-        security_groups: List[str] = None,
+        security_group_ids: List[str] = None,
         traffic_affinity_enabled: bool = None,
         vpc_id: str = None,
         zone_mappings: List[CreateLoadBalancerRequestZoneMappings] = None,
     ):
         self.address_ip_version = address_ip_version
         self.address_type = address_type
-        self.billing_config = billing_config
+        self.bandwidth_package_id = bandwidth_package_id
         self.biz_flag = biz_flag
         self.client_token = client_token
-        self.common_bandwidth_package_id = common_bandwidth_package_id
         self.cross_zone_enabled = cross_zone_enabled
         self.dry_run = dry_run
+        self.load_balancer_billing_config = load_balancer_billing_config
         self.load_balancer_name = load_balancer_name
         self.load_balancer_type = load_balancer_type
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        self.security_groups = security_groups
+        self.security_group_ids = security_group_ids
         self.traffic_affinity_enabled = traffic_affinity_enabled
         self.vpc_id = vpc_id
         self.zone_mappings = zone_mappings
 
     def validate(self):
-        if self.billing_config:
-            self.billing_config.validate()
+        if self.load_balancer_billing_config:
+            self.load_balancer_billing_config.validate()
         if self.zone_mappings:
             for k in self.zone_mappings:
                 if k:
@@ -853,18 +814,18 @@ class CreateLoadBalancerRequest(TeaModel):
             result['AddressIpVersion'] = self.address_ip_version
         if self.address_type is not None:
             result['AddressType'] = self.address_type
-        if self.billing_config is not None:
-            result['BillingConfig'] = self.billing_config.to_map()
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
         if self.biz_flag is not None:
             result['BizFlag'] = self.biz_flag
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
-        if self.common_bandwidth_package_id is not None:
-            result['CommonBandwidthPackageId'] = self.common_bandwidth_package_id
         if self.cross_zone_enabled is not None:
             result['CrossZoneEnabled'] = self.cross_zone_enabled
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.load_balancer_billing_config is not None:
+            result['LoadBalancerBillingConfig'] = self.load_balancer_billing_config.to_map()
         if self.load_balancer_name is not None:
             result['LoadBalancerName'] = self.load_balancer_name
         if self.load_balancer_type is not None:
@@ -873,8 +834,8 @@ class CreateLoadBalancerRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-        if self.security_groups is not None:
-            result['SecurityGroups'] = self.security_groups
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids
         if self.traffic_affinity_enabled is not None:
             result['TrafficAffinityEnabled'] = self.traffic_affinity_enabled
         if self.vpc_id is not None:
@@ -891,19 +852,19 @@ class CreateLoadBalancerRequest(TeaModel):
             self.address_ip_version = m.get('AddressIpVersion')
         if m.get('AddressType') is not None:
             self.address_type = m.get('AddressType')
-        if m.get('BillingConfig') is not None:
-            temp_model = CreateLoadBalancerRequestBillingConfig()
-            self.billing_config = temp_model.from_map(m['BillingConfig'])
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
         if m.get('BizFlag') is not None:
             self.biz_flag = m.get('BizFlag')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
-        if m.get('CommonBandwidthPackageId') is not None:
-            self.common_bandwidth_package_id = m.get('CommonBandwidthPackageId')
         if m.get('CrossZoneEnabled') is not None:
             self.cross_zone_enabled = m.get('CrossZoneEnabled')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('LoadBalancerBillingConfig') is not None:
+            temp_model = CreateLoadBalancerRequestLoadBalancerBillingConfig()
+            self.load_balancer_billing_config = temp_model.from_map(m['LoadBalancerBillingConfig'])
         if m.get('LoadBalancerName') is not None:
             self.load_balancer_name = m.get('LoadBalancerName')
         if m.get('LoadBalancerType') is not None:
@@ -912,8 +873,8 @@ class CreateLoadBalancerRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('SecurityGroups') is not None:
-            self.security_groups = m.get('SecurityGroups')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids = m.get('SecurityGroupIds')
         if m.get('TrafficAffinityEnabled') is not None:
             self.traffic_affinity_enabled = m.get('TrafficAffinityEnabled')
         if m.get('VpcId') is not None:
@@ -3321,6 +3282,7 @@ class GetListenerAttributeResponseBody(TeaModel):
         cps: int = None,
         dynamic_code: str = None,
         dynamic_message: str = None,
+        end_port: str = None,
         http_status_code: int = None,
         idle_timeout: int = None,
         listener_description: str = None,
@@ -3336,6 +3298,7 @@ class GetListenerAttributeResponseBody(TeaModel):
         sec_sensor_enabled: str = None,
         security_policy_id: str = None,
         server_group_id: str = None,
+        start_port: str = None,
         success: bool = None,
     ):
         # 用户uid
@@ -3351,6 +3314,8 @@ class GetListenerAttributeResponseBody(TeaModel):
         self.cps = cps
         self.dynamic_code = dynamic_code
         self.dynamic_message = dynamic_message
+        # anyPort监听结束端口
+        self.end_port = end_port
         self.http_status_code = http_status_code
         # 空闲超时时间
         self.idle_timeout = idle_timeout
@@ -3375,6 +3340,8 @@ class GetListenerAttributeResponseBody(TeaModel):
         self.security_policy_id = security_policy_id
         # servergroupId
         self.server_group_id = server_group_id
+        # anyPort监听起始端口
+        self.start_port = start_port
         self.success = success
 
     def validate(self):
@@ -3406,6 +3373,8 @@ class GetListenerAttributeResponseBody(TeaModel):
             result['DynamicCode'] = self.dynamic_code
         if self.dynamic_message is not None:
             result['DynamicMessage'] = self.dynamic_message
+        if self.end_port is not None:
+            result['EndPort'] = self.end_port
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
         if self.idle_timeout is not None:
@@ -3436,6 +3405,8 @@ class GetListenerAttributeResponseBody(TeaModel):
             result['SecurityPolicyId'] = self.security_policy_id
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
+        if self.start_port is not None:
+            result['StartPort'] = self.start_port
         if self.success is not None:
             result['Success'] = self.success
         return result
@@ -3462,6 +3433,8 @@ class GetListenerAttributeResponseBody(TeaModel):
             self.dynamic_code = m.get('DynamicCode')
         if m.get('DynamicMessage') is not None:
             self.dynamic_message = m.get('DynamicMessage')
+        if m.get('EndPort') is not None:
+            self.end_port = m.get('EndPort')
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('IdleTimeout') is not None:
@@ -3492,6 +3465,8 @@ class GetListenerAttributeResponseBody(TeaModel):
             self.security_policy_id = m.get('SecurityPolicyId')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
+        if m.get('StartPort') is not None:
+            self.start_port = m.get('StartPort')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -4117,25 +4092,23 @@ class GetLoadBalancerAttributeResponseBodyOperationLocks(TeaModel):
         return self
 
 
-class GetLoadBalancerAttributeResponseBodyZoneMappings(TeaModel):
+class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaModel):
     def __init__(
         self,
         allocation_id: str = None,
         eni_id: str = None,
+        ipv_6address: str = None,
         private_ipv_4address: str = None,
         public_ipv_4address: str = None,
-        v_switch_id: str = None,
-        zone_id: str = None,
     ):
         # 公网ipId
         self.allocation_id = allocation_id
         self.eni_id = eni_id
+        self.ipv_6address = ipv_6address
         # 私网ip
         self.private_ipv_4address = private_ipv_4address
         # 公网ip地址：仅Get的时候有值
         self.public_ipv_4address = public_ipv_4address
-        self.v_switch_id = v_switch_id
-        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -4150,14 +4123,12 @@ class GetLoadBalancerAttributeResponseBodyZoneMappings(TeaModel):
             result['AllocationId'] = self.allocation_id
         if self.eni_id is not None:
             result['EniId'] = self.eni_id
+        if self.ipv_6address is not None:
+            result['Ipv6Address'] = self.ipv_6address
         if self.private_ipv_4address is not None:
             result['PrivateIPv4Address'] = self.private_ipv_4address
         if self.public_ipv_4address is not None:
             result['PublicIPv4Address'] = self.public_ipv_4address
-        if self.v_switch_id is not None:
-            result['VSwitchId'] = self.v_switch_id
-        if self.zone_id is not None:
-            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4166,10 +4137,55 @@ class GetLoadBalancerAttributeResponseBodyZoneMappings(TeaModel):
             self.allocation_id = m.get('AllocationId')
         if m.get('EniId') is not None:
             self.eni_id = m.get('EniId')
+        if m.get('Ipv6Address') is not None:
+            self.ipv_6address = m.get('Ipv6Address')
         if m.get('PrivateIPv4Address') is not None:
             self.private_ipv_4address = m.get('PrivateIPv4Address')
         if m.get('PublicIPv4Address') is not None:
             self.public_ipv_4address = m.get('PublicIPv4Address')
+        return self
+
+
+class GetLoadBalancerAttributeResponseBodyZoneMappings(TeaModel):
+    def __init__(
+        self,
+        load_balancer_addresses: List[GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses] = None,
+        v_switch_id: str = None,
+        zone_id: str = None,
+    ):
+        self.load_balancer_addresses = load_balancer_addresses
+        self.v_switch_id = v_switch_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.load_balancer_addresses:
+            for k in self.load_balancer_addresses:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LoadBalancerAddresses'] = []
+        if self.load_balancer_addresses is not None:
+            for k in self.load_balancer_addresses:
+                result['LoadBalancerAddresses'].append(k.to_map() if k else None)
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.load_balancer_addresses = []
+        if m.get('LoadBalancerAddresses') is not None:
+            for k in m.get('LoadBalancerAddresses'):
+                temp_model = GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses()
+                self.load_balancer_addresses.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:
@@ -4182,9 +4198,9 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         self,
         address_ip_version: str = None,
         address_type: str = None,
+        bandwidth_package_id: str = None,
         capacity_unit_count: int = None,
         code: str = None,
-        common_bandwidth_package_id: str = None,
         cps: int = None,
         create_time: str = None,
         cross_zone_enable: bool = None,
@@ -4211,9 +4227,9 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
     ):
         self.address_ip_version = address_ip_version
         self.address_type = address_type
+        self.bandwidth_package_id = bandwidth_package_id
         self.capacity_unit_count = capacity_unit_count
         self.code = code
-        self.common_bandwidth_package_id = common_bandwidth_package_id
         self.cps = cps
         self.create_time = create_time
         self.cross_zone_enable = cross_zone_enable
@@ -4262,12 +4278,12 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             result['AddressIpVersion'] = self.address_ip_version
         if self.address_type is not None:
             result['AddressType'] = self.address_type
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
         if self.capacity_unit_count is not None:
             result['CapacityUnitCount'] = self.capacity_unit_count
         if self.code is not None:
             result['Code'] = self.code
-        if self.common_bandwidth_package_id is not None:
-            result['CommonBandwidthPackageId'] = self.common_bandwidth_package_id
         if self.cps is not None:
             result['Cps'] = self.cps
         if self.create_time is not None:
@@ -4326,12 +4342,12 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             self.address_ip_version = m.get('AddressIpVersion')
         if m.get('AddressType') is not None:
             self.address_type = m.get('AddressType')
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
         if m.get('CapacityUnitCount') is not None:
             self.capacity_unit_count = m.get('CapacityUnitCount')
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('CommonBandwidthPackageId') is not None:
-            self.common_bandwidth_package_id = m.get('CommonBandwidthPackageId')
         if m.get('Cps') is not None:
             self.cps = m.get('Cps')
         if m.get('CreateTime') is not None:
@@ -4689,6 +4705,7 @@ class ListListenersResponseBodyListeners(TeaModel):
         ca_certificate_ids: List[str] = None,
         ca_enabled: bool = None,
         certificate_ids: List[str] = None,
+        end_port: str = None,
         idle_timeout: int = None,
         listener_description: str = None,
         listener_id: str = None,
@@ -4701,6 +4718,7 @@ class ListListenersResponseBodyListeners(TeaModel):
         sec_sensor_enabled: str = None,
         security_policy_id: str = None,
         server_group_id: str = None,
+        start_port: str = None,
     ):
         # 用户uid
         self.ali_uid = ali_uid
@@ -4711,6 +4729,8 @@ class ListListenersResponseBodyListeners(TeaModel):
         self.ca_enabled = ca_enabled
         # server证书列表
         self.certificate_ids = certificate_ids
+        # anyPort监听结束端口
+        self.end_port = end_port
         # 空闲超时时间
         self.idle_timeout = idle_timeout
         # 监听描述
@@ -4731,6 +4751,8 @@ class ListListenersResponseBodyListeners(TeaModel):
         self.security_policy_id = security_policy_id
         # servergroupId
         self.server_group_id = server_group_id
+        # anyPort监听起始端口
+        self.start_port = start_port
 
     def validate(self):
         pass
@@ -4753,6 +4775,8 @@ class ListListenersResponseBodyListeners(TeaModel):
             result['CaEnabled'] = self.ca_enabled
         if self.certificate_ids is not None:
             result['CertificateIds'] = self.certificate_ids
+        if self.end_port is not None:
+            result['EndPort'] = self.end_port
         if self.idle_timeout is not None:
             result['IdleTimeout'] = self.idle_timeout
         if self.listener_description is not None:
@@ -4777,6 +4801,8 @@ class ListListenersResponseBodyListeners(TeaModel):
             result['SecurityPolicyId'] = self.security_policy_id
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
+        if self.start_port is not None:
+            result['StartPort'] = self.start_port
         return result
 
     def from_map(self, m: dict = None):
@@ -4793,6 +4819,8 @@ class ListListenersResponseBodyListeners(TeaModel):
             self.ca_enabled = m.get('CaEnabled')
         if m.get('CertificateIds') is not None:
             self.certificate_ids = m.get('CertificateIds')
+        if m.get('EndPort') is not None:
+            self.end_port = m.get('EndPort')
         if m.get('IdleTimeout') is not None:
             self.idle_timeout = m.get('IdleTimeout')
         if m.get('ListenerDescription') is not None:
@@ -4817,6 +4845,8 @@ class ListListenersResponseBodyListeners(TeaModel):
             self.security_policy_id = m.get('SecurityPolicyId')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
+        if m.get('StartPort') is not None:
+            self.start_port = m.get('StartPort')
         return self
 
 
@@ -5223,25 +5253,23 @@ class ListLoadBalancersResponseBodyLoadBalancersTags(TeaModel):
         return self
 
 
-class ListLoadBalancersResponseBodyLoadBalancersZoneMappings(TeaModel):
+class ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses(TeaModel):
     def __init__(
         self,
         allocation_id: str = None,
         eni_id: str = None,
+        ipv_6address: str = None,
         private_ipv_4address: str = None,
         public_ipv_4address: str = None,
-        v_switch_id: str = None,
-        zone_id: str = None,
     ):
         # 公网ipId
         self.allocation_id = allocation_id
         self.eni_id = eni_id
+        self.ipv_6address = ipv_6address
         # 私网ip
         self.private_ipv_4address = private_ipv_4address
         # 公网ip地址：仅Get的时候有值
         self.public_ipv_4address = public_ipv_4address
-        self.v_switch_id = v_switch_id
-        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -5256,14 +5284,12 @@ class ListLoadBalancersResponseBodyLoadBalancersZoneMappings(TeaModel):
             result['AllocationId'] = self.allocation_id
         if self.eni_id is not None:
             result['EniId'] = self.eni_id
+        if self.ipv_6address is not None:
+            result['Ipv6Address'] = self.ipv_6address
         if self.private_ipv_4address is not None:
             result['PrivateIPv4Address'] = self.private_ipv_4address
         if self.public_ipv_4address is not None:
             result['PublicIPv4Address'] = self.public_ipv_4address
-        if self.v_switch_id is not None:
-            result['VSwitchId'] = self.v_switch_id
-        if self.zone_id is not None:
-            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5272,10 +5298,55 @@ class ListLoadBalancersResponseBodyLoadBalancersZoneMappings(TeaModel):
             self.allocation_id = m.get('AllocationId')
         if m.get('EniId') is not None:
             self.eni_id = m.get('EniId')
+        if m.get('Ipv6Address') is not None:
+            self.ipv_6address = m.get('Ipv6Address')
         if m.get('PrivateIPv4Address') is not None:
             self.private_ipv_4address = m.get('PrivateIPv4Address')
         if m.get('PublicIPv4Address') is not None:
             self.public_ipv_4address = m.get('PublicIPv4Address')
+        return self
+
+
+class ListLoadBalancersResponseBodyLoadBalancersZoneMappings(TeaModel):
+    def __init__(
+        self,
+        load_balancer_addresses: List[ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses] = None,
+        v_switch_id: str = None,
+        zone_id: str = None,
+    ):
+        self.load_balancer_addresses = load_balancer_addresses
+        self.v_switch_id = v_switch_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.load_balancer_addresses:
+            for k in self.load_balancer_addresses:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LoadBalancerAddresses'] = []
+        if self.load_balancer_addresses is not None:
+            for k in self.load_balancer_addresses:
+                result['LoadBalancerAddresses'].append(k.to_map() if k else None)
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.load_balancer_addresses = []
+        if m.get('LoadBalancerAddresses') is not None:
+            for k in m.get('LoadBalancerAddresses'):
+                temp_model = ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses()
+                self.load_balancer_addresses.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:
@@ -5289,8 +5360,8 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         address_ip_version: str = None,
         address_type: str = None,
         ali_uid: int = None,
+        bandwidth_package_id: str = None,
         capacity_unit_count: int = None,
-        common_bandwidth_package_id: str = None,
         create_time: str = None,
         cross_zone_enabled: bool = None,
         dnsname: str = None,
@@ -5313,8 +5384,8 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         self.address_type = address_type
         # 用户uid
         self.ali_uid = ali_uid
+        self.bandwidth_package_id = bandwidth_package_id
         self.capacity_unit_count = capacity_unit_count
-        self.common_bandwidth_package_id = common_bandwidth_package_id
         self.create_time = create_time
         self.cross_zone_enabled = cross_zone_enabled
         self.dnsname = dnsname
@@ -5364,10 +5435,10 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
             result['AddressType'] = self.address_type
         if self.ali_uid is not None:
             result['AliUid'] = self.ali_uid
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
         if self.capacity_unit_count is not None:
             result['CapacityUnitCount'] = self.capacity_unit_count
-        if self.common_bandwidth_package_id is not None:
-            result['CommonBandwidthPackageId'] = self.common_bandwidth_package_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.cross_zone_enabled is not None:
@@ -5418,10 +5489,10 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
             self.address_type = m.get('AddressType')
         if m.get('AliUid') is not None:
             self.ali_uid = m.get('AliUid')
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
         if m.get('CapacityUnitCount') is not None:
             self.capacity_unit_count = m.get('CapacityUnitCount')
-        if m.get('CommonBandwidthPackageId') is not None:
-            self.common_bandwidth_package_id = m.get('CommonBandwidthPackageId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('CrossZoneEnabled') is not None:
@@ -8782,7 +8853,7 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
         load_balancer_id: str = None,
         load_balancer_name: str = None,
         region_id: str = None,
-        security_groups: List[str] = None,
+        security_group_ids: List[str] = None,
         traffic_affinity_enabled: bool = None,
     ):
         self.client_token = client_token
@@ -8792,7 +8863,7 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.load_balancer_name = load_balancer_name
         self.region_id = region_id
-        self.security_groups = security_groups
+        self.security_group_ids = security_group_ids
         self.traffic_affinity_enabled = traffic_affinity_enabled
 
     def validate(self):
@@ -8818,8 +8889,8 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
             result['LoadBalancerName'] = self.load_balancer_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.security_groups is not None:
-            result['SecurityGroups'] = self.security_groups
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids
         if self.traffic_affinity_enabled is not None:
             result['TrafficAffinityEnabled'] = self.traffic_affinity_enabled
         return result
@@ -8840,8 +8911,8 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
             self.load_balancer_name = m.get('LoadBalancerName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('SecurityGroups') is not None:
-            self.security_groups = m.get('SecurityGroups')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids = m.get('SecurityGroupIds')
         if m.get('TrafficAffinityEnabled') is not None:
             self.traffic_affinity_enabled = m.get('TrafficAffinityEnabled')
         return self
