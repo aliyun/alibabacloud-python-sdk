@@ -1,3 +1,6 @@
+2022-07-04 Version: 1.1.2
+- Add API QueryEmbeddedStaus.
+
 2022-07-04 Version: 1.1.1
 - Update API error code.
 - Adjust parameters verification rules for some APIs.
