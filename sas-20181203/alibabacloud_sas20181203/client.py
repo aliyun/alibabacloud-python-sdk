@@ -11040,6 +11040,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vul_whitelist_with_options_async(request, runtime)
 
+    def describe_warning_export_info_with_options(
+        self,
+        request: sas_20181203_models.DescribeWarningExportInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWarningExportInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.export_id):
+            query['ExportId'] = request.export_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWarningExportInfo',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWarningExportInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_warning_export_info_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeWarningExportInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWarningExportInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.export_id):
+            query['ExportId'] = request.export_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWarningExportInfo',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWarningExportInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_warning_export_info(
+        self,
+        request: sas_20181203_models.DescribeWarningExportInfoRequest,
+    ) -> sas_20181203_models.DescribeWarningExportInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_warning_export_info_with_options(request, runtime)
+
+    async def describe_warning_export_info_async(
+        self,
+        request: sas_20181203_models.DescribeWarningExportInfoRequest,
+    ) -> sas_20181203_models.DescribeWarningExportInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_warning_export_info_with_options_async(request, runtime)
+
     def describe_warning_machines_with_options(
         self,
         request: sas_20181203_models.DescribeWarningMachinesRequest,
