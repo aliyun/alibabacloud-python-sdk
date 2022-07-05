@@ -870,6 +870,318 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
+    def get_context_logs(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.GetContextLogsRequest,
+    ) -> sls_20201230_models.GetContextLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_context_logs_with_options(project, logstore, request, headers, runtime)
+
+    async def get_context_logs_async(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.GetContextLogsRequest,
+    ) -> sls_20201230_models.GetContextLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_context_logs_with_options_async(project, logstore, request, headers, runtime)
+
+    def get_context_logs_with_options(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.GetContextLogsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetContextLogsResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        query = {}
+        if not UtilClient.is_unset(request.back_lines):
+            query['back_lines'] = request.back_lines
+        if not UtilClient.is_unset(request.forward_lines):
+            query['forward_lines'] = request.forward_lines
+        if not UtilClient.is_unset(request.pack_id):
+            query['pack_id'] = request.pack_id
+        if not UtilClient.is_unset(request.pack_meta):
+            query['pack_meta'] = request.pack_meta
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetContextLogs',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetContextLogsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_context_logs_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.GetContextLogsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetContextLogsResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        query = {}
+        if not UtilClient.is_unset(request.back_lines):
+            query['back_lines'] = request.back_lines
+        if not UtilClient.is_unset(request.forward_lines):
+            query['forward_lines'] = request.forward_lines
+        if not UtilClient.is_unset(request.pack_id):
+            query['pack_id'] = request.pack_id
+        if not UtilClient.is_unset(request.pack_meta):
+            query['pack_meta'] = request.pack_meta
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetContextLogs',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetContextLogsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_cursor(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.GetCursorRequest,
+    ) -> sls_20201230_models.GetCursorResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_cursor_with_options(project, logstore, shard_id, request, headers, runtime)
+
+    async def get_cursor_async(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.GetCursorRequest,
+    ) -> sls_20201230_models.GetCursorResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_cursor_with_options_async(project, logstore, shard_id, request, headers, runtime)
+
+    def get_cursor_with_options(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.GetCursorRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetCursorResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCursor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shards/{shard_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetCursorResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_cursor_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.GetCursorRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetCursorResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCursor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shards/{shard_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetCursorResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_cursor_time(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.GetCursorTimeRequest,
+    ) -> sls_20201230_models.GetCursorTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_cursor_time_with_options(project, logstore, shard_id, request, headers, runtime)
+
+    async def get_cursor_time_async(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.GetCursorTimeRequest,
+    ) -> sls_20201230_models.GetCursorTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_cursor_time_with_options_async(project, logstore, shard_id, request, headers, runtime)
+
+    def get_cursor_time_with_options(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.GetCursorTimeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetCursorTimeResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
+        query = {}
+        if not UtilClient.is_unset(request.cursor):
+            query['cursor'] = request.cursor
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCursorTime',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shards/{shard_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetCursorTimeResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_cursor_time_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.GetCursorTimeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetCursorTimeResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
+        query = {}
+        if not UtilClient.is_unset(request.cursor):
+            query['cursor'] = request.cursor
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCursorTime',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shards/{shard_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetCursorTimeResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
     def get_histograms(
         self,
         project: str,
@@ -1131,6 +1443,130 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sls_20201230_models.GetLogStoreResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_logs(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.GetLogsRequest,
+    ) -> sls_20201230_models.GetLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_logs_with_options(project, logstore, request, headers, runtime)
+
+    async def get_logs_async(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.GetLogsRequest,
+    ) -> sls_20201230_models.GetLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_logs_with_options_async(project, logstore, request, headers, runtime)
+
+    def get_logs_with_options(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.GetLogsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetLogsResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.line):
+            query['line'] = request.line
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.power_sql):
+            query['powerSql'] = request.power_sql
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.reverse):
+            query['reverse'] = request.reverse
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        if not UtilClient.is_unset(request.topic):
+            query['topic'] = request.topic
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLogs',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/index',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetLogsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_logs_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.GetLogsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetLogsResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.line):
+            query['line'] = request.line
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.power_sql):
+            query['powerSql'] = request.power_sql
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.reverse):
+            query['reverse'] = request.reverse
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        if not UtilClient.is_unset(request.topic):
+            query['topic'] = request.topic
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLogs',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/index',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetLogsResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -1721,6 +2157,288 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sls_20201230_models.ListSavedSearchResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_shards(
+        self,
+        project: str,
+        logstore: str,
+    ) -> sls_20201230_models.ListShardsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_shards_with_options(project, logstore, headers, runtime)
+
+    async def list_shards_async(
+        self,
+        project: str,
+        logstore: str,
+    ) -> sls_20201230_models.ListShardsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_shards_with_options_async(project, logstore, headers, runtime)
+
+    def list_shards_with_options(
+        self,
+        project: str,
+        logstore: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListShardsResponse:
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListShards',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shards',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListShardsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_shards_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListShardsResponse:
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListShards',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shards',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListShardsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def merge_shards(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.MergeShardsRequest,
+    ) -> sls_20201230_models.MergeShardsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.merge_shards_with_options(project, logstore, shard_id, request, headers, runtime)
+
+    async def merge_shards_async(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.MergeShardsRequest,
+    ) -> sls_20201230_models.MergeShardsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.merge_shards_with_options_async(project, logstore, shard_id, request, headers, runtime)
+
+    def merge_shards_with_options(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.MergeShardsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.MergeShardsResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
+        query = {}
+        if not UtilClient.is_unset(request.action):
+            query['action'] = request.action
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MergeShards',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shards/{shard_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.MergeShardsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def merge_shards_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.MergeShardsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.MergeShardsResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
+        query = {}
+        if not UtilClient.is_unset(request.action):
+            query['action'] = request.action
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MergeShards',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shards/{shard_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.MergeShardsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def split_shard(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.SplitShardRequest,
+    ) -> sls_20201230_models.SplitShardResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.split_shard_with_options(project, logstore, shard_id, request, headers, runtime)
+
+    async def split_shard_async(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.SplitShardRequest,
+    ) -> sls_20201230_models.SplitShardResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.split_shard_with_options_async(project, logstore, shard_id, request, headers, runtime)
+
+    def split_shard_with_options(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.SplitShardRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.SplitShardResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
+        query = {}
+        if not UtilClient.is_unset(request.action):
+            query['action'] = request.action
+        if not UtilClient.is_unset(request.key):
+            query['key'] = request.key
+        if not UtilClient.is_unset(request.shard_count):
+            query['shardCount'] = request.shard_count
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SplitShard',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shards/{shard_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.SplitShardResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def split_shard_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.SplitShardRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.SplitShardResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
+        query = {}
+        if not UtilClient.is_unset(request.action):
+            query['action'] = request.action
+        if not UtilClient.is_unset(request.key):
+            query['key'] = request.key
+        if not UtilClient.is_unset(request.shard_count):
+            query['shardCount'] = request.shard_count
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SplitShard',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shards/{shard_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.SplitShardResponse(),
             await self.execute_async(params, req, runtime)
         )
 

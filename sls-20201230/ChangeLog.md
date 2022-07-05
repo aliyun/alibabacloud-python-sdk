@@ -1,3 +1,8 @@
+2022-07-05 Version: 1.1.0
+- Add SplitShard, MergeShard, ListShards.
+- Add getLogs, getContextLogs.
+- Add getCursorTime, getCursor.
+
 2022-07-05 Version: 1.0.4
 - Add resource index and domain.
 - Add api GetProjectLogs.
