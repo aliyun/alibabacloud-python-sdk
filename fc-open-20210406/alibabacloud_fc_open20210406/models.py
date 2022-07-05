@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import Dict, List
 
 
 class AccelerationInfo(TeaModel):
@@ -3939,7 +3939,7 @@ class CreateTriggerRequest(TeaModel):
         invocation_role: str = None,
         qualifier: str = None,
         source_arn: str = None,
-        trigger_config: Any = None,
+        trigger_config: str = None,
         trigger_name: str = None,
         trigger_type: str = None,
     ):
@@ -3950,6 +3950,7 @@ class CreateTriggerRequest(TeaModel):
         self.qualifier = qualifier
         # event source的Aliyun Resource Name（ARN
         self.source_arn = source_arn
+        # trigger配置，针对不同的trigger类型，trigger配置会有所不同
         self.trigger_config = trigger_config
         # trigger名称
         self.trigger_name = trigger_name
@@ -7564,10 +7565,10 @@ class InvokeFunctionHeaders(TeaModel):
 class InvokeFunctionRequest(TeaModel):
     def __init__(
         self,
-        body: Any = None,
+        body: bytes = None,
         qualifier: str = None,
     ):
-        # anything
+        # 事件（event），binary type。函数计算服务将event传递给用户function来处理
         self.body = body
         # service版本, 可以是versionId或者aliasName
         self.qualifier = qualifier
@@ -8950,13 +8951,9 @@ class ListInstancesHeaders(TeaModel):
         self,
         common_headers: Dict[str, str] = None,
         x_fc_account_id: str = None,
-        x_fc_date: str = None,
-        x_fc_trace_id: str = None,
     ):
         self.common_headers = common_headers
         self.x_fc_account_id = x_fc_account_id
-        self.x_fc_date = x_fc_date
-        self.x_fc_trace_id = x_fc_trace_id
 
     def validate(self):
         pass
@@ -8971,10 +8968,6 @@ class ListInstancesHeaders(TeaModel):
             result['commonHeaders'] = self.common_headers
         if self.x_fc_account_id is not None:
             result['X-Fc-Account-Id'] = self.x_fc_account_id
-        if self.x_fc_date is not None:
-            result['X-Fc-Date'] = self.x_fc_date
-        if self.x_fc_trace_id is not None:
-            result['X-Fc-Trace-Id'] = self.x_fc_trace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8983,10 +8976,6 @@ class ListInstancesHeaders(TeaModel):
             self.common_headers = m.get('commonHeaders')
         if m.get('X-Fc-Account-Id') is not None:
             self.x_fc_account_id = m.get('X-Fc-Account-Id')
-        if m.get('X-Fc-Date') is not None:
-            self.x_fc_date = m.get('X-Fc-Date')
-        if m.get('X-Fc-Trace-Id') is not None:
-            self.x_fc_trace_id = m.get('X-Fc-Trace-Id')
         return self
 
 

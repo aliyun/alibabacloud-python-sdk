@@ -1,3 +1,7 @@
+2022-07-05 Version: 1.1.6
+- Support java http trigger invocation.
+- Fix marshal byte array.
+
 2022-06-29 Version: 1.1.5
 - Add EventBridgeTriggerConfig struct.
 
