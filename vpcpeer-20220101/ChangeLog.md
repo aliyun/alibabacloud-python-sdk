@@ -1,3 +1,6 @@
+2022-07-05 Version: 1.0.5
+- Support bandwidth modification.
+
 2022-05-12 Version: 1.0.4
 - VpcPeer publish.
 

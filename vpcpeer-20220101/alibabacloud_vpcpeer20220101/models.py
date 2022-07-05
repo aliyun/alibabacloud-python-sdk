@@ -1082,12 +1082,14 @@ class ListVpcPeerConnectionsResponse(TeaModel):
 class ModifyVpcPeerConnectionRequest(TeaModel):
     def __init__(
         self,
+        bandwidth: int = None,
         client_token: str = None,
         description: str = None,
         dry_run: bool = None,
         instance_id: str = None,
         name: str = None,
     ):
+        self.bandwidth = bandwidth
         self.client_token = client_token
         self.description = description
         self.dry_run = dry_run
@@ -1103,6 +1105,8 @@ class ModifyVpcPeerConnectionRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.description is not None:
@@ -1117,6 +1121,8 @@ class ModifyVpcPeerConnectionRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:

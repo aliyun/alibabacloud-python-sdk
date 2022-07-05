@@ -486,6 +486,8 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            body['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -522,6 +524,8 @@ class Client(OpenApiClient):
     ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            body['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
