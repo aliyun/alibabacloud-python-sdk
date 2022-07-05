@@ -1,3 +1,7 @@
+2022-07-05 Version: 1.0.4
+- Add resource index and domain.
+- Add api GetProjectLogs.
+
 2022-06-01 Version: 1.0.3
 - Generated python 2020-12-30 for Sls.
 
