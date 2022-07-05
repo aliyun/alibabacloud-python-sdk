@@ -1,3 +1,6 @@
+2022-07-05 Version: 1.0.15
+ - Add DescribeDcdnIpaDomainMultiUsageData.
+
 2022-06-09 Version: 1.0.14
  - Update DescribeDcdnSLSRealtimeLogDelivery.
 

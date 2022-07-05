@@ -1891,6 +1891,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         body = {}
+        if not UtilClient.is_unset(request.business_type):
+            body['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.region):
             body['Region'] = request.region
         req = open_api_models.OpenApiRequest(
@@ -1923,6 +1925,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         body = {}
+        if not UtilClient.is_unset(request.business_type):
+            body['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.region):
             body['Region'] = request.region
         req = open_api_models.OpenApiRequest(
@@ -2368,8 +2372,6 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DeleteDcdnRealTimeLogProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.business_type):
-            query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.project_name):
@@ -2400,8 +2402,6 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DeleteDcdnRealTimeLogProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.business_type):
-            query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.project_name):
@@ -8849,6 +8849,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_report_list_with_options_async(request, runtime)
 
+    def describe_dcdn_slsreal_time_log_type_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnSLSRealTimeLogType',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_slsreal_time_log_type_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnSLSRealTimeLogType',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_slsreal_time_log_type(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_slsreal_time_log_type_with_options(request, runtime)
+
+    async def describe_dcdn_slsreal_time_log_type_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnSLSRealTimeLogTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_slsreal_time_log_type_with_options_async(request, runtime)
+
     def describe_dcdn_slsrealtime_log_delivery_with_options(
         self,
         request: dcdn_20180115_models.DescribeDcdnSLSRealtimeLogDeliveryRequest,
@@ -8856,8 +8922,6 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DescribeDcdnSLSRealtimeLogDeliveryResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.business_type):
-            query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.project_name):
@@ -8888,8 +8952,6 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DescribeDcdnSLSRealtimeLogDeliveryResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.business_type):
-            query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.project_name):
