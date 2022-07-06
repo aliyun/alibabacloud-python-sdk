@@ -41,6 +41,136 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_device_with_options(
+        self,
+        tmp_req: imarketing_20220704_models.CreateDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.CreateDeviceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imarketing_20220704_models.CreateDeviceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extra_map):
+            request.extra_map_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extra_map, 'ExtraMap', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.city):
+            body['City'] = request.city
+        if not UtilClient.is_unset(request.device_model_number):
+            body['DeviceModelNumber'] = request.device_model_number
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.device_type):
+            body['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.district):
+            body['District'] = request.district
+        if not UtilClient.is_unset(request.extra_map_shrink):
+            body['ExtraMap'] = request.extra_map_shrink
+        if not UtilClient.is_unset(request.first_scene):
+            body['FirstScene'] = request.first_scene
+        if not UtilClient.is_unset(request.floor):
+            body['Floor'] = request.floor
+        if not UtilClient.is_unset(request.location_name):
+            body['LocationName'] = request.location_name
+        if not UtilClient.is_unset(request.media_id):
+            body['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.outer_code):
+            body['OuterCode'] = request.outer_code
+        if not UtilClient.is_unset(request.province):
+            body['Province'] = request.province
+        if not UtilClient.is_unset(request.second_scene):
+            body['SecondScene'] = request.second_scene
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDevice',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.CreateDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_device_with_options_async(
+        self,
+        tmp_req: imarketing_20220704_models.CreateDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.CreateDeviceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imarketing_20220704_models.CreateDeviceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extra_map):
+            request.extra_map_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extra_map, 'ExtraMap', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.city):
+            body['City'] = request.city
+        if not UtilClient.is_unset(request.device_model_number):
+            body['DeviceModelNumber'] = request.device_model_number
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.device_type):
+            body['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.district):
+            body['District'] = request.district
+        if not UtilClient.is_unset(request.extra_map_shrink):
+            body['ExtraMap'] = request.extra_map_shrink
+        if not UtilClient.is_unset(request.first_scene):
+            body['FirstScene'] = request.first_scene
+        if not UtilClient.is_unset(request.floor):
+            body['Floor'] = request.floor
+        if not UtilClient.is_unset(request.location_name):
+            body['LocationName'] = request.location_name
+        if not UtilClient.is_unset(request.media_id):
+            body['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.outer_code):
+            body['OuterCode'] = request.outer_code
+        if not UtilClient.is_unset(request.province):
+            body['Province'] = request.province
+        if not UtilClient.is_unset(request.second_scene):
+            body['SecondScene'] = request.second_scene
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDevice',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.CreateDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_device(
+        self,
+        request: imarketing_20220704_models.CreateDeviceRequest,
+    ) -> imarketing_20220704_models.CreateDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_device_with_options(request, runtime)
+
+    async def create_device_async(
+        self,
+        request: imarketing_20220704_models.CreateDeviceRequest,
+    ) -> imarketing_20220704_models.CreateDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_device_with_options_async(request, runtime)
+
     def get_user_finished_ad_with_options(
         self,
         request: imarketing_20220704_models.GetUserFinishedAdRequest,

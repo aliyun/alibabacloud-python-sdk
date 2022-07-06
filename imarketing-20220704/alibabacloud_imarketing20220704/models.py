@@ -4,6 +4,313 @@ from Tea.model import TeaModel
 from typing import Dict, Any, List
 
 
+class CreateDeviceRequest(TeaModel):
+    def __init__(
+        self,
+        channel_id: str = None,
+        city: str = None,
+        device_model_number: str = None,
+        device_name: str = None,
+        device_type: str = None,
+        district: str = None,
+        extra_map: Dict[str, Any] = None,
+        first_scene: str = None,
+        floor: str = None,
+        location_name: str = None,
+        media_id: str = None,
+        outer_code: str = None,
+        province: str = None,
+        second_scene: str = None,
+    ):
+        self.channel_id = channel_id
+        self.city = city
+        self.device_model_number = device_model_number
+        self.device_name = device_name
+        self.device_type = device_type
+        self.district = district
+        self.extra_map = extra_map
+        self.first_scene = first_scene
+        self.floor = floor
+        self.location_name = location_name
+        self.media_id = media_id
+        self.outer_code = outer_code
+        self.province = province
+        self.second_scene = second_scene
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.city is not None:
+            result['City'] = self.city
+        if self.device_model_number is not None:
+            result['DeviceModelNumber'] = self.device_model_number
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.district is not None:
+            result['District'] = self.district
+        if self.extra_map is not None:
+            result['ExtraMap'] = self.extra_map
+        if self.first_scene is not None:
+            result['FirstScene'] = self.first_scene
+        if self.floor is not None:
+            result['Floor'] = self.floor
+        if self.location_name is not None:
+            result['LocationName'] = self.location_name
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.outer_code is not None:
+            result['OuterCode'] = self.outer_code
+        if self.province is not None:
+            result['Province'] = self.province
+        if self.second_scene is not None:
+            result['SecondScene'] = self.second_scene
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('DeviceModelNumber') is not None:
+            self.device_model_number = m.get('DeviceModelNumber')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('District') is not None:
+            self.district = m.get('District')
+        if m.get('ExtraMap') is not None:
+            self.extra_map = m.get('ExtraMap')
+        if m.get('FirstScene') is not None:
+            self.first_scene = m.get('FirstScene')
+        if m.get('Floor') is not None:
+            self.floor = m.get('Floor')
+        if m.get('LocationName') is not None:
+            self.location_name = m.get('LocationName')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('OuterCode') is not None:
+            self.outer_code = m.get('OuterCode')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        if m.get('SecondScene') is not None:
+            self.second_scene = m.get('SecondScene')
+        return self
+
+
+class CreateDeviceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        channel_id: str = None,
+        city: str = None,
+        device_model_number: str = None,
+        device_name: str = None,
+        device_type: str = None,
+        district: str = None,
+        extra_map_shrink: str = None,
+        first_scene: str = None,
+        floor: str = None,
+        location_name: str = None,
+        media_id: str = None,
+        outer_code: str = None,
+        province: str = None,
+        second_scene: str = None,
+    ):
+        self.channel_id = channel_id
+        self.city = city
+        self.device_model_number = device_model_number
+        self.device_name = device_name
+        self.device_type = device_type
+        self.district = district
+        self.extra_map_shrink = extra_map_shrink
+        self.first_scene = first_scene
+        self.floor = floor
+        self.location_name = location_name
+        self.media_id = media_id
+        self.outer_code = outer_code
+        self.province = province
+        self.second_scene = second_scene
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.city is not None:
+            result['City'] = self.city
+        if self.device_model_number is not None:
+            result['DeviceModelNumber'] = self.device_model_number
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.district is not None:
+            result['District'] = self.district
+        if self.extra_map_shrink is not None:
+            result['ExtraMap'] = self.extra_map_shrink
+        if self.first_scene is not None:
+            result['FirstScene'] = self.first_scene
+        if self.floor is not None:
+            result['Floor'] = self.floor
+        if self.location_name is not None:
+            result['LocationName'] = self.location_name
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.outer_code is not None:
+            result['OuterCode'] = self.outer_code
+        if self.province is not None:
+            result['Province'] = self.province
+        if self.second_scene is not None:
+            result['SecondScene'] = self.second_scene
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('DeviceModelNumber') is not None:
+            self.device_model_number = m.get('DeviceModelNumber')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('District') is not None:
+            self.district = m.get('District')
+        if m.get('ExtraMap') is not None:
+            self.extra_map_shrink = m.get('ExtraMap')
+        if m.get('FirstScene') is not None:
+            self.first_scene = m.get('FirstScene')
+        if m.get('Floor') is not None:
+            self.floor = m.get('Floor')
+        if m.get('LocationName') is not None:
+            self.location_name = m.get('LocationName')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('OuterCode') is not None:
+            self.outer_code = m.get('OuterCode')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        if m.get('SecondScene') is not None:
+            self.second_scene = m.get('SecondScene')
+        return self
+
+
+class CreateDeviceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        model: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Id of the request
+        self.code = code
+        self.message = message
+        self.model = model
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateDeviceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDeviceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDeviceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUserFinishedAdRequest(TeaModel):
     def __init__(
         self,
