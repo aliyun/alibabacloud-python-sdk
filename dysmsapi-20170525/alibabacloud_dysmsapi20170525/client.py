@@ -156,12 +156,12 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.scene_type):
-            query['SceneType'] = request.scene_type
         if not UtilClient.is_unset(request.sign_name):
             query['SignName'] = request.sign_name
         if not UtilClient.is_unset(request.sign_source):
             query['SignSource'] = request.sign_source
+        if not UtilClient.is_unset(request.sign_type):
+            query['SignType'] = request.sign_type
         body = {}
         if not UtilClient.is_unset(request.sign_file_list):
             body['SignFileList'] = request.sign_file_list
@@ -200,12 +200,12 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.scene_type):
-            query['SceneType'] = request.scene_type
         if not UtilClient.is_unset(request.sign_name):
             query['SignName'] = request.sign_name
         if not UtilClient.is_unset(request.sign_source):
             query['SignSource'] = request.sign_source
+        if not UtilClient.is_unset(request.sign_type):
+            query['SignType'] = request.sign_type
         body = {}
         if not UtilClient.is_unset(request.sign_file_list):
             body['SignFileList'] = request.sign_file_list
@@ -1110,12 +1110,12 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.scene_type):
-            query['SceneType'] = request.scene_type
         if not UtilClient.is_unset(request.sign_name):
             query['SignName'] = request.sign_name
         if not UtilClient.is_unset(request.sign_source):
             query['SignSource'] = request.sign_source
+        if not UtilClient.is_unset(request.sign_type):
+            query['SignType'] = request.sign_type
         body = {}
         if not UtilClient.is_unset(request.sign_file_list):
             body['SignFileList'] = request.sign_file_list
@@ -1154,12 +1154,12 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.scene_type):
-            query['SceneType'] = request.scene_type
         if not UtilClient.is_unset(request.sign_name):
             query['SignName'] = request.sign_name
         if not UtilClient.is_unset(request.sign_source):
             query['SignSource'] = request.sign_source
+        if not UtilClient.is_unset(request.sign_type):
+            query['SignType'] = request.sign_type
         body = {}
         if not UtilClient.is_unset(request.sign_file_list):
             body['SignFileList'] = request.sign_file_list
