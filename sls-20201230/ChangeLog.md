@@ -1,3 +1,8 @@
+2022-07-06 Version: 1.2.0
+- Rename config to LogtailConfig, fix conflict.
+- Add Get Delete Create List Update MachineGroup.
+- Add TagResources UnTagResources ListTagResources.
+
 2022-07-06 Version: 1.1.1
 - Rename config to LogtailConfig, fix conflict.
 
