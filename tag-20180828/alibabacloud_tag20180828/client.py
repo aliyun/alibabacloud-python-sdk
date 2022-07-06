@@ -726,6 +726,186 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detach_policy_with_options_async(request, runtime)
 
+    def disable_policy_type_with_options(
+        self,
+        request: tag_20180828_models.DisablePolicyTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.DisablePolicyTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisablePolicyType',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.DisablePolicyTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_policy_type_with_options_async(
+        self,
+        request: tag_20180828_models.DisablePolicyTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.DisablePolicyTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisablePolicyType',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.DisablePolicyTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_policy_type(
+        self,
+        request: tag_20180828_models.DisablePolicyTypeRequest,
+    ) -> tag_20180828_models.DisablePolicyTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.disable_policy_type_with_options(request, runtime)
+
+    async def disable_policy_type_async(
+        self,
+        request: tag_20180828_models.DisablePolicyTypeRequest,
+    ) -> tag_20180828_models.DisablePolicyTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_policy_type_with_options_async(request, runtime)
+
+    def enable_policy_type_with_options(
+        self,
+        request: tag_20180828_models.EnablePolicyTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.EnablePolicyTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnablePolicyType',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.EnablePolicyTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_policy_type_with_options_async(
+        self,
+        request: tag_20180828_models.EnablePolicyTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.EnablePolicyTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnablePolicyType',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.EnablePolicyTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_policy_type(
+        self,
+        request: tag_20180828_models.EnablePolicyTypeRequest,
+    ) -> tag_20180828_models.EnablePolicyTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.enable_policy_type_with_options(request, runtime)
+
+    async def enable_policy_type_async(
+        self,
+        request: tag_20180828_models.EnablePolicyTypeRequest,
+    ) -> tag_20180828_models.EnablePolicyTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_policy_type_with_options_async(request, runtime)
+
     def generate_config_rule_report_with_options(
         self,
         request: tag_20180828_models.GenerateConfigRuleReportRequest,
