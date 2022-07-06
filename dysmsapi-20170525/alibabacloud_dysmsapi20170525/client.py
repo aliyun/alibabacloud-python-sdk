@@ -156,6 +156,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene_type):
+            query['SceneType'] = request.scene_type
         if not UtilClient.is_unset(request.sign_name):
             query['SignName'] = request.sign_name
         if not UtilClient.is_unset(request.sign_source):
@@ -198,6 +200,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene_type):
+            query['SceneType'] = request.scene_type
         if not UtilClient.is_unset(request.sign_name):
             query['SignName'] = request.sign_name
         if not UtilClient.is_unset(request.sign_source):
@@ -1106,6 +1110,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene_type):
+            query['SceneType'] = request.scene_type
         if not UtilClient.is_unset(request.sign_name):
             query['SignName'] = request.sign_name
         if not UtilClient.is_unset(request.sign_source):
@@ -1148,6 +1154,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene_type):
+            query['SceneType'] = request.scene_type
         if not UtilClient.is_unset(request.sign_name):
             query['SignName'] = request.sign_name
         if not UtilClient.is_unset(request.sign_source):

@@ -231,6 +231,7 @@ class AddSmsSignRequest(TeaModel):
         remark: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        scene_type: int = None,
         sign_file_list: List[AddSmsSignRequestSignFileList] = None,
         sign_name: str = None,
         sign_source: int = None,
@@ -239,6 +240,7 @@ class AddSmsSignRequest(TeaModel):
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.scene_type = scene_type
         self.sign_file_list = sign_file_list
         self.sign_name = sign_name
         self.sign_source = sign_source
@@ -263,6 +265,8 @@ class AddSmsSignRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scene_type is not None:
+            result['SceneType'] = self.scene_type
         result['SignFileList'] = []
         if self.sign_file_list is not None:
             for k in self.sign_file_list:
@@ -283,6 +287,8 @@ class AddSmsSignRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SceneType') is not None:
+            self.scene_type = m.get('SceneType')
         self.sign_file_list = []
         if m.get('SignFileList') is not None:
             for k in m.get('SignFileList'):
@@ -2141,6 +2147,7 @@ class ModifySmsSignRequest(TeaModel):
         remark: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        scene_type: int = None,
         sign_file_list: List[ModifySmsSignRequestSignFileList] = None,
         sign_name: str = None,
         sign_source: int = None,
@@ -2149,6 +2156,7 @@ class ModifySmsSignRequest(TeaModel):
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.scene_type = scene_type
         self.sign_file_list = sign_file_list
         self.sign_name = sign_name
         self.sign_source = sign_source
@@ -2173,6 +2181,8 @@ class ModifySmsSignRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scene_type is not None:
+            result['SceneType'] = self.scene_type
         result['SignFileList'] = []
         if self.sign_file_list is not None:
             for k in self.sign_file_list:
@@ -2193,6 +2203,8 @@ class ModifySmsSignRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SceneType') is not None:
+            self.scene_type = m.get('SceneType')
         self.sign_file_list = []
         if m.get('SignFileList') is not None:
             for k in m.get('SignFileList'):
