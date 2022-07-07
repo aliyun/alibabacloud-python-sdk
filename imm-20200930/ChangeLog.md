@@ -1,3 +1,9 @@
+2022-07-07 Version: 1.27.4
+- Add new story APIs.
+- Fix Media APIs.
+- Add ListRegions.
+- Add Code detection APIs.
+
 2022-06-24 Version: 1.27.3
 - CreateOfficeConversionTask support TargetURI pattern.
 
