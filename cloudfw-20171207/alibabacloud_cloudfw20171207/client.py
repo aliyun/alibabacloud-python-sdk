@@ -1246,8 +1246,6 @@ class Client(OpenApiClient):
             query['GroupType'] = request.group_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.query):
@@ -1286,8 +1284,6 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.group_type):
             query['GroupType'] = request.group_type
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
@@ -1741,6 +1737,388 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_members_with_options_async(request, runtime)
 
+    def describe_invade_event_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeInvadeEventListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInvadeEventListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assets_ip):
+            query['AssetsIP'] = request.assets_ip
+        if not UtilClient.is_unset(request.assets_instance_id):
+            query['AssetsInstanceId'] = request.assets_instance_id
+        if not UtilClient.is_unset(request.assets_instance_name):
+            query['AssetsInstanceName'] = request.assets_instance_name
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_key):
+            query['EventKey'] = request.event_key
+        if not UtilClient.is_unset(request.event_name):
+            query['EventName'] = request.event_name
+        if not UtilClient.is_unset(request.event_uuid):
+            query['EventUuid'] = request.event_uuid
+        if not UtilClient.is_unset(request.is_ignore):
+            query['IsIgnore'] = request.is_ignore
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.process_status):
+            query['ProcessStatus'] = request.process_status
+        if not UtilClient.is_unset(request.process_status_list):
+            query['ProcessStatusList'] = request.process_status_list
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInvadeEventList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInvadeEventListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_invade_event_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInvadeEventListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeInvadeEventListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assets_ip):
+            query['AssetsIP'] = request.assets_ip
+        if not UtilClient.is_unset(request.assets_instance_id):
+            query['AssetsInstanceId'] = request.assets_instance_id
+        if not UtilClient.is_unset(request.assets_instance_name):
+            query['AssetsInstanceName'] = request.assets_instance_name
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_key):
+            query['EventKey'] = request.event_key
+        if not UtilClient.is_unset(request.event_name):
+            query['EventName'] = request.event_name
+        if not UtilClient.is_unset(request.event_uuid):
+            query['EventUuid'] = request.event_uuid
+        if not UtilClient.is_unset(request.is_ignore):
+            query['IsIgnore'] = request.is_ignore
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.process_status):
+            query['ProcessStatus'] = request.process_status
+        if not UtilClient.is_unset(request.process_status_list):
+            query['ProcessStatusList'] = request.process_status_list
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInvadeEventList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeInvadeEventListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_invade_event_list(
+        self,
+        request: cloudfw_20171207_models.DescribeInvadeEventListRequest,
+    ) -> cloudfw_20171207_models.DescribeInvadeEventListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_invade_event_list_with_options(request, runtime)
+
+    async def describe_invade_event_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeInvadeEventListRequest,
+    ) -> cloudfw_20171207_models.DescribeInvadeEventListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_invade_event_list_with_options_async(request, runtime)
+
+    def describe_outgoing_destination_ipwith_options(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingDestinationIPRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeOutgoingDestinationIPResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_coverage):
+            query['AclCoverage'] = request.acl_coverage
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.dst_ip):
+            query['DstIP'] = request.dst_ip
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.private_ip):
+            query['PrivateIP'] = request.private_ip
+        if not UtilClient.is_unset(request.public_ip):
+            query['PublicIP'] = request.public_ip
+        if not UtilClient.is_unset(request.security_suggest):
+            query['SecuritySuggest'] = request.security_suggest
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOutgoingDestinationIP',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeOutgoingDestinationIPResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_outgoing_destination_ipwith_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingDestinationIPRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeOutgoingDestinationIPResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_coverage):
+            query['AclCoverage'] = request.acl_coverage
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.dst_ip):
+            query['DstIP'] = request.dst_ip
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.private_ip):
+            query['PrivateIP'] = request.private_ip
+        if not UtilClient.is_unset(request.public_ip):
+            query['PublicIP'] = request.public_ip
+        if not UtilClient.is_unset(request.security_suggest):
+            query['SecuritySuggest'] = request.security_suggest
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOutgoingDestinationIP',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeOutgoingDestinationIPResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_outgoing_destination_ip(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingDestinationIPRequest,
+    ) -> cloudfw_20171207_models.DescribeOutgoingDestinationIPResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_outgoing_destination_ipwith_options(request, runtime)
+
+    async def describe_outgoing_destination_ip_async(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingDestinationIPRequest,
+    ) -> cloudfw_20171207_models.DescribeOutgoingDestinationIPResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_outgoing_destination_ipwith_options_async(request, runtime)
+
+    def describe_outgoing_domain_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeOutgoingDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_coverage):
+            query['AclCoverage'] = request.acl_coverage
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.public_ip):
+            query['PublicIP'] = request.public_ip
+        if not UtilClient.is_unset(request.security_suggest):
+            query['SecuritySuggest'] = request.security_suggest
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOutgoingDomain',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeOutgoingDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_outgoing_domain_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeOutgoingDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_coverage):
+            query['AclCoverage'] = request.acl_coverage
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.public_ip):
+            query['PublicIP'] = request.public_ip
+        if not UtilClient.is_unset(request.security_suggest):
+            query['SecuritySuggest'] = request.security_suggest
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOutgoingDomain',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeOutgoingDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_outgoing_domain(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingDomainRequest,
+    ) -> cloudfw_20171207_models.DescribeOutgoingDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_outgoing_domain_with_options(request, runtime)
+
+    async def describe_outgoing_domain_async(
+        self,
+        request: cloudfw_20171207_models.DescribeOutgoingDomainRequest,
+    ) -> cloudfw_20171207_models.DescribeOutgoingDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_outgoing_domain_with_options_async(request, runtime)
+
     def describe_policy_advanced_config_with_options(
         self,
         request: cloudfw_20171207_models.DescribePolicyAdvancedConfigRequest,
@@ -2046,6 +2424,72 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeRiskEventGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_risk_event_group_with_options_async(request, runtime)
+
+    def describe_user_asset_iptraffic_info_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserAssetIPTrafficInfo',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_asset_iptraffic_info_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserAssetIPTrafficInfo',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_asset_iptraffic_info(
+        self,
+        request: cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoRequest,
+    ) -> cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_asset_iptraffic_info_with_options(request, runtime)
+
+    async def describe_user_asset_iptraffic_info_async(
+        self,
+        request: cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoRequest,
+    ) -> cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_asset_iptraffic_info_with_options_async(request, runtime)
 
     def describe_vpc_firewall_acl_group_list_with_options(
         self,
