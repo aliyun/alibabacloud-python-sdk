@@ -1,3 +1,6 @@
+2022-07-07 Version: 1.21.0
+- Support execJob.
+
 2022-05-16 Version: 1.20.1
 - Support UpdateApplicationVswitches and DescribeComponents.
 
