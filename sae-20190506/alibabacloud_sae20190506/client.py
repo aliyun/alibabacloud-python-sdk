@@ -3425,6 +3425,86 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def describe_job_status(
+        self,
+        request: sae_20190506_models.DescribeJobStatusRequest,
+    ) -> sae_20190506_models.DescribeJobStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_job_status_with_options(request, headers, runtime)
+
+    async def describe_job_status_async(
+        self,
+        request: sae_20190506_models.DescribeJobStatusRequest,
+    ) -> sae_20190506_models.DescribeJobStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_job_status_with_options_async(request, headers, runtime)
+
+    def describe_job_status_with_options(
+        self,
+        request: sae_20190506_models.DescribeJobStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeJobStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeJobStatus',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/job/describeJobStatus',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeJobStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_job_status_with_options_async(
+        self,
+        request: sae_20190506_models.DescribeJobStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeJobStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeJobStatus',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/job/describeJobStatus',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeJobStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def describe_namespace(
         self,
         request: sae_20190506_models.DescribeNamespaceRequest,
