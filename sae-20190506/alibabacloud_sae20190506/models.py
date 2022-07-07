@@ -1079,6 +1079,7 @@ class CreateApplicationRequest(TeaModel):
         vpc_id: str = None,
         war_start_options: str = None,
         web_container: str = None,
+        mse_feature_config: str = None,
     ):
         self.acr_assume_role_arn = acr_assume_role_arn
         # ACR 企业版实例 ID
@@ -1137,6 +1138,7 @@ class CreateApplicationRequest(TeaModel):
         self.vpc_id = vpc_id
         self.war_start_options = war_start_options
         self.web_container = web_container
+        self.mse_feature_config = mse_feature_config
 
     def validate(self):
         pass
@@ -1251,6 +1253,8 @@ class CreateApplicationRequest(TeaModel):
             result['WarStartOptions'] = self.war_start_options
         if self.web_container is not None:
             result['WebContainer'] = self.web_container
+        if self.mse_feature_config is not None:
+            result['mseFeatureConfig'] = self.mse_feature_config
         return result
 
     def from_map(self, m: dict = None):
@@ -1359,6 +1363,8 @@ class CreateApplicationRequest(TeaModel):
             self.war_start_options = m.get('WarStartOptions')
         if m.get('WebContainer') is not None:
             self.web_container = m.get('WebContainer')
+        if m.get('mseFeatureConfig') is not None:
+            self.mse_feature_config = m.get('mseFeatureConfig')
         return self
 
 
@@ -3603,6 +3609,7 @@ class DeployApplicationRequest(TeaModel):
         min_ready_instances: int = None,
         mount_desc: str = None,
         mount_host: str = None,
+        mse_feature_config: str = None,
         nas_id: str = None,
         open_collect_to_kafka: bool = None,
         oss_ak_id: str = None,
@@ -3655,6 +3662,7 @@ class DeployApplicationRequest(TeaModel):
         self.min_ready_instances = min_ready_instances
         self.mount_desc = mount_desc
         self.mount_host = mount_host
+        self.mse_feature_config = mse_feature_config
         self.nas_id = nas_id
         self.open_collect_to_kafka = open_collect_to_kafka
         # OSS使用的AKID
@@ -3744,6 +3752,8 @@ class DeployApplicationRequest(TeaModel):
             result['MountDesc'] = self.mount_desc
         if self.mount_host is not None:
             result['MountHost'] = self.mount_host
+        if self.mse_feature_config is not None:
+            result['MseFeatureConfig'] = self.mse_feature_config
         if self.nas_id is not None:
             result['NasId'] = self.nas_id
         if self.open_collect_to_kafka is not None:
@@ -3844,6 +3854,8 @@ class DeployApplicationRequest(TeaModel):
             self.mount_desc = m.get('MountDesc')
         if m.get('MountHost') is not None:
             self.mount_host = m.get('MountHost')
+        if m.get('MseFeatureConfig') is not None:
+            self.mse_feature_config = m.get('MseFeatureConfig')
         if m.get('NasId') is not None:
             self.nas_id = m.get('NasId')
         if m.get('OpenCollectToKafka') is not None:
@@ -4631,6 +4643,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         mount_desc: List[DescribeApplicationConfigResponseBodyDataMountDesc] = None,
         mount_host: str = None,
         mse_application_id: str = None,
+        mse_feature_config: str = None,
         namespace_id: str = None,
         nas_id: str = None,
         oss_ak_id: str = None,
@@ -4692,6 +4705,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.mount_host = mount_host
         # 对应MSE产品侧应用ID
         self.mse_application_id = mse_application_id
+        self.mse_feature_config = mse_feature_config
         self.namespace_id = namespace_id
         self.nas_id = nas_id
         # OSS读写的AK
@@ -4808,6 +4822,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['MountHost'] = self.mount_host
         if self.mse_application_id is not None:
             result['MseApplicationId'] = self.mse_application_id
+        if self.mse_feature_config is not None:
+            result['MseFeatureConfig'] = self.mse_feature_config
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
         if self.nas_id is not None:
@@ -4934,6 +4950,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.mount_host = m.get('MountHost')
         if m.get('MseApplicationId') is not None:
             self.mse_application_id = m.get('MseApplicationId')
+        if m.get('MseFeatureConfig') is not None:
+            self.mse_feature_config = m.get('MseFeatureConfig')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
         if m.get('NasId') is not None:
@@ -11838,11 +11856,56 @@ class ExecJobRequest(TeaModel):
         return self
 
 
-class ExecJobResponseBody(TeaModel):
+class ExecJobResponseBodyData(TeaModel):
     def __init__(
         self,
         code: str = None,
         data: str = None,
+        msg: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.msg = msg
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ExecJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ExecJobResponseBodyData = None,
         error_code: str = None,
         message: str = None,
         request_id: str = None,
@@ -11858,7 +11921,8 @@ class ExecJobResponseBody(TeaModel):
         self.trace_id = trace_id
 
     def validate(self):
-        pass
+        if self.data:
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11869,7 +11933,7 @@ class ExecJobResponseBody(TeaModel):
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
-            result['Data'] = self.data
+            result['Data'] = self.data.to_map()
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
         if self.message is not None:
@@ -11887,7 +11951,8 @@ class ExecJobResponseBody(TeaModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            temp_model = ExecJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
         if m.get('Message') is not None:
