@@ -4566,7 +4566,7 @@ class DeleteInstanceResponseBody(TeaModel):
         create_user_name: str = None,
         error: str = None,
         id: int = None,
-        request_id: bytes = None,
+        request_id: str = None,
         response: int = None,
         status: str = None,
     ):
