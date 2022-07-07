@@ -1,3 +1,12 @@
+2022-07-07 Version: 1.3.0
+- Add Get Create Delete Update Logging.
+- Add Update Get CheckPoint.
+- Add ListMachines.
+- Add Delete Create List Domain.
+- Add ApplyConfigToMachineGroup.
+- Add RemoveConfigFromMachineGroup.
+- Add GetAppliedConfigs.
+
 2022-07-06 Version: 1.2.0
 - Rename config to LogtailConfig, fix conflict.
 - Add Get Delete Create List Update MachineGroup.
