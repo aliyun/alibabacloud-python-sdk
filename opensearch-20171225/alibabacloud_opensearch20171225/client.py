@@ -1034,28 +1034,36 @@ class Client(OpenApiClient):
     def create_model(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.CreateModelRequest,
     ) -> open_search_20171225_models.CreateModelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_model_with_options(app_group_identity, headers, runtime)
+        return self.create_model_with_options(app_group_identity, request, headers, runtime)
 
     async def create_model_async(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.CreateModelRequest,
     ) -> open_search_20171225_models.CreateModelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_model_with_options_async(app_group_identity, headers, runtime)
+        return await self.create_model_with_options_async(app_group_identity, request, headers, runtime)
 
     def create_model_with_options(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.CreateModelRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateModelResponse:
+        UtilClient.validate_model(request)
         app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['body'] = request.body
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateModel',
@@ -1076,12 +1084,18 @@ class Client(OpenApiClient):
     async def create_model_with_options_async(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.CreateModelRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateModelResponse:
+        UtilClient.validate_model(request)
         app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['body'] = request.body
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateModel',

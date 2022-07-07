@@ -1,3 +1,6 @@
+2022-07-07 Version: 1.1.0
+- Add ListQueryProcessorResults.
+
 2022-03-30 Version: 1.0.5
 - Update algorithm service interface.
 
