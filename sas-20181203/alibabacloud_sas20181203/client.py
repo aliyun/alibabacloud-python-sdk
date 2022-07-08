@@ -1941,6 +1941,10 @@ class Client(OpenApiClient):
             query['Levels'] = request.levels
         if not UtilClient.is_unset(request.operate_error_code_list):
             query['OperateErrorCodeList'] = request.operate_error_code_list
+        if not UtilClient.is_unset(request.operate_time_end):
+            query['OperateTimeEnd'] = request.operate_time_end
+        if not UtilClient.is_unset(request.operate_time_start):
+            query['OperateTimeStart'] = request.operate_time_start
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remark):
@@ -1949,6 +1953,10 @@ class Client(OpenApiClient):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.tactic_id):
             query['TacticId'] = request.tactic_id
+        if not UtilClient.is_unset(request.time_end):
+            query['TimeEnd'] = request.time_end
+        if not UtilClient.is_unset(request.time_start):
+            query['TimeStart'] = request.time_start
         if not UtilClient.is_unset(request.unique_info):
             query['UniqueInfo'] = request.unique_info
         if not UtilClient.is_unset(request.uuids):
@@ -1999,6 +2007,10 @@ class Client(OpenApiClient):
             query['Levels'] = request.levels
         if not UtilClient.is_unset(request.operate_error_code_list):
             query['OperateErrorCodeList'] = request.operate_error_code_list
+        if not UtilClient.is_unset(request.operate_time_end):
+            query['OperateTimeEnd'] = request.operate_time_end
+        if not UtilClient.is_unset(request.operate_time_start):
+            query['OperateTimeStart'] = request.operate_time_start
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remark):
@@ -2007,6 +2019,10 @@ class Client(OpenApiClient):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.tactic_id):
             query['TacticId'] = request.tactic_id
+        if not UtilClient.is_unset(request.time_end):
+            query['TimeEnd'] = request.time_end
+        if not UtilClient.is_unset(request.time_start):
+            query['TimeStart'] = request.time_start
         if not UtilClient.is_unset(request.unique_info):
             query['UniqueInfo'] = request.unique_info
         if not UtilClient.is_unset(request.uuids):
@@ -9909,6 +9925,10 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.target_type):
             query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.time_end):
+            query['TimeEnd'] = request.time_end
+        if not UtilClient.is_unset(request.time_start):
+            query['TimeStart'] = request.time_start
         if not UtilClient.is_unset(request.unique_info):
             query['UniqueInfo'] = request.unique_info
         if not UtilClient.is_unset(request.uuids):
@@ -9989,6 +10009,10 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.target_type):
             query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.time_end):
+            query['TimeEnd'] = request.time_end
+        if not UtilClient.is_unset(request.time_start):
+            query['TimeStart'] = request.time_start
         if not UtilClient.is_unset(request.unique_info):
             query['UniqueInfo'] = request.unique_info
         if not UtilClient.is_unset(request.uuids):
