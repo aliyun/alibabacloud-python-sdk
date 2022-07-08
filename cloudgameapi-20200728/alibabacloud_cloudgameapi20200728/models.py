@@ -7931,9 +7931,11 @@ class SkipTrialPolicyResponse(TeaModel):
 class StartGameLiveRequest(TeaModel):
     def __init__(
         self,
+        extension: Dict[str, str] = None,
         game_session: str = None,
         video_push_address: str = None,
     ):
+        self.extension = extension
         self.game_session = game_session
         self.video_push_address = video_push_address
 
@@ -7946,6 +7948,8 @@ class StartGameLiveRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.extension is not None:
+            result['Extension'] = self.extension
         if self.game_session is not None:
             result['GameSession'] = self.game_session
         if self.video_push_address is not None:
@@ -7954,6 +7958,47 @@ class StartGameLiveRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('GameSession') is not None:
+            self.game_session = m.get('GameSession')
+        if m.get('VideoPushAddress') is not None:
+            self.video_push_address = m.get('VideoPushAddress')
+        return self
+
+
+class StartGameLiveShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        extension_shrink: str = None,
+        game_session: str = None,
+        video_push_address: str = None,
+    ):
+        self.extension_shrink = extension_shrink
+        self.game_session = game_session
+        self.video_push_address = video_push_address
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extension_shrink is not None:
+            result['Extension'] = self.extension_shrink
+        if self.game_session is not None:
+            result['GameSession'] = self.game_session
+        if self.video_push_address is not None:
+            result['VideoPushAddress'] = self.video_push_address
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extension') is not None:
+            self.extension_shrink = m.get('Extension')
         if m.get('GameSession') is not None:
             self.game_session = m.get('GameSession')
         if m.get('VideoPushAddress') is not None:

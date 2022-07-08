@@ -3701,11 +3701,17 @@ class Client(OpenApiClient):
 
     def start_game_live_with_options(
         self,
-        request: cloud_game_api20200728_models.StartGameLiveRequest,
+        tmp_req: cloud_game_api20200728_models.StartGameLiveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_game_api20200728_models.StartGameLiveResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cloud_game_api20200728_models.StartGameLiveShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extension):
+            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
         query = {}
+        if not UtilClient.is_unset(request.extension_shrink):
+            query['Extension'] = request.extension_shrink
         if not UtilClient.is_unset(request.game_session):
             query['GameSession'] = request.game_session
         if not UtilClient.is_unset(request.video_push_address):
@@ -3731,11 +3737,17 @@ class Client(OpenApiClient):
 
     async def start_game_live_with_options_async(
         self,
-        request: cloud_game_api20200728_models.StartGameLiveRequest,
+        tmp_req: cloud_game_api20200728_models.StartGameLiveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_game_api20200728_models.StartGameLiveResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cloud_game_api20200728_models.StartGameLiveShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.extension):
+            request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
         query = {}
+        if not UtilClient.is_unset(request.extension_shrink):
+            query['Extension'] = request.extension_shrink
         if not UtilClient.is_unset(request.game_session):
             query['GameSession'] = request.game_session
         if not UtilClient.is_unset(request.video_push_address):
