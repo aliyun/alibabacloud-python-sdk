@@ -1,3 +1,6 @@
+2022-07-11 Version: 2.1.2
+- Support Storage And Network Features For LaunchTemplate.
+
 2022-04-27 Version: 2.1.1
 - Support systemdisk encrypt and arns.
 
