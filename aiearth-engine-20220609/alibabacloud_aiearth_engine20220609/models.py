@@ -44,13 +44,11 @@ class DownloadDataResponseBody(TeaModel):
         data_id: str = None,
         download_url: str = None,
         finished: bool = None,
-        request_id: str = None,
         status: str = None,
     ):
         self.data_id = data_id
         self.download_url = download_url
         self.finished = finished
-        self.request_id = request_id
         self.status = status
 
     def validate(self):
@@ -68,8 +66,6 @@ class DownloadDataResponseBody(TeaModel):
             result['DownloadUrl'] = self.download_url
         if self.finished is not None:
             result['Finished'] = self.finished
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -82,8 +78,6 @@ class DownloadDataResponseBody(TeaModel):
             self.download_url = m.get('DownloadUrl')
         if m.get('Finished') is not None:
             self.finished = m.get('Finished')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -147,7 +141,7 @@ class ListDatasRequest(TeaModel):
     ):
         # 云量上限
         self.cloudage_max = cloudage_max
-        # 云量下限
+        # 云量下限，注意modis数据云量为0
         self.cloudage_min = cloudage_min
         # 结束日期，例如"2020-06-01"
         self.date_end = date_end
@@ -164,7 +158,19 @@ class ListDatasRequest(TeaModel):
         #     landsat5,
         #     landsat7,
         #     landsat8,
-        #     landsat9
+        #     landsat9,
+        #     MODIS_MCD12Q1_006,
+        #     MODIS_MCD15A3H_006,
+        #     MODIS_MOD14A2_006,
+        #     MODIS_MOD13Q1_006,
+        #     MODIS_MOD09GQ_006,
+        #     MODIS_MOD11A1_006,
+        #     MODIS_MOD17A2H_006,
+        #     MODIS_MOD17A3HGF_006,
+        #     MODIS_MCD64A1_006,
+        #     MODIS_MOD08_M3_006,
+        #     MODIS_MOD10A1_006,
+        #     MODIS_MCD43A4_006
         self.source_type_list = source_type_list
 
     def validate(self):
@@ -229,7 +235,7 @@ class ListDatasShrinkRequest(TeaModel):
     ):
         # 云量上限
         self.cloudage_max = cloudage_max
-        # 云量下限
+        # 云量下限，注意modis数据云量为0
         self.cloudage_min = cloudage_min
         # 结束日期，例如"2020-06-01"
         self.date_end = date_end
@@ -246,7 +252,19 @@ class ListDatasShrinkRequest(TeaModel):
         #     landsat5,
         #     landsat7,
         #     landsat8,
-        #     landsat9
+        #     landsat9,
+        #     MODIS_MCD12Q1_006,
+        #     MODIS_MCD15A3H_006,
+        #     MODIS_MOD14A2_006,
+        #     MODIS_MOD13Q1_006,
+        #     MODIS_MOD09GQ_006,
+        #     MODIS_MOD11A1_006,
+        #     MODIS_MOD17A2H_006,
+        #     MODIS_MOD17A3HGF_006,
+        #     MODIS_MCD64A1_006,
+        #     MODIS_MOD08_M3_006,
+        #     MODIS_MOD10A1_006,
+        #     MODIS_MCD43A4_006
         self.source_type_list_shrink = source_type_list_shrink
 
     def validate(self):
@@ -460,13 +478,11 @@ class ListDatasResponseBody(TeaModel):
         list: List[ListDatasResponseBodyList] = None,
         page_number: int = None,
         page_size: int = None,
-        request_id: str = None,
         total_count: int = None,
     ):
         self.list = list
         self.page_number = page_number
         self.page_size = page_size
-        self.request_id = request_id
         self.total_count = total_count
 
     def validate(self):
@@ -489,8 +505,6 @@ class ListDatasResponseBody(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
@@ -506,8 +520,6 @@ class ListDatasResponseBody(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
