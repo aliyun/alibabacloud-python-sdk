@@ -1,3 +1,6 @@
+2022-07-11 Version: 2.0.18
+- Add UpdateASMNamespaceFromGuestCluster API.
+
 2022-05-26 Version: 2.0.17
 - Update servicemesh api.
 

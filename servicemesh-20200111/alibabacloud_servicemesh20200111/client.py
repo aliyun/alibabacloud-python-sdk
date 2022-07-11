@@ -2548,80 +2548,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_istio_gateway_routes_with_options_async(request, runtime)
 
-    def describe_mesh_workload_version_status_with_options(
-        self,
-        request: servicemesh_20200111_models.DescribeMeshWorkloadVersionStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeMeshWorkloadVersionStatusResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeMeshWorkloadVersionStatus',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeMeshWorkloadVersionStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_mesh_workload_version_status_with_options_async(
-        self,
-        request: servicemesh_20200111_models.DescribeMeshWorkloadVersionStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeMeshWorkloadVersionStatusResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.namespace):
-            body['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeMeshWorkloadVersionStatus',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeMeshWorkloadVersionStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_mesh_workload_version_status(
-        self,
-        request: servicemesh_20200111_models.DescribeMeshWorkloadVersionStatusRequest,
-    ) -> servicemesh_20200111_models.DescribeMeshWorkloadVersionStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_mesh_workload_version_status_with_options(request, runtime)
-
-    async def describe_mesh_workload_version_status_async(
-        self,
-        request: servicemesh_20200111_models.DescribeMeshWorkloadVersionStatusRequest,
-    ) -> servicemesh_20200111_models.DescribeMeshWorkloadVersionStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_mesh_workload_version_status_with_options_async(request, runtime)
-
     def describe_namespace_scope_sidecar_config_with_options(
         self,
         request: servicemesh_20200111_models.DescribeNamespaceScopeSidecarConfigRequest,
@@ -3279,84 +3205,6 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.DescribeServiceMeshProxyStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_service_mesh_proxy_status_with_options_async(request, runtime)
-
-    def describe_service_mesh_service_label_with_options(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceMeshServiceLabelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeServiceMeshServiceLabelResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        if not UtilClient.is_unset(request.service_names):
-            body['ServiceNames'] = request.service_names
-        if not UtilClient.is_unset(request.service_namespaces):
-            body['ServiceNamespaces'] = request.service_namespaces
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeServiceMeshServiceLabel',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeServiceMeshServiceLabelResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_service_mesh_service_label_with_options_async(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceMeshServiceLabelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> servicemesh_20200111_models.DescribeServiceMeshServiceLabelResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.service_mesh_id):
-            body['ServiceMeshId'] = request.service_mesh_id
-        if not UtilClient.is_unset(request.service_names):
-            body['ServiceNames'] = request.service_names
-        if not UtilClient.is_unset(request.service_namespaces):
-            body['ServiceNamespaces'] = request.service_namespaces
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeServiceMeshServiceLabel',
-            version='2020-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            servicemesh_20200111_models.DescribeServiceMeshServiceLabelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_service_mesh_service_label(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceMeshServiceLabelRequest,
-    ) -> servicemesh_20200111_models.DescribeServiceMeshServiceLabelResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_service_mesh_service_label_with_options(request, runtime)
-
-    async def describe_service_mesh_service_label_async(
-        self,
-        request: servicemesh_20200111_models.DescribeServiceMeshServiceLabelRequest,
-    ) -> servicemesh_20200111_models.DescribeServiceMeshServiceLabelResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_service_mesh_service_label_with_options_async(request, runtime)
 
     def describe_service_mesh_upgrade_status_with_options(
         self,
@@ -5074,6 +4922,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_asmgateway_imported_services_with_options_async(request, runtime)
 
+    def update_asmnamespace_from_guest_cluster_with_options(
+        self,
+        request: servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.k_8s_cluster_id):
+            body['K8sClusterId'] = request.k_8s_cluster_id
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateASMNamespaceFromGuestCluster',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_asmnamespace_from_guest_cluster_with_options_async(
+        self,
+        request: servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.k_8s_cluster_id):
+            body['K8sClusterId'] = request.k_8s_cluster_id
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateASMNamespaceFromGuestCluster',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_asmnamespace_from_guest_cluster(
+        self,
+        request: servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterRequest,
+    ) -> servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_asmnamespace_from_guest_cluster_with_options(request, runtime)
+
+    async def update_asmnamespace_from_guest_cluster_async(
+        self,
+        request: servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterRequest,
+    ) -> servicemesh_20200111_models.UpdateASMNamespaceFromGuestClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_asmnamespace_from_guest_cluster_with_options_async(request, runtime)
+
     def update_istio_gateway_routes_with_options(
         self,
         tmp_req: servicemesh_20200111_models.UpdateIstioGatewayRoutesRequest,
@@ -5447,6 +5369,10 @@ class Client(OpenApiClient):
             body['MultiBufferPollDelay'] = request.multi_buffer_poll_delay
         if not UtilClient.is_unset(request.mysql_filter_enabled):
             body['MysqlFilterEnabled'] = request.mysql_filter_enabled
+        if not UtilClient.is_unset(request.nfdenabled):
+            body['NFDEnabled'] = request.nfdenabled
+        if not UtilClient.is_unset(request.nfdlabel_pruned):
+            body['NFDLabelPruned'] = request.nfdlabel_pruned
         if not UtilClient.is_unset(request.opainjector_cpulimit):
             body['OPAInjectorCPULimit'] = request.opainjector_cpulimit
         if not UtilClient.is_unset(request.opainjector_cpurequirement):
@@ -5515,6 +5441,14 @@ class Client(OpenApiClient):
             body['TraceSampling'] = request.trace_sampling
         if not UtilClient.is_unset(request.tracing):
             body['Tracing'] = request.tracing
+        if not UtilClient.is_unset(request.tracing_on_ext_zipkin_limit_cpu):
+            body['TracingOnExtZipkinLimitCPU'] = request.tracing_on_ext_zipkin_limit_cpu
+        if not UtilClient.is_unset(request.tracing_on_ext_zipkin_limit_memory):
+            body['TracingOnExtZipkinLimitMemory'] = request.tracing_on_ext_zipkin_limit_memory
+        if not UtilClient.is_unset(request.tracing_on_ext_zipkin_request_cpu):
+            body['TracingOnExtZipkinRequestCPU'] = request.tracing_on_ext_zipkin_request_cpu
+        if not UtilClient.is_unset(request.tracing_on_ext_zipkin_request_memory):
+            body['TracingOnExtZipkinRequestMemory'] = request.tracing_on_ext_zipkin_request_memory
         if not UtilClient.is_unset(request.web_assembly_filter_enabled):
             body['WebAssemblyFilterEnabled'] = request.web_assembly_filter_enabled
         req = open_api_models.OpenApiRequest(
@@ -5627,6 +5561,10 @@ class Client(OpenApiClient):
             body['MultiBufferPollDelay'] = request.multi_buffer_poll_delay
         if not UtilClient.is_unset(request.mysql_filter_enabled):
             body['MysqlFilterEnabled'] = request.mysql_filter_enabled
+        if not UtilClient.is_unset(request.nfdenabled):
+            body['NFDEnabled'] = request.nfdenabled
+        if not UtilClient.is_unset(request.nfdlabel_pruned):
+            body['NFDLabelPruned'] = request.nfdlabel_pruned
         if not UtilClient.is_unset(request.opainjector_cpulimit):
             body['OPAInjectorCPULimit'] = request.opainjector_cpulimit
         if not UtilClient.is_unset(request.opainjector_cpurequirement):
@@ -5695,6 +5633,14 @@ class Client(OpenApiClient):
             body['TraceSampling'] = request.trace_sampling
         if not UtilClient.is_unset(request.tracing):
             body['Tracing'] = request.tracing
+        if not UtilClient.is_unset(request.tracing_on_ext_zipkin_limit_cpu):
+            body['TracingOnExtZipkinLimitCPU'] = request.tracing_on_ext_zipkin_limit_cpu
+        if not UtilClient.is_unset(request.tracing_on_ext_zipkin_limit_memory):
+            body['TracingOnExtZipkinLimitMemory'] = request.tracing_on_ext_zipkin_limit_memory
+        if not UtilClient.is_unset(request.tracing_on_ext_zipkin_request_cpu):
+            body['TracingOnExtZipkinRequestCPU'] = request.tracing_on_ext_zipkin_request_cpu
+        if not UtilClient.is_unset(request.tracing_on_ext_zipkin_request_memory):
+            body['TracingOnExtZipkinRequestMemory'] = request.tracing_on_ext_zipkin_request_memory
         if not UtilClient.is_unset(request.web_assembly_filter_enabled):
             body['WebAssemblyFilterEnabled'] = request.web_assembly_filter_enabled
         req = open_api_models.OpenApiRequest(
