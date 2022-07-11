@@ -4667,10 +4667,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.drive_id):
             body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.face_group_id):
+            body['face_group_id'] = request.face_group_id
         if not UtilClient.is_unset(request.file_id):
             body['file_id'] = request.file_id
-        if not UtilClient.is_unset(request.group_id):
-            body['group_id'] = request.group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -4701,10 +4701,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.drive_id):
             body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.face_group_id):
+            body['face_group_id'] = request.face_group_id
         if not UtilClient.is_unset(request.file_id):
             body['file_id'] = request.file_id
-        if not UtilClient.is_unset(request.group_id):
-            body['group_id'] = request.group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

@@ -8543,12 +8543,12 @@ class RemoveFaceGroupFileRequest(TeaModel):
     def __init__(
         self,
         drive_id: str = None,
+        face_group_id: str = None,
         file_id: str = None,
-        group_id: str = None,
     ):
         self.drive_id = drive_id
+        self.face_group_id = face_group_id
         self.file_id = file_id
-        self.group_id = group_id
 
     def validate(self):
         pass
@@ -8561,20 +8561,20 @@ class RemoveFaceGroupFileRequest(TeaModel):
         result = dict()
         if self.drive_id is not None:
             result['drive_id'] = self.drive_id
+        if self.face_group_id is not None:
+            result['face_group_id'] = self.face_group_id
         if self.file_id is not None:
             result['file_id'] = self.file_id
-        if self.group_id is not None:
-            result['group_id'] = self.group_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('drive_id') is not None:
             self.drive_id = m.get('drive_id')
+        if m.get('face_group_id') is not None:
+            self.face_group_id = m.get('face_group_id')
         if m.get('file_id') is not None:
             self.file_id = m.get('file_id')
-        if m.get('group_id') is not None:
-            self.group_id = m.get('group_id')
         return self
 
 
