@@ -11,11 +11,11 @@ class ConsumerGroup(TeaModel):
         order: bool = None,
         timeout: int = None,
     ):
-        # consumerGroup
+        # 消费者名称。
         self.name = name
-        # order
+        # 是否有序消费
         self.order = order
-        # timeout
+        # 消费超时时长，单位为妙
         self.timeout = timeout
 
     def validate(self):
@@ -138,11 +138,11 @@ class LogtailConfigOutputDetail(TeaModel):
         logstore_name: str = None,
         region: str = None,
     ):
-        # endpoint
+        # 日志项目的 endpoint。
         self.endpoint = endpoint
-        # logstoreName
+        # 输出的目标 logstore 名称。
         self.logstore_name = logstore_name
-        # 地域
+        # 地域。
         self.region = region
 
     def validate(self):
@@ -185,21 +185,21 @@ class LogtailConfig(TeaModel):
         output_detail: LogtailConfigOutputDetail = None,
         output_type: str = None,
     ):
-        # configName
+        # logtail 配置的名称。
         self.config_name = config_name
-        # 创建时间
+        # 创建时间，unix 时间戳。
         self.create_time = create_time
-        # inputDetail
+        # logtail 输入的详细配置。
         self.input_detail = input_detail
-        # inputType
+        # logtail 读取日志的输入类型。
         self.input_type = input_type
-        # 修改时间
+        # 最后一次修改时间，unix 时间戳。
         self.last_modify_time = last_modify_time
-        # 日志样例
+        # 日志样例，可以用于自动生成正则捕获字段。
         self.log_sample = log_sample
-        # outputDetail
+        # logtail 输出的详细配置。
         self.output_detail = output_detail
-        # outputType
+        # logtail 输出的目标类型。这里固定选择 LogService。
         self.output_type = output_type
 
     def validate(self):
@@ -430,7 +430,7 @@ class ChartSearch(TeaModel):
 class Chart(TeaModel):
     def __init__(
         self,
-        action: Dict[str, str] = None,
+        action: Dict[str, Any] = None,
         display: ChartDisplay = None,
         search: ChartSearch = None,
         title: str = None,
@@ -442,9 +442,9 @@ class Chart(TeaModel):
         self.display = display
         # 查询配置
         self.search = search
-        # 图表标题
+        # 图表标题。支持大小写英文字母、数字、下划线_、连字符-，连字符与下划线不能作为名称开头与结尾，长度必须在[2,64] 之间。
         self.title = title
-        # 图标类型
+        # 图表的类型。
         self.type = type
 
     def validate(self):
@@ -497,15 +497,15 @@ class Dashboard(TeaModel):
         description: str = None,
         display_name: str = None,
     ):
-        # 属性值
+        # 属性值，可用于修改仪表盘的布局等属性，例如 "type": "free" 自由布局， "type":"grid" 网格布局。
         self.attribute = attribute
-        # 包含的图表
+        # 仪表盘内包含的图表。
         self.charts = charts
-        # 内部名称
+        # 仪表盘ID。同一个Project下，仪表盘ID唯一，不可重复。
         self.dashboard_name = dashboard_name
-        # 描述信息
+        # 描述信息。
         self.description = description
-        # 展示名称
+        # 仪表盘的展示名称。
         self.display_name = display_name
 
     def validate(self):
@@ -569,7 +569,7 @@ class EtlJobFunctionConfig(TeaModel):
         self.endpoint = endpoint
         # 函数名
         self.function_name = function_name
-        # 函数 provider
+        # 函数 provider，可选值为 FunctionCompute 、CloudProdLogDispatch。当值为 FunctionCompute 时，endpoint、accountid 、regionName 、serviceName 、functionName 必选。
         self.function_provider = function_provider
         # 地域
         self.region_name = region_name
@@ -701,15 +701,15 @@ class EtlJobTriggerConfig(TeaModel):
         starting_unixtime: int = None,
         trigger_interval: int = None,
     ):
-        # 最大重试次数
+        # 最大重试次数，必须在[0,100] 之间
         self.max_retry_time = max_retry_time
         # 角色授权配置
         self.role_arn = role_arn
-        # 开始位置
+        # 开始位置，可选 latest、at-unixtime， 默认 latest。
         self.starting_position = starting_position
         # 开始时间
         self.starting_unixtime = starting_unixtime
-        # 触发间隔
+        # 触发间隔，单位为秒，必须在 [3,600] 之间
         self.trigger_interval = trigger_interval
 
     def validate(self):
@@ -754,7 +754,7 @@ class EtlJob(TeaModel):
         enable: bool = None,
         etl_job_name: str = None,
         function_config: EtlJobFunctionConfig = None,
-        function_parameter: Dict[str, str] = None,
+        function_parameter: Dict[str, Any] = None,
         log_config: EtlJobLogConfig = None,
         source_config: EtlJobSourceConfig = None,
         trigger_config: EtlJobTriggerConfig = None,
@@ -836,7 +836,7 @@ class EtlMeta(TeaModel):
         etl_meta_key: str = None,
         etl_meta_name: str = None,
         etl_meta_tag: str = None,
-        etl_meta_value: Dict[str, str] = None,
+        etl_meta_value: str = None,
     ):
         # 是否启用
         self.enable = enable
@@ -885,37 +885,19 @@ class EtlMeta(TeaModel):
         return self
 
 
-class ExternalStoreParameter(TeaModel):
+class ExternalStore(TeaModel):
     def __init__(
         self,
-        db: str = None,
-        host: str = None,
-        instance_id: str = None,
-        password: str = None,
-        port: str = None,
-        region: str = None,
-        table: str = None,
-        username: str = None,
-        vpc_id: str = None,
+        external_store_name: str = None,
+        parameter: Dict[str, Any] = None,
+        store_type: str = None,
     ):
-        # meta
-        self.db = db
-        # 192.168.XX.XX
-        self.host = host
-        # RDS MySQL实例ID。
-        self.instance_id = instance_id
-        # sfdsfldsfksfls****\
-        self.password = password
-        # 3306
-        self.port = port
-        # cn-qingdao
-        self.region = region
-        # join_meta
-        self.table = table
-        # root
-        self.username = username
-        # RDS MySQL实例所属的VPC ID。
-        self.vpc_id = vpc_id
+        # 外部存储的名称。
+        self.external_store_name = external_store_name
+        # 参数
+        self.parameter = parameter
+        # 类型。可选 rds-vpc 或者 oss
+        self.store_type = store_type
 
     def validate(self):
         pass
@@ -926,77 +908,10 @@ class ExternalStoreParameter(TeaModel):
             return _map
 
         result = dict()
-        if self.db is not None:
-            result['db'] = self.db
-        if self.host is not None:
-            result['host'] = self.host
-        if self.instance_id is not None:
-            result['instance-id'] = self.instance_id
-        if self.password is not None:
-            result['password'] = self.password
-        if self.port is not None:
-            result['port'] = self.port
-        if self.region is not None:
-            result['region'] = self.region
-        if self.table is not None:
-            result['table'] = self.table
-        if self.username is not None:
-            result['username'] = self.username
-        if self.vpc_id is not None:
-            result['vpc-id'] = self.vpc_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('db') is not None:
-            self.db = m.get('db')
-        if m.get('host') is not None:
-            self.host = m.get('host')
-        if m.get('instance-id') is not None:
-            self.instance_id = m.get('instance-id')
-        if m.get('password') is not None:
-            self.password = m.get('password')
-        if m.get('port') is not None:
-            self.port = m.get('port')
-        if m.get('region') is not None:
-            self.region = m.get('region')
-        if m.get('table') is not None:
-            self.table = m.get('table')
-        if m.get('username') is not None:
-            self.username = m.get('username')
-        if m.get('vpc-id') is not None:
-            self.vpc_id = m.get('vpc-id')
-        return self
-
-
-class ExternalStore(TeaModel):
-    def __init__(
-        self,
-        external_store_name: str = None,
-        parameter: ExternalStoreParameter = None,
-        store_type: str = None,
-    ):
-        # 名称
-        self.external_store_name = external_store_name
-        # 参数
-        self.parameter = parameter
-        # 类型
-        self.store_type = store_type
-
-    def validate(self):
-        if self.parameter:
-            self.parameter.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
         if self.external_store_name is not None:
             result['externalStoreName'] = self.external_store_name
         if self.parameter is not None:
-            result['parameter'] = self.parameter.to_map()
+            result['parameter'] = self.parameter
         if self.store_type is not None:
             result['storeType'] = self.store_type
         return result
@@ -1006,8 +921,7 @@ class ExternalStore(TeaModel):
         if m.get('externalStoreName') is not None:
             self.external_store_name = m.get('externalStoreName')
         if m.get('parameter') is not None:
-            temp_model = ExternalStoreParameter()
-            self.parameter = temp_model.from_map(m['parameter'])
+            self.parameter = m.get('parameter')
         if m.get('storeType') is not None:
             self.store_type = m.get('storeType')
         return self
@@ -1206,13 +1120,13 @@ class Machine(TeaModel):
         machine_uniqueid: str = None,
         userdefined_id: str = None,
     ):
-        # ip 地址
+        # 机器 ip 地址。
         self.ip = ip
-        # 上次心跳时间
+        # 最后一次心跳时间。Unix时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
         self.last_heartbeat_time = last_heartbeat_time
-        # 机器的唯一标识
+        # 机器的唯一标识。
         self.machine_uniqueid = machine_uniqueid
-        # 用户自定义标识
+        # 机器的用户自定义标识。
         self.userdefined_id = userdefined_id
 
     def validate(self):
@@ -1295,7 +1209,7 @@ class MachineGroup(TeaModel):
         self.group_attribute = group_attribute
         # 机器组名称。
         self.group_name = group_name
-        # 机器组种类。
+        # 机器组种类。目前固定为空字符串。
         self.group_type = group_type
         # 机器组标识种类，支持 IP 标识或者用户自定义标识，即 ip 、userdefined。
         self.machine_identify_type = machine_identify_type
@@ -1337,99 +1251,6 @@ class MachineGroup(TeaModel):
             self.machine_identify_type = m.get('machineIdentifyType')
         if m.get('machineList') is not None:
             self.machine_list = m.get('machineList')
-        return self
-
-
-class OssExternalStoreParameter(TeaModel):
-    def __init__(
-        self,
-        access_key: str = None,
-        accessid: str = None,
-        bucket: str = None,
-        endpoint: str = None,
-    ):
-        # 您的AccessKey Secret。
-        self.access_key = access_key
-        # 您的AccessKey ID。
-        self.accessid = accessid
-        # oss 桶名称。
-        self.bucket = bucket
-        # oss 的 endpoint 访问网址。
-        self.endpoint = endpoint
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.access_key is not None:
-            result['accessKey'] = self.access_key
-        if self.accessid is not None:
-            result['accessid'] = self.accessid
-        if self.bucket is not None:
-            result['bucket'] = self.bucket
-        if self.endpoint is not None:
-            result['endpoint'] = self.endpoint
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('accessKey') is not None:
-            self.access_key = m.get('accessKey')
-        if m.get('accessid') is not None:
-            self.accessid = m.get('accessid')
-        if m.get('bucket') is not None:
-            self.bucket = m.get('bucket')
-        if m.get('endpoint') is not None:
-            self.endpoint = m.get('endpoint')
-        return self
-
-
-class OssExternalStore(TeaModel):
-    def __init__(
-        self,
-        external_store_name: str = None,
-        parameter: OssExternalStoreParameter = None,
-        store_type: str = None,
-    ):
-        # 名称
-        self.external_store_name = external_store_name
-        # 参数
-        self.parameter = parameter
-        # 类型。这里固定为 oss
-        self.store_type = store_type
-
-    def validate(self):
-        if self.parameter:
-            self.parameter.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.external_store_name is not None:
-            result['externalStoreName'] = self.external_store_name
-        if self.parameter is not None:
-            result['parameter'] = self.parameter.to_map()
-        if self.store_type is not None:
-            result['storeType'] = self.store_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('externalStoreName') is not None:
-            self.external_store_name = m.get('externalStoreName')
-        if m.get('parameter') is not None:
-            temp_model = OssExternalStoreParameter()
-            self.parameter = temp_model.from_map(m['parameter'])
-        if m.get('storeType') is not None:
-            self.store_type = m.get('storeType')
         return self
 
 
@@ -1593,6 +1414,337 @@ class ApplyConfigToMachineGroupResponse(TeaModel):
         return self
 
 
+class BatchCreateEtlMetaRequestEtlMetaList(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        etl_meta_key: str = None,
+        etl_meta_name: str = None,
+        etl_meta_tag: str = None,
+        etl_meta_value: Dict[str, Any] = None,
+    ):
+        # 是否启用
+        self.enable = enable
+        # key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,255]之间。
+        self.etl_meta_key = etl_meta_key
+        # 名字。由数字、大小写字母、下划线_、连字符-组成，长度需要在[2,64]之间。
+        self.etl_meta_name = etl_meta_name
+        # key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,128]之间。
+        self.etl_meta_tag = etl_meta_tag
+        self.etl_meta_value = etl_meta_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.etl_meta_key is not None:
+            result['etlMetaKey'] = self.etl_meta_key
+        if self.etl_meta_name is not None:
+            result['etlMetaName'] = self.etl_meta_name
+        if self.etl_meta_tag is not None:
+            result['etlMetaTag'] = self.etl_meta_tag
+        if self.etl_meta_value is not None:
+            result['etlMetaValue'] = self.etl_meta_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('etlMetaKey') is not None:
+            self.etl_meta_key = m.get('etlMetaKey')
+        if m.get('etlMetaName') is not None:
+            self.etl_meta_name = m.get('etlMetaName')
+        if m.get('etlMetaTag') is not None:
+            self.etl_meta_tag = m.get('etlMetaTag')
+        if m.get('etlMetaValue') is not None:
+            self.etl_meta_value = m.get('etlMetaValue')
+        return self
+
+
+class BatchCreateEtlMetaRequest(TeaModel):
+    def __init__(
+        self,
+        etl_meta_list: List[BatchCreateEtlMetaRequestEtlMetaList] = None,
+    ):
+        self.etl_meta_list = etl_meta_list
+
+    def validate(self):
+        if self.etl_meta_list:
+            for k in self.etl_meta_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['etlMetaList'] = []
+        if self.etl_meta_list is not None:
+            for k in self.etl_meta_list:
+                result['etlMetaList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.etl_meta_list = []
+        if m.get('etlMetaList') is not None:
+            for k in m.get('etlMetaList'):
+                temp_model = BatchCreateEtlMetaRequestEtlMetaList()
+                self.etl_meta_list.append(temp_model.from_map(k))
+        return self
+
+
+class BatchCreateEtlMetaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class BatchModifyEtlMetaStatusRequest(TeaModel):
+    def __init__(
+        self,
+        etl_meta_key_list: List[str] = None,
+        etl_meta_name: str = None,
+        etl_meta_tag: str = None,
+        range: str = None,
+        type: str = None,
+    ):
+        # 当 range 的值为 "list" 时有效，匹配list中的 metaKey
+        self.etl_meta_key_list = etl_meta_key_list
+        self.etl_meta_name = etl_meta_name
+        # 匹配的 tag，当 tag 为 "__all_etl_meta_tag_match__" 时表示全部匹配。
+        self.etl_meta_tag = etl_meta_tag
+        # 操作作用的范围，可选 all 代表匹配全部，list 按名单列表匹配 key 两种模式。
+        self.range = range
+        # 操作类型，支持启用、禁用、删除三种，即 batch_enable、batch_disable、batch_delete。
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.etl_meta_key_list is not None:
+            result['etlMetaKeyList'] = self.etl_meta_key_list
+        if self.etl_meta_name is not None:
+            result['etlMetaName'] = self.etl_meta_name
+        if self.etl_meta_tag is not None:
+            result['etlMetaTag'] = self.etl_meta_tag
+        if self.range is not None:
+            result['range'] = self.range
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('etlMetaKeyList') is not None:
+            self.etl_meta_key_list = m.get('etlMetaKeyList')
+        if m.get('etlMetaName') is not None:
+            self.etl_meta_name = m.get('etlMetaName')
+        if m.get('etlMetaTag') is not None:
+            self.etl_meta_tag = m.get('etlMetaTag')
+        if m.get('range') is not None:
+            self.range = m.get('range')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class BatchModifyEtlMetaStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class BatchUpdateEtlMetaRequestEtlMetaList(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        etl_meta_key: str = None,
+        etl_meta_name: str = None,
+        etl_meta_tag: str = None,
+        etl_meta_value: Dict[str, Any] = None,
+    ):
+        # 是否启用。etlMetaTag、etlMetaValue、enable 至少需要存在一个。
+        self.enable = enable
+        # key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,255]之间。
+        self.etl_meta_key = etl_meta_key
+        # 名字。由数字、大小写字母、下划线_、连字符-组成，长度需要在[2,64]之间。
+        self.etl_meta_name = etl_meta_name
+        # key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,128]之间。
+        self.etl_meta_tag = etl_meta_tag
+        self.etl_meta_value = etl_meta_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.etl_meta_key is not None:
+            result['etlMetaKey'] = self.etl_meta_key
+        if self.etl_meta_name is not None:
+            result['etlMetaName'] = self.etl_meta_name
+        if self.etl_meta_tag is not None:
+            result['etlMetaTag'] = self.etl_meta_tag
+        if self.etl_meta_value is not None:
+            result['etlMetaValue'] = self.etl_meta_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('etlMetaKey') is not None:
+            self.etl_meta_key = m.get('etlMetaKey')
+        if m.get('etlMetaName') is not None:
+            self.etl_meta_name = m.get('etlMetaName')
+        if m.get('etlMetaTag') is not None:
+            self.etl_meta_tag = m.get('etlMetaTag')
+        if m.get('etlMetaValue') is not None:
+            self.etl_meta_value = m.get('etlMetaValue')
+        return self
+
+
+class BatchUpdateEtlMetaRequest(TeaModel):
+    def __init__(
+        self,
+        etl_meta_list: BatchUpdateEtlMetaRequestEtlMetaList = None,
+    ):
+        self.etl_meta_list = etl_meta_list
+
+    def validate(self):
+        if self.etl_meta_list:
+            self.etl_meta_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.etl_meta_list is not None:
+            result['etlMetaList'] = self.etl_meta_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('etlMetaList') is not None:
+            temp_model = BatchUpdateEtlMetaRequestEtlMetaList()
+            self.etl_meta_list = temp_model.from_map(m['etlMetaList'])
+        return self
+
+
+class BatchUpdateEtlMetaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class CreateConsumerGroupRequest(TeaModel):
     def __init__(
         self,
@@ -1694,6 +1846,95 @@ class CreateDomainRequest(TeaModel):
 
 
 class CreateDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class CreateEtlMetaRequest(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        etl_meta_key: str = None,
+        etl_meta_name: str = None,
+        etl_meta_tag: str = None,
+        etl_meta_value: Dict[str, Any] = None,
+    ):
+        # 是否启用
+        self.enable = enable
+        # key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,255]之间。
+        self.etl_meta_key = etl_meta_key
+        # 名字。由数字、大小写字母、下划线_、连字符-组成，长度需要在[2,64]之间。
+        self.etl_meta_name = etl_meta_name
+        # key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,128]之间。
+        self.etl_meta_tag = etl_meta_tag
+        self.etl_meta_value = etl_meta_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.etl_meta_key is not None:
+            result['etlMetaKey'] = self.etl_meta_key
+        if self.etl_meta_name is not None:
+            result['etlMetaName'] = self.etl_meta_name
+        if self.etl_meta_tag is not None:
+            result['etlMetaTag'] = self.etl_meta_tag
+        if self.etl_meta_value is not None:
+            result['etlMetaValue'] = self.etl_meta_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('etlMetaKey') is not None:
+            self.etl_meta_key = m.get('etlMetaKey')
+        if m.get('etlMetaName') is not None:
+            self.etl_meta_name = m.get('etlMetaName')
+        if m.get('etlMetaTag') is not None:
+            self.etl_meta_tag = m.get('etlMetaTag')
+        if m.get('etlMetaValue') is not None:
+            self.etl_meta_value = m.get('etlMetaValue')
+        return self
+
+
+class CreateEtlMetaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -2536,6 +2777,82 @@ class DeleteDomainResponse(TeaModel):
         return self
 
 
+class DeleteEtlMetaRequest(TeaModel):
+    def __init__(
+        self,
+        etl_meta_key: str = None,
+        etl_meta_name: str = None,
+        etl_meta_tag: str = None,
+    ):
+        # key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,255]之间。
+        self.etl_meta_key = etl_meta_key
+        # 名字。由数字、大小写字母、下划线_、连字符-组成，长度需要在[2,64]之间。
+        self.etl_meta_name = etl_meta_name
+        # 此处固定为 "__all_etl_meta_tag_match__"
+        self.etl_meta_tag = etl_meta_tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.etl_meta_key is not None:
+            result['etlMetaKey'] = self.etl_meta_key
+        if self.etl_meta_name is not None:
+            result['etlMetaName'] = self.etl_meta_name
+        if self.etl_meta_tag is not None:
+            result['etlMetaTag'] = self.etl_meta_tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('etlMetaKey') is not None:
+            self.etl_meta_key = m.get('etlMetaKey')
+        if m.get('etlMetaName') is not None:
+            self.etl_meta_name = m.get('etlMetaName')
+        if m.get('etlMetaTag') is not None:
+            self.etl_meta_tag = m.get('etlMetaTag')
+        return self
+
+
+class DeleteEtlMetaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class DeleteIndexResponse(TeaModel):
     def __init__(
         self,
@@ -2673,6 +2990,40 @@ class DeleteMachineGroupResponse(TeaModel):
 
 
 class DeleteProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class DeleteSavedSearchResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -3282,6 +3633,131 @@ class GetCursorTimeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCursorTimeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetEtlMetaRequest(TeaModel):
+    def __init__(
+        self,
+        el_meta_name: str = None,
+        etl_meta_key: str = None,
+        etl_meta_tag: str = None,
+    ):
+        self.el_meta_name = el_meta_name
+        self.etl_meta_key = etl_meta_key
+        # 此处固定为 "__all_etl_meta_tag_match__"。
+        self.etl_meta_tag = etl_meta_tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.el_meta_name is not None:
+            result['elMetaName'] = self.el_meta_name
+        if self.etl_meta_key is not None:
+            result['etlMetaKey'] = self.etl_meta_key
+        if self.etl_meta_tag is not None:
+            result['etlMetaTag'] = self.etl_meta_tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('elMetaName') is not None:
+            self.el_meta_name = m.get('elMetaName')
+        if m.get('etlMetaKey') is not None:
+            self.etl_meta_key = m.get('etlMetaKey')
+        if m.get('etlMetaTag') is not None:
+            self.etl_meta_tag = m.get('etlMetaTag')
+        return self
+
+
+class GetEtlMetaResponseBody(TeaModel):
+    def __init__(
+        self,
+        etl_meta_list: List[EtlMeta] = None,
+        total: int = None,
+    ):
+        self.etl_meta_list = etl_meta_list
+        self.total = total
+
+    def validate(self):
+        if self.etl_meta_list:
+            for k in self.etl_meta_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['etlMetaList'] = []
+        if self.etl_meta_list is not None:
+            for k in self.etl_meta_list:
+                result['etlMetaList'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.etl_meta_list = []
+        if m.get('etlMetaList') is not None:
+            for k in m.get('etlMetaList'):
+                temp_model = EtlMeta()
+                self.etl_meta_list.append(temp_model.from_map(k))
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class GetEtlMetaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEtlMetaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEtlMetaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4275,6 +4751,262 @@ class ListDomainsResponse(TeaModel):
         return self
 
 
+class ListEtlMetaRequest(TeaModel):
+    def __init__(
+        self,
+        etl_meta_key: str = None,
+        etl_meta_name: str = None,
+        etl_meta_tag: str = None,
+        offset: int = None,
+        size: int = None,
+    ):
+        self.etl_meta_key = etl_meta_key
+        self.etl_meta_name = etl_meta_name
+        self.etl_meta_tag = etl_meta_tag
+        # 默认值 0。
+        self.offset = offset
+        # 默认值 200.
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.etl_meta_key is not None:
+            result['etlMetaKey'] = self.etl_meta_key
+        if self.etl_meta_name is not None:
+            result['etlMetaName'] = self.etl_meta_name
+        if self.etl_meta_tag is not None:
+            result['etlMetaTag'] = self.etl_meta_tag
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.size is not None:
+            result['size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('etlMetaKey') is not None:
+            self.etl_meta_key = m.get('etlMetaKey')
+        if m.get('etlMetaName') is not None:
+            self.etl_meta_name = m.get('etlMetaName')
+        if m.get('etlMetaTag') is not None:
+            self.etl_meta_tag = m.get('etlMetaTag')
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        return self
+
+
+class ListEtlMetaResponseBody(TeaModel):
+    def __init__(
+        self,
+        etl_meta_list: List[EtlMeta] = None,
+        total: int = None,
+    ):
+        self.etl_meta_list = etl_meta_list
+        self.total = total
+
+    def validate(self):
+        if self.etl_meta_list:
+            for k in self.etl_meta_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['etlMetaList'] = []
+        if self.etl_meta_list is not None:
+            for k in self.etl_meta_list:
+                result['etlMetaList'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.etl_meta_list = []
+        if m.get('etlMetaList') is not None:
+            for k in m.get('etlMetaList'):
+                temp_model = EtlMeta()
+                self.etl_meta_list.append(temp_model.from_map(k))
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListEtlMetaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListEtlMetaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListEtlMetaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListEtlMetaNameRequest(TeaModel):
+    def __init__(
+        self,
+        offset: int = None,
+        size: int = None,
+    ):
+        # 默认值为 0。
+        self.offset = offset
+        # 默认值 200。
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.size is not None:
+            result['size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        return self
+
+
+class ListEtlMetaNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        etl_meta_name_list: List[str] = None,
+        total: int = None,
+    ):
+        self.count = count
+        self.etl_meta_name_list = etl_meta_name_list
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        if self.etl_meta_name_list is not None:
+            result['etlMetaNameList'] = self.etl_meta_name_list
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('etlMetaNameList') is not None:
+            self.etl_meta_name_list = m.get('etlMetaNameList')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListEtlMetaNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListEtlMetaNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListEtlMetaNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListLogStoresRequest(TeaModel):
     def __init__(
         self,
@@ -4285,6 +5017,7 @@ class ListLogStoresRequest(TeaModel):
     ):
         self.logstore_name = logstore_name
         self.offset = offset
+        # 默认值为 500。
         self.size = size
         self.telemetry_type = telemetry_type
 
@@ -4408,7 +5141,7 @@ class ListMachineGroupRequest(TeaModel):
         self.group_name = group_name
         # 分页请求的起始位置。默认为0。
         self.offset = offset
-        # 分页查询时，设置的每页行数。最大值为500。
+        # 分页查询时，设置的每页行数。默认值为2000。
         self.size = size
 
     def validate(self):
@@ -4533,7 +5266,7 @@ class ListMachinesRequest(TeaModel):
     ):
         # 查询开始行。默认值为0。
         self.offset = offset
-        # 分页查询时，设置的每页行数。默认值为100，最大值为500。
+        # 分页查询时，设置的每页行数。默认值为2000。
         self.size = size
 
     def validate(self):
@@ -4663,6 +5396,7 @@ class ListProjectRequest(TeaModel):
     ):
         self.offset = offset
         self.project_name = project_name
+        # 默认值为 500。
         self.size = size
 
     def validate(self):
@@ -4791,6 +5525,7 @@ class ListSavedSearchRequest(TeaModel):
         size: int = None,
     ):
         self.offset = offset
+        # 默认值为 500。
         self.size = size
 
     def validate(self):
@@ -5751,6 +6486,95 @@ class UpdateConsumerGroupRequest(TeaModel):
 
 
 class UpdateConsumerGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class UpdateEtlMetaRequest(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        etl_meta_key: str = None,
+        etl_meta_name: str = None,
+        etl_meta_tag: str = None,
+        etl_meta_value: Dict[str, Any] = None,
+    ):
+        # 是否启用。etlMetaTag、etlMetaValue、enable 至少需要存在一个。
+        self.enable = enable
+        # key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,255]之间。
+        self.etl_meta_key = etl_meta_key
+        # 名字。由数字、大小写字母、下划线_、连字符-组成，长度需要在[2,64]之间。
+        self.etl_meta_name = etl_meta_name
+        # key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,128]之间。
+        self.etl_meta_tag = etl_meta_tag
+        self.etl_meta_value = etl_meta_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.etl_meta_key is not None:
+            result['etlMetaKey'] = self.etl_meta_key
+        if self.etl_meta_name is not None:
+            result['etlMetaName'] = self.etl_meta_name
+        if self.etl_meta_tag is not None:
+            result['etlMetaTag'] = self.etl_meta_tag
+        if self.etl_meta_value is not None:
+            result['etlMetaValue'] = self.etl_meta_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('etlMetaKey') is not None:
+            self.etl_meta_key = m.get('etlMetaKey')
+        if m.get('etlMetaName') is not None:
+            self.etl_meta_name = m.get('etlMetaName')
+        if m.get('etlMetaTag') is not None:
+            self.etl_meta_tag = m.get('etlMetaTag')
+        if m.get('etlMetaValue') is not None:
+            self.etl_meta_value = m.get('etlMetaValue')
+        return self
+
+
+class UpdateEtlMetaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
