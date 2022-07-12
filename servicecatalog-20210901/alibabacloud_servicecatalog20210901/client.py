@@ -997,6 +997,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_product_version_with_options_async(request, runtime)
 
+    def delete_provisioned_product_plan_with_options(
+        self,
+        request: servicecatalog_20210901_models.DeleteProvisionedProductPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.DeleteProvisionedProductPlanResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.plan_id):
+            body['PlanId'] = request.plan_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteProvisionedProductPlan',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.DeleteProvisionedProductPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_provisioned_product_plan_with_options_async(
+        self,
+        request: servicecatalog_20210901_models.DeleteProvisionedProductPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicecatalog_20210901_models.DeleteProvisionedProductPlanResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.plan_id):
+            body['PlanId'] = request.plan_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteProvisionedProductPlan',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicecatalog_20210901_models.DeleteProvisionedProductPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_provisioned_product_plan(
+        self,
+        request: servicecatalog_20210901_models.DeleteProvisionedProductPlanRequest,
+    ) -> servicecatalog_20210901_models.DeleteProvisionedProductPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_provisioned_product_plan_with_options(request, runtime)
+
+    async def delete_provisioned_product_plan_async(
+        self,
+        request: servicecatalog_20210901_models.DeleteProvisionedProductPlanRequest,
+    ) -> servicecatalog_20210901_models.DeleteProvisionedProductPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_provisioned_product_plan_with_options_async(request, runtime)
+
     def disassociate_principal_from_portfolio_with_options(
         self,
         request: servicecatalog_20210901_models.DisassociatePrincipalFromPortfolioRequest,

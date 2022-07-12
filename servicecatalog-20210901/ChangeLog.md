@@ -1,3 +1,6 @@
+2022-07-12 Version: 1.1.2
+- Support delete provisioned product plan.
+
 2022-06-29 Version: 1.1.1
 - Support provisioned product plan.
 
