@@ -91,11 +91,15 @@ class DescribeBgpPackByIpResponseBodyDdosbgpInfo(TeaModel):
 class DescribeBgpPackByIpResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
         ddosbgp_info: DescribeBgpPackByIpResponseBodyDdosbgpInfo = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        self.code = code
         self.ddosbgp_info = ddosbgp_info
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         if self.ddosbgp_info:
@@ -107,19 +111,27 @@ class DescribeBgpPackByIpResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.ddosbgp_info is not None:
             result['DdosbgpInfo'] = self.ddosbgp_info.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('DdosbgpInfo') is not None:
             temp_model = DescribeBgpPackByIpResponseBodyDdosbgpInfo()
             self.ddosbgp_info = temp_model.from_map(m['DdosbgpInfo'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -127,13 +139,16 @@ class DescribeBgpPackByIpResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeBgpPackByIpResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -146,6 +161,8 @@ class DescribeBgpPackByIpResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -154,6 +171,8 @@ class DescribeBgpPackByIpResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeBgpPackByIpResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -167,11 +186,13 @@ class DescribeCapRequest(TeaModel):
         ddos_region_id: str = None,
         instance_id: str = None,
         instance_type: str = None,
+        internet_ip: str = None,
     ):
         self.beg_time = beg_time
         self.ddos_region_id = ddos_region_id
         self.instance_id = instance_id
         self.instance_type = instance_type
+        self.internet_ip = internet_ip
 
     def validate(self):
         pass
@@ -190,6 +211,8 @@ class DescribeCapRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -202,6 +225,8 @@ class DescribeCapRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
         return self
 
 
@@ -271,13 +296,16 @@ class DescribeCapResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeCapResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -290,6 +318,8 @@ class DescribeCapResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -298,6 +328,8 @@ class DescribeCapResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCapResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -415,13 +447,16 @@ class DescribeDdosCountResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDdosCountResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -434,6 +469,8 @@ class DescribeDdosCountResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -442,6 +479,8 @@ class DescribeDdosCountResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDdosCountResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -559,13 +598,16 @@ class DescribeDdosCreditResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDdosCreditResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -578,6 +620,8 @@ class DescribeDdosCreditResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -586,6 +630,8 @@ class DescribeDdosCreditResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDdosCreditResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -599,12 +645,14 @@ class DescribeDdosEventListRequest(TeaModel):
         ddos_region_id: str = None,
         instance_id: str = None,
         instance_type: str = None,
+        internet_ip: str = None,
         page_size: int = None,
     ):
         self.current_page = current_page
         self.ddos_region_id = ddos_region_id
         self.instance_id = instance_id
         self.instance_type = instance_type
+        self.internet_ip = internet_ip
         self.page_size = page_size
 
     def validate(self):
@@ -624,6 +672,8 @@ class DescribeDdosEventListRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         return result
@@ -638,6 +688,8 @@ class DescribeDdosEventListRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         return self
@@ -780,13 +832,16 @@ class DescribeDdosEventListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDdosEventListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -799,6 +854,8 @@ class DescribeDdosEventListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -807,6 +864,8 @@ class DescribeDdosEventListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDdosEventListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -865,6 +924,7 @@ class DescribeDdosThresholdResponseBodyThresholdsThreshold(TeaModel):
         ddos_type: str = None,
         elastic_bps: int = None,
         instance_id: str = None,
+        internet_ip: str = None,
         is_auto: bool = None,
         max_bps: int = None,
         max_pps: int = None,
@@ -874,6 +934,7 @@ class DescribeDdosThresholdResponseBodyThresholdsThreshold(TeaModel):
         self.ddos_type = ddos_type
         self.elastic_bps = elastic_bps
         self.instance_id = instance_id
+        self.internet_ip = internet_ip
         self.is_auto = is_auto
         self.max_bps = max_bps
         self.max_pps = max_pps
@@ -896,6 +957,8 @@ class DescribeDdosThresholdResponseBodyThresholdsThreshold(TeaModel):
             result['ElasticBps'] = self.elastic_bps
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
         if self.is_auto is not None:
             result['IsAuto'] = self.is_auto
         if self.max_bps is not None:
@@ -916,6 +979,8 @@ class DescribeDdosThresholdResponseBodyThresholdsThreshold(TeaModel):
             self.elastic_bps = m.get('ElasticBps')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
         if m.get('IsAuto') is not None:
             self.is_auto = m.get('IsAuto')
         if m.get('MaxBps') is not None:
@@ -1001,13 +1066,16 @@ class DescribeDdosThresholdResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDdosThresholdResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1020,6 +1088,8 @@ class DescribeDdosThresholdResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1028,6 +1098,8 @@ class DescribeDdosThresholdResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDdosThresholdResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1270,13 +1342,16 @@ class DescribeInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1289,6 +1364,8 @@ class DescribeInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1297,8 +1374,669 @@ class DescribeInstanceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeInstanceIpAddressRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        ddos_region_id: str = None,
+        ddos_status: str = None,
+        instance_id: str = None,
+        instance_ip: str = None,
+        instance_name: str = None,
+        instance_type: str = None,
+        page_size: int = None,
+    ):
+        self.current_page = current_page
+        self.ddos_region_id = ddos_region_id
+        self.ddos_status = ddos_status
+        self.instance_id = instance_id
+        self.instance_ip = instance_ip
+        self.instance_name = instance_name
+        self.instance_type = instance_type
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.ddos_region_id is not None:
+            result['DdosRegionId'] = self.ddos_region_id
+        if self.ddos_status is not None:
+            result['DdosStatus'] = self.ddos_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_ip is not None:
+            result['InstanceIp'] = self.instance_ip
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('DdosRegionId') is not None:
+            self.ddos_region_id = m.get('DdosRegionId')
+        if m.get('DdosStatus') is not None:
+            self.ddos_status = m.get('DdosStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceIp') is not None:
+            self.instance_ip = m.get('InstanceIp')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig(TeaModel):
+    def __init__(
+        self,
+        blackhole_threshold: int = None,
+        defense_bps_threshold: int = None,
+        defense_pps_threshold: int = None,
+        elastic_threshold: int = None,
+        instance_ip: str = None,
+        ip_status: str = None,
+        ip_version: str = None,
+        is_bgppack: bool = None,
+        region_id: str = None,
+    ):
+        self.blackhole_threshold = blackhole_threshold
+        self.defense_bps_threshold = defense_bps_threshold
+        self.defense_pps_threshold = defense_pps_threshold
+        self.elastic_threshold = elastic_threshold
+        self.instance_ip = instance_ip
+        self.ip_status = ip_status
+        self.ip_version = ip_version
+        self.is_bgppack = is_bgppack
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.blackhole_threshold is not None:
+            result['BlackholeThreshold'] = self.blackhole_threshold
+        if self.defense_bps_threshold is not None:
+            result['DefenseBpsThreshold'] = self.defense_bps_threshold
+        if self.defense_pps_threshold is not None:
+            result['DefensePpsThreshold'] = self.defense_pps_threshold
+        if self.elastic_threshold is not None:
+            result['ElasticThreshold'] = self.elastic_threshold
+        if self.instance_ip is not None:
+            result['InstanceIp'] = self.instance_ip
+        if self.ip_status is not None:
+            result['IpStatus'] = self.ip_status
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        if self.is_bgppack is not None:
+            result['IsBgppack'] = self.is_bgppack
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlackholeThreshold') is not None:
+            self.blackhole_threshold = m.get('BlackholeThreshold')
+        if m.get('DefenseBpsThreshold') is not None:
+            self.defense_bps_threshold = m.get('DefenseBpsThreshold')
+        if m.get('DefensePpsThreshold') is not None:
+            self.defense_pps_threshold = m.get('DefensePpsThreshold')
+        if m.get('ElasticThreshold') is not None:
+            self.elastic_threshold = m.get('ElasticThreshold')
+        if m.get('InstanceIp') is not None:
+            self.instance_ip = m.get('InstanceIp')
+        if m.get('IpStatus') is not None:
+            self.ip_status = m.get('IpStatus')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        if m.get('IsBgppack') is not None:
+            self.is_bgppack = m.get('IsBgppack')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeInstanceIpAddressResponseBodyInstanceList(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_status: str = None,
+        instance_type: str = None,
+        ip_address_config: List[DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig] = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.instance_status = instance_status
+        self.instance_type = instance_type
+        self.ip_address_config = ip_address_config
+
+    def validate(self):
+        if self.ip_address_config:
+            for k in self.ip_address_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_status is not None:
+            result['InstanceStatus'] = self.instance_status
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        result['IpAddressConfig'] = []
+        if self.ip_address_config is not None:
+            for k in self.ip_address_config:
+                result['IpAddressConfig'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceStatus') is not None:
+            self.instance_status = m.get('InstanceStatus')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        self.ip_address_config = []
+        if m.get('IpAddressConfig') is not None:
+            for k in m.get('IpAddressConfig'):
+                temp_model = DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig()
+                self.ip_address_config.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeInstanceIpAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_list: List[DescribeInstanceIpAddressResponseBodyInstanceList] = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.instance_list = instance_list
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.instance_list:
+            for k in self.instance_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceList'] = []
+        if self.instance_list is not None:
+            for k in self.instance_list:
+                result['InstanceList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_list = []
+        if m.get('InstanceList') is not None:
+            for k in m.get('InstanceList'):
+                temp_model = DescribeInstanceIpAddressResponseBodyInstanceList()
+                self.instance_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribeInstanceIpAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceIpAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceIpAddressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeIpDdosThresholdRequest(TeaModel):
+    def __init__(
+        self,
+        ddos_region_id: str = None,
+        ddos_type: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        internet_ip: str = None,
+    ):
+        self.ddos_region_id = ddos_region_id
+        self.ddos_type = ddos_type
+        self.instance_id = instance_id
+        self.instance_type = instance_type
+        self.internet_ip = internet_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ddos_region_id is not None:
+            result['DdosRegionId'] = self.ddos_region_id
+        if self.ddos_type is not None:
+            result['DdosType'] = self.ddos_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DdosRegionId') is not None:
+            self.ddos_region_id = m.get('DdosRegionId')
+        if m.get('DdosType') is not None:
+            self.ddos_type = m.get('DdosType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
+        return self
+
+
+class DescribeIpDdosThresholdResponseBodyThreshold(TeaModel):
+    def __init__(
+        self,
+        bps: int = None,
+        ddos_type: str = None,
+        elastic_bps: int = None,
+        instance_id: str = None,
+        internet_ip: str = None,
+        is_auto: bool = None,
+        max_bps: int = None,
+        max_pps: int = None,
+        pps: int = None,
+    ):
+        self.bps = bps
+        self.ddos_type = ddos_type
+        self.elastic_bps = elastic_bps
+        self.instance_id = instance_id
+        self.internet_ip = internet_ip
+        self.is_auto = is_auto
+        self.max_bps = max_bps
+        self.max_pps = max_pps
+        self.pps = pps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bps is not None:
+            result['Bps'] = self.bps
+        if self.ddos_type is not None:
+            result['DdosType'] = self.ddos_type
+        if self.elastic_bps is not None:
+            result['ElasticBps'] = self.elastic_bps
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
+        if self.is_auto is not None:
+            result['IsAuto'] = self.is_auto
+        if self.max_bps is not None:
+            result['MaxBps'] = self.max_bps
+        if self.max_pps is not None:
+            result['MaxPps'] = self.max_pps
+        if self.pps is not None:
+            result['Pps'] = self.pps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bps') is not None:
+            self.bps = m.get('Bps')
+        if m.get('DdosType') is not None:
+            self.ddos_type = m.get('DdosType')
+        if m.get('ElasticBps') is not None:
+            self.elastic_bps = m.get('ElasticBps')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
+        if m.get('IsAuto') is not None:
+            self.is_auto = m.get('IsAuto')
+        if m.get('MaxBps') is not None:
+            self.max_bps = m.get('MaxBps')
+        if m.get('MaxPps') is not None:
+            self.max_pps = m.get('MaxPps')
+        if m.get('Pps') is not None:
+            self.pps = m.get('Pps')
+        return self
+
+
+class DescribeIpDdosThresholdResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        threshold: DescribeIpDdosThresholdResponseBodyThreshold = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.threshold = threshold
+
+    def validate(self):
+        if self.threshold:
+            self.threshold.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Threshold') is not None:
+            temp_model = DescribeIpDdosThresholdResponseBodyThreshold()
+            self.threshold = temp_model.from_map(m['Threshold'])
+        return self
+
+
+class DescribeIpDdosThresholdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeIpDdosThresholdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeIpDdosThresholdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeIpLocationServiceRequest(TeaModel):
+    def __init__(
+        self,
+        internet_ip: str = None,
+    ):
+        self.internet_ip = internet_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
+        return self
+
+
+class DescribeIpLocationServiceResponseBodyInstance(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_type: str = None,
+        internet_ip: str = None,
+        region: str = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.instance_type = instance_type
+        self.internet_ip = internet_ip
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class DescribeIpLocationServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance: DescribeIpLocationServiceResponseBodyInstance = None,
+        request_id: str = None,
+    ):
+        # instance model
+        self.instance = instance
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance:
+            self.instance.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance is not None:
+            result['Instance'] = self.instance.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Instance') is not None:
+            temp_model = DescribeIpLocationServiceResponseBodyInstance()
+            self.instance = temp_model.from_map(m['Instance'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeIpLocationServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeIpLocationServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeIpLocationServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1422,13 +2160,16 @@ class DescribeRegionsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeRegionsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1441,6 +2182,8 @@ class DescribeRegionsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1449,6 +2192,8 @@ class DescribeRegionsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRegionsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1461,10 +2206,12 @@ class ModifyDdosStatusRequest(TeaModel):
         ddos_region_id: str = None,
         instance_id: str = None,
         instance_type: str = None,
+        internet_ip: str = None,
     ):
         self.ddos_region_id = ddos_region_id
         self.instance_id = instance_id
         self.instance_type = instance_type
+        self.internet_ip = internet_ip
 
     def validate(self):
         pass
@@ -1481,6 +2228,8 @@ class ModifyDdosStatusRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -1491,6 +2240,8 @@ class ModifyDdosStatusRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
         return self
 
 
@@ -1525,13 +2276,16 @@ class ModifyDdosStatusResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyDdosStatusResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1544,6 +2298,8 @@ class ModifyDdosStatusResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1552,6 +2308,8 @@ class ModifyDdosStatusResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDdosStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1565,6 +2323,7 @@ class ModifyDefenseThresholdRequest(TeaModel):
         ddos_region_id: str = None,
         instance_id: str = None,
         instance_type: str = None,
+        internet_ip: str = None,
         is_auto: bool = None,
         pps: int = None,
     ):
@@ -1572,6 +2331,7 @@ class ModifyDefenseThresholdRequest(TeaModel):
         self.ddos_region_id = ddos_region_id
         self.instance_id = instance_id
         self.instance_type = instance_type
+        self.internet_ip = internet_ip
         self.is_auto = is_auto
         self.pps = pps
 
@@ -1592,6 +2352,8 @@ class ModifyDefenseThresholdRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
         if self.is_auto is not None:
             result['IsAuto'] = self.is_auto
         if self.pps is not None:
@@ -1608,6 +2370,8 @@ class ModifyDefenseThresholdRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
         if m.get('IsAuto') is not None:
             self.is_auto = m.get('IsAuto')
         if m.get('Pps') is not None:
@@ -1646,13 +2410,16 @@ class ModifyDefenseThresholdResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyDefenseThresholdResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1665,6 +2432,8 @@ class ModifyDefenseThresholdResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1673,6 +2442,8 @@ class ModifyDefenseThresholdResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDefenseThresholdResponseBody()
             self.body = temp_model.from_map(m['body'])
