@@ -1,3 +1,6 @@
+2022-07-12 Version: 2.0.7
+- Upgrade sdk to same version.
+
 2021-08-03 Version: 2.0.1
 - Generated python 2020-09-30 for ecd.
 
