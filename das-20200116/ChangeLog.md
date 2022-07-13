@@ -1,3 +1,6 @@
+2022-07-13 Version: 2.0.20
+- Add UpdateAutoSqlOptimizeStatus API.
+
 2022-05-20 Version: 2.0.18
 - Dbgateway support delete api.
 
