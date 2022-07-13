@@ -1,3 +1,6 @@
+2022-07-13 Version: 1.0.16
+- Generated python 2020-02-17 for Dytnsapi.
+
 2022-07-12 Version: 1.0.15
 - AMP version.
 
