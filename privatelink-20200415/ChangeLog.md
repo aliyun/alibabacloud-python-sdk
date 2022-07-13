@@ -1,3 +1,6 @@
+2022-07-13 Version: 1.0.9
+- Support resource scheduler.
+
 2022-05-25 Version: 1.0.8
 - Support resource scheduler.
 

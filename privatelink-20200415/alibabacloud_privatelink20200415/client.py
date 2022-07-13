@@ -58,6 +58,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.user_arn):
+            query['UserARN'] = request.user_arn
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
@@ -96,6 +98,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.user_arn):
+            query['UserARN'] = request.user_arn
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
@@ -463,6 +467,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_product_open_with_options_async(runtime)
 
+    def check_resource_support_operate_with_options(
+        self,
+        request: privatelink_20200415_models.CheckResourceSupportOperateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.CheckResourceSupportOperateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckResourceSupportOperate',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.CheckResourceSupportOperateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_resource_support_operate_with_options_async(
+        self,
+        request: privatelink_20200415_models.CheckResourceSupportOperateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.CheckResourceSupportOperateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckResourceSupportOperate',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.CheckResourceSupportOperateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_resource_support_operate(
+        self,
+        request: privatelink_20200415_models.CheckResourceSupportOperateRequest,
+    ) -> privatelink_20200415_models.CheckResourceSupportOperateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_resource_support_operate_with_options(request, runtime)
+
+    async def check_resource_support_operate_async(
+        self,
+        request: privatelink_20200415_models.CheckResourceSupportOperateRequest,
+    ) -> privatelink_20200415_models.CheckResourceSupportOperateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_resource_support_operate_with_options_async(request, runtime)
+
     def create_vpc_endpoint_with_options(
         self,
         request: privatelink_20200415_models.CreateVpcEndpointRequest,
@@ -610,6 +692,8 @@ class Client(OpenApiClient):
             query['ServiceDescription'] = request.service_description
         if not UtilClient.is_unset(request.service_resource_type):
             query['ServiceResourceType'] = request.service_resource_type
+        if not UtilClient.is_unset(request.service_support_ipv_6):
+            query['ServiceSupportIPv6'] = request.service_support_ipv_6
         if not UtilClient.is_unset(request.zone_affinity_enabled):
             query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
@@ -656,6 +740,8 @@ class Client(OpenApiClient):
             query['ServiceDescription'] = request.service_description
         if not UtilClient.is_unset(request.service_resource_type):
             query['ServiceResourceType'] = request.service_resource_type
+        if not UtilClient.is_unset(request.service_support_ipv_6):
+            query['ServiceSupportIPv6'] = request.service_support_ipv_6
         if not UtilClient.is_unset(request.zone_affinity_enabled):
             query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
@@ -1571,6 +1657,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_vpc_endpoint_zone_connection_with_options_async(request, runtime)
 
+    def get_endpoint_attribute_by_nsi_and_service_id_with_options(
+        self,
+        request: privatelink_20200415_models.GetEndpointAttributeByNsiAndServiceIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.GetEndpointAttributeByNsiAndServiceIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.nsi_index):
+            query['NsiIndex'] = request.nsi_index
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEndpointAttributeByNsiAndServiceId',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.GetEndpointAttributeByNsiAndServiceIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_endpoint_attribute_by_nsi_and_service_id_with_options_async(
+        self,
+        request: privatelink_20200415_models.GetEndpointAttributeByNsiAndServiceIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.GetEndpointAttributeByNsiAndServiceIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.nsi_index):
+            query['NsiIndex'] = request.nsi_index
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEndpointAttributeByNsiAndServiceId',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.GetEndpointAttributeByNsiAndServiceIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_endpoint_attribute_by_nsi_and_service_id(
+        self,
+        request: privatelink_20200415_models.GetEndpointAttributeByNsiAndServiceIdRequest,
+    ) -> privatelink_20200415_models.GetEndpointAttributeByNsiAndServiceIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_endpoint_attribute_by_nsi_and_service_id_with_options(request, runtime)
+
+    async def get_endpoint_attribute_by_nsi_and_service_id_async(
+        self,
+        request: privatelink_20200415_models.GetEndpointAttributeByNsiAndServiceIdRequest,
+    ) -> privatelink_20200415_models.GetEndpointAttributeByNsiAndServiceIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_endpoint_attribute_by_nsi_and_service_id_with_options_async(request, runtime)
+
     def get_vpc_endpoint_attribute_with_options(
         self,
         request: privatelink_20200415_models.GetVpcEndpointAttributeRequest,
@@ -1734,6 +1910,8 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointConnectionsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.connection_id):
+            query['ConnectionId'] = request.connection_id
         if not UtilClient.is_unset(request.connection_status):
             query['ConnectionStatus'] = request.connection_status
         if not UtilClient.is_unset(request.endpoint_id):
@@ -1782,6 +1960,8 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointConnectionsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.connection_id):
+            query['ConnectionId'] = request.connection_id
         if not UtilClient.is_unset(request.connection_status):
             query['ConnectionStatus'] = request.connection_status
         if not UtilClient.is_unset(request.endpoint_id):
@@ -2028,6 +2208,8 @@ class Client(OpenApiClient):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.user_list_type):
+            query['UserListType'] = request.user_list_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2066,6 +2248,8 @@ class Client(OpenApiClient):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.user_list_type):
+            query['UserListType'] = request.user_list_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2499,6 +2683,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_vpc_endpoints_with_options_async(request, runtime)
 
+    def notify_resource_address_family_with_options(
+        self,
+        request: privatelink_20200415_models.NotifyResourceAddressFamilyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.NotifyResourceAddressFamilyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_family):
+            query['AddressFamily'] = request.address_family
+        if not UtilClient.is_unset(request.ipv_6address):
+            query['Ipv6Address'] = request.ipv_6address
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='NotifyResourceAddressFamily',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.NotifyResourceAddressFamilyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def notify_resource_address_family_with_options_async(
+        self,
+        request: privatelink_20200415_models.NotifyResourceAddressFamilyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.NotifyResourceAddressFamilyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_family):
+            query['AddressFamily'] = request.address_family
+        if not UtilClient.is_unset(request.ipv_6address):
+            query['Ipv6Address'] = request.ipv_6address
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='NotifyResourceAddressFamily',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.NotifyResourceAddressFamilyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def notify_resource_address_family(
+        self,
+        request: privatelink_20200415_models.NotifyResourceAddressFamilyRequest,
+    ) -> privatelink_20200415_models.NotifyResourceAddressFamilyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.notify_resource_address_family_with_options(request, runtime)
+
+    async def notify_resource_address_family_async(
+        self,
+        request: privatelink_20200415_models.NotifyResourceAddressFamilyRequest,
+    ) -> privatelink_20200415_models.NotifyResourceAddressFamilyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.notify_resource_address_family_with_options_async(request, runtime)
+
     def open_private_link_service_with_options(
         self,
         request: privatelink_20200415_models.OpenPrivateLinkServiceRequest,
@@ -2586,6 +2852,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.user_arn):
+            query['UserARN'] = request.user_arn
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
@@ -2624,6 +2892,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.user_arn):
+            query['UserARN'] = request.user_arn
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
@@ -2960,6 +3230,8 @@ class Client(OpenApiClient):
             query['ServiceDescription'] = request.service_description
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_support_ipv_6):
+            query['ServiceSupportIpv6'] = request.service_support_ipv_6
         if not UtilClient.is_unset(request.zone_affinity_enabled):
             query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
@@ -3004,6 +3276,8 @@ class Client(OpenApiClient):
             query['ServiceDescription'] = request.service_description
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_support_ipv_6):
+            query['ServiceSupportIpv6'] = request.service_support_ipv_6
         if not UtilClient.is_unset(request.zone_affinity_enabled):
             query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
