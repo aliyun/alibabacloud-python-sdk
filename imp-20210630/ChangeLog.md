@@ -1,3 +1,7 @@
+2022-07-13 Version: 2.9.6
+- Add CreatorId Query For ListComments API.
+- Add DeleteCommentByCreatorId API.
+
 2022-06-23 Version: 2.9.5
 - Update GetLiveRoom API.
 
