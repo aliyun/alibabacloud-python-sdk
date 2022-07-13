@@ -1,3 +1,6 @@
+2022-07-13 Version: 1.0.3
+- 修复 list delta 接口关于 domain id 参数的属性.
+
 2022-07-11 Version: 1.0.2
 - Update remove face group file request.
 

@@ -1203,32 +1203,27 @@ class Client(OpenApiClient):
 
     def delete_revision(
         self,
-        domain_id: str,
         request: pds_20220301_models.DeleteRevisionRequest,
     ) -> pds_20220301_models.DeleteRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_revision_with_options(domain_id, request, headers, runtime)
+        return self.delete_revision_with_options(request, headers, runtime)
 
     async def delete_revision_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.DeleteRevisionRequest,
     ) -> pds_20220301_models.DeleteRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_revision_with_options_async(domain_id, request, headers, runtime)
+        return await self.delete_revision_with_options_async(request, headers, runtime)
 
     def delete_revision_with_options(
         self,
-        domain_id: str,
         request: pds_20220301_models.DeleteRevisionRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteRevisionResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.drive_id):
             body['drive_id'] = request.drive_id
@@ -1237,7 +1232,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.revision_id):
             body['revision_id'] = request.revision_id
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1259,14 +1253,11 @@ class Client(OpenApiClient):
 
     async def delete_revision_with_options_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.DeleteRevisionRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteRevisionResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.drive_id):
             body['drive_id'] = request.drive_id
@@ -1275,7 +1266,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.revision_id):
             body['revision_id'] = request.revision_id
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2433,32 +2423,27 @@ class Client(OpenApiClient):
 
     def get_revision(
         self,
-        domain_id: str,
         request: pds_20220301_models.GetRevisionRequest,
     ) -> pds_20220301_models.GetRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_revision_with_options(domain_id, request, headers, runtime)
+        return self.get_revision_with_options(request, headers, runtime)
 
     async def get_revision_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.GetRevisionRequest,
     ) -> pds_20220301_models.GetRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_revision_with_options_async(domain_id, request, headers, runtime)
+        return await self.get_revision_with_options_async(request, headers, runtime)
 
     def get_revision_with_options(
         self,
-        domain_id: str,
         request: pds_20220301_models.GetRevisionRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetRevisionResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.drive_id):
             body['drive_id'] = request.drive_id
@@ -2471,7 +2456,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.url_expire_sec):
             body['url_expire_sec'] = request.url_expire_sec
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2493,14 +2477,11 @@ class Client(OpenApiClient):
 
     async def get_revision_with_options_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.GetRevisionRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetRevisionResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.drive_id):
             body['drive_id'] = request.drive_id
@@ -2513,7 +2494,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.url_expire_sec):
             body['url_expire_sec'] = request.url_expire_sec
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3319,32 +3299,27 @@ class Client(OpenApiClient):
 
     def list_delta(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListDeltaRequest,
     ) -> pds_20220301_models.ListDeltaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_delta_with_options(domain_id, request, headers, runtime)
+        return self.list_delta_with_options(request, headers, runtime)
 
     async def list_delta_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListDeltaRequest,
     ) -> pds_20220301_models.ListDeltaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_delta_with_options_async(domain_id, request, headers, runtime)
+        return await self.list_delta_with_options_async(request, headers, runtime)
 
     def list_delta_with_options(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListDeltaRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListDeltaResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.cursor):
             body['cursor'] = request.cursor
@@ -3355,7 +3330,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.sync_root_id):
             body['sync_root_id'] = request.sync_root_id
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3377,14 +3351,11 @@ class Client(OpenApiClient):
 
     async def list_delta_with_options_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListDeltaRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListDeltaResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.cursor):
             body['cursor'] = request.cursor
@@ -3395,7 +3366,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.sync_root_id):
             body['sync_root_id'] = request.sync_root_id
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3953,32 +3923,27 @@ class Client(OpenApiClient):
 
     def list_revision(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListRevisionRequest,
     ) -> pds_20220301_models.ListRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_revision_with_options(domain_id, request, headers, runtime)
+        return self.list_revision_with_options(request, headers, runtime)
 
     async def list_revision_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListRevisionRequest,
     ) -> pds_20220301_models.ListRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_revision_with_options_async(domain_id, request, headers, runtime)
+        return await self.list_revision_with_options_async(request, headers, runtime)
 
     def list_revision_with_options(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListRevisionRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListRevisionResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.drive_id):
             body['drive_id'] = request.drive_id
@@ -3991,7 +3956,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.marker):
             body['marker'] = request.marker
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4013,14 +3977,11 @@ class Client(OpenApiClient):
 
     async def list_revision_with_options_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.ListRevisionRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListRevisionResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.drive_id):
             body['drive_id'] = request.drive_id
@@ -4033,7 +3994,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.marker):
             body['marker'] = request.marker
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4807,32 +4767,27 @@ class Client(OpenApiClient):
 
     def restore_revision(
         self,
-        domain_id: str,
         request: pds_20220301_models.RestoreRevisionRequest,
     ) -> pds_20220301_models.RestoreRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.restore_revision_with_options(domain_id, request, headers, runtime)
+        return self.restore_revision_with_options(request, headers, runtime)
 
     async def restore_revision_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.RestoreRevisionRequest,
     ) -> pds_20220301_models.RestoreRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.restore_revision_with_options_async(domain_id, request, headers, runtime)
+        return await self.restore_revision_with_options_async(request, headers, runtime)
 
     def restore_revision_with_options(
         self,
-        domain_id: str,
         request: pds_20220301_models.RestoreRevisionRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.RestoreRevisionResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.drive_id):
             body['drive_id'] = request.drive_id
@@ -4841,7 +4796,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.revision_id):
             body['revision_id'] = request.revision_id
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4863,14 +4817,11 @@ class Client(OpenApiClient):
 
     async def restore_revision_with_options_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.RestoreRevisionRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.RestoreRevisionResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.drive_id):
             body['drive_id'] = request.drive_id
@@ -4879,7 +4830,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.revision_id):
             body['revision_id'] = request.revision_id
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4939,7 +4889,7 @@ class Client(OpenApiClient):
             action='ScanFile',
             version='2022-03-01',
             protocol='HTTPS',
-            pathname=f'/v2//file/scan',
+            pathname=f'/v2/file/scan',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -4975,7 +4925,7 @@ class Client(OpenApiClient):
             action='ScanFile',
             version='2022-03-01',
             protocol='HTTPS',
-            pathname=f'/v2//file/scan',
+            pathname=f'/v2/file/scan',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6041,32 +5991,27 @@ class Client(OpenApiClient):
 
     def update_revision(
         self,
-        domain_id: str,
         request: pds_20220301_models.UpdateRevisionRequest,
     ) -> pds_20220301_models.UpdateRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_revision_with_options(domain_id, request, headers, runtime)
+        return self.update_revision_with_options(request, headers, runtime)
 
     async def update_revision_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.UpdateRevisionRequest,
     ) -> pds_20220301_models.UpdateRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_revision_with_options_async(domain_id, request, headers, runtime)
+        return await self.update_revision_with_options_async(request, headers, runtime)
 
     def update_revision_with_options(
         self,
-        domain_id: str,
         request: pds_20220301_models.UpdateRevisionRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateRevisionResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.drive_id):
             body['drive_id'] = request.drive_id
@@ -6079,7 +6024,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.revision_id):
             body['revision_id'] = request.revision_id
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -6101,14 +6045,11 @@ class Client(OpenApiClient):
 
     async def update_revision_with_options_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.UpdateRevisionRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateRevisionResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.drive_id):
             body['drive_id'] = request.drive_id
@@ -6121,7 +6062,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.revision_id):
             body['revision_id'] = request.revision_id
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
