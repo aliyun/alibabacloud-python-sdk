@@ -1,3 +1,6 @@
+2022-07-13 Version: 3.2.7
+- PreviewStack adds StackId and returns Action to support preview stack update.
+
 2022-06-30 Version: 3.2.6
 - ValidateTemplate returns ResourceTypes.
 - GetStackResource supports ResourceAttributes.
