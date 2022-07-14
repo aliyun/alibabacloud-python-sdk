@@ -3216,7 +3216,6 @@ class DescribeInvadeEventListRequest(TeaModel):
         lang: str = None,
         member_uid: int = None,
         page_size: str = None,
-        process_status: str = None,
         process_status_list: List[int] = None,
         risk_level: List[int] = None,
         source_ip: str = None,
@@ -3246,8 +3245,6 @@ class DescribeInvadeEventListRequest(TeaModel):
         self.member_uid = member_uid
         # 每页多少条
         self.page_size = page_size
-        # 处理状态
-        self.process_status = process_status
         # 处理状态列表
         self.process_status_list = process_status_list
         # 风险等级
@@ -3290,8 +3287,6 @@ class DescribeInvadeEventListRequest(TeaModel):
             result['MemberUid'] = self.member_uid
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.process_status is not None:
-            result['ProcessStatus'] = self.process_status
         if self.process_status_list is not None:
             result['ProcessStatusList'] = self.process_status_list
         if self.risk_level is not None:
@@ -3328,8 +3323,6 @@ class DescribeInvadeEventListRequest(TeaModel):
             self.member_uid = m.get('MemberUid')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('ProcessStatus') is not None:
-            self.process_status = m.get('ProcessStatus')
         if m.get('ProcessStatusList') is not None:
             self.process_status_list = m.get('ProcessStatusList')
         if m.get('RiskLevel') is not None:
@@ -3636,9 +3629,6 @@ class DescribeInvadeEventListResponse(TeaModel):
 class DescribeOutgoingDestinationIPRequest(TeaModel):
     def __init__(
         self,
-        acl_coverage: str = None,
-        application_name: str = None,
-        category_id: str = None,
         current_page: str = None,
         dst_ip: str = None,
         end_time: str = None,
@@ -3648,29 +3638,9 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         port: str = None,
         private_ip: str = None,
         public_ip: str = None,
-        security_suggest: str = None,
         sort: str = None,
-        source_ip: str = None,
         start_time: str = None,
     ):
-        # ACL覆盖情况, 枚举值.
-        # 默认值: 空
-        # 可选值: 
-        # All (全部情况, 等同于空)
-        # FullCoverage ( 已覆盖)
-        # Uncovered (未覆盖)
-        self.acl_coverage = acl_coverage
-        # 应用名
-        self.application_name = application_name
-        # 分类, 枚举值.
-        # 默认值: 空
-        # 可选值: 
-        # All (全部分类)
-        # RiskDomain (风险域名分类)
-        # RiskIP (风险IP分类)
-        # AliYun (云产品分类)
-        # NotAliYun (非云产品分类)
-        self.category_id = category_id
         # 当前页
         self.current_page = current_page
         # 目的IP
@@ -3691,11 +3661,8 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         self.private_ip = private_ip
         # 公网IP
         self.public_ip = public_ip
-        # 安全建议, 枚举值: pass, alert, drop. 默认值为空
-        self.security_suggest = security_suggest
         # 顺序, 枚举值, 可选:asc, desc
         self.sort = sort
-        self.source_ip = source_ip
         # 开始时间,Unix timestamp, 精确到秒
         self.start_time = start_time
 
@@ -3708,12 +3675,6 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.acl_coverage is not None:
-            result['AclCoverage'] = self.acl_coverage
-        if self.application_name is not None:
-            result['ApplicationName'] = self.application_name
-        if self.category_id is not None:
-            result['CategoryId'] = self.category_id
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.dst_ip is not None:
@@ -3732,24 +3693,14 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
             result['PrivateIP'] = self.private_ip
         if self.public_ip is not None:
             result['PublicIP'] = self.public_ip
-        if self.security_suggest is not None:
-            result['SecuritySuggest'] = self.security_suggest
         if self.sort is not None:
             result['Sort'] = self.sort
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AclCoverage') is not None:
-            self.acl_coverage = m.get('AclCoverage')
-        if m.get('ApplicationName') is not None:
-            self.application_name = m.get('ApplicationName')
-        if m.get('CategoryId') is not None:
-            self.category_id = m.get('CategoryId')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('DstIP') is not None:
@@ -3768,12 +3719,8 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
             self.private_ip = m.get('PrivateIP')
         if m.get('PublicIP') is not None:
             self.public_ip = m.get('PublicIP')
-        if m.get('SecuritySuggest') is not None:
-            self.security_suggest = m.get('SecuritySuggest')
         if m.get('Sort') is not None:
             self.sort = m.get('Sort')
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -4129,7 +4076,6 @@ class DescribeOutgoingDestinationIPResponse(TeaModel):
 class DescribeOutgoingDomainRequest(TeaModel):
     def __init__(
         self,
-        acl_coverage: str = None,
         category_id: str = None,
         current_page: str = None,
         domain: str = None,
@@ -4138,18 +4084,9 @@ class DescribeOutgoingDomainRequest(TeaModel):
         order: str = None,
         page_size: str = None,
         public_ip: str = None,
-        security_suggest: str = None,
         sort: str = None,
-        source_ip: str = None,
         start_time: str = None,
     ):
-        # ACL覆盖情况, 枚举值.
-        # 默认值: 空
-        # 可选值: 
-        # All (全部情况, 等同于空)
-        # FullCoverage ( 已覆盖)
-        # Uncovered (未覆盖)
-        self.acl_coverage = acl_coverage
         # 分类, 枚举值.
         # 默认值: 空
         # 可选值: 
@@ -4177,11 +4114,8 @@ class DescribeOutgoingDomainRequest(TeaModel):
         self.page_size = page_size
         # 公网IP
         self.public_ip = public_ip
-        # 安全建议, 枚举值: pass, alert, drop. 默认值为空
-        self.security_suggest = security_suggest
         # 顺序, 枚举值, 可选:asc, desc
         self.sort = sort
-        self.source_ip = source_ip
         # 开始时间,Unix timestamp, 精确到秒
         self.start_time = start_time
 
@@ -4194,8 +4128,6 @@ class DescribeOutgoingDomainRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.acl_coverage is not None:
-            result['AclCoverage'] = self.acl_coverage
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
         if self.current_page is not None:
@@ -4212,20 +4144,14 @@ class DescribeOutgoingDomainRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.public_ip is not None:
             result['PublicIP'] = self.public_ip
-        if self.security_suggest is not None:
-            result['SecuritySuggest'] = self.security_suggest
         if self.sort is not None:
             result['Sort'] = self.sort
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AclCoverage') is not None:
-            self.acl_coverage = m.get('AclCoverage')
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
         if m.get('CurrentPage') is not None:
@@ -4242,12 +4168,8 @@ class DescribeOutgoingDomainRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('PublicIP') is not None:
             self.public_ip = m.get('PublicIP')
-        if m.get('SecuritySuggest') is not None:
-            self.security_suggest = m.get('SecuritySuggest')
         if m.get('Sort') is not None:
             self.sort = m.get('Sort')
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -5416,157 +5338,34 @@ class DescribeUserAssetIPTrafficInfoRequest(TeaModel):
         return self
 
 
-class DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo(TeaModel):
-    def __init__(
-        self,
-        in_bps: int = None,
-        in_pps: int = None,
-        new_conn: int = None,
-        out_bps: int = None,
-        out_pps: int = None,
-        session_count: int = None,
-    ):
-        # 入方向Bps
-        self.in_bps = in_bps
-        # 入方向pps
-        self.in_pps = in_pps
-        # 新建会话数
-        self.new_conn = new_conn
-        # 返回Bps
-        self.out_bps = out_bps
-        # 返回pps
-        self.out_pps = out_pps
-        # 会话数
-        self.session_count = session_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.in_bps is not None:
-            result['InBps'] = self.in_bps
-        if self.in_pps is not None:
-            result['InPps'] = self.in_pps
-        if self.new_conn is not None:
-            result['NewConn'] = self.new_conn
-        if self.out_bps is not None:
-            result['OutBps'] = self.out_bps
-        if self.out_pps is not None:
-            result['OutPps'] = self.out_pps
-        if self.session_count is not None:
-            result['SessionCount'] = self.session_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('InBps') is not None:
-            self.in_bps = m.get('InBps')
-        if m.get('InPps') is not None:
-            self.in_pps = m.get('InPps')
-        if m.get('NewConn') is not None:
-            self.new_conn = m.get('NewConn')
-        if m.get('OutBps') is not None:
-            self.out_bps = m.get('OutBps')
-        if m.get('OutPps') is not None:
-            self.out_pps = m.get('OutPps')
-        if m.get('SessionCount') is not None:
-            self.session_count = m.get('SessionCount')
-        return self
-
-
-class DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo(TeaModel):
-    def __init__(
-        self,
-        in_bps: int = None,
-        in_pps: int = None,
-        new_conn: int = None,
-        out_bps: int = None,
-        out_pps: int = None,
-        session_count: int = None,
-    ):
-        # 出方向接收流量Bps
-        self.in_bps = in_bps
-        # 出方向接收流量Bps
-        self.in_pps = in_pps
-        # 新建会话数
-        self.new_conn = new_conn
-        # 出方向流量Bps
-        self.out_bps = out_bps
-        # 出方向pps
-        self.out_pps = out_pps
-        # 会话数
-        self.session_count = session_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.in_bps is not None:
-            result['InBps'] = self.in_bps
-        if self.in_pps is not None:
-            result['InPps'] = self.in_pps
-        if self.new_conn is not None:
-            result['NewConn'] = self.new_conn
-        if self.out_bps is not None:
-            result['OutBps'] = self.out_bps
-        if self.out_pps is not None:
-            result['OutPps'] = self.out_pps
-        if self.session_count is not None:
-            result['SessionCount'] = self.session_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('InBps') is not None:
-            self.in_bps = m.get('InBps')
-        if m.get('InPps') is not None:
-            self.in_pps = m.get('InPps')
-        if m.get('NewConn') is not None:
-            self.new_conn = m.get('NewConn')
-        if m.get('OutBps') is not None:
-            self.out_bps = m.get('OutBps')
-        if m.get('OutPps') is not None:
-            self.out_pps = m.get('OutPps')
-        if m.get('SessionCount') is not None:
-            self.session_count = m.get('SessionCount')
-        return self
-
-
 class DescribeUserAssetIPTrafficInfoResponseBody(TeaModel):
     def __init__(
         self,
         end_time: int = None,
-        in_traffic_info: DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo = None,
-        out_traffic_info: DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo = None,
+        in_bps: int = None,
+        in_pps: int = None,
+        new_conn: int = None,
+        out_bps: int = None,
+        out_pps: int = None,
         request_id: str = None,
+        session_count: int = None,
         start_time: int = None,
     ):
         # 结束时间
         self.end_time = end_time
-        # 入方向流量信息
-        self.in_traffic_info = in_traffic_info
-        # 出方向流量信息
-        self.out_traffic_info = out_traffic_info
+        self.in_bps = in_bps
+        self.in_pps = in_pps
+        self.new_conn = new_conn
+        self.out_bps = out_bps
+        self.out_pps = out_pps
         # Id of the request
         self.request_id = request_id
+        self.session_count = session_count
         # 开始时间
         self.start_time = start_time
 
     def validate(self):
-        if self.in_traffic_info:
-            self.in_traffic_info.validate()
-        if self.out_traffic_info:
-            self.out_traffic_info.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -5576,12 +5375,20 @@ class DescribeUserAssetIPTrafficInfoResponseBody(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.in_traffic_info is not None:
-            result['InTrafficInfo'] = self.in_traffic_info.to_map()
-        if self.out_traffic_info is not None:
-            result['OutTrafficInfo'] = self.out_traffic_info.to_map()
+        if self.in_bps is not None:
+            result['InBps'] = self.in_bps
+        if self.in_pps is not None:
+            result['InPps'] = self.in_pps
+        if self.new_conn is not None:
+            result['NewConn'] = self.new_conn
+        if self.out_bps is not None:
+            result['OutBps'] = self.out_bps
+        if self.out_pps is not None:
+            result['OutPps'] = self.out_pps
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.session_count is not None:
+            result['SessionCount'] = self.session_count
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -5590,14 +5397,20 @@ class DescribeUserAssetIPTrafficInfoResponseBody(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('InTrafficInfo') is not None:
-            temp_model = DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo()
-            self.in_traffic_info = temp_model.from_map(m['InTrafficInfo'])
-        if m.get('OutTrafficInfo') is not None:
-            temp_model = DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo()
-            self.out_traffic_info = temp_model.from_map(m['OutTrafficInfo'])
+        if m.get('InBps') is not None:
+            self.in_bps = m.get('InBps')
+        if m.get('InPps') is not None:
+            self.in_pps = m.get('InPps')
+        if m.get('NewConn') is not None:
+            self.new_conn = m.get('NewConn')
+        if m.get('OutBps') is not None:
+            self.out_bps = m.get('OutBps')
+        if m.get('OutPps') is not None:
+            self.out_pps = m.get('OutPps')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SessionCount') is not None:
+            self.session_count = m.get('SessionCount')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self

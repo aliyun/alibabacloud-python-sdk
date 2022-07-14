@@ -1768,8 +1768,6 @@ class Client(OpenApiClient):
             query['MemberUid'] = request.member_uid
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.process_status):
-            query['ProcessStatus'] = request.process_status
         if not UtilClient.is_unset(request.process_status_list):
             query['ProcessStatusList'] = request.process_status_list
         if not UtilClient.is_unset(request.risk_level):
@@ -1828,8 +1826,6 @@ class Client(OpenApiClient):
             query['MemberUid'] = request.member_uid
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.process_status):
-            query['ProcessStatus'] = request.process_status
         if not UtilClient.is_unset(request.process_status_list):
             query['ProcessStatusList'] = request.process_status_list
         if not UtilClient.is_unset(request.risk_level):
@@ -1878,12 +1874,6 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeOutgoingDestinationIPResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.acl_coverage):
-            query['AclCoverage'] = request.acl_coverage
-        if not UtilClient.is_unset(request.application_name):
-            query['ApplicationName'] = request.application_name
-        if not UtilClient.is_unset(request.category_id):
-            query['CategoryId'] = request.category_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.dst_ip):
@@ -1902,12 +1892,8 @@ class Client(OpenApiClient):
             query['PrivateIP'] = request.private_ip
         if not UtilClient.is_unset(request.public_ip):
             query['PublicIP'] = request.public_ip
-        if not UtilClient.is_unset(request.security_suggest):
-            query['SecuritySuggest'] = request.security_suggest
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -1936,12 +1922,6 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeOutgoingDestinationIPResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.acl_coverage):
-            query['AclCoverage'] = request.acl_coverage
-        if not UtilClient.is_unset(request.application_name):
-            query['ApplicationName'] = request.application_name
-        if not UtilClient.is_unset(request.category_id):
-            query['CategoryId'] = request.category_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.dst_ip):
@@ -1960,12 +1940,8 @@ class Client(OpenApiClient):
             query['PrivateIP'] = request.private_ip
         if not UtilClient.is_unset(request.public_ip):
             query['PublicIP'] = request.public_ip
-        if not UtilClient.is_unset(request.security_suggest):
-            query['SecuritySuggest'] = request.security_suggest
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -2008,8 +1984,6 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeOutgoingDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.acl_coverage):
-            query['AclCoverage'] = request.acl_coverage
         if not UtilClient.is_unset(request.category_id):
             query['CategoryId'] = request.category_id
         if not UtilClient.is_unset(request.current_page):
@@ -2026,12 +2000,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.public_ip):
             query['PublicIP'] = request.public_ip
-        if not UtilClient.is_unset(request.security_suggest):
-            query['SecuritySuggest'] = request.security_suggest
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -2060,8 +2030,6 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeOutgoingDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.acl_coverage):
-            query['AclCoverage'] = request.acl_coverage
         if not UtilClient.is_unset(request.category_id):
             query['CategoryId'] = request.category_id
         if not UtilClient.is_unset(request.current_page):
@@ -2078,12 +2046,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.public_ip):
             query['PublicIP'] = request.public_ip
-        if not UtilClient.is_unset(request.security_suggest):
-            query['SecuritySuggest'] = request.security_suggest
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
