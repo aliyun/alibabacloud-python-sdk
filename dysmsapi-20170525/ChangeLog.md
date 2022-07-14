@@ -1,3 +1,6 @@
+2022-07-14 Version: 2.0.16
+- Upgrade Service for SmsTemplate.
+
 2022-07-06 Version: 2.0.15
 - Upgrade Service for SmsSign.
 

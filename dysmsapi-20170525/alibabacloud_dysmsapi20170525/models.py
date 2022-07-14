@@ -4146,6 +4146,7 @@ class QuerySmsTemplateListResponseBodySmsTemplateList(TeaModel):
         audit_status: str = None,
         create_date: str = None,
         order_id: str = None,
+        outer_template_type: int = None,
         reason: QuerySmsTemplateListResponseBodySmsTemplateListReason = None,
         template_code: str = None,
         template_content: str = None,
@@ -4155,6 +4156,7 @@ class QuerySmsTemplateListResponseBodySmsTemplateList(TeaModel):
         self.audit_status = audit_status
         self.create_date = create_date
         self.order_id = order_id
+        self.outer_template_type = outer_template_type
         self.reason = reason
         self.template_code = template_code
         self.template_content = template_content
@@ -4177,6 +4179,8 @@ class QuerySmsTemplateListResponseBodySmsTemplateList(TeaModel):
             result['CreateDate'] = self.create_date
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.outer_template_type is not None:
+            result['OuterTemplateType'] = self.outer_template_type
         if self.reason is not None:
             result['Reason'] = self.reason.to_map()
         if self.template_code is not None:
@@ -4197,6 +4201,8 @@ class QuerySmsTemplateListResponseBodySmsTemplateList(TeaModel):
             self.create_date = m.get('CreateDate')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('OuterTemplateType') is not None:
+            self.outer_template_type = m.get('OuterTemplateType')
         if m.get('Reason') is not None:
             temp_model = QuerySmsTemplateListResponseBodySmsTemplateListReason()
             self.reason = temp_model.from_map(m['Reason'])
