@@ -281,6 +281,8 @@ class Client(OpenApiClient):
         resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
         resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         query = {}
+        if not UtilClient.is_unset(request.data_type):
+            query['dataType'] = request.data_type
         if not UtilClient.is_unset(request.region_id):
             query['regionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -319,6 +321,8 @@ class Client(OpenApiClient):
         resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
         resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         query = {}
+        if not UtilClient.is_unset(request.data_type):
+            query['dataType'] = request.data_type
         if not UtilClient.is_unset(request.region_id):
             query['regionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -338,6 +342,100 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ia_cservice_20210722_models.GetResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_type(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        request: ia_cservice_20210722_models.GetResourceTypeRequest,
+    ) -> ia_cservice_20210722_models.GetResourceTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_resource_type_with_options(provider, product_code, resource_type_code, request, headers, runtime)
+
+    async def get_resource_type_async(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        request: ia_cservice_20210722_models.GetResourceTypeRequest,
+    ) -> ia_cservice_20210722_models.GetResourceTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_resource_type_with_options_async(provider, product_code, resource_type_code, request, headers, runtime)
+
+    def get_resource_type_with_options(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        request: ia_cservice_20210722_models.GetResourceTypeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210722_models.GetResourceTypeResponse:
+        UtilClient.validate_model(request)
+        provider = OpenApiUtilClient.get_encode_param(provider)
+        product_code = OpenApiUtilClient.get_encode_param(product_code)
+        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
+        query = {}
+        if not UtilClient.is_unset(request.resource_type_version):
+            query['resourceTypeVersion'] = request.resource_type_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceType',
+            version='2021-07-22',
+            protocol='HTTPS',
+            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210722_models.GetResourceTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_type_with_options_async(
+        self,
+        provider: str,
+        product_code: str,
+        resource_type_code: str,
+        request: ia_cservice_20210722_models.GetResourceTypeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210722_models.GetResourceTypeResponse:
+        UtilClient.validate_model(request)
+        provider = OpenApiUtilClient.get_encode_param(provider)
+        product_code = OpenApiUtilClient.get_encode_param(product_code)
+        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
+        query = {}
+        if not UtilClient.is_unset(request.resource_type_version):
+            query['resourceTypeVersion'] = request.resource_type_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceType',
+            version='2021-07-22',
+            protocol='HTTPS',
+            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210722_models.GetResourceTypeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
