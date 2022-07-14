@@ -767,6 +767,120 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.authorize_security_group_egress_with_options_async(request, runtime)
 
+    def create_armserver_instances_with_options(
+        self,
+        request: ens_20171110_models.CreateARMServerInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateARMServerInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.amount):
+            query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.frequency):
+            query['Frequency'] = request.frequency
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.key_pair_name):
+            query['KeyPairName'] = request.key_pair_name
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.resolution):
+            query['Resolution'] = request.resolution
+        if not UtilClient.is_unset(request.server_type):
+            query['ServerType'] = request.server_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateARMServerInstances',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateARMServerInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_armserver_instances_with_options_async(
+        self,
+        request: ens_20171110_models.CreateARMServerInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateARMServerInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.amount):
+            query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.frequency):
+            query['Frequency'] = request.frequency
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.key_pair_name):
+            query['KeyPairName'] = request.key_pair_name
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.resolution):
+            query['Resolution'] = request.resolution
+        if not UtilClient.is_unset(request.server_type):
+            query['ServerType'] = request.server_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateARMServerInstances',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateARMServerInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_armserver_instances(
+        self,
+        request: ens_20171110_models.CreateARMServerInstancesRequest,
+    ) -> ens_20171110_models.CreateARMServerInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_armserver_instances_with_options(request, runtime)
+
+    async def create_armserver_instances_async(
+        self,
+        request: ens_20171110_models.CreateARMServerInstancesRequest,
+    ) -> ens_20171110_models.CreateARMServerInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_armserver_instances_with_options_async(request, runtime)
+
     def create_application_with_options(
         self,
         request: ens_20171110_models.CreateApplicationRequest,
@@ -5448,8 +5562,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5478,8 +5590,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11071,6 +11181,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reboot_instance_with_options_async(request, runtime)
 
+    def release_armserver_instance_with_options(
+        self,
+        request: ens_20171110_models.ReleaseARMServerInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ReleaseARMServerInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseARMServerInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ReleaseARMServerInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_armserver_instance_with_options_async(
+        self,
+        request: ens_20171110_models.ReleaseARMServerInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ReleaseARMServerInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseARMServerInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ReleaseARMServerInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_armserver_instance(
+        self,
+        request: ens_20171110_models.ReleaseARMServerInstanceRequest,
+    ) -> ens_20171110_models.ReleaseARMServerInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.release_armserver_instance_with_options(request, runtime)
+
+    async def release_armserver_instance_async(
+        self,
+        request: ens_20171110_models.ReleaseARMServerInstanceRequest,
+    ) -> ens_20171110_models.ReleaseARMServerInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.release_armserver_instance_with_options_async(request, runtime)
+
     def release_instance_with_options(
         self,
         request: ens_20171110_models.ReleaseInstanceRequest,
@@ -11514,6 +11694,84 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.RemoveVSwitchesFromEpnInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.remove_vswitches_from_epn_instance_with_options_async(request, runtime)
+
+    def renew_armserver_instance_with_options(
+        self,
+        request: ens_20171110_models.RenewARMServerInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RenewARMServerInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenewARMServerInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RenewARMServerInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def renew_armserver_instance_with_options_async(
+        self,
+        request: ens_20171110_models.RenewARMServerInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RenewARMServerInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenewARMServerInstance',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RenewARMServerInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def renew_armserver_instance(
+        self,
+        request: ens_20171110_models.RenewARMServerInstanceRequest,
+    ) -> ens_20171110_models.RenewARMServerInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.renew_armserver_instance_with_options(request, runtime)
+
+    async def renew_armserver_instance_async(
+        self,
+        request: ens_20171110_models.RenewARMServerInstanceRequest,
+    ) -> ens_20171110_models.RenewARMServerInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.renew_armserver_instance_with_options_async(request, runtime)
 
     def renew_instance_with_options(
         self,
