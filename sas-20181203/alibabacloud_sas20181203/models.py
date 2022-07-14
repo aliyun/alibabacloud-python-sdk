@@ -8445,10 +8445,12 @@ class DescribeCriteriaRequest(TeaModel):
 class DescribeCriteriaResponseBodyCriteriaList(TeaModel):
     def __init__(
         self,
+        multi_values: str = None,
         name: str = None,
         type: str = None,
         values: str = None,
     ):
+        self.multi_values = multi_values
         self.name = name
         self.type = type
         self.values = values
@@ -8462,6 +8464,8 @@ class DescribeCriteriaResponseBodyCriteriaList(TeaModel):
             return _map
 
         result = dict()
+        if self.multi_values is not None:
+            result['MultiValues'] = self.multi_values
         if self.name is not None:
             result['Name'] = self.name
         if self.type is not None:
@@ -8472,6 +8476,8 @@ class DescribeCriteriaResponseBodyCriteriaList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MultiValues') is not None:
+            self.multi_values = m.get('MultiValues')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Type') is not None:
@@ -15509,6 +15515,169 @@ class DescribeInstanceAntiBruteForceRulesResponse(TeaModel):
         return self
 
 
+class DescribeInstanceRebootStatusRequest(TeaModel):
+    def __init__(
+        self,
+        uuids: str = None,
+    ):
+        self.uuids = uuids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.uuids is not None:
+            result['Uuids'] = self.uuids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Uuids') is not None:
+            self.uuids = m.get('Uuids')
+        return self
+
+
+class DescribeInstanceRebootStatusResponseBodyRebootStatuses(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        msg: str = None,
+        reboot_status: int = None,
+        uuid: str = None,
+    ):
+        self.code = code
+        self.msg = msg
+        self.reboot_status = reboot_status
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.reboot_status is not None:
+            result['RebootStatus'] = self.reboot_status
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('RebootStatus') is not None:
+            self.reboot_status = m.get('RebootStatus')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class DescribeInstanceRebootStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        reboot_statuses: List[DescribeInstanceRebootStatusResponseBodyRebootStatuses] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.reboot_statuses = reboot_statuses
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.reboot_statuses:
+            for k in self.reboot_statuses:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RebootStatuses'] = []
+        if self.reboot_statuses is not None:
+            for k in self.reboot_statuses:
+                result['RebootStatuses'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.reboot_statuses = []
+        if m.get('RebootStatuses') is not None:
+            for k in m.get('RebootStatuses'):
+                temp_model = DescribeInstanceRebootStatusResponseBodyRebootStatuses()
+                self.reboot_statuses.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeInstanceRebootStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceRebootStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceRebootStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeInstanceStatisticsRequest(TeaModel):
     def __init__(
         self,
@@ -20565,7 +20734,7 @@ class DescribeRiskCheckItemResultRequest(TeaModel):
 class DescribeRiskCheckItemResultResponseBodyPageContentResource(TeaModel):
     def __init__(
         self,
-        content_resource: str = None,
+        content_resource: Dict[str, Any] = None,
         count: int = None,
         current_page: int = None,
         page_count: int = None,
@@ -38195,6 +38364,104 @@ class QueryGroupedSecurityEventMarkMissListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryGroupedSecurityEventMarkMissListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RebootMachineRequest(TeaModel):
+    def __init__(
+        self,
+        uuid: str = None,
+    ):
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class RebootMachineResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RebootMachineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RebootMachineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RebootMachineResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

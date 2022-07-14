@@ -24,62 +24,62 @@ class Client(OpenApiClient):
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'tds.aliyuncs.com',
-            'ap-southeast-3': 'tds.ap-southeast-3.aliyuncs.com',
-            'ap-northeast-1': 'tds.aliyuncs.com',
-            'ap-northeast-2-pop': 'tds.aliyuncs.com',
-            'ap-south-1': 'tds.aliyuncs.com',
             'ap-southeast-1': 'tds.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-2': 'tds.aliyuncs.com',
-            'ap-southeast-5': 'tds.aliyuncs.com',
-            'cn-beijing': 'tds.aliyuncs.com',
-            'cn-beijing-finance-1': 'tds.aliyuncs.com',
-            'cn-beijing-finance-pop': 'tds.aliyuncs.com',
-            'cn-beijing-gov-1': 'tds.aliyuncs.com',
-            'cn-beijing-nu16-b01': 'tds.aliyuncs.com',
-            'cn-chengdu': 'tds.aliyuncs.com',
-            'cn-edge-1': 'tds.aliyuncs.com',
-            'cn-fujian': 'tds.aliyuncs.com',
-            'cn-haidian-cm12-c01': 'tds.aliyuncs.com',
-            'cn-hangzhou-bj-b01': 'tds.aliyuncs.com',
-            'cn-hangzhou-finance': 'tds.aliyuncs.com',
-            'cn-hangzhou-internal-prod-1': 'tds.aliyuncs.com',
-            'cn-hangzhou-internal-test-1': 'tds.aliyuncs.com',
-            'cn-hangzhou-internal-test-2': 'tds.aliyuncs.com',
-            'cn-hangzhou-internal-test-3': 'tds.aliyuncs.com',
-            'cn-hangzhou-test-306': 'tds.aliyuncs.com',
-            'cn-hongkong': 'tds.aliyuncs.com',
-            'cn-hongkong-finance-pop': 'tds.aliyuncs.com',
-            'cn-huhehaote': 'tds.aliyuncs.com',
-            'cn-huhehaote-nebula-1': 'tds.aliyuncs.com',
-            'cn-north-2-gov-1': 'tds.aliyuncs.com',
-            'cn-qingdao': 'tds.aliyuncs.com',
-            'cn-qingdao-nebula': 'tds.aliyuncs.com',
-            'cn-shanghai': 'tds.aliyuncs.com',
-            'cn-shanghai-et15-b01': 'tds.aliyuncs.com',
-            'cn-shanghai-et2-b01': 'tds.aliyuncs.com',
-            'cn-shanghai-finance-1': 'tds.aliyuncs.com',
-            'cn-shanghai-inner': 'tds.aliyuncs.com',
-            'cn-shanghai-internal-test-1': 'tds.aliyuncs.com',
-            'cn-shenzhen': 'tds.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'tds.aliyuncs.com',
-            'cn-shenzhen-inner': 'tds.aliyuncs.com',
-            'cn-shenzhen-st4-d01': 'tds.aliyuncs.com',
-            'cn-shenzhen-su18-b01': 'tds.aliyuncs.com',
-            'cn-wuhan': 'tds.aliyuncs.com',
-            'cn-wulanchabu': 'tds.aliyuncs.com',
-            'cn-yushanfang': 'tds.aliyuncs.com',
-            'cn-zhangbei': 'tds.aliyuncs.com',
-            'cn-zhangbei-na61-b01': 'tds.aliyuncs.com',
-            'cn-zhangjiakou': 'tds.aliyuncs.com',
-            'cn-zhangjiakou-na62-a01': 'tds.aliyuncs.com',
-            'cn-zhengzhou-nebula-1': 'tds.aliyuncs.com',
-            'eu-central-1': 'tds.aliyuncs.com',
-            'eu-west-1': 'tds.aliyuncs.com',
-            'eu-west-1-oxs': 'tds.aliyuncs.com',
-            'me-east-1': 'tds.aliyuncs.com',
-            'rus-west-1-pop': 'tds.aliyuncs.com',
-            'us-east-1': 'tds.aliyuncs.com',
-            'us-west-1': 'tds.aliyuncs.com'
+            'ap-southeast-3': 'tds.ap-southeast-3.aliyuncs.com',
+            'ap-northeast-1': 'sas.aliyuncs.com',
+            'ap-northeast-2-pop': 'sas.aliyuncs.com',
+            'ap-south-1': 'sas.aliyuncs.com',
+            'ap-southeast-2': 'sas.aliyuncs.com',
+            'ap-southeast-5': 'sas.aliyuncs.com',
+            'cn-beijing': 'sas.aliyuncs.com',
+            'cn-beijing-finance-1': 'sas.aliyuncs.com',
+            'cn-beijing-finance-pop': 'sas.aliyuncs.com',
+            'cn-beijing-gov-1': 'sas.aliyuncs.com',
+            'cn-beijing-nu16-b01': 'sas.aliyuncs.com',
+            'cn-chengdu': 'sas.aliyuncs.com',
+            'cn-edge-1': 'sas.aliyuncs.com',
+            'cn-fujian': 'sas.aliyuncs.com',
+            'cn-haidian-cm12-c01': 'sas.aliyuncs.com',
+            'cn-hangzhou-bj-b01': 'sas.aliyuncs.com',
+            'cn-hangzhou-finance': 'sas.aliyuncs.com',
+            'cn-hangzhou-internal-prod-1': 'sas.aliyuncs.com',
+            'cn-hangzhou-internal-test-1': 'sas.aliyuncs.com',
+            'cn-hangzhou-internal-test-2': 'sas.aliyuncs.com',
+            'cn-hangzhou-internal-test-3': 'sas.aliyuncs.com',
+            'cn-hangzhou-test-306': 'sas.aliyuncs.com',
+            'cn-hongkong': 'sas.aliyuncs.com',
+            'cn-hongkong-finance-pop': 'sas.aliyuncs.com',
+            'cn-huhehaote': 'sas.aliyuncs.com',
+            'cn-huhehaote-nebula-1': 'sas.aliyuncs.com',
+            'cn-north-2-gov-1': 'sas.aliyuncs.com',
+            'cn-qingdao': 'sas.aliyuncs.com',
+            'cn-qingdao-nebula': 'sas.aliyuncs.com',
+            'cn-shanghai': 'sas.aliyuncs.com',
+            'cn-shanghai-et15-b01': 'sas.aliyuncs.com',
+            'cn-shanghai-et2-b01': 'sas.aliyuncs.com',
+            'cn-shanghai-finance-1': 'sas.aliyuncs.com',
+            'cn-shanghai-inner': 'sas.aliyuncs.com',
+            'cn-shanghai-internal-test-1': 'sas.aliyuncs.com',
+            'cn-shenzhen': 'sas.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'sas.aliyuncs.com',
+            'cn-shenzhen-inner': 'sas.aliyuncs.com',
+            'cn-shenzhen-st4-d01': 'sas.aliyuncs.com',
+            'cn-shenzhen-su18-b01': 'sas.aliyuncs.com',
+            'cn-wuhan': 'sas.aliyuncs.com',
+            'cn-wulanchabu': 'sas.aliyuncs.com',
+            'cn-yushanfang': 'sas.aliyuncs.com',
+            'cn-zhangbei': 'sas.aliyuncs.com',
+            'cn-zhangbei-na61-b01': 'sas.aliyuncs.com',
+            'cn-zhangjiakou': 'sas.aliyuncs.com',
+            'cn-zhangjiakou-na62-a01': 'sas.aliyuncs.com',
+            'cn-zhengzhou-nebula-1': 'sas.aliyuncs.com',
+            'eu-central-1': 'sas.aliyuncs.com',
+            'eu-west-1': 'sas.aliyuncs.com',
+            'eu-west-1-oxs': 'sas.aliyuncs.com',
+            'me-east-1': 'sas.aliyuncs.com',
+            'rus-west-1-pop': 'sas.aliyuncs.com',
+            'us-east-1': 'sas.aliyuncs.com',
+            'us-west-1': 'sas.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('sas', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -6301,6 +6301,76 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeInstanceAntiBruteForceRulesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_anti_brute_force_rules_with_options_async(request, runtime)
+
+    def describe_instance_reboot_status_with_options(
+        self,
+        request: sas_20181203_models.DescribeInstanceRebootStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeInstanceRebootStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.uuids):
+            query['Uuids'] = request.uuids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceRebootStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeInstanceRebootStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_reboot_status_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeInstanceRebootStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeInstanceRebootStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.uuids):
+            query['Uuids'] = request.uuids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceRebootStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeInstanceRebootStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_reboot_status(
+        self,
+        request: sas_20181203_models.DescribeInstanceRebootStatusRequest,
+    ) -> sas_20181203_models.DescribeInstanceRebootStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_reboot_status_with_options(request, runtime)
+
+    async def describe_instance_reboot_status_async(
+        self,
+        request: sas_20181203_models.DescribeInstanceRebootStatusRequest,
+    ) -> sas_20181203_models.DescribeInstanceRebootStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_reboot_status_with_options_async(request, runtime)
 
     def describe_instance_statistics_with_options(
         self,
@@ -15901,6 +15971,76 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.QueryGroupedSecurityEventMarkMissListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_grouped_security_event_mark_miss_list_with_options_async(request, runtime)
+
+    def reboot_machine_with_options(
+        self,
+        request: sas_20181203_models.RebootMachineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.RebootMachineResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebootMachine',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.RebootMachineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reboot_machine_with_options_async(
+        self,
+        request: sas_20181203_models.RebootMachineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.RebootMachineResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebootMachine',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.RebootMachineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reboot_machine(
+        self,
+        request: sas_20181203_models.RebootMachineRequest,
+    ) -> sas_20181203_models.RebootMachineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.reboot_machine_with_options(request, runtime)
+
+    async def reboot_machine_async(
+        self,
+        request: sas_20181203_models.RebootMachineRequest,
+    ) -> sas_20181203_models.RebootMachineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.reboot_machine_with_options_async(request, runtime)
 
     def refresh_assets_with_options(
         self,
