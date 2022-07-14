@@ -1,3 +1,6 @@
+2022-07-14 Version: 2.0.21
+- Add UpdateAutoSqlOptimizeStatus API.
+
 2022-07-13 Version: 2.0.20
 - Add UpdateAutoSqlOptimizeStatus API.
 
