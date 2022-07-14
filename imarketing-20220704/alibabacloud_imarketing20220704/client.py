@@ -171,6 +171,174 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_device_with_options_async(request, runtime)
 
+    def get_brand_page_with_options(
+        self,
+        request: imarketing_20220704_models.GetBrandPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetBrandPageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_no):
+            query['AccountNo'] = request.account_no
+        if not UtilClient.is_unset(request.main_id):
+            query['MainId'] = request.main_id
+        if not UtilClient.is_unset(request.main_name):
+            query['MainName'] = request.main_name
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBrandPage',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetBrandPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_brand_page_with_options_async(
+        self,
+        request: imarketing_20220704_models.GetBrandPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetBrandPageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_no):
+            query['AccountNo'] = request.account_no
+        if not UtilClient.is_unset(request.main_id):
+            query['MainId'] = request.main_id
+        if not UtilClient.is_unset(request.main_name):
+            query['MainName'] = request.main_name
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBrandPage',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetBrandPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_brand_page(
+        self,
+        request: imarketing_20220704_models.GetBrandPageRequest,
+    ) -> imarketing_20220704_models.GetBrandPageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_brand_page_with_options(request, runtime)
+
+    async def get_brand_page_async(
+        self,
+        request: imarketing_20220704_models.GetBrandPageRequest,
+    ) -> imarketing_20220704_models.GetBrandPageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_brand_page_with_options_async(request, runtime)
+
+    def get_main_part_page_with_options(
+        self,
+        request: imarketing_20220704_models.GetMainPartPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetMainPartPageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.main_id):
+            query['MainId'] = request.main_id
+        if not UtilClient.is_unset(request.main_name):
+            query['MainName'] = request.main_name
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMainPartPage',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetMainPartPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_main_part_page_with_options_async(
+        self,
+        request: imarketing_20220704_models.GetMainPartPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetMainPartPageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.main_id):
+            query['MainId'] = request.main_id
+        if not UtilClient.is_unset(request.main_name):
+            query['MainName'] = request.main_name
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMainPartPage',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetMainPartPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_main_part_page(
+        self,
+        request: imarketing_20220704_models.GetMainPartPageRequest,
+    ) -> imarketing_20220704_models.GetMainPartPageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_main_part_page_with_options(request, runtime)
+
+    async def get_main_part_page_async(
+        self,
+        request: imarketing_20220704_models.GetMainPartPageRequest,
+    ) -> imarketing_20220704_models.GetMainPartPageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_main_part_page_with_options_async(request, runtime)
+
     def get_user_finished_ad_with_options(
         self,
         request: imarketing_20220704_models.GetUserFinishedAdRequest,
@@ -247,6 +415,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.app):
             request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
+        if not UtilClient.is_unset(tmp_req.device):
+            request.device_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device), 'Device', 'json')
         if not UtilClient.is_unset(tmp_req.ext):
             request.ext_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext, 'Ext', 'json')
         if not UtilClient.is_unset(tmp_req.imp):
@@ -283,6 +453,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.app):
             request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
+        if not UtilClient.is_unset(tmp_req.device):
+            request.device_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device), 'Device', 'json')
         if not UtilClient.is_unset(tmp_req.ext):
             request.ext_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext, 'Ext', 'json')
         if not UtilClient.is_unset(tmp_req.imp):
@@ -322,3 +494,73 @@ class Client(OpenApiClient):
     ) -> imarketing_20220704_models.ListAdvertisingResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_advertising_with_options_async(request, runtime)
+
+    def send_sms_with_options(
+        self,
+        request: imarketing_20220704_models.SendSmsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.SendSmsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.phone_numbers):
+            query['PhoneNumbers'] = request.phone_numbers
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendSms',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.SendSmsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_sms_with_options_async(
+        self,
+        request: imarketing_20220704_models.SendSmsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.SendSmsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.phone_numbers):
+            query['PhoneNumbers'] = request.phone_numbers
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendSms',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.SendSmsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_sms(
+        self,
+        request: imarketing_20220704_models.SendSmsRequest,
+    ) -> imarketing_20220704_models.SendSmsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_sms_with_options(request, runtime)
+
+    async def send_sms_async(
+        self,
+        request: imarketing_20220704_models.SendSmsRequest,
+    ) -> imarketing_20220704_models.SendSmsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_sms_with_options_async(request, runtime)

@@ -311,6 +311,593 @@ class CreateDeviceResponse(TeaModel):
         return self
 
 
+class GetBrandPageRequest(TeaModel):
+    def __init__(
+        self,
+        account_no: str = None,
+        main_id: int = None,
+        main_name: str = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.account_no = account_no
+        self.main_id = main_id
+        self.main_name = main_name
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_no is not None:
+            result['AccountNo'] = self.account_no
+        if self.main_id is not None:
+            result['MainId'] = self.main_id
+        if self.main_name is not None:
+            result['MainName'] = self.main_name
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountNo') is not None:
+            self.account_no = m.get('AccountNo')
+        if m.get('MainId') is not None:
+            self.main_id = m.get('MainId')
+        if m.get('MainName') is not None:
+            self.main_name = m.get('MainName')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GetBrandPageResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        account_no: str = None,
+        account_type: str = None,
+        company: str = None,
+        main_id: int = None,
+        main_name: str = None,
+        parent_main_id: int = None,
+    ):
+        self.account_no = account_no
+        self.account_type = account_type
+        self.company = company
+        self.main_id = main_id
+        self.main_name = main_name
+        self.parent_main_id = parent_main_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_no is not None:
+            result['AccountNo'] = self.account_no
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
+        if self.company is not None:
+            result['Company'] = self.company
+        if self.main_id is not None:
+            result['MainId'] = self.main_id
+        if self.main_name is not None:
+            result['MainName'] = self.main_name
+        if self.parent_main_id is not None:
+            result['ParentMainId'] = self.parent_main_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountNo') is not None:
+            self.account_no = m.get('AccountNo')
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
+        if m.get('Company') is not None:
+            self.company = m.get('Company')
+        if m.get('MainId') is not None:
+            self.main_id = m.get('MainId')
+        if m.get('MainName') is not None:
+            self.main_name = m.get('MainName')
+        if m.get('ParentMainId') is not None:
+            self.parent_main_id = m.get('ParentMainId')
+        return self
+
+
+class GetBrandPageResponseBodyDataPageInfo(TeaModel):
+    def __init__(
+        self,
+        page: int = None,
+        page_size: int = None,
+        total_number: int = None,
+    ):
+        self.page = page
+        self.page_size = page_size
+        self.total_number = total_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_number is not None:
+            result['TotalNumber'] = self.total_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalNumber') is not None:
+            self.total_number = m.get('TotalNumber')
+        return self
+
+
+class GetBrandPageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[GetBrandPageResponseBodyDataList] = None,
+        page_info: GetBrandPageResponseBodyDataPageInfo = None,
+    ):
+        self.list = list
+        self.page_info = page_info
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = GetBrandPageResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageInfo') is not None:
+            temp_model = GetBrandPageResponseBodyDataPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        return self
+
+
+class GetBrandPageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetBrandPageResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetBrandPageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetBrandPageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetBrandPageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetBrandPageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMainPartPageRequest(TeaModel):
+    def __init__(
+        self,
+        main_id: int = None,
+        main_name: str = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.main_id = main_id
+        self.main_name = main_name
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.main_id is not None:
+            result['MainId'] = self.main_id
+        if self.main_name is not None:
+            result['MainName'] = self.main_name
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MainId') is not None:
+            self.main_id = m.get('MainId')
+        if m.get('MainName') is not None:
+            self.main_name = m.get('MainName')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GetMainPartPageResponseBodyDataListAccountTypeList(TeaModel):
+    def __init__(
+        self,
+        account_type: str = None,
+        account_type_desc: str = None,
+    ):
+        self.account_type = account_type
+        self.account_type_desc = account_type_desc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
+        if self.account_type_desc is not None:
+            result['AccountTypeDesc'] = self.account_type_desc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
+        if m.get('AccountTypeDesc') is not None:
+            self.account_type_desc = m.get('AccountTypeDesc')
+        return self
+
+
+class GetMainPartPageResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        account_type_list: List[GetMainPartPageResponseBodyDataListAccountTypeList] = None,
+        company: str = None,
+        main_id: int = None,
+        main_name: str = None,
+    ):
+        self.account_type_list = account_type_list
+        self.company = company
+        self.main_id = main_id
+        self.main_name = main_name
+
+    def validate(self):
+        if self.account_type_list:
+            for k in self.account_type_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AccountTypeList'] = []
+        if self.account_type_list is not None:
+            for k in self.account_type_list:
+                result['AccountTypeList'].append(k.to_map() if k else None)
+        if self.company is not None:
+            result['Company'] = self.company
+        if self.main_id is not None:
+            result['MainId'] = self.main_id
+        if self.main_name is not None:
+            result['MainName'] = self.main_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.account_type_list = []
+        if m.get('AccountTypeList') is not None:
+            for k in m.get('AccountTypeList'):
+                temp_model = GetMainPartPageResponseBodyDataListAccountTypeList()
+                self.account_type_list.append(temp_model.from_map(k))
+        if m.get('Company') is not None:
+            self.company = m.get('Company')
+        if m.get('MainId') is not None:
+            self.main_id = m.get('MainId')
+        if m.get('MainName') is not None:
+            self.main_name = m.get('MainName')
+        return self
+
+
+class GetMainPartPageResponseBodyDataPageInfo(TeaModel):
+    def __init__(
+        self,
+        page: int = None,
+        page_size: int = None,
+        total_number: int = None,
+    ):
+        self.page = page
+        self.page_size = page_size
+        self.total_number = total_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page is not None:
+            result['page'] = self.page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_number is not None:
+            result['totalNumber'] = self.total_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalNumber') is not None:
+            self.total_number = m.get('totalNumber')
+        return self
+
+
+class GetMainPartPageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[GetMainPartPageResponseBodyDataList] = None,
+        page_info: GetMainPartPageResponseBodyDataPageInfo = None,
+    ):
+        self.list = list
+        self.page_info = page_info
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = GetMainPartPageResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageInfo') is not None:
+            temp_model = GetMainPartPageResponseBodyDataPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        return self
+
+
+class GetMainPartPageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetMainPartPageResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetMainPartPageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetMainPartPageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMainPartPageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMainPartPageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUserFinishedAdRequest(TeaModel):
     def __init__(
         self,
@@ -626,6 +1213,206 @@ class ListAdvertisingRequestApp(TeaModel):
         return self
 
 
+class ListAdvertisingRequestDeviceGeo(TeaModel):
+    def __init__(
+        self,
+        city: str = None,
+        district: str = None,
+        lat: float = None,
+        lon: float = None,
+        province: str = None,
+    ):
+        self.city = city
+        self.district = district
+        self.lat = lat
+        self.lon = lon
+        self.province = province
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city is not None:
+            result['City'] = self.city
+        if self.district is not None:
+            result['District'] = self.district
+        if self.lat is not None:
+            result['Lat'] = self.lat
+        if self.lon is not None:
+            result['Lon'] = self.lon
+        if self.province is not None:
+            result['Province'] = self.province
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('District') is not None:
+            self.district = m.get('District')
+        if m.get('Lat') is not None:
+            self.lat = m.get('Lat')
+        if m.get('Lon') is not None:
+            self.lon = m.get('Lon')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        return self
+
+
+class ListAdvertisingRequestDevice(TeaModel):
+    def __init__(
+        self,
+        androidid: str = None,
+        androidmd_5: str = None,
+        caid: str = None,
+        carrier: str = None,
+        connectiontype: int = None,
+        devicetype: int = None,
+        geo: ListAdvertisingRequestDeviceGeo = None,
+        idfa: str = None,
+        imei: str = None,
+        imeimd_5: str = None,
+        ip: str = None,
+        language: str = None,
+        mac: str = None,
+        macmd_5: str = None,
+        make: str = None,
+        model: str = None,
+        oaid: str = None,
+        os: str = None,
+        osv: str = None,
+        ua: str = None,
+        utdid: str = None,
+    ):
+        self.androidid = androidid
+        self.androidmd_5 = androidmd_5
+        self.caid = caid
+        self.carrier = carrier
+        self.connectiontype = connectiontype
+        self.devicetype = devicetype
+        self.geo = geo
+        self.idfa = idfa
+        self.imei = imei
+        self.imeimd_5 = imeimd_5
+        self.ip = ip
+        self.language = language
+        self.mac = mac
+        self.macmd_5 = macmd_5
+        self.make = make
+        self.model = model
+        self.oaid = oaid
+        self.os = os
+        self.osv = osv
+        self.ua = ua
+        self.utdid = utdid
+
+    def validate(self):
+        if self.geo:
+            self.geo.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.androidid is not None:
+            result['Androidid'] = self.androidid
+        if self.androidmd_5 is not None:
+            result['Androidmd5'] = self.androidmd_5
+        if self.caid is not None:
+            result['Caid'] = self.caid
+        if self.carrier is not None:
+            result['Carrier'] = self.carrier
+        if self.connectiontype is not None:
+            result['Connectiontype'] = self.connectiontype
+        if self.devicetype is not None:
+            result['Devicetype'] = self.devicetype
+        if self.geo is not None:
+            result['Geo'] = self.geo.to_map()
+        if self.idfa is not None:
+            result['Idfa'] = self.idfa
+        if self.imei is not None:
+            result['Imei'] = self.imei
+        if self.imeimd_5 is not None:
+            result['Imeimd5'] = self.imeimd_5
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.mac is not None:
+            result['Mac'] = self.mac
+        if self.macmd_5 is not None:
+            result['Macmd5'] = self.macmd_5
+        if self.make is not None:
+            result['Make'] = self.make
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.oaid is not None:
+            result['Oaid'] = self.oaid
+        if self.os is not None:
+            result['Os'] = self.os
+        if self.osv is not None:
+            result['Osv'] = self.osv
+        if self.ua is not None:
+            result['Ua'] = self.ua
+        if self.utdid is not None:
+            result['Utdid'] = self.utdid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Androidid') is not None:
+            self.androidid = m.get('Androidid')
+        if m.get('Androidmd5') is not None:
+            self.androidmd_5 = m.get('Androidmd5')
+        if m.get('Caid') is not None:
+            self.caid = m.get('Caid')
+        if m.get('Carrier') is not None:
+            self.carrier = m.get('Carrier')
+        if m.get('Connectiontype') is not None:
+            self.connectiontype = m.get('Connectiontype')
+        if m.get('Devicetype') is not None:
+            self.devicetype = m.get('Devicetype')
+        if m.get('Geo') is not None:
+            temp_model = ListAdvertisingRequestDeviceGeo()
+            self.geo = temp_model.from_map(m['Geo'])
+        if m.get('Idfa') is not None:
+            self.idfa = m.get('Idfa')
+        if m.get('Imei') is not None:
+            self.imei = m.get('Imei')
+        if m.get('Imeimd5') is not None:
+            self.imeimd_5 = m.get('Imeimd5')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Mac') is not None:
+            self.mac = m.get('Mac')
+        if m.get('Macmd5') is not None:
+            self.macmd_5 = m.get('Macmd5')
+        if m.get('Make') is not None:
+            self.make = m.get('Make')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Oaid') is not None:
+            self.oaid = m.get('Oaid')
+        if m.get('Os') is not None:
+            self.os = m.get('Os')
+        if m.get('Osv') is not None:
+            self.osv = m.get('Osv')
+        if m.get('Ua') is not None:
+            self.ua = m.get('Ua')
+        if m.get('Utdid') is not None:
+            self.utdid = m.get('Utdid')
+        return self
+
+
 class ListAdvertisingRequestImp(TeaModel):
     def __init__(
         self,
@@ -701,6 +1488,7 @@ class ListAdvertisingRequest(TeaModel):
         self,
         app: ListAdvertisingRequestApp = None,
         dealtype: int = None,
+        device: ListAdvertisingRequestDevice = None,
         ext: Dict[str, Any] = None,
         id: str = None,
         imp: List[ListAdvertisingRequestImp] = None,
@@ -710,6 +1498,7 @@ class ListAdvertisingRequest(TeaModel):
         # app
         self.app = app
         self.dealtype = dealtype
+        self.device = device
         self.ext = ext
         # id
         self.id = id
@@ -723,6 +1512,8 @@ class ListAdvertisingRequest(TeaModel):
     def validate(self):
         if self.app:
             self.app.validate()
+        if self.device:
+            self.device.validate()
         if self.imp:
             for k in self.imp:
                 if k:
@@ -740,6 +1531,8 @@ class ListAdvertisingRequest(TeaModel):
             result['App'] = self.app.to_map()
         if self.dealtype is not None:
             result['Dealtype'] = self.dealtype
+        if self.device is not None:
+            result['Device'] = self.device.to_map()
         if self.ext is not None:
             result['Ext'] = self.ext
         if self.id is not None:
@@ -761,6 +1554,9 @@ class ListAdvertisingRequest(TeaModel):
             self.app = temp_model.from_map(m['App'])
         if m.get('Dealtype') is not None:
             self.dealtype = m.get('Dealtype')
+        if m.get('Device') is not None:
+            temp_model = ListAdvertisingRequestDevice()
+            self.device = temp_model.from_map(m['Device'])
         if m.get('Ext') is not None:
             self.ext = m.get('Ext')
         if m.get('Id') is not None:
@@ -783,6 +1579,7 @@ class ListAdvertisingShrinkRequest(TeaModel):
         self,
         app_shrink: str = None,
         dealtype: int = None,
+        device_shrink: str = None,
         ext_shrink: str = None,
         id: str = None,
         imp_shrink: str = None,
@@ -792,6 +1589,7 @@ class ListAdvertisingShrinkRequest(TeaModel):
         # app
         self.app_shrink = app_shrink
         self.dealtype = dealtype
+        self.device_shrink = device_shrink
         self.ext_shrink = ext_shrink
         # id
         self.id = id
@@ -815,6 +1613,8 @@ class ListAdvertisingShrinkRequest(TeaModel):
             result['App'] = self.app_shrink
         if self.dealtype is not None:
             result['Dealtype'] = self.dealtype
+        if self.device_shrink is not None:
+            result['Device'] = self.device_shrink
         if self.ext_shrink is not None:
             result['Ext'] = self.ext_shrink
         if self.id is not None:
@@ -833,6 +1633,8 @@ class ListAdvertisingShrinkRequest(TeaModel):
             self.app_shrink = m.get('App')
         if m.get('Dealtype') is not None:
             self.dealtype = m.get('Dealtype')
+        if m.get('Device') is not None:
+            self.device_shrink = m.get('Device')
         if m.get('Ext') is not None:
             self.ext_shrink = m.get('Ext')
         if m.get('Id') is not None:
@@ -1355,6 +2157,122 @@ class ListAdvertisingResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAdvertisingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SendSmsRequest(TeaModel):
+    def __init__(
+        self,
+        phone_numbers: str = None,
+    ):
+        self.phone_numbers = phone_numbers
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.phone_numbers is not None:
+            result['PhoneNumbers'] = self.phone_numbers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PhoneNumbers') is not None:
+            self.phone_numbers = m.get('PhoneNumbers')
+        return self
+
+
+class SendSmsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: bool = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SendSmsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SendSmsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SendSmsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
