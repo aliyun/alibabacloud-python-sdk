@@ -1,3 +1,6 @@
+2022-07-15 Version: 1.1.20
+- Add open file detect api.
+
 2022-07-14 Version: 1.1.19
 - Add open file detect api.
 

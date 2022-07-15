@@ -3331,6 +3331,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.check_id):
             query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.check_type):
+            query['CheckType'] = request.check_type
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.lang):
@@ -3371,6 +3373,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.check_id):
             query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.check_type):
+            query['CheckType'] = request.check_type
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.lang):
