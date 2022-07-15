@@ -505,6 +505,10 @@ class Client(OpenApiClient):
             body['ChannelType'] = request.channel_type
         if not UtilClient.is_unset(request.cust_waba_id):
             body['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.fall_back_content):
+            body['FallBackContent'] = request.fall_back_content
+        if not UtilClient.is_unset(request.fall_back_id):
+            body['FallBackId'] = request.fall_back_id
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
         if not UtilClient.is_unset(request.language):
@@ -561,6 +565,10 @@ class Client(OpenApiClient):
             body['ChannelType'] = request.channel_type
         if not UtilClient.is_unset(request.cust_waba_id):
             body['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.fall_back_content):
+            body['FallBackContent'] = request.fall_back_content
+        if not UtilClient.is_unset(request.fall_back_id):
+            body['FallBackId'] = request.fall_back_id
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
         if not UtilClient.is_unset(request.language):

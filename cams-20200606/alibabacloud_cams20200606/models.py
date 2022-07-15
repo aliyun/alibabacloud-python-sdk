@@ -1430,6 +1430,8 @@ class SendChatappMessageRequest(TeaModel):
         channel_type: str = None,
         content: str = None,
         cust_waba_id: str = None,
+        fall_back_content: str = None,
+        fall_back_id: str = None,
         from_: str = None,
         language: str = None,
         message_type: str = None,
@@ -1445,6 +1447,10 @@ class SendChatappMessageRequest(TeaModel):
         self.content = content
         # ISV客户wabaId
         self.cust_waba_id = cust_waba_id
+        # 回落消息内容
+        self.fall_back_content = fall_back_content
+        # 回落策略ID，可在控制台创建策略并查看
+        self.fall_back_id = fall_back_id
         # 发送方
         self.from_ = from_
         # 语言
@@ -1477,6 +1483,10 @@ class SendChatappMessageRequest(TeaModel):
             result['Content'] = self.content
         if self.cust_waba_id is not None:
             result['CustWabaId'] = self.cust_waba_id
+        if self.fall_back_content is not None:
+            result['FallBackContent'] = self.fall_back_content
+        if self.fall_back_id is not None:
+            result['FallBackId'] = self.fall_back_id
         if self.from_ is not None:
             result['From'] = self.from_
         if self.language is not None:
@@ -1503,6 +1513,10 @@ class SendChatappMessageRequest(TeaModel):
             self.content = m.get('Content')
         if m.get('CustWabaId') is not None:
             self.cust_waba_id = m.get('CustWabaId')
+        if m.get('FallBackContent') is not None:
+            self.fall_back_content = m.get('FallBackContent')
+        if m.get('FallBackId') is not None:
+            self.fall_back_id = m.get('FallBackId')
         if m.get('From') is not None:
             self.from_ = m.get('From')
         if m.get('Language') is not None:
@@ -1528,6 +1542,8 @@ class SendChatappMessageShrinkRequest(TeaModel):
         channel_type: str = None,
         content: str = None,
         cust_waba_id: str = None,
+        fall_back_content: str = None,
+        fall_back_id: str = None,
         from_: str = None,
         language: str = None,
         message_type: str = None,
@@ -1543,6 +1559,10 @@ class SendChatappMessageShrinkRequest(TeaModel):
         self.content = content
         # ISV客户wabaId
         self.cust_waba_id = cust_waba_id
+        # 回落消息内容
+        self.fall_back_content = fall_back_content
+        # 回落策略ID，可在控制台创建策略并查看
+        self.fall_back_id = fall_back_id
         # 发送方
         self.from_ = from_
         # 语言
@@ -1575,6 +1595,10 @@ class SendChatappMessageShrinkRequest(TeaModel):
             result['Content'] = self.content
         if self.cust_waba_id is not None:
             result['CustWabaId'] = self.cust_waba_id
+        if self.fall_back_content is not None:
+            result['FallBackContent'] = self.fall_back_content
+        if self.fall_back_id is not None:
+            result['FallBackId'] = self.fall_back_id
         if self.from_ is not None:
             result['From'] = self.from_
         if self.language is not None:
@@ -1601,6 +1625,10 @@ class SendChatappMessageShrinkRequest(TeaModel):
             self.content = m.get('Content')
         if m.get('CustWabaId') is not None:
             self.cust_waba_id = m.get('CustWabaId')
+        if m.get('FallBackContent') is not None:
+            self.fall_back_content = m.get('FallBackContent')
+        if m.get('FallBackId') is not None:
+            self.fall_back_id = m.get('FallBackId')
         if m.get('From') is not None:
             self.from_ = m.get('From')
         if m.get('Language') is not None:
