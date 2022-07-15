@@ -2600,6 +2600,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.service_name):
             query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -2648,6 +2650,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.service_name):
             query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -3231,7 +3235,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.service_support_ipv_6):
-            query['ServiceSupportIpv6'] = request.service_support_ipv_6
+            query['ServiceSupportIPv6'] = request.service_support_ipv_6
         if not UtilClient.is_unset(request.zone_affinity_enabled):
             query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
@@ -3277,7 +3281,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.service_support_ipv_6):
-            query['ServiceSupportIpv6'] = request.service_support_ipv_6
+            query['ServiceSupportIPv6'] = request.service_support_ipv_6
         if not UtilClient.is_unset(request.zone_affinity_enabled):
             query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
