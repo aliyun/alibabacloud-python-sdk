@@ -2944,6 +2944,117 @@ class AttachNetworkInterfaceResponse(TeaModel):
         return self
 
 
+class AuthorizeSecurityGroupRequestPermissions(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        dest_cidr_ip: str = None,
+        ip_protocol: str = None,
+        ipv_6dest_cidr_ip: str = None,
+        ipv_6source_cidr_ip: str = None,
+        nic_type: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: str = None,
+        source_cidr_ip: str = None,
+        source_group_id: str = None,
+        source_group_owner_account: str = None,
+        source_group_owner_id: int = None,
+        source_port_range: str = None,
+        source_prefix_list_id: str = None,
+    ):
+        self.description = description
+        self.dest_cidr_ip = dest_cidr_ip
+        self.ip_protocol = ip_protocol
+        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
+        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
+        self.nic_type = nic_type
+        self.policy = policy
+        self.port_range = port_range
+        self.priority = priority
+        self.source_cidr_ip = source_cidr_ip
+        self.source_group_id = source_group_id
+        self.source_group_owner_account = source_group_owner_account
+        self.source_group_owner_id = source_group_owner_id
+        self.source_port_range = source_port_range
+        self.source_prefix_list_id = source_prefix_list_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dest_cidr_ip is not None:
+            result['DestCidrIp'] = self.dest_cidr_ip
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.ipv_6dest_cidr_ip is not None:
+            result['Ipv6DestCidrIp'] = self.ipv_6dest_cidr_ip
+        if self.ipv_6source_cidr_ip is not None:
+            result['Ipv6SourceCidrIp'] = self.ipv_6source_cidr_ip
+        if self.nic_type is not None:
+            result['NicType'] = self.nic_type
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        if self.source_group_id is not None:
+            result['SourceGroupId'] = self.source_group_id
+        if self.source_group_owner_account is not None:
+            result['SourceGroupOwnerAccount'] = self.source_group_owner_account
+        if self.source_group_owner_id is not None:
+            result['SourceGroupOwnerId'] = self.source_group_owner_id
+        if self.source_port_range is not None:
+            result['SourcePortRange'] = self.source_port_range
+        if self.source_prefix_list_id is not None:
+            result['SourcePrefixListId'] = self.source_prefix_list_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestCidrIp') is not None:
+            self.dest_cidr_ip = m.get('DestCidrIp')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('Ipv6DestCidrIp') is not None:
+            self.ipv_6dest_cidr_ip = m.get('Ipv6DestCidrIp')
+        if m.get('Ipv6SourceCidrIp') is not None:
+            self.ipv_6source_cidr_ip = m.get('Ipv6SourceCidrIp')
+        if m.get('NicType') is not None:
+            self.nic_type = m.get('NicType')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        if m.get('SourceGroupId') is not None:
+            self.source_group_id = m.get('SourceGroupId')
+        if m.get('SourceGroupOwnerAccount') is not None:
+            self.source_group_owner_account = m.get('SourceGroupOwnerAccount')
+        if m.get('SourceGroupOwnerId') is not None:
+            self.source_group_owner_id = m.get('SourceGroupOwnerId')
+        if m.get('SourcePortRange') is not None:
+            self.source_port_range = m.get('SourcePortRange')
+        if m.get('SourcePrefixListId') is not None:
+            self.source_prefix_list_id = m.get('SourcePrefixListId')
+        return self
+
+
 class AuthorizeSecurityGroupRequest(TeaModel):
     def __init__(
         self,
@@ -2956,6 +3067,7 @@ class AuthorizeSecurityGroupRequest(TeaModel):
         nic_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        permissions: List[AuthorizeSecurityGroupRequestPermissions] = None,
         policy: str = None,
         port_range: str = None,
         priority: str = None,
@@ -2979,6 +3091,7 @@ class AuthorizeSecurityGroupRequest(TeaModel):
         self.nic_type = nic_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.permissions = permissions
         self.policy = policy
         self.port_range = port_range
         self.priority = priority
@@ -2994,7 +3107,10 @@ class AuthorizeSecurityGroupRequest(TeaModel):
         self.source_prefix_list_id = source_prefix_list_id
 
     def validate(self):
-        pass
+        if self.permissions:
+            for k in self.permissions:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3020,6 +3136,10 @@ class AuthorizeSecurityGroupRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        result['Permissions'] = []
+        if self.permissions is not None:
+            for k in self.permissions:
+                result['Permissions'].append(k.to_map() if k else None)
         if self.policy is not None:
             result['Policy'] = self.policy
         if self.port_range is not None:
@@ -3068,6 +3188,11 @@ class AuthorizeSecurityGroupRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        self.permissions = []
+        if m.get('Permissions') is not None:
+            for k in m.get('Permissions'):
+                temp_model = AuthorizeSecurityGroupRequestPermissions()
+                self.permissions.append(temp_model.from_map(k))
         if m.get('Policy') is not None:
             self.policy = m.get('Policy')
         if m.get('PortRange') is not None:
@@ -3168,6 +3293,117 @@ class AuthorizeSecurityGroupResponse(TeaModel):
         return self
 
 
+class AuthorizeSecurityGroupEgressRequestPermissions(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        dest_cidr_ip: str = None,
+        dest_group_id: str = None,
+        dest_group_owner_account: str = None,
+        dest_group_owner_id: int = None,
+        dest_prefix_list_id: str = None,
+        ip_protocol: str = None,
+        ipv_6dest_cidr_ip: str = None,
+        ipv_6source_cidr_ip: str = None,
+        nic_type: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: str = None,
+        source_cidr_ip: str = None,
+        source_port_range: str = None,
+    ):
+        self.description = description
+        self.dest_cidr_ip = dest_cidr_ip
+        self.dest_group_id = dest_group_id
+        self.dest_group_owner_account = dest_group_owner_account
+        self.dest_group_owner_id = dest_group_owner_id
+        self.dest_prefix_list_id = dest_prefix_list_id
+        self.ip_protocol = ip_protocol
+        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
+        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
+        self.nic_type = nic_type
+        self.policy = policy
+        self.port_range = port_range
+        self.priority = priority
+        self.source_cidr_ip = source_cidr_ip
+        self.source_port_range = source_port_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dest_cidr_ip is not None:
+            result['DestCidrIp'] = self.dest_cidr_ip
+        if self.dest_group_id is not None:
+            result['DestGroupId'] = self.dest_group_id
+        if self.dest_group_owner_account is not None:
+            result['DestGroupOwnerAccount'] = self.dest_group_owner_account
+        if self.dest_group_owner_id is not None:
+            result['DestGroupOwnerId'] = self.dest_group_owner_id
+        if self.dest_prefix_list_id is not None:
+            result['DestPrefixListId'] = self.dest_prefix_list_id
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.ipv_6dest_cidr_ip is not None:
+            result['Ipv6DestCidrIp'] = self.ipv_6dest_cidr_ip
+        if self.ipv_6source_cidr_ip is not None:
+            result['Ipv6SourceCidrIp'] = self.ipv_6source_cidr_ip
+        if self.nic_type is not None:
+            result['NicType'] = self.nic_type
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        if self.source_port_range is not None:
+            result['SourcePortRange'] = self.source_port_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestCidrIp') is not None:
+            self.dest_cidr_ip = m.get('DestCidrIp')
+        if m.get('DestGroupId') is not None:
+            self.dest_group_id = m.get('DestGroupId')
+        if m.get('DestGroupOwnerAccount') is not None:
+            self.dest_group_owner_account = m.get('DestGroupOwnerAccount')
+        if m.get('DestGroupOwnerId') is not None:
+            self.dest_group_owner_id = m.get('DestGroupOwnerId')
+        if m.get('DestPrefixListId') is not None:
+            self.dest_prefix_list_id = m.get('DestPrefixListId')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('Ipv6DestCidrIp') is not None:
+            self.ipv_6dest_cidr_ip = m.get('Ipv6DestCidrIp')
+        if m.get('Ipv6SourceCidrIp') is not None:
+            self.ipv_6source_cidr_ip = m.get('Ipv6SourceCidrIp')
+        if m.get('NicType') is not None:
+            self.nic_type = m.get('NicType')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        if m.get('SourcePortRange') is not None:
+            self.source_port_range = m.get('SourcePortRange')
+        return self
+
+
 class AuthorizeSecurityGroupEgressRequest(TeaModel):
     def __init__(
         self,
@@ -3184,6 +3420,7 @@ class AuthorizeSecurityGroupEgressRequest(TeaModel):
         nic_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        permissions: List[AuthorizeSecurityGroupEgressRequestPermissions] = None,
         policy: str = None,
         port_range: str = None,
         priority: str = None,
@@ -3207,6 +3444,7 @@ class AuthorizeSecurityGroupEgressRequest(TeaModel):
         self.nic_type = nic_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.permissions = permissions
         self.policy = policy
         self.port_range = port_range
         self.priority = priority
@@ -3218,7 +3456,10 @@ class AuthorizeSecurityGroupEgressRequest(TeaModel):
         self.source_port_range = source_port_range
 
     def validate(self):
-        pass
+        if self.permissions:
+            for k in self.permissions:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3252,6 +3493,10 @@ class AuthorizeSecurityGroupEgressRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        result['Permissions'] = []
+        if self.permissions is not None:
+            for k in self.permissions:
+                result['Permissions'].append(k.to_map() if k else None)
         if self.policy is not None:
             result['Policy'] = self.policy
         if self.port_range is not None:
@@ -3300,6 +3545,11 @@ class AuthorizeSecurityGroupEgressRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        self.permissions = []
+        if m.get('Permissions') is not None:
+            for k in m.get('Permissions'):
+                temp_model = AuthorizeSecurityGroupEgressRequestPermissions()
+                self.permissions.append(temp_model.from_map(k))
         if m.get('Policy') is not None:
             self.policy = m.get('Policy')
         if m.get('PortRange') is not None:
@@ -82393,6 +82643,117 @@ class ResizeDiskResponse(TeaModel):
         return self
 
 
+class RevokeSecurityGroupRequestPermissions(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        dest_cidr_ip: str = None,
+        ip_protocol: str = None,
+        ipv_6dest_cidr_ip: str = None,
+        ipv_6source_cidr_ip: str = None,
+        nic_type: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: str = None,
+        source_cidr_ip: str = None,
+        source_group_id: str = None,
+        source_group_owner_account: str = None,
+        source_group_owner_id: int = None,
+        source_port_range: str = None,
+        source_prefix_list_id: str = None,
+    ):
+        self.description = description
+        self.dest_cidr_ip = dest_cidr_ip
+        self.ip_protocol = ip_protocol
+        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
+        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
+        self.nic_type = nic_type
+        self.policy = policy
+        self.port_range = port_range
+        self.priority = priority
+        self.source_cidr_ip = source_cidr_ip
+        self.source_group_id = source_group_id
+        self.source_group_owner_account = source_group_owner_account
+        self.source_group_owner_id = source_group_owner_id
+        self.source_port_range = source_port_range
+        self.source_prefix_list_id = source_prefix_list_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dest_cidr_ip is not None:
+            result['DestCidrIp'] = self.dest_cidr_ip
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.ipv_6dest_cidr_ip is not None:
+            result['Ipv6DestCidrIp'] = self.ipv_6dest_cidr_ip
+        if self.ipv_6source_cidr_ip is not None:
+            result['Ipv6SourceCidrIp'] = self.ipv_6source_cidr_ip
+        if self.nic_type is not None:
+            result['NicType'] = self.nic_type
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        if self.source_group_id is not None:
+            result['SourceGroupId'] = self.source_group_id
+        if self.source_group_owner_account is not None:
+            result['SourceGroupOwnerAccount'] = self.source_group_owner_account
+        if self.source_group_owner_id is not None:
+            result['SourceGroupOwnerId'] = self.source_group_owner_id
+        if self.source_port_range is not None:
+            result['SourcePortRange'] = self.source_port_range
+        if self.source_prefix_list_id is not None:
+            result['SourcePrefixListId'] = self.source_prefix_list_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestCidrIp') is not None:
+            self.dest_cidr_ip = m.get('DestCidrIp')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('Ipv6DestCidrIp') is not None:
+            self.ipv_6dest_cidr_ip = m.get('Ipv6DestCidrIp')
+        if m.get('Ipv6SourceCidrIp') is not None:
+            self.ipv_6source_cidr_ip = m.get('Ipv6SourceCidrIp')
+        if m.get('NicType') is not None:
+            self.nic_type = m.get('NicType')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        if m.get('SourceGroupId') is not None:
+            self.source_group_id = m.get('SourceGroupId')
+        if m.get('SourceGroupOwnerAccount') is not None:
+            self.source_group_owner_account = m.get('SourceGroupOwnerAccount')
+        if m.get('SourceGroupOwnerId') is not None:
+            self.source_group_owner_id = m.get('SourceGroupOwnerId')
+        if m.get('SourcePortRange') is not None:
+            self.source_port_range = m.get('SourcePortRange')
+        if m.get('SourcePrefixListId') is not None:
+            self.source_prefix_list_id = m.get('SourcePrefixListId')
+        return self
+
+
 class RevokeSecurityGroupRequest(TeaModel):
     def __init__(
         self,
@@ -82405,6 +82766,7 @@ class RevokeSecurityGroupRequest(TeaModel):
         nic_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        permissions: List[RevokeSecurityGroupRequestPermissions] = None,
         policy: str = None,
         port_range: str = None,
         priority: str = None,
@@ -82428,6 +82790,7 @@ class RevokeSecurityGroupRequest(TeaModel):
         self.nic_type = nic_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.permissions = permissions
         self.policy = policy
         self.port_range = port_range
         self.priority = priority
@@ -82443,7 +82806,10 @@ class RevokeSecurityGroupRequest(TeaModel):
         self.source_prefix_list_id = source_prefix_list_id
 
     def validate(self):
-        pass
+        if self.permissions:
+            for k in self.permissions:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -82469,6 +82835,10 @@ class RevokeSecurityGroupRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        result['Permissions'] = []
+        if self.permissions is not None:
+            for k in self.permissions:
+                result['Permissions'].append(k.to_map() if k else None)
         if self.policy is not None:
             result['Policy'] = self.policy
         if self.port_range is not None:
@@ -82517,6 +82887,11 @@ class RevokeSecurityGroupRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        self.permissions = []
+        if m.get('Permissions') is not None:
+            for k in m.get('Permissions'):
+                temp_model = RevokeSecurityGroupRequestPermissions()
+                self.permissions.append(temp_model.from_map(k))
         if m.get('Policy') is not None:
             self.policy = m.get('Policy')
         if m.get('PortRange') is not None:
@@ -82617,6 +82992,117 @@ class RevokeSecurityGroupResponse(TeaModel):
         return self
 
 
+class RevokeSecurityGroupEgressRequestPermissions(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        dest_cidr_ip: str = None,
+        dest_group_id: str = None,
+        dest_group_owner_account: str = None,
+        dest_group_owner_id: str = None,
+        dest_prefix_list_id: str = None,
+        ip_protocol: str = None,
+        ipv_6dest_cidr_ip: str = None,
+        ipv_6source_cidr_ip: str = None,
+        nic_type: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: str = None,
+        source_cidr_ip: str = None,
+        source_port_range: str = None,
+    ):
+        self.description = description
+        self.dest_cidr_ip = dest_cidr_ip
+        self.dest_group_id = dest_group_id
+        self.dest_group_owner_account = dest_group_owner_account
+        self.dest_group_owner_id = dest_group_owner_id
+        self.dest_prefix_list_id = dest_prefix_list_id
+        self.ip_protocol = ip_protocol
+        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
+        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
+        self.nic_type = nic_type
+        self.policy = policy
+        self.port_range = port_range
+        self.priority = priority
+        self.source_cidr_ip = source_cidr_ip
+        self.source_port_range = source_port_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dest_cidr_ip is not None:
+            result['DestCidrIp'] = self.dest_cidr_ip
+        if self.dest_group_id is not None:
+            result['DestGroupId'] = self.dest_group_id
+        if self.dest_group_owner_account is not None:
+            result['DestGroupOwnerAccount'] = self.dest_group_owner_account
+        if self.dest_group_owner_id is not None:
+            result['DestGroupOwnerId'] = self.dest_group_owner_id
+        if self.dest_prefix_list_id is not None:
+            result['DestPrefixListId'] = self.dest_prefix_list_id
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.ipv_6dest_cidr_ip is not None:
+            result['Ipv6DestCidrIp'] = self.ipv_6dest_cidr_ip
+        if self.ipv_6source_cidr_ip is not None:
+            result['Ipv6SourceCidrIp'] = self.ipv_6source_cidr_ip
+        if self.nic_type is not None:
+            result['NicType'] = self.nic_type
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        if self.source_port_range is not None:
+            result['SourcePortRange'] = self.source_port_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestCidrIp') is not None:
+            self.dest_cidr_ip = m.get('DestCidrIp')
+        if m.get('DestGroupId') is not None:
+            self.dest_group_id = m.get('DestGroupId')
+        if m.get('DestGroupOwnerAccount') is not None:
+            self.dest_group_owner_account = m.get('DestGroupOwnerAccount')
+        if m.get('DestGroupOwnerId') is not None:
+            self.dest_group_owner_id = m.get('DestGroupOwnerId')
+        if m.get('DestPrefixListId') is not None:
+            self.dest_prefix_list_id = m.get('DestPrefixListId')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('Ipv6DestCidrIp') is not None:
+            self.ipv_6dest_cidr_ip = m.get('Ipv6DestCidrIp')
+        if m.get('Ipv6SourceCidrIp') is not None:
+            self.ipv_6source_cidr_ip = m.get('Ipv6SourceCidrIp')
+        if m.get('NicType') is not None:
+            self.nic_type = m.get('NicType')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        if m.get('SourcePortRange') is not None:
+            self.source_port_range = m.get('SourcePortRange')
+        return self
+
+
 class RevokeSecurityGroupEgressRequest(TeaModel):
     def __init__(
         self,
@@ -82633,6 +83119,7 @@ class RevokeSecurityGroupEgressRequest(TeaModel):
         nic_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        permissions: List[RevokeSecurityGroupEgressRequestPermissions] = None,
         policy: str = None,
         port_range: str = None,
         priority: str = None,
@@ -82656,6 +83143,7 @@ class RevokeSecurityGroupEgressRequest(TeaModel):
         self.nic_type = nic_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.permissions = permissions
         self.policy = policy
         self.port_range = port_range
         self.priority = priority
@@ -82667,7 +83155,10 @@ class RevokeSecurityGroupEgressRequest(TeaModel):
         self.source_port_range = source_port_range
 
     def validate(self):
-        pass
+        if self.permissions:
+            for k in self.permissions:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -82701,6 +83192,10 @@ class RevokeSecurityGroupEgressRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        result['Permissions'] = []
+        if self.permissions is not None:
+            for k in self.permissions:
+                result['Permissions'].append(k.to_map() if k else None)
         if self.policy is not None:
             result['Policy'] = self.policy
         if self.port_range is not None:
@@ -82749,6 +83244,11 @@ class RevokeSecurityGroupEgressRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        self.permissions = []
+        if m.get('Permissions') is not None:
+            for k in m.get('Permissions'):
+                temp_model = RevokeSecurityGroupEgressRequestPermissions()
+                self.permissions.append(temp_model.from_map(k))
         if m.get('Policy') is not None:
             self.policy = m.get('Policy')
         if m.get('PortRange') is not None:

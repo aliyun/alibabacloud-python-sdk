@@ -1,3 +1,6 @@
+2022-07-15 Version: 2.1.3
+- Support Security Group Batch Manager Rules.
+
 2022-07-11 Version: 2.1.2
 - Support Storage And Network Features For LaunchTemplate.
 
