@@ -1673,13 +1673,19 @@ class CreateAppRequestTag(TeaModel):
 class CreateAppRequest(TeaModel):
     def __init__(
         self,
+        app_code: str = None,
+        app_key: str = None,
         app_name: str = None,
+        app_secret: str = None,
         description: str = None,
         security_token: str = None,
         source: str = None,
         tag: List[CreateAppRequestTag] = None,
     ):
+        self.app_code = app_code
+        self.app_key = app_key
         self.app_name = app_name
+        self.app_secret = app_secret
         self.description = description
         self.security_token = security_token
         self.source = source
@@ -1697,8 +1703,14 @@ class CreateAppRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_code is not None:
+            result['AppCode'] = self.app_code
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.app_secret is not None:
+            result['AppSecret'] = self.app_secret
         if self.description is not None:
             result['Description'] = self.description
         if self.security_token is not None:
@@ -1713,8 +1725,14 @@ class CreateAppRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppCode') is not None:
+            self.app_code = m.get('AppCode')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('AppSecret') is not None:
+            self.app_secret = m.get('AppSecret')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('SecurityToken') is not None:
@@ -8819,6 +8837,7 @@ class DescribeApiGroupResponseBodyCustomDomainsDomainItem(TeaModel):
         domain_name: str = None,
         domain_remark: str = None,
         domain_web_socket_status: str = None,
+        is_http_redirect_to_https: bool = None,
         wildcard_domain_patterns: str = None,
     ):
         self.bind_stage_name = bind_stage_name
@@ -8831,6 +8850,7 @@ class DescribeApiGroupResponseBodyCustomDomainsDomainItem(TeaModel):
         self.domain_name = domain_name
         self.domain_remark = domain_remark
         self.domain_web_socket_status = domain_web_socket_status
+        self.is_http_redirect_to_https = is_http_redirect_to_https
         self.wildcard_domain_patterns = wildcard_domain_patterns
 
     def validate(self):
@@ -8862,6 +8882,8 @@ class DescribeApiGroupResponseBodyCustomDomainsDomainItem(TeaModel):
             result['DomainRemark'] = self.domain_remark
         if self.domain_web_socket_status is not None:
             result['DomainWebSocketStatus'] = self.domain_web_socket_status
+        if self.is_http_redirect_to_https is not None:
+            result['IsHttpRedirectToHttps'] = self.is_http_redirect_to_https
         if self.wildcard_domain_patterns is not None:
             result['WildcardDomainPatterns'] = self.wildcard_domain_patterns
         return result
@@ -8888,6 +8910,8 @@ class DescribeApiGroupResponseBodyCustomDomainsDomainItem(TeaModel):
             self.domain_remark = m.get('DomainRemark')
         if m.get('DomainWebSocketStatus') is not None:
             self.domain_web_socket_status = m.get('DomainWebSocketStatus')
+        if m.get('IsHttpRedirectToHttps') is not None:
+            self.is_http_redirect_to_https = m.get('IsHttpRedirectToHttps')
         if m.get('WildcardDomainPatterns') is not None:
             self.wildcard_domain_patterns = m.get('WildcardDomainPatterns')
         return self
@@ -28341,11 +28365,13 @@ class ModifyInstanceSpecRequest(TeaModel):
         auto_pay: bool = None,
         instance_id: str = None,
         instance_spec: str = None,
+        modify_action: str = None,
         token: str = None,
     ):
         self.auto_pay = auto_pay
         self.instance_id = instance_id
         self.instance_spec = instance_spec
+        self.modify_action = modify_action
         self.token = token
 
     def validate(self):
@@ -28363,6 +28389,8 @@ class ModifyInstanceSpecRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_spec is not None:
             result['InstanceSpec'] = self.instance_spec
+        if self.modify_action is not None:
+            result['ModifyAction'] = self.modify_action
         if self.token is not None:
             result['Token'] = self.token
         return result
@@ -28375,6 +28403,8 @@ class ModifyInstanceSpecRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceSpec') is not None:
             self.instance_spec = m.get('InstanceSpec')
+        if m.get('ModifyAction') is not None:
+            self.modify_action = m.get('ModifyAction')
         if m.get('Token') is not None:
             self.token = m.get('Token')
         return self
@@ -30729,9 +30759,11 @@ class ResetAppCodeRequest(TeaModel):
     def __init__(
         self,
         app_code: str = None,
+        new_app_code: str = None,
         security_token: str = None,
     ):
         self.app_code = app_code
+        self.new_app_code = new_app_code
         self.security_token = security_token
 
     def validate(self):
@@ -30745,6 +30777,8 @@ class ResetAppCodeRequest(TeaModel):
         result = dict()
         if self.app_code is not None:
             result['AppCode'] = self.app_code
+        if self.new_app_code is not None:
+            result['NewAppCode'] = self.new_app_code
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         return result
@@ -30753,6 +30787,8 @@ class ResetAppCodeRequest(TeaModel):
         m = m or dict()
         if m.get('AppCode') is not None:
             self.app_code = m.get('AppCode')
+        if m.get('NewAppCode') is not None:
+            self.new_app_code = m.get('NewAppCode')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         return self
@@ -30833,9 +30869,11 @@ class ResetAppSecretRequest(TeaModel):
     def __init__(
         self,
         app_key: str = None,
+        new_app_secret: str = None,
         security_token: str = None,
     ):
         self.app_key = app_key
+        self.new_app_secret = new_app_secret
         self.security_token = security_token
 
     def validate(self):
@@ -30849,6 +30887,8 @@ class ResetAppSecretRequest(TeaModel):
         result = dict()
         if self.app_key is not None:
             result['AppKey'] = self.app_key
+        if self.new_app_secret is not None:
+            result['NewAppSecret'] = self.new_app_secret
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         return result
@@ -30857,6 +30897,8 @@ class ResetAppSecretRequest(TeaModel):
         m = m or dict()
         if m.get('AppKey') is not None:
             self.app_key = m.get('AppKey')
+        if m.get('NewAppSecret') is not None:
+            self.new_app_secret = m.get('NewAppSecret')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         return self
@@ -31277,6 +31319,116 @@ class SdkGenerateByGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SdkGenerateByGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetAccessControlListAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        acl_id: str = None,
+        acl_name: str = None,
+        security_token: str = None,
+    ):
+        self.acl_id = acl_id
+        self.acl_name = acl_name
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        if self.acl_name is not None:
+            result['AclName'] = self.acl_name
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
+        if m.get('AclName') is not None:
+            self.acl_name = m.get('AclName')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class SetAccessControlListAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetAccessControlListAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetAccessControlListAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetAccessControlListAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
