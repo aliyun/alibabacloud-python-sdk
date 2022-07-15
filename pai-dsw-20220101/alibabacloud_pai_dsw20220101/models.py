@@ -1328,6 +1328,7 @@ class GetInstanceResponseBody(TeaModel):
         request_id: str = None,
         requested_resource: GetInstanceResponseBodyRequestedResource = None,
         resource_id: str = None,
+        resource_name: str = None,
         status: str = None,
         success: bool = None,
         terminal_url: str = None,
@@ -1392,6 +1393,7 @@ class GetInstanceResponseBody(TeaModel):
         self.requested_resource = requested_resource
         # 资源Id,预付费时填写
         self.resource_id = resource_id
+        self.resource_name = resource_name
         # 实例状态
         self.status = status
         # 成功标志
@@ -1487,6 +1489,8 @@ class GetInstanceResponseBody(TeaModel):
             result['RequestedResource'] = self.requested_resource.to_map()
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
         if self.status is not None:
             result['Status'] = self.status
         if self.success is not None:
@@ -1569,6 +1573,8 @@ class GetInstanceResponseBody(TeaModel):
             self.requested_resource = temp_model.from_map(m['RequestedResource'])
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Success') is not None:
@@ -3009,6 +3015,7 @@ class ListInstancesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         payment_type: str = None,
+        resource_id: str = None,
         sort_by: str = None,
         status: str = None,
         workspace_id: str = None,
@@ -3024,6 +3031,7 @@ class ListInstancesRequest(TeaModel):
         # 分页数量大小
         self.page_size = page_size
         self.payment_type = payment_type
+        self.resource_id = resource_id
         # 排序字段
         self.sort_by = sort_by
         # 实例状态
@@ -3054,6 +3062,8 @@ class ListInstancesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.status is not None:
@@ -3078,6 +3088,8 @@ class ListInstancesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('Status') is not None:
@@ -3365,6 +3377,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         reason_message: str = None,
         requested_resource: ListInstancesResponseBodyInstancesRequestedResource = None,
         resource_id: str = None,
+        resource_name: str = None,
         status: str = None,
         terminal_url: str = None,
         user_id: str = None,
@@ -3420,6 +3433,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.requested_resource = requested_resource
         # 资源Id,预付费时填写
         self.resource_id = resource_id
+        self.resource_name = resource_name
         # 实例状态
         self.status = status
         # 终端url
@@ -3505,6 +3519,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['RequestedResource'] = self.requested_resource.to_map()
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
         if self.status is not None:
             result['Status'] = self.status
         if self.terminal_url is not None:
@@ -3577,6 +3593,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.requested_resource = temp_model.from_map(m['RequestedResource'])
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TerminalUrl') is not None:

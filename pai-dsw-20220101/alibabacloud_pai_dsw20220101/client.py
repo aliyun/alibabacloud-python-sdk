@@ -1261,6 +1261,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.payment_type):
             query['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.status):
@@ -1309,6 +1311,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.payment_type):
             query['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.status):
