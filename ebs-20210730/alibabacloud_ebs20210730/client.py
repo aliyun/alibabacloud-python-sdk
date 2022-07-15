@@ -1188,10 +1188,6 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.replica_group_id):
             query['ReplicaGroupId'] = request.replica_group_id
-        if not UtilClient.is_unset(request.source_region_id):
-            query['SourceRegionId'] = request.source_region_id
-        if not UtilClient.is_unset(request.source_zone_id):
-            query['SourceZoneId'] = request.source_zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1224,10 +1220,6 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.replica_group_id):
             query['ReplicaGroupId'] = request.replica_group_id
-        if not UtilClient.is_unset(request.source_region_id):
-            query['SourceRegionId'] = request.source_region_id
-        if not UtilClient.is_unset(request.source_zone_id):
-            query['SourceZoneId'] = request.source_zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
