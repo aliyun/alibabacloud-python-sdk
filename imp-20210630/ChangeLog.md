@@ -1,3 +1,6 @@
+2022-07-15 Version: 2.9.7
+- Add xxTime for ListLiveRoomsById API.
+
 2022-07-13 Version: 2.9.6
 - Add CreatorId Query For ListComments API.
 - Add DeleteCommentByCreatorId API.

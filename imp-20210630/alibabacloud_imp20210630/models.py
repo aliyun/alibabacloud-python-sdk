@@ -4,271 +4,6 @@ from Tea.model import TeaModel
 from typing import Dict, Any, List
 
 
-class AppsDomain(TeaModel):
-    def __init__(
-        self,
-        domain: str = None,
-    ):
-        # 域名
-        self.domain = domain
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain is not None:
-            result['Domain'] = self.domain
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Domain') is not None:
-            self.domain = m.get('Domain')
-        return self
-
-
-class AppsSecurity(TeaModel):
-    def __init__(
-        self,
-        play_url_ttl: int = None,
-    ):
-        self.play_url_ttl = play_url_ttl
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.play_url_ttl is not None:
-            result['PlayUrlTtl'] = self.play_url_ttl
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PlayUrlTtl') is not None:
-            self.play_url_ttl = m.get('PlayUrlTtl')
-        return self
-
-
-class AppsTranscoding(TeaModel):
-    def __init__(
-        self,
-        flow_id: str = None,
-        type: str = None,
-    ):
-        self.flow_id = flow_id
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.flow_id is not None:
-            result['FlowId'] = self.flow_id
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FlowId') is not None:
-            self.flow_id = m.get('FlowId')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class AppsInteractiveVideoSettings(TeaModel):
-    def __init__(
-        self,
-        domain: AppsDomain = None,
-        severity: AppsSecurity = None,
-        transcoding: AppsTranscoding = None,
-        type: str = None,
-    ):
-        self.domain = domain
-        self.severity = severity
-        self.transcoding = transcoding
-        self.type = type
-
-    def validate(self):
-        if self.domain:
-            self.domain.validate()
-        if self.severity:
-            self.severity.validate()
-        if self.transcoding:
-            self.transcoding.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain is not None:
-            result['Domain'] = self.domain.to_map()
-        if self.severity is not None:
-            result['Severity'] = self.severity.to_map()
-        if self.transcoding is not None:
-            result['Transcoding'] = self.transcoding.to_map()
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Domain') is not None:
-            temp_model = AppsDomain()
-            self.domain = temp_model.from_map(m['Domain'])
-        if m.get('Severity') is not None:
-            temp_model = AppsSecurity()
-            self.severity = temp_model.from_map(m['Severity'])
-        if m.get('Transcoding') is not None:
-            temp_model = AppsTranscoding()
-            self.transcoding = temp_model.from_map(m['Transcoding'])
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class CommonCustomer(TeaModel):
-    def __init__(
-        self,
-        cloud_uid: str = None,
-    ):
-        # 云帐号Id
-        self.cloud_uid = cloud_uid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cloud_uid is not None:
-            result['CloudUid'] = self.cloud_uid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CloudUid') is not None:
-            self.cloud_uid = m.get('CloudUid')
-        return self
-
-
-class AppsSettings(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        cloud_uid: str = None,
-        customer: CommonCustomer = None,
-        interactive_video_settings: AppsInteractiveVideoSettings = None,
-    ):
-        # AppId
-        self.app_id = app_id
-        # 云帐号Id
-        self.cloud_uid = cloud_uid
-        # 客户非敏感信息
-        self.customer = customer
-        # 互动视频配置
-        self.interactive_video_settings = interactive_video_settings
-
-    def validate(self):
-        if self.customer:
-            self.customer.validate()
-        if self.interactive_video_settings:
-            self.interactive_video_settings.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.cloud_uid is not None:
-            result['CloudUid'] = self.cloud_uid
-        if self.customer is not None:
-            result['Customer'] = self.customer.to_map()
-        if self.interactive_video_settings is not None:
-            result['InteractiveVideoSettings'] = self.interactive_video_settings.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('CloudUid') is not None:
-            self.cloud_uid = m.get('CloudUid')
-        if m.get('Customer') is not None:
-            temp_model = CommonCustomer()
-            self.customer = temp_model.from_map(m['Customer'])
-        if m.get('InteractiveVideoSettings') is not None:
-            temp_model = AppsInteractiveVideoSettings()
-            self.interactive_video_settings = temp_model.from_map(m['InteractiveVideoSettings'])
-        return self
-
-
-class AssetsAuditAssetRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        audit_status: str = None,
-        id: str = None,
-    ):
-        # AppId
-        self.app_id = app_id
-        # 审核状态
-        self.audit_status = audit_status
-        # AssetId
-        self.id = id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.audit_status is not None:
-            result['AuditStatus'] = self.audit_status
-        if self.id is not None:
-            result['Id'] = self.id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('AuditStatus') is not None:
-            self.audit_status = m.get('AuditStatus')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        return self
-
-
 class RpcStatus(TeaModel):
     def __init__(
         self,
@@ -502,180 +237,6 @@ class TypeLatLng(TeaModel):
         return self
 
 
-class CommonSimpleAsset(TeaModel):
-    def __init__(
-        self,
-        address: CommonAddress = None,
-        app_id: str = None,
-        audit_status: str = None,
-        author: str = None,
-        description: str = None,
-        extends: Dict[str, Any] = None,
-        id: str = None,
-        image: CommonMediaResource = None,
-        labels: Dict[str, Any] = None,
-        location: TypeLatLng = None,
-        source: str = None,
-        status: str = None,
-        synopsis: str = None,
-        tags: List[str] = None,
-        title: str = None,
-        video: CommonMediaResource = None,
-    ):
-        # 行政区域地址
-        self.address = address
-        # 应用ID
-        self.app_id = app_id
-        # 审核状态
-        self.audit_status = audit_status
-        # 作者
-        self.author = author
-        # 资产描述
-        self.description = description
-        # 扩展字段
-        self.extends = extends
-        # 资产ID
-        self.id = id
-        # 图像资源
-        self.image = image
-        # 定义Label， eg:type:advertise 支持广告类型的label
-        self.labels = labels
-        # 经纬度地理位置
-        self.location = location
-        # 资产来源
-        self.source = source
-        # 资产状态
-        self.status = status
-        # 概要
-        self.synopsis = synopsis
-        # 标签
-        self.tags = tags
-        # 标题
-        self.title = title
-        # 视频资源
-        self.video = video
-
-    def validate(self):
-        if self.address:
-            self.address.validate()
-        if self.image:
-            self.image.validate()
-        if self.location:
-            self.location.validate()
-        if self.video:
-            self.video.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.address is not None:
-            result['Address'] = self.address.to_map()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.audit_status is not None:
-            result['AuditStatus'] = self.audit_status
-        if self.author is not None:
-            result['Author'] = self.author
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.extends is not None:
-            result['Extends'] = self.extends
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.image is not None:
-            result['Image'] = self.image.to_map()
-        if self.labels is not None:
-            result['Labels'] = self.labels
-        if self.location is not None:
-            result['Location'] = self.location.to_map()
-        if self.source is not None:
-            result['Source'] = self.source
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.synopsis is not None:
-            result['Synopsis'] = self.synopsis
-        if self.tags is not None:
-            result['Tags'] = self.tags
-        if self.title is not None:
-            result['Title'] = self.title
-        if self.video is not None:
-            result['Video'] = self.video.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Address') is not None:
-            temp_model = CommonAddress()
-            self.address = temp_model.from_map(m['Address'])
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('AuditStatus') is not None:
-            self.audit_status = m.get('AuditStatus')
-        if m.get('Author') is not None:
-            self.author = m.get('Author')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('Extends') is not None:
-            self.extends = m.get('Extends')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Image') is not None:
-            temp_model = CommonMediaResource()
-            self.image = temp_model.from_map(m['Image'])
-        if m.get('Labels') is not None:
-            self.labels = m.get('Labels')
-        if m.get('Location') is not None:
-            temp_model = TypeLatLng()
-            self.location = temp_model.from_map(m['Location'])
-        if m.get('Source') is not None:
-            self.source = m.get('Source')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Synopsis') is not None:
-            self.synopsis = m.get('Synopsis')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
-        if m.get('Video') is not None:
-            temp_model = CommonMediaResource()
-            self.video = temp_model.from_map(m['Video'])
-        return self
-
-
-class AssetsCreateAssetRequest(TeaModel):
-    def __init__(
-        self,
-        asset: CommonSimpleAsset = None,
-    ):
-        # Asset请求Item
-        self.asset = asset
-
-    def validate(self):
-        if self.asset:
-            self.asset.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.asset is not None:
-            result['Asset'] = self.asset.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Asset') is not None:
-            temp_model = CommonSimpleAsset()
-            self.asset = temp_model.from_map(m['Asset'])
-        return self
-
-
 class CommonAsset(TeaModel):
     def __init__(
         self,
@@ -893,36 +454,6 @@ class AssetsCreateAssetResponse(TeaModel):
         return self
 
 
-class AssetsDeleteAssetRequest(TeaModel):
-    def __init__(
-        self,
-        asset: CommonAsset = None,
-    ):
-        # Asset
-        self.asset = asset
-
-    def validate(self):
-        if self.asset:
-            self.asset.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.asset is not None:
-            result['Asset'] = self.asset.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Asset') is not None:
-            temp_model = CommonAsset()
-            self.asset = temp_model.from_map(m['Asset'])
-        return self
-
-
 class AssetsDeleteAssetResponse(TeaModel):
     def __init__(
         self,
@@ -967,34 +498,6 @@ class AssetsDeleteAssetResponse(TeaModel):
         if m.get('Status') is not None:
             temp_model = RpcStatus()
             self.status = temp_model.from_map(m['Status'])
-        return self
-
-
-class AssetsGetAssetRequest(TeaModel):
-    def __init__(
-        self,
-        id: str = None,
-    ):
-        # AssetId
-        self.id = id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
         return self
 
 
@@ -1169,36 +672,6 @@ class AssetsListAssetsResponse(TeaModel):
         return self
 
 
-class AssetsUpdateAssetRequest(TeaModel):
-    def __init__(
-        self,
-        asset: CommonAsset = None,
-    ):
-        # Asset
-        self.asset = asset
-
-    def validate(self):
-        if self.asset:
-            self.asset.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.asset is not None:
-            result['Asset'] = self.asset.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Asset') is not None:
-            temp_model = CommonAsset()
-            self.asset = temp_model.from_map(m['Asset'])
-        return self
-
-
 class AssetsUpdateAssetResponse(TeaModel):
     def __init__(
         self,
@@ -1246,140 +719,68 @@ class AssetsUpdateAssetResponse(TeaModel):
         return self
 
 
-class CommonSTS(TeaModel):
+class CommonSimpleAsset(TeaModel):
     def __init__(
         self,
-        access_key_id: str = None,
-        access_key_secret: str = None,
-        security_token: str = None,
-    ):
-        # AccessKey ID 标识用户
-        self.access_key_id = access_key_id
-        # AccessKey Secret 验证用户的密钥
-        self.access_key_secret = access_key_secret
-        # 临时token
-        self.security_token = security_token
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.access_key_id is not None:
-            result['AccessKeyId'] = self.access_key_id
-        if self.access_key_secret is not None:
-            result['AccessKeySecret'] = self.access_key_secret
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AccessKeyId') is not None:
-            self.access_key_id = m.get('AccessKeyId')
-        if m.get('AccessKeySecret') is not None:
-            self.access_key_secret = m.get('AccessKeySecret')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
-        return self
-
-
-class CommonStorage(TeaModel):
-    def __init__(
-        self,
-        bucket: str = None,
-        object: str = None,
-        region: str = None,
-        sign_url: str = None,
-        sts: CommonSTS = None,
-    ):
-        # OSS bucket
-        self.bucket = bucket
-        # OSS object path
-        self.object = object
-        # 阿里云Region，比如 cn-shanghai
-        self.region = region
-        # OSS的签名URL
-        self.sign_url = sign_url
-        # Security Token Service
-        self.sts = sts
-
-    def validate(self):
-        if self.sts:
-            self.sts.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bucket is not None:
-            result['Bucket'] = self.bucket
-        if self.object is not None:
-            result['Object'] = self.object
-        if self.region is not None:
-            result['Region'] = self.region
-        if self.sign_url is not None:
-            result['SignUrl'] = self.sign_url
-        if self.sts is not None:
-            result['Sts'] = self.sts.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bucket') is not None:
-            self.bucket = m.get('Bucket')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
-        if m.get('SignUrl') is not None:
-            self.sign_url = m.get('SignUrl')
-        if m.get('Sts') is not None:
-            temp_model = CommonSTS()
-            self.sts = temp_model.from_map(m['Sts'])
-        return self
-
-
-class V1MediaSecurityStorageRequest(TeaModel):
-    def __init__(
-        self,
+        address: CommonAddress = None,
         app_id: str = None,
-        app_settings: AppsSettings = None,
-        asset_id: str = None,
-        customer: CommonCustomer = None,
+        audit_status: str = None,
+        author: str = None,
+        description: str = None,
+        extends: Dict[str, Any] = None,
+        id: str = None,
         image: CommonMediaResource = None,
-        image_storage: CommonStorage = None,
+        labels: Dict[str, Any] = None,
+        location: TypeLatLng = None,
+        source: str = None,
+        status: str = None,
+        synopsis: str = None,
+        tags: List[str] = None,
+        title: str = None,
         video: CommonMediaResource = None,
-        video_storage: CommonStorage = None,
     ):
+        # 行政区域地址
+        self.address = address
+        # 应用ID
         self.app_id = app_id
-        self.app_settings = app_settings
-        self.asset_id = asset_id
-        self.customer = customer
+        # 审核状态
+        self.audit_status = audit_status
+        # 作者
+        self.author = author
+        # 资产描述
+        self.description = description
+        # 扩展字段
+        self.extends = extends
+        # 资产ID
+        self.id = id
+        # 图像资源
         self.image = image
-        self.image_storage = image_storage
+        # 定义Label， eg:type:advertise 支持广告类型的label
+        self.labels = labels
+        # 经纬度地理位置
+        self.location = location
+        # 资产来源
+        self.source = source
+        # 资产状态
+        self.status = status
+        # 概要
+        self.synopsis = synopsis
+        # 标签
+        self.tags = tags
+        # 标题
+        self.title = title
+        # 视频资源
         self.video = video
-        self.video_storage = video_storage
 
     def validate(self):
-        if self.app_settings:
-            self.app_settings.validate()
-        if self.customer:
-            self.customer.validate()
+        if self.address:
+            self.address.validate()
         if self.image:
             self.image.validate()
-        if self.image_storage:
-            self.image_storage.validate()
+        if self.location:
+            self.location.validate()
         if self.video:
             self.video.validate()
-        if self.video_storage:
-            self.video_storage.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1387,116 +788,78 @@ class V1MediaSecurityStorageRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.address is not None:
+            result['Address'] = self.address.to_map()
         if self.app_id is not None:
             result['AppId'] = self.app_id
-        if self.app_settings is not None:
-            result['AppSettings'] = self.app_settings.to_map()
-        if self.asset_id is not None:
-            result['AssetId'] = self.asset_id
-        if self.customer is not None:
-            result['Customer'] = self.customer.to_map()
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
+        if self.author is not None:
+            result['Author'] = self.author
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.extends is not None:
+            result['Extends'] = self.extends
+        if self.id is not None:
+            result['Id'] = self.id
         if self.image is not None:
             result['Image'] = self.image.to_map()
-        if self.image_storage is not None:
-            result['ImageStorage'] = self.image_storage.to_map()
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.location is not None:
+            result['Location'] = self.location.to_map()
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.synopsis is not None:
+            result['Synopsis'] = self.synopsis
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.title is not None:
+            result['Title'] = self.title
         if self.video is not None:
             result['Video'] = self.video.to_map()
-        if self.video_storage is not None:
-            result['VideoStorage'] = self.video_storage.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Address') is not None:
+            temp_model = CommonAddress()
+            self.address = temp_model.from_map(m['Address'])
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
-        if m.get('AppSettings') is not None:
-            temp_model = AppsSettings()
-            self.app_settings = temp_model.from_map(m['AppSettings'])
-        if m.get('AssetId') is not None:
-            self.asset_id = m.get('AssetId')
-        if m.get('Customer') is not None:
-            temp_model = CommonCustomer()
-            self.customer = temp_model.from_map(m['Customer'])
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
+        if m.get('Author') is not None:
+            self.author = m.get('Author')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Extends') is not None:
+            self.extends = m.get('Extends')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('Image') is not None:
             temp_model = CommonMediaResource()
             self.image = temp_model.from_map(m['Image'])
-        if m.get('ImageStorage') is not None:
-            temp_model = CommonStorage()
-            self.image_storage = temp_model.from_map(m['ImageStorage'])
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('Location') is not None:
+            temp_model = TypeLatLng()
+            self.location = temp_model.from_map(m['Location'])
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Synopsis') is not None:
+            self.synopsis = m.get('Synopsis')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
         if m.get('Video') is not None:
             temp_model = CommonMediaResource()
             self.video = temp_model.from_map(m['Video'])
-        if m.get('VideoStorage') is not None:
-            temp_model = CommonStorage()
-            self.video_storage = temp_model.from_map(m['VideoStorage'])
-        return self
-
-
-class V1MediaSecurityStorageResponse(TeaModel):
-    def __init__(
-        self,
-        asset_id: str = None,
-        image: CommonMediaResource = None,
-        image_storage: CommonStorage = None,
-        media_id: str = None,
-        video: CommonMediaResource = None,
-        video_storage: CommonStorage = None,
-    ):
-        self.asset_id = asset_id
-        self.image = image
-        self.image_storage = image_storage
-        self.media_id = media_id
-        self.video = video
-        self.video_storage = video_storage
-
-    def validate(self):
-        if self.image:
-            self.image.validate()
-        if self.image_storage:
-            self.image_storage.validate()
-        if self.video:
-            self.video.validate()
-        if self.video_storage:
-            self.video_storage.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.asset_id is not None:
-            result['AssetId'] = self.asset_id
-        if self.image is not None:
-            result['Image'] = self.image.to_map()
-        if self.image_storage is not None:
-            result['ImageStorage'] = self.image_storage.to_map()
-        if self.media_id is not None:
-            result['MediaId'] = self.media_id
-        if self.video is not None:
-            result['Video'] = self.video.to_map()
-        if self.video_storage is not None:
-            result['VideoStorage'] = self.video_storage.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AssetId') is not None:
-            self.asset_id = m.get('AssetId')
-        if m.get('Image') is not None:
-            temp_model = CommonMediaResource()
-            self.image = temp_model.from_map(m['Image'])
-        if m.get('ImageStorage') is not None:
-            temp_model = CommonStorage()
-            self.image_storage = temp_model.from_map(m['ImageStorage'])
-        if m.get('MediaId') is not None:
-            self.media_id = m.get('MediaId')
-        if m.get('Video') is not None:
-            temp_model = CommonMediaResource()
-            self.video = temp_model.from_map(m['Video'])
-        if m.get('VideoStorage') is not None:
-            temp_model = CommonStorage()
-            self.video_storage = temp_model.from_map(m['VideoStorage'])
         return self
 
 
@@ -3711,7 +3074,6 @@ class DeleteCommentRequest(TeaModel):
         self,
         app_id: str = None,
         comment_id_list: List[str] = None,
-        creator_id: str = None,
         room_id: str = None,
         user_id: str = None,
     ):
@@ -3719,8 +3081,6 @@ class DeleteCommentRequest(TeaModel):
         self.app_id = app_id
         # 需要删除的弹幕id列表
         self.comment_id_list = comment_id_list
-        # 弹幕的创建者ID。
-        self.creator_id = creator_id
         # 直播间唯一标识，在调用CreateRoom返回。
         self.room_id = room_id
         # 删除的操作人ID。
@@ -3739,8 +3099,6 @@ class DeleteCommentRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.comment_id_list is not None:
             result['CommentIdList'] = self.comment_id_list
-        if self.creator_id is not None:
-            result['CreatorId'] = self.creator_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.user_id is not None:
@@ -3753,8 +3111,6 @@ class DeleteCommentRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('CommentIdList') is not None:
             self.comment_id_list = m.get('CommentIdList')
-        if m.get('CreatorId') is not None:
-            self.creator_id = m.get('CreatorId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('UserId') is not None:
@@ -4367,140 +3723,6 @@ class DeleteLiveRoomResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteLiveRoomResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DeleteRecordFileInfoRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        max_results: int = None,
-        next_token: str = None,
-    ):
-        self.app_id = app_id
-        # 本次读取的最大数据记录数量
-        self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始
-        self.next_token = next_token
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        return self
-
-
-class DeleteRecordFileInfoResponseBody(TeaModel):
-    def __init__(
-        self,
-        max_results: int = None,
-        next_token: str = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        # MaxResults本次请求所返回的最大记录条数
-        self.max_results = max_results
-        # 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-        self.next_token = next_token
-        # Id of the request
-        self.request_id = request_id
-        # TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class DeleteRecordFileInfoResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteRecordFileInfoResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteRecordFileInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7230,182 +6452,6 @@ class GetLiveRoomUserStatisticsResponse(TeaModel):
         return self
 
 
-class GetRecordFileInfoRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        max_results: int = None,
-        next_token: str = None,
-    ):
-        self.app_id = app_id
-        self.max_results = max_results
-        self.next_token = next_token
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        return self
-
-
-class GetRecordFileInfoResponseBodyResult(TeaModel):
-    def __init__(
-        self,
-        etag: str = None,
-        expire_time: str = None,
-        file_name: str = None,
-    ):
-        self.etag = etag
-        self.expire_time = expire_time
-        self.file_name = file_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.etag is not None:
-            result['ETag'] = self.etag
-        if self.expire_time is not None:
-            result['ExpireTime'] = self.expire_time
-        if self.file_name is not None:
-            result['FileName'] = self.file_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ETag') is not None:
-            self.etag = m.get('ETag')
-        if m.get('ExpireTime') is not None:
-            self.expire_time = m.get('ExpireTime')
-        if m.get('FileName') is not None:
-            self.file_name = m.get('FileName')
-        return self
-
-
-class GetRecordFileInfoResponseBody(TeaModel):
-    def __init__(
-        self,
-        download_url: str = None,
-        max_results: int = None,
-        next_token: str = None,
-        request_id: str = None,
-        result: GetRecordFileInfoResponseBodyResult = None,
-    ):
-        self.download_url = download_url
-        self.max_results = max_results
-        self.next_token = next_token
-        # Id of the request
-        self.request_id = request_id
-        self.result = result
-
-    def validate(self):
-        if self.result:
-            self.result.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.download_url is not None:
-            result['DownloadUrl'] = self.download_url
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result is not None:
-            result['Result'] = self.result.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DownloadUrl') is not None:
-            self.download_url = m.get('DownloadUrl')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Result') is not None:
-            temp_model = GetRecordFileInfoResponseBodyResult()
-            self.result = temp_model.from_map(m['Result'])
-        return self
-
-
-class GetRecordFileInfoResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetRecordFileInfoResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetRecordFileInfoResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetRoomRequest(TeaModel):
     def __init__(
         self,
@@ -8818,164 +7864,6 @@ class ListConferenceUsersResponse(TeaModel):
         return self
 
 
-class ListLiveFilesRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        live_id: str = None,
-        max_results: int = None,
-        next_token: str = None,
-        page_number: int = None,
-        page_size: int = None,
-    ):
-        self.app_id = app_id
-        self.live_id = live_id
-        # 本次读取的最大数据记录数量
-        self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始
-        self.next_token = next_token
-        self.page_number = page_number
-        self.page_size = page_size
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.live_id is not None:
-            result['LiveId'] = self.live_id
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('LiveId') is not None:
-            self.live_id = m.get('LiveId')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        return self
-
-
-class ListLiveFilesResponseBody(TeaModel):
-    def __init__(
-        self,
-        file_name: str = None,
-        max_results: int = None,
-        next_token: str = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        self.file_name = file_name
-        # MaxResults本次请求所返回的最大记录条数
-        self.max_results = max_results
-        # 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-        self.next_token = next_token
-        # Id of the request
-        self.request_id = request_id
-        # TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.file_name is not None:
-            result['FileName'] = self.file_name
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FileName') is not None:
-            self.file_name = m.get('FileName')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListLiveFilesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListLiveFilesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListLiveFilesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListLiveRoomsRequest(TeaModel):
     def __init__(
         self,
@@ -9381,12 +8269,15 @@ class ListLiveRoomsByIdResponseBodyResultLiveList(TeaModel):
         app_id: str = None,
         chat_id: str = None,
         cover_url: str = None,
+        create_time: int = None,
+        end_time: int = None,
         extension: Dict[str, str] = None,
         live_id: str = None,
         notice: str = None,
         online_count: int = None,
         pv: int = None,
         room_id: str = None,
+        start_time: int = None,
         status: int = None,
         title: str = None,
         uv: int = None,
@@ -9401,6 +8292,10 @@ class ListLiveRoomsByIdResponseBodyResultLiveList(TeaModel):
         self.chat_id = chat_id
         # 封面。
         self.cover_url = cover_url
+        # 直播的创建时间。单位为ms。
+        self.create_time = create_time
+        # 直播的结束时间。单位为ms。
+        self.end_time = end_time
         # 直播拓展字段。
         self.extension = extension
         # 直播ID。
@@ -9413,6 +8308,8 @@ class ListLiveRoomsByIdResponseBodyResultLiveList(TeaModel):
         self.pv = pv
         # 房间ID。
         self.room_id = room_id
+        # 直播的开始时间。单位为ms。
+        self.start_time = start_time
         # 直播状态，0-在播 1-下播。
         self.status = status
         # 标题。
@@ -9439,6 +8336,10 @@ class ListLiveRoomsByIdResponseBodyResultLiveList(TeaModel):
             result['ChatId'] = self.chat_id
         if self.cover_url is not None:
             result['CoverUrl'] = self.cover_url
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.extension is not None:
             result['Extension'] = self.extension
         if self.live_id is not None:
@@ -9451,6 +8352,8 @@ class ListLiveRoomsByIdResponseBodyResultLiveList(TeaModel):
             result['Pv'] = self.pv
         if self.room_id is not None:
             result['RoomId'] = self.room_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
         if self.title is not None:
@@ -9471,6 +8374,10 @@ class ListLiveRoomsByIdResponseBodyResultLiveList(TeaModel):
             self.chat_id = m.get('ChatId')
         if m.get('CoverUrl') is not None:
             self.cover_url = m.get('CoverUrl')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('Extension') is not None:
             self.extension = m.get('Extension')
         if m.get('LiveId') is not None:
@@ -9483,6 +8390,8 @@ class ListLiveRoomsByIdResponseBodyResultLiveList(TeaModel):
             self.pv = m.get('Pv')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Title') is not None:
