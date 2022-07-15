@@ -1,3 +1,6 @@
+2022-07-15 Version: 1.1.21
+- Add cspm ListCheckResult api.
+
 2022-07-15 Version: 1.1.20
 - Add open file detect api.
 
