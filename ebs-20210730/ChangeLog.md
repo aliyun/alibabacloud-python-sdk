@@ -1,3 +1,6 @@
+2022-07-18 Version: 1.3.6
+- Add pageNumber pageSize for describePairs.
+
 2022-07-15 Version: 1.3.5
 - Add describe dbsc for ecs api.
 - Add disk replica pair api.
