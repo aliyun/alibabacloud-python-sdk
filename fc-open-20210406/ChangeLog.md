@@ -1,3 +1,6 @@
+2022-07-18 Version: 1.1.7
+- Fix InvokeFunction serilization.
+
 2022-07-05 Version: 1.1.6
 - Support java http trigger invocation.
 - Fix marshal byte array.
