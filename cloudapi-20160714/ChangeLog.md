@@ -1,3 +1,6 @@
+2022-07-18 Version: 2.2.4
+- Change the parameter tag to optional.
+
 2022-07-15 Version: 2.2.3
 - Add param ModifyAction.
 
