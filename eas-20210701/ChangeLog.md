@@ -1,3 +1,6 @@
+2022-07-18 Version: 1.1.3
+- Add chargetype in list resource instance api.
+
 2022-04-07 Version: 1.1.2
 - Add DescribeRegion api.
 
