@@ -1,3 +1,6 @@
+2022-07-19 Version: 1.1.22
+- Change cspm ListCheckResult api.
+
 2022-07-15 Version: 1.1.21
 - Add cspm ListCheckResult api.
 

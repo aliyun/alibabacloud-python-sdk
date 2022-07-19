@@ -32748,7 +32748,6 @@ class ListCheckResultRequest(TeaModel):
         check_key: str = None,
         current_page: int = None,
         instance_ids: List[str] = None,
-        instance_sub_types: List[str] = None,
         instance_types: List[str] = None,
         lang: str = None,
         page_size: int = None,
@@ -32762,7 +32761,6 @@ class ListCheckResultRequest(TeaModel):
         self.check_key = check_key
         self.current_page = current_page
         self.instance_ids = instance_ids
-        self.instance_sub_types = instance_sub_types
         self.instance_types = instance_types
         self.lang = lang
         self.page_size = page_size
@@ -32788,8 +32786,6 @@ class ListCheckResultRequest(TeaModel):
             result['CurrentPage'] = self.current_page
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
-        if self.instance_sub_types is not None:
-            result['InstanceSubTypes'] = self.instance_sub_types
         if self.instance_types is not None:
             result['InstanceTypes'] = self.instance_types
         if self.lang is not None:
@@ -32818,8 +32814,6 @@ class ListCheckResultRequest(TeaModel):
             self.current_page = m.get('CurrentPage')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
-        if m.get('InstanceSubTypes') is not None:
-            self.instance_sub_types = m.get('InstanceSubTypes')
         if m.get('InstanceTypes') is not None:
             self.instance_types = m.get('InstanceTypes')
         if m.get('Lang') is not None:
@@ -33940,6 +33934,122 @@ class ModifyBackupPolicyStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyBackupPolicyStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyClearLogstoreStorageRequest(TeaModel):
+    def __init__(
+        self,
+        from_: str = None,
+        lang: str = None,
+        user_log_store: str = None,
+        user_project: str = None,
+    ):
+        self.from_ = from_
+        self.lang = lang
+        self.user_log_store = user_log_store
+        self.user_project = user_project
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.user_log_store is not None:
+            result['UserLogStore'] = self.user_log_store
+        if self.user_project is not None:
+            result['UserProject'] = self.user_project
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('UserLogStore') is not None:
+            self.user_log_store = m.get('UserLogStore')
+        if m.get('UserProject') is not None:
+            self.user_project = m.get('UserProject')
+        return self
+
+
+class ModifyClearLogstoreStorageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyClearLogstoreStorageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyClearLogstoreStorageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyClearLogstoreStorageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
