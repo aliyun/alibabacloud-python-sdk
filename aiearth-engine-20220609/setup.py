@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_aiearth-engine20220609.
 
-Created on 11/07/2022
+Created on 19/07/2022
 
 @author: Alibaba Cloud SDK
 """
