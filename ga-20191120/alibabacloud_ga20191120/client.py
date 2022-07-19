@@ -1386,6 +1386,8 @@ class Client(OpenApiClient):
             query['AcceleratorId'] = request.accelerator_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.isp_type):
+            query['IspType'] = request.isp_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -1420,6 +1422,8 @@ class Client(OpenApiClient):
             query['AcceleratorId'] = request.accelerator_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.isp_type):
+            query['IspType'] = request.isp_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
