@@ -425,6 +425,43 @@ class Boundary(TeaModel):
         return self
 
 
+class Body(TeaModel):
+    def __init__(
+        self,
+        boundary: Boundary = None,
+        confidence: float = None,
+    ):
+        # Boundary
+        self.boundary = boundary
+        # Confidence
+        self.confidence = confidence
+
+    def validate(self):
+        if self.boundary:
+            self.boundary.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.boundary is not None:
+            result['Boundary'] = self.boundary.to_map()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Boundary') is not None:
+            temp_model = Boundary()
+            self.boundary = temp_model.from_map(m['Boundary'])
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        return self
+
+
 class ClusterForReqCoverFigures(TeaModel):
     def __init__(
         self,
@@ -5793,6 +5830,357 @@ class CreateImageModerationTaskResponse(TeaModel):
         return self
 
 
+class CreateImageSplicingTaskRequestSources(TeaModel):
+    def __init__(
+        self,
+        rotate: int = None,
+        uri: str = None,
+    ):
+        self.rotate = rotate
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rotate is not None:
+            result['Rotate'] = self.rotate
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Rotate') is not None:
+            self.rotate = m.get('Rotate')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class CreateImageSplicingTaskRequest(TeaModel):
+    def __init__(
+        self,
+        align: int = None,
+        background_color: str = None,
+        credential_config: CredentialConfig = None,
+        direction: str = None,
+        image_format: str = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        padding: int = None,
+        project_name: str = None,
+        quality: int = None,
+        scale_type: str = None,
+        sources: List[CreateImageSplicingTaskRequestSources] = None,
+        tags: Dict[str, Any] = None,
+        target_uri: str = None,
+        user_data: str = None,
+    ):
+        self.align = align
+        self.background_color = background_color
+        self.credential_config = credential_config
+        self.direction = direction
+        self.image_format = image_format
+        self.notify_endpoint = notify_endpoint
+        self.notify_topic_name = notify_topic_name
+        self.padding = padding
+        # A short description of struct
+        self.project_name = project_name
+        self.quality = quality
+        self.scale_type = scale_type
+        self.sources = sources
+        self.tags = tags
+        self.target_uri = target_uri
+        self.user_data = user_data
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+        if self.sources:
+            for k in self.sources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.align is not None:
+            result['Align'] = self.align
+        if self.background_color is not None:
+            result['BackgroundColor'] = self.background_color
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.image_format is not None:
+            result['ImageFormat'] = self.image_format
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.padding is not None:
+            result['Padding'] = self.padding
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.quality is not None:
+            result['Quality'] = self.quality
+        if self.scale_type is not None:
+            result['ScaleType'] = self.scale_type
+        result['Sources'] = []
+        if self.sources is not None:
+            for k in self.sources:
+                result['Sources'].append(k.to_map() if k else None)
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Align') is not None:
+            self.align = m.get('Align')
+        if m.get('BackgroundColor') is not None:
+            self.background_color = m.get('BackgroundColor')
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('ImageFormat') is not None:
+            self.image_format = m.get('ImageFormat')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('Padding') is not None:
+            self.padding = m.get('Padding')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Quality') is not None:
+            self.quality = m.get('Quality')
+        if m.get('ScaleType') is not None:
+            self.scale_type = m.get('ScaleType')
+        self.sources = []
+        if m.get('Sources') is not None:
+            for k in m.get('Sources'):
+                temp_model = CreateImageSplicingTaskRequestSources()
+                self.sources.append(temp_model.from_map(k))
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateImageSplicingTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        align: int = None,
+        background_color: str = None,
+        credential_config_shrink: str = None,
+        direction: str = None,
+        image_format: str = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        padding: int = None,
+        project_name: str = None,
+        quality: int = None,
+        scale_type: str = None,
+        sources_shrink: str = None,
+        tags_shrink: str = None,
+        target_uri: str = None,
+        user_data: str = None,
+    ):
+        self.align = align
+        self.background_color = background_color
+        self.credential_config_shrink = credential_config_shrink
+        self.direction = direction
+        self.image_format = image_format
+        self.notify_endpoint = notify_endpoint
+        self.notify_topic_name = notify_topic_name
+        self.padding = padding
+        # A short description of struct
+        self.project_name = project_name
+        self.quality = quality
+        self.scale_type = scale_type
+        self.sources_shrink = sources_shrink
+        self.tags_shrink = tags_shrink
+        self.target_uri = target_uri
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.align is not None:
+            result['Align'] = self.align
+        if self.background_color is not None:
+            result['BackgroundColor'] = self.background_color
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.image_format is not None:
+            result['ImageFormat'] = self.image_format
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.padding is not None:
+            result['Padding'] = self.padding
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.quality is not None:
+            result['Quality'] = self.quality
+        if self.scale_type is not None:
+            result['ScaleType'] = self.scale_type
+        if self.sources_shrink is not None:
+            result['Sources'] = self.sources_shrink
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Align') is not None:
+            self.align = m.get('Align')
+        if m.get('BackgroundColor') is not None:
+            self.background_color = m.get('BackgroundColor')
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('ImageFormat') is not None:
+            self.image_format = m.get('ImageFormat')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('Padding') is not None:
+            self.padding = m.get('Padding')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Quality') is not None:
+            self.quality = m.get('Quality')
+        if m.get('ScaleType') is not None:
+            self.scale_type = m.get('ScaleType')
+        if m.get('Sources') is not None:
+            self.sources_shrink = m.get('Sources')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateImageSplicingTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateImageSplicingTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateImageSplicingTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateImageSplicingTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateMediaConvertTaskRequestSourcesSubtitles(TeaModel):
     def __init__(
         self,
@@ -9040,6 +9428,189 @@ class DetachOSSBucketResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetachOSSBucketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DetectImageBodiesRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config: CredentialConfig = None,
+        project_name: str = None,
+        sensitivity: float = None,
+        source_uri: str = None,
+    ):
+        self.credential_config = credential_config
+        # 项目名称
+        self.project_name = project_name
+        self.sensitivity = sensitivity
+        # SourceURI
+        self.source_uri = source_uri
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.sensitivity is not None:
+            result['Sensitivity'] = self.sensitivity
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Sensitivity') is not None:
+            self.sensitivity = m.get('Sensitivity')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        return self
+
+
+class DetectImageBodiesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config_shrink: str = None,
+        project_name: str = None,
+        sensitivity: float = None,
+        source_uri: str = None,
+    ):
+        self.credential_config_shrink = credential_config_shrink
+        # 项目名称
+        self.project_name = project_name
+        self.sensitivity = sensitivity
+        # SourceURI
+        self.source_uri = source_uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.sensitivity is not None:
+            result['Sensitivity'] = self.sensitivity
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Sensitivity') is not None:
+            self.sensitivity = m.get('Sensitivity')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        return self
+
+
+class DetectImageBodiesResponseBody(TeaModel):
+    def __init__(
+        self,
+        bodies: List[Body] = None,
+        request_id: str = None,
+    ):
+        # 图片裁剪结果
+        self.bodies = bodies
+        # 请求唯一ID
+        self.request_id = request_id
+
+    def validate(self):
+        if self.bodies:
+            for k in self.bodies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Bodies'] = []
+        if self.bodies is not None:
+            for k in self.bodies:
+                result['Bodies'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.bodies = []
+        if m.get('Bodies') is not None:
+            for k in m.get('Bodies'):
+                temp_model = Body()
+                self.bodies.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DetectImageBodiesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DetectImageBodiesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DetectImageBodiesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

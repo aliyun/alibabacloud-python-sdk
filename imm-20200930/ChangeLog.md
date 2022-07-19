@@ -1,3 +1,6 @@
+2022-07-19 Version: 1.27.5
+- Add Body Detection and Image Splicing API.
+
 2022-07-07 Version: 1.27.4
 - Add new story APIs.
 - Fix Media APIs.

@@ -1176,6 +1176,148 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_image_moderation_task_with_options_async(request, runtime)
 
+    def create_image_splicing_task_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateImageSplicingTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateImageSplicingTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateImageSplicingTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.align):
+            query['Align'] = request.align
+        if not UtilClient.is_unset(request.background_color):
+            query['BackgroundColor'] = request.background_color
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.image_format):
+            query['ImageFormat'] = request.image_format
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.padding):
+            query['Padding'] = request.padding
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.quality):
+            query['Quality'] = request.quality
+        if not UtilClient.is_unset(request.scale_type):
+            query['ScaleType'] = request.scale_type
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateImageSplicingTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateImageSplicingTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_image_splicing_task_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateImageSplicingTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateImageSplicingTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateImageSplicingTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.align):
+            query['Align'] = request.align
+        if not UtilClient.is_unset(request.background_color):
+            query['BackgroundColor'] = request.background_color
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.image_format):
+            query['ImageFormat'] = request.image_format
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.padding):
+            query['Padding'] = request.padding
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.quality):
+            query['Quality'] = request.quality
+        if not UtilClient.is_unset(request.scale_type):
+            query['ScaleType'] = request.scale_type
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateImageSplicingTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateImageSplicingTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_image_splicing_task(
+        self,
+        request: imm_20200930_models.CreateImageSplicingTaskRequest,
+    ) -> imm_20200930_models.CreateImageSplicingTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_image_splicing_task_with_options(request, runtime)
+
+    async def create_image_splicing_task_async(
+        self,
+        request: imm_20200930_models.CreateImageSplicingTaskRequest,
+    ) -> imm_20200930_models.CreateImageSplicingTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_image_splicing_task_with_options_async(request, runtime)
+
     def create_media_convert_task_with_options(
         self,
         tmp_req: imm_20200930_models.CreateMediaConvertTaskRequest,
@@ -2341,6 +2483,96 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.DetachOSSBucketResponse:
         runtime = util_models.RuntimeOptions()
         return await self.detach_ossbucket_with_options_async(request, runtime)
+
+    def detect_image_bodies_with_options(
+        self,
+        tmp_req: imm_20200930_models.DetectImageBodiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetectImageBodiesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.DetectImageBodiesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sensitivity):
+            query['Sensitivity'] = request.sensitivity
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectImageBodies',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetectImageBodiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detect_image_bodies_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.DetectImageBodiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetectImageBodiesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.DetectImageBodiesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sensitivity):
+            query['Sensitivity'] = request.sensitivity
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectImageBodies',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetectImageBodiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detect_image_bodies(
+        self,
+        request: imm_20200930_models.DetectImageBodiesRequest,
+    ) -> imm_20200930_models.DetectImageBodiesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_image_bodies_with_options(request, runtime)
+
+    async def detect_image_bodies_async(
+        self,
+        request: imm_20200930_models.DetectImageBodiesRequest,
+    ) -> imm_20200930_models.DetectImageBodiesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_image_bodies_with_options_async(request, runtime)
 
     def detect_image_codes_with_options(
         self,
