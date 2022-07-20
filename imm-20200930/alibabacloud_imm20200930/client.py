@@ -1201,6 +1201,8 @@ class Client(OpenApiClient):
             query['Direction'] = request.direction
         if not UtilClient.is_unset(request.image_format):
             query['ImageFormat'] = request.image_format
+        if not UtilClient.is_unset(request.margin):
+            query['Margin'] = request.margin
         if not UtilClient.is_unset(request.notify_endpoint):
             query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
@@ -1265,6 +1267,8 @@ class Client(OpenApiClient):
             query['Direction'] = request.direction
         if not UtilClient.is_unset(request.image_format):
             query['ImageFormat'] = request.image_format
+        if not UtilClient.is_unset(request.margin):
+            query['Margin'] = request.margin
         if not UtilClient.is_unset(request.notify_endpoint):
             query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):

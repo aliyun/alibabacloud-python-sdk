@@ -5871,6 +5871,7 @@ class CreateImageSplicingTaskRequest(TeaModel):
         credential_config: CredentialConfig = None,
         direction: str = None,
         image_format: str = None,
+        margin: int = None,
         notify_endpoint: str = None,
         notify_topic_name: str = None,
         padding: int = None,
@@ -5887,6 +5888,7 @@ class CreateImageSplicingTaskRequest(TeaModel):
         self.credential_config = credential_config
         self.direction = direction
         self.image_format = image_format
+        self.margin = margin
         self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.padding = padding
@@ -5923,6 +5925,8 @@ class CreateImageSplicingTaskRequest(TeaModel):
             result['Direction'] = self.direction
         if self.image_format is not None:
             result['ImageFormat'] = self.image_format
+        if self.margin is not None:
+            result['Margin'] = self.margin
         if self.notify_endpoint is not None:
             result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
@@ -5960,6 +5964,8 @@ class CreateImageSplicingTaskRequest(TeaModel):
             self.direction = m.get('Direction')
         if m.get('ImageFormat') is not None:
             self.image_format = m.get('ImageFormat')
+        if m.get('Margin') is not None:
+            self.margin = m.get('Margin')
         if m.get('NotifyEndpoint') is not None:
             self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
@@ -5994,6 +6000,7 @@ class CreateImageSplicingTaskShrinkRequest(TeaModel):
         credential_config_shrink: str = None,
         direction: str = None,
         image_format: str = None,
+        margin: int = None,
         notify_endpoint: str = None,
         notify_topic_name: str = None,
         padding: int = None,
@@ -6010,6 +6017,7 @@ class CreateImageSplicingTaskShrinkRequest(TeaModel):
         self.credential_config_shrink = credential_config_shrink
         self.direction = direction
         self.image_format = image_format
+        self.margin = margin
         self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.padding = padding
@@ -6041,6 +6049,8 @@ class CreateImageSplicingTaskShrinkRequest(TeaModel):
             result['Direction'] = self.direction
         if self.image_format is not None:
             result['ImageFormat'] = self.image_format
+        if self.margin is not None:
+            result['Margin'] = self.margin
         if self.notify_endpoint is not None:
             result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
@@ -6075,6 +6085,8 @@ class CreateImageSplicingTaskShrinkRequest(TeaModel):
             self.direction = m.get('Direction')
         if m.get('ImageFormat') is not None:
             self.image_format = m.get('ImageFormat')
+        if m.get('Margin') is not None:
+            self.margin = m.get('Margin')
         if m.get('NotifyEndpoint') is not None:
             self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:

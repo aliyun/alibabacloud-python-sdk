@@ -1,3 +1,6 @@
+2022-07-20 Version: 1.27.6
+- Add Body Detection and Image Splicing API.
+
 2022-07-19 Version: 1.27.5
 - Add Body Detection and Image Splicing API.
 
