@@ -1,3 +1,11 @@
+2022-07-20 Version: 1.3.0
+- Ass new api called SubmitMediaInfoJob, which submit mediaInfo job.
+- Ass new api called SubmitMediaCensorJob, which submit mediaCensor job.
+- Ass new api called SubmitIProductionJob, which submit iProduction job.
+- Ass new api called SubmitTranscodeJob, which submit transcode job.
+- Ass new api called SubmitDynamicImageJob, which submit dynamicImage job.
+- Ass new api called SubmitSnapshotJob, which submit snapshot job.
+
 2022-06-08 Version: 1.2.0
 - Add page params in ListTemplates API.
 
