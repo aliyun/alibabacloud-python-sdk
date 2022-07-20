@@ -48391,11 +48391,13 @@ class SubmitFileRequest(TeaModel):
         file_id: int = None,
         project_id: int = None,
         project_identifier: str = None,
+        skip_all_deploy_file_extensions: bool = None,
     ):
         self.comment = comment
         self.file_id = file_id
         self.project_id = project_id
         self.project_identifier = project_identifier
+        self.skip_all_deploy_file_extensions = skip_all_deploy_file_extensions
 
     def validate(self):
         pass
@@ -48414,6 +48416,8 @@ class SubmitFileRequest(TeaModel):
             result['ProjectId'] = self.project_id
         if self.project_identifier is not None:
             result['ProjectIdentifier'] = self.project_identifier
+        if self.skip_all_deploy_file_extensions is not None:
+            result['SkipAllDeployFileExtensions'] = self.skip_all_deploy_file_extensions
         return result
 
     def from_map(self, m: dict = None):
@@ -48426,6 +48430,8 @@ class SubmitFileRequest(TeaModel):
             self.project_id = m.get('ProjectId')
         if m.get('ProjectIdentifier') is not None:
             self.project_identifier = m.get('ProjectIdentifier')
+        if m.get('SkipAllDeployFileExtensions') is not None:
+            self.skip_all_deploy_file_extensions = m.get('SkipAllDeployFileExtensions')
         return self
 
 

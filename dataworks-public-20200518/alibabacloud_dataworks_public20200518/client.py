@@ -17007,6 +17007,8 @@ class Client(OpenApiClient):
             body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_identifier):
             body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.skip_all_deploy_file_extensions):
+            body['SkipAllDeployFileExtensions'] = request.skip_all_deploy_file_extensions
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -17041,6 +17043,8 @@ class Client(OpenApiClient):
             body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_identifier):
             body['ProjectIdentifier'] = request.project_identifier
+        if not UtilClient.is_unset(request.skip_all_deploy_file_extensions):
+            body['SkipAllDeployFileExtensions'] = request.skip_all_deploy_file_extensions
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
