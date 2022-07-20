@@ -1,3 +1,8 @@
+2022-07-20 Version: 2.3.0
+- Add sync open api.
+- Add batch open api.
+- Add resource open api.
+
 2022-06-30 Version: 2.2.2
 - App manage open api.
 
