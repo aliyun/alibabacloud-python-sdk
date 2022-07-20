@@ -1,3 +1,6 @@
+2022-07-20 Version: 1.1.23
+- Change getFileDetectResult.
+
 2022-07-19 Version: 1.1.22
 - Change cspm ListCheckResult api.
 
