@@ -1,3 +1,6 @@
+2022-07-21 Version: 1.1.8
+- Add instanceSoftConcurrency field for function meta.
+
 2022-07-18 Version: 1.1.7
 - Fix InvokeFunction serilization.
 

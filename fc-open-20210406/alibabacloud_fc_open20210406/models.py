@@ -3033,6 +3033,7 @@ class CreateFunctionRequest(TeaModel):
         initializer: str = None,
         instance_concurrency: int = None,
         instance_lifecycle_config: InstanceLifecycleConfig = None,
+        instance_soft_concurrency: int = None,
         instance_type: str = None,
         layers: List[str] = None,
         memory_size: int = None,
@@ -3060,6 +3061,7 @@ class CreateFunctionRequest(TeaModel):
         self.initializer = initializer
         self.instance_concurrency = instance_concurrency
         self.instance_lifecycle_config = instance_lifecycle_config
+        self.instance_soft_concurrency = instance_soft_concurrency
         self.instance_type = instance_type
         # 层列表
         self.layers = layers
@@ -3114,6 +3116,8 @@ class CreateFunctionRequest(TeaModel):
             result['instanceConcurrency'] = self.instance_concurrency
         if self.instance_lifecycle_config is not None:
             result['instanceLifecycleConfig'] = self.instance_lifecycle_config.to_map()
+        if self.instance_soft_concurrency is not None:
+            result['instanceSoftConcurrency'] = self.instance_soft_concurrency
         if self.instance_type is not None:
             result['instanceType'] = self.instance_type
         if self.layers is not None:
@@ -3159,6 +3163,8 @@ class CreateFunctionRequest(TeaModel):
         if m.get('instanceLifecycleConfig') is not None:
             temp_model = InstanceLifecycleConfig()
             self.instance_lifecycle_config = temp_model.from_map(m['instanceLifecycleConfig'])
+        if m.get('instanceSoftConcurrency') is not None:
+            self.instance_soft_concurrency = m.get('instanceSoftConcurrency')
         if m.get('instanceType') is not None:
             self.instance_type = m.get('instanceType')
         if m.get('layers') is not None:
@@ -3191,6 +3197,7 @@ class CreateFunctionResponseBody(TeaModel):
         initializer: str = None,
         instance_concurrency: int = None,
         instance_lifecycle_config: InstanceLifecycleConfig = None,
+        instance_soft_concurrency: int = None,
         instance_type: str = None,
         last_modified_time: str = None,
         layers: List[str] = None,
@@ -3226,6 +3233,7 @@ class CreateFunctionResponseBody(TeaModel):
         self.initializer = initializer
         self.instance_concurrency = instance_concurrency
         self.instance_lifecycle_config = instance_lifecycle_config
+        self.instance_soft_concurrency = instance_soft_concurrency
         self.instance_type = instance_type
         # function上次修改时间
         self.last_modified_time = last_modified_time
@@ -3285,6 +3293,8 @@ class CreateFunctionResponseBody(TeaModel):
             result['instanceConcurrency'] = self.instance_concurrency
         if self.instance_lifecycle_config is not None:
             result['instanceLifecycleConfig'] = self.instance_lifecycle_config.to_map()
+        if self.instance_soft_concurrency is not None:
+            result['instanceSoftConcurrency'] = self.instance_soft_concurrency
         if self.instance_type is not None:
             result['instanceType'] = self.instance_type
         if self.last_modified_time is not None:
@@ -3337,6 +3347,8 @@ class CreateFunctionResponseBody(TeaModel):
         if m.get('instanceLifecycleConfig') is not None:
             temp_model = InstanceLifecycleConfig()
             self.instance_lifecycle_config = temp_model.from_map(m['instanceLifecycleConfig'])
+        if m.get('instanceSoftConcurrency') is not None:
+            self.instance_soft_concurrency = m.get('instanceSoftConcurrency')
         if m.get('instanceType') is not None:
             self.instance_type = m.get('instanceType')
         if m.get('lastModifiedTime') is not None:
@@ -3751,6 +3763,7 @@ class CreateServiceResponseBody(TeaModel):
         service_id: str = None,
         service_name: str = None,
         tracing_config: TracingConfig = None,
+        vendor_config: VendorConfig = None,
         vpc_config: VPCConfig = None,
     ):
         # 创建时间
@@ -3770,6 +3783,7 @@ class CreateServiceResponseBody(TeaModel):
         # 服务名称
         self.service_name = service_name
         self.tracing_config = tracing_config
+        self.vendor_config = vendor_config
         self.vpc_config = vpc_config
 
     def validate(self):
@@ -3779,6 +3793,8 @@ class CreateServiceResponseBody(TeaModel):
             self.nas_config.validate()
         if self.tracing_config:
             self.tracing_config.validate()
+        if self.vendor_config:
+            self.vendor_config.validate()
         if self.vpc_config:
             self.vpc_config.validate()
 
@@ -3808,6 +3824,8 @@ class CreateServiceResponseBody(TeaModel):
             result['serviceName'] = self.service_name
         if self.tracing_config is not None:
             result['tracingConfig'] = self.tracing_config.to_map()
+        if self.vendor_config is not None:
+            result['vendorConfig'] = self.vendor_config.to_map()
         if self.vpc_config is not None:
             result['vpcConfig'] = self.vpc_config.to_map()
         return result
@@ -3837,6 +3855,9 @@ class CreateServiceResponseBody(TeaModel):
         if m.get('tracingConfig') is not None:
             temp_model = TracingConfig()
             self.tracing_config = temp_model.from_map(m['tracingConfig'])
+        if m.get('vendorConfig') is not None:
+            temp_model = VendorConfig()
+            self.vendor_config = temp_model.from_map(m['vendorConfig'])
         if m.get('vpcConfig') is not None:
             temp_model = VPCConfig()
             self.vpc_config = temp_model.from_map(m['vpcConfig'])
@@ -5788,6 +5809,7 @@ class GetFunctionResponseBody(TeaModel):
         initializer: str = None,
         instance_concurrency: int = None,
         instance_lifecycle_config: InstanceLifecycleConfig = None,
+        instance_soft_concurrency: int = None,
         instance_type: str = None,
         last_modified_time: str = None,
         layers: List[str] = None,
@@ -5824,6 +5846,7 @@ class GetFunctionResponseBody(TeaModel):
         self.initializer = initializer
         self.instance_concurrency = instance_concurrency
         self.instance_lifecycle_config = instance_lifecycle_config
+        self.instance_soft_concurrency = instance_soft_concurrency
         self.instance_type = instance_type
         # function上次修改时间
         self.last_modified_time = last_modified_time
@@ -5883,6 +5906,8 @@ class GetFunctionResponseBody(TeaModel):
             result['instanceConcurrency'] = self.instance_concurrency
         if self.instance_lifecycle_config is not None:
             result['instanceLifecycleConfig'] = self.instance_lifecycle_config.to_map()
+        if self.instance_soft_concurrency is not None:
+            result['instanceSoftConcurrency'] = self.instance_soft_concurrency
         if self.instance_type is not None:
             result['instanceType'] = self.instance_type
         if self.last_modified_time is not None:
@@ -5935,6 +5960,8 @@ class GetFunctionResponseBody(TeaModel):
         if m.get('instanceLifecycleConfig') is not None:
             temp_model = InstanceLifecycleConfig()
             self.instance_lifecycle_config = temp_model.from_map(m['instanceLifecycleConfig'])
+        if m.get('instanceSoftConcurrency') is not None:
+            self.instance_soft_concurrency = m.get('instanceSoftConcurrency')
         if m.get('instanceType') is not None:
             self.instance_type = m.get('instanceType')
         if m.get('lastModifiedTime') is not None:
@@ -8715,6 +8742,7 @@ class ListFunctionsResponseBodyFunctions(TeaModel):
         initializer: str = None,
         instance_concurrency: int = None,
         instance_lifecycle_config: InstanceLifecycleConfig = None,
+        instance_soft_concurrency: int = None,
         instance_type: str = None,
         last_modified_time: str = None,
         layers: List[str] = None,
@@ -8747,6 +8775,7 @@ class ListFunctionsResponseBodyFunctions(TeaModel):
         self.initializer = initializer
         self.instance_concurrency = instance_concurrency
         self.instance_lifecycle_config = instance_lifecycle_config
+        self.instance_soft_concurrency = instance_soft_concurrency
         self.instance_type = instance_type
         # function上次修改时间
         self.last_modified_time = last_modified_time
@@ -8798,6 +8827,8 @@ class ListFunctionsResponseBodyFunctions(TeaModel):
             result['instanceConcurrency'] = self.instance_concurrency
         if self.instance_lifecycle_config is not None:
             result['instanceLifecycleConfig'] = self.instance_lifecycle_config.to_map()
+        if self.instance_soft_concurrency is not None:
+            result['instanceSoftConcurrency'] = self.instance_soft_concurrency
         if self.instance_type is not None:
             result['instanceType'] = self.instance_type
         if self.last_modified_time is not None:
@@ -8844,6 +8875,8 @@ class ListFunctionsResponseBodyFunctions(TeaModel):
         if m.get('instanceLifecycleConfig') is not None:
             temp_model = InstanceLifecycleConfig()
             self.instance_lifecycle_config = temp_model.from_map(m['instanceLifecycleConfig'])
+        if m.get('instanceSoftConcurrency') is not None:
+            self.instance_soft_concurrency = m.get('instanceSoftConcurrency')
         if m.get('instanceType') is not None:
             self.instance_type = m.get('instanceType')
         if m.get('lastModifiedTime') is not None:
@@ -8951,9 +8984,13 @@ class ListInstancesHeaders(TeaModel):
         self,
         common_headers: Dict[str, str] = None,
         x_fc_account_id: str = None,
+        x_fc_date: str = None,
+        x_fc_trace_id: str = None,
     ):
         self.common_headers = common_headers
         self.x_fc_account_id = x_fc_account_id
+        self.x_fc_date = x_fc_date
+        self.x_fc_trace_id = x_fc_trace_id
 
     def validate(self):
         pass
@@ -8968,6 +9005,10 @@ class ListInstancesHeaders(TeaModel):
             result['commonHeaders'] = self.common_headers
         if self.x_fc_account_id is not None:
             result['X-Fc-Account-Id'] = self.x_fc_account_id
+        if self.x_fc_date is not None:
+            result['X-Fc-Date'] = self.x_fc_date
+        if self.x_fc_trace_id is not None:
+            result['X-Fc-Trace-Id'] = self.x_fc_trace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8976,6 +9017,10 @@ class ListInstancesHeaders(TeaModel):
             self.common_headers = m.get('commonHeaders')
         if m.get('X-Fc-Account-Id') is not None:
             self.x_fc_account_id = m.get('X-Fc-Account-Id')
+        if m.get('X-Fc-Date') is not None:
+            self.x_fc_date = m.get('X-Fc-Date')
+        if m.get('X-Fc-Trace-Id') is not None:
+            self.x_fc_trace_id = m.get('X-Fc-Trace-Id')
         return self
 
 
@@ -13389,6 +13434,7 @@ class UpdateFunctionRequest(TeaModel):
         initialization_timeout: int = None,
         initializer: str = None,
         instance_lifecycle_config: InstanceLifecycleConfig = None,
+        instance_soft_concurrency: int = None,
         instance_type: str = None,
         layers: List[str] = None,
         memory_size: int = None,
@@ -13415,6 +13461,7 @@ class UpdateFunctionRequest(TeaModel):
         # 初始化 function 执行的入口，具体格式和语言相关
         self.initializer = initializer
         self.instance_lifecycle_config = instance_lifecycle_config
+        self.instance_soft_concurrency = instance_soft_concurrency
         self.instance_type = instance_type
         self.layers = layers
         # function的内存规格，单位为MB，为64MB的倍数
@@ -13466,6 +13513,8 @@ class UpdateFunctionRequest(TeaModel):
             result['initializer'] = self.initializer
         if self.instance_lifecycle_config is not None:
             result['instanceLifecycleConfig'] = self.instance_lifecycle_config.to_map()
+        if self.instance_soft_concurrency is not None:
+            result['instanceSoftConcurrency'] = self.instance_soft_concurrency
         if self.instance_type is not None:
             result['instanceType'] = self.instance_type
         if self.layers is not None:
@@ -13509,6 +13558,8 @@ class UpdateFunctionRequest(TeaModel):
         if m.get('instanceLifecycleConfig') is not None:
             temp_model = InstanceLifecycleConfig()
             self.instance_lifecycle_config = temp_model.from_map(m['instanceLifecycleConfig'])
+        if m.get('instanceSoftConcurrency') is not None:
+            self.instance_soft_concurrency = m.get('instanceSoftConcurrency')
         if m.get('instanceType') is not None:
             self.instance_type = m.get('instanceType')
         if m.get('layers') is not None:
@@ -13540,6 +13591,7 @@ class UpdateFunctionResponseBody(TeaModel):
         initialization_timeout: int = None,
         initializer: str = None,
         instance_lifecycle_config: InstanceLifecycleConfig = None,
+        instance_soft_concurrency: int = None,
         instance_type: str = None,
         last_modified_time: str = None,
         layers: List[str] = None,
@@ -13575,6 +13627,7 @@ class UpdateFunctionResponseBody(TeaModel):
         # 初始化 function 执行的入口，具体格式和语言相关
         self.initializer = initializer
         self.instance_lifecycle_config = instance_lifecycle_config
+        self.instance_soft_concurrency = instance_soft_concurrency
         self.instance_type = instance_type
         # function上次修改时间
         self.last_modified_time = last_modified_time
@@ -13632,6 +13685,8 @@ class UpdateFunctionResponseBody(TeaModel):
             result['initializer'] = self.initializer
         if self.instance_lifecycle_config is not None:
             result['instanceLifecycleConfig'] = self.instance_lifecycle_config.to_map()
+        if self.instance_soft_concurrency is not None:
+            result['instanceSoftConcurrency'] = self.instance_soft_concurrency
         if self.instance_type is not None:
             result['instanceType'] = self.instance_type
         if self.last_modified_time is not None:
@@ -13682,6 +13737,8 @@ class UpdateFunctionResponseBody(TeaModel):
         if m.get('instanceLifecycleConfig') is not None:
             temp_model = InstanceLifecycleConfig()
             self.instance_lifecycle_config = temp_model.from_map(m['instanceLifecycleConfig'])
+        if m.get('instanceSoftConcurrency') is not None:
+            self.instance_soft_concurrency = m.get('instanceSoftConcurrency')
         if m.get('instanceType') is not None:
             self.instance_type = m.get('instanceType')
         if m.get('lastModifiedTime') is not None:
@@ -13883,6 +13940,7 @@ class UpdateServiceResponseBody(TeaModel):
         service_id: str = None,
         service_name: str = None,
         tracing_config: TracingConfig = None,
+        vendor_config: VendorConfig = None,
         vpc_config: VPCConfig = None,
     ):
         # 创建时间
@@ -13902,6 +13960,7 @@ class UpdateServiceResponseBody(TeaModel):
         # 服务名称
         self.service_name = service_name
         self.tracing_config = tracing_config
+        self.vendor_config = vendor_config
         self.vpc_config = vpc_config
 
     def validate(self):
@@ -13911,6 +13970,8 @@ class UpdateServiceResponseBody(TeaModel):
             self.nas_config.validate()
         if self.tracing_config:
             self.tracing_config.validate()
+        if self.vendor_config:
+            self.vendor_config.validate()
         if self.vpc_config:
             self.vpc_config.validate()
 
@@ -13940,6 +14001,8 @@ class UpdateServiceResponseBody(TeaModel):
             result['serviceName'] = self.service_name
         if self.tracing_config is not None:
             result['tracingConfig'] = self.tracing_config.to_map()
+        if self.vendor_config is not None:
+            result['vendorConfig'] = self.vendor_config.to_map()
         if self.vpc_config is not None:
             result['vpcConfig'] = self.vpc_config.to_map()
         return result
@@ -13969,6 +14032,9 @@ class UpdateServiceResponseBody(TeaModel):
         if m.get('tracingConfig') is not None:
             temp_model = TracingConfig()
             self.tracing_config = temp_model.from_map(m['tracingConfig'])
+        if m.get('vendorConfig') is not None:
+            temp_model = VendorConfig()
+            self.vendor_config = temp_model.from_map(m['vendorConfig'])
         if m.get('vpcConfig') is not None:
             temp_model = VPCConfig()
             self.vpc_config = temp_model.from_map(m['vpcConfig'])
