@@ -3428,6 +3428,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.change_set_id):
             query['ChangeSetId'] = request.change_set_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.stack_group_name):
@@ -3470,6 +3474,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.change_set_id):
             query['ChangeSetId'] = request.change_set_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.stack_group_name):

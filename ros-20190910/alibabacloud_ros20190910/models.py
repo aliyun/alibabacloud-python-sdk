@@ -9144,26 +9144,14 @@ class GetTemplateScratchResponse(TeaModel):
         return self
 
 
-class GetTemplateSummaryRequest(TeaModel):
+class GetTemplateSummaryRequestParameters(TeaModel):
     def __init__(
         self,
-        change_set_id: str = None,
-        region_id: str = None,
-        stack_group_name: str = None,
-        stack_id: str = None,
-        template_body: str = None,
-        template_id: str = None,
-        template_url: str = None,
-        template_version: str = None,
+        parameter_key: str = None,
+        parameter_value: str = None,
     ):
-        self.change_set_id = change_set_id
-        self.region_id = region_id
-        self.stack_group_name = stack_group_name
-        self.stack_id = stack_id
-        self.template_body = template_body
-        self.template_id = template_id
-        self.template_url = template_url
-        self.template_version = template_version
+        self.parameter_key = parameter_key
+        self.parameter_value = parameter_value
 
     def validate(self):
         pass
@@ -9174,8 +9162,66 @@ class GetTemplateSummaryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.parameter_key is not None:
+            result['ParameterKey'] = self.parameter_key
+        if self.parameter_value is not None:
+            result['ParameterValue'] = self.parameter_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterKey') is not None:
+            self.parameter_key = m.get('ParameterKey')
+        if m.get('ParameterValue') is not None:
+            self.parameter_value = m.get('ParameterValue')
+        return self
+
+
+class GetTemplateSummaryRequest(TeaModel):
+    def __init__(
+        self,
+        change_set_id: str = None,
+        client_token: str = None,
+        parameters: List[GetTemplateSummaryRequestParameters] = None,
+        region_id: str = None,
+        stack_group_name: str = None,
+        stack_id: str = None,
+        template_body: str = None,
+        template_id: str = None,
+        template_url: str = None,
+        template_version: str = None,
+    ):
+        self.change_set_id = change_set_id
+        self.client_token = client_token
+        self.parameters = parameters
+        self.region_id = region_id
+        self.stack_group_name = stack_group_name
+        self.stack_id = stack_id
+        self.template_body = template_body
+        self.template_id = template_id
+        self.template_url = template_url
+        self.template_version = template_version
+
+    def validate(self):
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.change_set_id is not None:
             result['ChangeSetId'] = self.change_set_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.stack_group_name is not None:
@@ -9196,6 +9242,13 @@ class GetTemplateSummaryRequest(TeaModel):
         m = m or dict()
         if m.get('ChangeSetId') is not None:
             self.change_set_id = m.get('ChangeSetId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = GetTemplateSummaryRequestParameters()
+                self.parameters.append(temp_model.from_map(k))
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('StackGroupName') is not None:

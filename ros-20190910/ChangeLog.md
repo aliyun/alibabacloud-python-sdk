@@ -1,3 +1,6 @@
+2022-07-21 Version: 3.2.8
+- GetTemplateSummary support Parameters and ClientToken.
+
 2022-07-13 Version: 3.2.7
 - PreviewStack adds StackId and returns Action to support preview stack update.
 
