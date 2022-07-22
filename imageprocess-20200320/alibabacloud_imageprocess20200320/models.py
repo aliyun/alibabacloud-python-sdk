@@ -4655,11 +4655,13 @@ class ScreenChestCTResponseBodyDataCACS(TeaModel):
         detections: List[ScreenChestCTResponseBodyDataCACSDetections] = None,
         result_url: str = None,
         score: str = None,
+        series_instance_uid: str = None,
         volume_score: str = None,
     ):
         self.detections = detections
         self.result_url = result_url
         self.score = score
+        self.series_instance_uid = series_instance_uid
         self.volume_score = volume_score
 
     def validate(self):
@@ -4682,6 +4684,8 @@ class ScreenChestCTResponseBodyDataCACS(TeaModel):
             result['ResultUrl'] = self.result_url
         if self.score is not None:
             result['Score'] = self.score
+        if self.series_instance_uid is not None:
+            result['SeriesInstanceUID'] = self.series_instance_uid
         if self.volume_score is not None:
             result['VolumeScore'] = self.volume_score
         return result
@@ -4697,6 +4701,8 @@ class ScreenChestCTResponseBodyDataCACS(TeaModel):
             self.result_url = m.get('ResultUrl')
         if m.get('Score') is not None:
             self.score = m.get('Score')
+        if m.get('SeriesInstanceUID') is not None:
+            self.series_instance_uid = m.get('SeriesInstanceUID')
         if m.get('VolumeScore') is not None:
             self.volume_score = m.get('VolumeScore')
         return self
@@ -4710,12 +4716,14 @@ class ScreenChestCTResponseBodyDataCovid(TeaModel):
         new_probability: str = None,
         normal_probability: str = None,
         other_probability: str = None,
+        series_instance_uid: str = None,
     ):
         self.lesion_ratio = lesion_ratio
         self.mask = mask
         self.new_probability = new_probability
         self.normal_probability = normal_probability
         self.other_probability = other_probability
+        self.series_instance_uid = series_instance_uid
 
     def validate(self):
         pass
@@ -4736,6 +4744,8 @@ class ScreenChestCTResponseBodyDataCovid(TeaModel):
             result['NormalProbability'] = self.normal_probability
         if self.other_probability is not None:
             result['OtherProbability'] = self.other_probability
+        if self.series_instance_uid is not None:
+            result['SeriesInstanceUID'] = self.series_instance_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -4750,6 +4760,8 @@ class ScreenChestCTResponseBodyDataCovid(TeaModel):
             self.normal_probability = m.get('NormalProbability')
         if m.get('OtherProbability') is not None:
             self.other_probability = m.get('OtherProbability')
+        if m.get('SeriesInstanceUID') is not None:
+            self.series_instance_uid = m.get('SeriesInstanceUID')
         return self
 
 
@@ -4808,8 +4820,10 @@ class ScreenChestCTResponseBodyDataDetectLymph(TeaModel):
     def __init__(
         self,
         lesions: List[ScreenChestCTResponseBodyDataDetectLymphLesions] = None,
+        series_instance_uid: str = None,
     ):
         self.lesions = lesions
+        self.series_instance_uid = series_instance_uid
 
     def validate(self):
         if self.lesions:
@@ -4827,6 +4841,8 @@ class ScreenChestCTResponseBodyDataDetectLymph(TeaModel):
         if self.lesions is not None:
             for k in self.lesions:
                 result['Lesions'].append(k.to_map() if k else None)
+        if self.series_instance_uid is not None:
+            result['SeriesInstanceUID'] = self.series_instance_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -4836,6 +4852,8 @@ class ScreenChestCTResponseBodyDataDetectLymph(TeaModel):
             for k in m.get('Lesions'):
                 temp_model = ScreenChestCTResponseBodyDataDetectLymphLesions()
                 self.lesions.append(temp_model.from_map(k))
+        if m.get('SeriesInstanceUID') is not None:
+            self.series_instance_uid = m.get('SeriesInstanceUID')
         return self
 
 
@@ -4894,8 +4912,10 @@ class ScreenChestCTResponseBodyDataDetectPdac(TeaModel):
     def __init__(
         self,
         lesion: ScreenChestCTResponseBodyDataDetectPdacLesion = None,
+        series_instance_uid: str = None,
     ):
         self.lesion = lesion
+        self.series_instance_uid = series_instance_uid
 
     def validate(self):
         if self.lesion:
@@ -4909,6 +4929,8 @@ class ScreenChestCTResponseBodyDataDetectPdac(TeaModel):
         result = dict()
         if self.lesion is not None:
             result['Lesion'] = self.lesion.to_map()
+        if self.series_instance_uid is not None:
+            result['SeriesInstanceUID'] = self.series_instance_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -4916,6 +4938,8 @@ class ScreenChestCTResponseBodyDataDetectPdac(TeaModel):
         if m.get('Lesion') is not None:
             temp_model = ScreenChestCTResponseBodyDataDetectPdacLesion()
             self.lesion = temp_model.from_map(m['Lesion'])
+        if m.get('SeriesInstanceUID') is not None:
+            self.series_instance_uid = m.get('SeriesInstanceUID')
         return self
 
 
@@ -4990,6 +5014,7 @@ class ScreenChestCTResponseBodyDataDetectRibFracture(TeaModel):
         origin: List[float] = None,
         result_url: str = None,
         rib_segment_mask_url: str = None,
+        series_instance_uid: str = None,
         spacing: List[float] = None,
     ):
         self.detections = detections
@@ -4997,6 +5022,7 @@ class ScreenChestCTResponseBodyDataDetectRibFracture(TeaModel):
         self.origin = origin
         self.result_url = result_url
         self.rib_segment_mask_url = rib_segment_mask_url
+        self.series_instance_uid = series_instance_uid
         self.spacing = spacing
 
     def validate(self):
@@ -5023,6 +5049,8 @@ class ScreenChestCTResponseBodyDataDetectRibFracture(TeaModel):
             result['ResultURL'] = self.result_url
         if self.rib_segment_mask_url is not None:
             result['RibSegmentMaskURL'] = self.rib_segment_mask_url
+        if self.series_instance_uid is not None:
+            result['SeriesInstanceUID'] = self.series_instance_uid
         if self.spacing is not None:
             result['Spacing'] = self.spacing
         return result
@@ -5042,6 +5070,8 @@ class ScreenChestCTResponseBodyDataDetectRibFracture(TeaModel):
             self.result_url = m.get('ResultURL')
         if m.get('RibSegmentMaskURL') is not None:
             self.rib_segment_mask_url = m.get('RibSegmentMaskURL')
+        if m.get('SeriesInstanceUID') is not None:
+            self.series_instance_uid = m.get('SeriesInstanceUID')
         if m.get('Spacing') is not None:
             self.spacing = m.get('Spacing')
         return self
@@ -5257,6 +5287,7 @@ class ScreenChestCTResponseBodyData(TeaModel):
         detect_rib_fracture: ScreenChestCTResponseBodyDataDetectRibFracture = None,
         error_message: str = None,
         lung_nodule: ScreenChestCTResponseBodyDataLungNodule = None,
+        nested_url_list: Dict[str, Any] = None,
         urllist: Dict[str, Any] = None,
     ):
         self.analyze_chest_vessel = analyze_chest_vessel
@@ -5267,6 +5298,7 @@ class ScreenChestCTResponseBodyData(TeaModel):
         self.detect_rib_fracture = detect_rib_fracture
         self.error_message = error_message
         self.lung_nodule = lung_nodule
+        self.nested_url_list = nested_url_list
         self.urllist = urllist
 
     def validate(self):
@@ -5307,6 +5339,8 @@ class ScreenChestCTResponseBodyData(TeaModel):
             result['ErrorMessage'] = self.error_message
         if self.lung_nodule is not None:
             result['LungNodule'] = self.lung_nodule.to_map()
+        if self.nested_url_list is not None:
+            result['NestedUrlList'] = self.nested_url_list
         if self.urllist is not None:
             result['URLList'] = self.urllist
         return result
@@ -5336,6 +5370,8 @@ class ScreenChestCTResponseBodyData(TeaModel):
         if m.get('LungNodule') is not None:
             temp_model = ScreenChestCTResponseBodyDataLungNodule()
             self.lung_nodule = temp_model.from_map(m['LungNodule'])
+        if m.get('NestedUrlList') is not None:
+            self.nested_url_list = m.get('NestedUrlList')
         if m.get('URLList') is not None:
             self.urllist = m.get('URLList')
         return self
