@@ -2254,6 +2254,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.screen_chest_ctwith_options_async(request, runtime)
 
+    def segment_oarwith_options(
+        self,
+        request: imageprocess_20200320_models.SegmentOARRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.SegmentOARResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.body_part):
+            body['BodyPart'] = request.body_part
+        if not UtilClient.is_unset(request.contrast):
+            body['Contrast'] = request.contrast
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.mask_list):
+            body['MaskList'] = request.mask_list
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SegmentOAR',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.SegmentOARResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def segment_oarwith_options_async(
+        self,
+        request: imageprocess_20200320_models.SegmentOARRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.SegmentOARResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.body_part):
+            body['BodyPart'] = request.body_part
+        if not UtilClient.is_unset(request.contrast):
+            body['Contrast'] = request.contrast
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.mask_list):
+            body['MaskList'] = request.mask_list
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SegmentOAR',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.SegmentOARResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def segment_oar(
+        self,
+        request: imageprocess_20200320_models.SegmentOARRequest,
+    ) -> imageprocess_20200320_models.SegmentOARResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.segment_oarwith_options(request, runtime)
+
+    async def segment_oar_async(
+        self,
+        request: imageprocess_20200320_models.SegmentOARRequest,
+    ) -> imageprocess_20200320_models.SegmentOARResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.segment_oarwith_options_async(request, runtime)
+
     def translate_med_with_options(
         self,
         request: imageprocess_20200320_models.TranslateMedRequest,
