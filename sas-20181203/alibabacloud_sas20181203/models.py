@@ -1492,9 +1492,7 @@ class CreateVulAutoRepairConfigRequestVulAutoRepairConfigList(TeaModel):
         alias_name: str = None,
         name: str = None,
     ):
-        # 漏洞别名
         self.alias_name = alias_name
-        # 漏洞名称
         self.name = name
 
     def validate(self):
@@ -1529,7 +1527,6 @@ class CreateVulAutoRepairConfigRequest(TeaModel):
         vul_auto_repair_config_list: List[CreateVulAutoRepairConfigRequestVulAutoRepairConfigList] = None,
     ):
         self.reason = reason
-        # 漏洞类型
         self.type = type
         self.vul_auto_repair_config_list = vul_auto_repair_config_list
 
@@ -3912,7 +3909,6 @@ class DescribeAlarmEventListResponseBodySuspEvents(TeaModel):
         self.stages = stages
         self.start_time = start_time
         self.suspicious_event_count = suspicious_event_count
-        # 攻击阶段展示名
         self.tactic_items = tactic_items
         self.uuid = uuid
 
@@ -9410,7 +9406,6 @@ class DescribeEmgVulItemRequest(TeaModel):
         scan_type: str = None,
         vul_name: str = None,
     ):
-        # 检测方式
         self.check_type = check_type
         self.current_page = current_page
         self.lang = lang
@@ -13582,7 +13577,6 @@ class DescribeImageFixTaskResponseBody(TeaModel):
     ):
         self.build_tasks = build_tasks
         self.page_info = page_info
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -23227,7 +23221,6 @@ class DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse
         self.mark_mis_type = mark_mis_type
         self.mark_mis_value = mark_mis_value
         self.supported_mis_type = supported_mis_type
-        # 资产uuid
         self.uuid = uuid
 
     def validate(self):
@@ -26366,9 +26359,7 @@ class DescribeSuspEventsRequest(TeaModel):
         self.levels = levels
         self.name = name
         self.operate_error_code_list = operate_error_code_list
-        # 处理时间结束时间
         self.operate_time_end = operate_time_end
-        # 处理时间开始时间
         self.operate_time_start = operate_time_start
         self.page_size = page_size
         self.parent_event_types = parent_event_types
@@ -26378,9 +26369,7 @@ class DescribeSuspEventsRequest(TeaModel):
         self.status = status
         self.tactic_id = tactic_id
         self.target_type = target_type
-        # 最新发生结束时间
         self.time_end = time_end
-        # 最新发生开始时间
         self.time_start = time_start
         self.unique_info = unique_info
         self.uuids = uuids
@@ -26729,7 +26718,6 @@ class DescribeSuspEventsResponseBodySuspEvents(TeaModel):
         self.sale_version = sale_version
         self.security_event_ids = security_event_ids
         self.stages = stages
-        # 攻击阶段展示名
         self.tactic_items = tactic_items
         self.unique_info = unique_info
         self.uuid = uuid
@@ -32859,15 +32847,10 @@ class InstallCloudMonitorRequest(TeaModel):
         instance_id_list: List[str] = None,
         uuid_list: List[str] = None,
     ):
-        # 非阿里云主机安装云监控插件时所需要的AccessKey
         self.agent_access_key = agent_access_key
-        # 非阿里云主机安装云监控插件时所需要的AccessSecret
         self.agent_secret_key = agent_secret_key
-        # 云监控版本
         self.argus_version = argus_version
-        # 实例 instanceId
         self.instance_id_list = instance_id_list
-        # uuid 列表
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -33286,18 +33269,16 @@ class ListCheckInstanceResultResponseBody(TeaModel):
     def __init__(
         self,
         basic_data: List[ListCheckInstanceResultResponseBodyBasicData] = None,
-        checks: Dict[str, Any] = None,
+        checks: List[Dict[str, Any]] = None,
         columns: List[ListCheckInstanceResultResponseBodyColumns] = None,
         page_info: ListCheckInstanceResultResponseBodyPageInfo = None,
         request_id: str = None,
-        total_count: int = None,
     ):
         self.basic_data = basic_data
         self.checks = checks
         self.columns = columns
         self.page_info = page_info
         self.request_id = request_id
-        self.total_count = total_count
 
     def validate(self):
         if self.basic_data:
@@ -33331,8 +33312,6 @@ class ListCheckInstanceResultResponseBody(TeaModel):
             result['PageInfo'] = self.page_info.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -33354,8 +33333,6 @@ class ListCheckInstanceResultResponseBody(TeaModel):
             self.page_info = temp_model.from_map(m['PageInfo'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -33795,11 +33772,9 @@ class ListVulAutoRepairConfigRequest(TeaModel):
         page_size: int = None,
         type: str = None,
     ):
-        # 漏洞别名
         self.alias_name = alias_name
         self.current_page = current_page
         self.page_size = page_size
-        # 漏洞类型
         self.type = type
 
     def validate(self):
@@ -38160,7 +38135,6 @@ class OperationCancelIgnoreSuspEventRequest(TeaModel):
         self,
         security_event_ids: List[int] = None,
     ):
-        # 告警编号集合
         self.security_event_ids = security_event_ids
 
     def validate(self):
@@ -38685,7 +38659,6 @@ class PublicCreateImageScanTaskResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -38873,7 +38846,6 @@ class PublicPreCheckImageScanTaskResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -39061,7 +39033,6 @@ class PublicSyncAndCreateImageScanTaskResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -39257,14 +39228,11 @@ class QueryGroupedSecurityEventMarkMissListRequest(TeaModel):
         source_ip: str = None,
     ):
         self.current_page = current_page
-        # 加白方式
         self.disposal_way = disposal_way
-        # 告警事件名称（子类型）
         self.event_name = event_name
         self.from_ = from_
         self.lang = lang
         self.page_size = page_size
-        # 资产名
         self.remark = remark
         self.source_ip = source_ip
 
@@ -39331,27 +39299,16 @@ class QueryGroupedSecurityEventMarkMissListResponseBodyList(TeaModel):
         operate: str = None,
         uuids: str = None,
     ):
-        # 用户统一编号
         self.ali_uid = ali_uid
-        # 处置方式
         self.disposal_way = disposal_way
-        # 告警事件名称（子类型）
         self.event_name = event_name
-        # 告警事件名称（子类型）
         self.event_name_original = event_name_original
-        # 告警事件名称（父类型）
         self.event_type = event_type
-        # 告警事件名称（父类型）
         self.event_type_original = event_type_original
-        # 加白字段
         self.field = field
-        # 加白值
         self.field_value = field_value
-        # 加白字段别名
         self.filed_alias_name = filed_alias_name
-        # 操作符
         self.operate = operate
-        # 资产ids，逗号分割
         self.uuids = uuids
 
     def validate(self):
