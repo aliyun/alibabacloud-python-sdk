@@ -1,3 +1,6 @@
+2022-07-25 Version: 3.1.4
+- Add  Hotspot Interface.
+
 2022-05-27 Version: 3.1.3
 - Add  Model CoverUrl.
 
