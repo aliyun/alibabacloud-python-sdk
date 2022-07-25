@@ -1,3 +1,6 @@
+2022-07-25 Version: 1.1.24
+- Change ListCheckInstanceResult GetCheckDetail Public.
+
 2022-07-20 Version: 1.1.23
 - Change getFileDetectResult.
 
