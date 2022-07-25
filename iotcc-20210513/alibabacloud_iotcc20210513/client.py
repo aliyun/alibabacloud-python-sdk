@@ -3008,6 +3008,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3044,6 +3046,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4048,6 +4052,88 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListIoTCloudConnectorAvailableZonesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_io_tcloud_connector_available_zones_with_options_async(request, runtime)
+
+    def list_io_tcloud_connector_eips_with_options(
+        self,
+        request: io_tcc20210513_models.ListIoTCloudConnectorEIPsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ListIoTCloudConnectorEIPsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIoTCloudConnectorEIPs',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ListIoTCloudConnectorEIPsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_io_tcloud_connector_eips_with_options_async(
+        self,
+        request: io_tcc20210513_models.ListIoTCloudConnectorEIPsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ListIoTCloudConnectorEIPsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIoTCloudConnectorEIPs',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ListIoTCloudConnectorEIPsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_io_tcloud_connector_eips(
+        self,
+        request: io_tcc20210513_models.ListIoTCloudConnectorEIPsRequest,
+    ) -> io_tcc20210513_models.ListIoTCloudConnectorEIPsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_io_tcloud_connector_eips_with_options(request, runtime)
+
+    async def list_io_tcloud_connector_eips_async(
+        self,
+        request: io_tcc20210513_models.ListIoTCloudConnectorEIPsRequest,
+    ) -> io_tcc20210513_models.ListIoTCloudConnectorEIPsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_io_tcloud_connector_eips_with_options_async(request, runtime)
 
     def list_io_tcloud_connector_groups_with_options(
         self,
