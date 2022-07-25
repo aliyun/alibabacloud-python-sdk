@@ -11116,7 +11116,7 @@ class MonitorExaminationResponseBodyDataFaceInfoPose(TeaModel):
 class MonitorExaminationResponseBodyDataFaceInfo(TeaModel):
     def __init__(
         self,
-        completeness: int = None,
+        completeness: float = None,
         face_number: int = None,
         pose: MonitorExaminationResponseBodyDataFaceInfoPose = None,
     ):

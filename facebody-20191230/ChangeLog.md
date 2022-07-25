@@ -1,3 +1,6 @@
+2022-07-25 Version: 3.0.3
+- Update MonitorExamination.
+
 2022-06-30 Version: 3.0.2
 - Update ListFaceDbs.
 
