@@ -78,6 +78,84 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def change_resource_group_with_options(
+        self,
+        request: alikafka_20190916_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: alikafka_20190916_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: alikafka_20190916_models.ChangeResourceGroupRequest,
+    ) -> alikafka_20190916_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.change_resource_group_with_options(request, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: alikafka_20190916_models.ChangeResourceGroupRequest,
+    ) -> alikafka_20190916_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.change_resource_group_with_options_async(request, runtime)
+
     def convert_post_pay_order_with_options(
         self,
         request: alikafka_20190916_models.ConvertPostPayOrderRequest,
@@ -353,6 +431,8 @@ class Client(OpenApiClient):
             query['IoMaxSpec'] = request.io_max_spec
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.spec_type):
             query['SpecType'] = request.spec_type
         if not UtilClient.is_unset(request.topic_quota):
@@ -397,6 +477,8 @@ class Client(OpenApiClient):
             query['IoMaxSpec'] = request.io_max_spec
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.spec_type):
             query['SpecType'] = request.spec_type
         if not UtilClient.is_unset(request.topic_quota):
@@ -455,6 +537,8 @@ class Client(OpenApiClient):
             query['IoMaxSpec'] = request.io_max_spec
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.spec_type):
             query['SpecType'] = request.spec_type
         if not UtilClient.is_unset(request.topic_quota):
@@ -499,6 +583,8 @@ class Client(OpenApiClient):
             query['IoMaxSpec'] = request.io_max_spec
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.spec_type):
             query['SpecType'] = request.spec_type
         if not UtilClient.is_unset(request.topic_quota):
@@ -1693,6 +1779,8 @@ class Client(OpenApiClient):
             query['OrderId'] = request.order_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -1727,6 +1815,8 @@ class Client(OpenApiClient):
             query['OrderId'] = request.order_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -2347,20 +2437,28 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.is_eip_inner):
             query['IsEipInner'] = request.is_eip_inner
+        if not UtilClient.is_unset(request.is_force_selected_zones):
+            query['IsForceSelectedZones'] = request.is_force_selected_zones
         if not UtilClient.is_unset(request.is_set_user_and_password):
             query['IsSetUserAndPassword'] = request.is_set_user_and_password
         if not UtilClient.is_unset(request.kmskey_id):
             query['KMSKeyId'] = request.kmskey_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.notifier):
+            query['Notifier'] = request.notifier
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.security_group):
             query['SecurityGroup'] = request.security_group
+        if not UtilClient.is_unset(request.selected_zones):
+            query['SelectedZones'] = request.selected_zones
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.user_phone_num):
+            query['UserPhoneNum'] = request.user_phone_num
         if not UtilClient.is_unset(request.username):
             query['Username'] = request.username
         if not UtilClient.is_unset(request.v_switch_id):
@@ -2403,20 +2501,28 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.is_eip_inner):
             query['IsEipInner'] = request.is_eip_inner
+        if not UtilClient.is_unset(request.is_force_selected_zones):
+            query['IsForceSelectedZones'] = request.is_force_selected_zones
         if not UtilClient.is_unset(request.is_set_user_and_password):
             query['IsSetUserAndPassword'] = request.is_set_user_and_password
         if not UtilClient.is_unset(request.kmskey_id):
             query['KMSKeyId'] = request.kmskey_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.notifier):
+            query['Notifier'] = request.notifier
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.security_group):
             query['SecurityGroup'] = request.security_group
+        if not UtilClient.is_unset(request.selected_zones):
+            query['SelectedZones'] = request.selected_zones
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.user_phone_num):
+            query['UserPhoneNum'] = request.user_phone_num
         if not UtilClient.is_unset(request.username):
             query['Username'] = request.username
         if not UtilClient.is_unset(request.v_switch_id):
@@ -2465,6 +2571,8 @@ class Client(OpenApiClient):
     ) -> alikafka_20190916_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_id):
@@ -2499,6 +2607,8 @@ class Client(OpenApiClient):
     ) -> alikafka_20190916_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_id):

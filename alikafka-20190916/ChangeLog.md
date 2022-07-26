@@ -1,3 +1,6 @@
+2022-07-26 Version: 2.0.3
+- TagResources add instanceId param.
+
 2022-03-23 Version: 2.0.2
 - Add GetAllInstanceId.
 
