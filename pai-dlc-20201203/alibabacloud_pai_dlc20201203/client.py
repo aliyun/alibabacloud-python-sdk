@@ -22,7 +22,58 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._signature_algorithm = 'v2'
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'ap-northeast-1': 'pai-dlc.aliyuncs.com',
+            'ap-northeast-2-pop': 'pai-dlc.aliyuncs.com',
+            'ap-south-1': 'pai-dlc.aliyuncs.com',
+            'ap-southeast-2': 'pai-dlc.aliyuncs.com',
+            'ap-southeast-3': 'pai-dlc.aliyuncs.com',
+            'ap-southeast-5': 'pai-dlc.aliyuncs.com',
+            'cn-beijing-finance-1': 'pai-dlc.aliyuncs.com',
+            'cn-beijing-finance-pop': 'pai-dlc.aliyuncs.com',
+            'cn-beijing-gov-1': 'pai-dlc.aliyuncs.com',
+            'cn-beijing-nu16-b01': 'pai-dlc.aliyuncs.com',
+            'cn-chengdu': 'pai-dlc.aliyuncs.com',
+            'cn-edge-1': 'pai-dlc.aliyuncs.com',
+            'cn-fujian': 'pai-dlc.aliyuncs.com',
+            'cn-haidian-cm12-c01': 'pai-dlc.aliyuncs.com',
+            'cn-hangzhou-bj-b01': 'pai-dlc.aliyuncs.com',
+            'cn-hangzhou-finance': 'pai-dlc.aliyuncs.com',
+            'cn-hangzhou-internal-prod-1': 'pai-dlc.aliyuncs.com',
+            'cn-hangzhou-internal-test-1': 'pai-dlc.aliyuncs.com',
+            'cn-hangzhou-internal-test-2': 'pai-dlc.aliyuncs.com',
+            'cn-hangzhou-internal-test-3': 'pai-dlc.aliyuncs.com',
+            'cn-hangzhou-test-306': 'pai-dlc.aliyuncs.com',
+            'cn-hongkong-finance-pop': 'pai-dlc.aliyuncs.com',
+            'cn-huhehaote': 'pai-dlc.aliyuncs.com',
+            'cn-huhehaote-nebula-1': 'pai-dlc.aliyuncs.com',
+            'cn-north-2-gov-1': 'pai-dlc.aliyuncs.com',
+            'cn-qingdao': 'pai-dlc.aliyuncs.com',
+            'cn-qingdao-nebula': 'pai-dlc.aliyuncs.com',
+            'cn-shanghai-et15-b01': 'pai-dlc.aliyuncs.com',
+            'cn-shanghai-et2-b01': 'pai-dlc.aliyuncs.com',
+            'cn-shanghai-inner': 'pai-dlc.aliyuncs.com',
+            'cn-shanghai-internal-test-1': 'pai-dlc.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'pai-dlc.aliyuncs.com',
+            'cn-shenzhen-inner': 'pai-dlc.aliyuncs.com',
+            'cn-shenzhen-st4-d01': 'pai-dlc.aliyuncs.com',
+            'cn-shenzhen-su18-b01': 'pai-dlc.aliyuncs.com',
+            'cn-wuhan': 'pai-dlc.aliyuncs.com',
+            'cn-wulanchabu': 'pai-dlc.aliyuncs.com',
+            'cn-yushanfang': 'pai-dlc.aliyuncs.com',
+            'cn-zhangbei': 'pai-dlc.aliyuncs.com',
+            'cn-zhangbei-na61-b01': 'pai-dlc.aliyuncs.com',
+            'cn-zhangjiakou': 'pai-dlc.aliyuncs.com',
+            'cn-zhangjiakou-na62-a01': 'pai-dlc.aliyuncs.com',
+            'cn-zhengzhou-nebula-1': 'pai-dlc.aliyuncs.com',
+            'eu-west-1': 'pai-dlc.aliyuncs.com',
+            'eu-west-1-oxs': 'pai-dlc.aliyuncs.com',
+            'me-east-1': 'pai-dlc.aliyuncs.com',
+            'rus-west-1-pop': 'pai-dlc.aliyuncs.com',
+            'us-east-1': 'pai-dlc.aliyuncs.com',
+            'us-west-1': 'pai-dlc.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('pai-dlc', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
