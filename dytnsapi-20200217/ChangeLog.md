@@ -1,3 +1,6 @@
+2022-07-26 Version: 1.0.17
+- Support Service of number analysis.
+
 2022-07-13 Version: 1.0.16
 - Generated python 2020-02-17 for Dytnsapi.
 
