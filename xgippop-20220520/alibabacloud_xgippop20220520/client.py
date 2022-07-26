@@ -664,6 +664,442 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_order_free_flow_product_status_with_options_async(request, runtime)
 
+    def get_qos_flow_usage_with_options(
+        self,
+        request: xgip_pop_20220520_models.GetQosFlowUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetQosFlowUsageResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetQosFlowUsage',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetQosFlowUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_qos_flow_usage_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.GetQosFlowUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetQosFlowUsageResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetQosFlowUsage',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetQosFlowUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_qos_flow_usage(
+        self,
+        request: xgip_pop_20220520_models.GetQosFlowUsageRequest,
+    ) -> xgip_pop_20220520_models.GetQosFlowUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_qos_flow_usage_with_options(request, runtime)
+
+    async def get_qos_flow_usage_async(
+        self,
+        request: xgip_pop_20220520_models.GetQosFlowUsageRequest,
+    ) -> xgip_pop_20220520_models.GetQosFlowUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_qos_flow_usage_with_options_async(request, runtime)
+
+    def get_qos_usage_statistic_with_options(
+        self,
+        request: xgip_pop_20220520_models.GetQosUsageStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetQosUsageStatisticResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetQosUsageStatistic',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetQosUsageStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_qos_usage_statistic_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.GetQosUsageStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetQosUsageStatisticResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetQosUsageStatistic',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetQosUsageStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_qos_usage_statistic(
+        self,
+        request: xgip_pop_20220520_models.GetQosUsageStatisticRequest,
+    ) -> xgip_pop_20220520_models.GetQosUsageStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_qos_usage_statistic_with_options(request, runtime)
+
+    async def get_qos_usage_statistic_async(
+        self,
+        request: xgip_pop_20220520_models.GetQosUsageStatisticRequest,
+    ) -> xgip_pop_20220520_models.GetQosUsageStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_qos_usage_statistic_with_options_async(request, runtime)
+
+    def get_uat_data_list_with_options(
+        self,
+        request: xgip_pop_20220520_models.GetUatDataListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetUatDataListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUatDataList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetUatDataListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_uat_data_list_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.GetUatDataListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetUatDataListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUatDataList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetUatDataListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_uat_data_list(
+        self,
+        request: xgip_pop_20220520_models.GetUatDataListRequest,
+    ) -> xgip_pop_20220520_models.GetUatDataListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_uat_data_list_with_options(request, runtime)
+
+    async def get_uat_data_list_async(
+        self,
+        request: xgip_pop_20220520_models.GetUatDataListRequest,
+    ) -> xgip_pop_20220520_models.GetUatDataListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_uat_data_list_with_options_async(request, runtime)
+
+    def get_uat_spec_ct_data_with_options(
+        self,
+        request: xgip_pop_20220520_models.GetUatSpecCtDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetUatSpecCtDataResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUatSpecCtData',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetUatSpecCtDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_uat_spec_ct_data_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.GetUatSpecCtDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetUatSpecCtDataResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUatSpecCtData',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetUatSpecCtDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_uat_spec_ct_data(
+        self,
+        request: xgip_pop_20220520_models.GetUatSpecCtDataRequest,
+    ) -> xgip_pop_20220520_models.GetUatSpecCtDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_uat_spec_ct_data_with_options(request, runtime)
+
+    async def get_uat_spec_ct_data_async(
+        self,
+        request: xgip_pop_20220520_models.GetUatSpecCtDataRequest,
+    ) -> xgip_pop_20220520_models.GetUatSpecCtDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_uat_spec_ct_data_with_options_async(request, runtime)
+
+    def mock_get_order_free_flow_product_status_with_options(
+        self,
+        request: xgip_pop_20220520_models.MockGetOrderFreeFlowProductStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.MockGetOrderFreeFlowProductStatusResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MockGetOrderFreeFlowProductStatus',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.MockGetOrderFreeFlowProductStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mock_get_order_free_flow_product_status_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.MockGetOrderFreeFlowProductStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.MockGetOrderFreeFlowProductStatusResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MockGetOrderFreeFlowProductStatus',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.MockGetOrderFreeFlowProductStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mock_get_order_free_flow_product_status(
+        self,
+        request: xgip_pop_20220520_models.MockGetOrderFreeFlowProductStatusRequest,
+    ) -> xgip_pop_20220520_models.MockGetOrderFreeFlowProductStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.mock_get_order_free_flow_product_status_with_options(request, runtime)
+
+    async def mock_get_order_free_flow_product_status_async(
+        self,
+        request: xgip_pop_20220520_models.MockGetOrderFreeFlowProductStatusRequest,
+    ) -> xgip_pop_20220520_models.MockGetOrderFreeFlowProductStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.mock_get_order_free_flow_product_status_with_options_async(request, runtime)
+
+    def mock_order_free_flow_product_with_options(
+        self,
+        request: xgip_pop_20220520_models.MockOrderFreeFlowProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.MockOrderFreeFlowProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.customer_flow_request_id):
+            query['CustomerFlowRequestId'] = request.customer_flow_request_id
+        if not UtilClient.is_unset(request.flow_product_id):
+            query['FlowProductId'] = request.flow_product_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lasting):
+            query['Lasting'] = request.lasting
+        if not UtilClient.is_unset(request.mobile_number):
+            query['MobileNumber'] = request.mobile_number
+        if not UtilClient.is_unset(request.notify_url):
+            query['NotifyUrl'] = request.notify_url
+        if not UtilClient.is_unset(request.operator):
+            query['Operator'] = request.operator
+        if not UtilClient.is_unset(request.purchase_order_id):
+            query['PurchaseOrderId'] = request.purchase_order_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MockOrderFreeFlowProduct',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.MockOrderFreeFlowProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mock_order_free_flow_product_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.MockOrderFreeFlowProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.MockOrderFreeFlowProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.customer_flow_request_id):
+            query['CustomerFlowRequestId'] = request.customer_flow_request_id
+        if not UtilClient.is_unset(request.flow_product_id):
+            query['FlowProductId'] = request.flow_product_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lasting):
+            query['Lasting'] = request.lasting
+        if not UtilClient.is_unset(request.mobile_number):
+            query['MobileNumber'] = request.mobile_number
+        if not UtilClient.is_unset(request.notify_url):
+            query['NotifyUrl'] = request.notify_url
+        if not UtilClient.is_unset(request.operator):
+            query['Operator'] = request.operator
+        if not UtilClient.is_unset(request.purchase_order_id):
+            query['PurchaseOrderId'] = request.purchase_order_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MockOrderFreeFlowProduct',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.MockOrderFreeFlowProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mock_order_free_flow_product(
+        self,
+        request: xgip_pop_20220520_models.MockOrderFreeFlowProductRequest,
+    ) -> xgip_pop_20220520_models.MockOrderFreeFlowProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.mock_order_free_flow_product_with_options(request, runtime)
+
+    async def mock_order_free_flow_product_async(
+        self,
+        request: xgip_pop_20220520_models.MockOrderFreeFlowProductRequest,
+    ) -> xgip_pop_20220520_models.MockOrderFreeFlowProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.mock_order_free_flow_product_with_options_async(request, runtime)
+
     def modify_application_with_options(
         self,
         request: xgip_pop_20220520_models.ModifyApplicationRequest,

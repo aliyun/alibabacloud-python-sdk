@@ -14,16 +14,11 @@ class ChangeApplicationInfoRequest(TeaModel):
         apping_list: str = None,
         item_code: str = None,
     ):
-        # 阿里UID
         self.ali_uid = ali_uid
         self.app_id = app_id
-        # 应用名称
         self.app_name = app_name
-        # dynamic|static
         self.app_type_list = app_type_list
-        # [
         self.apping_list = apping_list
-        # 商品code
         self.item_code = item_code
 
     def validate(self):
@@ -75,15 +70,10 @@ class ChangeApplicationInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 应用id
         self.app_id = app_id
-        # 结果码
         self.code = code
-        # 结果描述
         self.message = message
-        # 请求ID
         self.request_id = request_id
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -176,13 +166,9 @@ class CreateApplicationInfoRequestAppingList(TeaModel):
         original_url_list: List[str] = None,
     ):
         self.ext_id = ext_id
-        # cdn ip
         self.flow_ip = flow_ip
-        # cdn 域名信息
         self.flow_url = flow_url
-        # 业务方ip集合
         self.original_ip_list = original_ip_list
-        # 业务方域名集合
         self.original_url_list = original_url_list
 
     def validate(self):
@@ -230,14 +216,10 @@ class CreateApplicationInfoRequest(TeaModel):
         apping_list: List[CreateApplicationInfoRequestAppingList] = None,
         item_code: str = None,
     ):
-        # 阿里UID
         self.ali_uid = ali_uid
-        # 应用名称
         self.app_name = app_name
-        # dynamic（动态业务）/static（静态业务
         self.app_type_list = app_type_list
         self.apping_list = apping_list
-        # 商品code
         self.item_code = item_code
 
     def validate(self):
@@ -293,15 +275,10 @@ class CreateApplicationInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 应用id
         self.app_id = app_id
-        # 结果码
         self.code = code
-        # 结果描述
         self.message = message
-        # 请求ID
         self.request_id = request_id
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -394,17 +371,11 @@ class GetAliyunXgipTokenResponseBody(TeaModel):
         rt: int = None,
         success: bool = None,
     ):
-        # 结果码
         self.code = code
-        # 结果
         self.data = data
-        # 结果描述
         self.message = message
-        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
         self.request_id = request_id
-        # 服务端处理耗时，ms
         self.rt = rt
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -496,11 +467,11 @@ class GetApplicationRequest(TeaModel):
         self,
         ali_uid: int = None,
         app_code: str = None,
+        item_code: str = None,
     ):
-        # 阿里UID
         self.ali_uid = ali_uid
-        # 应用ID
         self.app_code = app_code
+        self.item_code = item_code
 
     def validate(self):
         pass
@@ -515,6 +486,8 @@ class GetApplicationRequest(TeaModel):
             result['AliUid'] = self.ali_uid
         if self.app_code is not None:
             result['AppCode'] = self.app_code
+        if self.item_code is not None:
+            result['ItemCode'] = self.item_code
         return result
 
     def from_map(self, m: dict = None):
@@ -523,6 +496,8 @@ class GetApplicationRequest(TeaModel):
             self.ali_uid = m.get('AliUid')
         if m.get('AppCode') is not None:
             self.app_code = m.get('AppCode')
+        if m.get('ItemCode') is not None:
+            self.item_code = m.get('ItemCode')
         return self
 
 
@@ -536,16 +511,11 @@ class GetApplicationResponseBody(TeaModel):
         rt: int = None,
         success: bool = None,
     ):
-        # 结果码
         self.code = code
         self.data = data
-        # 结果描述
         self.message = message
-        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
         self.request_id = request_id
-        # 服务端处理耗时，ms
         self.rt = rt
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -641,9 +611,7 @@ class GetFreeFlowInstanceRequest(TeaModel):
         item_code: str = None,
     ):
         self.aliuid = aliuid
-        # 应用ID
         self.app_id = app_id
-        # 实例ID
         self.instance_id = instance_id
         self.item_code = item_code
 
@@ -691,21 +659,13 @@ class GetFreeFlowInstanceResponseBodyData(TeaModel):
         spec_type: str = None,
         start_time: str = None,
     ):
-        # APP编号
         self.app_code = app_code
-        # APP名称
         self.app_name = app_name
-        # 产品失效时间
         self.end_time = end_time
-        # 实例名称
         self.instance_memo = instance_memo
-        # 实例状态
         self.instance_status = instance_status
-        # 产品开通时间
         self.open_time = open_time
-        # 规格类型
         self.spec_type = spec_type
-        # 产品生效时间
         self.start_time = start_time
 
     def validate(self):
@@ -766,17 +726,11 @@ class GetFreeFlowInstanceResponseBody(TeaModel):
         rt: int = None,
         success: bool = None,
     ):
-        # 结果码
         self.code = code
-        # 结果
         self.data = data
-        # 结果描述
         self.message = message
-        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
         self.request_id = request_id
-        # 服务端处理耗时，ms
         self.rt = rt
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -877,9 +831,7 @@ class GetFreeFlowProductListRequest(TeaModel):
         ali_uid: int = None,
         instance_id: str = None,
     ):
-        # 用户编号
         self.ali_uid = ali_uid
-        # 实例ID
         self.instance_id = instance_id
 
     def validate(self):
@@ -920,21 +872,13 @@ class GetFreeFlowProductListResponseBodyData(TeaModel):
         spid: str = None,
         unit_price: int = None,
     ):
-        # 产品当前状态，true为已配置，false为未配置
         self.configured = configured
-        # 产品包含的流量大小
         self.flow_product_amount = flow_product_amount
-        # 免流产品ID
         self.flow_product_id = flow_product_id
-        # 流量包名称
         self.flow_product_name = flow_product_name
-        # 产品周期
         self.flow_product_period = flow_product_period
-        # 取值包括free（定向流量）/normal（通用流量）
         self.flow_type = flow_type
-        # 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
         self.operator = operator
-        # 注意这里返回的全量套餐里，只能包含SpecType与该InstanceId的SpecType相同的规格
         self.spec_type = spec_type
         self.spid = spid
         self.unit_price = unit_price
@@ -1005,16 +949,11 @@ class GetFreeFlowProductListResponseBody(TeaModel):
         rt: int = None,
         success: bool = None,
     ):
-        # 结果码
         self.code = code
         self.data = data
-        # 结果描述
         self.message = message
-        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
         self.request_id = request_id
-        # 服务端处理耗时，ms
         self.rt = rt
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -1119,13 +1058,9 @@ class GetFreeFlowUsageRequest(TeaModel):
         num_per_page: int = None,
     ):
         self.ali_uid = ali_uid
-        # 当前页
         self.cur_page_num = cur_page_num
-        # 实例ID
         self.instance_id = instance_id
-        # 查询月份
         self.month = month
-        # 每页的记录数量
         self.num_per_page = num_per_page
 
     def validate(self):
@@ -1180,28 +1115,17 @@ class GetFreeFlowUsageResponseBodyDataCustomerList(TeaModel):
         unit_num: int = None,
         unit_price: int = None,
     ):
-        # 购买渠道
         self.channel_id = channel_id
-        # C端产品失效时间
         self.customer_end_time = customer_end_time
         self.customer_flow_order_id = customer_flow_order_id
-        # C端免流状态，取值包括create/working/expiration
         self.customer_flow_status = customer_flow_status
-        # C端产品开通时间
         self.customer_open_time = customer_open_time
-        # C端产品生效时间
         self.customer_start_time = customer_start_time
-        # 免流产品ID
         self.flow_product_id = flow_product_id
-        # 免流产品名
         self.flow_product_name = flow_product_name
-        # 是否包月，true或false
         self.is_lasting = is_lasting
-        # C端手机号
         self.mobile_number = mobile_number
-        # 该流量包的计量单元数
         self.unit_num = unit_num
-        # 流量包价格
         self.unit_price = unit_price
 
     def validate(self):
@@ -1280,21 +1204,13 @@ class GetFreeFlowUsageResponseBodyData(TeaModel):
         total_num: int = None,
         total_page_num: int = None,
     ):
-        # 当前页数
         self.cur_page_num = cur_page_num
-        # C端用户列表
         self.customer_list = customer_list
-        # 是否有下一页
         self.has_next = has_next
-        # 是否有上一页
         self.has_prev = has_prev
-        # 实例ID
         self.instance_id = instance_id
-        # 每页的记录条数
         self.num_per_page = num_per_page
-        # 总记录条数
         self.total_num = total_num
-        # 总页数
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -1363,17 +1279,11 @@ class GetFreeFlowUsageResponseBody(TeaModel):
         rt: int = None,
         success: bool = None,
     ):
-        # 结果码
         self.code = code
-        # 结果
         self.data = data
-        # 结果描述
         self.message = message
-        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
         self.request_id = request_id
-        # 服务端处理耗时，ms
         self.rt = rt
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -1524,14 +1434,10 @@ class GetFreeFlowUsageStatisticResponseBodyData(TeaModel):
         yun_out_product: str = None,
     ):
         self.instance_id = instance_id
-        # 该实例对应的包类型
         self.spec_type = spec_type
         self.total_money = total_money
-        # 该实例的订单总数
         self.total_order_number = total_order_number
-        # 该实例的订单总计量单元数
         self.total_unit_number = total_unit_number
-        # 产品规格
         self.yun_out_product = yun_out_product
 
     def validate(self):
@@ -1584,17 +1490,11 @@ class GetFreeFlowUsageStatisticResponseBody(TeaModel):
         rt: int = None,
         success: bool = None,
     ):
-        # 结果码
         self.code = code
-        # 结果
         self.data = data
-        # 结果描述
         self.message = message
-        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
         self.request_id = request_id
-        # 服务端处理耗时，ms
         self.rt = rt
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -1696,7 +1596,6 @@ class GetOrderFreeFlowProductStatusRequest(TeaModel):
         customer_flow_order_id: str = None,
     ):
         self.ali_uid = ali_uid
-        # 在订购接口2.1.9中引擎侧生成的id
         self.customer_flow_order_id = customer_flow_order_id
 
     def validate(self):
@@ -1731,12 +1630,9 @@ class GetOrderFreeFlowProductStatusResponseBodyData(TeaModel):
         error: str = None,
         status: str = None,
     ):
-        # C端免流订单ID
         self.customer_flow_order_id = customer_flow_order_id
         self.customer_flow_request_id = customer_flow_request_id
-        # status为fail时，描述fail的具体原因
         self.error = error
-        # 执行中ordering、成功success、失败fail
         self.status = status
 
     def validate(self):
@@ -1781,16 +1677,11 @@ class GetOrderFreeFlowProductStatusResponseBody(TeaModel):
         rt: int = None,
         success: bool = None,
     ):
-        # 结果码
         self.code = code
         self.data = data
-        # 结果描述
         self.message = message
-        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
         self.request_id = request_id
-        # 服务端处理耗时，ms
         self.rt = rt
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -1879,6 +1770,1533 @@ class GetOrderFreeFlowProductStatusResponse(TeaModel):
         return self
 
 
+class GetQosFlowUsageRequest(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        cur_page_num: int = None,
+        end_time: str = None,
+        instance_id: str = None,
+        month: int = None,
+        num_per_page: int = None,
+        start_time: str = None,
+        type: bool = None,
+    ):
+        self.ali_uid = ali_uid
+        self.cur_page_num = cur_page_num
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.month = month
+        self.num_per_page = num_per_page
+        self.start_time = start_time
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.cur_page_num is not None:
+            result['CurPageNum'] = self.cur_page_num
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.month is not None:
+            result['Month'] = self.month
+        if self.num_per_page is not None:
+            result['NumPerPage'] = self.num_per_page
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('CurPageNum') is not None:
+            self.cur_page_num = m.get('CurPageNum')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Month') is not None:
+            self.month = m.get('Month')
+        if m.get('NumPerPage') is not None:
+            self.num_per_page = m.get('NumPerPage')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetQosFlowUsageResponseBodyDataCustomerList(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        app_id: str = None,
+        ds_day: int = None,
+        ds_month: int = None,
+        end_time: str = None,
+        instance_id: str = None,
+        item_code: str = None,
+        message: str = None,
+        name: str = None,
+        operator: str = None,
+        order_num: int = None,
+        product_id: str = None,
+        product_name: str = None,
+        provice: str = None,
+        qos_request_id: str = None,
+        remark: str = None,
+        spec_type: str = None,
+        start_time: str = None,
+        status: str = None,
+        total_price: int = None,
+        totol_time: int = None,
+    ):
+        self.ali_uid = ali_uid
+        self.app_id = app_id
+        self.ds_day = ds_day
+        self.ds_month = ds_month
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.item_code = item_code
+        self.message = message
+        self.name = name
+        self.operator = operator
+        self.order_num = order_num
+        self.product_id = product_id
+        self.product_name = product_name
+        self.provice = provice
+        self.qos_request_id = qos_request_id
+        self.remark = remark
+        self.spec_type = spec_type
+        self.start_time = start_time
+        self.status = status
+        self.total_price = total_price
+        self.totol_time = totol_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.ds_day is not None:
+            result['DsDay'] = self.ds_day
+        if self.ds_month is not None:
+            result['DsMonth'] = self.ds_month
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.item_code is not None:
+            result['ItemCode'] = self.item_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.order_num is not None:
+            result['OrderNum'] = self.order_num
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.provice is not None:
+            result['Provice'] = self.provice
+        if self.qos_request_id is not None:
+            result['QosRequestId'] = self.qos_request_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.spec_type is not None:
+            result['SpecType'] = self.spec_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_price is not None:
+            result['TotalPrice'] = self.total_price
+        if self.totol_time is not None:
+            result['TotolTime'] = self.totol_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('DsDay') is not None:
+            self.ds_day = m.get('DsDay')
+        if m.get('DsMonth') is not None:
+            self.ds_month = m.get('DsMonth')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ItemCode') is not None:
+            self.item_code = m.get('ItemCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('OrderNum') is not None:
+            self.order_num = m.get('OrderNum')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('Provice') is not None:
+            self.provice = m.get('Provice')
+        if m.get('QosRequestId') is not None:
+            self.qos_request_id = m.get('QosRequestId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('SpecType') is not None:
+            self.spec_type = m.get('SpecType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalPrice') is not None:
+            self.total_price = m.get('TotalPrice')
+        if m.get('TotolTime') is not None:
+            self.totol_time = m.get('TotolTime')
+        return self
+
+
+class GetQosFlowUsageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cur_page_num: int = None,
+        customer_list: List[GetQosFlowUsageResponseBodyDataCustomerList] = None,
+        has_next: bool = None,
+        has_prev: bool = None,
+        instance_id: str = None,
+        num_per_page: int = None,
+        total_num: int = None,
+        total_page_num: int = None,
+    ):
+        self.cur_page_num = cur_page_num
+        self.customer_list = customer_list
+        self.has_next = has_next
+        self.has_prev = has_prev
+        self.instance_id = instance_id
+        self.num_per_page = num_per_page
+        self.total_num = total_num
+        self.total_page_num = total_page_num
+
+    def validate(self):
+        if self.customer_list:
+            for k in self.customer_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cur_page_num is not None:
+            result['CurPageNum'] = self.cur_page_num
+        result['CustomerList'] = []
+        if self.customer_list is not None:
+            for k in self.customer_list:
+                result['CustomerList'].append(k.to_map() if k else None)
+        if self.has_next is not None:
+            result['HasNext'] = self.has_next
+        if self.has_prev is not None:
+            result['HasPrev'] = self.has_prev
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.num_per_page is not None:
+            result['NumPerPage'] = self.num_per_page
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        if self.total_page_num is not None:
+            result['TotalPageNum'] = self.total_page_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurPageNum') is not None:
+            self.cur_page_num = m.get('CurPageNum')
+        self.customer_list = []
+        if m.get('CustomerList') is not None:
+            for k in m.get('CustomerList'):
+                temp_model = GetQosFlowUsageResponseBodyDataCustomerList()
+                self.customer_list.append(temp_model.from_map(k))
+        if m.get('HasNext') is not None:
+            self.has_next = m.get('HasNext')
+        if m.get('HasPrev') is not None:
+            self.has_prev = m.get('HasPrev')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NumPerPage') is not None:
+            self.num_per_page = m.get('NumPerPage')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        if m.get('TotalPageNum') is not None:
+            self.total_page_num = m.get('TotalPageNum')
+        return self
+
+
+class GetQosFlowUsageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetQosFlowUsageResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        rt: int = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.rt = rt
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rt is not None:
+            result['Rt'] = self.rt
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetQosFlowUsageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rt') is not None:
+            self.rt = m.get('Rt')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetQosFlowUsageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetQosFlowUsageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetQosFlowUsageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetQosUsageStatisticRequest(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        cur_page_num: int = None,
+        end_time: str = None,
+        instance_id: str = None,
+        month: int = None,
+        num_per_page: int = None,
+        request_id: str = None,
+        start_time: str = None,
+    ):
+        self.ali_uid = ali_uid
+        self.cur_page_num = cur_page_num
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.month = month
+        self.num_per_page = num_per_page
+        self.request_id = request_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.cur_page_num is not None:
+            result['CurPageNum'] = self.cur_page_num
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.month is not None:
+            result['Month'] = self.month
+        if self.num_per_page is not None:
+            result['NumPerPage'] = self.num_per_page
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('CurPageNum') is not None:
+            self.cur_page_num = m.get('CurPageNum')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Month') is not None:
+            self.month = m.get('Month')
+        if m.get('NumPerPage') is not None:
+            self.num_per_page = m.get('NumPerPage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList(TeaModel):
+    def __init__(
+        self,
+        bill_count: int = None,
+        ds_day: int = None,
+        fail_count: int = None,
+        instance_id: str = None,
+        month: int = None,
+        operator: str = None,
+        product_name: str = None,
+        provice: str = None,
+        spec_type: str = None,
+        sucess_count: int = None,
+        total_count: int = None,
+        yun_out_product: str = None,
+    ):
+        self.bill_count = bill_count
+        self.ds_day = ds_day
+        self.fail_count = fail_count
+        self.instance_id = instance_id
+        self.month = month
+        self.operator = operator
+        self.product_name = product_name
+        self.provice = provice
+        self.spec_type = spec_type
+        self.sucess_count = sucess_count
+        self.total_count = total_count
+        self.yun_out_product = yun_out_product
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bill_count is not None:
+            result['BillCount'] = self.bill_count
+        if self.ds_day is not None:
+            result['DsDay'] = self.ds_day
+        if self.fail_count is not None:
+            result['FailCount'] = self.fail_count
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.month is not None:
+            result['Month'] = self.month
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.provice is not None:
+            result['Provice'] = self.provice
+        if self.spec_type is not None:
+            result['SpecType'] = self.spec_type
+        if self.sucess_count is not None:
+            result['SucessCount'] = self.sucess_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.yun_out_product is not None:
+            result['YunOutProduct'] = self.yun_out_product
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BillCount') is not None:
+            self.bill_count = m.get('BillCount')
+        if m.get('DsDay') is not None:
+            self.ds_day = m.get('DsDay')
+        if m.get('FailCount') is not None:
+            self.fail_count = m.get('FailCount')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Month') is not None:
+            self.month = m.get('Month')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('Provice') is not None:
+            self.provice = m.get('Provice')
+        if m.get('SpecType') is not None:
+            self.spec_type = m.get('SpecType')
+        if m.get('SucessCount') is not None:
+            self.sucess_count = m.get('SucessCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('YunOutProduct') is not None:
+            self.yun_out_product = m.get('YunOutProduct')
+        return self
+
+
+class GetQosUsageStatisticResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cur_page_num: int = None,
+        get_qos_usage_statistic_res_list: List[GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList] = None,
+        num_per_page: int = None,
+        total_num: int = None,
+    ):
+        self.cur_page_num = cur_page_num
+        self.get_qos_usage_statistic_res_list = get_qos_usage_statistic_res_list
+        self.num_per_page = num_per_page
+        self.total_num = total_num
+
+    def validate(self):
+        if self.get_qos_usage_statistic_res_list:
+            for k in self.get_qos_usage_statistic_res_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cur_page_num is not None:
+            result['CurPageNum'] = self.cur_page_num
+        result['GetQosUsageStatisticResList'] = []
+        if self.get_qos_usage_statistic_res_list is not None:
+            for k in self.get_qos_usage_statistic_res_list:
+                result['GetQosUsageStatisticResList'].append(k.to_map() if k else None)
+        if self.num_per_page is not None:
+            result['NumPerPage'] = self.num_per_page
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurPageNum') is not None:
+            self.cur_page_num = m.get('CurPageNum')
+        self.get_qos_usage_statistic_res_list = []
+        if m.get('GetQosUsageStatisticResList') is not None:
+            for k in m.get('GetQosUsageStatisticResList'):
+                temp_model = GetQosUsageStatisticResponseBodyDataGetQosUsageStatisticResList()
+                self.get_qos_usage_statistic_res_list.append(temp_model.from_map(k))
+        if m.get('NumPerPage') is not None:
+            self.num_per_page = m.get('NumPerPage')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        return self
+
+
+class GetQosUsageStatisticResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetQosUsageStatisticResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        rt: int = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.rt = rt
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rt is not None:
+            result['Rt'] = self.rt
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetQosUsageStatisticResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rt') is not None:
+            self.rt = m.get('Rt')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetQosUsageStatisticResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetQosUsageStatisticResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetQosUsageStatisticResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetUatDataListRequest(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        ds_month: int = None,
+        item_id: str = None,
+    ):
+        self.ali_uid = ali_uid
+        self.ds_month = ds_month
+        self.item_id = item_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.ds_month is not None:
+            result['DsMonth'] = self.ds_month
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('DsMonth') is not None:
+            self.ds_month = m.get('DsMonth')
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+        return self
+
+
+class GetUatDataListResponseBodyDataDsList(TeaModel):
+    def __init__(
+        self,
+        ds_data: int = None,
+        ds_day: int = None,
+    ):
+        self.ds_data = ds_data
+        self.ds_day = ds_day
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ds_data is not None:
+            result['DsData'] = self.ds_data
+        if self.ds_day is not None:
+            result['DsDay'] = self.ds_day
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DsData') is not None:
+            self.ds_data = m.get('DsData')
+        if m.get('DsDay') is not None:
+            self.ds_day = m.get('DsDay')
+        return self
+
+
+class GetUatDataListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        ds_list: List[GetUatDataListResponseBodyDataDsList] = None,
+        spec_type: str = None,
+    ):
+        self.ds_list = ds_list
+        self.spec_type = spec_type
+
+    def validate(self):
+        if self.ds_list:
+            for k in self.ds_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DsList'] = []
+        if self.ds_list is not None:
+            for k in self.ds_list:
+                result['DsList'].append(k.to_map() if k else None)
+        if self.spec_type is not None:
+            result['SpecType'] = self.spec_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ds_list = []
+        if m.get('DsList') is not None:
+            for k in m.get('DsList'):
+                temp_model = GetUatDataListResponseBodyDataDsList()
+                self.ds_list.append(temp_model.from_map(k))
+        if m.get('SpecType') is not None:
+            self.spec_type = m.get('SpecType')
+        return self
+
+
+class GetUatDataListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[GetUatDataListResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        rt: int = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.rt = rt
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rt is not None:
+            result['Rt'] = self.rt
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetUatDataListResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rt') is not None:
+            self.rt = m.get('Rt')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetUatDataListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetUatDataListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetUatDataListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetUatSpecCtDataRequest(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        ds_month: int = None,
+        item_id: str = None,
+    ):
+        self.ali_uid = ali_uid
+        self.ds_month = ds_month
+        self.item_id = item_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.ds_month is not None:
+            result['DsMonth'] = self.ds_month
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('DsMonth') is not None:
+            self.ds_month = m.get('DsMonth')
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+        return self
+
+
+class GetUatSpecCtDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        month_count: int = None,
+        spec_type: str = None,
+    ):
+        self.month_count = month_count
+        self.spec_type = spec_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.month_count is not None:
+            result['MonthCount'] = self.month_count
+        if self.spec_type is not None:
+            result['SpecType'] = self.spec_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MonthCount') is not None:
+            self.month_count = m.get('MonthCount')
+        if m.get('SpecType') is not None:
+            self.spec_type = m.get('SpecType')
+        return self
+
+
+class GetUatSpecCtDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[GetUatSpecCtDataResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        rt: int = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.rt = rt
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rt is not None:
+            result['Rt'] = self.rt
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetUatSpecCtDataResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rt') is not None:
+            self.rt = m.get('Rt')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetUatSpecCtDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetUatSpecCtDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetUatSpecCtDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class MockGetOrderFreeFlowProductStatusRequest(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        customer_flow_order_id: str = None,
+    ):
+        self.ali_uid = ali_uid
+        self.customer_flow_order_id = customer_flow_order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.customer_flow_order_id is not None:
+            result['CustomerFlowOrderId'] = self.customer_flow_order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('CustomerFlowOrderId') is not None:
+            self.customer_flow_order_id = m.get('CustomerFlowOrderId')
+        return self
+
+
+class MockGetOrderFreeFlowProductStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        customer_flow_order_id: str = None,
+        customer_flow_request_id: str = None,
+        error: str = None,
+        status: str = None,
+    ):
+        self.customer_flow_order_id = customer_flow_order_id
+        self.customer_flow_request_id = customer_flow_request_id
+        self.error = error
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.customer_flow_order_id is not None:
+            result['CustomerFlowOrderId'] = self.customer_flow_order_id
+        if self.customer_flow_request_id is not None:
+            result['CustomerFlowRequestId'] = self.customer_flow_request_id
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomerFlowOrderId') is not None:
+            self.customer_flow_order_id = m.get('CustomerFlowOrderId')
+        if m.get('CustomerFlowRequestId') is not None:
+            self.customer_flow_request_id = m.get('CustomerFlowRequestId')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class MockGetOrderFreeFlowProductStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: MockGetOrderFreeFlowProductStatusResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        rt: int = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.rt = rt
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rt is not None:
+            result['Rt'] = self.rt
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = MockGetOrderFreeFlowProductStatusResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rt') is not None:
+            self.rt = m.get('Rt')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class MockGetOrderFreeFlowProductStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MockGetOrderFreeFlowProductStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MockGetOrderFreeFlowProductStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class MockOrderFreeFlowProductRequest(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        channel_id: str = None,
+        customer_flow_request_id: str = None,
+        flow_product_id: str = None,
+        instance_id: str = None,
+        lasting: str = None,
+        mobile_number: str = None,
+        notify_url: str = None,
+        operator: str = None,
+        purchase_order_id: str = None,
+    ):
+        self.ali_uid = ali_uid
+        self.channel_id = channel_id
+        self.customer_flow_request_id = customer_flow_request_id
+        self.flow_product_id = flow_product_id
+        self.instance_id = instance_id
+        self.lasting = lasting
+        self.mobile_number = mobile_number
+        self.notify_url = notify_url
+        self.operator = operator
+        self.purchase_order_id = purchase_order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.customer_flow_request_id is not None:
+            result['CustomerFlowRequestId'] = self.customer_flow_request_id
+        if self.flow_product_id is not None:
+            result['FlowProductId'] = self.flow_product_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.lasting is not None:
+            result['Lasting'] = self.lasting
+        if self.mobile_number is not None:
+            result['MobileNumber'] = self.mobile_number
+        if self.notify_url is not None:
+            result['NotifyUrl'] = self.notify_url
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.purchase_order_id is not None:
+            result['PurchaseOrderId'] = self.purchase_order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('CustomerFlowRequestId') is not None:
+            self.customer_flow_request_id = m.get('CustomerFlowRequestId')
+        if m.get('FlowProductId') is not None:
+            self.flow_product_id = m.get('FlowProductId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Lasting') is not None:
+            self.lasting = m.get('Lasting')
+        if m.get('MobileNumber') is not None:
+            self.mobile_number = m.get('MobileNumber')
+        if m.get('NotifyUrl') is not None:
+            self.notify_url = m.get('NotifyUrl')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('PurchaseOrderId') is not None:
+            self.purchase_order_id = m.get('PurchaseOrderId')
+        return self
+
+
+class MockOrderFreeFlowProductResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        customer_flow_order_id: str = None,
+        customer_flow_request_id: str = None,
+        status: str = None,
+    ):
+        self.biz_code = biz_code
+        self.customer_flow_order_id = customer_flow_order_id
+        self.customer_flow_request_id = customer_flow_request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.customer_flow_order_id is not None:
+            result['CustomerFlowOrderId'] = self.customer_flow_order_id
+        if self.customer_flow_request_id is not None:
+            result['CustomerFlowRequestId'] = self.customer_flow_request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('CustomerFlowOrderId') is not None:
+            self.customer_flow_order_id = m.get('CustomerFlowOrderId')
+        if m.get('CustomerFlowRequestId') is not None:
+            self.customer_flow_request_id = m.get('CustomerFlowRequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class MockOrderFreeFlowProductResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: MockOrderFreeFlowProductResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        rt: int = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.rt = rt
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rt is not None:
+            result['Rt'] = self.rt
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = MockOrderFreeFlowProductResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rt') is not None:
+            self.rt = m.get('Rt')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class MockOrderFreeFlowProductResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MockOrderFreeFlowProductResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MockOrderFreeFlowProductResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyApplicationRequestAppingList(TeaModel):
     def __init__(
         self,
@@ -1889,13 +3307,9 @@ class ModifyApplicationRequestAppingList(TeaModel):
         original_url_list: List[str] = None,
     ):
         self.ext_id = ext_id
-        # cdn ip
         self.flow_ip = flow_ip
-        # cdn 域名信息
         self.flow_url = flow_url
-        # 业务方ip集合
         self.original_ip_list = original_ip_list
-        # 业务方域名集合
         self.original_url_list = original_url_list
 
     def validate(self):
@@ -1943,15 +3357,10 @@ class ModifyApplicationRequest(TeaModel):
         app_type_list: List[str] = None,
         apping_list: List[ModifyApplicationRequestAppingList] = None,
     ):
-        # AliUid
         self.ali_uid = ali_uid
-        # AppId
         self.app_code = app_code
-        # 应用名称
         self.app_name = app_name
-        # dynamic（动态业务）/static（静态业务
         self.app_type_list = app_type_list
-        # 扩展属性 源域名和源ip信息保存
         self.apping_list = apping_list
 
     def validate(self):
@@ -2007,15 +3416,10 @@ class ModifyApplicationResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 应用id
         self.app_id = app_id
-        # 结果码
         self.code = code
-        # 结果描述
         self.message = message
-        # 请求ID
         self.request_id = request_id
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -2113,23 +3517,14 @@ class OrderFreeFlowProductRequest(TeaModel):
         purchase_order_id: str = None,
     ):
         self.ali_uid = ali_uid
-        # 渠道ID
         self.channel_id = channel_id
-        # 客户侧生成的QoS请求ID，需要保证请求幂等性，确保不同请求间该参数值唯一
         self.customer_flow_request_id = customer_flow_request_id
-        # 免流产品ID
         self.flow_product_id = flow_product_id
-        # 实例ID
         self.instance_id = instance_id
-        # 是否包月，true为包月，false为不包月
         self.lasting = lasting
-        # C端手机号
         self.mobile_number = mobile_number
-        # 客户提供的回调通知接口url
         self.notify_url = notify_url
-        # 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
         self.operator = operator
-        # 支付订单ID
         self.purchase_order_id = purchase_order_id
 
     def validate(self):
@@ -2197,10 +3592,8 @@ class OrderFreeFlowProductResponseBodyData(TeaModel):
         status: str = None,
     ):
         self.biz_code = biz_code
-        # C端免流订单ID
         self.customer_flow_order_id = customer_flow_order_id
         self.customer_flow_request_id = customer_flow_request_id
-        # 执行中ordering、成功success、失败fail
         self.status = status
 
     def validate(self):
@@ -2245,17 +3638,11 @@ class OrderFreeFlowProductResponseBody(TeaModel):
         rt: int = None,
         success: bool = None,
     ):
-        # 结果码
         self.code = code
-        # 结果
         self.data = data
-        # 结果描述
         self.message = message
-        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
         self.request_id = request_id
-        # 服务端处理耗时，ms
         self.rt = rt
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -2364,32 +3751,19 @@ class OrderQosProductRequest(TeaModel):
         unit_num: int = None,
     ):
         self.ali_uid = ali_uid
-        # 渠道ID
         self.channel_id = channel_id
-        # C端v6 IP（移动场景下可以携带）
         self.ipv_6 = ipv_6
-        # 实例ID
         self.instance_id = instance_id
-        # IP类型
         self.ip_type = ip_type
-        # C端手机号
         self.mobile_number = mobile_number
-        # 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
         self.operator = operator
-        # C端用户私网IP（联通场景下必须携带)
         self.private_ipv_4 = private_ipv_4
-        # 产品ID
         self.product_id = product_id
         self.provice = provice
-        # C端用户公网IP（联通场景下必须携带）
         self.public_ipv_4 = public_ipv_4
-        # 客户侧生成的QoS请求ID，需要保证请求幂等性，确保不同请求间该参数值唯一
         self.qos_request_id = qos_request_id
-        # 移动场景目前ip
         self.target_ip_list = target_ip_list
-        # token获取
         self.token = token
-        # 请求次数
         self.unit_num = unit_num
 
     def validate(self):
@@ -2478,17 +3852,11 @@ class OrderQosProductResponseBody(TeaModel):
         rt: int = None,
         success: bool = None,
     ):
-        # 结果码
         self.code = code
-        # 结果
         self.data = data
-        # 结果描述
         self.message = message
-        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
         self.request_id = request_id
-        # 服务端处理耗时，ms
         self.rt = rt
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -2585,16 +3953,11 @@ class SaveApplicationInfoRequest(TeaModel):
         apping_list: str = None,
         item_code: str = None,
     ):
-        # 阿里UID
         self.ali_uid = ali_uid
         self.app_id = app_id
-        # 应用名称
         self.app_name = app_name
-        # dynamic|static
         self.app_type_list = app_type_list
-        # [
         self.apping_list = apping_list
-        # 商品code
         self.item_code = item_code
 
     def validate(self):
@@ -2646,15 +4009,10 @@ class SaveApplicationInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 应用id
         self.app_id = app_id
-        # 结果码
         self.code = code
-        # 结果描述
         self.message = message
-        # 请求ID
         self.request_id = request_id
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -2746,13 +4104,9 @@ class SdkValidateStatusRequest(TeaModel):
         operator: str = None,
         token: str = None,
     ):
-        # 应用名称
         self.app_id = app_id
-        # 凭证类型
         self.credential_type = credential_type
-        # mobile=150xxxx4661
         self.credential_value = credential_value
-        # 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
         self.operator = operator
         self.token = token
 
@@ -2802,13 +4156,9 @@ class SdkValidateStatusResponseBodyDataAppExtPopList(TeaModel):
         original_url_list: List[str] = None,
     ):
         self.ext_id = ext_id
-        # cdn ip
         self.flow_ip = flow_ip
-        # cdn 域名信息
         self.flow_url = flow_url
-        # 业务方ip集合
         self.original_ip_list = original_ip_list
-        # 业务方域名集合
         self.original_url_list = original_url_list
 
     def validate(self):
@@ -2855,9 +4205,7 @@ class SdkValidateStatusResponseBodyData(TeaModel):
         pseudo_code: str = None,
     ):
         self.app_ext_pop_list = app_ext_pop_list
-        # 是否处于免流状态，取值范围为true/false
         self.free_flow = free_flow
-        # 伪码
         self.pseudo_code = pseudo_code
 
     def validate(self):
@@ -2906,17 +4254,11 @@ class SdkValidateStatusResponseBody(TeaModel):
         rt: int = None,
         success: bool = None,
     ):
-        # 结果码
         self.code = code
-        # 结果
         self.data = data
-        # 结果描述
         self.message = message
-        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
         self.request_id = request_id
-        # 服务端处理耗时，ms
         self.rt = rt
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -3012,7 +4354,6 @@ class ValidControllerAuthorRequest(TeaModel):
         item_code: str = None,
     ):
         self.ali_uid = ali_uid
-        # 商品code
         self.item_code = item_code
 
     def validate(self):
@@ -3049,17 +4390,11 @@ class ValidControllerAuthorResponseBody(TeaModel):
         rt: int = None,
         success: bool = None,
     ):
-        # 结果码
         self.code = code
-        # 结果
         self.data = data
-        # 结果描述
         self.message = message
-        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
         self.request_id = request_id
-        # 服务端处理耗时，ms
         self.rt = rt
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -3155,15 +4490,10 @@ class ValidateStatusRequest(TeaModel):
         credential_value: str = None,
         operator: str = None,
     ):
-        # 阿里UID
         self.ali_uid = ali_uid
-        # 应用名称
         self.app_id = app_id
-        # 凭证类型
         self.credential_type = credential_type
-        # mobile=150xxxx4661
         self.credential_value = credential_value
-        # 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
         self.operator = operator
 
     def validate(self):
@@ -3212,13 +4542,9 @@ class ValidateStatusResponseBodyDataAppExtPopList(TeaModel):
         original_url_list: List[str] = None,
     ):
         self.ext_id = ext_id
-        # cdn ip
         self.flow_ip = flow_ip
-        # cdn 域名信息
         self.flow_url = flow_url
-        # 业务方ip集合
         self.original_ip_list = original_ip_list
-        # 业务方域名集合
         self.original_url_list = original_url_list
 
     def validate(self):
@@ -3265,9 +4591,7 @@ class ValidateStatusResponseBodyData(TeaModel):
         pseudo_code: str = None,
     ):
         self.app_ext_pop_list = app_ext_pop_list
-        # 是否处于免流状态，取值范围为true/false
         self.free_flow = free_flow
-        # 伪码
         self.pseudo_code = pseudo_code
 
     def validate(self):
@@ -3316,17 +4640,11 @@ class ValidateStatusResponseBody(TeaModel):
         rt: int = None,
         success: bool = None,
     ):
-        # 结果码
         self.code = code
-        # 结果
         self.data = data
-        # 结果描述
         self.message = message
-        # 请求链路ID，如POP请求进来的requestId，返回时原样返回
         self.request_id = request_id
-        # 服务端处理耗时，ms
         self.rt = rt
-        # 是否成功
         self.success = success
 
     def validate(self):
