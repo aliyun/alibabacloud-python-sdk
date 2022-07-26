@@ -31912,37 +31912,10 @@ class GetFileDetectResultRequest(TeaModel):
         return self
 
 
-class GetFileDetectResultResponseBodyResultListExt(TeaModel):
-    def __init__(
-        self,
-        virus_name: str = None,
-    ):
-        self.virus_name = virus_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.virus_name is not None:
-            result['VirusName'] = self.virus_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('VirusName') is not None:
-            self.virus_name = m.get('VirusName')
-        return self
-
-
 class GetFileDetectResultResponseBodyResultList(TeaModel):
     def __init__(
         self,
-        ext: GetFileDetectResultResponseBodyResultListExt = None,
+        ext: str = None,
         hash_key: str = None,
         result: int = None,
         score: int = None,
@@ -31955,8 +31928,7 @@ class GetFileDetectResultResponseBodyResultList(TeaModel):
         self.virus_type = virus_type
 
     def validate(self):
-        if self.ext:
-            self.ext.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -31965,7 +31937,7 @@ class GetFileDetectResultResponseBodyResultList(TeaModel):
 
         result = dict()
         if self.ext is not None:
-            result['Ext'] = self.ext.to_map()
+            result['Ext'] = self.ext
         if self.hash_key is not None:
             result['HashKey'] = self.hash_key
         if self.result is not None:
@@ -31979,8 +31951,7 @@ class GetFileDetectResultResponseBodyResultList(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Ext') is not None:
-            temp_model = GetFileDetectResultResponseBodyResultListExt()
-            self.ext = temp_model.from_map(m['Ext'])
+            self.ext = m.get('Ext')
         if m.get('HashKey') is not None:
             self.hash_key = m.get('HashKey')
         if m.get('Result') is not None:

@@ -1,3 +1,6 @@
+2022-07-26 Version: 1.1.27
+- Change ListCheckInstanceResult Public.
+
 2022-07-26 Version: 1.1.26
 - Change ListCheckInstanceResult Public.
 
