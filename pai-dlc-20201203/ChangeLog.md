@@ -1,3 +1,6 @@
+2022-07-26 Version: 1.2.0
+- Upgrade SDK version.
+
 2022-07-22 Version: 1.1.5
 - Support change the priority of jobs in queue.
 
