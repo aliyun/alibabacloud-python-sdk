@@ -72,7 +72,6 @@ class AddDesensitizationRuleResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.rule_id = rule_id
         self.success = success
@@ -659,7 +658,6 @@ class ChangeColumnSecLevelRequest(TeaModel):
         self.column_name = column_name
         self.db_id = db_id
         self.is_logic = is_logic
-        # 新的敏感等级
         self.new_level = new_level
         self.schema_name = schema_name
         self.table_name = table_name
@@ -1292,7 +1290,6 @@ class CreateDataCorrectOrderResponseBody(TeaModel):
         self.create_order_result = create_order_result
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -1650,7 +1647,6 @@ class CreateDataCronClearOrderResponseBody(TeaModel):
         self.create_order_result = create_order_result
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -1990,7 +1986,6 @@ class CreateDataImportOrderResponseBody(TeaModel):
         self.create_order_result = create_order_result
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -2306,7 +2301,6 @@ class CreateFreeLockCorrectOrderResponseBody(TeaModel):
         self.create_order_result = create_order_result
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -2644,7 +2638,6 @@ class CreateLogicDatabaseResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.logic_db_id = logic_db_id
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -3023,7 +3016,6 @@ class CreateProxyResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.proxy_id = proxy_id
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -3170,7 +3162,6 @@ class CreateProxyAccessResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.proxy_access_id = proxy_access_id
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -3549,7 +3540,6 @@ class CreateSQLReviewOrderResponseBody(TeaModel):
         self.create_order_result = create_order_result
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -3740,7 +3730,6 @@ class CreateStandardGroupResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.standard_group = standard_group
         self.success = success
@@ -4125,7 +4114,6 @@ class CreateStructSyncOrderResponseBody(TeaModel):
         self.create_order_result = create_order_result
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -4266,7 +4254,6 @@ class CreateUploadFileJobResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.job_key = job_key
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -4493,7 +4480,6 @@ class CreateUploadOSSFileJobResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.job_key = job_key
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -5055,7 +5041,6 @@ class DeleteLogicDatabaseResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -5306,7 +5291,6 @@ class DeleteProxyResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -5429,7 +5413,6 @@ class DeleteProxyAccessResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -5975,7 +5958,6 @@ class EditLogicDatabaseResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -6753,7 +6735,6 @@ class ExecuteStructSyncResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -7313,7 +7294,6 @@ class GetDBTaskSQLJobLogResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.log = log
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -7594,7 +7574,6 @@ class GetDBTopologyResponseBody(TeaModel):
         self.dbtopology = dbtopology
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -8363,7 +8342,6 @@ class GetDataCorrectSQLFileResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.file_url = file_url
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -8537,7 +8515,6 @@ class GetDataCorrectTaskDetailResponseBody(TeaModel):
         self.data_correct_task_detail = data_correct_task_detail
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -8726,7 +8703,6 @@ class GetDataCronClearTaskDetailListResponseBody(TeaModel):
         self.data_cron_clear_task_detail_list = data_cron_clear_task_detail_list
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
         self.total_count = total_count
@@ -11758,7 +11734,6 @@ class GetOwnerApplyOrderDetailResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.owner_apply_order_detail = owner_apply_order_detail
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -12202,7 +12177,6 @@ class GetPermApplyOrderDetailResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.perm_apply_order_detail = perm_apply_order_detail
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -12642,9 +12616,10 @@ class GetProxyResponseBody(TeaModel):
         error_message: str = None,
         https_port: int = None,
         instance_id: int = None,
-        mysql_port: int = None,
         private_enable: bool = None,
         private_host: str = None,
+        protocol_port: int = None,
+        protocol_type: str = None,
         proxy_id: int = None,
         public_enable: bool = None,
         public_host: str = None,
@@ -12657,13 +12632,13 @@ class GetProxyResponseBody(TeaModel):
         self.error_message = error_message
         self.https_port = https_port
         self.instance_id = instance_id
-        self.mysql_port = mysql_port
         self.private_enable = private_enable
         self.private_host = private_host
+        self.protocol_port = protocol_port
+        self.protocol_type = protocol_type
         self.proxy_id = proxy_id
         self.public_enable = public_enable
         self.public_host = public_host
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -12688,12 +12663,14 @@ class GetProxyResponseBody(TeaModel):
             result['HttpsPort'] = self.https_port
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.mysql_port is not None:
-            result['MysqlPort'] = self.mysql_port
         if self.private_enable is not None:
             result['PrivateEnable'] = self.private_enable
         if self.private_host is not None:
             result['PrivateHost'] = self.private_host
+        if self.protocol_port is not None:
+            result['ProtocolPort'] = self.protocol_port
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
         if self.proxy_id is not None:
             result['ProxyId'] = self.proxy_id
         if self.public_enable is not None:
@@ -12720,12 +12697,14 @@ class GetProxyResponseBody(TeaModel):
             self.https_port = m.get('HttpsPort')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('MysqlPort') is not None:
-            self.mysql_port = m.get('MysqlPort')
         if m.get('PrivateEnable') is not None:
             self.private_enable = m.get('PrivateEnable')
         if m.get('PrivateHost') is not None:
             self.private_host = m.get('PrivateHost')
+        if m.get('ProtocolPort') is not None:
+            self.protocol_port = m.get('ProtocolPort')
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
         if m.get('ProxyId') is not None:
             self.proxy_id = m.get('ProxyId')
         if m.get('PublicEnable') is not None:
@@ -13500,7 +13479,6 @@ class GetStructSyncExecSqlDetailResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.struct_sync_exec_sql_detail = struct_sync_exec_sql_detail
         self.success = success
@@ -13771,7 +13749,6 @@ class GetStructSyncJobAnalyzeResultResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.struct_sync_job_analyze_result = struct_sync_job_analyze_result
         self.success = success
@@ -13971,7 +13948,6 @@ class GetStructSyncJobDetailResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.struct_sync_job_detail = struct_sync_job_detail
         self.success = success
@@ -14380,7 +14356,6 @@ class GetStructSyncOrderDetailResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.struct_sync_order_detail = struct_sync_order_detail
         self.success = success
@@ -14985,7 +14960,6 @@ class GetTableTopologyResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
         self.table_topology = table_topology
@@ -15977,7 +15951,6 @@ class GetUserUploadFileJobResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
         self.upload_file_job_detail = upload_file_job_detail
@@ -16279,7 +16252,6 @@ class InspectProxyAccessSecretResponseBody(TeaModel):
         self.access_secret = access_secret
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -17018,7 +16990,6 @@ class ListDBTaskSQLJobResponseBody(TeaModel):
         self.dbtask_sqljob_list = dbtask_sqljob_list
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
         self.total_count = total_count
@@ -17278,7 +17249,6 @@ class ListDBTaskSQLJobDetailResponseBody(TeaModel):
         self.dbtask_sqljob_detail_list = dbtask_sqljob_detail_list
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
         self.total_count = total_count
@@ -17637,7 +17607,6 @@ class ListDDLPublishRecordsResponseBody(TeaModel):
         self.ddlpublish_record_list = ddlpublish_record_list
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -17825,7 +17794,6 @@ class ListDataCorrectPreCheckDBResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.pre_check_dblist = pre_check_dblist
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -18043,7 +18011,6 @@ class ListDataCorrectPreCheckSQLResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.pre_check_sqllist = pre_check_sqllist
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -19055,13 +19022,10 @@ class ListDesensitizationRuleResponseBody(TeaModel):
         total_count: int = None,
     ):
         self.desensitization_rule_list = desensitization_rule_list
-        # 表示当前调用返回读取到的位置，空代表数据已经读取完毕
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
-        # TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
         self.total_count = total_count
 
     def validate(self):
@@ -22188,9 +22152,10 @@ class ListProxiesResponseBodyProxyList(TeaModel):
         creator_name: str = None,
         https_port: int = None,
         instance_id: int = None,
-        mysql_port: int = None,
         private_enable: bool = None,
         private_host: str = None,
+        protocol_port: int = None,
+        protocol_type: str = None,
         proxy_id: int = None,
         public_enable: bool = None,
         public_host: str = None,
@@ -22199,9 +22164,10 @@ class ListProxiesResponseBodyProxyList(TeaModel):
         self.creator_name = creator_name
         self.https_port = https_port
         self.instance_id = instance_id
-        self.mysql_port = mysql_port
         self.private_enable = private_enable
         self.private_host = private_host
+        self.protocol_port = protocol_port
+        self.protocol_type = protocol_type
         self.proxy_id = proxy_id
         self.public_enable = public_enable
         self.public_host = public_host
@@ -22223,12 +22189,14 @@ class ListProxiesResponseBodyProxyList(TeaModel):
             result['HttpsPort'] = self.https_port
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.mysql_port is not None:
-            result['MysqlPort'] = self.mysql_port
         if self.private_enable is not None:
             result['PrivateEnable'] = self.private_enable
         if self.private_host is not None:
             result['PrivateHost'] = self.private_host
+        if self.protocol_port is not None:
+            result['ProtocolPort'] = self.protocol_port
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
         if self.proxy_id is not None:
             result['ProxyId'] = self.proxy_id
         if self.public_enable is not None:
@@ -22247,12 +22215,14 @@ class ListProxiesResponseBodyProxyList(TeaModel):
             self.https_port = m.get('HttpsPort')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('MysqlPort') is not None:
-            self.mysql_port = m.get('MysqlPort')
         if m.get('PrivateEnable') is not None:
             self.private_enable = m.get('PrivateEnable')
         if m.get('PrivateHost') is not None:
             self.private_host = m.get('PrivateHost')
+        if m.get('ProtocolPort') is not None:
+            self.protocol_port = m.get('ProtocolPort')
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
         if m.get('ProxyId') is not None:
             self.proxy_id = m.get('ProxyId')
         if m.get('PublicEnable') is not None:
@@ -22274,7 +22244,6 @@ class ListProxiesResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.proxy_list = proxy_list
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -22492,7 +22461,6 @@ class ListProxyAccessesResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.proxy_access_list = proxy_access_list
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -24187,7 +24155,6 @@ class ListStandardGroupsResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.standard_group_list = standard_group_list
         self.success = success
@@ -26812,7 +26779,6 @@ class ModifyDataCorrectExecSQLResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -26972,7 +26938,6 @@ class ModifyDesensitizationStrategyResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.result = result
         self.success = success
@@ -27234,7 +27199,6 @@ class PauseDataCorrectSQLJobResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -27885,7 +27849,6 @@ class RestartDataCorrectSQLJobResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -28008,7 +27971,6 @@ class RetryDataCorrectPreCheckResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -29318,7 +29280,6 @@ class SubmitStructSyncOrderApprovalResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
         self.workflow_instance_id = workflow_instance_id
