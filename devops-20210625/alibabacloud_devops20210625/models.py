@@ -12,13 +12,9 @@ class AddRepositoryMemberRequest(TeaModel):
         aliyun_pks: str = None,
         organization_id: str = None,
     ):
-        # Codeup访问令牌，使用AK/SK方式访问可以不用填AccessToken
         self.access_token = access_token
-        # 成员权限
         self.access_level = access_level
-        # 需要添加为代码库成员的用户阿里云ID。支持多个，以","分割
         self.aliyun_pks = aliyun_pks
-        # 企业ID
         self.organization_id = organization_id
 
     def validate(self):
@@ -63,17 +59,11 @@ class AddRepositoryMemberResponseBodyResult(TeaModel):
         id: int = None,
         state: str = None,
     ):
-        # 权限类型
         self.access_level = access_level
-        # 头像地址
         self.avatar_url = avatar_url
-        # 邮箱
         self.email = email
-        # 云效用户ID
         self.extern_user_id = extern_user_id
-        # Codeup用户Id
         self.id = id
-        # 状态
         self.state = state
 
     def validate(self):
@@ -125,15 +115,10 @@ class AddRepositoryMemberResponseBody(TeaModel):
         result: List[AddRepositoryMemberResponseBodyResult] = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求ID
         self.request_id = request_id
-        # 返回结果
         self.result = result
-        # 请求状态
         self.success = success
 
     def validate(self):
@@ -240,20 +225,13 @@ class AddWebhookRequest(TeaModel):
     ):
         self.access_token = access_token
         self.organization_id = organization_id
-        # webhook描述
         self.description = description
-        # 使用ssl认证
         self.enable_ssl_verification = enable_ssl_verification
-        # 合并请求事件
         self.merge_requests_events = merge_requests_events
-        # 评论事件
         self.note_events = note_events
-        # 分支推送事件
         self.push_events = push_events
         self.secret_token = secret_token
-        # 标签推送事件
         self.tag_push_events = tag_push_events
-        # hook url
         self.url = url
 
     def validate(self):
@@ -550,14 +528,10 @@ class CreateFlowTagResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
         self.id = id
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -676,15 +650,10 @@ class CreateFlowTagGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 标签分类
         self.id = id
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -860,7 +829,6 @@ class CreateHostGroupResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.host_group_id = host_group_id
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -954,17 +922,11 @@ class CreateOAuthTokenRequest(TeaModel):
         login: str = None,
         scope: str = None,
     ):
-        # clientId
         self.client_id = client_id
-        # client_secret
         self.client_secret = client_secret
-        # 当前grantType=code时必传
         self.code = code
-        # 授权类型：code，token
         self.grant_type = grant_type
-        # code = token时必传
         self.login = login
-        # 授权范围.例如：read:repo,write:repo
         self.scope = scope
 
     def validate(self):
@@ -1062,7 +1024,6 @@ class CreateOAuthTokenResponseBody(TeaModel):
         success: str = None,
     ):
         self.error_code = error_code
-        # Id of the request
         self.error_message = error_message
         self.request_id = request_id
         self.result = result
@@ -1215,37 +1176,21 @@ class CreateProjectResponseBodyProject(TeaModel):
         status_stage_identifier: str = None,
         type_identifier: str = None,
     ):
-        # 空间大类id
         self.category_identifier = category_identifier
-        # 创建人id
         self.creator = creator
-        # 自定义编号
         self.custom_code = custom_code
-        # 描述信息
         self.description = description
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 图标
         self.icon = icon
-        # 项目唯一标识符
         self.identifier = identifier
-        # 项目状态
         self.logical_status = logical_status
-        # 修改人
         self.modifier = modifier
-        # 项目名称
         self.name = name
-        # 企业id
         self.organization_identifier = organization_identifier
-        # 可见范围
         self.scope = scope
-        # 状态id
         self.status_identifier = status_identifier
-        # 状态阶段
         self.status_stage_identifier = status_stage_identifier
-        # 空间小类id
         self.type_identifier = type_identifier
 
     def validate(self):
@@ -1337,15 +1282,10 @@ class CreateProjectResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 项目信息
         self.project = project
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true或者false
         self.success = success
 
     def validate(self):
@@ -1456,37 +1396,21 @@ class CreateRepositoryRequest(TeaModel):
         sync: bool = None,
     ):
         self.access_token = access_token
-        # 代码库头像地址
         self.avatar_url = avatar_url
-        # 代码库描述
         self.description = description
-        # gitignore模板类型
         self.gitignore_type = gitignore_type
-        # 导入时使用的账号
         self.import_account = import_account
-        # 使用使用demo库内容进行初始化
         self.import_demo_project = import_demo_project
-        # 导入代码库类型 (GIT: Git库, SVN: SVN库)
         self.import_repo_type = import_repo_type
-        # 导入时账号的token
         self.import_token = import_token
-        # import_token字段的传输格式，使用明文或rsa加密
         self.import_token_encrypted = import_token_encrypted
-        # 导入地址（http协议地址）
         self.import_url = import_url
-        # 初始化标准智能化服务
         self.init_standard_service = init_standard_service
-        # 是否启用加密
         self.is_crypto_enabled = is_crypto_enabled
-        # 本地导入代码库的远程地址
         self.local_import_url = local_import_url
-        # 代码库名称
         self.name = name
-        # 代码库父路径id
         self.namespace_id = namespace_id
-        # 代码库路径
         self.path = path
-        # 自动创建readme类型 (EMPTY: 仅创建README.md, USER_GUIDE: 包含新手引导)
         self.readme_type = readme_type
         self.visibility_level = visibility_level
         self.create_parent_path = create_parent_path
@@ -1607,25 +1531,15 @@ class CreateRepositoryResponseBodyResultNamespace(TeaModel):
         updated_at: str = None,
         visibility_level: str = None,
     ):
-        # 头像地址
         self.avatar = avatar
-        # 创建时间
         self.created_at = created_at
-        # 描述
         self.description = description
-        # id
         self.id = id
-        # 名称
         self.name = name
-        # 归属者id
         self.owner_id = owner_id
-        # 路径
         self.path = path
-        # 公开性
         self.public = public
-        # 更新时间
         self.updated_at = updated_at
-        # 可见性。0：私有，10：内部公开
         self.visibility_level = visibility_level
 
     def validate(self):
@@ -1707,43 +1621,24 @@ class CreateRepositoryResponseBodyResult(TeaModel):
         visibility_level: str = None,
         web_url: str = None,
     ):
-        # 从SVN导入
         self.import_from_svn = import_from_svn
-        # 归档标识
         self.archived = archived
-        # 代码库头像地址
         self.avatar_url = avatar_url
-        # 创建时间
         self.created_at = created_at
-        # 创建者id
         self.creator_id = creator_id
-        # 默认分支
         self.default_branch = default_branch
-        # demo库标识
         self.demo_project = demo_project
-        # 描述
         self.description = description
-        # http地址
         self.http_url_to_repo = http_url_to_repo
-        # id
         self.id = id
-        # 最后活跃时间
         self.last_activity_at = last_activity_at
-        # 名称
         self.name = name
-        # 名称（含父路径）
         self.name_with_namespace = name_with_namespace
-        # 父路径信息
         self.namespace = namespace
-        # 路径
         self.path = path
-        # 路径（含父路径）
         self.path_with_namespace = path_with_namespace
-        # ssh地址
         self.ssh_url_to_repo = ssh_url_to_repo
-        # 可见性。0：私有，10：内部公开
         self.visibility_level = visibility_level
-        # web url
         self.web_url = web_url
 
     def validate(self):
@@ -1849,14 +1744,10 @@ class CreateRepositoryResponseBody(TeaModel):
         result: CreateRepositoryResponseBodyResult = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求ID
         self.request_id = request_id
         self.result = result
-        # 调用是否成功
         self.success = success
 
     def validate(self):
@@ -1947,9 +1838,7 @@ class CreateResourceMemberRequest(TeaModel):
         account_id: str = None,
         role_name: str = None,
     ):
-        # 用户id
         self.account_id = account_id
-        # 角色部署组 deployGroup   user  成员，使用权限   admin 管理员，使用编辑权限 流水线 pipeline   admin 查看、运行、编辑权限   member  运行权限   viewer 查看权限
         self.role_name = role_name
 
     def validate(self):
@@ -1984,13 +1873,9 @@ class CreateResourceMemberResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -2078,15 +1963,10 @@ class CreateSprintRequest(TeaModel):
         staff_ids: List[str] = None,
         start_date: str = None,
     ):
-        # 结束时间
         self.end_date = end_date
-        # 迭代名
         self.name = name
-        # 项目id
         self.space_identifier = space_identifier
-        # 负责人列表
         self.staff_ids = staff_ids
-        # 开始时间
         self.start_date = start_date
 
     def validate(self):
@@ -2141,29 +2021,17 @@ class CreateSprintResponseBodySprint(TeaModel):
         start_date: int = None,
         status: str = None,
     ):
-        # 创建人id
         self.creator = creator
-        # 描述信息
         self.description = description
-        # 结束时间
         self.end_date = end_date
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 迭代唯一标识符
         self.identifier = identifier
-        # 修改人
         self.modifier = modifier
-        # 迭代名称
         self.name = name
-        # 可见范围
         self.scope = scope
-        # 项目id
         self.space_identifier = space_identifier
-        # 开始时间
         self.start_date = start_date
-        # 状态
         self.status = status
 
     def validate(self):
@@ -2239,15 +2107,10 @@ class CreateSprintResponseBody(TeaModel):
         sprint: CreateSprintResponseBodySprint = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # 迭代信息
         self.sprint = sprint
-        # true或者false
         self.success = success
 
     def validate(self):
@@ -2338,9 +2201,7 @@ class CreateSshKeyResponseBodySshKey(TeaModel):
         id: int = None,
         public_key: str = None,
     ):
-        # 企业公钥id
         self.id = id
-        # 企业公钥
         self.public_key = public_key
 
     def validate(self):
@@ -2376,15 +2237,10 @@ class CreateSshKeyResponseBody(TeaModel):
         ssh_key: CreateSshKeyResponseBodySshKey = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # 企业公钥
         self.ssh_key = ssh_key
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -2476,11 +2332,8 @@ class CreateVariableGroupRequest(TeaModel):
         name: str = None,
         variables: str = None,
     ):
-        # 变量组描述
         self.description = description
-        # 变量组名称
         self.name = name
-        # 变量信息json字符串 isEncrypted 是否加密 name 变量名称 value 变量值
         self.variables = variables
 
     def validate(self):
@@ -2520,15 +2373,10 @@ class CreateVariableGroupResponseBody(TeaModel):
         success: bool = None,
         variable_group_id: int = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
-        # 新建的变量组id
         self.variable_group_id = variable_group_id
 
     def validate(self):
@@ -2618,11 +2466,8 @@ class CreateWorkitemRequestFieldValueList(TeaModel):
         value: str = None,
         workitem_identifier: str = None,
     ):
-        # 字段唯一标识
         self.field_identifier = field_identifier
-        # 字段值，写入时使用
         self.value = value
-        # 工作项的唯一标识
         self.workitem_identifier = workitem_identifier
 
     def validate(self):
@@ -2672,35 +2517,20 @@ class CreateWorkitemRequest(TeaModel):
         verifier: List[str] = None,
         workitem_type: str = None,
     ):
-        # 工作项负责人的account id，或者企业中的用户名
         self.assigned_to = assigned_to
-        # 工作项的类型id，比如：Bug、Task对应id
         self.category = category
-        # 工作项内容
         self.description = description
-        # 内容格式
         self.description_format = description_format
-        # 自定义字段
         self.field_value_list = field_value_list
-        # 所属父工作项的唯一标识
         self.parent = parent
-        # 参与人account id列表，或者企业名称列表
         self.participant = participant
-        # 项目id
         self.space = space
-        # 项目id
         self.space_identifier = space_identifier
-        # 资源类型
         self.space_type = space_type
-        # 要关联迭代
         self.sprint = sprint
-        # 标题
         self.subject = subject
-        # 抄送人account id列表
         self.tracker = tracker
-        # 验证者account id列表，或者企业名称列表
         self.verifier = verifier
-        # 工作项小类型id
         self.workitem_type = workitem_type
 
     def validate(self):
@@ -2812,47 +2642,26 @@ class CreateWorkitemResponseBodyWorkitem(TeaModel):
         update_status_at: int = None,
         workitem_type_identifier: str = None,
     ):
-        # 负责人
         self.assigned_to = assigned_to
-        # 工作项的类型id
         self.category_identifier = category_identifier
-        # 创建人
         self.creator = creator
-        # 工作项内容
         self.document = document
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 工作项唯一标识
         self.identifier = identifier
-        # 逻辑状态
         self.logical_status = logical_status
-        # 修改人
         self.modifier = modifier
-        # 父工作项id
         self.parent_identifier = parent_identifier
-        # 编号
         self.serial_number = serial_number
-        # 所属项目id
         self.space_identifier = space_identifier
-        # 所属项目名称
         self.space_name = space_name
-        # 项目类型
         self.space_type = space_type
-        # 迭代的id
         self.sprint_identifier = sprint_identifier
-        # 状态名称
         self.status = status
-        # 状态唯一标识id
         self.status_identifier = status_identifier
-        # 状态阶段id
         self.status_stage_identifier = status_stage_identifier
-        # 工作项标题
         self.subject = subject
-        # 状态更新时间
         self.update_status_at = update_status_at
-        # 工作项类型id
         self.workitem_type_identifier = workitem_type_identifier
 
     def validate(self):
@@ -2964,15 +2773,10 @@ class CreateWorkitemResponseBody(TeaModel):
         success: bool = None,
         workitem: CreateWorkitemResponseBodyWorkitem = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true或者false
         self.success = success
-        # 工作项信息
         self.workitem = workitem
 
     def validate(self):
@@ -3069,21 +2873,13 @@ class CreateWorkspaceRequest(TeaModel):
         reuse: bool = None,
         workspace_template: str = None,
     ):
-        # 代码来源URL（当前仅支持云效 Codeup 来源）
         self.code_url = code_url
-        # 代码版本，支持 commitSHA、分支、标签
         self.code_version = code_version
-        # 打开空间默认打开的文件相对路径
         self.file_path = file_path
-        # 工作空间名称
         self.name = name
-        # 请求来源（用于统计，云产品集成时需要传入）
         self.request_from = request_from
-        # 资源标识，提供给非标代码源作为空间复用的唯一标识
         self.resource_identifier = resource_identifier
-        # 工作空间复用标识，按照"用户+技术栈+代码地址+版本"进行复用 true - 复用 false - 不复用，每次均为新创建
         self.reuse = reuse
-        # 技术栈
         self.workspace_template = workspace_template
 
     def validate(self):
@@ -3144,17 +2940,11 @@ class CreateWorkspaceResponseBodyWorkspace(TeaModel):
         status: str = None,
         template: str = None,
     ):
-        # 创建时间戳
         self.create_time = create_time
-        # 创建者，阿里云PK
         self.creator = creator
-        # 工作空间唯一标识，字符串形式，可在云效DevStudio访问空间链接中获取
         self.id = id
-        # 工作空间名称
         self.name = name
-        # 空间状态，枚举：CREATING-创建中, SUCCESS-运行中, FROZEN-冻结中, RECOVERING-恢复中
         self.status = status
-        # 工作空间模板
         self.template = template
 
     def validate(self):
@@ -3206,15 +2996,10 @@ class CreateWorkspaceResponseBody(TeaModel):
         success: bool = None,
         workspace: CreateWorkspaceResponseBodyWorkspace = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求ID
         self.request_id = request_id
-        # 请求是否成功
         self.success = success
-        # 工作空间信息
         self.workspace = workspace
 
     def validate(self):
@@ -3307,13 +3092,9 @@ class DeleteFlowTagResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -3400,13 +3181,9 @@ class DeleteFlowTagGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -3493,13 +3270,9 @@ class DeleteHostGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -3586,13 +3359,9 @@ class DeletePipelineResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -3707,15 +3476,10 @@ class DeleteProjectResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true或者false
         self.result = result
-        # true或者false
         self.success = success
 
     def validate(self):
@@ -3806,13 +3570,9 @@ class DeleteResourceMemberResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -3899,13 +3659,9 @@ class DeleteVariableGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -3992,13 +3748,9 @@ class FrozenWorkspaceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求ID
         self.request_id = request_id
-        # 请求是否成功
         self.success = success
 
     def validate(self):
@@ -4271,11 +4023,8 @@ class GetCustomFieldOptionRequest(TeaModel):
         space_type: str = None,
         workitem_type_identifier: str = None,
     ):
-        # 项目id
         self.space_identifier = space_identifier
-        # 类型
         self.space_type = space_type
-        # 工作项类型id
         self.workitem_type_identifier = workitem_type_identifier
 
     def validate(self):
@@ -4317,19 +4066,12 @@ class GetCustomFieldOptionResponseBodyFileds(TeaModel):
         value: str = None,
         value_en: str = None,
     ):
-        # 展示的值
         self.display_value = display_value
-        # 字段唯一标识
         self.field_identifier = field_identifier
-        # 迭代唯一标识符
         self.identifier = identifier
-        # 展示级别，数字范围1~9，数字越大，颜色越浅
         self.level = level
-        # 待选值顺序
         self.position = position
-        # 字段中文名称
         self.value = value
-        # 字段英文名称
         self.value_en = value_en
 
     def validate(self):
@@ -4385,15 +4127,10 @@ class GetCustomFieldOptionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 字段值信息
         self.fileds = fileds
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true或者false
         self.success = success
 
     def validate(self):
@@ -4492,13 +4229,9 @@ class GetFileLastCommitRequest(TeaModel):
         organization_id: str = None,
         sha: str = None,
     ):
-        # 个人访问令牌
         self.access_token = access_token
-        # 文件路径
         self.filepath = filepath
-        # 云效企业ID
         self.organization_id = organization_id
-        # 分支名称、标签名称或Commit ID
         self.sha = sha
 
     def validate(self):
@@ -4539,9 +4272,7 @@ class GetFileLastCommitResponseBodyResultSignature(TeaModel):
         gpg_key_id: str = None,
         verification_status: str = None,
     ):
-        # GPG密钥ID
         self.gpg_key_id = gpg_key_id
-        # 验证状态
         self.verification_status = verification_status
 
     def validate(self):
@@ -4585,31 +4316,18 @@ class GetFileLastCommitResponseBodyResult(TeaModel):
         signature: GetFileLastCommitResponseBodyResultSignature = None,
         title: str = None,
     ):
-        # 作者提交时间
         self.author_date = author_date
-        # 提交者邮箱
         self.author_email = author_email
-        # 作者姓名
         self.author_name = author_name
-        # 提交者提交时间
         self.committed_date = committed_date
-        # 提交者邮箱
         self.committer_email = committer_email
-        # 提交者姓名
         self.committer_name = committer_name
-        # 创建时间
         self.created_at = created_at
-        # Commit ID
         self.id = id
-        # 提交内容
         self.message = message
-        # 父提交ID
         self.parent_ids = parent_ids
-        # Commit短ID
         self.short_id = short_id
-        # 签名
         self.signature = signature
-        # 标题，提交的第一行内容
         self.title = title
 
     def validate(self):
@@ -4691,15 +4409,10 @@ class GetFileLastCommitResponseBody(TeaModel):
         result: GetFileLastCommitResponseBodyResult = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求ID
         self.request_id = request_id
-        # 响应结果
         self.result = result
-        # 请求结果
         self.success = success
 
     def validate(self):
@@ -4903,14 +4616,10 @@ class GetFlowTagGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
         self.flow_tag_group = flow_tag_group
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -5198,14 +4907,10 @@ class GetHostGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
         self.host_group = host_group
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -5296,9 +5001,7 @@ class GetOrganizationMemberResponseBodyMemberIdentities(TeaModel):
         extern_uid: str = None,
         provider: str = None,
     ):
-        # 第三方系统的用户 id
         self.extern_uid = extern_uid
-        # 第三方系统
         self.provider = provider
 
     def validate(self):
@@ -5342,31 +5045,18 @@ class GetOrganizationMemberResponseBodyMember(TeaModel):
         organization_role_name: str = None,
         state: str = None,
     ):
-        # 阿里云用户PK
         self.account_id = account_id
-        # 生日
         self.birthday = birthday
-        # 部门名称列表
         self.dept_lists = dept_lists
-        # 邮箱
         self.email = email
-        # 入职时间
         self.hired_date = hired_date
-        # 第三方信息
         self.identities = identities
-        # 加入云效企业时间
         self.join_time = join_time
-        # 最近一次访问时间
         self.last_visit_time = last_visit_time
-        # 手机号
         self.mobile = mobile
-        # 企业成员名
         self.organization_member_name = organization_member_name
-        # 企业角色Id
         self.organization_role_id = organization_role_id
-        # 企业角色名字
         self.organization_role_name = organization_role_name
-        # 用户状态
         self.state = state
 
     def validate(self):
@@ -5448,15 +5138,10 @@ class GetOrganizationMemberResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 成员
         self.member = member
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -5561,37 +5246,21 @@ class GetPipelineResponseBodyPipelinePipelineConfigSourcesData(TeaModel):
         trigger_filter: str = None,
         webhook: str = None,
     ):
-        # 分支
         self.branch = branch
-        # 克隆深度
         self.clone_depth = clone_depth
-        # Credential Id
         self.credential_id = credential_id
-        # Credential Label
         self.credential_label = credential_label
-        # Credential Type
         self.credential_type = credential_type
-        # 触发事件
         self.events = events
-        # 是否分支模式
         self.is_branch_mode = is_branch_mode
-        # 是否设置clone深度
         self.is_clone_depth = is_clone_depth
-        # 是否子模块
         self.is_submodule = is_submodule
-        # 是否提交触发
         self.is_trigger = is_trigger
-        # 代码源显示标签
         self.label = label
-        # github命名空间
         self.namespace = namespace
-        # 代码库地址
         self.repo = repo
-        # 服务连接Id
         self.service_connection_id = service_connection_id
-        # 触发过滤条件
         self.trigger_filter = trigger_filter
-        # webhhook地址
         self.webhook = webhook
 
     def validate(self):
@@ -5681,11 +5350,8 @@ class GetPipelineResponseBodyPipelinePipelineConfigSources(TeaModel):
         sign: str = None,
         type: str = None,
     ):
-        # 代码数据
         self.data = data
-        # 代码源唯一标识
         self.sign = sign
-        # 代码源类型aliyunGit 阿里云代码库 customGitlab  自建git giteeGit 码云 codeup Codeup git 通用git gitlab gitlab bitbucket bitbucket githubOAuth github
         self.type = type
 
     def validate(self):
@@ -5725,11 +5391,8 @@ class GetPipelineResponseBodyPipelinePipelineConfig(TeaModel):
         settings: str = None,
         sources: List[GetPipelineResponseBodyPipelinePipelineConfigSources] = None,
     ):
-        # 流水线配置信息
         self.flow = flow
-        # 流水线环境变量等
         self.settings = settings
-        # 代码源
         self.sources = sources
 
     def validate(self):
@@ -5774,9 +5437,7 @@ class GetPipelineResponseBodyPipelineTagList(TeaModel):
         id: int = None,
         name: str = None,
     ):
-        # 标签id
         self.id = id
-        # 标签名称
         self.name = name
 
     def validate(self):
@@ -5817,25 +5478,15 @@ class GetPipelineResponseBodyPipeline(TeaModel):
         tag_list: List[GetPipelineResponseBodyPipelineTagList] = None,
         update_time: int = None,
     ):
-        # 创建时间
         self.create_time = create_time
-        # 创建者阿里云账号id
         self.creator_account_id = creator_account_id
-        # 环境id 0 日常环境  1预发环境 2正式环境
         self.env_id = env_id
-        # 环境名称
         self.env_name = env_name
-        # 流水线分组id
         self.group_id = group_id
-        # 更新人阿里云账号id
         self.modifier_account_id = modifier_account_id
-        # 流水线名称
         self.name = name
-        # 流水线配置
         self.pipeline_config = pipeline_config
-        # 标签
         self.tag_list = tag_list
-        # 更新时间
         self.update_time = update_time
 
     def validate(self):
@@ -5914,15 +5565,10 @@ class GetPipelineResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 流水线
         self.pipeline = pipeline
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -6049,14 +5695,10 @@ class GetPipelineArtifactUrlResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
         self.file_url = file_url
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -6175,14 +5817,10 @@ class GetPipelineEmasArtifactUrlResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
         self.file_url = file_url
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -6272,11 +5910,8 @@ class GetPipelineRunResponseBodyPipelineRunSourcesData(TeaModel):
         commint: str = None,
         repo: str = None,
     ):
-        # 分支
         self.branch = branch
-        # 提交信息 json数据
         self.commint = commint
-        # 代码库地址
         self.repo = repo
 
     def validate(self):
@@ -6314,11 +5949,8 @@ class GetPipelineRunResponseBodyPipelineRunSources(TeaModel):
         sign: str = None,
         type: str = None,
     ):
-        # 代码源信息
         self.data = data
-        # 代码源唯一标识
         self.sign = sign
-        # 代码库类型
         self.type = type
 
     def validate(self):
@@ -6355,14 +5987,11 @@ class GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions(TeaModel):
     def __init__(
         self,
         disable: bool = None,
-        params: Dict[str, Any] = None,
+        params: Any = None,
         type: str = None,
     ):
-        # 是否可用
         self.disable = disable
-        # API参数
         self.params = params
-        # API名称
         self.type = type
 
     def validate(self):
@@ -6404,19 +6033,12 @@ class GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobs(TeaModel):
         start_time: int = None,
         status: str = None,
     ):
-        # 后续操作
         self.actions = actions
-        # 结束时间
         self.end_time = end_time
-        # 任务Id
         self.id = id
-        # 任务名称
         self.name = name
-        # 触发参数
         self.params = params
-        # 开始时间
         self.start_time = start_time
-        # 状态
         self.status = status
 
     def validate(self):
@@ -6480,15 +6102,10 @@ class GetPipelineRunResponseBodyPipelineRunStagesStageInfo(TeaModel):
         start_time: int = None,
         status: str = None,
     ):
-        # 结束时间
         self.end_time = end_time
-        # 任务
         self.jobs = jobs
-        # 阶段名称
         self.name = name
-        # 开始时间
         self.start_time = start_time
-        # 状态
         self.status = status
 
     def validate(self):
@@ -6541,9 +6158,7 @@ class GetPipelineRunResponseBodyPipelineRunStages(TeaModel):
         name: str = None,
         stage_info: GetPipelineRunResponseBodyPipelineRunStagesStageInfo = None,
     ):
-        # 阶段名称
         self.name = name
-        # 阶段详情
         self.stage_info = stage_info
 
     def validate(self):
@@ -6587,27 +6202,16 @@ class GetPipelineRunResponseBodyPipelineRun(TeaModel):
         trigger_mode: int = None,
         update_time: int = None,
     ):
-        # 创建时间
         self.create_time = create_time
-        # 创建者阿里云账号id
         self.creator_account_id = creator_account_id
-        # 更新人阿里云账号id
         self.modifier_account_id = modifier_account_id
-        # 流水线Id
         self.pipeline_id = pipeline_id
-        # 流水线运行实例id
         self.pipeline_run_id = pipeline_run_id
-        # 代码源
         self.sources = sources
-        # 阶段拓扑信息
         self.stage_group = stage_group
-        # 阶段信息
         self.stages = stages
-        # 状态 FAIL 运行失败 SUCCESS 运行成功 RUNNING 运行中
         self.status = status
-        # 触发模式 1人工触发 2定时触发 3代码提交触发
         self.trigger_mode = trigger_mode
-        # 更新时间
         self.update_time = update_time
 
     def validate(self):
@@ -6696,15 +6300,10 @@ class GetPipelineRunResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 流水线运行实例
         self.pipeline_run = pipeline_run
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -6825,14 +6424,10 @@ class GetPipelineScanReportUrlResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
         self.report_url = report_url
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -7091,7 +6686,6 @@ class GetProjectInfoResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # 项目信息
         self.project = project
         self.request_id = request_id
         self.success = success
@@ -7186,13 +6780,9 @@ class GetProjectMemberRequest(TeaModel):
         repository_id: int = None,
         user_aliyun_pk: str = None,
     ):
-        # accessToken（选填），使用AK方式调用时无需填accessToken
         self.access_token = access_token
-        # 企业ID
         self.organization_id = organization_id
-        # 代码仓库Id
         self.repository_id = repository_id
-        # 用户阿里云PK
         self.user_aliyun_pk = user_aliyun_pk
 
     def validate(self):
@@ -7382,11 +6972,8 @@ class GetRepositoryRequest(TeaModel):
         identity: str = None,
         organization_id: str = None,
     ):
-        # 个人访问令牌
         self.access_token = access_token
-        # 代码库ID或路径
         self.identity = identity
-        # 企业ID
         self.organization_id = organization_id
 
     def validate(self):
@@ -7430,23 +7017,14 @@ class GetRepositoryResponseBodyRepositoryNamespace(TeaModel):
         updated_at: str = None,
         visibility_level: int = None,
     ):
-        # 头像地址
         self.avatar = avatar
-        # 创建时间
         self.created_at = created_at
-        # 描述
         self.description = description
-        # id
         self.id = id
-        # 名称
         self.name = name
-        # 归属者ID
         self.owner_id = owner_id
-        # 路径
         self.path = path
-        # 更新时间
         self.updated_at = updated_at
-        # 可见性。0：私有，10：内部公开
         self.visibility_level = visibility_level
 
     def validate(self):
@@ -7523,41 +7101,23 @@ class GetRepositoryResponseBodyRepository(TeaModel):
         visibility_level: int = None,
         web_url: str = None,
     ):
-        # 归档标识
         self.archive = archive
-        # 代码库头像地址
         self.avatar_url = avatar_url
-        # 创建时间
         self.created_at = created_at
-        # 创建者ID
         self.creator_id = creator_id
-        # 默认分支
         self.default_branch = default_branch
-        # DEMO库标识
         self.demo_project_status = demo_project_status
-        # 描述
         self.description = description
-        # HTTP克隆地址
         self.http_url_to_repository = http_url_to_repository
-        # 代码库ID
         self.id = id
-        # 最后活跃时间
         self.last_activity_at = last_activity_at
-        # 名称
         self.name = name
-        # 名称（含父名称）
         self.name_with_namespace = name_with_namespace
-        # 父空间
         self.namespace = namespace
-        # 路径
         self.path = path
-        # 路径（含父路径）
         self.path_with_namespace = path_with_namespace
-        # SSH克隆地址
         self.ssh_url_to_repository = ssh_url_to_repository
-        # 可见性。0：私有，10：内部公开
         self.visibility_level = visibility_level
-        # 页面访问地址
         self.web_url = web_url
 
     def validate(self):
@@ -7659,15 +7219,10 @@ class GetRepositoryResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 代码库信息
         self.repository = repository
-        # 请求ID
         self.request_id = request_id
-        # 请求是否成功
         self.success = success
 
     def validate(self):
@@ -7768,29 +7323,17 @@ class GetSprintInfoResponseBodySprint(TeaModel):
         start_date: int = None,
         status: str = None,
     ):
-        # 创建人id
         self.creator = creator
-        # 描述信息
         self.description = description
-        # 结束时间
         self.end_date = end_date
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 迭代唯一标识符
         self.identifier = identifier
-        # 修改人
         self.modifier = modifier
-        # 迭代名称
         self.name = name
-        # 可见范围
         self.scope = scope
-        # 项目id
         self.space_identifier = space_identifier
-        # 开始时间
         self.start_date = start_date
-        # 状态
         self.status = status
 
     def validate(self):
@@ -7869,7 +7412,6 @@ class GetSprintInfoResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.request_id = request_id
-        # 迭代信息
         self.sprint = sprint
         self.success = success
 
@@ -7959,14 +7501,11 @@ class GetVMDeployOrderResponseBodyDeployOrderActions(TeaModel):
     def __init__(
         self,
         disable: bool = None,
-        params: Dict[str, Any] = None,
+        params: Any = None,
         type: str = None,
     ):
-        # 是否可用
         self.disable = disable
-        # 参数
         self.params = params
-        # Action
         self.type = type
 
     def validate(self):
@@ -8001,14 +7540,11 @@ class GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActi
     def __init__(
         self,
         disable: bool = None,
-        params: Dict[str, Any] = None,
+        params: Any = None,
         type: str = None,
     ):
-        # 是否可用
         self.disable = disable
-        # 参数
         self.params = params
-        # Action
         self.type = type
 
     def validate(self):
@@ -8051,21 +7587,13 @@ class GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines(Tea
         status: str = None,
         update_time: int = None,
     ):
-        # 后续action
         self.actions = actions
-        # 部署批次
         self.batch_num = batch_num
-        # 机器状态
         self.client_status = client_status
-        # 开始时间
         self.create_time = create_time
-        # 机器IP
         self.ip = ip
-        # 机器sn
         self.machine_sn = machine_sn
-        # 部署状态
         self.status = status
-        # 修改时间
         self.update_time = update_time
 
     def validate(self):
@@ -8131,11 +7659,8 @@ class GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo(TeaModel):
         deploy_machines: List[GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines] = None,
         host_group_id: int = None,
     ):
-        # 发布批次
         self.batch_num = batch_num
-        # 部署机器列表
         self.deploy_machines = deploy_machines
-        # 主机组ID
         self.host_group_id = host_group_id
 
     def validate(self):
@@ -8188,25 +7713,15 @@ class GetVMDeployOrderResponseBodyDeployOrder(TeaModel):
         total_batch: int = None,
         update_time: int = None,
     ):
-        # 后续action
         self.actions = actions
-        # 创建时时间
         self.create_time = create_time
-        # 创建人
         self.creator = creator
-        # 当前发布批次
         self.current_batch = current_batch
-        # 部署机器信息
         self.deploy_machine_info = deploy_machine_info
-        # 部署单ID
         self.deploy_order_id = deploy_order_id
-        # 错误码
         self.exception_code = exception_code
-        # 发布状态
         self.status = status
-        # 总发布批次
         self.total_batch = total_batch
-        # 修改时间
         self.update_time = update_time
 
     def validate(self):
@@ -8285,15 +7800,10 @@ class GetVMDeployOrderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 部署单
         self.deploy_order = deploy_order
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -8384,9 +7894,7 @@ class GetVariableGroupResponseBodyVariableGroupRelatedPipelines(TeaModel):
         id: int = None,
         name: str = None,
     ):
-        # 关联的流水线Id
         self.id = id
-        # 关联的流水线名称
         self.name = name
 
     def validate(self):
@@ -8420,11 +7928,8 @@ class GetVariableGroupResponseBodyVariableGroupVariables(TeaModel):
         name: str = None,
         value: str = None,
     ):
-        # 是否加密
         self.is_encrypted = is_encrypted
-        # 变量名
         self.name = name
-        # 变量值
         self.value = value
 
     def validate(self):
@@ -8468,23 +7973,14 @@ class GetVariableGroupResponseBodyVariableGroup(TeaModel):
         update_time: int = None,
         variables: List[GetVariableGroupResponseBodyVariableGroupVariables] = None,
     ):
-        # 创建人阿里云账号id
         self.ccreator_account_id = ccreator_account_id
-        # 创建时间
         self.create_time = create_time
-        # 变量组描述
         self.description = description
-        # 变量组id
         self.id = id
-        # 更新人阿里云账号id
         self.modifier_account_id = modifier_account_id
-        # 变量组名称
         self.name = name
-        # 关联的流水线
         self.related_pipelines = related_pipelines
-        # 更新时间
         self.update_time = update_time
-        # 变量
         self.variables = variables
 
     def validate(self):
@@ -8565,15 +8061,10 @@ class GetVariableGroupResponseBody(TeaModel):
         success: bool = None,
         variable_group: GetVariableGroupResponseBodyVariableGroup = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
-        # 变量组
         self.variable_group = variable_group
 
     def validate(self):
@@ -8666,13 +8157,9 @@ class GetWorkItemActivityResponseBodyActivitiesProperty(TeaModel):
         property_name: str = None,
         property_type: str = None,
     ):
-        # 属性的展示名
         self.display_name = display_name
-        # 资源id
         self.property_identifier = property_identifier
-        # 属性key
         self.property_name = property_name
-        # 类型
         self.property_type = property_type
 
     def validate(self):
@@ -8719,21 +8206,13 @@ class GetWorkItemActivityResponseBodyActivities(TeaModel):
         property: GetWorkItemActivityResponseBodyActivitiesProperty = None,
         resource_identifier: str = None,
     ):
-        # 动作类型
         self.action_type = action_type
-        # 事件id
         self.event_id = event_id
-        # 事件时间
         self.event_time = event_time
-        # 事件类型
         self.event_type = event_type
-        # 操作者
         self.operator = operator
-        # 父事件id
         self.parent_event_id = parent_event_id
-        # 修改属性
         self.property = property
-        # 操作对象
         self.resource_identifier = resource_identifier
 
     def validate(self):
@@ -8795,15 +8274,10 @@ class GetWorkItemActivityResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 动态信息
         self.activities = activities
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true或者false
         self.success = success
 
     def validate(self):
@@ -8903,15 +8377,10 @@ class GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList(TeaModel):
         value: str = None,
         value_en: str = None,
     ):
-        # 根据语言环境获取当前展示的值
         self.display_value = display_value
-        # 字段值为对象类型时，值所对应的对象的唯一标识 例如：option表中的id
         self.identifier = identifier
-        # 展示级别，数字范围1~9，数字越大，颜色越浅。
         self.level = level
-        # 字段值
         self.value = value
-        # 字段英文值，目前只有列表类有英文值
         self.value_en = value_en
 
     def validate(self):
@@ -8963,23 +8432,14 @@ class GetWorkItemInfoResponseBodyWorkitemCustomFields(TeaModel):
         value_list: List[GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList] = None,
         workitem_identifier: str = None,
     ):
-        # 字段的className，便于数据查询
         self.field_class_name = field_class_name
-        # 字段格式，便于查询数据
         self.field_format = field_format
-        # 字段的唯一标识
         self.field_identifier = field_identifier
-        # 展示级别，数字范围1~9，数字越大，颜色越浅。
         self.level = level
-        # 值对象列表
         self.object_value = object_value
-        # 自定义字段值的position
         self.position = position
-        # 字段值，写入时使用
         self.value = value
-        # 值对象列表，查询时使用
         self.value_list = value_list
-        # 工作项的唯一标识
         self.workitem_identifier = workitem_identifier
 
     def validate(self):
@@ -9072,57 +8532,31 @@ class GetWorkItemInfoResponseBodyWorkitem(TeaModel):
         verifier: List[str] = None,
         workitem_type_identifier: str = None,
     ):
-        # 负责人
         self.assigned_to = assigned_to
-        # 工作项的类型id
         self.category_identifier = category_identifier
-        # 创建人
         self.creator = creator
-        # 自定义字段列表
         self.custom_fields = custom_fields
-        # 工作项内容
         self.document = document
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 工作项唯一标识
         self.identifier = identifier
-        # 逻辑状态
         self.logical_status = logical_status
-        # 修改人
         self.modifier = modifier
-        # 父工作项id
         self.parent_identifier = parent_identifier
-        # 参与人account id列表
         self.participant = participant
-        # 编号
         self.serial_number = serial_number
-        # 所属项目id
         self.space_identifier = space_identifier
-        # 所属项目名称
         self.space_name = space_name
-        # 项目类型
         self.space_type = space_type
-        # 关联的迭代id
         self.sprint = sprint
-        # 状态名称
         self.status = status
-        # 状态id
         self.status_identifier = status_identifier
-        # 状态阶段id
         self.status_stage_identifier = status_stage_identifier
-        # 工作项标题
         self.subject = subject
-        # 标签id列表
         self.tag = tag
-        # 抄送人的account id列表
         self.tracker = tracker
-        # 状态更新时间
         self.update_status_at = update_status_at
-        # 验证者的account id列表
         self.verifier = verifier
-        # 工作项类型id
         self.workitem_type_identifier = workitem_type_identifier
 
     def validate(self):
@@ -9262,15 +8696,10 @@ class GetWorkItemInfoResponseBody(TeaModel):
         success: bool = None,
         workitem: GetWorkItemInfoResponseBodyWorkitem = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true或者false
         self.success = success
-        # 工作项信息
         self.workitem = workitem
 
     def validate(self):
@@ -9360,7 +8789,6 @@ class GetWorkItemWorkFlowInfoRequest(TeaModel):
         self,
         configuration_id: str = None,
     ):
-        # 项目id
         self.configuration_id = configuration_id
 
     def validate(self):
@@ -9398,27 +8826,16 @@ class GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses(TeaModel):
         workflow_stage_identifier: str = None,
         workflow_stage_name: str = None,
     ):
-        # 创建人
         self.creator = creator
-        # 描述信息
         self.description = description
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 状态唯一标识
         self.identifier = identifier
-        # 修改人
         self.modifier = modifier
-        # 状态名
         self.name = name
-        # 资源来源
         self.resource_type = resource_type
-        # 状态来源
         self.source = source
-        # 阶段信息-阶段的唯一标识
         self.workflow_stage_identifier = workflow_stage_identifier
-        # 阶段信息-名称
         self.workflow_stage_name = workflow_stage_name
 
     def validate(self):
@@ -9490,15 +8907,10 @@ class GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions(TeaModel):
         workflow_identifier: str = None,
         workflow_status_identifier: str = None,
     ):
-        # 流转步骤的id
         self.id = id
-        # action的名称
         self.name = name
-        # action对应的下个状态的信息id
         self.next_workflow_status_identifier = next_workflow_status_identifier
-        # action对应的工作流
         self.workflow_identifier = workflow_identifier
-        # action对应的当前状态id
         self.workflow_status_identifier = workflow_status_identifier
 
     def validate(self):
@@ -9556,35 +8968,20 @@ class GetWorkItemWorkFlowInfoResponseBodyWorkflow(TeaModel):
         statuses: List[GetWorkItemWorkFlowInfoResponseBodyWorkflowStatuses] = None,
         workflow_actions: List[GetWorkItemWorkFlowInfoResponseBodyWorkflowWorkflowActions] = None,
     ):
-        # 创建人
         self.creator = creator
-        # 工作流的默认状态
         self.default_status_identifier = default_status_identifier
-        # 工作流的描述
         self.description = description
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 工作流唯一标识
         self.identifier = identifier
-        # 修改人
         self.modifier = modifier
-        # 工作流名称
         self.name = name
-        # 工作流所属的团队空间或项目的identifier
         self.owner_space_identifier = owner_space_identifier
-        # 工作流所属的团队项目类型
         self.owner_space_type = owner_space_type
-        # 资源类型
         self.resource_type = resource_type
-        # 工作流来源
         self.source = source
-        # 工作流的状态顺序
         self.status_order = status_order
-        # 状态列表
         self.statuses = statuses
-        # 工作流的流转步骤
         self.workflow_actions = workflow_actions
 
     def validate(self):
@@ -9689,15 +9086,10 @@ class GetWorkItemWorkFlowInfoResponseBody(TeaModel):
         success: bool = None,
         workflow: GetWorkItemWorkFlowInfoResponseBodyWorkflow = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true或者false
         self.success = success
-        # 工作项信息
         self.workflow = workflow
 
     def validate(self):
@@ -9795,23 +9187,14 @@ class GetWorkspaceResponseBodyWorkspace(TeaModel):
         template: str = None,
         user_id: str = None,
     ):
-        # 代码来源URL
         self.code_url = code_url
-        # 代码版本，支持 commitSHA、分支、标签
         self.code_version = code_version
-        # 创建时间戳
         self.create_time = create_time
-        # 工作空间唯一标识，字符串形式，可在云效DevStudio访问空间链接中获取
         self.id = id
-        # 工作空间名称
         self.name = name
-        # 机器规格
         self.spec = spec
-        # 空间状态，枚举：CREATING-创建中, SUCCESS-运行中, FROZEN-冻结中, RECOVERING-恢复中
         self.status = status
-        # 工作空间模板
         self.template = template
-        # 用户阿里云PK
         self.user_id = user_id
 
     def validate(self):
@@ -9875,15 +9258,10 @@ class GetWorkspaceResponseBody(TeaModel):
         success: bool = None,
         workspace: GetWorkspaceResponseBodyWorkspace = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求ID
         self.request_id = request_id
-        # 请求是否成功
         self.success = success
-        # 工作空间信息
         self.workspace = workspace
 
     def validate(self):
@@ -9976,13 +9354,9 @@ class ListFlowTagGroupsResponseBodyFlowTagGroups(TeaModel):
         modifer_account_id: str = None,
         name: str = None,
     ):
-        # 创建人
         self.creator_account_id = creator_account_id
-        # 标签分类id
         self.id = id
-        # 修改人
         self.modifer_account_id = modifer_account_id
-        # 标签分类名称
         self.name = name
 
     def validate(self):
@@ -10026,15 +9400,10 @@ class ListFlowTagGroupsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 标签分类
         self.flow_tag_groups = flow_tag_groups
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -10138,23 +9507,14 @@ class ListHostGroupsRequest(TeaModel):
         page_order: str = None,
         page_sort: str = None,
     ):
-        # 主机组结束时间
         self.create_end_time = create_end_time
-        # 主机组创建时间
         self.create_start_time = create_start_time
-        # 创建阿里云账号id，多个逗号分割
         self.creator_account_ids = creator_account_ids
-        # 主机组id，多个逗号分割
         self.ids = ids
-        # 结果返回个数
         self.max_results = max_results
-        # 主机组名称
         self.name = name
-        # 分页token
         self.next_token = next_token
-        # 排序顺序
         self.page_order = page_order
-        # 排序条件ID
         self.page_sort = page_sort
 
     def validate(self):
@@ -10227,33 +9587,19 @@ class ListHostGroupsResponseBodyHostGroups(TeaModel):
         type: str = None,
         update_time: int = None,
     ):
-        # 阿里云区域
         self.aliyun_region = aliyun_region
-        # 主机时间
         self.create_time = create_time
-        # 创建人阿里云账号id
         self.creator_account_id = creator_account_id
-        # 描述
         self.description = description
-        # ecs标签Key
         self.ecs_label_key = ecs_label_key
-        # Ecs标签值
         self.ecs_label_value = ecs_label_value
-        # 主机类型
         self.ecs_type = ecs_type
-        # 主机个数
         self.host_num = host_num
-        # 323232
         self.id = id
-        # 修改人阿里云账号id
         self.modifier_account_id = modifier_account_id
-        # 部署组名称
         self.name = name
-        # 服务连接Id
         self.service_connection_id = service_connection_id
-        # 类型
         self.type = type
-        # 更新时间
         self.update_time = update_time
 
     def validate(self):
@@ -10339,19 +9685,12 @@ class ListHostGroupsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 主机组
         self.host_groups = host_groups
-        # 分页token,空表示最后一页
         self.next_token = next_token
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
-        # 总数
         self.total_count = total_count
 
     def validate(self):
@@ -10525,9 +9864,7 @@ class ListOrganizationMembersResponseBodyMembersIdentities(TeaModel):
         extern_uid: str = None,
         provider: str = None,
     ):
-        # 第三方系统的用户Id
         self.extern_uid = extern_uid
-        # 第三方系统
         self.provider = provider
 
     def validate(self):
@@ -10571,31 +9908,18 @@ class ListOrganizationMembersResponseBodyMembers(TeaModel):
         organization_role_name: str = None,
         state: str = None,
     ):
-        # 阿里云用户ID
         self.account_id = account_id
-        # 生日
         self.birthday = birthday
-        # 部门名称列表
         self.dept_lists = dept_lists
-        # 邮箱
         self.email = email
-        # 入职时间
         self.hired_date = hired_date
-        # 第三方信息
         self.identities = identities
-        # 加入云效企业时间
         self.join_time = join_time
-        # 最近一次访问时间
         self.last_visit_time = last_visit_time
-        # 手机号
         self.mobile = mobile
-        # 企业成员名
         self.organization_member_name = organization_member_name
-        # 企业角色Id
         self.organization_role_id = organization_role_id
-        # 企业角色名字
         self.organization_role_name = organization_role_name
-        # 用户状态
         self.state = state
 
     def validate(self):
@@ -10679,19 +10003,12 @@ class ListOrganizationMembersResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 成员列表
         self.members = members
-        # 分页Token
         self.next_token = next_token
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
-        # 总数
         self.total_count = total_count
 
     def validate(self):
@@ -10921,15 +10238,11 @@ class ListPipelineJobHistorysResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
         self.jobs = jobs
         self.next_token = next_token
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
         self.total_count = total_count
 
@@ -11110,14 +10423,10 @@ class ListPipelineJobsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
         self.jobs = jobs
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -11218,17 +10527,11 @@ class ListPipelineRunsRequest(TeaModel):
         status: str = None,
         trigger_mode: int = None,
     ):
-        # 结束时间
         self.end_time = end_time
-        # 最大返回数量
         self.max_results = max_results
-        # 分页Token
         self.next_token = next_token
-        # 开始时间
         self.start_time = start_time
-        # 状态 状态 FAIL 运行失败 SUCCESS 运行成功 RUNNING 运行中
         self.status = status
-        # 触发模式 1人工触发 2定时触发 3代码提交触发
         self.trigger_mode = trigger_mode
 
     def validate(self):
@@ -11282,19 +10585,12 @@ class ListPipelineRunsResponseBodyPipelineRuns(TeaModel):
         status: str = None,
         trigger_mode: int = None,
     ):
-        # 运行人阿里云账号id
         self.creator_account_id = creator_account_id
-        # 结束时间
         self.end_time = end_time
-        # 流水线id
         self.pipeline_id = pipeline_id
-        # 流水线实例id
         self.pipeline_run_id = pipeline_run_id
-        # 开始时间
         self.start_time = start_time
-        # 运行状态
         self.status = status
-        # 触发模式
         self.trigger_mode = trigger_mode
 
     def validate(self):
@@ -11352,19 +10648,12 @@ class ListPipelineRunsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 下一个分页token，为空时，表示没有下一页
         self.next_token = next_token
-        # 流水线运行实例
         self.pipeline_runs = pipeline_runs
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
-        # 总数
         self.total_count = total_count
 
     def validate(self):
@@ -11477,25 +10766,15 @@ class ListPipelinesRequest(TeaModel):
         pipeline_name: str = None,
         status_list: str = None,
     ):
-        # 创建结束时间
         self.create_end_time = create_end_time
-        # 创建开始时间
         self.create_start_time = create_start_time
-        # 创建人阿里云账号Id
         self.creator_account_ids = creator_account_ids
-        # 执行人阿里云账号id
         self.execute_account_ids = execute_account_ids
-        # 执行结束时间
         self.execute_end_time = execute_end_time
-        # 执行开始时间
         self.execute_start_time = execute_start_time
-        # 返回的总数
         self.max_results = max_results
-        # 分页Token
         self.next_token = next_token
-        # 流水线名称
         self.pipeline_name = pipeline_name
-        # 状态列表，多个逗号分割
         self.status_list = status_list
 
     def validate(self):
@@ -11562,13 +10841,9 @@ class ListPipelinesResponseBodyPipelines(TeaModel):
         pipeline_id: int = None,
         pipeline_name: str = None,
     ):
-        # 创建时间
         self.create_time = create_time
-        # 创建人阿里云账号id
         self.creator_account_id = creator_account_id
-        # 流水线id
         self.pipeline_id = pipeline_id
-        # 流水线名称
         self.pipeline_name = pipeline_name
 
     def validate(self):
@@ -11614,19 +10889,12 @@ class ListPipelinesResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 分页Token
         self.next_token = next_token
-        # 流水线
         self.pipelines = pipelines
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
-        # 总数
         self.total_count = total_count
 
     def validate(self):
@@ -11757,7 +11025,6 @@ class ListProjectMembersResponseBodyMembersDivision(TeaModel):
         self,
         identifier: str = None,
     ):
-        # 部门唯一标识
         self.identifier = identifier
 
     def validate(self):
@@ -11785,7 +11052,6 @@ class ListProjectMembersResponseBodyMembersOrganizationUserInfo(TeaModel):
         self,
         organization_identifier: str = None,
     ):
-        # 企业唯一标识符
         self.organization_identifier = organization_identifier
 
     def validate(self):
@@ -11831,43 +11097,24 @@ class ListProjectMembersResponseBodyMembers(TeaModel):
         stamp: str = None,
         tb_role_id: str = None,
     ):
-        # 登陆账号
         self.account = account
-        # 用户头像
         self.avatar = avatar
-        # 钉钉id
         self.ding_talk_id = ding_talk_id
-        # 展示名
         self.display_name = display_name
-        # 展示昵称
         self.display_nick_name = display_nick_name
-        # 展示真名
         self.display_real_name = display_real_name
-        # 部门信息
         self.division = division
-        # 邮箱
         self.email = email
-        # 性别
         self.gender = gender
-        # 用户唯一 标识符
         self.identifier = identifier
-        # 手机号
         self.mobile = mobile
-        # 英文名
         self.name_en = name_en
-        # 昵称
         self.nick_name = nick_name
-        # 昵称拼音
         self.nick_name_pinyin = nick_name_pinyin
-        # 企业信息
         self.organization_user_info = organization_user_info
-        # 真名
         self.real_name = real_name
-        # 真名拼音
         self.real_name_pinyin = real_name_pinyin
-        # 用户类型
         self.stamp = stamp
-        # 角色id
         self.tb_role_id = tb_role_id
 
     def validate(self):
@@ -11976,15 +11223,10 @@ class ListProjectMembersResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # member信息
         self.members = members
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true或者false
         self.success = success
 
     def validate(self):
@@ -12080,7 +11322,6 @@ class ListProjectTemplatesRequest(TeaModel):
         self,
         category: str = None,
     ):
-        # 模板类型
         self.category = category
 
     def validate(self):
@@ -12123,30 +11364,19 @@ class ListProjectTemplatesResponseBodyTemplates(TeaModel):
         type: int = None,
     ):
         self.copy_from = copy_from
-        # 创建人id
         self.creator = creator
-        # 描述信息
         self.description = description
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 模板封面
         self.icon = icon
-        # 模板唯一标识符
         self.identifier = identifier
-        # 修改人
         self.modifier = modifier
-        # 模板名称
         self.name = name
-        # 模板英文名称
         self.name_en = name_en
-        # 所属资源类型
         self.resource_category = resource_category
         self.resource_type = resource_type
         self.space_identifier = space_identifier
         self.space_type = space_type
-        # 模板类型 0-system/4-custom/16-instance
         self.type = type
 
     def validate(self):
@@ -12234,15 +11464,10 @@ class ListProjectTemplatesResponseBody(TeaModel):
         success: bool = None,
         templates: List[ListProjectTemplatesResponseBodyTemplates] = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true或者false
         self.success = success
-        # 项目模板信息
         self.templates = templates
 
     def validate(self):
@@ -12339,9 +11564,7 @@ class ListProjectWorkitemTypesRequest(TeaModel):
         category: str = None,
         space_type: str = None,
     ):
-        # 工作项类型
         self.category = category
-        # 空间类型
         self.space_type = space_type
 
     def validate(self):
@@ -12384,29 +11607,17 @@ class ListProjectWorkitemTypesResponseBodyWorkitemTypes(TeaModel):
         name_en: str = None,
         system_default: bool = None,
     ):
-        # 添加到项目中的添加人
         self.add_user = add_user
-        # 工作项类型
         self.category_identifier = category_identifier
-        # 工作项类型创建人
         self.creator = creator
-        # 在项目中是否为默认类型
         self.default_type = default_type
-        # 描述
         self.description = description
-        # 是否启用
         self.enable = enable
-        # 添加到项目中的时间
         self.gmt_add = gmt_add
-        # 创建时间
         self.gmt_create = gmt_create
-        # 工作项类型id
         self.identifier = identifier
-        # 工作项类型的名称
         self.name = name
-        # 工作项类型的英文名称
         self.name_en = name_en
-        # 是否系统默认
         self.system_default = system_default
 
     def validate(self):
@@ -12482,15 +11693,10 @@ class ListProjectWorkitemTypesResponseBody(TeaModel):
         success: bool = None,
         workitem_types: List[ListProjectWorkitemTypesResponseBodyWorkitemTypes] = None,
     ):
-        # 错误返回码
         self.error_code = error_code
-        # 错误返回信息
         self.error_message = error_message
-        # openapi平台的request id
         self.request_id = request_id
-        # 接口是否正常返回
         self.success = success
-        # 工作项类型
         self.workitem_types = workitem_types
 
     def validate(self):
@@ -12591,15 +11797,11 @@ class ListProjectsRequest(TeaModel):
         next_token: str = None,
         scope: str = None,
     ):
-        # 项目类型
         self.category = category
         self.conditions = conditions
         self.extra_conditions = extra_conditions
-        # 每页最大返回数量，0-200，默认值20
         self.max_results = max_results
-        # 分页中的起始序列
         self.next_token = next_token
-        # 公开类型
         self.scope = scope
 
     def validate(self):
@@ -12659,31 +11861,18 @@ class ListProjectsResponseBodyProjects(TeaModel):
         status_stage_identifier: str = None,
         type_identifier: str = None,
     ):
-        # 类型
         self.category_identifier = category_identifier
-        # 创建人
         self.creator = creator
-        # 自定义编号
         self.custom_code = custom_code
-        # 删除时间
         self.delete_time = delete_time
-        # 描述信息
         self.description = description
-        # 创建时间
         self.gmt_create = gmt_create
-        # 项目封面
         self.icon = icon
-        # 项目唯一标识符
         self.identifier = identifier
-        # 逻辑状态
         self.logical_status = logical_status
-        # 项目名称
         self.name = name
-        # 公开还是私有
         self.scope = scope
-        # 状态阶段
         self.status_stage_identifier = status_stage_identifier
-        # 类型id
         self.type_identifier = type_identifier
 
     def validate(self):
@@ -12766,21 +11955,13 @@ class ListProjectsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 每页数量
         self.max_results = max_results
-        # 分页Token，没有下一页则为空
         self.next_token = next_token
-        # 项目信息
         self.projects = projects
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true或者false
         self.success = success
-        # 总数
         self.total_count = total_count
 
     def validate(self):
@@ -12895,21 +12076,13 @@ class ListRepositoriesRequest(TeaModel):
         search: str = None,
         sort: str = None,
     ):
-        # accessToken
         self.access_token = access_token
-        # 是否列出归档项目
         self.archived = archived
-        # 排序字段
         self.order_by = order_by
-        # 企业ID
         self.organization_id = organization_id
-        # 页码
         self.page = page
-        # 每页大小
         self.per_page = per_page
-        # 搜索关键字
         self.search = search
-        # 排序方式 (desc: 降序, asc: 升序)
         self.sort = sort
 
     def validate(self):
@@ -12982,41 +12155,23 @@ class ListRepositoriesResponseBodyResult(TeaModel):
         visibility_level: str = None,
         web_url: str = None,
     ):
-        # 代码库Id
         self.id = id
-        # 当前用户在该代码库上的权限类型
         self.access_level = access_level
-        # 代码库是否归档
         self.archive = archive
-        # 头像地址
         self.avatar_url = avatar_url
-        # 创建时间
         self.created_at = created_at
-        # 代码库描述
         self.description = description
-        # 代码库导入状态
         self.import_status = import_status
-        # 最后活跃时间
         self.last_activity_at = last_activity_at
-        # 代码库名称
         self.name = name
-        # 代码库完整名称（含完整组名称）
         self.name_with_namespace = name_with_namespace
-        # 上级路径的id
         self.namespace_id = namespace_id
-        # 代码库路径
         self.path = path
-        # 代码库完整路径（含完整组路径）
         self.path_with_namespace = path_with_namespace
-        # 是否被收藏
         self.star = star
-        # 被收藏的数量
         self.star_count = star_count
-        # 更新时间
         self.updated_at = updated_at
-        # 可见性;0标识私有的/10标识企业内公开
         self.visibility_level = visibility_level
-        # 页面访问时的URL
         self.web_url = web_url
 
     def validate(self):
@@ -13117,16 +12272,11 @@ class ListRepositoriesResponseBody(TeaModel):
         success: bool = None,
         total: int = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求requestId
         self.request_id = request_id
         self.result = result
-        # 调用是否成功
         self.success = success
-        # 总数量
         self.total = total
 
     def validate(self):
@@ -13227,9 +12377,7 @@ class ListRepositoryMemberWithInheritedRequest(TeaModel):
         access_token: str = None,
         organization_id: str = None,
     ):
-        # accessToken
         self.access_token = access_token
-        # 企业Id
         self.organization_id = organization_id
 
     def validate(self):
@@ -13507,13 +12655,9 @@ class ListRepositoryWebhookRequest(TeaModel):
         page: int = None,
         page_size: int = None,
     ):
-        # accessToken
         self.access_token = access_token
-        # 企业Id
         self.organization_id = organization_id
-        # 页码
         self.page = page
-        # 每页数据量
         self.page_size = page_size
 
     def validate(self):
@@ -13757,11 +12901,8 @@ class ListResourceMembersResponseBodyResourceMembers(TeaModel):
         role_name: str = None,
         username: str = None,
     ):
-        # 账号id
         self.account_id = account_id
-        # 角色
         self.role_name = role_name
-        # 用户名称
         self.username = username
 
     def validate(self):
@@ -13801,15 +12942,10 @@ class ListResourceMembersResponseBody(TeaModel):
         resource_members: List[ListResourceMembersResponseBodyResourceMembers] = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # 成员
         self.resource_members = resource_members
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.success = success
 
     def validate(self):
@@ -13905,7 +13041,6 @@ class ListServiceConnectionsRequest(TeaModel):
         self,
         serice_connection_type: str = None,
     ):
-        # aliyun_code  阿里云代码 Codeup       Codeup  Gitee        码云 github       Github ack       容器服务Kubernetes(ACK) docker_register_aliyun    容器镜像服务(ACR) ecs          对象存储(OSS) edas          企业级分布式应用(EDAS) emas         移动研发平台(EMAS) fc            阿里云函数计算(FC) kubernetes     自建k8s集群 oss            对象存储(OSS) PACKAGES       制品仓库 ros   资源编排服务(ROS) sae       Serverless应用引擎(SAE)
         self.serice_connection_type = serice_connection_type
 
     def validate(self):
@@ -13937,15 +13072,10 @@ class ListServiceConnectionsResponseBodyServiceConnections(TeaModel):
         owner_account_id: int = None,
         type: str = None,
     ):
-        # 创建时间
         self.create_time = create_time
-        # 服务连接Id
         self.id = id
-        # 服务连接名称
         self.name = name
-        # 拥有者阿里云账号id
         self.owner_account_id = owner_account_id
-        # 服务连接类型
         self.type = type
 
     def validate(self):
@@ -13993,15 +13123,10 @@ class ListServiceConnectionsResponseBody(TeaModel):
         service_connections: List[ListServiceConnectionsResponseBodyServiceConnections] = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # 服务连接
         self.service_connections = service_connections
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -14100,13 +13225,9 @@ class ListSprintsRequest(TeaModel):
         space_identifier: str = None,
         space_type: str = None,
     ):
-        # 每页最大返回数量，0-200，默认值20
         self.max_results = max_results
-        # 分页中的起始序列
         self.next_token = next_token
-        # 项目id
         self.space_identifier = space_identifier
-        # 类型
         self.space_type = space_type
 
     def validate(self):
@@ -14157,29 +13278,17 @@ class ListSprintsResponseBodySprints(TeaModel):
         start_date: int = None,
         status: str = None,
     ):
-        # 创建人id
         self.creator = creator
-        # 描述信息
         self.description = description
-        # 结束时间
         self.end_date = end_date
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 迭代唯一标识符
         self.identifier = identifier
-        # 修改人
         self.modifier = modifier
-        # 迭代名称
         self.name = name
-        # 可见范围
         self.scope = scope
-        # 项目id
         self.space_identifier = space_identifier
-        # 开始时间
         self.start_date = start_date
-        # 状态，未开始:Todo, 进行中:Doing, 已完成:Done
         self.status = status
 
     def validate(self):
@@ -14258,21 +13367,13 @@ class ListSprintsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 每页数量
         self.max_results = max_results
-        # 分页Token，没有下一页则为空
         self.next_token = next_token
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # 迭代信息
         self.sprints = sprints
-        # true或者false
         self.success = success
-        # 总数
         self.total_count = total_count
 
     def validate(self):
@@ -14383,13 +13484,9 @@ class ListVariableGroupsRequest(TeaModel):
         page_order: str = None,
         page_sort: str = None,
     ):
-        # 最大返回数，默认30
         self.max_results = max_results
-        # 分页token，上一次请求的出参nextToken
         self.next_token = next_token
-        # 排序顺序
         self.page_order = page_order
-        # 排序条件
         self.page_sort = page_sort
 
     def validate(self):
@@ -14430,9 +13527,7 @@ class ListVariableGroupsResponseBodyVariableGroupsRelatedPipelines(TeaModel):
         id: int = None,
         name: str = None,
     ):
-        # 关联的流水线Id
         self.id = id
-        # 关联的流水线名称
         self.name = name
 
     def validate(self):
@@ -14466,11 +13561,8 @@ class ListVariableGroupsResponseBodyVariableGroupsVariables(TeaModel):
         name: str = None,
         value: str = None,
     ):
-        # 是否加密
         self.is_encrypted = is_encrypted
-        # 变量名
         self.name = name
-        # 变量值
         self.value = value
 
     def validate(self):
@@ -14514,23 +13606,14 @@ class ListVariableGroupsResponseBodyVariableGroups(TeaModel):
         update_time: int = None,
         variables: List[ListVariableGroupsResponseBodyVariableGroupsVariables] = None,
     ):
-        # 创建时间
         self.create_time = create_time
-        # 创建人阿里云账号id
         self.creator_account_id = creator_account_id
-        # 变量组描述
         self.description = description
-        # 变量组id
         self.id = id
-        # 更新人阿里云账号id
         self.modifier_account_id = modifier_account_id
-        # 变量组名称
         self.name = name
-        # 关联的流水线
         self.related_pipelines = related_pipelines
-        # 更新时间
         self.update_time = update_time
-        # 变量
         self.variables = variables
 
     def validate(self):
@@ -14613,19 +13696,12 @@ class ListVariableGroupsResponseBody(TeaModel):
         total_count: int = None,
         variable_groups: List[ListVariableGroupsResponseBodyVariableGroups] = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 下一次查询的token，为空表示最后一页
         self.next_token = next_token
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
-        # 变量组总数
         self.total_count = total_count
-        # 变量组
         self.variable_groups = variable_groups
 
     def validate(self):
@@ -14731,11 +13807,8 @@ class ListWorkItemAllFieldsRequest(TeaModel):
         space_type: str = None,
         workitem_type_identifier: str = None,
     ):
-        # 项目id
         self.space_identifier = space_identifier
-        # 资源类型
         self.space_type = space_type
-        # 工作项类型id，工作项类型的列表和id可以从ListProjectWorkitemType中获取
         self.workitem_type_identifier = workitem_type_identifier
 
     def validate(self):
@@ -14777,19 +13850,12 @@ class ListWorkItemAllFieldsResponseBodyFieldsOptions(TeaModel):
         value: str = None,
         value_en: str = None,
     ):
-        # 根据语言环境获取当前展示的值
         self.display_value = display_value
-        # 字段唯一标识
         self.field_identifier = field_identifier
-        # 待选值的唯一标识
         self.identifier = identifier
-        # 展示级别，数字范围1~9，数字越大，颜色越浅。
         self.level = level
-        # 待选值顺序
         self.position = position
-        # 待选值中文名称
         self.value = value
-        # 待选值英文名称
         self.value_en = value_en
 
     def validate(self):
@@ -14857,39 +13923,22 @@ class ListWorkItemAllFieldsResponseBodyFields(TeaModel):
         resource_type: str = None,
         type: str = None,
     ):
-        # 字段类型
         self.class_name = class_name
-        # 创建人id
         self.creator = creator
-        # 默认值
         self.default_value = default_value
-        # 描述信息
         self.description = description
-        # 字段格式
         self.format = format
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 字段唯一标识符
         self.identifier = identifier
-        # 是否必填
         self.is_required = is_required
-        # 创建时是否展示
         self.is_show_when_create = is_show_when_create
-        # 是否是系统必须字段，比如：负责人、状态等。
         self.is_system_required = is_system_required
-        # 联动的服务，比如：迭代 迭代服务开启/关闭，这个字段字段加进/剔除出对应的模板； 字段模板里，这类字段不能手动添加或删除
         self.link_with_service = link_with_service
-        # 修改人
         self.modifier = modifier
-        # 字段名称
         self.name = name
-        # 待选值
         self.options = options
-        # 区分不同的适用对象
         self.resource_type = resource_type
-        # 区分不同的类型，如系统字段、用户自定义字段
         self.type = type
 
     def validate(self):
@@ -14993,15 +14042,10 @@ class ListWorkItemAllFieldsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 字段信息
         self.fields = fields
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true或者false
         self.success = success
 
     def validate(self):
@@ -15100,13 +14144,9 @@ class ListWorkItemWorkFlowStatusRequest(TeaModel):
         workitem_category_identifier: str = None,
         workitem_type_identifier: str = None,
     ):
-        # 项目id
         self.space_identifier = space_identifier
-        # 空间类型
         self.space_type = space_type
-        # 工作项大类型
         self.workitem_category_identifier = workitem_category_identifier
-        # 工作项小类型id
         self.workitem_type_identifier = workitem_type_identifier
 
     def validate(self):
@@ -15156,27 +14196,16 @@ class ListWorkItemWorkFlowStatusResponseBodyStatuses(TeaModel):
         workflow_stage_identifier: str = None,
         workflow_stage_name: str = None,
     ):
-        # 状态的创建人
         self.creator = creator
-        # 描述
         self.description = description
-        # 创建时间
         self.gmt_create = gmt_create
-        # 更新时间
         self.gmt_modified = gmt_modified
-        # 工作流状态id
         self.identifier = identifier
-        # 修改人
         self.modifier = modifier
-        # 工作流状态名称
         self.name = name
-        # 状态作用的资源类型
         self.resource_type = resource_type
-        # 状态来源
         self.source = source
-        # 阶段信息-阶段的唯一标识
         self.workflow_stage_identifier = workflow_stage_identifier
-        # 阶段信息-名称
         self.workflow_stage_name = workflow_stage_name
 
     def validate(self):
@@ -15248,15 +14277,10 @@ class ListWorkItemWorkFlowStatusResponseBody(TeaModel):
         statuses: List[ListWorkItemWorkFlowStatusResponseBodyStatuses] = None,
         success: bool = None,
     ):
-        # 错误返回码
         self.error_code = error_code
-        # 错误返回信息
         self.error_message = error_message
-        # openapi平台的request id
         self.request_id = request_id
-        # 工作流状态
         self.statuses = statuses
-        # 接口是否正常返回
         self.success = success
 
     def validate(self):
@@ -15361,25 +14385,15 @@ class ListWorkitemTimeResponseBodyWorkitemTime(TeaModel):
         type: str = None,
         workitem_identifier: str = None,
     ):
-        # 实际工时，小时为单位
         self.actual_time = actual_time
-        # 工时描述信息
         self.description = description
-        # 工时记录的创建时间
         self.gmt_create = gmt_create
-        # 结束时间
         self.gmt_end = gmt_end
-        # 工时记录的修改时间
         self.gmt_modified = gmt_modified
-        # 开始时间
         self.gmt_start = gmt_start
-        # 工时唯一标识
         self.identifier = identifier
-        # 登记人的account Id
         self.record_user = record_user
-        # 工时类型
         self.type = type
-        # 工作项id，唯一标识
         self.workitem_identifier = workitem_identifier
 
     def validate(self):
@@ -15448,17 +14462,11 @@ class ListWorkitemTimeResponseBody(TeaModel):
         success: bool = None,
         workitem_time: List[ListWorkitemTimeResponseBodyWorkitemTime] = None,
     ):
-        # 接口返回code
         self.code = code
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true或者false
         self.success = success
-        # 工时信息
         self.workitem_time = workitem_time
 
     def validate(self):
@@ -15567,25 +14575,15 @@ class ListWorkitemsRequest(TeaModel):
         space_identifier: str = None,
         space_type: str = None,
     ):
-        # 工作项类型，需求为Req，缺陷为Bug，任务为Task，风险为Risk
         self.category = category
-        # 过滤条件
         self.conditions = conditions
-        # 额外条件
         self.extra_conditions = extra_conditions
-        # 分组条件
         self.group_condition = group_condition
-        # 每页最大返回数量，0-200，默认值20
         self.max_results = max_results
-        # 分页中的起始序列
         self.next_token = next_token
-        # 排序顺序
         self.order_by = order_by
-        # 查询类型
         self.search_type = search_type
-        # 项目id
         self.space_identifier = space_identifier
-        # 项目类型
         self.space_type = space_type
 
     def validate(self):
@@ -15669,47 +14667,26 @@ class ListWorkitemsResponseBodyWorkitems(TeaModel):
         update_status_at: int = None,
         workitem_type_identifier: str = None,
     ):
-        # 负责人aliyunPk
         self.assigned_to = assigned_to
-        # 工作项的类型id
         self.category_identifier = category_identifier
-        # 创建人aliyunPK
         self.creator = creator
-        # 工作项内容
         self.document = document
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 工作项唯一标识
         self.identifier = identifier
-        # 逻辑状态
         self.logical_status = logical_status
-        # 修改人aliyunPK
         self.modifier = modifier
-        # 父工作项id
         self.parent_identifier = parent_identifier
-        # 编号
         self.serial_number = serial_number
-        # 所属项目id
         self.space_identifier = space_identifier
-        # 所属项目名称
         self.space_name = space_name
-        # 项目类型
         self.space_type = space_type
-        # 迭代id
         self.sprint_identifier = sprint_identifier
-        # 状态名称
         self.status = status
-        # 状态唯一标识
         self.status_identifier = status_identifier
-        # 状态阶段id
         self.status_stage_identifier = status_stage_identifier
-        # 工作项标题
         self.subject = subject
-        # 状态更新时间
         self.update_status_at = update_status_at
-        # 工作项类型id
         self.workitem_type_identifier = workitem_type_identifier
 
     def validate(self):
@@ -15824,21 +14801,13 @@ class ListWorkitemsResponseBody(TeaModel):
         total_count: int = None,
         workitems: List[ListWorkitemsResponseBodyWorkitems] = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 每页数量
         self.max_results = max_results
-        # 分页Token，没有下一页则为空
         self.next_token = next_token
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true或者false
         self.success = success
-        # 总数
         self.total_count = total_count
-        # 工作项信息
         self.workitems = workitems
 
     def validate(self):
@@ -15949,13 +14918,9 @@ class ListWorkspacesRequest(TeaModel):
         status_list: List[str] = None,
         workspace_template_list: List[str] = None,
     ):
-        # 本次读取的最大数据记录数量，默认10，最大100
         self.max_results = max_results
-        # 用来标记当前开始读取的位置，置空表示从头开始
         self.next_token = next_token
-        # 枚举值：CREATING-创建中, SUCCESS-运行中, FROZEN-冻结中, RECOVERING-恢复中
         self.status_list = status_list
-        # 空间模板列表
         self.workspace_template_list = workspace_template_list
 
     def validate(self):
@@ -15998,13 +14963,9 @@ class ListWorkspacesShrinkRequest(TeaModel):
         status_list_shrink: str = None,
         workspace_template_list_shrink: str = None,
     ):
-        # 本次读取的最大数据记录数量，默认10，最大100
         self.max_results = max_results
-        # 用来标记当前开始读取的位置，置空表示从头开始
         self.next_token = next_token
-        # 枚举值：CREATING-创建中, SUCCESS-运行中, FROZEN-冻结中, RECOVERING-恢复中
         self.status_list_shrink = status_list_shrink
-        # 空间模板列表
         self.workspace_template_list_shrink = workspace_template_list_shrink
 
     def validate(self):
@@ -16052,23 +15013,14 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
         template: str = None,
         user_id: str = None,
     ):
-        # 代码来源URL
         self.code_url = code_url
-        # 代码版本，支持 commitSHA、分支、标签
         self.code_version = code_version
-        # 创建时间戳
         self.create_time = create_time
-        # 工作空间唯一标识，字符串形式，可在云效DevStudio访问空间链接中获取
         self.id = id
-        # 工作空间名称
         self.name = name
-        # 机器规格
         self.spec = spec
-        # 空间状态，枚举：CREATING-创建中, SUCCESS-运行中, FROZEN-冻结中, RECOVERING-恢复中
         self.status = status
-        # 工作空间模板
         self.template = template
-        # 用户阿里云PK
         self.user_id = user_id
 
     def validate(self):
@@ -16135,21 +15087,13 @@ class ListWorkspacesResponseBody(TeaModel):
         total_count: int = None,
         workspaces: List[ListWorkspacesResponseBodyWorkspaces] = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # MaxResults本次请求所返回的最大记录条数
         self.max_results = max_results
-        # 表示当前调用返回读取到的位置，空代表数据已经读取完毕
         self.next_token = next_token
-        # 请求ID
         self.request_id = request_id
-        # 请求是否成功
         self.success = success
-        # TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
         self.total_count = total_count
-        # 工作空间列表
         self.workspaces = workspaces
 
     def validate(self):
@@ -16391,15 +15335,10 @@ class LogVMDeployMachineResponseBodyDeployMachineLog(TeaModel):
         deploy_log: str = None,
         deploy_log_path: str = None,
     ):
-        # 部署地域
         self.aliyun_region = aliyun_region
-        # 部署开始时间
         self.deploy_begin_time = deploy_begin_time
-        # 部署结束时间
         self.deploy_end_time = deploy_end_time
-        # 部署日志
         self.deploy_log = deploy_log
-        # 部署日志路径
         self.deploy_log_path = deploy_log_path
 
     def validate(self):
@@ -16447,15 +15386,10 @@ class LogVMDeployMachineResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 部署单
         self.deploy_machine_log = deploy_machine_log
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -16548,13 +15482,9 @@ class PassPipelineValidateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -16641,13 +15571,9 @@ class RefusePipelineValidateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -16734,13 +15660,9 @@ class ReleaseWorkspaceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求ID
         self.request_id = request_id
-        # 请求是否成功
         self.success = success
 
     def validate(self):
@@ -16825,9 +15747,7 @@ class ResetSshKeyResponseBodySshKey(TeaModel):
         id: int = None,
         public_key: str = None,
     ):
-        # 企业公钥id
         self.id = id
-        # 企业公钥
         self.public_key = public_key
 
     def validate(self):
@@ -16863,15 +15783,10 @@ class ResetSshKeyResponseBody(TeaModel):
         ssh_key: ResetSshKeyResponseBodySshKey = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # 企业公钥
         self.ssh_key = ssh_key
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -16964,13 +15879,9 @@ class ResumeVMDeployOrderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -17146,13 +16057,9 @@ class RetryVMDeployMachineResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -17328,13 +16235,9 @@ class SkipVMDeployMachineResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -17418,7 +16321,6 @@ class StartPipelineRunRequest(TeaModel):
         self,
         params: str = None,
     ):
-        # 流水线运行参数,json字符串 branchModeBranchs  分支模式运行的分支 envs  环境变量 runningBranchs 运行分支 runningTags  运行代码tag comment  运行备注
         self.params = params
 
     def validate(self):
@@ -17450,15 +16352,10 @@ class StartPipelineRunResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 流水线运行实例id
         self.pipeline_run_id = pipeline_run_id
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -17549,13 +16446,9 @@ class StopPipelineJobRunResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -17642,13 +16535,9 @@ class StopPipelineRunResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -17735,13 +16624,9 @@ class StopVMDeployOrderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -17828,13 +16713,9 @@ class TriggerRepositoryMirrorSyncRequest(TeaModel):
         organization_id: str = None,
         token: str = None,
     ):
-        # 个人访问令牌。 使用阿里云AK+SK或使用STS临时授权方式不需要传该字段
         self.access_token = access_token
-        # 远程同步库克隆账号
         self.account = account
-        # 企业标识，也称企业id，字符串形式，可在云效访问链接中获取，如 https://devops.aliyun.com/organization/\
         self.organization_id = organization_id
-        # 远程同步库克隆令牌
         self.token = token
 
     def validate(self):
@@ -17874,7 +16755,6 @@ class TriggerRepositoryMirrorSyncResponseBodyResult(TeaModel):
         self,
         result: bool = None,
     ):
-        # 仓库同步触发结果
         self.result = result
 
     def validate(self):
@@ -17906,15 +16786,10 @@ class TriggerRepositoryMirrorSyncResponseBody(TeaModel):
         result: TriggerRepositoryMirrorSyncResponseBodyResult = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求ID
         self.request_id = request_id
-        # 响应结果
         self.result = result
-        # 请求结果
         self.success = success
 
     def validate(self):
@@ -18046,13 +16921,9 @@ class UpdateFlowTagResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -18166,13 +17037,9 @@ class UpdateFlowTagGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -18342,7 +17209,6 @@ class UpdateHostGroupResponseBody(TeaModel):
     ):
         self.error_code = error_code
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -18469,13 +17335,9 @@ class UpdatePipelineBaseInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -18563,15 +17425,10 @@ class UpdateProjectMemberRequest(TeaModel):
         user_identifier: str = None,
         user_type: str = None,
     ):
-        # 角色id
         self.role_identifier = role_identifier
-        # 资源id，也就是项目id
         self.target_identifier = target_identifier
-        # 资源类型
         self.target_type = target_type
-        # 用户id
         self.user_identifier = user_identifier
-        # 用户类型
         self.user_type = user_type
 
     def validate(self):
@@ -18622,21 +17479,13 @@ class UpdateProjectMemberResponseBodyMember(TeaModel):
         user_identifier: str = None,
         user_type: str = None,
     ):
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # id
         self.id = id
-        # 角色id
         self.role_identifier = role_identifier
-        # 资源id，也就是项目id
         self.target_identifier = target_identifier
-        # 资源类型
         self.target_type = target_type
-        # 用户id
         self.user_identifier = user_identifier
-        # 用户类型
         self.user_type = user_type
 
     def validate(self):
@@ -18696,15 +17545,10 @@ class UpdateProjectMemberResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_msg = error_msg
-        # 成员信息
         self.member = member
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true或者false
         self.success = success
 
     def validate(self):
@@ -18794,7 +17638,6 @@ class UpdateResourceMemberRequest(TeaModel):
         self,
         role_name: str = None,
     ):
-        # 角色部署组 deployGroup   user  成员，使用权限   admin 管理员，使用编辑权限   owner 拥有者，所有权限 流水线 pipeline   owner 拥有者，所有权限   admin 查看、运行、编辑权限   member  运行权限   viewer 查看权限
         self.role_name = role_name
 
     def validate(self):
@@ -18825,13 +17668,9 @@ class UpdateResourceMemberResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -18917,11 +17756,8 @@ class UpdateVariableGroupRequest(TeaModel):
         name: str = None,
         variables: str = None,
     ):
-        # 变量组描述
         self.description = description
-        # 变量组名称
         self.name = name
-        # 变量信息json字符串 isEncrypted 是否加密 name 变量名称 value 变量值
         self.variables = variables
 
     def validate(self):
@@ -18960,13 +17796,9 @@ class UpdateVariableGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true 接口调用成功，false 接口调用失败
         self.success = success
 
     def validate(self):
@@ -19053,13 +17885,9 @@ class UpdateWorkItemRequest(TeaModel):
         property_key: str = None,
         property_value: str = None,
     ):
-        # 更新字段的类型，标题：subject/自定义字段：customField/状态：status/描述：document/基本字段：basic(包括负责人、迭代、参与人等)
         self.field_type = field_type
-        # 工作项唯一标识id
         self.identifier = identifier
-        # 更新的字段名
         self.property_key = property_key
-        # 更新后的值
         self.property_value = property_value
 
     def validate(self):
@@ -19119,47 +17947,26 @@ class UpdateWorkItemResponseBodyWorkitem(TeaModel):
         update_status_at: int = None,
         workitem_type_identifier: str = None,
     ):
-        # 负责人
         self.assigned_to = assigned_to
-        # 工作项的类型id
         self.category_identifier = category_identifier
-        # 创建人
         self.creator = creator
-        # 工作项内容
         self.document = document
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 工作项唯一标识
         self.identifier = identifier
-        # 逻辑状态
         self.logical_status = logical_status
-        # 修改人
         self.modifier = modifier
-        # 父工作项id
         self.parent_identifier = parent_identifier
-        # 编号
         self.serial_number = serial_number
-        # 所属项目id
         self.space_identifier = space_identifier
-        # 所属项目名称
         self.space_name = space_name
-        # 项目类型
         self.space_type = space_type
-        # 迭代id
         self.sprint_identifier = sprint_identifier
-        # 状态名称
         self.status = status
-        # 状态id
         self.status_identifier = status_identifier
-        # 状态阶段id
         self.status_stage_identifier = status_stage_identifier
-        # 工作项标题
         self.subject = subject
-        # 状态更新时间
         self.update_status_at = update_status_at
-        # 工作项类型id
         self.workitem_type_identifier = workitem_type_identifier
 
     def validate(self):
@@ -19271,15 +18078,10 @@ class UpdateWorkItemResponseBody(TeaModel):
         success: bool = None,
         workitem: UpdateWorkItemResponseBodyWorkitem = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息
         self.error_message = error_message
-        # 请求id，每次请求都是唯一值，便于后续排查问题
         self.request_id = request_id
-        # true或者false
         self.success = success
-        # 工作项信息
         self.workitem = workitem
 
     def validate(self):
