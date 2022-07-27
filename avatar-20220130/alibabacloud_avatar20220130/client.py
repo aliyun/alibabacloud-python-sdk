@@ -41,6 +41,88 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def query_running_instance_with_options(
+        self,
+        tmp_req: avatar_20220130_models.QueryRunningInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.QueryRunningInstanceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.QueryRunningInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_shrink):
+            query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryRunningInstance',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.QueryRunningInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_running_instance_with_options_async(
+        self,
+        tmp_req: avatar_20220130_models.QueryRunningInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.QueryRunningInstanceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.QueryRunningInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_shrink):
+            query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryRunningInstance',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.QueryRunningInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_running_instance(
+        self,
+        request: avatar_20220130_models.QueryRunningInstanceRequest,
+    ) -> avatar_20220130_models.QueryRunningInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_running_instance_with_options(request, runtime)
+
+    async def query_running_instance_async(
+        self,
+        request: avatar_20220130_models.QueryRunningInstanceRequest,
+    ) -> avatar_20220130_models.QueryRunningInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_running_instance_with_options_async(request, runtime)
+
     def send_message_with_options(
         self,
         tmp_req: avatar_20220130_models.SendMessageRequest,
