@@ -1,3 +1,6 @@
+2022-07-27 Version: 2.0.4
+- Supported new features.
+
 2022-07-26 Version: 2.0.3
 - TagResources add instanceId param.
 
