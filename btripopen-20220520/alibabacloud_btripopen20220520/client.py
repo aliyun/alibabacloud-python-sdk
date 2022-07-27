@@ -2228,8 +2228,8 @@ class Client(OpenApiClient):
             action='EntityDelete',
             version='2022-05-20',
             protocol='HTTPS',
-            pathname=f'/costcenter/v1/delete-entity',
-            method='DELETE',
+            pathname=f'/costcenter/v1/entity/action/delete',
+            method='POST',
             auth_type='AK',
             style='ROA',
             req_body_type='formData',
@@ -2270,8 +2270,8 @@ class Client(OpenApiClient):
             action='EntityDelete',
             version='2022-05-20',
             protocol='HTTPS',
-            pathname=f'/costcenter/v1/delete-entity',
-            method='DELETE',
+            pathname=f'/costcenter/v1/entity/action/delete',
+            method='POST',
             auth_type='AK',
             style='ROA',
             req_body_type='formData',
@@ -4423,5 +4423,101 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             btrip_open_20220520_models.TrainOrderQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def user_query(
+        self,
+        request: btrip_open_20220520_models.UserQueryRequest,
+    ) -> btrip_open_20220520_models.UserQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.user_query_with_options(request, headers, runtime)
+
+    async def user_query_async(
+        self,
+        request: btrip_open_20220520_models.UserQueryRequest,
+    ) -> btrip_open_20220520_models.UserQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.user_query_with_options_async(request, headers, runtime)
+
+    def user_query_with_options(
+        self,
+        request: btrip_open_20220520_models.UserQueryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.UserQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.modified_time_greater_or_equal_than):
+            query['modified_time_greater_or_equal_than'] = request.modified_time_greater_or_equal_than
+        if not UtilClient.is_unset(request.third_part_corp_id):
+            query['third_part_corp_id'] = request.third_part_corp_id
+        if not UtilClient.is_unset(request.third_part_job_no):
+            query['third_part_job_no'] = request.third_part_job_no
+        if not UtilClient.is_unset(request.top_app_key_owner_id):
+            query['top_app_key_owner_id'] = request.top_app_key_owner_id
+        if not UtilClient.is_unset(request.top_authorized_havana_id):
+            query['top_authorized_havana_id'] = request.top_authorized_havana_id
+        if not UtilClient.is_unset(request.top_authorized_user_nick):
+            query['top_authorized_user_nick'] = request.top_authorized_user_nick
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UserQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/user',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.UserQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def user_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.UserQueryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.UserQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.modified_time_greater_or_equal_than):
+            query['modified_time_greater_or_equal_than'] = request.modified_time_greater_or_equal_than
+        if not UtilClient.is_unset(request.third_part_corp_id):
+            query['third_part_corp_id'] = request.third_part_corp_id
+        if not UtilClient.is_unset(request.third_part_job_no):
+            query['third_part_job_no'] = request.third_part_job_no
+        if not UtilClient.is_unset(request.top_app_key_owner_id):
+            query['top_app_key_owner_id'] = request.top_app_key_owner_id
+        if not UtilClient.is_unset(request.top_authorized_havana_id):
+            query['top_authorized_havana_id'] = request.top_authorized_havana_id
+        if not UtilClient.is_unset(request.top_authorized_user_nick):
+            query['top_authorized_user_nick'] = request.top_authorized_user_nick
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UserQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/user',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.UserQueryResponse(),
             await self.call_api_async(params, req, runtime)
         )
