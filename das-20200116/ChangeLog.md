@@ -1,3 +1,6 @@
+2022-07-28 Version: 2.0.24
+- Add GetGeneralAbnormalEventsCount.
+
 2022-07-14 Version: 2.0.21
 - Add UpdateAutoSqlOptimizeStatus API.
 
