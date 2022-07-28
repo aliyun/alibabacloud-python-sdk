@@ -1,3 +1,6 @@
+2022-07-28 Version: 1.1.4
+- Fix bug.
+
 2022-07-18 Version: 1.1.3
 - Add chargetype in list resource instance api.
 
