@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import List, Dict, Any
 
 
 class QueryRunningInstanceRequestApp(TeaModel):
@@ -399,20 +399,57 @@ class SendMessageRequestTextRequest(TeaModel):
         return self
 
 
+class SendMessageRequestVAMLRequest(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        vaml: str = None,
+    ):
+        self.code = code
+        self.vaml = vaml
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.vaml is not None:
+            result['Vaml'] = self.vaml
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Vaml') is not None:
+            self.vaml = m.get('Vaml')
+        return self
+
+
 class SendMessageRequest(TeaModel):
     def __init__(
         self,
         session_id: str = None,
         tenant_id: int = None,
         text_request: SendMessageRequestTextRequest = None,
+        vamlrequest: SendMessageRequestVAMLRequest = None,
     ):
         self.session_id = session_id
         self.tenant_id = tenant_id
         self.text_request = text_request
+        self.vamlrequest = vamlrequest
 
     def validate(self):
         if self.text_request:
             self.text_request.validate()
+        if self.vamlrequest:
+            self.vamlrequest.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -426,6 +463,8 @@ class SendMessageRequest(TeaModel):
             result['TenantId'] = self.tenant_id
         if self.text_request is not None:
             result['TextRequest'] = self.text_request.to_map()
+        if self.vamlrequest is not None:
+            result['VAMLRequest'] = self.vamlrequest.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -437,6 +476,9 @@ class SendMessageRequest(TeaModel):
         if m.get('TextRequest') is not None:
             temp_model = SendMessageRequestTextRequest()
             self.text_request = temp_model.from_map(m['TextRequest'])
+        if m.get('VAMLRequest') is not None:
+            temp_model = SendMessageRequestVAMLRequest()
+            self.vamlrequest = temp_model.from_map(m['VAMLRequest'])
         return self
 
 
@@ -446,10 +488,12 @@ class SendMessageShrinkRequest(TeaModel):
         session_id: str = None,
         tenant_id: int = None,
         text_request_shrink: str = None,
+        vamlrequest_shrink: str = None,
     ):
         self.session_id = session_id
         self.tenant_id = tenant_id
         self.text_request_shrink = text_request_shrink
+        self.vamlrequest_shrink = vamlrequest_shrink
 
     def validate(self):
         pass
@@ -466,6 +510,8 @@ class SendMessageShrinkRequest(TeaModel):
             result['TenantId'] = self.tenant_id
         if self.text_request_shrink is not None:
             result['TextRequest'] = self.text_request_shrink
+        if self.vamlrequest_shrink is not None:
+            result['VAMLRequest'] = self.vamlrequest_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -476,6 +522,8 @@ class SendMessageShrinkRequest(TeaModel):
             self.tenant_id = m.get('TenantId')
         if m.get('TextRequest') is not None:
             self.text_request_shrink = m.get('TextRequest')
+        if m.get('VAMLRequest') is not None:
+            self.vamlrequest_shrink = m.get('VAMLRequest')
         return self
 
 
@@ -630,6 +678,39 @@ class StartInstanceRequestApp(TeaModel):
         return self
 
 
+class StartInstanceRequestChannel(TeaModel):
+    def __init__(
+        self,
+        req_config: Dict[str, Any] = None,
+        type: str = None,
+    ):
+        self.req_config = req_config
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.req_config is not None:
+            result['ReqConfig'] = self.req_config
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReqConfig') is not None:
+            self.req_config = m.get('ReqConfig')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class StartInstanceRequestUser(TeaModel):
     def __init__(
         self,
@@ -667,16 +748,20 @@ class StartInstanceRequest(TeaModel):
     def __init__(
         self,
         app: StartInstanceRequestApp = None,
+        channel: StartInstanceRequestChannel = None,
         tenant_id: int = None,
         user: StartInstanceRequestUser = None,
     ):
         self.app = app
+        self.channel = channel
         self.tenant_id = tenant_id
         self.user = user
 
     def validate(self):
         if self.app:
             self.app.validate()
+        if self.channel:
+            self.channel.validate()
         if self.user:
             self.user.validate()
 
@@ -688,6 +773,8 @@ class StartInstanceRequest(TeaModel):
         result = dict()
         if self.app is not None:
             result['App'] = self.app.to_map()
+        if self.channel is not None:
+            result['Channel'] = self.channel.to_map()
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.user is not None:
@@ -699,6 +786,9 @@ class StartInstanceRequest(TeaModel):
         if m.get('App') is not None:
             temp_model = StartInstanceRequestApp()
             self.app = temp_model.from_map(m['App'])
+        if m.get('Channel') is not None:
+            temp_model = StartInstanceRequestChannel()
+            self.channel = temp_model.from_map(m['Channel'])
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('User') is not None:
@@ -711,10 +801,12 @@ class StartInstanceShrinkRequest(TeaModel):
     def __init__(
         self,
         app_shrink: str = None,
+        channel_shrink: str = None,
         tenant_id: int = None,
         user_shrink: str = None,
     ):
         self.app_shrink = app_shrink
+        self.channel_shrink = channel_shrink
         self.tenant_id = tenant_id
         self.user_shrink = user_shrink
 
@@ -729,6 +821,8 @@ class StartInstanceShrinkRequest(TeaModel):
         result = dict()
         if self.app_shrink is not None:
             result['App'] = self.app_shrink
+        if self.channel_shrink is not None:
+            result['Channel'] = self.channel_shrink
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.user_shrink is not None:
@@ -739,6 +833,8 @@ class StartInstanceShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('App') is not None:
             self.app_shrink = m.get('App')
+        if m.get('Channel') is not None:
+            self.channel_shrink = m.get('Channel')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('User') is not None:
