@@ -1,3 +1,6 @@
+2022-07-28 Version: 1.0.13
+ - Update SetDomainServerCertificate.
+
 2022-06-09 Version: 1.0.12
  - Update DescribeCdnDomainConfigs.
 
