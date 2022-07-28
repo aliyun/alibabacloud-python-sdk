@@ -1111,6 +1111,594 @@ class CreateOAuthTokenResponse(TeaModel):
         return self
 
 
+class CreatePipelineRequestBasicInfo(TeaModel):
+    def __init__(
+        self,
+        env_id: int = None,
+        group_id: int = None,
+        name: str = None,
+        tag_ids: str = None,
+    ):
+        self.env_id = env_id
+        self.group_id = group_id
+        self.name = name
+        self.tag_ids = tag_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env_id is not None:
+            result['envId'] = self.env_id
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.tag_ids is not None:
+            result['tagIds'] = self.tag_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('envId') is not None:
+            self.env_id = m.get('envId')
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('tagIds') is not None:
+            self.tag_ids = m.get('tagIds')
+        return self
+
+
+class CreatePipelineRequestSettingsCaches(TeaModel):
+    def __init__(
+        self,
+        desc: str = None,
+        directory: str = None,
+        disable: bool = None,
+    ):
+        self.desc = desc
+        self.directory = directory
+        self.disable = disable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desc is not None:
+            result['desc'] = self.desc
+        if self.directory is not None:
+            result['directory'] = self.directory
+        if self.disable is not None:
+            result['disable'] = self.disable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('desc') is not None:
+            self.desc = m.get('desc')
+        if m.get('directory') is not None:
+            self.directory = m.get('directory')
+        if m.get('disable') is not None:
+            self.disable = m.get('disable')
+        return self
+
+
+class CreatePipelineRequestSettingsGlobalParams(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        mask: bool = None,
+        running_config: bool = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.mask = mask
+        self.running_config = running_config
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.mask is not None:
+            result['mask'] = self.mask
+        if self.running_config is not None:
+            result['runningConfig'] = self.running_config
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('mask') is not None:
+            self.mask = m.get('mask')
+        if m.get('runningConfig') is not None:
+            self.running_config = m.get('runningConfig')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class CreatePipelineRequestSettings(TeaModel):
+    def __init__(
+        self,
+        caches: List[CreatePipelineRequestSettingsCaches] = None,
+        global_params: List[CreatePipelineRequestSettingsGlobalParams] = None,
+        runner_cache_mode: str = None,
+    ):
+        self.caches = caches
+        self.global_params = global_params
+        self.runner_cache_mode = runner_cache_mode
+
+    def validate(self):
+        if self.caches:
+            for k in self.caches:
+                if k:
+                    k.validate()
+        if self.global_params:
+            for k in self.global_params:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['caches'] = []
+        if self.caches is not None:
+            for k in self.caches:
+                result['caches'].append(k.to_map() if k else None)
+        result['globalParams'] = []
+        if self.global_params is not None:
+            for k in self.global_params:
+                result['globalParams'].append(k.to_map() if k else None)
+        if self.runner_cache_mode is not None:
+            result['runnerCacheMode'] = self.runner_cache_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.caches = []
+        if m.get('caches') is not None:
+            for k in m.get('caches'):
+                temp_model = CreatePipelineRequestSettingsCaches()
+                self.caches.append(temp_model.from_map(k))
+        self.global_params = []
+        if m.get('globalParams') is not None:
+            for k in m.get('globalParams'):
+                temp_model = CreatePipelineRequestSettingsGlobalParams()
+                self.global_params.append(temp_model.from_map(k))
+        if m.get('runnerCacheMode') is not None:
+            self.runner_cache_mode = m.get('runnerCacheMode')
+        return self
+
+
+class CreatePipelineRequestTriggerInfoScheduled(TeaModel):
+    def __init__(
+        self,
+        days_of_week: str = None,
+        fixed_time: str = None,
+        from_: str = None,
+        interval: int = None,
+        only_source_change: bool = None,
+        to: str = None,
+        type: str = None,
+    ):
+        self.days_of_week = days_of_week
+        self.fixed_time = fixed_time
+        self.from_ = from_
+        self.interval = interval
+        self.only_source_change = only_source_change
+        self.to = to
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.days_of_week is not None:
+            result['daysOfWeek'] = self.days_of_week
+        if self.fixed_time is not None:
+            result['fixedTime'] = self.fixed_time
+        if self.from_ is not None:
+            result['from'] = self.from_
+        if self.interval is not None:
+            result['interval'] = self.interval
+        if self.only_source_change is not None:
+            result['onlySourceChange'] = self.only_source_change
+        if self.to is not None:
+            result['to'] = self.to
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('daysOfWeek') is not None:
+            self.days_of_week = m.get('daysOfWeek')
+        if m.get('fixedTime') is not None:
+            self.fixed_time = m.get('fixedTime')
+        if m.get('from') is not None:
+            self.from_ = m.get('from')
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        if m.get('onlySourceChange') is not None:
+            self.only_source_change = m.get('onlySourceChange')
+        if m.get('to') is not None:
+            self.to = m.get('to')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreatePipelineRequestTriggerInfo(TeaModel):
+    def __init__(
+        self,
+        scheduled: CreatePipelineRequestTriggerInfoScheduled = None,
+        webhook_enable: bool = None,
+    ):
+        self.scheduled = scheduled
+        self.webhook_enable = webhook_enable
+
+    def validate(self):
+        if self.scheduled:
+            self.scheduled.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scheduled is not None:
+            result['scheduled'] = self.scheduled.to_map()
+        if self.webhook_enable is not None:
+            result['webhookEnable'] = self.webhook_enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scheduled') is not None:
+            temp_model = CreatePipelineRequestTriggerInfoScheduled()
+            self.scheduled = temp_model.from_map(m['scheduled'])
+        if m.get('webhookEnable') is not None:
+            self.webhook_enable = m.get('webhookEnable')
+        return self
+
+
+class CreatePipelineRequest(TeaModel):
+    def __init__(
+        self,
+        basic_info: CreatePipelineRequestBasicInfo = None,
+        pipeline_yaml: str = None,
+        settings: CreatePipelineRequestSettings = None,
+        trigger_info: CreatePipelineRequestTriggerInfo = None,
+    ):
+        self.basic_info = basic_info
+        self.pipeline_yaml = pipeline_yaml
+        self.settings = settings
+        self.trigger_info = trigger_info
+
+    def validate(self):
+        if self.basic_info:
+            self.basic_info.validate()
+        if self.settings:
+            self.settings.validate()
+        if self.trigger_info:
+            self.trigger_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.basic_info is not None:
+            result['basicInfo'] = self.basic_info.to_map()
+        if self.pipeline_yaml is not None:
+            result['pipelineYaml'] = self.pipeline_yaml
+        if self.settings is not None:
+            result['settings'] = self.settings.to_map()
+        if self.trigger_info is not None:
+            result['triggerInfo'] = self.trigger_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('basicInfo') is not None:
+            temp_model = CreatePipelineRequestBasicInfo()
+            self.basic_info = temp_model.from_map(m['basicInfo'])
+        if m.get('pipelineYaml') is not None:
+            self.pipeline_yaml = m.get('pipelineYaml')
+        if m.get('settings') is not None:
+            temp_model = CreatePipelineRequestSettings()
+            self.settings = temp_model.from_map(m['settings'])
+        if m.get('triggerInfo') is not None:
+            temp_model = CreatePipelineRequestTriggerInfo()
+            self.trigger_info = temp_model.from_map(m['triggerInfo'])
+        return self
+
+
+class CreatePipelineResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        object: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.object = object
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.object is not None:
+            result['object'] = self.object
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('object') is not None:
+            self.object = m.get('object')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreatePipelineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePipelineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePipelineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreatePipelineGroupRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CreatePipelineGroupResponseBodyPipelineGroup(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CreatePipelineGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        pipeline_group: CreatePipelineGroupResponseBodyPipelineGroup = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.pipeline_group = pipeline_group
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.pipeline_group:
+            self.pipeline_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.pipeline_group is not None:
+            result['pipelineGroup'] = self.pipeline_group.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('pipelineGroup') is not None:
+            temp_model = CreatePipelineGroupResponseBodyPipelineGroup()
+            self.pipeline_group = temp_model.from_map(m['pipelineGroup'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreatePipelineGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePipelineGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePipelineGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateProjectRequest(TeaModel):
     def __init__(
         self,
@@ -3436,6 +4024,95 @@ class DeletePipelineResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeletePipelineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeletePipelineGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class DeletePipelineGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeletePipelineGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeletePipelineGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5903,6 +6580,142 @@ class GetPipelineEmasArtifactUrlResponse(TeaModel):
         return self
 
 
+class GetPipelineGroupResponseBodyPipelineGroup(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        id: int = None,
+        name: str = None,
+    ):
+        self.create_time = create_time
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class GetPipelineGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        pipeline_group: GetPipelineGroupResponseBodyPipelineGroup = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.pipeline_group = pipeline_group
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.pipeline_group:
+            self.pipeline_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.pipeline_group is not None:
+            result['pipelineGroup'] = self.pipeline_group.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('pipelineGroup') is not None:
+            temp_model = GetPipelineGroupResponseBodyPipelineGroup()
+            self.pipeline_group = temp_model.from_map(m['pipelineGroup'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetPipelineGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPipelineGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPipelineGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetPipelineRunResponseBodyPipelineRunSourcesData(TeaModel):
     def __init__(
         self,
@@ -5987,7 +6800,7 @@ class GetPipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions(TeaModel):
     def __init__(
         self,
         disable: bool = None,
-        params: Any = None,
+        params: Dict[str, Any] = None,
         type: str = None,
     ):
         self.disable = disable
@@ -9346,6 +10159,128 @@ class GetWorkspaceResponse(TeaModel):
         return self
 
 
+class JoinPipelineGroupRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: int = None,
+        pipeline_ids: str = None,
+    ):
+        self.group_id = group_id
+        self.pipeline_ids = pipeline_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
+        if self.pipeline_ids is not None:
+            result['pipelineIds'] = self.pipeline_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
+        if m.get('pipelineIds') is not None:
+            self.pipeline_ids = m.get('pipelineIds')
+        return self
+
+
+class JoinPipelineGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class JoinPipelineGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: JoinPipelineGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = JoinPipelineGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListFlowTagGroupsResponseBodyFlowTagGroups(TeaModel):
     def __init__(
         self,
@@ -10107,6 +11042,416 @@ class ListOrganizationMembersResponse(TeaModel):
         return self
 
 
+class ListPipelineGroupPipelinesRequest(TeaModel):
+    def __init__(
+        self,
+        create_end_time: int = None,
+        create_start_time: int = None,
+        execute_end_time: int = None,
+        execute_start_time: int = None,
+        max_results: int = None,
+        next_token: str = None,
+        pipeline_name: str = None,
+        result_status_list: str = None,
+    ):
+        self.create_end_time = create_end_time
+        self.create_start_time = create_start_time
+        self.execute_end_time = execute_end_time
+        self.execute_start_time = execute_start_time
+        self.max_results = max_results
+        self.next_token = next_token
+        self.pipeline_name = pipeline_name
+        self.result_status_list = result_status_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_end_time is not None:
+            result['createEndTime'] = self.create_end_time
+        if self.create_start_time is not None:
+            result['createStartTime'] = self.create_start_time
+        if self.execute_end_time is not None:
+            result['executeEndTime'] = self.execute_end_time
+        if self.execute_start_time is not None:
+            result['executeStartTime'] = self.execute_start_time
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.pipeline_name is not None:
+            result['pipelineName'] = self.pipeline_name
+        if self.result_status_list is not None:
+            result['resultStatusList'] = self.result_status_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createEndTime') is not None:
+            self.create_end_time = m.get('createEndTime')
+        if m.get('createStartTime') is not None:
+            self.create_start_time = m.get('createStartTime')
+        if m.get('executeEndTime') is not None:
+            self.execute_end_time = m.get('executeEndTime')
+        if m.get('executeStartTime') is not None:
+            self.execute_start_time = m.get('executeStartTime')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('pipelineName') is not None:
+            self.pipeline_name = m.get('pipelineName')
+        if m.get('resultStatusList') is not None:
+            self.result_status_list = m.get('resultStatusList')
+        return self
+
+
+class ListPipelineGroupPipelinesResponseBodyPipelines(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        pipeline_id: int = None,
+        pipeline_name: str = None,
+    ):
+        self.create_time = create_time
+        self.pipeline_id = pipeline_id
+        self.pipeline_name = pipeline_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.pipeline_id is not None:
+            result['pipelineId'] = self.pipeline_id
+        if self.pipeline_name is not None:
+            result['pipelineName'] = self.pipeline_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('pipelineId') is not None:
+            self.pipeline_id = m.get('pipelineId')
+        if m.get('pipelineName') is not None:
+            self.pipeline_name = m.get('pipelineName')
+        return self
+
+
+class ListPipelineGroupPipelinesResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        next_token: str = None,
+        pipelines: List[ListPipelineGroupPipelinesResponseBodyPipelines] = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.next_token = next_token
+        self.pipelines = pipelines
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.pipelines:
+            for k in self.pipelines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['pipelines'] = []
+        if self.pipelines is not None:
+            for k in self.pipelines:
+                result['pipelines'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.pipelines = []
+        if m.get('pipelines') is not None:
+            for k in m.get('pipelines'):
+                temp_model = ListPipelineGroupPipelinesResponseBodyPipelines()
+                self.pipelines.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListPipelineGroupPipelinesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPipelineGroupPipelinesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPipelineGroupPipelinesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPipelineGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        return self
+
+
+class ListPipelineGroupsResponseBodyPipelineGroups(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        id: int = None,
+        name: str = None,
+    ):
+        self.create_time = create_time
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class ListPipelineGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        next_token: str = None,
+        pipeline_groups: List[ListPipelineGroupsResponseBodyPipelineGroups] = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.next_token = next_token
+        self.pipeline_groups = pipeline_groups
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.pipeline_groups:
+            for k in self.pipeline_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['pipelineGroups'] = []
+        if self.pipeline_groups is not None:
+            for k in self.pipeline_groups:
+                result['pipelineGroups'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.pipeline_groups = []
+        if m.get('pipelineGroups') is not None:
+            for k in m.get('pipelineGroups'):
+                temp_model = ListPipelineGroupsResponseBodyPipelineGroups()
+                self.pipeline_groups.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListPipelineGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPipelineGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPipelineGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListPipelineJobHistorysRequest(TeaModel):
     def __init__(
         self,
@@ -10838,11 +12183,13 @@ class ListPipelinesResponseBodyPipelines(TeaModel):
         self,
         create_time: int = None,
         creator_account_id: str = None,
+        group_id: int = None,
         pipeline_id: int = None,
         pipeline_name: str = None,
     ):
         self.create_time = create_time
         self.creator_account_id = creator_account_id
+        self.group_id = group_id
         self.pipeline_id = pipeline_id
         self.pipeline_name = pipeline_name
 
@@ -10859,6 +12206,8 @@ class ListPipelinesResponseBodyPipelines(TeaModel):
             result['createTime'] = self.create_time
         if self.creator_account_id is not None:
             result['creatorAccountId'] = self.creator_account_id
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
         if self.pipeline_id is not None:
             result['pipelineId'] = self.pipeline_id
         if self.pipeline_name is not None:
@@ -10871,6 +12220,8 @@ class ListPipelinesResponseBodyPipelines(TeaModel):
             self.create_time = m.get('createTime')
         if m.get('creatorAccountId') is not None:
             self.creator_account_id = m.get('creatorAccountId')
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
         if m.get('pipelineId') is not None:
             self.pipeline_id = m.get('pipelineId')
         if m.get('pipelineName') is not None:
@@ -17288,6 +18639,443 @@ class UpdateHostGroupResponse(TeaModel):
         return self
 
 
+class UpdatePipelineRequestBasicInfo(TeaModel):
+    def __init__(
+        self,
+        env_id: int = None,
+        group_id: int = None,
+        name: str = None,
+        pipeline_id: int = None,
+        tag_ids: str = None,
+    ):
+        self.env_id = env_id
+        self.group_id = group_id
+        self.name = name
+        self.pipeline_id = pipeline_id
+        self.tag_ids = tag_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env_id is not None:
+            result['envId'] = self.env_id
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.pipeline_id is not None:
+            result['pipelineId'] = self.pipeline_id
+        if self.tag_ids is not None:
+            result['tagIds'] = self.tag_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('envId') is not None:
+            self.env_id = m.get('envId')
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('pipelineId') is not None:
+            self.pipeline_id = m.get('pipelineId')
+        if m.get('tagIds') is not None:
+            self.tag_ids = m.get('tagIds')
+        return self
+
+
+class UpdatePipelineRequestSettingsCaches(TeaModel):
+    def __init__(
+        self,
+        desc: str = None,
+        directory: str = None,
+        disable: bool = None,
+    ):
+        self.desc = desc
+        self.directory = directory
+        self.disable = disable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desc is not None:
+            result['desc'] = self.desc
+        if self.directory is not None:
+            result['directory'] = self.directory
+        if self.disable is not None:
+            result['disable'] = self.disable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('desc') is not None:
+            self.desc = m.get('desc')
+        if m.get('directory') is not None:
+            self.directory = m.get('directory')
+        if m.get('disable') is not None:
+            self.disable = m.get('disable')
+        return self
+
+
+class UpdatePipelineRequestSettingsGlobalParams(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        mask: bool = None,
+        running_config: bool = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.mask = mask
+        self.running_config = running_config
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.mask is not None:
+            result['mask'] = self.mask
+        if self.running_config is not None:
+            result['runningConfig'] = self.running_config
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('mask') is not None:
+            self.mask = m.get('mask')
+        if m.get('runningConfig') is not None:
+            self.running_config = m.get('runningConfig')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class UpdatePipelineRequestSettings(TeaModel):
+    def __init__(
+        self,
+        caches: List[UpdatePipelineRequestSettingsCaches] = None,
+        global_params: List[UpdatePipelineRequestSettingsGlobalParams] = None,
+        runner_cache_mode: str = None,
+    ):
+        self.caches = caches
+        self.global_params = global_params
+        self.runner_cache_mode = runner_cache_mode
+
+    def validate(self):
+        if self.caches:
+            for k in self.caches:
+                if k:
+                    k.validate()
+        if self.global_params:
+            for k in self.global_params:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['caches'] = []
+        if self.caches is not None:
+            for k in self.caches:
+                result['caches'].append(k.to_map() if k else None)
+        result['globalParams'] = []
+        if self.global_params is not None:
+            for k in self.global_params:
+                result['globalParams'].append(k.to_map() if k else None)
+        if self.runner_cache_mode is not None:
+            result['runnerCacheMode'] = self.runner_cache_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.caches = []
+        if m.get('caches') is not None:
+            for k in m.get('caches'):
+                temp_model = UpdatePipelineRequestSettingsCaches()
+                self.caches.append(temp_model.from_map(k))
+        self.global_params = []
+        if m.get('globalParams') is not None:
+            for k in m.get('globalParams'):
+                temp_model = UpdatePipelineRequestSettingsGlobalParams()
+                self.global_params.append(temp_model.from_map(k))
+        if m.get('runnerCacheMode') is not None:
+            self.runner_cache_mode = m.get('runnerCacheMode')
+        return self
+
+
+class UpdatePipelineRequestTriggerInfoScheduled(TeaModel):
+    def __init__(
+        self,
+        days_of_week: str = None,
+        fixed_time: str = None,
+        from_: str = None,
+        interval: int = None,
+        only_source_change: bool = None,
+        to: str = None,
+        type: str = None,
+    ):
+        self.days_of_week = days_of_week
+        self.fixed_time = fixed_time
+        self.from_ = from_
+        self.interval = interval
+        self.only_source_change = only_source_change
+        self.to = to
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.days_of_week is not None:
+            result['daysOfWeek'] = self.days_of_week
+        if self.fixed_time is not None:
+            result['fixedTime'] = self.fixed_time
+        if self.from_ is not None:
+            result['from'] = self.from_
+        if self.interval is not None:
+            result['interval'] = self.interval
+        if self.only_source_change is not None:
+            result['onlySourceChange'] = self.only_source_change
+        if self.to is not None:
+            result['to'] = self.to
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('daysOfWeek') is not None:
+            self.days_of_week = m.get('daysOfWeek')
+        if m.get('fixedTime') is not None:
+            self.fixed_time = m.get('fixedTime')
+        if m.get('from') is not None:
+            self.from_ = m.get('from')
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        if m.get('onlySourceChange') is not None:
+            self.only_source_change = m.get('onlySourceChange')
+        if m.get('to') is not None:
+            self.to = m.get('to')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class UpdatePipelineRequestTriggerInfo(TeaModel):
+    def __init__(
+        self,
+        scheduled: UpdatePipelineRequestTriggerInfoScheduled = None,
+        webhook_enable: bool = None,
+    ):
+        self.scheduled = scheduled
+        self.webhook_enable = webhook_enable
+
+    def validate(self):
+        if self.scheduled:
+            self.scheduled.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scheduled is not None:
+            result['scheduled'] = self.scheduled.to_map()
+        if self.webhook_enable is not None:
+            result['webhookEnable'] = self.webhook_enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scheduled') is not None:
+            temp_model = UpdatePipelineRequestTriggerInfoScheduled()
+            self.scheduled = temp_model.from_map(m['scheduled'])
+        if m.get('webhookEnable') is not None:
+            self.webhook_enable = m.get('webhookEnable')
+        return self
+
+
+class UpdatePipelineRequest(TeaModel):
+    def __init__(
+        self,
+        basic_info: UpdatePipelineRequestBasicInfo = None,
+        pipeline_yaml: str = None,
+        settings: UpdatePipelineRequestSettings = None,
+        trigger_info: UpdatePipelineRequestTriggerInfo = None,
+    ):
+        self.basic_info = basic_info
+        self.pipeline_yaml = pipeline_yaml
+        self.settings = settings
+        self.trigger_info = trigger_info
+
+    def validate(self):
+        if self.basic_info:
+            self.basic_info.validate()
+        if self.settings:
+            self.settings.validate()
+        if self.trigger_info:
+            self.trigger_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.basic_info is not None:
+            result['basicInfo'] = self.basic_info.to_map()
+        if self.pipeline_yaml is not None:
+            result['pipelineYaml'] = self.pipeline_yaml
+        if self.settings is not None:
+            result['settings'] = self.settings.to_map()
+        if self.trigger_info is not None:
+            result['triggerInfo'] = self.trigger_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('basicInfo') is not None:
+            temp_model = UpdatePipelineRequestBasicInfo()
+            self.basic_info = temp_model.from_map(m['basicInfo'])
+        if m.get('pipelineYaml') is not None:
+            self.pipeline_yaml = m.get('pipelineYaml')
+        if m.get('settings') is not None:
+            temp_model = UpdatePipelineRequestSettings()
+            self.settings = temp_model.from_map(m['settings'])
+        if m.get('triggerInfo') is not None:
+            temp_model = UpdatePipelineRequestTriggerInfo()
+            self.trigger_info = temp_model.from_map(m['triggerInfo'])
+        return self
+
+
+class UpdatePipelineResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        object: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.object = object
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.object is not None:
+            result['object'] = self.object
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('object') is not None:
+            self.object = m.get('object')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdatePipelineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePipelineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePipelineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdatePipelineBaseInfoRequest(TeaModel):
     def __init__(
         self,
@@ -17412,6 +19200,122 @@ class UpdatePipelineBaseInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdatePipelineBaseInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdatePipelineGroupRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class UpdatePipelineGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdatePipelineGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePipelineGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePipelineGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

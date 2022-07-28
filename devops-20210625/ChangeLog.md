@@ -1,3 +1,6 @@
+2022-07-28 Version: 1.1.30
+- Add PipelineGroup.
+
 2022-07-27 Version: 1.0.29
 - Update create repo.
 
