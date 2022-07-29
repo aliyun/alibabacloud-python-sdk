@@ -1,3 +1,6 @@
+2022-07-29 Version: 1.0.8
+- Add net access api.
+
 2022-04-11 Version: 1.0.7
 - List methods result changed.
 
