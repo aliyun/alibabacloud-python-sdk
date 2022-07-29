@@ -100,6 +100,92 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_install_code_with_options(
+        self,
+        request: sas_20181203_models.AddInstallCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.AddInstallCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.expired_date):
+            query['ExpiredDate'] = request.expired_date
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.only_image):
+            query['OnlyImage'] = request.only_image
+        if not UtilClient.is_unset(request.os):
+            query['Os'] = request.os
+        if not UtilClient.is_unset(request.vendor_name):
+            query['VendorName'] = request.vendor_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddInstallCode',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.AddInstallCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_install_code_with_options_async(
+        self,
+        request: sas_20181203_models.AddInstallCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.AddInstallCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.expired_date):
+            query['ExpiredDate'] = request.expired_date
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.only_image):
+            query['OnlyImage'] = request.only_image
+        if not UtilClient.is_unset(request.os):
+            query['Os'] = request.os
+        if not UtilClient.is_unset(request.vendor_name):
+            query['VendorName'] = request.vendor_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddInstallCode',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.AddInstallCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_install_code(
+        self,
+        request: sas_20181203_models.AddInstallCodeRequest,
+    ) -> sas_20181203_models.AddInstallCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_install_code_with_options(request, runtime)
+
+    async def add_install_code_async(
+        self,
+        request: sas_20181203_models.AddInstallCodeRequest,
+    ) -> sas_20181203_models.AddInstallCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_install_code_with_options_async(request, runtime)
+
     def add_vpc_honey_pot_with_options(
         self,
         request: sas_20181203_models.AddVpcHoneyPotRequest,
@@ -3567,6 +3653,80 @@ class Client(OpenApiClient):
     async def describe_cloud_product_field_statistics_async(self) -> sas_20181203_models.DescribeCloudProductFieldStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_product_field_statistics_with_options_async(runtime)
+
+    def describe_common_overall_config_with_options(
+        self,
+        request: sas_20181203_models.DescribeCommonOverallConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCommonOverallConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCommonOverallConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCommonOverallConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_common_overall_config_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeCommonOverallConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCommonOverallConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCommonOverallConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCommonOverallConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_common_overall_config(
+        self,
+        request: sas_20181203_models.DescribeCommonOverallConfigRequest,
+    ) -> sas_20181203_models.DescribeCommonOverallConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_common_overall_config_with_options(request, runtime)
+
+    async def describe_common_overall_config_async(
+        self,
+        request: sas_20181203_models.DescribeCommonOverallConfigRequest,
+    ) -> sas_20181203_models.DescribeCommonOverallConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_common_overall_config_with_options_async(request, runtime)
 
     def describe_concern_necessity_with_options(
         self,
@@ -10128,6 +10288,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_susp_events_with_options_async(request, runtime)
 
+    def describe_suspicious_overall_config_with_options(
+        self,
+        request: sas_20181203_models.DescribeSuspiciousOverallConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSuspiciousOverallConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSuspiciousOverallConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSuspiciousOverallConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_suspicious_overall_config_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeSuspiciousOverallConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSuspiciousOverallConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSuspiciousOverallConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSuspiciousOverallConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_suspicious_overall_config(
+        self,
+        request: sas_20181203_models.DescribeSuspiciousOverallConfigRequest,
+    ) -> sas_20181203_models.DescribeSuspiciousOverallConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_suspicious_overall_config_with_options(request, runtime)
+
+    async def describe_suspicious_overall_config_async(
+        self,
+        request: sas_20181203_models.DescribeSuspiciousOverallConfigRequest,
+    ) -> sas_20181203_models.DescribeSuspiciousOverallConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_suspicious_overall_config_with_options_async(request, runtime)
+
     def describe_suspicious_uuidconfig_with_options(
         self,
         request: sas_20181203_models.DescribeSuspiciousUUIDConfigRequest,
@@ -10529,6 +10763,56 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeUuidsByVulNamesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_uuids_by_vul_names_with_options_async(request, runtime)
+
+    def describe_vendor_list_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeVendorListResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeVendorList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVendorListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vendor_list_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeVendorListResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeVendorList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVendorListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vendor_list(self) -> sas_20181203_models.DescribeVendorListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vendor_list_with_options(runtime)
+
+    async def describe_vendor_list_async(self) -> sas_20181203_models.DescribeVendorListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vendor_list_with_options_async(runtime)
 
     def describe_version_config_with_options(
         self,
@@ -15511,6 +15795,170 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.OperateAgentClientInstallResponse:
         runtime = util_models.RuntimeOptions()
         return await self.operate_agent_client_install_with_options_async(request, runtime)
+
+    def operate_common_overall_config_with_options(
+        self,
+        request: sas_20181203_models.OperateCommonOverallConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OperateCommonOverallConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperateCommonOverallConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OperateCommonOverallConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_common_overall_config_with_options_async(
+        self,
+        request: sas_20181203_models.OperateCommonOverallConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OperateCommonOverallConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperateCommonOverallConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OperateCommonOverallConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_common_overall_config(
+        self,
+        request: sas_20181203_models.OperateCommonOverallConfigRequest,
+    ) -> sas_20181203_models.OperateCommonOverallConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.operate_common_overall_config_with_options(request, runtime)
+
+    async def operate_common_overall_config_async(
+        self,
+        request: sas_20181203_models.OperateCommonOverallConfigRequest,
+    ) -> sas_20181203_models.OperateCommonOverallConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.operate_common_overall_config_with_options_async(request, runtime)
+
+    def operate_suspicious_overall_config_with_options(
+        self,
+        request: sas_20181203_models.OperateSuspiciousOverallConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OperateSuspiciousOverallConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.no_target_as_on):
+            query['NoTargetAsOn'] = request.no_target_as_on
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperateSuspiciousOverallConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OperateSuspiciousOverallConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_suspicious_overall_config_with_options_async(
+        self,
+        request: sas_20181203_models.OperateSuspiciousOverallConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OperateSuspiciousOverallConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.no_target_as_on):
+            query['NoTargetAsOn'] = request.no_target_as_on
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperateSuspiciousOverallConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OperateSuspiciousOverallConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_suspicious_overall_config(
+        self,
+        request: sas_20181203_models.OperateSuspiciousOverallConfigRequest,
+    ) -> sas_20181203_models.OperateSuspiciousOverallConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.operate_suspicious_overall_config_with_options(request, runtime)
+
+    async def operate_suspicious_overall_config_async(
+        self,
+        request: sas_20181203_models.OperateSuspiciousOverallConfigRequest,
+    ) -> sas_20181203_models.OperateSuspiciousOverallConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.operate_suspicious_overall_config_with_options_async(request, runtime)
 
     def operate_suspicious_target_config_with_options(
         self,

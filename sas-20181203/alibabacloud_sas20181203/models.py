@@ -4,6 +4,128 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class AddInstallCodeRequest(TeaModel):
+    def __init__(
+        self,
+        expired_date: int = None,
+        group_id: int = None,
+        only_image: bool = None,
+        os: str = None,
+        vendor_name: str = None,
+    ):
+        self.expired_date = expired_date
+        self.group_id = group_id
+        self.only_image = only_image
+        self.os = os
+        self.vendor_name = vendor_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expired_date is not None:
+            result['ExpiredDate'] = self.expired_date
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.only_image is not None:
+            result['OnlyImage'] = self.only_image
+        if self.os is not None:
+            result['Os'] = self.os
+        if self.vendor_name is not None:
+            result['VendorName'] = self.vendor_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpiredDate') is not None:
+            self.expired_date = m.get('ExpiredDate')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('OnlyImage') is not None:
+            self.only_image = m.get('OnlyImage')
+        if m.get('Os') is not None:
+            self.os = m.get('Os')
+        if m.get('VendorName') is not None:
+            self.vendor_name = m.get('VendorName')
+        return self
+
+
+class AddInstallCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddInstallCodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddInstallCodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddInstallCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddVpcHoneyPotRequest(TeaModel):
     def __init__(
         self,
@@ -8162,6 +8284,151 @@ class DescribeCloudProductFieldStatisticsResponse(TeaModel):
         return self
 
 
+class DescribeCommonOverallConfigRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+        type: str = None,
+    ):
+        self.source_ip = source_ip
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeCommonOverallConfigResponseBodyOverallConfig(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        type: str = None,
+    ):
+        self.config = config
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeCommonOverallConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        overall_config: DescribeCommonOverallConfigResponseBodyOverallConfig = None,
+        request_id: str = None,
+    ):
+        self.overall_config = overall_config
+        self.request_id = request_id
+
+    def validate(self):
+        if self.overall_config:
+            self.overall_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.overall_config is not None:
+            result['OverallConfig'] = self.overall_config.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OverallConfig') is not None:
+            temp_model = DescribeCommonOverallConfigResponseBodyOverallConfig()
+            self.overall_config = temp_model.from_map(m['OverallConfig'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCommonOverallConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCommonOverallConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCommonOverallConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeConcernNecessityRequest(TeaModel):
     def __init__(
         self,
@@ -11051,6 +11318,7 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(TeaModel):
         new_instance_count: int = None,
         not_running_status_count: int = None,
         offline_instance_count: int = None,
+        out_machine_instance_count: int = None,
         pause_instance_count: int = None,
         region_count: int = None,
         risk_instance_count: int = None,
@@ -11072,6 +11340,7 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(TeaModel):
         self.new_instance_count = new_instance_count
         self.not_running_status_count = not_running_status_count
         self.offline_instance_count = offline_instance_count
+        self.out_machine_instance_count = out_machine_instance_count
         self.pause_instance_count = pause_instance_count
         self.region_count = region_count
         self.risk_instance_count = risk_instance_count
@@ -11115,6 +11384,8 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(TeaModel):
             result['NotRunningStatusCount'] = self.not_running_status_count
         if self.offline_instance_count is not None:
             result['OfflineInstanceCount'] = self.offline_instance_count
+        if self.out_machine_instance_count is not None:
+            result['OutMachineInstanceCount'] = self.out_machine_instance_count
         if self.pause_instance_count is not None:
             result['PauseInstanceCount'] = self.pause_instance_count
         if self.region_count is not None:
@@ -11159,6 +11430,8 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(TeaModel):
             self.not_running_status_count = m.get('NotRunningStatusCount')
         if m.get('OfflineInstanceCount') is not None:
             self.offline_instance_count = m.get('OfflineInstanceCount')
+        if m.get('OutMachineInstanceCount') is not None:
+            self.out_machine_instance_count = m.get('OutMachineInstanceCount')
         if m.get('PauseInstanceCount') is not None:
             self.pause_instance_count = m.get('PauseInstanceCount')
         if m.get('RegionCount') is not None:
@@ -27069,6 +27342,151 @@ class DescribeSuspEventsResponse(TeaModel):
         return self
 
 
+class DescribeSuspiciousOverallConfigRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+        type: str = None,
+    ):
+        self.source_ip = source_ip
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeSuspiciousOverallConfigResponseBodyOverallConfig(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        type: str = None,
+    ):
+        self.config = config
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeSuspiciousOverallConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        overall_config: DescribeSuspiciousOverallConfigResponseBodyOverallConfig = None,
+        request_id: str = None,
+    ):
+        self.overall_config = overall_config
+        self.request_id = request_id
+
+    def validate(self):
+        if self.overall_config:
+            self.overall_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.overall_config is not None:
+            result['OverallConfig'] = self.overall_config.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OverallConfig') is not None:
+            temp_model = DescribeSuspiciousOverallConfigResponseBodyOverallConfig()
+            self.overall_config = temp_model.from_map(m['OverallConfig'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeSuspiciousOverallConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSuspiciousOverallConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSuspiciousOverallConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSuspiciousUUIDConfigRequest(TeaModel):
     def __init__(
         self,
@@ -27813,6 +28231,83 @@ class DescribeUuidsByVulNamesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeUuidsByVulNamesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVendorListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        vendor_name_list: List[str] = None,
+    ):
+        self.request_id = request_id
+        self.vendor_name_list = vendor_name_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.vendor_name_list is not None:
+            result['VendorNameList'] = self.vendor_name_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VendorNameList') is not None:
+            self.vendor_name_list = m.get('VendorNameList')
+        return self
+
+
+class DescribeVendorListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVendorListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVendorListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -37883,6 +38378,238 @@ class OperateAgentClientInstallResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OperateAgentClientInstallResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class OperateCommonOverallConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        source_ip: str = None,
+        type: str = None,
+    ):
+        self.config = config
+        self.source_ip = source_ip
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class OperateCommonOverallConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class OperateCommonOverallConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OperateCommonOverallConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OperateCommonOverallConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class OperateSuspiciousOverallConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        lang: str = None,
+        no_target_as_on: bool = None,
+        source_ip: str = None,
+        type: str = None,
+    ):
+        self.config = config
+        self.lang = lang
+        self.no_target_as_on = no_target_as_on
+        self.source_ip = source_ip
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.no_target_as_on is not None:
+            result['NoTargetAsOn'] = self.no_target_as_on
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('NoTargetAsOn') is not None:
+            self.no_target_as_on = m.get('NoTargetAsOn')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class OperateSuspiciousOverallConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class OperateSuspiciousOverallConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OperateSuspiciousOverallConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OperateSuspiciousOverallConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
