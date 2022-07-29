@@ -1,3 +1,6 @@
+2022-07-29 Version: 2.0.25
+- Del GetGeneralAbnormalEventsCount.
+
 2022-07-28 Version: 2.0.24
 - Add GetGeneralAbnormalEventsCount.
 
