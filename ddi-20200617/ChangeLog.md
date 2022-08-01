@@ -1,3 +1,6 @@
+2022-08-01 Version: 2.7.32
+- Add library api.
+
 2022-06-29 Version: 2.7.31
 - Add library api.
 

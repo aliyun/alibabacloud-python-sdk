@@ -12,13 +12,9 @@ class CloneFlowJobRequest(TeaModel):
         project_id: str = None,
         region_id: str = None,
     ):
-        # 克隆的目标作业ID。您可以调用ListFlowJob查看。
         self.id = id
-        # 克隆的目标作业名称。
         self.name = name
-        # 克隆的目标作业所属项目。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
-        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -59,9 +55,7 @@ class CloneFlowJobResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
-        # 新产生的作业ID。
         self.id = id
-        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -1355,9 +1349,7 @@ class CreateFlowJobRequestResourceList(TeaModel):
         alias: str = None,
         path: str = None,
     ):
-        # 保留参数。
         self.alias = alias
-        # 保留参数。
         self.path = path
 
     def validate(self):
@@ -1408,45 +1400,25 @@ class CreateFlowJobRequest(TeaModel):
         run_conf: str = None,
         type: str = None,
     ):
-        # 是否临时查询。
         self.adhoc = adhoc
-        # 保留参数。
         self.alert_conf = alert_conf
-        # 保留参数。
         self.client_token = client_token
-        # 集群ID。您可以调用ListClusters查看集群的ID。
         self.cluster_id = cluster_id
-        # 自定义变量。
         self.custom_variables = custom_variables
-        # 作业的描述。
         self.description = description
-        # 环境变量设置。
         self.env_conf = env_conf
-        # 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
         self.fail_act = fail_act
-        # 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
         self.mode = mode
-        # 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
         self.monitor_conf = monitor_conf
-        # 作业的名称。
         self.name = name
-        # 参数设置。
         self.param_conf = param_conf
-        # 作业内容。
         self.params = params
-        # 父目录ID。您可以调用DescribeFlowCategory查看。
         self.parent_category = parent_category
-        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
-        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
-        # 保留参数。
         self.resource_list = resource_list
-        # 重试策略，保留参数。
         self.retry_policy = retry_policy
-        # 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
         self.run_conf = run_conf
-        # 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
         self.type = type
 
     def validate(self):
@@ -1559,9 +1531,7 @@ class CreateFlowJobResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
-        # 作业ID。
         self.id = id
-        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -1643,15 +1613,10 @@ class CreateFlowProjectRequest(TeaModel):
         resource_group_id: str = None,
     ):
         self.client_token = client_token
-        # 项目描述
         self.description = description
-        # 项目名称
         self.name = name
-        # 产品类型，固定值DATABRICKS_DATAINSIGHT
         self.product_type = product_type
-        # 地域ID
         self.region_id = region_id
-        # 资源组ID
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1700,9 +1665,7 @@ class CreateFlowProjectResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
-        # 项目ID
         self.id = id
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -1936,164 +1899,6 @@ class CreateFlowProjectUserResponse(TeaModel):
         return self
 
 
-class CreateLibraryRequest(TeaModel):
-    def __init__(
-        self,
-        client_token: str = None,
-        library_version: str = None,
-        name: str = None,
-        properties: str = None,
-        region_id: str = None,
-        resource_owner_id: int = None,
-        scope: str = None,
-        source_location: str = None,
-        source_type: str = None,
-        type: str = None,
-    ):
-        self.client_token = client_token
-        self.library_version = library_version
-        self.name = name
-        self.properties = properties
-        self.region_id = region_id
-        self.resource_owner_id = resource_owner_id
-        self.scope = scope
-        self.source_location = source_location
-        self.source_type = source_type
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.library_version is not None:
-            result['LibraryVersion'] = self.library_version
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.properties is not None:
-            result['Properties'] = self.properties
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.scope is not None:
-            result['Scope'] = self.scope
-        if self.source_location is not None:
-            result['SourceLocation'] = self.source_location
-        if self.source_type is not None:
-            result['SourceType'] = self.source_type
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('LibraryVersion') is not None:
-            self.library_version = m.get('LibraryVersion')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Properties') is not None:
-            self.properties = m.get('Properties')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('Scope') is not None:
-            self.scope = m.get('Scope')
-        if m.get('SourceLocation') is not None:
-            self.source_location = m.get('SourceLocation')
-        if m.get('SourceType') is not None:
-            self.source_type = m.get('SourceType')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class CreateLibraryResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: str = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class CreateLibraryResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateLibraryResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateLibraryResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DeleteFlowRequest(TeaModel):
     def __init__(
         self,
@@ -2252,15 +2057,11 @@ class DeleteFlowCategoryRequest(TeaModel):
 class DeleteFlowCategoryResponseBody(TeaModel):
     def __init__(
         self,
-        flow_id: str = None,
-        job_id: str = None,
+        data: bool = None,
         request_id: str = None,
-        result: bool = None,
     ):
-        self.flow_id = flow_id
-        self.job_id = job_id
+        self.data = data
         self.request_id = request_id
-        self.result = result
 
     def validate(self):
         pass
@@ -2271,26 +2072,18 @@ class DeleteFlowCategoryResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.flow_id is not None:
-            result['FlowId'] = self.flow_id
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
+        if self.data is not None:
+            result['Data'] = self.data
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.result is not None:
-            result['Result'] = self.result
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('FlowId') is not None:
-            self.flow_id = m.get('FlowId')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Result') is not None:
-            self.result = m.get('Result')
         return self
 
 
@@ -2560,122 +2353,6 @@ class DeleteFlowProjectUserResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteFlowProjectUserResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DeleteLibrariesRequest(TeaModel):
-    def __init__(
-        self,
-        library_biz_id_list: List[str] = None,
-        region_id: str = None,
-        resource_owner_id: int = None,
-    ):
-        self.library_biz_id_list = library_biz_id_list
-        self.region_id = region_id
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.library_biz_id_list is not None:
-            result['LibraryBizIdList'] = self.library_biz_id_list
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('LibraryBizIdList') is not None:
-            self.library_biz_id_list = m.get('LibraryBizIdList')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class DeleteLibrariesResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: bool = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DeleteLibrariesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteLibrariesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteLibrariesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4597,11 +4274,8 @@ class DescribeFlowJobRequest(TeaModel):
         project_id: str = None,
         region_id: str = None,
     ):
-        # 作业ID。您可以调用ListFlowJob查看作业ID。
         self.id = id
-        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
-        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -4638,9 +4312,7 @@ class DescribeFlowJobResponseBodyResourceListResource(TeaModel):
         alias: str = None,
         path: str = None,
     ):
-        # 保留参数。
         self.alias = alias
-        # 保留参数。
         self.path = path
 
     def validate(self):
@@ -4733,58 +4405,32 @@ class DescribeFlowJobResponseBody(TeaModel):
         run_conf: str = None,
         type: str = None,
     ):
-        # 是否临时查询。
         self.adhoc = adhoc
-        # 报警配置。
         self.alert_conf = alert_conf
-        # 作业所在目录ID。
         self.category_id = category_id
-        # 自定义变量。
         self.custom_variables = custom_variables
-        # 作业的描述。
         self.description = description
-        # 保留参数。
         self.edit_lock_detail = edit_lock_detail
-        # 环境变量设置。
         self.env_conf = env_conf
-        # 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
         self.fail_act = fail_act
-        # 创建时间。
         self.gmt_create = gmt_create
-        # 最后修改时间。
         self.gmt_modified = gmt_modified
-        # 作业ID。
         self.id = id
-        # Knox的用户密码，执行Zeppelin Notebook时必须提供。
         self.knox_password = knox_password
-        # Knox的用户名，执行Zeppelin Notebook时必须提供。
         self.knox_user = knox_user
-        # 最后一次执行的实例ID。
         self.last_instance_id = last_instance_id
-        # 最大重试次数。
         self.max_retry = max_retry
-        # 保留参数。
         self.max_running_time_sec = max_running_time_sec
-        # 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
         self.mode = mode
-        # 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
         self.monitor_conf = monitor_conf
-        # 作业名称。
         self.name = name
-        # 参数设置。
         self.param_conf = param_conf
-        # 作业内容。
         self.params = params
-        # 请求ID。
         self.request_id = request_id
         self.resource_list = resource_list
-        # 重试间隔 0~300（秒）。
         self.retry_interval = retry_interval
-        # 重试策略，保留参数。
         self.retry_policy = retry_policy
-        # 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
         self.run_conf = run_conf
-        # 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
         self.type = type
 
     def validate(self):
@@ -5423,480 +5069,6 @@ class DescribeFlowProjectResponse(TeaModel):
         return self
 
 
-class DescribeLibraryDetailRequest(TeaModel):
-    def __init__(
-        self,
-        library_biz_id: str = None,
-        region_id: str = None,
-        resource_owner_id: int = None,
-    ):
-        self.library_biz_id = library_biz_id
-        self.region_id = region_id
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.library_biz_id is not None:
-            result['LibraryBizId'] = self.library_biz_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('LibraryBizId') is not None:
-            self.library_biz_id = m.get('LibraryBizId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class DescribeLibraryDetailResponseBody(TeaModel):
-    def __init__(
-        self,
-        biz_id: str = None,
-        create_time: int = None,
-        library_version: str = None,
-        name: str = None,
-        properties: str = None,
-        request_id: str = None,
-        scope: str = None,
-        source_location: str = None,
-        source_type: str = None,
-        type: str = None,
-        user_id: str = None,
-    ):
-        self.biz_id = biz_id
-        self.create_time = create_time
-        self.library_version = library_version
-        self.name = name
-        self.properties = properties
-        self.request_id = request_id
-        self.scope = scope
-        self.source_location = source_location
-        self.source_type = source_type
-        self.type = type
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.biz_id is not None:
-            result['BizId'] = self.biz_id
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.library_version is not None:
-            result['LibraryVersion'] = self.library_version
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.properties is not None:
-            result['Properties'] = self.properties
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.scope is not None:
-            result['Scope'] = self.scope
-        if self.source_location is not None:
-            result['SourceLocation'] = self.source_location
-        if self.source_type is not None:
-            result['SourceType'] = self.source_type
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BizId') is not None:
-            self.biz_id = m.get('BizId')
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('LibraryVersion') is not None:
-            self.library_version = m.get('LibraryVersion')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Properties') is not None:
-            self.properties = m.get('Properties')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Scope') is not None:
-            self.scope = m.get('Scope')
-        if m.get('SourceLocation') is not None:
-            self.source_location = m.get('SourceLocation')
-        if m.get('SourceType') is not None:
-            self.source_type = m.get('SourceType')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
-        return self
-
-
-class DescribeLibraryDetailResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeLibraryDetailResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeLibraryDetailResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeLibraryInstallTaskDetailRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-        resource_owner_id: int = None,
-        task_biz_id: str = None,
-    ):
-        self.region_id = region_id
-        self.resource_owner_id = resource_owner_id
-        self.task_biz_id = task_biz_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.task_biz_id is not None:
-            result['TaskBizId'] = self.task_biz_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('TaskBizId') is not None:
-            self.task_biz_id = m.get('TaskBizId')
-        return self
-
-
-class DescribeLibraryInstallTaskDetailResponseBody(TeaModel):
-    def __init__(
-        self,
-        cluster_biz_id: str = None,
-        detail: str = None,
-        end_time: int = None,
-        execute_time: int = None,
-        hostname: str = None,
-        library_biz_id: str = None,
-        request_id: str = None,
-        start_time: int = None,
-        task_group_id: str = None,
-        task_id: str = None,
-        task_process: int = None,
-        task_status: str = None,
-        task_type: str = None,
-    ):
-        self.cluster_biz_id = cluster_biz_id
-        self.detail = detail
-        self.end_time = end_time
-        self.execute_time = execute_time
-        self.hostname = hostname
-        self.library_biz_id = library_biz_id
-        self.request_id = request_id
-        self.start_time = start_time
-        self.task_group_id = task_group_id
-        self.task_id = task_id
-        self.task_process = task_process
-        self.task_status = task_status
-        self.task_type = task_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_biz_id is not None:
-            result['ClusterBizId'] = self.cluster_biz_id
-        if self.detail is not None:
-            result['Detail'] = self.detail
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.execute_time is not None:
-            result['ExecuteTime'] = self.execute_time
-        if self.hostname is not None:
-            result['Hostname'] = self.hostname
-        if self.library_biz_id is not None:
-            result['LibraryBizId'] = self.library_biz_id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.task_group_id is not None:
-            result['TaskGroupId'] = self.task_group_id
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        if self.task_process is not None:
-            result['TaskProcess'] = self.task_process
-        if self.task_status is not None:
-            result['TaskStatus'] = self.task_status
-        if self.task_type is not None:
-            result['TaskType'] = self.task_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterBizId') is not None:
-            self.cluster_biz_id = m.get('ClusterBizId')
-        if m.get('Detail') is not None:
-            self.detail = m.get('Detail')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('ExecuteTime') is not None:
-            self.execute_time = m.get('ExecuteTime')
-        if m.get('Hostname') is not None:
-            self.hostname = m.get('Hostname')
-        if m.get('LibraryBizId') is not None:
-            self.library_biz_id = m.get('LibraryBizId')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('TaskGroupId') is not None:
-            self.task_group_id = m.get('TaskGroupId')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        if m.get('TaskProcess') is not None:
-            self.task_process = m.get('TaskProcess')
-        if m.get('TaskStatus') is not None:
-            self.task_status = m.get('TaskStatus')
-        if m.get('TaskType') is not None:
-            self.task_type = m.get('TaskType')
-        return self
-
-
-class DescribeLibraryInstallTaskDetailResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeLibraryInstallTaskDetailResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeLibraryInstallTaskDetailResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class InstallLibrariesRequest(TeaModel):
-    def __init__(
-        self,
-        cluster_biz_id_list: List[str] = None,
-        library_biz_id: str = None,
-        region_id: str = None,
-        resource_owner_id: int = None,
-    ):
-        self.cluster_biz_id_list = cluster_biz_id_list
-        self.library_biz_id = library_biz_id
-        self.region_id = region_id
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_biz_id_list is not None:
-            result['ClusterBizIdList'] = self.cluster_biz_id_list
-        if self.library_biz_id is not None:
-            result['LibraryBizId'] = self.library_biz_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterBizIdList') is not None:
-            self.cluster_biz_id_list = m.get('ClusterBizIdList')
-        if m.get('LibraryBizId') is not None:
-            self.library_biz_id = m.get('LibraryBizId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class InstallLibrariesResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: str = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class InstallLibrariesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: InstallLibrariesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = InstallLibrariesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class KillFlowJobRequest(TeaModel):
     def __init__(
         self,
@@ -5904,11 +5076,8 @@ class KillFlowJobRequest(TeaModel):
         project_id: str = None,
         region_id: str = None,
     ):
-        # 作业实例ID。您可以调用DescribeFlowJob查看作业实例ID。
         self.job_instance_id = job_instance_id
-        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
-        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -5945,9 +5114,7 @@ class KillFlowJobResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # 返回执行结果，包含如下：true（执行成功），false（执行失败）
         self.data = data
-        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -6605,25 +5772,15 @@ class ListFlowRequest(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
-        # 集群ID。您可以调用ListClusters查看集群的ID。
         self.cluster_id = cluster_id
-        # 工作流ID。您可以调用ListFlowInstance查看工作流ID。
         self.id = id
-        # 作业ID。您可以调用ListFlowJob查看。
         self.job_id = job_id
-        # 工作流名称。您可以调用ListFlowInstance查看。
         self.name = name
-        # 页码。
         self.page_number = page_number
-        # 每页查询数量。
         self.page_size = page_size
-        # 是否调度。
         self.periodic = periodic
-        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
-        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
-        # 状态：  STOP_SCHEDULE（停止调度） UNDER_SCHEDULE（调度中）
         self.status = status
 
     def validate(self):
@@ -6867,15 +6024,10 @@ class ListFlowResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 工作流列表
         self.flow = flow
-        # 页码。
         self.page_number = page_number
-        # 每页数量。
         self.page_size = page_size
-        # 请求ID。
         self.request_id = request_id
-        # 总数。
         self.total = total
 
     def validate(self):
@@ -6973,23 +6125,14 @@ class ListFlowJobHistoryRequest(TeaModel):
         status_list: List[str] = None,
         time_range: str = None,
     ):
-        # 作业ID。您可以调用ListFlowJob查看作业ID。
         self.id = id
-        # 作业实例ID。您可以调用DescribeFlowJob查看作业实例ID。
         self.instance_id = instance_id
-        # 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
         self.job_type = job_type
-        # 当前页码。
         self.page_number = page_number
-        # 分页查询时每页行数。
         self.page_size = page_size
-        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
-        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
-        # 状态列表。取值如下：SUBMITTED, RUNNING, SUCCESS, FAILED, KILL_FAILED, KILL_SUCCESS
         self.status_list = status_list
-        # 查询的时间范围参数，参数列表：type: range，from: 开始时间（long型时间戳），to: 结束时间（long型时间戳）
         self.time_range = time_range
 
     def validate(self):
@@ -7074,57 +6217,31 @@ class ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance(TeaModel):
         type: str = None,
         pending: bool = None,
     ):
-        # 集群ID。
         self.cluster_id = cluster_id
-        # 运行结束时间。
         self.end_time = end_time
-        # 环境变量设置。
         self.env_conf = env_conf
-        # 启动器的application的ID。
         self.external_id = external_id
-        # 外部信息。例如，运行作业的错误诊断信息。
         self.external_info = external_info
-        # 实例对应的Container的状态：SUBMITTED, RUNNING, SUCCESS, FAIL, KILL_FAIL, KILL_SUCCESS
         self.external_status = external_status
-        # 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
         self.fail_act = fail_act
-        # 创建时间。
         self.gmt_create = gmt_create
-        # 创建时间。
         self.gmt_modified = gmt_modified
-        # 保留参数。
         self.host_name = host_name
-        # 作业实例ID。
         self.id = id
-        # 作业ID。
         self.job_id = job_id
-        # 作业名称。
         self.job_name = job_name
-        # 作业内容。
         self.job_params = job_params
-        # 作业类型。
         self.job_type = job_type
-        # 最大重试次数。
         self.max_retry = max_retry
-        # 保留参数。
         self.node_name = node_name
-        # 参数设置。
         self.param_conf = param_conf
-        # 项目ID。
         self.project_id = project_id
-        # 重试次数。
         self.retries = retries
-        # 重试间隔 0-300（秒）。
         self.retry_interval = retry_interval
-        # 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
         self.run_conf = run_conf
-        # 运行开始时间。
         self.start_time = start_time
-        # 实例的执行状态：PREP：准备启动，SUBMITTING：提交中，RUNNING：运行中DONE：已完成，OK：执行成功，FAILED：执行失败，KILLED：已终止，KILL_FAILED：终止失败，START_RETRY：开始重试
         self.status = status
-        # 节点类型：JOB：作业，CLUSTER：集群，START：开始，END：结束
         self.type = type
-        # 是否结束。
         self.pending = pending
 
     def validate(self):
@@ -7291,15 +6408,10 @@ class ListFlowJobHistoryResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 作业实例列表。
         self.node_instances = node_instances
-        # 当前页码。
         self.page_number = page_number
-        # 分页查询时设置的每页行数。
         self.page_size = page_size
-        # 请求ID。
         self.request_id = request_id
-        # 记录总数。
         self.total = total
 
     def validate(self):
@@ -7397,22 +6509,14 @@ class ListFlowJobsRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
-        # 是否为临时查询。用于过滤作业。
         self.adhoc = adhoc
         self.exact_name = exact_name
-        # 作业ID。您可以调用ListFlowJob查看作业ID。
         self.id = id
-        # 作业名称。
         self.name = name
-        # 当前页数。
         self.page_number = page_number
-        # 每页的作业数量。
         self.page_size = page_size
-        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
-        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
-        # 作业类型。用于过滤作业，支持的类型有：SPARK，SPARK_STREAMING，ZEPPELIN。
         self.type = type
 
     def validate(self):
@@ -7473,9 +6577,7 @@ class ListFlowJobsResponseBodyJobListJobResourceListResource(TeaModel):
         alias: str = None,
         path: str = None,
     ):
-        # 保留参数。
         self.alias = alias
-        # 保留参数。
         self.path = path
 
     def validate(self):
@@ -7562,46 +6664,26 @@ class ListFlowJobsResponseBodyJobListJob(TeaModel):
         run_conf: str = None,
         type: str = None,
     ):
-        # 是否临时查询。
         self.adhoc = adhoc
-        # 报警配置。
         self.alert_conf = alert_conf
-        # 作业所在目录ID。
         self.category_id = category_id
-        # 自定义变量。
         self.custom_variables = custom_variables
-        # 作业的描述。
         self.description = description
-        # 环境变量设置。
         self.env_conf = env_conf
-        # 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
         self.fail_act = fail_act
-        # 创建时间。
         self.gmt_create = gmt_create
-        # 最后修改时间。
         self.gmt_modified = gmt_modified
-        # 作业ID。
         self.id = id
-        # 最后一次执行的实例ID。
         self.last_instance_detail = last_instance_detail
-        # 最大重试次数。
         self.max_retry = max_retry
-        # 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
         self.mode = mode
-        # 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
         self.monitor_conf = monitor_conf
-        # 作业名称。
         self.name = name
-        # 参数设置。
         self.param_conf = param_conf
-        # 作业内容。
         self.params = params
         self.resource_list = resource_list
-        # 重试间隔 0~300（秒）。
         self.retry_interval = retry_interval
-        # 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
         self.run_conf = run_conf
-        # 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
         self.type = type
 
     def validate(self):
@@ -7751,13 +6833,9 @@ class ListFlowJobsResponseBody(TeaModel):
         total: int = None,
     ):
         self.job_list = job_list
-        # 当前页数。
         self.page_number = page_number
-        # 每页的作业数量。
         self.page_size = page_size
-        # 请求ID。
         self.request_id = request_id
-        # 作业数量。
         self.total = total
 
     def validate(self):
@@ -8087,19 +7165,12 @@ class ListFlowProjectsRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # 项目名称，用于过滤项目
         self.name = name
-        # 页码，用于分页
         self.page_number = page_number
-        # 每页数量
         self.page_size = page_size
-        # 产品类型。固定值DATABIRCKS_DATAINSIGHT
         self.product_type = product_type
-        # 项目ID。您可以调用ListFlowProjects查看项目的ID
         self.project_id = project_id
-        # 地域ID
         self.region_id = region_id
-        # 资源组ID
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -8156,17 +7227,11 @@ class ListFlowProjectsResponseBodyProjectsProject(TeaModel):
         name: str = None,
         user_id: str = None,
     ):
-        # 项目描述
         self.description = description
-        # 创建时间戳
         self.gmt_create = gmt_create
-        # 修改时间戳
         self.gmt_modified = gmt_modified
-        # 项目ID
         self.id = id
-        # 项目名称
         self.name = name
-        # 主账号ID
         self.user_id = user_id
 
     def validate(self):
@@ -8253,15 +7318,10 @@ class ListFlowProjectsResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 页码
         self.page_number = page_number
-        # 每页数量
         self.page_size = page_size
-        # 项目列表
         self.projects = projects
-        # 请求ID
         self.request_id = request_id
-        # 总数
         self.total = total
 
     def validate(self):
@@ -8342,1171 +7402,6 @@ class ListFlowProjectsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListFlowProjectsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListLibrariesRequest(TeaModel):
-    def __init__(
-        self,
-        cluster_biz_id: str = None,
-        current_size: int = None,
-        limit: int = None,
-        order_field: str = None,
-        order_mode: str = None,
-        page_count: int = None,
-        page_number: int = None,
-        page_size: int = None,
-        region_id: str = None,
-        resource_owner_id: int = None,
-    ):
-        self.cluster_biz_id = cluster_biz_id
-        self.current_size = current_size
-        self.limit = limit
-        self.order_field = order_field
-        self.order_mode = order_mode
-        self.page_count = page_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.region_id = region_id
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_biz_id is not None:
-            result['ClusterBizId'] = self.cluster_biz_id
-        if self.current_size is not None:
-            result['CurrentSize'] = self.current_size
-        if self.limit is not None:
-            result['Limit'] = self.limit
-        if self.order_field is not None:
-            result['OrderField'] = self.order_field
-        if self.order_mode is not None:
-            result['OrderMode'] = self.order_mode
-        if self.page_count is not None:
-            result['PageCount'] = self.page_count
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterBizId') is not None:
-            self.cluster_biz_id = m.get('ClusterBizId')
-        if m.get('CurrentSize') is not None:
-            self.current_size = m.get('CurrentSize')
-        if m.get('Limit') is not None:
-            self.limit = m.get('Limit')
-        if m.get('OrderField') is not None:
-            self.order_field = m.get('OrderField')
-        if m.get('OrderMode') is not None:
-            self.order_mode = m.get('OrderMode')
-        if m.get('PageCount') is not None:
-            self.page_count = m.get('PageCount')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class ListLibrariesResponseBodyItemsItem(TeaModel):
-    def __init__(
-        self,
-        biz_id: str = None,
-        create_time: int = None,
-        library_version: str = None,
-        name: str = None,
-        properties: str = None,
-        scope: str = None,
-        source_location: str = None,
-        source_type: str = None,
-        type: str = None,
-        user_id: str = None,
-    ):
-        self.biz_id = biz_id
-        self.create_time = create_time
-        self.library_version = library_version
-        self.name = name
-        self.properties = properties
-        self.scope = scope
-        self.source_location = source_location
-        self.source_type = source_type
-        self.type = type
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.biz_id is not None:
-            result['BizId'] = self.biz_id
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.library_version is not None:
-            result['LibraryVersion'] = self.library_version
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.properties is not None:
-            result['Properties'] = self.properties
-        if self.scope is not None:
-            result['Scope'] = self.scope
-        if self.source_location is not None:
-            result['SourceLocation'] = self.source_location
-        if self.source_type is not None:
-            result['SourceType'] = self.source_type
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BizId') is not None:
-            self.biz_id = m.get('BizId')
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('LibraryVersion') is not None:
-            self.library_version = m.get('LibraryVersion')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Properties') is not None:
-            self.properties = m.get('Properties')
-        if m.get('Scope') is not None:
-            self.scope = m.get('Scope')
-        if m.get('SourceLocation') is not None:
-            self.source_location = m.get('SourceLocation')
-        if m.get('SourceType') is not None:
-            self.source_type = m.get('SourceType')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
-        return self
-
-
-class ListLibrariesResponseBodyItems(TeaModel):
-    def __init__(
-        self,
-        item: List[ListLibrariesResponseBodyItemsItem] = None,
-    ):
-        self.item = item
-
-    def validate(self):
-        if self.item:
-            for k in self.item:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Item'] = []
-        if self.item is not None:
-            for k in self.item:
-                result['Item'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.item = []
-        if m.get('Item') is not None:
-            for k in m.get('Item'):
-                temp_model = ListLibrariesResponseBodyItemsItem()
-                self.item.append(temp_model.from_map(k))
-        return self
-
-
-class ListLibrariesResponseBody(TeaModel):
-    def __init__(
-        self,
-        items: ListLibrariesResponseBodyItems = None,
-        next_token: str = None,
-        page_number: int = None,
-        page_size: int = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        self.items = items
-        self.next_token = next_token
-        self.page_number = page_number
-        self.page_size = page_size
-        self.request_id = request_id
-        self.total_count = total_count
-
-    def validate(self):
-        if self.items:
-            self.items.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.items is not None:
-            result['Items'] = self.items.to_map()
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Items') is not None:
-            temp_model = ListLibrariesResponseBodyItems()
-            self.items = temp_model.from_map(m['Items'])
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListLibrariesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListLibrariesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListLibrariesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListLibraryInstallTasksRequest(TeaModel):
-    def __init__(
-        self,
-        cluster_biz_id: str = None,
-        current_size: int = None,
-        library_biz_id: str = None,
-        limit: int = None,
-        order_field: str = None,
-        order_mode: str = None,
-        page_count: int = None,
-        page_number: int = None,
-        page_size: int = None,
-        region_id: str = None,
-        resource_owner_id: int = None,
-    ):
-        self.cluster_biz_id = cluster_biz_id
-        self.current_size = current_size
-        self.library_biz_id = library_biz_id
-        self.limit = limit
-        self.order_field = order_field
-        self.order_mode = order_mode
-        self.page_count = page_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.region_id = region_id
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_biz_id is not None:
-            result['ClusterBizId'] = self.cluster_biz_id
-        if self.current_size is not None:
-            result['CurrentSize'] = self.current_size
-        if self.library_biz_id is not None:
-            result['LibraryBizId'] = self.library_biz_id
-        if self.limit is not None:
-            result['Limit'] = self.limit
-        if self.order_field is not None:
-            result['OrderField'] = self.order_field
-        if self.order_mode is not None:
-            result['OrderMode'] = self.order_mode
-        if self.page_count is not None:
-            result['PageCount'] = self.page_count
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterBizId') is not None:
-            self.cluster_biz_id = m.get('ClusterBizId')
-        if m.get('CurrentSize') is not None:
-            self.current_size = m.get('CurrentSize')
-        if m.get('LibraryBizId') is not None:
-            self.library_biz_id = m.get('LibraryBizId')
-        if m.get('Limit') is not None:
-            self.limit = m.get('Limit')
-        if m.get('OrderField') is not None:
-            self.order_field = m.get('OrderField')
-        if m.get('OrderMode') is not None:
-            self.order_mode = m.get('OrderMode')
-        if m.get('PageCount') is not None:
-            self.page_count = m.get('PageCount')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class ListLibraryInstallTasksResponseBodyItemsItem(TeaModel):
-    def __init__(
-        self,
-        cluster_biz_id: str = None,
-        detail: str = None,
-        end_time: int = None,
-        execute_time: int = None,
-        hostname: str = None,
-        library_biz_id: str = None,
-        start_time: int = None,
-        task_group_id: str = None,
-        task_id: str = None,
-        task_process: int = None,
-        task_status: str = None,
-        task_type: str = None,
-    ):
-        self.cluster_biz_id = cluster_biz_id
-        self.detail = detail
-        self.end_time = end_time
-        self.execute_time = execute_time
-        self.hostname = hostname
-        self.library_biz_id = library_biz_id
-        self.start_time = start_time
-        self.task_group_id = task_group_id
-        self.task_id = task_id
-        self.task_process = task_process
-        self.task_status = task_status
-        self.task_type = task_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_biz_id is not None:
-            result['ClusterBizId'] = self.cluster_biz_id
-        if self.detail is not None:
-            result['Detail'] = self.detail
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.execute_time is not None:
-            result['ExecuteTime'] = self.execute_time
-        if self.hostname is not None:
-            result['Hostname'] = self.hostname
-        if self.library_biz_id is not None:
-            result['LibraryBizId'] = self.library_biz_id
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.task_group_id is not None:
-            result['TaskGroupId'] = self.task_group_id
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        if self.task_process is not None:
-            result['TaskProcess'] = self.task_process
-        if self.task_status is not None:
-            result['TaskStatus'] = self.task_status
-        if self.task_type is not None:
-            result['TaskType'] = self.task_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterBizId') is not None:
-            self.cluster_biz_id = m.get('ClusterBizId')
-        if m.get('Detail') is not None:
-            self.detail = m.get('Detail')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('ExecuteTime') is not None:
-            self.execute_time = m.get('ExecuteTime')
-        if m.get('Hostname') is not None:
-            self.hostname = m.get('Hostname')
-        if m.get('LibraryBizId') is not None:
-            self.library_biz_id = m.get('LibraryBizId')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('TaskGroupId') is not None:
-            self.task_group_id = m.get('TaskGroupId')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        if m.get('TaskProcess') is not None:
-            self.task_process = m.get('TaskProcess')
-        if m.get('TaskStatus') is not None:
-            self.task_status = m.get('TaskStatus')
-        if m.get('TaskType') is not None:
-            self.task_type = m.get('TaskType')
-        return self
-
-
-class ListLibraryInstallTasksResponseBodyItems(TeaModel):
-    def __init__(
-        self,
-        item: List[ListLibraryInstallTasksResponseBodyItemsItem] = None,
-    ):
-        self.item = item
-
-    def validate(self):
-        if self.item:
-            for k in self.item:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Item'] = []
-        if self.item is not None:
-            for k in self.item:
-                result['Item'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.item = []
-        if m.get('Item') is not None:
-            for k in m.get('Item'):
-                temp_model = ListLibraryInstallTasksResponseBodyItemsItem()
-                self.item.append(temp_model.from_map(k))
-        return self
-
-
-class ListLibraryInstallTasksResponseBody(TeaModel):
-    def __init__(
-        self,
-        items: ListLibraryInstallTasksResponseBodyItems = None,
-        next_token: str = None,
-        page_number: int = None,
-        page_size: int = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        self.items = items
-        self.next_token = next_token
-        self.page_number = page_number
-        self.page_size = page_size
-        self.request_id = request_id
-        self.total_count = total_count
-
-    def validate(self):
-        if self.items:
-            self.items.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.items is not None:
-            result['Items'] = self.items.to_map()
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Items') is not None:
-            temp_model = ListLibraryInstallTasksResponseBodyItems()
-            self.items = temp_model.from_map(m['Items'])
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListLibraryInstallTasksResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListLibraryInstallTasksResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListLibraryInstallTasksResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListLibraryStatusRequest(TeaModel):
-    def __init__(
-        self,
-        cluster_biz_id: str = None,
-        current_size: int = None,
-        library_biz_id: str = None,
-        limit: int = None,
-        order_field: str = None,
-        order_mode: str = None,
-        page_count: int = None,
-        page_number: int = None,
-        page_size: int = None,
-        region_id: str = None,
-        resource_owner_id: int = None,
-    ):
-        self.cluster_biz_id = cluster_biz_id
-        self.current_size = current_size
-        self.library_biz_id = library_biz_id
-        self.limit = limit
-        self.order_field = order_field
-        self.order_mode = order_mode
-        self.page_count = page_count
-        self.page_number = page_number
-        self.page_size = page_size
-        self.region_id = region_id
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_biz_id is not None:
-            result['ClusterBizId'] = self.cluster_biz_id
-        if self.current_size is not None:
-            result['CurrentSize'] = self.current_size
-        if self.library_biz_id is not None:
-            result['LibraryBizId'] = self.library_biz_id
-        if self.limit is not None:
-            result['Limit'] = self.limit
-        if self.order_field is not None:
-            result['OrderField'] = self.order_field
-        if self.order_mode is not None:
-            result['OrderMode'] = self.order_mode
-        if self.page_count is not None:
-            result['PageCount'] = self.page_count
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterBizId') is not None:
-            self.cluster_biz_id = m.get('ClusterBizId')
-        if m.get('CurrentSize') is not None:
-            self.current_size = m.get('CurrentSize')
-        if m.get('LibraryBizId') is not None:
-            self.library_biz_id = m.get('LibraryBizId')
-        if m.get('Limit') is not None:
-            self.limit = m.get('Limit')
-        if m.get('OrderField') is not None:
-            self.order_field = m.get('OrderField')
-        if m.get('OrderMode') is not None:
-            self.order_mode = m.get('OrderMode')
-        if m.get('PageCount') is not None:
-            self.page_count = m.get('PageCount')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class ListLibraryStatusResponseBodyItemsItem(TeaModel):
-    def __init__(
-        self,
-        cluster_biz_id: str = None,
-        cluster_name: str = None,
-        library_biz_id: str = None,
-        library_name: str = None,
-        status: str = None,
-    ):
-        self.cluster_biz_id = cluster_biz_id
-        self.cluster_name = cluster_name
-        self.library_biz_id = library_biz_id
-        self.library_name = library_name
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_biz_id is not None:
-            result['ClusterBizId'] = self.cluster_biz_id
-        if self.cluster_name is not None:
-            result['ClusterName'] = self.cluster_name
-        if self.library_biz_id is not None:
-            result['LibraryBizId'] = self.library_biz_id
-        if self.library_name is not None:
-            result['LibraryName'] = self.library_name
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterBizId') is not None:
-            self.cluster_biz_id = m.get('ClusterBizId')
-        if m.get('ClusterName') is not None:
-            self.cluster_name = m.get('ClusterName')
-        if m.get('LibraryBizId') is not None:
-            self.library_biz_id = m.get('LibraryBizId')
-        if m.get('LibraryName') is not None:
-            self.library_name = m.get('LibraryName')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class ListLibraryStatusResponseBodyItems(TeaModel):
-    def __init__(
-        self,
-        item: List[ListLibraryStatusResponseBodyItemsItem] = None,
-    ):
-        self.item = item
-
-    def validate(self):
-        if self.item:
-            for k in self.item:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Item'] = []
-        if self.item is not None:
-            for k in self.item:
-                result['Item'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.item = []
-        if m.get('Item') is not None:
-            for k in m.get('Item'):
-                temp_model = ListLibraryStatusResponseBodyItemsItem()
-                self.item.append(temp_model.from_map(k))
-        return self
-
-
-class ListLibraryStatusResponseBody(TeaModel):
-    def __init__(
-        self,
-        items: ListLibraryStatusResponseBodyItems = None,
-        next_token: str = None,
-        page_number: int = None,
-        page_size: int = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        self.items = items
-        self.next_token = next_token
-        self.page_number = page_number
-        self.page_size = page_size
-        self.request_id = request_id
-        self.total_count = total_count
-
-    def validate(self):
-        if self.items:
-            self.items.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.items is not None:
-            result['Items'] = self.items.to_map()
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Items') is not None:
-            temp_model = ListLibraryStatusResponseBodyItems()
-            self.items = temp_model.from_map(m['Items'])
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListLibraryStatusResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListLibraryStatusResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListLibraryStatusResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListTagResourcesRequestTag(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        # 标签键
-        self.key = key
-        # 标签值
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class ListTagResourcesRequest(TeaModel):
-    def __init__(
-        self,
-        next_token: str = None,
-        region_id: str = None,
-        resource_group_id: str = None,
-        resource_id: List[str] = None,
-        resource_owner_id: int = None,
-        resource_type: str = None,
-        tag: List[ListTagResourcesRequestTag] = None,
-    ):
-        self.next_token = next_token
-        self.region_id = region_id
-        self.resource_group_id = resource_group_id
-        # 资源组ID
-        self.resource_id = resource_id
-        self.resource_owner_id = resource_owner_id
-        self.resource_type = resource_type
-        # 标签
-        self.tag = tag
-
-    def validate(self):
-        if self.tag:
-            for k in self.tag:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        if self.resource_id is not None:
-            result['ResourceId'] = self.resource_id
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
-        result['Tag'] = []
-        if self.tag is not None:
-            for k in self.tag:
-                result['Tag'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('ResourceId') is not None:
-            self.resource_id = m.get('ResourceId')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
-        self.tag = []
-        if m.get('Tag') is not None:
-            for k in m.get('Tag'):
-                temp_model = ListTagResourcesRequestTag()
-                self.tag.append(temp_model.from_map(k))
-        return self
-
-
-class ListTagResourcesResponseBodyTagResources(TeaModel):
-    def __init__(
-        self,
-        resource_id: str = None,
-        resource_type: str = None,
-        tag_key: str = None,
-        tag_value: str = None,
-    ):
-        # 资源ID
-        self.resource_id = resource_id
-        # 资源类型
-        self.resource_type = resource_type
-        # 标签键
-        self.tag_key = tag_key
-        # 标签值
-        self.tag_value = tag_value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.resource_id is not None:
-            result['ResourceId'] = self.resource_id
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
-        if self.tag_key is not None:
-            result['TagKey'] = self.tag_key
-        if self.tag_value is not None:
-            result['TagValue'] = self.tag_value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ResourceId') is not None:
-            self.resource_id = m.get('ResourceId')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
-        if m.get('TagKey') is not None:
-            self.tag_key = m.get('TagKey')
-        if m.get('TagValue') is not None:
-            self.tag_value = m.get('TagValue')
-        return self
-
-
-class ListTagResourcesResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        error_code: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-        tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
-    ):
-        # 响应码
-        self.code = code
-        # 错误码
-        self.error_code = error_code
-        # 响应消息
-        self.message = message
-        # Id of the request
-        self.request_id = request_id
-        # 请求是否成功被处理
-        self.success = success
-        self.tag_resources = tag_resources
-
-    def validate(self):
-        if self.tag_resources:
-            for k in self.tag_resources:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        result['TagResources'] = []
-        if self.tag_resources is not None:
-            for k in self.tag_resources:
-                result['TagResources'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        self.tag_resources = []
-        if m.get('TagResources') is not None:
-            for k in m.get('TagResources'):
-                temp_model = ListTagResourcesResponseBodyTagResources()
-                self.tag_resources.append(temp_model.from_map(k))
-        return self
-
-
-class ListTagResourcesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListTagResourcesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListTagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9735,9 +7630,7 @@ class ModifyFlowJobRequestResourceList(TeaModel):
         alias: str = None,
         path: str = None,
     ):
-        # 保留参数。
         self.alias = alias
-        # 保留参数。
         self.path = path
 
     def validate(self):
@@ -9776,6 +7669,7 @@ class ModifyFlowJobRequest(TeaModel):
         id: str = None,
         knox_password: str = None,
         knox_user: str = None,
+        max_retry: int = None,
         mode: str = None,
         monitor_conf: str = None,
         name: str = None,
@@ -9784,46 +7678,30 @@ class ModifyFlowJobRequest(TeaModel):
         project_id: str = None,
         region_id: str = None,
         resource_list: List[ModifyFlowJobRequestResourceList] = None,
+        retry_interval: int = None,
         retry_policy: str = None,
         run_conf: str = None,
     ):
-        # 保留参数。
         self.alert_conf = alert_conf
-        # 集群ID。您可以调用ListClusters查看集群的ID。
         self.cluster_id = cluster_id
-        # 自定义变量。
         self.custom_variables = custom_variables
-        # 修改后的作业描述。
         self.description = description
-        # 环境变量设置。
         self.env_conf = env_conf
-        # 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
         self.fail_act = fail_act
-        # 需要修改的作业的ID。
         self.id = id
-        # Knox的用户密码，执行Zeppelin Notebook时必须提供。
         self.knox_password = knox_password
-        # Knox的用户名，执行Zeppelin Notebook时必须提供。
         self.knox_user = knox_user
-        # 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
+        self.max_retry = max_retry
         self.mode = mode
-        # 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
         self.monitor_conf = monitor_conf
-        # 修改后的作业名称。
         self.name = name
-        # 参数设置。
         self.param_conf = param_conf
-        # 作业内容。如果是spark作业，该参数的内容会作为spark-submit的参数。
         self.params = params
-        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
-        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
-        # 保留参数。
         self.resource_list = resource_list
-        # 重试策略，保留参数。
+        self.retry_interval = retry_interval
         self.retry_policy = retry_policy
-        # 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
         self.run_conf = run_conf
 
     def validate(self):
@@ -9856,6 +7734,8 @@ class ModifyFlowJobRequest(TeaModel):
             result['KnoxPassword'] = self.knox_password
         if self.knox_user is not None:
             result['KnoxUser'] = self.knox_user
+        if self.max_retry is not None:
+            result['MaxRetry'] = self.max_retry
         if self.mode is not None:
             result['Mode'] = self.mode
         if self.monitor_conf is not None:
@@ -9874,6 +7754,8 @@ class ModifyFlowJobRequest(TeaModel):
         if self.resource_list is not None:
             for k in self.resource_list:
                 result['ResourceList'].append(k.to_map() if k else None)
+        if self.retry_interval is not None:
+            result['RetryInterval'] = self.retry_interval
         if self.retry_policy is not None:
             result['RetryPolicy'] = self.retry_policy
         if self.run_conf is not None:
@@ -9900,6 +7782,8 @@ class ModifyFlowJobRequest(TeaModel):
             self.knox_password = m.get('KnoxPassword')
         if m.get('KnoxUser') is not None:
             self.knox_user = m.get('KnoxUser')
+        if m.get('MaxRetry') is not None:
+            self.max_retry = m.get('MaxRetry')
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
         if m.get('MonitorConf') is not None:
@@ -9919,6 +7803,8 @@ class ModifyFlowJobRequest(TeaModel):
             for k in m.get('ResourceList'):
                 temp_model = ModifyFlowJobRequestResourceList()
                 self.resource_list.append(temp_model.from_map(k))
+        if m.get('RetryInterval') is not None:
+            self.retry_interval = m.get('RetryInterval')
         if m.get('RetryPolicy') is not None:
             self.retry_policy = m.get('RetryPolicy')
         if m.get('RunConf') is not None:
@@ -9932,9 +7818,7 @@ class ModifyFlowJobResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # API调用结果：true（修改成功），false（修改失败）
         self.data = data
-        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -10251,13 +8135,9 @@ class RerunFlowRequest(TeaModel):
         re_run_fail: bool = None,
         region_id: str = None,
     ):
-        # 工作流实例ID。您可以调用ListFlowInstance查看工作流实例ID。
         self.flow_instance_id = flow_instance_id
-        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
-        # 是否只重试失败节点。
         self.re_run_fail = re_run_fail
-        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -10298,9 +8178,7 @@ class RerunFlowResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # 返回执行结果，包含如下：true: 重试工作流成功，false: 重试工作流失败。
         self.data = data
-        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -10378,11 +8256,8 @@ class ResumeFlowRequest(TeaModel):
         project_id: str = None,
         region_id: str = None,
     ):
-        # 工作流实例ID。您可以调用ListFlowInstance查看工作流ID。
         self.flow_instance_id = flow_instance_id
-        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
-        # 区域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -10419,9 +8294,7 @@ class ResumeFlowResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # 返回执行结果。
         self.data = data
-        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -10500,13 +8373,9 @@ class SubmitFlowRequest(TeaModel):
         project_id: str = None,
         region_id: str = None,
     ):
-        # 配置信息{"key":"value"}格式。  本示例中cyctime表示实际调度运行的时间（长整型时间戳）。
         self.conf = conf
-        # 工作流ID。您可以调用ListFlowInstance查看工作流ID。
         self.flow_id = flow_id
-        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
-        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -10549,13 +8418,9 @@ class SubmitFlowResponseBody(TeaModel):
         instance_id: str = None,
         request_id: str = None,
     ):
-        # 过期参数。
         self.data = data
-        # 工作流实例ID。
         self.id = id
-        # 过期参数。
         self.instance_id = instance_id
-        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -10644,17 +8509,11 @@ class SubmitFlowJobRequest(TeaModel):
         project_id: str = None,
         region_id: str = None,
     ):
-        # 集群ID。您可以调用ListClusters查看集群的ID。
         self.cluster_id = cluster_id
-        # 配置参数信息：{"key1":"value1"}。key为params的参数值会覆盖实际作业中运行的内容。
         self.conf = conf
-        # 保留参数。
         self.host_name = host_name
-        # 作业ID。您可以调用ListFlowJob查看作业ID。
         self.job_id = job_id
-        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
-        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -10703,9 +8562,7 @@ class SubmitFlowJobResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
-        # 运行的作业实例ID。
         self.id = id
-        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -10772,618 +8629,6 @@ class SubmitFlowJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitFlowJobResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class TagResourcesRequestTag(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class TagResourcesRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-        resource_group_id: str = None,
-        resource_id: List[str] = None,
-        resource_owner_id: int = None,
-        resource_type: str = None,
-        tag: List[TagResourcesRequestTag] = None,
-    ):
-        self.region_id = region_id
-        self.resource_group_id = resource_group_id
-        # 资源ID
-        self.resource_id = resource_id
-        self.resource_owner_id = resource_owner_id
-        # 资源类型
-        self.resource_type = resource_type
-        # 标签列表
-        self.tag = tag
-
-    def validate(self):
-        if self.tag:
-            for k in self.tag:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        if self.resource_id is not None:
-            result['ResourceId'] = self.resource_id
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
-        result['Tag'] = []
-        if self.tag is not None:
-            for k in self.tag:
-                result['Tag'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('ResourceId') is not None:
-            self.resource_id = m.get('ResourceId')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
-        self.tag = []
-        if m.get('Tag') is not None:
-            for k in m.get('Tag'):
-                temp_model = TagResourcesRequestTag()
-                self.tag.append(temp_model.from_map(k))
-        return self
-
-
-class TagResourcesResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        error_code: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        # 响应码
-        self.code = code
-        # 错误码
-        self.error_code = error_code
-        # 响应消息
-        self.message = message
-        # Id of the request
-        self.request_id = request_id
-        # 请求是否成功被处理
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class TagResourcesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: TagResourcesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = TagResourcesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UninstallLibrariesRequest(TeaModel):
-    def __init__(
-        self,
-        cluster_biz_id_list: List[str] = None,
-        library_biz_id: str = None,
-        region_id: str = None,
-        resource_owner_id: int = None,
-    ):
-        self.cluster_biz_id_list = cluster_biz_id_list
-        self.library_biz_id = library_biz_id
-        self.region_id = region_id
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_biz_id_list is not None:
-            result['ClusterBizIdList'] = self.cluster_biz_id_list
-        if self.library_biz_id is not None:
-            result['LibraryBizId'] = self.library_biz_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterBizIdList') is not None:
-            self.cluster_biz_id_list = m.get('ClusterBizIdList')
-        if m.get('LibraryBizId') is not None:
-            self.library_biz_id = m.get('LibraryBizId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class UninstallLibrariesResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: str = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class UninstallLibrariesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: UninstallLibrariesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = UninstallLibrariesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UntagResourcesRequest(TeaModel):
-    def __init__(
-        self,
-        all: bool = None,
-        region_id: str = None,
-        resource_group_id: str = None,
-        resource_id: List[str] = None,
-        resource_owner_id: int = None,
-        resource_type: str = None,
-        tag_key: List[str] = None,
-    ):
-        # 是否解绑资源的所有标签
-        self.all = all
-        self.region_id = region_id
-        self.resource_group_id = resource_group_id
-        # 集群ID列表
-        self.resource_id = resource_id
-        self.resource_owner_id = resource_owner_id
-        # 资源类型
-        self.resource_type = resource_type
-        # 解绑的标签键列表
-        self.tag_key = tag_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.all is not None:
-            result['All'] = self.all
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        if self.resource_id is not None:
-            result['ResourceId'] = self.resource_id
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
-        if self.tag_key is not None:
-            result['TagKey'] = self.tag_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('All') is not None:
-            self.all = m.get('All')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('ResourceId') is not None:
-            self.resource_id = m.get('ResourceId')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
-        if m.get('TagKey') is not None:
-            self.tag_key = m.get('TagKey')
-        return self
-
-
-class UntagResourcesResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        error_code: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        # 响应码
-        self.code = code
-        # 错误码
-        self.error_code = error_code
-        # 响应消息
-        self.message = message
-        # Id of the request
-        self.request_id = request_id
-        # 请求是否成功被处理
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class UntagResourcesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: UntagResourcesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = UntagResourcesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UpdateLibraryInstallTaskStatusRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-        resource_owner_id: int = None,
-        status: str = None,
-        task_biz_id: str = None,
-    ):
-        self.region_id = region_id
-        self.resource_owner_id = resource_owner_id
-        self.status = status
-        self.task_biz_id = task_biz_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.task_biz_id is not None:
-            result['TaskBizId'] = self.task_biz_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('TaskBizId') is not None:
-            self.task_biz_id = m.get('TaskBizId')
-        return self
-
-
-class UpdateLibraryInstallTaskStatusResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: bool = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class UpdateLibraryInstallTaskStatusResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: UpdateLibraryInstallTaskStatusResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = UpdateLibraryInstallTaskStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
