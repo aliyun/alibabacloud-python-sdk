@@ -608,10 +608,12 @@ class BatchAbolishApisRequestApi(TeaModel):
         api_uid: str = None,
         group_id: str = None,
         stage_id: str = None,
+        stage_name: str = None,
     ):
         self.api_uid = api_uid
         self.group_id = group_id
         self.stage_id = stage_id
+        self.stage_name = stage_name
 
     def validate(self):
         pass
@@ -628,6 +630,8 @@ class BatchAbolishApisRequestApi(TeaModel):
             result['GroupId'] = self.group_id
         if self.stage_id is not None:
             result['StageId'] = self.stage_id
+        if self.stage_name is not None:
+            result['StageName'] = self.stage_name
         return result
 
     def from_map(self, m: dict = None):
@@ -638,6 +642,8 @@ class BatchAbolishApisRequestApi(TeaModel):
             self.group_id = m.get('GroupId')
         if m.get('StageId') is not None:
             self.stage_id = m.get('StageId')
+        if m.get('StageName') is not None:
+            self.stage_name = m.get('StageName')
         return self
 
 
@@ -13730,20 +13736,13 @@ class DescribeApisByAppRequest(TeaModel):
         path: str = None,
         security_token: str = None,
     ):
-        # API名称
         self.api_name = api_name
-        # API的ID
         self.api_uid = api_uid
-        # APP的ID
         self.app_id = app_id
         self.description = description
-        # API的请求HTTP Method
         self.method = method
-        # 当前页码
         self.page_number = page_number
-        # 每页条目
         self.page_size = page_size
-        # API请求路径
         self.path = path
         self.security_token = security_token
 
@@ -13816,30 +13815,18 @@ class DescribeApisByAppResponseBodyAppApiRelationInfosAppApiRelationInfo(TeaMode
         region_id: str = None,
         stage_name: str = None,
     ):
-        # API的ID
         self.api_id = api_id
-        # API名称
         self.api_name = api_name
-        # 授权有效时间
         self.auth_vaild_time = auth_vaild_time
-        # 授权来源
         self.authorization_source = authorization_source
-        # 授权时间
         self.created_time = created_time
-        # 描述
         self.description = description
-        # 分组ID
         self.group_id = group_id
-        # 分组名称
         self.group_name = group_name
-        # API的请求HTTP Method
         self.method = method
         self.operator = operator
-        # API的请求路径
         self.path = path
-        # 地区ID
         self.region_id = region_id
-        # 环境名称
         self.stage_name = stage_name
 
     def validate(self):
@@ -13955,13 +13942,9 @@ class DescribeApisByAppResponseBody(TeaModel):
         total_count: int = None,
     ):
         self.app_api_relation_infos = app_api_relation_infos
-        # 当前页码
         self.page_number = page_number
-        # 每页条目
         self.page_size = page_size
-        # 请求ID
         self.request_id = request_id
-        # 总条目数
         self.total_count = total_count
 
     def validate(self):
@@ -24877,20 +24860,13 @@ class DescribeVpcAccessesRequest(TeaModel):
         vpc_access_id: str = None,
         vpc_id: str = None,
     ):
-        # 实例ID
         self.instance_id = instance_id
-        # VPC授权名称
         self.name = name
-        # 当前页码
         self.page_number = page_number
-        # 每页展示条目
         self.page_size = page_size
-        # 端口号
         self.port = port
         self.security_token = security_token
-        # Vpc授权ID
         self.vpc_access_id = vpc_access_id
-        # Vpc ID
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -24954,21 +24930,13 @@ class DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute(TeaMo
         vpc_id: str = None,
         vpc_target_host_name: str = None,
     ):
-        # VPC授权的创建时间
         self.created_time = created_time
-        # VPC授权的描述
         self.description = description
-        # VPC中的后端服务信息
         self.instance_id = instance_id
-        # VPC授权名称
         self.name = name
-        # VPC中的后端服务端口
         self.port = port
-        # 地域id
         self.region_id = region_id
-        # vpc授权ID
         self.vpc_access_id = vpc_access_id
-        # VPC的ID
         self.vpc_id = vpc_id
         self.vpc_target_host_name = vpc_target_host_name
 

@@ -1,3 +1,6 @@
+2022-08-01 Version: 2.2.5
+- Add parameter stageName for BatchAbolishApis.
+
 2022-07-18 Version: 2.2.4
 - Change the parameter tag to optional.
 
