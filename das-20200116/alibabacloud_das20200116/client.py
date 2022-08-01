@@ -1772,6 +1772,154 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_all_sql_concurrency_control_rules_with_options_async(request, runtime)
 
+    def disable_auto_resource_optimize_rules_with_options(
+        self,
+        request: das20200116_models.DisableAutoResourceOptimizeRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DisableAutoResourceOptimizeRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableAutoResourceOptimizeRules',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DisableAutoResourceOptimizeRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_auto_resource_optimize_rules_with_options_async(
+        self,
+        request: das20200116_models.DisableAutoResourceOptimizeRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DisableAutoResourceOptimizeRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableAutoResourceOptimizeRules',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DisableAutoResourceOptimizeRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_auto_resource_optimize_rules(
+        self,
+        request: das20200116_models.DisableAutoResourceOptimizeRulesRequest,
+    ) -> das20200116_models.DisableAutoResourceOptimizeRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.disable_auto_resource_optimize_rules_with_options(request, runtime)
+
+    async def disable_auto_resource_optimize_rules_async(
+        self,
+        request: das20200116_models.DisableAutoResourceOptimizeRulesRequest,
+    ) -> das20200116_models.DisableAutoResourceOptimizeRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_auto_resource_optimize_rules_with_options_async(request, runtime)
+
+    def disable_auto_throttle_rules_with_options(
+        self,
+        request: das20200116_models.DisableAutoThrottleRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DisableAutoThrottleRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableAutoThrottleRules',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DisableAutoThrottleRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_auto_throttle_rules_with_options_async(
+        self,
+        request: das20200116_models.DisableAutoThrottleRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DisableAutoThrottleRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableAutoThrottleRules',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DisableAutoThrottleRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_auto_throttle_rules(
+        self,
+        request: das20200116_models.DisableAutoThrottleRulesRequest,
+    ) -> das20200116_models.DisableAutoThrottleRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.disable_auto_throttle_rules_with_options(request, runtime)
+
+    async def disable_auto_throttle_rules_async(
+        self,
+        request: das20200116_models.DisableAutoThrottleRulesRequest,
+    ) -> das20200116_models.DisableAutoThrottleRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_auto_throttle_rules_with_options_async(request, runtime)
+
     def disable_das_pro_with_options(
         self,
         request: das20200116_models.DisableDasProRequest,
@@ -2353,6 +2501,154 @@ class Client(OpenApiClient):
     ) -> das20200116_models.GetAsyncErrorRequestStatResultResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_async_error_request_stat_result_with_options_async(request, runtime)
+
+    def get_auto_resource_optimize_rules_with_options(
+        self,
+        request: das20200116_models.GetAutoResourceOptimizeRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetAutoResourceOptimizeRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAutoResourceOptimizeRules',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetAutoResourceOptimizeRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_auto_resource_optimize_rules_with_options_async(
+        self,
+        request: das20200116_models.GetAutoResourceOptimizeRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetAutoResourceOptimizeRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAutoResourceOptimizeRules',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetAutoResourceOptimizeRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_auto_resource_optimize_rules(
+        self,
+        request: das20200116_models.GetAutoResourceOptimizeRulesRequest,
+    ) -> das20200116_models.GetAutoResourceOptimizeRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_auto_resource_optimize_rules_with_options(request, runtime)
+
+    async def get_auto_resource_optimize_rules_async(
+        self,
+        request: das20200116_models.GetAutoResourceOptimizeRulesRequest,
+    ) -> das20200116_models.GetAutoResourceOptimizeRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_auto_resource_optimize_rules_with_options_async(request, runtime)
+
+    def get_auto_throttle_rules_with_options(
+        self,
+        request: das20200116_models.GetAutoThrottleRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetAutoThrottleRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAutoThrottleRules',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetAutoThrottleRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_auto_throttle_rules_with_options_async(
+        self,
+        request: das20200116_models.GetAutoThrottleRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetAutoThrottleRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAutoThrottleRules',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetAutoThrottleRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_auto_throttle_rules(
+        self,
+        request: das20200116_models.GetAutoThrottleRulesRequest,
+    ) -> das20200116_models.GetAutoThrottleRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_auto_throttle_rules_with_options(request, runtime)
+
+    async def get_auto_throttle_rules_async(
+        self,
+        request: das20200116_models.GetAutoThrottleRulesRequest,
+    ) -> das20200116_models.GetAutoThrottleRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_auto_throttle_rules_with_options_async(request, runtime)
 
     def get_autonomous_notify_event_content_with_options(
         self,
@@ -4600,6 +4896,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.sync_hdmaliyun_resource_with_options_async(request, runtime)
 
+    def update_auto_resource_optimize_rules_async_with_options(
+        self,
+        request: das20200116_models.UpdateAutoResourceOptimizeRulesAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.UpdateAutoResourceOptimizeRulesAsyncResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.result_id):
+            query['ResultId'] = request.result_id
+        if not UtilClient.is_unset(request.table_fragmentation_ratio):
+            query['TableFragmentationRatio'] = request.table_fragmentation_ratio
+        if not UtilClient.is_unset(request.table_space_size):
+            query['TableSpaceSize'] = request.table_space_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAutoResourceOptimizeRulesAsync',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.UpdateAutoResourceOptimizeRulesAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_auto_resource_optimize_rules_async_with_options_async(
+        self,
+        request: das20200116_models.UpdateAutoResourceOptimizeRulesAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.UpdateAutoResourceOptimizeRulesAsyncResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.result_id):
+            query['ResultId'] = request.result_id
+        if not UtilClient.is_unset(request.table_fragmentation_ratio):
+            query['TableFragmentationRatio'] = request.table_fragmentation_ratio
+        if not UtilClient.is_unset(request.table_space_size):
+            query['TableSpaceSize'] = request.table_space_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAutoResourceOptimizeRulesAsync',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.UpdateAutoResourceOptimizeRulesAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_auto_resource_optimize_rules_async(
+        self,
+        request: das20200116_models.UpdateAutoResourceOptimizeRulesAsyncRequest,
+    ) -> das20200116_models.UpdateAutoResourceOptimizeRulesAsyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_auto_resource_optimize_rules_async_with_options(request, runtime)
+
+    async def update_auto_resource_optimize_rules_async_async(
+        self,
+        request: das20200116_models.UpdateAutoResourceOptimizeRulesAsyncRequest,
+    ) -> das20200116_models.UpdateAutoResourceOptimizeRulesAsyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_auto_resource_optimize_rules_async_with_options_async(request, runtime)
+
     def update_auto_sql_optimize_status_with_options(
         self,
         request: das20200116_models.UpdateAutoSqlOptimizeStatusRequest,
@@ -4673,3 +5055,113 @@ class Client(OpenApiClient):
     ) -> das20200116_models.UpdateAutoSqlOptimizeStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_auto_sql_optimize_status_with_options_async(request, runtime)
+
+    def update_auto_throttle_rules_async_with_options(
+        self,
+        request: das20200116_models.UpdateAutoThrottleRulesAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.UpdateAutoThrottleRulesAsyncResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abnormal_duration):
+            query['AbnormalDuration'] = request.abnormal_duration
+        if not UtilClient.is_unset(request.active_sessions):
+            query['ActiveSessions'] = request.active_sessions
+        if not UtilClient.is_unset(request.allow_throttle_end_time):
+            query['AllowThrottleEndTime'] = request.allow_throttle_end_time
+        if not UtilClient.is_unset(request.allow_throttle_start_time):
+            query['AllowThrottleStartTime'] = request.allow_throttle_start_time
+        if not UtilClient.is_unset(request.auto_kill_session):
+            query['AutoKillSession'] = request.auto_kill_session
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not UtilClient.is_unset(request.cpu_session_relation):
+            query['CpuSessionRelation'] = request.cpu_session_relation
+        if not UtilClient.is_unset(request.cpu_usage):
+            query['CpuUsage'] = request.cpu_usage
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.max_throttle_time):
+            query['MaxThrottleTime'] = request.max_throttle_time
+        if not UtilClient.is_unset(request.result_id):
+            query['ResultId'] = request.result_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAutoThrottleRulesAsync',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.UpdateAutoThrottleRulesAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_auto_throttle_rules_async_with_options_async(
+        self,
+        request: das20200116_models.UpdateAutoThrottleRulesAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.UpdateAutoThrottleRulesAsyncResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abnormal_duration):
+            query['AbnormalDuration'] = request.abnormal_duration
+        if not UtilClient.is_unset(request.active_sessions):
+            query['ActiveSessions'] = request.active_sessions
+        if not UtilClient.is_unset(request.allow_throttle_end_time):
+            query['AllowThrottleEndTime'] = request.allow_throttle_end_time
+        if not UtilClient.is_unset(request.allow_throttle_start_time):
+            query['AllowThrottleStartTime'] = request.allow_throttle_start_time
+        if not UtilClient.is_unset(request.auto_kill_session):
+            query['AutoKillSession'] = request.auto_kill_session
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not UtilClient.is_unset(request.cpu_session_relation):
+            query['CpuSessionRelation'] = request.cpu_session_relation
+        if not UtilClient.is_unset(request.cpu_usage):
+            query['CpuUsage'] = request.cpu_usage
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.max_throttle_time):
+            query['MaxThrottleTime'] = request.max_throttle_time
+        if not UtilClient.is_unset(request.result_id):
+            query['ResultId'] = request.result_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAutoThrottleRulesAsync',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.UpdateAutoThrottleRulesAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_auto_throttle_rules_async(
+        self,
+        request: das20200116_models.UpdateAutoThrottleRulesAsyncRequest,
+    ) -> das20200116_models.UpdateAutoThrottleRulesAsyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_auto_throttle_rules_async_with_options(request, runtime)
+
+    async def update_auto_throttle_rules_async_async(
+        self,
+        request: das20200116_models.UpdateAutoThrottleRulesAsyncRequest,
+    ) -> das20200116_models.UpdateAutoThrottleRulesAsyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_auto_throttle_rules_async_with_options_async(request, runtime)

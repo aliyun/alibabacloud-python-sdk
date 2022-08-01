@@ -5001,6 +5001,546 @@ class DisableAllSqlConcurrencyControlRulesResponse(TeaModel):
         return self
 
 
+class DisableAutoResourceOptimizeRulesRequest(TeaModel):
+    def __init__(
+        self,
+        console_context: str = None,
+        instance_ids: str = None,
+    ):
+        self.console_context = console_context
+        self.instance_ids = instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.console_context is not None:
+            result['ConsoleContext'] = self.console_context
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsoleContext') is not None:
+            self.console_context = m.get('ConsoleContext')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        return self
+
+
+class DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList(TeaModel):
+    def __init__(
+        self,
+        config_success: bool = None,
+        error_message: str = None,
+        instance_id: str = None,
+    ):
+        self.config_success = config_success
+        self.error_message = error_message
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_success is not None:
+            result['ConfigSuccess'] = self.config_success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigSuccess') is not None:
+            self.config_success = m.get('ConfigSuccess')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList(TeaModel):
+    def __init__(
+        self,
+        config_success: bool = None,
+        instance_id: str = None,
+    ):
+        self.config_success = config_success
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_success is not None:
+            result['ConfigSuccess'] = self.config_success
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigSuccess') is not None:
+            self.config_success = m.get('ConfigSuccess')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableAutoResourceOptimizeRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        config_fail_instance_count: int = None,
+        config_fail_instance_list: List[DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList] = None,
+        config_success_instance_count: int = None,
+        config_success_instance_list: List[DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList] = None,
+        total_instance_count: int = None,
+    ):
+        self.config_fail_instance_count = config_fail_instance_count
+        self.config_fail_instance_list = config_fail_instance_list
+        self.config_success_instance_count = config_success_instance_count
+        self.config_success_instance_list = config_success_instance_list
+        self.total_instance_count = total_instance_count
+
+    def validate(self):
+        if self.config_fail_instance_list:
+            for k in self.config_fail_instance_list:
+                if k:
+                    k.validate()
+        if self.config_success_instance_list:
+            for k in self.config_success_instance_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_fail_instance_count is not None:
+            result['ConfigFailInstanceCount'] = self.config_fail_instance_count
+        result['ConfigFailInstanceList'] = []
+        if self.config_fail_instance_list is not None:
+            for k in self.config_fail_instance_list:
+                result['ConfigFailInstanceList'].append(k.to_map() if k else None)
+        if self.config_success_instance_count is not None:
+            result['ConfigSuccessInstanceCount'] = self.config_success_instance_count
+        result['ConfigSuccessInstanceList'] = []
+        if self.config_success_instance_list is not None:
+            for k in self.config_success_instance_list:
+                result['ConfigSuccessInstanceList'].append(k.to_map() if k else None)
+        if self.total_instance_count is not None:
+            result['TotalInstanceCount'] = self.total_instance_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigFailInstanceCount') is not None:
+            self.config_fail_instance_count = m.get('ConfigFailInstanceCount')
+        self.config_fail_instance_list = []
+        if m.get('ConfigFailInstanceList') is not None:
+            for k in m.get('ConfigFailInstanceList'):
+                temp_model = DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList()
+                self.config_fail_instance_list.append(temp_model.from_map(k))
+        if m.get('ConfigSuccessInstanceCount') is not None:
+            self.config_success_instance_count = m.get('ConfigSuccessInstanceCount')
+        self.config_success_instance_list = []
+        if m.get('ConfigSuccessInstanceList') is not None:
+            for k in m.get('ConfigSuccessInstanceList'):
+                temp_model = DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList()
+                self.config_success_instance_list.append(temp_model.from_map(k))
+        if m.get('TotalInstanceCount') is not None:
+            self.total_instance_count = m.get('TotalInstanceCount')
+        return self
+
+
+class DisableAutoResourceOptimizeRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: DisableAutoResourceOptimizeRulesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DisableAutoResourceOptimizeRulesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DisableAutoResourceOptimizeRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableAutoResourceOptimizeRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableAutoResourceOptimizeRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisableAutoThrottleRulesRequest(TeaModel):
+    def __init__(
+        self,
+        console_context: str = None,
+        instance_ids: str = None,
+    ):
+        self.console_context = console_context
+        self.instance_ids = instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.console_context is not None:
+            result['ConsoleContext'] = self.console_context
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsoleContext') is not None:
+            self.console_context = m.get('ConsoleContext')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        return self
+
+
+class DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList(TeaModel):
+    def __init__(
+        self,
+        config_success: bool = None,
+        error_message: str = None,
+        instance_id: str = None,
+    ):
+        self.config_success = config_success
+        self.error_message = error_message
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_success is not None:
+            result['ConfigSuccess'] = self.config_success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigSuccess') is not None:
+            self.config_success = m.get('ConfigSuccess')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList(TeaModel):
+    def __init__(
+        self,
+        config_success: bool = None,
+        instance_id: str = None,
+    ):
+        self.config_success = config_success
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_success is not None:
+            result['ConfigSuccess'] = self.config_success
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigSuccess') is not None:
+            self.config_success = m.get('ConfigSuccess')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DisableAutoThrottleRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        config_fail_instance_count: int = None,
+        config_fail_instance_list: List[DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList] = None,
+        config_success_instance_count: int = None,
+        config_success_instance_list: List[DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList] = None,
+        total_instance_count: int = None,
+    ):
+        self.config_fail_instance_count = config_fail_instance_count
+        self.config_fail_instance_list = config_fail_instance_list
+        self.config_success_instance_count = config_success_instance_count
+        self.config_success_instance_list = config_success_instance_list
+        self.total_instance_count = total_instance_count
+
+    def validate(self):
+        if self.config_fail_instance_list:
+            for k in self.config_fail_instance_list:
+                if k:
+                    k.validate()
+        if self.config_success_instance_list:
+            for k in self.config_success_instance_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_fail_instance_count is not None:
+            result['ConfigFailInstanceCount'] = self.config_fail_instance_count
+        result['ConfigFailInstanceList'] = []
+        if self.config_fail_instance_list is not None:
+            for k in self.config_fail_instance_list:
+                result['ConfigFailInstanceList'].append(k.to_map() if k else None)
+        if self.config_success_instance_count is not None:
+            result['ConfigSuccessInstanceCount'] = self.config_success_instance_count
+        result['ConfigSuccessInstanceList'] = []
+        if self.config_success_instance_list is not None:
+            for k in self.config_success_instance_list:
+                result['ConfigSuccessInstanceList'].append(k.to_map() if k else None)
+        if self.total_instance_count is not None:
+            result['TotalInstanceCount'] = self.total_instance_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigFailInstanceCount') is not None:
+            self.config_fail_instance_count = m.get('ConfigFailInstanceCount')
+        self.config_fail_instance_list = []
+        if m.get('ConfigFailInstanceList') is not None:
+            for k in m.get('ConfigFailInstanceList'):
+                temp_model = DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList()
+                self.config_fail_instance_list.append(temp_model.from_map(k))
+        if m.get('ConfigSuccessInstanceCount') is not None:
+            self.config_success_instance_count = m.get('ConfigSuccessInstanceCount')
+        self.config_success_instance_list = []
+        if m.get('ConfigSuccessInstanceList') is not None:
+            for k in m.get('ConfigSuccessInstanceList'):
+                temp_model = DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList()
+                self.config_success_instance_list.append(temp_model.from_map(k))
+        if m.get('TotalInstanceCount') is not None:
+            self.total_instance_count = m.get('TotalInstanceCount')
+        return self
+
+
+class DisableAutoThrottleRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: DisableAutoThrottleRulesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DisableAutoThrottleRulesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DisableAutoThrottleRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableAutoThrottleRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableAutoThrottleRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableDasProRequest(TeaModel):
     def __init__(
         self,
@@ -6295,6 +6835,792 @@ class GetAsyncErrorRequestStatResultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAsyncErrorRequestStatResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAutoResourceOptimizeRulesRequest(TeaModel):
+    def __init__(
+        self,
+        console_context: str = None,
+        instance_ids: str = None,
+    ):
+        self.console_context = console_context
+        self.instance_ids = instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.console_context is not None:
+            result['ConsoleContext'] = self.console_context
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsoleContext') is not None:
+            self.console_context = m.get('ConsoleContext')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        return self
+
+
+class GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList(TeaModel):
+    def __init__(
+        self,
+        auto_defragment: bool = None,
+        das_pro_on: bool = None,
+        instance_id: str = None,
+        table_fragmentation_ratio: float = None,
+        table_space_size: float = None,
+        user_id: str = None,
+    ):
+        self.auto_defragment = auto_defragment
+        self.das_pro_on = das_pro_on
+        self.instance_id = instance_id
+        self.table_fragmentation_ratio = table_fragmentation_ratio
+        self.table_space_size = table_space_size
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_defragment is not None:
+            result['AutoDefragment'] = self.auto_defragment
+        if self.das_pro_on is not None:
+            result['DasProOn'] = self.das_pro_on
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.table_fragmentation_ratio is not None:
+            result['TableFragmentationRatio'] = self.table_fragmentation_ratio
+        if self.table_space_size is not None:
+            result['TableSpaceSize'] = self.table_space_size
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoDefragment') is not None:
+            self.auto_defragment = m.get('AutoDefragment')
+        if m.get('DasProOn') is not None:
+            self.das_pro_on = m.get('DasProOn')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TableFragmentationRatio') is not None:
+            self.table_fragmentation_ratio = m.get('TableFragmentationRatio')
+        if m.get('TableSpaceSize') is not None:
+            self.table_space_size = m.get('TableSpaceSize')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList(TeaModel):
+    def __init__(
+        self,
+        auto_defragment: bool = None,
+        das_pro_on: bool = None,
+        instance_id: str = None,
+        table_fragmentation_ratio: float = None,
+        table_space_size: float = None,
+        user_id: str = None,
+    ):
+        self.auto_defragment = auto_defragment
+        self.das_pro_on = das_pro_on
+        self.instance_id = instance_id
+        self.table_fragmentation_ratio = table_fragmentation_ratio
+        self.table_space_size = table_space_size
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_defragment is not None:
+            result['AutoDefragment'] = self.auto_defragment
+        if self.das_pro_on is not None:
+            result['DasProOn'] = self.das_pro_on
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.table_fragmentation_ratio is not None:
+            result['TableFragmentationRatio'] = self.table_fragmentation_ratio
+        if self.table_space_size is not None:
+            result['TableSpaceSize'] = self.table_space_size
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoDefragment') is not None:
+            self.auto_defragment = m.get('AutoDefragment')
+        if m.get('DasProOn') is not None:
+            self.das_pro_on = m.get('DasProOn')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TableFragmentationRatio') is not None:
+            self.table_fragmentation_ratio = m.get('TableFragmentationRatio')
+        if m.get('TableSpaceSize') is not None:
+            self.table_space_size = m.get('TableSpaceSize')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList(TeaModel):
+    def __init__(
+        self,
+        auto_defragment: bool = None,
+        das_pro_on: bool = None,
+        instance_id: str = None,
+        table_fragmentation_ratio: float = None,
+        table_space_size: float = None,
+        user_id: str = None,
+    ):
+        self.auto_defragment = auto_defragment
+        self.das_pro_on = das_pro_on
+        self.instance_id = instance_id
+        self.table_fragmentation_ratio = table_fragmentation_ratio
+        self.table_space_size = table_space_size
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_defragment is not None:
+            result['AutoDefragment'] = self.auto_defragment
+        if self.das_pro_on is not None:
+            result['DasProOn'] = self.das_pro_on
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.table_fragmentation_ratio is not None:
+            result['TableFragmentationRatio'] = self.table_fragmentation_ratio
+        if self.table_space_size is not None:
+            result['TableSpaceSize'] = self.table_space_size
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoDefragment') is not None:
+            self.auto_defragment = m.get('AutoDefragment')
+        if m.get('DasProOn') is not None:
+            self.das_pro_on = m.get('DasProOn')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TableFragmentationRatio') is not None:
+            self.table_fragmentation_ratio = m.get('TableFragmentationRatio')
+        if m.get('TableSpaceSize') is not None:
+            self.table_space_size = m.get('TableSpaceSize')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetAutoResourceOptimizeRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        enable_auto_resource_optimize_count: int = None,
+        enable_auto_resource_optimize_list: List[GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList] = None,
+        has_enable_rule_but_not_das_pro_count: int = None,
+        has_enable_rule_but_not_das_pro_list: List[GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList] = None,
+        never_enable_auto_resource_optimize_or_released_instance_count: int = None,
+        never_enable_auto_resource_optimize_or_released_instance_id_list: List[str] = None,
+        total_auto_resource_optimize_rules_count: int = None,
+        turn_off_auto_resource_optimize_count: int = None,
+        turn_off_auto_resource_optimize_list: List[GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList] = None,
+    ):
+        self.enable_auto_resource_optimize_count = enable_auto_resource_optimize_count
+        self.enable_auto_resource_optimize_list = enable_auto_resource_optimize_list
+        self.has_enable_rule_but_not_das_pro_count = has_enable_rule_but_not_das_pro_count
+        self.has_enable_rule_but_not_das_pro_list = has_enable_rule_but_not_das_pro_list
+        self.never_enable_auto_resource_optimize_or_released_instance_count = never_enable_auto_resource_optimize_or_released_instance_count
+        self.never_enable_auto_resource_optimize_or_released_instance_id_list = never_enable_auto_resource_optimize_or_released_instance_id_list
+        self.total_auto_resource_optimize_rules_count = total_auto_resource_optimize_rules_count
+        self.turn_off_auto_resource_optimize_count = turn_off_auto_resource_optimize_count
+        self.turn_off_auto_resource_optimize_list = turn_off_auto_resource_optimize_list
+
+    def validate(self):
+        if self.enable_auto_resource_optimize_list:
+            for k in self.enable_auto_resource_optimize_list:
+                if k:
+                    k.validate()
+        if self.has_enable_rule_but_not_das_pro_list:
+            for k in self.has_enable_rule_but_not_das_pro_list:
+                if k:
+                    k.validate()
+        if self.turn_off_auto_resource_optimize_list:
+            for k in self.turn_off_auto_resource_optimize_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_auto_resource_optimize_count is not None:
+            result['EnableAutoResourceOptimizeCount'] = self.enable_auto_resource_optimize_count
+        result['EnableAutoResourceOptimizeList'] = []
+        if self.enable_auto_resource_optimize_list is not None:
+            for k in self.enable_auto_resource_optimize_list:
+                result['EnableAutoResourceOptimizeList'].append(k.to_map() if k else None)
+        if self.has_enable_rule_but_not_das_pro_count is not None:
+            result['HasEnableRuleButNotDasProCount'] = self.has_enable_rule_but_not_das_pro_count
+        result['HasEnableRuleButNotDasProList'] = []
+        if self.has_enable_rule_but_not_das_pro_list is not None:
+            for k in self.has_enable_rule_but_not_das_pro_list:
+                result['HasEnableRuleButNotDasProList'].append(k.to_map() if k else None)
+        if self.never_enable_auto_resource_optimize_or_released_instance_count is not None:
+            result['NeverEnableAutoResourceOptimizeOrReleasedInstanceCount'] = self.never_enable_auto_resource_optimize_or_released_instance_count
+        if self.never_enable_auto_resource_optimize_or_released_instance_id_list is not None:
+            result['NeverEnableAutoResourceOptimizeOrReleasedInstanceIdList'] = self.never_enable_auto_resource_optimize_or_released_instance_id_list
+        if self.total_auto_resource_optimize_rules_count is not None:
+            result['TotalAutoResourceOptimizeRulesCount'] = self.total_auto_resource_optimize_rules_count
+        if self.turn_off_auto_resource_optimize_count is not None:
+            result['TurnOffAutoResourceOptimizeCount'] = self.turn_off_auto_resource_optimize_count
+        result['TurnOffAutoResourceOptimizeList'] = []
+        if self.turn_off_auto_resource_optimize_list is not None:
+            for k in self.turn_off_auto_resource_optimize_list:
+                result['TurnOffAutoResourceOptimizeList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableAutoResourceOptimizeCount') is not None:
+            self.enable_auto_resource_optimize_count = m.get('EnableAutoResourceOptimizeCount')
+        self.enable_auto_resource_optimize_list = []
+        if m.get('EnableAutoResourceOptimizeList') is not None:
+            for k in m.get('EnableAutoResourceOptimizeList'):
+                temp_model = GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList()
+                self.enable_auto_resource_optimize_list.append(temp_model.from_map(k))
+        if m.get('HasEnableRuleButNotDasProCount') is not None:
+            self.has_enable_rule_but_not_das_pro_count = m.get('HasEnableRuleButNotDasProCount')
+        self.has_enable_rule_but_not_das_pro_list = []
+        if m.get('HasEnableRuleButNotDasProList') is not None:
+            for k in m.get('HasEnableRuleButNotDasProList'):
+                temp_model = GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList()
+                self.has_enable_rule_but_not_das_pro_list.append(temp_model.from_map(k))
+        if m.get('NeverEnableAutoResourceOptimizeOrReleasedInstanceCount') is not None:
+            self.never_enable_auto_resource_optimize_or_released_instance_count = m.get('NeverEnableAutoResourceOptimizeOrReleasedInstanceCount')
+        if m.get('NeverEnableAutoResourceOptimizeOrReleasedInstanceIdList') is not None:
+            self.never_enable_auto_resource_optimize_or_released_instance_id_list = m.get('NeverEnableAutoResourceOptimizeOrReleasedInstanceIdList')
+        if m.get('TotalAutoResourceOptimizeRulesCount') is not None:
+            self.total_auto_resource_optimize_rules_count = m.get('TotalAutoResourceOptimizeRulesCount')
+        if m.get('TurnOffAutoResourceOptimizeCount') is not None:
+            self.turn_off_auto_resource_optimize_count = m.get('TurnOffAutoResourceOptimizeCount')
+        self.turn_off_auto_resource_optimize_list = []
+        if m.get('TurnOffAutoResourceOptimizeList') is not None:
+            for k in m.get('TurnOffAutoResourceOptimizeList'):
+                temp_model = GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList()
+                self.turn_off_auto_resource_optimize_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetAutoResourceOptimizeRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetAutoResourceOptimizeRulesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAutoResourceOptimizeRulesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAutoResourceOptimizeRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAutoResourceOptimizeRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAutoResourceOptimizeRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAutoThrottleRulesRequest(TeaModel):
+    def __init__(
+        self,
+        console_context: str = None,
+        instance_ids: str = None,
+    ):
+        self.console_context = console_context
+        self.instance_ids = instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.console_context is not None:
+            result['ConsoleContext'] = self.console_context
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsoleContext') is not None:
+            self.console_context = m.get('ConsoleContext')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        return self
+
+
+class GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList(TeaModel):
+    def __init__(
+        self,
+        abnormal_duration: float = None,
+        active_sessions: int = None,
+        allow_throttle_end_time: str = None,
+        allow_throttle_start_time: str = None,
+        auto_kill_session: bool = None,
+        cpu_session_relation: str = None,
+        cpu_usage: float = None,
+        instance_id: str = None,
+        max_throttle_time: float = None,
+        user_id: str = None,
+        visible: bool = None,
+    ):
+        self.abnormal_duration = abnormal_duration
+        self.active_sessions = active_sessions
+        self.allow_throttle_end_time = allow_throttle_end_time
+        self.allow_throttle_start_time = allow_throttle_start_time
+        self.auto_kill_session = auto_kill_session
+        self.cpu_session_relation = cpu_session_relation
+        self.cpu_usage = cpu_usage
+        self.instance_id = instance_id
+        self.max_throttle_time = max_throttle_time
+        self.user_id = user_id
+        self.visible = visible
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.abnormal_duration is not None:
+            result['AbnormalDuration'] = self.abnormal_duration
+        if self.active_sessions is not None:
+            result['ActiveSessions'] = self.active_sessions
+        if self.allow_throttle_end_time is not None:
+            result['AllowThrottleEndTime'] = self.allow_throttle_end_time
+        if self.allow_throttle_start_time is not None:
+            result['AllowThrottleStartTime'] = self.allow_throttle_start_time
+        if self.auto_kill_session is not None:
+            result['AutoKillSession'] = self.auto_kill_session
+        if self.cpu_session_relation is not None:
+            result['CpuSessionRelation'] = self.cpu_session_relation
+        if self.cpu_usage is not None:
+            result['CpuUsage'] = self.cpu_usage
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_throttle_time is not None:
+            result['MaxThrottleTime'] = self.max_throttle_time
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.visible is not None:
+            result['Visible'] = self.visible
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AbnormalDuration') is not None:
+            self.abnormal_duration = m.get('AbnormalDuration')
+        if m.get('ActiveSessions') is not None:
+            self.active_sessions = m.get('ActiveSessions')
+        if m.get('AllowThrottleEndTime') is not None:
+            self.allow_throttle_end_time = m.get('AllowThrottleEndTime')
+        if m.get('AllowThrottleStartTime') is not None:
+            self.allow_throttle_start_time = m.get('AllowThrottleStartTime')
+        if m.get('AutoKillSession') is not None:
+            self.auto_kill_session = m.get('AutoKillSession')
+        if m.get('CpuSessionRelation') is not None:
+            self.cpu_session_relation = m.get('CpuSessionRelation')
+        if m.get('CpuUsage') is not None:
+            self.cpu_usage = m.get('CpuUsage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxThrottleTime') is not None:
+            self.max_throttle_time = m.get('MaxThrottleTime')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('Visible') is not None:
+            self.visible = m.get('Visible')
+        return self
+
+
+class GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList(TeaModel):
+    def __init__(
+        self,
+        abnormal_duration: float = None,
+        active_sessions: int = None,
+        allow_throttle_end_time: str = None,
+        allow_throttle_start_time: str = None,
+        auto_kill_session: bool = None,
+        cpu_session_relation: str = None,
+        cpu_usage: float = None,
+        instance_id: str = None,
+        max_throttle_time: float = None,
+        user_id: str = None,
+        visible: bool = None,
+    ):
+        self.abnormal_duration = abnormal_duration
+        self.active_sessions = active_sessions
+        self.allow_throttle_end_time = allow_throttle_end_time
+        self.allow_throttle_start_time = allow_throttle_start_time
+        self.auto_kill_session = auto_kill_session
+        self.cpu_session_relation = cpu_session_relation
+        self.cpu_usage = cpu_usage
+        self.instance_id = instance_id
+        self.max_throttle_time = max_throttle_time
+        self.user_id = user_id
+        self.visible = visible
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.abnormal_duration is not None:
+            result['AbnormalDuration'] = self.abnormal_duration
+        if self.active_sessions is not None:
+            result['ActiveSessions'] = self.active_sessions
+        if self.allow_throttle_end_time is not None:
+            result['AllowThrottleEndTime'] = self.allow_throttle_end_time
+        if self.allow_throttle_start_time is not None:
+            result['AllowThrottleStartTime'] = self.allow_throttle_start_time
+        if self.auto_kill_session is not None:
+            result['AutoKillSession'] = self.auto_kill_session
+        if self.cpu_session_relation is not None:
+            result['CpuSessionRelation'] = self.cpu_session_relation
+        if self.cpu_usage is not None:
+            result['CpuUsage'] = self.cpu_usage
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_throttle_time is not None:
+            result['MaxThrottleTime'] = self.max_throttle_time
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.visible is not None:
+            result['Visible'] = self.visible
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AbnormalDuration') is not None:
+            self.abnormal_duration = m.get('AbnormalDuration')
+        if m.get('ActiveSessions') is not None:
+            self.active_sessions = m.get('ActiveSessions')
+        if m.get('AllowThrottleEndTime') is not None:
+            self.allow_throttle_end_time = m.get('AllowThrottleEndTime')
+        if m.get('AllowThrottleStartTime') is not None:
+            self.allow_throttle_start_time = m.get('AllowThrottleStartTime')
+        if m.get('AutoKillSession') is not None:
+            self.auto_kill_session = m.get('AutoKillSession')
+        if m.get('CpuSessionRelation') is not None:
+            self.cpu_session_relation = m.get('CpuSessionRelation')
+        if m.get('CpuUsage') is not None:
+            self.cpu_usage = m.get('CpuUsage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxThrottleTime') is not None:
+            self.max_throttle_time = m.get('MaxThrottleTime')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('Visible') is not None:
+            self.visible = m.get('Visible')
+        return self
+
+
+class GetAutoThrottleRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        enable_auto_throttle_count: int = None,
+        enable_auto_throttle_list: List[GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList] = None,
+        never_enable_auto_throttle_or_released_instance_count: int = None,
+        never_enable_auto_throttle_or_released_instance_id_list: List[str] = None,
+        total_auto_throttle_rules_count: int = None,
+        turn_off_auto_throttle_count: int = None,
+        turn_off_auto_throttle_list: List[GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList] = None,
+    ):
+        self.enable_auto_throttle_count = enable_auto_throttle_count
+        self.enable_auto_throttle_list = enable_auto_throttle_list
+        self.never_enable_auto_throttle_or_released_instance_count = never_enable_auto_throttle_or_released_instance_count
+        self.never_enable_auto_throttle_or_released_instance_id_list = never_enable_auto_throttle_or_released_instance_id_list
+        self.total_auto_throttle_rules_count = total_auto_throttle_rules_count
+        self.turn_off_auto_throttle_count = turn_off_auto_throttle_count
+        self.turn_off_auto_throttle_list = turn_off_auto_throttle_list
+
+    def validate(self):
+        if self.enable_auto_throttle_list:
+            for k in self.enable_auto_throttle_list:
+                if k:
+                    k.validate()
+        if self.turn_off_auto_throttle_list:
+            for k in self.turn_off_auto_throttle_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_auto_throttle_count is not None:
+            result['EnableAutoThrottleCount'] = self.enable_auto_throttle_count
+        result['EnableAutoThrottleList'] = []
+        if self.enable_auto_throttle_list is not None:
+            for k in self.enable_auto_throttle_list:
+                result['EnableAutoThrottleList'].append(k.to_map() if k else None)
+        if self.never_enable_auto_throttle_or_released_instance_count is not None:
+            result['NeverEnableAutoThrottleOrReleasedInstanceCount'] = self.never_enable_auto_throttle_or_released_instance_count
+        if self.never_enable_auto_throttle_or_released_instance_id_list is not None:
+            result['NeverEnableAutoThrottleOrReleasedInstanceIdList'] = self.never_enable_auto_throttle_or_released_instance_id_list
+        if self.total_auto_throttle_rules_count is not None:
+            result['TotalAutoThrottleRulesCount'] = self.total_auto_throttle_rules_count
+        if self.turn_off_auto_throttle_count is not None:
+            result['TurnOffAutoThrottleCount'] = self.turn_off_auto_throttle_count
+        result['TurnOffAutoThrottleList'] = []
+        if self.turn_off_auto_throttle_list is not None:
+            for k in self.turn_off_auto_throttle_list:
+                result['TurnOffAutoThrottleList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableAutoThrottleCount') is not None:
+            self.enable_auto_throttle_count = m.get('EnableAutoThrottleCount')
+        self.enable_auto_throttle_list = []
+        if m.get('EnableAutoThrottleList') is not None:
+            for k in m.get('EnableAutoThrottleList'):
+                temp_model = GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList()
+                self.enable_auto_throttle_list.append(temp_model.from_map(k))
+        if m.get('NeverEnableAutoThrottleOrReleasedInstanceCount') is not None:
+            self.never_enable_auto_throttle_or_released_instance_count = m.get('NeverEnableAutoThrottleOrReleasedInstanceCount')
+        if m.get('NeverEnableAutoThrottleOrReleasedInstanceIdList') is not None:
+            self.never_enable_auto_throttle_or_released_instance_id_list = m.get('NeverEnableAutoThrottleOrReleasedInstanceIdList')
+        if m.get('TotalAutoThrottleRulesCount') is not None:
+            self.total_auto_throttle_rules_count = m.get('TotalAutoThrottleRulesCount')
+        if m.get('TurnOffAutoThrottleCount') is not None:
+            self.turn_off_auto_throttle_count = m.get('TurnOffAutoThrottleCount')
+        self.turn_off_auto_throttle_list = []
+        if m.get('TurnOffAutoThrottleList') is not None:
+            for k in m.get('TurnOffAutoThrottleList'):
+                temp_model = GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList()
+                self.turn_off_auto_throttle_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetAutoThrottleRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetAutoThrottleRulesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAutoThrottleRulesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAutoThrottleRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAutoThrottleRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAutoThrottleRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13399,6 +14725,359 @@ class SyncHDMAliyunResourceResponse(TeaModel):
         return self
 
 
+class UpdateAutoResourceOptimizeRulesAsyncRequest(TeaModel):
+    def __init__(
+        self,
+        console_context: str = None,
+        instance_ids: str = None,
+        result_id: str = None,
+        table_fragmentation_ratio: float = None,
+        table_space_size: float = None,
+    ):
+        self.console_context = console_context
+        self.instance_ids = instance_ids
+        self.result_id = result_id
+        self.table_fragmentation_ratio = table_fragmentation_ratio
+        self.table_space_size = table_space_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.console_context is not None:
+            result['ConsoleContext'] = self.console_context
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.result_id is not None:
+            result['ResultId'] = self.result_id
+        if self.table_fragmentation_ratio is not None:
+            result['TableFragmentationRatio'] = self.table_fragmentation_ratio
+        if self.table_space_size is not None:
+            result['TableSpaceSize'] = self.table_space_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsoleContext') is not None:
+            self.console_context = m.get('ConsoleContext')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('ResultId') is not None:
+            self.result_id = m.get('ResultId')
+        if m.get('TableFragmentationRatio') is not None:
+            self.table_fragmentation_ratio = m.get('TableFragmentationRatio')
+        if m.get('TableSpaceSize') is not None:
+            self.table_space_size = m.get('TableSpaceSize')
+        return self
+
+
+class UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList(TeaModel):
+    def __init__(
+        self,
+        config_success: bool = None,
+        error_message: str = None,
+        instance_id: str = None,
+    ):
+        self.config_success = config_success
+        self.error_message = error_message
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_success is not None:
+            result['ConfigSuccess'] = self.config_success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigSuccess') is not None:
+            self.config_success = m.get('ConfigSuccess')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList(TeaModel):
+    def __init__(
+        self,
+        config_success: bool = None,
+        instance_id: str = None,
+    ):
+        self.config_success = config_success
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_success is not None:
+            result['ConfigSuccess'] = self.config_success
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigSuccess') is not None:
+            self.config_success = m.get('ConfigSuccess')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse(TeaModel):
+    def __init__(
+        self,
+        config_fail_instance_count: int = None,
+        config_fail_instance_list: List[UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList] = None,
+        config_success_instance_count: int = None,
+        config_success_instance_list: List[UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList] = None,
+        total_instance_count: int = None,
+    ):
+        self.config_fail_instance_count = config_fail_instance_count
+        self.config_fail_instance_list = config_fail_instance_list
+        self.config_success_instance_count = config_success_instance_count
+        self.config_success_instance_list = config_success_instance_list
+        self.total_instance_count = total_instance_count
+
+    def validate(self):
+        if self.config_fail_instance_list:
+            for k in self.config_fail_instance_list:
+                if k:
+                    k.validate()
+        if self.config_success_instance_list:
+            for k in self.config_success_instance_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_fail_instance_count is not None:
+            result['ConfigFailInstanceCount'] = self.config_fail_instance_count
+        result['ConfigFailInstanceList'] = []
+        if self.config_fail_instance_list is not None:
+            for k in self.config_fail_instance_list:
+                result['ConfigFailInstanceList'].append(k.to_map() if k else None)
+        if self.config_success_instance_count is not None:
+            result['ConfigSuccessInstanceCount'] = self.config_success_instance_count
+        result['ConfigSuccessInstanceList'] = []
+        if self.config_success_instance_list is not None:
+            for k in self.config_success_instance_list:
+                result['ConfigSuccessInstanceList'].append(k.to_map() if k else None)
+        if self.total_instance_count is not None:
+            result['TotalInstanceCount'] = self.total_instance_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigFailInstanceCount') is not None:
+            self.config_fail_instance_count = m.get('ConfigFailInstanceCount')
+        self.config_fail_instance_list = []
+        if m.get('ConfigFailInstanceList') is not None:
+            for k in m.get('ConfigFailInstanceList'):
+                temp_model = UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList()
+                self.config_fail_instance_list.append(temp_model.from_map(k))
+        if m.get('ConfigSuccessInstanceCount') is not None:
+            self.config_success_instance_count = m.get('ConfigSuccessInstanceCount')
+        self.config_success_instance_list = []
+        if m.get('ConfigSuccessInstanceList') is not None:
+            for k in m.get('ConfigSuccessInstanceList'):
+                temp_model = UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList()
+                self.config_success_instance_list.append(temp_model.from_map(k))
+        if m.get('TotalInstanceCount') is not None:
+            self.total_instance_count = m.get('TotalInstanceCount')
+        return self
+
+
+class UpdateAutoResourceOptimizeRulesAsyncResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        complete: bool = None,
+        config_response: UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse = None,
+        fail: bool = None,
+        is_finish: bool = None,
+        result_id: str = None,
+        state: str = None,
+        timestamp: int = None,
+    ):
+        self.complete = complete
+        self.config_response = config_response
+        self.fail = fail
+        self.is_finish = is_finish
+        self.result_id = result_id
+        self.state = state
+        self.timestamp = timestamp
+
+    def validate(self):
+        if self.config_response:
+            self.config_response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.complete is not None:
+            result['Complete'] = self.complete
+        if self.config_response is not None:
+            result['ConfigResponse'] = self.config_response.to_map()
+        if self.fail is not None:
+            result['Fail'] = self.fail
+        if self.is_finish is not None:
+            result['IsFinish'] = self.is_finish
+        if self.result_id is not None:
+            result['ResultId'] = self.result_id
+        if self.state is not None:
+            result['State'] = self.state
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Complete') is not None:
+            self.complete = m.get('Complete')
+        if m.get('ConfigResponse') is not None:
+            temp_model = UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse()
+            self.config_response = temp_model.from_map(m['ConfigResponse'])
+        if m.get('Fail') is not None:
+            self.fail = m.get('Fail')
+        if m.get('IsFinish') is not None:
+            self.is_finish = m.get('IsFinish')
+        if m.get('ResultId') is not None:
+            self.result_id = m.get('ResultId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        return self
+
+
+class UpdateAutoResourceOptimizeRulesAsyncResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: UpdateAutoResourceOptimizeRulesAsyncResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdateAutoResourceOptimizeRulesAsyncResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateAutoResourceOptimizeRulesAsyncResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAutoResourceOptimizeRulesAsyncResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAutoResourceOptimizeRulesAsyncResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateAutoSqlOptimizeStatusRequest(TeaModel):
     def __init__(
         self,
@@ -13564,6 +15243,395 @@ class UpdateAutoSqlOptimizeStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAutoSqlOptimizeStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAutoThrottleRulesAsyncRequest(TeaModel):
+    def __init__(
+        self,
+        abnormal_duration: float = None,
+        active_sessions: int = None,
+        allow_throttle_end_time: str = None,
+        allow_throttle_start_time: str = None,
+        auto_kill_session: bool = None,
+        console_context: str = None,
+        cpu_session_relation: str = None,
+        cpu_usage: float = None,
+        instance_ids: str = None,
+        max_throttle_time: float = None,
+        result_id: str = None,
+    ):
+        self.abnormal_duration = abnormal_duration
+        self.active_sessions = active_sessions
+        self.allow_throttle_end_time = allow_throttle_end_time
+        self.allow_throttle_start_time = allow_throttle_start_time
+        self.auto_kill_session = auto_kill_session
+        self.console_context = console_context
+        self.cpu_session_relation = cpu_session_relation
+        self.cpu_usage = cpu_usage
+        self.instance_ids = instance_ids
+        self.max_throttle_time = max_throttle_time
+        self.result_id = result_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.abnormal_duration is not None:
+            result['AbnormalDuration'] = self.abnormal_duration
+        if self.active_sessions is not None:
+            result['ActiveSessions'] = self.active_sessions
+        if self.allow_throttle_end_time is not None:
+            result['AllowThrottleEndTime'] = self.allow_throttle_end_time
+        if self.allow_throttle_start_time is not None:
+            result['AllowThrottleStartTime'] = self.allow_throttle_start_time
+        if self.auto_kill_session is not None:
+            result['AutoKillSession'] = self.auto_kill_session
+        if self.console_context is not None:
+            result['ConsoleContext'] = self.console_context
+        if self.cpu_session_relation is not None:
+            result['CpuSessionRelation'] = self.cpu_session_relation
+        if self.cpu_usage is not None:
+            result['CpuUsage'] = self.cpu_usage
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.max_throttle_time is not None:
+            result['MaxThrottleTime'] = self.max_throttle_time
+        if self.result_id is not None:
+            result['ResultId'] = self.result_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AbnormalDuration') is not None:
+            self.abnormal_duration = m.get('AbnormalDuration')
+        if m.get('ActiveSessions') is not None:
+            self.active_sessions = m.get('ActiveSessions')
+        if m.get('AllowThrottleEndTime') is not None:
+            self.allow_throttle_end_time = m.get('AllowThrottleEndTime')
+        if m.get('AllowThrottleStartTime') is not None:
+            self.allow_throttle_start_time = m.get('AllowThrottleStartTime')
+        if m.get('AutoKillSession') is not None:
+            self.auto_kill_session = m.get('AutoKillSession')
+        if m.get('ConsoleContext') is not None:
+            self.console_context = m.get('ConsoleContext')
+        if m.get('CpuSessionRelation') is not None:
+            self.cpu_session_relation = m.get('CpuSessionRelation')
+        if m.get('CpuUsage') is not None:
+            self.cpu_usage = m.get('CpuUsage')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('MaxThrottleTime') is not None:
+            self.max_throttle_time = m.get('MaxThrottleTime')
+        if m.get('ResultId') is not None:
+            self.result_id = m.get('ResultId')
+        return self
+
+
+class UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList(TeaModel):
+    def __init__(
+        self,
+        config_success: bool = None,
+        error_message: str = None,
+        instance_id: str = None,
+    ):
+        self.config_success = config_success
+        self.error_message = error_message
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_success is not None:
+            result['ConfigSuccess'] = self.config_success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigSuccess') is not None:
+            self.config_success = m.get('ConfigSuccess')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList(TeaModel):
+    def __init__(
+        self,
+        config_success: bool = None,
+        instance_id: str = None,
+    ):
+        self.config_success = config_success
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_success is not None:
+            result['ConfigSuccess'] = self.config_success
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigSuccess') is not None:
+            self.config_success = m.get('ConfigSuccess')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse(TeaModel):
+    def __init__(
+        self,
+        config_fail_instance_count: int = None,
+        config_fail_instance_list: List[UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList] = None,
+        config_success_instance_count: int = None,
+        config_success_instance_list: List[UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList] = None,
+        total_instance_count: int = None,
+    ):
+        self.config_fail_instance_count = config_fail_instance_count
+        self.config_fail_instance_list = config_fail_instance_list
+        self.config_success_instance_count = config_success_instance_count
+        self.config_success_instance_list = config_success_instance_list
+        self.total_instance_count = total_instance_count
+
+    def validate(self):
+        if self.config_fail_instance_list:
+            for k in self.config_fail_instance_list:
+                if k:
+                    k.validate()
+        if self.config_success_instance_list:
+            for k in self.config_success_instance_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_fail_instance_count is not None:
+            result['ConfigFailInstanceCount'] = self.config_fail_instance_count
+        result['ConfigFailInstanceList'] = []
+        if self.config_fail_instance_list is not None:
+            for k in self.config_fail_instance_list:
+                result['ConfigFailInstanceList'].append(k.to_map() if k else None)
+        if self.config_success_instance_count is not None:
+            result['ConfigSuccessInstanceCount'] = self.config_success_instance_count
+        result['ConfigSuccessInstanceList'] = []
+        if self.config_success_instance_list is not None:
+            for k in self.config_success_instance_list:
+                result['ConfigSuccessInstanceList'].append(k.to_map() if k else None)
+        if self.total_instance_count is not None:
+            result['TotalInstanceCount'] = self.total_instance_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigFailInstanceCount') is not None:
+            self.config_fail_instance_count = m.get('ConfigFailInstanceCount')
+        self.config_fail_instance_list = []
+        if m.get('ConfigFailInstanceList') is not None:
+            for k in m.get('ConfigFailInstanceList'):
+                temp_model = UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList()
+                self.config_fail_instance_list.append(temp_model.from_map(k))
+        if m.get('ConfigSuccessInstanceCount') is not None:
+            self.config_success_instance_count = m.get('ConfigSuccessInstanceCount')
+        self.config_success_instance_list = []
+        if m.get('ConfigSuccessInstanceList') is not None:
+            for k in m.get('ConfigSuccessInstanceList'):
+                temp_model = UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList()
+                self.config_success_instance_list.append(temp_model.from_map(k))
+        if m.get('TotalInstanceCount') is not None:
+            self.total_instance_count = m.get('TotalInstanceCount')
+        return self
+
+
+class UpdateAutoThrottleRulesAsyncResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        complete: bool = None,
+        config_response: UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse = None,
+        fail: bool = None,
+        is_finish: bool = None,
+        result_id: str = None,
+        state: str = None,
+        timestamp: int = None,
+    ):
+        self.complete = complete
+        self.config_response = config_response
+        self.fail = fail
+        self.is_finish = is_finish
+        self.result_id = result_id
+        self.state = state
+        self.timestamp = timestamp
+
+    def validate(self):
+        if self.config_response:
+            self.config_response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.complete is not None:
+            result['Complete'] = self.complete
+        if self.config_response is not None:
+            result['ConfigResponse'] = self.config_response.to_map()
+        if self.fail is not None:
+            result['Fail'] = self.fail
+        if self.is_finish is not None:
+            result['IsFinish'] = self.is_finish
+        if self.result_id is not None:
+            result['ResultId'] = self.result_id
+        if self.state is not None:
+            result['State'] = self.state
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Complete') is not None:
+            self.complete = m.get('Complete')
+        if m.get('ConfigResponse') is not None:
+            temp_model = UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse()
+            self.config_response = temp_model.from_map(m['ConfigResponse'])
+        if m.get('Fail') is not None:
+            self.fail = m.get('Fail')
+        if m.get('IsFinish') is not None:
+            self.is_finish = m.get('IsFinish')
+        if m.get('ResultId') is not None:
+            self.result_id = m.get('ResultId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        return self
+
+
+class UpdateAutoThrottleRulesAsyncResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: UpdateAutoThrottleRulesAsyncResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdateAutoThrottleRulesAsyncResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateAutoThrottleRulesAsyncResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAutoThrottleRulesAsyncResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAutoThrottleRulesAsyncResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
