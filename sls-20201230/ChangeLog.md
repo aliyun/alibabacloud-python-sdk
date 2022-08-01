@@ -1,3 +1,7 @@
+2022-08-01 Version: 1.5.0
+- Add resource Shipper.
+- Add resource ExternalStore.
+
 2022-07-12 Version: 1.4.0
 - Add DeleteSavedsearch.
 - Add EtlMeta.

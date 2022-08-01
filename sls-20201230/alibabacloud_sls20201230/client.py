@@ -1108,6 +1108,300 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
+    def create_odps_shipper(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.CreateOdpsShipperRequest,
+    ) -> sls_20201230_models.CreateOdpsShipperResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_odps_shipper_with_options(project, logstore, request, headers, runtime)
+
+    async def create_odps_shipper_async(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.CreateOdpsShipperRequest,
+    ) -> sls_20201230_models.CreateOdpsShipperResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_odps_shipper_with_options_async(project, logstore, request, headers, runtime)
+
+    def create_odps_shipper_with_options(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.CreateOdpsShipperRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateOdpsShipperResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        body = {}
+        if not UtilClient.is_unset(request.shipper_name):
+            body['shipperName'] = request.shipper_name
+        if not UtilClient.is_unset(request.target_configuration):
+            body['targetConfiguration'] = request.target_configuration
+        if not UtilClient.is_unset(request.target_type):
+            body['targetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOdpsShipper',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateOdpsShipperResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_odps_shipper_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.CreateOdpsShipperRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateOdpsShipperResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        body = {}
+        if not UtilClient.is_unset(request.shipper_name):
+            body['shipperName'] = request.shipper_name
+        if not UtilClient.is_unset(request.target_configuration):
+            body['targetConfiguration'] = request.target_configuration
+        if not UtilClient.is_unset(request.target_type):
+            body['targetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOdpsShipper',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateOdpsShipperResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_oss_external_store(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateOssExternalStoreRequest,
+    ) -> sls_20201230_models.CreateOssExternalStoreResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_oss_external_store_with_options(project, request, headers, runtime)
+
+    async def create_oss_external_store_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateOssExternalStoreRequest,
+    ) -> sls_20201230_models.CreateOssExternalStoreResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_oss_external_store_with_options_async(project, request, headers, runtime)
+
+    def create_oss_external_store_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateOssExternalStoreRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateOssExternalStoreResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.external_store_name):
+            body['externalStoreName'] = request.external_store_name
+        if not UtilClient.is_unset(request.parameter):
+            body['parameter'] = request.parameter
+        if not UtilClient.is_unset(request.store_type):
+            body['storeType'] = request.store_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOssExternalStore',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/externalstores',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateOssExternalStoreResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_oss_external_store_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateOssExternalStoreRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateOssExternalStoreResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.external_store_name):
+            body['externalStoreName'] = request.external_store_name
+        if not UtilClient.is_unset(request.parameter):
+            body['parameter'] = request.parameter
+        if not UtilClient.is_unset(request.store_type):
+            body['storeType'] = request.store_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOssExternalStore',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/externalstores',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateOssExternalStoreResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_oss_shipper(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.CreateOssShipperRequest,
+    ) -> sls_20201230_models.CreateOssShipperResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_oss_shipper_with_options(project, logstore, request, headers, runtime)
+
+    async def create_oss_shipper_async(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.CreateOssShipperRequest,
+    ) -> sls_20201230_models.CreateOssShipperResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_oss_shipper_with_options_async(project, logstore, request, headers, runtime)
+
+    def create_oss_shipper_with_options(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.CreateOssShipperRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateOssShipperResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        body = {}
+        if not UtilClient.is_unset(request.shipper_name):
+            body['shipperName'] = request.shipper_name
+        if not UtilClient.is_unset(request.target_configuration):
+            body['targetConfiguration'] = request.target_configuration
+        if not UtilClient.is_unset(request.target_type):
+            body['targetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOssShipper',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateOssShipperResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_oss_shipper_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.CreateOssShipperRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateOssShipperResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        body = {}
+        if not UtilClient.is_unset(request.shipper_name):
+            body['shipperName'] = request.shipper_name
+        if not UtilClient.is_unset(request.target_configuration):
+            body['targetConfiguration'] = request.target_configuration
+        if not UtilClient.is_unset(request.target_type):
+            body['targetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOssShipper',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateOssShipperResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
     def create_project(
         self,
         request: sls_20201230_models.CreateProjectRequest,
@@ -1185,6 +1479,100 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sls_20201230_models.CreateProjectResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_rds_external_store(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateRdsExternalStoreRequest,
+    ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_rds_external_store_with_options(project, request, headers, runtime)
+
+    async def create_rds_external_store_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateRdsExternalStoreRequest,
+    ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_rds_external_store_with_options_async(project, request, headers, runtime)
+
+    def create_rds_external_store_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateRdsExternalStoreRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.external_store_name):
+            body['externalStoreName'] = request.external_store_name
+        if not UtilClient.is_unset(request.parameter):
+            body['parameter'] = request.parameter
+        if not UtilClient.is_unset(request.store_type):
+            body['storeType'] = request.store_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRdsExternalStore',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/externalstores',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateRdsExternalStoreResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_rds_external_store_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateRdsExternalStoreRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.external_store_name):
+            body['externalStoreName'] = request.external_store_name
+        if not UtilClient.is_unset(request.parameter):
+            body['parameter'] = request.parameter
+        if not UtilClient.is_unset(request.store_type):
+            body['storeType'] = request.store_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRdsExternalStore',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/externalstores',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateRdsExternalStoreResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -1543,6 +1931,84 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sls_20201230_models.DeleteEtlMetaResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_external_store(
+        self,
+        project: str,
+        external_store_name: str,
+    ) -> sls_20201230_models.DeleteExternalStoreResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_external_store_with_options(project, external_store_name, headers, runtime)
+
+    async def delete_external_store_async(
+        self,
+        project: str,
+        external_store_name: str,
+    ) -> sls_20201230_models.DeleteExternalStoreResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_external_store_with_options_async(project, external_store_name, headers, runtime)
+
+    def delete_external_store_with_options(
+        self,
+        project: str,
+        external_store_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteExternalStoreResponse:
+        host_map = {}
+        host_map['project'] = project
+        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteExternalStore',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/externalstores/{external_store_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteExternalStoreResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_external_store_with_options_async(
+        self,
+        project: str,
+        external_store_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteExternalStoreResponse:
+        host_map = {}
+        host_map['project'] = project
+        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteExternalStore',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/externalstores/{external_store_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteExternalStoreResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -2002,6 +2468,90 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
+    def delete_shipper(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+    ) -> sls_20201230_models.DeleteShipperResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_shipper_with_options(project, logstore, shipper_name, headers, runtime)
+
+    async def delete_shipper_async(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+    ) -> sls_20201230_models.DeleteShipperResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_shipper_with_options_async(project, logstore, shipper_name, headers, runtime)
+
+    def delete_shipper_with_options(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteShipperResponse:
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteShipper',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper/{shipper_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteShipperResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_shipper_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteShipperResponse:
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteShipper',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper/{shipper_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteShipperResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
     def get_applied_configs(
         self,
         project: str,
@@ -2077,6 +2627,84 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sls_20201230_models.GetAppliedConfigsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_applied_machine_groups(
+        self,
+        project: str,
+        config_name: str,
+    ) -> sls_20201230_models.GetAppliedMachineGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_applied_machine_groups_with_options(project, config_name, headers, runtime)
+
+    async def get_applied_machine_groups_async(
+        self,
+        project: str,
+        config_name: str,
+    ) -> sls_20201230_models.GetAppliedMachineGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_applied_machine_groups_with_options_async(project, config_name, headers, runtime)
+
+    def get_applied_machine_groups_with_options(
+        self,
+        project: str,
+        config_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetAppliedMachineGroupsResponse:
+        host_map = {}
+        host_map['project'] = project
+        config_name = OpenApiUtilClient.get_encode_param(config_name)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAppliedMachineGroups',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/configs/{config_name}/machinegroups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetAppliedMachineGroupsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_applied_machine_groups_with_options_async(
+        self,
+        project: str,
+        config_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetAppliedMachineGroupsResponse:
+        host_map = {}
+        host_map['project'] = project
+        config_name = OpenApiUtilClient.get_encode_param(config_name)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAppliedMachineGroups',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/configs/{config_name}/machinegroups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetAppliedMachineGroupsResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -2581,6 +3209,84 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sls_20201230_models.GetEtlMetaResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_external_store(
+        self,
+        project: str,
+        external_store_name: str,
+    ) -> sls_20201230_models.GetExternalStoreResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_external_store_with_options(project, external_store_name, headers, runtime)
+
+    async def get_external_store_async(
+        self,
+        project: str,
+        external_store_name: str,
+    ) -> sls_20201230_models.GetExternalStoreResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_external_store_with_options_async(project, external_store_name, headers, runtime)
+
+    def get_external_store_with_options(
+        self,
+        project: str,
+        external_store_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetExternalStoreResponse:
+        host_map = {}
+        host_map['project'] = project
+        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetExternalStore',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/externalstores/{external_store_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetExternalStoreResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_external_store_with_options_async(
+        self,
+        project: str,
+        external_store_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetExternalStoreResponse:
+        host_map = {}
+        host_map['project'] = project
+        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetExternalStore',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/externalstores/{external_store_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetExternalStoreResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -3362,6 +4068,204 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
+    def get_shipper_config(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+    ) -> sls_20201230_models.GetShipperConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_shipper_config_with_options(project, logstore, shipper_name, headers, runtime)
+
+    async def get_shipper_config_async(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+    ) -> sls_20201230_models.GetShipperConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_shipper_config_with_options_async(project, logstore, shipper_name, headers, runtime)
+
+    def get_shipper_config_with_options(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetShipperConfigResponse:
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetShipperConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper/{shipper_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetShipperConfigResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_shipper_config_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetShipperConfigResponse:
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetShipperConfig',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper/{shipper_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetShipperConfigResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_shipper_status(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.GetShipperStatusRequest,
+    ) -> sls_20201230_models.GetShipperStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_shipper_status_with_options(project, logstore, shipper_name, request, headers, runtime)
+
+    async def get_shipper_status_async(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.GetShipperStatusRequest,
+    ) -> sls_20201230_models.GetShipperStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_shipper_status_with_options_async(project, logstore, shipper_name, request, headers, runtime)
+
+    def get_shipper_status_with_options(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.GetShipperStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetShipperStatusResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetShipperStatus',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper/{shipper_name}/tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetShipperStatusResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_shipper_status_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.GetShipperStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetShipperStatusResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetShipperStatus',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper/{shipper_name}/tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetShipperStatusResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
     def list_consumer_group(
         self,
         project: str,
@@ -3723,6 +4627,100 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sls_20201230_models.ListEtlMetaNameResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_external_store(
+        self,
+        project: str,
+        request: sls_20201230_models.ListExternalStoreRequest,
+    ) -> sls_20201230_models.ListExternalStoreResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_external_store_with_options(project, request, headers, runtime)
+
+    async def list_external_store_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListExternalStoreRequest,
+    ) -> sls_20201230_models.ListExternalStoreResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_external_store_with_options_async(project, request, headers, runtime)
+
+    def list_external_store_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.ListExternalStoreRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListExternalStoreResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.external_store_name):
+            query['externalStoreName'] = request.external_store_name
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.sizs):
+            query['sizs'] = request.sizs
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExternalStore',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/externalstores',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListExternalStoreResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_external_store_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListExternalStoreRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListExternalStoreResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.external_store_name):
+            query['externalStoreName'] = request.external_store_name
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.sizs):
+            query['sizs'] = request.sizs
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExternalStore',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/externalstores',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListExternalStoreResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -4263,6 +5261,84 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sls_20201230_models.ListShardsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_shipper(
+        self,
+        project: str,
+        logstore: str,
+    ) -> sls_20201230_models.ListShipperResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_shipper_with_options(project, logstore, headers, runtime)
+
+    async def list_shipper_async(
+        self,
+        project: str,
+        logstore: str,
+    ) -> sls_20201230_models.ListShipperResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_shipper_with_options_async(project, logstore, headers, runtime)
+
+    def list_shipper_with_options(
+        self,
+        project: str,
+        logstore: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListShipperResponse:
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListShipper',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListShipperResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_shipper_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListShipperResponse:
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListShipper',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListShipperResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -5586,6 +6662,318 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
+    def update_odps_shipper(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.UpdateOdpsShipperRequest,
+    ) -> sls_20201230_models.UpdateOdpsShipperResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_odps_shipper_with_options(project, logstore, shipper_name, request, headers, runtime)
+
+    async def update_odps_shipper_async(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.UpdateOdpsShipperRequest,
+    ) -> sls_20201230_models.UpdateOdpsShipperResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_odps_shipper_with_options_async(project, logstore, shipper_name, request, headers, runtime)
+
+    def update_odps_shipper_with_options(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.UpdateOdpsShipperRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateOdpsShipperResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
+        body = {}
+        if not UtilClient.is_unset(request.shipper_name):
+            body['shipperName'] = request.shipper_name
+        if not UtilClient.is_unset(request.target_configuration):
+            body['targetConfiguration'] = request.target_configuration
+        if not UtilClient.is_unset(request.target_type):
+            body['targetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateOdpsShipper',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper/{shipper_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateOdpsShipperResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_odps_shipper_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.UpdateOdpsShipperRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateOdpsShipperResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
+        body = {}
+        if not UtilClient.is_unset(request.shipper_name):
+            body['shipperName'] = request.shipper_name
+        if not UtilClient.is_unset(request.target_configuration):
+            body['targetConfiguration'] = request.target_configuration
+        if not UtilClient.is_unset(request.target_type):
+            body['targetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateOdpsShipper',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper/{shipper_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateOdpsShipperResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_oss_external_store(
+        self,
+        project: str,
+        external_store_name: str,
+        request: sls_20201230_models.UpdateOssExternalStoreRequest,
+    ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_oss_external_store_with_options(project, external_store_name, request, headers, runtime)
+
+    async def update_oss_external_store_async(
+        self,
+        project: str,
+        external_store_name: str,
+        request: sls_20201230_models.UpdateOssExternalStoreRequest,
+    ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_oss_external_store_with_options_async(project, external_store_name, request, headers, runtime)
+
+    def update_oss_external_store_with_options(
+        self,
+        project: str,
+        external_store_name: str,
+        request: sls_20201230_models.UpdateOssExternalStoreRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
+        body = {}
+        if not UtilClient.is_unset(request.external_store_name):
+            body['externalStoreName'] = request.external_store_name
+        if not UtilClient.is_unset(request.parameter):
+            body['parameter'] = request.parameter
+        if not UtilClient.is_unset(request.store_type):
+            body['storeType'] = request.store_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateOssExternalStore',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/externalstores/{external_store_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateOssExternalStoreResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_oss_external_store_with_options_async(
+        self,
+        project: str,
+        external_store_name: str,
+        request: sls_20201230_models.UpdateOssExternalStoreRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
+        body = {}
+        if not UtilClient.is_unset(request.external_store_name):
+            body['externalStoreName'] = request.external_store_name
+        if not UtilClient.is_unset(request.parameter):
+            body['parameter'] = request.parameter
+        if not UtilClient.is_unset(request.store_type):
+            body['storeType'] = request.store_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateOssExternalStore',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/externalstores/{external_store_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateOssExternalStoreResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_oss_shipper(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.UpdateOssShipperRequest,
+    ) -> sls_20201230_models.UpdateOssShipperResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_oss_shipper_with_options(project, logstore, shipper_name, request, headers, runtime)
+
+    async def update_oss_shipper_async(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.UpdateOssShipperRequest,
+    ) -> sls_20201230_models.UpdateOssShipperResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_oss_shipper_with_options_async(project, logstore, shipper_name, request, headers, runtime)
+
+    def update_oss_shipper_with_options(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.UpdateOssShipperRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateOssShipperResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
+        body = {}
+        if not UtilClient.is_unset(request.shipper_name):
+            body['shipperName'] = request.shipper_name
+        if not UtilClient.is_unset(request.target_configuration):
+            body['targetConfiguration'] = request.target_configuration
+        if not UtilClient.is_unset(request.target_type):
+            body['targetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateOssShipper',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper/{shipper_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateOssShipperResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_oss_shipper_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.UpdateOssShipperRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateOssShipperResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        logstore = OpenApiUtilClient.get_encode_param(logstore)
+        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
+        body = {}
+        if not UtilClient.is_unset(request.shipper_name):
+            body['shipperName'] = request.shipper_name
+        if not UtilClient.is_unset(request.target_configuration):
+            body['targetConfiguration'] = request.target_configuration
+        if not UtilClient.is_unset(request.target_type):
+            body['targetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateOssShipper',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/logstores/{logstore}/shipper/{shipper_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateOssShipperResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
     def update_project(
         self,
         project: str,
@@ -5669,6 +7057,106 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sls_20201230_models.UpdateProjectResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_rds_external_store(
+        self,
+        project: str,
+        external_store_name: str,
+        request: sls_20201230_models.UpdateRdsExternalStoreRequest,
+    ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_rds_external_store_with_options(project, external_store_name, request, headers, runtime)
+
+    async def update_rds_external_store_async(
+        self,
+        project: str,
+        external_store_name: str,
+        request: sls_20201230_models.UpdateRdsExternalStoreRequest,
+    ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_rds_external_store_with_options_async(project, external_store_name, request, headers, runtime)
+
+    def update_rds_external_store_with_options(
+        self,
+        project: str,
+        external_store_name: str,
+        request: sls_20201230_models.UpdateRdsExternalStoreRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
+        body = {}
+        if not UtilClient.is_unset(request.external_store_name):
+            body['externalStoreName'] = request.external_store_name
+        if not UtilClient.is_unset(request.parameter):
+            body['parameter'] = request.parameter
+        if not UtilClient.is_unset(request.store_type):
+            body['storeType'] = request.store_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRdsExternalStore',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/externalstores/{external_store_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateRdsExternalStoreResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_rds_external_store_with_options_async(
+        self,
+        project: str,
+        external_store_name: str,
+        request: sls_20201230_models.UpdateRdsExternalStoreRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
+        body = {}
+        if not UtilClient.is_unset(request.external_store_name):
+            body['externalStoreName'] = request.external_store_name
+        if not UtilClient.is_unset(request.parameter):
+            body['parameter'] = request.parameter
+        if not UtilClient.is_unset(request.store_type):
+            body['storeType'] = request.store_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRdsExternalStore',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/externalstores/{external_store_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateRdsExternalStoreResponse(),
             await self.execute_async(params, req, runtime)
         )
 
