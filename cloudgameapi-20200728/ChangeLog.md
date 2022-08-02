@@ -1,3 +1,6 @@
+2022-08-02 Version: 2.5.6
+- Update Archive OpenApi.
+
 2022-07-08 Version: 2.5.5
 - Update StartGameLive.
 

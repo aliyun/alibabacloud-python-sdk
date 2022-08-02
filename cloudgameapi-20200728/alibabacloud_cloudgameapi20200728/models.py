@@ -11,11 +11,8 @@ class AdaptGameVersionRequest(TeaModel):
         resolution: str = None,
         version_id: str = None,
     ):
-        # 帧率
         self.frame_rate = frame_rate
-        # 分辨率
         self.resolution = resolution
-        # 游戏版本ID
         self.version_id = version_id
 
     def validate(self):
@@ -52,9 +49,7 @@ class AdaptGameVersionResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # Id of the task
         self.task_id = task_id
 
     def validate(self):
@@ -131,9 +126,7 @@ class AddGameToProjectRequest(TeaModel):
         game_id: str = None,
         project_id: str = None,
     ):
-        # 游戏iD
         self.game_id = game_id
-        # 项目ID
         self.project_id = project_id
 
     def validate(self):
@@ -165,7 +158,6 @@ class AddGameToProjectResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -616,7 +608,6 @@ class CancelGameHangResponseBody(TeaModel):
         self.code = code
         self.game_session = game_session
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -823,11 +814,8 @@ class CreateGameRequest(TeaModel):
         game_name: str = None,
         platform_type: int = None,
     ):
-        # 幂等参数，1-64位建议使用uuid
         self.client_token = client_token
-        # 游戏名称
         self.game_name = game_name
-        # 平台类型
         self.platform_type = platform_type
 
     def validate(self):
@@ -864,9 +852,7 @@ class CreateGameResponseBody(TeaModel):
         game_id: str = None,
         request_id: str = None,
     ):
-        # 游戏ID
         self.game_id = game_id
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -1024,9 +1010,7 @@ class CreateGameDeployWorkflowResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 任务id
         self.task_id = task_id
 
     def validate(self):
@@ -1350,9 +1334,7 @@ class CreateProjectRequest(TeaModel):
         client_token: str = None,
         project_name: str = None,
     ):
-        # 幂等参数，1-64位建议使用uuid
         self.client_token = client_token
-        # 项目名称
         self.project_name = project_name
 
     def validate(self):
@@ -1385,9 +1367,7 @@ class CreateProjectResponseBody(TeaModel):
         project_id: str = None,
         request_id: str = None,
     ):
-        # 项目ID
         self.project_id = project_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1608,7 +1588,6 @@ class DeleteGameRequest(TeaModel):
         self,
         game_id: str = None,
     ):
-        # 游戏ID
         self.game_id = game_id
 
     def validate(self):
@@ -1636,7 +1615,6 @@ class DeleteGameResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1703,12 +1681,127 @@ class DeleteGameResponse(TeaModel):
         return self
 
 
+class DeleteGameArchiveRequest(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        archive_id: str = None,
+        game_id: str = None,
+    ):
+        self.account_id = account_id
+        self.archive_id = archive_id
+        self.game_id = game_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.archive_id is not None:
+            result['ArchiveId'] = self.archive_id
+        if self.game_id is not None:
+            result['GameId'] = self.game_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('ArchiveId') is not None:
+            self.archive_id = m.get('ArchiveId')
+        if m.get('GameId') is not None:
+            self.game_id = m.get('GameId')
+        return self
+
+
+class DeleteGameArchiveResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: int = None,
+    ):
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DeleteGameArchiveResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteGameArchiveResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteGameArchiveResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteGameVersionRequest(TeaModel):
     def __init__(
         self,
         version_id: str = None,
     ):
-        # 游戏版本ID
         self.version_id = version_id
 
     def validate(self):
@@ -1736,7 +1829,6 @@ class DeleteGameVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1808,7 +1900,6 @@ class DeleteProjectRequest(TeaModel):
         self,
         project_id: str = None,
     ):
-        # 项目ID
         self.project_id = project_id
 
     def validate(self):
@@ -1836,7 +1927,6 @@ class DeleteProjectResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2839,11 +2929,8 @@ class GetGameTrialSurplusDurationRequest(TeaModel):
         game_id: str = None,
         project_id: str = None,
     ):
-        # 账号ID
         self.account_id = account_id
-        # 游戏ID
         self.game_id = game_id
-        # 项目ID
         self.project_id = project_id
 
     def validate(self):
@@ -2881,11 +2968,8 @@ class GetGameTrialSurplusDurationResponseBody(TeaModel):
         status: float = None,
         surplus_duration: float = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 状态
         self.status = status
-        # 剩余试玩时长
         self.surplus_duration = surplus_duration
 
     def validate(self):
@@ -2965,7 +3049,6 @@ class GetGameVersionRequest(TeaModel):
         self,
         version_id: str = None,
     ):
-        # 版本ID
         self.version_id = version_id
 
     def validate(self):
@@ -2996,13 +3079,9 @@ class GetGameVersionResponseBody(TeaModel):
         version_name: str = None,
         version_number: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 版本ID
         self.version_id = version_id
-        # 版本名称
         self.version_name = version_name
-        # 版本号
         self.version_number = version_number
 
     def validate(self):
@@ -3086,7 +3165,6 @@ class GetGameVersionProgressRequest(TeaModel):
         self,
         task_id: str = None,
     ):
-        # 任务id
         self.task_id = task_id
 
     def validate(self):
@@ -3121,7 +3199,6 @@ class GetGameVersionProgressResponseBody(TeaModel):
         self.description = description
         self.event = event
         self.extra = extra
-        # Id of the request
         self.request_id = request_id
         self.status = status
 
@@ -3798,7 +3875,6 @@ class GetQueuingSizeResponseBody(TeaModel):
         size: int = None,
     ):
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.size = size
 
@@ -4550,7 +4626,6 @@ class ListContainerStatusResponseBodyDataList(TeaModel):
         self.player_detail_list = player_detail_list
         self.project_id = project_id
         self.tags = tags
-        # 系统时间戳
         self.timestamp = timestamp
 
     def validate(self):
@@ -4710,13 +4785,9 @@ class ListDeployableInstancesRequest(TeaModel):
         project_id: str = None,
         version_id: str = None,
     ):
-        # 页码
         self.page_number = page_number
-        # 每页大小
         self.page_size = page_size
-        # 项目ID
         self.project_id = project_id
-        # 游戏版本ID
         self.version_id = version_id
 
     def validate(self):
@@ -4757,9 +4828,7 @@ class ListDeployableInstancesResponseBodyDataList(TeaModel):
         cloud_game_instance_id: str = None,
         cloud_game_instance_name: str = None,
     ):
-        # 实例ID
         self.cloud_game_instance_id = cloud_game_instance_id
-        # 实例名称
         self.cloud_game_instance_name = cloud_game_instance_name
 
     def validate(self):
@@ -4795,15 +4864,10 @@ class ListDeployableInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 数据列表
         self.data_list = data_list
-        # 表示当前调用返回读取到的位置，空代表数据已经读取完毕
         self.page_number = page_number
-        # MaxResults本次请求所返回的最大记录条数
         self.page_size = page_size
-        # Id of the request
         self.request_id = request_id
-        # TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
         self.total_count = total_count
 
     def validate(self):
@@ -4938,11 +5002,8 @@ class ListGameServerIpResponseBody(TeaModel):
     ):
         self.items = items
         self.page_number = page_number
-        # MaxResults本次请求所返回的最大记录条数
         self.page_size = page_size
-        # Id of the request
         self.request_id = request_id
-        # TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
         self.total_count = total_count
 
     def validate(self):
@@ -5032,11 +5093,8 @@ class ListGameVersionsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # 游戏ID
         self.game_id = game_id
-        # 本次读取的最大数据记录数量
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始
         self.next_token = next_token
 
     def validate(self):
@@ -5074,11 +5132,8 @@ class ListGameVersionsResponseBodyDataList(TeaModel):
         version_name: str = None,
         version_number: str = None,
     ):
-        # 版本ID
         self.version_id = version_id
-        # 版本名称
         self.version_name = version_name
-        # 版本号
         self.version_number = version_number
 
     def validate(self):
@@ -5118,15 +5173,10 @@ class ListGameVersionsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # 总记录数
         self.count = count
-        # 数据列表
         self.data_list = data_list
-        # 本次请求所返回的最大记录条数
         self.max_results = max_results
-        # 表示当前调用返回读取到的位置，空代表数据已经读取完毕
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -5223,9 +5273,7 @@ class ListGamesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # 本次读取的最大数据记录数量
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始
         self.next_token = next_token
 
     def validate(self):
@@ -5259,11 +5307,8 @@ class ListGamesResponseBodyDataList(TeaModel):
         game_name: str = None,
         platform_type: int = None,
     ):
-        # 游戏ID
         self.game_id = game_id
-        # 游戏名称
         self.game_name = game_name
-        # 平台类型
         self.platform_type = platform_type
 
     def validate(self):
@@ -5303,15 +5348,10 @@ class ListGamesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # 总记录数
         self.count = count
-        # 数据列表
         self.data_list = data_list
-        # 本次请求所返回的最大记录条数
         self.max_results = max_results
-        # 表示当前调用返回读取到的位置，空代表数据已经读取完毕
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -5411,15 +5451,10 @@ class ListHistoryContainerStatusRequest(TeaModel):
         project_id: str = None,
         start_time: int = None,
     ):
-        # 结束时间（Linux时间戳，单位毫秒）
         self.end_time = end_time
-        # 上一个游戏会话ID
         self.last_game_session_id = last_game_session_id
-        # 每页数量
         self.page_size = page_size
-        # 项目ID
         self.project_id = project_id
-        # 开始时间（Linux时间戳，单位毫秒）
         self.start_time = start_time
 
     def validate(self):
@@ -5465,11 +5500,8 @@ class ListHistoryContainerStatusResponseBodyDataListPlayerDetailList(TeaModel):
         is_initiator: bool = None,
         start_time: int = None,
     ):
-        # 账号ID
         self.account_id = account_id
-        # 是否主机
         self.is_initiator = is_initiator
-        # 玩家进入游戏时间
         self.start_time = start_time
 
     def validate(self):
@@ -5514,25 +5546,15 @@ class ListHistoryContainerStatusResponseBodyDataList(TeaModel):
         tags: str = None,
         timestamp: int = None,
     ):
-        # 主机账号ID
         self.account_id = account_id
-        # 容器退出时间（Linux时间戳，单位毫秒）
         self.container_quit_time = container_quit_time
-        # 容器启动时间（Linux时间戳，单位毫秒）
         self.container_start_time = container_start_time
-        # 容器状态
         self.container_state = container_state
-        # 游戏ID
         self.game_id = game_id
-        # 游戏会话ID
         self.game_session_id = game_session_id
-        # 玩家信息集合
         self.player_detail_list = player_detail_list
-        # 项目ID
         self.project_id = project_id
-        # 自定义标识
         self.tags = tags
-        # 系统时间戳
         self.timestamp = timestamp
 
     def validate(self):
@@ -5605,9 +5627,7 @@ class ListHistoryContainerStatusResponseBody(TeaModel):
         data_list: List[ListHistoryContainerStatusResponseBodyDataList] = None,
         request_id: str = None,
     ):
-        # 容器状态信息集合
         self.data_list = data_list
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -5686,15 +5706,218 @@ class ListHistoryContainerStatusResponse(TeaModel):
         return self
 
 
+class ListLatestGameArchiveRequest(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        game_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        tag_status: int = None,
+    ):
+        self.account_id = account_id
+        self.game_id = game_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.tag_status = tag_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.game_id is not None:
+            result['GameId'] = self.game_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.tag_status is not None:
+            result['TagStatus'] = self.tag_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('GameId') is not None:
+            self.game_id = m.get('GameId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TagStatus') is not None:
+            self.tag_status = m.get('TagStatus')
+        return self
+
+
+class ListLatestGameArchiveResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        archive_id: str = None,
+        archive_time: str = None,
+        game_id: str = None,
+        tag_status: int = None,
+    ):
+        self.account_id = account_id
+        self.archive_id = archive_id
+        self.archive_time = archive_time
+        self.game_id = game_id
+        self.tag_status = tag_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.archive_id is not None:
+            result['ArchiveId'] = self.archive_id
+        if self.archive_time is not None:
+            result['ArchiveTime'] = self.archive_time
+        if self.game_id is not None:
+            result['GameId'] = self.game_id
+        if self.tag_status is not None:
+            result['TagStatus'] = self.tag_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('ArchiveId') is not None:
+            self.archive_id = m.get('ArchiveId')
+        if m.get('ArchiveTime') is not None:
+            self.archive_time = m.get('ArchiveTime')
+        if m.get('GameId') is not None:
+            self.game_id = m.get('GameId')
+        if m.get('TagStatus') is not None:
+            self.tag_status = m.get('TagStatus')
+        return self
+
+
+class ListLatestGameArchiveResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_list: List[ListLatestGameArchiveResponseBodyDataList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.data_list = data_list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data_list:
+            for k in self.data_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataList'] = []
+        if self.data_list is not None:
+            for k in self.data_list:
+                result['DataList'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_list = []
+        if m.get('DataList') is not None:
+            for k in m.get('DataList'):
+                temp_model = ListLatestGameArchiveResponseBodyDataList()
+                self.data_list.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListLatestGameArchiveResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListLatestGameArchiveResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListLatestGameArchiveResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListProjectsRequest(TeaModel):
     def __init__(
         self,
         max_results: int = None,
         next_token: str = None,
     ):
-        # 本次读取的最大数据记录数量
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始
         self.next_token = next_token
 
     def validate(self):
@@ -5727,9 +5950,7 @@ class ListProjectsResponseBodyDataList(TeaModel):
         project_id: str = None,
         project_name: str = None,
     ):
-        # 项目ID
         self.project_id = project_id
-        # 项目名称
         self.project_name = project_name
 
     def validate(self):
@@ -5765,15 +5986,10 @@ class ListProjectsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # 总记录数
         self.count = count
-        # 数据列表
         self.data_list = data_list
-        # 本次请求所返回的最大记录条数
         self.max_results = max_results
-        # 表示当前调用返回读取到的位置，空代表数据已经读取完毕
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -6119,7 +6335,6 @@ class QueryGameHangResponseBody(TeaModel):
         self.game_session = game_session
         self.hanging = hanging
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.start_hang_timestamp = start_hang_timestamp
         self.success = success
@@ -7412,9 +7627,7 @@ class RemoveGameFromProjectRequest(TeaModel):
         game_id: str = None,
         project_id: str = None,
     ):
-        # 游戏iD
         self.game_id = game_id
-        # 项目ID
         self.project_id = project_id
 
     def validate(self):
@@ -7446,7 +7659,6 @@ class RemoveGameFromProjectResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -7513,6 +7725,122 @@ class RemoveGameFromProjectResponse(TeaModel):
         return self
 
 
+class RestoreGameArchiveRequest(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        archive_id: str = None,
+        game_id: str = None,
+    ):
+        self.account_id = account_id
+        self.archive_id = archive_id
+        self.game_id = game_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.archive_id is not None:
+            result['ArchiveId'] = self.archive_id
+        if self.game_id is not None:
+            result['GameId'] = self.game_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('ArchiveId') is not None:
+            self.archive_id = m.get('ArchiveId')
+        if m.get('GameId') is not None:
+            self.game_id = m.get('GameId')
+        return self
+
+
+class RestoreGameArchiveResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: int = None,
+    ):
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class RestoreGameArchiveResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RestoreGameArchiveResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RestoreGameArchiveResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SetGameAliveRequest(TeaModel):
     def __init__(
         self,
@@ -7564,7 +7892,6 @@ class SetGameAliveResponseBody(TeaModel):
         self.code = code
         self.game_session = game_session
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -7702,7 +8029,6 @@ class SetGameHangResponseBody(TeaModel):
         self.duration = duration
         self.game_session = game_session
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.start_hang_timestamp = start_hang_timestamp
         self.success = success
@@ -8360,15 +8686,10 @@ class SubmitDeploymentRequest(TeaModel):
         project_id: str = None,
         version_id: str = None,
     ):
-        # 实例ID列表
         self.cloud_game_instance_ids = cloud_game_instance_ids
-        # 游戏iD
         self.game_id = game_id
-        # 操作类型
         self.operation_type = operation_type
-        # 项目ID
         self.project_id = project_id
-        # 游戏版本ID
         self.version_id = version_id
 
     def validate(self):
@@ -8413,9 +8734,7 @@ class SubmitDeploymentResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 任务ID
         self.task_id = task_id
 
     def validate(self):
@@ -9153,6 +9472,128 @@ class SubmitInternalPurchaseReadyFlagResponse(TeaModel):
         return self
 
 
+class UpdateGameArchiveTagStatusRequest(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        archive_id: str = None,
+        game_id: str = None,
+        tag_status: int = None,
+    ):
+        self.account_id = account_id
+        self.archive_id = archive_id
+        self.game_id = game_id
+        self.tag_status = tag_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.archive_id is not None:
+            result['ArchiveId'] = self.archive_id
+        if self.game_id is not None:
+            result['GameId'] = self.game_id
+        if self.tag_status is not None:
+            result['TagStatus'] = self.tag_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('ArchiveId') is not None:
+            self.archive_id = m.get('ArchiveId')
+        if m.get('GameId') is not None:
+            self.game_id = m.get('GameId')
+        if m.get('TagStatus') is not None:
+            self.tag_status = m.get('TagStatus')
+        return self
+
+
+class UpdateGameArchiveTagStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: int = None,
+    ):
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateGameArchiveTagStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateGameArchiveTagStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateGameArchiveTagStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UploadGameVersionByDownloadRequest(TeaModel):
     def __init__(
         self,
@@ -9216,9 +9657,7 @@ class UploadGameVersionByDownloadResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 任务id
         self.task_id = task_id
 
     def validate(self):
