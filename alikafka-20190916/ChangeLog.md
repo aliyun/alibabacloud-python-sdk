@@ -1,3 +1,7 @@
+2022-08-02 Version: 2.0.5
+- TagResources add instanceId param.
+- Add topic count, group count, partition count.
+
 2022-07-27 Version: 2.0.4
 - Supported new features.
 
