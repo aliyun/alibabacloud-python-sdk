@@ -1,3 +1,6 @@
+2022-08-02 Version: 2.0.3
+- Supported latest apis.
+
 2021-12-05 Version: 2.0.2
 - Generated python 2016-04-28 for Vpc.
 
