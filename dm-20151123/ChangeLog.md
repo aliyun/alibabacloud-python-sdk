@@ -1,3 +1,6 @@
+2022-08-02 Version: 1.0.4
+- The input parameter IpProtection of UpdateIpProtection API  is corrected to be required. 
+
 2022-05-20 Version: 1.0.3
 - Ip related APIs are changed to visiable and QPM is set as 60 .
 
