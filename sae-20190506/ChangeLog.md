@@ -1,3 +1,6 @@
+2022-08-02 Version: 1.21.3
+- Delete kafka params.
+
 2022-07-07 Version: 1.21.2
 - Support execJob.
 
