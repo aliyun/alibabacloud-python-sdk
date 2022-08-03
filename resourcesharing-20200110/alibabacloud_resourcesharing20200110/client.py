@@ -41,6 +41,76 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def accept_resource_share_invitation_with_options(
+        self,
+        request: resource_sharing_20200110_models.AcceptResourceShareInvitationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.AcceptResourceShareInvitationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_share_invitation_id):
+            query['ResourceShareInvitationId'] = request.resource_share_invitation_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AcceptResourceShareInvitation',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.AcceptResourceShareInvitationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def accept_resource_share_invitation_with_options_async(
+        self,
+        request: resource_sharing_20200110_models.AcceptResourceShareInvitationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.AcceptResourceShareInvitationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_share_invitation_id):
+            query['ResourceShareInvitationId'] = request.resource_share_invitation_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AcceptResourceShareInvitation',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.AcceptResourceShareInvitationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def accept_resource_share_invitation(
+        self,
+        request: resource_sharing_20200110_models.AcceptResourceShareInvitationRequest,
+    ) -> resource_sharing_20200110_models.AcceptResourceShareInvitationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.accept_resource_share_invitation_with_options(request, runtime)
+
+    async def accept_resource_share_invitation_async(
+        self,
+        request: resource_sharing_20200110_models.AcceptResourceShareInvitationRequest,
+    ) -> resource_sharing_20200110_models.AcceptResourceShareInvitationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.accept_resource_share_invitation_with_options_async(request, runtime)
+
     def associate_resource_share_with_options(
         self,
         request: resource_sharing_20200110_models.AssociateResourceShareRequest,
@@ -48,12 +118,14 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.AssociateResourceShareResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceShareId'] = request.resource_share_id
-        query['Resources'] = request.resources
-        query['Targets'] = request.targets
+        if not UtilClient.is_unset(request.resource_share_id):
+            query['ResourceShareId'] = request.resource_share_id
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.targets):
+            query['Targets'] = request.targets
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AssociateResourceShare',
@@ -63,7 +135,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -78,12 +150,14 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.AssociateResourceShareResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceShareId'] = request.resource_share_id
-        query['Resources'] = request.resources
-        query['Targets'] = request.targets
+        if not UtilClient.is_unset(request.resource_share_id):
+            query['ResourceShareId'] = request.resource_share_id
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.targets):
+            query['Targets'] = request.targets
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AssociateResourceShare',
@@ -93,7 +167,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -122,12 +196,16 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.CreateResourceShareResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceShareName'] = request.resource_share_name
-        query['Resources'] = request.resources
-        query['Targets'] = request.targets
+        if not UtilClient.is_unset(request.allow_external_targets):
+            query['AllowExternalTargets'] = request.allow_external_targets
+        if not UtilClient.is_unset(request.resource_share_name):
+            query['ResourceShareName'] = request.resource_share_name
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.targets):
+            query['Targets'] = request.targets
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateResourceShare',
@@ -137,7 +215,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -152,12 +230,16 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.CreateResourceShareResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceShareName'] = request.resource_share_name
-        query['Resources'] = request.resources
-        query['Targets'] = request.targets
+        if not UtilClient.is_unset(request.allow_external_targets):
+            query['AllowExternalTargets'] = request.allow_external_targets
+        if not UtilClient.is_unset(request.resource_share_name):
+            query['ResourceShareName'] = request.resource_share_name
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.targets):
+            query['Targets'] = request.targets
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateResourceShare',
@@ -167,7 +249,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -196,10 +278,10 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.DeleteResourceShareResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceShareId'] = request.resource_share_id
+        if not UtilClient.is_unset(request.resource_share_id):
+            query['ResourceShareId'] = request.resource_share_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteResourceShare',
@@ -209,7 +291,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -224,10 +306,10 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.DeleteResourceShareResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceShareId'] = request.resource_share_id
+        if not UtilClient.is_unset(request.resource_share_id):
+            query['ResourceShareId'] = request.resource_share_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteResourceShare',
@@ -237,7 +319,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -266,10 +348,10 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRegions',
@@ -279,7 +361,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -294,10 +376,10 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRegions',
@@ -307,7 +389,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -336,12 +418,16 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.DisassociateResourceShareResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceShareId'] = request.resource_share_id
-        query['Resources'] = request.resources
-        query['Targets'] = request.targets
+        if not UtilClient.is_unset(request.resource_owner):
+            query['ResourceOwner'] = request.resource_owner
+        if not UtilClient.is_unset(request.resource_share_id):
+            query['ResourceShareId'] = request.resource_share_id
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.targets):
+            query['Targets'] = request.targets
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DisassociateResourceShare',
@@ -351,7 +437,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -366,12 +452,16 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.DisassociateResourceShareResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceShareId'] = request.resource_share_id
-        query['Resources'] = request.resources
-        query['Targets'] = request.targets
+        if not UtilClient.is_unset(request.resource_owner):
+            query['ResourceOwner'] = request.resource_owner
+        if not UtilClient.is_unset(request.resource_share_id):
+            query['ResourceShareId'] = request.resource_share_id
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.targets):
+            query['Targets'] = request.targets
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DisassociateResourceShare',
@@ -381,7 +471,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -403,6 +493,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disassociate_resource_share_with_options_async(request, runtime)
 
+    def enable_sharing_with_resource_directory_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.EnableSharingWithResourceDirectoryResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='EnableSharingWithResourceDirectory',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.EnableSharingWithResourceDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_sharing_with_resource_directory_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.EnableSharingWithResourceDirectoryResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='EnableSharingWithResourceDirectory',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.EnableSharingWithResourceDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_sharing_with_resource_directory(self) -> resource_sharing_20200110_models.EnableSharingWithResourceDirectoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.enable_sharing_with_resource_directory_with_options(runtime)
+
+    async def enable_sharing_with_resource_directory_async(self) -> resource_sharing_20200110_models.EnableSharingWithResourceDirectoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_sharing_with_resource_directory_with_options_async(runtime)
+
     def list_resource_share_associations_with_options(
         self,
         request: resource_sharing_20200110_models.ListResourceShareAssociationsRequest,
@@ -410,16 +550,22 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.ListResourceShareAssociationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceId'] = request.resource_id
-        query['Target'] = request.target
-        query['AssociationType'] = request.association_type
-        query['AssociationStatus'] = request.association_status
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceShareIds'] = request.resource_share_ids
+        if not UtilClient.is_unset(request.association_status):
+            query['AssociationStatus'] = request.association_status
+        if not UtilClient.is_unset(request.association_type):
+            query['AssociationType'] = request.association_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_share_ids):
+            query['ResourceShareIds'] = request.resource_share_ids
+        if not UtilClient.is_unset(request.target):
+            query['Target'] = request.target
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListResourceShareAssociations',
@@ -429,7 +575,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -444,16 +590,22 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.ListResourceShareAssociationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceId'] = request.resource_id
-        query['Target'] = request.target
-        query['AssociationType'] = request.association_type
-        query['AssociationStatus'] = request.association_status
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceShareIds'] = request.resource_share_ids
+        if not UtilClient.is_unset(request.association_status):
+            query['AssociationStatus'] = request.association_status
+        if not UtilClient.is_unset(request.association_type):
+            query['AssociationType'] = request.association_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_share_ids):
+            query['ResourceShareIds'] = request.resource_share_ids
+        if not UtilClient.is_unset(request.target):
+            query['Target'] = request.target
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListResourceShareAssociations',
@@ -463,7 +615,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -485,6 +637,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_resource_share_associations_with_options_async(request, runtime)
 
+    def list_resource_share_invitations_with_options(
+        self,
+        request: resource_sharing_20200110_models.ListResourceShareInvitationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.ListResourceShareInvitationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_share_ids):
+            query['ResourceShareIds'] = request.resource_share_ids
+        if not UtilClient.is_unset(request.resource_share_invitation_ids):
+            query['ResourceShareInvitationIds'] = request.resource_share_invitation_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceShareInvitations',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.ListResourceShareInvitationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_resource_share_invitations_with_options_async(
+        self,
+        request: resource_sharing_20200110_models.ListResourceShareInvitationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.ListResourceShareInvitationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_share_ids):
+            query['ResourceShareIds'] = request.resource_share_ids
+        if not UtilClient.is_unset(request.resource_share_invitation_ids):
+            query['ResourceShareInvitationIds'] = request.resource_share_invitation_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceShareInvitations',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.ListResourceShareInvitationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_resource_share_invitations(
+        self,
+        request: resource_sharing_20200110_models.ListResourceShareInvitationsRequest,
+    ) -> resource_sharing_20200110_models.ListResourceShareInvitationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_resource_share_invitations_with_options(request, runtime)
+
+    async def list_resource_share_invitations_async(
+        self,
+        request: resource_sharing_20200110_models.ListResourceShareInvitationsRequest,
+    ) -> resource_sharing_20200110_models.ListResourceShareInvitationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_resource_share_invitations_with_options_async(request, runtime)
+
     def list_resource_shares_with_options(
         self,
         request: resource_sharing_20200110_models.ListResourceSharesRequest,
@@ -492,15 +726,20 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.ListResourceSharesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwner'] = request.resource_owner
-        query['ResourceShareName'] = request.resource_share_name
-        query['ResourceShareStatus'] = request.resource_share_status
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceShareIds'] = request.resource_share_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_owner):
+            query['ResourceOwner'] = request.resource_owner
+        if not UtilClient.is_unset(request.resource_share_ids):
+            query['ResourceShareIds'] = request.resource_share_ids
+        if not UtilClient.is_unset(request.resource_share_name):
+            query['ResourceShareName'] = request.resource_share_name
+        if not UtilClient.is_unset(request.resource_share_status):
+            query['ResourceShareStatus'] = request.resource_share_status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListResourceShares',
@@ -510,7 +749,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -525,15 +764,20 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.ListResourceSharesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwner'] = request.resource_owner
-        query['ResourceShareName'] = request.resource_share_name
-        query['ResourceShareStatus'] = request.resource_share_status
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceShareIds'] = request.resource_share_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_owner):
+            query['ResourceOwner'] = request.resource_owner
+        if not UtilClient.is_unset(request.resource_share_ids):
+            query['ResourceShareIds'] = request.resource_share_ids
+        if not UtilClient.is_unset(request.resource_share_name):
+            query['ResourceShareName'] = request.resource_share_name
+        if not UtilClient.is_unset(request.resource_share_status):
+            query['ResourceShareStatus'] = request.resource_share_status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListResourceShares',
@@ -543,7 +787,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -572,16 +816,22 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.ListSharedResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwner'] = request.resource_owner
-        query['ResourceType'] = request.resource_type
-        query['Target'] = request.target
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceShareIds'] = request.resource_share_ids
-        query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_owner):
+            query['ResourceOwner'] = request.resource_owner
+        if not UtilClient.is_unset(request.resource_share_ids):
+            query['ResourceShareIds'] = request.resource_share_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.target):
+            query['Target'] = request.target
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSharedResources',
@@ -591,7 +841,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -606,16 +856,22 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.ListSharedResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwner'] = request.resource_owner
-        query['ResourceType'] = request.resource_type
-        query['Target'] = request.target
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceShareIds'] = request.resource_share_ids
-        query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_owner):
+            query['ResourceOwner'] = request.resource_owner
+        if not UtilClient.is_unset(request.resource_share_ids):
+            query['ResourceShareIds'] = request.resource_share_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.target):
+            query['Target'] = request.target
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSharedResources',
@@ -625,7 +881,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -654,16 +910,22 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.ListSharedTargetsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwner'] = request.resource_owner
-        query['ResourceType'] = request.resource_type
-        query['ResourceId'] = request.resource_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceShareIds'] = request.resource_share_ids
-        query['Targets'] = request.targets
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner):
+            query['ResourceOwner'] = request.resource_owner
+        if not UtilClient.is_unset(request.resource_share_ids):
+            query['ResourceShareIds'] = request.resource_share_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.targets):
+            query['Targets'] = request.targets
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSharedTargets',
@@ -673,7 +935,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -688,16 +950,22 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.ListSharedTargetsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwner'] = request.resource_owner
-        query['ResourceType'] = request.resource_type
-        query['ResourceId'] = request.resource_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceShareIds'] = request.resource_share_ids
-        query['Targets'] = request.targets
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner):
+            query['ResourceOwner'] = request.resource_owner
+        if not UtilClient.is_unset(request.resource_share_ids):
+            query['ResourceShareIds'] = request.resource_share_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.targets):
+            query['Targets'] = request.targets
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSharedTargets',
@@ -707,7 +975,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -729,6 +997,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_shared_targets_with_options_async(request, runtime)
 
+    def reject_resource_share_invitation_with_options(
+        self,
+        request: resource_sharing_20200110_models.RejectResourceShareInvitationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.RejectResourceShareInvitationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_share_invitation_id):
+            query['ResourceShareInvitationId'] = request.resource_share_invitation_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RejectResourceShareInvitation',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.RejectResourceShareInvitationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reject_resource_share_invitation_with_options_async(
+        self,
+        request: resource_sharing_20200110_models.RejectResourceShareInvitationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.RejectResourceShareInvitationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_share_invitation_id):
+            query['ResourceShareInvitationId'] = request.resource_share_invitation_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RejectResourceShareInvitation',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.RejectResourceShareInvitationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reject_resource_share_invitation(
+        self,
+        request: resource_sharing_20200110_models.RejectResourceShareInvitationRequest,
+    ) -> resource_sharing_20200110_models.RejectResourceShareInvitationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.reject_resource_share_invitation_with_options(request, runtime)
+
+    async def reject_resource_share_invitation_async(
+        self,
+        request: resource_sharing_20200110_models.RejectResourceShareInvitationRequest,
+    ) -> resource_sharing_20200110_models.RejectResourceShareInvitationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.reject_resource_share_invitation_with_options_async(request, runtime)
+
     def update_resource_share_with_options(
         self,
         request: resource_sharing_20200110_models.UpdateResourceShareRequest,
@@ -736,11 +1074,14 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.UpdateResourceShareResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceShareId'] = request.resource_share_id
-        query['ResourceShareName'] = request.resource_share_name
+        if not UtilClient.is_unset(request.allow_external_targets):
+            query['AllowExternalTargets'] = request.allow_external_targets
+        if not UtilClient.is_unset(request.resource_share_id):
+            query['ResourceShareId'] = request.resource_share_id
+        if not UtilClient.is_unset(request.resource_share_name):
+            query['ResourceShareName'] = request.resource_share_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateResourceShare',
@@ -750,7 +1091,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -765,11 +1106,14 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.UpdateResourceShareResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceShareId'] = request.resource_share_id
-        query['ResourceShareName'] = request.resource_share_name
+        if not UtilClient.is_unset(request.allow_external_targets):
+            query['AllowExternalTargets'] = request.allow_external_targets
+        if not UtilClient.is_unset(request.resource_share_id):
+            query['ResourceShareId'] = request.resource_share_id
+        if not UtilClient.is_unset(request.resource_share_name):
+            query['ResourceShareName'] = request.resource_share_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateResourceShare',
@@ -779,7 +1123,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
