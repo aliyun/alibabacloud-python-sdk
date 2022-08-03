@@ -22,6 +22,31 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'central'
+        self._endpoint_map = {
+            'ap-northeast-1': 'resourcemanager.ap-northeast-1.aliyuncs.com',
+            'ap-south-1': 'resourcemanager.ap-south-1.aliyuncs.com',
+            'ap-southeast-1': 'resourcemanager.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-2': 'resourcemanager.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-3': 'resourcemanager.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-5': 'resourcemanager.ap-southeast-5.aliyuncs.com',
+            'cn-beijing': 'resourcemanager.cn-beijing.aliyuncs.com',
+            'cn-chengdu': 'resourcemanager.cn-chengdu.aliyuncs.com',
+            'cn-hangzhou-finance': 'resourcemanager.cn-hangzhou-finance.aliyuncs.com',
+            'cn-hongkong': 'resourcemanager.cn-hongkong.aliyuncs.com',
+            'cn-huhehaote': 'resourcemanager.cn-huhehaote.aliyuncs.com',
+            'cn-north-2-gov-1': 'resourcemanager.cn-north-2-gov-1.aliyuncs.com',
+            'cn-qingdao': 'resourcemanager.cn-qingdao.aliyuncs.com',
+            'cn-shanghai-finance-1': 'resourcemanager.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shenzhen': 'resourcemanager.cn-shenzhen.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'resourcemanager.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-wulanchabu': 'resourcemanager.cn-wulanchabu.aliyuncs.com',
+            'cn-zhangjiakou': 'resourcemanager.cn-zhangjiakou.aliyuncs.com',
+            'eu-central-1': 'resourcemanager.eu-central-1.aliyuncs.com',
+            'eu-west-1': 'resourcemanager.eu-west-1.aliyuncs.com',
+            'me-east-1': 'resourcemanager.me-east-1.aliyuncs.com',
+            'us-east-1': 'resourcemanager.us-east-1.aliyuncs.com',
+            'us-west-1': 'resourcemanager.us-west-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('resourcemanager', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -968,6 +993,8 @@ class Client(OpenApiClient):
             query['ParentFolderId'] = request.parent_folder_id
         if not UtilClient.is_unset(request.payer_account_id):
             query['PayerAccountId'] = request.payer_account_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1002,6 +1029,8 @@ class Client(OpenApiClient):
             query['ParentFolderId'] = request.parent_folder_id
         if not UtilClient.is_unset(request.payer_account_id):
             query['PayerAccountId'] = request.payer_account_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2308,6 +2337,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_id):
             query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2336,6 +2367,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_id):
             query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2916,6 +2949,8 @@ class Client(OpenApiClient):
     ) -> resource_manager_20200331_models.GetResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
@@ -2944,6 +2979,8 @@ class Client(OpenApiClient):
     ) -> resource_manager_20200331_models.GetResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
@@ -2978,6 +3015,56 @@ class Client(OpenApiClient):
     ) -> resource_manager_20200331_models.GetResourceGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_group_with_options_async(request, runtime)
+
+    def get_resource_group_list_acl_mode_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.GetResourceGroupListAclModeResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetResourceGroupListAclMode',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetResourceGroupListAclModeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_group_list_acl_mode_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.GetResourceGroupListAclModeResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetResourceGroupListAclMode',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetResourceGroupListAclModeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_group_list_acl_mode(self) -> resource_manager_20200331_models.GetResourceGroupListAclModeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_resource_group_list_acl_mode_with_options(runtime)
+
+    async def get_resource_group_list_acl_mode_async(self) -> resource_manager_20200331_models.GetResourceGroupListAclModeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_resource_group_list_acl_mode_with_options_async(runtime)
 
     def get_role_with_options(
         self,
@@ -3182,6 +3269,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.note):
             query['Note'] = request.note
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.target_entity):
             query['TargetEntity'] = request.target_entity
         if not UtilClient.is_unset(request.target_type):
@@ -3214,6 +3303,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.note):
             query['Note'] = request.note
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.target_entity):
             query['TargetEntity'] = request.target_entity
         if not UtilClient.is_unset(request.target_type):
@@ -3258,10 +3349,14 @@ class Client(OpenApiClient):
     ) -> resource_manager_20200331_models.ListAccountsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3288,10 +3383,14 @@ class Client(OpenApiClient):
     ) -> resource_manager_20200331_models.ListAccountsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3332,6 +3431,8 @@ class Client(OpenApiClient):
     ) -> resource_manager_20200331_models.ListAccountsForParentResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -3340,6 +3441,8 @@ class Client(OpenApiClient):
             query['ParentFolderId'] = request.parent_folder_id
         if not UtilClient.is_unset(request.query_keyword):
             query['QueryKeyword'] = request.query_keyword
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3366,6 +3469,8 @@ class Client(OpenApiClient):
     ) -> resource_manager_20200331_models.ListAccountsForParentResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -3374,6 +3479,8 @@ class Client(OpenApiClient):
             query['ParentFolderId'] = request.parent_folder_id
         if not UtilClient.is_unset(request.query_keyword):
             query['QueryKeyword'] = request.query_keyword
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4274,6 +4381,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.display_name):
             query['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_number):
@@ -4282,8 +4391,12 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4312,6 +4425,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.display_name):
             query['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.include_tags):
+            query['IncludeTags'] = request.include_tags
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_number):
@@ -4320,8 +4435,12 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4526,6 +4645,260 @@ class Client(OpenApiClient):
     ) -> resource_manager_20200331_models.ListRolesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_roles_with_options_async(request, runtime)
+
+    def list_tag_keys_with_options(
+        self,
+        request: resource_manager_20200331_models.ListTagKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ListTagKeysResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_filter):
+            query['KeyFilter'] = request.key_filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagKeys',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTagKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_keys_with_options_async(
+        self,
+        request: resource_manager_20200331_models.ListTagKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ListTagKeysResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_filter):
+            query['KeyFilter'] = request.key_filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagKeys',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTagKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_keys(
+        self,
+        request: resource_manager_20200331_models.ListTagKeysRequest,
+    ) -> resource_manager_20200331_models.ListTagKeysResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_keys_with_options(request, runtime)
+
+    async def list_tag_keys_async(
+        self,
+        request: resource_manager_20200331_models.ListTagKeysRequest,
+    ) -> resource_manager_20200331_models.ListTagKeysResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_keys_with_options_async(request, runtime)
+
+    def list_tag_resources_with_options(
+        self,
+        request: resource_manager_20200331_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: resource_manager_20200331_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: resource_manager_20200331_models.ListTagResourcesRequest,
+    ) -> resource_manager_20200331_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: resource_manager_20200331_models.ListTagResourcesRequest,
+    ) -> resource_manager_20200331_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def list_tag_values_with_options(
+        self,
+        request: resource_manager_20200331_models.ListTagValuesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ListTagValuesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.value_filter):
+            query['ValueFilter'] = request.value_filter
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagValues',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTagValuesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_values_with_options_async(
+        self,
+        request: resource_manager_20200331_models.ListTagValuesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ListTagValuesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.value_filter):
+            query['ValueFilter'] = request.value_filter
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagValues',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListTagValuesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_values(
+        self,
+        request: resource_manager_20200331_models.ListTagValuesRequest,
+    ) -> resource_manager_20200331_models.ListTagValuesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_values_with_options(request, runtime)
+
+    async def list_tag_values_async(
+        self,
+        request: resource_manager_20200331_models.ListTagValuesRequest,
+    ) -> resource_manager_20200331_models.ListTagValuesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_values_with_options_async(request, runtime)
 
     def list_target_attachments_for_control_policy_with_options(
         self,
@@ -5406,6 +5779,236 @@ class Client(OpenApiClient):
     ) -> resource_manager_20200331_models.SetDefaultPolicyVersionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.set_default_policy_version_with_options_async(request, runtime)
+
+    def set_member_deletion_permission_with_options(
+        self,
+        request: resource_manager_20200331_models.SetMemberDeletionPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.SetMemberDeletionPermissionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetMemberDeletionPermission',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.SetMemberDeletionPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_member_deletion_permission_with_options_async(
+        self,
+        request: resource_manager_20200331_models.SetMemberDeletionPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.SetMemberDeletionPermissionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetMemberDeletionPermission',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.SetMemberDeletionPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_member_deletion_permission(
+        self,
+        request: resource_manager_20200331_models.SetMemberDeletionPermissionRequest,
+    ) -> resource_manager_20200331_models.SetMemberDeletionPermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_member_deletion_permission_with_options(request, runtime)
+
+    async def set_member_deletion_permission_async(
+        self,
+        request: resource_manager_20200331_models.SetMemberDeletionPermissionRequest,
+    ) -> resource_manager_20200331_models.SetMemberDeletionPermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_member_deletion_permission_with_options_async(request, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: resource_manager_20200331_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: resource_manager_20200331_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: resource_manager_20200331_models.TagResourcesRequest,
+    ) -> resource_manager_20200331_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: resource_manager_20200331_models.TagResourcesRequest,
+    ) -> resource_manager_20200331_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: resource_manager_20200331_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: resource_manager_20200331_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: resource_manager_20200331_models.UntagResourcesRequest,
+    ) -> resource_manager_20200331_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: resource_manager_20200331_models.UntagResourcesRequest,
+    ) -> resource_manager_20200331_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
 
     def update_account_with_options(
         self,
