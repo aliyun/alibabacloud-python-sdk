@@ -1429,6 +1429,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.persistence_timeout):
             query['PersistenceTimeout'] = request.persistence_timeout
+        if not UtilClient.is_unset(request.proxy_protocol_v2enabled):
+            query['ProxyProtocolV2Enabled'] = request.proxy_protocol_v2enabled
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -1513,6 +1515,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.persistence_timeout):
             query['PersistenceTimeout'] = request.persistence_timeout
+        if not UtilClient.is_unset(request.proxy_protocol_v2enabled):
+            query['ProxyProtocolV2Enabled'] = request.proxy_protocol_v2enabled
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -1595,6 +1599,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.proxy_protocol_v2enabled):
+            query['ProxyProtocolV2Enabled'] = request.proxy_protocol_v2enabled
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -1667,6 +1673,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.proxy_protocol_v2enabled):
+            query['ProxyProtocolV2Enabled'] = request.proxy_protocol_v2enabled
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -5675,12 +5683,16 @@ class Client(OpenApiClient):
     ) -> slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
         if not UtilClient.is_unset(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.load_balancer_spec):
+            query['LoadBalancerSpec'] = request.load_balancer_spec
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -5717,12 +5729,16 @@ class Client(OpenApiClient):
     ) -> slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
         if not UtilClient.is_unset(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.load_balancer_spec):
+            query['LoadBalancerSpec'] = request.load_balancer_spec
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -7995,6 +8011,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.persistence_timeout):
             query['PersistenceTimeout'] = request.persistence_timeout
+        if not UtilClient.is_unset(request.proxy_protocol_v2enabled):
+            query['ProxyProtocolV2Enabled'] = request.proxy_protocol_v2enabled
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -8083,6 +8101,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.persistence_timeout):
             query['PersistenceTimeout'] = request.persistence_timeout
+        if not UtilClient.is_unset(request.proxy_protocol_v2enabled):
+            query['ProxyProtocolV2Enabled'] = request.proxy_protocol_v2enabled
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -8169,6 +8189,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.proxy_protocol_v2enabled):
+            query['ProxyProtocolV2Enabled'] = request.proxy_protocol_v2enabled
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -8243,6 +8265,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.proxy_protocol_v2enabled):
+            query['ProxyProtocolV2Enabled'] = request.proxy_protocol_v2enabled
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):

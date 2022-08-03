@@ -2163,6 +2163,7 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         persistence_timeout: int = None,
+        proxy_protocol_v2enabled: bool = None,
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -2193,6 +2194,7 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.persistence_timeout = persistence_timeout
+        self.proxy_protocol_v2enabled = proxy_protocol_v2enabled
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2254,6 +2256,8 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.persistence_timeout is not None:
             result['PersistenceTimeout'] = self.persistence_timeout
+        if self.proxy_protocol_v2enabled is not None:
+            result['ProxyProtocolV2Enabled'] = self.proxy_protocol_v2enabled
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
@@ -2316,6 +2320,8 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('PersistenceTimeout') is not None:
             self.persistence_timeout = m.get('PersistenceTimeout')
+        if m.get('ProxyProtocolV2Enabled') is not None:
+            self.proxy_protocol_v2enabled = m.get('ProxyProtocolV2Enabled')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -2421,6 +2427,7 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
         master_slave_server_group_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        proxy_protocol_v2enabled: bool = None,
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -2445,6 +2452,7 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
         self.master_slave_server_group_id = master_slave_server_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.proxy_protocol_v2enabled = proxy_protocol_v2enabled
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2492,6 +2500,8 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.proxy_protocol_v2enabled is not None:
+            result['ProxyProtocolV2Enabled'] = self.proxy_protocol_v2enabled
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
@@ -2542,6 +2552,8 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ProxyProtocolV2Enabled') is not None:
+            self.proxy_protocol_v2enabled = m.get('ProxyProtocolV2Enabled')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -9282,6 +9294,7 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         listener_port: int = None,
         master_slave_server_group_id: str = None,
         persistence_timeout: int = None,
+        proxy_protocol_v2enabled: bool = None,
         request_id: str = None,
         scheduler: str = None,
         status: str = None,
@@ -9311,6 +9324,7 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         self.listener_port = listener_port
         self.master_slave_server_group_id = master_slave_server_group_id
         self.persistence_timeout = persistence_timeout
+        self.proxy_protocol_v2enabled = proxy_protocol_v2enabled
         self.request_id = request_id
         self.scheduler = scheduler
         self.status = status
@@ -9371,6 +9385,8 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
             result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
         if self.persistence_timeout is not None:
             result['PersistenceTimeout'] = self.persistence_timeout
+        if self.proxy_protocol_v2enabled is not None:
+            result['ProxyProtocolV2Enabled'] = self.proxy_protocol_v2enabled
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.scheduler is not None:
@@ -9431,6 +9447,8 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
             self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
         if m.get('PersistenceTimeout') is not None:
             self.persistence_timeout = m.get('PersistenceTimeout')
+        if m.get('ProxyProtocolV2Enabled') is not None:
+            self.proxy_protocol_v2enabled = m.get('ProxyProtocolV2Enabled')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Scheduler') is not None:
@@ -9571,6 +9589,7 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
         healthy_threshold: int = None,
         listener_port: int = None,
         master_slave_server_group_id: str = None,
+        proxy_protocol_v2enabled: bool = None,
         request_id: str = None,
         scheduler: str = None,
         status: str = None,
@@ -9592,6 +9611,7 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
         self.healthy_threshold = healthy_threshold
         self.listener_port = listener_port
         self.master_slave_server_group_id = master_slave_server_group_id
+        self.proxy_protocol_v2enabled = proxy_protocol_v2enabled
         self.request_id = request_id
         self.scheduler = scheduler
         self.status = status
@@ -9637,6 +9657,8 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
             result['ListenerPort'] = self.listener_port
         if self.master_slave_server_group_id is not None:
             result['MasterSlaveServerGroupId'] = self.master_slave_server_group_id
+        if self.proxy_protocol_v2enabled is not None:
+            result['ProxyProtocolV2Enabled'] = self.proxy_protocol_v2enabled
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.scheduler is not None:
@@ -9681,6 +9703,8 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
             self.listener_port = m.get('ListenerPort')
         if m.get('MasterSlaveServerGroupId') is not None:
             self.master_slave_server_group_id = m.get('MasterSlaveServerGroupId')
+        if m.get('ProxyProtocolV2Enabled') is not None:
+            self.proxy_protocol_v2enabled = m.get('ProxyProtocolV2Enabled')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Scheduler') is not None:
@@ -13708,18 +13732,22 @@ class ListTagResourcesResponse(TeaModel):
 class ModifyLoadBalancerInstanceChargeTypeRequest(TeaModel):
     def __init__(
         self,
+        bandwidth: int = None,
         instance_charge_type: str = None,
         internet_charge_type: str = None,
         load_balancer_id: str = None,
+        load_balancer_spec: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.bandwidth = bandwidth
         self.instance_charge_type = instance_charge_type
         self.internet_charge_type = internet_charge_type
         self.load_balancer_id = load_balancer_id
+        self.load_balancer_spec = load_balancer_spec
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.region_id = region_id
@@ -13735,12 +13763,16 @@ class ModifyLoadBalancerInstanceChargeTypeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
         if self.instance_charge_type is not None:
             result['InstanceChargeType'] = self.instance_charge_type
         if self.internet_charge_type is not None:
             result['InternetChargeType'] = self.internet_charge_type
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
+        if self.load_balancer_spec is not None:
+            result['LoadBalancerSpec'] = self.load_balancer_spec
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -13755,12 +13787,16 @@ class ModifyLoadBalancerInstanceChargeTypeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
         if m.get('InstanceChargeType') is not None:
             self.instance_charge_type = m.get('InstanceChargeType')
         if m.get('InternetChargeType') is not None:
             self.internet_charge_type = m.get('InternetChargeType')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('LoadBalancerSpec') is not None:
+            self.load_balancer_spec = m.get('LoadBalancerSpec')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -17395,6 +17431,7 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         persistence_timeout: int = None,
+        proxy_protocol_v2enabled: bool = None,
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -17427,6 +17464,7 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.persistence_timeout = persistence_timeout
+        self.proxy_protocol_v2enabled = proxy_protocol_v2enabled
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -17491,6 +17529,8 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.persistence_timeout is not None:
             result['PersistenceTimeout'] = self.persistence_timeout
+        if self.proxy_protocol_v2enabled is not None:
+            result['ProxyProtocolV2Enabled'] = self.proxy_protocol_v2enabled
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
@@ -17557,6 +17597,8 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('PersistenceTimeout') is not None:
             self.persistence_timeout = m.get('PersistenceTimeout')
+        if m.get('ProxyProtocolV2Enabled') is not None:
+            self.proxy_protocol_v2enabled = m.get('ProxyProtocolV2Enabled')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -17665,6 +17707,7 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         master_slave_server_group_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        proxy_protocol_v2enabled: bool = None,
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -17690,6 +17733,7 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         self.master_slave_server_group_id = master_slave_server_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.proxy_protocol_v2enabled = proxy_protocol_v2enabled
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -17739,6 +17783,8 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.proxy_protocol_v2enabled is not None:
+            result['ProxyProtocolV2Enabled'] = self.proxy_protocol_v2enabled
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
@@ -17791,6 +17837,8 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ProxyProtocolV2Enabled') is not None:
+            self.proxy_protocol_v2enabled = m.get('ProxyProtocolV2Enabled')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
