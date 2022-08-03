@@ -65,7 +65,6 @@ class ListResourceRelationshipsResponseBodyResourceRelationships(TeaModel):
     def __init__(
         self,
         account_id: str = None,
-        relationship_type: str = None,
         source_region_id: str = None,
         source_resource_id: str = None,
         source_resource_type: str = None,
@@ -74,7 +73,6 @@ class ListResourceRelationshipsResponseBodyResourceRelationships(TeaModel):
         target_resource_type: str = None,
     ):
         self.account_id = account_id
-        self.relationship_type = relationship_type
         self.source_region_id = source_region_id
         self.source_resource_id = source_resource_id
         self.source_resource_type = source_resource_type
@@ -93,8 +91,6 @@ class ListResourceRelationshipsResponseBodyResourceRelationships(TeaModel):
         result = dict()
         if self.account_id is not None:
             result['AccountId'] = self.account_id
-        if self.relationship_type is not None:
-            result['RelationshipType'] = self.relationship_type
         if self.source_region_id is not None:
             result['SourceRegionId'] = self.source_region_id
         if self.source_resource_id is not None:
@@ -113,8 +109,6 @@ class ListResourceRelationshipsResponseBodyResourceRelationships(TeaModel):
         m = m or dict()
         if m.get('AccountId') is not None:
             self.account_id = m.get('AccountId')
-        if m.get('RelationshipType') is not None:
-            self.relationship_type = m.get('RelationshipType')
         if m.get('SourceRegionId') is not None:
             self.source_region_id = m.get('SourceRegionId')
         if m.get('SourceResourceId') is not None:
@@ -187,13 +181,16 @@ class ListResourceRelationshipsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListResourceRelationshipsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -206,6 +203,8 @@ class ListResourceRelationshipsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -214,6 +213,8 @@ class ListResourceRelationshipsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListResourceRelationshipsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -587,13 +588,16 @@ class SearchResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SearchResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -606,6 +610,8 @@ class SearchResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -614,6 +620,8 @@ class SearchResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SearchResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
