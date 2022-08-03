@@ -1,3 +1,6 @@
+2022-08-03 Version: 1.0.4
+- Generated python 2019-05-17 for Oss.
+
 2022-04-07 Version: 1.0.3
 - Generated python 2019-05-17 for Oss.
 

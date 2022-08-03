@@ -131,7 +131,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.upload_id):
             query['uploadId'] = request.upload_id
@@ -167,7 +166,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.upload_id):
             query['uploadId'] = request.upload_id
@@ -223,7 +221,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.position):
             query['position'] = request.position
@@ -282,7 +279,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.position):
             query['position'] = request.position
@@ -447,7 +443,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.encoding_type):
             query['encoding-type'] = request.encoding_type
@@ -496,7 +491,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.encoding_type):
             query['encoding-type'] = request.encoding_type
@@ -561,7 +555,6 @@ class Client(OpenApiClient):
     ) -> oss_20190517_models.CopyObjectResponse:
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -622,7 +615,6 @@ class Client(OpenApiClient):
     ) -> oss_20190517_models.CopyObjectResponse:
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -705,7 +697,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -738,7 +729,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -1529,7 +1519,6 @@ class Client(OpenApiClient):
     ) -> oss_20190517_models.DeleteLiveChannelResponse:
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -1559,7 +1548,6 @@ class Client(OpenApiClient):
     ) -> oss_20190517_models.DeleteLiveChannelResponse:
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -1699,7 +1687,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -1735,7 +1722,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -1791,7 +1777,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -1827,7 +1812,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -3445,7 +3429,6 @@ class Client(OpenApiClient):
     ) -> oss_20190517_models.GetLiveChannelHistoryResponse:
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -3475,7 +3458,6 @@ class Client(OpenApiClient):
     ) -> oss_20190517_models.GetLiveChannelHistoryResponse:
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -3523,7 +3505,6 @@ class Client(OpenApiClient):
     ) -> oss_20190517_models.GetLiveChannelInfoResponse:
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -3553,7 +3534,6 @@ class Client(OpenApiClient):
     ) -> oss_20190517_models.GetLiveChannelInfoResponse:
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -3601,7 +3581,6 @@ class Client(OpenApiClient):
     ) -> oss_20190517_models.GetLiveChannelStatResponse:
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -3631,7 +3610,6 @@ class Client(OpenApiClient):
     ) -> oss_20190517_models.GetLiveChannelStatResponse:
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -3683,7 +3661,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.response_cache_control):
             query['response-cache-control'] = request.response_cache_control
@@ -3744,7 +3721,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.response_cache_control):
             query['response-cache-control'] = request.response_cache_control
@@ -3825,7 +3801,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -3861,7 +3836,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -3917,7 +3891,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -3953,7 +3926,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -4009,7 +3981,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -4045,7 +4016,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -4101,7 +4071,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -4137,7 +4106,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -4193,7 +4161,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
@@ -4231,7 +4198,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
@@ -4289,7 +4255,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -4336,7 +4301,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -4483,7 +4447,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.encoding_type):
             query['encoding-type'] = request.encoding_type
@@ -4542,7 +4505,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.encoding_type):
             query['encoding-type'] = request.encoding_type
@@ -5309,7 +5271,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         request = oss_20190517_models.ListPartsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.encoding_type):
@@ -5355,7 +5316,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         request = oss_20190517_models.ListPartsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.encoding_type):
@@ -5417,7 +5377,6 @@ class Client(OpenApiClient):
     ) -> oss_20190517_models.OptionObjectResponse:
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -5456,7 +5415,6 @@ class Client(OpenApiClient):
     ) -> oss_20190517_models.OptionObjectResponse:
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -5522,7 +5480,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='none',
+            req_body_type='multiFormData',
             body_type='xml'
         )
         return TeaCore.from_map(
@@ -5550,7 +5508,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='none',
+            req_body_type='multiFormData',
             body_type='xml'
         )
         return TeaCore.from_map(
@@ -5592,8 +5550,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
-        playlist = OpenApiUtilClient.get_encode_param(playlist)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
@@ -5632,8 +5588,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
-        playlist = OpenApiUtilClient.get_encode_param(playlist)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
@@ -6911,7 +6865,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -6944,7 +6897,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -6997,7 +6949,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
         query = {}
         if not UtilClient.is_unset(request.status):
             query['status'] = request.status
@@ -7033,7 +6984,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        channel = OpenApiUtilClient.get_encode_param(channel)
         query = {}
         if not UtilClient.is_unset(request.status):
             query['status'] = request.status
@@ -7089,7 +7039,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -7142,7 +7091,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -7215,7 +7163,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -7256,7 +7203,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -7317,7 +7263,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -7354,7 +7299,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -7407,7 +7351,6 @@ class Client(OpenApiClient):
     ) -> oss_20190517_models.PutSymlinkResponse:
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -7448,7 +7391,6 @@ class Client(OpenApiClient):
     ) -> oss_20190517_models.PutSymlinkResponse:
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -7511,7 +7453,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -7548,7 +7489,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.version_id):
             query['versionId'] = request.version_id
@@ -7605,7 +7545,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -7638,7 +7577,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -7691,7 +7629,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.part_number):
             query['partNumber'] = request.part_number
@@ -7731,7 +7668,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.part_number):
             query['partNumber'] = request.part_number
@@ -7791,7 +7727,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.part_number):
             query['partNumber'] = request.part_number
@@ -7844,7 +7779,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['bucket'] = bucket
-        key = OpenApiUtilClient.get_encode_param(key)
         query = {}
         if not UtilClient.is_unset(request.part_number):
             query['partNumber'] = request.part_number
