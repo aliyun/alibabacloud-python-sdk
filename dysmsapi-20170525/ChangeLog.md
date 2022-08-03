@@ -1,3 +1,6 @@
+2022-08-03 Version: 2.0.17
+- Upgrade Service for SmsStatistics.
+
 2022-07-14 Version: 2.0.16
 - Upgrade Service for SmsTemplate.
 

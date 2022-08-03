@@ -1562,8 +1562,12 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
         if not UtilClient.is_unset(request.start_date):
             query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1604,8 +1608,12 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
         if not UtilClient.is_unset(request.start_date):
             query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

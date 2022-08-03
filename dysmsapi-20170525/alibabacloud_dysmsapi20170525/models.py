@@ -1539,8 +1539,10 @@ class GetMediaResourceIdRequest(TeaModel):
 class GetMediaResourceIdResponseBodyData(TeaModel):
     def __init__(
         self,
+        res_url_download: str = None,
         resource_id: int = None,
     ):
+        self.res_url_download = res_url_download
         self.resource_id = resource_id
 
     def validate(self):
@@ -1552,12 +1554,16 @@ class GetMediaResourceIdResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.res_url_download is not None:
+            result['ResUrlDownload'] = self.res_url_download
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ResUrlDownload') is not None:
+            self.res_url_download = m.get('ResUrlDownload')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         return self
@@ -3017,7 +3023,9 @@ class QuerySendStatisticsRequest(TeaModel):
         page_size: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        sign_name: str = None,
         start_date: str = None,
+        template_type: int = None,
     ):
         self.end_date = end_date
         self.is_globe = is_globe
@@ -3026,7 +3034,9 @@ class QuerySendStatisticsRequest(TeaModel):
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.sign_name = sign_name
         self.start_date = start_date
+        self.template_type = template_type
 
     def validate(self):
         pass
@@ -3051,8 +3061,12 @@ class QuerySendStatisticsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sign_name is not None:
+            result['SignName'] = self.sign_name
         if self.start_date is not None:
             result['StartDate'] = self.start_date
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
         return result
 
     def from_map(self, m: dict = None):
@@ -3071,8 +3085,12 @@ class QuerySendStatisticsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SignName') is not None:
+            self.sign_name = m.get('SignName')
         if m.get('StartDate') is not None:
             self.start_date = m.get('StartDate')
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
         return self
 
 
