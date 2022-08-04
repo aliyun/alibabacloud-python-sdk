@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import Dict, BinaryIO, List, Any
 
 
 class CreateDatasetRequest(TeaModel):
@@ -12,13 +12,9 @@ class CreateDatasetRequest(TeaModel):
         type: str = None,
         workspace_id: int = None,
     ):
-        # 描述
         self.description = description
-        # 数据集名称
         self.name = name
-        # 类型
         self.type = type
-        # 空间id
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -1112,6 +1108,806 @@ class CreateWorkspaceResponse(TeaModel):
         return self
 
 
+class CustomizeClassifyImageRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        service_id: str = None,
+    ):
+        self.image_url = image_url
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class CustomizeClassifyImageAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_url_object: BinaryIO = None,
+        service_id: str = None,
+    ):
+        self.image_url_object = image_url_object
+        self.service_id = service_id
+
+    def validate(self):
+        self.validate_required(self.image_url_object, 'image_url_object')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url_object is not None:
+            result['ImageUrlObject'] = self.image_url_object
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageUrlObject') is not None:
+            self.image_url_object = m.get('ImageUrlObject')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class CustomizeClassifyImageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        score: float = None,
+    ):
+        self.category = category
+        self.score = score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.score is not None:
+            result['Score'] = self.score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        return self
+
+
+class CustomizeClassifyImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CustomizeClassifyImageResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CustomizeClassifyImageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CustomizeClassifyImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CustomizeClassifyImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CustomizeClassifyImageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CustomizeDetectImageRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        service_id: str = None,
+    ):
+        self.image_url = image_url
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class CustomizeDetectImageAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_url_object: BinaryIO = None,
+        service_id: str = None,
+    ):
+        self.image_url_object = image_url_object
+        self.service_id = service_id
+
+    def validate(self):
+        self.validate_required(self.image_url_object, 'image_url_object')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url_object is not None:
+            result['ImageUrlObject'] = self.image_url_object
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageUrlObject') is not None:
+            self.image_url_object = m.get('ImageUrlObject')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class CustomizeDetectImageResponseBodyDataElementsBoxes(TeaModel):
+    def __init__(
+        self,
+        height: float = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.height = height
+        self.width = width
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class CustomizeDetectImageResponseBodyDataElements(TeaModel):
+    def __init__(
+        self,
+        boxes: CustomizeDetectImageResponseBodyDataElementsBoxes = None,
+        category: str = None,
+        score: float = None,
+    ):
+        self.boxes = boxes
+        self.category = category
+        self.score = score
+
+    def validate(self):
+        if self.boxes:
+            self.boxes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.boxes is not None:
+            result['Boxes'] = self.boxes.to_map()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.score is not None:
+            result['Score'] = self.score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Boxes') is not None:
+            temp_model = CustomizeDetectImageResponseBodyDataElementsBoxes()
+            self.boxes = temp_model.from_map(m['Boxes'])
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        return self
+
+
+class CustomizeDetectImageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        elements: List[CustomizeDetectImageResponseBodyDataElements] = None,
+    ):
+        self.elements = elements
+
+    def validate(self):
+        if self.elements:
+            for k in self.elements:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Elements'] = []
+        if self.elements is not None:
+            for k in self.elements:
+                result['Elements'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.elements = []
+        if m.get('Elements') is not None:
+            for k in m.get('Elements'):
+                temp_model = CustomizeDetectImageResponseBodyDataElements()
+                self.elements.append(temp_model.from_map(k))
+        return self
+
+
+class CustomizeDetectImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CustomizeDetectImageResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CustomizeDetectImageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CustomizeDetectImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CustomizeDetectImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CustomizeDetectImageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CustomizeInstanceSegmentImageRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        service_id: str = None,
+    ):
+        self.image_url = image_url
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class CustomizeInstanceSegmentImageAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_url_object: BinaryIO = None,
+        service_id: str = None,
+    ):
+        self.image_url_object = image_url_object
+        self.service_id = service_id
+
+    def validate(self):
+        self.validate_required(self.image_url_object, 'image_url_object')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url_object is not None:
+            result['ImageUrlObject'] = self.image_url_object
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageUrlObject') is not None:
+            self.image_url_object = m.get('ImageUrlObject')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        width: int = None,
+        x: int = None,
+        y: int = None,
+    ):
+        self.height = height
+        self.width = width
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class CustomizeInstanceSegmentImageResponseBodyDataElementsContours(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class CustomizeInstanceSegmentImageResponseBodyDataElementsMask(TeaModel):
+    def __init__(
+        self,
+        counts: str = None,
+        sizes: List[int] = None,
+    ):
+        self.counts = counts
+        self.sizes = sizes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.counts is not None:
+            result['Counts'] = self.counts
+        if self.sizes is not None:
+            result['Sizes'] = self.sizes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Counts') is not None:
+            self.counts = m.get('Counts')
+        if m.get('Sizes') is not None:
+            self.sizes = m.get('Sizes')
+        return self
+
+
+class CustomizeInstanceSegmentImageResponseBodyDataElements(TeaModel):
+    def __init__(
+        self,
+        boxes: CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes = None,
+        category: str = None,
+        contours: List[CustomizeInstanceSegmentImageResponseBodyDataElementsContours] = None,
+        mask: CustomizeInstanceSegmentImageResponseBodyDataElementsMask = None,
+        score: float = None,
+    ):
+        self.boxes = boxes
+        self.category = category
+        self.contours = contours
+        self.mask = mask
+        self.score = score
+
+    def validate(self):
+        if self.boxes:
+            self.boxes.validate()
+        if self.contours:
+            for k in self.contours:
+                if k:
+                    k.validate()
+        if self.mask:
+            self.mask.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.boxes is not None:
+            result['Boxes'] = self.boxes.to_map()
+        if self.category is not None:
+            result['Category'] = self.category
+        result['Contours'] = []
+        if self.contours is not None:
+            for k in self.contours:
+                result['Contours'].append(k.to_map() if k else None)
+        if self.mask is not None:
+            result['Mask'] = self.mask.to_map()
+        if self.score is not None:
+            result['Score'] = self.score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Boxes') is not None:
+            temp_model = CustomizeInstanceSegmentImageResponseBodyDataElementsBoxes()
+            self.boxes = temp_model.from_map(m['Boxes'])
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        self.contours = []
+        if m.get('Contours') is not None:
+            for k in m.get('Contours'):
+                temp_model = CustomizeInstanceSegmentImageResponseBodyDataElementsContours()
+                self.contours.append(temp_model.from_map(k))
+        if m.get('Mask') is not None:
+            temp_model = CustomizeInstanceSegmentImageResponseBodyDataElementsMask()
+            self.mask = temp_model.from_map(m['Mask'])
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        return self
+
+
+class CustomizeInstanceSegmentImageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        elements: List[CustomizeInstanceSegmentImageResponseBodyDataElements] = None,
+    ):
+        self.elements = elements
+
+    def validate(self):
+        if self.elements:
+            for k in self.elements:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Elements'] = []
+        if self.elements is not None:
+            for k in self.elements:
+                result['Elements'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.elements = []
+        if m.get('Elements') is not None:
+            for k in m.get('Elements'):
+                temp_model = CustomizeInstanceSegmentImageResponseBodyDataElements()
+                self.elements.append(temp_model.from_map(k))
+        return self
+
+
+class CustomizeInstanceSegmentImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CustomizeInstanceSegmentImageResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CustomizeInstanceSegmentImageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CustomizeInstanceSegmentImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CustomizeInstanceSegmentImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CustomizeInstanceSegmentImageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DebugServiceRequest(TeaModel):
     def __init__(
         self,
@@ -2200,9 +2996,7 @@ class DownloadFileNameListRequest(TeaModel):
         dataset_id: int = None,
         identity: str = None,
     ):
-        # 空间id
         self.dataset_id = dataset_id
-        # 数据集名称
         self.identity = identity
 
     def validate(self):

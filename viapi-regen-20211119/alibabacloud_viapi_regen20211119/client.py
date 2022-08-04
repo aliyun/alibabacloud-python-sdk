@@ -10,6 +10,13 @@ from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_viapi_regen20211119 import models as viapi_regen_20211119_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_rpc import models as rpc_models
+from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
+from alibabacloud_openplatform20191219 import models as open_platform_models
+from alibabacloud_oss_sdk import models as oss_models
+from alibabacloud_tea_fileform import models as file_form_models
+from alibabacloud_oss_util import models as ossutil_models
+from alibabacloud_oss_sdk.client import Client as OSSClient
 
 
 class Client(OpenApiClient):
@@ -536,6 +543,654 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.CreateWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_workspace_with_options_async(request, runtime)
+
+    def customize_classify_image_with_options(
+        self,
+        request: viapi_regen_20211119_models.CustomizeClassifyImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CustomizeClassifyImageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CustomizeClassifyImage',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CustomizeClassifyImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def customize_classify_image_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.CustomizeClassifyImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CustomizeClassifyImageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CustomizeClassifyImage',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CustomizeClassifyImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def customize_classify_image(
+        self,
+        request: viapi_regen_20211119_models.CustomizeClassifyImageRequest,
+    ) -> viapi_regen_20211119_models.CustomizeClassifyImageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.customize_classify_image_with_options(request, runtime)
+
+    async def customize_classify_image_async(
+        self,
+        request: viapi_regen_20211119_models.CustomizeClassifyImageRequest,
+    ) -> viapi_regen_20211119_models.CustomizeClassifyImageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.customize_classify_image_with_options_async(request, runtime)
+
+    def customize_classify_image_advance(
+        self,
+        request: viapi_regen_20211119_models.CustomizeClassifyImageAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CustomizeClassifyImageResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='viapi-regen',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        customize_classify_image_req = viapi_regen_20211119_models.CustomizeClassifyImageRequest()
+        OpenApiUtilClient.convert(request, customize_classify_image_req)
+        if not UtilClient.is_unset(request.image_url_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            customize_classify_image_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        customize_classify_image_resp = self.customize_classify_image_with_options(customize_classify_image_req, runtime)
+        return customize_classify_image_resp
+
+    async def customize_classify_image_advance_async(
+        self,
+        request: viapi_regen_20211119_models.CustomizeClassifyImageAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CustomizeClassifyImageResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='viapi-regen',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        customize_classify_image_req = viapi_regen_20211119_models.CustomizeClassifyImageRequest()
+        OpenApiUtilClient.convert(request, customize_classify_image_req)
+        if not UtilClient.is_unset(request.image_url_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            customize_classify_image_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        customize_classify_image_resp = await self.customize_classify_image_with_options_async(customize_classify_image_req, runtime)
+        return customize_classify_image_resp
+
+    def customize_detect_image_with_options(
+        self,
+        request: viapi_regen_20211119_models.CustomizeDetectImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CustomizeDetectImageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CustomizeDetectImage',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CustomizeDetectImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def customize_detect_image_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.CustomizeDetectImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CustomizeDetectImageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CustomizeDetectImage',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CustomizeDetectImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def customize_detect_image(
+        self,
+        request: viapi_regen_20211119_models.CustomizeDetectImageRequest,
+    ) -> viapi_regen_20211119_models.CustomizeDetectImageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.customize_detect_image_with_options(request, runtime)
+
+    async def customize_detect_image_async(
+        self,
+        request: viapi_regen_20211119_models.CustomizeDetectImageRequest,
+    ) -> viapi_regen_20211119_models.CustomizeDetectImageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.customize_detect_image_with_options_async(request, runtime)
+
+    def customize_detect_image_advance(
+        self,
+        request: viapi_regen_20211119_models.CustomizeDetectImageAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CustomizeDetectImageResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='viapi-regen',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        customize_detect_image_req = viapi_regen_20211119_models.CustomizeDetectImageRequest()
+        OpenApiUtilClient.convert(request, customize_detect_image_req)
+        if not UtilClient.is_unset(request.image_url_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            customize_detect_image_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        customize_detect_image_resp = self.customize_detect_image_with_options(customize_detect_image_req, runtime)
+        return customize_detect_image_resp
+
+    async def customize_detect_image_advance_async(
+        self,
+        request: viapi_regen_20211119_models.CustomizeDetectImageAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CustomizeDetectImageResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='viapi-regen',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        customize_detect_image_req = viapi_regen_20211119_models.CustomizeDetectImageRequest()
+        OpenApiUtilClient.convert(request, customize_detect_image_req)
+        if not UtilClient.is_unset(request.image_url_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            customize_detect_image_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        customize_detect_image_resp = await self.customize_detect_image_with_options_async(customize_detect_image_req, runtime)
+        return customize_detect_image_resp
+
+    def customize_instance_segment_image_with_options(
+        self,
+        request: viapi_regen_20211119_models.CustomizeInstanceSegmentImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CustomizeInstanceSegmentImageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CustomizeInstanceSegmentImage',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CustomizeInstanceSegmentImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def customize_instance_segment_image_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.CustomizeInstanceSegmentImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CustomizeInstanceSegmentImageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CustomizeInstanceSegmentImage',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CustomizeInstanceSegmentImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def customize_instance_segment_image(
+        self,
+        request: viapi_regen_20211119_models.CustomizeInstanceSegmentImageRequest,
+    ) -> viapi_regen_20211119_models.CustomizeInstanceSegmentImageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.customize_instance_segment_image_with_options(request, runtime)
+
+    async def customize_instance_segment_image_async(
+        self,
+        request: viapi_regen_20211119_models.CustomizeInstanceSegmentImageRequest,
+    ) -> viapi_regen_20211119_models.CustomizeInstanceSegmentImageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.customize_instance_segment_image_with_options_async(request, runtime)
+
+    def customize_instance_segment_image_advance(
+        self,
+        request: viapi_regen_20211119_models.CustomizeInstanceSegmentImageAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CustomizeInstanceSegmentImageResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='viapi-regen',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        customize_instance_segment_image_req = viapi_regen_20211119_models.CustomizeInstanceSegmentImageRequest()
+        OpenApiUtilClient.convert(request, customize_instance_segment_image_req)
+        if not UtilClient.is_unset(request.image_url_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            customize_instance_segment_image_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        customize_instance_segment_image_resp = self.customize_instance_segment_image_with_options(customize_instance_segment_image_req, runtime)
+        return customize_instance_segment_image_resp
+
+    async def customize_instance_segment_image_advance_async(
+        self,
+        request: viapi_regen_20211119_models.CustomizeInstanceSegmentImageAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CustomizeInstanceSegmentImageResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = rpc_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='viapi-regen',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        customize_instance_segment_image_req = viapi_regen_20211119_models.CustomizeInstanceSegmentImageRequest()
+        OpenApiUtilClient.convert(request, customize_instance_segment_image_req)
+        if not UtilClient.is_unset(request.image_url_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.object_key,
+                content=request.image_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.access_key_id,
+                policy=auth_response.encoded_policy,
+                signature=auth_response.signature,
+                key=auth_response.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            customize_instance_segment_image_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+        customize_instance_segment_image_resp = await self.customize_instance_segment_image_with_options_async(customize_instance_segment_image_req, runtime)
+        return customize_instance_segment_image_resp
 
     def debug_service_with_options(
         self,
