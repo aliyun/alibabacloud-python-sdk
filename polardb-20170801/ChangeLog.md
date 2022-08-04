@@ -1,3 +1,6 @@
+2022-08-04 Version: 2.0.8
+- Support new feature.
+
 2022-08-01 Version: 2.0.7
 - Support new feature.
 
