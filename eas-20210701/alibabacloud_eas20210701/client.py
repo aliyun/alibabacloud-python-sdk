@@ -515,11 +515,11 @@ class Client(OpenApiClient):
         service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.max):
-            body['Max'] = request.max
+            body['max'] = request.max
         if not UtilClient.is_unset(request.min):
-            body['Min'] = request.min
+            body['min'] = request.min
         if not UtilClient.is_unset(request.strategies):
-            body['Strategies'] = request.strategies
+            body['strategies'] = request.strategies
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -553,11 +553,11 @@ class Client(OpenApiClient):
         service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.max):
-            body['Max'] = request.max
+            body['max'] = request.max
         if not UtilClient.is_unset(request.min):
-            body['Min'] = request.min
+            body['min'] = request.min
         if not UtilClient.is_unset(request.strategies):
-            body['Strategies'] = request.strategies
+            body['strategies'] = request.strategies
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3685,11 +3685,11 @@ class Client(OpenApiClient):
         service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.max):
-            body['Max'] = request.max
+            body['max'] = request.max
         if not UtilClient.is_unset(request.min):
-            body['Min'] = request.min
+            body['min'] = request.min
         if not UtilClient.is_unset(request.strategies):
-            body['Strategies'] = request.strategies
+            body['strategies'] = request.strategies
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3723,11 +3723,11 @@ class Client(OpenApiClient):
         service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.max):
-            body['Max'] = request.max
+            body['max'] = request.max
         if not UtilClient.is_unset(request.min):
-            body['Min'] = request.min
+            body['min'] = request.min
         if not UtilClient.is_unset(request.strategies):
-            body['Strategies'] = request.strategies
+            body['strategies'] = request.strategies
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

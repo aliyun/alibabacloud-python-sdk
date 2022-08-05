@@ -1,3 +1,6 @@
+2022-08-05 Version: 1.1.5
+- Fix AutoScaler API bug.
+
 2022-07-28 Version: 1.1.4
 - Fix bug.
 
