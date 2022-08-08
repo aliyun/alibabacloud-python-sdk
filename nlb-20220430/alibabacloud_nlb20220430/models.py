@@ -14,17 +14,11 @@ class AddServersToServerGroupRequestServers(TeaModel):
         server_type: str = None,
         weight: int = None,
     ):
-        # 服务器描述信息
         self.description = description
-        # 服务器端口
         self.port = port
-        # 服务器id
         self.server_id = server_id
-        # 服务器ip
         self.server_ip = server_ip
-        # 服务器类型
         self.server_type = server_type
-        # 后端权重
         self.weight = weight
 
     def validate(self):
@@ -129,25 +123,13 @@ class AddServersToServerGroupRequest(TeaModel):
 class AddServersToServerGroupResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
         server_group_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
         self.server_group_id = server_group_id
-        self.success = success
 
     def validate(self):
         pass
@@ -158,46 +140,22 @@ class AddServersToServerGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -253,14 +211,12 @@ class AttachCommonBandwidthPackageToLoadBalancerRequest(TeaModel):
         dry_run: bool = None,
         load_balancer_id: str = None,
         region_id: str = None,
-        request_content: str = None,
     ):
         self.bandwidth_package_id = bandwidth_package_id
         self.client_token = client_token
         self.dry_run = dry_run
         self.load_balancer_id = load_balancer_id
         self.region_id = region_id
-        self.request_content = request_content
 
     def validate(self):
         pass
@@ -281,8 +237,6 @@ class AttachCommonBandwidthPackageToLoadBalancerRequest(TeaModel):
             result['LoadBalancerId'] = self.load_balancer_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.request_content is not None:
-            result['RequestContent'] = self.request_content
         return result
 
     def from_map(self, m: dict = None):
@@ -297,31 +251,17 @@ class AttachCommonBandwidthPackageToLoadBalancerRequest(TeaModel):
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('RequestContent') is not None:
-            self.request_content = m.get('RequestContent')
         return self
 
 
 class AttachCommonBandwidthPackageToLoadBalancerResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -332,42 +272,18 @@ class AttachCommonBandwidthPackageToLoadBalancerResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -432,6 +348,7 @@ class CreateListenerRequest(TeaModel):
         listener_port: int = None,
         listener_protocol: str = None,
         load_balancer_id: str = None,
+        mss: int = None,
         proxy_protocol_enabled: bool = None,
         region_id: str = None,
         sec_sensor_enabled: bool = None,
@@ -441,31 +358,23 @@ class CreateListenerRequest(TeaModel):
     ):
         self.alpn_enabled = alpn_enabled
         self.alpn_policy = alpn_policy
-        # ca 证书列表
         self.ca_certificate_ids = ca_certificate_ids
         self.ca_enabled = ca_enabled
-        # server证书列表
         self.certificate_ids = certificate_ids
         self.client_token = client_token
         self.cps = cps
         self.dry_run = dry_run
         self.end_port = end_port
-        # 空闲超时时间
         self.idle_timeout = idle_timeout
-        # 监听描述
         self.listener_description = listener_description
-        # 监听端口
         self.listener_port = listener_port
-        # 监听协议
         self.listener_protocol = listener_protocol
-        # add 必选
         self.load_balancer_id = load_balancer_id
+        self.mss = mss
         self.proxy_protocol_enabled = proxy_protocol_enabled
         self.region_id = region_id
         self.sec_sensor_enabled = sec_sensor_enabled
-        # Tclssl监听的安全策略
         self.security_policy_id = security_policy_id
-        # servergroupId
         self.server_group_id = server_group_id
         self.start_port = start_port
 
@@ -506,6 +415,8 @@ class CreateListenerRequest(TeaModel):
             result['ListenerProtocol'] = self.listener_protocol
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
+        if self.mss is not None:
+            result['Mss'] = self.mss
         if self.proxy_protocol_enabled is not None:
             result['ProxyProtocolEnabled'] = self.proxy_protocol_enabled
         if self.region_id is not None:
@@ -550,6 +461,8 @@ class CreateListenerRequest(TeaModel):
             self.listener_protocol = m.get('ListenerProtocol')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('Mss') is not None:
+            self.mss = m.get('Mss')
         if m.get('ProxyProtocolEnabled') is not None:
             self.proxy_protocol_enabled = m.get('ProxyProtocolEnabled')
         if m.get('RegionId') is not None:
@@ -568,25 +481,13 @@ class CreateListenerRequest(TeaModel):
 class CreateListenerResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
         listener_id: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
         self.listener_id = listener_id
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -597,46 +498,22 @@ class CreateListenerResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
         if self.listener_id is not None:
             result['ListenerId'] = self.listener_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         if m.get('ListenerId') is not None:
             self.listener_id = m.get('ListenerId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -689,7 +566,6 @@ class CreateLoadBalancerRequestLoadBalancerBillingConfig(TeaModel):
         self,
         pay_type: str = None,
     ):
-        # PrePay, PostPay
         self.pay_type = pay_type
 
     def validate(self):
@@ -720,9 +596,7 @@ class CreateLoadBalancerRequestZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # 公网ipId
         self.allocation_id = allocation_id
-        # 私网ip
         self.private_ipv_4address = private_ipv_4address
         self.v_switch_id = v_switch_id
         self.zone_id = zone_id
@@ -765,34 +639,26 @@ class CreateLoadBalancerRequest(TeaModel):
         address_ip_version: str = None,
         address_type: str = None,
         bandwidth_package_id: str = None,
-        biz_flag: str = None,
         client_token: str = None,
-        cross_zone_enabled: bool = None,
         dry_run: bool = None,
         load_balancer_billing_config: CreateLoadBalancerRequestLoadBalancerBillingConfig = None,
         load_balancer_name: str = None,
         load_balancer_type: str = None,
         region_id: str = None,
         resource_group_id: str = None,
-        security_group_ids: List[str] = None,
-        traffic_affinity_enabled: bool = None,
         vpc_id: str = None,
         zone_mappings: List[CreateLoadBalancerRequestZoneMappings] = None,
     ):
         self.address_ip_version = address_ip_version
         self.address_type = address_type
         self.bandwidth_package_id = bandwidth_package_id
-        self.biz_flag = biz_flag
         self.client_token = client_token
-        self.cross_zone_enabled = cross_zone_enabled
         self.dry_run = dry_run
         self.load_balancer_billing_config = load_balancer_billing_config
         self.load_balancer_name = load_balancer_name
         self.load_balancer_type = load_balancer_type
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        self.security_group_ids = security_group_ids
-        self.traffic_affinity_enabled = traffic_affinity_enabled
         self.vpc_id = vpc_id
         self.zone_mappings = zone_mappings
 
@@ -816,12 +682,8 @@ class CreateLoadBalancerRequest(TeaModel):
             result['AddressType'] = self.address_type
         if self.bandwidth_package_id is not None:
             result['BandwidthPackageId'] = self.bandwidth_package_id
-        if self.biz_flag is not None:
-            result['BizFlag'] = self.biz_flag
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
-        if self.cross_zone_enabled is not None:
-            result['CrossZoneEnabled'] = self.cross_zone_enabled
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
         if self.load_balancer_billing_config is not None:
@@ -834,10 +696,6 @@ class CreateLoadBalancerRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-        if self.security_group_ids is not None:
-            result['SecurityGroupIds'] = self.security_group_ids
-        if self.traffic_affinity_enabled is not None:
-            result['TrafficAffinityEnabled'] = self.traffic_affinity_enabled
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         result['ZoneMappings'] = []
@@ -854,12 +712,8 @@ class CreateLoadBalancerRequest(TeaModel):
             self.address_type = m.get('AddressType')
         if m.get('BandwidthPackageId') is not None:
             self.bandwidth_package_id = m.get('BandwidthPackageId')
-        if m.get('BizFlag') is not None:
-            self.biz_flag = m.get('BizFlag')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
-        if m.get('CrossZoneEnabled') is not None:
-            self.cross_zone_enabled = m.get('CrossZoneEnabled')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
         if m.get('LoadBalancerBillingConfig') is not None:
@@ -873,10 +727,6 @@ class CreateLoadBalancerRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('SecurityGroupIds') is not None:
-            self.security_group_ids = m.get('SecurityGroupIds')
-        if m.get('TrafficAffinityEnabled') is not None:
-            self.traffic_affinity_enabled = m.get('TrafficAffinityEnabled')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         self.zone_mappings = []
@@ -890,25 +740,15 @@ class CreateLoadBalancerRequest(TeaModel):
 class CreateLoadBalancerResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
         loadbalancer_id: str = None,
-        message: str = None,
+        order_id: int = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
         self.loadbalancer_id = loadbalancer_id
-        self.message = message
+        self.order_id = order_id
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -919,46 +759,26 @@ class CreateLoadBalancerResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
         if self.loadbalancer_id is not None:
             result['LoadbalancerId'] = self.loadbalancer_id
-        if self.message is not None:
-            result['Message'] = self.message
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         if m.get('LoadbalancerId') is not None:
             self.loadbalancer_id = m.get('LoadbalancerId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -1072,25 +892,13 @@ class CreateSecurityPolicyRequest(TeaModel):
 class CreateSecurityPolicyResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
         security_policy_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
         self.security_policy_id = security_policy_id
-        self.success = success
 
     def validate(self):
         pass
@@ -1101,46 +909,22 @@ class CreateSecurityPolicyResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.security_policy_id is not None:
             result['SecurityPolicyId'] = self.security_policy_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SecurityPolicyId') is not None:
             self.security_policy_id = m.get('SecurityPolicyId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -1203,26 +987,16 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         http_check_method: str = None,
         unhealthy_threshold: int = None,
     ):
-        # 健康检查使用的端口
         self.health_check_connect_port = health_check_connect_port
-        # 健康检查响应的最大超时时间
         self.health_check_connect_timeout = health_check_connect_timeout
-        # 健康检查的域名
         self.health_check_domain = health_check_domain
-        # 是否开启健康检查
         self.health_check_enabled = health_check_enabled
-        # 状态码，多个状态码用逗号分隔
         self.health_check_http_code = health_check_http_code
-        # 健康检查时间间隔
         self.health_check_interval = health_check_interval
-        # 健康检查协议类型
         self.health_check_type = health_check_type
-        # 健康检查的url
         self.health_check_url = health_check_url
-        # 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success
         self.healthy_threshold = healthy_threshold
         self.http_check_method = http_check_method
-        # 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -1294,8 +1068,6 @@ class CreateServerGroupRequest(TeaModel):
         connection_drain_timeout: int = None,
         dry_run: bool = None,
         health_check_config: CreateServerGroupRequestHealthCheckConfig = None,
-        persistence_enabled: bool = None,
-        persistence_timeout: int = None,
         preserve_client_ip_enabled: bool = None,
         protocol: str = None,
         region_id: str = None,
@@ -1307,29 +1079,17 @@ class CreateServerGroupRequest(TeaModel):
     ):
         self.address_ipversion = address_ipversion
         self.client_token = client_token
-        # 是否开启连接优雅中断
         self.connection_drain_enabled = connection_drain_enabled
-        # 连接优雅中断超时时间
         self.connection_drain_timeout = connection_drain_timeout
         self.dry_run = dry_run
-        # 健康检查配置
         self.health_check_config = health_check_config
-        # 是否开启会话保持
-        self.persistence_enabled = persistence_enabled
-        # 会话保持超时时间
-        self.persistence_timeout = persistence_timeout
         self.preserve_client_ip_enabled = preserve_client_ip_enabled
-        # 后端服务器类型
         self.protocol = protocol
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # 调度类型
         self.scheduler = scheduler
-        # 服务器组名称
         self.server_group_name = server_group_name
-        # 服务器组类型
         self.server_group_type = server_group_type
-        # 服务器组所在vpc的id
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1354,10 +1114,6 @@ class CreateServerGroupRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.health_check_config is not None:
             result['HealthCheckConfig'] = self.health_check_config.to_map()
-        if self.persistence_enabled is not None:
-            result['PersistenceEnabled'] = self.persistence_enabled
-        if self.persistence_timeout is not None:
-            result['PersistenceTimeout'] = self.persistence_timeout
         if self.preserve_client_ip_enabled is not None:
             result['PreserveClientIpEnabled'] = self.preserve_client_ip_enabled
         if self.protocol is not None:
@@ -1391,10 +1147,6 @@ class CreateServerGroupRequest(TeaModel):
         if m.get('HealthCheckConfig') is not None:
             temp_model = CreateServerGroupRequestHealthCheckConfig()
             self.health_check_config = temp_model.from_map(m['HealthCheckConfig'])
-        if m.get('PersistenceEnabled') is not None:
-            self.persistence_enabled = m.get('PersistenceEnabled')
-        if m.get('PersistenceTimeout') is not None:
-            self.persistence_timeout = m.get('PersistenceTimeout')
         if m.get('PreserveClientIpEnabled') is not None:
             self.preserve_client_ip_enabled = m.get('PreserveClientIpEnabled')
         if m.get('Protocol') is not None:
@@ -1417,25 +1169,13 @@ class CreateServerGroupRequest(TeaModel):
 class CreateServerGroupResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
         server_group_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
         self.server_group_id = server_group_id
-        self.success = success
 
     def validate(self):
         pass
@@ -1446,46 +1186,22 @@ class CreateServerGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -1543,7 +1259,6 @@ class DeleteListenerRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
-        # update or delete必选, add在custom中生成
         self.listener_id = listener_id
         self.region_id = region_id
 
@@ -1582,23 +1297,11 @@ class DeleteListenerRequest(TeaModel):
 class DeleteListenerResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -1609,42 +1312,18 @@ class DeleteListenerResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -1740,23 +1419,11 @@ class DeleteLoadBalancerRequest(TeaModel):
 class DeleteLoadBalancerResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -1767,42 +1434,18 @@ class DeleteLoadBalancerResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -1898,25 +1541,9 @@ class DeleteSecurityPolicyRequest(TeaModel):
 class DeleteSecurityPolicyResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
-        job_id: str = None,
-        message: str = None,
         request_id: str = None,
-        security_policy_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
-        self.job_id = job_id
-        self.message = message
         self.request_id = request_id
-        self.security_policy_id = security_policy_id
-        self.success = success
 
     def validate(self):
         pass
@@ -1927,46 +1554,14 @@ class DeleteSecurityPolicyResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.security_policy_id is not None:
-            result['SecurityPolicyId'] = self.security_policy_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('SecurityPolicyId') is not None:
-            self.security_policy_id = m.get('SecurityPolicyId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -2025,7 +1620,6 @@ class DeleteServerGroupRequest(TeaModel):
         self.client_token = client_token
         self.dry_run = dry_run
         self.region_id = region_id
-        # 服务器组ID
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -2063,26 +1657,11 @@ class DeleteServerGroupRequest(TeaModel):
 class DeleteServerGroupResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
-        server_group_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
-        # 服务器组ID
-        self.server_group_id = server_group_id
-        self.success = success
 
     def validate(self):
         pass
@@ -2093,46 +1672,18 @@ class DeleteServerGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.server_group_id is not None:
-            result['ServerGroupId'] = self.server_group_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ServerGroupId') is not None:
-            self.server_group_id = m.get('ServerGroupId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -2261,23 +1812,11 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
 class DescribeRegionsResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
-        message: str = None,
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
-        self.message = message
         self.regions = regions
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         if self.regions:
@@ -2291,38 +1830,16 @@ class DescribeRegionsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
-        if self.message is not None:
-            result['Message'] = self.message
         result['Regions'] = []
         if self.regions is not None:
             for k in self.regions:
                 result['Regions'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         self.regions = []
         if m.get('Regions') is not None:
             for k in m.get('Regions'):
@@ -2330,8 +1847,6 @@ class DescribeRegionsResponseBody(TeaModel):
                 self.regions.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -2460,22 +1975,10 @@ class DescribeZonesResponseBodyZones(TeaModel):
 class DescribeZonesResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
         zones: List[DescribeZonesResponseBodyZones] = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
-        self.message = message
         self.request_id = request_id
-        self.success = success
         self.zones = zones
 
     def validate(self):
@@ -2490,20 +1993,8 @@ class DescribeZonesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         result['Zones'] = []
         if self.zones is not None:
             for k in self.zones:
@@ -2512,20 +2003,8 @@ class DescribeZonesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         self.zones = []
         if m.get('Zones') is not None:
             for k in m.get('Zones'):
@@ -2586,14 +2065,12 @@ class DetachCommonBandwidthPackageFromLoadBalancerRequest(TeaModel):
         dry_run: bool = None,
         load_balancer_id: str = None,
         region_id: str = None,
-        request_content: str = None,
     ):
         self.bandwidth_package_id = bandwidth_package_id
         self.client_token = client_token
         self.dry_run = dry_run
         self.load_balancer_id = load_balancer_id
         self.region_id = region_id
-        self.request_content = request_content
 
     def validate(self):
         pass
@@ -2614,8 +2091,6 @@ class DetachCommonBandwidthPackageFromLoadBalancerRequest(TeaModel):
             result['LoadBalancerId'] = self.load_balancer_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.request_content is not None:
-            result['RequestContent'] = self.request_content
         return result
 
     def from_map(self, m: dict = None):
@@ -2630,31 +2105,17 @@ class DetachCommonBandwidthPackageFromLoadBalancerRequest(TeaModel):
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('RequestContent') is not None:
-            self.request_content = m.get('RequestContent')
         return self
 
 
 class DetachCommonBandwidthPackageFromLoadBalancerResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -2665,42 +2126,18 @@ class DetachCommonBandwidthPackageFromLoadBalancerResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -2755,13 +2192,11 @@ class DisableLoadBalancerIpv6InternetRequest(TeaModel):
         dry_run: bool = None,
         load_balancer_id: str = None,
         region_id: str = None,
-        request_content: str = None,
     ):
         self.client_token = client_token
         self.dry_run = dry_run
         self.load_balancer_id = load_balancer_id
         self.region_id = region_id
-        self.request_content = request_content
 
     def validate(self):
         pass
@@ -2780,8 +2215,6 @@ class DisableLoadBalancerIpv6InternetRequest(TeaModel):
             result['LoadBalancerId'] = self.load_balancer_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.request_content is not None:
-            result['RequestContent'] = self.request_content
         return result
 
     def from_map(self, m: dict = None):
@@ -2794,31 +2227,17 @@ class DisableLoadBalancerIpv6InternetRequest(TeaModel):
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('RequestContent') is not None:
-            self.request_content = m.get('RequestContent')
         return self
 
 
 class DisableLoadBalancerIpv6InternetResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -2829,42 +2248,18 @@ class DisableLoadBalancerIpv6InternetResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -2919,13 +2314,11 @@ class EnableLoadBalancerIpv6InternetRequest(TeaModel):
         dry_run: bool = None,
         load_balancer_id: str = None,
         region_id: str = None,
-        request_content: str = None,
     ):
         self.client_token = client_token
         self.dry_run = dry_run
         self.load_balancer_id = load_balancer_id
         self.region_id = region_id
-        self.request_content = request_content
 
     def validate(self):
         pass
@@ -2944,8 +2337,6 @@ class EnableLoadBalancerIpv6InternetRequest(TeaModel):
             result['LoadBalancerId'] = self.load_balancer_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.request_content is not None:
-            result['RequestContent'] = self.request_content
         return result
 
     def from_map(self, m: dict = None):
@@ -2958,31 +2349,17 @@ class EnableLoadBalancerIpv6InternetRequest(TeaModel):
             self.load_balancer_id = m.get('LoadBalancerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('RequestContent') is not None:
-            self.request_content = m.get('RequestContent')
         return self
 
 
 class EnableLoadBalancerIpv6InternetResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -2993,42 +2370,18 @@ class EnableLoadBalancerIpv6InternetResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -3083,7 +2436,6 @@ class GetJobStatusRequest(TeaModel):
         job_id: str = None,
     ):
         self.client_token = client_token
-        # add 必选
         self.job_id = job_id
 
     def validate(self):
@@ -3113,23 +2465,11 @@ class GetJobStatusRequest(TeaModel):
 class GetJobStatusResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
-        message: str = None,
         request_id: str = None,
         status: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
-        self.message = message
         self.request_id = request_id
         self.status = status
-        self.success = success
 
     def validate(self):
         pass
@@ -3140,42 +2480,18 @@ class GetJobStatusResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.status is not None:
             result['Status'] = self.status
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -3233,7 +2549,6 @@ class GetListenerAttributeRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
-        # update or delete必选, add在custom中生成
         self.listener_id = listener_id
         self.region_id = region_id
 
@@ -3272,18 +2587,13 @@ class GetListenerAttributeRequest(TeaModel):
 class GetListenerAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        ali_uid: int = None,
         alpn_enabled: bool = None,
         alpn_policy: str = None,
         ca_certificate_ids: List[str] = None,
         ca_enabled: bool = None,
         certificate_ids: List[str] = None,
-        code: str = None,
         cps: int = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
         end_port: str = None,
-        http_status_code: int = None,
         idle_timeout: int = None,
         listener_description: str = None,
         listener_id: str = None,
@@ -3291,7 +2601,7 @@ class GetListenerAttributeResponseBody(TeaModel):
         listener_protocol: str = None,
         listener_status: str = None,
         load_balancer_id: str = None,
-        message: str = None,
+        mss: int = None,
         proxy_protocol_enabled: str = None,
         region_id: str = None,
         request_id: str = None,
@@ -3299,50 +2609,29 @@ class GetListenerAttributeResponseBody(TeaModel):
         security_policy_id: str = None,
         server_group_id: str = None,
         start_port: str = None,
-        success: bool = None,
     ):
-        # 用户uid
-        self.ali_uid = ali_uid
         self.alpn_enabled = alpn_enabled
         self.alpn_policy = alpn_policy
-        # ca 证书列表
         self.ca_certificate_ids = ca_certificate_ids
         self.ca_enabled = ca_enabled
-        # server证书列表
         self.certificate_ids = certificate_ids
-        self.code = code
         self.cps = cps
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        # anyPort监听结束端口
         self.end_port = end_port
-        self.http_status_code = http_status_code
-        # 空闲超时时间
         self.idle_timeout = idle_timeout
-        # 监听描述
         self.listener_description = listener_description
-        # 监听id
         self.listener_id = listener_id
-        # 监听端口
         self.listener_port = listener_port
-        # 监听协议 (TCP, UDP, TCPSSL, GENEVE)
         self.listener_protocol = listener_protocol
         self.listener_status = listener_status
-        # 列表id
         self.load_balancer_id = load_balancer_id
-        self.message = message
+        self.mss = mss
         self.proxy_protocol_enabled = proxy_protocol_enabled
-        # 业务location
         self.region_id = region_id
         self.request_id = request_id
         self.sec_sensor_enabled = sec_sensor_enabled
-        # Tclssl监听的安全策略
         self.security_policy_id = security_policy_id
-        # servergroupId
         self.server_group_id = server_group_id
-        # anyPort监听起始端口
         self.start_port = start_port
-        self.success = success
 
     def validate(self):
         pass
@@ -3353,8 +2642,6 @@ class GetListenerAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.ali_uid is not None:
-            result['AliUid'] = self.ali_uid
         if self.alpn_enabled is not None:
             result['AlpnEnabled'] = self.alpn_enabled
         if self.alpn_policy is not None:
@@ -3365,18 +2652,10 @@ class GetListenerAttributeResponseBody(TeaModel):
             result['CaEnabled'] = self.ca_enabled
         if self.certificate_ids is not None:
             result['CertificateIds'] = self.certificate_ids
-        if self.code is not None:
-            result['Code'] = self.code
         if self.cps is not None:
             result['Cps'] = self.cps
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
         if self.end_port is not None:
             result['EndPort'] = self.end_port
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.idle_timeout is not None:
             result['IdleTimeout'] = self.idle_timeout
         if self.listener_description is not None:
@@ -3391,8 +2670,8 @@ class GetListenerAttributeResponseBody(TeaModel):
             result['ListenerStatus'] = self.listener_status
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
-        if self.message is not None:
-            result['Message'] = self.message
+        if self.mss is not None:
+            result['Mss'] = self.mss
         if self.proxy_protocol_enabled is not None:
             result['ProxyProtocolEnabled'] = self.proxy_protocol_enabled
         if self.region_id is not None:
@@ -3407,14 +2686,10 @@ class GetListenerAttributeResponseBody(TeaModel):
             result['ServerGroupId'] = self.server_group_id
         if self.start_port is not None:
             result['StartPort'] = self.start_port
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AliUid') is not None:
-            self.ali_uid = m.get('AliUid')
         if m.get('AlpnEnabled') is not None:
             self.alpn_enabled = m.get('AlpnEnabled')
         if m.get('AlpnPolicy') is not None:
@@ -3425,18 +2700,10 @@ class GetListenerAttributeResponseBody(TeaModel):
             self.ca_enabled = m.get('CaEnabled')
         if m.get('CertificateIds') is not None:
             self.certificate_ids = m.get('CertificateIds')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Cps') is not None:
             self.cps = m.get('Cps')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
         if m.get('EndPort') is not None:
             self.end_port = m.get('EndPort')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('IdleTimeout') is not None:
             self.idle_timeout = m.get('IdleTimeout')
         if m.get('ListenerDescription') is not None:
@@ -3451,8 +2718,8 @@ class GetListenerAttributeResponseBody(TeaModel):
             self.listener_status = m.get('ListenerStatus')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
+        if m.get('Mss') is not None:
+            self.mss = m.get('Mss')
         if m.get('ProxyProtocolEnabled') is not None:
             self.proxy_protocol_enabled = m.get('ProxyProtocolEnabled')
         if m.get('RegionId') is not None:
@@ -3467,8 +2734,6 @@ class GetListenerAttributeResponseBody(TeaModel):
             self.server_group_id = m.get('ServerGroupId')
         if m.get('StartPort') is not None:
             self.start_port = m.get('StartPort')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -3522,15 +2787,11 @@ class GetListenerHealthStatusRequest(TeaModel):
         listener_id: str = None,
         max_results: int = None,
         next_token: str = None,
-        page: int = None,
-        page_size: int = None,
         region_id: str = None,
     ):
         self.listener_id = listener_id
         self.max_results = max_results
         self.next_token = next_token
-        self.page = page
-        self.page_size = page_size
         self.region_id = region_id
 
     def validate(self):
@@ -3548,10 +2809,6 @@ class GetListenerHealthStatusRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
-        if self.page is not None:
-            result['Page'] = self.page
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -3564,115 +2821,16 @@ class GetListenerHealthStatusRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
-        if m.get('Page') is not None:
-            self.page = m.get('Page')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
 
 
-class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel(TeaModel):
+class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason(TeaModel):
     def __init__(
         self,
-        description: str = None,
-        id: int = None,
-        port: int = None,
-        server_group_id: str = None,
-        server_id: str = None,
-        server_ip: str = None,
-        server_type: str = None,
-        status: str = None,
-        weight: int = None,
-        zone_id: str = None,
-    ):
-        # 服务器描述信息
-        self.description = description
-        self.id = id
-        # 服务器端口
-        self.port = port
-        # 服务器所属的服务器组ID
-        self.server_group_id = server_group_id
-        # 服务器id
-        self.server_id = server_id
-        # 服务器ip
-        self.server_ip = server_ip
-        # 服务器类型
-        self.server_type = server_type
-        # 服务器的状态
-        self.status = status
-        # 后端权重
-        self.weight = weight
-        # 服务器对应的zoneId
-        self.zone_id = zone_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.port is not None:
-            result['Port'] = self.port
-        if self.server_group_id is not None:
-            result['ServerGroupId'] = self.server_group_id
-        if self.server_id is not None:
-            result['ServerId'] = self.server_id
-        if self.server_ip is not None:
-            result['ServerIp'] = self.server_ip
-        if self.server_type is not None:
-            result['ServerType'] = self.server_type
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.weight is not None:
-            result['Weight'] = self.weight
-        if self.zone_id is not None:
-            result['ZoneId'] = self.zone_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
-        if m.get('ServerGroupId') is not None:
-            self.server_group_id = m.get('ServerGroupId')
-        if m.get('ServerId') is not None:
-            self.server_id = m.get('ServerId')
-        if m.get('ServerIp') is not None:
-            self.server_ip = m.get('ServerIp')
-        if m.get('ServerType') is not None:
-            self.server_type = m.get('ServerType')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Weight') is not None:
-            self.weight = m.get('Weight')
-        if m.get('ZoneId') is not None:
-            self.zone_id = m.get('ZoneId')
-        return self
-
-
-class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersHealthCheckReasonModel(TeaModel):
-    def __init__(
-        self,
-        actual_return_code: str = None,
-        expect_return_code: str = None,
         reason_code: str = None,
     ):
-        self.actual_return_code = actual_return_code
-        self.expect_return_code = expect_return_code
-        # CONNECT_TIMEOUT, CONNECT_FAILED, RECV_RESPONSE_FAILED, RECV_RESPONSE_TIMEOUT, SEND_REQUEST_FAILED, SEND_REQUEST_TIMEOUT, RESPONSE_FORMAT_ERROR, RESPONSE_MISMATCH
         self.reason_code = reason_code
 
     def validate(self):
@@ -3684,41 +2842,35 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbn
             return _map
 
         result = dict()
-        if self.actual_return_code is not None:
-            result['ActualReturnCode'] = self.actual_return_code
-        if self.expect_return_code is not None:
-            result['ExpectReturnCode'] = self.expect_return_code
         if self.reason_code is not None:
             result['ReasonCode'] = self.reason_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ActualReturnCode') is not None:
-            self.actual_return_code = m.get('ActualReturnCode')
-        if m.get('ExpectReturnCode') is not None:
-            self.expect_return_code = m.get('ExpectReturnCode')
         if m.get('ReasonCode') is not None:
             self.reason_code = m.get('ReasonCode')
         return self
 
 
-class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServers(TeaModel):
+class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers(TeaModel):
     def __init__(
         self,
-        backend_server_model: GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel = None,
-        health_check_reason_model: GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersHealthCheckReasonModel = None,
+        port: int = None,
+        reason: GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason = None,
+        server_id: str = None,
+        server_ip: str = None,
         status: str = None,
     ):
-        self.backend_server_model = backend_server_model
-        self.health_check_reason_model = health_check_reason_model
+        self.port = port
+        self.reason = reason
+        self.server_id = server_id
+        self.server_ip = server_ip
         self.status = status
 
     def validate(self):
-        if self.backend_server_model:
-            self.backend_server_model.validate()
-        if self.health_check_reason_model:
-            self.health_check_reason_model.validate()
+        if self.reason:
+            self.reason.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3726,22 +2878,29 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbn
             return _map
 
         result = dict()
-        if self.backend_server_model is not None:
-            result['BackendServerModel'] = self.backend_server_model.to_map()
-        if self.health_check_reason_model is not None:
-            result['HealthCheckReasonModel'] = self.health_check_reason_model.to_map()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.reason is not None:
+            result['Reason'] = self.reason.to_map()
+        if self.server_id is not None:
+            result['ServerId'] = self.server_id
+        if self.server_ip is not None:
+            result['ServerIp'] = self.server_ip
         if self.status is not None:
             result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('BackendServerModel') is not None:
-            temp_model = GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersBackendServerModel()
-            self.backend_server_model = temp_model.from_map(m['BackendServerModel'])
-        if m.get('HealthCheckReasonModel') is not None:
-            temp_model = GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServersHealthCheckReasonModel()
-            self.health_check_reason_model = temp_model.from_map(m['HealthCheckReasonModel'])
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Reason') is not None:
+            temp_model = GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason()
+            self.reason = temp_model.from_map(m['Reason'])
+        if m.get('ServerId') is not None:
+            self.server_id = m.get('ServerId')
+        if m.get('ServerIp') is not None:
+            self.server_ip = m.get('ServerIp')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -3750,17 +2909,17 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbn
 class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos(TeaModel):
     def __init__(
         self,
-        abnormal_servers: List[GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServers] = None,
         heath_check_enabled: bool = None,
+        non_normal_servers: List[GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers] = None,
         server_group_id: str = None,
     ):
-        self.abnormal_servers = abnormal_servers
         self.heath_check_enabled = heath_check_enabled
+        self.non_normal_servers = non_normal_servers
         self.server_group_id = server_group_id
 
     def validate(self):
-        if self.abnormal_servers:
-            for k in self.abnormal_servers:
+        if self.non_normal_servers:
+            for k in self.non_normal_servers:
                 if k:
                     k.validate()
 
@@ -3770,25 +2929,25 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos(Te
             return _map
 
         result = dict()
-        result['AbnormalServers'] = []
-        if self.abnormal_servers is not None:
-            for k in self.abnormal_servers:
-                result['AbnormalServers'].append(k.to_map() if k else None)
         if self.heath_check_enabled is not None:
             result['HeathCheckEnabled'] = self.heath_check_enabled
+        result['NonNormalServers'] = []
+        if self.non_normal_servers is not None:
+            for k in self.non_normal_servers:
+                result['NonNormalServers'].append(k.to_map() if k else None)
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.abnormal_servers = []
-        if m.get('AbnormalServers') is not None:
-            for k in m.get('AbnormalServers'):
-                temp_model = GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosAbnormalServers()
-                self.abnormal_servers.append(temp_model.from_map(k))
         if m.get('HeathCheckEnabled') is not None:
             self.heath_check_enabled = m.get('HeathCheckEnabled')
+        self.non_normal_servers = []
+        if m.get('NonNormalServers') is not None:
+            for k in m.get('NonNormalServers'):
+                temp_model = GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers()
+                self.non_normal_servers.append(temp_model.from_map(k))
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
         return self
@@ -3850,28 +3009,16 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatus(TeaModel):
 class GetListenerHealthStatusResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         listener_health_status: List[GetListenerHealthStatusResponseBodyListenerHealthStatus] = None,
         max_results: int = None,
-        message: str = None,
         next_token: str = None,
         request_id: str = None,
-        success: bool = None,
         total_count: int = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.listener_health_status = listener_health_status
         self.max_results = max_results
-        self.message = message
         self.next_token = next_token
         self.request_id = request_id
-        self.success = success
         self.total_count = total_count
 
     def validate(self):
@@ -3886,42 +3033,22 @@ class GetListenerHealthStatusResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         result['ListenerHealthStatus'] = []
         if self.listener_health_status is not None:
             for k in self.listener_health_status:
                 result['ListenerHealthStatus'].append(k.to_map() if k else None)
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
-        if self.message is not None:
-            result['Message'] = self.message
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         self.listener_health_status = []
         if m.get('ListenerHealthStatus') is not None:
             for k in m.get('ListenerHealthStatus'):
@@ -3929,14 +3056,10 @@ class GetListenerHealthStatusResponseBody(TeaModel):
                 self.listener_health_status.append(temp_model.from_map(k))
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -4036,7 +3159,6 @@ class GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig(TeaModel):
         self,
         pay_type: str = None,
     ):
-        # 实例的计费类型
         self.pay_type = pay_type
 
     def validate(self):
@@ -4101,13 +3223,10 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
         private_ipv_4address: str = None,
         public_ipv_4address: str = None,
     ):
-        # 公网ipId
         self.allocation_id = allocation_id
         self.eni_id = eni_id
         self.ipv_6address = ipv_6address
-        # 私网ip
         self.private_ipv_4address = private_ipv_4address
-        # 公网ip地址：仅Get的时候有值
         self.public_ipv_4address = public_ipv_4address
 
     def validate(self):
@@ -4199,60 +3318,42 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         address_ip_version: str = None,
         address_type: str = None,
         bandwidth_package_id: str = None,
-        capacity_unit_count: int = None,
-        code: str = None,
         cps: int = None,
         create_time: str = None,
-        cross_zone_enable: bool = None,
+        cross_zone_enabled: bool = None,
         dnsname: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
+        ipv_6address_type: str = None,
         load_balancer_billing_config: GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig = None,
         load_balancer_business_status: str = None,
         load_balancer_id: str = None,
         load_balancer_name: str = None,
         load_balancer_status: str = None,
         load_balancer_type: str = None,
-        message: str = None,
         operation_locks: List[GetLoadBalancerAttributeResponseBodyOperationLocks] = None,
         region_id: str = None,
         request_id: str = None,
         resource_group_id: str = None,
-        security_group_ids: List[str] = None,
-        success: bool = None,
-        traffic_affinity_enable: bool = None,
         vpc_id: str = None,
         zone_mappings: List[GetLoadBalancerAttributeResponseBodyZoneMappings] = None,
     ):
         self.address_ip_version = address_ip_version
         self.address_type = address_type
         self.bandwidth_package_id = bandwidth_package_id
-        self.capacity_unit_count = capacity_unit_count
-        self.code = code
         self.cps = cps
         self.create_time = create_time
-        self.cross_zone_enable = cross_zone_enable
+        self.cross_zone_enabled = cross_zone_enabled
         self.dnsname = dnsname
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
-        # 计费相关属性
+        self.ipv_6address_type = ipv_6address_type
         self.load_balancer_billing_config = load_balancer_billing_config
         self.load_balancer_business_status = load_balancer_business_status
         self.load_balancer_id = load_balancer_id
         self.load_balancer_name = load_balancer_name
         self.load_balancer_status = load_balancer_status
         self.load_balancer_type = load_balancer_type
-        self.message = message
-        # 实例处于锁定状态列表
         self.operation_locks = operation_locks
         self.region_id = region_id
         self.request_id = request_id
         self.resource_group_id = resource_group_id
-        self.security_group_ids = security_group_ids
-        self.success = success
-        self.traffic_affinity_enable = traffic_affinity_enable
         self.vpc_id = vpc_id
         self.zone_mappings = zone_mappings
 
@@ -4280,24 +3381,16 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             result['AddressType'] = self.address_type
         if self.bandwidth_package_id is not None:
             result['BandwidthPackageId'] = self.bandwidth_package_id
-        if self.capacity_unit_count is not None:
-            result['CapacityUnitCount'] = self.capacity_unit_count
-        if self.code is not None:
-            result['Code'] = self.code
         if self.cps is not None:
             result['Cps'] = self.cps
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
-        if self.cross_zone_enable is not None:
-            result['CrossZoneEnable'] = self.cross_zone_enable
+        if self.cross_zone_enabled is not None:
+            result['CrossZoneEnabled'] = self.cross_zone_enabled
         if self.dnsname is not None:
             result['DNSName'] = self.dnsname
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
+        if self.ipv_6address_type is not None:
+            result['Ipv6AddressType'] = self.ipv_6address_type
         if self.load_balancer_billing_config is not None:
             result['LoadBalancerBillingConfig'] = self.load_balancer_billing_config.to_map()
         if self.load_balancer_business_status is not None:
@@ -4310,8 +3403,6 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             result['LoadBalancerStatus'] = self.load_balancer_status
         if self.load_balancer_type is not None:
             result['LoadBalancerType'] = self.load_balancer_type
-        if self.message is not None:
-            result['Message'] = self.message
         result['OperationLocks'] = []
         if self.operation_locks is not None:
             for k in self.operation_locks:
@@ -4322,12 +3413,6 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-        if self.security_group_ids is not None:
-            result['SecurityGroupIds'] = self.security_group_ids
-        if self.success is not None:
-            result['Success'] = self.success
-        if self.traffic_affinity_enable is not None:
-            result['TrafficAffinityEnable'] = self.traffic_affinity_enable
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         result['ZoneMappings'] = []
@@ -4344,24 +3429,16 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             self.address_type = m.get('AddressType')
         if m.get('BandwidthPackageId') is not None:
             self.bandwidth_package_id = m.get('BandwidthPackageId')
-        if m.get('CapacityUnitCount') is not None:
-            self.capacity_unit_count = m.get('CapacityUnitCount')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Cps') is not None:
             self.cps = m.get('Cps')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
-        if m.get('CrossZoneEnable') is not None:
-            self.cross_zone_enable = m.get('CrossZoneEnable')
+        if m.get('CrossZoneEnabled') is not None:
+            self.cross_zone_enabled = m.get('CrossZoneEnabled')
         if m.get('DNSName') is not None:
             self.dnsname = m.get('DNSName')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Ipv6AddressType') is not None:
+            self.ipv_6address_type = m.get('Ipv6AddressType')
         if m.get('LoadBalancerBillingConfig') is not None:
             temp_model = GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig()
             self.load_balancer_billing_config = temp_model.from_map(m['LoadBalancerBillingConfig'])
@@ -4375,8 +3452,6 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             self.load_balancer_status = m.get('LoadBalancerStatus')
         if m.get('LoadBalancerType') is not None:
             self.load_balancer_type = m.get('LoadBalancerType')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         self.operation_locks = []
         if m.get('OperationLocks') is not None:
             for k in m.get('OperationLocks'):
@@ -4388,12 +3463,6 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('SecurityGroupIds') is not None:
-            self.security_group_ids = m.get('SecurityGroupIds')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        if m.get('TrafficAffinityEnable') is not None:
-            self.traffic_affinity_enable = m.get('TrafficAffinityEnable')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         self.zone_mappings = []
@@ -4509,27 +3578,15 @@ class ListListenerCertificatesResponseBody(TeaModel):
     def __init__(
         self,
         certificate_ids: List[str] = None,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         max_results: int = None,
-        message: str = None,
         next_token: str = None,
         request_id: str = None,
-        success: bool = None,
         total_count: int = None,
     ):
         self.certificate_ids = certificate_ids
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.max_results = max_results
-        self.message = message
         self.next_token = next_token
         self.request_id = request_id
-        self.success = success
         self.total_count = total_count
 
     def validate(self):
@@ -4543,24 +3600,12 @@ class ListListenerCertificatesResponseBody(TeaModel):
         result = dict()
         if self.certificate_ids is not None:
             result['CertificateIds'] = self.certificate_ids
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
-        if self.message is not None:
-            result['Message'] = self.message
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
@@ -4569,24 +3614,12 @@ class ListListenerCertificatesResponseBody(TeaModel):
         m = m or dict()
         if m.get('CertificateIds') is not None:
             self.certificate_ids = m.get('CertificateIds')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -4646,11 +3679,8 @@ class ListListenersRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # 监听唯一标识
         self.listener_ids = listener_ids
-        # 监听协议
         self.listener_protocol = listener_protocol
-        # 负载均衡实例标识
         self.load_balancer_ids = load_balancer_ids
         self.max_results = max_results
         self.next_token = next_token
@@ -4699,12 +3729,12 @@ class ListListenersRequest(TeaModel):
 class ListListenersResponseBodyListeners(TeaModel):
     def __init__(
         self,
-        ali_uid: int = None,
         alpn_enabled: str = None,
         alpn_policy: str = None,
         ca_certificate_ids: List[str] = None,
         ca_enabled: bool = None,
         certificate_ids: List[str] = None,
+        cps: int = None,
         end_port: str = None,
         idle_timeout: int = None,
         listener_description: str = None,
@@ -4713,6 +3743,7 @@ class ListListenersResponseBodyListeners(TeaModel):
         listener_protocol: str = None,
         listener_status: str = None,
         load_balancer_id: str = None,
+        mss: int = None,
         proxy_protocol_enabled: str = None,
         region_id: str = None,
         sec_sensor_enabled: str = None,
@@ -4720,38 +3751,26 @@ class ListListenersResponseBodyListeners(TeaModel):
         server_group_id: str = None,
         start_port: str = None,
     ):
-        # 用户uid
-        self.ali_uid = ali_uid
         self.alpn_enabled = alpn_enabled
         self.alpn_policy = alpn_policy
-        # ca 证书列表
         self.ca_certificate_ids = ca_certificate_ids
         self.ca_enabled = ca_enabled
-        # server证书列表
         self.certificate_ids = certificate_ids
-        # anyPort监听结束端口
+        self.cps = cps
         self.end_port = end_port
-        # 空闲超时时间
         self.idle_timeout = idle_timeout
-        # 监听描述
         self.listener_description = listener_description
-        # 自己生成后赋值
         self.listener_id = listener_id
-        # 监听端口
         self.listener_port = listener_port
-        # 监听协议 (TCP, UDP, TCPSSL, GENEVE)
         self.listener_protocol = listener_protocol
         self.listener_status = listener_status
         self.load_balancer_id = load_balancer_id
+        self.mss = mss
         self.proxy_protocol_enabled = proxy_protocol_enabled
-        # 业务location
         self.region_id = region_id
         self.sec_sensor_enabled = sec_sensor_enabled
-        # Tclssl监听的安全策略
         self.security_policy_id = security_policy_id
-        # servergroupId
         self.server_group_id = server_group_id
-        # anyPort监听起始端口
         self.start_port = start_port
 
     def validate(self):
@@ -4763,8 +3782,6 @@ class ListListenersResponseBodyListeners(TeaModel):
             return _map
 
         result = dict()
-        if self.ali_uid is not None:
-            result['AliUid'] = self.ali_uid
         if self.alpn_enabled is not None:
             result['AlpnEnabled'] = self.alpn_enabled
         if self.alpn_policy is not None:
@@ -4775,6 +3792,8 @@ class ListListenersResponseBodyListeners(TeaModel):
             result['CaEnabled'] = self.ca_enabled
         if self.certificate_ids is not None:
             result['CertificateIds'] = self.certificate_ids
+        if self.cps is not None:
+            result['Cps'] = self.cps
         if self.end_port is not None:
             result['EndPort'] = self.end_port
         if self.idle_timeout is not None:
@@ -4791,6 +3810,8 @@ class ListListenersResponseBodyListeners(TeaModel):
             result['ListenerStatus'] = self.listener_status
         if self.load_balancer_id is not None:
             result['LoadBalancerId'] = self.load_balancer_id
+        if self.mss is not None:
+            result['Mss'] = self.mss
         if self.proxy_protocol_enabled is not None:
             result['ProxyProtocolEnabled'] = self.proxy_protocol_enabled
         if self.region_id is not None:
@@ -4807,8 +3828,6 @@ class ListListenersResponseBodyListeners(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AliUid') is not None:
-            self.ali_uid = m.get('AliUid')
         if m.get('AlpnEnabled') is not None:
             self.alpn_enabled = m.get('AlpnEnabled')
         if m.get('AlpnPolicy') is not None:
@@ -4819,6 +3838,8 @@ class ListListenersResponseBodyListeners(TeaModel):
             self.ca_enabled = m.get('CaEnabled')
         if m.get('CertificateIds') is not None:
             self.certificate_ids = m.get('CertificateIds')
+        if m.get('Cps') is not None:
+            self.cps = m.get('Cps')
         if m.get('EndPort') is not None:
             self.end_port = m.get('EndPort')
         if m.get('IdleTimeout') is not None:
@@ -4835,6 +3856,8 @@ class ListListenersResponseBodyListeners(TeaModel):
             self.listener_status = m.get('ListenerStatus')
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('Mss') is not None:
+            self.mss = m.get('Mss')
         if m.get('ProxyProtocolEnabled') is not None:
             self.proxy_protocol_enabled = m.get('ProxyProtocolEnabled')
         if m.get('RegionId') is not None:
@@ -4853,28 +3876,16 @@ class ListListenersResponseBodyListeners(TeaModel):
 class ListListenersResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         listeners: List[ListListenersResponseBodyListeners] = None,
         max_results: int = None,
-        message: str = None,
         next_token: str = None,
         request_id: str = None,
-        success: bool = None,
         total_count: int = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.listeners = listeners
         self.max_results = max_results
-        self.message = message
         self.next_token = next_token
         self.request_id = request_id
-        self.success = success
         self.total_count = total_count
 
     def validate(self):
@@ -4889,42 +3900,22 @@ class ListListenersResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         result['Listeners'] = []
         if self.listeners is not None:
             for k in self.listeners:
                 result['Listeners'].append(k.to_map() if k else None)
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
-        if self.message is not None:
-            result['Message'] = self.message
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         self.listeners = []
         if m.get('Listeners') is not None:
             for k in m.get('Listeners'):
@@ -4932,14 +3923,10 @@ class ListListenersResponseBody(TeaModel):
                 self.listeners.append(temp_model.from_map(k))
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -5025,10 +4012,10 @@ class ListLoadBalancersRequestTag(TeaModel):
 class ListLoadBalancersRequest(TeaModel):
     def __init__(
         self,
-        address: str = None,
         address_ip_version: str = None,
         address_type: str = None,
         dnsname: str = None,
+        ipv_6address_type: str = None,
         load_balancer_business_status: str = None,
         load_balancer_ids: List[str] = None,
         load_balancer_names: List[str] = None,
@@ -5042,33 +4029,21 @@ class ListLoadBalancersRequest(TeaModel):
         vpc_ids: List[str] = None,
         zone_id: str = None,
     ):
-        # 负载均衡地址 todo 增加校验方法
-        self.address = address
-        # 协议类型
         self.address_ip_version = address_ip_version
-        # 地址类型：取值 internet，intranet
         self.address_type = address_type
-        # dns 地址
         self.dnsname = dnsname
-        # 实例业务状态
+        self.ipv_6address_type = ipv_6address_type
         self.load_balancer_business_status = load_balancer_business_status
-        # 实例列表
         self.load_balancer_ids = load_balancer_ids
-        # 负载均衡实例名称
         self.load_balancer_names = load_balancer_names
-        # 实例状态
         self.load_balancer_status = load_balancer_status
-        # 负载均衡类型
         self.load_balancer_type = load_balancer_type
         self.max_results = max_results
         self.next_token = next_token
         self.region_id = region_id
-        # 企业资源组标识
         self.resource_group_id = resource_group_id
         self.tag = tag
-        # 专有网络唯一标识
         self.vpc_ids = vpc_ids
-        # 负载均衡拥有的可用区
         self.zone_id = zone_id
 
     def validate(self):
@@ -5083,14 +4058,14 @@ class ListLoadBalancersRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.address is not None:
-            result['Address'] = self.address
         if self.address_ip_version is not None:
             result['AddressIpVersion'] = self.address_ip_version
         if self.address_type is not None:
             result['AddressType'] = self.address_type
         if self.dnsname is not None:
             result['DNSName'] = self.dnsname
+        if self.ipv_6address_type is not None:
+            result['Ipv6AddressType'] = self.ipv_6address_type
         if self.load_balancer_business_status is not None:
             result['LoadBalancerBusinessStatus'] = self.load_balancer_business_status
         if self.load_balancer_ids is not None:
@@ -5121,14 +4096,14 @@ class ListLoadBalancersRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Address') is not None:
-            self.address = m.get('Address')
         if m.get('AddressIpVersion') is not None:
             self.address_ip_version = m.get('AddressIpVersion')
         if m.get('AddressType') is not None:
             self.address_type = m.get('AddressType')
         if m.get('DNSName') is not None:
             self.dnsname = m.get('DNSName')
+        if m.get('Ipv6AddressType') is not None:
+            self.ipv_6address_type = m.get('Ipv6AddressType')
         if m.get('LoadBalancerBusinessStatus') is not None:
             self.load_balancer_business_status = m.get('LoadBalancerBusinessStatus')
         if m.get('LoadBalancerIds') is not None:
@@ -5164,7 +4139,6 @@ class ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig(TeaMod
         self,
         pay_type: str = None,
     ):
-        # 实例的计费类型
         self.pay_type = pay_type
 
     def validate(self):
@@ -5262,13 +4236,10 @@ class ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresse
         private_ipv_4address: str = None,
         public_ipv_4address: str = None,
     ):
-        # 公网ipId
         self.allocation_id = allocation_id
         self.eni_id = eni_id
         self.ipv_6address = ipv_6address
-        # 私网ip
         self.private_ipv_4address = private_ipv_4address
-        # 公网ip地址：仅Get的时候有值
         self.public_ipv_4address = public_ipv_4address
 
     def validate(self):
@@ -5359,12 +4330,11 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         self,
         address_ip_version: str = None,
         address_type: str = None,
-        ali_uid: int = None,
         bandwidth_package_id: str = None,
-        capacity_unit_count: int = None,
         create_time: str = None,
         cross_zone_enabled: bool = None,
         dnsname: str = None,
+        ipv_6address_type: str = None,
         load_balancer_billing_config: ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig = None,
         load_balancer_business_status: str = None,
         load_balancer_id: str = None,
@@ -5376,34 +4346,27 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         resource_group_id: str = None,
         security_group_ids: List[str] = None,
         tags: List[ListLoadBalancersResponseBodyLoadBalancersTags] = None,
-        traffic_affinity_enabled: bool = None,
         vpc_id: str = None,
         zone_mappings: List[ListLoadBalancersResponseBodyLoadBalancersZoneMappings] = None,
     ):
         self.address_ip_version = address_ip_version
         self.address_type = address_type
-        # 用户uid
-        self.ali_uid = ali_uid
         self.bandwidth_package_id = bandwidth_package_id
-        self.capacity_unit_count = capacity_unit_count
         self.create_time = create_time
         self.cross_zone_enabled = cross_zone_enabled
         self.dnsname = dnsname
-        # 计费相关属性
+        self.ipv_6address_type = ipv_6address_type
         self.load_balancer_billing_config = load_balancer_billing_config
         self.load_balancer_business_status = load_balancer_business_status
         self.load_balancer_id = load_balancer_id
         self.load_balancer_name = load_balancer_name
         self.load_balancer_status = load_balancer_status
         self.load_balancer_type = load_balancer_type
-        # 实例处于锁定状态列表
         self.operation_locks = operation_locks
-        # 业务location
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.security_group_ids = security_group_ids
         self.tags = tags
-        self.traffic_affinity_enabled = traffic_affinity_enabled
         self.vpc_id = vpc_id
         self.zone_mappings = zone_mappings
 
@@ -5433,18 +4396,16 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
             result['AddressIpVersion'] = self.address_ip_version
         if self.address_type is not None:
             result['AddressType'] = self.address_type
-        if self.ali_uid is not None:
-            result['AliUid'] = self.ali_uid
         if self.bandwidth_package_id is not None:
             result['BandwidthPackageId'] = self.bandwidth_package_id
-        if self.capacity_unit_count is not None:
-            result['CapacityUnitCount'] = self.capacity_unit_count
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.cross_zone_enabled is not None:
             result['CrossZoneEnabled'] = self.cross_zone_enabled
         if self.dnsname is not None:
             result['DNSName'] = self.dnsname
+        if self.ipv_6address_type is not None:
+            result['Ipv6AddressType'] = self.ipv_6address_type
         if self.load_balancer_billing_config is not None:
             result['LoadBalancerBillingConfig'] = self.load_balancer_billing_config.to_map()
         if self.load_balancer_business_status is not None:
@@ -5471,8 +4432,6 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
-        if self.traffic_affinity_enabled is not None:
-            result['TrafficAffinityEnabled'] = self.traffic_affinity_enabled
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         result['ZoneMappings'] = []
@@ -5487,18 +4446,16 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
             self.address_ip_version = m.get('AddressIpVersion')
         if m.get('AddressType') is not None:
             self.address_type = m.get('AddressType')
-        if m.get('AliUid') is not None:
-            self.ali_uid = m.get('AliUid')
         if m.get('BandwidthPackageId') is not None:
             self.bandwidth_package_id = m.get('BandwidthPackageId')
-        if m.get('CapacityUnitCount') is not None:
-            self.capacity_unit_count = m.get('CapacityUnitCount')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('CrossZoneEnabled') is not None:
             self.cross_zone_enabled = m.get('CrossZoneEnabled')
         if m.get('DNSName') is not None:
             self.dnsname = m.get('DNSName')
+        if m.get('Ipv6AddressType') is not None:
+            self.ipv_6address_type = m.get('Ipv6AddressType')
         if m.get('LoadBalancerBillingConfig') is not None:
             temp_model = ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig()
             self.load_balancer_billing_config = temp_model.from_map(m['LoadBalancerBillingConfig'])
@@ -5528,8 +4485,6 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
             for k in m.get('Tags'):
                 temp_model = ListLoadBalancersResponseBodyLoadBalancersTags()
                 self.tags.append(temp_model.from_map(k))
-        if m.get('TrafficAffinityEnabled') is not None:
-            self.traffic_affinity_enabled = m.get('TrafficAffinityEnabled')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         self.zone_mappings = []
@@ -5543,28 +4498,16 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
 class ListLoadBalancersResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         load_balancers: List[ListLoadBalancersResponseBodyLoadBalancers] = None,
         max_results: int = None,
-        message: str = None,
         next_token: str = None,
         request_id: str = None,
-        success: bool = None,
         total_count: int = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.load_balancers = load_balancers
         self.max_results = max_results
-        self.message = message
         self.next_token = next_token
         self.request_id = request_id
-        self.success = success
         self.total_count = total_count
 
     def validate(self):
@@ -5579,42 +4522,22 @@ class ListLoadBalancersResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         result['LoadBalancers'] = []
         if self.load_balancers is not None:
             for k in self.load_balancers:
                 result['LoadBalancers'].append(k.to_map() if k else None)
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
-        if self.message is not None:
-            result['Message'] = self.message
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         self.load_balancers = []
         if m.get('LoadBalancers') is not None:
             for k in m.get('LoadBalancers'):
@@ -5622,14 +4545,10 @@ class ListLoadBalancersResponseBody(TeaModel):
                 self.load_balancers.append(temp_model.from_map(k))
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -5874,19 +4793,14 @@ class ListSecurityPolicyResponseBodySecurityPolicies(TeaModel):
         tags: List[ListSecurityPolicyResponseBodySecurityPoliciesTags] = None,
         tls_version: str = None,
     ):
-        # 加密套件
         self.ciphers = ciphers
-        # 业务location
         self.region_id = region_id
         self.related_listeners = related_listeners
         self.resource_group_id = resource_group_id
-        # tls策略ID
         self.security_policy_id = security_policy_id
-        # 名称
         self.security_policy_name = security_policy_name
         self.security_policy_status = security_policy_status
         self.tags = tags
-        # tls版本
         self.tls_version = tls_version
 
     def validate(self):
@@ -5961,28 +4875,16 @@ class ListSecurityPolicyResponseBodySecurityPolicies(TeaModel):
 class ListSecurityPolicyResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         max_results: int = None,
-        message: str = None,
         next_token: str = None,
         request_id: str = None,
         security_policies: List[ListSecurityPolicyResponseBodySecurityPolicies] = None,
-        success: bool = None,
         total_count: int = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.max_results = max_results
-        self.message = message
         self.next_token = next_token
         self.request_id = request_id
         self.security_policies = security_policies
-        self.success = success
         self.total_count = total_count
 
     def validate(self):
@@ -5997,18 +4899,8 @@ class ListSecurityPolicyResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
-        if self.message is not None:
-            result['Message'] = self.message
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
@@ -6017,26 +4909,14 @@ class ListSecurityPolicyResponseBody(TeaModel):
         if self.security_policies is not None:
             for k in self.security_policies:
                 result['SecurityPolicies'].append(k.to_map() if k else None)
-        if self.success is not None:
-            result['Success'] = self.success
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
@@ -6046,8 +4926,6 @@ class ListSecurityPolicyResponseBody(TeaModel):
             for k in m.get('SecurityPolicies'):
                 temp_model = ListSecurityPolicyResponseBodySecurityPolicies()
                 self.security_policies.append(temp_model.from_map(k))
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -6161,22 +5039,14 @@ class ListServerGroupServersResponseBodyServers(TeaModel):
         weight: int = None,
         zone_id: str = None,
     ):
-        # 服务器描述信息
         self.description = description
-        # 服务器端口
         self.port = port
         self.server_group_id = server_group_id
-        # 服务器id
         self.server_id = server_id
-        # 服务器ip
         self.server_ip = server_ip
-        # 服务器类型
         self.server_type = server_type
-        # 服务器的状态
         self.status = status
-        # 后端权重
         self.weight = weight
-        # 服务器对应的zoneId
         self.zone_id = zone_id
 
     def validate(self):
@@ -6234,28 +5104,16 @@ class ListServerGroupServersResponseBodyServers(TeaModel):
 class ListServerGroupServersResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         max_results: int = None,
-        message: str = None,
         next_token: str = None,
         request_id: str = None,
         servers: List[ListServerGroupServersResponseBodyServers] = None,
-        success: bool = None,
         total_count: int = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.max_results = max_results
-        self.message = message
         self.next_token = next_token
         self.request_id = request_id
         self.servers = servers
-        self.success = success
         self.total_count = total_count
 
     def validate(self):
@@ -6270,18 +5128,8 @@ class ListServerGroupServersResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
-        if self.message is not None:
-            result['Message'] = self.message
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
@@ -6290,26 +5138,14 @@ class ListServerGroupServersResponseBody(TeaModel):
         if self.servers is not None:
             for k in self.servers:
                 result['Servers'].append(k.to_map() if k else None)
-        if self.success is not None:
-            result['Success'] = self.success
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
@@ -6319,8 +5155,6 @@ class ListServerGroupServersResponseBody(TeaModel):
             for k in m.get('Servers'):
                 temp_model = ListServerGroupServersResponseBodyServers()
                 self.servers.append(temp_model.from_map(k))
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -6424,7 +5258,6 @@ class ListServerGroupsRequest(TeaModel):
         self.server_group_names = server_group_names
         self.server_group_type = server_group_type
         self.tag = tag
-        # 服务器组所在vpc的id
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -6502,26 +5335,16 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheck(TeaModel):
         http_check_method: str = None,
         unhealthy_threshold: int = None,
     ):
-        # 健康检查使用的端口
         self.health_check_connect_port = health_check_connect_port
-        # 健康检查响应的最大超时时间
         self.health_check_connect_timeout = health_check_connect_timeout
-        # 健康检查的域名
         self.health_check_domain = health_check_domain
-        # 是否开启健康检查
         self.health_check_enabled = health_check_enabled
-        # 状态码，多个状态码用逗号分隔
         self.health_check_http_code = health_check_http_code
-        # 健康检查时间间隔
         self.health_check_interval = health_check_interval
-        # 健康检查协议类型
         self.health_check_type = health_check_type
-        # 健康检查的url
         self.health_check_url = health_check_url
-        # 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success
         self.healthy_threshold = healthy_threshold
         self.http_check_method = http_check_method
-        # 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -6625,8 +5448,6 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         connection_drain_enabled: bool = None,
         connection_drain_timeout: int = None,
         health_check: ListServerGroupsResponseBodyServerGroupsHealthCheck = None,
-        persistence_enabled: bool = None,
-        persistence_timeout: int = None,
         preserve_client_ip_enabled: bool = None,
         protocol: str = None,
         region_id: str = None,
@@ -6641,41 +5462,23 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         tags: List[ListServerGroupsResponseBodyServerGroupsTags] = None,
         vpc_id: str = None,
     ):
-        # 服务器组地址类型
         self.address_ipversion = address_ipversion
         self.ali_uid = ali_uid
-        # 连接优雅中断开关
         self.connection_drain_enabled = connection_drain_enabled
-        # 连接优雅中断超时时间
         self.connection_drain_timeout = connection_drain_timeout
-        # 健康检查配置
         self.health_check = health_check
-        # 会话保持开关
-        self.persistence_enabled = persistence_enabled
-        # 会话保持超时时间
-        self.persistence_timeout = persistence_timeout
-        # 客户端地址保持开关
         self.preserve_client_ip_enabled = preserve_client_ip_enabled
-        # 后端协议
         self.protocol = protocol
-        # 业务region
         self.region_id = region_id
         self.related_load_balancer_ids = related_load_balancer_ids
-        # 资源组id
         self.resource_group_id = resource_group_id
-        # 调度类型
         self.scheduler = scheduler
         self.server_count = server_count
-        # 服务器组id
         self.server_group_id = server_group_id
-        # 服务器组名称
         self.server_group_name = server_group_name
-        # 状态
         self.server_group_status = server_group_status
-        # 服务器组类型
         self.server_group_type = server_group_type
         self.tags = tags
-        # 服务器组的vpcid
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -6702,10 +5505,6 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             result['ConnectionDrainTimeout'] = self.connection_drain_timeout
         if self.health_check is not None:
             result['HealthCheck'] = self.health_check.to_map()
-        if self.persistence_enabled is not None:
-            result['PersistenceEnabled'] = self.persistence_enabled
-        if self.persistence_timeout is not None:
-            result['PersistenceTimeout'] = self.persistence_timeout
         if self.preserve_client_ip_enabled is not None:
             result['PreserveClientIpEnabled'] = self.preserve_client_ip_enabled
         if self.protocol is not None:
@@ -6749,10 +5548,6 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         if m.get('HealthCheck') is not None:
             temp_model = ListServerGroupsResponseBodyServerGroupsHealthCheck()
             self.health_check = temp_model.from_map(m['HealthCheck'])
-        if m.get('PersistenceEnabled') is not None:
-            self.persistence_enabled = m.get('PersistenceEnabled')
-        if m.get('PersistenceTimeout') is not None:
-            self.persistence_timeout = m.get('PersistenceTimeout')
         if m.get('PreserveClientIpEnabled') is not None:
             self.preserve_client_ip_enabled = m.get('PreserveClientIpEnabled')
         if m.get('Protocol') is not None:
@@ -6788,28 +5583,16 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
 class ListServerGroupsResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         max_results: int = None,
-        message: str = None,
         next_token: str = None,
         request_id: str = None,
         server_groups: List[ListServerGroupsResponseBodyServerGroups] = None,
-        success: bool = None,
         total_count: int = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.max_results = max_results
-        self.message = message
         self.next_token = next_token
         self.request_id = request_id
         self.server_groups = server_groups
-        self.success = success
         self.total_count = total_count
 
     def validate(self):
@@ -6824,18 +5607,8 @@ class ListServerGroupsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
-        if self.message is not None:
-            result['Message'] = self.message
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.request_id is not None:
@@ -6844,26 +5617,14 @@ class ListServerGroupsResponseBody(TeaModel):
         if self.server_groups is not None:
             for k in self.server_groups:
                 result['ServerGroups'].append(k.to_map() if k else None)
-        if self.success is not None:
-            result['Success'] = self.success
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
@@ -6873,8 +5634,6 @@ class ListServerGroupsResponseBody(TeaModel):
             for k in m.get('ServerGroups'):
                 temp_model = ListServerGroupsResponseBodyServerGroups()
                 self.server_groups.append(temp_model.from_map(k))
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -7001,13 +5760,9 @@ class ListSystemSecurityPolicyResponseBodySecurityPolicies(TeaModel):
         security_policy_name: str = None,
         tls_version: str = None,
     ):
-        # 加密套件
         self.ciphers = ciphers
-        # tls策略ID
         self.security_policy_id = security_policy_id
-        # 名称
         self.security_policy_name = security_policy_name
-        # tls版本
         self.tls_version = tls_version
 
     def validate(self):
@@ -7045,23 +5800,11 @@ class ListSystemSecurityPolicyResponseBodySecurityPolicies(TeaModel):
 class ListSystemSecurityPolicyResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
-        message: str = None,
         request_id: str = None,
         security_policies: List[ListSystemSecurityPolicyResponseBodySecurityPolicies] = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
-        self.message = message
         self.request_id = request_id
         self.security_policies = security_policies
-        self.success = success
 
     def validate(self):
         if self.security_policies:
@@ -7075,38 +5818,16 @@ class ListSystemSecurityPolicyResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         result['SecurityPolicies'] = []
         if self.security_policies is not None:
             for k in self.security_policies:
                 result['SecurityPolicies'].append(k.to_map() if k else None)
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         self.security_policies = []
@@ -7114,8 +5835,6 @@ class ListSystemSecurityPolicyResponseBody(TeaModel):
             for k in m.get('SecurityPolicies'):
                 temp_model = ListSystemSecurityPolicyResponseBodySecurityPolicies()
                 self.security_policies.append(temp_model.from_map(k))
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -7453,13 +6172,9 @@ class RemoveServersFromServerGroupRequestServers(TeaModel):
         server_ip: str = None,
         server_type: str = None,
     ):
-        # 服务器端口
         self.port = port
-        # 服务器id
         self.server_id = server_id
-        # 服务器ip
         self.server_ip = server_ip
-        # 服务器类型
         self.server_type = server_type
 
     def validate(self):
@@ -7556,25 +6271,13 @@ class RemoveServersFromServerGroupRequest(TeaModel):
 class RemoveServersFromServerGroupResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
         server_group_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
         self.server_group_id = server_group_id
-        self.success = success
 
     def validate(self):
         pass
@@ -7585,46 +6288,22 @@ class RemoveServersFromServerGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -7679,14 +6358,11 @@ class StartListenerRequest(TeaModel):
         dry_run: bool = None,
         listener_id: str = None,
         region_id: str = None,
-        request_content: str = None,
     ):
         self.client_token = client_token
         self.dry_run = dry_run
-        # update or delete必选, add在custom中生成
         self.listener_id = listener_id
         self.region_id = region_id
-        self.request_content = request_content
 
     def validate(self):
         pass
@@ -7705,8 +6381,6 @@ class StartListenerRequest(TeaModel):
             result['ListenerId'] = self.listener_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.request_content is not None:
-            result['RequestContent'] = self.request_content
         return result
 
     def from_map(self, m: dict = None):
@@ -7719,31 +6393,17 @@ class StartListenerRequest(TeaModel):
             self.listener_id = m.get('ListenerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('RequestContent') is not None:
-            self.request_content = m.get('RequestContent')
         return self
 
 
 class StartListenerResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -7754,42 +6414,18 @@ class StartListenerResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -7844,14 +6480,11 @@ class StopListenerRequest(TeaModel):
         dry_run: bool = None,
         listener_id: str = None,
         region_id: str = None,
-        request_content: str = None,
     ):
         self.client_token = client_token
         self.dry_run = dry_run
-        # update or delete必选, add在custom中生成
         self.listener_id = listener_id
         self.region_id = region_id
-        self.request_content = request_content
 
     def validate(self):
         pass
@@ -7870,8 +6503,6 @@ class StopListenerRequest(TeaModel):
             result['ListenerId'] = self.listener_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.request_content is not None:
-            result['RequestContent'] = self.request_content
         return result
 
     def from_map(self, m: dict = None):
@@ -7884,31 +6515,17 @@ class StopListenerRequest(TeaModel):
             self.listener_id = m.get('ListenerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('RequestContent') is not None:
-            self.request_content = m.get('RequestContent')
         return self
 
 
 class StopListenerResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -7919,42 +6536,18 @@ class StopListenerResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -8403,6 +6996,7 @@ class UpdateListenerAttributeRequest(TeaModel):
         idle_timeout: int = None,
         listener_description: str = None,
         listener_id: str = None,
+        mss: int = None,
         proxy_protocol_enabled: bool = None,
         region_id: str = None,
         sec_sensor_enabled: bool = None,
@@ -8411,25 +7005,20 @@ class UpdateListenerAttributeRequest(TeaModel):
     ):
         self.alpn_enabled = alpn_enabled
         self.alpn_policy = alpn_policy
-        # ca 证书列表
         self.ca_certificate_ids = ca_certificate_ids
         self.ca_enabled = ca_enabled
-        # server证书列表
         self.certificate_ids = certificate_ids
         self.client_token = client_token
         self.cps = cps
         self.dry_run = dry_run
         self.idle_timeout = idle_timeout
-        # 监听描述
         self.listener_description = listener_description
-        # update or delete必选, add在custom中生成
         self.listener_id = listener_id
+        self.mss = mss
         self.proxy_protocol_enabled = proxy_protocol_enabled
         self.region_id = region_id
         self.sec_sensor_enabled = sec_sensor_enabled
-        # https监听的安全策略
         self.security_policy_id = security_policy_id
-        # 实服务组
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -8463,6 +7052,8 @@ class UpdateListenerAttributeRequest(TeaModel):
             result['ListenerDescription'] = self.listener_description
         if self.listener_id is not None:
             result['ListenerId'] = self.listener_id
+        if self.mss is not None:
+            result['Mss'] = self.mss
         if self.proxy_protocol_enabled is not None:
             result['ProxyProtocolEnabled'] = self.proxy_protocol_enabled
         if self.region_id is not None:
@@ -8499,6 +7090,8 @@ class UpdateListenerAttributeRequest(TeaModel):
             self.listener_description = m.get('ListenerDescription')
         if m.get('ListenerId') is not None:
             self.listener_id = m.get('ListenerId')
+        if m.get('Mss') is not None:
+            self.mss = m.get('Mss')
         if m.get('ProxyProtocolEnabled') is not None:
             self.proxy_protocol_enabled = m.get('ProxyProtocolEnabled')
         if m.get('RegionId') is not None:
@@ -8515,23 +7108,11 @@ class UpdateListenerAttributeRequest(TeaModel):
 class UpdateListenerAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -8542,42 +7123,18 @@ class UpdateListenerAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -8632,7 +7189,6 @@ class UpdateLoadBalancerAddressTypeConfigRequestZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # 公网ipId
         self.allocation_id = allocation_id
         self.v_switch_id = v_switch_id
         self.zone_id = zone_id
@@ -8733,23 +7289,11 @@ class UpdateLoadBalancerAddressTypeConfigRequest(TeaModel):
 class UpdateLoadBalancerAddressTypeConfigResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -8760,42 +7304,18 @@ class UpdateLoadBalancerAddressTypeConfigResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -8853,8 +7373,6 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
         load_balancer_id: str = None,
         load_balancer_name: str = None,
         region_id: str = None,
-        security_group_ids: List[str] = None,
-        traffic_affinity_enabled: bool = None,
     ):
         self.client_token = client_token
         self.cps = cps
@@ -8863,8 +7381,6 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         self.load_balancer_name = load_balancer_name
         self.region_id = region_id
-        self.security_group_ids = security_group_ids
-        self.traffic_affinity_enabled = traffic_affinity_enabled
 
     def validate(self):
         pass
@@ -8889,10 +7405,6 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
             result['LoadBalancerName'] = self.load_balancer_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.security_group_ids is not None:
-            result['SecurityGroupIds'] = self.security_group_ids
-        if self.traffic_affinity_enabled is not None:
-            result['TrafficAffinityEnabled'] = self.traffic_affinity_enabled
         return result
 
     def from_map(self, m: dict = None):
@@ -8911,33 +7423,17 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
             self.load_balancer_name = m.get('LoadBalancerName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('SecurityGroupIds') is not None:
-            self.security_group_ids = m.get('SecurityGroupIds')
-        if m.get('TrafficAffinityEnabled') is not None:
-            self.traffic_affinity_enabled = m.get('TrafficAffinityEnabled')
         return self
 
 
 class UpdateLoadBalancerAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -8948,42 +7444,18 @@ class UpdateLoadBalancerAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -9039,9 +7511,7 @@ class UpdateLoadBalancerZonesRequestZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # 公网ipId
         self.allocation_id = allocation_id
-        # 私网ip
         self.private_ipv_4address = private_ipv_4address
         self.v_switch_id = v_switch_id
         self.zone_id = zone_id
@@ -9140,23 +7610,11 @@ class UpdateLoadBalancerZonesRequest(TeaModel):
 class UpdateLoadBalancerZonesResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
-        self.success = success
 
     def validate(self):
         pass
@@ -9167,42 +7625,18 @@ class UpdateLoadBalancerZonesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -9257,7 +7691,6 @@ class UpdateSecurityPolicyAttributeRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
         region_id: str = None,
-        request_content: str = None,
         security_policy_id: str = None,
         security_policy_name: str = None,
         tls_versions: List[str] = None,
@@ -9266,7 +7699,6 @@ class UpdateSecurityPolicyAttributeRequest(TeaModel):
         self.client_token = client_token
         self.dry_run = dry_run
         self.region_id = region_id
-        self.request_content = request_content
         self.security_policy_id = security_policy_id
         self.security_policy_name = security_policy_name
         self.tls_versions = tls_versions
@@ -9288,8 +7720,6 @@ class UpdateSecurityPolicyAttributeRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.request_content is not None:
-            result['RequestContent'] = self.request_content
         if self.security_policy_id is not None:
             result['SecurityPolicyId'] = self.security_policy_id
         if self.security_policy_name is not None:
@@ -9308,8 +7738,6 @@ class UpdateSecurityPolicyAttributeRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('RequestContent') is not None:
-            self.request_content = m.get('RequestContent')
         if m.get('SecurityPolicyId') is not None:
             self.security_policy_id = m.get('SecurityPolicyId')
         if m.get('SecurityPolicyName') is not None:
@@ -9322,25 +7750,13 @@ class UpdateSecurityPolicyAttributeRequest(TeaModel):
 class UpdateSecurityPolicyAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
         security_policy_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
         self.security_policy_id = security_policy_id
-        self.success = success
 
     def validate(self):
         pass
@@ -9351,46 +7767,22 @@ class UpdateSecurityPolicyAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.security_policy_id is not None:
             result['SecurityPolicyId'] = self.security_policy_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SecurityPolicyId') is not None:
             self.security_policy_id = m.get('SecurityPolicyId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -9453,26 +7845,16 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         http_check_method: str = None,
         unhealthy_threshold: int = None,
     ):
-        # 健康检查使用的端口
         self.health_check_connect_port = health_check_connect_port
-        # 健康检查响应的最大超时时间
         self.health_check_connect_timeout = health_check_connect_timeout
-        # 健康检查的域名
         self.health_check_domain = health_check_domain
-        # 是否开启健康检查
         self.health_check_enabled = health_check_enabled
-        # 状态码，多个状态码用逗号分隔
         self.health_check_http_code = health_check_http_code
-        # 健康检查时间间隔
         self.health_check_interval = health_check_interval
-        # 健康检查协议类型
         self.health_check_type = health_check_type
-        # 健康检查的url
         self.health_check_url = health_check_url
-        # 健康检查连续成功多少次后，将后端服务器的健康检查状态由fail判定为success
         self.healthy_threshold = healthy_threshold
         self.http_check_method = http_check_method
-        # 健康检查连续失败多少次后，将后端服务器的健康检查状态由success判定为fail
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -9543,8 +7925,6 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         connection_drain_timeout: int = None,
         dry_run: bool = None,
         health_check_config: UpdateServerGroupAttributeRequestHealthCheckConfig = None,
-        persistence_enabled: bool = None,
-        persistence_timeout: int = None,
         preserve_client_ip_enabled: bool = None,
         region_id: str = None,
         scheduler: str = None,
@@ -9552,22 +7932,13 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         server_group_name: str = None,
     ):
         self.client_token = client_token
-        # 是否开启连接优雅中断
         self.connection_drain_enabled = connection_drain_enabled
-        # 连接优雅中断超时时间
         self.connection_drain_timeout = connection_drain_timeout
         self.dry_run = dry_run
-        # 健康检查配置
         self.health_check_config = health_check_config
-        # 是否开启会话保持
-        self.persistence_enabled = persistence_enabled
-        # 会话保持超时时间
-        self.persistence_timeout = persistence_timeout
         self.preserve_client_ip_enabled = preserve_client_ip_enabled
         self.region_id = region_id
-        # 调度类型
         self.scheduler = scheduler
-        # 服务器组ID
         self.server_group_id = server_group_id
         self.server_group_name = server_group_name
 
@@ -9591,10 +7962,6 @@ class UpdateServerGroupAttributeRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.health_check_config is not None:
             result['HealthCheckConfig'] = self.health_check_config.to_map()
-        if self.persistence_enabled is not None:
-            result['PersistenceEnabled'] = self.persistence_enabled
-        if self.persistence_timeout is not None:
-            result['PersistenceTimeout'] = self.persistence_timeout
         if self.preserve_client_ip_enabled is not None:
             result['PreserveClientIpEnabled'] = self.preserve_client_ip_enabled
         if self.region_id is not None:
@@ -9620,10 +7987,6 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         if m.get('HealthCheckConfig') is not None:
             temp_model = UpdateServerGroupAttributeRequestHealthCheckConfig()
             self.health_check_config = temp_model.from_map(m['HealthCheckConfig'])
-        if m.get('PersistenceEnabled') is not None:
-            self.persistence_enabled = m.get('PersistenceEnabled')
-        if m.get('PersistenceTimeout') is not None:
-            self.persistence_timeout = m.get('PersistenceTimeout')
         if m.get('PreserveClientIpEnabled') is not None:
             self.preserve_client_ip_enabled = m.get('PreserveClientIpEnabled')
         if m.get('RegionId') is not None:
@@ -9640,25 +8003,13 @@ class UpdateServerGroupAttributeRequest(TeaModel):
 class UpdateServerGroupAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
         server_group_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
         self.server_group_id = server_group_id
-        self.success = success
 
     def validate(self):
         pass
@@ -9669,46 +8020,22 @@ class UpdateServerGroupAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -9766,17 +8093,11 @@ class UpdateServerGroupServersAttributeRequestServers(TeaModel):
         server_type: str = None,
         weight: int = None,
     ):
-        # 服务器描述信息
         self.description = description
-        # 服务器端口
         self.port = port
-        # 服务器id
         self.server_id = server_id
-        # 服务器ip
         self.server_ip = server_ip
-        # 服务器类型
         self.server_type = server_type
-        # 后端权重
         self.weight = weight
 
     def validate(self):
@@ -9881,25 +8202,13 @@ class UpdateServerGroupServersAttributeRequest(TeaModel):
 class UpdateServerGroupServersAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        dynamic_code: str = None,
-        dynamic_message: str = None,
-        http_status_code: int = None,
         job_id: str = None,
-        message: str = None,
         request_id: str = None,
         server_group_id: str = None,
-        success: bool = None,
     ):
-        self.code = code
-        self.dynamic_code = dynamic_code
-        self.dynamic_message = dynamic_message
-        self.http_status_code = http_status_code
         self.job_id = job_id
-        self.message = message
         self.request_id = request_id
         self.server_group_id = server_group_id
-        self.success = success
 
     def validate(self):
         pass
@@ -9910,46 +8219,22 @@ class UpdateServerGroupServersAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.dynamic_code is not None:
-            result['DynamicCode'] = self.dynamic_code
-        if self.dynamic_message is not None:
-            result['DynamicMessage'] = self.dynamic_message
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('DynamicCode') is not None:
-            self.dynamic_code = m.get('DynamicCode')
-        if m.get('DynamicMessage') is not None:
-            self.dynamic_message = m.get('DynamicMessage')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 

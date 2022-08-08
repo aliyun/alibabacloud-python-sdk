@@ -56,8 +56,11 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.server_group_id):
             body['ServerGroupId'] = request.server_group_id
+        body_flat = {}
         if not UtilClient.is_unset(request.servers):
-            body['Servers'] = request.servers
+            body_flat['Servers'] = request.servers
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -92,8 +95,11 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.server_group_id):
             body['ServerGroupId'] = request.server_group_id
+        body_flat = {}
         if not UtilClient.is_unset(request.servers):
-            body['Servers'] = request.servers
+            body_flat['Servers'] = request.servers
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -144,8 +150,6 @@ class Client(OpenApiClient):
             body['LoadBalancerId'] = request.load_balancer_id
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -182,8 +186,6 @@ class Client(OpenApiClient):
             body['LoadBalancerId'] = request.load_balancer_id
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -252,6 +254,8 @@ class Client(OpenApiClient):
             body['ListenerProtocol'] = request.listener_protocol
         if not UtilClient.is_unset(request.load_balancer_id):
             body['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.mss):
+            body['Mss'] = request.mss
         if not UtilClient.is_unset(request.proxy_protocol_enabled):
             body['ProxyProtocolEnabled'] = request.proxy_protocol_enabled
         if not UtilClient.is_unset(request.region_id):
@@ -318,6 +322,8 @@ class Client(OpenApiClient):
             body['ListenerProtocol'] = request.listener_protocol
         if not UtilClient.is_unset(request.load_balancer_id):
             body['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.mss):
+            body['Mss'] = request.mss
         if not UtilClient.is_unset(request.proxy_protocol_enabled):
             body['ProxyProtocolEnabled'] = request.proxy_protocol_enabled
         if not UtilClient.is_unset(request.region_id):
@@ -376,12 +382,8 @@ class Client(OpenApiClient):
             body['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.bandwidth_package_id):
             body['BandwidthPackageId'] = request.bandwidth_package_id
-        if not UtilClient.is_unset(request.biz_flag):
-            body['BizFlag'] = request.biz_flag
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.cross_zone_enabled):
-            body['CrossZoneEnabled'] = request.cross_zone_enabled
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
         body_flat = {}
@@ -395,14 +397,10 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.security_group_ids):
-            body['SecurityGroupIds'] = request.security_group_ids
-        if not UtilClient.is_unset(request.traffic_affinity_enabled):
-            body['TrafficAffinityEnabled'] = request.traffic_affinity_enabled
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.zone_mappings):
-            body['ZoneMappings'] = request.zone_mappings
+            body_flat['ZoneMappings'] = request.zone_mappings
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
@@ -437,12 +435,8 @@ class Client(OpenApiClient):
             body['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.bandwidth_package_id):
             body['BandwidthPackageId'] = request.bandwidth_package_id
-        if not UtilClient.is_unset(request.biz_flag):
-            body['BizFlag'] = request.biz_flag
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.cross_zone_enabled):
-            body['CrossZoneEnabled'] = request.cross_zone_enabled
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
         body_flat = {}
@@ -456,14 +450,10 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.security_group_ids):
-            body['SecurityGroupIds'] = request.security_group_ids
-        if not UtilClient.is_unset(request.traffic_affinity_enabled):
-            body['TrafficAffinityEnabled'] = request.traffic_affinity_enabled
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.zone_mappings):
-            body['ZoneMappings'] = request.zone_mappings
+            body_flat['ZoneMappings'] = request.zone_mappings
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
@@ -613,10 +603,6 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.health_check_config):
             body_flat['HealthCheckConfig'] = request.health_check_config
-        if not UtilClient.is_unset(request.persistence_enabled):
-            body['PersistenceEnabled'] = request.persistence_enabled
-        if not UtilClient.is_unset(request.persistence_timeout):
-            body['PersistenceTimeout'] = request.persistence_timeout
         if not UtilClient.is_unset(request.preserve_client_ip_enabled):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
         if not UtilClient.is_unset(request.protocol):
@@ -674,10 +660,6 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.health_check_config):
             body_flat['HealthCheckConfig'] = request.health_check_config
-        if not UtilClient.is_unset(request.persistence_enabled):
-            body['PersistenceEnabled'] = request.persistence_enabled
-        if not UtilClient.is_unset(request.persistence_timeout):
-            body['PersistenceTimeout'] = request.persistence_timeout
         if not UtilClient.is_unset(request.preserve_client_ip_enabled):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
         if not UtilClient.is_unset(request.protocol):
@@ -1238,8 +1220,6 @@ class Client(OpenApiClient):
             body['LoadBalancerId'] = request.load_balancer_id
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1276,8 +1256,6 @@ class Client(OpenApiClient):
             body['LoadBalancerId'] = request.load_balancer_id
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1326,8 +1304,6 @@ class Client(OpenApiClient):
             body['LoadBalancerId'] = request.load_balancer_id
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1362,8 +1338,6 @@ class Client(OpenApiClient):
             body['LoadBalancerId'] = request.load_balancer_id
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1412,8 +1386,6 @@ class Client(OpenApiClient):
             body['LoadBalancerId'] = request.load_balancer_id
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1448,8 +1420,6 @@ class Client(OpenApiClient):
             body['LoadBalancerId'] = request.load_balancer_id
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1652,10 +1622,6 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.page):
-            query['Page'] = request.page
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -1690,10 +1656,6 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.page):
-            query['Page'] = request.page
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -1998,14 +1960,14 @@ class Client(OpenApiClient):
     ) -> nlb_20220430_models.ListLoadBalancersResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.address):
-            query['Address'] = request.address
         if not UtilClient.is_unset(request.address_ip_version):
             query['AddressIpVersion'] = request.address_ip_version
         if not UtilClient.is_unset(request.address_type):
             query['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.dnsname):
             query['DNSName'] = request.dnsname
+        if not UtilClient.is_unset(request.ipv_6address_type):
+            query['Ipv6AddressType'] = request.ipv_6address_type
         if not UtilClient.is_unset(request.load_balancer_business_status):
             query['LoadBalancerBusinessStatus'] = request.load_balancer_business_status
         if not UtilClient.is_unset(request.load_balancer_ids):
@@ -2056,14 +2018,14 @@ class Client(OpenApiClient):
     ) -> nlb_20220430_models.ListLoadBalancersResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.address):
-            query['Address'] = request.address
         if not UtilClient.is_unset(request.address_ip_version):
             query['AddressIpVersion'] = request.address_ip_version
         if not UtilClient.is_unset(request.address_type):
             query['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.dnsname):
             query['DNSName'] = request.dnsname
+        if not UtilClient.is_unset(request.ipv_6address_type):
+            query['Ipv6AddressType'] = request.ipv_6address_type
         if not UtilClient.is_unset(request.load_balancer_business_status):
             query['LoadBalancerBusinessStatus'] = request.load_balancer_business_status
         if not UtilClient.is_unset(request.load_balancer_ids):
@@ -2714,8 +2676,6 @@ class Client(OpenApiClient):
             body['ListenerId'] = request.listener_id
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2750,8 +2710,6 @@ class Client(OpenApiClient):
             body['ListenerId'] = request.listener_id
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2800,8 +2758,6 @@ class Client(OpenApiClient):
             body['ListenerId'] = request.listener_id
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2836,8 +2792,6 @@ class Client(OpenApiClient):
             body['ListenerId'] = request.listener_id
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3096,6 +3050,8 @@ class Client(OpenApiClient):
             body['ListenerDescription'] = request.listener_description
         if not UtilClient.is_unset(request.listener_id):
             body['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.mss):
+            body['Mss'] = request.mss
         if not UtilClient.is_unset(request.proxy_protocol_enabled):
             body['ProxyProtocolEnabled'] = request.proxy_protocol_enabled
         if not UtilClient.is_unset(request.region_id):
@@ -3154,6 +3110,8 @@ class Client(OpenApiClient):
             body['ListenerDescription'] = request.listener_description
         if not UtilClient.is_unset(request.listener_id):
             body['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.mss):
+            body['Mss'] = request.mss
         if not UtilClient.is_unset(request.proxy_protocol_enabled):
             body['ProxyProtocolEnabled'] = request.proxy_protocol_enabled
         if not UtilClient.is_unset(request.region_id):
@@ -3308,10 +3266,6 @@ class Client(OpenApiClient):
             body['LoadBalancerName'] = request.load_balancer_name
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.security_group_ids):
-            body['SecurityGroupIds'] = request.security_group_ids
-        if not UtilClient.is_unset(request.traffic_affinity_enabled):
-            body['TrafficAffinityEnabled'] = request.traffic_affinity_enabled
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3352,10 +3306,6 @@ class Client(OpenApiClient):
             body['LoadBalancerName'] = request.load_balancer_name
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.security_group_ids):
-            body['SecurityGroupIds'] = request.security_group_ids
-        if not UtilClient.is_unset(request.traffic_affinity_enabled):
-            body['TrafficAffinityEnabled'] = request.traffic_affinity_enabled
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3490,8 +3440,6 @@ class Client(OpenApiClient):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         if not UtilClient.is_unset(request.security_policy_id):
             body['SecurityPolicyId'] = request.security_policy_id
         if not UtilClient.is_unset(request.security_policy_name):
@@ -3532,8 +3480,6 @@ class Client(OpenApiClient):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.request_content):
-            body['RequestContent'] = request.request_content
         if not UtilClient.is_unset(request.security_policy_id):
             body['SecurityPolicyId'] = request.security_policy_id
         if not UtilClient.is_unset(request.security_policy_name):
@@ -3591,10 +3537,6 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.health_check_config):
             body_flat['HealthCheckConfig'] = request.health_check_config
-        if not UtilClient.is_unset(request.persistence_enabled):
-            body['PersistenceEnabled'] = request.persistence_enabled
-        if not UtilClient.is_unset(request.persistence_timeout):
-            body['PersistenceTimeout'] = request.persistence_timeout
         if not UtilClient.is_unset(request.preserve_client_ip_enabled):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
         if not UtilClient.is_unset(request.region_id):
@@ -3644,10 +3586,6 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.health_check_config):
             body_flat['HealthCheckConfig'] = request.health_check_config
-        if not UtilClient.is_unset(request.persistence_enabled):
-            body['PersistenceEnabled'] = request.persistence_enabled
-        if not UtilClient.is_unset(request.persistence_timeout):
-            body['PersistenceTimeout'] = request.persistence_timeout
         if not UtilClient.is_unset(request.preserve_client_ip_enabled):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
         if not UtilClient.is_unset(request.region_id):
