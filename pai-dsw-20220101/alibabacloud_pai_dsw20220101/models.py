@@ -12,13 +12,9 @@ class DemoCategory(TeaModel):
         order: int = None,
         sub_categories: List['DemoCategory'] = None,
     ):
-        # 目录码
         self.category_code = category_code
-        # 目录名
         self.category_name = category_name
-        # 序号
         self.order = order
-        # 目录列表
         self.sub_categories = sub_categories
 
     def validate(self):
@@ -67,9 +63,7 @@ class CreateInstanceRequestDatasets(TeaModel):
         dataset_id: str = None,
         mount_path: str = None,
     ):
-        # 数据集Id
         self.dataset_id = dataset_id
-        # 容器内挂载路径
         self.mount_path = mount_path
 
     def validate(self):
@@ -105,15 +99,10 @@ class CreateInstanceRequestRequestedResource(TeaModel):
         memory: str = None,
         shared_memory: str = None,
     ):
-        # cpu核数
         self.cpu = cpu
-        # gpu数量
         self.gpu = gpu
-        # gpu显卡类型
         self.gputype = gputype
-        # memory大小
         self.memory = memory
-        # shared memory大小
         self.shared_memory = shared_memory
 
     def validate(self):
@@ -159,11 +148,8 @@ class CreateInstanceRequestUserVpc(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # Security Group Id
         self.security_group_id = security_group_id
-        # VSwitch Id
         self.v_switch_id = v_switch_id
-        # Vpc Id
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -210,29 +196,17 @@ class CreateInstanceRequest(TeaModel):
         user_vpc: CreateInstanceRequestUserVpc = None,
         workspace_id: str = None,
     ):
-        # 工作空间内是否他人可见
         self.accessibility = accessibility
-        # 数据集集合
         self.datasets = datasets
-        # 实例对应的Ecs规格
         self.ecs_spec = ecs_spec
-        # 环境变量
         self.environment_variables = environment_variables
-        # 镜像Id
         self.image_id = image_id
-        # 镜像地址
         self.image_url = image_url
-        # 实例名称
         self.instance_name = instance_name
-        # 优先级，在分配资源给实例时，优先级越高的实例越优先
         self.priority = priority
-        # 资源配置，弹内或者轻量化时使用
         self.requested_resource = requested_resource
-        # 资源Id,预付费时填写
         self.resource_id = resource_id
-        # user vpc配置
         self.user_vpc = user_vpc
-        # 工作空间Id
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -323,17 +297,11 @@ class CreateInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 状态码
         self.code = code
-        # http状态码
         self.http_status_code = http_status_code
-        # 实例Id
         self.instance_id = instance_id
-        # 说明
         self.message = message
-        # 请求Id
         self.request_id = request_id
-        # 成功标志
         self.success = success
 
     def validate(self):
@@ -426,9 +394,7 @@ class CreateInstanceShutdownTimerRequest(TeaModel):
         due_time: str = None,
         remaining_time_in_ms: int = None,
     ):
-        # 定时关机设定时间
         self.due_time = due_time
-        # 距离定时关机时间段
         self.remaining_time_in_ms = remaining_time_in_ms
 
     def validate(self):
@@ -465,17 +431,11 @@ class CreateInstanceShutdownTimerResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 状态码
         self.code = code
-        # http状态码
         self.http_status_code = http_status_code
-        # 实例Id
         self.instance_id = instance_id
-        # 说明
         self.message = message
-        # 请求Id
         self.request_id = request_id
-        # 成功标志
         self.success = success
 
     def validate(self):
@@ -569,11 +529,8 @@ class CreateInstanceSnapshotRequest(TeaModel):
         snapshot_description: str = None,
         snapshot_name: str = None,
     ):
-        # 镜像地址
         self.image_url = image_url
-        # 实例快照描述
         self.snapshot_description = snapshot_description
-        # 实例快照名称
         self.snapshot_name = snapshot_name
 
     def validate(self):
@@ -615,19 +572,12 @@ class CreateInstanceSnapshotResponseBody(TeaModel):
         snapshot_id: str = None,
         success: bool = None,
     ):
-        # 状态码
         self.code = code
-        # http状态码
         self.http_status_code = http_status_code
-        # 实例Id
         self.instance_id = instance_id
-        # 说明
         self.message = message
-        # 请求Id
         self.request_id = request_id
-        # 实例快照Id
         self.snapshot_id = snapshot_id
-        # 成功标志
         self.success = success
 
     def validate(self):
@@ -728,17 +678,11 @@ class DeleteInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 状态码
         self.code = code
-        # http状态码
         self.http_status_code = http_status_code
-        # 实例Id
         self.instance_id = instance_id
-        # 说明
         self.message = message
-        # 请求Id
         self.request_id = request_id
-        # 成功标志
         self.success = success
 
     def validate(self):
@@ -835,17 +779,11 @@ class DeleteInstanceShutdownTimerResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 状态码
         self.code = code
-        # http状态码
         self.http_status_code = http_status_code
-        # 实例Id
         self.instance_id = instance_id
-        # 说明
         self.message = message
-        # 请求Id
         self.request_id = request_id
-        # 成功标志
         self.success = success
 
     def validate(self):
@@ -943,19 +881,12 @@ class DeleteInstanceSnapshotResponseBody(TeaModel):
         snapshot_id: str = None,
         success: bool = None,
     ):
-        # 状态码
         self.code = code
-        # http状态码
         self.http_status_code = http_status_code
-        # 实例Id
         self.instance_id = instance_id
-        # 说明
         self.message = message
-        # 请求Id
         self.request_id = request_id
-        # 实例快照Id
         self.snapshot_id = snapshot_id
-        # 成功标志
         self.success = success
 
     def validate(self):
@@ -1052,9 +983,7 @@ class GetInstanceResponseBodyDatasets(TeaModel):
         dataset_id: str = None,
         mount_path: str = None,
     ):
-        # 数据集Id
         self.dataset_id = dataset_id
-        # 容器内挂载路径
         self.mount_path = mount_path
 
     def validate(self):
@@ -1090,15 +1019,10 @@ class GetInstanceResponseBodyInstanceShutdownTimer(TeaModel):
         instance_id: str = None,
         remaining_time_in_ms: int = None,
     ):
-        # 设定关机时间
         self.due_time = due_time
-        # 创建时间
         self.gmt_create_time = gmt_create_time
-        # 修改时间
         self.gmt_modified_time = gmt_modified_time
-        # 实例Id
         self.instance_id = instance_id
-        # 剩余关机时间（ms）
         self.remaining_time_in_ms = remaining_time_in_ms
 
     def validate(self):
@@ -1147,17 +1071,11 @@ class GetInstanceResponseBodyLatestSnapshot(TeaModel):
         image_url: str = None,
         repository_url: str = None,
     ):
-        # 快照创建时间
         self.gmt_create_time = gmt_create_time
-        # 快照修改时间
         self.gmt_modified_time = gmt_modified_time
-        # 镜像Id
         self.image_id = image_id
-        # 镜像名称
         self.image_name = image_name
-        # 镜像Url
         self.image_url = image_url
-        # 镜像仓库Url
         self.repository_url = repository_url
 
     def validate(self):
@@ -1209,15 +1127,10 @@ class GetInstanceResponseBodyRequestedResource(TeaModel):
         memory: str = None,
         shared_memory: str = None,
     ):
-        # cpu核数
         self.cpu = cpu
-        # gpu数量
         self.gpu = gpu
-        # gpu显卡类型
         self.gputype = gputype
-        # memory大小
         self.memory = memory
-        # shared memory大小
         self.shared_memory = shared_memory
 
     def validate(self):
@@ -1263,11 +1176,8 @@ class GetInstanceResponseBodyUserVpc(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # Security Group Id
         self.security_group_id = security_group_id
-        # VSwitch Id
         self.v_switch_id = v_switch_id
-        # Vpc Id
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1339,78 +1249,42 @@ class GetInstanceResponseBody(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # 实例计算类型
         self.accelerator_type = accelerator_type
-        # 工作空间内是否他人可见
         self.accessibility = accessibility
-        # 累计运行时间（ms）
         self.accumulated_running_time_in_ms = accumulated_running_time_in_ms
-        # 状态码
         self.code = code
-        # 数据集集合
         self.datasets = datasets
-        # 实例对应的Ecs规格
         self.ecs_spec = ecs_spec
-        # 环境变量
         self.environment_variables = environment_variables
-        # 实例创建时间
         self.gmt_create_time = gmt_create_time
-        # 实例修改时间
         self.gmt_modified_time = gmt_modified_time
-        # http状态码
         self.http_status_code = http_status_code
-        # 镜像Id
         self.image_id = image_id
-        # 镜像名称
         self.image_name = image_name
-        # 镜像地址
         self.image_url = image_url
-        # 实例Id
         self.instance_id = instance_id
-        # 实例名称
         self.instance_name = instance_name
-        # 定时关机任务
         self.instance_shutdown_timer = instance_shutdown_timer
-        # 实例Url
         self.instance_url = instance_url
-        # Jupyterlab Url
         self.jupyterlab_url = jupyterlab_url
-        # 最新保存的用户镜像
         self.latest_snapshot = latest_snapshot
-        # 说明
         self.message = message
-        # 支付类型
         self.payment_type = payment_type
-        # 优先级，在分配资源给实例时，优先级越高的实例越优先
         self.priority = priority
-        # 实例错误代码
         self.reason_code = reason_code
-        # 实例错误原因
         self.reason_message = reason_message
-        # 请求Id
         self.request_id = request_id
-        # 资源配置，弹内或者轻量化时使用
         self.requested_resource = requested_resource
-        # 资源Id,预付费时填写
         self.resource_id = resource_id
         self.resource_name = resource_name
-        # 实例状态
         self.status = status
-        # 成功标志
         self.success = success
-        # 终端url
         self.terminal_url = terminal_url
-        # 用户Id
         self.user_id = user_id
-        # 用户名称
         self.user_name = user_name
-        # user vpc配置
         self.user_vpc = user_vpc
-        # Web IDE url
         self.web_ideurl = web_ideurl
-        # 工作空间Id
         self.workspace_id = workspace_id
-        # 工作空间名称
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -1655,25 +1529,15 @@ class GetInstanceShutdownTimerResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 状态码
         self.code = code
-        # 设定关机时间
         self.due_time = due_time
-        # 创建时间
         self.gmt_create_time = gmt_create_time
-        # 修改时间
         self.gmt_modified_time = gmt_modified_time
-        # http状态码
         self.http_status_code = http_status_code
-        # 实例Id
         self.instance_id = instance_id
-        # 说明
         self.message = message
-        # 剩余关机时间（ms）
         self.remaining_time_in_ms = remaining_time_in_ms
-        # 请求Id
         self.request_id = request_id
-        # 成功标志
         self.success = success
 
     def validate(self):
@@ -1795,35 +1659,20 @@ class GetInstanceSnapshotResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
-        # 状态码
         self.code = code
-        # 实例快照创建时间
         self.gmt_create_time = gmt_create_time
-        # 实例快照修改时间
         self.gmt_modified_time = gmt_modified_time
-        # http状态码
         self.http_status_code = http_status_code
-        # 实例快照的镜像Id
         self.image_id = image_id
-        # 实例快照的镜像地址
         self.image_url = image_url
-        # 实例Id
         self.instance_id = instance_id
-        # 说明
         self.message = message
-        # 实例快照错误代码
         self.reason_code = reason_code
-        # 实例快照错误消息
         self.reason_message = reason_message
-        # 请求Id
         self.request_id = request_id
-        # 实例快照Id
         self.snapshot_id = snapshot_id
-        # 实例快照名称
         self.snapshot_name = snapshot_name
-        # 实例快照状态
         self.status = status
-        # 成功标志
         self.success = success
 
     def validate(self):
@@ -1946,6 +1795,134 @@ class GetInstanceSnapshotResponse(TeaModel):
         return self
 
 
+class GetTokenRequest(TeaModel):
+    def __init__(
+        self,
+        expire_time: int = None,
+        instance_id: str = None,
+    ):
+        self.expire_time = expire_time
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        token: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class GetTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUserConfigResponseBody(TeaModel):
     def __init__(
         self,
@@ -1956,17 +1933,11 @@ class GetUserConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 用户账号金额是否充足
         self.account_sufficient = account_sufficient
-        # 状态码
         self.code = code
-        # http状态码
         self.http_status_code = http_status_code
-        # 说明
         self.message = message
-        # 请求Id
         self.request_id = request_id
-        # 成功标志
         self.success = success
 
     def validate(self):
@@ -2059,9 +2030,7 @@ class ListDemoCategoriesResponseBody(TeaModel):
         categories: List[DemoCategory] = None,
         request_id: str = None,
     ):
-        # 样例列表
         self.categories = categories
-        # 请求Id
         self.request_id = request_id
 
     def validate(self):
@@ -2148,7 +2117,6 @@ class ListDemosRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 目录
         self.category = category
         self.demo_name = demo_name
         self.page_number = page_number
@@ -2196,17 +2164,11 @@ class ListDemosResponseBodyDemos(TeaModel):
         order: int = None,
         size: int = None,
     ):
-        # 所在目录
         self.categories = categories
-        # 样例描述
         self.demo_description = demo_description
-        # 样例名称
         self.demo_name = demo_name
-        # 样例地址
         self.demo_url = demo_url
-        # 序号
         self.order = order
-        # 大小
         self.size = size
 
     def validate(self):
@@ -2256,11 +2218,8 @@ class ListDemosResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 样例列表
         self.demos = demos
-        # 请求Id
         self.request_id = request_id
-        # 总数
         self.total_count = total_count
 
     def validate(self):
@@ -2352,15 +2311,10 @@ class ListEcsSpecsRequest(TeaModel):
         page_size: int = None,
         sort_by: str = None,
     ):
-        # 加速类型
         self.accelerator_type = accelerator_type
-        # 排序顺序
         self.order = order
-        # 页数
         self.page_number = page_number
-        # 每页大小
         self.page_size = page_size
-        # 排序字段
         self.sort_by = sort_by
 
     def validate(self):
@@ -2413,25 +2367,15 @@ class ListEcsSpecsResponseBodyEcsSpecs(TeaModel):
         price: float = None,
         system_disk_capacity: int = None,
     ):
-        # 资源类型
         self.accelerator_type = accelerator_type
-        # CPU核数
         self.cpu = cpu
-        # 货币单位
         self.currency = currency
-        # GPU卡数
         self.gpu = gpu
-        # 显卡类型
         self.gputype = gputype
-        # 实例接收带宽
         self.instance_bandwidth_rx = instance_bandwidth_rx
-        # 实例规格
         self.instance_type = instance_type
-        # 内存大小(GB)
         self.memory = memory
-        # 价格
         self.price = price
-        # 系统盘大小(GB)
         self.system_disk_capacity = system_disk_capacity
 
     def validate(self):
@@ -2501,19 +2445,12 @@ class ListEcsSpecsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # 状态码
         self.code = code
-        # 本分页中请求的实例列表
         self.ecs_specs = ecs_specs
-        # http状态码
         self.http_status_code = http_status_code
-        # 说明
         self.message = message
-        # 请求Id
         self.request_id = request_id
-        # 成功标志
         self.success = success
-        # 实例总数
         self.total_count = total_count
 
     def validate(self):
@@ -2671,25 +2608,15 @@ class ListInstanceSnapshotResponseBodySnapshots(TeaModel):
         snapshot_name: str = None,
         status: str = None,
     ):
-        # 实例快照创建时间
         self.gmt_create_time = gmt_create_time
-        # 实例快照修改时间
         self.gmt_modified_time = gmt_modified_time
-        # 实例快照的镜像Id
         self.image_id = image_id
-        # 实例快照的镜像地址
         self.image_url = image_url
-        # 实例Id
         self.instance_id = instance_id
-        # 实例快照错误代码
         self.reason_code = reason_code
-        # 实例快照错误消息
         self.reason_message = reason_message
-        # 实例快照Id
         self.snapshot_id = snapshot_id
-        # 实例快照名称
         self.snapshot_name = snapshot_name
-        # 实例快照状态
         self.status = status
 
     def validate(self):
@@ -2759,19 +2686,12 @@ class ListInstanceSnapshotResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # 状态码
         self.code = code
-        # http状态码
         self.http_status_code = http_status_code
-        # 说明
         self.message = message
-        # 请求Id
         self.request_id = request_id
-        # 本分页中请求的实例镜像列表
         self.snapshots = snapshots
-        # 成功标志
         self.success = success
-        # 实例总数
         self.total_count = total_count
 
     def validate(self):
@@ -2875,7 +2795,6 @@ class ListInstanceStatisticsRequest(TeaModel):
         self,
         workspace_ids: str = None,
     ):
-        # 工作空间列表
         self.workspace_ids = workspace_ids
 
     def validate(self):
@@ -2908,17 +2827,11 @@ class ListInstanceStatisticsResponseBody(TeaModel):
         statistics: Dict[str, dict] = None,
         success: bool = None,
     ):
-        # 状态码
         self.code = code
-        # http状态码
         self.http_status_code = http_status_code
-        # 说明
         self.message = message
-        # 请求Id
         self.request_id = request_id
-        # 统计信息
         self.statistics = statistics
-        # 成功标志
         self.success = success
 
     def validate(self):
@@ -3022,21 +2935,14 @@ class ListInstancesRequest(TeaModel):
     ):
         self.accelerator_type = accelerator_type
         self.accessibility = accessibility
-        # 实例名称
         self.instance_name = instance_name
-        # 排列顺序
         self.order = order
-        # 页码
         self.page_number = page_number
-        # 分页数量大小
         self.page_size = page_size
         self.payment_type = payment_type
         self.resource_id = resource_id
-        # 排序字段
         self.sort_by = sort_by
-        # 实例状态
         self.status = status
-        # 工作空间Id
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -3105,9 +3011,7 @@ class ListInstancesResponseBodyInstancesDatasets(TeaModel):
         dataset_id: str = None,
         mount_path: str = None,
     ):
-        # 数据集Id
         self.dataset_id = dataset_id
-        # 容器内挂载路径
         self.mount_path = mount_path
 
     def validate(self):
@@ -3143,15 +3047,10 @@ class ListInstancesResponseBodyInstancesInstanceShutdownTimer(TeaModel):
         instance_id: str = None,
         remaining_time_in_ms: int = None,
     ):
-        # 设定关机时间
         self.due_time = due_time
-        # 创建时间
         self.gmt_create_time = gmt_create_time
-        # 修改时间
         self.gmt_modified_time = gmt_modified_time
-        # 实例Id
         self.instance_id = instance_id
-        # 剩余关机时间（ms）
         self.remaining_time_in_ms = remaining_time_in_ms
 
     def validate(self):
@@ -3200,17 +3099,11 @@ class ListInstancesResponseBodyInstancesLatestSnapshot(TeaModel):
         image_url: str = None,
         repository_url: str = None,
     ):
-        # 快照创建时间
         self.gmt_create_time = gmt_create_time
-        # 快照修改时间
         self.gmt_modified_time = gmt_modified_time
-        # 镜像Id
         self.image_id = image_id
-        # 镜像名称
         self.image_name = image_name
-        # 镜像Url
         self.image_url = image_url
-        # 镜像仓库Url
         self.repository_url = repository_url
 
     def validate(self):
@@ -3262,15 +3155,10 @@ class ListInstancesResponseBodyInstancesRequestedResource(TeaModel):
         memory: str = None,
         shared_memory: str = None,
     ):
-        # cpu核数
         self.cpu = cpu
-        # gpu数量
         self.gpu = gpu
-        # gpu显卡类型
         self.gputype = gputype
-        # memory大小
         self.memory = memory
-        # shared memory大小
         self.shared_memory = shared_memory
 
     def validate(self):
@@ -3316,11 +3204,8 @@ class ListInstancesResponseBodyInstancesUserVpc(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # Security Group Id
         self.security_group_id = security_group_id
-        # VSwitch Id
         self.v_switch_id = v_switch_id
-        # Vpc Id
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -3387,68 +3272,37 @@ class ListInstancesResponseBodyInstances(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # 实例计算类型
         self.accelerator_type = accelerator_type
-        # 工作空间内是否他人可见
         self.accessibility = accessibility
-        # 累计运行时间（ms）
         self.accumulated_running_time_in_ms = accumulated_running_time_in_ms
-        # 数据集集合
         self.datasets = datasets
-        # 实例对应的Ecs规格
         self.ecs_spec = ecs_spec
-        # 环境变量
         self.environment_variables = environment_variables
-        # 实例创建时间
         self.gmt_create_time = gmt_create_time
-        # 实例修改时间
         self.gmt_modified_time = gmt_modified_time
-        # 镜像Id
         self.image_id = image_id
-        # 镜像名称
         self.image_name = image_name
-        # 镜像地址
         self.image_url = image_url
-        # 实例Id
         self.instance_id = instance_id
-        # 实例名称
         self.instance_name = instance_name
-        # 定时关机任务
         self.instance_shutdown_timer = instance_shutdown_timer
-        # 实例Url
         self.instance_url = instance_url
-        # Jupyterlab Url
         self.jupyterlab_url = jupyterlab_url
-        # 最新保存的用户镜像
         self.latest_snapshot = latest_snapshot
-        # 支付类型
         self.payment_type = payment_type
-        # 优先级，在分配资源给实例时，优先级越高的实例越优先
         self.priority = priority
-        # 实例错误代码
         self.reason_code = reason_code
-        # 实例错误原因
         self.reason_message = reason_message
-        # 资源配置，弹内或者轻量化时使用
         self.requested_resource = requested_resource
-        # 资源Id,预付费时填写
         self.resource_id = resource_id
         self.resource_name = resource_name
-        # 实例状态
         self.status = status
-        # 终端url
         self.terminal_url = terminal_url
-        # 用户Id
         self.user_id = user_id
-        # 用户名称
         self.user_name = user_name
-        # user vpc配置
         self.user_vpc = user_vpc
-        # Web IDE url
         self.web_ideurl = web_ideurl
-        # 工作空间Id
         self.workspace_id = workspace_id
-        # 工作空间名称
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -3626,19 +3480,12 @@ class ListInstancesResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # 状态码
         self.code = code
-        # http状态码
         self.http_status_code = http_status_code
-        # 本分页中请求的实例列表
         self.instances = instances
-        # 说明
         self.message = message
-        # 请求Id
         self.request_id = request_id
-        # 成功标志
         self.success = success
-        # 实例总数
         self.total_count = total_count
 
     def validate(self):
@@ -3747,17 +3594,11 @@ class StartInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 状态码
         self.code = code
-        # http状态码
         self.http_status_code = http_status_code
-        # 实例Id
         self.instance_id = instance_id
-        # 说明
         self.message = message
-        # 请求Id
         self.request_id = request_id
-        # 成功标志
         self.success = success
 
     def validate(self):
@@ -3849,7 +3690,6 @@ class StopInstanceRequest(TeaModel):
         self,
         save_image: bool = None,
     ):
-        # 是否保存环境后再关闭实例
         self.save_image = save_image
 
     def validate(self):
@@ -3882,17 +3722,11 @@ class StopInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 状态码
         self.code = code
-        # http状态码
         self.http_status_code = http_status_code
-        # 实例Id
         self.instance_id = instance_id
-        # 说明
         self.message = message
-        # 请求Id
         self.request_id = request_id
-        # 成功标志
         self.success = success
 
     def validate(self):
@@ -3984,7 +3818,6 @@ class UpdateInstanceRequest(TeaModel):
         self,
         instance_name: str = None,
     ):
-        # 实例名称
         self.instance_name = instance_name
 
     def validate(self):
@@ -4017,17 +3850,11 @@ class UpdateInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 状态码
         self.code = code
-        # http状态码
         self.http_status_code = http_status_code
-        # 实例Id
         self.instance_id = instance_id
-        # 说明
         self.message = message
-        # 请求Id
         self.request_id = request_id
-        # 成功标志
         self.success = success
 
     def validate(self):

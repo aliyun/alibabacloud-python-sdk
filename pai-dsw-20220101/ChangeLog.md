@@ -1,3 +1,6 @@
+2022-08-08 Version: 1.1.19
+- Release of list instance enhancement.
+
 2022-07-15 Version: 1.1.18
 - Release of list instance enhancement.
 
