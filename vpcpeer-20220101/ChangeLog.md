@@ -1,3 +1,6 @@
+2022-08-09 Version: 1.0.6
+- Publish.
+
 2022-07-05 Version: 1.0.5
 - Support bandwidth modification.
 

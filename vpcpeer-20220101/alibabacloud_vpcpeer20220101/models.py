@@ -282,7 +282,6 @@ class DeleteVpcPeerConnectionRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
-        # 是否强删
         self.force = force
         self.instance_id = instance_id
 
@@ -681,7 +680,6 @@ class ListVpcPeerConnectionsRequest(TeaModel):
         self.name = name
         self.next_token = next_token
         self.region_id = region_id
-        # 根据两端vpcid过滤，不区分发起端和接收端。如果只传入一个，则根据一端过滤
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -739,7 +737,6 @@ class ListVpcPeerConnectionsShrinkRequest(TeaModel):
         self.name = name
         self.next_token = next_token
         self.region_id = region_id
-        # 根据两端vpcid过滤，不区分发起端和接收端。如果只传入一个，则根据一端过滤
         self.vpc_id_shrink = vpc_id_shrink
 
     def validate(self):
