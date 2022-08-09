@@ -1652,8 +1652,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.thirdpart_id):
             query['thirdpart_id'] = request.thirdpart_id
-        if not UtilClient.is_unset(request.user_id):
-            query['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1684,8 +1682,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.thirdpart_id):
             query['thirdpart_id'] = request.thirdpart_id
-        if not UtilClient.is_unset(request.user_id):
-            query['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1740,8 +1736,6 @@ class Client(OpenApiClient):
             body['thirdpart_id'] = request.thirdpart_id
         if not UtilClient.is_unset(request.title):
             body['title'] = request.title
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1780,8 +1774,6 @@ class Client(OpenApiClient):
             body['thirdpart_id'] = request.thirdpart_id
         if not UtilClient.is_unset(request.title):
             body['title'] = request.title
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1922,8 +1914,6 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.CostCenterSaveResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.alipay_id):
-            body['alipay_id'] = request.alipay_id
         if not UtilClient.is_unset(request.alipay_no):
             body['alipay_no'] = request.alipay_no
         if not UtilClient.is_unset(request.corp_id):
@@ -1936,8 +1926,6 @@ class Client(OpenApiClient):
             body['thirdpart_id'] = request.thirdpart_id
         if not UtilClient.is_unset(request.title):
             body['title'] = request.title
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1966,8 +1954,6 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.CostCenterSaveResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.alipay_id):
-            body['alipay_id'] = request.alipay_id
         if not UtilClient.is_unset(request.alipay_no):
             body['alipay_no'] = request.alipay_no
         if not UtilClient.is_unset(request.corp_id):
@@ -1980,8 +1966,6 @@ class Client(OpenApiClient):
             body['thirdpart_id'] = request.thirdpart_id
         if not UtilClient.is_unset(request.title):
             body['title'] = request.title
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2032,8 +2016,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.depart_list_shrink):
             body['depart_list'] = request.depart_list_shrink
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2068,8 +2050,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.depart_list_shrink):
             body['depart_list'] = request.depart_list_shrink
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2122,8 +2102,6 @@ class Client(OpenApiClient):
             body['entity_d_o_list'] = request.entity_dolist_shrink
         if not UtilClient.is_unset(request.thirdpart_id):
             body['thirdpart_id'] = request.thirdpart_id
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2160,8 +2138,6 @@ class Client(OpenApiClient):
             body['entity_d_o_list'] = request.entity_dolist_shrink
         if not UtilClient.is_unset(request.thirdpart_id):
             body['thirdpart_id'] = request.thirdpart_id
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2217,8 +2193,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.entity_dolist_shrink):
             body['entity_d_o_list'] = request.entity_dolist_shrink
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -2259,8 +2233,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.entity_dolist_shrink):
             body['entity_d_o_list'] = request.entity_dolist_shrink
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -2314,8 +2286,6 @@ class Client(OpenApiClient):
             body['entity_d_o_list'] = request.entity_dolist_shrink
         if not UtilClient.is_unset(request.thirdpart_id):
             body['thirdpart_id'] = request.thirdpart_id
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2352,8 +2322,6 @@ class Client(OpenApiClient):
             body['entity_d_o_list'] = request.entity_dolist_shrink
         if not UtilClient.is_unset(request.thirdpart_id):
             body['thirdpart_id'] = request.thirdpart_id
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3156,8 +3124,6 @@ class Client(OpenApiClient):
             body['bank_name'] = request.bank_name
         if not UtilClient.is_unset(request.bank_no):
             body['bank_no'] = request.bank_no
-        if not UtilClient.is_unset(request.corp_id):
-            body['corp_id'] = request.corp_id
         if not UtilClient.is_unset(request.tax_no):
             body['tax_no'] = request.tax_no
         if not UtilClient.is_unset(request.tel):
@@ -3168,8 +3134,6 @@ class Client(OpenApiClient):
             body['title'] = request.title
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3204,8 +3168,6 @@ class Client(OpenApiClient):
             body['bank_name'] = request.bank_name
         if not UtilClient.is_unset(request.bank_no):
             body['bank_no'] = request.bank_no
-        if not UtilClient.is_unset(request.corp_id):
-            body['corp_id'] = request.corp_id
         if not UtilClient.is_unset(request.tax_no):
             body['tax_no'] = request.tax_no
         if not UtilClient.is_unset(request.tel):
@@ -3216,8 +3178,6 @@ class Client(OpenApiClient):
             body['title'] = request.title
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3264,13 +3224,9 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.third_part_id):
             query['third_part_id'] = request.third_part_id
-        body = {}
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='InvoiceDelete',
@@ -3280,7 +3236,7 @@ class Client(OpenApiClient):
             method='DELETE',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3298,13 +3254,9 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.third_part_id):
             query['third_part_id'] = request.third_part_id
-        body = {}
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='InvoiceDelete',
@@ -3314,7 +3266,7 @@ class Client(OpenApiClient):
             method='DELETE',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3352,8 +3304,6 @@ class Client(OpenApiClient):
             body['bank_name'] = request.bank_name
         if not UtilClient.is_unset(request.bank_no):
             body['bank_no'] = request.bank_no
-        if not UtilClient.is_unset(request.corp_id):
-            body['corp_id'] = request.corp_id
         if not UtilClient.is_unset(request.tax_no):
             body['tax_no'] = request.tax_no
         if not UtilClient.is_unset(request.tel):
@@ -3364,8 +3314,6 @@ class Client(OpenApiClient):
             body['title'] = request.title
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3400,8 +3348,6 @@ class Client(OpenApiClient):
             body['bank_name'] = request.bank_name
         if not UtilClient.is_unset(request.bank_no):
             body['bank_no'] = request.bank_no
-        if not UtilClient.is_unset(request.corp_id):
-            body['corp_id'] = request.corp_id
         if not UtilClient.is_unset(request.tax_no):
             body['tax_no'] = request.tax_no
         if not UtilClient.is_unset(request.tel):
@@ -3412,8 +3358,6 @@ class Client(OpenApiClient):
             body['title'] = request.title
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3464,14 +3408,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.all_employe):
             body['all_employe'] = request.all_employe
-        if not UtilClient.is_unset(request.corp_id):
-            body['corp_id'] = request.corp_id
         if not UtilClient.is_unset(request.entities_shrink):
             body['entities'] = request.entities_shrink
         if not UtilClient.is_unset(request.third_part_id):
             body['third_part_id'] = request.third_part_id
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3506,14 +3446,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.all_employe):
             body['all_employe'] = request.all_employe
-        if not UtilClient.is_unset(request.corp_id):
-            body['corp_id'] = request.corp_id
         if not UtilClient.is_unset(request.entities_shrink):
             body['entities'] = request.entities_shrink
         if not UtilClient.is_unset(request.third_part_id):
             body['third_part_id'] = request.third_part_id
-        if not UtilClient.is_unset(request.user_id):
-            body['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3558,19 +3494,11 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.InvoiceSearchResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.corp_id):
-            query['corp_id'] = request.corp_id
-        if not UtilClient.is_unset(request.user_id):
-            query['user_id'] = request.user_id
-        body = {}
-        if not UtilClient.is_unset(request.authority):
-            body['authority'] = request.authority
         if not UtilClient.is_unset(request.title):
-            body['title'] = request.title
+            query['title'] = request.title
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='InvoiceSearch',
@@ -3580,7 +3508,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3596,19 +3524,11 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.InvoiceSearchResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.corp_id):
-            query['corp_id'] = request.corp_id
-        if not UtilClient.is_unset(request.user_id):
-            query['user_id'] = request.user_id
-        body = {}
-        if not UtilClient.is_unset(request.authority):
-            body['authority'] = request.authority
         if not UtilClient.is_unset(request.title):
-            body['title'] = request.title
+            query['title'] = request.title
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='InvoiceSearch',
@@ -3618,7 +3538,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3654,8 +3574,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.user_list):
             request.user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_list, 'user_list', 'json')
         body = {}
-        if not UtilClient.is_unset(request.user_id):
-            body['user_Id'] = request.user_id
         if not UtilClient.is_unset(request.user_list_shrink):
             body['user_list'] = request.user_list_shrink
         req = open_api_models.OpenApiRequest(
@@ -3690,8 +3608,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.user_list):
             request.user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_list, 'user_list', 'json')
         body = {}
-        if not UtilClient.is_unset(request.user_id):
-            body['user_Id'] = request.user_id
         if not UtilClient.is_unset(request.user_list_shrink):
             body['user_list'] = request.user_list_shrink
         req = open_api_models.OpenApiRequest(
@@ -4456,12 +4372,6 @@ class Client(OpenApiClient):
             query['third_part_corp_id'] = request.third_part_corp_id
         if not UtilClient.is_unset(request.third_part_job_no):
             query['third_part_job_no'] = request.third_part_job_no
-        if not UtilClient.is_unset(request.top_app_key_owner_id):
-            query['top_app_key_owner_id'] = request.top_app_key_owner_id
-        if not UtilClient.is_unset(request.top_authorized_havana_id):
-            query['top_authorized_havana_id'] = request.top_authorized_havana_id
-        if not UtilClient.is_unset(request.top_authorized_user_nick):
-            query['top_authorized_user_nick'] = request.top_authorized_user_nick
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4496,12 +4406,6 @@ class Client(OpenApiClient):
             query['third_part_corp_id'] = request.third_part_corp_id
         if not UtilClient.is_unset(request.third_part_job_no):
             query['third_part_job_no'] = request.third_part_job_no
-        if not UtilClient.is_unset(request.top_app_key_owner_id):
-            query['top_app_key_owner_id'] = request.top_app_key_owner_id
-        if not UtilClient.is_unset(request.top_authorized_havana_id):
-            query['top_authorized_havana_id'] = request.top_authorized_havana_id
-        if not UtilClient.is_unset(request.top_authorized_user_nick):
-            query['top_authorized_user_nick'] = request.top_authorized_user_nick
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
