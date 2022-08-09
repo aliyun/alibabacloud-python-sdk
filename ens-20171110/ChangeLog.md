@@ -1,3 +1,7 @@
+2022-08-09 Version: 3.0.7
+- Support API ARMInstance.
+- Support Control ARM API.
+
 2022-07-26 Version: 3.0.6
 - Support API ARMInstance.
 - Support Control ARM API.
