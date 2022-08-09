@@ -7,8 +7,8 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_tea_util import models as util_models
 from alibabacloud_linkcard20210520 import models as linkcard_20210520_models
+from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
@@ -21,6 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'central'
         self.check_config(config)
         self._endpoint = self.get_endpoint('linkcard', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -40,6 +41,264 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def add_directional_card_with_options(
+        self,
+        tmp_req: linkcard_20210520_models.AddDirectionalCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkcard_20210520_models.AddDirectionalCardResponse:
+        UtilClient.validate_model(tmp_req)
+        request = linkcard_20210520_models.AddDirectionalCardShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.order_list):
+            request.order_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order_list, 'OrderList', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_list):
+            request.tag_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_list, 'TagList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.file_uri):
+            query['FileUri'] = request.file_uri
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.order_list_shrink):
+            query['OrderList'] = request.order_list_shrink
+        if not UtilClient.is_unset(request.tag_list_shrink):
+            query['TagList'] = request.tag_list_shrink
+        if not UtilClient.is_unset(request.upload_method):
+            query['UploadMethod'] = request.upload_method
+        if not UtilClient.is_unset(request.upload_type):
+            query['UploadType'] = request.upload_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddDirectionalCard',
+            version='2021-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkcard_20210520_models.AddDirectionalCardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_directional_card_with_options_async(
+        self,
+        tmp_req: linkcard_20210520_models.AddDirectionalCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkcard_20210520_models.AddDirectionalCardResponse:
+        UtilClient.validate_model(tmp_req)
+        request = linkcard_20210520_models.AddDirectionalCardShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.order_list):
+            request.order_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order_list, 'OrderList', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_list):
+            request.tag_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_list, 'TagList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.file_uri):
+            query['FileUri'] = request.file_uri
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.order_list_shrink):
+            query['OrderList'] = request.order_list_shrink
+        if not UtilClient.is_unset(request.tag_list_shrink):
+            query['TagList'] = request.tag_list_shrink
+        if not UtilClient.is_unset(request.upload_method):
+            query['UploadMethod'] = request.upload_method
+        if not UtilClient.is_unset(request.upload_type):
+            query['UploadType'] = request.upload_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddDirectionalCard',
+            version='2021-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkcard_20210520_models.AddDirectionalCardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_directional_card(
+        self,
+        request: linkcard_20210520_models.AddDirectionalCardRequest,
+    ) -> linkcard_20210520_models.AddDirectionalCardResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_directional_card_with_options(request, runtime)
+
+    async def add_directional_card_async(
+        self,
+        request: linkcard_20210520_models.AddDirectionalCardRequest,
+    ) -> linkcard_20210520_models.AddDirectionalCardResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_directional_card_with_options_async(request, runtime)
+
+    def add_directional_group_with_options(
+        self,
+        request: linkcard_20210520_models.AddDirectionalGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkcard_20210520_models.AddDirectionalGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddDirectionalGroup',
+            version='2021-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkcard_20210520_models.AddDirectionalGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_directional_group_with_options_async(
+        self,
+        request: linkcard_20210520_models.AddDirectionalGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkcard_20210520_models.AddDirectionalGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddDirectionalGroup',
+            version='2021-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkcard_20210520_models.AddDirectionalGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_directional_group(
+        self,
+        request: linkcard_20210520_models.AddDirectionalGroupRequest,
+    ) -> linkcard_20210520_models.AddDirectionalGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_directional_group_with_options(request, runtime)
+
+    async def add_directional_group_async(
+        self,
+        request: linkcard_20210520_models.AddDirectionalGroupRequest,
+    ) -> linkcard_20210520_models.AddDirectionalGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_directional_group_with_options_async(request, runtime)
+
+    def batch_add_directional_address_with_options(
+        self,
+        request: linkcard_20210520_models.BatchAddDirectionalAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkcard_20210520_models.BatchAddDirectionalAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.list_address):
+            query['ListAddress'] = request.list_address
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchAddDirectionalAddress',
+            version='2021-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkcard_20210520_models.BatchAddDirectionalAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_add_directional_address_with_options_async(
+        self,
+        request: linkcard_20210520_models.BatchAddDirectionalAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkcard_20210520_models.BatchAddDirectionalAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.list_address):
+            query['ListAddress'] = request.list_address
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchAddDirectionalAddress',
+            version='2021-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkcard_20210520_models.BatchAddDirectionalAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_add_directional_address(
+        self,
+        request: linkcard_20210520_models.BatchAddDirectionalAddressRequest,
+    ) -> linkcard_20210520_models.BatchAddDirectionalAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_add_directional_address_with_options(request, runtime)
+
+    async def batch_add_directional_address_async(
+        self,
+        request: linkcard_20210520_models.BatchAddDirectionalAddressRequest,
+    ) -> linkcard_20210520_models.BatchAddDirectionalAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_add_directional_address_with_options_async(request, runtime)
 
     def card_statistics_with_options(
         self,
@@ -432,6 +691,10 @@ class Client(OpenApiClient):
             query['Imsi'] = request.imsi
         if not UtilClient.is_unset(request.is_auto_recharge):
             query['IsAutoRecharge'] = request.is_auto_recharge
+        if not UtilClient.is_unset(request.max_flow):
+            query['MaxFlow'] = request.max_flow
+        if not UtilClient.is_unset(request.min_flow):
+            query['MinFlow'] = request.min_flow
         if not UtilClient.is_unset(request.msisdn):
             query['Msisdn'] = request.msisdn
         if not UtilClient.is_unset(request.notify_id):
@@ -510,6 +773,10 @@ class Client(OpenApiClient):
             query['Imsi'] = request.imsi
         if not UtilClient.is_unset(request.is_auto_recharge):
             query['IsAutoRecharge'] = request.is_auto_recharge
+        if not UtilClient.is_unset(request.max_flow):
+            query['MaxFlow'] = request.max_flow
+        if not UtilClient.is_unset(request.min_flow):
+            query['MinFlow'] = request.min_flow
         if not UtilClient.is_unset(request.msisdn):
             query['Msisdn'] = request.msisdn
         if not UtilClient.is_unset(request.notify_id):
@@ -564,6 +831,162 @@ class Client(OpenApiClient):
     ) -> linkcard_20210520_models.ListCardInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_card_info_with_options_async(request, runtime)
+
+    def list_directional_address_with_options(
+        self,
+        request: linkcard_20210520_models.ListDirectionalAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkcard_20210520_models.ListDirectionalAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDirectionalAddress',
+            version='2021-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkcard_20210520_models.ListDirectionalAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_directional_address_with_options_async(
+        self,
+        request: linkcard_20210520_models.ListDirectionalAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkcard_20210520_models.ListDirectionalAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDirectionalAddress',
+            version='2021-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkcard_20210520_models.ListDirectionalAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_directional_address(
+        self,
+        request: linkcard_20210520_models.ListDirectionalAddressRequest,
+    ) -> linkcard_20210520_models.ListDirectionalAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_directional_address_with_options(request, runtime)
+
+    async def list_directional_address_async(
+        self,
+        request: linkcard_20210520_models.ListDirectionalAddressRequest,
+    ) -> linkcard_20210520_models.ListDirectionalAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_directional_address_with_options_async(request, runtime)
+
+    def list_directional_detail_with_options(
+        self,
+        request: linkcard_20210520_models.ListDirectionalDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkcard_20210520_models.ListDirectionalDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iccid):
+            query['Iccid'] = request.iccid
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDirectionalDetail',
+            version='2021-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkcard_20210520_models.ListDirectionalDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_directional_detail_with_options_async(
+        self,
+        request: linkcard_20210520_models.ListDirectionalDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkcard_20210520_models.ListDirectionalDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iccid):
+            query['Iccid'] = request.iccid
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDirectionalDetail',
+            version='2021-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkcard_20210520_models.ListDirectionalDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_directional_detail(
+        self,
+        request: linkcard_20210520_models.ListDirectionalDetailRequest,
+    ) -> linkcard_20210520_models.ListDirectionalDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_directional_detail_with_options(request, runtime)
+
+    async def list_directional_detail_async(
+        self,
+        request: linkcard_20210520_models.ListDirectionalDetailRequest,
+    ) -> linkcard_20210520_models.ListDirectionalDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_directional_detail_with_options_async(request, runtime)
 
     def list_order_with_options(
         self,
@@ -1154,3 +1577,73 @@ class Client(OpenApiClient):
     ) -> linkcard_20210520_models.UpdateAutoRechargeSwitchResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_auto_recharge_switch_with_options_async(request, runtime)
+
+    def verify_iot_card_with_options(
+        self,
+        request: linkcard_20210520_models.VerifyIotCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkcard_20210520_models.VerifyIotCardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iccid):
+            query['Iccid'] = request.iccid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyIotCard',
+            version='2021-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkcard_20210520_models.VerifyIotCardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_iot_card_with_options_async(
+        self,
+        request: linkcard_20210520_models.VerifyIotCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkcard_20210520_models.VerifyIotCardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iccid):
+            query['Iccid'] = request.iccid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyIotCard',
+            version='2021-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkcard_20210520_models.VerifyIotCardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_iot_card(
+        self,
+        request: linkcard_20210520_models.VerifyIotCardRequest,
+    ) -> linkcard_20210520_models.VerifyIotCardResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.verify_iot_card_with_options(request, runtime)
+
+    async def verify_iot_card_async(
+        self,
+        request: linkcard_20210520_models.VerifyIotCardRequest,
+    ) -> linkcard_20210520_models.VerifyIotCardResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_iot_card_with_options_async(request, runtime)
