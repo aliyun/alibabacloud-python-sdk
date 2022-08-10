@@ -1,3 +1,6 @@
+2022-08-10 Version: 1.1.10
+- Support diagnose instance.
+
 2022-06-27 Version: 1.1.9
 - Support diagnose instance.
 
