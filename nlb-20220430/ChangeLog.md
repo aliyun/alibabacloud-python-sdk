@@ -1,3 +1,6 @@
+2022-08-10 Version: 1.0.4
+- Generated python 2022-04-30 for Nlb.
+
 2022-08-08 Version: 1.0.3
 - Nlb init.
 
