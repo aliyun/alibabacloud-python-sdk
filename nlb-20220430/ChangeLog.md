@@ -1,3 +1,6 @@
+2022-08-10 Version: 1.0.5
+- Nlb endpoint config.
+
 2022-08-10 Version: 1.0.4
 - Generated python 2022-04-30 for Nlb.
 
