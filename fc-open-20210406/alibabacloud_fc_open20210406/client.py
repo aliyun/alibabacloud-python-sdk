@@ -100,6 +100,10 @@ class Client(OpenApiClient):
             body['aliasName'] = request.alias_name
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.resolve_policy):
+            body['resolvePolicy'] = request.resolve_policy
+        if not UtilClient.is_unset(request.route_policy):
+            body['routePolicy'] = request.route_policy
         if not UtilClient.is_unset(request.version_id):
             body['versionId'] = request.version_id
         real_headers = {}
@@ -147,6 +151,10 @@ class Client(OpenApiClient):
             body['aliasName'] = request.alias_name
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.resolve_policy):
+            body['resolvePolicy'] = request.resolve_policy
+        if not UtilClient.is_unset(request.route_policy):
+            body['routePolicy'] = request.route_policy
         if not UtilClient.is_unset(request.version_id):
             body['versionId'] = request.version_id
         real_headers = {}
@@ -3324,6 +3332,9 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
+        body = ''
+        if not UtilClient.is_unset(request.body):
+            body = UtilClient.to_string(request.body)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -3342,7 +3353,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_string(request.body)
+            body=body
         )
         params = open_api_models.Params(
             action='InvokeFunction',
@@ -3374,6 +3385,9 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
+        body = ''
+        if not UtilClient.is_unset(request.body):
+            body = UtilClient.to_string(request.body)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -3392,7 +3406,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_string(request.body)
+            body=body
         )
         params = open_api_models.Params(
             action='InvokeFunction',
@@ -4015,10 +4029,6 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_fc_account_id):
             real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
-        if not UtilClient.is_unset(headers.x_fc_date):
-            real_headers['X-Fc-Date'] = UtilClient.to_jsonstring(headers.x_fc_date)
-        if not UtilClient.is_unset(headers.x_fc_trace_id):
-            real_headers['X-Fc-Trace-Id'] = UtilClient.to_jsonstring(headers.x_fc_trace_id)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
@@ -4062,10 +4072,6 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_fc_account_id):
             real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
-        if not UtilClient.is_unset(headers.x_fc_date):
-            real_headers['X-Fc-Date'] = UtilClient.to_jsonstring(headers.x_fc_date)
-        if not UtilClient.is_unset(headers.x_fc_trace_id):
-            real_headers['X-Fc-Trace-Id'] = UtilClient.to_jsonstring(headers.x_fc_trace_id)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
@@ -4218,8 +4224,12 @@ class Client(OpenApiClient):
             query['limit'] = request.limit
         if not UtilClient.is_unset(request.next_token):
             query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.official):
+            query['official'] = request.official
         if not UtilClient.is_unset(request.prefix):
             query['prefix'] = request.prefix
+        if not UtilClient.is_unset(request.public):
+            query['public'] = request.public
         if not UtilClient.is_unset(request.start_key):
             query['startKey'] = request.start_key
         real_headers = {}
@@ -4263,8 +4273,12 @@ class Client(OpenApiClient):
             query['limit'] = request.limit
         if not UtilClient.is_unset(request.next_token):
             query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.official):
+            query['official'] = request.official
         if not UtilClient.is_unset(request.prefix):
             query['prefix'] = request.prefix
+        if not UtilClient.is_unset(request.public):
+            query['public'] = request.public
         if not UtilClient.is_unset(request.start_key):
             query['startKey'] = request.start_key
         real_headers = {}
@@ -5722,6 +5736,106 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def put_layer_acl(
+        self,
+        layer_name: str,
+        request: fc__open_20210406_models.PutLayerACLRequest,
+    ) -> fc__open_20210406_models.PutLayerACLResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = fc__open_20210406_models.PutLayerACLHeaders()
+        return self.put_layer_aclwith_options(layer_name, request, headers, runtime)
+
+    async def put_layer_acl_async(
+        self,
+        layer_name: str,
+        request: fc__open_20210406_models.PutLayerACLRequest,
+    ) -> fc__open_20210406_models.PutLayerACLResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = fc__open_20210406_models.PutLayerACLHeaders()
+        return await self.put_layer_aclwith_options_async(layer_name, request, headers, runtime)
+
+    def put_layer_aclwith_options(
+        self,
+        layer_name: str,
+        request: fc__open_20210406_models.PutLayerACLRequest,
+        headers: fc__open_20210406_models.PutLayerACLHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> fc__open_20210406_models.PutLayerACLResponse:
+        UtilClient.validate_model(request)
+        layer_name = OpenApiUtilClient.get_encode_param(layer_name)
+        query = {}
+        if not UtilClient.is_unset(request.public):
+            query['public'] = request.public
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_fc_account_id):
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
+        if not UtilClient.is_unset(headers.x_fc_date):
+            real_headers['X-Fc-Date'] = UtilClient.to_jsonstring(headers.x_fc_date)
+        if not UtilClient.is_unset(headers.x_fc_trace_id):
+            real_headers['X-Fc-Trace-Id'] = UtilClient.to_jsonstring(headers.x_fc_trace_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutLayerACL',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layers/{layer_name}/acl',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='string'
+        )
+        return TeaCore.from_map(
+            fc__open_20210406_models.PutLayerACLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def put_layer_aclwith_options_async(
+        self,
+        layer_name: str,
+        request: fc__open_20210406_models.PutLayerACLRequest,
+        headers: fc__open_20210406_models.PutLayerACLHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> fc__open_20210406_models.PutLayerACLResponse:
+        UtilClient.validate_model(request)
+        layer_name = OpenApiUtilClient.get_encode_param(layer_name)
+        query = {}
+        if not UtilClient.is_unset(request.public):
+            query['public'] = request.public
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_fc_account_id):
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
+        if not UtilClient.is_unset(headers.x_fc_date):
+            real_headers['X-Fc-Date'] = UtilClient.to_jsonstring(headers.x_fc_date)
+        if not UtilClient.is_unset(headers.x_fc_trace_id):
+            real_headers['X-Fc-Trace-Id'] = UtilClient.to_jsonstring(headers.x_fc_trace_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutLayerACL',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layers/{layer_name}/acl',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='string'
+        )
+        return TeaCore.from_map(
+            fc__open_20210406_models.PutLayerACLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def put_provision_config(
         self,
         service_name: str,
@@ -6310,6 +6424,10 @@ class Client(OpenApiClient):
             body['additionalVersionWeight'] = request.additional_version_weight
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.resolve_policy):
+            body['resolvePolicy'] = request.resolve_policy
+        if not UtilClient.is_unset(request.route_policy):
+            body['routePolicy'] = request.route_policy
         if not UtilClient.is_unset(request.version_id):
             body['versionId'] = request.version_id
         real_headers = {}
@@ -6359,6 +6477,10 @@ class Client(OpenApiClient):
             body['additionalVersionWeight'] = request.additional_version_weight
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.resolve_policy):
+            body['resolvePolicy'] = request.resolve_policy
+        if not UtilClient.is_unset(request.route_policy):
+            body['routePolicy'] = request.route_policy
         if not UtilClient.is_unset(request.version_id):
             body['versionId'] = request.version_id
         real_headers = {}

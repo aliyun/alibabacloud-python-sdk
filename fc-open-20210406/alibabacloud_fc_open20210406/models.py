@@ -9,7 +9,6 @@ class AccelerationInfo(TeaModel):
         self,
         status: str = None,
     ):
-        # 镜像加速状态，取值 Preparing 或 Ready
         self.status = status
 
     def validate(self):
@@ -39,11 +38,8 @@ class AsyncConfigMeta(TeaModel):
         qualifier: str = None,
         service_name: str = None,
     ):
-        # 异步配置所属函数名称。
         self.function_name = function_name
-        # 异步配置所属服务版本/别名。
         self.qualifier = qualifier
-        # 异步配置所属服务名称。
         self.service_name = service_name
 
     def validate(self):
@@ -79,7 +75,6 @@ class AvailableAZ(TeaModel):
         self,
         available_azs: str = None,
     ):
-        # az
         self.available_azs = available_azs
 
     def validate(self):
@@ -110,13 +105,9 @@ class CDNEventsTriggerConfig(TeaModel):
         filter: Dict[str, List[str]] = None,
         notes: str = None,
     ):
-        # eventName
         self.event_name = event_name
-        # eventVersion
         self.event_version = event_version
-        # filter
         self.filter = filter
-        # notes
         self.notes = notes
 
     def validate(self):
@@ -158,11 +149,8 @@ class CertConfig(TeaModel):
         certificate: str = None,
         private_key: str = None,
     ):
-        # 证书名称
         self.cert_name = cert_name
-        # 证书，如果是证书链则依次填写多个证书
         self.certificate = certificate
-        # 私钥
         self.private_key = private_key
 
     def validate(self):
@@ -200,11 +188,8 @@ class Code(TeaModel):
         oss_object_name: str = None,
         zip_file: str = None,
     ):
-        # 函数代码包的OSS bucket name
         self.oss_bucket_name = oss_bucket_name
-        # 函数代码包的OSS对象名
         self.oss_object_name = oss_object_name
-        # 直接在request body中上传code zip包的base64编码
         self.zip_file = zip_file
 
     def validate(self):
@@ -244,15 +229,10 @@ class CustomContainerConfig(TeaModel):
         image: str = None,
         instance_id: str = None,
     ):
-        # 镜像加速类型，取值Default为开启加速，None为关闭加速，默认开启
         self.acceleration_type = acceleration_type
-        # 容器启动参数
         self.args = args
-        # 容器启动命令，等同于 Docker ENTRYPOINT
         self.command = command
-        # 容器镜像地址，实例值： registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1
         self.image = image
-        # ACR企业版镜像仓库ID，使用ACR企业版镜像时须传入
         self.instance_id = instance_id
 
     def validate(self):
@@ -302,15 +282,10 @@ class CustomContainerConfigInfo(TeaModel):
         instance_id: str = None,
     ):
         self.acceleration_info = acceleration_info
-        # 镜像加速类型，取值Default为开启加速，None为关闭加速，默认开启
         self.acceleration_type = acceleration_type
-        # 容器启动参数
         self.args = args
-        # 容器启动命令，等同于 Docker ENTRYPOINT
         self.command = command
-        # 容器镜像地址，实例值： registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1
         self.image = image
-        # ACR企业版镜像仓库ID，使用ACR企业版镜像时须传入
         self.instance_id = instance_id
 
     def validate(self):
@@ -361,9 +336,7 @@ class DNSOption(TeaModel):
         name: str = None,
         value: str = None,
     ):
-        # DNS option 名称
         self.name = name
-        # DNS option 值
         self.value = value
 
     def validate(self):
@@ -397,11 +370,8 @@ class CustomDNS(TeaModel):
         name_servers: List[str] = None,
         searches: List[str] = None,
     ):
-        # DNS resolver 配置参数列表
         self.dns_options = dns_options
-        # DNS 服务器的 IP 地址列表
         self.name_servers = name_servers
-        # DNS 搜索域的列表
         self.searches = searches
 
     def validate(self):
@@ -446,9 +416,7 @@ class CustomRuntimeConfig(TeaModel):
         args: List[str] = None,
         command: List[str] = None,
     ):
-        # 启动入口命令接收的参数
         self.args = args
-        # 启动入口命令
         self.command = command
 
     def validate(self):
@@ -480,7 +448,6 @@ class Destination(TeaModel):
         self,
         destination: str = None,
     ):
-        # destination
         self.destination = destination
 
     def validate(self):
@@ -547,9 +514,7 @@ class Error(TeaModel):
         error_code: str = None,
         error_message: str = None,
     ):
-        # 错误码
         self.error_code = error_code
-        # 错误信息描述
         self.error_message = error_message
 
     def validate(self):
@@ -582,9 +547,7 @@ class ErrorInfo(TeaModel):
         error_message: str = None,
         stack_trace: str = None,
     ):
-        # 错误信息
         self.error_message = error_message
-        # 错误堆栈
         self.stack_trace = stack_trace
 
     def validate(self):
@@ -618,11 +581,8 @@ class SourceMNSParameters(TeaModel):
         queue_name: str = None,
         region_id: str = None,
     ):
-        # IsBase64Decode
         self.is_base_64decode = is_base_64decode
-        # QueueName
         self.queue_name = queue_name
-        # RegionId
         self.region_id = region_id
 
     def validate(self):
@@ -661,13 +621,9 @@ class SourceRabbitMQParameters(TeaModel):
         region_id: str = None,
         virtual_host_name: str = None,
     ):
-        # InstanceId
         self.instance_id = instance_id
-        # QueueName
         self.queue_name = queue_name
-        # RegionId
         self.region_id = region_id
-        # VirtualHostName
         self.virtual_host_name = virtual_host_name
 
     def validate(self):
@@ -713,19 +669,12 @@ class SourceRocketMQParameters(TeaModel):
         timestamp: int = None,
         topic: str = None,
     ):
-        # GroupID
         self.group_id = group_id
-        # InstanceId
         self.instance_id = instance_id
-        # Offset
         self.offset = offset
-        # RegionId
         self.region_id = region_id
-        # Tag
         self.tag = tag
-        # Timestamp
         self.timestamp = timestamp
-        # Topic
         self.topic = topic
 
     def validate(self):
@@ -826,7 +775,6 @@ class EventSourceConfig(TeaModel):
         event_source_type: str = None,
     ):
         self.event_source_parameters = event_source_parameters
-        # eventSourceType
         self.event_source_type = event_source_type
 
     def validate(self):
@@ -863,12 +811,9 @@ class EventBridgeTriggerConfig(TeaModel):
         event_source_config: EventSourceConfig = None,
         trigger_enable: bool = None,
     ):
-        # asyncInvocationType
         self.async_invocation_type = async_invocation_type
-        # eventRuleFilterPattern
         self.event_rule_filter_pattern = event_rule_filter_pattern
         self.event_source_config = event_source_config
-        # triggerEnable
         self.trigger_enable = trigger_enable
 
     def validate(self):
@@ -911,9 +856,7 @@ class HTTPTriggerConfig(TeaModel):
         auth_type: str = None,
         methods: List[str] = None,
     ):
-        # 认证类型
         self.auth_type = auth_type
-        # 允许的HTTP方法列表
         self.methods = methods
 
     def validate(self):
@@ -946,9 +889,7 @@ class LifecycleHook(TeaModel):
         handler: str = None,
         timeout: int = None,
     ):
-        # handler name
         self.handler = handler
-        # timeout in second
         self.timeout = timeout
 
     def validate(self):
@@ -1018,7 +959,6 @@ class JaegerConfig(TeaModel):
         self,
         endpoint: str = None,
     ):
-        # endpoint
         self.endpoint = endpoint
 
     def validate(self):
@@ -1047,9 +987,7 @@ class JobConfig(TeaModel):
         max_retry_time: int = None,
         trigger_interval: int = None,
     ):
-        # maxRetryTime
         self.max_retry_time = max_retry_time
-        # triggerInterval
         self.trigger_interval = trigger_interval
 
     def validate(self):
@@ -1082,9 +1020,7 @@ class JobLogConfig(TeaModel):
         logstore: str = None,
         project: str = None,
     ):
-        # logstore
         self.logstore = logstore
-        # project
         self.project = project
 
     def validate(self):
@@ -1117,9 +1053,7 @@ class LayerCode(TeaModel):
         location: str = None,
         repository_type: str = None,
     ):
-        # 层代码位置
         self.location = location
-        # 层代码类型
         self.repository_type = repository_type
 
     def validate(self):
@@ -1151,6 +1085,7 @@ class Layer(TeaModel):
         self,
         acl: int = None,
         arn: str = None,
+        arn_v2: str = None,
         code: LayerCode = None,
         code_checksum: str = None,
         code_size: int = None,
@@ -1158,27 +1093,20 @@ class Layer(TeaModel):
         create_time: str = None,
         description: str = None,
         layer_name: str = None,
+        license: str = None,
         version: int = None,
     ):
-        # 层访问类型
         self.acl = acl
-        # arn
         self.arn = arn
-        # 层代码
+        self.arn_v2 = arn_v2
         self.code = code
-        # 层Checksum
         self.code_checksum = code_checksum
-        # 层代码大小
         self.code_size = code_size
-        # compatibleRuntime
         self.compatible_runtime = compatible_runtime
-        # 层创建时间
         self.create_time = create_time
-        # 层描述
         self.description = description
-        # 层名称
         self.layer_name = layer_name
-        # 层版本
+        self.license = license
         self.version = version
 
     def validate(self):
@@ -1195,6 +1123,8 @@ class Layer(TeaModel):
             result['acl'] = self.acl
         if self.arn is not None:
             result['arn'] = self.arn
+        if self.arn_v2 is not None:
+            result['arnV2'] = self.arn_v2
         if self.code is not None:
             result['code'] = self.code.to_map()
         if self.code_checksum is not None:
@@ -1209,6 +1139,8 @@ class Layer(TeaModel):
             result['description'] = self.description
         if self.layer_name is not None:
             result['layerName'] = self.layer_name
+        if self.license is not None:
+            result['license'] = self.license
         if self.version is not None:
             result['version'] = self.version
         return result
@@ -1219,6 +1151,8 @@ class Layer(TeaModel):
             self.acl = m.get('acl')
         if m.get('arn') is not None:
             self.arn = m.get('arn')
+        if m.get('arnV2') is not None:
+            self.arn_v2 = m.get('arnV2')
         if m.get('code') is not None:
             temp_model = LayerCode()
             self.code = temp_model.from_map(m['code'])
@@ -1234,6 +1168,8 @@ class Layer(TeaModel):
             self.description = m.get('description')
         if m.get('layerName') is not None:
             self.layer_name = m.get('layerName')
+        if m.get('license') is not None:
+            self.license = m.get('license')
         if m.get('version') is not None:
             self.version = m.get('version')
         return self
@@ -1248,15 +1184,10 @@ class LogConfig(TeaModel):
         logstore: str = None,
         project: str = None,
     ):
-        # 开启实例级别指标
         self.enable_instance_metrics = enable_instance_metrics
-        # 开启请求级别指标
         self.enable_request_metrics = enable_request_metrics
-        # 日志切分规则
         self.log_begin_rule = log_begin_rule
-        # 日志库
         self.logstore = logstore
-        # 日志项目
         self.project = project
 
     def validate(self):
@@ -1300,7 +1231,6 @@ class SourceConfig(TeaModel):
         self,
         logstore: str = None,
     ):
-        # logstore
         self.logstore = logstore
 
     def validate(self):
@@ -1332,9 +1262,7 @@ class LogTriggerConfig(TeaModel):
         log_config: JobLogConfig = None,
         source_config: SourceConfig = None,
     ):
-        # enable
         self.enable = enable
-        # functionParameter
         self.function_parameter = function_parameter
         self.job_config = job_config
         self.log_config = log_config
@@ -1391,11 +1319,8 @@ class MeteringConfig(TeaModel):
         payer_id: str = None,
         role: str = None,
     ):
-        # 日志仓库
         self.log_config = log_config
-        # 支付用户
         self.payer_id = payer_id
-        # 权限
         self.role = role
 
     def validate(self):
@@ -1435,11 +1360,8 @@ class MnsTopicTriggerConfig(TeaModel):
         notify_content_format: str = None,
         notify_strategy: str = None,
     ):
-        # filterTag
         self.filter_tag = filter_tag
-        # notifyContentFormat
         self.notify_content_format = notify_content_format
-        # notifyStrategy
         self.notify_strategy = notify_strategy
 
     def validate(self):
@@ -1476,9 +1398,7 @@ class NASConfigMountPoints(TeaModel):
         mount_dir: str = None,
         server_addr: str = None,
     ):
-        # 本地挂载目录
         self.mount_dir = mount_dir
-        # NAS服务器地址
         self.server_addr = server_addr
 
     def validate(self):
@@ -1512,11 +1432,8 @@ class NASConfig(TeaModel):
         mount_points: List[NASConfigMountPoints] = None,
         user_id: int = None,
     ):
-        # groupID
         self.group_id = group_id
-        # 挂载点
         self.mount_points = mount_points
-        # userID
         self.user_id = user_id
 
     def validate(self):
@@ -1561,9 +1478,7 @@ class OSSTriggerKey(TeaModel):
         prefix: str = None,
         suffix: str = None,
     ):
-        # prefix
         self.prefix = prefix
-        # suffix
         self.suffix = suffix
 
     def validate(self):
@@ -1625,7 +1540,6 @@ class OSSTriggerConfig(TeaModel):
         events: List[str] = None,
         filter: OSSTriggerFilter = None,
     ):
-        # events
         self.events = events
         self.filter = filter
 
@@ -1661,9 +1575,7 @@ class OnDemandConfig(TeaModel):
         maximum_instance_count: int = None,
         resource: str = None,
     ):
-        # todo
         self.maximum_instance_count = maximum_instance_count
-        # 函数详情
         self.resource = resource
 
     def validate(self):
@@ -1700,17 +1612,11 @@ class OpenReservedCapacity(TeaModel):
         is_refunded: str = None,
         last_modified_time: str = None,
     ):
-        # createdTime
         self.created_time = created_time
-        # cu
         self.cu = cu
-        # deadline
         self.deadline = deadline
-        # instanceId
         self.instance_id = instance_id
-        # isRefunded
         self.is_refunded = is_refunded
-        # lastModifiedTime
         self.last_modified_time = last_modified_time
 
     def validate(self):
@@ -1759,9 +1665,7 @@ class OutputCodeLocation(TeaModel):
         location: str = None,
         repository_type: str = None,
     ):
-        # location
         self.location = location
-        # repositoryType
         self.repository_type = repository_type
 
     def validate(self):
@@ -1797,15 +1701,10 @@ class PathConfig(TeaModel):
         qualifier: str = None,
         service_name: str = None,
     ):
-        # 该路径/方法对应的函数名称
         self.function_name = function_name
-        # 请求方法，不填表示当前路径的所有方法匹配同一函数
         self.methods = methods
-        # 请求路径
         self.path = path
-        # 该路径/方法对应服务的版本/别名
         self.qualifier = qualifier
-        # 该路径/方法对应的服务名称
         self.service_name = service_name
 
     def validate(self):
@@ -1844,15 +1743,58 @@ class PathConfig(TeaModel):
         return self
 
 
+class PolicyItem(TeaModel):
+    def __init__(
+        self,
+        key: bytes = None,
+        operator: bytes = None,
+        type: bytes = None,
+        value: bytes = None,
+    ):
+        self.key = key
+        self.operator = operator
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.operator is not None:
+            result['operator'] = self.operator
+        if self.type is not None:
+            result['type'] = self.type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class PreFreeze(TeaModel):
     def __init__(
         self,
         handler: str = None,
         timeout: int = None,
     ):
-        # preFreeze handler name
         self.handler = handler
-        # handler timeout
         self.timeout = timeout
 
     def validate(self):
@@ -1885,9 +1827,7 @@ class PreStop(TeaModel):
         handler: str = None,
         timeout: int = None,
     ):
-        # PreStop handler
         self.handler = handler
-        # PreStop hander timeout
         self.timeout = timeout
 
     def validate(self):
@@ -1922,13 +1862,9 @@ class RdsTriggerConfig(TeaModel):
         retry: int = None,
         subscription_objects: List[str] = None,
     ):
-        # concurrency
         self.concurrency = concurrency
-        # eventFormat
         self.event_format = event_format
-        # retry
         self.retry = retry
-        # subscriptionObjects
         self.subscription_objects = subscription_objects
 
     def validate(self):
@@ -1969,9 +1905,7 @@ class Resource(TeaModel):
         resource_arn: str = None,
         tags: Dict[str, str] = None,
     ):
-        # resourceArn
         self.resource_arn = resource_arn
-        # tags
         self.tags = tags
 
     def validate(self):
@@ -2003,7 +1937,6 @@ class RouteConfig(TeaModel):
         self,
         routes: List[PathConfig] = None,
     ):
-        # routes
         self.routes = routes
 
     def validate(self):
@@ -2034,6 +1967,41 @@ class RouteConfig(TeaModel):
         return self
 
 
+class RoutePolicy(TeaModel):
+    def __init__(
+        self,
+        condition: bytes = None,
+        policy_items: PolicyItem = None,
+    ):
+        self.condition = condition
+        self.policy_items = policy_items
+
+    def validate(self):
+        if self.policy_items:
+            self.policy_items.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['condition'] = self.condition
+        if self.policy_items is not None:
+            result['policyItems'] = self.policy_items.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('condition') is not None:
+            self.condition = m.get('condition')
+        if m.get('policyItems') is not None:
+            temp_model = PolicyItem()
+            self.policy_items = temp_model.from_map(m['policyItems'])
+        return self
+
+
 class ScheduledActions(TeaModel):
     def __init__(
         self,
@@ -2043,15 +2011,10 @@ class ScheduledActions(TeaModel):
         start_time: str = None,
         target: int = None,
     ):
-        # endTime
         self.end_time = end_time
-        # name
         self.name = name
-        # scheduleExpression
         self.schedule_expression = schedule_expression
-        # startTime
         self.start_time = start_time
-        # target
         self.target = target
 
     def validate(self):
@@ -2098,13 +2061,9 @@ class StatefulAsyncInvocationEvent(TeaModel):
         status: str = None,
         timestamp: int = None,
     ):
-        # 事件详细数据。
         self.event_detail = event_detail
-        # 事件ID。
         self.event_id = event_id
-        # 事件执行状态。
         self.status = status
-        # 事件时间。
         self.timestamp = timestamp
 
     def validate(self):
@@ -2157,33 +2116,19 @@ class StatefulAsyncInvocation(TeaModel):
         started_time: int = None,
         status: str = None,
     ):
-        # 异步任务调用失败后的已重试次数。
         self.already_retried_times = already_retried_times
-        # 异步任务的目的状态。
         self.destination_status = destination_status
-        # 异步任务的结束时间。
         self.end_time = end_time
-        # 异步任务事件列表。
         self.events = events
-        # 异步任务所属的函数的名称。
         self.function_name = function_name
-        # 异步任务的执行实例ID。
         self.instance_id = instance_id
-        # 异步任务的错误消息。
         self.invocation_error_message = invocation_error_message
-        # 异步任务ID。
         self.invocation_id = invocation_id
-        # 异步任务的任务触发事件。
         self.invocation_payload = invocation_payload
-        # 异步任务所属的服务的别名或版本。
         self.qualifier = qualifier
-        # 异步任务的请求ID。
         self.request_id = request_id
-        # 异步任务所属的服务的名称。
         self.service_name = service_name
-        # 异步任务的开始时间。
         self.started_time = started_time
-        # 异步任务的执行状态。      Enqueued：异步消息已入队，等待处理。      Succeeded：调用执行成功。      Failed：调用执行失败。      Running：调用执行中。      Stopped：调用执行终止。      Stopping：执行停止中。      Invalid：您的执行因函数被删除等原因处于无效状态（任务未被执行）。      Expired：您为任务配置了最长排队等待的期限。该任务因为超期被丢弃（任务未被执行）。      Retrying：异步调用因执行错误重试中。
         self.status = status
 
     def validate(self):
@@ -2273,11 +2218,8 @@ class TLSConfig(TeaModel):
         max_version: str = None,
         min_version: str = None,
     ):
-        # TLS加密套件列表
         self.cipher_suites = cipher_suites
-        # TLS最大版本号
         self.max_version = max_version
-        # TLS最小版本号
         self.min_version = min_version
 
     def validate(self):
@@ -2319,19 +2261,12 @@ class TargetTrackingPolicies(TeaModel):
         name: str = None,
         start_time: str = None,
     ):
-        # endTime
         self.end_time = end_time
-        # maxCapacity
         self.max_capacity = max_capacity
-        # metricTarget
         self.metric_target = metric_target
-        # metricType
         self.metric_type = metric_type
-        # minCapacity
         self.min_capacity = min_capacity
-        # name
         self.name = name
-        # startTime
         self.start_time = start_time
 
     def validate(self):
@@ -2385,11 +2320,8 @@ class TimeTriggerConfig(TeaModel):
         enable: bool = None,
         payload: str = None,
     ):
-        # cronExpression
         self.cron_expression = cron_expression
-        # enable
         self.enable = enable
-        # payload
         self.payload = payload
 
     def validate(self):
@@ -2426,9 +2358,7 @@ class TracingConfig(TeaModel):
         params: Dict[str, str] = None,
         type: str = None,
     ):
-        # 链路追踪参数。当协议类型为 Jaeger 时，参数为 map[string]string，其中 key 为 "endpoint"，value 为您的链路追踪内网接入点。例如 endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/otlp/traces
         self.params = params
-        # 链路追踪协议类型，目前只支持 Jaeger
         self.type = type
 
     def validate(self):
@@ -2463,13 +2393,9 @@ class VPCConfig(TeaModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
-        # Role
         self.role = role
-        # 安全组ID
         self.security_group_id = security_group_id
-        # VSwitch ID列表
         self.v_switch_ids = v_switch_ids
-        # VPC ID
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -2584,19 +2510,20 @@ class CreateAliasRequest(TeaModel):
         additional_version_weight: Dict[str, float] = None,
         alias_name: str = None,
         description: str = None,
+        resolve_policy: str = None,
+        route_policy: RoutePolicy = None,
         version_id: str = None,
     ):
-        # 额外版本权重
         self.additional_version_weight = additional_version_weight
-        # 别名名称
         self.alias_name = alias_name
-        # 别名描述
         self.description = description
-        # 版本ID
+        self.resolve_policy = resolve_policy
+        self.route_policy = route_policy
         self.version_id = version_id
 
     def validate(self):
-        pass
+        if self.route_policy:
+            self.route_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2610,6 +2537,10 @@ class CreateAliasRequest(TeaModel):
             result['aliasName'] = self.alias_name
         if self.description is not None:
             result['description'] = self.description
+        if self.resolve_policy is not None:
+            result['resolvePolicy'] = self.resolve_policy
+        if self.route_policy is not None:
+            result['routePolicy'] = self.route_policy.to_map()
         if self.version_id is not None:
             result['versionId'] = self.version_id
         return result
@@ -2622,6 +2553,11 @@ class CreateAliasRequest(TeaModel):
             self.alias_name = m.get('aliasName')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('resolvePolicy') is not None:
+            self.resolve_policy = m.get('resolvePolicy')
+        if m.get('routePolicy') is not None:
+            temp_model = RoutePolicy()
+            self.route_policy = temp_model.from_map(m['routePolicy'])
         if m.get('versionId') is not None:
             self.version_id = m.get('versionId')
         return self
@@ -2637,17 +2573,11 @@ class CreateAliasResponseBody(TeaModel):
         last_modified_time: str = None,
         version_id: str = None,
     ):
-        # 额外版本权重
         self.additional_version_weight = additional_version_weight
-        # 别名名称
         self.alias_name = alias_name
-        # 创建时间
         self.created_time = created_time
-        # 别名描述
         self.description = description
-        # 上次更新时间
         self.last_modified_time = last_modified_time
-        # 版本ID
         self.version_id = version_id
 
     def validate(self):
@@ -2855,7 +2785,6 @@ class CreateCustomDomainResponseBody(TeaModel):
         self.api_version = api_version
         self.cert_config = cert_config
         self.created_time = created_time
-        # Id of the request
         self.domain_name = domain_name
         self.last_modified_time = last_modified_time
         self.protocol = protocol
@@ -3040,36 +2969,24 @@ class CreateFunctionRequest(TeaModel):
         runtime: str = None,
         timeout: int = None,
     ):
-        # 自定义、自定义容器运行时 HTTP Server 的监听端口
         self.ca_port = ca_port
         self.code = code
         self.custom_container_config = custom_container_config
-        # 函数自定义DNS配置
         self.custom_dns = custom_dns
-        # Custom Runtime函数详细配置
         self.custom_runtime_config = custom_runtime_config
-        # 函数描述
         self.description = description
         self.environment_variables = environment_variables
-        # 函数名称
         self.function_name = function_name
-        # function执行的入口，具体格式和语言相关
         self.handler = handler
-        # 初始化function运行的超时时间，单位为秒，最小1秒，默认3秒。初始化function超过这个时间后会被终止执行
         self.initialization_timeout = initialization_timeout
-        # 初始化 function 执行的入口，具体格式和语言相关
         self.initializer = initializer
         self.instance_concurrency = instance_concurrency
         self.instance_lifecycle_config = instance_lifecycle_config
         self.instance_soft_concurrency = instance_soft_concurrency
         self.instance_type = instance_type
-        # 层列表
         self.layers = layers
-        # function的内存规格，单位为MB，为64MB的倍数
         self.memory_size = memory_size
-        # function运行的语言环境，目前支持nodejs6, nodejs8, python2.7, python3, java8
         self.runtime = runtime
-        # function运行的超时时间，单位为秒，最小1秒，默认3秒。function超过这个时间后会被终止执行
         self.timeout = timeout
 
     def validate(self):
@@ -3205,44 +3122,28 @@ class CreateFunctionResponseBody(TeaModel):
         runtime: str = None,
         timeout: int = None,
     ):
-        # 自定义、自定义容器运行时 HTTP Server 的监听端口
         self.ca_port = ca_port
-        # function code包的CRC64值
         self.code_checksum = code_checksum
-        # 系统返回的function的code包大小，单位为byte Example : 1024
         self.code_size = code_size
-        # function创建时间
         self.created_time = created_time
         self.custom_container_config = custom_container_config
-        # 函数自定义DNS配置
         self.custom_dns = custom_dns
-        # Custom Runtime函数详细配置
         self.custom_runtime_config = custom_runtime_config
-        # 函数描述
         self.description = description
         self.environment_variables = environment_variables
-        # 系统为每个function生成的唯一ID
         self.function_id = function_id
-        # 函数名称
         self.function_name = function_name
-        # function的执行入口
         self.handler = handler
-        # 初始化function运行的超时时间，单位为秒，最小1秒，默认3秒。初始化function超过这个时间后会被终止执行
         self.initialization_timeout = initialization_timeout
-        # 初始化 function 执行的入口，具体格式和语言相关
         self.initializer = initializer
         self.instance_concurrency = instance_concurrency
         self.instance_lifecycle_config = instance_lifecycle_config
         self.instance_soft_concurrency = instance_soft_concurrency
         self.instance_type = instance_type
-        # function上次修改时间
         self.last_modified_time = last_modified_time
         self.layers = layers
-        # function设置的内存大小，单位为MB
         self.memory_size = memory_size
-        # function运行的语言环境，目前支持nodejs6, nodejs8, python2.7, python3, java8
         self.runtime = runtime
-        # 运行的超时时间，单位为秒
         self.timeout = timeout
 
     def validate(self):
@@ -3678,15 +3579,11 @@ class CreateServiceRequest(TeaModel):
         tracing_config: TracingConfig = None,
         vpc_config: VPCConfig = None,
     ):
-        # 服务描述
         self.description = description
-        # 公网访问设置
         self.internet_access = internet_access
         self.log_config = log_config
         self.nas_config = nas_config
-        # 服务角色
         self.role = role
-        # 服务名称
         self.service_name = service_name
         self.tracing_config = tracing_config
         self.vpc_config = vpc_config
@@ -3763,27 +3660,18 @@ class CreateServiceResponseBody(TeaModel):
         service_id: str = None,
         service_name: str = None,
         tracing_config: TracingConfig = None,
-        vendor_config: VendorConfig = None,
         vpc_config: VPCConfig = None,
     ):
-        # 创建时间
         self.created_time = created_time
-        # 服务描述
         self.description = description
-        # 公网访问设置
         self.internet_access = internet_access
-        # 上次更新时间
         self.last_modified_time = last_modified_time
         self.log_config = log_config
         self.nas_config = nas_config
-        # 服务角色
         self.role = role
-        # 服务ID
         self.service_id = service_id
-        # 服务名称
         self.service_name = service_name
         self.tracing_config = tracing_config
-        self.vendor_config = vendor_config
         self.vpc_config = vpc_config
 
     def validate(self):
@@ -3793,8 +3681,6 @@ class CreateServiceResponseBody(TeaModel):
             self.nas_config.validate()
         if self.tracing_config:
             self.tracing_config.validate()
-        if self.vendor_config:
-            self.vendor_config.validate()
         if self.vpc_config:
             self.vpc_config.validate()
 
@@ -3824,8 +3710,6 @@ class CreateServiceResponseBody(TeaModel):
             result['serviceName'] = self.service_name
         if self.tracing_config is not None:
             result['tracingConfig'] = self.tracing_config.to_map()
-        if self.vendor_config is not None:
-            result['vendorConfig'] = self.vendor_config.to_map()
         if self.vpc_config is not None:
             result['vpcConfig'] = self.vpc_config.to_map()
         return result
@@ -3855,9 +3739,6 @@ class CreateServiceResponseBody(TeaModel):
         if m.get('tracingConfig') is not None:
             temp_model = TracingConfig()
             self.tracing_config = temp_model.from_map(m['tracingConfig'])
-        if m.get('vendorConfig') is not None:
-            temp_model = VendorConfig()
-            self.vendor_config = temp_model.from_map(m['vendorConfig'])
         if m.get('vpcConfig') is not None:
             temp_model = VPCConfig()
             self.vpc_config = temp_model.from_map(m['vpcConfig'])
@@ -3965,17 +3846,11 @@ class CreateTriggerRequest(TeaModel):
         trigger_type: str = None,
     ):
         self.description = description
-        # event source，如OSS，使用该role去invoke function
         self.invocation_role = invocation_role
-        # service版本
         self.qualifier = qualifier
-        # event source的Aliyun Resource Name（ARN
         self.source_arn = source_arn
-        # trigger配置，针对不同的trigger类型，trigger配置会有所不同
         self.trigger_config = trigger_config
-        # trigger名称
         self.trigger_name = trigger_name
-        # trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -4039,29 +3914,18 @@ class CreateTriggerResponseBody(TeaModel):
         url_internet: str = None,
         url_intranet: str = None,
     ):
-        # 创建时间
         self.created_time = created_time
         self.description = description
-        # 域名名称，使用域名名称拼接上函数计算域名，可以采用HTTP协议调用到触发器对应版本的函数。例如{domainName}.cn-shanghai.fc.aliyuncs.com
         self.domain_name = domain_name
-        # 调用函数使用的RAM角色的ARN
         self.invocation_role = invocation_role
-        # 上次修改时间
         self.last_modified_time = last_modified_time
-        # service版本
         self.qualifier = qualifier
-        # event source的Aliyun Resource Name（ARN
         self.source_arn = source_arn
-        # trigger配置对象
         self.trigger_config = trigger_config
         self.trigger_id = trigger_id
-        # trigger名称
         self.trigger_name = trigger_name
-        # trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
         self.trigger_type = trigger_type
-        # 公网域名地址。在互联网可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
         self.url_internet = url_internet
-        # 私网域名地址。在VPC可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
         self.url_intranet = url_intranet
 
     def validate(self):
@@ -4456,7 +4320,6 @@ class DeleteFunctionHeaders(TeaModel):
         x_fc_trace_id: str = None,
     ):
         self.common_headers = common_headers
-        # 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
         self.if_match = if_match
         self.x_fc_account_id = x_fc_account_id
         self.x_fc_date = x_fc_date
@@ -4582,7 +4445,6 @@ class DeleteFunctionAsyncInvokeConfigRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
-        # 限定符
         self.qualifier = qualifier
 
     def validate(self):
@@ -4695,7 +4557,6 @@ class DeleteFunctionOnDemandConfigRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
-        # 服务别名或LATEST，不支持版本。
         self.qualifier = qualifier
 
     def validate(self):
@@ -4841,7 +4702,6 @@ class DeleteServiceHeaders(TeaModel):
         x_fc_trace_id: str = None,
     ):
         self.common_headers = common_headers
-        # 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
         self.if_match = if_match
         self.x_fc_account_id = x_fc_account_id
         self.x_fc_date = x_fc_date
@@ -5006,7 +4866,6 @@ class DeleteTriggerHeaders(TeaModel):
         x_fc_trace_id: str = None,
     ):
         self.common_headers = common_headers
-        # 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
         self.if_match = if_match
         self.x_fc_account_id = x_fc_account_id
         self.x_fc_date = x_fc_date
@@ -5211,7 +5070,6 @@ class DeregisterEventSourceRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
-        # 别名或版本
         self.qualifier = qualifier
 
     def validate(self):
@@ -5319,9 +5177,7 @@ class GetAccountSettingsResponseBody(TeaModel):
         available_azs: List[str] = None,
         default_role: str = None,
     ):
-        # 可用区列表
         self.available_azs = available_azs
-        # 默认服务角色
         self.default_role = default_role
 
     def validate(self):
@@ -5445,23 +5301,22 @@ class GetAliasResponseBody(TeaModel):
         created_time: str = None,
         description: str = None,
         last_modified_time: str = None,
+        resolve_policy: str = None,
+        route_policy: RoutePolicy = None,
         version_id: str = None,
     ):
-        # 额外版本权重
         self.additional_version_weight = additional_version_weight
-        # 别名名称
         self.alias_name = alias_name
-        # 创建时间
         self.created_time = created_time
-        # 别名描述
         self.description = description
-        # 上次更新时间
         self.last_modified_time = last_modified_time
-        # 版本ID
+        self.resolve_policy = resolve_policy
+        self.route_policy = route_policy
         self.version_id = version_id
 
     def validate(self):
-        pass
+        if self.route_policy:
+            self.route_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5479,6 +5334,10 @@ class GetAliasResponseBody(TeaModel):
             result['description'] = self.description
         if self.last_modified_time is not None:
             result['lastModifiedTime'] = self.last_modified_time
+        if self.resolve_policy is not None:
+            result['resolvePolicy'] = self.resolve_policy
+        if self.route_policy is not None:
+            result['routePolicy'] = self.route_policy.to_map()
         if self.version_id is not None:
             result['versionId'] = self.version_id
         return result
@@ -5495,6 +5354,11 @@ class GetAliasResponseBody(TeaModel):
             self.description = m.get('description')
         if m.get('lastModifiedTime') is not None:
             self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('resolvePolicy') is not None:
+            self.resolve_policy = m.get('resolvePolicy')
+        if m.get('routePolicy') is not None:
+            temp_model = RoutePolicy()
+            self.route_policy = temp_model.from_map(m['routePolicy'])
         if m.get('versionId') is not None:
             self.version_id = m.get('versionId')
         return self
@@ -5606,7 +5470,6 @@ class GetCustomDomainResponseBody(TeaModel):
         self.api_version = api_version
         self.cert_config = cert_config
         self.created_time = created_time
-        # Id of the request
         self.domain_name = domain_name
         self.last_modified_time = last_modified_time
         self.protocol = protocol
@@ -5767,7 +5630,6 @@ class GetFunctionRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
-        # service版本, 可以是versionId或者aliasName
         self.qualifier = qualifier
 
     def validate(self):
@@ -5817,45 +5679,28 @@ class GetFunctionResponseBody(TeaModel):
         runtime: str = None,
         timeout: int = None,
     ):
-        # 自定义、自定义容器运行时 HTTP Server 的监听端口
         self.ca_port = ca_port
-        # function code包的CRC64值
         self.code_checksum = code_checksum
-        # 系统返回的function的code包大小，单位为byte Example : 1024
         self.code_size = code_size
-        # function创建时间
         self.created_time = created_time
         self.custom_container_config = custom_container_config
-        # 函数自定义DNS配置
         self.custom_dns = custom_dns
-        # Custom Runtime函数详细配置
         self.custom_runtime_config = custom_runtime_config
-        # 函数描述
         self.description = description
-        # 为函数设置的环境变量，可以在函数中获取环境变量的值
         self.environment_variables = environment_variables
-        # 系统为每个function生成的唯一ID
         self.function_id = function_id
-        # 函数名称
         self.function_name = function_name
-        # function的执行入口
         self.handler = handler
-        # 初始化function运行的超时时间，单位为秒，最小1秒，默认3秒。初始化function超过这个时间后会被终止执行
         self.initialization_timeout = initialization_timeout
-        # 初始化 function 执行的入口，具体格式和语言相关
         self.initializer = initializer
         self.instance_concurrency = instance_concurrency
         self.instance_lifecycle_config = instance_lifecycle_config
         self.instance_soft_concurrency = instance_soft_concurrency
         self.instance_type = instance_type
-        # function上次修改时间
         self.last_modified_time = last_modified_time
         self.layers = layers
-        # function设置的内存大小，单位为MB
         self.memory_size = memory_size
-        # function运行的语言环境，目前支持nodejs6, nodejs8, python2.7, python3, java8
         self.runtime = runtime
-        # 运行的超时时间，单位为秒
         self.timeout = timeout
 
     def validate(self):
@@ -6071,7 +5916,6 @@ class GetFunctionAsyncInvokeConfigRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
-        # 限定符
         self.qualifier = qualifier
 
     def validate(self):
@@ -6107,20 +5951,13 @@ class GetFunctionAsyncInvokeConfigResponseBody(TeaModel):
         service: str = None,
         stateful_invocation: bool = None,
     ):
-        # 创建时间
         self.created_time = created_time
         self.destination_config = destination_config
-        # 函数名称
         self.function = function
-        # 最后更改时间
         self.last_modified_time = last_modified_time
-        # 消息最大存活时长
         self.max_async_event_age_in_seconds = max_async_event_age_in_seconds
-        # 异步调用失败后的最大重试次数
         self.max_async_retry_attempts = max_async_retry_attempts
-        # 限定符
         self.qualifier = qualifier
-        # 服务名称
         self.service = service
         self.stateful_invocation = stateful_invocation
 
@@ -6272,7 +6109,6 @@ class GetFunctionCodeRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
-        # service版本, 可以是versionId或者aliasName
         self.qualifier = qualifier
 
     def validate(self):
@@ -6301,9 +6137,7 @@ class GetFunctionCodeResponseBody(TeaModel):
         checksum: str = None,
         url: str = None,
     ):
-        # function code包的CRC64值
         self.checksum = checksum
-        # 获取function代码的URL
         self.url = url
 
     def validate(self):
@@ -6453,7 +6287,6 @@ class GetFunctionOnDemandConfigResponseBody(TeaModel):
         resource: str = None,
     ):
         self.maximum_instance_count = maximum_instance_count
-        # Id of the request
         self.resource = resource
 
     def validate(self):
@@ -6663,7 +6496,6 @@ class GetProvisionConfigRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
-        # 别名名称
         self.qualifier = qualifier
 
     def validate(self):
@@ -6697,19 +6529,12 @@ class GetProvisionConfigResponseBody(TeaModel):
         target: int = None,
         target_tracking_policies: List[TargetTrackingPolicies] = None,
     ):
-        # 是否始终分配CPU给函数实例。
         self.always_allocate_cpu = always_allocate_cpu
-        # 实际资源个数
         self.current = current
-        # 预留实例创建失败时的错误信息
         self.current_error = current_error
-        # 资源描述
         self.resource = resource
-        # 定时策略配置
         self.scheduled_actions = scheduled_actions
-        # 目标资源个数
         self.target = target
-        # 指标追踪伸缩策略配置
         self.target_tracking_policies = target_tracking_policies
 
     def validate(self):
@@ -6867,7 +6692,6 @@ class GetResourceTagsRequest(TeaModel):
         self,
         resource_arn: str = None,
     ):
-        # Resource ARN 全称或者简称
         self.resource_arn = resource_arn
 
     def validate(self):
@@ -6896,9 +6720,7 @@ class GetResourceTagsResponseBody(TeaModel):
         resource_arn: str = None,
         tags: Dict[str, str] = None,
     ):
-        # Resource ARN 全称
         self.resource_arn = resource_arn
-        # tag 列表
         self.tags = tags
 
     def validate(self):
@@ -7019,7 +6841,6 @@ class GetServiceRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
-        # 限定符
         self.qualifier = qualifier
 
     def validate(self):
@@ -7057,21 +6878,14 @@ class GetServiceResponseBody(TeaModel):
         tracing_config: TracingConfig = None,
         vpc_config: VPCConfig = None,
     ):
-        # 创建时间
         self.created_time = created_time
-        # 服务描述
         self.description = description
-        # 公网访问设置
         self.internet_access = internet_access
-        # 上次更新时间
         self.last_modified_time = last_modified_time
         self.log_config = log_config
         self.nas_config = nas_config
-        # 服务角色
         self.role = role
-        # 服务ID
         self.service_id = service_id
-        # 服务名称
         self.service_name = service_name
         self.tracing_config = tracing_config
         self.vpc_config = vpc_config
@@ -7387,29 +7201,18 @@ class GetTriggerResponseBody(TeaModel):
         url_internet: str = None,
         url_intranet: str = None,
     ):
-        # 创建时间
         self.created_time = created_time
         self.description = description
-        # 域名名称，使用域名名称拼接上函数计算域名，可以采用HTTP协议调用到触发器对应版本的函数。例如{domainName}.cn-shanghai.fc.aliyuncs.com
         self.domain_name = domain_name
-        # 调用函数使用的RAM角色的ARN
         self.invocation_role = invocation_role
-        # 上次修改时间
         self.last_modified_time = last_modified_time
-        # service版本
         self.qualifier = qualifier
-        # event source的Aliyun Resource Name（ARN
         self.source_arn = source_arn
-        # trigger配置对象
         self.trigger_config = trigger_config
         self.trigger_id = trigger_id
-        # trigger名称
         self.trigger_name = trigger_name
-        # trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
         self.trigger_type = trigger_type
-        # 公网域名地址。在互联网可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
         self.url_internet = url_internet
-        # 私网域名地址。在VPC可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
         self.url_intranet = url_intranet
 
     def validate(self):
@@ -7538,9 +7341,7 @@ class InvokeFunctionHeaders(TeaModel):
         self.common_headers = common_headers
         self.x_fc_account_id = x_fc_account_id
         self.x_fc_date = x_fc_date
-        # 调用方式:Sync或者Async，默认值：Sync
         self.x_fc_invocation_type = x_fc_invocation_type
-        # 请求返回日志类型, Tail 为返回函数日志最后 4KB 数据，None 或空值则返回不带有日志，默认为 None
         self.x_fc_log_type = x_fc_log_type
         self.x_fc_stateful_async_invocation_id = x_fc_stateful_async_invocation_id
         self.x_fc_trace_id = x_fc_trace_id
@@ -7595,9 +7396,7 @@ class InvokeFunctionRequest(TeaModel):
         body: bytes = None,
         qualifier: str = None,
     ):
-        # 事件（event），binary type。函数计算服务将event传递给用户function来处理
         self.body = body
-        # service版本, 可以是versionId或者aliasName
         self.qualifier = qualifier
 
     def validate(self):
@@ -7718,13 +7517,9 @@ class ListAliasesRequest(TeaModel):
         prefix: str = None,
         start_key: str = None,
     ):
-        # 最多返回个数
         self.limit = limit
-        # 下次查询token
         self.next_token = next_token
-        # 前缀
         self.prefix = prefix
-        # 起始key
         self.start_key = start_key
 
     def validate(self):
@@ -7767,23 +7562,22 @@ class ListAliasesResponseBodyAliases(TeaModel):
         created_time: str = None,
         description: str = None,
         last_modified_time: str = None,
+        resolve_policy: str = None,
+        route_policy: RoutePolicy = None,
         version_id: str = None,
     ):
-        # 额外版本权重
         self.additional_version_weight = additional_version_weight
-        # 别名名称
         self.alias_name = alias_name
-        # 创建时间
         self.created_time = created_time
-        # 别名描述
         self.description = description
-        # 上次更新时间
         self.last_modified_time = last_modified_time
-        # 版本ID
+        self.resolve_policy = resolve_policy
+        self.route_policy = route_policy
         self.version_id = version_id
 
     def validate(self):
-        pass
+        if self.route_policy:
+            self.route_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7801,6 +7595,10 @@ class ListAliasesResponseBodyAliases(TeaModel):
             result['description'] = self.description
         if self.last_modified_time is not None:
             result['lastModifiedTime'] = self.last_modified_time
+        if self.resolve_policy is not None:
+            result['resolvePolicy'] = self.resolve_policy
+        if self.route_policy is not None:
+            result['routePolicy'] = self.route_policy.to_map()
         if self.version_id is not None:
             result['versionId'] = self.version_id
         return result
@@ -7817,6 +7615,11 @@ class ListAliasesResponseBodyAliases(TeaModel):
             self.description = m.get('description')
         if m.get('lastModifiedTime') is not None:
             self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('resolvePolicy') is not None:
+            self.resolve_policy = m.get('resolvePolicy')
+        if m.get('routePolicy') is not None:
+            temp_model = RoutePolicy()
+            self.route_policy = temp_model.from_map(m['routePolicy'])
         if m.get('versionId') is not None:
             self.version_id = m.get('versionId')
         return self
@@ -7828,9 +7631,7 @@ class ListAliasesResponseBody(TeaModel):
         aliases: List[ListAliasesResponseBodyAliases] = None,
         next_token: str = None,
     ):
-        # 别名列表
         self.aliases = aliases
-        # 下次查询token
         self.next_token = next_token
 
     def validate(self):
@@ -8217,7 +8018,6 @@ class ListEventSourcesRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
-        # 别名或版本
         self.qualifier = qualifier
 
     def validate(self):
@@ -8246,9 +8046,7 @@ class ListEventSourcesResponseBodyEventSources(TeaModel):
         created_time: str = None,
         source_arn: str = None,
     ):
-        # 创建时间
         self.created_time = created_time
-        # 事件源资源标识符
         self.source_arn = source_arn
 
     def validate(self):
@@ -8280,7 +8078,6 @@ class ListEventSourcesResponseBody(TeaModel):
         self,
         event_sources: List[ListEventSourcesResponseBodyEventSources] = None,
     ):
-        # 事件源列表
         self.event_sources = event_sources
 
     def validate(self):
@@ -8424,9 +8221,7 @@ class ListFunctionAsyncInvokeConfigsRequest(TeaModel):
         limit: int = None,
         next_token: str = None,
     ):
-        # 最多返回个数
         self.limit = limit
-        # 下次查询token
         self.next_token = next_token
 
     def validate(self):
@@ -8466,20 +8261,13 @@ class ListFunctionAsyncInvokeConfigsResponseBodyConfigs(TeaModel):
         service: str = None,
         stateful_invocation: bool = None,
     ):
-        # 创建时间
         self.created_time = created_time
         self.destination_config = destination_config
-        # 函数名称
         self.function = function
-        # 最后更改时间
         self.last_modified_time = last_modified_time
-        # 消息最大存活时长
         self.max_async_event_age_in_seconds = max_async_event_age_in_seconds
-        # 异步调用失败后的最大重试次数
         self.max_async_retry_attempts = max_async_retry_attempts
-        # 限定符
         self.qualifier = qualifier
-        # 服务名称
         self.service = service
         self.stateful_invocation = stateful_invocation
 
@@ -8543,9 +8331,7 @@ class ListFunctionAsyncInvokeConfigsResponseBody(TeaModel):
         configs: List[ListFunctionAsyncInvokeConfigsResponseBodyConfigs] = None,
         next_token: str = None,
     ):
-        # 异步配置列表
         self.configs = configs
-        # 下次查询token
         self.next_token = next_token
 
     def validate(self):
@@ -8678,15 +8464,10 @@ class ListFunctionsRequest(TeaModel):
         qualifier: str = None,
         start_key: str = None,
     ):
-        # 限定此次返回资源的数量。如果不设定，默认返回20，最大不能超过100。返回结果可能小于指定的数量，但不会多于指定的数量
         self.limit = limit
-        # 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的token从返回结果中获取
         self.next_token = next_token
-        # 限定返回的资源名称必须以prefix作为前缀
         self.prefix = prefix
-        # service版本, 可以是versionId或者aliasName
         self.qualifier = qualifier
-        # 设定结果从startKey之后（包括startKey）按字母排序的第一个开始返回
         self.start_key = start_key
 
     def validate(self):
@@ -8750,41 +8531,26 @@ class ListFunctionsResponseBodyFunctions(TeaModel):
         runtime: str = None,
         timeout: int = None,
     ):
-        # 自定义、自定义容器运行时 HTTP Server 的监听端口
         self.ca_port = ca_port
-        # function code包的CRC64值
         self.code_checksum = code_checksum
-        # 系统返回的function的code包大小，单位为byte Example : 1024
         self.code_size = code_size
-        # function创建时间
         self.created_time = created_time
         self.custom_container_config = custom_container_config
-        # 函数描述
         self.description = description
-        # 为函数设置的环境变量，可以在函数中获取环境变量的值
         self.environment_variables = environment_variables
-        # 系统为每个function生成的唯一ID
         self.function_id = function_id
-        # 函数名称
         self.function_name = function_name
-        # function的执行入口
         self.handler = handler
-        # 初始化function运行的超时时间，单位为秒，最小1秒，默认3秒。初始化function超过这个时间后会被终止执行
         self.initialization_timeout = initialization_timeout
-        # 初始化 function 执行的入口，具体格式和语言相关
         self.initializer = initializer
         self.instance_concurrency = instance_concurrency
         self.instance_lifecycle_config = instance_lifecycle_config
         self.instance_soft_concurrency = instance_soft_concurrency
         self.instance_type = instance_type
-        # function上次修改时间
         self.last_modified_time = last_modified_time
         self.layers = layers
-        # function设置的内存大小，单位为MB
         self.memory_size = memory_size
-        # function运行的语言环境，目前支持nodejs6, nodejs8, python2.7, python3, java8
         self.runtime = runtime
-        # 运行的超时时间，单位为秒
         self.timeout = timeout
 
     def validate(self):
@@ -8898,9 +8664,7 @@ class ListFunctionsResponseBody(TeaModel):
         functions: List[ListFunctionsResponseBodyFunctions] = None,
         next_token: str = None,
     ):
-        # 函数列表
         self.functions = functions
-        # 用来返回更多的查询结果。如果这个值没有返回，则说明没有更多结果
         self.next_token = next_token
 
     def validate(self):
@@ -8984,13 +8748,9 @@ class ListInstancesHeaders(TeaModel):
         self,
         common_headers: Dict[str, str] = None,
         x_fc_account_id: str = None,
-        x_fc_date: str = None,
-        x_fc_trace_id: str = None,
     ):
         self.common_headers = common_headers
         self.x_fc_account_id = x_fc_account_id
-        self.x_fc_date = x_fc_date
-        self.x_fc_trace_id = x_fc_trace_id
 
     def validate(self):
         pass
@@ -9005,10 +8765,6 @@ class ListInstancesHeaders(TeaModel):
             result['commonHeaders'] = self.common_headers
         if self.x_fc_account_id is not None:
             result['X-Fc-Account-Id'] = self.x_fc_account_id
-        if self.x_fc_date is not None:
-            result['X-Fc-Date'] = self.x_fc_date
-        if self.x_fc_trace_id is not None:
-            result['X-Fc-Trace-Id'] = self.x_fc_trace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9017,10 +8773,6 @@ class ListInstancesHeaders(TeaModel):
             self.common_headers = m.get('commonHeaders')
         if m.get('X-Fc-Account-Id') is not None:
             self.x_fc_account_id = m.get('X-Fc-Account-Id')
-        if m.get('X-Fc-Date') is not None:
-            self.x_fc_date = m.get('X-Fc-Date')
-        if m.get('X-Fc-Trace-Id') is not None:
-            self.x_fc_trace_id = m.get('X-Fc-Trace-Id')
         return self
 
 
@@ -9031,15 +8783,8 @@ class ListInstancesRequest(TeaModel):
         limit: int = None,
         qualifier: str = None,
     ):
-        # 实例ID
         self.instance_ids = instance_ids
-        # 限定此次返回资源的数量，取值范围[0,1000]。
-        # 
-        # 返回结果可以小于指定的数量，但不能多于指定的数量。
         self.limit = limit
-        # 服务的版本或别名。默认是LATEST。
-        # 
-        # 此处的qualifier同InvokeFunction的qualifier含义一致，即调用ListInstances时指定qualifier=test查询出来的实例，就是调用InvokeFunction时qualifier=test链路上的实例。
         self.qualifier = qualifier
 
     def validate(self):
@@ -9076,9 +8821,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         instance_id: str = None,
         version_id: str = None,
     ):
-        # 实例ID。
         self.instance_id = instance_id
-        # 实例所属的服务版本。如果是LATEST别名下的函数实例，则返回版本号为0。
         self.version_id = version_id
 
     def validate(self):
@@ -9235,9 +8978,7 @@ class ListLayerVersionsRequest(TeaModel):
         limit: int = None,
         start_version: int = None,
     ):
-        # 本次读取的最大数据记录数量
         self.limit = limit
-        # 起始版本
         self.start_version = start_version
 
     def validate(self):
@@ -9270,9 +9011,7 @@ class ListLayerVersionsResponseBody(TeaModel):
         layers: List[Layer] = None,
         next_version: int = None,
     ):
-        # 层版本列表
         self.layers = layers
-        # 剩余列表起始版本号
         self.next_version = next_version
 
     def validate(self):
@@ -9401,16 +9140,16 @@ class ListLayersRequest(TeaModel):
         self,
         limit: int = None,
         next_token: str = None,
+        official: bool = None,
         prefix: str = None,
+        public: bool = None,
         start_key: str = None,
     ):
-        # 最大返回条目数
         self.limit = limit
-        # 下一个层名称
         self.next_token = next_token
-        # 层名称前缀
+        self.official = official
         self.prefix = prefix
-        # 起始层名称
+        self.public = public
         self.start_key = start_key
 
     def validate(self):
@@ -9426,8 +9165,12 @@ class ListLayersRequest(TeaModel):
             result['limit'] = self.limit
         if self.next_token is not None:
             result['nextToken'] = self.next_token
+        if self.official is not None:
+            result['official'] = self.official
         if self.prefix is not None:
             result['prefix'] = self.prefix
+        if self.public is not None:
+            result['public'] = self.public
         if self.start_key is not None:
             result['startKey'] = self.start_key
         return result
@@ -9438,8 +9181,12 @@ class ListLayersRequest(TeaModel):
             self.limit = m.get('limit')
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
+        if m.get('official') is not None:
+            self.official = m.get('official')
         if m.get('prefix') is not None:
             self.prefix = m.get('prefix')
+        if m.get('public') is not None:
+            self.public = m.get('public')
         if m.get('startKey') is not None:
             self.start_key = m.get('startKey')
         return self
@@ -9451,9 +9198,7 @@ class ListLayersResponseBody(TeaModel):
         layers: List[Layer] = None,
         next_token: str = None,
     ):
-        # 层列表
         self.layers = layers
-        # 剩余列表起始层名
         self.next_token = next_token
 
     def validate(self):
@@ -9585,13 +9330,9 @@ class ListOnDemandConfigsRequest(TeaModel):
         prefix: str = None,
         start_key: str = None,
     ):
-        # 限定此次返回资源的数量。如果不设定，默认返回20，最大不能超过100。返回结果可以小于指定的数量，但不会多于指定的数量。
         self.limit = limit
-        # 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的Token从返回结果中获取。
         self.next_token = next_token
-        # 限定返回的资源名称，名称必须以Prefix作为前缀，例如Prefix是a，则返回的资源名均是以a开始的。
         self.prefix = prefix
-        # 设定结果从startKey之后（包括startKey）按字母排序的第一个开始返回。
         self.start_key = start_key
 
     def validate(self):
@@ -9632,9 +9373,7 @@ class ListOnDemandConfigsResponseBody(TeaModel):
         configs: List[OnDemandConfig] = None,
         next_token: str = None,
     ):
-        # 预留实例配置
         self.configs = configs
-        # 用来返回更多的查询结果。如果这个值没有返回，则说明没有更多结果。
         self.next_token = next_token
 
     def validate(self):
@@ -9766,13 +9505,9 @@ class ListProvisionConfigsRequest(TeaModel):
         qualifier: str = None,
         service_name: str = None,
     ):
-        # 限定此次返回资源的数量。如果不设定，默认返回20，最大不能超过100。返回结果可能小于指定的数量，但不会多于指定的数量
         self.limit = limit
-        # 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的token从返回结果中获取
         self.next_token = next_token
-        # 限定返回的资源名称必须属于该qualifier。qualifier只能是aliasName，且必须和serviceName共同使用
         self.qualifier = qualifier
-        # 限定返回的资源名称必须属于该service
         self.service_name = service_name
 
     def validate(self):
@@ -9818,19 +9553,12 @@ class ListProvisionConfigsResponseBodyProvisionConfigs(TeaModel):
         target: int = None,
         target_tracking_policies: List[TargetTrackingPolicies] = None,
     ):
-        # 是否始终分配CPU给函数实例。
         self.always_allocate_cpu = always_allocate_cpu
-        # 实际资源个数
         self.current = current
-        # 预留实例创建失败时的错误信息
         self.current_error = current_error
-        # 资源描述
         self.resource = resource
-        # 定时策略配置
         self.scheduled_actions = scheduled_actions
-        # 目标资源个数
         self.target = target
-        # 指标追踪伸缩策略配置
         self.target_tracking_policies = target_tracking_policies
 
     def validate(self):
@@ -9900,9 +9628,7 @@ class ListProvisionConfigsResponseBody(TeaModel):
         next_token: str = None,
         provision_configs: List[ListProvisionConfigsResponseBodyProvisionConfigs] = None,
     ):
-        # 下次查询的起始token
         self.next_token = next_token
-        # 预留实例列表
         self.provision_configs = provision_configs
 
     def validate(self):
@@ -10032,7 +9758,6 @@ class ListReservedCapacitiesRequest(TeaModel):
         limit: str = None,
         next_token: str = None,
     ):
-        # 一次返回的数量，取值范围[1, 100]
         self.limit = limit
         self.next_token = next_token
 
@@ -10066,9 +9791,7 @@ class ListReservedCapacitiesResponseBody(TeaModel):
         next_token: str = None,
         reserved_capacities: List[OpenReservedCapacity] = None,
     ):
-        # nextToken
         self.next_token = next_token
-        # reservedCapacities
         self.reserved_capacities = reserved_capacities
 
     def validate(self):
@@ -10200,13 +9923,9 @@ class ListServiceVersionsRequest(TeaModel):
         next_token: str = None,
         start_key: str = None,
     ):
-        # 排序方向
         self.direction = direction
-        # 最多返回个数
         self.limit = limit
-        # 下次查询token
         self.next_token = next_token
-        # 起始key
         self.start_key = start_key
 
     def validate(self):
@@ -10249,13 +9968,9 @@ class ListServiceVersionsResponseBodyVersions(TeaModel):
         last_modified_time: str = None,
         version_id: str = None,
     ):
-        # 创建时间
         self.created_time = created_time
-        # 版本描述
         self.description = description
-        # 上次更新时间
         self.last_modified_time = last_modified_time
-        # 版本ID
         self.version_id = version_id
 
     def validate(self):
@@ -10297,11 +10012,8 @@ class ListServiceVersionsResponseBody(TeaModel):
         next_token: str = None,
         versions: List[ListServiceVersionsResponseBodyVersions] = None,
     ):
-        # 排序方向
         self.direction = direction
-        # 下次查询token
         self.next_token = next_token
-        # 版本列表
         self.versions = versions
 
     def validate(self):
@@ -10437,13 +10149,9 @@ class ListServicesRequest(TeaModel):
         prefix: str = None,
         start_key: str = None,
     ):
-        # 最多返回个数
         self.limit = limit
-        # 下次查询token
         self.next_token = next_token
-        # 前缀
         self.prefix = prefix
-        # 起始key
         self.start_key = start_key
 
     def validate(self):
@@ -10493,21 +10201,14 @@ class ListServicesResponseBodyServices(TeaModel):
         tracing_config: TracingConfig = None,
         vpc_config: VPCConfig = None,
     ):
-        # 创建时间
         self.created_time = created_time
-        # 服务描述
         self.description = description
-        # 公网访问设置
         self.internet_access = internet_access
-        # 上次更新时间
         self.last_modified_time = last_modified_time
         self.log_config = log_config
         self.nas_config = nas_config
-        # 服务角色
         self.role = role
-        # 服务ID
         self.service_id = service_id
-        # 服务信息
         self.service_name = service_name
         self.tracing_config = tracing_config
         self.vpc_config = vpc_config
@@ -10589,9 +10290,7 @@ class ListServicesResponseBody(TeaModel):
         next_token: str = None,
         services: List[ListServicesResponseBodyServices] = None,
     ):
-        # 下次查询token
         self.next_token = next_token
-        # 服务列表
         self.services = services
 
     def validate(self):
@@ -10679,11 +10378,8 @@ class ListStatefulAsyncInvocationFunctionsHeaders(TeaModel):
         x_fc_trace_id: str = None,
     ):
         self.common_headers = common_headers
-        # 您的阿里云账号（主账号）ID。
         self.x_fc_account_id = x_fc_account_id
-        # 发起API调用的日期，用于对请求签名。格式为yyyy-mm-ddhh:mm:ss。
         self.x_fc_date = x_fc_date
-        # 用于链路追踪的ID。
         self.x_fc_trace_id = x_fc_trace_id
 
     def validate(self):
@@ -10724,9 +10420,7 @@ class ListStatefulAsyncInvocationFunctionsRequest(TeaModel):
         limit: int = None,
         next_token: str = None,
     ):
-        # 限定此次返回资源的数量。如果不设定，默认返回20，最大不能超过100。返回结果可以小于指定的数量，但不会多于指定的数量。
         self.limit = limit
-        # 用来标记当前开始读取的位置，置空表示从头开始。第一次查询不需要提供这个参数，后续查询的Token从前一次查询的返回结果中获取。
         self.next_token = next_token
 
     def validate(self):
@@ -10759,9 +10453,7 @@ class ListStatefulAsyncInvocationFunctionsResponseBody(TeaModel):
         data: List[AsyncConfigMeta] = None,
         next_token: str = None,
     ):
-        # 返回的实际数据列表。
         self.data = data
-        # 用来表示当前调用返回读取到的位置，空代表数据已经读取完毕。
         self.next_token = next_token
 
     def validate(self):
@@ -11279,13 +10971,9 @@ class ListTriggersRequest(TeaModel):
         prefix: str = None,
         start_key: str = None,
     ):
-        # 限定此次返回资源的数量。如果不设定，默认返回20，最大不能超过100。返回结果可能小于指定的数量，但不会多于指定的数量
         self.limit = limit
-        # 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的token从返回结果中获取
         self.next_token = next_token
-        # 限定返回的资源名称必须以prefix作为前缀
         self.prefix = prefix
-        # 设定结果从startKey之后（包括startKey）按字母排序的第一个开始返回
         self.start_key = start_key
 
     def validate(self):
@@ -11337,29 +11025,18 @@ class ListTriggersResponseBodyTriggers(TeaModel):
         url_internet: str = None,
         url_intranet: str = None,
     ):
-        # 创建时间
         self.created_time = created_time
         self.description = description
-        # 域名名称，使用域名名称拼接上函数计算域名，可以采用HTTP协议调用到触发器对应版本的函数。例如{domainName}.cn-shanghai.fc.aliyuncs.com
         self.domain_name = domain_name
-        # 调用函数使用的RAM角色的ARN
         self.invocation_role = invocation_role
-        # 上次修改时间
         self.last_modified_time = last_modified_time
-        # service版本
         self.qualifier = qualifier
-        # event source的Aliyun Resource Name（ARN
         self.source_arn = source_arn
-        # trigger配置对象
         self.trigger_config = trigger_config
         self.trigger_id = trigger_id
-        # trigger名称
         self.trigger_name = trigger_name
-        # trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
         self.trigger_type = trigger_type
-        # 公网域名地址。在互联网可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
         self.url_internet = url_internet
-        # 私网域名地址。在VPC可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
         self.url_intranet = url_intranet
 
     def validate(self):
@@ -11436,9 +11113,7 @@ class ListTriggersResponseBody(TeaModel):
         next_token: str = None,
         triggers: List[ListTriggersResponseBodyTriggers] = None,
     ):
-        # 用来返回更多的查询结果。如果这个值没有返回，则说明没有更多结果
         self.next_token = next_token
-        # Trigger列表
         self.triggers = triggers
 
     def validate(self):
@@ -11643,7 +11318,6 @@ class PublishServiceVersionHeaders(TeaModel):
         x_fc_trace_id: str = None,
     ):
         self.common_headers = common_headers
-        # 服务的ETag，可通过GetService接口获得。若发布版本时服务的ETag与传入的不一致，则发布版本会失败。
         self.if_match = if_match
         self.x_fc_account_id = x_fc_account_id
         self.x_fc_date = x_fc_date
@@ -11690,7 +11364,6 @@ class PublishServiceVersionRequest(TeaModel):
         self,
         description: str = None,
     ):
-        # 版本描述
         self.description = description
 
     def validate(self):
@@ -11721,13 +11394,9 @@ class PublishServiceVersionResponseBody(TeaModel):
         last_modified_time: str = None,
         version_id: str = None,
     ):
-        # 创建时间
         self.created_time = created_time
-        # 版本描述
         self.description = description
-        # 上次更新时间
         self.last_modified_time = last_modified_time
-        # 版本ID
         self.version_id = version_id
 
     def validate(self):
@@ -11861,12 +11530,9 @@ class PutFunctionAsyncInvokeConfigRequest(TeaModel):
         qualifier: str = None,
     ):
         self.destination_config = destination_config
-        # 消息最大存活时长
         self.max_async_event_age_in_seconds = max_async_event_age_in_seconds
-        # 异步调用失败后的最大重试次数
         self.max_async_retry_attempts = max_async_retry_attempts
         self.stateful_invocation = stateful_invocation
-        # 别名或版本
         self.qualifier = qualifier
 
     def validate(self):
@@ -11920,20 +11586,13 @@ class PutFunctionAsyncInvokeConfigResponseBody(TeaModel):
         service: str = None,
         stateful_invocation: bool = None,
     ):
-        # 创建时间
         self.created_time = created_time
         self.destination_config = destination_config
-        # 函数名称
         self.function = function
-        # 最后更改时间
         self.last_modified_time = last_modified_time
-        # 消息最大存活时长
         self.max_async_event_age_in_seconds = max_async_event_age_in_seconds
-        # 异步调用失败后的最大重试次数
         self.max_async_retry_attempts = max_async_retry_attempts
-        # 限定符
         self.qualifier = qualifier
-        # 服务名称
         self.service = service
         self.stateful_invocation = stateful_invocation
 
@@ -12196,6 +11855,119 @@ class PutFunctionOnDemandConfigResponse(TeaModel):
         return self
 
 
+class PutLayerACLHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_fc_account_id: str = None,
+        x_fc_date: str = None,
+        x_fc_trace_id: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_fc_account_id = x_fc_account_id
+        self.x_fc_date = x_fc_date
+        self.x_fc_trace_id = x_fc_trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_fc_account_id is not None:
+            result['X-Fc-Account-Id'] = self.x_fc_account_id
+        if self.x_fc_date is not None:
+            result['X-Fc-Date'] = self.x_fc_date
+        if self.x_fc_trace_id is not None:
+            result['X-Fc-Trace-Id'] = self.x_fc_trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('X-Fc-Account-Id') is not None:
+            self.x_fc_account_id = m.get('X-Fc-Account-Id')
+        if m.get('X-Fc-Date') is not None:
+            self.x_fc_date = m.get('X-Fc-Date')
+        if m.get('X-Fc-Trace-Id') is not None:
+            self.x_fc_trace_id = m.get('X-Fc-Trace-Id')
+        return self
+
+
+class PutLayerACLRequest(TeaModel):
+    def __init__(
+        self,
+        public: bool = None,
+    ):
+        self.public = public
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.public is not None:
+            result['public'] = self.public
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('public') is not None:
+            self.public = m.get('public')
+        return self
+
+
+class PutLayerACLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: str = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
 class PutProvisionConfigHeaders(TeaModel):
     def __init__(
         self,
@@ -12250,15 +12022,10 @@ class PutProvisionConfigRequest(TeaModel):
         target_tracking_policies: List[TargetTrackingPolicies] = None,
         qualifier: str = None,
     ):
-        # 当实例进入空闲状态时，是否继续分配CPU。
         self.always_allocate_cpu = always_allocate_cpu
-        # 定时策略配置
         self.scheduled_actions = scheduled_actions
-        # 预留的目标资源个数
         self.target = target
-        # 指标追踪伸缩策略配置
         self.target_tracking_policies = target_tracking_policies
-        # 别名名称
         self.qualifier = qualifier
 
     def validate(self):
@@ -12324,17 +12091,11 @@ class PutProvisionConfigResponseBody(TeaModel):
         target: int = None,
         target_tracking_policies: List[TargetTrackingPolicies] = None,
     ):
-        # 是否始终分配CPU给函数实例。
         self.always_allocate_cpu = always_allocate_cpu
-        # 实际资源个数
         self.current = current
-        # 资源描述
         self.resource = resource
-        # 定时策略配置
         self.scheduled_actions = scheduled_actions
-        # 目标资源个数
         self.target = target
-        # 指标追踪伸缩策略配置
         self.target_tracking_policies = target_tracking_policies
 
     def validate(self):
@@ -12489,9 +12250,7 @@ class RegisterEventSourceRequest(TeaModel):
         source_arn: str = None,
         qualifier: str = None,
     ):
-        # 事件源资源标识符
         self.source_arn = source_arn
-        # 别名或版本
         self.qualifier = qualifier
 
     def validate(self):
@@ -12524,9 +12283,7 @@ class RegisterEventSourceResponseBody(TeaModel):
         created_time: str = None,
         source_arn: str = None,
     ):
-        # 创建时间
         self.created_time = created_time
-        # 事件源资源标识符
         self.source_arn = source_arn
 
     def validate(self):
@@ -12867,11 +12624,8 @@ class UntagResourceRequest(TeaModel):
         resource_arn: str = None,
         tag_keys: List[str] = None,
     ):
-        # 删除所有 tag，默认值为 false
         self.all = all
-        # 目前只能给 top level 资源 service 进行标签的相关操作, ARN 可以是类似 services/foo 或者 acs:fc:cn-shanghai:123456789:services/foo
         self.resource_arn = resource_arn
-        # tag key 值列表， 最大为 20，当 all=false， length 至少为 1. 当 length 大于 1 时， 可以忽略 all 值
         self.tag_keys = tag_keys
 
     def validate(self):
@@ -12992,17 +12746,19 @@ class UpdateAliasRequest(TeaModel):
         self,
         additional_version_weight: Dict[str, float] = None,
         description: str = None,
+        resolve_policy: str = None,
+        route_policy: RoutePolicy = None,
         version_id: str = None,
     ):
-        # 额外版本权重
         self.additional_version_weight = additional_version_weight
-        # 别名描述
         self.description = description
-        # 版本ID
+        self.resolve_policy = resolve_policy
+        self.route_policy = route_policy
         self.version_id = version_id
 
     def validate(self):
-        pass
+        if self.route_policy:
+            self.route_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -13014,6 +12770,10 @@ class UpdateAliasRequest(TeaModel):
             result['additionalVersionWeight'] = self.additional_version_weight
         if self.description is not None:
             result['description'] = self.description
+        if self.resolve_policy is not None:
+            result['resolvePolicy'] = self.resolve_policy
+        if self.route_policy is not None:
+            result['routePolicy'] = self.route_policy.to_map()
         if self.version_id is not None:
             result['versionId'] = self.version_id
         return result
@@ -13024,6 +12784,11 @@ class UpdateAliasRequest(TeaModel):
             self.additional_version_weight = m.get('additionalVersionWeight')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('resolvePolicy') is not None:
+            self.resolve_policy = m.get('resolvePolicy')
+        if m.get('routePolicy') is not None:
+            temp_model = RoutePolicy()
+            self.route_policy = temp_model.from_map(m['routePolicy'])
         if m.get('versionId') is not None:
             self.version_id = m.get('versionId')
         return self
@@ -13039,17 +12804,11 @@ class UpdateAliasResponseBody(TeaModel):
         last_modified_time: str = None,
         version_id: str = None,
     ):
-        # 额外版本权重
         self.additional_version_weight = additional_version_weight
-        # 别名名称
         self.alias_name = alias_name
-        # 创建时间
         self.created_time = created_time
-        # 别名描述
         self.description = description
-        # 上次更新时间
         self.last_modified_time = last_modified_time
-        # 版本ID
         self.version_id = version_id
 
     def validate(self):
@@ -13372,7 +13131,6 @@ class UpdateFunctionHeaders(TeaModel):
         x_fc_trace_id: str = None,
     ):
         self.common_headers = common_headers
-        # 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
         self.if_match = if_match
         self.x_fc_account_id = x_fc_account_id
         self.x_fc_code_checksum = x_fc_code_checksum
@@ -13442,33 +13200,22 @@ class UpdateFunctionRequest(TeaModel):
         timeout: int = None,
     ):
         self.instance_concurrency = instance_concurrency
-        # 自定义、自定义容器运行时 HTTP Server 的监听端口
         self.ca_port = ca_port
         self.code = code
         self.custom_container_config = custom_container_config
-        # 函数自定义DNS配置
         self.custom_dns = custom_dns
-        # Custom Runtime函数详细配置
         self.custom_runtime_config = custom_runtime_config
-        # 函数描述
         self.description = description
-        # 为函数设置的环境变量，可以在函数中获取环境变量的值
         self.environment_variables = environment_variables
-        # function执行的入口，具体格式和语言相关
         self.handler = handler
-        # 初始化function运行的超时时间，单位为秒，最小1秒，默认3秒。初始化function超过这个时间后会被终止执行
         self.initialization_timeout = initialization_timeout
-        # 初始化 function 执行的入口，具体格式和语言相关
         self.initializer = initializer
         self.instance_lifecycle_config = instance_lifecycle_config
         self.instance_soft_concurrency = instance_soft_concurrency
         self.instance_type = instance_type
         self.layers = layers
-        # function的内存规格，单位为MB，为64MB的倍数
         self.memory_size = memory_size
-        # runtime
         self.runtime = runtime
-        # function运行的超时时间，单位为秒，最小1秒，默认3秒。function超过这个时间后会被终止执行
         self.timeout = timeout
 
     def validate(self):
@@ -13599,44 +13346,27 @@ class UpdateFunctionResponseBody(TeaModel):
         runtime: str = None,
         timeout: int = None,
     ):
-        # 自定义、自定义容器运行时 HTTP Server 的监听端口
         self.ca_port = ca_port
-        # function code包的CRC64值
         self.code_checksum = code_checksum
-        # 系统返回的function的code包大小，单位为byte Example : 1024
         self.code_size = code_size
-        # function创建时间
         self.created_time = created_time
         self.custom_container_config = custom_container_config
-        # 函数自定义DNS配置
         self.custom_dns = custom_dns
-        # Custom Runtime函数详细配置
         self.custom_runtime_config = custom_runtime_config
-        # 函数描述
         self.description = description
-        # 为函数设置的环境变量，可以在函数中获取环境变量的值
         self.environment_variables = environment_variables
-        # 系统为每个function生成的唯一ID
         self.function_id = function_id
-        # 函数名称
         self.function_name = function_name
-        # function的执行入口
         self.handler = handler
-        # 初始化function运行的超时时间，单位为秒，最小1秒，默认3秒。初始化function超过这个时间后会被终止执行
         self.initialization_timeout = initialization_timeout
-        # 初始化 function 执行的入口，具体格式和语言相关
         self.initializer = initializer
         self.instance_lifecycle_config = instance_lifecycle_config
         self.instance_soft_concurrency = instance_soft_concurrency
         self.instance_type = instance_type
-        # function上次修改时间
         self.last_modified_time = last_modified_time
         self.layers = layers
-        # function设置的内存大小，单位为MB
         self.memory_size = memory_size
-        # function运行的语言环境，目前支持nodejs6, nodejs8, python2.7, python3, java8
         self.runtime = runtime
-        # 运行的超时时间，单位为秒
         self.timeout = timeout
 
     def validate(self):
@@ -13808,7 +13538,6 @@ class UpdateServiceHeaders(TeaModel):
         x_fc_trace_id: str = None,
     ):
         self.common_headers = common_headers
-        # 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
         self.if_match = if_match
         self.x_fc_account_id = x_fc_account_id
         self.x_fc_date = x_fc_date
@@ -13861,13 +13590,10 @@ class UpdateServiceRequest(TeaModel):
         tracing_config: TracingConfig = None,
         vpc_config: VPCConfig = None,
     ):
-        # 服务描述
         self.description = description
-        # 公网访问设置
         self.internet_access = internet_access
         self.log_config = log_config
         self.nas_config = nas_config
-        # 服务角色
         self.role = role
         self.tracing_config = tracing_config
         self.vpc_config = vpc_config
@@ -13940,27 +13666,18 @@ class UpdateServiceResponseBody(TeaModel):
         service_id: str = None,
         service_name: str = None,
         tracing_config: TracingConfig = None,
-        vendor_config: VendorConfig = None,
         vpc_config: VPCConfig = None,
     ):
-        # 创建时间
         self.created_time = created_time
-        # 服务描述
         self.description = description
-        # 公网访问设置
         self.internet_access = internet_access
-        # 上次更新时间
         self.last_modified_time = last_modified_time
         self.log_config = log_config
         self.nas_config = nas_config
-        # 服务角色
         self.role = role
-        # 服务ID
         self.service_id = service_id
-        # 服务名称
         self.service_name = service_name
         self.tracing_config = tracing_config
-        self.vendor_config = vendor_config
         self.vpc_config = vpc_config
 
     def validate(self):
@@ -13970,8 +13687,6 @@ class UpdateServiceResponseBody(TeaModel):
             self.nas_config.validate()
         if self.tracing_config:
             self.tracing_config.validate()
-        if self.vendor_config:
-            self.vendor_config.validate()
         if self.vpc_config:
             self.vpc_config.validate()
 
@@ -14001,8 +13716,6 @@ class UpdateServiceResponseBody(TeaModel):
             result['serviceName'] = self.service_name
         if self.tracing_config is not None:
             result['tracingConfig'] = self.tracing_config.to_map()
-        if self.vendor_config is not None:
-            result['vendorConfig'] = self.vendor_config.to_map()
         if self.vpc_config is not None:
             result['vpcConfig'] = self.vpc_config.to_map()
         return result
@@ -14032,9 +13745,6 @@ class UpdateServiceResponseBody(TeaModel):
         if m.get('tracingConfig') is not None:
             temp_model = TracingConfig()
             self.tracing_config = temp_model.from_map(m['tracingConfig'])
-        if m.get('vendorConfig') is not None:
-            temp_model = VendorConfig()
-            self.vendor_config = temp_model.from_map(m['vendorConfig'])
         if m.get('vpcConfig') is not None:
             temp_model = VPCConfig()
             self.vpc_config = temp_model.from_map(m['vpcConfig'])
@@ -14095,7 +13805,6 @@ class UpdateTriggerHeaders(TeaModel):
         x_fc_trace_id: str = None,
     ):
         self.common_headers = common_headers
-        # 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
         self.if_match = if_match
         self.x_fc_account_id = x_fc_account_id
         self.x_fc_date = x_fc_date
@@ -14146,11 +13855,8 @@ class UpdateTriggerRequest(TeaModel):
         trigger_config: str = None,
     ):
         self.description = description
-        # event source，如OSS，使用该role去invoke function
         self.invocation_role = invocation_role
-        # service版本
         self.qualifier = qualifier
-        # trigger配置，针对不同的trigger类型，trigger配置会有所不同
         self.trigger_config = trigger_config
 
     def validate(self):
@@ -14202,29 +13908,18 @@ class UpdateTriggerResponseBody(TeaModel):
         url_internet: str = None,
         url_intranet: str = None,
     ):
-        # 创建时间
         self.created_time = created_time
         self.description = description
-        # 域名名称，使用域名名称拼接上函数计算域名，可以采用HTTP协议调用到触发器对应版本的函数。例如{domainName}.cn-shanghai.fc.aliyuncs.com
         self.domain_name = domain_name
-        # 调用函数使用的RAM角色的ARN
         self.invocation_role = invocation_role
-        # 上次修改时间
         self.last_modified_time = last_modified_time
-        # service版本
         self.qualifier = qualifier
-        # event source的Aliyun Resource Name（ARN
         self.source_arn = source_arn
-        # trigger配置对象
         self.trigger_config = trigger_config
         self.trigger_id = trigger_id
-        # trigger名称
         self.trigger_name = trigger_name
-        # trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
         self.trigger_type = trigger_type
-        # 公网域名地址。在互联网可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
         self.url_internet = url_internet
-        # 私网域名地址。在VPC可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
         self.url_intranet = url_intranet
 
     def validate(self):

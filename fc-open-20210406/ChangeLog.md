@@ -1,3 +1,8 @@
+2022-08-11 Version: 1.1.9
+- Add PutLayerACL API.
+- Update ListLayers.
+- Add arnV2 in Layer struct.
+
 2022-07-21 Version: 1.1.8
 - Add instanceSoftConcurrency field for function meta.
 
