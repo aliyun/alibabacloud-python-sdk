@@ -1,23 +1,27 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
-from Tea.core import TeaCore
 from typing import Dict
+from Tea.core import TeaCore
 
-from alibabacloud_tea_rpc.client import Client as RPCClient
-from alibabacloud_tea_rpc import models as rpc_models
+from alibabacloud_tea_openapi.client import Client as OpenApiClient
+from alibabacloud_tea_openapi import models as open_api_models
+from alibabacloud_tea_util.client import Client as UtilClient
+from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_ft20180713 import models as ft_20180713_models
 from alibabacloud_tea_util import models as util_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_rpc_util.client import Client as RPCUtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
-class Client(RPCClient):
+class Client(OpenApiClient):
+    """
+    *\
+    """
     def __init__(
         self, 
-        config: rpc_models.Config,
+        config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-2-pop': 'ft.aliyuncs.com',
@@ -73,147 +77,21 @@ class Client(RPCClient):
         self.check_config(config)
         self._endpoint = self.get_endpoint('ft', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
-    def ft_dynamic_address_http_vpc_with_options(
+    def get_endpoint(
         self,
-        tmp: ft_20180713_models.FtDynamicAddressHttpVpcRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ft_20180713_models.FtDynamicAddressHttpVpcResponse:
-        UtilClient.validate_model(tmp)
-        request = ft_20180713_models.FtDynamicAddressHttpVpcShrinkRequest()
-        RPCUtilClient.convert(tmp, request)
-        if not UtilClient.is_unset(tmp.string_value):
-            request.string_value_shrink = UtilClient.to_jsonstring(tmp.string_value)
-        if not UtilClient.is_unset(tmp.default_value):
-            request.default_value_shrink = UtilClient.to_jsonstring(tmp.default_value)
-        if not UtilClient.is_unset(tmp.other_param):
-            request.other_param_shrink = UtilClient.to_jsonstring(tmp.other_param)
-        return ft_20180713_models.FtDynamicAddressHttpVpcResponse().from_map(
-            self.do_request('FtDynamicAddressHttpVpc', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
-        )
-
-    async def ft_dynamic_address_http_vpc_with_options_async(
-        self,
-        tmp: ft_20180713_models.FtDynamicAddressHttpVpcRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ft_20180713_models.FtDynamicAddressHttpVpcResponse:
-        UtilClient.validate_model(tmp)
-        request = ft_20180713_models.FtDynamicAddressHttpVpcShrinkRequest()
-        RPCUtilClient.convert(tmp, request)
-        if not UtilClient.is_unset(tmp.string_value):
-            request.string_value_shrink = UtilClient.to_jsonstring(tmp.string_value)
-        if not UtilClient.is_unset(tmp.default_value):
-            request.default_value_shrink = UtilClient.to_jsonstring(tmp.default_value)
-        if not UtilClient.is_unset(tmp.other_param):
-            request.other_param_shrink = UtilClient.to_jsonstring(tmp.other_param)
-        return ft_20180713_models.FtDynamicAddressHttpVpcResponse().from_map(
-            await self.do_request_async('FtDynamicAddressHttpVpc', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
-        )
-
-    def ft_dynamic_address_http_vpc(
-        self,
-        request: ft_20180713_models.FtDynamicAddressHttpVpcRequest,
-    ) -> ft_20180713_models.FtDynamicAddressHttpVpcResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.ft_dynamic_address_http_vpc_with_options(request, runtime)
-
-    async def ft_dynamic_address_http_vpc_async(
-        self,
-        request: ft_20180713_models.FtDynamicAddressHttpVpcRequest,
-    ) -> ft_20180713_models.FtDynamicAddressHttpVpcResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.ft_dynamic_address_http_vpc_with_options_async(request, runtime)
-
-    def test_flow_strategy_01with_options(
-        self,
-        tmp: ft_20180713_models.TestFlowStrategy01Request,
-        runtime: util_models.RuntimeOptions,
-    ) -> ft_20180713_models.TestFlowStrategy01Response:
-        UtilClient.validate_model(tmp)
-        request = ft_20180713_models.TestFlowStrategy01ShrinkRequest()
-        RPCUtilClient.convert(tmp, request)
-        if not UtilClient.is_unset(tmp.names):
-            request.names_shrink = UtilClient.to_jsonstring(tmp.names)
-        return ft_20180713_models.TestFlowStrategy01Response().from_map(
-            self.do_request('TestFlowStrategy01', 'HTTPS', 'PUT', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
-        )
-
-    async def test_flow_strategy_01with_options_async(
-        self,
-        tmp: ft_20180713_models.TestFlowStrategy01Request,
-        runtime: util_models.RuntimeOptions,
-    ) -> ft_20180713_models.TestFlowStrategy01Response:
-        UtilClient.validate_model(tmp)
-        request = ft_20180713_models.TestFlowStrategy01ShrinkRequest()
-        RPCUtilClient.convert(tmp, request)
-        if not UtilClient.is_unset(tmp.names):
-            request.names_shrink = UtilClient.to_jsonstring(tmp.names)
-        return ft_20180713_models.TestFlowStrategy01Response().from_map(
-            await self.do_request_async('TestFlowStrategy01', 'HTTPS', 'PUT', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
-        )
-
-    def test_flow_strategy_01(
-        self,
-        request: ft_20180713_models.TestFlowStrategy01Request,
-    ) -> ft_20180713_models.TestFlowStrategy01Response:
-        runtime = util_models.RuntimeOptions()
-        return self.test_flow_strategy_01with_options(request, runtime)
-
-    async def test_flow_strategy_01_async(
-        self,
-        request: ft_20180713_models.TestFlowStrategy01Request,
-    ) -> ft_20180713_models.TestFlowStrategy01Response:
-        runtime = util_models.RuntimeOptions()
-        return await self.test_flow_strategy_01with_options_async(request, runtime)
-
-    def test_http_api_with_options(
-        self,
-        tmp: ft_20180713_models.TestHttpApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ft_20180713_models.TestHttpApiResponse:
-        UtilClient.validate_model(tmp)
-        request = ft_20180713_models.TestHttpApiShrinkRequest()
-        RPCUtilClient.convert(tmp, request)
-        if not UtilClient.is_unset(tmp.string_value):
-            request.string_value_shrink = UtilClient.to_jsonstring(tmp.string_value)
-        if not UtilClient.is_unset(tmp.default_value):
-            request.default_value_shrink = UtilClient.to_jsonstring(tmp.default_value)
-        if not UtilClient.is_unset(tmp.other_param):
-            request.other_param_shrink = UtilClient.to_jsonstring(tmp.other_param)
-        return ft_20180713_models.TestHttpApiResponse().from_map(
-            self.do_request('TestHttpApi', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
-        )
-
-    async def test_http_api_with_options_async(
-        self,
-        tmp: ft_20180713_models.TestHttpApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ft_20180713_models.TestHttpApiResponse:
-        UtilClient.validate_model(tmp)
-        request = ft_20180713_models.TestHttpApiShrinkRequest()
-        RPCUtilClient.convert(tmp, request)
-        if not UtilClient.is_unset(tmp.string_value):
-            request.string_value_shrink = UtilClient.to_jsonstring(tmp.string_value)
-        if not UtilClient.is_unset(tmp.default_value):
-            request.default_value_shrink = UtilClient.to_jsonstring(tmp.default_value)
-        if not UtilClient.is_unset(tmp.other_param):
-            request.other_param_shrink = UtilClient.to_jsonstring(tmp.other_param)
-        return ft_20180713_models.TestHttpApiResponse().from_map(
-            await self.do_request_async('TestHttpApi', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
-        )
-
-    def test_http_api(
-        self,
-        request: ft_20180713_models.TestHttpApiRequest,
-    ) -> ft_20180713_models.TestHttpApiResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.test_http_api_with_options(request, runtime)
-
-    async def test_http_api_async(
-        self,
-        request: ft_20180713_models.TestHttpApiRequest,
-    ) -> ft_20180713_models.TestHttpApiResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.test_http_api_with_options_async(request, runtime)
+        product_id: str,
+        region_id: str,
+        endpoint_rule: str,
+        network: str,
+        suffix: str,
+        endpoint_map: Dict[str, str],
+        endpoint: str,
+    ) -> str:
+        if not UtilClient.empty(endpoint):
+            return endpoint
+        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+            return endpoint_map.get(region_id)
+        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
     def batch_audit_test_01with_options(
         self,
@@ -221,8 +99,34 @@ class Client(RPCClient):
         runtime: util_models.RuntimeOptions,
     ) -> ft_20180713_models.BatchAuditTest01Response:
         UtilClient.validate_model(request)
-        return ft_20180713_models.BatchAuditTest01Response().from_map(
-            self.do_request('BatchAuditTest01', 'HTTPS', 'POST', '2018-07-13', 'Anonymous', None, TeaCore.to_map(request), runtime)
+        query = {}
+        if not UtilClient.is_unset(request.batch_audit_test_01):
+            query['BatchAuditTest01'] = request.batch_audit_test_01
+        if not UtilClient.is_unset(request.demo_01):
+            query['Demo01'] = request.demo_01
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        body = {}
+        if not UtilClient.is_unset(request.test_010101):
+            body['Test010101'] = request.test_010101
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchAuditTest01',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.BatchAuditTest01Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def batch_audit_test_01with_options_async(
@@ -231,8 +135,34 @@ class Client(RPCClient):
         runtime: util_models.RuntimeOptions,
     ) -> ft_20180713_models.BatchAuditTest01Response:
         UtilClient.validate_model(request)
-        return ft_20180713_models.BatchAuditTest01Response().from_map(
-            await self.do_request_async('BatchAuditTest01', 'HTTPS', 'POST', '2018-07-13', 'Anonymous', None, TeaCore.to_map(request), runtime)
+        query = {}
+        if not UtilClient.is_unset(request.batch_audit_test_01):
+            query['BatchAuditTest01'] = request.batch_audit_test_01
+        if not UtilClient.is_unset(request.demo_01):
+            query['Demo01'] = request.demo_01
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        body = {}
+        if not UtilClient.is_unset(request.test_010101):
+            body['Test010101'] = request.test_010101
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchAuditTest01',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.BatchAuditTest01Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_audit_test_01(
@@ -249,39 +179,75 @@ class Client(RPCClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_audit_test_01with_options_async(request, runtime)
 
-    def ft_ip_flow_control_with_options(
+    def f_tapi_alias_api_with_options(
         self,
-        request: ft_20180713_models.FtIpFlowControlRequest,
+        request: ft_20180713_models.FTApiAliasApiRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ft_20180713_models.FtIpFlowControlResponse:
+    ) -> ft_20180713_models.FTApiAliasApiResponse:
         UtilClient.validate_model(request)
-        return ft_20180713_models.FtIpFlowControlResponse().from_map(
-            self.do_request('FtIpFlowControl', 'HTTPS', 'POST', '2018-07-13', 'Anonymous', None, TeaCore.to_map(request), runtime)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FTApiAliasApi',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FTApiAliasApiResponse(),
+            self.call_api(params, req, runtime)
         )
 
-    async def ft_ip_flow_control_with_options_async(
+    async def f_tapi_alias_api_with_options_async(
         self,
-        request: ft_20180713_models.FtIpFlowControlRequest,
+        request: ft_20180713_models.FTApiAliasApiRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ft_20180713_models.FtIpFlowControlResponse:
+    ) -> ft_20180713_models.FTApiAliasApiResponse:
         UtilClient.validate_model(request)
-        return ft_20180713_models.FtIpFlowControlResponse().from_map(
-            await self.do_request_async('FtIpFlowControl', 'HTTPS', 'POST', '2018-07-13', 'Anonymous', None, TeaCore.to_map(request), runtime)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FTApiAliasApi',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FTApiAliasApiResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def ft_ip_flow_control(
+    def f_tapi_alias_api(
         self,
-        request: ft_20180713_models.FtIpFlowControlRequest,
-    ) -> ft_20180713_models.FtIpFlowControlResponse:
+        request: ft_20180713_models.FTApiAliasApiRequest,
+    ) -> ft_20180713_models.FTApiAliasApiResponse:
         runtime = util_models.RuntimeOptions()
-        return self.ft_ip_flow_control_with_options(request, runtime)
+        return self.f_tapi_alias_api_with_options(request, runtime)
 
-    async def ft_ip_flow_control_async(
+    async def f_tapi_alias_api_async(
         self,
-        request: ft_20180713_models.FtIpFlowControlRequest,
-    ) -> ft_20180713_models.FtIpFlowControlResponse:
+        request: ft_20180713_models.FTApiAliasApiRequest,
+    ) -> ft_20180713_models.FTApiAliasApiResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.ft_ip_flow_control_with_options_async(request, runtime)
+        return await self.f_tapi_alias_api_with_options_async(request, runtime)
 
     def ft_dynamic_address_dubbo_with_options(
         self,
@@ -289,8 +255,28 @@ class Client(RPCClient):
         runtime: util_models.RuntimeOptions,
     ) -> ft_20180713_models.FtDynamicAddressDubboResponse:
         UtilClient.validate_model(request)
-        return ft_20180713_models.FtDynamicAddressDubboResponse().from_map(
-            self.do_request('FtDynamicAddressDubbo', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
+        query = {}
+        if not UtilClient.is_unset(request.int_value):
+            query['IntValue'] = request.int_value
+        if not UtilClient.is_unset(request.string_value):
+            query['StringValue'] = request.string_value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FtDynamicAddressDubbo',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtDynamicAddressDubboResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def ft_dynamic_address_dubbo_with_options_async(
@@ -299,8 +285,28 @@ class Client(RPCClient):
         runtime: util_models.RuntimeOptions,
     ) -> ft_20180713_models.FtDynamicAddressDubboResponse:
         UtilClient.validate_model(request)
-        return ft_20180713_models.FtDynamicAddressDubboResponse().from_map(
-            await self.do_request_async('FtDynamicAddressDubbo', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
+        query = {}
+        if not UtilClient.is_unset(request.int_value):
+            query['IntValue'] = request.int_value
+        if not UtilClient.is_unset(request.string_value):
+            query['StringValue'] = request.string_value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FtDynamicAddressDubbo',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtDynamicAddressDubboResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def ft_dynamic_address_dubbo(
@@ -319,105 +325,155 @@ class Client(RPCClient):
 
     def ft_dynamic_address_hsf_with_options(
         self,
-        request: ft_20180713_models.FtDynamicAddressHsfRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ft_20180713_models.FtDynamicAddressHsfResponse:
-        UtilClient.validate_model(request)
-        return ft_20180713_models.FtDynamicAddressHsfResponse().from_map(
-            self.do_request('FtDynamicAddressHsf', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='FtDynamicAddressHsf',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtDynamicAddressHsfResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def ft_dynamic_address_hsf_with_options_async(
         self,
-        request: ft_20180713_models.FtDynamicAddressHsfRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ft_20180713_models.FtDynamicAddressHsfResponse:
-        UtilClient.validate_model(request)
-        return ft_20180713_models.FtDynamicAddressHsfResponse().from_map(
-            await self.do_request_async('FtDynamicAddressHsf', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='FtDynamicAddressHsf',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtDynamicAddressHsfResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def ft_dynamic_address_hsf(
-        self,
-        request: ft_20180713_models.FtDynamicAddressHsfRequest,
-    ) -> ft_20180713_models.FtDynamicAddressHsfResponse:
+    def ft_dynamic_address_hsf(self) -> ft_20180713_models.FtDynamicAddressHsfResponse:
         runtime = util_models.RuntimeOptions()
-        return self.ft_dynamic_address_hsf_with_options(request, runtime)
+        return self.ft_dynamic_address_hsf_with_options(runtime)
 
-    async def ft_dynamic_address_hsf_async(
-        self,
-        request: ft_20180713_models.FtDynamicAddressHsfRequest,
-    ) -> ft_20180713_models.FtDynamicAddressHsfResponse:
+    async def ft_dynamic_address_hsf_async(self) -> ft_20180713_models.FtDynamicAddressHsfResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.ft_dynamic_address_hsf_with_options_async(request, runtime)
+        return await self.ft_dynamic_address_hsf_with_options_async(runtime)
 
-    def ft_flow_special_with_options(
+    def ft_dynamic_address_http_vpc_with_options(
         self,
-        request: ft_20180713_models.FtFlowSpecialRequest,
+        tmp_req: ft_20180713_models.FtDynamicAddressHttpVpcRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ft_20180713_models.FtFlowSpecialResponse:
-        UtilClient.validate_model(request)
-        return ft_20180713_models.FtFlowSpecialResponse().from_map(
-            self.do_request('FtFlowSpecial', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
+    ) -> ft_20180713_models.FtDynamicAddressHttpVpcResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ft_20180713_models.FtDynamicAddressHttpVpcShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.default_value):
+            request.default_value_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.default_value, 'DefaultValue', 'json')
+        if not UtilClient.is_unset(tmp_req.other_param):
+            request.other_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.other_param, 'OtherParam', 'json')
+        if not UtilClient.is_unset(tmp_req.string_value):
+            request.string_value_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.string_value, 'StringValue', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.boolean_param):
+            query['BooleanParam'] = request.boolean_param
+        if not UtilClient.is_unset(request.default_value_shrink):
+            query['DefaultValue'] = request.default_value_shrink
+        if not UtilClient.is_unset(request.other_param_shrink):
+            query['OtherParam'] = request.other_param_shrink
+        if not UtilClient.is_unset(request.p_1):
+            query['P1'] = request.p_1
+        if not UtilClient.is_unset(request.string_value_shrink):
+            query['StringValue'] = request.string_value_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FtDynamicAddressHttpVpc',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtDynamicAddressHttpVpcResponse(),
+            self.call_api(params, req, runtime)
         )
 
-    async def ft_flow_special_with_options_async(
+    async def ft_dynamic_address_http_vpc_with_options_async(
         self,
-        request: ft_20180713_models.FtFlowSpecialRequest,
+        tmp_req: ft_20180713_models.FtDynamicAddressHttpVpcRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ft_20180713_models.FtFlowSpecialResponse:
-        UtilClient.validate_model(request)
-        return ft_20180713_models.FtFlowSpecialResponse().from_map(
-            await self.do_request_async('FtFlowSpecial', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
+    ) -> ft_20180713_models.FtDynamicAddressHttpVpcResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ft_20180713_models.FtDynamicAddressHttpVpcShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.default_value):
+            request.default_value_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.default_value, 'DefaultValue', 'json')
+        if not UtilClient.is_unset(tmp_req.other_param):
+            request.other_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.other_param, 'OtherParam', 'json')
+        if not UtilClient.is_unset(tmp_req.string_value):
+            request.string_value_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.string_value, 'StringValue', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.boolean_param):
+            query['BooleanParam'] = request.boolean_param
+        if not UtilClient.is_unset(request.default_value_shrink):
+            query['DefaultValue'] = request.default_value_shrink
+        if not UtilClient.is_unset(request.other_param_shrink):
+            query['OtherParam'] = request.other_param_shrink
+        if not UtilClient.is_unset(request.p_1):
+            query['P1'] = request.p_1
+        if not UtilClient.is_unset(request.string_value_shrink):
+            query['StringValue'] = request.string_value_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FtDynamicAddressHttpVpc',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtDynamicAddressHttpVpcResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def ft_flow_special(
+    def ft_dynamic_address_http_vpc(
         self,
-        request: ft_20180713_models.FtFlowSpecialRequest,
-    ) -> ft_20180713_models.FtFlowSpecialResponse:
+        request: ft_20180713_models.FtDynamicAddressHttpVpcRequest,
+    ) -> ft_20180713_models.FtDynamicAddressHttpVpcResponse:
         runtime = util_models.RuntimeOptions()
-        return self.ft_flow_special_with_options(request, runtime)
+        return self.ft_dynamic_address_http_vpc_with_options(request, runtime)
 
-    async def ft_flow_special_async(
+    async def ft_dynamic_address_http_vpc_async(
         self,
-        request: ft_20180713_models.FtFlowSpecialRequest,
-    ) -> ft_20180713_models.FtFlowSpecialResponse:
+        request: ft_20180713_models.FtDynamicAddressHttpVpcRequest,
+    ) -> ft_20180713_models.FtDynamicAddressHttpVpcResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.ft_flow_special_with_options_async(request, runtime)
-
-    def ftapi_alias_api_with_options(
-        self,
-        request: ft_20180713_models.FTApiAliasApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ft_20180713_models.FTApiAliasApiResponse:
-        UtilClient.validate_model(request)
-        return ft_20180713_models.FTApiAliasApiResponse().from_map(
-            self.do_request('FTApiAliasApi', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
-        )
-
-    async def ftapi_alias_api_with_options_async(
-        self,
-        request: ft_20180713_models.FTApiAliasApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ft_20180713_models.FTApiAliasApiResponse:
-        UtilClient.validate_model(request)
-        return ft_20180713_models.FTApiAliasApiResponse().from_map(
-            await self.do_request_async('FTApiAliasApi', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
-        )
-
-    def ftapi_alias_api(
-        self,
-        request: ft_20180713_models.FTApiAliasApiRequest,
-    ) -> ft_20180713_models.FTApiAliasApiResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.ftapi_alias_api_with_options(request, runtime)
-
-    async def ftapi_alias_api_async(
-        self,
-        request: ft_20180713_models.FTApiAliasApiRequest,
-    ) -> ft_20180713_models.FTApiAliasApiResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.ftapi_alias_api_with_options_async(request, runtime)
+        return await self.ft_dynamic_address_http_vpc_with_options_async(request, runtime)
 
     def ft_eagle_eye_with_options(
         self,
@@ -425,8 +481,26 @@ class Client(RPCClient):
         runtime: util_models.RuntimeOptions,
     ) -> ft_20180713_models.FtEagleEyeResponse:
         UtilClient.validate_model(request)
-        return ft_20180713_models.FtEagleEyeResponse().from_map(
-            self.do_request('FtEagleEye', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FtEagleEye',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtEagleEyeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def ft_eagle_eye_with_options_async(
@@ -435,8 +509,26 @@ class Client(RPCClient):
         runtime: util_models.RuntimeOptions,
     ) -> ft_20180713_models.FtEagleEyeResponse:
         UtilClient.validate_model(request)
-        return ft_20180713_models.FtEagleEyeResponse().from_map(
-            await self.do_request_async('FtEagleEye', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FtEagleEye',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtEagleEyeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def ft_eagle_eye(
@@ -453,39 +545,75 @@ class Client(RPCClient):
         runtime = util_models.RuntimeOptions()
         return await self.ft_eagle_eye_with_options_async(request, runtime)
 
-    def ft_param_list_with_options(
+    def ft_flow_special_with_options(
         self,
-        request: ft_20180713_models.FtParamListRequest,
+        request: ft_20180713_models.FtFlowSpecialRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ft_20180713_models.FtParamListResponse:
+    ) -> ft_20180713_models.FtFlowSpecialResponse:
         UtilClient.validate_model(request)
-        return ft_20180713_models.FtParamListResponse().from_map(
-            self.do_request('FtParamList', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FtFlowSpecial',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtFlowSpecialResponse(),
+            self.call_api(params, req, runtime)
         )
 
-    async def ft_param_list_with_options_async(
+    async def ft_flow_special_with_options_async(
         self,
-        request: ft_20180713_models.FtParamListRequest,
+        request: ft_20180713_models.FtFlowSpecialRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ft_20180713_models.FtParamListResponse:
+    ) -> ft_20180713_models.FtFlowSpecialResponse:
         UtilClient.validate_model(request)
-        return ft_20180713_models.FtParamListResponse().from_map(
-            await self.do_request_async('FtParamList', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FtFlowSpecial',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtFlowSpecialResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def ft_param_list(
+    def ft_flow_special(
         self,
-        request: ft_20180713_models.FtParamListRequest,
-    ) -> ft_20180713_models.FtParamListResponse:
+        request: ft_20180713_models.FtFlowSpecialRequest,
+    ) -> ft_20180713_models.FtFlowSpecialResponse:
         runtime = util_models.RuntimeOptions()
-        return self.ft_param_list_with_options(request, runtime)
+        return self.ft_flow_special_with_options(request, runtime)
 
-    async def ft_param_list_async(
+    async def ft_flow_special_async(
         self,
-        request: ft_20180713_models.FtParamListRequest,
-    ) -> ft_20180713_models.FtParamListResponse:
+        request: ft_20180713_models.FtFlowSpecialRequest,
+    ) -> ft_20180713_models.FtFlowSpecialResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.ft_param_list_with_options_async(request, runtime)
+        return await self.ft_flow_special_with_options_async(request, runtime)
 
     def ft_gated_launch_policy_4with_options(
         self,
@@ -493,8 +621,26 @@ class Client(RPCClient):
         runtime: util_models.RuntimeOptions,
     ) -> ft_20180713_models.FtGatedLaunchPolicy4Response:
         UtilClient.validate_model(request)
-        return ft_20180713_models.FtGatedLaunchPolicy4Response().from_map(
-            self.do_request('FtGatedLaunchPolicy4', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
+        query = {}
+        if not UtilClient.is_unset(request.is_gated_launch):
+            query['IsGatedLaunch'] = request.is_gated_launch
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FtGatedLaunchPolicy4',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtGatedLaunchPolicy4Response(),
+            self.call_api(params, req, runtime)
         )
 
     async def ft_gated_launch_policy_4with_options_async(
@@ -503,8 +649,26 @@ class Client(RPCClient):
         runtime: util_models.RuntimeOptions,
     ) -> ft_20180713_models.FtGatedLaunchPolicy4Response:
         UtilClient.validate_model(request)
-        return ft_20180713_models.FtGatedLaunchPolicy4Response().from_map(
-            await self.do_request_async('FtGatedLaunchPolicy4', 'HTTPS', 'POST', '2018-07-13', 'AK', None, TeaCore.to_map(request), runtime)
+        query = {}
+        if not UtilClient.is_unset(request.is_gated_launch):
+            query['IsGatedLaunch'] = request.is_gated_launch
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FtGatedLaunchPolicy4',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtGatedLaunchPolicy4Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def ft_gated_launch_policy_4(
@@ -521,18 +685,322 @@ class Client(RPCClient):
         runtime = util_models.RuntimeOptions()
         return await self.ft_gated_launch_policy_4with_options_async(request, runtime)
 
-    def get_endpoint(
+    def ft_ip_flow_control_with_options(
         self,
-        product_id: str,
-        region_id: str,
-        endpoint_rule: str,
-        network: str,
-        suffix: str,
-        endpoint_map: Dict[str, str],
-        endpoint: str,
-    ) -> str:
-        if not UtilClient.empty(endpoint):
-            return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
-            return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        request: ft_20180713_models.FtIpFlowControlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ft_20180713_models.FtIpFlowControlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FtIpFlowControl',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtIpFlowControlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ft_ip_flow_control_with_options_async(
+        self,
+        request: ft_20180713_models.FtIpFlowControlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ft_20180713_models.FtIpFlowControlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FtIpFlowControl',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtIpFlowControlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ft_ip_flow_control(
+        self,
+        request: ft_20180713_models.FtIpFlowControlRequest,
+    ) -> ft_20180713_models.FtIpFlowControlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.ft_ip_flow_control_with_options(request, runtime)
+
+    async def ft_ip_flow_control_async(
+        self,
+        request: ft_20180713_models.FtIpFlowControlRequest,
+    ) -> ft_20180713_models.FtIpFlowControlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.ft_ip_flow_control_with_options_async(request, runtime)
+
+    def ft_param_list_with_options(
+        self,
+        request: ft_20180713_models.FtParamListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ft_20180713_models.FtParamListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk):
+            query['Disk'] = request.disk
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FtParamList',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtParamListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ft_param_list_with_options_async(
+        self,
+        request: ft_20180713_models.FtParamListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ft_20180713_models.FtParamListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk):
+            query['Disk'] = request.disk
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FtParamList',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.FtParamListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ft_param_list(
+        self,
+        request: ft_20180713_models.FtParamListRequest,
+    ) -> ft_20180713_models.FtParamListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.ft_param_list_with_options(request, runtime)
+
+    async def ft_param_list_async(
+        self,
+        request: ft_20180713_models.FtParamListRequest,
+    ) -> ft_20180713_models.FtParamListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.ft_param_list_with_options_async(request, runtime)
+
+    def test_flow_strategy_01with_options(
+        self,
+        tmp_req: ft_20180713_models.TestFlowStrategy01Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> ft_20180713_models.TestFlowStrategy01Response:
+        UtilClient.validate_model(tmp_req)
+        request = ft_20180713_models.TestFlowStrategy01ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.names):
+            request.names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.names, 'Names', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.names_shrink):
+            body['Names'] = request.names_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TestFlowStrategy01',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='PUT',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.TestFlowStrategy01Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def test_flow_strategy_01with_options_async(
+        self,
+        tmp_req: ft_20180713_models.TestFlowStrategy01Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> ft_20180713_models.TestFlowStrategy01Response:
+        UtilClient.validate_model(tmp_req)
+        request = ft_20180713_models.TestFlowStrategy01ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.names):
+            request.names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.names, 'Names', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.names_shrink):
+            body['Names'] = request.names_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TestFlowStrategy01',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='PUT',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.TestFlowStrategy01Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def test_flow_strategy_01(
+        self,
+        request: ft_20180713_models.TestFlowStrategy01Request,
+    ) -> ft_20180713_models.TestFlowStrategy01Response:
+        runtime = util_models.RuntimeOptions()
+        return self.test_flow_strategy_01with_options(request, runtime)
+
+    async def test_flow_strategy_01_async(
+        self,
+        request: ft_20180713_models.TestFlowStrategy01Request,
+    ) -> ft_20180713_models.TestFlowStrategy01Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.test_flow_strategy_01with_options_async(request, runtime)
+
+    def test_http_api_with_options(
+        self,
+        tmp_req: ft_20180713_models.TestHttpApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ft_20180713_models.TestHttpApiResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ft_20180713_models.TestHttpApiShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.default_value):
+            request.default_value_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.default_value, 'DefaultValue', 'json')
+        if not UtilClient.is_unset(tmp_req.other_param):
+            request.other_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.other_param, 'OtherParam', 'json')
+        if not UtilClient.is_unset(tmp_req.string_value):
+            request.string_value_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.string_value, 'StringValue', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.boolean_param):
+            query['BooleanParam'] = request.boolean_param
+        if not UtilClient.is_unset(request.default_value_shrink):
+            query['DefaultValue'] = request.default_value_shrink
+        if not UtilClient.is_unset(request.other_param_shrink):
+            query['OtherParam'] = request.other_param_shrink
+        if not UtilClient.is_unset(request.string_value_shrink):
+            query['StringValue'] = request.string_value_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TestHttpApi',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.TestHttpApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def test_http_api_with_options_async(
+        self,
+        tmp_req: ft_20180713_models.TestHttpApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ft_20180713_models.TestHttpApiResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ft_20180713_models.TestHttpApiShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.default_value):
+            request.default_value_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.default_value, 'DefaultValue', 'json')
+        if not UtilClient.is_unset(tmp_req.other_param):
+            request.other_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.other_param, 'OtherParam', 'json')
+        if not UtilClient.is_unset(tmp_req.string_value):
+            request.string_value_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.string_value, 'StringValue', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.boolean_param):
+            query['BooleanParam'] = request.boolean_param
+        if not UtilClient.is_unset(request.default_value_shrink):
+            query['DefaultValue'] = request.default_value_shrink
+        if not UtilClient.is_unset(request.other_param_shrink):
+            query['OtherParam'] = request.other_param_shrink
+        if not UtilClient.is_unset(request.string_value_shrink):
+            query['StringValue'] = request.string_value_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TestHttpApi',
+            version='2018-07-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ft_20180713_models.TestHttpApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def test_http_api(
+        self,
+        request: ft_20180713_models.TestHttpApiRequest,
+    ) -> ft_20180713_models.TestHttpApiResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.test_http_api_with_options(request, runtime)
+
+    async def test_http_api_async(
+        self,
+        request: ft_20180713_models.TestHttpApiRequest,
+    ) -> ft_20180713_models.TestHttpApiResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.test_http_api_with_options_async(request, runtime)
