@@ -598,6 +598,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_free_flow_usage_statistic_with_options_async(request, runtime)
 
+    def get_item_list_with_options(
+        self,
+        request: xgip_pop_20220520_models.GetItemListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetItemListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetItemList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetItemListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_item_list_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.GetItemListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetItemListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetItemList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetItemListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_item_list(
+        self,
+        request: xgip_pop_20220520_models.GetItemListRequest,
+    ) -> xgip_pop_20220520_models.GetItemListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_item_list_with_options(request, runtime)
+
+    async def get_item_list_async(
+        self,
+        request: xgip_pop_20220520_models.GetItemListRequest,
+    ) -> xgip_pop_20220520_models.GetItemListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_item_list_with_options_async(request, runtime)
+
     def get_order_free_flow_product_status_with_options(
         self,
         request: xgip_pop_20220520_models.GetOrderFreeFlowProductStatusRequest,
@@ -1511,6 +1577,136 @@ class Client(OpenApiClient):
     ) -> xgip_pop_20220520_models.SaveApplicationInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.save_application_info_with_options_async(request, runtime)
+
+    def sdk_order_qos_product_with_options(
+        self,
+        request: xgip_pop_20220520_models.SdkOrderQosProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.SdkOrderQosProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.ct_token):
+            query['CtToken'] = request.ct_token
+        if not UtilClient.is_unset(request.ipv_6):
+            query['IPv6'] = request.ipv_6
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ip_type):
+            query['IpType'] = request.ip_type
+        if not UtilClient.is_unset(request.mobile_number):
+            query['MobileNumber'] = request.mobile_number
+        if not UtilClient.is_unset(request.operator):
+            query['Operator'] = request.operator
+        if not UtilClient.is_unset(request.private_ipv_4):
+            query['PrivateIpv4'] = request.private_ipv_4
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.provice):
+            query['Provice'] = request.provice
+        if not UtilClient.is_unset(request.public_ipv_4):
+            query['PublicIpv4'] = request.public_ipv_4
+        if not UtilClient.is_unset(request.qos_request_id):
+            query['QosRequestId'] = request.qos_request_id
+        if not UtilClient.is_unset(request.target_ip_list):
+            query['TargetIpList'] = request.target_ip_list
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        if not UtilClient.is_unset(request.unit_num):
+            query['UnitNum'] = request.unit_num
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SdkOrderQosProduct',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.SdkOrderQosProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sdk_order_qos_product_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.SdkOrderQosProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.SdkOrderQosProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.ct_token):
+            query['CtToken'] = request.ct_token
+        if not UtilClient.is_unset(request.ipv_6):
+            query['IPv6'] = request.ipv_6
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ip_type):
+            query['IpType'] = request.ip_type
+        if not UtilClient.is_unset(request.mobile_number):
+            query['MobileNumber'] = request.mobile_number
+        if not UtilClient.is_unset(request.operator):
+            query['Operator'] = request.operator
+        if not UtilClient.is_unset(request.private_ipv_4):
+            query['PrivateIpv4'] = request.private_ipv_4
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.provice):
+            query['Provice'] = request.provice
+        if not UtilClient.is_unset(request.public_ipv_4):
+            query['PublicIpv4'] = request.public_ipv_4
+        if not UtilClient.is_unset(request.qos_request_id):
+            query['QosRequestId'] = request.qos_request_id
+        if not UtilClient.is_unset(request.target_ip_list):
+            query['TargetIpList'] = request.target_ip_list
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        if not UtilClient.is_unset(request.unit_num):
+            query['UnitNum'] = request.unit_num
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SdkOrderQosProduct',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.SdkOrderQosProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sdk_order_qos_product(
+        self,
+        request: xgip_pop_20220520_models.SdkOrderQosProductRequest,
+    ) -> xgip_pop_20220520_models.SdkOrderQosProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.sdk_order_qos_product_with_options(request, runtime)
+
+    async def sdk_order_qos_product_async(
+        self,
+        request: xgip_pop_20220520_models.SdkOrderQosProductRequest,
+    ) -> xgip_pop_20220520_models.SdkOrderQosProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.sdk_order_qos_product_with_options_async(request, runtime)
 
     def sdk_validate_status_with_options(
         self,
