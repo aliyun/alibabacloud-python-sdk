@@ -2188,22 +2188,24 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.phone_number_json):
-            query['PhoneNumberJson'] = request.phone_number_json
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.sign_name_json):
-            query['SignNameJson'] = request.sign_name_json
-        if not UtilClient.is_unset(request.sms_up_extend_code_json):
-            query['SmsUpExtendCodeJson'] = request.sms_up_extend_code_json
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
+        body = {}
+        if not UtilClient.is_unset(request.phone_number_json):
+            body['PhoneNumberJson'] = request.phone_number_json
+        if not UtilClient.is_unset(request.sign_name_json):
+            body['SignNameJson'] = request.sign_name_json
+        if not UtilClient.is_unset(request.sms_up_extend_code_json):
+            body['SmsUpExtendCodeJson'] = request.sms_up_extend_code_json
         if not UtilClient.is_unset(request.template_param_json):
-            query['TemplateParamJson'] = request.template_param_json
+            body['TemplateParamJson'] = request.template_param_json
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SendBatchSms',
@@ -2230,22 +2232,24 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.phone_number_json):
-            query['PhoneNumberJson'] = request.phone_number_json
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.sign_name_json):
-            query['SignNameJson'] = request.sign_name_json
-        if not UtilClient.is_unset(request.sms_up_extend_code_json):
-            query['SmsUpExtendCodeJson'] = request.sms_up_extend_code_json
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
+        body = {}
+        if not UtilClient.is_unset(request.phone_number_json):
+            body['PhoneNumberJson'] = request.phone_number_json
+        if not UtilClient.is_unset(request.sign_name_json):
+            body['SignNameJson'] = request.sign_name_json
+        if not UtilClient.is_unset(request.sms_up_extend_code_json):
+            body['SmsUpExtendCodeJson'] = request.sms_up_extend_code_json
         if not UtilClient.is_unset(request.template_param_json):
-            query['TemplateParamJson'] = request.template_param_json
+            body['TemplateParamJson'] = request.template_param_json
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SendBatchSms',

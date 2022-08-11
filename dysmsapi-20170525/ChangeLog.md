@@ -1,3 +1,6 @@
+2022-08-11 Version: 2.0.18
+- Upgrade formdata for SendBatchSms.
+
 2022-08-03 Version: 2.0.17
 - Upgrade Service for SmsStatistics.
 
