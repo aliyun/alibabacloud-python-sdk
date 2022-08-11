@@ -40,10 +40,7 @@ REQUIRES = [
     "alibabacloud_tea_util>=0.3.6, <1.0.0",
     "alibabacloud_tea_openapi>=0.3.3, <1.0.0",
     "alibabacloud_openapi_util>=0.1.6, <1.0.0",
-    "alibabacloud_endpoint_util>=0.0.3, <1.0.0",
-    "alibabacloud_credentials>=0.2.0, <1.0.0",
-    "requests>=2.21.0, <3.0.0",
-    "alibabacloud_gateway_fc_util>=0.0.3, <1.0.0"
+    "alibabacloud_endpoint_util>=0.0.3, <1.0.0"
 ]
 
 LONG_DESCRIPTION = ''
