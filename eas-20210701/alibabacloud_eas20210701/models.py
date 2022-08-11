@@ -414,6 +414,7 @@ class Service(TeaModel):
         cpu: int = None,
         create_time: str = None,
         current_version: int = None,
+        extra_data: str = None,
         gpu: int = None,
         image: str = None,
         internet_endpoint: str = None,
@@ -428,8 +429,10 @@ class Service(TeaModel):
         region: str = None,
         request_id: str = None,
         resource: str = None,
+        resource_alias: str = None,
         running_instance: int = None,
         service_config: str = None,
+        service_group: str = None,
         service_id: str = None,
         service_name: str = None,
         source: str = None,
@@ -443,6 +446,7 @@ class Service(TeaModel):
         self.cpu = cpu
         self.create_time = create_time
         self.current_version = current_version
+        self.extra_data = extra_data
         self.gpu = gpu
         self.image = image
         self.internet_endpoint = internet_endpoint
@@ -457,8 +461,10 @@ class Service(TeaModel):
         self.region = region
         self.request_id = request_id
         self.resource = resource
+        self.resource_alias = resource_alias
         self.running_instance = running_instance
         self.service_config = service_config
+        self.service_group = service_group
         self.service_id = service_id
         self.service_name = service_name
         self.source = source
@@ -486,6 +492,8 @@ class Service(TeaModel):
             result['CreateTime'] = self.create_time
         if self.current_version is not None:
             result['CurrentVersion'] = self.current_version
+        if self.extra_data is not None:
+            result['ExtraData'] = self.extra_data
         if self.gpu is not None:
             result['Gpu'] = self.gpu
         if self.image is not None:
@@ -514,10 +522,14 @@ class Service(TeaModel):
             result['RequestId'] = self.request_id
         if self.resource is not None:
             result['Resource'] = self.resource
+        if self.resource_alias is not None:
+            result['ResourceAlias'] = self.resource_alias
         if self.running_instance is not None:
             result['RunningInstance'] = self.running_instance
         if self.service_config is not None:
             result['ServiceConfig'] = self.service_config
+        if self.service_group is not None:
+            result['ServiceGroup'] = self.service_group
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
         if self.service_name is not None:
@@ -546,6 +558,8 @@ class Service(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('CurrentVersion') is not None:
             self.current_version = m.get('CurrentVersion')
+        if m.get('ExtraData') is not None:
+            self.extra_data = m.get('ExtraData')
         if m.get('Gpu') is not None:
             self.gpu = m.get('Gpu')
         if m.get('Image') is not None:
@@ -574,10 +588,14 @@ class Service(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Resource') is not None:
             self.resource = m.get('Resource')
+        if m.get('ResourceAlias') is not None:
+            self.resource_alias = m.get('ResourceAlias')
         if m.get('RunningInstance') is not None:
             self.running_instance = m.get('RunningInstance')
         if m.get('ServiceConfig') is not None:
             self.service_config = m.get('ServiceConfig')
+        if m.get('ServiceGroup') is not None:
+            self.service_group = m.get('ServiceGroup')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
         if m.get('ServiceName') is not None:
@@ -4591,8 +4609,10 @@ class ListServicesResponse(TeaModel):
 class ReleaseServiceRequest(TeaModel):
     def __init__(
         self,
+        traffic_state: str = None,
         weight: int = None,
     ):
+        self.traffic_state = traffic_state
         self.weight = weight
 
     def validate(self):
@@ -4604,12 +4624,16 @@ class ReleaseServiceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.traffic_state is not None:
+            result['TrafficState'] = self.traffic_state
         if self.weight is not None:
             result['Weight'] = self.weight
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TrafficState') is not None:
+            self.traffic_state = m.get('TrafficState')
         if m.get('Weight') is not None:
             self.weight = m.get('Weight')
         return self

@@ -1,3 +1,6 @@
+2022-08-11 Version: 1.1.6
+- Add some missing field.
+
 2022-08-05 Version: 1.1.5
 - Fix AutoScaler API bug.
 

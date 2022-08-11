@@ -2948,6 +2948,8 @@ class Client(OpenApiClient):
         cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
+        if not UtilClient.is_unset(request.traffic_state):
+            body['TrafficState'] = request.traffic_state
         if not UtilClient.is_unset(request.weight):
             body['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
@@ -2982,6 +2984,8 @@ class Client(OpenApiClient):
         cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
+        if not UtilClient.is_unset(request.traffic_state):
+            body['TrafficState'] = request.traffic_state
         if not UtilClient.is_unset(request.weight):
             body['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
