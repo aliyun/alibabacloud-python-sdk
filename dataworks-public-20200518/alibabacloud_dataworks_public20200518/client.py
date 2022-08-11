@@ -8820,10 +8820,14 @@ class Client(OpenApiClient):
 
     def get_meta_table_partition_with_options(
         self,
-        request: dataworks_public_20200518_models.GetMetaTablePartitionRequest,
+        tmp_req: dataworks_public_20200518_models.GetMetaTablePartitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTablePartitionResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.GetMetaTablePartitionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sort_criterion):
+            request.sort_criterion_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.sort_criterion), 'SortCriterion', 'json')
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
@@ -8835,6 +8839,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_criterion_shrink):
+            query['SortCriterion'] = request.sort_criterion_shrink
         if not UtilClient.is_unset(request.table_guid):
             query['TableGuid'] = request.table_guid
         if not UtilClient.is_unset(request.table_name):
@@ -8860,10 +8866,14 @@ class Client(OpenApiClient):
 
     async def get_meta_table_partition_with_options_async(
         self,
-        request: dataworks_public_20200518_models.GetMetaTablePartitionRequest,
+        tmp_req: dataworks_public_20200518_models.GetMetaTablePartitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTablePartitionResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.GetMetaTablePartitionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sort_criterion):
+            request.sort_criterion_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.sort_criterion), 'SortCriterion', 'json')
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
@@ -8875,6 +8885,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_criterion_shrink):
+            query['SortCriterion'] = request.sort_criterion_shrink
         if not UtilClient.is_unset(request.table_guid):
             query['TableGuid'] = request.table_guid
         if not UtilClient.is_unset(request.table_name):

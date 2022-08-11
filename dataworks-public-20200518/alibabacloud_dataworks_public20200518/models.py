@@ -11596,9 +11596,7 @@ class GetDISyncTaskMetricInfoResponseBody(TeaModel):
         success: bool = None,
     ):
         self.metric_info = metric_info
-        # Id of the request
         self.request_id = request_id
-        # isSuccess
         self.success = success
 
     def validate(self):
@@ -15305,7 +15303,6 @@ class GetExtensionResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.extension = extension
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -17279,7 +17276,6 @@ class GetIDEEventDetailResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.event_detail = event_detail
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -22253,6 +22249,39 @@ class GetMetaTableOutputResponse(TeaModel):
         return self
 
 
+class GetMetaTablePartitionRequestSortCriterion(TeaModel):
+    def __init__(
+        self,
+        order: str = None,
+        sort_field: str = None,
+    ):
+        self.order = order
+        self.sort_field = sort_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.sort_field is not None:
+            result['SortField'] = self.sort_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('SortField') is not None:
+            self.sort_field = m.get('SortField')
+        return self
+
+
 class GetMetaTablePartitionRequest(TeaModel):
     def __init__(
         self,
@@ -22261,6 +22290,7 @@ class GetMetaTablePartitionRequest(TeaModel):
         database_name: str = None,
         page_number: int = None,
         page_size: int = None,
+        sort_criterion: GetMetaTablePartitionRequestSortCriterion = None,
         table_guid: str = None,
         table_name: str = None,
     ):
@@ -22269,6 +22299,78 @@ class GetMetaTablePartitionRequest(TeaModel):
         self.database_name = database_name
         self.page_number = page_number
         self.page_size = page_size
+        self.sort_criterion = sort_criterion
+        self.table_guid = table_guid
+        self.table_name = table_name
+
+    def validate(self):
+        if self.sort_criterion:
+            self.sort_criterion.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_criterion is not None:
+            result['SortCriterion'] = self.sort_criterion.to_map()
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortCriterion') is not None:
+            temp_model = GetMetaTablePartitionRequestSortCriterion()
+            self.sort_criterion = temp_model.from_map(m['SortCriterion'])
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class GetMetaTablePartitionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        data_source_type: str = None,
+        database_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        sort_criterion_shrink: str = None,
+        table_guid: str = None,
+        table_name: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.data_source_type = data_source_type
+        self.database_name = database_name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.sort_criterion_shrink = sort_criterion_shrink
         self.table_guid = table_guid
         self.table_name = table_name
 
@@ -22291,6 +22393,8 @@ class GetMetaTablePartitionRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.sort_criterion_shrink is not None:
+            result['SortCriterion'] = self.sort_criterion_shrink
         if self.table_guid is not None:
             result['TableGuid'] = self.table_guid
         if self.table_name is not None:
@@ -22309,6 +22413,8 @@ class GetMetaTablePartitionRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('SortCriterion') is not None:
+            self.sort_criterion_shrink = m.get('SortCriterion')
         if m.get('TableGuid') is not None:
             self.table_guid = m.get('TableGuid')
         if m.get('TableName') is not None:
@@ -24811,7 +24917,6 @@ class GetOptionValueForProjectResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.option_value = option_value
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -30348,7 +30453,6 @@ class ListCurrentTasksForResourceGroupRequest(TeaModel):
         self.page_size = page_size
         self.project_env = project_env
         self.resource_group_identifier = resource_group_identifier
-        # 3-等待资源；4-运行中
         self.status = status
 
     def validate(self):
@@ -30517,7 +30621,6 @@ class ListCurrentTasksForResourceGroupResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.http_status_code = http_status_code
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -30685,7 +30788,6 @@ class ListCurrentUsageForResourceGroupResponseBody(TeaModel):
         self.data = data
         self.error_message = error_message
         self.http_status_code = http_status_code
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -35504,7 +35606,6 @@ class ListDeploymentsResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -35768,7 +35869,6 @@ class ListExtensionsResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.paging_info = paging_info
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -37003,13 +37103,11 @@ class ListHistoryTasksForResourceGroupRequest(TeaModel):
         resource_group_identifier: str = None,
         start_time: int = None,
     ):
-        # 最晚当前时间
         self.end_time = end_time
         self.page_number = page_number
         self.page_size = page_size
         self.project_env = project_env
         self.resource_group_identifier = resource_group_identifier
-        # 7天内
         self.start_time = start_time
 
     def validate(self):
@@ -37176,7 +37274,6 @@ class ListHistoryTasksForResourceGroupResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.http_status_code = http_status_code
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -38357,12 +38454,10 @@ class ListMigrationsRequest(TeaModel):
         page_size: int = None,
         project_id: int = None,
     ):
-        # Migration operation type, IMPORT/EXPORT
         self.migration_type = migration_type
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
-        # Workspace Id
         self.project_id = project_id
 
     def validate(self):
@@ -42465,7 +42560,6 @@ class ListQualityRulesResponseBodyDataRules(TeaModel):
         self.property = property
         self.property_key = property_key
         self.rule_checker_relation_id = rule_checker_relation_id
-        # 规则名称
         self.rule_name = rule_name
         self.rule_type = rule_type
         self.table_name = table_name
@@ -43711,7 +43805,6 @@ class ListShiftPersonnelsResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.paging = paging
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -43922,7 +44015,6 @@ class ListShiftSchedulesResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.paging = paging
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -45089,11 +45181,9 @@ class ListUsageForResourceGroupRequest(TeaModel):
         resource_group_identifier: str = None,
         start_time: int = None,
     ):
-        # 最晚当前时间
         self.end_time = end_time
         self.project_env = project_env
         self.resource_group_identifier = resource_group_identifier
-        # 7天内
         self.start_time = start_time
 
     def validate(self):
@@ -51133,7 +51223,6 @@ class UpdateIDEEventResultRequest(TeaModel):
         self.check_result = check_result
         self.check_result_tip = check_result_tip
         self.extension_code = extension_code
-        # 消息UUID
         self.message_id = message_id
 
     def validate(self):
@@ -51173,7 +51262,6 @@ class UpdateIDEEventResultResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -53745,9 +53833,7 @@ class UpdateWorkbenchEventResultResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 成功标识
         self.success = success
 
     def validate(self):
