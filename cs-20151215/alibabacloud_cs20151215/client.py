@@ -634,6 +634,8 @@ class Client(OpenApiClient):
             body['addons'] = request.addons
         if not UtilClient.is_unset(request.api_audiences):
             body['api_audiences'] = request.api_audiences
+        if not UtilClient.is_unset(request.charge_type):
+            body['charge_type'] = request.charge_type
         if not UtilClient.is_unset(request.cis_enabled):
             body['cis_enabled'] = request.cis_enabled
         if not UtilClient.is_unset(request.cloud_monitor_flags):
@@ -726,6 +728,10 @@ class Client(OpenApiClient):
             body['num_of_nodes'] = request.num_of_nodes
         if not UtilClient.is_unset(request.os_type):
             body['os_type'] = request.os_type
+        if not UtilClient.is_unset(request.period):
+            body['period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['period_unit'] = request.period_unit
         if not UtilClient.is_unset(request.platform):
             body['platform'] = request.platform
         if not UtilClient.is_unset(request.pod_vswitch_ids):
@@ -830,6 +836,8 @@ class Client(OpenApiClient):
             body['addons'] = request.addons
         if not UtilClient.is_unset(request.api_audiences):
             body['api_audiences'] = request.api_audiences
+        if not UtilClient.is_unset(request.charge_type):
+            body['charge_type'] = request.charge_type
         if not UtilClient.is_unset(request.cis_enabled):
             body['cis_enabled'] = request.cis_enabled
         if not UtilClient.is_unset(request.cloud_monitor_flags):
@@ -922,6 +930,10 @@ class Client(OpenApiClient):
             body['num_of_nodes'] = request.num_of_nodes
         if not UtilClient.is_unset(request.os_type):
             body['os_type'] = request.os_type
+        if not UtilClient.is_unset(request.period):
+            body['period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['period_unit'] = request.period_unit
         if not UtilClient.is_unset(request.platform):
             body['platform'] = request.platform
         if not UtilClient.is_unset(request.pod_vswitch_ids):
@@ -2988,6 +3000,96 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def describe_cluster_events(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.DescribeClusterEventsRequest,
+    ) -> cs20151215_models.DescribeClusterEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_cluster_events_with_options(cluster_id, request, headers, runtime)
+
+    async def describe_cluster_events_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.DescribeClusterEventsRequest,
+    ) -> cs20151215_models.DescribeClusterEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_cluster_events_with_options_async(cluster_id, request, headers, runtime)
+
+    def describe_cluster_events_with_options(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.DescribeClusterEventsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeClusterEventsResponse:
+        UtilClient.validate_model(request)
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['page_number'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.task_id):
+            query['task_id'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterEvents',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeClusterEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_events_with_options_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.DescribeClusterEventsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeClusterEventsResponse:
+        UtilClient.validate_model(request)
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['page_number'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.task_id):
+            query['task_id'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterEvents',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeClusterEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def describe_cluster_logs(
         self,
         cluster_id: str,
@@ -3361,6 +3463,74 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_tasks(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.DescribeClusterTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_cluster_tasks_with_options(cluster_id, headers, runtime)
+
+    async def describe_cluster_tasks_async(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.DescribeClusterTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_cluster_tasks_with_options_async(cluster_id, headers, runtime)
+
+    def describe_cluster_tasks_with_options(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeClusterTasksResponse:
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterTasks',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeClusterTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_tasks_with_options_async(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeClusterTasksResponse:
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterTasks',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeClusterTasksResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -5811,28 +5981,38 @@ class Client(OpenApiClient):
     def migrate_cluster(
         self,
         cluster_id: str,
+        request: cs20151215_models.MigrateClusterRequest,
     ) -> cs20151215_models.MigrateClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.migrate_cluster_with_options(cluster_id, headers, runtime)
+        return self.migrate_cluster_with_options(cluster_id, request, headers, runtime)
 
     async def migrate_cluster_async(
         self,
         cluster_id: str,
+        request: cs20151215_models.MigrateClusterRequest,
     ) -> cs20151215_models.MigrateClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.migrate_cluster_with_options_async(cluster_id, headers, runtime)
+        return await self.migrate_cluster_with_options_async(cluster_id, request, headers, runtime)
 
     def migrate_cluster_with_options(
         self,
         cluster_id: str,
+        request: cs20151215_models.MigrateClusterRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.MigrateClusterResponse:
+        UtilClient.validate_model(request)
         cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        body = {}
+        if not UtilClient.is_unset(request.oss_bucket_endpoint):
+            body['oss_bucket_endpoint'] = request.oss_bucket_endpoint
+        if not UtilClient.is_unset(request.oss_bucket_name):
+            body['oss_bucket_name'] = request.oss_bucket_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='MigrateCluster',
@@ -5843,7 +6023,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
             cs20151215_models.MigrateClusterResponse(),
@@ -5853,12 +6033,20 @@ class Client(OpenApiClient):
     async def migrate_cluster_with_options_async(
         self,
         cluster_id: str,
+        request: cs20151215_models.MigrateClusterRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.MigrateClusterResponse:
+        UtilClient.validate_model(request)
         cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        body = {}
+        if not UtilClient.is_unset(request.oss_bucket_endpoint):
+            body['oss_bucket_endpoint'] = request.oss_bucket_endpoint
+        if not UtilClient.is_unset(request.oss_bucket_name):
+            body['oss_bucket_name'] = request.oss_bucket_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='MigrateCluster',
@@ -5869,7 +6057,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
             cs20151215_models.MigrateClusterResponse(),
@@ -6198,6 +6386,8 @@ class Client(OpenApiClient):
             body['kubernetes_config'] = request.kubernetes_config
         if not UtilClient.is_unset(request.management):
             body['management'] = request.management
+        if not UtilClient.is_unset(request.node_config):
+            body['node_config'] = request.node_config
         if not UtilClient.is_unset(request.nodepool_info):
             body['nodepool_info'] = request.nodepool_info
         if not UtilClient.is_unset(request.scaling_group):
@@ -6244,6 +6434,8 @@ class Client(OpenApiClient):
             body['kubernetes_config'] = request.kubernetes_config
         if not UtilClient.is_unset(request.management):
             body['management'] = request.management
+        if not UtilClient.is_unset(request.node_config):
+            body['node_config'] = request.node_config
         if not UtilClient.is_unset(request.nodepool_info):
             body['nodepool_info'] = request.nodepool_info
         if not UtilClient.is_unset(request.scaling_group):

@@ -1,3 +1,6 @@
+2022-08-11 Version: 3.0.14
+- Update.
+
 2022-05-24 Version: 3.0.13
 - Update DescribeClusterResources.
 
