@@ -14,17 +14,11 @@ class ResourceDirectoryFolderNode(TeaModel):
         folder_name: str = None,
         parent_folder_id: str = None,
     ):
-        # accountId
         self.account_id = account_id
-        # children
         self.children = children
-        # displayName
         self.display_name = display_name
-        # folderId
         self.folder_id = folder_id
-        # folderName
         self.folder_name = folder_name
-        # parentFolderId
         self.parent_folder_id = parent_folder_id
 
     def validate(self):
@@ -8703,9 +8697,7 @@ class GetAggregateResourceCountsGroupByRegionRequest(TeaModel):
         resource_type: str = None,
     ):
         self.aggregator_id = aggregator_id
-        # 资源夹Id
         self.folder_id = folder_id
-        # 资源owner
         self.resource_owner_id = resource_owner_id
         self.resource_type = resource_type
 
@@ -8868,10 +8860,8 @@ class GetAggregateResourceCountsGroupByResourceTypeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.aggregator_id = aggregator_id
-        # 资源文件夹Id
         self.folder_id = folder_id
         self.region = region
-        # 资源Owner
         self.resource_owner_id = resource_owner_id
 
     def validate(self):
@@ -17476,7 +17466,7 @@ class ListManagedRulesResponseBodyManagedRules(TeaModel):
 class ListManagedRulesResponseBody(TeaModel):
     def __init__(
         self,
-        managed_rules: List[ListManagedRulesResponseBodyManagedRules] = None,
+        managed_rules: ListManagedRulesResponseBodyManagedRules = None,
         request_id: str = None,
     ):
         self.managed_rules = managed_rules
@@ -17484,9 +17474,7 @@ class ListManagedRulesResponseBody(TeaModel):
 
     def validate(self):
         if self.managed_rules:
-            for k in self.managed_rules:
-                if k:
-                    k.validate()
+            self.managed_rules.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -17494,21 +17482,17 @@ class ListManagedRulesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['ManagedRules'] = []
         if self.managed_rules is not None:
-            for k in self.managed_rules:
-                result['ManagedRules'].append(k.to_map() if k else None)
+            result['ManagedRules'] = self.managed_rules.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.managed_rules = []
         if m.get('ManagedRules') is not None:
-            for k in m.get('ManagedRules'):
-                temp_model = ListManagedRulesResponseBodyManagedRules()
-                self.managed_rules.append(temp_model.from_map(k))
+            temp_model = ListManagedRulesResponseBodyManagedRules()
+            self.managed_rules = temp_model.from_map(m['ManagedRules'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -18284,9 +18268,7 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键
         self.key = key
-        # 标签值
         self.value = value
 
     def validate(self):
@@ -18322,15 +18304,10 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
-        # 下一个查询开始Token
         self.next_token = next_token
-        # 地域
         self.region_id = region_id
-        # 资源ID,最多 50个子项
         self.resource_id = resource_id
-        # 资源类型
         self.resource_type = resource_type
-        # 标签列表，最多包含20个子项
         self.tag = tag
 
     def validate(self):
@@ -18386,15 +18363,10 @@ class ListTagResourcesShrinkRequest(TeaModel):
         resource_type: str = None,
         tag_shrink: str = None,
     ):
-        # 下一个查询开始Token
         self.next_token = next_token
-        # 地域
         self.region_id = region_id
-        # 资源ID,最多 50个子项
         self.resource_id = resource_id
-        # 资源类型
         self.resource_type = resource_type
-        # 标签列表，最多包含20个子项
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -18520,7 +18492,6 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: ListTagResourcesResponseBodyTagResources = None,
     ):
-        # 下一个查询开始Token，NextToken为空说明没有下一个
         self.next_token = next_token
         self.request_id = request_id
         self.tag_resources = tag_resources
@@ -19333,9 +19304,7 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键
         self.key = key
-        # 标签值
         self.value = value
 
     def validate(self):
@@ -19370,13 +19339,9 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # 地域
         self.region_id = region_id
-        # 资源ID,最多 50个子项
         self.resource_id = resource_id
-        # 资源类型
         self.resource_type = resource_type
-        # 标签列表，最多包含20个子项
         self.tag = tag
 
     def validate(self):
@@ -19427,13 +19392,9 @@ class TagResourcesShrinkRequest(TeaModel):
         resource_type: str = None,
         tag_shrink: str = None,
     ):
-        # 地域
         self.region_id = region_id
-        # 资源ID,最多 50个子项
         self.resource_id = resource_id
-        # 资源类型
         self.resource_type = resource_type
-        # 标签列表，最多包含20个子项
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -19549,11 +19510,8 @@ class UntagResourcesRequest(TeaModel):
         tag_key: List[str] = None,
     ):
         self.all = all
-        # 地域
         self.region_id = region_id
-        # 资源ID,最多 50个子项
         self.resource_id = resource_id
-        # 资源类型
         self.resource_type = resource_type
         self.tag_key = tag_key
 
