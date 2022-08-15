@@ -5918,6 +5918,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.duration):
             query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.eip_bind_mode):
+            query['EipBindMode'] = request.eip_bind_mode
         if not UtilClient.is_unset(request.icmp_reply_enabled):
             query['IcmpReplyEnabled'] = request.icmp_reply_enabled
         if not UtilClient.is_unset(request.instance_charge_type):
@@ -5984,6 +5986,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.duration):
             query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.eip_bind_mode):
+            query['EipBindMode'] = request.eip_bind_mode
         if not UtilClient.is_unset(request.icmp_reply_enabled):
             query['IcmpReplyEnabled'] = request.icmp_reply_enabled
         if not UtilClient.is_unset(request.instance_charge_type):
@@ -8190,8 +8194,6 @@ class Client(OpenApiClient):
             query['OverlayMode'] = request.overlay_mode
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.publish_vpc):
-            query['PublishVpc'] = request.publish_vpc
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -8240,8 +8242,6 @@ class Client(OpenApiClient):
             query['OverlayMode'] = request.overlay_mode
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.publish_vpc):
-            query['PublishVpc'] = request.publish_vpc
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -8990,14 +8990,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateVpnAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.attach_type):
-            query['AttachType'] = request.attach_type
         if not UtilClient.is_unset(request.auto_config_route):
             query['AutoConfigRoute'] = request.auto_config_route
         if not UtilClient.is_unset(request.bgp_config):
             query['BgpConfig'] = request.bgp_config
-        if not UtilClient.is_unset(request.cen_id):
-            query['CenId'] = request.cen_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.customer_gateway_id):
@@ -9032,8 +9028,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9060,14 +9054,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateVpnAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.attach_type):
-            query['AttachType'] = request.attach_type
         if not UtilClient.is_unset(request.auto_config_route):
             query['AutoConfigRoute'] = request.auto_config_route
         if not UtilClient.is_unset(request.bgp_config):
             query['BgpConfig'] = request.bgp_config
-        if not UtilClient.is_unset(request.cen_id):
-            query['CenId'] = request.cen_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.customer_gateway_id):
@@ -9102,8 +9092,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21015,96 +21003,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detach_dhcp_options_set_from_vpc_with_options_async(request, runtime)
 
-    def detach_vpn_attachment_with_options(
-        self,
-        request: vpc_20160428_models.DetachVpnAttachmentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_20160428_models.DetachVpnAttachmentResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.vpn_connection_id):
-            query['VpnConnectionId'] = request.vpn_connection_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DetachVpnAttachment',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vpc_20160428_models.DetachVpnAttachmentResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def detach_vpn_attachment_with_options_async(
-        self,
-        request: vpc_20160428_models.DetachVpnAttachmentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_20160428_models.DetachVpnAttachmentResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.vpn_connection_id):
-            query['VpnConnectionId'] = request.vpn_connection_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DetachVpnAttachment',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vpc_20160428_models.DetachVpnAttachmentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def detach_vpn_attachment(
-        self,
-        request: vpc_20160428_models.DetachVpnAttachmentRequest,
-    ) -> vpc_20160428_models.DetachVpnAttachmentResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.detach_vpn_attachment_with_options(request, runtime)
-
-    async def detach_vpn_attachment_async(
-        self,
-        request: vpc_20160428_models.DetachVpnAttachmentRequest,
-    ) -> vpc_20160428_models.DetachVpnAttachmentResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.detach_vpn_attachment_with_options_async(request, runtime)
-
     def disable_nat_gateway_ecs_metric_with_options(
         self,
         request: vpc_20160428_models.DisableNatGatewayEcsMetricRequest,
@@ -29270,100 +29168,6 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.ModifyVcoRouteEntryWeightResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_vco_route_entry_weight_with_options_async(request, runtime)
-
-    def modify_vco_spec_with_options(
-        self,
-        request: vpc_20160428_models.ModifyVcoSpecRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_20160428_models.ModifyVcoSpecResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.spec):
-            query['Spec'] = request.spec
-        if not UtilClient.is_unset(request.vpn_connection_id):
-            query['VpnConnectionId'] = request.vpn_connection_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyVcoSpec',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVcoSpecResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_vco_spec_with_options_async(
-        self,
-        request: vpc_20160428_models.ModifyVcoSpecRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_20160428_models.ModifyVcoSpecResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.spec):
-            query['Spec'] = request.spec
-        if not UtilClient.is_unset(request.vpn_connection_id):
-            query['VpnConnectionId'] = request.vpn_connection_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyVcoSpec',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVcoSpecResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_vco_spec(
-        self,
-        request: vpc_20160428_models.ModifyVcoSpecRequest,
-    ) -> vpc_20160428_models.ModifyVcoSpecResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_vco_spec_with_options(request, runtime)
-
-    async def modify_vco_spec_async(
-        self,
-        request: vpc_20160428_models.ModifyVcoSpecRequest,
-    ) -> vpc_20160428_models.ModifyVcoSpecResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_vco_spec_with_options_async(request, runtime)
 
     def modify_virtual_border_router_attribute_with_options(
         self,

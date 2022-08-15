@@ -1,3 +1,6 @@
+2022-08-15 Version: 2.0.4
+- Add param eipbindmode for api CreateNatGateway.
+
 2022-08-02 Version: 2.0.3
 - Supported latest apis.
 
