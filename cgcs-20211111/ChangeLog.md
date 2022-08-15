@@ -1,3 +1,6 @@
+2022-08-15 Version: 2.3.1
+- Update createSession open api.
+
 2022-07-20 Version: 2.3.0
 - Add sync open api.
 - Add batch open api.

@@ -115,6 +115,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_reserve_task_with_options_async(request, runtime)
 
+    def cancel_upload_task_with_options(
+        self,
+        request: cgcs20211111_models.CancelUploadTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.CancelUploadTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.version_id):
+            body['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelUploadTask',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.CancelUploadTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_upload_task_with_options_async(
+        self,
+        request: cgcs20211111_models.CancelUploadTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.CancelUploadTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.version_id):
+            body['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelUploadTask',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.CancelUploadTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_upload_task(
+        self,
+        request: cgcs20211111_models.CancelUploadTaskRequest,
+    ) -> cgcs20211111_models.CancelUploadTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_upload_task_with_options(request, runtime)
+
+    async def cancel_upload_task_async(
+        self,
+        request: cgcs20211111_models.CancelUploadTaskRequest,
+    ) -> cgcs20211111_models.CancelUploadTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_upload_task_with_options_async(request, runtime)
+
     def create_adaptation_with_options(
         self,
         tmp_req: cgcs20211111_models.CreateAdaptationRequest,
@@ -290,6 +364,8 @@ class Client(OpenApiClient):
             query['CustomUserId'] = request.custom_user_id
         if not UtilClient.is_unset(request.enable_postpaid):
             query['EnablePostpaid'] = request.enable_postpaid
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.start_parameters):
             query['StartParameters'] = request.start_parameters
         if not UtilClient.is_unset(request.system_info):
@@ -334,6 +410,8 @@ class Client(OpenApiClient):
             query['CustomUserId'] = request.custom_user_id
         if not UtilClient.is_unset(request.enable_postpaid):
             query['EnablePostpaid'] = request.enable_postpaid
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.start_parameters):
             query['StartParameters'] = request.start_parameters
         if not UtilClient.is_unset(request.system_info):
@@ -729,108 +807,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_capacity_reservation_with_options_async(request, runtime)
 
-    def create_project_with_options(
-        self,
-        tmp_req: cgcs20211111_models.CreateProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.CreateProjectResponse:
-        UtilClient.validate_model(tmp_req)
-        request = cgcs20211111_models.CreateProjectShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.bound_app_id_list):
-            request.bound_app_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.bound_app_id_list, 'BoundAppIdList', 'json')
-        if not UtilClient.is_unset(tmp_req.project_quota_limit):
-            request.project_quota_limit_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.project_quota_limit), 'ProjectQuotaLimit', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.bound_app_id_list_shrink):
-            body['BoundAppIdList'] = request.bound_app_id_list_shrink
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        if not UtilClient.is_unset(request.project_memo):
-            body['ProjectMemo'] = request.project_memo
-        if not UtilClient.is_unset(request.project_name):
-            body['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.project_quota_limit_shrink):
-            body['ProjectQuotaLimit'] = request.project_quota_limit_shrink
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateProject',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.CreateProjectResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_project_with_options_async(
-        self,
-        tmp_req: cgcs20211111_models.CreateProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.CreateProjectResponse:
-        UtilClient.validate_model(tmp_req)
-        request = cgcs20211111_models.CreateProjectShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.bound_app_id_list):
-            request.bound_app_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.bound_app_id_list, 'BoundAppIdList', 'json')
-        if not UtilClient.is_unset(tmp_req.project_quota_limit):
-            request.project_quota_limit_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.project_quota_limit), 'ProjectQuotaLimit', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.bound_app_id_list_shrink):
-            body['BoundAppIdList'] = request.bound_app_id_list_shrink
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        if not UtilClient.is_unset(request.project_memo):
-            body['ProjectMemo'] = request.project_memo
-        if not UtilClient.is_unset(request.project_name):
-            body['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.project_quota_limit_shrink):
-            body['ProjectQuotaLimit'] = request.project_quota_limit_shrink
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateProject',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.CreateProjectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_project(
-        self,
-        request: cgcs20211111_models.CreateProjectRequest,
-    ) -> cgcs20211111_models.CreateProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_project_with_options(request, runtime)
-
-    async def create_project_async(
-        self,
-        request: cgcs20211111_models.CreateProjectRequest,
-    ) -> cgcs20211111_models.CreateProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_project_with_options_async(request, runtime)
-
     def delete_app_with_options(
         self,
         request: cgcs20211111_models.DeleteAppRequest,
@@ -970,84 +946,6 @@ class Client(OpenApiClient):
     ) -> cgcs20211111_models.DeleteAppVersionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_version_with_options_async(request, runtime)
-
-    def delete_project_with_options(
-        self,
-        request: cgcs20211111_models.DeleteProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.DeleteProjectResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        if not UtilClient.is_unset(request.project_id):
-            body['ProjectId'] = request.project_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteProject',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.DeleteProjectResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_project_with_options_async(
-        self,
-        request: cgcs20211111_models.DeleteProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.DeleteProjectResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        if not UtilClient.is_unset(request.project_id):
-            body['ProjectId'] = request.project_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteProject',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.DeleteProjectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_project(
-        self,
-        request: cgcs20211111_models.DeleteProjectRequest,
-    ) -> cgcs20211111_models.DeleteProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_project_with_options(request, runtime)
-
-    async def delete_project_async(
-        self,
-        request: cgcs20211111_models.DeleteProjectRequest,
-    ) -> cgcs20211111_models.DeleteProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_project_with_options_async(request, runtime)
 
     def get_adaptation_with_options(
         self,
@@ -1493,84 +1391,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_capacity_with_options_async(request, runtime)
 
-    def get_project_with_options(
-        self,
-        request: cgcs20211111_models.GetProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.GetProjectResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        if not UtilClient.is_unset(request.project_id):
-            body['ProjectId'] = request.project_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetProject',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.GetProjectResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_project_with_options_async(
-        self,
-        request: cgcs20211111_models.GetProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.GetProjectResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        if not UtilClient.is_unset(request.project_id):
-            body['ProjectId'] = request.project_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetProject',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.GetProjectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_project(
-        self,
-        request: cgcs20211111_models.GetProjectRequest,
-    ) -> cgcs20211111_models.GetProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_project_with_options(request, runtime)
-
-    async def get_project_async(
-        self,
-        request: cgcs20211111_models.GetProjectRequest,
-    ) -> cgcs20211111_models.GetProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_project_with_options_async(request, runtime)
-
     def get_reserve_task_detail_with_options(
         self,
         request: cgcs20211111_models.GetReserveTaskDetailRequest,
@@ -1718,56 +1538,6 @@ class Client(OpenApiClient):
     ) -> cgcs20211111_models.GetResourcePublicIPsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_public_ips_with_options_async(request, runtime)
-
-    def get_tenant_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.GetTenantResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetTenant',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.GetTenantResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_tenant_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.GetTenantResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetTenant',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.GetTenantResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_tenant(self) -> cgcs20211111_models.GetTenantResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_tenant_with_options(runtime)
-
-    async def get_tenant_async(self) -> cgcs20211111_models.GetTenantResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_tenant_with_options_async(runtime)
 
     def list_app_with_options(
         self,
@@ -2159,222 +1929,22 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_app_version_with_options_async(request, runtime)
 
-    def modify_project_with_options(
+    def query_offline_task_progress_with_options(
         self,
-        tmp_req: cgcs20211111_models.ModifyProjectRequest,
+        request: cgcs20211111_models.QueryOfflineTaskProgressRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.ModifyProjectResponse:
-        UtilClient.validate_model(tmp_req)
-        request = cgcs20211111_models.ModifyProjectShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.bound_app_id_list):
-            request.bound_app_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.bound_app_id_list, 'BoundAppIdList', 'json')
-        if not UtilClient.is_unset(tmp_req.project_quota_limit):
-            request.project_quota_limit_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.project_quota_limit), 'ProjectQuotaLimit', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.bound_app_id_list_shrink):
-            body['BoundAppIdList'] = request.bound_app_id_list_shrink
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        if not UtilClient.is_unset(request.project_id):
-            body['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.project_memo):
-            body['ProjectMemo'] = request.project_memo
-        if not UtilClient.is_unset(request.project_name):
-            body['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.project_quota_limit_shrink):
-            body['ProjectQuotaLimit'] = request.project_quota_limit_shrink
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ModifyProject',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.ModifyProjectResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_project_with_options_async(
-        self,
-        tmp_req: cgcs20211111_models.ModifyProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.ModifyProjectResponse:
-        UtilClient.validate_model(tmp_req)
-        request = cgcs20211111_models.ModifyProjectShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.bound_app_id_list):
-            request.bound_app_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.bound_app_id_list, 'BoundAppIdList', 'json')
-        if not UtilClient.is_unset(tmp_req.project_quota_limit):
-            request.project_quota_limit_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.project_quota_limit), 'ProjectQuotaLimit', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.bound_app_id_list_shrink):
-            body['BoundAppIdList'] = request.bound_app_id_list_shrink
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        if not UtilClient.is_unset(request.project_id):
-            body['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.project_memo):
-            body['ProjectMemo'] = request.project_memo
-        if not UtilClient.is_unset(request.project_name):
-            body['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.project_quota_limit_shrink):
-            body['ProjectQuotaLimit'] = request.project_quota_limit_shrink
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ModifyProject',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.ModifyProjectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_project(
-        self,
-        request: cgcs20211111_models.ModifyProjectRequest,
-    ) -> cgcs20211111_models.ModifyProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_project_with_options(request, runtime)
-
-    async def modify_project_async(
-        self,
-        request: cgcs20211111_models.ModifyProjectRequest,
-    ) -> cgcs20211111_models.ModifyProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_project_with_options_async(request, runtime)
-
-    def page_query_project_with_options(
-        self,
-        request: cgcs20211111_models.PageQueryProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.PageQueryProjectResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.key_search):
-            body['KeySearch'] = request.key_search
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='PageQueryProject',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.PageQueryProjectResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def page_query_project_with_options_async(
-        self,
-        request: cgcs20211111_models.PageQueryProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.PageQueryProjectResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.key_search):
-            body['KeySearch'] = request.key_search
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='PageQueryProject',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.PageQueryProjectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def page_query_project(
-        self,
-        request: cgcs20211111_models.PageQueryProjectRequest,
-    ) -> cgcs20211111_models.PageQueryProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.page_query_project_with_options(request, runtime)
-
-    async def page_query_project_async(
-        self,
-        request: cgcs20211111_models.PageQueryProjectRequest,
-    ) -> cgcs20211111_models.PageQueryProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.page_query_project_with_options_async(request, runtime)
-
-    def page_query_project_apps_with_options(
-        self,
-        request: cgcs20211111_models.PageQueryProjectAppsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.PageQueryProjectAppsResponse:
+    ) -> cgcs20211111_models.QueryOfflineTaskProgressResponse:
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.project_id):
-            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.version_id):
+            body['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='PageQueryProjectApps',
+            action='QueryOfflineTaskProgress',
             version='2021-11-11',
             protocol='HTTPS',
             pathname='/',
@@ -2385,34 +1955,26 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            cgcs20211111_models.PageQueryProjectAppsResponse(),
+            cgcs20211111_models.QueryOfflineTaskProgressResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def page_query_project_apps_with_options_async(
+    async def query_offline_task_progress_with_options_async(
         self,
-        request: cgcs20211111_models.PageQueryProjectAppsRequest,
+        request: cgcs20211111_models.QueryOfflineTaskProgressRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.PageQueryProjectAppsResponse:
+    ) -> cgcs20211111_models.QueryOfflineTaskProgressResponse:
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.project_id):
-            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.version_id):
+            body['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='PageQueryProjectApps',
+            action='QueryOfflineTaskProgress',
             version='2021-11-11',
             protocol='HTTPS',
             pathname='/',
@@ -2423,73 +1985,23 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            cgcs20211111_models.PageQueryProjectAppsResponse(),
+            cgcs20211111_models.QueryOfflineTaskProgressResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def page_query_project_apps(
+    def query_offline_task_progress(
         self,
-        request: cgcs20211111_models.PageQueryProjectAppsRequest,
-    ) -> cgcs20211111_models.PageQueryProjectAppsResponse:
+        request: cgcs20211111_models.QueryOfflineTaskProgressRequest,
+    ) -> cgcs20211111_models.QueryOfflineTaskProgressResponse:
         runtime = util_models.RuntimeOptions()
-        return self.page_query_project_apps_with_options(request, runtime)
+        return self.query_offline_task_progress_with_options(request, runtime)
 
-    async def page_query_project_apps_async(
+    async def query_offline_task_progress_async(
         self,
-        request: cgcs20211111_models.PageQueryProjectAppsRequest,
-    ) -> cgcs20211111_models.PageQueryProjectAppsResponse:
+        request: cgcs20211111_models.QueryOfflineTaskProgressRequest,
+    ) -> cgcs20211111_models.QueryOfflineTaskProgressResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.page_query_project_apps_with_options_async(request, runtime)
-
-    def refresh_district_meta_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.RefreshDistrictMetaResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='RefreshDistrictMeta',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.RefreshDistrictMetaResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def refresh_district_meta_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.RefreshDistrictMetaResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='RefreshDistrictMeta',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.RefreshDistrictMetaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def refresh_district_meta(self) -> cgcs20211111_models.RefreshDistrictMetaResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.refresh_district_meta_with_options(runtime)
-
-    async def refresh_district_meta_async(self) -> cgcs20211111_models.RefreshDistrictMetaResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.refresh_district_meta_with_options_async(runtime)
+        return await self.query_offline_task_progress_with_options_async(request, runtime)
 
     def release_capacity_with_options(
         self,
@@ -2761,22 +2273,26 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_app_session_batch_with_options_async(request, runtime)
 
-    def version_check_same_name_service_with_options(
+    def submit_offline_task_with_options(
         self,
-        request: cgcs20211111_models.VersionCheckSameNameServiceRequest,
+        request: cgcs20211111_models.SubmitOfflineTaskRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.VersionCheckSameNameServiceResponse:
+    ) -> cgcs20211111_models.SubmitOfflineTaskResponse:
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.app_version_name):
-            body['AppVersionName'] = request.app_version_name
+        if not UtilClient.is_unset(request.app_type):
+            body['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.uri):
+            body['Uri'] = request.uri
+        if not UtilClient.is_unset(request.version_id):
+            body['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='VersionCheckSameNameService',
+            action='SubmitOfflineTask',
             version='2021-11-11',
             protocol='HTTPS',
             pathname='/',
@@ -2787,26 +2303,30 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            cgcs20211111_models.VersionCheckSameNameServiceResponse(),
+            cgcs20211111_models.SubmitOfflineTaskResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def version_check_same_name_service_with_options_async(
+    async def submit_offline_task_with_options_async(
         self,
-        request: cgcs20211111_models.VersionCheckSameNameServiceRequest,
+        request: cgcs20211111_models.SubmitOfflineTaskRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.VersionCheckSameNameServiceResponse:
+    ) -> cgcs20211111_models.SubmitOfflineTaskResponse:
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.app_version_name):
-            body['AppVersionName'] = request.app_version_name
+        if not UtilClient.is_unset(request.app_type):
+            body['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.uri):
+            body['Uri'] = request.uri
+        if not UtilClient.is_unset(request.version_id):
+            body['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='VersionCheckSameNameService',
+            action='SubmitOfflineTask',
             version='2021-11-11',
             protocol='HTTPS',
             pathname='/',
@@ -2817,20 +2337,20 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            cgcs20211111_models.VersionCheckSameNameServiceResponse(),
+            cgcs20211111_models.SubmitOfflineTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def version_check_same_name_service(
+    def submit_offline_task(
         self,
-        request: cgcs20211111_models.VersionCheckSameNameServiceRequest,
-    ) -> cgcs20211111_models.VersionCheckSameNameServiceResponse:
+        request: cgcs20211111_models.SubmitOfflineTaskRequest,
+    ) -> cgcs20211111_models.SubmitOfflineTaskResponse:
         runtime = util_models.RuntimeOptions()
-        return self.version_check_same_name_service_with_options(request, runtime)
+        return self.submit_offline_task_with_options(request, runtime)
 
-    async def version_check_same_name_service_async(
+    async def submit_offline_task_async(
         self,
-        request: cgcs20211111_models.VersionCheckSameNameServiceRequest,
-    ) -> cgcs20211111_models.VersionCheckSameNameServiceResponse:
+        request: cgcs20211111_models.SubmitOfflineTaskRequest,
+    ) -> cgcs20211111_models.SubmitOfflineTaskResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.version_check_same_name_service_with_options_async(request, runtime)
+        return await self.submit_offline_task_with_options_async(request, runtime)
