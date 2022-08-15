@@ -1,3 +1,6 @@
+2022-08-15 Version: 1.1.7
+- Fix bug.
+
 2022-08-11 Version: 1.1.6
 - Add some missing field.
 

@@ -435,6 +435,7 @@ class Service(TeaModel):
         service_group: str = None,
         service_id: str = None,
         service_name: str = None,
+        service_uid: str = None,
         source: str = None,
         status: str = None,
         total_instance: int = None,
@@ -467,6 +468,7 @@ class Service(TeaModel):
         self.service_group = service_group
         self.service_id = service_id
         self.service_name = service_name
+        self.service_uid = service_uid
         self.source = source
         self.status = status
         self.total_instance = total_instance
@@ -534,6 +536,8 @@ class Service(TeaModel):
             result['ServiceId'] = self.service_id
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
+        if self.service_uid is not None:
+            result['ServiceUid'] = self.service_uid
         if self.source is not None:
             result['Source'] = self.source
         if self.status is not None:
@@ -600,6 +604,8 @@ class Service(TeaModel):
             self.service_id = m.get('ServiceId')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
+        if m.get('ServiceUid') is not None:
+            self.service_uid = m.get('ServiceUid')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('Status') is not None:
