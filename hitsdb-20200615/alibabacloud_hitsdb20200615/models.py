@@ -22,6 +22,7 @@ class CreateLindormInstanceRequest(TeaModel):
         pay_type: str = None,
         pricing_cycle: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
@@ -48,6 +49,7 @@ class CreateLindormInstanceRequest(TeaModel):
         self.pay_type = pay_type
         self.pricing_cycle = pricing_cycle
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -98,6 +100,8 @@ class CreateLindormInstanceRequest(TeaModel):
             result['PricingCycle'] = self.pricing_cycle
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -152,6 +156,8 @@ class CreateLindormInstanceRequest(TeaModel):
             self.pricing_cycle = m.get('PricingCycle')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -218,13 +224,16 @@ class CreateLindormInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateLindormInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -237,6 +246,8 @@ class CreateLindormInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -245,6 +256,8 @@ class CreateLindormInstanceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateLindormInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -392,13 +405,16 @@ class DescribeRegionsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeRegionsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -411,6 +427,8 @@ class DescribeRegionsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -419,6 +437,8 @@ class DescribeRegionsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRegionsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -531,13 +551,16 @@ class GetInstanceIpWhiteListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetInstanceIpWhiteListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -550,6 +573,8 @@ class GetInstanceIpWhiteListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -558,6 +583,8 @@ class GetInstanceIpWhiteListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetInstanceIpWhiteListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -570,7 +597,6 @@ class GetLindormInstanceRequest(TeaModel):
         instance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
-        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
@@ -578,7 +604,6 @@ class GetLindormInstanceRequest(TeaModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -598,8 +623,6 @@ class GetLindormInstanceRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -616,8 +639,6 @@ class GetLindormInstanceRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -722,6 +743,7 @@ class GetLindormInstanceResponseBody(TeaModel):
         pay_type: str = None,
         region_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         service_type: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
@@ -756,6 +778,7 @@ class GetLindormInstanceResponseBody(TeaModel):
         self.pay_type = pay_type
         self.region_id = region_id
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         self.service_type = service_type
         self.vpc_id = vpc_id
         self.vswitch_id = vswitch_id
@@ -833,6 +856,8 @@ class GetLindormInstanceResponseBody(TeaModel):
             result['RegionId'] = self.region_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.service_type is not None:
             result['ServiceType'] = self.service_type
         if self.vpc_id is not None:
@@ -906,6 +931,8 @@ class GetLindormInstanceResponseBody(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
         if m.get('VpcId') is not None:
@@ -921,13 +948,16 @@ class GetLindormInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetLindormInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -940,6 +970,8 @@ class GetLindormInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -948,6 +980,8 @@ class GetLindormInstanceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetLindormInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1154,13 +1188,16 @@ class GetLindormInstanceEngineListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetLindormInstanceEngineListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1173,6 +1210,8 @@ class GetLindormInstanceEngineListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1181,6 +1220,8 @@ class GetLindormInstanceEngineListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetLindormInstanceEngineListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1229,6 +1270,7 @@ class GetLindormInstanceListRequest(TeaModel):
         page_size: int = None,
         query_str: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
@@ -1242,6 +1284,7 @@ class GetLindormInstanceListRequest(TeaModel):
         self.page_size = page_size
         self.query_str = query_str
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -1273,6 +1316,8 @@ class GetLindormInstanceListRequest(TeaModel):
             result['QueryStr'] = self.query_str
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -1303,6 +1348,8 @@ class GetLindormInstanceListRequest(TeaModel):
             self.query_str = m.get('QueryStr')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -1360,6 +1407,7 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
         ali_uid: int = None,
         create_milliseconds: int = None,
         create_time: str = None,
+        enable_compute: bool = None,
         enable_stream: bool = None,
         engine_type: str = None,
         expire_time: str = None,
@@ -1371,6 +1419,7 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
         network_type: str = None,
         pay_type: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         service_type: str = None,
         tags: List[GetLindormInstanceListResponseBodyInstanceListTags] = None,
         vpc_id: str = None,
@@ -1379,6 +1428,7 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
         self.ali_uid = ali_uid
         self.create_milliseconds = create_milliseconds
         self.create_time = create_time
+        self.enable_compute = enable_compute
         self.enable_stream = enable_stream
         self.engine_type = engine_type
         self.expire_time = expire_time
@@ -1390,6 +1440,7 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
         self.network_type = network_type
         self.pay_type = pay_type
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.service_type = service_type
         self.tags = tags
         self.vpc_id = vpc_id
@@ -1413,6 +1464,8 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
             result['CreateMilliseconds'] = self.create_milliseconds
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.enable_compute is not None:
+            result['EnableCompute'] = self.enable_compute
         if self.enable_stream is not None:
             result['EnableStream'] = self.enable_stream
         if self.engine_type is not None:
@@ -1435,6 +1488,8 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
             result['PayType'] = self.pay_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.service_type is not None:
             result['ServiceType'] = self.service_type
         result['Tags'] = []
@@ -1455,6 +1510,8 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
             self.create_milliseconds = m.get('CreateMilliseconds')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('EnableCompute') is not None:
+            self.enable_compute = m.get('EnableCompute')
         if m.get('EnableStream') is not None:
             self.enable_stream = m.get('EnableStream')
         if m.get('EngineType') is not None:
@@ -1477,6 +1534,8 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
         self.tags = []
@@ -1554,13 +1613,16 @@ class GetLindormInstanceListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetLindormInstanceListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1573,6 +1635,8 @@ class GetLindormInstanceListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1581,6 +1645,8 @@ class GetLindormInstanceListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetLindormInstanceListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1805,13 +1871,16 @@ class ListTagResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListTagResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1824,6 +1893,8 @@ class ListTagResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1832,6 +1903,8 @@ class ListTagResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1926,13 +1999,16 @@ class ReleaseLindormInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ReleaseLindormInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1945,6 +2021,8 @@ class ReleaseLindormInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1953,6 +2031,8 @@ class ReleaseLindormInstanceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReleaseLindormInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1997,6 +2077,7 @@ class TagResourcesRequest(TeaModel):
         self,
         owner_account: str = None,
         owner_id: int = None,
+        region_id: str = None,
         resource_id: List[str] = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -2006,6 +2087,7 @@ class TagResourcesRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2029,6 +2111,8 @@ class TagResourcesRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_owner_account is not None:
@@ -2051,6 +2135,8 @@ class TagResourcesRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -2100,13 +2186,16 @@ class TagResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: TagResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2119,6 +2208,8 @@ class TagResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2127,6 +2218,8 @@ class TagResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2239,13 +2332,16 @@ class UntagResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UntagResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2258,6 +2354,8 @@ class UntagResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2266,6 +2364,8 @@ class UntagResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2372,13 +2472,16 @@ class UpdateInstanceIpWhiteListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateInstanceIpWhiteListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2391,6 +2494,8 @@ class UpdateInstanceIpWhiteListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2399,6 +2504,8 @@ class UpdateInstanceIpWhiteListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateInstanceIpWhiteListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2613,13 +2720,16 @@ class UpgradeLindormInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpgradeLindormInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2632,6 +2742,8 @@ class UpgradeLindormInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2640,6 +2752,8 @@ class UpgradeLindormInstanceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpgradeLindormInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
