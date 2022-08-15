@@ -288,8 +288,10 @@ class InitializeResponseBodyResult(TeaModel):
     def __init__(
         self,
         transaction_id: str = None,
+        client_cfg: str = None,
     ):
         self.transaction_id = transaction_id
+        self.client_cfg = client_cfg
 
     def validate(self):
         pass
@@ -302,12 +304,16 @@ class InitializeResponseBodyResult(TeaModel):
         result = dict()
         if self.transaction_id is not None:
             result['TransactionId'] = self.transaction_id
+        if self.client_cfg is not None:
+            result['clientCfg'] = self.client_cfg
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('TransactionId') is not None:
             self.transaction_id = m.get('TransactionId')
+        if m.get('clientCfg') is not None:
+            self.client_cfg = m.get('clientCfg')
         return self
 
 
