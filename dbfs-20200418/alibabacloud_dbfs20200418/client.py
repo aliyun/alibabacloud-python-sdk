@@ -259,6 +259,8 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.CreateDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.advanced_features):
+            query['AdvancedFeatures'] = request.advanced_features
         if not UtilClient.is_unset(request.category):
             query['Category'] = request.category
         if not UtilClient.is_unset(request.client_token):
@@ -315,6 +317,8 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.CreateDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.advanced_features):
+            query['AdvancedFeatures'] = request.advanced_features
         if not UtilClient.is_unset(request.category):
             query['Category'] = request.category
         if not UtilClient.is_unset(request.client_token):
@@ -1719,84 +1723,6 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.RenameDbfsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.rename_dbfs_with_options_async(request, runtime)
-
-    def reset_dbfs_with_options(
-        self,
-        request: dbfs20200418_models.ResetDbfsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.ResetDbfsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.fs_id):
-            query['FsId'] = request.fs_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.snapshot_id):
-            query['SnapshotId'] = request.snapshot_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ResetDbfs',
-            version='2020-04-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.ResetDbfsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def reset_dbfs_with_options_async(
-        self,
-        request: dbfs20200418_models.ResetDbfsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.ResetDbfsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.fs_id):
-            query['FsId'] = request.fs_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.snapshot_id):
-            query['SnapshotId'] = request.snapshot_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ResetDbfs',
-            version='2020-04-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.ResetDbfsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def reset_dbfs(
-        self,
-        request: dbfs20200418_models.ResetDbfsRequest,
-    ) -> dbfs20200418_models.ResetDbfsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.reset_dbfs_with_options(request, runtime)
-
-    async def reset_dbfs_async(
-        self,
-        request: dbfs20200418_models.ResetDbfsRequest,
-    ) -> dbfs20200418_models.ResetDbfsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.reset_dbfs_with_options_async(request, runtime)
 
     def resize_dbfs_with_options(
         self,

@@ -1,3 +1,6 @@
+2022-08-15 Version: 3.1.2
+- The new parameter AdvancedFeatures is added to the CreateDbfs interface.
+
 2022-03-22 Version: 3.1.1
 - The new return value SourceFsStripeWidth is added to the ListSnapshot interface.
 
