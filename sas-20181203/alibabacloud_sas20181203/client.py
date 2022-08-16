@@ -752,6 +752,284 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_file_detect_upload_url_with_options_async(request, runtime)
 
+    def create_honeypot_with_options(
+        self,
+        request: sas_20181203_models.CreateHoneypotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateHoneypotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.honeypot_image_id):
+            query['HoneypotImageId'] = request.honeypot_image_id
+        if not UtilClient.is_unset(request.honeypot_image_name):
+            query['HoneypotImageName'] = request.honeypot_image_name
+        if not UtilClient.is_unset(request.honeypot_name):
+            query['HoneypotName'] = request.honeypot_name
+        if not UtilClient.is_unset(request.meta):
+            query['Meta'] = request.meta
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHoneypot',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateHoneypotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_honeypot_with_options_async(
+        self,
+        request: sas_20181203_models.CreateHoneypotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateHoneypotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.honeypot_image_id):
+            query['HoneypotImageId'] = request.honeypot_image_id
+        if not UtilClient.is_unset(request.honeypot_image_name):
+            query['HoneypotImageName'] = request.honeypot_image_name
+        if not UtilClient.is_unset(request.honeypot_name):
+            query['HoneypotName'] = request.honeypot_name
+        if not UtilClient.is_unset(request.meta):
+            query['Meta'] = request.meta
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHoneypot',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateHoneypotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_honeypot(
+        self,
+        request: sas_20181203_models.CreateHoneypotRequest,
+    ) -> sas_20181203_models.CreateHoneypotResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_honeypot_with_options(request, runtime)
+
+    async def create_honeypot_async(
+        self,
+        request: sas_20181203_models.CreateHoneypotRequest,
+    ) -> sas_20181203_models.CreateHoneypotResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_honeypot_with_options_async(request, runtime)
+
+    def create_honeypot_node_with_options(
+        self,
+        request: sas_20181203_models.CreateHoneypotNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateHoneypotNodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_honeypot_access_internet):
+            query['AllowHoneypotAccessInternet'] = request.allow_honeypot_access_internet
+        if not UtilClient.is_unset(request.available_probe_num):
+            query['AvailableProbeNum'] = request.available_probe_num
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.security_group_probe_ip_list):
+            query['SecurityGroupProbeIpList'] = request.security_group_probe_ip_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHoneypotNode',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateHoneypotNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_honeypot_node_with_options_async(
+        self,
+        request: sas_20181203_models.CreateHoneypotNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateHoneypotNodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_honeypot_access_internet):
+            query['AllowHoneypotAccessInternet'] = request.allow_honeypot_access_internet
+        if not UtilClient.is_unset(request.available_probe_num):
+            query['AvailableProbeNum'] = request.available_probe_num
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.security_group_probe_ip_list):
+            query['SecurityGroupProbeIpList'] = request.security_group_probe_ip_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHoneypotNode',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateHoneypotNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_honeypot_node(
+        self,
+        request: sas_20181203_models.CreateHoneypotNodeRequest,
+    ) -> sas_20181203_models.CreateHoneypotNodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_honeypot_node_with_options(request, runtime)
+
+    async def create_honeypot_node_async(
+        self,
+        request: sas_20181203_models.CreateHoneypotNodeRequest,
+    ) -> sas_20181203_models.CreateHoneypotNodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_honeypot_node_with_options_async(request, runtime)
+
+    def create_honeypot_probe_with_options(
+        self,
+        request: sas_20181203_models.CreateHoneypotProbeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateHoneypotProbeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.arp):
+            query['Arp'] = request.arp
+        if not UtilClient.is_unset(request.business_group_id):
+            query['BusinessGroupId'] = request.business_group_id
+        if not UtilClient.is_unset(request.control_node_id):
+            query['ControlNodeId'] = request.control_node_id
+        if not UtilClient.is_unset(request.display_name):
+            query['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.honeypot_bind_list):
+            query['HoneypotBindList'] = request.honeypot_bind_list
+        if not UtilClient.is_unset(request.ping):
+            query['Ping'] = request.ping
+        if not UtilClient.is_unset(request.probe_type):
+            query['ProbeType'] = request.probe_type
+        if not UtilClient.is_unset(request.probe_version):
+            query['ProbeVersion'] = request.probe_version
+        if not UtilClient.is_unset(request.proxy_ip):
+            query['ProxyIp'] = request.proxy_ip
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHoneypotProbe',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateHoneypotProbeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_honeypot_probe_with_options_async(
+        self,
+        request: sas_20181203_models.CreateHoneypotProbeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateHoneypotProbeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.arp):
+            query['Arp'] = request.arp
+        if not UtilClient.is_unset(request.business_group_id):
+            query['BusinessGroupId'] = request.business_group_id
+        if not UtilClient.is_unset(request.control_node_id):
+            query['ControlNodeId'] = request.control_node_id
+        if not UtilClient.is_unset(request.display_name):
+            query['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.honeypot_bind_list):
+            query['HoneypotBindList'] = request.honeypot_bind_list
+        if not UtilClient.is_unset(request.ping):
+            query['Ping'] = request.ping
+        if not UtilClient.is_unset(request.probe_type):
+            query['ProbeType'] = request.probe_type
+        if not UtilClient.is_unset(request.probe_version):
+            query['ProbeVersion'] = request.probe_version
+        if not UtilClient.is_unset(request.proxy_ip):
+            query['ProxyIp'] = request.proxy_ip
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHoneypotProbe',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateHoneypotProbeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_honeypot_probe(
+        self,
+        request: sas_20181203_models.CreateHoneypotProbeRequest,
+    ) -> sas_20181203_models.CreateHoneypotProbeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_honeypot_probe_with_options(request, runtime)
+
+    async def create_honeypot_probe_async(
+        self,
+        request: sas_20181203_models.CreateHoneypotProbeRequest,
+    ) -> sas_20181203_models.CreateHoneypotProbeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_honeypot_probe_with_options_async(request, runtime)
+
     def create_or_update_asset_group_with_options(
         self,
         request: sas_20181203_models.CreateOrUpdateAssetGroupRequest,
@@ -3427,6 +3705,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.risk_id):
             query['RiskId'] = request.risk_id
+        if not UtilClient.is_unset(request.risk_status):
+            query['RiskStatus'] = request.risk_status
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.uuid):
@@ -3469,6 +3749,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.risk_id):
             query['RiskId'] = request.risk_id
+        if not UtilClient.is_unset(request.risk_status):
+            query['RiskStatus'] = request.risk_status
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.uuid):
@@ -11507,6 +11789,8 @@ class Client(OpenApiClient):
             query['ContainerFieldValue'] = request.container_field_value
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.have_risk):
+            query['HaveRisk'] = request.have_risk
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.machine_name):
@@ -11557,6 +11841,8 @@ class Client(OpenApiClient):
             query['ContainerFieldValue'] = request.container_field_value
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.have_risk):
+            query['HaveRisk'] = request.have_risk
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.machine_name):
@@ -11773,6 +12059,100 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeWebLockConfigListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_web_lock_config_list_with_options_async(request, runtime)
+
+    def describe_web_lock_file_events_with_options(
+        self,
+        request: sas_20181203_models.DescribeWebLockFileEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWebLockFileEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.dealed):
+            query['Dealed'] = request.dealed
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.process_name):
+            query['ProcessName'] = request.process_name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.ts_begin):
+            query['TsBegin'] = request.ts_begin
+        if not UtilClient.is_unset(request.ts_end):
+            query['TsEnd'] = request.ts_end
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebLockFileEvents',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWebLockFileEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_web_lock_file_events_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeWebLockFileEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWebLockFileEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.dealed):
+            query['Dealed'] = request.dealed
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.process_name):
+            query['ProcessName'] = request.process_name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.ts_begin):
+            query['TsBegin'] = request.ts_begin
+        if not UtilClient.is_unset(request.ts_end):
+            query['TsEnd'] = request.ts_end
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebLockFileEvents',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWebLockFileEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_web_lock_file_events(
+        self,
+        request: sas_20181203_models.DescribeWebLockFileEventsRequest,
+    ) -> sas_20181203_models.DescribeWebLockFileEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_web_lock_file_events_with_options(request, runtime)
+
+    async def describe_web_lock_file_events_async(
+        self,
+        request: sas_20181203_models.DescribeWebLockFileEventsRequest,
+    ) -> sas_20181203_models.DescribeWebLockFileEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_web_lock_file_events_with_options_async(request, runtime)
 
     def export_record_with_options(
         self,
@@ -13177,6 +13557,244 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ListCheckResultResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_check_result_with_options_async(request, runtime)
+
+    def list_honeypot_with_options(
+        self,
+        request: sas_20181203_models.ListHoneypotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListHoneypotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.honeypot_ids):
+            query['HoneypotIds'] = request.honeypot_ids
+        if not UtilClient.is_unset(request.honeypot_name):
+            query['HoneypotName'] = request.honeypot_name
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHoneypot',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListHoneypotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_honeypot_with_options_async(
+        self,
+        request: sas_20181203_models.ListHoneypotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListHoneypotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.honeypot_ids):
+            query['HoneypotIds'] = request.honeypot_ids
+        if not UtilClient.is_unset(request.honeypot_name):
+            query['HoneypotName'] = request.honeypot_name
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHoneypot',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListHoneypotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_honeypot(
+        self,
+        request: sas_20181203_models.ListHoneypotRequest,
+    ) -> sas_20181203_models.ListHoneypotResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_honeypot_with_options(request, runtime)
+
+    async def list_honeypot_async(
+        self,
+        request: sas_20181203_models.ListHoneypotRequest,
+    ) -> sas_20181203_models.ListHoneypotResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_honeypot_with_options_async(request, runtime)
+
+    def list_honeypot_alarm_events_with_options(
+        self,
+        request: sas_20181203_models.ListHoneypotAlarmEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListHoneypotAlarmEventsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHoneypotAlarmEvents',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListHoneypotAlarmEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_honeypot_alarm_events_with_options_async(
+        self,
+        request: sas_20181203_models.ListHoneypotAlarmEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListHoneypotAlarmEventsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHoneypotAlarmEvents',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListHoneypotAlarmEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_honeypot_alarm_events(
+        self,
+        request: sas_20181203_models.ListHoneypotAlarmEventsRequest,
+    ) -> sas_20181203_models.ListHoneypotAlarmEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_honeypot_alarm_events_with_options(request, runtime)
+
+    async def list_honeypot_alarm_events_async(
+        self,
+        request: sas_20181203_models.ListHoneypotAlarmEventsRequest,
+    ) -> sas_20181203_models.ListHoneypotAlarmEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_honeypot_alarm_events_with_options_async(request, runtime)
+
+    def list_honeypot_node_with_options(
+        self,
+        request: sas_20181203_models.ListHoneypotNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListHoneypotNodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHoneypotNode',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListHoneypotNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_honeypot_node_with_options_async(
+        self,
+        request: sas_20181203_models.ListHoneypotNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListHoneypotNodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHoneypotNode',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListHoneypotNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_honeypot_node(
+        self,
+        request: sas_20181203_models.ListHoneypotNodeRequest,
+    ) -> sas_20181203_models.ListHoneypotNodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_honeypot_node_with_options(request, runtime)
+
+    async def list_honeypot_node_async(
+        self,
+        request: sas_20181203_models.ListHoneypotNodeRequest,
+    ) -> sas_20181203_models.ListHoneypotNodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_honeypot_node_with_options_async(request, runtime)
 
     def list_vul_auto_repair_config_with_options(
         self,
