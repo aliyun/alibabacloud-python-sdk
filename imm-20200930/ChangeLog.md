@@ -1,3 +1,6 @@
+2022-08-16 Version: 1.27.7
+- Automatically generate sdk tasks.
+
 2022-07-20 Version: 1.27.6
 - Add Body Detection and Image Splicing API.
 

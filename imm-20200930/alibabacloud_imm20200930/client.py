@@ -395,8 +395,6 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.files_shrink):
             query['Files'] = request.files_shrink
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -435,8 +433,6 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.files_shrink):
             query['Files'] = request.files_shrink
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -637,6 +633,144 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.CreateBindingResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_binding_with_options_async(request, runtime)
+
+    def create_compress_point_cloud_task_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateCompressPointCloudTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateCompressPointCloudTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateCompressPointCloudTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.kdtree_option):
+            request.kdtree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.kdtree_option), 'KdtreeOption', 'json')
+        if not UtilClient.is_unset(tmp_req.octree_option):
+            request.octree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.octree_option), 'OctreeOption', 'json')
+        if not UtilClient.is_unset(tmp_req.point_cloud_fields):
+            request.point_cloud_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.point_cloud_fields, 'PointCloudFields', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.compress_method):
+            query['CompressMethod'] = request.compress_method
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.kdtree_option_shrink):
+            query['KdtreeOption'] = request.kdtree_option_shrink
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.octree_option_shrink):
+            query['OctreeOption'] = request.octree_option_shrink
+        if not UtilClient.is_unset(request.point_cloud_fields_shrink):
+            query['PointCloudFields'] = request.point_cloud_fields_shrink
+        if not UtilClient.is_unset(request.point_cloud_file_format):
+            query['PointCloudFileFormat'] = request.point_cloud_file_format
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCompressPointCloudTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateCompressPointCloudTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_compress_point_cloud_task_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateCompressPointCloudTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateCompressPointCloudTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateCompressPointCloudTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.kdtree_option):
+            request.kdtree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.kdtree_option), 'KdtreeOption', 'json')
+        if not UtilClient.is_unset(tmp_req.octree_option):
+            request.octree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.octree_option), 'OctreeOption', 'json')
+        if not UtilClient.is_unset(tmp_req.point_cloud_fields):
+            request.point_cloud_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.point_cloud_fields, 'PointCloudFields', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.compress_method):
+            query['CompressMethod'] = request.compress_method
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.kdtree_option_shrink):
+            query['KdtreeOption'] = request.kdtree_option_shrink
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.octree_option_shrink):
+            query['OctreeOption'] = request.octree_option_shrink
+        if not UtilClient.is_unset(request.point_cloud_fields_shrink):
+            query['PointCloudFields'] = request.point_cloud_fields_shrink
+        if not UtilClient.is_unset(request.point_cloud_file_format):
+            query['PointCloudFileFormat'] = request.point_cloud_file_format
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCompressPointCloudTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateCompressPointCloudTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_compress_point_cloud_task(
+        self,
+        request: imm_20200930_models.CreateCompressPointCloudTaskRequest,
+    ) -> imm_20200930_models.CreateCompressPointCloudTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_compress_point_cloud_task_with_options(request, runtime)
+
+    async def create_compress_point_cloud_task_async(
+        self,
+        request: imm_20200930_models.CreateCompressPointCloudTaskRequest,
+    ) -> imm_20200930_models.CreateCompressPointCloudTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_compress_point_cloud_task_with_options_async(request, runtime)
 
     def create_dataset_with_options(
         self,
@@ -959,8 +1093,6 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.from_):
             query['From'] = request.from_
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -1005,8 +1137,6 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.from_):
             query['From'] = request.from_
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -1071,8 +1201,6 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.max_frames):
             query['MaxFrames'] = request.max_frames
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -1127,8 +1255,6 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.max_frames):
             query['MaxFrames'] = request.max_frames
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -1203,8 +1329,6 @@ class Client(OpenApiClient):
             query['ImageFormat'] = request.image_format
         if not UtilClient.is_unset(request.margin):
             query['Margin'] = request.margin
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.padding):
@@ -1269,8 +1393,6 @@ class Client(OpenApiClient):
             query['ImageFormat'] = request.image_format
         if not UtilClient.is_unset(request.margin):
             query['Margin'] = request.margin
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.padding):
@@ -1341,8 +1463,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -1393,8 +1513,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -1477,8 +1595,6 @@ class Client(OpenApiClient):
             query['MaxSheetColumn'] = request.max_sheet_column
         if not UtilClient.is_unset(request.max_sheet_row):
             query['MaxSheetRow'] = request.max_sheet_row
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.pages):
@@ -1575,8 +1691,6 @@ class Client(OpenApiClient):
             query['MaxSheetColumn'] = request.max_sheet_column
         if not UtilClient.is_unset(request.max_sheet_row):
             query['MaxSheetRow'] = request.max_sheet_row
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.pages):
@@ -1792,8 +1906,6 @@ class Client(OpenApiClient):
             body['MaxFileCount'] = request.max_file_count
         if not UtilClient.is_unset(request.min_file_count):
             body['MinFileCount'] = request.min_file_count
-        if not UtilClient.is_unset(request.notify_endpoint):
-            body['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             body['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.object_id):
@@ -1858,8 +1970,6 @@ class Client(OpenApiClient):
             body['MaxFileCount'] = request.max_file_count
         if not UtilClient.is_unset(request.min_file_count):
             body['MinFileCount'] = request.min_file_count
-        if not UtilClient.is_unset(request.notify_endpoint):
-            body['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             body['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.object_id):
@@ -1931,8 +2041,6 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.max_frames):
             query['MaxFrames'] = request.max_frames
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -1987,8 +2095,6 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.max_frames):
             query['MaxFrames'] = request.max_frames
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -3979,8 +4085,6 @@ class Client(OpenApiClient):
             query['Filename'] = request.filename
         if not UtilClient.is_unset(request.hidecmb):
             query['Hidecmb'] = request.hidecmb
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
@@ -4047,8 +4151,6 @@ class Client(OpenApiClient):
             query['Filename'] = request.filename
         if not UtilClient.is_unset(request.hidecmb):
             query['Hidecmb'] = request.hidecmb
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
@@ -4117,8 +4219,6 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.file_shrink):
             query['File'] = request.file_shrink
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -4157,8 +4257,6 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.file_shrink):
             query['File'] = request.file_shrink
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):

@@ -15,19 +15,12 @@ class Address(TeaModel):
         province: str = None,
         township: str = None,
     ):
-        # AddressLine
         self.address_line = address_line
-        # City
         self.city = city
-        # Country
         self.country = country
-        # District
         self.district = district
-        # Language
         self.language = language
-        # Province
         self.province = province
-        # Township
         self.township = township
 
     def validate(self):
@@ -81,11 +74,8 @@ class AssumeRoleChainNode(TeaModel):
         role: str = None,
         type: str = None,
     ):
-        # 账号id
         self.owner_id = owner_id
-        # 授权角色名
         self.role = role
-        # 账号类型，普通账号填 user，服务账号填 service
         self.type = type
 
     def validate(self):
@@ -122,9 +112,7 @@ class AssumeRoleChain(TeaModel):
         chain: List[AssumeRoleChainNode] = None,
         policy: str = None,
     ):
-        # 链式授权节点
         self.chain = chain
-        # 当前用户 policy
         self.policy = policy
 
     def validate(self):
@@ -180,39 +168,22 @@ class AudioStream(TeaModel):
         start_time: float = None,
         time_base: str = None,
     ):
-        # Bitrate
         self.bitrate = bitrate
-        # ChannelLayout
         self.channel_layout = channel_layout
-        # Channels
         self.channels = channels
-        # CodecLongName
         self.codec_long_name = codec_long_name
-        # CodecName
         self.codec_name = codec_name
-        # CodecTag
         self.codec_tag = codec_tag
-        # CodecTagString
         self.codec_tag_string = codec_tag_string
-        # CodecTimeBase
         self.codec_time_base = codec_time_base
-        # Duration
         self.duration = duration
-        # FrameCount
         self.frame_count = frame_count
-        # Index
         self.index = index
-        # Language
         self.language = language
-        # Lyric
         self.lyric = lyric
-        # SampleFormat
         self.sample_format = sample_format
-        # SampleRate
         self.sample_rate = sample_rate
-        # StartTime
         self.start_time = start_time
-        # TimeBase
         self.time_base = time_base
 
     def validate(self):
@@ -311,21 +282,13 @@ class Binding(TeaModel):
         uri: str = None,
         update_time: str = None,
     ):
-        # CreateTime
         self.create_time = create_time
-        # DatasetName
         self.dataset_name = dataset_name
-        # Detail
         self.detail = detail
-        # Phase
         self.phase = phase
-        # ProjectName
         self.project_name = project_name
-        # State
         self.state = state
-        # URI
         self.uri = uri
-        # UpdateTime
         self.update_time = update_time
 
     def validate(self):
@@ -384,13 +347,9 @@ class Boundary(TeaModel):
         top: int = None,
         width: int = None,
     ):
-        # Height
         self.height = height
-        # Left
         self.left = left
-        # Top
         self.top = top
-        # Width
         self.width = width
 
     def validate(self):
@@ -431,9 +390,7 @@ class Body(TeaModel):
         boundary: Boundary = None,
         confidence: float = None,
     ):
-        # Boundary
         self.boundary = boundary
-        # Confidence
         self.confidence = confidence
 
     def validate(self):
@@ -467,7 +424,6 @@ class ClusterForReqCoverFigures(TeaModel):
         self,
         figure_id: str = None,
     ):
-        # FigureId
         self.figure_id = figure_id
 
     def validate(self):
@@ -495,7 +451,6 @@ class ClusterForReqCover(TeaModel):
         self,
         figures: List[ClusterForReqCoverFigures] = None,
     ):
-        # Figures
         self.figures = figures
 
     def validate(self):
@@ -535,15 +490,10 @@ class ClusterForReq(TeaModel):
         name: str = None,
         object_id: str = None,
     ):
-        # Cover
         self.cover = cover
-        # CustomId
         self.custom_id = custom_id
-        # CustomLabels
         self.custom_labels = custom_labels
-        # Name
         self.name = name
-        # ObjectId
         self.object_id = object_id
 
     def validate(self):
@@ -592,13 +542,9 @@ class Codes(TeaModel):
         content: str = None,
         type: str = None,
     ):
-        # Boundary
         self.boundary = boundary
-        # Confidence
         self.confidence = confidence
-        # Content
         self.content = content
-        # Type
         self.type = type
 
     def validate(self):
@@ -642,11 +588,8 @@ class CredentialConfigChain(TeaModel):
         role: str = None,
         role_type: str = None,
     ):
-        # 授权对象
         self.assume_role_for = assume_role_for
-        # 授权角色
         self.role = role
-        # 授权方类型
         self.role_type = role_type
 
     def validate(self):
@@ -684,11 +627,8 @@ class CredentialConfig(TeaModel):
         policy: str = None,
         service_role: str = None,
     ):
-        # 授权链
         self.chain = chain
-        # 权限策略
         self.policy = policy
-        # 服务角色
         self.service_role = service_role
 
     def validate(self):
@@ -734,11 +674,8 @@ class CroppingSuggestion(TeaModel):
         boundary: Boundary = None,
         confidence: float = None,
     ):
-        # AspectRatio
         self.aspect_ratio = aspect_ratio
-        # Boundary
         self.boundary = boundary
-        # Confidence
         self.confidence = confidence
 
     def validate(self):
@@ -788,31 +725,18 @@ class Dataset(TeaModel):
         total_file_size: int = None,
         update_time: str = None,
     ):
-        # 媒体集当前绑定数
         self.bind_count = bind_count
-        # 创建时间
         self.create_time = create_time
-        # 媒体集最大绑定数
         self.dataset_max_bind_count = dataset_max_bind_count
-        # 媒体集最多实体数量
         self.dataset_max_entity_count = dataset_max_entity_count
-        # 媒体集最多文件数量
         self.dataset_max_file_count = dataset_max_file_count
-        # 媒体集最多关系数量
         self.dataset_max_relation_count = dataset_max_relation_count
-        # 媒体集最大文件总大小
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # 媒体集名称
         self.dataset_name = dataset_name
-        # 描述
         self.description = description
-        # 媒体集当前文件数
         self.file_count = file_count
-        # 项目名称
         self.project_name = project_name
-        # 媒体集当前文件总大小
         self.total_file_size = total_file_size
-        # 更新时间
         self.update_time = update_time
 
     def validate(self):
@@ -890,11 +814,8 @@ class HeadPose(TeaModel):
         roll: float = None,
         yaw: float = None,
     ):
-        # Pitch
         self.pitch = pitch
-        # Roll
         self.roll = roll
-        # Yaw
         self.yaw = yaw
 
     def validate(self):
@@ -955,56 +876,31 @@ class Figure(TeaModel):
         mouth_confidence: float = None,
         sharpness: float = None,
     ):
-        # Age
         self.age = age
-        # AgeSD
         self.age_sd = age_sd
-        # Attractive
         self.attractive = attractive
-        # Beard
         self.beard = beard
-        # BeardConfidence
         self.beard_confidence = beard_confidence
-        # Boundary
         self.boundary = boundary
-        # Emotion
         self.emotion = emotion
-        # EmotionConfidence
         self.emotion_confidence = emotion_confidence
-        # FaceQuality
         self.face_quality = face_quality
-        # FigureClusterConfidence
         self.figure_cluster_confidence = figure_cluster_confidence
-        # FigureClusterId
         self.figure_cluster_id = figure_cluster_id
-        # FigureConfidence
         self.figure_confidence = figure_confidence
-        # FigureId
         self.figure_id = figure_id
-        # FigureType
         self.figure_type = figure_type
-        # Gender
         self.gender = gender
-        # GenderConfidence
         self.gender_confidence = gender_confidence
-        # Glasses
         self.glasses = glasses
-        # GlassesConfidence
         self.glasses_confidence = glasses_confidence
-        # Hat
         self.hat = hat
-        # HatConfidence
         self.hat_confidence = hat_confidence
         self.head_pose = head_pose
-        # Mask
         self.mask = mask
-        # MaskConfidence
         self.mask_confidence = mask_confidence
-        # Mouth
         self.mouth = mouth
-        # MouthConfidence
         self.mouth_confidence = mouth_confidence
-        # Sharpness
         self.sharpness = sharpness
 
     def validate(self):
@@ -1137,7 +1033,6 @@ class ImageScore(TeaModel):
         self,
         overall_quality_score: float = None,
     ):
-        # OverallQualityScore
         self.overall_quality_score = overall_quality_score
 
     def validate(self):
@@ -1168,13 +1063,9 @@ class OCRContents(TeaModel):
         contents: str = None,
         language: str = None,
     ):
-        # Boundary
         self.boundary = boundary
-        # Confidence
         self.confidence = confidence
-        # Contents
         self.contents = contents
-        # Language
         self.language = language
 
     def validate(self):
@@ -1221,16 +1112,11 @@ class Image(TeaModel):
         image_width: int = None,
         ocrcontents: List[OCRContents] = None,
     ):
-        # CroppingSuggestions
         self.cropping_suggestions = cropping_suggestions
-        # EXIF
         self.exif = exif
-        # ImageHeight
         self.image_height = image_height
         self.image_score = image_score
-        # ImageWidth
         self.image_width = image_width
-        # OCRContents
         self.ocrcontents = ocrcontents
 
     def validate(self):
@@ -1303,17 +1189,11 @@ class Label(TeaModel):
         language: str = None,
         parent_label_name: str = None,
     ):
-        # CentricScore
         self.centric_score = centric_score
-        # LabelConfidence
         self.label_confidence = label_confidence
-        # LabelLevel
         self.label_level = label_level
-        # LabelName
         self.label_name = label_name
-        # Language
         self.language = language
-        # ParentLabelName
         self.parent_label_name = parent_label_name
 
     def validate(self):
@@ -1372,29 +1252,17 @@ class SubtitleStream(TeaModel):
         start_time: float = None,
         width: int = None,
     ):
-        # Bitrate
         self.bitrate = bitrate
-        # CodecLongName
         self.codec_long_name = codec_long_name
-        # CodecName
         self.codec_name = codec_name
-        # CodecTag
         self.codec_tag = codec_tag
-        # CodecTagString
         self.codec_tag_string = codec_tag_string
-        # Content
         self.content = content
-        # Duration
         self.duration = duration
-        # Height
         self.height = height
-        # Index
         self.index = index
-        # Language
         self.language = language
-        # StartTime
         self.start_time = start_time
-        # Width
         self.width = width
 
     def validate(self):
@@ -1493,61 +1361,33 @@ class VideoStream(TeaModel):
         time_base: str = None,
         width: int = None,
     ):
-        # AverageFrameRate
         self.average_frame_rate = average_frame_rate
-        # BitDepth
         self.bit_depth = bit_depth
-        # Bitrate
         self.bitrate = bitrate
-        # CodecLongName
         self.codec_long_name = codec_long_name
-        # CodecName
         self.codec_name = codec_name
-        # CodecTag
         self.codec_tag = codec_tag
-        # CodecTagString
         self.codec_tag_string = codec_tag_string
-        # CodecTimeBase
         self.codec_time_base = codec_time_base
-        # ColorPrimaries
         self.color_primaries = color_primaries
-        # ColorRange
         self.color_range = color_range
-        # ColorSpace
         self.color_space = color_space
-        # ColorTransfer
         self.color_transfer = color_transfer
-        # DisplayAspectRatio
         self.display_aspect_ratio = display_aspect_ratio
-        # Duration
         self.duration = duration
-        # FrameCount
         self.frame_count = frame_count
-        # FrameRate
         self.frame_rate = frame_rate
-        # HasBFrames
         self.has_bframes = has_bframes
-        # Height
         self.height = height
-        # Index
         self.index = index
-        # Language
         self.language = language
-        # Level
         self.level = level
-        # PixelFormat
         self.pixel_format = pixel_format
-        # Profile
         self.profile = profile
-        # Rotate
         self.rotate = rotate
-        # SampleAspectRatio
         self.sample_aspect_ratio = sample_aspect_ratio
-        # StartTime
         self.start_time = start_time
-        # TimeBase
         self.time_base = time_base
-        # Width
         self.width = width
 
     def validate(self):
@@ -1761,162 +1601,84 @@ class File(TeaModel):
         video_streams: List[VideoStream] = None,
         video_width: int = None,
     ):
-        # AccessControlAllowOrigin
         self.access_control_allow_origin = access_control_allow_origin
-        # AccessControlRequestMethod
         self.access_control_request_method = access_control_request_method
-        # Addresses
         self.addresses = addresses
-        # Album
         self.album = album
-        # AlbumArtist
         self.album_artist = album_artist
-        # Artist
         self.artist = artist
-        # AudioCovers
         self.audio_covers = audio_covers
-        # AudioStreams
         self.audio_streams = audio_streams
-        # Bitrate
         self.bitrate = bitrate
-        # CacheControl
         self.cache_control = cache_control
-        # Composer
         self.composer = composer
-        # ContentDisposition
         self.content_disposition = content_disposition
-        # ContentEncoding
         self.content_encoding = content_encoding
-        # ContentLanguage
         self.content_language = content_language
-        # ContentMd5
         self.content_md_5 = content_md_5
-        # ContentType
         self.content_type = content_type
-        # CreateTime
         self.create_time = create_time
-        # CroppingSuggestions
         self.cropping_suggestions = cropping_suggestions
-        # CustomId
         self.custom_id = custom_id
-        # CustomLabels
         self.custom_labels = custom_labels
-        # DatasetName
         self.dataset_name = dataset_name
-        # DocumentContent
         self.document_content = document_content
-        # DocumentLanguage
         self.document_language = document_language
-        # Duration
         self.duration = duration
-        # ETag
         self.etag = etag
-        # EXIF
         self.exif = exif
-        # FigureCount
         self.figure_count = figure_count
-        # Figures
         self.figures = figures
-        # FileAccessTime
         self.file_access_time = file_access_time
-        # FileCreateTime
         self.file_create_time = file_create_time
-        # FileHash
         self.file_hash = file_hash
-        # FileModifiedTime
         self.file_modified_time = file_modified_time
-        # Filename
         self.filename = filename
-        # FormatLongName
         self.format_long_name = format_long_name
-        # FormatName
         self.format_name = format_name
-        # ImageHeight
         self.image_height = image_height
         self.image_score = image_score
-        # ImageWidth
         self.image_width = image_width
-        # Labels
         self.labels = labels
-        # Language
         self.language = language
-        # LatLong
         self.lat_long = lat_long
-        # MediaType
         self.media_type = media_type
-        # OCRContents
         self.ocrcontents = ocrcontents
-        # OSSCRC64
         self.osscrc64 = osscrc64
-        # OSSDeleteMarker
         self.ossdelete_marker = ossdelete_marker
-        # OSSExpiration
         self.ossexpiration = ossexpiration
-        # OSSObjectType
         self.ossobject_type = ossobject_type
-        # OSSStorageClass
         self.ossstorage_class = ossstorage_class
-        # OSSTagging
         self.osstagging = osstagging
-        # OSSTaggingCount
         self.osstagging_count = osstagging_count
-        # OSSURI
         self.ossuri = ossuri
-        # OSSUserMeta
         self.ossuser_meta = ossuser_meta
-        # OSSVersionId
         self.ossversion_id = ossversion_id
-        # ObjectACL
         self.object_acl = object_acl
-        # ObjectId
         self.object_id = object_id
-        # ObjectType
         self.object_type = object_type
-        # Orientation
         self.orientation = orientation
-        # OwnerId
         self.owner_id = owner_id
-        # PageCount
         self.page_count = page_count
-        # Performer
         self.performer = performer
-        # ProduceTime
         self.produce_time = produce_time
-        # ProgramCount
         self.program_count = program_count
-        # ProjectName
         self.project_name = project_name
-        # ServerSideDataEncryption
         self.server_side_data_encryption = server_side_data_encryption
-        # ServerSideEncryption
         self.server_side_encryption = server_side_encryption
-        # ServerSideEncryptionCustomerAlgorithm
         self.server_side_encryption_customer_algorithm = server_side_encryption_customer_algorithm
-        # ServerSideEncryptionKeyId
         self.server_side_encryption_key_id = server_side_encryption_key_id
-        # Size
         self.size = size
-        # StartTime
         self.start_time = start_time
-        # StreamCount
         self.stream_count = stream_count
-        # Subtitles
         self.subtitles = subtitles
-        # Timezone
         self.timezone = timezone
-        # Title
         self.title = title
-        # TravelClusterId
         self.travel_cluster_id = travel_cluster_id
-        # URI
         self.uri = uri
-        # UpdateTime
         self.update_time = update_time
-        # VideoHeight
         self.video_height = video_height
-        # VideoStreams
         self.video_streams = video_streams
-        # VideoWidth
         self.video_width = video_width
 
     def validate(self):
@@ -2356,41 +2118,23 @@ class FigureCluster(TeaModel):
         update_time: str = None,
         video_count: int = None,
     ):
-        # AverageAge
         self.average_age = average_age
-        # Cover
         self.cover = cover
-        # CreateTime
         self.create_time = create_time
-        # CustomId
         self.custom_id = custom_id
-        # CustomLabels
         self.custom_labels = custom_labels
-        # DatasetName
         self.dataset_name = dataset_name
-        # FaceCount
         self.face_count = face_count
-        # Gender
         self.gender = gender
-        # ImageCount
         self.image_count = image_count
-        # MaxAge
         self.max_age = max_age
-        # MinAge
         self.min_age = min_age
-        # Name
         self.name = name
-        # ObjectId
         self.object_id = object_id
-        # ObjectType
         self.object_type = object_type
-        # OwnerId
         self.owner_id = owner_id
-        # ProjectName
         self.project_name = project_name
-        # UpdateTime
         self.update_time = update_time
-        # VideoCount
         self.video_count = video_count
 
     def validate(self):
@@ -2488,7 +2232,6 @@ class FigureClusterForReqCoverFigures(TeaModel):
         self,
         figure_id: str = None,
     ):
-        # FigureId
         self.figure_id = figure_id
 
     def validate(self):
@@ -2516,7 +2259,6 @@ class FigureClusterForReqCover(TeaModel):
         self,
         figures: List[FigureClusterForReqCoverFigures] = None,
     ):
-        # Figures
         self.figures = figures
 
     def validate(self):
@@ -2556,15 +2298,10 @@ class FigureClusterForReq(TeaModel):
         name: str = None,
         object_id: str = None,
     ):
-        # Cover
         self.cover = cover
-        # CustomId
         self.custom_id = custom_id
-        # CustomLabels
         self.custom_labels = custom_labels
-        # Name
         self.name = name
-        # ObjectId
         self.object_id = object_id
 
     def validate(self):
@@ -2612,11 +2349,8 @@ class FileForReqFigures(TeaModel):
         figure_id: str = None,
         figure_type: str = None,
     ):
-        # FigureClusterId
         self.figure_cluster_id = figure_cluster_id
-        # FigureId
         self.figure_id = figure_id
-        # FigureType
         self.figure_type = figure_type
 
     def validate(self):
@@ -2659,21 +2393,13 @@ class FileForReq(TeaModel):
         ossuri: str = None,
         uri: str = None,
     ):
-        # ContentType
         self.content_type = content_type
-        # CustomId
         self.custom_id = custom_id
-        # CustomLabels
         self.custom_labels = custom_labels
-        # Figures
         self.figures = figures
-        # FileHash
         self.file_hash = file_hash
-        # MediaType
         self.media_type = media_type
-        # OSSURI
         self.ossuri = ossuri
-        # URI
         self.uri = uri
 
     def validate(self):
@@ -2732,15 +2458,52 @@ class FileForReq(TeaModel):
         return self
 
 
+class KdtreeOption(TeaModel):
+    def __init__(
+        self,
+        compression_level: int = None,
+        library_name: str = None,
+        quantization_bits: int = None,
+    ):
+        self.compression_level = compression_level
+        self.library_name = library_name
+        self.quantization_bits = quantization_bits
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compression_level is not None:
+            result['CompressionLevel'] = self.compression_level
+        if self.library_name is not None:
+            result['LibraryName'] = self.library_name
+        if self.quantization_bits is not None:
+            result['QuantizationBits'] = self.quantization_bits
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompressionLevel') is not None:
+            self.compression_level = m.get('CompressionLevel')
+        if m.get('LibraryName') is not None:
+            self.library_name = m.get('LibraryName')
+        if m.get('QuantizationBits') is not None:
+            self.quantization_bits = m.get('QuantizationBits')
+        return self
+
+
 class KeyValuePair(TeaModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
-        # 键
         self.key = key
-        # 值
         self.value = value
 
     def validate(self):
@@ -2767,15 +2530,58 @@ class KeyValuePair(TeaModel):
         return self
 
 
+class OctreeOption(TeaModel):
+    def __init__(
+        self,
+        do_voxel_grid_down_down_sampling: bool = None,
+        library_name: str = None,
+        octree_resolution: float = None,
+        point_resolution: float = None,
+    ):
+        self.do_voxel_grid_down_down_sampling = do_voxel_grid_down_down_sampling
+        self.library_name = library_name
+        self.octree_resolution = octree_resolution
+        self.point_resolution = point_resolution
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.do_voxel_grid_down_down_sampling is not None:
+            result['DoVoxelGridDownDownSampling'] = self.do_voxel_grid_down_down_sampling
+        if self.library_name is not None:
+            result['LibraryName'] = self.library_name
+        if self.octree_resolution is not None:
+            result['OctreeResolution'] = self.octree_resolution
+        if self.point_resolution is not None:
+            result['PointResolution'] = self.point_resolution
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DoVoxelGridDownDownSampling') is not None:
+            self.do_voxel_grid_down_down_sampling = m.get('DoVoxelGridDownDownSampling')
+        if m.get('LibraryName') is not None:
+            self.library_name = m.get('LibraryName')
+        if m.get('OctreeResolution') is not None:
+            self.octree_resolution = m.get('OctreeResolution')
+        if m.get('PointResolution') is not None:
+            self.point_resolution = m.get('PointResolution')
+        return self
+
+
 class PresetReference(TeaModel):
     def __init__(
         self,
         name: str = None,
         type: str = None,
     ):
-        # 名称
         self.name = name
-        # 类型
         self.type = type
 
     def validate(self):
@@ -2822,37 +2628,21 @@ class Project(TeaModel):
         total_file_size: int = None,
         update_time: str = None,
     ):
-        # 创建时间
         self.create_time = create_time
-        # 项目当前媒体集数
         self.dataset_count = dataset_count
-        # 项目最多绑定数
         self.dataset_max_bind_count = dataset_max_bind_count
-        # 项目最多实体数
         self.dataset_max_entity_count = dataset_max_entity_count
-        # 项目最多文件数
         self.dataset_max_file_count = dataset_max_file_count
-        # 项目最多关系数
         self.dataset_max_relation_count = dataset_max_relation_count
-        # 项目最大文件总大小
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # 描述
         self.description = description
-        # 项目最大并发数
         self.engine_concurrency = engine_concurrency
-        # 项目当前文件数
         self.file_count = file_count
-        # 项目最多媒体集数量
         self.project_max_dataset_count = project_max_dataset_count
-        # 项目名称
         self.project_name = project_name
-        # 项目QPS
         self.project_queries_per_second = project_queries_per_second
-        # 服务角色
         self.service_role = service_role
-        # 项目当前文件总大小
         self.total_file_size = total_file_size
-        # 更新时间
         self.update_time = update_time
 
     def validate(self):
@@ -2941,9 +2731,7 @@ class RegionType(TeaModel):
         local_name: str = None,
         region_id: str = None,
     ):
-        # LocalName
         self.local_name = local_name
-        # RegionId
         self.region_id = region_id
 
     def validate(self):
@@ -2976,9 +2764,7 @@ class Row(TeaModel):
         custom_labels: List[KeyValuePair] = None,
         uri: str = None,
     ):
-        # CustomLabels
         self.custom_labels = custom_labels
-        # URI
         self.uri = uri
 
     def validate(self):
@@ -3021,13 +2807,9 @@ class SimpleQuery(TeaModel):
         sub_queries: List['SimpleQuery'] = None,
         value: str = None,
     ):
-        # 需要查询的字段名
         self.field = field
-        # 运算符
         self.operation = operation
-        # 由 SimpleQuery 结构体组成的子查询数组
         self.sub_queries = sub_queries
-        # 需要查询的字段值
         self.value = value
 
     def validate(self):
@@ -3092,37 +2874,21 @@ class Story(TeaModel):
         update_time: str = None,
     ):
         self.cover = cover
-        # CreateTime
         self.create_time = create_time
-        # CustomId
         self.custom_id = custom_id
-        # CustomLabels
         self.custom_labels = custom_labels
-        # DatasetName
         self.dataset_name = dataset_name
-        # FigureClusterIds
         self.figure_cluster_ids = figure_cluster_ids
-        # Files
         self.files = files
-        # ObjectId
         self.object_id = object_id
-        # ObjectType
         self.object_type = object_type
-        # OwnerId
         self.owner_id = owner_id
-        # ProjectName
         self.project_name = project_name
-        # StoryEndTime
         self.story_end_time = story_end_time
-        # StoryName
         self.story_name = story_name
-        # StoryStartTime
         self.story_start_time = story_start_time
-        # StorySubType
         self.story_sub_type = story_sub_type
-        # StoryType
         self.story_type = story_type
-        # UpdateTime
         self.update_time = update_time
 
     def validate(self):
@@ -3233,23 +2999,14 @@ class TaskInfo(TeaModel):
         task_type: str = None,
         user_data: str = None,
     ):
-        # 错误码
         self.code = code
-        # 任务结束时间
         self.end_time = end_time
-        # 错误消息
         self.message = message
-        # 任务开始时间
         self.start_time = start_time
-        # 任务状态
         self.status = status
-        # 标签
         self.tags = tags
-        # 任务唯一ID
         self.task_id = task_id
-        # 任务类型
         self.task_type = task_type
-        # 用户自定义信息
         self.user_data = user_data
 
     def validate(self):
@@ -3310,9 +3067,7 @@ class TimeRange(TeaModel):
         end: str = None,
         start: str = None,
     ):
-        # end time
         self.end = end
-        # start time
         self.start = start
 
     def validate(self):
@@ -3347,13 +3102,9 @@ class TrimPolicy(TeaModel):
         disable_delete_unused_picture: bool = None,
         disable_delete_unused_shape: bool = None,
     ):
-        # 禁止删除所有空单元格
         self.disable_delete_empty_cell = disable_delete_empty_cell
-        # 禁止删除所有重复样式
         self.disable_delete_repeated_style = disable_delete_repeated_style
-        # 禁止删除未使用的单元格图片
         self.disable_delete_unused_picture = disable_delete_unused_picture
-        # 禁止删除没有使用的Shape
         self.disable_delete_unused_shape = disable_delete_unused_shape
 
     def validate(self):
@@ -3398,17 +3149,11 @@ class WebofficePermission(TeaModel):
         readonly: bool = None,
         rename: bool = None,
     ):
-        # 拷贝
         self.copy = copy
-        # 导出
         self.export = export
-        # 查看历史版本
         self.history = history
-        # 打印
         self.print = print
-        # 只读模式
         self.readonly = readonly
-        # 重命名
         self.rename = rename
 
     def validate(self):
@@ -3458,11 +3203,8 @@ class WebofficeUser(TeaModel):
         id: str = None,
         name: str = None,
     ):
-        # 头像
         self.avatar = avatar
-        # Id
         self.id = id
-        # 名字
         self.name = name
 
     def validate(self):
@@ -3504,19 +3246,12 @@ class WebofficeWatermark(TeaModel):
         value: str = None,
         vertical: int = None,
     ):
-        # 字体颜色
         self.fill_style = fill_style
-        # 字体样式
         self.font = font
-        # 水平间距
         self.horizontal = horizontal
-        # 旋转角度
         self.rotate = rotate
-        # 水印类型，目前仅支持文字水印，0: 无水印；1: 文字水印
         self.type = type
-        # 水印文字
         self.value = value
-        # 垂直间距
         self.vertical = vertical
 
     def validate(self):
@@ -3601,7 +3336,6 @@ class AddStoryFilesRequest(TeaModel):
         self.dataset_name = dataset_name
         self.files = files
         self.object_id = object_id
-        # A short description of struct
         self.project_name = project_name
 
     def validate(self):
@@ -3655,7 +3389,6 @@ class AddStoryFilesShrinkRequest(TeaModel):
         self.dataset_name = dataset_name
         self.files_shrink = files_shrink
         self.object_id = object_id
-        # A short description of struct
         self.project_name = project_name
 
     def validate(self):
@@ -3736,7 +3469,6 @@ class AddStoryFilesResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.files = files
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3822,7 +3554,6 @@ class AttachOSSBucketRequest(TeaModel):
         project_name: str = None,
     ):
         self.ossbucket = ossbucket
-        # 项目名称
         self.project_name = project_name
 
     def validate(self):
@@ -3854,7 +3585,6 @@ class AttachOSSBucketResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -4004,7 +3734,6 @@ class BatchDeleteFileMetaResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -4156,7 +3885,6 @@ class BatchGetFileMetaResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.files = files
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -4240,13 +3968,11 @@ class BatchIndexFileMetaRequest(TeaModel):
         self,
         dataset_name: str = None,
         files: List[FileForReq] = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
     ):
         self.dataset_name = dataset_name
         self.files = files
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
 
@@ -4268,8 +3994,6 @@ class BatchIndexFileMetaRequest(TeaModel):
         if self.files is not None:
             for k in self.files:
                 result['Files'].append(k.to_map() if k else None)
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -4285,8 +4009,6 @@ class BatchIndexFileMetaRequest(TeaModel):
             for k in m.get('Files'):
                 temp_model = FileForReq()
                 self.files.append(temp_model.from_map(k))
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
@@ -4299,13 +4021,11 @@ class BatchIndexFileMetaShrinkRequest(TeaModel):
         self,
         dataset_name: str = None,
         files_shrink: str = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
     ):
         self.dataset_name = dataset_name
         self.files_shrink = files_shrink
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
 
@@ -4322,8 +4042,6 @@ class BatchIndexFileMetaShrinkRequest(TeaModel):
             result['DatasetName'] = self.dataset_name
         if self.files_shrink is not None:
             result['Files'] = self.files_shrink
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -4336,8 +4054,6 @@ class BatchIndexFileMetaShrinkRequest(TeaModel):
             self.dataset_name = m.get('DatasetName')
         if m.get('Files') is not None:
             self.files_shrink = m.get('Files')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
@@ -4352,7 +4068,6 @@ class BatchIndexFileMetaResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.event_id = event_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -4555,7 +4270,6 @@ class BatchUpdateFileMetaResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.files = files
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -4641,11 +4355,8 @@ class CreateBindingRequest(TeaModel):
         project_name: str = None,
         uri: str = None,
     ):
-        # DatasetName
         self.dataset_name = dataset_name
-        # ProjectName
         self.project_name = project_name
-        # URI
         self.uri = uri
 
     def validate(self):
@@ -4683,7 +4394,6 @@ class CreateBindingResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.binding = binding
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -4756,6 +4466,283 @@ class CreateBindingResponse(TeaModel):
         return self
 
 
+class CreateCompressPointCloudTaskRequest(TeaModel):
+    def __init__(
+        self,
+        compress_method: str = None,
+        credential_config: CredentialConfig = None,
+        kdtree_option: KdtreeOption = None,
+        notify_topic_name: str = None,
+        octree_option: OctreeOption = None,
+        point_cloud_fields: List[str] = None,
+        point_cloud_file_format: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+        tags: Dict[str, Any] = None,
+        target_uri: str = None,
+        user_data: str = None,
+    ):
+        self.compress_method = compress_method
+        self.credential_config = credential_config
+        self.kdtree_option = kdtree_option
+        self.notify_topic_name = notify_topic_name
+        self.octree_option = octree_option
+        self.point_cloud_fields = point_cloud_fields
+        self.point_cloud_file_format = point_cloud_file_format
+        self.project_name = project_name
+        self.source_uri = source_uri
+        self.tags = tags
+        self.target_uri = target_uri
+        self.user_data = user_data
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+        if self.kdtree_option:
+            self.kdtree_option.validate()
+        if self.octree_option:
+            self.octree_option.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compress_method is not None:
+            result['CompressMethod'] = self.compress_method
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.kdtree_option is not None:
+            result['KdtreeOption'] = self.kdtree_option.to_map()
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.octree_option is not None:
+            result['OctreeOption'] = self.octree_option.to_map()
+        if self.point_cloud_fields is not None:
+            result['PointCloudFields'] = self.point_cloud_fields
+        if self.point_cloud_file_format is not None:
+            result['PointCloudFileFormat'] = self.point_cloud_file_format
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompressMethod') is not None:
+            self.compress_method = m.get('CompressMethod')
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('KdtreeOption') is not None:
+            temp_model = KdtreeOption()
+            self.kdtree_option = temp_model.from_map(m['KdtreeOption'])
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('OctreeOption') is not None:
+            temp_model = OctreeOption()
+            self.octree_option = temp_model.from_map(m['OctreeOption'])
+        if m.get('PointCloudFields') is not None:
+            self.point_cloud_fields = m.get('PointCloudFields')
+        if m.get('PointCloudFileFormat') is not None:
+            self.point_cloud_file_format = m.get('PointCloudFileFormat')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateCompressPointCloudTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        compress_method: str = None,
+        credential_config_shrink: str = None,
+        kdtree_option_shrink: str = None,
+        notify_topic_name: str = None,
+        octree_option_shrink: str = None,
+        point_cloud_fields_shrink: str = None,
+        point_cloud_file_format: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+        tags_shrink: str = None,
+        target_uri: str = None,
+        user_data: str = None,
+    ):
+        self.compress_method = compress_method
+        self.credential_config_shrink = credential_config_shrink
+        self.kdtree_option_shrink = kdtree_option_shrink
+        self.notify_topic_name = notify_topic_name
+        self.octree_option_shrink = octree_option_shrink
+        self.point_cloud_fields_shrink = point_cloud_fields_shrink
+        self.point_cloud_file_format = point_cloud_file_format
+        self.project_name = project_name
+        self.source_uri = source_uri
+        self.tags_shrink = tags_shrink
+        self.target_uri = target_uri
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compress_method is not None:
+            result['CompressMethod'] = self.compress_method
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
+        if self.kdtree_option_shrink is not None:
+            result['KdtreeOption'] = self.kdtree_option_shrink
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.octree_option_shrink is not None:
+            result['OctreeOption'] = self.octree_option_shrink
+        if self.point_cloud_fields_shrink is not None:
+            result['PointCloudFields'] = self.point_cloud_fields_shrink
+        if self.point_cloud_file_format is not None:
+            result['PointCloudFileFormat'] = self.point_cloud_file_format
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompressMethod') is not None:
+            self.compress_method = m.get('CompressMethod')
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
+        if m.get('KdtreeOption') is not None:
+            self.kdtree_option_shrink = m.get('KdtreeOption')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('OctreeOption') is not None:
+            self.octree_option_shrink = m.get('OctreeOption')
+        if m.get('PointCloudFields') is not None:
+            self.point_cloud_fields_shrink = m.get('PointCloudFields')
+        if m.get('PointCloudFileFormat') is not None:
+            self.point_cloud_file_format = m.get('PointCloudFileFormat')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateCompressPointCloudTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateCompressPointCloudTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCompressPointCloudTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCompressPointCloudTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDatasetRequest(TeaModel):
     def __init__(
         self,
@@ -4769,23 +4756,14 @@ class CreateDatasetRequest(TeaModel):
         project_name: str = None,
         template_id: str = None,
     ):
-        # 媒体集最多帮定数
         self.dataset_max_bind_count = dataset_max_bind_count
-        # 媒体集最多实体数
         self.dataset_max_entity_count = dataset_max_entity_count
-        # 媒体集最多文件数
         self.dataset_max_file_count = dataset_max_file_count
-        # 媒体集最多关系数
         self.dataset_max_relation_count = dataset_max_relation_count
-        # 媒体集最大文件总大小
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # 数据集名称
         self.dataset_name = dataset_name
-        # 对数据集的描述
         self.description = description
-        # 项目名称
         self.project_name = project_name
-        # 模板Id
         self.template_id = template_id
 
     def validate(self):
@@ -4847,7 +4825,6 @@ class CreateDatasetResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.dataset = dataset
-        # 请求 ID
         self.request_id = request_id
 
     def validate(self):
@@ -4932,16 +4909,11 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config = credential_config
-        # NotifyEndpoint
         self.notify_endpoint = notify_endpoint
-        # NotifyTopicName
         self.notify_topic_name = notify_topic_name
-        # 项目名称
         self.project_name = project_name
-        # SourceURI
         self.source_uri = source_uri
         self.tags = tags
-        # UserData
         self.user_data = user_data
 
     def validate(self):
@@ -5002,16 +4974,11 @@ class CreateDetectVideoLabelsTaskShrinkRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
-        # NotifyEndpoint
         self.notify_endpoint = notify_endpoint
-        # NotifyTopicName
         self.notify_topic_name = notify_topic_name
-        # 项目名称
         self.project_name = project_name
-        # SourceURI
         self.source_uri = source_uri
         self.tags_shrink = tags_shrink
-        # UserData
         self.user_data = user_data
 
     def validate(self):
@@ -5065,11 +5032,8 @@ class CreateDetectVideoLabelsTaskResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # 事件Id
         self.event_id = event_id
-        # 请求唯一Id
         self.request_id = request_id
-        # 任务唯一ID
         self.task_id = task_id
 
     def validate(self):
@@ -5266,7 +5230,6 @@ class CreateFigureClusteringTaskResponseBody(TeaModel):
         task_id: str = None,
     ):
         self.event_id = event_id
-        # Id of the request
         self.request_id = request_id
         self.task_id = task_id
 
@@ -5347,7 +5310,6 @@ class CreateFigureClustersMergingTaskRequest(TeaModel):
         self,
         dataset_name: str = None,
         from_: str = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
         tags: Dict[str, Any] = None,
@@ -5355,13 +5317,10 @@ class CreateFigureClustersMergingTaskRequest(TeaModel):
         user_data: str = None,
     ):
         self.dataset_name = dataset_name
-        # 源cluster
         self.from_ = from_
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
         self.tags = tags
-        # 目的cluster
         self.to = to
         self.user_data = user_data
 
@@ -5378,8 +5337,6 @@ class CreateFigureClustersMergingTaskRequest(TeaModel):
             result['DatasetName'] = self.dataset_name
         if self.from_ is not None:
             result['From'] = self.from_
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -5398,8 +5355,6 @@ class CreateFigureClustersMergingTaskRequest(TeaModel):
             self.dataset_name = m.get('DatasetName')
         if m.get('From') is not None:
             self.from_ = m.get('From')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
@@ -5418,7 +5373,6 @@ class CreateFigureClustersMergingTaskShrinkRequest(TeaModel):
         self,
         dataset_name: str = None,
         from_: str = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
         tags_shrink: str = None,
@@ -5426,13 +5380,10 @@ class CreateFigureClustersMergingTaskShrinkRequest(TeaModel):
         user_data: str = None,
     ):
         self.dataset_name = dataset_name
-        # 源cluster
         self.from_ = from_
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
         self.tags_shrink = tags_shrink
-        # 目的cluster
         self.to = to
         self.user_data = user_data
 
@@ -5449,8 +5400,6 @@ class CreateFigureClustersMergingTaskShrinkRequest(TeaModel):
             result['DatasetName'] = self.dataset_name
         if self.from_ is not None:
             result['From'] = self.from_
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -5469,8 +5418,6 @@ class CreateFigureClustersMergingTaskShrinkRequest(TeaModel):
             self.dataset_name = m.get('DatasetName')
         if m.get('From') is not None:
             self.from_ = m.get('From')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
@@ -5492,7 +5439,6 @@ class CreateFigureClustersMergingTaskResponseBody(TeaModel):
         task_id: str = None,
     ):
         self.event_id = event_id
-        # Id of the request
         self.request_id = request_id
         self.task_id = task_id
 
@@ -5574,7 +5520,6 @@ class CreateImageModerationTaskRequest(TeaModel):
         credential_config: CredentialConfig = None,
         interval: int = None,
         max_frames: int = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
         reviewer: str = None,
@@ -5586,9 +5531,7 @@ class CreateImageModerationTaskRequest(TeaModel):
         self.credential_config = credential_config
         self.interval = interval
         self.max_frames = max_frames
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
-        # 项目名称
         self.project_name = project_name
         self.reviewer = reviewer
         self.scenes = scenes
@@ -5612,8 +5555,6 @@ class CreateImageModerationTaskRequest(TeaModel):
             result['Interval'] = self.interval
         if self.max_frames is not None:
             result['MaxFrames'] = self.max_frames
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -5639,8 +5580,6 @@ class CreateImageModerationTaskRequest(TeaModel):
             self.interval = m.get('Interval')
         if m.get('MaxFrames') is not None:
             self.max_frames = m.get('MaxFrames')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
@@ -5664,7 +5603,6 @@ class CreateImageModerationTaskShrinkRequest(TeaModel):
         credential_config_shrink: str = None,
         interval: int = None,
         max_frames: int = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
         reviewer: str = None,
@@ -5676,9 +5614,7 @@ class CreateImageModerationTaskShrinkRequest(TeaModel):
         self.credential_config_shrink = credential_config_shrink
         self.interval = interval
         self.max_frames = max_frames
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
-        # 项目名称
         self.project_name = project_name
         self.reviewer = reviewer
         self.scenes_shrink = scenes_shrink
@@ -5701,8 +5637,6 @@ class CreateImageModerationTaskShrinkRequest(TeaModel):
             result['Interval'] = self.interval
         if self.max_frames is not None:
             result['MaxFrames'] = self.max_frames
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -5727,8 +5661,6 @@ class CreateImageModerationTaskShrinkRequest(TeaModel):
             self.interval = m.get('Interval')
         if m.get('MaxFrames') is not None:
             self.max_frames = m.get('MaxFrames')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
@@ -5754,7 +5686,6 @@ class CreateImageModerationTaskResponseBody(TeaModel):
         task_id: str = None,
     ):
         self.event_id = event_id
-        # RequestId
         self.request_id = request_id
         self.task_id = task_id
 
@@ -5872,7 +5803,6 @@ class CreateImageSplicingTaskRequest(TeaModel):
         direction: str = None,
         image_format: str = None,
         margin: int = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         padding: int = None,
         project_name: str = None,
@@ -5889,10 +5819,8 @@ class CreateImageSplicingTaskRequest(TeaModel):
         self.direction = direction
         self.image_format = image_format
         self.margin = margin
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.padding = padding
-        # A short description of struct
         self.project_name = project_name
         self.quality = quality
         self.scale_type = scale_type
@@ -5927,8 +5855,6 @@ class CreateImageSplicingTaskRequest(TeaModel):
             result['ImageFormat'] = self.image_format
         if self.margin is not None:
             result['Margin'] = self.margin
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.padding is not None:
@@ -5966,8 +5892,6 @@ class CreateImageSplicingTaskRequest(TeaModel):
             self.image_format = m.get('ImageFormat')
         if m.get('Margin') is not None:
             self.margin = m.get('Margin')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('Padding') is not None:
@@ -6001,7 +5925,6 @@ class CreateImageSplicingTaskShrinkRequest(TeaModel):
         direction: str = None,
         image_format: str = None,
         margin: int = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         padding: int = None,
         project_name: str = None,
@@ -6018,10 +5941,8 @@ class CreateImageSplicingTaskShrinkRequest(TeaModel):
         self.direction = direction
         self.image_format = image_format
         self.margin = margin
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.padding = padding
-        # A short description of struct
         self.project_name = project_name
         self.quality = quality
         self.scale_type = scale_type
@@ -6051,8 +5972,6 @@ class CreateImageSplicingTaskShrinkRequest(TeaModel):
             result['ImageFormat'] = self.image_format
         if self.margin is not None:
             result['Margin'] = self.margin
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.padding is not None:
@@ -6087,8 +6006,6 @@ class CreateImageSplicingTaskShrinkRequest(TeaModel):
             self.image_format = m.get('ImageFormat')
         if m.get('Margin') is not None:
             self.margin = m.get('Margin')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('Padding') is not None:
@@ -7231,7 +7148,6 @@ class CreateMediaConvertTaskRequest(TeaModel):
     def __init__(
         self,
         credential_config: CredentialConfig = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
         sources: List[CreateMediaConvertTaskRequestSources] = None,
@@ -7240,7 +7156,6 @@ class CreateMediaConvertTaskRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config = credential_config
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
         self.sources = sources
@@ -7268,8 +7183,6 @@ class CreateMediaConvertTaskRequest(TeaModel):
         result = dict()
         if self.credential_config is not None:
             result['CredentialConfig'] = self.credential_config.to_map()
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -7293,8 +7206,6 @@ class CreateMediaConvertTaskRequest(TeaModel):
         if m.get('CredentialConfig') is not None:
             temp_model = CredentialConfig()
             self.credential_config = temp_model.from_map(m['CredentialConfig'])
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
@@ -7320,7 +7231,6 @@ class CreateMediaConvertTaskShrinkRequest(TeaModel):
     def __init__(
         self,
         credential_config_shrink: str = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
         sources_shrink: str = None,
@@ -7329,7 +7239,6 @@ class CreateMediaConvertTaskShrinkRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
         self.sources_shrink = sources_shrink
@@ -7348,8 +7257,6 @@ class CreateMediaConvertTaskShrinkRequest(TeaModel):
         result = dict()
         if self.credential_config_shrink is not None:
             result['CredentialConfig'] = self.credential_config_shrink
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -7368,8 +7275,6 @@ class CreateMediaConvertTaskShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('CredentialConfig') is not None:
             self.credential_config_shrink = m.get('CredentialConfig')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
@@ -7393,7 +7298,6 @@ class CreateMediaConvertTaskResponseBody(TeaModel):
         task_id: str = None,
     ):
         self.event_id = event_id
-        # 请求 ID
         self.request_id = request_id
         self.task_id = task_id
 
@@ -7483,7 +7387,6 @@ class CreateOfficeConversionTaskRequest(TeaModel):
         long_text: bool = None,
         max_sheet_column: int = None,
         max_sheet_row: int = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         pages: str = None,
         paper_horizontal: bool = None,
@@ -7506,67 +7409,35 @@ class CreateOfficeConversionTaskRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config = credential_config
-        # 转换终止页，包含终止页，默认转换到最后一页，表格转图片时需要指定 SheetIndex 才有效
         self.end_page = end_page
-        # 表格转图片参数，是否只返回表格的第一张图片，默认为否
         self.first_page = first_page
-        # 表格转图片参数，是否将所有行输出到一张图片，默认为否
         self.fit_to_height = fit_to_height
-        # 表格转图片参数，是否将所有列输出到一张图片，默认为否
         self.fit_to_width = fit_to_width
-        # 转文本时是否保留文档中的换行符，默认不保留
         self.hold_line_feed = hold_line_feed
-        # 输出图片 DPI，允许范围 96-600，默认 96
         self.image_dpi = image_dpi
-        # 转图片时是否转换成一张长图，最多支持将 20 页合成一张长图，超过可能报错，默认为不转成长图
         self.long_picture = long_picture
-        # 转文本时是否转换成长文本，默认每页是个独立的文本
         self.long_text = long_text
-        # 表格转图片的最大列数，在 LongPicture 为 true 时生效，默认转所有列
         self.max_sheet_column = max_sheet_column
-        # 表格转图片的最大行数，在 LongPicture 为 true 时生效，默认转所有行
         self.max_sheet_row = max_sheet_row
-        # mns 消息通知地址
-        self.notify_endpoint = notify_endpoint
-        # mns 消息通知 topic
         self.notify_topic_name = notify_topic_name
-        # 指定转换页码，优先级高于 StartPage/EndPage，格式：多个页码用 “," 拼接，连续页码用 "-" 连接，样例参考: 1,2-4,7
         self.pages = pages
-        # 表格转图片纸张是否水平放置，默认为否
         self.paper_horizontal = paper_horizontal
-        # 表格转图片纸张大小，支持 A4/A2/A0，默认A4，配合 FitToHeight 或 FitToWidth 一起使用才有效
         self.paper_size = paper_size
-        # 文档密码
         self.password = password
-        # 项目名称
         self.project_name = project_name
-        # 质量参数，范围是0-100，越大质量越好，默认系统自动选择适合的分辨率
         self.quality = quality
-        # 缩放参数，允许范围 20~200，100代表不缩放，小于100表示缩小，大于100表示放大，默认不缩放
         self.scale_percentage = scale_percentage
-        # 表格转图片参数，指定转换表格中的 sheet 数量，默认转换所有 sheet
         self.sheet_count = sheet_count
-        # 表格转图片参数，指定转换哪一个 sheet，从 1 开始，默认从起始页开始转
         self.sheet_index = sheet_index
-        # 文字转图片，是否显示批注，目前只支持文字转图片时携带批注，默认不显示批注
         self.show_comments = show_comments
-        # 输入文件格式，默认使用文件名后缀小写格式
         self.source_type = source_type
-        # 文档转换输入文件地址
         self.source_uri = source_uri
-        # 转换起始页，从 1 开始，包含起始页，默认从第一页开始转换，表格转图片时需要指定 SheetIndex 才有效
         self.start_page = start_page
-        # 用户自定义标签
         self.tags = tags
-        # 输出文件格式
         self.target_type = target_type
-        # 文档转换输出地址模式
         self.target_uri = target_uri
-        # 文档转换输出文件地址前缀
         self.target_uriprefix = target_uriprefix
-        # 表格瘦身
         self.trim_policy = trim_policy
-        # 用户自定义数据，在消息通知中返回
         self.user_data = user_data
 
     def validate(self):
@@ -7603,8 +7474,6 @@ class CreateOfficeConversionTaskRequest(TeaModel):
             result['MaxSheetColumn'] = self.max_sheet_column
         if self.max_sheet_row is not None:
             result['MaxSheetRow'] = self.max_sheet_row
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.pages is not None:
@@ -7672,8 +7541,6 @@ class CreateOfficeConversionTaskRequest(TeaModel):
             self.max_sheet_column = m.get('MaxSheetColumn')
         if m.get('MaxSheetRow') is not None:
             self.max_sheet_row = m.get('MaxSheetRow')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('Pages') is not None:
@@ -7732,7 +7599,6 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
         long_text: bool = None,
         max_sheet_column: int = None,
         max_sheet_row: int = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         pages: str = None,
         paper_horizontal: bool = None,
@@ -7755,67 +7621,35 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
-        # 转换终止页，包含终止页，默认转换到最后一页，表格转图片时需要指定 SheetIndex 才有效
         self.end_page = end_page
-        # 表格转图片参数，是否只返回表格的第一张图片，默认为否
         self.first_page = first_page
-        # 表格转图片参数，是否将所有行输出到一张图片，默认为否
         self.fit_to_height = fit_to_height
-        # 表格转图片参数，是否将所有列输出到一张图片，默认为否
         self.fit_to_width = fit_to_width
-        # 转文本时是否保留文档中的换行符，默认不保留
         self.hold_line_feed = hold_line_feed
-        # 输出图片 DPI，允许范围 96-600，默认 96
         self.image_dpi = image_dpi
-        # 转图片时是否转换成一张长图，最多支持将 20 页合成一张长图，超过可能报错，默认为不转成长图
         self.long_picture = long_picture
-        # 转文本时是否转换成长文本，默认每页是个独立的文本
         self.long_text = long_text
-        # 表格转图片的最大列数，在 LongPicture 为 true 时生效，默认转所有列
         self.max_sheet_column = max_sheet_column
-        # 表格转图片的最大行数，在 LongPicture 为 true 时生效，默认转所有行
         self.max_sheet_row = max_sheet_row
-        # mns 消息通知地址
-        self.notify_endpoint = notify_endpoint
-        # mns 消息通知 topic
         self.notify_topic_name = notify_topic_name
-        # 指定转换页码，优先级高于 StartPage/EndPage，格式：多个页码用 “," 拼接，连续页码用 "-" 连接，样例参考: 1,2-4,7
         self.pages = pages
-        # 表格转图片纸张是否水平放置，默认为否
         self.paper_horizontal = paper_horizontal
-        # 表格转图片纸张大小，支持 A4/A2/A0，默认A4，配合 FitToHeight 或 FitToWidth 一起使用才有效
         self.paper_size = paper_size
-        # 文档密码
         self.password = password
-        # 项目名称
         self.project_name = project_name
-        # 质量参数，范围是0-100，越大质量越好，默认系统自动选择适合的分辨率
         self.quality = quality
-        # 缩放参数，允许范围 20~200，100代表不缩放，小于100表示缩小，大于100表示放大，默认不缩放
         self.scale_percentage = scale_percentage
-        # 表格转图片参数，指定转换表格中的 sheet 数量，默认转换所有 sheet
         self.sheet_count = sheet_count
-        # 表格转图片参数，指定转换哪一个 sheet，从 1 开始，默认从起始页开始转
         self.sheet_index = sheet_index
-        # 文字转图片，是否显示批注，目前只支持文字转图片时携带批注，默认不显示批注
         self.show_comments = show_comments
-        # 输入文件格式，默认使用文件名后缀小写格式
         self.source_type = source_type
-        # 文档转换输入文件地址
         self.source_uri = source_uri
-        # 转换起始页，从 1 开始，包含起始页，默认从第一页开始转换，表格转图片时需要指定 SheetIndex 才有效
         self.start_page = start_page
-        # 用户自定义标签
         self.tags_shrink = tags_shrink
-        # 输出文件格式
         self.target_type = target_type
-        # 文档转换输出地址模式
         self.target_uri = target_uri
-        # 文档转换输出文件地址前缀
         self.target_uriprefix = target_uriprefix
-        # 表格瘦身
         self.trim_policy_shrink = trim_policy_shrink
-        # 用户自定义数据，在消息通知中返回
         self.user_data = user_data
 
     def validate(self):
@@ -7849,8 +7683,6 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
             result['MaxSheetColumn'] = self.max_sheet_column
         if self.max_sheet_row is not None:
             result['MaxSheetRow'] = self.max_sheet_row
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.pages is not None:
@@ -7917,8 +7749,6 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
             self.max_sheet_column = m.get('MaxSheetColumn')
         if m.get('MaxSheetRow') is not None:
             self.max_sheet_row = m.get('MaxSheetRow')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('Pages') is not None:
@@ -7970,9 +7800,7 @@ class CreateOfficeConversionTaskResponseBody(TeaModel):
         task_id: str = None,
     ):
         self.event_id = event_id
-        # 请求 id
         self.request_id = request_id
-        # 任务 id
         self.task_id = task_id
 
     def validate(self):
@@ -8071,7 +7899,6 @@ class CreateProjectRequest(TeaModel):
         self.description = description
         self.engine_concurrency = engine_concurrency
         self.project_max_dataset_count = project_max_dataset_count
-        # 项目名称
         self.project_name = project_name
         self.project_queries_per_second = project_queries_per_second
         self.service_role = service_role
@@ -8148,7 +7975,6 @@ class CreateProjectResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.project = project
-        # 本次请求的唯一 ID
         self.request_id = request_id
 
     def validate(self):
@@ -8229,7 +8055,6 @@ class CreateStoryRequest(TeaModel):
         dataset_name: str = None,
         max_file_count: int = None,
         min_file_count: int = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         object_id: str = None,
         project_name: str = None,
@@ -8246,7 +8071,6 @@ class CreateStoryRequest(TeaModel):
         self.dataset_name = dataset_name
         self.max_file_count = max_file_count
         self.min_file_count = min_file_count
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.object_id = object_id
         self.project_name = project_name
@@ -8277,8 +8101,6 @@ class CreateStoryRequest(TeaModel):
             result['MaxFileCount'] = self.max_file_count
         if self.min_file_count is not None:
             result['MinFileCount'] = self.min_file_count
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.object_id is not None:
@@ -8313,8 +8135,6 @@ class CreateStoryRequest(TeaModel):
             self.max_file_count = m.get('MaxFileCount')
         if m.get('MinFileCount') is not None:
             self.min_file_count = m.get('MinFileCount')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ObjectId') is not None:
@@ -8346,7 +8166,6 @@ class CreateStoryShrinkRequest(TeaModel):
         dataset_name: str = None,
         max_file_count: int = None,
         min_file_count: int = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         object_id: str = None,
         project_name: str = None,
@@ -8363,7 +8182,6 @@ class CreateStoryShrinkRequest(TeaModel):
         self.dataset_name = dataset_name
         self.max_file_count = max_file_count
         self.min_file_count = min_file_count
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.object_id = object_id
         self.project_name = project_name
@@ -8394,8 +8212,6 @@ class CreateStoryShrinkRequest(TeaModel):
             result['MaxFileCount'] = self.max_file_count
         if self.min_file_count is not None:
             result['MinFileCount'] = self.min_file_count
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.object_id is not None:
@@ -8430,8 +8246,6 @@ class CreateStoryShrinkRequest(TeaModel):
             self.max_file_count = m.get('MaxFileCount')
         if m.get('MinFileCount') is not None:
             self.min_file_count = m.get('MinFileCount')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ObjectId') is not None:
@@ -8463,7 +8277,6 @@ class CreateStoryResponseBody(TeaModel):
         task_id: str = None,
     ):
         self.event_id = event_id
-        # Id of the request
         self.request_id = request_id
         self.task_id = task_id
 
@@ -8545,7 +8358,6 @@ class CreateVideoModerationTaskRequest(TeaModel):
         credential_config: CredentialConfig = None,
         interval: int = None,
         max_frames: int = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
         reviewer: str = None,
@@ -8557,9 +8369,7 @@ class CreateVideoModerationTaskRequest(TeaModel):
         self.credential_config = credential_config
         self.interval = interval
         self.max_frames = max_frames
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
-        # 项目名称
         self.project_name = project_name
         self.reviewer = reviewer
         self.scenes = scenes
@@ -8583,8 +8393,6 @@ class CreateVideoModerationTaskRequest(TeaModel):
             result['Interval'] = self.interval
         if self.max_frames is not None:
             result['MaxFrames'] = self.max_frames
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -8610,8 +8418,6 @@ class CreateVideoModerationTaskRequest(TeaModel):
             self.interval = m.get('Interval')
         if m.get('MaxFrames') is not None:
             self.max_frames = m.get('MaxFrames')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
@@ -8635,7 +8441,6 @@ class CreateVideoModerationTaskShrinkRequest(TeaModel):
         credential_config_shrink: str = None,
         interval: int = None,
         max_frames: int = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
         reviewer: str = None,
@@ -8647,9 +8452,7 @@ class CreateVideoModerationTaskShrinkRequest(TeaModel):
         self.credential_config_shrink = credential_config_shrink
         self.interval = interval
         self.max_frames = max_frames
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
-        # 项目名称
         self.project_name = project_name
         self.reviewer = reviewer
         self.scenes_shrink = scenes_shrink
@@ -8672,8 +8475,6 @@ class CreateVideoModerationTaskShrinkRequest(TeaModel):
             result['Interval'] = self.interval
         if self.max_frames is not None:
             result['MaxFrames'] = self.max_frames
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -8698,8 +8499,6 @@ class CreateVideoModerationTaskShrinkRequest(TeaModel):
             self.interval = m.get('Interval')
         if m.get('MaxFrames') is not None:
             self.max_frames = m.get('MaxFrames')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
@@ -8725,7 +8524,6 @@ class CreateVideoModerationTaskResponseBody(TeaModel):
         task_id: str = None,
     ):
         self.event_id = event_id
-        # RequestId
         self.request_id = request_id
         self.task_id = task_id
 
@@ -8811,7 +8609,6 @@ class DeleteBindingRequest(TeaModel):
     ):
         self.cleanup = cleanup
         self.dataset_name = dataset_name
-        # A short description of struct
         self.project_name = project_name
         self.uri = uri
 
@@ -8852,7 +8649,6 @@ class DeleteBindingResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -8957,7 +8753,6 @@ class DeleteDatasetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -9068,7 +8863,6 @@ class DeleteFileMetaResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -9140,7 +8934,6 @@ class DeleteProjectRequest(TeaModel):
         self,
         project_name: str = None,
     ):
-        # 项目名称
         self.project_name = project_name
 
     def validate(self):
@@ -9168,7 +8961,6 @@ class DeleteProjectResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 本次请求的唯一 ID
         self.request_id = request_id
 
     def validate(self):
@@ -9377,7 +9169,6 @@ class DetachOSSBucketResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -9453,10 +9244,8 @@ class DetectImageBodiesRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config = credential_config
-        # 项目名称
         self.project_name = project_name
         self.sensitivity = sensitivity
-        # SourceURI
         self.source_uri = source_uri
 
     def validate(self):
@@ -9502,10 +9291,8 @@ class DetectImageBodiesShrinkRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
-        # 项目名称
         self.project_name = project_name
         self.sensitivity = sensitivity
-        # SourceURI
         self.source_uri = source_uri
 
     def validate(self):
@@ -9546,9 +9333,7 @@ class DetectImageBodiesResponseBody(TeaModel):
         bodies: List[Body] = None,
         request_id: str = None,
     ):
-        # 图片裁剪结果
         self.bodies = bodies
-        # 请求唯一ID
         self.request_id = request_id
 
     def validate(self):
@@ -9635,9 +9420,7 @@ class DetectImageCodesRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config = credential_config
-        # 项目名称
         self.project_name = project_name
-        # SourceURI
         self.source_uri = source_uri
 
     def validate(self):
@@ -9678,9 +9461,7 @@ class DetectImageCodesShrinkRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
-        # 项目名称
         self.project_name = project_name
-        # SourceURI
         self.source_uri = source_uri
 
     def validate(self):
@@ -9717,9 +9498,7 @@ class DetectImageCodesResponseBody(TeaModel):
         codes: List[Codes] = None,
         request_id: str = None,
     ):
-        # 二维码检测结果
         self.codes = codes
-        # 请求唯一ID
         self.request_id = request_id
 
     def validate(self):
@@ -9808,9 +9587,7 @@ class DetectImageCroppingRequest(TeaModel):
     ):
         self.aspect_ratios = aspect_ratios
         self.credential_config = credential_config
-        # 项目名称
         self.project_name = project_name
-        # SourceURI
         self.source_uri = source_uri
 
     def validate(self):
@@ -9857,9 +9634,7 @@ class DetectImageCroppingShrinkRequest(TeaModel):
     ):
         self.aspect_ratios = aspect_ratios
         self.credential_config_shrink = credential_config_shrink
-        # 项目名称
         self.project_name = project_name
-        # SourceURI
         self.source_uri = source_uri
 
     def validate(self):
@@ -9900,9 +9675,7 @@ class DetectImageCroppingResponseBody(TeaModel):
         croppings: List[CroppingSuggestion] = None,
         request_id: str = None,
     ):
-        # 图片裁剪结果
         self.croppings = croppings
-        # 请求唯一ID
         self.request_id = request_id
 
     def validate(self):
@@ -9989,7 +9762,6 @@ class DetectImageFacesRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config = credential_config
-        # 项目名称
         self.project_name = project_name
         self.source_uri = source_uri
 
@@ -10031,7 +9803,6 @@ class DetectImageFacesShrinkRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
-        # 项目名称
         self.project_name = project_name
         self.source_uri = source_uri
 
@@ -10070,7 +9841,6 @@ class DetectImageFacesResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.faces = faces
-        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -10158,11 +9928,8 @@ class DetectImageLabelsRequest(TeaModel):
         threshold: float = None,
     ):
         self.credential_config = credential_config
-        # 项目名称
         self.project_name = project_name
-        # SourceURI
         self.source_uri = source_uri
-        # Threshold
         self.threshold = threshold
 
     def validate(self):
@@ -10208,11 +9975,8 @@ class DetectImageLabelsShrinkRequest(TeaModel):
         threshold: float = None,
     ):
         self.credential_config_shrink = credential_config_shrink
-        # 项目名称
         self.project_name = project_name
-        # SourceURI
         self.source_uri = source_uri
-        # Threshold
         self.threshold = threshold
 
     def validate(self):
@@ -10253,9 +10017,7 @@ class DetectImageLabelsResponseBody(TeaModel):
         labels: List[Label] = None,
         request_id: str = None,
     ):
-        # 内容标签列表
         self.labels = labels
-        # 请求唯一ID
         self.request_id = request_id
 
     def validate(self):
@@ -10342,7 +10104,6 @@ class DetectImageScoreRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config = credential_config
-        # 项目名称
         self.project_name = project_name
         self.source_uri = source_uri
 
@@ -10384,7 +10145,6 @@ class DetectImageScoreShrinkRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
-        # 项目名称
         self.project_name = project_name
         self.source_uri = source_uri
 
@@ -10450,7 +10210,6 @@ class DetectImageScoreResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.image_score = image_score
-        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -10530,7 +10289,6 @@ class DetectTextAnomalyRequest(TeaModel):
         project_name: str = None,
     ):
         self.content = content
-        # 项目名称
         self.project_name = project_name
 
     def validate(self):
@@ -10563,7 +10321,6 @@ class DetectTextAnomalyResponseBody(TeaModel):
         request_id: str = None,
         suggestion: str = None,
     ):
-        # RequestId
         self.request_id = request_id
         self.suggestion = suggestion
 
@@ -10644,15 +10401,10 @@ class FuzzyQueryRequest(TeaModel):
         project_name: str = None,
         query: str = None,
     ):
-        # Dataset 名称
         self.dataset_name = dataset_name
-        # 本次读取的最大数据记录数量
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始
         self.next_token = next_token
-        # 项目名称
         self.project_name = project_name
-        # 用于搜索的字符串
         self.query = query
 
     def validate(self):
@@ -10699,9 +10451,7 @@ class FuzzyQueryResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.files = files
-        # 表示当前调用返回读取到的位置，空代表数据已经读取完毕
         self.next_token = next_token
-        # 本次请求的唯一 Id
         self.request_id = request_id
 
     def validate(self):
@@ -10830,7 +10580,6 @@ class GetBindingResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.binding = binding
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -11028,11 +10777,8 @@ class GetDetectVideoLabelsResultRequest(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # 项目名称
         self.project_name = project_name
-        # TaskId
         self.task_id = task_id
-        # TaskType
         self.task_type = task_type
 
     def validate(self):
@@ -11079,29 +10825,17 @@ class GetDetectVideoLabelsResultResponseBody(TeaModel):
         task_type: str = None,
         user_data: str = None,
     ):
-        # 任务错误码
         self.code = code
-        # 任务结束时间
         self.end_time = end_time
-        # 事件Id
         self.event_id = event_id
-        # 标签列表
         self.labels = labels
-        # 任务错误消息
         self.message = message
-        # 项目名称
         self.project_name = project_name
-        # 请求唯一Id
         self.request_id = request_id
-        # 任务开始时间
         self.start_time = start_time
-        # 任务运行状态
         self.status = status
-        # 任务唯一ID
         self.task_id = task_id
-        # 任务类型
         self.task_type = task_type
-        # 用户自定义信息
         self.user_data = user_data
 
     def validate(self):
@@ -11266,7 +11000,6 @@ class GetFigureClusterResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.figure_cluster = figure_cluster
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -11384,9 +11117,7 @@ class GetFileMetaResponseBody(TeaModel):
         files: List[File] = None,
         request_id: str = None,
     ):
-        # File list.
         self.files = files
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -11823,7 +11554,6 @@ class GetOSSBucketAttachmentResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.project_name = project_name
-        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -11900,9 +11630,7 @@ class GetProjectRequest(TeaModel):
         project_name: str = None,
         with_statistics: bool = None,
     ):
-        # 项目名称
         self.project_name = project_name
-        # 是否获取详细信息
         self.with_statistics = with_statistics
 
     def validate(self):
@@ -11936,7 +11664,6 @@ class GetProjectResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.project = project
-        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -12054,7 +11781,6 @@ class GetStoryResponseBody(TeaModel):
         request_id: str = None,
         story: Story = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.story = story
 
@@ -12135,11 +11861,8 @@ class GetTaskRequest(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # 项目名称
         self.project_name = project_name
-        # TaskId
         self.task_id = task_id
-        # TaskType
         self.task_type = task_type
 
     def validate(self):
@@ -12186,28 +11909,17 @@ class GetTaskResponseBody(TeaModel):
         task_type: str = None,
         user_data: str = None,
     ):
-        # 任务错误码
         self.code = code
-        # 任务结束时间
         self.end_time = end_time
-        # 事件Id
         self.event_id = event_id
-        # 任务错误消息
         self.message = message
-        # 项目名称
         self.project_name = project_name
-        # 请求唯一Id
         self.request_id = request_id
-        # 任务开始时间
         self.start_time = start_time
-        # 任务运行状态
         self.status = status
         self.tags = tags
-        # 任务唯一ID
         self.task_id = task_id
-        # 任务类型
         self.task_type = task_type
-        # 用户自定义信息
         self.user_data = user_data
 
     def validate(self):
@@ -12326,7 +12038,6 @@ class GetWebofficeURLRequest(TeaModel):
         external_uploaded: bool = None,
         filename: str = None,
         hidecmb: bool = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         password: str = None,
         permission: WebofficePermission = None,
@@ -12338,36 +12049,20 @@ class GetWebofficeURLRequest(TeaModel):
         user_data: str = None,
         watermark: WebofficeWatermark = None,
     ):
-        # 缓存预览标识
         self.cache_preview = cache_preview
         self.credential_config = credential_config
-        # 是否支持外部上传
         self.external_uploaded = external_uploaded
-        # 文件名，必须带文件名后缀，默认是 SourceUri 的最后一级
         self.filename = filename
-        # 隐藏工具栏，预览模式下使用
         self.hidecmb = hidecmb
-        # mns 消息通知地址
-        self.notify_endpoint = notify_endpoint
-        # mns 消息通知 topic
         self.notify_topic_name = notify_topic_name
-        # 文件密码
         self.password = password
-        # 权限
         self.permission = permission
-        # 预览前几页
         self.preview_pages = preview_pages
-        # 项目名称
         self.project_name = project_name
-        # oss 防盗链 referer
         self.referer = referer
-        # 预览编辑地址
         self.source_uri = source_uri
-        # 用户
         self.user = user
-        # 用户自定义数据，在消息通知中返回
         self.user_data = user_data
-        # 水印
         self.watermark = watermark
 
     def validate(self):
@@ -12396,8 +12091,6 @@ class GetWebofficeURLRequest(TeaModel):
             result['Filename'] = self.filename
         if self.hidecmb is not None:
             result['Hidecmb'] = self.hidecmb
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.password is not None:
@@ -12433,8 +12126,6 @@ class GetWebofficeURLRequest(TeaModel):
             self.filename = m.get('Filename')
         if m.get('Hidecmb') is not None:
             self.hidecmb = m.get('Hidecmb')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('Password') is not None:
@@ -12469,7 +12160,6 @@ class GetWebofficeURLShrinkRequest(TeaModel):
         external_uploaded: bool = None,
         filename: str = None,
         hidecmb: bool = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         password: str = None,
         permission_shrink: str = None,
@@ -12481,36 +12171,20 @@ class GetWebofficeURLShrinkRequest(TeaModel):
         user_data: str = None,
         watermark_shrink: str = None,
     ):
-        # 缓存预览标识
         self.cache_preview = cache_preview
         self.credential_config_shrink = credential_config_shrink
-        # 是否支持外部上传
         self.external_uploaded = external_uploaded
-        # 文件名，必须带文件名后缀，默认是 SourceUri 的最后一级
         self.filename = filename
-        # 隐藏工具栏，预览模式下使用
         self.hidecmb = hidecmb
-        # mns 消息通知地址
-        self.notify_endpoint = notify_endpoint
-        # mns 消息通知 topic
         self.notify_topic_name = notify_topic_name
-        # 文件密码
         self.password = password
-        # 权限
         self.permission_shrink = permission_shrink
-        # 预览前几页
         self.preview_pages = preview_pages
-        # 项目名称
         self.project_name = project_name
-        # oss 防盗链 referer
         self.referer = referer
-        # 预览编辑地址
         self.source_uri = source_uri
-        # 用户
         self.user_shrink = user_shrink
-        # 用户自定义数据，在消息通知中返回
         self.user_data = user_data
-        # 水印
         self.watermark_shrink = watermark_shrink
 
     def validate(self):
@@ -12532,8 +12206,6 @@ class GetWebofficeURLShrinkRequest(TeaModel):
             result['Filename'] = self.filename
         if self.hidecmb is not None:
             result['Hidecmb'] = self.hidecmb
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.password is not None:
@@ -12568,8 +12240,6 @@ class GetWebofficeURLShrinkRequest(TeaModel):
             self.filename = m.get('Filename')
         if m.get('Hidecmb') is not None:
             self.hidecmb = m.get('Hidecmb')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('Password') is not None:
@@ -12603,17 +12273,11 @@ class GetWebofficeURLResponseBody(TeaModel):
         request_id: str = None,
         weboffice_url: str = None,
     ):
-        # access token
         self.access_token = access_token
-        # access token 过期时间
         self.access_token_expired_time = access_token_expired_time
-        # refresh token
         self.refresh_token = refresh_token
-        # refresh token 过期时间
         self.refresh_token_expired_time = refresh_token_expired_time
-        # 请求 id
         self.request_id = request_id
-        # 预览编辑地址
         self.weboffice_url = weboffice_url
 
     def validate(self):
@@ -12705,13 +12369,11 @@ class IndexFileMetaRequest(TeaModel):
         self,
         dataset_name: str = None,
         file: FileForReq = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
     ):
         self.dataset_name = dataset_name
         self.file = file
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
 
@@ -12729,8 +12391,6 @@ class IndexFileMetaRequest(TeaModel):
             result['DatasetName'] = self.dataset_name
         if self.file is not None:
             result['File'] = self.file.to_map()
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -12744,8 +12404,6 @@ class IndexFileMetaRequest(TeaModel):
         if m.get('File') is not None:
             temp_model = FileForReq()
             self.file = temp_model.from_map(m['File'])
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
@@ -12758,13 +12416,11 @@ class IndexFileMetaShrinkRequest(TeaModel):
         self,
         dataset_name: str = None,
         file_shrink: str = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
     ):
         self.dataset_name = dataset_name
         self.file_shrink = file_shrink
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
 
@@ -12781,8 +12437,6 @@ class IndexFileMetaShrinkRequest(TeaModel):
             result['DatasetName'] = self.dataset_name
         if self.file_shrink is not None:
             result['File'] = self.file_shrink
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -12795,8 +12449,6 @@ class IndexFileMetaShrinkRequest(TeaModel):
             self.dataset_name = m.get('DatasetName')
         if m.get('File') is not None:
             self.file_shrink = m.get('File')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
@@ -12811,7 +12463,6 @@ class IndexFileMetaResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.event_id = event_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -12893,7 +12544,6 @@ class ListBindingsRequest(TeaModel):
         self.dataset_name = dataset_name
         self.max_results = max_results
         self.next_token = next_token
-        # A short description of struct
         self.project_name = project_name
 
     def validate(self):
@@ -12937,7 +12587,6 @@ class ListBindingsResponseBody(TeaModel):
     ):
         self.bindings = bindings
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -13028,12 +12677,9 @@ class ListDatasetsRequest(TeaModel):
         prefix: str = None,
         project_name: str = None,
     ):
-        # 返回最大个数
         self.max_results = max_results
-        # 当总结果个数大于MaxResults时，用于翻页的token
         self.next_token = next_token
         self.prefix = prefix
-        # 项目名称
         self.project_name = project_name
 
     def validate(self):
@@ -13075,10 +12721,8 @@ class ListDatasetsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Datasets
         self.datasets = datasets
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -13168,11 +12812,8 @@ class ListProjectsRequest(TeaModel):
         next_token: str = None,
         prefix: str = None,
     ):
-        # 返回结果的最大个数
         self.max_results = max_results
-        # 当总结果个数大于MaxResults时，用于翻页的token
         self.next_token = next_token
-        # 列出包含某前缀的project
         self.prefix = prefix
 
     def validate(self):
@@ -13210,11 +12851,8 @@ class ListProjectsResponseBody(TeaModel):
         projects: List[Project] = None,
         request_id: str = None,
     ):
-        # 当总结果个数大于MaxResults时，用于翻页的token
         self.next_token = next_token
-        # 由ProjectItem组成的数组
         self.projects = projects
-        # 本次请求的唯一 ID
         self.request_id = request_id
 
     def validate(self):
@@ -13331,7 +12969,6 @@ class ListRegionsResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.regions = regions
-        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -13425,12 +13062,9 @@ class ListTasksRequest(TeaModel):
         task_types: List[str] = None,
     ):
         self.end_time_range = end_time_range
-        # MaxResults
         self.max_results = max_results
-        # NextToken
         self.next_token = next_token
         self.order = order
-        # 项目名称
         self.project_name = project_name
         self.sort = sort
         self.start_time_range = start_time_range
@@ -13514,12 +13148,9 @@ class ListTasksShrinkRequest(TeaModel):
         task_types_shrink: str = None,
     ):
         self.end_time_range_shrink = end_time_range_shrink
-        # MaxResults
         self.max_results = max_results
-        # NextToken
         self.next_token = next_token
         self.order = order
-        # 项目名称
         self.project_name = project_name
         self.sort = sort
         self.start_time_range_shrink = start_time_range_shrink
@@ -13592,15 +13223,10 @@ class ListTasksResponseBody(TeaModel):
         request_id: str = None,
         tasks: List[TaskInfo] = None,
     ):
-        # 最大结果数量
         self.max_results = max_results
-        # 翻页标记
         self.next_token = next_token
-        # 项目名称
         self.project_name = project_name
-        # 请求唯一Id
         self.request_id = request_id
-        # 任务信息
         self.tasks = tasks
 
     def validate(self):
@@ -13766,7 +13392,6 @@ class MergeFigureClustersResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.task_id = task_id
 
@@ -13853,10 +13478,8 @@ class QueryFigureClustersRequest(TeaModel):
         self.dataset_name = dataset_name
         self.max_results = max_results
         self.next_token = next_token
-        # 升降序
         self.order = order
         self.project_name = project_name
-        # 排序字段
         self.sort = sort
 
     def validate(self):
@@ -13912,7 +13535,6 @@ class QueryFigureClustersResponseBody(TeaModel):
     ):
         self.figure_clusters = figure_clusters
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -14245,7 +13867,6 @@ class QueryStoriesResponseBody(TeaModel):
         stories: List[Story] = None,
     ):
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
         self.stories = stories
 
@@ -14337,12 +13958,9 @@ class RefreshWebofficeTokenRequest(TeaModel):
         project_name: str = None,
         refresh_token: str = None,
     ):
-        # access token
         self.access_token = access_token
         self.credential_config = credential_config
-        # 项目名称
         self.project_name = project_name
-        # refresh token
         self.refresh_token = refresh_token
 
     def validate(self):
@@ -14387,12 +14005,9 @@ class RefreshWebofficeTokenShrinkRequest(TeaModel):
         project_name: str = None,
         refresh_token: str = None,
     ):
-        # access token
         self.access_token = access_token
         self.credential_config_shrink = credential_config_shrink
-        # 项目名称
         self.project_name = project_name
-        # refresh token
         self.refresh_token = refresh_token
 
     def validate(self):
@@ -14436,15 +14051,10 @@ class RefreshWebofficeTokenResponseBody(TeaModel):
         refresh_token_expired_time: str = None,
         request_id: str = None,
     ):
-        # access token
         self.access_token = access_token
-        # access token 过期时间
         self.access_token_expired_time = access_token_expired_time
-        # refresh token
         self.refresh_token = refresh_token
-        # refresh token 过期时间
         self.refresh_token_expired_time = refresh_token_expired_time
-        # 请求 Id
         self.request_id = request_id
 
     def validate(self):
@@ -14565,7 +14175,6 @@ class RemoveStoryFilesRequest(TeaModel):
         self.dataset_name = dataset_name
         self.files = files
         self.object_id = object_id
-        # A short description of struct
         self.project_name = project_name
 
     def validate(self):
@@ -14619,7 +14228,6 @@ class RemoveStoryFilesShrinkRequest(TeaModel):
         self.dataset_name = dataset_name
         self.files_shrink = files_shrink
         self.object_id = object_id
-        # A short description of struct
         self.project_name = project_name
 
     def validate(self):
@@ -14659,7 +14267,6 @@ class RemoveStoryFilesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -14770,7 +14377,6 @@ class ResumeBindingResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -14846,15 +14452,10 @@ class SemanticQueryRequest(TeaModel):
         project_name: str = None,
         query: str = None,
     ):
-        # Dataset 名称
         self.dataset_name = dataset_name
-        # 本次读取的最大数据记录数量
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始
         self.next_token = next_token
-        # 项目名称
         self.project_name = project_name
-        # 需要搜索的内容，使用自然语言描述
         self.query = query
 
     def validate(self):
@@ -14899,9 +14500,7 @@ class SemanticQueryResponseBodyAggregationsGroups(TeaModel):
         count: int = None,
         value: str = None,
     ):
-        # 分组聚合的计数
         self.count = count
-        # 分组聚合的值
         self.value = value
 
     def validate(self):
@@ -14936,13 +14535,9 @@ class SemanticQueryResponseBodyAggregations(TeaModel):
         operation: str = None,
         value: float = None,
     ):
-        # 聚合字段名
         self.field = field
-        # 分组聚合的结果
         self.groups = groups
-        # 聚合字段的聚合操作符
         self.operation = operation
-        # 聚合的统计结果
         self.value = value
 
     def validate(self):
@@ -14993,13 +14588,9 @@ class SemanticQueryResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # 聚合字段的字段名
         self.aggregations = aggregations
-        # 文件列表
         self.files = files
-        # 表示当前调用返回读取到的位置，空代表数据已经读取完毕
         self.next_token = next_token
-        # 本次请求的唯一 Id
         self.request_id = request_id
 
     def validate(self):
@@ -15101,9 +14692,7 @@ class SimpleQueryRequestAggregations(TeaModel):
         field: str = None,
         operation: str = None,
     ):
-        # 聚合字段的字段名
         self.field = field
-        # 聚合字段的聚合操作符
         self.operation = operation
 
     def validate(self):
@@ -15143,22 +14732,14 @@ class SimpleQueryRequest(TeaModel):
         sort: str = None,
         with_fields: List[str] = None,
     ):
-        # 聚合字段
         self.aggregations = aggregations
-        # Dataset 名称
         self.dataset_name = dataset_name
-        # 本次读取的最大数据记录数量
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始
         self.next_token = next_token
-        # 排序字段
         self.order = order
-        # 项目名称
         self.project_name = project_name
         self.query = query
-        # 排序方式，默认 DESC
         self.sort = sort
-        # 仅返回哪些字段
         self.with_fields = with_fields
 
     def validate(self):
@@ -15237,22 +14818,14 @@ class SimpleQueryShrinkRequest(TeaModel):
         sort: str = None,
         with_fields_shrink: str = None,
     ):
-        # 聚合字段
         self.aggregations_shrink = aggregations_shrink
-        # Dataset 名称
         self.dataset_name = dataset_name
-        # 本次读取的最大数据记录数量
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始
         self.next_token = next_token
-        # 排序字段
         self.order = order
-        # 项目名称
         self.project_name = project_name
         self.query_shrink = query_shrink
-        # 排序方式，默认 DESC
         self.sort = sort
-        # 仅返回哪些字段
         self.with_fields_shrink = with_fields_shrink
 
     def validate(self):
@@ -15313,9 +14886,7 @@ class SimpleQueryResponseBodyAggregationsGroups(TeaModel):
         count: int = None,
         value: str = None,
     ):
-        # 分组聚合的计数
         self.count = count
-        # 分组聚合的值
         self.value = value
 
     def validate(self):
@@ -15350,11 +14921,8 @@ class SimpleQueryResponseBodyAggregations(TeaModel):
         operation: str = None,
         value: float = None,
     ):
-        # 聚合字段名
         self.field = field
-        # 分组聚合的结果
         self.groups = groups
-        # 聚合字段的聚合操作符
         self.operation = operation
         self.value = value
 
@@ -15406,13 +14974,9 @@ class SimpleQueryResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # 聚合字段的字段名
         self.aggregations = aggregations
-        # 文件列表
         self.files = files
-        # 表示当前调用返回读取到的位置，空代表数据已经读取完毕
         self.next_token = next_token
-        # 本次请求的唯一 Id
         self.request_id = request_id
 
     def validate(self):
@@ -15558,7 +15122,6 @@ class StopBindingResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -15638,23 +15201,14 @@ class UpdateDatasetRequest(TeaModel):
         project_name: str = None,
         template_id: str = None,
     ):
-        # 媒体集最多绑定数
         self.dataset_max_bind_count = dataset_max_bind_count
-        # 媒体集最多实体数
         self.dataset_max_entity_count = dataset_max_entity_count
-        # 媒体集最多文件数
         self.dataset_max_file_count = dataset_max_file_count
-        # 媒体集最多关系数
         self.dataset_max_relation_count = dataset_max_relation_count
-        # 媒体集最大文件总大小
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # 媒体集名称
         self.dataset_name = dataset_name
-        # 描述
         self.description = description
-        # 项目名称
         self.project_name = project_name
-        # 模板Id
         self.template_id = template_id
 
     def validate(self):
@@ -15716,7 +15270,6 @@ class UpdateDatasetResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.dataset = dataset
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -15874,7 +15427,6 @@ class UpdateFigureClusterResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -16026,7 +15578,6 @@ class UpdateFileMetaResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -16109,29 +15660,17 @@ class UpdateProjectRequest(TeaModel):
         service_role: str = None,
         template_id: str = None,
     ):
-        # 媒体集最多绑定数
         self.dataset_max_bind_count = dataset_max_bind_count
-        # 媒体集最多实体数
         self.dataset_max_entity_count = dataset_max_entity_count
-        # 媒体集最多文件数
         self.dataset_max_file_count = dataset_max_file_count
-        # 媒体集最多关系数
         self.dataset_max_relation_count = dataset_max_relation_count
-        # 媒体集最大文件总大小
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # 项目描述
         self.description = description
-        # 项目并发数
         self.engine_concurrency = engine_concurrency
-        # 项目最多媒体集数
         self.project_max_dataset_count = project_max_dataset_count
-        # 项目名称
         self.project_name = project_name
-        # 项目QPS
         self.project_queries_per_second = project_queries_per_second
-        # 服务角色
         self.service_role = service_role
-        # 模板Id
         self.template_id = template_id
 
     def validate(self):
@@ -16205,7 +15744,6 @@ class UpdateProjectResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.project = project
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
