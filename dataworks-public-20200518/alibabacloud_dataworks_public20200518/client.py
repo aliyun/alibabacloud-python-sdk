@@ -7557,6 +7557,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetInstanceLogResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.instance_history_id):
+            body['InstanceHistoryId'] = request.instance_history_id
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.project_env):
@@ -7587,6 +7589,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetInstanceLogResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.instance_history_id):
+            body['InstanceHistoryId'] = request.instance_history_id
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.project_env):
@@ -12904,6 +12908,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_history_tasks_for_resource_group_with_options_async(request, runtime)
 
+    def list_inner_nodes_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListInnerNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListInnerNodesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_name):
+            body['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.outer_node_id):
+            body['OuterNodeId'] = request.outer_node_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.program_type):
+            body['ProgramType'] = request.program_type
+        if not UtilClient.is_unset(request.project_env):
+            body['ProjectEnv'] = request.project_env
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInnerNodes',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListInnerNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_inner_nodes_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListInnerNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListInnerNodesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_name):
+            body['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.outer_node_id):
+            body['OuterNodeId'] = request.outer_node_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.program_type):
+            body['ProgramType'] = request.program_type
+        if not UtilClient.is_unset(request.project_env):
+            body['ProjectEnv'] = request.project_env
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInnerNodes',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListInnerNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_inner_nodes(
+        self,
+        request: dataworks_public_20200518_models.ListInnerNodesRequest,
+    ) -> dataworks_public_20200518_models.ListInnerNodesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_inner_nodes_with_options(request, runtime)
+
+    async def list_inner_nodes_async(
+        self,
+        request: dataworks_public_20200518_models.ListInnerNodesRequest,
+    ) -> dataworks_public_20200518_models.ListInnerNodesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_inner_nodes_with_options_async(request, runtime)
+
     def list_instance_amount_with_options(
         self,
         request: dataworks_public_20200518_models.ListInstanceAmountRequest,
@@ -12981,6 +13079,80 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.ListInstanceAmountResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_amount_with_options_async(request, runtime)
+
+    def list_instance_history_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListInstanceHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListInstanceHistoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.project_env):
+            body['ProjectEnv'] = request.project_env
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceHistory',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListInstanceHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_history_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListInstanceHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListInstanceHistoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.project_env):
+            body['ProjectEnv'] = request.project_env
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceHistory',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListInstanceHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_history(
+        self,
+        request: dataworks_public_20200518_models.ListInstanceHistoryRequest,
+    ) -> dataworks_public_20200518_models.ListInstanceHistoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_instance_history_with_options(request, runtime)
+
+    async def list_instance_history_async(
+        self,
+        request: dataworks_public_20200518_models.ListInstanceHistoryRequest,
+    ) -> dataworks_public_20200518_models.ListInstanceHistoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instance_history_with_options_async(request, runtime)
 
     def list_instances_with_options(
         self,
@@ -15947,6 +16119,8 @@ class Client(OpenApiClient):
             body['RootNodeId'] = request.root_node_id
         if not UtilClient.is_unset(request.start_biz_date):
             body['StartBizDate'] = request.start_biz_date
+        if not UtilClient.is_unset(request.start_future_instance_immediately):
+            body['StartFutureInstanceImmediately'] = request.start_future_instance_immediately
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -15995,6 +16169,8 @@ class Client(OpenApiClient):
             body['RootNodeId'] = request.root_node_id
         if not UtilClient.is_unset(request.start_biz_date):
             body['StartBizDate'] = request.start_biz_date
+        if not UtilClient.is_unset(request.start_future_instance_immediately):
+            body['StartFutureInstanceImmediately'] = request.start_future_instance_immediately
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
