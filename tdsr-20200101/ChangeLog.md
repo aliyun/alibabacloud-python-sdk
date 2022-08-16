@@ -1,3 +1,6 @@
+2022-08-16 Version: 3.1.6
+- Add  SaveMinimap Interface.
+
 2022-07-26 Version: 3.1.5
 - Add  Hotspot  File Interface.
 

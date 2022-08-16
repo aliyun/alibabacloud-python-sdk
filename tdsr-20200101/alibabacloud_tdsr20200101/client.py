@@ -796,76 +796,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_upload_policy_with_options_async(request, runtime)
 
-    def decrypt_content_with_options(
-        self,
-        request: tdsr_20200101_models.DecryptContentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.DecryptContentResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.content):
-            query['Content'] = request.content
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DecryptContent',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.DecryptContentResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def decrypt_content_with_options_async(
-        self,
-        request: tdsr_20200101_models.DecryptContentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.DecryptContentResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.content):
-            query['Content'] = request.content
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DecryptContent',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.DecryptContentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def decrypt_content(
-        self,
-        request: tdsr_20200101_models.DecryptContentRequest,
-    ) -> tdsr_20200101_models.DecryptContentResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.decrypt_content_with_options(request, runtime)
-
-    async def decrypt_content_async(
-        self,
-        request: tdsr_20200101_models.DecryptContentRequest,
-    ) -> tdsr_20200101_models.DecryptContentResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.decrypt_content_with_options_async(request, runtime)
-
     def detail_project_with_options(
         self,
         request: tdsr_20200101_models.DetailProjectRequest,
@@ -1285,76 +1215,6 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DropSubSceneResponse:
         runtime = util_models.RuntimeOptions()
         return await self.drop_sub_scene_with_options_async(request, runtime)
-
-    def encrypt_content_with_options(
-        self,
-        request: tdsr_20200101_models.EncryptContentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.EncryptContentResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.content):
-            query['Content'] = request.content
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='EncryptContent',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.EncryptContentResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def encrypt_content_with_options_async(
-        self,
-        request: tdsr_20200101_models.EncryptContentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> tdsr_20200101_models.EncryptContentResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.content):
-            query['Content'] = request.content
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='EncryptContent',
-            version='2020-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            tdsr_20200101_models.EncryptContentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def encrypt_content(
-        self,
-        request: tdsr_20200101_models.EncryptContentRequest,
-    ) -> tdsr_20200101_models.EncryptContentResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.encrypt_content_with_options(request, runtime)
-
-    async def encrypt_content_async(
-        self,
-        request: tdsr_20200101_models.EncryptContentRequest,
-    ) -> tdsr_20200101_models.EncryptContentResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.encrypt_content_with_options_async(request, runtime)
 
     def get_conn_data_with_options(
         self,
@@ -4413,6 +4273,80 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.SaveHotspotTagListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.save_hotspot_tag_list_with_options_async(request, runtime)
+
+    def save_minimap_with_options(
+        self,
+        request: tdsr_20200101_models.SaveMinimapRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.SaveMinimapResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data):
+            query['Data'] = request.data
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveMinimap',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.SaveMinimapResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_minimap_with_options_async(
+        self,
+        request: tdsr_20200101_models.SaveMinimapRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.SaveMinimapResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data):
+            query['Data'] = request.data
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveMinimap',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.SaveMinimapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_minimap(
+        self,
+        request: tdsr_20200101_models.SaveMinimapRequest,
+    ) -> tdsr_20200101_models.SaveMinimapResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.save_minimap_with_options(request, runtime)
+
+    async def save_minimap_async(
+        self,
+        request: tdsr_20200101_models.SaveMinimapRequest,
+    ) -> tdsr_20200101_models.SaveMinimapResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.save_minimap_with_options_async(request, runtime)
 
     def save_model_config_with_options(
         self,
