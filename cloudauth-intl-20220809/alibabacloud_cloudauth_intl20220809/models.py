@@ -287,11 +287,11 @@ class InitializeRequest(TeaModel):
 class InitializeResponseBodyResult(TeaModel):
     def __init__(
         self,
-        transaction_id: str = None,
         client_cfg: str = None,
+        transaction_id: str = None,
     ):
-        self.transaction_id = transaction_id
         self.client_cfg = client_cfg
+        self.transaction_id = transaction_id
 
     def validate(self):
         pass
@@ -302,18 +302,18 @@ class InitializeResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
+        if self.client_cfg is not None:
+            result['ClientCfg'] = self.client_cfg
         if self.transaction_id is not None:
             result['TransactionId'] = self.transaction_id
-        if self.client_cfg is not None:
-            result['clientCfg'] = self.client_cfg
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientCfg') is not None:
+            self.client_cfg = m.get('ClientCfg')
         if m.get('TransactionId') is not None:
             self.transaction_id = m.get('TransactionId')
-        if m.get('clientCfg') is not None:
-            self.client_cfg = m.get('clientCfg')
         return self
 
 
