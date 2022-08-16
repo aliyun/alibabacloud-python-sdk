@@ -1,3 +1,6 @@
+2022-08-16 Version: 3.1.3
+- CreateDbfs support AdvancedFeatures.
+
 2022-08-15 Version: 3.1.2
 - The new parameter AdvancedFeatures is added to the CreateDbfs interface.
 
