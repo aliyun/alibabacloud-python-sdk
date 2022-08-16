@@ -331,6 +331,198 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_authorization_rule_with_options_async(request, runtime)
 
+    def create_batch_operate_cards_task_with_options(
+        self,
+        request: cc5g20220314_models.CreateBatchOperateCardsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.CreateBatchOperateCardsTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.effect_type):
+            query['EffectType'] = request.effect_type
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.iccids_oss_file_path):
+            query['IccidsOssFilePath'] = request.iccids_oss_file_path
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        if not UtilClient.is_unset(request.wireless_cloud_connector_ids):
+            query['WirelessCloudConnectorIds'] = request.wireless_cloud_connector_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBatchOperateCardsTask',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.CreateBatchOperateCardsTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_batch_operate_cards_task_with_options_async(
+        self,
+        request: cc5g20220314_models.CreateBatchOperateCardsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.CreateBatchOperateCardsTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.effect_type):
+            query['EffectType'] = request.effect_type
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.iccids_oss_file_path):
+            query['IccidsOssFilePath'] = request.iccids_oss_file_path
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        if not UtilClient.is_unset(request.wireless_cloud_connector_ids):
+            query['WirelessCloudConnectorIds'] = request.wireless_cloud_connector_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBatchOperateCardsTask',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.CreateBatchOperateCardsTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_batch_operate_cards_task(
+        self,
+        request: cc5g20220314_models.CreateBatchOperateCardsTaskRequest,
+    ) -> cc5g20220314_models.CreateBatchOperateCardsTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_batch_operate_cards_task_with_options(request, runtime)
+
+    async def create_batch_operate_cards_task_async(
+        self,
+        request: cc5g20220314_models.CreateBatchOperateCardsTaskRequest,
+    ) -> cc5g20220314_models.CreateBatchOperateCardsTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_batch_operate_cards_task_with_options_async(request, runtime)
+
+    def create_io_tcloud_connector_backhaul_route_with_options(
+        self,
+        request: cc5g20220314_models.CreateIoTCloudConnectorBackhaulRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.CreateIoTCloudConnectorBackhaulRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.net_link_id):
+            query['NetLinkId'] = request.net_link_id
+        if not UtilClient.is_unset(request.wireless_cloud_connector_id):
+            query['WirelessCloudConnectorId'] = request.wireless_cloud_connector_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIoTCloudConnectorBackhaulRoute',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.CreateIoTCloudConnectorBackhaulRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_io_tcloud_connector_backhaul_route_with_options_async(
+        self,
+        request: cc5g20220314_models.CreateIoTCloudConnectorBackhaulRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.CreateIoTCloudConnectorBackhaulRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.net_link_id):
+            query['NetLinkId'] = request.net_link_id
+        if not UtilClient.is_unset(request.wireless_cloud_connector_id):
+            query['WirelessCloudConnectorId'] = request.wireless_cloud_connector_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIoTCloudConnectorBackhaulRoute',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.CreateIoTCloudConnectorBackhaulRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_io_tcloud_connector_backhaul_route(
+        self,
+        request: cc5g20220314_models.CreateIoTCloudConnectorBackhaulRouteRequest,
+    ) -> cc5g20220314_models.CreateIoTCloudConnectorBackhaulRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_io_tcloud_connector_backhaul_route_with_options(request, runtime)
+
+    async def create_io_tcloud_connector_backhaul_route_async(
+        self,
+        request: cc5g20220314_models.CreateIoTCloudConnectorBackhaulRouteRequest,
+    ) -> cc5g20220314_models.CreateIoTCloudConnectorBackhaulRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_io_tcloud_connector_backhaul_route_with_options_async(request, runtime)
+
     def create_wireless_cloud_connector_with_options(
         self,
         request: cc5g20220314_models.CreateWirelessCloudConnectorRequest,
@@ -338,6 +530,8 @@ class Client(OpenApiClient):
     ) -> cc5g20220314_models.CreateWirelessCloudConnectorResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -380,6 +574,8 @@ class Client(OpenApiClient):
     ) -> cc5g20220314_models.CreateWirelessCloudConnectorResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -510,6 +706,170 @@ class Client(OpenApiClient):
     ) -> cc5g20220314_models.DeleteAuthorizationRuleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_authorization_rule_with_options_async(request, runtime)
+
+    def delete_batch_operate_cards_task_with_options(
+        self,
+        request: cc5g20220314_models.DeleteBatchOperateCardsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.DeleteBatchOperateCardsTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.batch_operate_cards_task_id):
+            query['BatchOperateCardsTaskId'] = request.batch_operate_cards_task_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBatchOperateCardsTask',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.DeleteBatchOperateCardsTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_batch_operate_cards_task_with_options_async(
+        self,
+        request: cc5g20220314_models.DeleteBatchOperateCardsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.DeleteBatchOperateCardsTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.batch_operate_cards_task_id):
+            query['BatchOperateCardsTaskId'] = request.batch_operate_cards_task_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBatchOperateCardsTask',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.DeleteBatchOperateCardsTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_batch_operate_cards_task(
+        self,
+        request: cc5g20220314_models.DeleteBatchOperateCardsTaskRequest,
+    ) -> cc5g20220314_models.DeleteBatchOperateCardsTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_batch_operate_cards_task_with_options(request, runtime)
+
+    async def delete_batch_operate_cards_task_async(
+        self,
+        request: cc5g20220314_models.DeleteBatchOperateCardsTaskRequest,
+    ) -> cc5g20220314_models.DeleteBatchOperateCardsTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_batch_operate_cards_task_with_options_async(request, runtime)
+
+    def delete_io_tcloud_connector_backhaul_route_with_options(
+        self,
+        request: cc5g20220314_models.DeleteIoTCloudConnectorBackhaulRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.DeleteIoTCloudConnectorBackhaulRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.net_link_id):
+            query['NetLinkId'] = request.net_link_id
+        if not UtilClient.is_unset(request.wireless_cloud_connector_id):
+            query['WirelessCloudConnectorId'] = request.wireless_cloud_connector_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIoTCloudConnectorBackhaulRoute',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.DeleteIoTCloudConnectorBackhaulRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_io_tcloud_connector_backhaul_route_with_options_async(
+        self,
+        request: cc5g20220314_models.DeleteIoTCloudConnectorBackhaulRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.DeleteIoTCloudConnectorBackhaulRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.net_link_id):
+            query['NetLinkId'] = request.net_link_id
+        if not UtilClient.is_unset(request.wireless_cloud_connector_id):
+            query['WirelessCloudConnectorId'] = request.wireless_cloud_connector_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIoTCloudConnectorBackhaulRoute',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.DeleteIoTCloudConnectorBackhaulRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_io_tcloud_connector_backhaul_route(
+        self,
+        request: cc5g20220314_models.DeleteIoTCloudConnectorBackhaulRouteRequest,
+    ) -> cc5g20220314_models.DeleteIoTCloudConnectorBackhaulRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_io_tcloud_connector_backhaul_route_with_options(request, runtime)
+
+    async def delete_io_tcloud_connector_backhaul_route_async(
+        self,
+        request: cc5g20220314_models.DeleteIoTCloudConnectorBackhaulRouteRequest,
+    ) -> cc5g20220314_models.DeleteIoTCloudConnectorBackhaulRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_io_tcloud_connector_backhaul_route_with_options_async(request, runtime)
 
     def delete_wireless_cloud_connector_with_options(
         self,
@@ -671,6 +1031,204 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detach_vpc_from_net_link_with_options_async(request, runtime)
 
+    def get_card_with_options(
+        self,
+        request: cc5g20220314_models.GetCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.GetCardResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCard',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.GetCardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_card_with_options_async(
+        self,
+        request: cc5g20220314_models.GetCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.GetCardResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCard',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.GetCardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_card(
+        self,
+        request: cc5g20220314_models.GetCardRequest,
+    ) -> cc5g20220314_models.GetCardResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_card_with_options(request, runtime)
+
+    async def get_card_async(
+        self,
+        request: cc5g20220314_models.GetCardRequest,
+    ) -> cc5g20220314_models.GetCardResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_card_with_options_async(request, runtime)
+
+    def get_card_lock_reason_with_options(
+        self,
+        request: cc5g20220314_models.GetCardLockReasonRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.GetCardLockReasonResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCardLockReason',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.GetCardLockReasonResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_card_lock_reason_with_options_async(
+        self,
+        request: cc5g20220314_models.GetCardLockReasonRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.GetCardLockReasonResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCardLockReason',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.GetCardLockReasonResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_card_lock_reason(
+        self,
+        request: cc5g20220314_models.GetCardLockReasonRequest,
+    ) -> cc5g20220314_models.GetCardLockReasonResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_card_lock_reason_with_options(request, runtime)
+
+    async def get_card_lock_reason_async(
+        self,
+        request: cc5g20220314_models.GetCardLockReasonRequest,
+    ) -> cc5g20220314_models.GetCardLockReasonResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_card_lock_reason_with_options_async(request, runtime)
+
+    def get_create_customer_information_with_options(
+        self,
+        request: cc5g20220314_models.GetCreateCustomerInformationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.GetCreateCustomerInformationResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCreateCustomerInformation',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.GetCreateCustomerInformationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_create_customer_information_with_options_async(
+        self,
+        request: cc5g20220314_models.GetCreateCustomerInformationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.GetCreateCustomerInformationResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCreateCustomerInformation',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.GetCreateCustomerInformationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_create_customer_information(
+        self,
+        request: cc5g20220314_models.GetCreateCustomerInformationRequest,
+    ) -> cc5g20220314_models.GetCreateCustomerInformationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_create_customer_information_with_options(request, runtime)
+
+    async def get_create_customer_information_async(
+        self,
+        request: cc5g20220314_models.GetCreateCustomerInformationRequest,
+    ) -> cc5g20220314_models.GetCreateCustomerInformationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_create_customer_information_with_options_async(request, runtime)
+
     def get_wireless_cloud_connector_with_options(
         self,
         request: cc5g20220314_models.GetWirelessCloudConnectorRequest,
@@ -803,6 +1361,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_authorization_rules_with_options_async(request, runtime)
 
+    def list_batch_operate_cards_tasks_with_options(
+        self,
+        request: cc5g20220314_models.ListBatchOperateCardsTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListBatchOperateCardsTasksResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBatchOperateCardsTasks',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListBatchOperateCardsTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_batch_operate_cards_tasks_with_options_async(
+        self,
+        request: cc5g20220314_models.ListBatchOperateCardsTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListBatchOperateCardsTasksResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBatchOperateCardsTasks',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListBatchOperateCardsTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_batch_operate_cards_tasks(
+        self,
+        request: cc5g20220314_models.ListBatchOperateCardsTasksRequest,
+    ) -> cc5g20220314_models.ListBatchOperateCardsTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_batch_operate_cards_tasks_with_options(request, runtime)
+
+    async def list_batch_operate_cards_tasks_async(
+        self,
+        request: cc5g20220314_models.ListBatchOperateCardsTasksRequest,
+    ) -> cc5g20220314_models.ListBatchOperateCardsTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_batch_operate_cards_tasks_with_options_async(request, runtime)
+
     def list_cards_with_options(
         self,
         request: cc5g20220314_models.ListCardsRequest,
@@ -934,6 +1558,72 @@ class Client(OpenApiClient):
     ) -> cc5g20220314_models.ListDataPackagesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_data_packages_with_options_async(request, runtime)
+
+    def list_io_tcloud_connector_backhaul_route_with_options(
+        self,
+        request: cc5g20220314_models.ListIoTCloudConnectorBackhaulRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListIoTCloudConnectorBackhaulRouteResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIoTCloudConnectorBackhaulRoute',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListIoTCloudConnectorBackhaulRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_io_tcloud_connector_backhaul_route_with_options_async(
+        self,
+        request: cc5g20220314_models.ListIoTCloudConnectorBackhaulRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListIoTCloudConnectorBackhaulRouteResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIoTCloudConnectorBackhaulRoute',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListIoTCloudConnectorBackhaulRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_io_tcloud_connector_backhaul_route(
+        self,
+        request: cc5g20220314_models.ListIoTCloudConnectorBackhaulRouteRequest,
+    ) -> cc5g20220314_models.ListIoTCloudConnectorBackhaulRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_io_tcloud_connector_backhaul_route_with_options(request, runtime)
+
+    async def list_io_tcloud_connector_backhaul_route_async(
+        self,
+        request: cc5g20220314_models.ListIoTCloudConnectorBackhaulRouteRequest,
+    ) -> cc5g20220314_models.ListIoTCloudConnectorBackhaulRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_io_tcloud_connector_backhaul_route_with_options_async(request, runtime)
 
     def list_orders_with_options(
         self,
@@ -1199,6 +1889,174 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_zones_with_options_async(request, runtime)
 
+    def lock_cards_with_options(
+        self,
+        request: cc5g20220314_models.LockCardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.LockCardsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LockCards',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.LockCardsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def lock_cards_with_options_async(
+        self,
+        request: cc5g20220314_models.LockCardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.LockCardsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LockCards',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.LockCardsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def lock_cards(
+        self,
+        request: cc5g20220314_models.LockCardsRequest,
+    ) -> cc5g20220314_models.LockCardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.lock_cards_with_options(request, runtime)
+
+    async def lock_cards_async(
+        self,
+        request: cc5g20220314_models.LockCardsRequest,
+    ) -> cc5g20220314_models.LockCardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.lock_cards_with_options_async(request, runtime)
+
+    def modify_wireless_cloud_connector_feature_with_options(
+        self,
+        request: cc5g20220314_models.ModifyWirelessCloudConnectorFeatureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ModifyWirelessCloudConnectorFeatureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.feature_name):
+            query['FeatureName'] = request.feature_name
+        if not UtilClient.is_unset(request.feature_value):
+            query['FeatureValue'] = request.feature_value
+        if not UtilClient.is_unset(request.wireless_cloud_connector_id):
+            query['WirelessCloudConnectorId'] = request.wireless_cloud_connector_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyWirelessCloudConnectorFeature',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ModifyWirelessCloudConnectorFeatureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_wireless_cloud_connector_feature_with_options_async(
+        self,
+        request: cc5g20220314_models.ModifyWirelessCloudConnectorFeatureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ModifyWirelessCloudConnectorFeatureResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.feature_name):
+            query['FeatureName'] = request.feature_name
+        if not UtilClient.is_unset(request.feature_value):
+            query['FeatureValue'] = request.feature_value
+        if not UtilClient.is_unset(request.wireless_cloud_connector_id):
+            query['WirelessCloudConnectorId'] = request.wireless_cloud_connector_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyWirelessCloudConnectorFeature',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ModifyWirelessCloudConnectorFeatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_wireless_cloud_connector_feature(
+        self,
+        request: cc5g20220314_models.ModifyWirelessCloudConnectorFeatureRequest,
+    ) -> cc5g20220314_models.ModifyWirelessCloudConnectorFeatureResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_wireless_cloud_connector_feature_with_options(request, runtime)
+
+    async def modify_wireless_cloud_connector_feature_async(
+        self,
+        request: cc5g20220314_models.ModifyWirelessCloudConnectorFeatureRequest,
+    ) -> cc5g20220314_models.ModifyWirelessCloudConnectorFeatureResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_wireless_cloud_connector_feature_with_options_async(request, runtime)
+
     def open_cc_5g_service_with_options(
         self,
         request: cc5g20220314_models.OpenCc5gServiceRequest,
@@ -1268,6 +2126,330 @@ class Client(OpenApiClient):
     ) -> cc5g20220314_models.OpenCc5gServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.open_cc_5g_service_with_options_async(request, runtime)
+
+    def resume_cards_with_options(
+        self,
+        request: cc5g20220314_models.ResumeCardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ResumeCardsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResumeCards',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ResumeCardsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_cards_with_options_async(
+        self,
+        request: cc5g20220314_models.ResumeCardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ResumeCardsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResumeCards',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ResumeCardsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_cards(
+        self,
+        request: cc5g20220314_models.ResumeCardsRequest,
+    ) -> cc5g20220314_models.ResumeCardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.resume_cards_with_options(request, runtime)
+
+    async def resume_cards_async(
+        self,
+        request: cc5g20220314_models.ResumeCardsRequest,
+    ) -> cc5g20220314_models.ResumeCardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.resume_cards_with_options_async(request, runtime)
+
+    def stop_cards_with_options(
+        self,
+        request: cc5g20220314_models.StopCardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.StopCardsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopCards',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.StopCardsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_cards_with_options_async(
+        self,
+        request: cc5g20220314_models.StopCardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.StopCardsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopCards',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.StopCardsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_cards(
+        self,
+        request: cc5g20220314_models.StopCardsRequest,
+    ) -> cc5g20220314_models.StopCardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_cards_with_options(request, runtime)
+
+    async def stop_cards_async(
+        self,
+        request: cc5g20220314_models.StopCardsRequest,
+    ) -> cc5g20220314_models.StopCardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_cards_with_options_async(request, runtime)
+
+    def switch_wireless_cloud_connector_to_business_with_options(
+        self,
+        request: cc5g20220314_models.SwitchWirelessCloudConnectorToBusinessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.SwitchWirelessCloudConnectorToBusinessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.wireless_cloud_connector_id):
+            query['WirelessCloudConnectorId'] = request.wireless_cloud_connector_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchWirelessCloudConnectorToBusiness',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.SwitchWirelessCloudConnectorToBusinessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def switch_wireless_cloud_connector_to_business_with_options_async(
+        self,
+        request: cc5g20220314_models.SwitchWirelessCloudConnectorToBusinessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.SwitchWirelessCloudConnectorToBusinessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.wireless_cloud_connector_id):
+            query['WirelessCloudConnectorId'] = request.wireless_cloud_connector_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchWirelessCloudConnectorToBusiness',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.SwitchWirelessCloudConnectorToBusinessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def switch_wireless_cloud_connector_to_business(
+        self,
+        request: cc5g20220314_models.SwitchWirelessCloudConnectorToBusinessRequest,
+    ) -> cc5g20220314_models.SwitchWirelessCloudConnectorToBusinessResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.switch_wireless_cloud_connector_to_business_with_options(request, runtime)
+
+    async def switch_wireless_cloud_connector_to_business_async(
+        self,
+        request: cc5g20220314_models.SwitchWirelessCloudConnectorToBusinessRequest,
+    ) -> cc5g20220314_models.SwitchWirelessCloudConnectorToBusinessResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.switch_wireless_cloud_connector_to_business_with_options_async(request, runtime)
+
+    def unlock_cards_with_options(
+        self,
+        request: cc5g20220314_models.UnlockCardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.UnlockCardsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnlockCards',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.UnlockCardsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unlock_cards_with_options_async(
+        self,
+        request: cc5g20220314_models.UnlockCardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.UnlockCardsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnlockCards',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.UnlockCardsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unlock_cards(
+        self,
+        request: cc5g20220314_models.UnlockCardsRequest,
+    ) -> cc5g20220314_models.UnlockCardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.unlock_cards_with_options(request, runtime)
+
+    async def unlock_cards_async(
+        self,
+        request: cc5g20220314_models.UnlockCardsRequest,
+    ) -> cc5g20220314_models.UnlockCardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.unlock_cards_with_options_async(request, runtime)
 
     def update_authorization_rule_with_options(
         self,
@@ -1370,6 +2552,120 @@ class Client(OpenApiClient):
     ) -> cc5g20220314_models.UpdateAuthorizationRuleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_authorization_rule_with_options_async(request, runtime)
+
+    def update_batch_operate_cards_task_with_options(
+        self,
+        request: cc5g20220314_models.UpdateBatchOperateCardsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.UpdateBatchOperateCardsTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.batch_operate_cards_task_id):
+            query['BatchOperateCardsTaskId'] = request.batch_operate_cards_task_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.effect_type):
+            query['EffectType'] = request.effect_type
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.iccids_oss_file_path):
+            query['IccidsOssFilePath'] = request.iccids_oss_file_path
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        if not UtilClient.is_unset(request.wireless_cloud_connector_ids):
+            query['WirelessCloudConnectorIds'] = request.wireless_cloud_connector_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateBatchOperateCardsTask',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.UpdateBatchOperateCardsTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_batch_operate_cards_task_with_options_async(
+        self,
+        request: cc5g20220314_models.UpdateBatchOperateCardsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.UpdateBatchOperateCardsTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.batch_operate_cards_task_id):
+            query['BatchOperateCardsTaskId'] = request.batch_operate_cards_task_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.effect_type):
+            query['EffectType'] = request.effect_type
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.iccids_oss_file_path):
+            query['IccidsOssFilePath'] = request.iccids_oss_file_path
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        if not UtilClient.is_unset(request.wireless_cloud_connector_ids):
+            query['WirelessCloudConnectorIds'] = request.wireless_cloud_connector_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateBatchOperateCardsTask',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.UpdateBatchOperateCardsTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_batch_operate_cards_task(
+        self,
+        request: cc5g20220314_models.UpdateBatchOperateCardsTaskRequest,
+    ) -> cc5g20220314_models.UpdateBatchOperateCardsTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_batch_operate_cards_task_with_options(request, runtime)
+
+    async def update_batch_operate_cards_task_async(
+        self,
+        request: cc5g20220314_models.UpdateBatchOperateCardsTaskRequest,
+    ) -> cc5g20220314_models.UpdateBatchOperateCardsTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_batch_operate_cards_task_with_options_async(request, runtime)
 
     def update_card_with_options(
         self,
