@@ -1436,6 +1436,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_image_splicing_task_with_options_async(request, runtime)
 
+    def create_image_to_pdftask_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateImageToPDFTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateImageToPDFTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateImageToPDFTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateImageToPDFTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateImageToPDFTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_image_to_pdftask_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateImageToPDFTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateImageToPDFTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateImageToPDFTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateImageToPDFTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateImageToPDFTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_image_to_pdftask(
+        self,
+        request: imm_20200930_models.CreateImageToPDFTaskRequest,
+    ) -> imm_20200930_models.CreateImageToPDFTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_image_to_pdftask_with_options(request, runtime)
+
+    async def create_image_to_pdftask_async(
+        self,
+        request: imm_20200930_models.CreateImageToPDFTaskRequest,
+    ) -> imm_20200930_models.CreateImageToPDFTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_image_to_pdftask_with_options_async(request, runtime)
+
     def create_media_convert_task_with_options(
         self,
         tmp_req: imm_20200930_models.CreateMediaConvertTaskRequest,

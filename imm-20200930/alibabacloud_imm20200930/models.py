@@ -6086,6 +6086,259 @@ class CreateImageSplicingTaskResponse(TeaModel):
         return self
 
 
+class CreateImageToPDFTaskRequestSources(TeaModel):
+    def __init__(
+        self,
+        rotate: int = None,
+        uri: str = None,
+    ):
+        self.rotate = rotate
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rotate is not None:
+            result['Rotate'] = self.rotate
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Rotate') is not None:
+            self.rotate = m.get('Rotate')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class CreateImageToPDFTaskRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config: CredentialConfig = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        sources: List[CreateImageToPDFTaskRequestSources] = None,
+        tags: Dict[str, Any] = None,
+        target_uri: str = None,
+        user_data: str = None,
+    ):
+        self.credential_config = credential_config
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+        self.sources = sources
+        self.tags = tags
+        self.target_uri = target_uri
+        self.user_data = user_data
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+        if self.sources:
+            for k in self.sources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        result['Sources'] = []
+        if self.sources is not None:
+            for k in self.sources:
+                result['Sources'].append(k.to_map() if k else None)
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        self.sources = []
+        if m.get('Sources') is not None:
+            for k in m.get('Sources'):
+                temp_model = CreateImageToPDFTaskRequestSources()
+                self.sources.append(temp_model.from_map(k))
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateImageToPDFTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config_shrink: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        sources_shrink: str = None,
+        tags_shrink: str = None,
+        target_uri: str = None,
+        user_data: str = None,
+    ):
+        self.credential_config_shrink = credential_config_shrink
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+        self.sources_shrink = sources_shrink
+        self.tags_shrink = tags_shrink
+        self.target_uri = target_uri
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.sources_shrink is not None:
+            result['Sources'] = self.sources_shrink
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Sources') is not None:
+            self.sources_shrink = m.get('Sources')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateImageToPDFTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateImageToPDFTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateImageToPDFTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateImageToPDFTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateMediaConvertTaskRequestSourcesSubtitles(TeaModel):
     def __init__(
         self,
