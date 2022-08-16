@@ -4901,7 +4901,6 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
     def __init__(
         self,
         credential_config: CredentialConfig = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
         source_uri: str = None,
@@ -4909,7 +4908,6 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config = credential_config
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
         self.source_uri = source_uri
@@ -4928,8 +4926,6 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
         result = dict()
         if self.credential_config is not None:
             result['CredentialConfig'] = self.credential_config.to_map()
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -4947,8 +4943,6 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
         if m.get('CredentialConfig') is not None:
             temp_model = CredentialConfig()
             self.credential_config = temp_model.from_map(m['CredentialConfig'])
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
@@ -4966,7 +4960,6 @@ class CreateDetectVideoLabelsTaskShrinkRequest(TeaModel):
     def __init__(
         self,
         credential_config_shrink: str = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
         source_uri: str = None,
@@ -4974,7 +4967,6 @@ class CreateDetectVideoLabelsTaskShrinkRequest(TeaModel):
         user_data: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
         self.source_uri = source_uri
@@ -4992,8 +4984,6 @@ class CreateDetectVideoLabelsTaskShrinkRequest(TeaModel):
         result = dict()
         if self.credential_config_shrink is not None:
             result['CredentialConfig'] = self.credential_config_shrink
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -5010,8 +5000,6 @@ class CreateDetectVideoLabelsTaskShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('CredentialConfig') is not None:
             self.credential_config_shrink = m.get('CredentialConfig')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
@@ -5112,14 +5100,12 @@ class CreateFigureClusteringTaskRequest(TeaModel):
     def __init__(
         self,
         dataset_name: str = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
         self.dataset_name = dataset_name
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
         self.tags = tags
@@ -5136,8 +5122,6 @@ class CreateFigureClusteringTaskRequest(TeaModel):
         result = dict()
         if self.dataset_name is not None:
             result['DatasetName'] = self.dataset_name
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -5152,8 +5136,6 @@ class CreateFigureClusteringTaskRequest(TeaModel):
         m = m or dict()
         if m.get('DatasetName') is not None:
             self.dataset_name = m.get('DatasetName')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
@@ -5169,14 +5151,12 @@ class CreateFigureClusteringTaskShrinkRequest(TeaModel):
     def __init__(
         self,
         dataset_name: str = None,
-        notify_endpoint: str = None,
         notify_topic_name: str = None,
         project_name: str = None,
         tags_shrink: str = None,
         user_data: str = None,
     ):
         self.dataset_name = dataset_name
-        self.notify_endpoint = notify_endpoint
         self.notify_topic_name = notify_topic_name
         self.project_name = project_name
         self.tags_shrink = tags_shrink
@@ -5193,8 +5173,6 @@ class CreateFigureClusteringTaskShrinkRequest(TeaModel):
         result = dict()
         if self.dataset_name is not None:
             result['DatasetName'] = self.dataset_name
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
@@ -5209,8 +5187,6 @@ class CreateFigureClusteringTaskShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('DatasetName') is not None:
             self.dataset_name = m.get('DatasetName')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:

@@ -889,8 +889,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -935,8 +933,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -993,8 +989,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -1035,8 +1029,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
-        if not UtilClient.is_unset(request.notify_endpoint):
-            query['NotifyEndpoint'] = request.notify_endpoint
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
