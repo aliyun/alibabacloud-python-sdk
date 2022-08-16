@@ -1,3 +1,7 @@
+2022-08-16 Version: 1.28.1
+- Add ImageToPDF.
+- Add Compress.
+
 2022-08-16 Version: 1.28.0
 - Add ImageToPDF.
 - Add Compress.
