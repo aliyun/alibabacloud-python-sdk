@@ -3206,6 +3206,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_full_request_origin_stat_by_instance_id_with_options_async(request, runtime)
 
+    def get_full_request_sample_by_instance_id_with_options(
+        self,
+        request: das20200116_models.GetFullRequestSampleByInstanceIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetFullRequestSampleByInstanceIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        body = {}
+        if not UtilClient.is_unset(request.end):
+            body['End'] = request.end
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sql_id):
+            body['SqlId'] = request.sql_id
+        if not UtilClient.is_unset(request.start):
+            body['Start'] = request.start
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFullRequestSampleByInstanceId',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetFullRequestSampleByInstanceIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_full_request_sample_by_instance_id_with_options_async(
+        self,
+        request: das20200116_models.GetFullRequestSampleByInstanceIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetFullRequestSampleByInstanceIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        body = {}
+        if not UtilClient.is_unset(request.end):
+            body['End'] = request.end
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sql_id):
+            body['SqlId'] = request.sql_id
+        if not UtilClient.is_unset(request.start):
+            body['Start'] = request.start
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFullRequestSampleByInstanceId',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetFullRequestSampleByInstanceIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_full_request_sample_by_instance_id(
+        self,
+        request: das20200116_models.GetFullRequestSampleByInstanceIdRequest,
+    ) -> das20200116_models.GetFullRequestSampleByInstanceIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_full_request_sample_by_instance_id_with_options(request, runtime)
+
+    async def get_full_request_sample_by_instance_id_async(
+        self,
+        request: das20200116_models.GetFullRequestSampleByInstanceIdRequest,
+    ) -> das20200116_models.GetFullRequestSampleByInstanceIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_full_request_sample_by_instance_id_with_options_async(request, runtime)
+
     def get_full_request_stat_result_by_instance_id_with_options(
         self,
         request: das20200116_models.GetFullRequestStatResultByInstanceIdRequest,

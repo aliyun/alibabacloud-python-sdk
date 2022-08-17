@@ -1,3 +1,6 @@
+2022-08-17 Version: 2.0.27
+- ADD GetFullRequestSampleByInstanceId.
+
 2022-08-01 Version: 2.0.26
 - Del GetGeneralAbnormalEventsCount.
 
