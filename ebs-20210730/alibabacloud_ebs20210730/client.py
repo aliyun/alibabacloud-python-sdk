@@ -123,6 +123,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_disk_replica_pair_with_options_async(request, runtime)
 
+    def create_dedicated_block_storage_cluster_with_options(
+        self,
+        request: ebs_20210730_models.CreateDedicatedBlockStorageClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.azone):
+            query['Azone'] = request.azone
+        if not UtilClient.is_unset(request.capacity):
+            query['Capacity'] = request.capacity
+        if not UtilClient.is_unset(request.dbsc_id):
+            query['DbscId'] = request.dbsc_id
+        if not UtilClient.is_unset(request.dbsc_name):
+            query['DbscName'] = request.dbsc_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDedicatedBlockStorageCluster',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dedicated_block_storage_cluster_with_options_async(
+        self,
+        request: ebs_20210730_models.CreateDedicatedBlockStorageClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.azone):
+            query['Azone'] = request.azone
+        if not UtilClient.is_unset(request.capacity):
+            query['Capacity'] = request.capacity
+        if not UtilClient.is_unset(request.dbsc_id):
+            query['DbscId'] = request.dbsc_id
+        if not UtilClient.is_unset(request.dbsc_name):
+            query['DbscName'] = request.dbsc_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDedicatedBlockStorageCluster',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dedicated_block_storage_cluster(
+        self,
+        request: ebs_20210730_models.CreateDedicatedBlockStorageClusterRequest,
+    ) -> ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_dedicated_block_storage_cluster_with_options(request, runtime)
+
+    async def create_dedicated_block_storage_cluster_async(
+        self,
+        request: ebs_20210730_models.CreateDedicatedBlockStorageClusterRequest,
+    ) -> ebs_20210730_models.CreateDedicatedBlockStorageClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dedicated_block_storage_cluster_with_options_async(request, runtime)
+
     def create_disk_replica_group_with_options(
         self,
         request: ebs_20210730_models.CreateDiskReplicaGroupRequest,
@@ -130,6 +220,8 @@ class Client(OpenApiClient):
     ) -> ebs_20210730_models.CreateDiskReplicaGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -172,6 +264,8 @@ class Client(OpenApiClient):
     ) -> ebs_20210730_models.CreateDiskReplicaGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -498,6 +592,186 @@ class Client(OpenApiClient):
     ) -> ebs_20210730_models.DeleteDiskReplicaPairResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_disk_replica_pair_with_options_async(request, runtime)
+
+    def describe_dedicated_block_storage_cluster_disks_with_options(
+        self,
+        request: ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbsc_id):
+            query['DbscId'] = request.dbsc_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDedicatedBlockStorageClusterDisks',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dedicated_block_storage_cluster_disks_with_options_async(
+        self,
+        request: ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbsc_id):
+            query['DbscId'] = request.dbsc_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDedicatedBlockStorageClusterDisks',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dedicated_block_storage_cluster_disks(
+        self,
+        request: ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksRequest,
+    ) -> ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dedicated_block_storage_cluster_disks_with_options(request, runtime)
+
+    async def describe_dedicated_block_storage_cluster_disks_async(
+        self,
+        request: ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksRequest,
+    ) -> ebs_20210730_models.DescribeDedicatedBlockStorageClusterDisksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dedicated_block_storage_cluster_disks_with_options_async(request, runtime)
+
+    def describe_dedicated_block_storage_clusters_with_options(
+        self,
+        request: ebs_20210730_models.DescribeDedicatedBlockStorageClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.azone_id):
+            body['AzoneId'] = request.azone_id
+        if not UtilClient.is_unset(request.category):
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedicated_block_storage_cluster_id):
+            body['DedicatedBlockStorageClusterId'] = request.dedicated_block_storage_cluster_id
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeDedicatedBlockStorageClusters',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dedicated_block_storage_clusters_with_options_async(
+        self,
+        request: ebs_20210730_models.DescribeDedicatedBlockStorageClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.azone_id):
+            body['AzoneId'] = request.azone_id
+        if not UtilClient.is_unset(request.category):
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedicated_block_storage_cluster_id):
+            body['DedicatedBlockStorageClusterId'] = request.dedicated_block_storage_cluster_id
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeDedicatedBlockStorageClusters',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dedicated_block_storage_clusters(
+        self,
+        request: ebs_20210730_models.DescribeDedicatedBlockStorageClustersRequest,
+    ) -> ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dedicated_block_storage_clusters_with_options(request, runtime)
+
+    async def describe_dedicated_block_storage_clusters_async(
+        self,
+        request: ebs_20210730_models.DescribeDedicatedBlockStorageClustersRequest,
+    ) -> ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dedicated_block_storage_clusters_with_options_async(request, runtime)
 
     def describe_disk_replica_groups_with_options(
         self,
@@ -917,6 +1191,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.failover_disk_replica_pair_with_options_async(request, runtime)
 
+    def modify_dedicated_block_storage_cluster_attribute_with_options(
+        self,
+        request: ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbsc_id):
+            query['DbscId'] = request.dbsc_id
+        if not UtilClient.is_unset(request.dbsc_name):
+            query['DbscName'] = request.dbsc_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDedicatedBlockStorageClusterAttribute',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dedicated_block_storage_cluster_attribute_with_options_async(
+        self,
+        request: ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbsc_id):
+            query['DbscId'] = request.dbsc_id
+        if not UtilClient.is_unset(request.dbsc_name):
+            query['DbscName'] = request.dbsc_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDedicatedBlockStorageClusterAttribute',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dedicated_block_storage_cluster_attribute(
+        self,
+        request: ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeRequest,
+    ) -> ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dedicated_block_storage_cluster_attribute_with_options(request, runtime)
+
+    async def modify_dedicated_block_storage_cluster_attribute_async(
+        self,
+        request: ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeRequest,
+    ) -> ebs_20210730_models.ModifyDedicatedBlockStorageClusterAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dedicated_block_storage_cluster_attribute_with_options_async(request, runtime)
+
     def modify_disk_replica_group_with_options(
         self,
         request: ebs_20210730_models.ModifyDiskReplicaGroupRequest,
@@ -924,6 +1284,8 @@ class Client(OpenApiClient):
     ) -> ebs_20210730_models.ModifyDiskReplicaGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -962,6 +1324,8 @@ class Client(OpenApiClient):
     ) -> ebs_20210730_models.ModifyDiskReplicaGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):

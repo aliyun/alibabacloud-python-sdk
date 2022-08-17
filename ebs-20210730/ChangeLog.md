@@ -1,3 +1,7 @@
+2022-08-17 Version: 1.3.7
+- Add bandwidth for replica group.
+- Add dbsc pop.
+
 2022-07-18 Version: 1.3.6
 - Add pageNumber pageSize for describePairs.
 
