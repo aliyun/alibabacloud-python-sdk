@@ -247,12 +247,13 @@ class Client(OpenApiClient):
             request.hotel_share_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.hotel_share), 'hotel_share', 'json')
         if not UtilClient.is_unset(tmp_req.itinerary_list):
             request.itinerary_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.itinerary_list, 'itinerary_list', 'json')
-        if not UtilClient.is_unset(tmp_req.itinerary_set_list):
-            request.itinerary_set_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.itinerary_set_list, 'itinerary_set_list', 'json')
         if not UtilClient.is_unset(tmp_req.traveler_list):
             request.traveler_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.traveler_list, 'traveler_list', 'json')
         if not UtilClient.is_unset(tmp_req.traveler_standard):
             request.traveler_standard_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.traveler_standard, 'traveler_standard', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.international_flight_cabins):
+            query['international_flight_cabins'] = request.international_flight_cabins
         body = {}
         if not UtilClient.is_unset(request.budget):
             body['budget'] = request.budget
@@ -276,10 +277,6 @@ class Client(OpenApiClient):
             body['hotel_share'] = request.hotel_share_shrink
         if not UtilClient.is_unset(request.itinerary_list_shrink):
             body['itinerary_list'] = request.itinerary_list_shrink
-        if not UtilClient.is_unset(request.itinerary_rule):
-            body['itinerary_rule'] = request.itinerary_rule
-        if not UtilClient.is_unset(request.itinerary_set_list_shrink):
-            body['itinerary_set_list'] = request.itinerary_set_list_shrink
         if not UtilClient.is_unset(request.limit_traveler):
             body['limit_traveler'] = request.limit_traveler
         if not UtilClient.is_unset(request.status):
@@ -314,6 +311,7 @@ class Client(OpenApiClient):
             body['vehicle_budget'] = request.vehicle_budget
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -349,12 +347,13 @@ class Client(OpenApiClient):
             request.hotel_share_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.hotel_share), 'hotel_share', 'json')
         if not UtilClient.is_unset(tmp_req.itinerary_list):
             request.itinerary_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.itinerary_list, 'itinerary_list', 'json')
-        if not UtilClient.is_unset(tmp_req.itinerary_set_list):
-            request.itinerary_set_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.itinerary_set_list, 'itinerary_set_list', 'json')
         if not UtilClient.is_unset(tmp_req.traveler_list):
             request.traveler_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.traveler_list, 'traveler_list', 'json')
         if not UtilClient.is_unset(tmp_req.traveler_standard):
             request.traveler_standard_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.traveler_standard, 'traveler_standard', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.international_flight_cabins):
+            query['international_flight_cabins'] = request.international_flight_cabins
         body = {}
         if not UtilClient.is_unset(request.budget):
             body['budget'] = request.budget
@@ -378,10 +377,6 @@ class Client(OpenApiClient):
             body['hotel_share'] = request.hotel_share_shrink
         if not UtilClient.is_unset(request.itinerary_list_shrink):
             body['itinerary_list'] = request.itinerary_list_shrink
-        if not UtilClient.is_unset(request.itinerary_rule):
-            body['itinerary_rule'] = request.itinerary_rule
-        if not UtilClient.is_unset(request.itinerary_set_list_shrink):
-            body['itinerary_set_list'] = request.itinerary_set_list_shrink
         if not UtilClient.is_unset(request.limit_traveler):
             body['limit_traveler'] = request.limit_traveler
         if not UtilClient.is_unset(request.status):
@@ -416,6 +411,7 @@ class Client(OpenApiClient):
             body['vehicle_budget'] = request.vehicle_budget
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -998,8 +994,6 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.CarApplyModifyResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.corp_id):
-            body['corp_id'] = request.corp_id
         if not UtilClient.is_unset(request.operate_time):
             body['operate_time'] = request.operate_time
         if not UtilClient.is_unset(request.remark):
@@ -1038,8 +1032,6 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.CarApplyModifyResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.corp_id):
-            body['corp_id'] = request.corp_id
         if not UtilClient.is_unset(request.operate_time):
             body['operate_time'] = request.operate_time
         if not UtilClient.is_unset(request.remark):
@@ -2904,8 +2896,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.apply_id):
             query['apply_id'] = request.apply_id
-        if not UtilClient.is_unset(request.user_id):
-            query['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2936,8 +2926,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.apply_id):
             query['apply_id'] = request.apply_id
-        if not UtilClient.is_unset(request.user_id):
-            query['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3476,6 +3464,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.title):
             query['title'] = request.title
+        if not UtilClient.is_unset(request.user_id):
+            query['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3506,6 +3496,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.title):
             query['title'] = request.title
+        if not UtilClient.is_unset(request.user_id):
+            query['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4060,8 +4052,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.apply_id):
             query['apply_id'] = request.apply_id
-        if not UtilClient.is_unset(request.user_id):
-            query['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4092,8 +4082,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.apply_id):
             query['apply_id'] = request.apply_id
-        if not UtilClient.is_unset(request.user_id):
-            query['user_id'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
