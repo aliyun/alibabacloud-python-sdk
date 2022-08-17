@@ -5291,6 +5291,8 @@ class Client(OpenApiClient):
             body['AccessLogFile'] = request.access_log_file
         if not UtilClient.is_unset(request.access_log_format):
             body['AccessLogFormat'] = request.access_log_format
+        if not UtilClient.is_unset(request.access_log_gateway_lifecycle):
+            body['AccessLogGatewayLifecycle'] = request.access_log_gateway_lifecycle
         if not UtilClient.is_unset(request.access_log_project):
             body['AccessLogProject'] = request.access_log_project
         if not UtilClient.is_unset(request.access_log_service_enabled):
@@ -5299,6 +5301,8 @@ class Client(OpenApiClient):
             body['AccessLogServiceHost'] = request.access_log_service_host
         if not UtilClient.is_unset(request.access_log_service_port):
             body['AccessLogServicePort'] = request.access_log_service_port
+        if not UtilClient.is_unset(request.access_log_sidecar_lifecycle):
+            body['AccessLogSidecarLifecycle'] = request.access_log_sidecar_lifecycle
         if not UtilClient.is_unset(request.audit_project):
             body['AuditProject'] = request.audit_project
         if not UtilClient.is_unset(request.auto_injection_policy_enabled):
@@ -5327,6 +5331,8 @@ class Client(OpenApiClient):
             body['DubboFilterEnabled'] = request.dubbo_filter_enabled
         if not UtilClient.is_unset(request.enable_audit):
             body['EnableAudit'] = request.enable_audit
+        if not UtilClient.is_unset(request.enable_auto_diagnosis):
+            body['EnableAutoDiagnosis'] = request.enable_auto_diagnosis
         if not UtilClient.is_unset(request.enable_crhistory):
             body['EnableCRHistory'] = request.enable_crhistory
         if not UtilClient.is_unset(request.enable_namespaces_by_default):
@@ -5483,6 +5489,8 @@ class Client(OpenApiClient):
             body['AccessLogFile'] = request.access_log_file
         if not UtilClient.is_unset(request.access_log_format):
             body['AccessLogFormat'] = request.access_log_format
+        if not UtilClient.is_unset(request.access_log_gateway_lifecycle):
+            body['AccessLogGatewayLifecycle'] = request.access_log_gateway_lifecycle
         if not UtilClient.is_unset(request.access_log_project):
             body['AccessLogProject'] = request.access_log_project
         if not UtilClient.is_unset(request.access_log_service_enabled):
@@ -5491,6 +5499,8 @@ class Client(OpenApiClient):
             body['AccessLogServiceHost'] = request.access_log_service_host
         if not UtilClient.is_unset(request.access_log_service_port):
             body['AccessLogServicePort'] = request.access_log_service_port
+        if not UtilClient.is_unset(request.access_log_sidecar_lifecycle):
+            body['AccessLogSidecarLifecycle'] = request.access_log_sidecar_lifecycle
         if not UtilClient.is_unset(request.audit_project):
             body['AuditProject'] = request.audit_project
         if not UtilClient.is_unset(request.auto_injection_policy_enabled):
@@ -5519,6 +5529,8 @@ class Client(OpenApiClient):
             body['DubboFilterEnabled'] = request.dubbo_filter_enabled
         if not UtilClient.is_unset(request.enable_audit):
             body['EnableAudit'] = request.enable_audit
+        if not UtilClient.is_unset(request.enable_auto_diagnosis):
+            body['EnableAutoDiagnosis'] = request.enable_auto_diagnosis
         if not UtilClient.is_unset(request.enable_crhistory):
             body['EnableCRHistory'] = request.enable_crhistory
         if not UtilClient.is_unset(request.enable_namespaces_by_default):

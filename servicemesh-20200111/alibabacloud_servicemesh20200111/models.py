@@ -158,7 +158,6 @@ class AddVMIntoServiceMeshResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2843,7 +2842,6 @@ class DescribeAhasProResponseBody(TeaModel):
         request_id: str = None,
         status: bool = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.status = status
 
@@ -6902,11 +6900,15 @@ class DescribeNodesInstanceTypeRequest(TeaModel):
 class DescribeNodesInstanceTypeResponseBodyInstanceTypes(TeaModel):
     def __init__(
         self,
+        key: str = None,
         multi_buffer_enabled: bool = None,
         node_type: str = None,
+        value: str = None,
     ):
+        self.key = key
         self.multi_buffer_enabled = multi_buffer_enabled
         self.node_type = node_type
+        self.value = value
 
     def validate(self):
         pass
@@ -6917,18 +6919,26 @@ class DescribeNodesInstanceTypeResponseBodyInstanceTypes(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
         if self.multi_buffer_enabled is not None:
             result['MultiBufferEnabled'] = self.multi_buffer_enabled
         if self.node_type is not None:
             result['NodeType'] = self.node_type
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
         if m.get('MultiBufferEnabled') is not None:
             self.multi_buffer_enabled = m.get('MultiBufferEnabled')
         if m.get('NodeType') is not None:
             self.node_type = m.get('NodeType')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -7252,6 +7262,57 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadB
         return self
 
 
+class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus(TeaModel):
+    def __init__(
+        self,
+        locked: bool = None,
+        pay_type: str = None,
+        reused: bool = None,
+        slbback_end_server_num_status: str = None,
+        slbexist_status: str = None,
+    ):
+        self.locked = locked
+        self.pay_type = pay_type
+        self.reused = reused
+        self.slbback_end_server_num_status = slbback_end_server_num_status
+        self.slbexist_status = slbexist_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.locked is not None:
+            result['Locked'] = self.locked
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.reused is not None:
+            result['Reused'] = self.reused
+        if self.slbback_end_server_num_status is not None:
+            result['SLBBackEndServerNumStatus'] = self.slbback_end_server_num_status
+        if self.slbexist_status is not None:
+            result['SLBExistStatus'] = self.slbexist_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Locked') is not None:
+            self.locked = m.get('Locked')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('Reused') is not None:
+            self.reused = m.get('Reused')
+        if m.get('SLBBackEndServerNumStatus') is not None:
+            self.slbback_end_server_num_status = m.get('SLBBackEndServerNumStatus')
+        if m.get('SLBExistStatus') is not None:
+            self.slbexist_status = m.get('SLBExistStatus')
+        return self
+
+
 class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus(TeaModel):
     def __init__(
         self,
@@ -7310,6 +7371,7 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
         api_server_eipstatus: str = None,
         api_server_load_balancer_status: DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus = None,
         audit_project_status: str = None,
+        canary_pilot_load_balancer_status: DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus = None,
         control_plane_project_status: str = None,
         logtail_status_record: Dict[str, Any] = None,
         pilot_load_balancer_status: DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus = None,
@@ -7319,6 +7381,7 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
         self.api_server_eipstatus = api_server_eipstatus
         self.api_server_load_balancer_status = api_server_load_balancer_status
         self.audit_project_status = audit_project_status
+        self.canary_pilot_load_balancer_status = canary_pilot_load_balancer_status
         self.control_plane_project_status = control_plane_project_status
         self.logtail_status_record = logtail_status_record
         self.pilot_load_balancer_status = pilot_load_balancer_status
@@ -7327,6 +7390,8 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
     def validate(self):
         if self.api_server_load_balancer_status:
             self.api_server_load_balancer_status.validate()
+        if self.canary_pilot_load_balancer_status:
+            self.canary_pilot_load_balancer_status.validate()
         if self.pilot_load_balancer_status:
             self.pilot_load_balancer_status.validate()
 
@@ -7344,6 +7409,8 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
             result['ApiServerLoadBalancerStatus'] = self.api_server_load_balancer_status.to_map()
         if self.audit_project_status is not None:
             result['AuditProjectStatus'] = self.audit_project_status
+        if self.canary_pilot_load_balancer_status is not None:
+            result['CanaryPilotLoadBalancerStatus'] = self.canary_pilot_load_balancer_status.to_map()
         if self.control_plane_project_status is not None:
             result['ControlPlaneProjectStatus'] = self.control_plane_project_status
         if self.logtail_status_record is not None:
@@ -7365,6 +7432,9 @@ class DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus(TeaModel):
             self.api_server_load_balancer_status = temp_model.from_map(m['ApiServerLoadBalancerStatus'])
         if m.get('AuditProjectStatus') is not None:
             self.audit_project_status = m.get('AuditProjectStatus')
+        if m.get('CanaryPilotLoadBalancerStatus') is not None:
+            temp_model = DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusCanaryPilotLoadBalancerStatus()
+            self.canary_pilot_load_balancer_status = temp_model.from_map(m['CanaryPilotLoadBalancerStatus'])
         if m.get('ControlPlaneProjectStatus') is not None:
             self.control_plane_project_status = m.get('ControlPlaneProjectStatus')
         if m.get('LogtailStatusRecord') is not None:
@@ -7604,9 +7674,11 @@ class DescribeServiceMeshClustersResponseBody(TeaModel):
     def __init__(
         self,
         clusters: List[DescribeServiceMeshClustersResponseBodyClusters] = None,
+        number_of_clusters: int = None,
         request_id: str = None,
     ):
         self.clusters = clusters
+        self.number_of_clusters = number_of_clusters
         self.request_id = request_id
 
     def validate(self):
@@ -7625,6 +7697,8 @@ class DescribeServiceMeshClustersResponseBody(TeaModel):
         if self.clusters is not None:
             for k in self.clusters:
                 result['Clusters'].append(k.to_map() if k else None)
+        if self.number_of_clusters is not None:
+            result['NumberOfClusters'] = self.number_of_clusters
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -7636,6 +7710,8 @@ class DescribeServiceMeshClustersResponseBody(TeaModel):
             for k in m.get('Clusters'):
                 temp_model = DescribeServiceMeshClustersResponseBodyClusters()
                 self.clusters.append(temp_model.from_map(k))
+        if m.get('NumberOfClusters') is not None:
+            self.number_of_clusters = m.get('NumberOfClusters')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -8018,6 +8094,39 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigEdition(TeaM
             self.name = m.get('Name')
         if m.get('ProxyImageTag') is not None:
             self.proxy_image_tag = m.get('ProxyImageTag')
+        return self
+
+
+class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf(TeaModel):
+    def __init__(
+        self,
+        gateway_lifecycle: int = None,
+        sidecar_lifecycle: int = None,
+    ):
+        self.gateway_lifecycle = gateway_lifecycle
+        self.sidecar_lifecycle = sidecar_lifecycle
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_lifecycle is not None:
+            result['GatewayLifecycle'] = self.gateway_lifecycle
+        if self.sidecar_lifecycle is not None:
+            result['SidecarLifecycle'] = self.sidecar_lifecycle
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GatewayLifecycle') is not None:
+            self.gateway_lifecycle = m.get('GatewayLifecycle')
+        if m.get('SidecarLifecycle') is not None:
+            self.sidecar_lifecycle = m.get('SidecarLifecycle')
         return self
 
 
@@ -8688,6 +8797,7 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
 class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfiguration(TeaModel):
     def __init__(
         self,
+        access_log_extra_conf: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf = None,
         craggregation_configuration: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationCRAggregationConfiguration = None,
         craggregation_enabled: bool = None,
         discovery_selectors: List[Dict[str, Any]] = None,
@@ -8701,6 +8811,7 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
         sidecar_proxy_init_resource_request: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationSidecarProxyInitResourceRequest = None,
         termination_drain_duration: str = None,
     ):
+        self.access_log_extra_conf = access_log_extra_conf
         self.craggregation_configuration = craggregation_configuration
         self.craggregation_enabled = craggregation_enabled
         self.discovery_selectors = discovery_selectors
@@ -8715,6 +8826,8 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
         self.termination_drain_duration = termination_drain_duration
 
     def validate(self):
+        if self.access_log_extra_conf:
+            self.access_log_extra_conf.validate()
         if self.craggregation_configuration:
             self.craggregation_configuration.validate()
         if self.istio_crhistory:
@@ -8740,6 +8853,8 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
             return _map
 
         result = dict()
+        if self.access_log_extra_conf is not None:
+            result['AccessLogExtraConf'] = self.access_log_extra_conf.to_map()
         if self.craggregation_configuration is not None:
             result['CRAggregationConfiguration'] = self.craggregation_configuration.to_map()
         if self.craggregation_enabled is not None:
@@ -8768,6 +8883,9 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessLogExtraConf') is not None:
+            temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf()
+            self.access_log_extra_conf = temp_model.from_map(m['AccessLogExtraConf'])
         if m.get('CRAggregationConfiguration') is not None:
             temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationCRAggregationConfiguration()
             self.craggregation_configuration = temp_model.from_map(m['CRAggregationConfiguration'])
@@ -10631,7 +10749,6 @@ class DescribeServiceMeshVMsResponseBody(TeaModel):
         request_id: str = None,
         vms: List[DescribeServiceMeshVMsResponseBodyVMs] = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.vms = vms
 
@@ -11813,7 +11930,6 @@ class DescribeVMsInServiceMeshResponseBody(TeaModel):
         request_id: str = None,
         vms: List[DescribeVMsInServiceMeshResponseBodyVMs] = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.vms = vms
 
@@ -11986,15 +12102,10 @@ class DescribeVSwitchesResponseBody(TeaModel):
         total_count: int = None,
         v_switches: List[DescribeVSwitchesResponseBodyVSwitches] = None,
     ):
-        # MaxResults本次请求所返回的最大记录条数
         self.max_results = max_results
-        # 表示当前调用返回读取到的位置，空代表数据已经读取完毕
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
         self.total_count = total_count
-        # VSwitches
         self.v_switches = v_switches
 
     def validate(self):
@@ -12284,15 +12395,10 @@ class DescribeVpcsResponseBody(TeaModel):
         total_count: int = None,
         vpcs: List[DescribeVpcsResponseBodyVpcs] = None,
     ):
-        # MaxResults本次请求所返回的最大记录条数
         self.max_results = max_results
-        # 表示当前调用返回读取到的位置，空代表数据已经读取完毕
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
         self.total_count = total_count
-        # Vpcs
         self.vpcs = vpcs
 
     def validate(self):
@@ -12416,7 +12522,6 @@ class GetCaCertResponseBody(TeaModel):
         ca_cert: str = None,
         request_id: str = None,
     ):
-        # base64 encode format
         self.ca_cert = ca_cert
         self.request_id = request_id
 
@@ -13729,7 +13834,6 @@ class RemoveVMFromServiceMeshResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -15484,10 +15588,12 @@ class UpdateMeshFeatureRequest(TeaModel):
         access_log_enabled: bool = None,
         access_log_file: str = None,
         access_log_format: str = None,
+        access_log_gateway_lifecycle: int = None,
         access_log_project: str = None,
         access_log_service_enabled: bool = None,
         access_log_service_host: str = None,
         access_log_service_port: int = None,
+        access_log_sidecar_lifecycle: int = None,
         audit_project: str = None,
         auto_injection_policy_enabled: bool = None,
         craggregation_enabled: bool = None,
@@ -15502,6 +15608,7 @@ class UpdateMeshFeatureRequest(TeaModel):
         discovery_selectors: str = None,
         dubbo_filter_enabled: bool = None,
         enable_audit: bool = None,
+        enable_auto_diagnosis: bool = None,
         enable_crhistory: bool = None,
         enable_namespaces_by_default: bool = None,
         enable_sdsserver: bool = None,
@@ -15568,10 +15675,12 @@ class UpdateMeshFeatureRequest(TeaModel):
         self.access_log_enabled = access_log_enabled
         self.access_log_file = access_log_file
         self.access_log_format = access_log_format
+        self.access_log_gateway_lifecycle = access_log_gateway_lifecycle
         self.access_log_project = access_log_project
         self.access_log_service_enabled = access_log_service_enabled
         self.access_log_service_host = access_log_service_host
         self.access_log_service_port = access_log_service_port
+        self.access_log_sidecar_lifecycle = access_log_sidecar_lifecycle
         self.audit_project = audit_project
         self.auto_injection_policy_enabled = auto_injection_policy_enabled
         self.craggregation_enabled = craggregation_enabled
@@ -15586,6 +15695,7 @@ class UpdateMeshFeatureRequest(TeaModel):
         self.discovery_selectors = discovery_selectors
         self.dubbo_filter_enabled = dubbo_filter_enabled
         self.enable_audit = enable_audit
+        self.enable_auto_diagnosis = enable_auto_diagnosis
         self.enable_crhistory = enable_crhistory
         self.enable_namespaces_by_default = enable_namespaces_by_default
         self.enable_sdsserver = enable_sdsserver
@@ -15664,6 +15774,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             result['AccessLogFile'] = self.access_log_file
         if self.access_log_format is not None:
             result['AccessLogFormat'] = self.access_log_format
+        if self.access_log_gateway_lifecycle is not None:
+            result['AccessLogGatewayLifecycle'] = self.access_log_gateway_lifecycle
         if self.access_log_project is not None:
             result['AccessLogProject'] = self.access_log_project
         if self.access_log_service_enabled is not None:
@@ -15672,6 +15784,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             result['AccessLogServiceHost'] = self.access_log_service_host
         if self.access_log_service_port is not None:
             result['AccessLogServicePort'] = self.access_log_service_port
+        if self.access_log_sidecar_lifecycle is not None:
+            result['AccessLogSidecarLifecycle'] = self.access_log_sidecar_lifecycle
         if self.audit_project is not None:
             result['AuditProject'] = self.audit_project
         if self.auto_injection_policy_enabled is not None:
@@ -15700,6 +15814,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             result['DubboFilterEnabled'] = self.dubbo_filter_enabled
         if self.enable_audit is not None:
             result['EnableAudit'] = self.enable_audit
+        if self.enable_auto_diagnosis is not None:
+            result['EnableAutoDiagnosis'] = self.enable_auto_diagnosis
         if self.enable_crhistory is not None:
             result['EnableCRHistory'] = self.enable_crhistory
         if self.enable_namespaces_by_default is not None:
@@ -15834,6 +15950,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             self.access_log_file = m.get('AccessLogFile')
         if m.get('AccessLogFormat') is not None:
             self.access_log_format = m.get('AccessLogFormat')
+        if m.get('AccessLogGatewayLifecycle') is not None:
+            self.access_log_gateway_lifecycle = m.get('AccessLogGatewayLifecycle')
         if m.get('AccessLogProject') is not None:
             self.access_log_project = m.get('AccessLogProject')
         if m.get('AccessLogServiceEnabled') is not None:
@@ -15842,6 +15960,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             self.access_log_service_host = m.get('AccessLogServiceHost')
         if m.get('AccessLogServicePort') is not None:
             self.access_log_service_port = m.get('AccessLogServicePort')
+        if m.get('AccessLogSidecarLifecycle') is not None:
+            self.access_log_sidecar_lifecycle = m.get('AccessLogSidecarLifecycle')
         if m.get('AuditProject') is not None:
             self.audit_project = m.get('AuditProject')
         if m.get('AutoInjectionPolicyEnabled') is not None:
@@ -15870,6 +15990,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             self.dubbo_filter_enabled = m.get('DubboFilterEnabled')
         if m.get('EnableAudit') is not None:
             self.enable_audit = m.get('EnableAudit')
+        if m.get('EnableAutoDiagnosis') is not None:
+            self.enable_auto_diagnosis = m.get('EnableAutoDiagnosis')
         if m.get('EnableCRHistory') is not None:
             self.enable_crhistory = m.get('EnableCRHistory')
         if m.get('EnableNamespacesByDefault') is not None:
