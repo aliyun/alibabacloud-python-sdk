@@ -1,3 +1,6 @@
+2022-08-17 Version: 3.2.9
+- GetFeatureDetail returns supported resource types for terraform risk check.
+
 2022-07-21 Version: 3.2.8
 - GetTemplateSummary support Parameters and ClientToken.
 

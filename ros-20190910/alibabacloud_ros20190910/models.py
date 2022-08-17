@@ -4722,21 +4722,51 @@ class GetFeatureDetailsResponseBodyTemplateScratch(TeaModel):
         return self
 
 
+class GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperationRisk(TeaModel):
+    def __init__(
+        self,
+        delete_stack: List[str] = None,
+    ):
+        self.delete_stack = delete_stack
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delete_stack is not None:
+            result['DeleteStack'] = self.delete_stack
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeleteStack') is not None:
+            self.delete_stack = m.get('DeleteStack')
+        return self
+
+
 class GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes(TeaModel):
     def __init__(
         self,
         custom_tag: List[str] = None,
         estimate_cost: List[str] = None,
         resource_group: List[str] = None,
+        stack_operation_risk: GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperationRisk = None,
         system_tag: List[str] = None,
     ):
         self.custom_tag = custom_tag
         self.estimate_cost = estimate_cost
         self.resource_group = resource_group
+        self.stack_operation_risk = stack_operation_risk
         self.system_tag = system_tag
 
     def validate(self):
-        pass
+        if self.stack_operation_risk:
+            self.stack_operation_risk.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4750,6 +4780,8 @@ class GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes(TeaModel):
             result['EstimateCost'] = self.estimate_cost
         if self.resource_group is not None:
             result['ResourceGroup'] = self.resource_group
+        if self.stack_operation_risk is not None:
+            result['StackOperationRisk'] = self.stack_operation_risk.to_map()
         if self.system_tag is not None:
             result['SystemTag'] = self.system_tag
         return result
@@ -4762,6 +4794,9 @@ class GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes(TeaModel):
             self.estimate_cost = m.get('EstimateCost')
         if m.get('ResourceGroup') is not None:
             self.resource_group = m.get('ResourceGroup')
+        if m.get('StackOperationRisk') is not None:
+            temp_model = GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperationRisk()
+            self.stack_operation_risk = temp_model.from_map(m['StackOperationRisk'])
         if m.get('SystemTag') is not None:
             self.system_tag = m.get('SystemTag')
         return self
@@ -13496,7 +13531,6 @@ class MoveResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
