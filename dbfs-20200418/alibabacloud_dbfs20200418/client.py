@@ -1879,3 +1879,89 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.TagDbfsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.tag_dbfs_with_options_async(request, runtime)
+
+    def update_dbfs_with_options(
+        self,
+        request: dbfs20200418_models.UpdateDbfsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbfs20200418_models.UpdateDbfsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.advanced_features):
+            query['AdvancedFeatures'] = request.advanced_features
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.used_scene):
+            query['UsedScene'] = request.used_scene
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dbfs20200418_models.UpdateDbfsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dbfs_with_options_async(
+        self,
+        request: dbfs20200418_models.UpdateDbfsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbfs20200418_models.UpdateDbfsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.advanced_features):
+            query['AdvancedFeatures'] = request.advanced_features
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.used_scene):
+            query['UsedScene'] = request.used_scene
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dbfs20200418_models.UpdateDbfsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dbfs(
+        self,
+        request: dbfs20200418_models.UpdateDbfsRequest,
+    ) -> dbfs20200418_models.UpdateDbfsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_dbfs_with_options(request, runtime)
+
+    async def update_dbfs_async(
+        self,
+        request: dbfs20200418_models.UpdateDbfsRequest,
+    ) -> dbfs20200418_models.UpdateDbfsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dbfs_with_options_async(request, runtime)

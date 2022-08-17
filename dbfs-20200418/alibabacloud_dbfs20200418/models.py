@@ -3568,3 +3568,125 @@ class TagDbfsResponse(TeaModel):
         return self
 
 
+class UpdateDbfsRequest(TeaModel):
+    def __init__(
+        self,
+        advanced_features: str = None,
+        fs_id: str = None,
+        instance_type: str = None,
+        region_id: str = None,
+        used_scene: str = None,
+    ):
+        self.advanced_features = advanced_features
+        self.fs_id = fs_id
+        self.instance_type = instance_type
+        self.region_id = region_id
+        self.used_scene = used_scene
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advanced_features is not None:
+            result['AdvancedFeatures'] = self.advanced_features
+        if self.fs_id is not None:
+            result['FsId'] = self.fs_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.used_scene is not None:
+            result['UsedScene'] = self.used_scene
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdvancedFeatures') is not None:
+            self.advanced_features = m.get('AdvancedFeatures')
+        if m.get('FsId') is not None:
+            self.fs_id = m.get('FsId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UsedScene') is not None:
+            self.used_scene = m.get('UsedScene')
+        return self
+
+
+class UpdateDbfsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateDbfsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDbfsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDbfsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
