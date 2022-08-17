@@ -1,3 +1,6 @@
+2022-08-17 Version: 2.5.7
+- Add QuerySessionStatus.
+
 2022-08-02 Version: 2.5.6
 - Update Archive OpenApi.
 

@@ -3485,6 +3485,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_project_with_options_async(request, runtime)
 
+    def query_session_status_with_options(
+        self,
+        request: cloud_game_api20200728_models.QuerySessionStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_game_api20200728_models.QuerySessionStatusResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.access_key):
+            body['AccessKey'] = request.access_key
+        if not UtilClient.is_unset(request.game_session):
+            body['GameSession'] = request.game_session
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySessionStatus',
+            version='2020-07-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_game_api20200728_models.QuerySessionStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_session_status_with_options_async(
+        self,
+        request: cloud_game_api20200728_models.QuerySessionStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_game_api20200728_models.QuerySessionStatusResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.access_key):
+            body['AccessKey'] = request.access_key
+        if not UtilClient.is_unset(request.game_session):
+            body['GameSession'] = request.game_session
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySessionStatus',
+            version='2020-07-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_game_api20200728_models.QuerySessionStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_session_status(
+        self,
+        request: cloud_game_api20200728_models.QuerySessionStatusRequest,
+    ) -> cloud_game_api20200728_models.QuerySessionStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_session_status_with_options(request, runtime)
+
+    async def query_session_status_async(
+        self,
+        request: cloud_game_api20200728_models.QuerySessionStatusRequest,
+    ) -> cloud_game_api20200728_models.QuerySessionStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_session_status_with_options_async(request, runtime)
+
     def query_tenant_with_options(
         self,
         request: cloud_game_api20200728_models.QueryTenantRequest,

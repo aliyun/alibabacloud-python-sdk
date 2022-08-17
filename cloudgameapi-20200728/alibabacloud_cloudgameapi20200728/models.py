@@ -7440,6 +7440,194 @@ class QueryProjectResponse(TeaModel):
         return self
 
 
+class QuerySessionStatusRequest(TeaModel):
+    def __init__(
+        self,
+        access_key: str = None,
+        game_session: str = None,
+    ):
+        self.access_key = access_key
+        self.game_session = game_session
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key is not None:
+            result['AccessKey'] = self.access_key
+        if self.game_session is not None:
+            result['GameSession'] = self.game_session
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKey') is not None:
+            self.access_key = m.get('AccessKey')
+        if m.get('GameSession') is not None:
+            self.game_session = m.get('GameSession')
+        return self
+
+
+class QuerySessionStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        code: str = None,
+        dispatch_time: int = None,
+        game_id: str = None,
+        game_session: str = None,
+        message: str = None,
+        play_time: int = None,
+        project_id: str = None,
+        region_id: str = None,
+        request_id: str = None,
+        status: str = None,
+        stop_time: int = None,
+        success: bool = None,
+        tenant_id: int = None,
+        user_level: int = None,
+    ):
+        self.account_id = account_id
+        self.code = code
+        self.dispatch_time = dispatch_time
+        self.game_id = game_id
+        self.game_session = game_session
+        self.message = message
+        self.play_time = play_time
+        self.project_id = project_id
+        self.region_id = region_id
+        self.request_id = request_id
+        self.status = status
+        self.stop_time = stop_time
+        self.success = success
+        self.tenant_id = tenant_id
+        self.user_level = user_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.dispatch_time is not None:
+            result['DispatchTime'] = self.dispatch_time
+        if self.game_id is not None:
+            result['GameId'] = self.game_id
+        if self.game_session is not None:
+            result['GameSession'] = self.game_session
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.play_time is not None:
+            result['PlayTime'] = self.play_time
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.stop_time is not None:
+            result['StopTime'] = self.stop_time
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.user_level is not None:
+            result['UserLevel'] = self.user_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DispatchTime') is not None:
+            self.dispatch_time = m.get('DispatchTime')
+        if m.get('GameId') is not None:
+            self.game_id = m.get('GameId')
+        if m.get('GameSession') is not None:
+            self.game_session = m.get('GameSession')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PlayTime') is not None:
+            self.play_time = m.get('PlayTime')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StopTime') is not None:
+            self.stop_time = m.get('StopTime')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('UserLevel') is not None:
+            self.user_level = m.get('UserLevel')
+        return self
+
+
+class QuerySessionStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySessionStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySessionStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryTenantRequest(TeaModel):
     def __init__(
         self,
