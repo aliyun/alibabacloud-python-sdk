@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
-from requests import Response, Request
 from typing import Dict
 from Tea.core import TeaCore
 
@@ -11,7 +10,6 @@ from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_fc_open20210406 import models as fc__open_20210406_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
-from alibabacloud_gateway_fc_util.client import Client as FCUtilClient
 
 
 class Client(OpenApiClient):
@@ -7063,135 +7061,3 @@ class Client(OpenApiClient):
             fc__open_20210406_models.UpdateTriggerResponse(),
             await self.call_api_async(params, req, runtime)
         )
-
-    def invoke_httptrigger(
-        self,
-        url: str,
-        method: str,
-        body: bytes,
-        headers: Dict[str, str],
-    ) -> Response:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return util_client.invoke_httptrigger(url, method, body, headers)
-
-    async def invoke_httptrigger_async(
-        self,
-        url: str,
-        method: str,
-        body: bytes,
-        headers: Dict[str, str],
-    ) -> Response:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return await util_client.invoke_httptrigger_async(url, method, body, headers)
-
-    def invoke_anonymous_httptrigger(
-        self,
-        url: str,
-        method: str,
-        body: bytes,
-        headers: Dict[str, str],
-    ) -> Response:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return util_client.invoke_anonymous_httptrigger(url, method, body, headers)
-
-    async def invoke_anonymous_httptrigger_async(
-        self,
-        url: str,
-        method: str,
-        body: bytes,
-        headers: Dict[str, str],
-    ) -> Response:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return await util_client.invoke_anonymous_httptrigger_async(url, method, body, headers)
-
-    def send_httprequest_with_authorization(
-        self,
-        req: Request,
-    ) -> Response:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return util_client.send_httprequest_with_authorization(req)
-
-    async def send_httprequest_with_authorization_async(
-        self,
-        req: Request,
-    ) -> Response:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return await util_client.send_httprequest_with_authorization_async(req)
-
-    def send_httprequest(
-        self,
-        req: Request,
-    ) -> Response:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return util_client.send_httprequest(req)
-
-    async def send_httprequest_async(
-        self,
-        req: Request,
-    ) -> Response:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return await util_client.send_httprequest_async(req)
-
-    def sign_request(
-        self,
-        req: Request,
-    ) -> Request:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return util_client.sign_request(req)
-
-    async def sign_request_async(
-        self,
-        req: Request,
-    ) -> Request:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return await util_client.sign_request_async(req)
-
-    def sign_request_with_content_md5(
-        self,
-        req: Request,
-        content_md5: str,
-    ) -> Request:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return util_client.sign_request_with_content_md5(req, content_md5)
-
-    async def sign_request_with_content_md5_async(
-        self,
-        req: Request,
-        content_md5: str,
-    ) -> Request:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return await util_client.sign_request_with_content_md5_async(req, content_md5)
-
-    def build_httprequest(
-        self,
-        url: str,
-        method: str,
-        body: bytes,
-        headers: Dict[str, str],
-    ) -> Request:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return util_client.build_httprequest(url, method, body, headers)
-
-    async def build_httprequest_async(
-        self,
-        url: str,
-        method: str,
-        body: bytes,
-        headers: Dict[str, str],
-    ) -> Request:
-        cred = self._credential
-        util_client = FCUtilClient(cred)
-        return await util_client.build_httprequest_async(url, method, body, headers)
