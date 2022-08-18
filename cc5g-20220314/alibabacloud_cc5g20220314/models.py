@@ -284,20 +284,24 @@ class CreateAuthorizationRuleRequest(TeaModel):
         client_token: str = None,
         description: str = None,
         destination: str = None,
+        destination_port: str = None,
         destination_type: str = None,
         dry_run: bool = None,
         name: str = None,
         policy: str = None,
+        protocol: str = None,
         source_cidr: str = None,
         wireless_cloud_connector_id: str = None,
     ):
         self.client_token = client_token
         self.description = description
         self.destination = destination
+        self.destination_port = destination_port
         self.destination_type = destination_type
         self.dry_run = dry_run
         self.name = name
         self.policy = policy
+        self.protocol = protocol
         self.source_cidr = source_cidr
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
@@ -316,6 +320,8 @@ class CreateAuthorizationRuleRequest(TeaModel):
             result['Description'] = self.description
         if self.destination is not None:
             result['Destination'] = self.destination
+        if self.destination_port is not None:
+            result['DestinationPort'] = self.destination_port
         if self.destination_type is not None:
             result['DestinationType'] = self.destination_type
         if self.dry_run is not None:
@@ -324,6 +330,8 @@ class CreateAuthorizationRuleRequest(TeaModel):
             result['Name'] = self.name
         if self.policy is not None:
             result['Policy'] = self.policy
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
         if self.source_cidr is not None:
             result['SourceCidr'] = self.source_cidr
         if self.wireless_cloud_connector_id is not None:
@@ -338,6 +346,8 @@ class CreateAuthorizationRuleRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Destination') is not None:
             self.destination = m.get('Destination')
+        if m.get('DestinationPort') is not None:
+            self.destination_port = m.get('DestinationPort')
         if m.get('DestinationType') is not None:
             self.destination_type = m.get('DestinationType')
         if m.get('DryRun') is not None:
@@ -346,6 +356,8 @@ class CreateAuthorizationRuleRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('Policy') is not None:
             self.policy = m.get('Policy')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
         if m.get('SourceCidr') is not None:
             self.source_cidr = m.get('SourceCidr')
         if m.get('WirelessCloudConnectorId') is not None:
@@ -2227,24 +2239,28 @@ class ListAuthorizationRulesRequest(TeaModel):
         self,
         authorization_rule_ids: List[str] = None,
         destination: str = None,
+        destination_port: str = None,
         destination_type: str = None,
         dns: bool = None,
         max_results: int = None,
         names: List[str] = None,
         next_token: str = None,
         policy: str = None,
+        protocol: str = None,
         statuses: List[str] = None,
         type: str = None,
         wireless_cloud_connector_id: str = None,
     ):
         self.authorization_rule_ids = authorization_rule_ids
         self.destination = destination
+        self.destination_port = destination_port
         self.destination_type = destination_type
         self.dns = dns
         self.max_results = max_results
         self.names = names
         self.next_token = next_token
         self.policy = policy
+        self.protocol = protocol
         self.statuses = statuses
         self.type = type
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
@@ -2262,6 +2278,8 @@ class ListAuthorizationRulesRequest(TeaModel):
             result['AuthorizationRuleIds'] = self.authorization_rule_ids
         if self.destination is not None:
             result['Destination'] = self.destination
+        if self.destination_port is not None:
+            result['DestinationPort'] = self.destination_port
         if self.destination_type is not None:
             result['DestinationType'] = self.destination_type
         if self.dns is not None:
@@ -2274,6 +2292,8 @@ class ListAuthorizationRulesRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.policy is not None:
             result['Policy'] = self.policy
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
         if self.statuses is not None:
             result['Statuses'] = self.statuses
         if self.type is not None:
@@ -2288,6 +2308,8 @@ class ListAuthorizationRulesRequest(TeaModel):
             self.authorization_rule_ids = m.get('AuthorizationRuleIds')
         if m.get('Destination') is not None:
             self.destination = m.get('Destination')
+        if m.get('DestinationPort') is not None:
+            self.destination_port = m.get('DestinationPort')
         if m.get('DestinationType') is not None:
             self.destination_type = m.get('DestinationType')
         if m.get('Dns') is not None:
@@ -2300,6 +2322,8 @@ class ListAuthorizationRulesRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('Policy') is not None:
             self.policy = m.get('Policy')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
         if m.get('Statuses') is not None:
             self.statuses = m.get('Statuses')
         if m.get('Type') is not None:
@@ -2316,10 +2340,12 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(TeaModel):
         create_time: str = None,
         description: str = None,
         destination: str = None,
+        destination_port: str = None,
         destination_type: str = None,
         dns: bool = None,
         name: str = None,
         policy: str = None,
+        protocol: str = None,
         source_cidr: str = None,
         status: str = None,
         type: str = None,
@@ -2328,10 +2354,12 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(TeaModel):
         self.create_time = create_time
         self.description = description
         self.destination = destination
+        self.destination_port = destination_port
         self.destination_type = destination_type
         self.dns = dns
         self.name = name
         self.policy = policy
+        self.protocol = protocol
         self.source_cidr = source_cidr
         self.status = status
         self.type = type
@@ -2353,6 +2381,8 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(TeaModel):
             result['Description'] = self.description
         if self.destination is not None:
             result['Destination'] = self.destination
+        if self.destination_port is not None:
+            result['DestinationPort'] = self.destination_port
         if self.destination_type is not None:
             result['DestinationType'] = self.destination_type
         if self.dns is not None:
@@ -2361,6 +2391,8 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(TeaModel):
             result['Name'] = self.name
         if self.policy is not None:
             result['Policy'] = self.policy
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
         if self.source_cidr is not None:
             result['SourceCidr'] = self.source_cidr
         if self.status is not None:
@@ -2379,6 +2411,8 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(TeaModel):
             self.description = m.get('Description')
         if m.get('Destination') is not None:
             self.destination = m.get('Destination')
+        if m.get('DestinationPort') is not None:
+            self.destination_port = m.get('DestinationPort')
         if m.get('DestinationType') is not None:
             self.destination_type = m.get('DestinationType')
         if m.get('Dns') is not None:
@@ -2387,6 +2421,8 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(TeaModel):
             self.name = m.get('Name')
         if m.get('Policy') is not None:
             self.policy = m.get('Policy')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
         if m.get('SourceCidr') is not None:
             self.source_cidr = m.get('SourceCidr')
         if m.get('Status') is not None:
@@ -5155,9 +5191,11 @@ class UpdateAuthorizationRuleRequest(TeaModel):
         client_token: str = None,
         description: str = None,
         destination: str = None,
+        destination_port: str = None,
         dry_run: bool = None,
         name: str = None,
         policy: str = None,
+        protocol: str = None,
         source_cidr: str = None,
         wireless_cloud_connector_id: str = None,
     ):
@@ -5165,9 +5203,11 @@ class UpdateAuthorizationRuleRequest(TeaModel):
         self.client_token = client_token
         self.description = description
         self.destination = destination
+        self.destination_port = destination_port
         self.dry_run = dry_run
         self.name = name
         self.policy = policy
+        self.protocol = protocol
         self.source_cidr = source_cidr
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
@@ -5188,12 +5228,16 @@ class UpdateAuthorizationRuleRequest(TeaModel):
             result['Description'] = self.description
         if self.destination is not None:
             result['Destination'] = self.destination
+        if self.destination_port is not None:
+            result['DestinationPort'] = self.destination_port
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
         if self.name is not None:
             result['Name'] = self.name
         if self.policy is not None:
             result['Policy'] = self.policy
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
         if self.source_cidr is not None:
             result['SourceCidr'] = self.source_cidr
         if self.wireless_cloud_connector_id is not None:
@@ -5210,12 +5254,16 @@ class UpdateAuthorizationRuleRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Destination') is not None:
             self.destination = m.get('Destination')
+        if m.get('DestinationPort') is not None:
+            self.destination_port = m.get('DestinationPort')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Policy') is not None:
             self.policy = m.get('Policy')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
         if m.get('SourceCidr') is not None:
             self.source_cidr = m.get('SourceCidr')
         if m.get('WirelessCloudConnectorId') is not None:

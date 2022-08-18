@@ -242,6 +242,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.dry_run):
@@ -250,6 +252,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.source_cidr):
             query['SourceCidr'] = request.source_cidr
         if not UtilClient.is_unset(request.wireless_cloud_connector_id):
@@ -286,6 +290,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.dry_run):
@@ -294,6 +300,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.source_cidr):
             query['SourceCidr'] = request.source_cidr
         if not UtilClient.is_unset(request.wireless_cloud_connector_id):
@@ -2466,12 +2474,16 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.source_cidr):
             query['SourceCidr'] = request.source_cidr
         if not UtilClient.is_unset(request.wireless_cloud_connector_id):
@@ -2510,12 +2522,16 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.source_cidr):
             query['SourceCidr'] = request.source_cidr
         if not UtilClient.is_unset(request.wireless_cloud_connector_id):
