@@ -48,22 +48,22 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.CreateQuotaAlarmResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.alarm_name):
-            body['AlarmName'] = request.alarm_name
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
-        if not UtilClient.is_unset(request.quota_dimensions):
-            body['QuotaDimensions'] = request.quota_dimensions
+        if not UtilClient.is_unset(request.alarm_name):
+            body['AlarmName'] = request.alarm_name
+        if not UtilClient.is_unset(request.threshold_type):
+            body['ThresholdType'] = request.threshold_type
         if not UtilClient.is_unset(request.threshold):
             body['Threshold'] = request.threshold
         if not UtilClient.is_unset(request.threshold_percent):
             body['ThresholdPercent'] = request.threshold_percent
-        if not UtilClient.is_unset(request.threshold_type):
-            body['ThresholdType'] = request.threshold_type
         if not UtilClient.is_unset(request.web_hook):
             body['WebHook'] = request.web_hook
+        if not UtilClient.is_unset(request.quota_dimensions):
+            body['QuotaDimensions'] = request.quota_dimensions
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -90,22 +90,22 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.CreateQuotaAlarmResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.alarm_name):
-            body['AlarmName'] = request.alarm_name
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
-        if not UtilClient.is_unset(request.quota_dimensions):
-            body['QuotaDimensions'] = request.quota_dimensions
+        if not UtilClient.is_unset(request.alarm_name):
+            body['AlarmName'] = request.alarm_name
+        if not UtilClient.is_unset(request.threshold_type):
+            body['ThresholdType'] = request.threshold_type
         if not UtilClient.is_unset(request.threshold):
             body['Threshold'] = request.threshold
         if not UtilClient.is_unset(request.threshold_percent):
             body['ThresholdPercent'] = request.threshold_percent
-        if not UtilClient.is_unset(request.threshold_type):
-            body['ThresholdType'] = request.threshold_type
         if not UtilClient.is_unset(request.web_hook):
             body['WebHook'] = request.web_hook
+        if not UtilClient.is_unset(request.quota_dimensions):
+            body['QuotaDimensions'] = request.quota_dimensions
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -146,24 +146,24 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.CreateQuotaApplicationResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.audit_mode):
-            body['AuditMode'] = request.audit_mode
-        if not UtilClient.is_unset(request.desire_value):
-            body['DesireValue'] = request.desire_value
-        if not UtilClient.is_unset(request.dimensions):
-            body['Dimensions'] = request.dimensions
-        if not UtilClient.is_unset(request.env_language):
-            body['EnvLanguage'] = request.env_language
-        if not UtilClient.is_unset(request.notice_type):
-            body['NoticeType'] = request.notice_type
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
-        if not UtilClient.is_unset(request.quota_category):
-            body['QuotaCategory'] = request.quota_category
+        if not UtilClient.is_unset(request.desire_value):
+            body['DesireValue'] = request.desire_value
         if not UtilClient.is_unset(request.reason):
             body['Reason'] = request.reason
+        if not UtilClient.is_unset(request.notice_type):
+            body['NoticeType'] = request.notice_type
+        if not UtilClient.is_unset(request.dimensions):
+            body['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.quota_category):
+            body['QuotaCategory'] = request.quota_category
+        if not UtilClient.is_unset(request.audit_mode):
+            body['AuditMode'] = request.audit_mode
+        if not UtilClient.is_unset(request.env_language):
+            body['EnvLanguage'] = request.env_language
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -190,24 +190,24 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.CreateQuotaApplicationResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.audit_mode):
-            body['AuditMode'] = request.audit_mode
-        if not UtilClient.is_unset(request.desire_value):
-            body['DesireValue'] = request.desire_value
-        if not UtilClient.is_unset(request.dimensions):
-            body['Dimensions'] = request.dimensions
-        if not UtilClient.is_unset(request.env_language):
-            body['EnvLanguage'] = request.env_language
-        if not UtilClient.is_unset(request.notice_type):
-            body['NoticeType'] = request.notice_type
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
-        if not UtilClient.is_unset(request.quota_category):
-            body['QuotaCategory'] = request.quota_category
+        if not UtilClient.is_unset(request.desire_value):
+            body['DesireValue'] = request.desire_value
         if not UtilClient.is_unset(request.reason):
             body['Reason'] = request.reason
+        if not UtilClient.is_unset(request.notice_type):
+            body['NoticeType'] = request.notice_type
+        if not UtilClient.is_unset(request.dimensions):
+            body['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.quota_category):
+            body['QuotaCategory'] = request.quota_category
+        if not UtilClient.is_unset(request.audit_mode):
+            body['AuditMode'] = request.audit_mode
+        if not UtilClient.is_unset(request.env_language):
+            body['EnvLanguage'] = request.env_language
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -318,12 +318,12 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.GetProductQuotaResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.dimensions):
-            body['Dimensions'] = request.dimensions
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
+        if not UtilClient.is_unset(request.dimensions):
+            body['Dimensions'] = request.dimensions
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -350,12 +350,12 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.GetProductQuotaResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.dimensions):
-            body['Dimensions'] = request.dimensions
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
+        if not UtilClient.is_unset(request.dimensions):
+            body['Dimensions'] = request.dimensions
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -396,12 +396,12 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.GetProductQuotaDimensionResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.dependent_dimensions):
-            body['DependentDimensions'] = request.dependent_dimensions
-        if not UtilClient.is_unset(request.dimension_key):
-            body['DimensionKey'] = request.dimension_key
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.dimension_key):
+            body['DimensionKey'] = request.dimension_key
+        if not UtilClient.is_unset(request.dependent_dimensions):
+            body['DependentDimensions'] = request.dependent_dimensions
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -428,12 +428,12 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.GetProductQuotaDimensionResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.dependent_dimensions):
-            body['DependentDimensions'] = request.dependent_dimensions
-        if not UtilClient.is_unset(request.dimension_key):
-            body['DimensionKey'] = request.dimension_key
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.dimension_key):
+            body['DimensionKey'] = request.dimension_key
+        if not UtilClient.is_unset(request.dependent_dimensions):
+            body['DependentDimensions'] = request.dependent_dimensions
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -614,18 +614,18 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.ListAlarmHistoriesResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.end_time):
-            body['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.keyword):
-            body['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.max_results):
-            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.product_code):
-            body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.product_code):
+            body['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -652,18 +652,18 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.ListAlarmHistoriesResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.end_time):
-            body['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.keyword):
-            body['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.max_results):
-            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.product_code):
-            body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.product_code):
+            body['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -778,10 +778,10 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.ListProductDimensionGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.max_results):
-            query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
@@ -810,10 +810,10 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.ListProductDimensionGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.max_results):
-            query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
@@ -856,10 +856,10 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.ListProductQuotaDimensionsResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.max_results):
-            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_category):
@@ -890,10 +890,10 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.ListProductQuotaDimensionsResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.max_results):
-            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_category):
@@ -938,26 +938,26 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.ListProductQuotasResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.dimensions):
-            body['Dimensions'] = request.dimensions
-        if not UtilClient.is_unset(request.group_code):
-            body['GroupCode'] = request.group_code
-        if not UtilClient.is_unset(request.key_word):
-            body['KeyWord'] = request.key_word
-        if not UtilClient.is_unset(request.max_results):
-            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
-        if not UtilClient.is_unset(request.quota_category):
-            body['QuotaCategory'] = request.quota_category
+        if not UtilClient.is_unset(request.key_word):
+            body['KeyWord'] = request.key_word
         if not UtilClient.is_unset(request.sort_field):
             body['SortField'] = request.sort_field
         if not UtilClient.is_unset(request.sort_order):
             body['SortOrder'] = request.sort_order
+        if not UtilClient.is_unset(request.dimensions):
+            body['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.quota_category):
+            body['QuotaCategory'] = request.quota_category
+        if not UtilClient.is_unset(request.group_code):
+            body['GroupCode'] = request.group_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -984,26 +984,26 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.ListProductQuotasResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.dimensions):
-            body['Dimensions'] = request.dimensions
-        if not UtilClient.is_unset(request.group_code):
-            body['GroupCode'] = request.group_code
-        if not UtilClient.is_unset(request.key_word):
-            body['KeyWord'] = request.key_word
-        if not UtilClient.is_unset(request.max_results):
-            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
-        if not UtilClient.is_unset(request.quota_category):
-            body['QuotaCategory'] = request.quota_category
+        if not UtilClient.is_unset(request.key_word):
+            body['KeyWord'] = request.key_word
         if not UtilClient.is_unset(request.sort_field):
             body['SortField'] = request.sort_field
         if not UtilClient.is_unset(request.sort_order):
             body['SortOrder'] = request.sort_order
+        if not UtilClient.is_unset(request.dimensions):
+            body['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.quota_category):
+            body['QuotaCategory'] = request.quota_category
+        if not UtilClient.is_unset(request.group_code):
+            body['GroupCode'] = request.group_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1044,10 +1044,10 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.ListProductsResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.max_results):
-            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1074,10 +1074,10 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.ListProductsResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.max_results):
-            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1118,14 +1118,14 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.ListQuotaAlarmsResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.alarm_name):
-            body['AlarmName'] = request.alarm_name
-        if not UtilClient.is_unset(request.max_results):
-            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.alarm_name):
+            body['AlarmName'] = request.alarm_name
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
         if not UtilClient.is_unset(request.quota_dimensions):
@@ -1156,14 +1156,14 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.ListQuotaAlarmsResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.alarm_name):
-            body['AlarmName'] = request.alarm_name
-        if not UtilClient.is_unset(request.max_results):
-            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.alarm_name):
+            body['AlarmName'] = request.alarm_name
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
         if not UtilClient.is_unset(request.quota_dimensions):
@@ -1208,22 +1208,22 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.ListQuotaApplicationsResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.dimensions):
-            body['Dimensions'] = request.dimensions
-        if not UtilClient.is_unset(request.key_word):
-            body['KeyWord'] = request.key_word
-        if not UtilClient.is_unset(request.max_results):
-            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
-        if not UtilClient.is_unset(request.quota_category):
-            body['QuotaCategory'] = request.quota_category
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
+        if not UtilClient.is_unset(request.key_word):
+            body['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.dimensions):
+            body['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.quota_category):
+            body['QuotaCategory'] = request.quota_category
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1250,22 +1250,22 @@ class Client(OpenApiClient):
     ) -> quotas_20200510_models.ListQuotaApplicationsResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.dimensions):
-            body['Dimensions'] = request.dimensions
-        if not UtilClient.is_unset(request.key_word):
-            body['KeyWord'] = request.key_word
-        if not UtilClient.is_unset(request.max_results):
-            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
-        if not UtilClient.is_unset(request.quota_category):
-            body['QuotaCategory'] = request.quota_category
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
+        if not UtilClient.is_unset(request.key_word):
+            body['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.dimensions):
+            body['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.quota_category):
+            body['QuotaCategory'] = request.quota_category
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1310,12 +1310,12 @@ class Client(OpenApiClient):
             body['AlarmId'] = request.alarm_id
         if not UtilClient.is_unset(request.alarm_name):
             body['AlarmName'] = request.alarm_name
+        if not UtilClient.is_unset(request.threshold_type):
+            body['ThresholdType'] = request.threshold_type
         if not UtilClient.is_unset(request.threshold):
             body['Threshold'] = request.threshold
         if not UtilClient.is_unset(request.threshold_percent):
             body['ThresholdPercent'] = request.threshold_percent
-        if not UtilClient.is_unset(request.threshold_type):
-            body['ThresholdType'] = request.threshold_type
         if not UtilClient.is_unset(request.web_hook):
             body['WebHook'] = request.web_hook
         req = open_api_models.OpenApiRequest(
@@ -1348,12 +1348,12 @@ class Client(OpenApiClient):
             body['AlarmId'] = request.alarm_id
         if not UtilClient.is_unset(request.alarm_name):
             body['AlarmName'] = request.alarm_name
+        if not UtilClient.is_unset(request.threshold_type):
+            body['ThresholdType'] = request.threshold_type
         if not UtilClient.is_unset(request.threshold):
             body['Threshold'] = request.threshold
         if not UtilClient.is_unset(request.threshold_percent):
             body['ThresholdPercent'] = request.threshold_percent
-        if not UtilClient.is_unset(request.threshold_type):
-            body['ThresholdType'] = request.threshold_type
         if not UtilClient.is_unset(request.web_hook):
             body['WebHook'] = request.web_hook
         req = open_api_models.OpenApiRequest(
