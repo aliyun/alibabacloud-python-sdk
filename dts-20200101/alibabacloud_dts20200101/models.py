@@ -8,6 +8,7 @@ class ConfigureDtsJobRequest(TeaModel):
     def __init__(
         self,
         checkpoint: str = None,
+        data_check_configure: str = None,
         data_initialization: bool = None,
         data_synchronization: bool = None,
         db_list: str = None,
@@ -51,6 +52,7 @@ class ConfigureDtsJobRequest(TeaModel):
         synchronization_direction: str = None,
     ):
         self.checkpoint = checkpoint
+        self.data_check_configure = data_check_configure
         self.data_initialization = data_initialization
         self.data_synchronization = data_synchronization
         self.db_list = db_list
@@ -104,6 +106,8 @@ class ConfigureDtsJobRequest(TeaModel):
         result = dict()
         if self.checkpoint is not None:
             result['Checkpoint'] = self.checkpoint
+        if self.data_check_configure is not None:
+            result['DataCheckConfigure'] = self.data_check_configure
         if self.data_initialization is not None:
             result['DataInitialization'] = self.data_initialization
         if self.data_synchronization is not None:
@@ -192,6 +196,8 @@ class ConfigureDtsJobRequest(TeaModel):
         m = m or dict()
         if m.get('Checkpoint') is not None:
             self.checkpoint = m.get('Checkpoint')
+        if m.get('DataCheckConfigure') is not None:
+            self.data_check_configure = m.get('DataCheckConfigure')
         if m.get('DataInitialization') is not None:
             self.data_initialization = m.get('DataInitialization')
         if m.get('DataSynchronization') is not None:
@@ -282,6 +288,7 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         self,
         file_oss_url_object: BinaryIO = None,
         checkpoint: str = None,
+        data_check_configure: str = None,
         data_initialization: bool = None,
         data_synchronization: bool = None,
         db_list: str = None,
@@ -325,6 +332,7 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
     ):
         self.file_oss_url_object = file_oss_url_object
         self.checkpoint = checkpoint
+        self.data_check_configure = data_check_configure
         self.data_initialization = data_initialization
         self.data_synchronization = data_synchronization
         self.db_list = db_list
@@ -379,6 +387,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             result['FileOssUrlObject'] = self.file_oss_url_object
         if self.checkpoint is not None:
             result['Checkpoint'] = self.checkpoint
+        if self.data_check_configure is not None:
+            result['DataCheckConfigure'] = self.data_check_configure
         if self.data_initialization is not None:
             result['DataInitialization'] = self.data_initialization
         if self.data_synchronization is not None:
@@ -467,6 +477,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             self.file_oss_url_object = m.get('FileOssUrlObject')
         if m.get('Checkpoint') is not None:
             self.checkpoint = m.get('Checkpoint')
+        if m.get('DataCheckConfigure') is not None:
+            self.data_check_configure = m.get('DataCheckConfigure')
         if m.get('DataInitialization') is not None:
             self.data_initialization = m.get('DataInitialization')
         if m.get('DataSynchronization') is not None:
@@ -2741,19 +2753,14 @@ class CountJobByConditionRequest(TeaModel):
         status: str = None,
         type: str = None,
     ):
-        # 目标端数据库类型
         self.dest_db_type = dest_db_type
-        # 父任务id
         self.group_id = group_id
         self.job_type = job_type
-        # 查询的值，与Type对应
         self.params = params
         self.region = region
         self.region_id = region_id
-        # 源端数据库类型
         self.src_db_type = src_db_type
         self.status = status
-        # 查询类型
         self.type = type
 
     def validate(self):
@@ -2825,7 +2832,6 @@ class CountJobByConditionResponseBody(TeaModel):
         self.err_code = err_code
         self.err_message = err_message
         self.http_status_code = http_status_code
-        # Id of the request
         self.request_id = request_id
         self.success = success
         self.total_record_count = total_record_count
@@ -3655,16 +3661,22 @@ class CreateJobMonitorRuleRequest(TeaModel):
         self,
         delay_rule_time: int = None,
         dts_job_id: str = None,
+        notice_value: int = None,
+        period: int = None,
         phone: str = None,
         region_id: str = None,
         state: str = None,
+        times: int = None,
         type: str = None,
     ):
         self.delay_rule_time = delay_rule_time
         self.dts_job_id = dts_job_id
+        self.notice_value = notice_value
+        self.period = period
         self.phone = phone
         self.region_id = region_id
         self.state = state
+        self.times = times
         self.type = type
 
     def validate(self):
@@ -3680,12 +3692,18 @@ class CreateJobMonitorRuleRequest(TeaModel):
             result['DelayRuleTime'] = self.delay_rule_time
         if self.dts_job_id is not None:
             result['DtsJobId'] = self.dts_job_id
+        if self.notice_value is not None:
+            result['NoticeValue'] = self.notice_value
+        if self.period is not None:
+            result['Period'] = self.period
         if self.phone is not None:
             result['Phone'] = self.phone
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.state is not None:
             result['State'] = self.state
+        if self.times is not None:
+            result['Times'] = self.times
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -3696,12 +3714,18 @@ class CreateJobMonitorRuleRequest(TeaModel):
             self.delay_rule_time = m.get('DelayRuleTime')
         if m.get('DtsJobId') is not None:
             self.dts_job_id = m.get('DtsJobId')
+        if m.get('NoticeValue') is not None:
+            self.notice_value = m.get('NoticeValue')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
         if m.get('Phone') is not None:
             self.phone = m.get('Phone')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('State') is not None:
             self.state = m.get('State')
+        if m.get('Times') is not None:
+            self.times = m.get('Times')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -5410,6 +5434,313 @@ class DeleteSynchronizationJobResponse(TeaModel):
         return self
 
 
+class DescribeCheckJobsRequest(TeaModel):
+    def __init__(
+        self,
+        check_type: int = None,
+        instance_id: str = None,
+        job_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.check_type = check_type
+        self.instance_id = instance_id
+        self.job_name = job_name
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_type is not None:
+            result['CheckType'] = self.check_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckType') is not None:
+            self.check_type = m.get('CheckType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeCheckJobsResponseBodyCheckJobs(TeaModel):
+    def __init__(
+        self,
+        charge_type: str = None,
+        check_point: int = None,
+        check_type: int = None,
+        diff_count: int = None,
+        diff_sum: int = None,
+        dts_instance_id: str = None,
+        dts_job_id: str = None,
+        finish_count: int = None,
+        group_id: str = None,
+        instance_class: str = None,
+        job_name: str = None,
+        job_step_id: str = None,
+        parent_job_type: str = None,
+        region_id: str = None,
+        status: int = None,
+        total_count: int = None,
+    ):
+        self.charge_type = charge_type
+        self.check_point = check_point
+        self.check_type = check_type
+        self.diff_count = diff_count
+        self.diff_sum = diff_sum
+        self.dts_instance_id = dts_instance_id
+        self.dts_job_id = dts_job_id
+        self.finish_count = finish_count
+        self.group_id = group_id
+        self.instance_class = instance_class
+        self.job_name = job_name
+        self.job_step_id = job_step_id
+        self.parent_job_type = parent_job_type
+        self.region_id = region_id
+        self.status = status
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.check_point is not None:
+            result['CheckPoint'] = self.check_point
+        if self.check_type is not None:
+            result['CheckType'] = self.check_type
+        if self.diff_count is not None:
+            result['DiffCount'] = self.diff_count
+        if self.diff_sum is not None:
+            result['DiffSum'] = self.diff_sum
+        if self.dts_instance_id is not None:
+            result['DtsInstanceID'] = self.dts_instance_id
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.finish_count is not None:
+            result['FinishCount'] = self.finish_count
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.instance_class is not None:
+            result['InstanceClass'] = self.instance_class
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+        if self.job_step_id is not None:
+            result['JobStepId'] = self.job_step_id
+        if self.parent_job_type is not None:
+            result['ParentJobType'] = self.parent_job_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('CheckPoint') is not None:
+            self.check_point = m.get('CheckPoint')
+        if m.get('CheckType') is not None:
+            self.check_type = m.get('CheckType')
+        if m.get('DiffCount') is not None:
+            self.diff_count = m.get('DiffCount')
+        if m.get('DiffSum') is not None:
+            self.diff_sum = m.get('DiffSum')
+        if m.get('DtsInstanceID') is not None:
+            self.dts_instance_id = m.get('DtsInstanceID')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('FinishCount') is not None:
+            self.finish_count = m.get('FinishCount')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('InstanceClass') is not None:
+            self.instance_class = m.get('InstanceClass')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+        if m.get('JobStepId') is not None:
+            self.job_step_id = m.get('JobStepId')
+        if m.get('ParentJobType') is not None:
+            self.parent_job_type = m.get('ParentJobType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeCheckJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        check_jobs: List[DescribeCheckJobsResponseBodyCheckJobs] = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        page_number: int = None,
+        page_record_count: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_record_count: int = None,
+    ):
+        self.check_jobs = check_jobs
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.page_number = page_number
+        self.page_record_count = page_record_count
+        self.request_id = request_id
+        self.success = success
+        self.total_record_count = total_record_count
+
+    def validate(self):
+        if self.check_jobs:
+            for k in self.check_jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CheckJobs'] = []
+        if self.check_jobs is not None:
+            for k in self.check_jobs:
+                result['CheckJobs'].append(k.to_map() if k else None)
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_record_count is not None:
+            result['PageRecordCount'] = self.page_record_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.check_jobs = []
+        if m.get('CheckJobs') is not None:
+            for k in m.get('CheckJobs'):
+                temp_model = DescribeCheckJobsResponseBodyCheckJobs()
+                self.check_jobs.append(temp_model.from_map(k))
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageRecordCount') is not None:
+            self.page_record_count = m.get('PageRecordCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
+        return self
+
+
+class DescribeCheckJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCheckJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCheckJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeClusterOperateLogsRequest(TeaModel):
     def __init__(
         self,
@@ -5423,19 +5754,14 @@ class DescribeClusterOperateLogsRequest(TeaModel):
         page_size: int = None,
         start_time: int = None,
     ):
-        # callType=AssumedRoleUser
         self.account_id = account_id
-        # 幂等性验证
         self.client_token = client_token
         self.dedicated_cluster_id = dedicated_cluster_id
-        # migration job id
         self.dts_job_id = dts_job_id
         self.end_time = end_time
-        # OwnerID
         self.owner_id = owner_id
         self.page_number = page_number
         self.page_size = page_size
-        # 当不传时默认最近返回七天的数据
         self.start_time = start_time
 
     def validate(self):
@@ -5574,25 +5900,16 @@ class DescribeClusterOperateLogsResponseBody(TeaModel):
         success: bool = None,
         total_record_count: int = None,
     ):
-        # 后端错误码 数字递增
         self.code = code
         self.data_points = data_points
-        # 动态错误信息，会替换错误码里的"%s"
         self.dynamic_message = dynamic_message
-        # 错误短码 ps：InternalError
         self.err_code = err_code
-        # 错误信息（返回给用户）
         self.err_message = err_message
-        # 异常对应的http code
         self.http_status_code = http_status_code
-        # 当前页码
         self.page_number = page_number
-        # 当前每页显示数量
         self.page_record_count = page_record_count
         self.request_id = request_id
-        # 调用结果
         self.success = success
-        # 总数
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -5720,19 +6037,14 @@ class DescribeClusterUsedUtilizationRequest(TeaModel):
         region_id: str = None,
         security_token: str = None,
     ):
-        # callType=AssumedRoleUser
         self.account_id = account_id
-        # 幂等性验证
         self.client_token = client_token
         self.dedicated_cluster_id = dedicated_cluster_id
-        # migration job id
         self.dts_job_id = dts_job_id
         self.env = env
         self.metric_type = metric_type
-        # OwnerID
         self.owner_id = owner_id
         self.region_id = region_id
-        # callType=AssumedRoleUser
         self.security_token = security_token
 
     def validate(self):
@@ -5808,7 +6120,6 @@ class DescribeClusterUsedUtilizationResponseBody(TeaModel):
         success: bool = None,
         task_running: int = None,
     ):
-        # 后端错误码 数字递增
         self.code = code
         self.cpu_total = cpu_total
         self.dedicated_cluster_id = dedicated_cluster_id
@@ -5816,19 +6127,14 @@ class DescribeClusterUsedUtilizationResponseBody(TeaModel):
         self.disk_used = disk_used
         self.du_total = du_total
         self.du_used = du_used
-        # 动态错误信息，会替换错误码里的 "%s"
         self.dynamic_message = dynamic_message
-        # 错误短码 ps：InternalError
         self.err_code = err_code
-        # 错误信息（返回给用户）
         self.err_message = err_message
-        # 异常对应的http code
         self.http_status_code = http_status_code
         self.memory_total = memory_total
         self.memory_used = memory_used
         self.memory_used_percentage = memory_used_percentage
         self.request_id = request_id
-        # 调用结果
         self.success = success
         self.task_running = task_running
 
@@ -6865,6 +7171,640 @@ class DescribeDTSIPResponse(TeaModel):
         return self
 
 
+class DescribeDataCheckReportUrlRequest(TeaModel):
+    def __init__(
+        self,
+        db_name: str = None,
+        job_step_id: str = None,
+        tb_name: str = None,
+    ):
+        self.db_name = db_name
+        self.job_step_id = job_step_id
+        self.tb_name = tb_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.job_step_id is not None:
+            result['JobStepId'] = self.job_step_id
+        if self.tb_name is not None:
+            result['TbName'] = self.tb_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('JobStepId') is not None:
+            self.job_step_id = m.get('JobStepId')
+        if m.get('TbName') is not None:
+            self.tb_name = m.get('TbName')
+        return self
+
+
+class DescribeDataCheckReportUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeDataCheckReportUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDataCheckReportUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDataCheckReportUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDataCheckTableDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        job_step_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        status: str = None,
+        table_name: str = None,
+    ):
+        self.job_step_id = job_step_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.status = status
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_step_id is not None:
+            result['JobStepId'] = self.job_step_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobStepId') is not None:
+            self.job_step_id = m.get('JobStepId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class DescribeDataCheckTableDetailsResponseBodyTableDetails(TeaModel):
+    def __init__(
+        self,
+        boot_time: str = None,
+        diff_count: int = None,
+        finish_count: int = None,
+        id: int = None,
+        source_db_name: str = None,
+        source_tb_name: str = None,
+        status: str = None,
+        target_db_name: str = None,
+        target_tb_name: str = None,
+        total_count: int = None,
+    ):
+        self.boot_time = boot_time
+        self.diff_count = diff_count
+        self.finish_count = finish_count
+        self.id = id
+        self.source_db_name = source_db_name
+        self.source_tb_name = source_tb_name
+        self.status = status
+        self.target_db_name = target_db_name
+        self.target_tb_name = target_tb_name
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.boot_time is not None:
+            result['BootTime'] = self.boot_time
+        if self.diff_count is not None:
+            result['DiffCount'] = self.diff_count
+        if self.finish_count is not None:
+            result['FinishCount'] = self.finish_count
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.source_db_name is not None:
+            result['SourceDbName'] = self.source_db_name
+        if self.source_tb_name is not None:
+            result['SourceTbName'] = self.source_tb_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.target_db_name is not None:
+            result['TargetDbName'] = self.target_db_name
+        if self.target_tb_name is not None:
+            result['TargetTbName'] = self.target_tb_name
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BootTime') is not None:
+            self.boot_time = m.get('BootTime')
+        if m.get('DiffCount') is not None:
+            self.diff_count = m.get('DiffCount')
+        if m.get('FinishCount') is not None:
+            self.finish_count = m.get('FinishCount')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SourceDbName') is not None:
+            self.source_db_name = m.get('SourceDbName')
+        if m.get('SourceTbName') is not None:
+            self.source_tb_name = m.get('SourceTbName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TargetDbName') is not None:
+            self.target_db_name = m.get('TargetDbName')
+        if m.get('TargetTbName') is not None:
+            self.target_tb_name = m.get('TargetTbName')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDataCheckTableDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        page_number: int = None,
+        request_id: str = None,
+        success: bool = None,
+        table_details: List[DescribeDataCheckTableDetailsResponseBodyTableDetails] = None,
+        total_count: int = None,
+    ):
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.page_number = page_number
+        self.request_id = request_id
+        self.success = success
+        self.table_details = table_details
+        self.total_count = total_count
+
+    def validate(self):
+        if self.table_details:
+            for k in self.table_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        result['TableDetails'] = []
+        if self.table_details is not None:
+            for k in self.table_details:
+                result['TableDetails'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        self.table_details = []
+        if m.get('TableDetails') is not None:
+            for k in m.get('TableDetails'):
+                temp_model = DescribeDataCheckTableDetailsResponseBodyTableDetails()
+                self.table_details.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDataCheckTableDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDataCheckTableDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDataCheckTableDetailsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDataCheckTableDiffDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        db_name: str = None,
+        job_step_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        tb_name: str = None,
+    ):
+        self.db_name = db_name
+        self.job_step_id = job_step_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.tb_name = tb_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.job_step_id is not None:
+            result['JobStepId'] = self.job_step_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.tb_name is not None:
+            result['TbName'] = self.tb_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('JobStepId') is not None:
+            self.job_step_id = m.get('JobStepId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TbName') is not None:
+            self.tb_name = m.get('TbName')
+        return self
+
+
+class DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails(TeaModel):
+    def __init__(
+        self,
+        diff: str = None,
+        gmt_created: str = None,
+        id: int = None,
+    ):
+        self.diff = diff
+        self.gmt_created = gmt_created
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.diff is not None:
+            result['Diff'] = self.diff
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Diff') is not None:
+            self.diff = m.get('Diff')
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DescribeDataCheckTableDiffDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        db_name: str = None,
+        diff_count: int = None,
+        diff_details: List[DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails] = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        instance_id: str = None,
+        request_id: str = None,
+        success: bool = None,
+        tb_name: str = None,
+    ):
+        self.db_name = db_name
+        self.diff_count = diff_count
+        self.diff_details = diff_details
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.instance_id = instance_id
+        self.request_id = request_id
+        self.success = success
+        self.tb_name = tb_name
+
+    def validate(self):
+        if self.diff_details:
+            for k in self.diff_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.diff_count is not None:
+            result['DiffCount'] = self.diff_count
+        result['DiffDetails'] = []
+        if self.diff_details is not None:
+            for k in self.diff_details:
+                result['DiffDetails'].append(k.to_map() if k else None)
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.tb_name is not None:
+            result['TbName'] = self.tb_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('DiffCount') is not None:
+            self.diff_count = m.get('DiffCount')
+        self.diff_details = []
+        if m.get('DiffDetails') is not None:
+            for k in m.get('DiffDetails'):
+                temp_model = DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails()
+                self.diff_details.append(temp_model.from_map(k))
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TbName') is not None:
+            self.tb_name = m.get('TbName')
+        return self
+
+
+class DescribeDataCheckTableDiffDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDataCheckTableDiffDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDataCheckTableDiffDetailsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDedicatedClusterRequest(TeaModel):
     def __init__(
         self,
@@ -7572,212 +8512,6 @@ class DescribeDtsEtlJobVersionInfoResponse(TeaModel):
         return self
 
 
-class DescribeDtsJobConfigRequest(TeaModel):
-    def __init__(
-        self,
-        dts_job_id: str = None,
-        module: str = None,
-        owner_id: str = None,
-        region_id: str = None,
-    ):
-        self.dts_job_id = dts_job_id
-        self.module = module
-        self.owner_id = owner_id
-        self.region_id = region_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dts_job_id is not None:
-            result['DtsJobId'] = self.dts_job_id
-        if self.module is not None:
-            result['Module'] = self.module
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DtsJobId') is not None:
-            self.dts_job_id = m.get('DtsJobId')
-        if m.get('Module') is not None:
-            self.module = m.get('Module')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        return self
-
-
-class DescribeDtsJobConfigResponseBodyParameters(TeaModel):
-    def __init__(
-        self,
-        checking_code: str = None,
-        default_value: str = None,
-        description: str = None,
-        force_restart: str = None,
-        modifiable: str = None,
-        module: str = None,
-        name: str = None,
-        running_value: str = None,
-        value_type: int = None,
-    ):
-        self.checking_code = checking_code
-        self.default_value = default_value
-        self.description = description
-        # 请使用
-        self.force_restart = force_restart
-        self.modifiable = modifiable
-        self.module = module
-        self.name = name
-        self.running_value = running_value
-        self.value_type = value_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.checking_code is not None:
-            result['CheckingCode'] = self.checking_code
-        if self.default_value is not None:
-            result['DefaultValue'] = self.default_value
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.force_restart is not None:
-            result['ForceRestart'] = self.force_restart
-        if self.modifiable is not None:
-            result['Modifiable'] = self.modifiable
-        if self.module is not None:
-            result['Module'] = self.module
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.running_value is not None:
-            result['RunningValue'] = self.running_value
-        if self.value_type is not None:
-            result['ValueType'] = self.value_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CheckingCode') is not None:
-            self.checking_code = m.get('CheckingCode')
-        if m.get('DefaultValue') is not None:
-            self.default_value = m.get('DefaultValue')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('ForceRestart') is not None:
-            self.force_restart = m.get('ForceRestart')
-        if m.get('Modifiable') is not None:
-            self.modifiable = m.get('Modifiable')
-        if m.get('Module') is not None:
-            self.module = m.get('Module')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('RunningValue') is not None:
-            self.running_value = m.get('RunningValue')
-        if m.get('ValueType') is not None:
-            self.value_type = m.get('ValueType')
-        return self
-
-
-class DescribeDtsJobConfigResponseBody(TeaModel):
-    def __init__(
-        self,
-        parameters: List[DescribeDtsJobConfigResponseBodyParameters] = None,
-        request_id: str = None,
-    ):
-        self.parameters = parameters
-        self.request_id = request_id
-
-    def validate(self):
-        if self.parameters:
-            for k in self.parameters:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Parameters'] = []
-        if self.parameters is not None:
-            for k in self.parameters:
-                result['Parameters'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.parameters = []
-        if m.get('Parameters') is not None:
-            for k in m.get('Parameters'):
-                temp_model = DescribeDtsJobConfigResponseBodyParameters()
-                self.parameters.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeDtsJobConfigResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeDtsJobConfigResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeDtsJobConfigResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeDtsJobDetailRequest(TeaModel):
     def __init__(
         self,
@@ -7790,7 +8524,6 @@ class DescribeDtsJobDetailRequest(TeaModel):
         self.dts_instance_id = dts_instance_id
         self.dts_job_id = dts_job_id
         self.region_id = region_id
-        # 是否返回所有的同步子任务
         self.sync_sub_job_history = sync_sub_job_history
         self.synchronization_direction = synchronization_direction
 
@@ -7827,6 +8560,57 @@ class DescribeDtsJobDetailRequest(TeaModel):
             self.sync_sub_job_history = m.get('SyncSubJobHistory')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
+        return self
+
+
+class DescribeDtsJobDetailResponseBodyDataSynchronizationStatus(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        need_upgrade: bool = None,
+        percent: str = None,
+        progress: str = None,
+        status: str = None,
+    ):
+        self.error_message = error_message
+        self.need_upgrade = need_upgrade
+        self.percent = percent
+        self.progress = progress
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.need_upgrade is not None:
+            result['NeedUpgrade'] = self.need_upgrade
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('NeedUpgrade') is not None:
+            self.need_upgrade = m.get('NeedUpgrade')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -8059,13 +8843,9 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus(TeaModel):
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -8114,13 +8894,9 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobDataInitializationStatus(
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -8169,13 +8945,9 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobDataSynchronizationStatus
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -8240,7 +9012,6 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobDestinationEndpoint(TeaMo
         self.port = port
         self.region = region
         self.role_name = role_name
-        # DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
         self.ssl_solution_enum = ssl_solution_enum
         self.user_name = user_name
 
@@ -8359,9 +9130,7 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobPerformance(TeaModel):
         flow: str = None,
         rps: str = None,
     ):
-        # 每秒同步的流量，单位为：MB/s
         self.flow = flow
-        # 每秒同步的记录数
         self.rps = rps
 
     def validate(self):
@@ -8397,15 +9166,10 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail(TeaM
         failed_reason: str = None,
         repair_method: str = None,
     ):
-        # 预检查项
         self.check_item = check_item
-        # 检查项的描述
         self.check_item_description = check_item_description
-        # 检查结果 (NotStarted: 未启动, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Warning: 警告, Success: 完成)
         self.check_result = check_result
-        # 错误原因
         self.failed_reason = failed_reason
-        # 修复方法
         self.repair_method = repair_method
 
     def validate(self):
@@ -8455,7 +9219,6 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus(TeaModel):
         self.detail = detail
         self.error_message = error_message
         self.percent = percent
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -8510,21 +9273,13 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobRetryState(TeaModel):
         retry_time: int = None,
         retrying: bool = None,
     ):
-        # 错误信息
         self.err_msg = err_msg
-        # 任务ID
         self.job_id = job_id
-        # 最大重试时间,单位秒
         self.max_retry_time = max_retry_time
-        # 模块名称 reader/store/writer/full/struct
         self.module = module
-        # 已重试次数
         self.retry_count = retry_count
-        # srcDB/destDB/metaDB/dstore
         self.retry_target = retry_target
-        # 已重试时间,单位秒
         self.retry_time = retry_time
-        # 是否重试中
         self.retrying = retrying
 
     def validate(self):
@@ -8585,13 +9340,9 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus(T
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -8640,13 +9391,9 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataInitializat
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -8695,13 +9442,9 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataSynchroniza
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -8766,7 +9509,6 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDestinationEndp
         self.port = port
         self.region = region
         self.role_name = role_name
-        # DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
         self.ssl_solution_enum = ssl_solution_enum
         self.user_name = user_name
 
@@ -8885,9 +9627,7 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPerformance(Tea
         flow: str = None,
         rps: str = None,
     ):
-        # 每秒同步的流量，单位为：MB/s
         self.flow = flow
-        # 每秒同步的记录数
         self.rps = rps
 
     def validate(self):
@@ -8923,15 +9663,10 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusD
         failed_reason: str = None,
         repair_method: str = None,
     ):
-        # 预检查项
         self.check_item = check_item
-        # 检查项的描述
         self.check_item_description = check_item_description
-        # 检查结果 (NotStarted: 未启动, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Warning: 警告, Success: 完成)
         self.check_result = check_result
-        # 错误原因
         self.failed_reason = failed_reason
-        # 修复方法
         self.repair_method = repair_method
 
     def validate(self):
@@ -8981,7 +9716,6 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus(
         self.detail = detail
         self.error_message = error_message
         self.percent = percent
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -9036,21 +9770,13 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobRetryState(TeaM
         retry_time: int = None,
         retrying: bool = None,
     ):
-        # 错误信息
         self.err_msg = err_msg
-        # 任务ID
         self.job_id = job_id
-        # 最大重试时间,单位秒
         self.max_retry_time = max_retry_time
-        # 模块名称 reader/store/writer/full/struct
         self.module = module
-        # 已重试次数
         self.retry_count = retry_count
-        # srcDB/destDB/metaDB/dstore
         self.retry_target = retry_target
-        # 已重试时间,单位秒
         self.retry_time = retry_time
-        # 是否重试中
         self.retrying = retrying
 
     def validate(self):
@@ -9127,7 +9853,6 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobSourceEndpoint(
         self.port = port
         self.region = region
         self.role_name = role_name
-        # DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
         self.ssl_solution_enum = ssl_solution_enum
         self.user_name = user_name
 
@@ -9205,13 +9930,9 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobStructureInitia
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -9339,31 +10060,18 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobTagList(TeaMode
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # 用户id
         self.ali_uid = ali_uid
-        # 标签操作者
         self.creator = creator
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 主键
         self.id = id
-        # region_id
         self.region_id = region_id
-        # dts instance id
         self.resource_id = resource_id
-        # 资源类型
         self.resource_type = resource_type
-        # 0为public，1为private (Public, Private, All)
         self.scope = scope
-        # 任务所在region，注意一般是dts的目标端region
         self.src_region = src_region
-        # 标签类型：系统标签－System，用户标签－Custom (Custom, System, All)
         self.tag_category = tag_category
-        # 标签键tagkey
         self.tag_key = tag_key
-        # 标签值tagvalue
         self.tag_value = tag_value
 
     def validate(self):
@@ -9498,7 +10206,6 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob(TeaModel):
         self.destination_endpoint = destination_endpoint
         self.dts_instance_id = dts_instance_id
         self.dts_job_class = dts_job_class
-        # 请使用
         self.dts_job_direction = dts_job_direction
         self.dts_job_id = dts_job_id
         self.dts_job_name = dts_job_name
@@ -9509,10 +10216,8 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob(TeaModel):
         self.finish_time = finish_time
         self.group_id = group_id
         self.is_demo_job = is_demo_job
-        # 返回结果中新增jobType字段
         self.job_type = job_type
         self.migration_mode = migration_mode
-        # 任务来源 pts任务、dms任务 (PTS, DMS, DTS)
         self.origin_type = origin_type
         self.pay_type = pay_type
         self.performance = performance
@@ -9792,7 +10497,6 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobSourceEndpoint(TeaModel):
         self.port = port
         self.region = region
         self.role_name = role_name
-        # DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
         self.ssl_solution_enum = ssl_solution_enum
         self.user_name = user_name
 
@@ -9870,13 +10574,9 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobStructureInitializationSt
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -10004,31 +10704,18 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobTagList(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # 用户id
         self.ali_uid = ali_uid
-        # 标签操作者
         self.creator = creator
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 主键
         self.id = id
-        # region_id
         self.region_id = region_id
-        # dts instance id
         self.resource_id = resource_id
-        # 资源类型
         self.resource_type = resource_type
-        # 0为public，1为private (Public, Private, All)
         self.scope = scope
-        # 任务所在region，注意一般是dts的目标端region
         self.src_region = src_region
-        # 标签类型：系统标签－System，用户标签－Custom (Custom, System, All)
         self.tag_category = tag_category
-        # 标签键tagkey
         self.tag_key = tag_key
-        # 标签值tagvalue
         self.tag_value = tag_value
 
     def validate(self):
@@ -10164,7 +10851,6 @@ class DescribeDtsJobDetailResponseBodySubDistributedJob(TeaModel):
         self.destination_endpoint = destination_endpoint
         self.dts_instance_id = dts_instance_id
         self.dts_job_class = dts_job_class
-        # 请使用
         self.dts_job_direction = dts_job_direction
         self.dts_job_id = dts_job_id
         self.dts_job_name = dts_job_name
@@ -10175,10 +10861,8 @@ class DescribeDtsJobDetailResponseBodySubDistributedJob(TeaModel):
         self.finish_time = finish_time
         self.group_id = group_id
         self.is_demo_job = is_demo_job
-        # 返回结果中新增jobType字段
         self.job_type = job_type
         self.migration_mode = migration_mode
-        # 任务来源 pts任务、dms任务 (PTS, DMS, DTS)
         self.origin_type = origin_type
         self.pay_type = pay_type
         self.performance = performance
@@ -10450,13 +11134,9 @@ class DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus(TeaModel):
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -10505,13 +11185,9 @@ class DescribeDtsJobDetailResponseBodySubSyncJobDataInitializationStatus(TeaMode
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -10560,13 +11236,9 @@ class DescribeDtsJobDetailResponseBodySubSyncJobDataSynchronizationStatus(TeaMod
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -10631,7 +11303,6 @@ class DescribeDtsJobDetailResponseBodySubSyncJobDestinationEndpoint(TeaModel):
         self.port = port
         self.region = region
         self.role_name = role_name
-        # DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
         self.ssl_solution_enum = ssl_solution_enum
         self.user_name = user_name
 
@@ -10750,9 +11421,7 @@ class DescribeDtsJobDetailResponseBodySubSyncJobPerformance(TeaModel):
         flow: str = None,
         rps: str = None,
     ):
-        # 每秒同步的流量，单位为：MB/s
         self.flow = flow
-        # 每秒同步的记录数
         self.rps = rps
 
     def validate(self):
@@ -10788,15 +11457,10 @@ class DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail(TeaModel):
         failed_reason: str = None,
         repair_method: str = None,
     ):
-        # 预检查项
         self.check_item = check_item
-        # 检查项的描述
         self.check_item_description = check_item_description
-        # 检查结果 (NotStarted: 未启动, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Warning: 警告, Success: 完成)
         self.check_result = check_result
-        # 错误原因
         self.failed_reason = failed_reason
-        # 修复方法
         self.repair_method = repair_method
 
     def validate(self):
@@ -10846,7 +11510,6 @@ class DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus(TeaModel):
         self.detail = detail
         self.error_message = error_message
         self.percent = percent
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -10901,21 +11564,13 @@ class DescribeDtsJobDetailResponseBodySubSyncJobRetryState(TeaModel):
         retry_time: int = None,
         retrying: bool = None,
     ):
-        # 错误信息
         self.err_msg = err_msg
-        # 任务ID
         self.job_id = job_id
-        # 最大重试时间,单位秒
         self.max_retry_time = max_retry_time
-        # 模块名称 reader/store/writer/full/struct
         self.module = module
-        # 已重试次数
         self.retry_count = retry_count
-        # srcDB/destDB/metaDB/dstore
         self.retry_target = retry_target
-        # 已重试时间,单位秒
         self.retry_time = retry_time
-        # 是否重试中
         self.retrying = retrying
 
     def validate(self):
@@ -10976,13 +11631,9 @@ class DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus(TeaModel
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -11031,13 +11682,9 @@ class DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataInitializationStat
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -11086,13 +11733,9 @@ class DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataSynchronizationSta
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -11157,7 +11800,6 @@ class DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDestinationEndpoint(Te
         self.port = port
         self.region = region
         self.role_name = role_name
-        # DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
         self.ssl_solution_enum = ssl_solution_enum
         self.user_name = user_name
 
@@ -11276,9 +11918,7 @@ class DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPerformance(TeaModel):
         flow: str = None,
         rps: str = None,
     ):
-        # 每秒同步的流量，单位为：MB/s
         self.flow = flow
-        # 每秒同步的记录数
         self.rps = rps
 
     def validate(self):
@@ -11314,15 +11954,10 @@ class DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail(T
         failed_reason: str = None,
         repair_method: str = None,
     ):
-        # 预检查项
         self.check_item = check_item
-        # 检查项的描述
         self.check_item_description = check_item_description
-        # 检查结果 (NotStarted: 未启动, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Warning: 警告, Success: 完成)
         self.check_result = check_result
-        # 错误原因
         self.failed_reason = failed_reason
-        # 修复方法
         self.repair_method = repair_method
 
     def validate(self):
@@ -11372,7 +12007,6 @@ class DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus(TeaMode
         self.detail = detail
         self.error_message = error_message
         self.percent = percent
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -11427,21 +12061,13 @@ class DescribeDtsJobDetailResponseBodySubSyncJobReverseJobRetryState(TeaModel):
         retry_time: int = None,
         retrying: bool = None,
     ):
-        # 错误信息
         self.err_msg = err_msg
-        # 任务ID
         self.job_id = job_id
-        # 最大重试时间,单位秒
         self.max_retry_time = max_retry_time
-        # 模块名称 reader/store/writer/full/struct
         self.module = module
-        # 已重试次数
         self.retry_count = retry_count
-        # srcDB/destDB/metaDB/dstore
         self.retry_target = retry_target
-        # 已重试时间,单位秒
         self.retry_time = retry_time
-        # 是否重试中
         self.retrying = retrying
 
     def validate(self):
@@ -11518,7 +12144,6 @@ class DescribeDtsJobDetailResponseBodySubSyncJobReverseJobSourceEndpoint(TeaMode
         self.port = port
         self.region = region
         self.role_name = role_name
-        # DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
         self.ssl_solution_enum = ssl_solution_enum
         self.user_name = user_name
 
@@ -11596,13 +12221,9 @@ class DescribeDtsJobDetailResponseBodySubSyncJobReverseJobStructureInitializatio
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -11730,31 +12351,18 @@ class DescribeDtsJobDetailResponseBodySubSyncJobReverseJobTagList(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # 用户id
         self.ali_uid = ali_uid
-        # 标签操作者
         self.creator = creator
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 主键
         self.id = id
-        # region_id
         self.region_id = region_id
-        # dts instance id
         self.resource_id = resource_id
-        # 资源类型
         self.resource_type = resource_type
-        # 0为public，1为private (Public, Private, All)
         self.scope = scope
-        # 任务所在region，注意一般是dts的目标端region
         self.src_region = src_region
-        # 标签类型：系统标签－System，用户标签－Custom (Custom, System, All)
         self.tag_category = tag_category
-        # 标签键tagkey
         self.tag_key = tag_key
-        # 标签值tagvalue
         self.tag_value = tag_value
 
     def validate(self):
@@ -11889,7 +12497,6 @@ class DescribeDtsJobDetailResponseBodySubSyncJobReverseJob(TeaModel):
         self.destination_endpoint = destination_endpoint
         self.dts_instance_id = dts_instance_id
         self.dts_job_class = dts_job_class
-        # 请使用
         self.dts_job_direction = dts_job_direction
         self.dts_job_id = dts_job_id
         self.dts_job_name = dts_job_name
@@ -11900,10 +12507,8 @@ class DescribeDtsJobDetailResponseBodySubSyncJobReverseJob(TeaModel):
         self.finish_time = finish_time
         self.group_id = group_id
         self.is_demo_job = is_demo_job
-        # 返回结果中新增jobType字段
         self.job_type = job_type
         self.migration_mode = migration_mode
-        # 任务来源 pts任务、dms任务 (PTS, DMS, DTS)
         self.origin_type = origin_type
         self.pay_type = pay_type
         self.performance = performance
@@ -12183,7 +12788,6 @@ class DescribeDtsJobDetailResponseBodySubSyncJobSourceEndpoint(TeaModel):
         self.port = port
         self.region = region
         self.role_name = role_name
-        # DISABLE: 不使用 SSL, ENABLE_WITH_CERTIFICATE: 使用 SSL, 需要用户上传 CA 证书, ENABLE_ONLY_4_MONGODB_ATLAS: 使用 SSL, 但只适用于 AWS MongoDB Altas, 不需要证书, ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256: Kafka SCRAM-SHA-256 支持, 不需要证书
         self.ssl_solution_enum = ssl_solution_enum
         self.user_name = user_name
 
@@ -12261,13 +12865,9 @@ class DescribeDtsJobDetailResponseBodySubSyncJobStructureInitializationStatus(Te
         status: str = None,
     ):
         self.error_message = error_message
-        # 是否显示提升升级规格
         self.need_upgrade = need_upgrade
-        # 迁移进度
         self.percent = percent
-        # 已经完成迁移的表数量
         self.progress = progress
-        # NotStarted: 未启动, Suspending: 暂停中, Checking: 检查中, Migrating: 迁移中, Failed: 失败, Catched: 同步中 ｜ 增量迁移中, Finished: 完成
         self.status = status
 
     def validate(self):
@@ -12395,31 +12995,18 @@ class DescribeDtsJobDetailResponseBodySubSyncJobTagList(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # 用户id
         self.ali_uid = ali_uid
-        # 标签操作者
         self.creator = creator
-        # 创建时间
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modified = gmt_modified
-        # 主键
         self.id = id
-        # region_id
         self.region_id = region_id
-        # dts instance id
         self.resource_id = resource_id
-        # 资源类型
         self.resource_type = resource_type
-        # 0为public，1为private (Public, Private, All)
         self.scope = scope
-        # 任务所在region，注意一般是dts的目标端region
         self.src_region = src_region
-        # 标签类型：系统标签－System，用户标签－Custom (Custom, System, All)
         self.tag_category = tag_category
-        # 标签键tagkey
         self.tag_key = tag_key
-        # 标签值tagvalue
         self.tag_value = tag_value
 
     def validate(self):
@@ -12555,7 +13142,6 @@ class DescribeDtsJobDetailResponseBodySubSyncJob(TeaModel):
         self.destination_endpoint = destination_endpoint
         self.dts_instance_id = dts_instance_id
         self.dts_job_class = dts_job_class
-        # 请使用
         self.dts_job_direction = dts_job_direction
         self.dts_job_id = dts_job_id
         self.dts_job_name = dts_job_name
@@ -12566,10 +13152,8 @@ class DescribeDtsJobDetailResponseBodySubSyncJob(TeaModel):
         self.finish_time = finish_time
         self.group_id = group_id
         self.is_demo_job = is_demo_job
-        # 返回结果中新增jobType字段
         self.job_type = job_type
         self.migration_mode = migration_mode
-        # 任务来源 pts任务、dms任务 (PTS, DMS, DTS)
         self.origin_type = origin_type
         self.pay_type = pay_type
         self.performance = performance
@@ -12913,6 +13497,7 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         consumption_checkpoint: str = None,
         consumption_client: str = None,
         create_time: str = None,
+        data_synchronization_status: DescribeDtsJobDetailResponseBodyDataSynchronizationStatus = None,
         database_count: int = None,
         db_object: str = None,
         dedicated_cluster_id: str = None,
@@ -12958,6 +13543,7 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         self.consumption_checkpoint = consumption_checkpoint
         self.consumption_client = consumption_client
         self.create_time = create_time
+        self.data_synchronization_status = data_synchronization_status
         self.database_count = database_count
         self.db_object = db_object
         self.dedicated_cluster_id = dedicated_cluster_id
@@ -12997,6 +13583,8 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         self.task_type = task_type
 
     def validate(self):
+        if self.data_synchronization_status:
+            self.data_synchronization_status.validate()
         if self.destination_endpoint:
             self.destination_endpoint.validate()
         if self.migration_mode:
@@ -13036,6 +13624,8 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             result['ConsumptionClient'] = self.consumption_client
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.data_synchronization_status is not None:
+            result['DataSynchronizationStatus'] = self.data_synchronization_status.to_map()
         if self.database_count is not None:
             result['DatabaseCount'] = self.database_count
         if self.db_object is not None:
@@ -13132,6 +13722,9 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             self.consumption_client = m.get('ConsumptionClient')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DataSynchronizationStatus') is not None:
+            temp_model = DescribeDtsJobDetailResponseBodyDataSynchronizationStatus()
+            self.data_synchronization_status = temp_model.from_map(m['DataSynchronizationStatus'])
         if m.get('DatabaseCount') is not None:
             self.database_count = m.get('DatabaseCount')
         if m.get('DbObject') is not None:
@@ -13268,6 +13861,7 @@ class DescribeDtsJobsRequest(TeaModel):
     def __init__(
         self,
         dedicated_cluster_id: str = None,
+        dts_instance_id: str = None,
         dts_job_id: str = None,
         group_id: str = None,
         job_type: str = None,
@@ -13284,6 +13878,7 @@ class DescribeDtsJobsRequest(TeaModel):
         type: str = None,
     ):
         self.dedicated_cluster_id = dedicated_cluster_id
+        self.dts_instance_id = dts_instance_id
         self.dts_job_id = dts_job_id
         self.group_id = group_id
         self.job_type = job_type
@@ -13310,6 +13905,8 @@ class DescribeDtsJobsRequest(TeaModel):
         result = dict()
         if self.dedicated_cluster_id is not None:
             result['DedicatedClusterId'] = self.dedicated_cluster_id
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
         if self.dts_job_id is not None:
             result['DtsJobId'] = self.dts_job_id
         if self.group_id is not None:
@@ -13344,6 +13941,8 @@ class DescribeDtsJobsRequest(TeaModel):
         m = m or dict()
         if m.get('DedicatedClusterId') is not None:
             self.dedicated_cluster_id = m.get('DedicatedClusterId')
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
         if m.get('DtsJobId') is not None:
             self.dts_job_id = m.get('DtsJobId')
         if m.get('GroupId') is not None:
@@ -14726,7 +15325,6 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         self.end_timestamp = end_timestamp
         self.error_message = error_message
         self.expire_time = expire_time
-        # DTS任务类型
         self.job_type = job_type
         self.mem_usage = mem_usage
         self.migration_mode = migration_mode
@@ -16267,7 +16865,6 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
         self.end_timestamp = end_timestamp
         self.error_message = error_message
         self.expire_time = expire_time
-        # DtsJob类型
         self.job_type = job_type
         self.migration_mode = migration_mode
         self.origin_type = origin_type
@@ -17728,13 +18325,23 @@ class DescribeJobMonitorRuleResponseBodyMonitorRules(TeaModel):
     def __init__(
         self,
         delay_rule_time: int = None,
+        job_id: str = None,
+        job_type: str = None,
+        notice_value: int = None,
+        period: int = None,
         phone: str = None,
         state: str = None,
+        times: int = None,
         type: str = None,
     ):
         self.delay_rule_time = delay_rule_time
+        self.job_id = job_id
+        self.job_type = job_type
+        self.notice_value = notice_value
+        self.period = period
         self.phone = phone
         self.state = state
+        self.times = times
         self.type = type
 
     def validate(self):
@@ -17748,10 +18355,20 @@ class DescribeJobMonitorRuleResponseBodyMonitorRules(TeaModel):
         result = dict()
         if self.delay_rule_time is not None:
             result['DelayRuleTime'] = self.delay_rule_time
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.notice_value is not None:
+            result['NoticeValue'] = self.notice_value
+        if self.period is not None:
+            result['Period'] = self.period
         if self.phone is not None:
             result['Phone'] = self.phone
         if self.state is not None:
             result['State'] = self.state
+        if self.times is not None:
+            result['Times'] = self.times
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -17760,10 +18377,20 @@ class DescribeJobMonitorRuleResponseBodyMonitorRules(TeaModel):
         m = m or dict()
         if m.get('DelayRuleTime') is not None:
             self.delay_rule_time = m.get('DelayRuleTime')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('NoticeValue') is not None:
+            self.notice_value = m.get('NoticeValue')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
         if m.get('Phone') is not None:
             self.phone = m.get('Phone')
         if m.get('State') is not None:
             self.state = m.get('State')
+        if m.get('Times') is not None:
+            self.times = m.get('Times')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -17917,18 +18544,13 @@ class DescribeMetricListRequest(TeaModel):
         period: int = None,
         start_time: int = None,
     ):
-        # callType=AssumedRoleUser
         self.account_id = account_id
-        # 幂等性验证
         self.client_token = client_token
-        # migration job id
         self.dts_job_id = dts_job_id
         self.end_time = end_time
         self.env = env
         self.metric_name = metric_name
-        # NODE, CLUSTER
         self.metric_type = metric_type
-        # OwnerID
         self.owner_id = owner_id
         self.param = param
         self.period = period
@@ -18043,24 +18665,17 @@ class DescribeMetricListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 后端错误码 数字递增
         self.code = code
         self.data_points = data_points
-        # 动态错误信息，会替换错误码里的"%s"
         self.dynamic_message = dynamic_message
-        # 错误短码 ps：InternalError
         self.err_code = err_code
-        # 错误信息（返回给用户）
         self.err_message = err_message
-        # 异常对应的http code
         self.http_status_code = http_status_code
         self.metric_name = metric_name
-        # NODE, CLUSTER
         self.metric_type = metric_type
         self.param = param
         self.period = period
         self.request_id = request_id
-        # 调用结果
         self.success = success
 
     def validate(self):
@@ -20590,193 +21205,6 @@ class DescribeMigrationJobsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMigrationJobsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeModifyConfigLogRequest(TeaModel):
-    def __init__(
-        self,
-        dts_job_id: str = None,
-        end_time: int = None,
-        owner_id: str = None,
-        region_id: str = None,
-        start_time: int = None,
-    ):
-        self.dts_job_id = dts_job_id
-        self.end_time = end_time
-        self.owner_id = owner_id
-        self.region_id = region_id
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dts_job_id is not None:
-            result['DtsJobId'] = self.dts_job_id
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DtsJobId') is not None:
-            self.dts_job_id = m.get('DtsJobId')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class DescribeModifyConfigLogResponseBodyModifyConfigLogs(TeaModel):
-    def __init__(
-        self,
-        modify_time: int = None,
-        module: str = None,
-        new_parameter_value: str = None,
-        old_parameter_value: str = None,
-        parameter_name: str = None,
-    ):
-        self.modify_time = modify_time
-        self.module = module
-        self.new_parameter_value = new_parameter_value
-        self.old_parameter_value = old_parameter_value
-        self.parameter_name = parameter_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.modify_time is not None:
-            result['ModifyTime'] = self.modify_time
-        if self.module is not None:
-            result['Module'] = self.module
-        if self.new_parameter_value is not None:
-            result['NewParameterValue'] = self.new_parameter_value
-        if self.old_parameter_value is not None:
-            result['OldParameterValue'] = self.old_parameter_value
-        if self.parameter_name is not None:
-            result['ParameterName'] = self.parameter_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ModifyTime') is not None:
-            self.modify_time = m.get('ModifyTime')
-        if m.get('Module') is not None:
-            self.module = m.get('Module')
-        if m.get('NewParameterValue') is not None:
-            self.new_parameter_value = m.get('NewParameterValue')
-        if m.get('OldParameterValue') is not None:
-            self.old_parameter_value = m.get('OldParameterValue')
-        if m.get('ParameterName') is not None:
-            self.parameter_name = m.get('ParameterName')
-        return self
-
-
-class DescribeModifyConfigLogResponseBody(TeaModel):
-    def __init__(
-        self,
-        modify_config_logs: List[DescribeModifyConfigLogResponseBodyModifyConfigLogs] = None,
-        request_id: str = None,
-    ):
-        self.modify_config_logs = modify_config_logs
-        self.request_id = request_id
-
-    def validate(self):
-        if self.modify_config_logs:
-            for k in self.modify_config_logs:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['ModifyConfigLogs'] = []
-        if self.modify_config_logs is not None:
-            for k in self.modify_config_logs:
-                result['ModifyConfigLogs'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.modify_config_logs = []
-        if m.get('ModifyConfigLogs') is not None:
-            for k in m.get('ModifyConfigLogs'):
-                temp_model = DescribeModifyConfigLogResponseBodyModifyConfigLogs()
-                self.modify_config_logs.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeModifyConfigLogResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeModifyConfigLogResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeModifyConfigLogResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27610,6 +28038,7 @@ class ModifyDtsJobRequest(TeaModel):
         dts_instance_id: str = None,
         etl_operator_column_reference: str = None,
         file_oss_url: str = None,
+        filter_table_name: str = None,
         modify_type_enum: str = None,
         region_id: str = None,
         reserved: str = None,
@@ -27619,12 +28048,10 @@ class ModifyDtsJobRequest(TeaModel):
         self.db_list = db_list
         self.dts_instance_id = dts_instance_id
         self.etl_operator_column_reference = etl_operator_column_reference
-        # 文件上传后的url
         self.file_oss_url = file_oss_url
-        # 修改任务的方式，当为UPDATE_RESERVED时为修改reserve字段，不传默认修改dbList
+        self.filter_table_name = filter_table_name
         self.modify_type_enum = modify_type_enum
         self.region_id = region_id
-        # 新增的reserved字段，新增而不是覆盖
         self.reserved = reserved
         self.synchronization_direction = synchronization_direction
 
@@ -27647,6 +28074,8 @@ class ModifyDtsJobRequest(TeaModel):
             result['EtlOperatorColumnReference'] = self.etl_operator_column_reference
         if self.file_oss_url is not None:
             result['FileOssUrl'] = self.file_oss_url
+        if self.filter_table_name is not None:
+            result['FilterTableName'] = self.filter_table_name
         if self.modify_type_enum is not None:
             result['ModifyTypeEnum'] = self.modify_type_enum
         if self.region_id is not None:
@@ -27669,6 +28098,8 @@ class ModifyDtsJobRequest(TeaModel):
             self.etl_operator_column_reference = m.get('EtlOperatorColumnReference')
         if m.get('FileOssUrl') is not None:
             self.file_oss_url = m.get('FileOssUrl')
+        if m.get('FilterTableName') is not None:
+            self.filter_table_name = m.get('FilterTableName')
         if m.get('ModifyTypeEnum') is not None:
             self.modify_type_enum = m.get('ModifyTypeEnum')
         if m.get('RegionId') is not None:
@@ -27688,6 +28119,7 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         db_list: Dict[str, Any] = None,
         dts_instance_id: str = None,
         etl_operator_column_reference: str = None,
+        filter_table_name: str = None,
         modify_type_enum: str = None,
         region_id: str = None,
         reserved: str = None,
@@ -27698,10 +28130,9 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         self.db_list = db_list
         self.dts_instance_id = dts_instance_id
         self.etl_operator_column_reference = etl_operator_column_reference
-        # 修改任务的方式，当为UPDATE_RESERVED时为修改reserve字段，不传默认修改dbList
+        self.filter_table_name = filter_table_name
         self.modify_type_enum = modify_type_enum
         self.region_id = region_id
-        # 新增的reserved字段，新增而不是覆盖
         self.reserved = reserved
         self.synchronization_direction = synchronization_direction
 
@@ -27724,6 +28155,8 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
             result['DtsInstanceId'] = self.dts_instance_id
         if self.etl_operator_column_reference is not None:
             result['EtlOperatorColumnReference'] = self.etl_operator_column_reference
+        if self.filter_table_name is not None:
+            result['FilterTableName'] = self.filter_table_name
         if self.modify_type_enum is not None:
             result['ModifyTypeEnum'] = self.modify_type_enum
         if self.region_id is not None:
@@ -27746,6 +28179,8 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
             self.dts_instance_id = m.get('DtsInstanceId')
         if m.get('EtlOperatorColumnReference') is not None:
             self.etl_operator_column_reference = m.get('EtlOperatorColumnReference')
+        if m.get('FilterTableName') is not None:
+            self.filter_table_name = m.get('FilterTableName')
         if m.get('ModifyTypeEnum') is not None:
             self.modify_type_enum = m.get('ModifyTypeEnum')
         if m.get('RegionId') is not None:
@@ -27765,6 +28200,7 @@ class ModifyDtsJobShrinkRequest(TeaModel):
         dts_instance_id: str = None,
         etl_operator_column_reference: str = None,
         file_oss_url: str = None,
+        filter_table_name: str = None,
         modify_type_enum: str = None,
         region_id: str = None,
         reserved: str = None,
@@ -27774,12 +28210,10 @@ class ModifyDtsJobShrinkRequest(TeaModel):
         self.db_list_shrink = db_list_shrink
         self.dts_instance_id = dts_instance_id
         self.etl_operator_column_reference = etl_operator_column_reference
-        # 文件上传后的url
         self.file_oss_url = file_oss_url
-        # 修改任务的方式，当为UPDATE_RESERVED时为修改reserve字段，不传默认修改dbList
+        self.filter_table_name = filter_table_name
         self.modify_type_enum = modify_type_enum
         self.region_id = region_id
-        # 新增的reserved字段，新增而不是覆盖
         self.reserved = reserved
         self.synchronization_direction = synchronization_direction
 
@@ -27802,6 +28236,8 @@ class ModifyDtsJobShrinkRequest(TeaModel):
             result['EtlOperatorColumnReference'] = self.etl_operator_column_reference
         if self.file_oss_url is not None:
             result['FileOssUrl'] = self.file_oss_url
+        if self.filter_table_name is not None:
+            result['FilterTableName'] = self.filter_table_name
         if self.modify_type_enum is not None:
             result['ModifyTypeEnum'] = self.modify_type_enum
         if self.region_id is not None:
@@ -27824,6 +28260,8 @@ class ModifyDtsJobShrinkRequest(TeaModel):
             self.etl_operator_column_reference = m.get('EtlOperatorColumnReference')
         if m.get('FileOssUrl') is not None:
             self.file_oss_url = m.get('FileOssUrl')
+        if m.get('FilterTableName') is not None:
+            self.filter_table_name = m.get('FilterTableName')
         if m.get('ModifyTypeEnum') is not None:
             self.modify_type_enum = m.get('ModifyTypeEnum')
         if m.get('RegionId') is not None:
@@ -31069,12 +31507,14 @@ class SummaryJobDetailRequest(TeaModel):
         dts_job_id: str = None,
         job_code: str = None,
         region_id: str = None,
+        struct_type: str = None,
         synchronization_direction: str = None,
     ):
         self.dts_instance_id = dts_instance_id
         self.dts_job_id = dts_job_id
         self.job_code = job_code
         self.region_id = region_id
+        self.struct_type = struct_type
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
@@ -31094,6 +31534,8 @@ class SummaryJobDetailRequest(TeaModel):
             result['JobCode'] = self.job_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.struct_type is not None:
+            result['StructType'] = self.struct_type
         if self.synchronization_direction is not None:
             result['SynchronizationDirection'] = self.synchronization_direction
         return result
@@ -31108,6 +31550,8 @@ class SummaryJobDetailRequest(TeaModel):
             self.job_code = m.get('JobCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('StructType') is not None:
+            self.struct_type = m.get('StructType')
         if m.get('SynchronizationDirection') is not None:
             self.synchronization_direction = m.get('SynchronizationDirection')
         return self
