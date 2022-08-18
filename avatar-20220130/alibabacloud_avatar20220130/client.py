@@ -41,6 +41,166 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def cancel_video_task_with_options(
+        self,
+        tmp_req: avatar_20220130_models.CancelVideoTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.CancelVideoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.CancelVideoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_shrink):
+            query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.task_uuid):
+            query['TaskUuid'] = request.task_uuid
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelVideoTask',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.CancelVideoTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_video_task_with_options_async(
+        self,
+        tmp_req: avatar_20220130_models.CancelVideoTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.CancelVideoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.CancelVideoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_shrink):
+            query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.task_uuid):
+            query['TaskUuid'] = request.task_uuid
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelVideoTask',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.CancelVideoTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_video_task(
+        self,
+        request: avatar_20220130_models.CancelVideoTaskRequest,
+    ) -> avatar_20220130_models.CancelVideoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_video_task_with_options(request, runtime)
+
+    async def cancel_video_task_async(
+        self,
+        request: avatar_20220130_models.CancelVideoTaskRequest,
+    ) -> avatar_20220130_models.CancelVideoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_video_task_with_options_async(request, runtime)
+
+    def get_video_task_info_with_options(
+        self,
+        tmp_req: avatar_20220130_models.GetVideoTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.GetVideoTaskInfoResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.GetVideoTaskInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideoTaskInfo',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.GetVideoTaskInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_task_info_with_options_async(
+        self,
+        tmp_req: avatar_20220130_models.GetVideoTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.GetVideoTaskInfoResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.GetVideoTaskInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideoTaskInfo',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.GetVideoTaskInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_task_info(
+        self,
+        request: avatar_20220130_models.GetVideoTaskInfoRequest,
+    ) -> avatar_20220130_models.GetVideoTaskInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_video_task_info_with_options(request, runtime)
+
+    async def get_video_task_info_async(
+        self,
+        request: avatar_20220130_models.GetVideoTaskInfoRequest,
+    ) -> avatar_20220130_models.GetVideoTaskInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_video_task_info_with_options_async(request, runtime)
+
     def query_running_instance_with_options(
         self,
         tmp_req: avatar_20220130_models.QueryRunningInstanceRequest,
@@ -388,3 +548,297 @@ class Client(OpenApiClient):
     ) -> avatar_20220130_models.StopInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.stop_instance_with_options_async(request, runtime)
+
+    def submit_text_to_2davatar_video_task_with_options(
+        self,
+        tmp_req: avatar_20220130_models.SubmitTextTo2DAvatarVideoTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.SubmitTextTo2DAvatarVideoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.SubmitTextTo2DAvatarVideoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
+        if not UtilClient.is_unset(tmp_req.video_info):
+            request.video_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.video_info), 'VideoInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_shrink):
+            query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.video_info_shrink):
+            query['VideoInfo'] = request.video_info_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTextTo2DAvatarVideoTask',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.SubmitTextTo2DAvatarVideoTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_text_to_2davatar_video_task_with_options_async(
+        self,
+        tmp_req: avatar_20220130_models.SubmitTextTo2DAvatarVideoTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.SubmitTextTo2DAvatarVideoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.SubmitTextTo2DAvatarVideoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
+        if not UtilClient.is_unset(tmp_req.video_info):
+            request.video_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.video_info), 'VideoInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_shrink):
+            query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.video_info_shrink):
+            query['VideoInfo'] = request.video_info_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTextTo2DAvatarVideoTask',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.SubmitTextTo2DAvatarVideoTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_text_to_2davatar_video_task(
+        self,
+        request: avatar_20220130_models.SubmitTextTo2DAvatarVideoTaskRequest,
+    ) -> avatar_20220130_models.SubmitTextTo2DAvatarVideoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_text_to_2davatar_video_task_with_options(request, runtime)
+
+    async def submit_text_to_2davatar_video_task_async(
+        self,
+        request: avatar_20220130_models.SubmitTextTo2DAvatarVideoTaskRequest,
+    ) -> avatar_20220130_models.SubmitTextTo2DAvatarVideoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_text_to_2davatar_video_task_with_options_async(request, runtime)
+
+    def submit_text_to_3davatar_video_task_with_options(
+        self,
+        tmp_req: avatar_20220130_models.SubmitTextTo3DAvatarVideoTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.SubmitTextTo3DAvatarVideoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.SubmitTextTo3DAvatarVideoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
+        if not UtilClient.is_unset(tmp_req.video_info):
+            request.video_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.video_info), 'VideoInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_shrink):
+            query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.video_info_shrink):
+            query['VideoInfo'] = request.video_info_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTextTo3DAvatarVideoTask',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.SubmitTextTo3DAvatarVideoTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_text_to_3davatar_video_task_with_options_async(
+        self,
+        tmp_req: avatar_20220130_models.SubmitTextTo3DAvatarVideoTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.SubmitTextTo3DAvatarVideoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.SubmitTextTo3DAvatarVideoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
+        if not UtilClient.is_unset(tmp_req.video_info):
+            request.video_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.video_info), 'VideoInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_shrink):
+            query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.video_info_shrink):
+            query['VideoInfo'] = request.video_info_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTextTo3DAvatarVideoTask',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.SubmitTextTo3DAvatarVideoTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_text_to_3davatar_video_task(
+        self,
+        request: avatar_20220130_models.SubmitTextTo3DAvatarVideoTaskRequest,
+    ) -> avatar_20220130_models.SubmitTextTo3DAvatarVideoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_text_to_3davatar_video_task_with_options(request, runtime)
+
+    async def submit_text_to_3davatar_video_task_async(
+        self,
+        request: avatar_20220130_models.SubmitTextTo3DAvatarVideoTaskRequest,
+    ) -> avatar_20220130_models.SubmitTextTo3DAvatarVideoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_text_to_3davatar_video_task_with_options_async(request, runtime)
+
+    def submit_text_to_sign_video_task_with_options(
+        self,
+        tmp_req: avatar_20220130_models.SubmitTextToSignVideoTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.SubmitTextToSignVideoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.SubmitTextToSignVideoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
+        if not UtilClient.is_unset(tmp_req.video_info):
+            request.video_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.video_info), 'VideoInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_shrink):
+            query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.video_info_shrink):
+            query['VideoInfo'] = request.video_info_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTextToSignVideoTask',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.SubmitTextToSignVideoTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_text_to_sign_video_task_with_options_async(
+        self,
+        tmp_req: avatar_20220130_models.SubmitTextToSignVideoTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.SubmitTextToSignVideoTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.SubmitTextToSignVideoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app):
+            request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
+        if not UtilClient.is_unset(tmp_req.video_info):
+            request.video_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.video_info), 'VideoInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_shrink):
+            query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.video_info_shrink):
+            query['VideoInfo'] = request.video_info_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTextToSignVideoTask',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.SubmitTextToSignVideoTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_text_to_sign_video_task(
+        self,
+        request: avatar_20220130_models.SubmitTextToSignVideoTaskRequest,
+    ) -> avatar_20220130_models.SubmitTextToSignVideoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_text_to_sign_video_task_with_options(request, runtime)
+
+    async def submit_text_to_sign_video_task_async(
+        self,
+        request: avatar_20220130_models.SubmitTextToSignVideoTaskRequest,
+    ) -> avatar_20220130_models.SubmitTextToSignVideoTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_text_to_sign_video_task_with_options_async(request, runtime)
