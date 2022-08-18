@@ -48,13 +48,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddCustomLineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['LineName'] = request.line_name
-        query['IpSegment'] = request.ip_segment
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.ip_segment):
+            query['IpSegment'] = request.ip_segment
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line_name):
+            query['LineName'] = request.line_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddCustomLine',
@@ -64,7 +67,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -79,13 +82,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddCustomLineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['LineName'] = request.line_name
-        query['IpSegment'] = request.ip_segment
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.ip_segment):
+            query['IpSegment'] = request.ip_segment
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line_name):
+            query['LineName'] = request.line_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddCustomLine',
@@ -95,7 +101,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -124,18 +130,26 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDnsCacheDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['InstanceId'] = request.instance_id
-        query['CacheTtlMin'] = request.cache_ttl_min
-        query['CacheTtlMax'] = request.cache_ttl_max
-        query['SourceProtocol'] = request.source_protocol
-        query['SourceEdns'] = request.source_edns
-        query['Remark'] = request.remark
-        query['SourceDnsServer'] = request.source_dns_server
+        if not UtilClient.is_unset(request.cache_ttl_max):
+            query['CacheTtlMax'] = request.cache_ttl_max
+        if not UtilClient.is_unset(request.cache_ttl_min):
+            query['CacheTtlMin'] = request.cache_ttl_min
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.source_dns_server):
+            query['SourceDnsServer'] = request.source_dns_server
+        if not UtilClient.is_unset(request.source_edns):
+            query['SourceEdns'] = request.source_edns
+        if not UtilClient.is_unset(request.source_protocol):
+            query['SourceProtocol'] = request.source_protocol
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDnsCacheDomain',
@@ -145,7 +159,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -160,18 +174,26 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDnsCacheDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['InstanceId'] = request.instance_id
-        query['CacheTtlMin'] = request.cache_ttl_min
-        query['CacheTtlMax'] = request.cache_ttl_max
-        query['SourceProtocol'] = request.source_protocol
-        query['SourceEdns'] = request.source_edns
-        query['Remark'] = request.remark
-        query['SourceDnsServer'] = request.source_dns_server
+        if not UtilClient.is_unset(request.cache_ttl_max):
+            query['CacheTtlMax'] = request.cache_ttl_max
+        if not UtilClient.is_unset(request.cache_ttl_min):
+            query['CacheTtlMin'] = request.cache_ttl_min
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.source_dns_server):
+            query['SourceDnsServer'] = request.source_dns_server
+        if not UtilClient.is_unset(request.source_edns):
+            query['SourceEdns'] = request.source_edns
+        if not UtilClient.is_unset(request.source_protocol):
+            query['SourceProtocol'] = request.source_protocol
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDnsCacheDomain',
@@ -181,7 +203,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -210,26 +232,42 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDnsGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['StrategyName'] = request.strategy_name
-        query['Lines'] = request.lines
-        query['DefaultAddrPoolType'] = request.default_addr_pool_type
-        query['DefaultLbaStrategy'] = request.default_lba_strategy
-        query['DefaultMinAvailableAddrNum'] = request.default_min_available_addr_num
-        query['DefaultMaxReturnAddrNum'] = request.default_max_return_addr_num
-        query['DefaultLatencyOptimization'] = request.default_latency_optimization
-        query['FailoverAddrPoolType'] = request.failover_addr_pool_type
-        query['FailoverLbaStrategy'] = request.failover_lba_strategy
-        query['FailoverMinAvailableAddrNum'] = request.failover_min_available_addr_num
-        query['FailoverMaxReturnAddrNum'] = request.failover_max_return_addr_num
-        query['FailoverLatencyOptimization'] = request.failover_latency_optimization
-        query['StrategyMode'] = request.strategy_mode
-        query['DefaultAddrPool'] = request.default_addr_pool
-        query['FailoverAddrPool'] = request.failover_addr_pool
+        if not UtilClient.is_unset(request.default_addr_pool):
+            query['DefaultAddrPool'] = request.default_addr_pool
+        if not UtilClient.is_unset(request.default_addr_pool_type):
+            query['DefaultAddrPoolType'] = request.default_addr_pool_type
+        if not UtilClient.is_unset(request.default_latency_optimization):
+            query['DefaultLatencyOptimization'] = request.default_latency_optimization
+        if not UtilClient.is_unset(request.default_lba_strategy):
+            query['DefaultLbaStrategy'] = request.default_lba_strategy
+        if not UtilClient.is_unset(request.default_max_return_addr_num):
+            query['DefaultMaxReturnAddrNum'] = request.default_max_return_addr_num
+        if not UtilClient.is_unset(request.default_min_available_addr_num):
+            query['DefaultMinAvailableAddrNum'] = request.default_min_available_addr_num
+        if not UtilClient.is_unset(request.failover_addr_pool):
+            query['FailoverAddrPool'] = request.failover_addr_pool
+        if not UtilClient.is_unset(request.failover_addr_pool_type):
+            query['FailoverAddrPoolType'] = request.failover_addr_pool_type
+        if not UtilClient.is_unset(request.failover_latency_optimization):
+            query['FailoverLatencyOptimization'] = request.failover_latency_optimization
+        if not UtilClient.is_unset(request.failover_lba_strategy):
+            query['FailoverLbaStrategy'] = request.failover_lba_strategy
+        if not UtilClient.is_unset(request.failover_max_return_addr_num):
+            query['FailoverMaxReturnAddrNum'] = request.failover_max_return_addr_num
+        if not UtilClient.is_unset(request.failover_min_available_addr_num):
+            query['FailoverMinAvailableAddrNum'] = request.failover_min_available_addr_num
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lines):
+            query['Lines'] = request.lines
+        if not UtilClient.is_unset(request.strategy_mode):
+            query['StrategyMode'] = request.strategy_mode
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDnsGtmAccessStrategy',
@@ -239,7 +277,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -254,26 +292,42 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDnsGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['StrategyName'] = request.strategy_name
-        query['Lines'] = request.lines
-        query['DefaultAddrPoolType'] = request.default_addr_pool_type
-        query['DefaultLbaStrategy'] = request.default_lba_strategy
-        query['DefaultMinAvailableAddrNum'] = request.default_min_available_addr_num
-        query['DefaultMaxReturnAddrNum'] = request.default_max_return_addr_num
-        query['DefaultLatencyOptimization'] = request.default_latency_optimization
-        query['FailoverAddrPoolType'] = request.failover_addr_pool_type
-        query['FailoverLbaStrategy'] = request.failover_lba_strategy
-        query['FailoverMinAvailableAddrNum'] = request.failover_min_available_addr_num
-        query['FailoverMaxReturnAddrNum'] = request.failover_max_return_addr_num
-        query['FailoverLatencyOptimization'] = request.failover_latency_optimization
-        query['StrategyMode'] = request.strategy_mode
-        query['DefaultAddrPool'] = request.default_addr_pool
-        query['FailoverAddrPool'] = request.failover_addr_pool
+        if not UtilClient.is_unset(request.default_addr_pool):
+            query['DefaultAddrPool'] = request.default_addr_pool
+        if not UtilClient.is_unset(request.default_addr_pool_type):
+            query['DefaultAddrPoolType'] = request.default_addr_pool_type
+        if not UtilClient.is_unset(request.default_latency_optimization):
+            query['DefaultLatencyOptimization'] = request.default_latency_optimization
+        if not UtilClient.is_unset(request.default_lba_strategy):
+            query['DefaultLbaStrategy'] = request.default_lba_strategy
+        if not UtilClient.is_unset(request.default_max_return_addr_num):
+            query['DefaultMaxReturnAddrNum'] = request.default_max_return_addr_num
+        if not UtilClient.is_unset(request.default_min_available_addr_num):
+            query['DefaultMinAvailableAddrNum'] = request.default_min_available_addr_num
+        if not UtilClient.is_unset(request.failover_addr_pool):
+            query['FailoverAddrPool'] = request.failover_addr_pool
+        if not UtilClient.is_unset(request.failover_addr_pool_type):
+            query['FailoverAddrPoolType'] = request.failover_addr_pool_type
+        if not UtilClient.is_unset(request.failover_latency_optimization):
+            query['FailoverLatencyOptimization'] = request.failover_latency_optimization
+        if not UtilClient.is_unset(request.failover_lba_strategy):
+            query['FailoverLbaStrategy'] = request.failover_lba_strategy
+        if not UtilClient.is_unset(request.failover_max_return_addr_num):
+            query['FailoverMaxReturnAddrNum'] = request.failover_max_return_addr_num
+        if not UtilClient.is_unset(request.failover_min_available_addr_num):
+            query['FailoverMinAvailableAddrNum'] = request.failover_min_available_addr_num
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lines):
+            query['Lines'] = request.lines
+        if not UtilClient.is_unset(request.strategy_mode):
+            query['StrategyMode'] = request.strategy_mode
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDnsGtmAccessStrategy',
@@ -283,7 +337,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -312,22 +366,34 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDnsGtmAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['Name'] = request.name
-        query['Type'] = request.type
-        query['LbaStrategy'] = request.lba_strategy
-        query['MonitorStatus'] = request.monitor_status
-        query['ProtocolType'] = request.protocol_type
-        query['Interval'] = request.interval
-        query['EvaluationCount'] = request.evaluation_count
-        query['Timeout'] = request.timeout
-        query['MonitorExtendInfo'] = request.monitor_extend_info
-        query['Addr'] = request.addr
-        query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.addr):
+            query['Addr'] = request.addr
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_city_node):
+            query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lba_strategy):
+            query['LbaStrategy'] = request.lba_strategy
+        if not UtilClient.is_unset(request.monitor_extend_info):
+            query['MonitorExtendInfo'] = request.monitor_extend_info
+        if not UtilClient.is_unset(request.monitor_status):
+            query['MonitorStatus'] = request.monitor_status
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDnsGtmAddressPool',
@@ -337,7 +403,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -352,22 +418,34 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDnsGtmAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['Name'] = request.name
-        query['Type'] = request.type
-        query['LbaStrategy'] = request.lba_strategy
-        query['MonitorStatus'] = request.monitor_status
-        query['ProtocolType'] = request.protocol_type
-        query['Interval'] = request.interval
-        query['EvaluationCount'] = request.evaluation_count
-        query['Timeout'] = request.timeout
-        query['MonitorExtendInfo'] = request.monitor_extend_info
-        query['Addr'] = request.addr
-        query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.addr):
+            query['Addr'] = request.addr
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_city_node):
+            query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lba_strategy):
+            query['LbaStrategy'] = request.lba_strategy
+        if not UtilClient.is_unset(request.monitor_extend_info):
+            query['MonitorExtendInfo'] = request.monitor_extend_info
+        if not UtilClient.is_unset(request.monitor_status):
+            query['MonitorStatus'] = request.monitor_status
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDnsGtmAddressPool',
@@ -377,7 +455,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -406,17 +484,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDnsGtmMonitorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
-        query['ProtocolType'] = request.protocol_type
-        query['Interval'] = request.interval
-        query['EvaluationCount'] = request.evaluation_count
-        query['Timeout'] = request.timeout
-        query['MonitorExtendInfo'] = request.monitor_extend_info
-        query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_city_node):
+            query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_extend_info):
+            query['MonitorExtendInfo'] = request.monitor_extend_info
+        if not UtilClient.is_unset(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDnsGtmMonitor',
@@ -426,7 +511,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -441,17 +526,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDnsGtmMonitorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
-        query['ProtocolType'] = request.protocol_type
-        query['Interval'] = request.interval
-        query['EvaluationCount'] = request.evaluation_count
-        query['Timeout'] = request.timeout
-        query['MonitorExtendInfo'] = request.monitor_extend_info
-        query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_city_node):
+            query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_extend_info):
+            query['MonitorExtendInfo'] = request.monitor_extend_info
+        if not UtilClient.is_unset(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDnsGtmMonitor',
@@ -461,7 +553,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -490,13 +582,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['GroupId'] = request.group_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDomain',
@@ -506,7 +601,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -521,13 +616,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['GroupId'] = request.group_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDomain',
@@ -537,7 +635,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -566,12 +664,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDomainBackupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['PeriodType'] = request.period_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.period_type):
+            query['PeriodType'] = request.period_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDomainBackup',
@@ -581,7 +681,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -596,12 +696,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDomainBackupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['PeriodType'] = request.period_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.period_type):
+            query['PeriodType'] = request.period_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDomainBackup',
@@ -611,7 +713,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -640,11 +742,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDomainGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDomainGroup',
@@ -654,7 +757,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -669,11 +772,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDomainGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDomainGroup',
@@ -683,7 +787,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -712,18 +816,26 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDomainRecordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['DomainName'] = request.domain_name
-        query['RR'] = request.rr
-        query['Type'] = request.type
-        query['Value'] = request.value
-        query['TTL'] = request.ttl
-        query['Priority'] = request.priority
-        query['Line'] = request.line
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.rr):
+            query['RR'] = request.rr
+        if not UtilClient.is_unset(request.ttl):
+            query['TTL'] = request.ttl
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDomainRecord',
@@ -733,7 +845,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -748,18 +860,26 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddDomainRecordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['DomainName'] = request.domain_name
-        query['RR'] = request.rr
-        query['Type'] = request.type
-        query['Value'] = request.value
-        query['TTL'] = request.ttl
-        query['Priority'] = request.priority
-        query['Line'] = request.line
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.rr):
+            query['RR'] = request.rr
+        if not UtilClient.is_unset(request.ttl):
+            query['TTL'] = request.ttl
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDomainRecord',
@@ -769,7 +889,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -798,15 +918,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['StrategyName'] = request.strategy_name
-        query['DefaultAddrPoolId'] = request.default_addr_pool_id
-        query['FailoverAddrPoolId'] = request.failover_addr_pool_id
-        query['AccessLines'] = request.access_lines
+        if not UtilClient.is_unset(request.access_lines):
+            query['AccessLines'] = request.access_lines
+        if not UtilClient.is_unset(request.default_addr_pool_id):
+            query['DefaultAddrPoolId'] = request.default_addr_pool_id
+        if not UtilClient.is_unset(request.failover_addr_pool_id):
+            query['FailoverAddrPoolId'] = request.failover_addr_pool_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddGtmAccessStrategy',
@@ -816,7 +941,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -831,15 +956,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['StrategyName'] = request.strategy_name
-        query['DefaultAddrPoolId'] = request.default_addr_pool_id
-        query['FailoverAddrPoolId'] = request.failover_addr_pool_id
-        query['AccessLines'] = request.access_lines
+        if not UtilClient.is_unset(request.access_lines):
+            query['AccessLines'] = request.access_lines
+        if not UtilClient.is_unset(request.default_addr_pool_id):
+            query['DefaultAddrPoolId'] = request.default_addr_pool_id
+        if not UtilClient.is_unset(request.failover_addr_pool_id):
+            query['FailoverAddrPoolId'] = request.failover_addr_pool_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddGtmAccessStrategy',
@@ -849,7 +979,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -878,22 +1008,34 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddGtmAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['Name'] = request.name
-        query['Type'] = request.type
-        query['MinAvailableAddrNum'] = request.min_available_addr_num
-        query['MonitorStatus'] = request.monitor_status
-        query['ProtocolType'] = request.protocol_type
-        query['Interval'] = request.interval
-        query['EvaluationCount'] = request.evaluation_count
-        query['Timeout'] = request.timeout
-        query['MonitorExtendInfo'] = request.monitor_extend_info
-        query['Addr'] = request.addr
-        query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.addr):
+            query['Addr'] = request.addr
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_city_node):
+            query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.min_available_addr_num):
+            query['MinAvailableAddrNum'] = request.min_available_addr_num
+        if not UtilClient.is_unset(request.monitor_extend_info):
+            query['MonitorExtendInfo'] = request.monitor_extend_info
+        if not UtilClient.is_unset(request.monitor_status):
+            query['MonitorStatus'] = request.monitor_status
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddGtmAddressPool',
@@ -903,7 +1045,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -918,22 +1060,34 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddGtmAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['Name'] = request.name
-        query['Type'] = request.type
-        query['MinAvailableAddrNum'] = request.min_available_addr_num
-        query['MonitorStatus'] = request.monitor_status
-        query['ProtocolType'] = request.protocol_type
-        query['Interval'] = request.interval
-        query['EvaluationCount'] = request.evaluation_count
-        query['Timeout'] = request.timeout
-        query['MonitorExtendInfo'] = request.monitor_extend_info
-        query['Addr'] = request.addr
-        query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.addr):
+            query['Addr'] = request.addr
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_city_node):
+            query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.min_available_addr_num):
+            query['MinAvailableAddrNum'] = request.min_available_addr_num
+        if not UtilClient.is_unset(request.monitor_extend_info):
+            query['MonitorExtendInfo'] = request.monitor_extend_info
+        if not UtilClient.is_unset(request.monitor_status):
+            query['MonitorStatus'] = request.monitor_status
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddGtmAddressPool',
@@ -943,7 +1097,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -972,17 +1126,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddGtmMonitorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
-        query['ProtocolType'] = request.protocol_type
-        query['Interval'] = request.interval
-        query['EvaluationCount'] = request.evaluation_count
-        query['Timeout'] = request.timeout
-        query['MonitorExtendInfo'] = request.monitor_extend_info
-        query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_city_node):
+            query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_extend_info):
+            query['MonitorExtendInfo'] = request.monitor_extend_info
+        if not UtilClient.is_unset(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddGtmMonitor',
@@ -992,7 +1153,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1007,17 +1168,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddGtmMonitorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
-        query['ProtocolType'] = request.protocol_type
-        query['Interval'] = request.interval
-        query['EvaluationCount'] = request.evaluation_count
-        query['Timeout'] = request.timeout
-        query['MonitorExtendInfo'] = request.monitor_extend_info
-        query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_city_node):
+            query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_extend_info):
+            query['MonitorExtendInfo'] = request.monitor_extend_info
+        if not UtilClient.is_unset(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddGtmMonitor',
@@ -1027,7 +1195,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1056,13 +1224,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddGtmRecoveryPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['Name'] = request.name
-        query['Remark'] = request.remark
-        query['FaultAddrPool'] = request.fault_addr_pool
+        if not UtilClient.is_unset(request.fault_addr_pool):
+            query['FaultAddrPool'] = request.fault_addr_pool
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddGtmRecoveryPlan',
@@ -1072,7 +1243,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1087,13 +1258,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.AddGtmRecoveryPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['Name'] = request.name
-        query['Remark'] = request.remark
-        query['FaultAddrPool'] = request.fault_addr_pool
+        if not UtilClient.is_unset(request.fault_addr_pool):
+            query['FaultAddrPool'] = request.fault_addr_pool
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddGtmRecoveryPlan',
@@ -1103,7 +1277,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1132,12 +1306,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.BindInstanceDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindInstanceDomains',
@@ -1147,7 +1323,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1162,12 +1338,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.BindInstanceDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindInstanceDomains',
@@ -1177,7 +1355,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1206,12 +1384,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.ChangeDomainGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ChangeDomainGroup',
@@ -1221,7 +1401,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1236,12 +1416,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.ChangeDomainGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ChangeDomainGroup',
@@ -1251,7 +1433,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1280,14 +1462,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.ChangeDomainOfDnsProductResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['InstanceId'] = request.instance_id
-        query['NewDomain'] = request.new_domain
-        query['Force'] = request.force
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.new_domain):
+            query['NewDomain'] = request.new_domain
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ChangeDomainOfDnsProduct',
@@ -1297,7 +1483,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1312,14 +1498,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.ChangeDomainOfDnsProductResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['InstanceId'] = request.instance_id
-        query['NewDomain'] = request.new_domain
-        query['Force'] = request.force
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.new_domain):
+            query['NewDomain'] = request.new_domain
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ChangeDomainOfDnsProduct',
@@ -1329,7 +1519,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1358,13 +1548,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.CopyGtmConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['SourceId'] = request.source_id
-        query['TargetId'] = request.target_id
-        query['CopyType'] = request.copy_type
+        if not UtilClient.is_unset(request.copy_type):
+            query['CopyType'] = request.copy_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.target_id):
+            query['TargetId'] = request.target_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CopyGtmConfig',
@@ -1374,7 +1567,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1389,13 +1582,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.CopyGtmConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['SourceId'] = request.source_id
-        query['TargetId'] = request.target_id
-        query['CopyType'] = request.copy_type
+        if not UtilClient.is_unset(request.copy_type):
+            query['CopyType'] = request.copy_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.target_id):
+            query['TargetId'] = request.target_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CopyGtmConfig',
@@ -1405,7 +1601,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1427,6 +1623,154 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.copy_gtm_config_with_options_async(request, runtime)
 
+    def create_pdns_app_key_with_options(
+        self,
+        request: alidns_20150109_models.CreatePdnsAppKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.CreatePdnsAppKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePdnsAppKey',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.CreatePdnsAppKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_pdns_app_key_with_options_async(
+        self,
+        request: alidns_20150109_models.CreatePdnsAppKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.CreatePdnsAppKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePdnsAppKey',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.CreatePdnsAppKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_pdns_app_key(
+        self,
+        request: alidns_20150109_models.CreatePdnsAppKeyRequest,
+    ) -> alidns_20150109_models.CreatePdnsAppKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_pdns_app_key_with_options(request, runtime)
+
+    async def create_pdns_app_key_async(
+        self,
+        request: alidns_20150109_models.CreatePdnsAppKeyRequest,
+    ) -> alidns_20150109_models.CreatePdnsAppKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_pdns_app_key_with_options_async(request, runtime)
+
+    def create_pdns_udp_ip_segment_with_options(
+        self,
+        request: alidns_20150109_models.CreatePdnsUdpIpSegmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.CreatePdnsUdpIpSegmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePdnsUdpIpSegment',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.CreatePdnsUdpIpSegmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_pdns_udp_ip_segment_with_options_async(
+        self,
+        request: alidns_20150109_models.CreatePdnsUdpIpSegmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.CreatePdnsUdpIpSegmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePdnsUdpIpSegment',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.CreatePdnsUdpIpSegmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_pdns_udp_ip_segment(
+        self,
+        request: alidns_20150109_models.CreatePdnsUdpIpSegmentRequest,
+    ) -> alidns_20150109_models.CreatePdnsUdpIpSegmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_pdns_udp_ip_segment_with_options(request, runtime)
+
+    async def create_pdns_udp_ip_segment_async(
+        self,
+        request: alidns_20150109_models.CreatePdnsUdpIpSegmentRequest,
+    ) -> alidns_20150109_models.CreatePdnsUdpIpSegmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_pdns_udp_ip_segment_with_options_async(request, runtime)
+
     def delete_custom_lines_with_options(
         self,
         request: alidns_20150109_models.DeleteCustomLinesRequest,
@@ -1434,11 +1778,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteCustomLinesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['LineIds'] = request.line_ids
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line_ids):
+            query['LineIds'] = request.line_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCustomLines',
@@ -1448,7 +1793,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1463,11 +1808,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteCustomLinesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['LineIds'] = request.line_ids
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line_ids):
+            query['LineIds'] = request.line_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCustomLines',
@@ -1477,7 +1823,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1506,11 +1852,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteDnsCacheDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDnsCacheDomain',
@@ -1520,7 +1867,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1535,11 +1882,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteDnsCacheDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDnsCacheDomain',
@@ -1549,7 +1897,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1578,11 +1926,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteDnsGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDnsGtmAccessStrategy',
@@ -1592,7 +1941,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1607,11 +1956,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteDnsGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDnsGtmAccessStrategy',
@@ -1621,7 +1971,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1650,11 +2000,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteDnsGtmAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDnsGtmAddressPool',
@@ -1664,7 +2015,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1679,11 +2030,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteDnsGtmAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDnsGtmAddressPool',
@@ -1693,7 +2045,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1722,11 +2074,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDomain',
@@ -1736,7 +2089,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1751,11 +2104,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDomain',
@@ -1765,7 +2119,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1794,11 +2148,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteDomainGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDomainGroup',
@@ -1808,7 +2163,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1823,11 +2178,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteDomainGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDomainGroup',
@@ -1837,7 +2193,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1866,12 +2222,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteDomainRecordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDomainRecord',
@@ -1881,7 +2239,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1896,12 +2254,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteDomainRecordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDomainRecord',
@@ -1911,7 +2271,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1940,11 +2300,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteGtmAccessStrategy',
@@ -1954,7 +2315,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1969,11 +2330,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteGtmAccessStrategy',
@@ -1983,7 +2345,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2012,11 +2374,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteGtmAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteGtmAddressPool',
@@ -2026,7 +2389,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2041,11 +2404,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteGtmAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteGtmAddressPool',
@@ -2055,7 +2419,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2084,11 +2448,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteGtmRecoveryPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['RecoveryPlanId'] = request.recovery_plan_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.recovery_plan_id):
+            query['RecoveryPlanId'] = request.recovery_plan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteGtmRecoveryPlan',
@@ -2098,7 +2463,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2113,11 +2478,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteGtmRecoveryPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['RecoveryPlanId'] = request.recovery_plan_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.recovery_plan_id):
+            query['RecoveryPlanId'] = request.recovery_plan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteGtmRecoveryPlan',
@@ -2127,7 +2493,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2156,14 +2522,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteSubDomainRecordsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['DomainName'] = request.domain_name
-        query['RR'] = request.rr
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.rr):
+            query['RR'] = request.rr
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSubDomainRecords',
@@ -2173,7 +2543,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2188,14 +2558,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DeleteSubDomainRecordsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['DomainName'] = request.domain_name
-        query['RR'] = request.rr
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.rr):
+            query['RR'] = request.rr
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSubDomainRecords',
@@ -2205,7 +2579,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2234,12 +2608,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeBatchResultCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['TaskId'] = request.task_id
-        query['BatchType'] = request.batch_type
+        if not UtilClient.is_unset(request.batch_type):
+            query['BatchType'] = request.batch_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBatchResultCount',
@@ -2249,7 +2625,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2264,12 +2640,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeBatchResultCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['TaskId'] = request.task_id
-        query['BatchType'] = request.batch_type
+        if not UtilClient.is_unset(request.batch_type):
+            query['BatchType'] = request.batch_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBatchResultCount',
@@ -2279,7 +2657,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2308,15 +2686,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeBatchResultDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['TaskId'] = request.task_id
-        query['BatchType'] = request.batch_type
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.batch_type):
+            query['BatchType'] = request.batch_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBatchResultDetail',
@@ -2326,7 +2709,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2341,15 +2724,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeBatchResultDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['TaskId'] = request.task_id
-        query['BatchType'] = request.batch_type
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.batch_type):
+            query['BatchType'] = request.batch_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBatchResultDetail',
@@ -2359,7 +2747,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2388,11 +2776,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeCustomLineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['LineId'] = request.line_id
-        query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line_id):
+            query['LineId'] = request.line_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCustomLine',
@@ -2402,7 +2791,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2417,11 +2806,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeCustomLineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['LineId'] = request.line_id
-        query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line_id):
+            query['LineId'] = request.line_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCustomLine',
@@ -2431,7 +2821,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2460,13 +2850,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeCustomLinesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCustomLines',
@@ -2476,7 +2869,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2491,13 +2884,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeCustomLinesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCustomLines',
@@ -2507,7 +2903,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2529,6 +2925,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_custom_lines_with_options_async(request, runtime)
 
+    def describe_dnsslbsub_domains_with_options(
+        self,
+        request: alidns_20150109_models.DescribeDNSSLBSubDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeDNSSLBSubDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDNSSLBSubDomains',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeDNSSLBSubDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dnsslbsub_domains_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeDNSSLBSubDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeDNSSLBSubDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDNSSLBSubDomains',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeDNSSLBSubDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dnsslbsub_domains(
+        self,
+        request: alidns_20150109_models.DescribeDNSSLBSubDomainsRequest,
+    ) -> alidns_20150109_models.DescribeDNSSLBSubDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dnsslbsub_domains_with_options(request, runtime)
+
+    async def describe_dnsslbsub_domains_async(
+        self,
+        request: alidns_20150109_models.DescribeDNSSLBSubDomainsRequest,
+    ) -> alidns_20150109_models.DescribeDNSSLBSubDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dnsslbsub_domains_with_options_async(request, runtime)
+
     def describe_dns_cache_domains_with_options(
         self,
         request: alidns_20150109_models.DescribeDnsCacheDomainsRequest,
@@ -2536,13 +3022,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsCacheDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['Keyword'] = request.keyword
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsCacheDomains',
@@ -2552,7 +3041,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2567,13 +3056,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsCacheDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['Keyword'] = request.keyword
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsCacheDomains',
@@ -2583,7 +3075,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2612,14 +3104,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategiesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StrategyMode'] = request.strategy_mode
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.strategy_mode):
+            query['StrategyMode'] = request.strategy_mode
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmAccessStrategies',
@@ -2629,7 +3125,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2644,14 +3140,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategiesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StrategyMode'] = request.strategy_mode
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.strategy_mode):
+            query['StrategyMode'] = request.strategy_mode
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmAccessStrategies',
@@ -2661,7 +3161,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2690,11 +3190,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmAccessStrategy',
@@ -2704,7 +3205,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2719,11 +3220,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmAccessStrategy',
@@ -2733,7 +3235,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2762,12 +3264,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategyAvailableConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['StrategyMode'] = request.strategy_mode
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_mode):
+            query['StrategyMode'] = request.strategy_mode
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmAccessStrategyAvailableConfig',
@@ -2777,7 +3281,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2792,12 +3296,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategyAvailableConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['StrategyMode'] = request.strategy_mode
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_mode):
+            query['StrategyMode'] = request.strategy_mode
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmAccessStrategyAvailableConfig',
@@ -2807,7 +3313,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2836,12 +3342,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['Type'] = request.type
-        query['Addrs'] = request.addrs
+        if not UtilClient.is_unset(request.addrs):
+            query['Addrs'] = request.addrs
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmAddrAttributeInfo',
@@ -2851,7 +3359,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2866,12 +3374,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['Type'] = request.type
-        query['Addrs'] = request.addrs
+        if not UtilClient.is_unset(request.addrs):
+            query['Addrs'] = request.addrs
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmAddrAttributeInfo',
@@ -2881,7 +3391,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2910,11 +3420,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmAddressPoolAvailableConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmAddressPoolAvailableConfig',
@@ -2924,7 +3435,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2939,11 +3450,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmAddressPoolAvailableConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmAddressPoolAvailableConfig',
@@ -2953,7 +3465,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2982,10 +3494,10 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmAvailableAlertGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmAvailableAlertGroup',
@@ -2995,7 +3507,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3010,10 +3522,10 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmAvailableAlertGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmAvailableAlertGroup',
@@ -3023,7 +3535,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3052,11 +3564,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmInstance',
@@ -3066,7 +3579,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3081,11 +3594,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmInstance',
@@ -3095,7 +3609,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3124,11 +3638,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmInstanceAddressPool',
@@ -3138,7 +3653,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3153,11 +3668,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmInstanceAddressPool',
@@ -3167,7 +3683,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3196,13 +3712,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmInstanceAddressPools',
@@ -3212,7 +3731,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3227,13 +3746,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmInstanceAddressPools',
@@ -3243,7 +3765,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3265,84 +3787,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_instance_address_pools_with_options_async(request, runtime)
 
-    def describe_dns_gtm_instances_with_options(
-        self,
-        request: alidns_20150109_models.DescribeDnsGtmInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Keyword'] = request.keyword
-        query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeDnsGtmInstances',
-            version='2015-01-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            alidns_20150109_models.DescribeDnsGtmInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_dns_gtm_instances_with_options_async(
-        self,
-        request: alidns_20150109_models.DescribeDnsGtmInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Keyword'] = request.keyword
-        query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeDnsGtmInstances',
-            version='2015-01-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            alidns_20150109_models.DescribeDnsGtmInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_dns_gtm_instances(
-        self,
-        request: alidns_20150109_models.DescribeDnsGtmInstancesRequest,
-    ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_dns_gtm_instances_with_options(request, runtime)
-
-    async def describe_dns_gtm_instances_async(
-        self,
-        request: alidns_20150109_models.DescribeDnsGtmInstancesRequest,
-    ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_dns_gtm_instances_with_options_async(request, runtime)
-
     def describe_dns_gtm_instance_status_with_options(
         self,
         request: alidns_20150109_models.DescribeDnsGtmInstanceStatusRequest,
@@ -3350,11 +3794,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmInstanceStatus',
@@ -3364,7 +3809,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3379,11 +3824,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmInstanceStatus',
@@ -3393,7 +3839,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3422,11 +3868,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceSystemCnameResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmInstanceSystemCname',
@@ -3436,7 +3883,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3451,11 +3898,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceSystemCnameResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmInstanceSystemCname',
@@ -3465,7 +3913,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3487,6 +3935,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_instance_system_cname_with_options_async(request, runtime)
 
+    def describe_dns_gtm_instances_with_options(
+        self,
+        request: alidns_20150109_models.DescribeDnsGtmInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDnsGtmInstances',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeDnsGtmInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dns_gtm_instances_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeDnsGtmInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDnsGtmInstances',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeDnsGtmInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dns_gtm_instances(
+        self,
+        request: alidns_20150109_models.DescribeDnsGtmInstancesRequest,
+    ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dns_gtm_instances_with_options(request, runtime)
+
+    async def describe_dns_gtm_instances_async(
+        self,
+        request: alidns_20150109_models.DescribeDnsGtmInstancesRequest,
+    ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dns_gtm_instances_with_options_async(request, runtime)
+
     def describe_dns_gtm_logs_with_options(
         self,
         request: alidns_20150109_models.DescribeDnsGtmLogsRequest,
@@ -3494,16 +4028,22 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmLogsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['Keyword'] = request.keyword
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartTimestamp'] = request.start_timestamp
-        query['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmLogs',
@@ -3513,7 +4053,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3528,16 +4068,22 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmLogsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['Keyword'] = request.keyword
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartTimestamp'] = request.start_timestamp
-        query['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmLogs',
@@ -3547,7 +4093,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3576,10 +4122,10 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmMonitorAvailableConfig',
@@ -3589,7 +4135,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3604,10 +4150,10 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmMonitorAvailableConfig',
@@ -3617,7 +4163,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3646,11 +4192,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['MonitorConfigId'] = request.monitor_config_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_config_id):
+            query['MonitorConfigId'] = request.monitor_config_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmMonitorConfig',
@@ -3660,7 +4207,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3675,11 +4222,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['MonitorConfigId'] = request.monitor_config_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_config_id):
+            query['MonitorConfigId'] = request.monitor_config_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsGtmMonitorConfig',
@@ -3689,7 +4237,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3718,12 +4266,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsProductInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsProductInstance',
@@ -3733,7 +4283,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3748,12 +4298,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsProductInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsProductInstance',
@@ -3763,7 +4315,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3792,15 +4344,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsProductInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['VersionCode'] = request.version_code
-        query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.domain_type):
+            query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        if not UtilClient.is_unset(request.version_code):
+            query['VersionCode'] = request.version_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsProductInstances',
@@ -3810,7 +4367,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3825,15 +4382,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDnsProductInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['VersionCode'] = request.version_code
-        query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.domain_type):
+            query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        if not UtilClient.is_unset(request.version_code):
+            query['VersionCode'] = request.version_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDnsProductInstances',
@@ -3843,7 +4405,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3865,86 +4427,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_product_instances_with_options_async(request, runtime)
 
-    def describe_dnsslbsub_domains_with_options(
-        self,
-        request: alidns_20150109_models.DescribeDNSSLBSubDomainsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alidns_20150109_models.DescribeDNSSLBSubDomainsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['DomainName'] = request.domain_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Rr'] = request.rr
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeDNSSLBSubDomains',
-            version='2015-01-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            alidns_20150109_models.DescribeDNSSLBSubDomainsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_dnsslbsub_domains_with_options_async(
-        self,
-        request: alidns_20150109_models.DescribeDNSSLBSubDomainsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alidns_20150109_models.DescribeDNSSLBSubDomainsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['DomainName'] = request.domain_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Rr'] = request.rr
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeDNSSLBSubDomains',
-            version='2015-01-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            alidns_20150109_models.DescribeDNSSLBSubDomainsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_dnsslbsub_domains(
-        self,
-        request: alidns_20150109_models.DescribeDNSSLBSubDomainsRequest,
-    ) -> alidns_20150109_models.DescribeDNSSLBSubDomainsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_dnsslbsub_domains_with_options(request, runtime)
-
-    async def describe_dnsslbsub_domains_async(
-        self,
-        request: alidns_20150109_models.DescribeDNSSLBSubDomainsRequest,
-    ) -> alidns_20150109_models.DescribeDNSSLBSubDomainsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_dnsslbsub_domains_with_options_async(request, runtime)
-
     def describe_doh_account_statistics_with_options(
         self,
         request: alidns_20150109_models.DescribeDohAccountStatisticsRequest,
@@ -3952,12 +4434,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDohAccountStatisticsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDohAccountStatistics',
@@ -3967,7 +4451,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3982,12 +4466,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDohAccountStatisticsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDohAccountStatistics',
@@ -3997,7 +4483,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4026,13 +4512,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDohDomainStatistics',
@@ -4042,7 +4531,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4057,13 +4546,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDohDomainStatistics',
@@ -4073,7 +4565,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4102,15 +4594,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDohDomainStatisticsSummary',
@@ -4120,7 +4617,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4135,15 +4632,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDohDomainStatisticsSummary',
@@ -4153,7 +4655,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4182,13 +4684,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDohSubDomainStatisticsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['SubDomain'] = request.sub_domain
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_domain):
+            query['SubDomain'] = request.sub_domain
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDohSubDomainStatistics',
@@ -4198,7 +4703,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4213,13 +4718,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDohSubDomainStatisticsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['SubDomain'] = request.sub_domain
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_domain):
+            query['SubDomain'] = request.sub_domain
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDohSubDomainStatistics',
@@ -4229,7 +4737,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4258,16 +4766,22 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDohSubDomainStatisticsSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
-        query['SubDomain'] = request.sub_domain
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_domain):
+            query['SubDomain'] = request.sub_domain
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDohSubDomainStatisticsSummary',
@@ -4277,7 +4791,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4292,16 +4806,22 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDohSubDomainStatisticsSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
-        query['SubDomain'] = request.sub_domain
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_domain):
+            query['SubDomain'] = request.sub_domain
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDohSubDomainStatisticsSummary',
@@ -4311,7 +4831,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4340,12 +4860,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDohUserInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDohUserInfo',
@@ -4355,7 +4877,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4370,12 +4892,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDohUserInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDohUserInfo',
@@ -4385,7 +4909,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4414,11 +4938,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainDnssecInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainDnssecInfo',
@@ -4428,7 +4953,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4443,11 +4968,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainDnssecInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainDnssecInfo',
@@ -4457,7 +4983,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4486,13 +5012,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['KeyWord'] = request.key_word
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainGroups',
@@ -4502,7 +5031,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4517,13 +5046,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['KeyWord'] = request.key_word
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainGroups',
@@ -4533,7 +5065,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4562,12 +5094,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['NeedDetailAttributes'] = request.need_detail_attributes
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.need_detail_attributes):
+            query['NeedDetailAttributes'] = request.need_detail_attributes
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainInfo',
@@ -4577,7 +5111,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4592,12 +5126,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['NeedDetailAttributes'] = request.need_detail_attributes
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.need_detail_attributes):
+            query['NeedDetailAttributes'] = request.need_detail_attributes
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainInfo',
@@ -4607,7 +5143,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4636,17 +5172,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainLogsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['KeyWord'] = request.key_word
-        query['GroupId'] = request.group_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartDate'] = request.start_date
-        query['endDate'] = request.end_date
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.end_date):
+            query['endDate'] = request.end_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainLogs',
@@ -4656,7 +5199,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4671,17 +5214,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainLogsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['KeyWord'] = request.key_word
-        query['GroupId'] = request.group_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartDate'] = request.start_date
-        query['endDate'] = request.end_date
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.end_date):
+            query['endDate'] = request.end_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainLogs',
@@ -4691,7 +5241,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4720,11 +5270,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainNsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainNs',
@@ -4734,7 +5285,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4749,11 +5300,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainNsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainNs',
@@ -4763,7 +5315,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4792,12 +5344,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainRecordInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRecordInfo',
@@ -4807,7 +5361,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4822,12 +5376,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainRecordInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRecordInfo',
@@ -4837,7 +5393,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4866,24 +5422,38 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainRecordsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['KeyWord'] = request.key_word
-        query['RRKeyWord'] = request.rrkey_word
-        query['TypeKeyWord'] = request.type_key_word
-        query['ValueKeyWord'] = request.value_key_word
-        query['OrderBy'] = request.order_by
-        query['Direction'] = request.direction
-        query['SearchMode'] = request.search_mode
-        query['GroupId'] = request.group_id
-        query['Type'] = request.type
-        query['Line'] = request.line
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rrkey_word):
+            query['RRKeyWord'] = request.rrkey_word
+        if not UtilClient.is_unset(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.type_key_word):
+            query['TypeKeyWord'] = request.type_key_word
+        if not UtilClient.is_unset(request.value_key_word):
+            query['ValueKeyWord'] = request.value_key_word
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRecords',
@@ -4893,7 +5463,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4908,24 +5478,38 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainRecordsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['KeyWord'] = request.key_word
-        query['RRKeyWord'] = request.rrkey_word
-        query['TypeKeyWord'] = request.type_key_word
-        query['ValueKeyWord'] = request.value_key_word
-        query['OrderBy'] = request.order_by
-        query['Direction'] = request.direction
-        query['SearchMode'] = request.search_mode
-        query['GroupId'] = request.group_id
-        query['Type'] = request.type
-        query['Line'] = request.line
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rrkey_word):
+            query['RRKeyWord'] = request.rrkey_word
+        if not UtilClient.is_unset(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.type_key_word):
+            query['TypeKeyWord'] = request.type_key_word
+        if not UtilClient.is_unset(request.value_key_word):
+            query['ValueKeyWord'] = request.value_key_word
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRecords',
@@ -4935,7 +5519,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4957,90 +5541,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_records_with_options_async(request, runtime)
 
-    def describe_domains_with_options(
-        self,
-        request: alidns_20150109_models.DescribeDomainsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alidns_20150109_models.DescribeDomainsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Lang'] = request.lang
-        query['KeyWord'] = request.key_word
-        query['GroupId'] = request.group_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SearchMode'] = request.search_mode
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Starmark'] = request.starmark
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeDomains',
-            version='2015-01-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            alidns_20150109_models.DescribeDomainsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_domains_with_options_async(
-        self,
-        request: alidns_20150109_models.DescribeDomainsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alidns_20150109_models.DescribeDomainsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Lang'] = request.lang
-        query['KeyWord'] = request.key_word
-        query['GroupId'] = request.group_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SearchMode'] = request.search_mode
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Starmark'] = request.starmark
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeDomains',
-            version='2015-01-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            alidns_20150109_models.DescribeDomainsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_domains(
-        self,
-        request: alidns_20150109_models.DescribeDomainsRequest,
-    ) -> alidns_20150109_models.DescribeDomainsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_domains_with_options(request, runtime)
-
-    async def describe_domains_async(
-        self,
-        request: alidns_20150109_models.DescribeDomainsRequest,
-    ) -> alidns_20150109_models.DescribeDomainsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_domains_with_options_async(request, runtime)
-
     def describe_domain_statistics_with_options(
         self,
         request: alidns_20150109_models.DescribeDomainStatisticsRequest,
@@ -5048,14 +5548,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainStatisticsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
-        query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_type):
+            query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainStatistics',
@@ -5065,7 +5569,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5080,14 +5584,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainStatisticsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
-        query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_type):
+            query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainStatistics',
@@ -5097,7 +5605,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5126,17 +5634,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainStatisticsSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
-        query['SearchMode'] = request.search_mode
-        query['Keyword'] = request.keyword
-        query['Threshold'] = request.threshold
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainStatisticsSummary',
@@ -5146,7 +5661,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5161,17 +5676,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeDomainStatisticsSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
-        query['SearchMode'] = request.search_mode
-        query['Keyword'] = request.keyword
-        query['Threshold'] = request.threshold
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainStatisticsSummary',
@@ -5181,7 +5703,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5203,6 +5725,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_statistics_summary_with_options_async(request, runtime)
 
+    def describe_domains_with_options(
+        self,
+        request: alidns_20150109_models.DescribeDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        if not UtilClient.is_unset(request.starmark):
+            query['Starmark'] = request.starmark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomains',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domains_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        if not UtilClient.is_unset(request.starmark):
+            query['Starmark'] = request.starmark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomains',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domains(
+        self,
+        request: alidns_20150109_models.DescribeDomainsRequest,
+    ) -> alidns_20150109_models.DescribeDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domains_with_options(request, runtime)
+
+    async def describe_domains_async(
+        self,
+        request: alidns_20150109_models.DescribeDomainsRequest,
+    ) -> alidns_20150109_models.DescribeDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domains_with_options_async(request, runtime)
+
     def describe_gtm_access_strategies_with_options(
         self,
         request: alidns_20150109_models.DescribeGtmAccessStrategiesRequest,
@@ -5210,13 +5830,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmAccessStrategiesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmAccessStrategies',
@@ -5226,7 +5849,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5241,13 +5864,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmAccessStrategiesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmAccessStrategies',
@@ -5257,7 +5883,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5286,11 +5912,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmAccessStrategy',
@@ -5300,7 +5927,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5315,11 +5942,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmAccessStrategy',
@@ -5329,7 +5957,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5358,11 +5986,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmAccessStrategyAvailableConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmAccessStrategyAvailableConfig',
@@ -5372,7 +6001,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5387,11 +6016,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmAccessStrategyAvailableConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmAccessStrategyAvailableConfig',
@@ -5401,7 +6031,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5430,10 +6060,10 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmAvailableAlertGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmAvailableAlertGroup',
@@ -5443,7 +6073,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5458,10 +6088,10 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmAvailableAlertGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmAvailableAlertGroup',
@@ -5471,7 +6101,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5500,12 +6130,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['NeedDetailAttributes'] = request.need_detail_attributes
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.need_detail_attributes):
+            query['NeedDetailAttributes'] = request.need_detail_attributes
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmInstance',
@@ -5515,7 +6147,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5530,12 +6162,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['NeedDetailAttributes'] = request.need_detail_attributes
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.need_detail_attributes):
+            query['NeedDetailAttributes'] = request.need_detail_attributes
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmInstance',
@@ -5545,7 +6179,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5574,11 +6208,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmInstanceAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmInstanceAddressPool',
@@ -5588,7 +6223,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5603,11 +6238,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmInstanceAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmInstanceAddressPool',
@@ -5617,7 +6253,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5646,13 +6282,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmInstanceAddressPoolsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmInstanceAddressPools',
@@ -5662,7 +6301,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5677,13 +6316,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmInstanceAddressPoolsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmInstanceAddressPools',
@@ -5693,7 +6335,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5715,86 +6357,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_instance_address_pools_with_options_async(request, runtime)
 
-    def describe_gtm_instances_with_options(
-        self,
-        request: alidns_20150109_models.DescribeGtmInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alidns_20150109_models.DescribeGtmInstancesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Keyword'] = request.keyword
-        query['ResourceGroupId'] = request.resource_group_id
-        query['NeedDetailAttributes'] = request.need_detail_attributes
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeGtmInstances',
-            version='2015-01-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            alidns_20150109_models.DescribeGtmInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_gtm_instances_with_options_async(
-        self,
-        request: alidns_20150109_models.DescribeGtmInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alidns_20150109_models.DescribeGtmInstancesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Keyword'] = request.keyword
-        query['ResourceGroupId'] = request.resource_group_id
-        query['NeedDetailAttributes'] = request.need_detail_attributes
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeGtmInstances',
-            version='2015-01-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            alidns_20150109_models.DescribeGtmInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_gtm_instances(
-        self,
-        request: alidns_20150109_models.DescribeGtmInstancesRequest,
-    ) -> alidns_20150109_models.DescribeGtmInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_gtm_instances_with_options(request, runtime)
-
-    async def describe_gtm_instances_async(
-        self,
-        request: alidns_20150109_models.DescribeGtmInstancesRequest,
-    ) -> alidns_20150109_models.DescribeGtmInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_gtm_instances_with_options_async(request, runtime)
-
     def describe_gtm_instance_status_with_options(
         self,
         request: alidns_20150109_models.DescribeGtmInstanceStatusRequest,
@@ -5802,11 +6364,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmInstanceStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmInstanceStatus',
@@ -5816,7 +6379,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5831,11 +6394,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmInstanceStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmInstanceStatus',
@@ -5845,7 +6409,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5874,11 +6438,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmInstanceSystemCnameResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmInstanceSystemCname',
@@ -5888,7 +6453,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5903,11 +6468,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmInstanceSystemCnameResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmInstanceSystemCname',
@@ -5917,7 +6483,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5939,6 +6505,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_instance_system_cname_with_options_async(request, runtime)
 
+    def describe_gtm_instances_with_options(
+        self,
+        request: alidns_20150109_models.DescribeGtmInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeGtmInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.need_detail_attributes):
+            query['NeedDetailAttributes'] = request.need_detail_attributes
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGtmInstances',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeGtmInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_gtm_instances_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeGtmInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeGtmInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.need_detail_attributes):
+            query['NeedDetailAttributes'] = request.need_detail_attributes
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGtmInstances',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeGtmInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_gtm_instances(
+        self,
+        request: alidns_20150109_models.DescribeGtmInstancesRequest,
+    ) -> alidns_20150109_models.DescribeGtmInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_gtm_instances_with_options(request, runtime)
+
+    async def describe_gtm_instances_async(
+        self,
+        request: alidns_20150109_models.DescribeGtmInstancesRequest,
+    ) -> alidns_20150109_models.DescribeGtmInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_gtm_instances_with_options_async(request, runtime)
+
     def describe_gtm_logs_with_options(
         self,
         request: alidns_20150109_models.DescribeGtmLogsRequest,
@@ -5946,16 +6602,22 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmLogsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['Keyword'] = request.keyword
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartTimestamp'] = request.start_timestamp
-        query['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmLogs',
@@ -5965,7 +6627,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5980,16 +6642,22 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmLogsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['Keyword'] = request.keyword
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartTimestamp'] = request.start_timestamp
-        query['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmLogs',
@@ -5999,7 +6667,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6028,10 +6696,10 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmMonitorAvailableConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmMonitorAvailableConfig',
@@ -6041,7 +6709,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6056,10 +6724,10 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmMonitorAvailableConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmMonitorAvailableConfig',
@@ -6069,7 +6737,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6098,11 +6766,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmMonitorConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['MonitorConfigId'] = request.monitor_config_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_config_id):
+            query['MonitorConfigId'] = request.monitor_config_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmMonitorConfig',
@@ -6112,7 +6781,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6127,11 +6796,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmMonitorConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['MonitorConfigId'] = request.monitor_config_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_config_id):
+            query['MonitorConfigId'] = request.monitor_config_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmMonitorConfig',
@@ -6141,7 +6811,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6170,11 +6840,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['RecoveryPlanId'] = request.recovery_plan_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.recovery_plan_id):
+            query['RecoveryPlanId'] = request.recovery_plan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmRecoveryPlan',
@@ -6184,7 +6855,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6199,11 +6870,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['RecoveryPlanId'] = request.recovery_plan_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.recovery_plan_id):
+            query['RecoveryPlanId'] = request.recovery_plan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmRecoveryPlan',
@@ -6213,7 +6885,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6242,10 +6914,10 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmRecoveryPlanAvailableConfig',
@@ -6255,7 +6927,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6270,10 +6942,10 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmRecoveryPlanAvailableConfig',
@@ -6283,7 +6955,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6312,13 +6984,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlansResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['Keyword'] = request.keyword
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmRecoveryPlans',
@@ -6328,7 +7003,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6343,13 +7018,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlansResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['Keyword'] = request.keyword
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeGtmRecoveryPlans',
@@ -6359,7 +7037,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6388,13 +7066,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeInstanceDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeInstanceDomains',
@@ -6404,7 +7085,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6419,13 +7100,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeInstanceDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeInstanceDomains',
@@ -6435,7 +7119,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6457,6 +7141,1296 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_domains_with_options_async(request, runtime)
 
+    def describe_isp_flush_cache_instances_with_options(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.isp):
+            query['Isp'] = request.isp
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIspFlushCacheInstances',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeIspFlushCacheInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_isp_flush_cache_instances_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.isp):
+            query['Isp'] = request.isp
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIspFlushCacheInstances',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeIspFlushCacheInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_isp_flush_cache_instances(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheInstancesRequest,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_isp_flush_cache_instances_with_options(request, runtime)
+
+    async def describe_isp_flush_cache_instances_async(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheInstancesRequest,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_isp_flush_cache_instances_with_options_async(request, runtime)
+
+    def describe_isp_flush_cache_remain_quota_with_options(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheRemainQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheRemainQuotaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIspFlushCacheRemainQuota',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeIspFlushCacheRemainQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_isp_flush_cache_remain_quota_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheRemainQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheRemainQuotaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIspFlushCacheRemainQuota',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeIspFlushCacheRemainQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_isp_flush_cache_remain_quota(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheRemainQuotaRequest,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheRemainQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_isp_flush_cache_remain_quota_with_options(request, runtime)
+
+    async def describe_isp_flush_cache_remain_quota_async(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheRemainQuotaRequest,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheRemainQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_isp_flush_cache_remain_quota_with_options_async(request, runtime)
+
+    def describe_isp_flush_cache_task_with_options(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIspFlushCacheTask',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeIspFlushCacheTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_isp_flush_cache_task_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIspFlushCacheTask',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeIspFlushCacheTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_isp_flush_cache_task(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheTaskRequest,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_isp_flush_cache_task_with_options(request, runtime)
+
+    async def describe_isp_flush_cache_task_async(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheTaskRequest,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_isp_flush_cache_task_with_options_async(request, runtime)
+
+    def describe_isp_flush_cache_tasks_with_options(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.isp):
+            query['Isp'] = request.isp
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIspFlushCacheTasks',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeIspFlushCacheTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_isp_flush_cache_tasks_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.isp):
+            query['Isp'] = request.isp
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIspFlushCacheTasks',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeIspFlushCacheTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_isp_flush_cache_tasks(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheTasksRequest,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_isp_flush_cache_tasks_with_options(request, runtime)
+
+    async def describe_isp_flush_cache_tasks_async(
+        self,
+        request: alidns_20150109_models.DescribeIspFlushCacheTasksRequest,
+    ) -> alidns_20150109_models.DescribeIspFlushCacheTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_isp_flush_cache_tasks_with_options_async(request, runtime)
+
+    def describe_pdns_account_summary_with_options(
+        self,
+        request: alidns_20150109_models.DescribePdnsAccountSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsAccountSummaryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsAccountSummary',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsAccountSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pdns_account_summary_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsAccountSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsAccountSummaryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsAccountSummary',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsAccountSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pdns_account_summary(
+        self,
+        request: alidns_20150109_models.DescribePdnsAccountSummaryRequest,
+    ) -> alidns_20150109_models.DescribePdnsAccountSummaryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pdns_account_summary_with_options(request, runtime)
+
+    async def describe_pdns_account_summary_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsAccountSummaryRequest,
+    ) -> alidns_20150109_models.DescribePdnsAccountSummaryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pdns_account_summary_with_options_async(request, runtime)
+
+    def describe_pdns_app_key_with_options(
+        self,
+        request: alidns_20150109_models.DescribePdnsAppKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsAppKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_key_id):
+            query['AppKeyId'] = request.app_key_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsAppKey',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsAppKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pdns_app_key_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsAppKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsAppKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_key_id):
+            query['AppKeyId'] = request.app_key_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsAppKey',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsAppKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pdns_app_key(
+        self,
+        request: alidns_20150109_models.DescribePdnsAppKeyRequest,
+    ) -> alidns_20150109_models.DescribePdnsAppKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pdns_app_key_with_options(request, runtime)
+
+    async def describe_pdns_app_key_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsAppKeyRequest,
+    ) -> alidns_20150109_models.DescribePdnsAppKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pdns_app_key_with_options_async(request, runtime)
+
+    def describe_pdns_app_keys_with_options(
+        self,
+        request: alidns_20150109_models.DescribePdnsAppKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsAppKeysResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsAppKeys',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsAppKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pdns_app_keys_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsAppKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsAppKeysResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsAppKeys',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsAppKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pdns_app_keys(
+        self,
+        request: alidns_20150109_models.DescribePdnsAppKeysRequest,
+    ) -> alidns_20150109_models.DescribePdnsAppKeysResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pdns_app_keys_with_options(request, runtime)
+
+    async def describe_pdns_app_keys_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsAppKeysRequest,
+    ) -> alidns_20150109_models.DescribePdnsAppKeysResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pdns_app_keys_with_options_async(request, runtime)
+
+    def describe_pdns_operate_logs_with_options(
+        self,
+        request: alidns_20150109_models.DescribePdnsOperateLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsOperateLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_type):
+            query['ActionType'] = request.action_type
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsOperateLogs',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsOperateLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pdns_operate_logs_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsOperateLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsOperateLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_type):
+            query['ActionType'] = request.action_type
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsOperateLogs',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsOperateLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pdns_operate_logs(
+        self,
+        request: alidns_20150109_models.DescribePdnsOperateLogsRequest,
+    ) -> alidns_20150109_models.DescribePdnsOperateLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pdns_operate_logs_with_options(request, runtime)
+
+    async def describe_pdns_operate_logs_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsOperateLogsRequest,
+    ) -> alidns_20150109_models.DescribePdnsOperateLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pdns_operate_logs_with_options_async(request, runtime)
+
+    def describe_pdns_request_statistic_with_options(
+        self,
+        request: alidns_20150109_models.DescribePdnsRequestStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsRequestStatisticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_domain):
+            query['SubDomain'] = request.sub_domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsRequestStatistic',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsRequestStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pdns_request_statistic_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsRequestStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsRequestStatisticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_domain):
+            query['SubDomain'] = request.sub_domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsRequestStatistic',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsRequestStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pdns_request_statistic(
+        self,
+        request: alidns_20150109_models.DescribePdnsRequestStatisticRequest,
+    ) -> alidns_20150109_models.DescribePdnsRequestStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pdns_request_statistic_with_options(request, runtime)
+
+    async def describe_pdns_request_statistic_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsRequestStatisticRequest,
+    ) -> alidns_20150109_models.DescribePdnsRequestStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pdns_request_statistic_with_options_async(request, runtime)
+
+    def describe_pdns_request_statistics_with_options(
+        self,
+        request: alidns_20150109_models.DescribePdnsRequestStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsRequestStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_domain):
+            query['SubDomain'] = request.sub_domain
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsRequestStatistics',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsRequestStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pdns_request_statistics_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsRequestStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsRequestStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_domain):
+            query['SubDomain'] = request.sub_domain
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsRequestStatistics',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsRequestStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pdns_request_statistics(
+        self,
+        request: alidns_20150109_models.DescribePdnsRequestStatisticsRequest,
+    ) -> alidns_20150109_models.DescribePdnsRequestStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pdns_request_statistics_with_options(request, runtime)
+
+    async def describe_pdns_request_statistics_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsRequestStatisticsRequest,
+    ) -> alidns_20150109_models.DescribePdnsRequestStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pdns_request_statistics_with_options_async(request, runtime)
+
+    def describe_pdns_threat_logs_with_options(
+        self,
+        request: alidns_20150109_models.DescribePdnsThreatLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsThreatLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.threat_level):
+            query['ThreatLevel'] = request.threat_level
+        if not UtilClient.is_unset(request.threat_source_ip):
+            query['ThreatSourceIp'] = request.threat_source_ip
+        if not UtilClient.is_unset(request.threat_type):
+            query['ThreatType'] = request.threat_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsThreatLogs',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsThreatLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pdns_threat_logs_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsThreatLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsThreatLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.threat_level):
+            query['ThreatLevel'] = request.threat_level
+        if not UtilClient.is_unset(request.threat_source_ip):
+            query['ThreatSourceIp'] = request.threat_source_ip
+        if not UtilClient.is_unset(request.threat_type):
+            query['ThreatType'] = request.threat_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsThreatLogs',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsThreatLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pdns_threat_logs(
+        self,
+        request: alidns_20150109_models.DescribePdnsThreatLogsRequest,
+    ) -> alidns_20150109_models.DescribePdnsThreatLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pdns_threat_logs_with_options(request, runtime)
+
+    async def describe_pdns_threat_logs_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsThreatLogsRequest,
+    ) -> alidns_20150109_models.DescribePdnsThreatLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pdns_threat_logs_with_options_async(request, runtime)
+
+    def describe_pdns_threat_statistic_with_options(
+        self,
+        request: alidns_20150109_models.DescribePdnsThreatStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsThreatStatisticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.threat_source_ip):
+            query['ThreatSourceIp'] = request.threat_source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsThreatStatistic',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsThreatStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pdns_threat_statistic_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsThreatStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsThreatStatisticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.threat_source_ip):
+            query['ThreatSourceIp'] = request.threat_source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsThreatStatistic',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsThreatStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pdns_threat_statistic(
+        self,
+        request: alidns_20150109_models.DescribePdnsThreatStatisticRequest,
+    ) -> alidns_20150109_models.DescribePdnsThreatStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pdns_threat_statistic_with_options(request, runtime)
+
+    async def describe_pdns_threat_statistic_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsThreatStatisticRequest,
+    ) -> alidns_20150109_models.DescribePdnsThreatStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pdns_threat_statistic_with_options_async(request, runtime)
+
+    def describe_pdns_threat_statistics_with_options(
+        self,
+        request: alidns_20150109_models.DescribePdnsThreatStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsThreatStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_domain):
+            query['SubDomain'] = request.sub_domain
+        if not UtilClient.is_unset(request.threat_level):
+            query['ThreatLevel'] = request.threat_level
+        if not UtilClient.is_unset(request.threat_source_ip):
+            query['ThreatSourceIp'] = request.threat_source_ip
+        if not UtilClient.is_unset(request.threat_type):
+            query['ThreatType'] = request.threat_type
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsThreatStatistics',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsThreatStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pdns_threat_statistics_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsThreatStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsThreatStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.sub_domain):
+            query['SubDomain'] = request.sub_domain
+        if not UtilClient.is_unset(request.threat_level):
+            query['ThreatLevel'] = request.threat_level
+        if not UtilClient.is_unset(request.threat_source_ip):
+            query['ThreatSourceIp'] = request.threat_source_ip
+        if not UtilClient.is_unset(request.threat_type):
+            query['ThreatType'] = request.threat_type
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsThreatStatistics',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsThreatStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pdns_threat_statistics(
+        self,
+        request: alidns_20150109_models.DescribePdnsThreatStatisticsRequest,
+    ) -> alidns_20150109_models.DescribePdnsThreatStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pdns_threat_statistics_with_options(request, runtime)
+
+    async def describe_pdns_threat_statistics_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsThreatStatisticsRequest,
+    ) -> alidns_20150109_models.DescribePdnsThreatStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pdns_threat_statistics_with_options_async(request, runtime)
+
+    def describe_pdns_udp_ip_segments_with_options(
+        self,
+        request: alidns_20150109_models.DescribePdnsUdpIpSegmentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsUdpIpSegmentsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsUdpIpSegments',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsUdpIpSegmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pdns_udp_ip_segments_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsUdpIpSegmentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsUdpIpSegmentsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsUdpIpSegments',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsUdpIpSegmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pdns_udp_ip_segments(
+        self,
+        request: alidns_20150109_models.DescribePdnsUdpIpSegmentsRequest,
+    ) -> alidns_20150109_models.DescribePdnsUdpIpSegmentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pdns_udp_ip_segments_with_options(request, runtime)
+
+    async def describe_pdns_udp_ip_segments_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsUdpIpSegmentsRequest,
+    ) -> alidns_20150109_models.DescribePdnsUdpIpSegmentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pdns_udp_ip_segments_with_options_async(request, runtime)
+
+    def describe_pdns_user_info_with_options(
+        self,
+        request: alidns_20150109_models.DescribePdnsUserInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsUserInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsUserInfo',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsUserInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pdns_user_info_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsUserInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribePdnsUserInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePdnsUserInfo',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribePdnsUserInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pdns_user_info(
+        self,
+        request: alidns_20150109_models.DescribePdnsUserInfoRequest,
+    ) -> alidns_20150109_models.DescribePdnsUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pdns_user_info_with_options(request, runtime)
+
+    async def describe_pdns_user_info_async(
+        self,
+        request: alidns_20150109_models.DescribePdnsUserInfoRequest,
+    ) -> alidns_20150109_models.DescribePdnsUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pdns_user_info_with_options_async(request, runtime)
+
     def describe_record_logs_with_options(
         self,
         request: alidns_20150109_models.DescribeRecordLogsRequest,
@@ -6464,17 +8438,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeRecordLogsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['DomainName'] = request.domain_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['KeyWord'] = request.key_word
-        query['StartDate'] = request.start_date
-        query['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        if not UtilClient.is_unset(request.end_date):
+            query['endDate'] = request.end_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRecordLogs',
@@ -6484,7 +8465,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6499,17 +8480,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeRecordLogsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['DomainName'] = request.domain_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['KeyWord'] = request.key_word
-        query['StartDate'] = request.start_date
-        query['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        if not UtilClient.is_unset(request.end_date):
+            query['endDate'] = request.end_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRecordLogs',
@@ -6519,7 +8507,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6548,15 +8536,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeRecordStatisticsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
-        query['DomainName'] = request.domain_name
-        query['Rr'] = request.rr
-        query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_type):
+            query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRecordStatistics',
@@ -6566,7 +8559,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6581,15 +8574,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeRecordStatisticsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
-        query['DomainName'] = request.domain_name
-        query['Rr'] = request.rr
-        query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_type):
+            query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRecordStatistics',
@@ -6599,7 +8597,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6628,19 +8626,28 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeRecordStatisticsSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
-        query['DomainName'] = request.domain_name
-        query['SearchMode'] = request.search_mode
-        query['Keyword'] = request.keyword
-        query['Threshold'] = request.threshold
-        query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_type):
+            query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRecordStatisticsSummary',
@@ -6650,7 +8657,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6665,19 +8672,28 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeRecordStatisticsSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartDate'] = request.start_date
-        query['EndDate'] = request.end_date
-        query['DomainName'] = request.domain_name
-        query['SearchMode'] = request.search_mode
-        query['Keyword'] = request.keyword
-        query['Threshold'] = request.threshold
-        query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_type):
+            query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRecordStatisticsSummary',
@@ -6687,7 +8703,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6716,17 +8732,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeSubDomainRecordsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['SubDomain'] = request.sub_domain
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Type'] = request.type
-        query['Line'] = request.line
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sub_domain):
+            query['SubDomain'] = request.sub_domain
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSubDomainRecords',
@@ -6736,7 +8759,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6751,17 +8774,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeSubDomainRecordsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['SubDomain'] = request.sub_domain
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Type'] = request.type
-        query['Line'] = request.line
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sub_domain):
+            query['SubDomain'] = request.sub_domain
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSubDomainRecords',
@@ -6771,7 +8801,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6800,12 +8830,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeSupportLinesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSupportLines',
@@ -6815,7 +8847,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6830,12 +8862,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeSupportLinesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSupportLines',
@@ -6845,7 +8879,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6874,13 +8908,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeTagsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['ResourceType'] = request.resource_type
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeTags',
@@ -6890,7 +8927,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6905,13 +8942,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeTagsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['ResourceType'] = request.resource_type
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeTags',
@@ -6921,7 +8961,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6950,16 +8990,22 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeTransferDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['TransferType'] = request.transfer_type
-        query['DomainName'] = request.domain_name
-        query['FromUserId'] = request.from_user_id
-        query['TargetUserId'] = request.target_user_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.from_user_id):
+            query['FromUserId'] = request.from_user_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
+        if not UtilClient.is_unset(request.transfer_type):
+            query['TransferType'] = request.transfer_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeTransferDomains',
@@ -6969,7 +9015,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6984,16 +9030,22 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.DescribeTransferDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['TransferType'] = request.transfer_type
-        query['DomainName'] = request.domain_name
-        query['FromUserId'] = request.from_user_id
-        query['TargetUserId'] = request.target_user_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.from_user_id):
+            query['FromUserId'] = request.from_user_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
+        if not UtilClient.is_unset(request.transfer_type):
+            query['TransferType'] = request.transfer_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeTransferDomains',
@@ -7003,7 +9055,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7032,11 +9084,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.ExecuteGtmRecoveryPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['RecoveryPlanId'] = request.recovery_plan_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.recovery_plan_id):
+            query['RecoveryPlanId'] = request.recovery_plan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ExecuteGtmRecoveryPlan',
@@ -7046,7 +9099,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7061,11 +9114,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.ExecuteGtmRecoveryPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['RecoveryPlanId'] = request.recovery_plan_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.recovery_plan_id):
+            query['RecoveryPlanId'] = request.recovery_plan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ExecuteGtmRecoveryPlan',
@@ -7075,7 +9129,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7104,11 +9158,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.GetMainDomainNameResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InputString'] = request.input_string
+        if not UtilClient.is_unset(request.input_string):
+            query['InputString'] = request.input_string
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetMainDomainName',
@@ -7118,7 +9173,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7133,11 +9188,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.GetMainDomainNameResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InputString'] = request.input_string
+        if not UtilClient.is_unset(request.input_string):
+            query['InputString'] = request.input_string
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetMainDomainName',
@@ -7147,7 +9203,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7176,12 +9232,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.GetTxtRecordForVerifyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTxtRecordForVerify',
@@ -7191,7 +9249,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7206,12 +9264,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.GetTxtRecordForVerifyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTxtRecordForVerify',
@@ -7221,7 +9281,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7250,14 +9310,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['ResourceType'] = request.resource_type
-        query['NextToken'] = request.next_token
-        query['Tag'] = request.tag
-        query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagResources',
@@ -7267,7 +9331,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7282,14 +9346,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['ResourceType'] = request.resource_type
-        query['NextToken'] = request.next_token
-        query['Tag'] = request.tag
-        query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagResources',
@@ -7299,7 +9367,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7328,12 +9396,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.ModifyHichinaDomainDNSResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyHichinaDomainDNS',
@@ -7343,7 +9413,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7358,12 +9428,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.ModifyHichinaDomainDNSResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyHichinaDomainDNS',
@@ -7373,7 +9445,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7402,12 +9474,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.MoveDomainResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['ResourceId'] = request.resource_id
-        query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='MoveDomainResourceGroup',
@@ -7417,7 +9491,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7432,12 +9506,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.MoveDomainResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['ResourceId'] = request.resource_id
-        query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='MoveDomainResourceGroup',
@@ -7447,7 +9523,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7476,12 +9552,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.MoveGtmResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['ResourceId'] = request.resource_id
-        query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='MoveGtmResourceGroup',
@@ -7491,7 +9569,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7506,12 +9584,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.MoveGtmResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['ResourceId'] = request.resource_id
-        query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='MoveGtmResourceGroup',
@@ -7521,7 +9601,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7550,12 +9630,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.OperateBatchDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['Type'] = request.type
-        query['DomainRecordInfo'] = request.domain_record_info
+        if not UtilClient.is_unset(request.domain_record_info):
+            query['DomainRecordInfo'] = request.domain_record_info
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='OperateBatchDomain',
@@ -7565,7 +9647,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7580,12 +9662,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.OperateBatchDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['Type'] = request.type
-        query['DomainRecordInfo'] = request.domain_record_info
+        if not UtilClient.is_unset(request.domain_record_info):
+            query['DomainRecordInfo'] = request.domain_record_info
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='OperateBatchDomain',
@@ -7595,7 +9679,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7617,6 +9701,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.operate_batch_domain_with_options_async(request, runtime)
 
+    def pause_pdns_service_with_options(
+        self,
+        request: alidns_20150109_models.PausePdnsServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.PausePdnsServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PausePdnsService',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.PausePdnsServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pause_pdns_service_with_options_async(
+        self,
+        request: alidns_20150109_models.PausePdnsServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.PausePdnsServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PausePdnsService',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.PausePdnsServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pause_pdns_service(
+        self,
+        request: alidns_20150109_models.PausePdnsServiceRequest,
+    ) -> alidns_20150109_models.PausePdnsServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pause_pdns_service_with_options(request, runtime)
+
+    async def pause_pdns_service_async(
+        self,
+        request: alidns_20150109_models.PausePdnsServiceRequest,
+    ) -> alidns_20150109_models.PausePdnsServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pause_pdns_service_with_options_async(request, runtime)
+
     def preview_gtm_recovery_plan_with_options(
         self,
         request: alidns_20150109_models.PreviewGtmRecoveryPlanRequest,
@@ -7624,13 +9782,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.PreviewGtmRecoveryPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['RecoveryPlanId'] = request.recovery_plan_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.recovery_plan_id):
+            query['RecoveryPlanId'] = request.recovery_plan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PreviewGtmRecoveryPlan',
@@ -7640,7 +9801,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7655,13 +9816,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.PreviewGtmRecoveryPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['RecoveryPlanId'] = request.recovery_plan_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.recovery_plan_id):
+            query['RecoveryPlanId'] = request.recovery_plan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PreviewGtmRecoveryPlan',
@@ -7671,7 +9835,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7693,6 +9857,228 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.preview_gtm_recovery_plan_with_options_async(request, runtime)
 
+    def remove_pdns_app_key_with_options(
+        self,
+        request: alidns_20150109_models.RemovePdnsAppKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.RemovePdnsAppKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_key_id):
+            query['AppKeyId'] = request.app_key_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemovePdnsAppKey',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.RemovePdnsAppKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_pdns_app_key_with_options_async(
+        self,
+        request: alidns_20150109_models.RemovePdnsAppKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.RemovePdnsAppKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_key_id):
+            query['AppKeyId'] = request.app_key_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemovePdnsAppKey',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.RemovePdnsAppKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_pdns_app_key(
+        self,
+        request: alidns_20150109_models.RemovePdnsAppKeyRequest,
+    ) -> alidns_20150109_models.RemovePdnsAppKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.remove_pdns_app_key_with_options(request, runtime)
+
+    async def remove_pdns_app_key_async(
+        self,
+        request: alidns_20150109_models.RemovePdnsAppKeyRequest,
+    ) -> alidns_20150109_models.RemovePdnsAppKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_pdns_app_key_with_options_async(request, runtime)
+
+    def remove_pdns_udp_ip_segment_with_options(
+        self,
+        request: alidns_20150109_models.RemovePdnsUdpIpSegmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.RemovePdnsUdpIpSegmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemovePdnsUdpIpSegment',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.RemovePdnsUdpIpSegmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_pdns_udp_ip_segment_with_options_async(
+        self,
+        request: alidns_20150109_models.RemovePdnsUdpIpSegmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.RemovePdnsUdpIpSegmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemovePdnsUdpIpSegment',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.RemovePdnsUdpIpSegmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_pdns_udp_ip_segment(
+        self,
+        request: alidns_20150109_models.RemovePdnsUdpIpSegmentRequest,
+    ) -> alidns_20150109_models.RemovePdnsUdpIpSegmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.remove_pdns_udp_ip_segment_with_options(request, runtime)
+
+    async def remove_pdns_udp_ip_segment_async(
+        self,
+        request: alidns_20150109_models.RemovePdnsUdpIpSegmentRequest,
+    ) -> alidns_20150109_models.RemovePdnsUdpIpSegmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_pdns_udp_ip_segment_with_options_async(request, runtime)
+
+    def resume_pdns_service_with_options(
+        self,
+        request: alidns_20150109_models.ResumePdnsServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ResumePdnsServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResumePdnsService',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ResumePdnsServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_pdns_service_with_options_async(
+        self,
+        request: alidns_20150109_models.ResumePdnsServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ResumePdnsServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResumePdnsService',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ResumePdnsServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_pdns_service(
+        self,
+        request: alidns_20150109_models.ResumePdnsServiceRequest,
+    ) -> alidns_20150109_models.ResumePdnsServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.resume_pdns_service_with_options(request, runtime)
+
+    async def resume_pdns_service_async(
+        self,
+        request: alidns_20150109_models.ResumePdnsServiceRequest,
+    ) -> alidns_20150109_models.ResumePdnsServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.resume_pdns_service_with_options_async(request, runtime)
+
     def retrieve_domain_with_options(
         self,
         request: alidns_20150109_models.RetrieveDomainRequest,
@@ -7700,11 +10086,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.RetrieveDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RetrieveDomain',
@@ -7714,7 +10101,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7729,11 +10116,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.RetrieveDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RetrieveDomain',
@@ -7743,7 +10131,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7772,11 +10160,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.RollbackGtmRecoveryPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['RecoveryPlanId'] = request.recovery_plan_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.recovery_plan_id):
+            query['RecoveryPlanId'] = request.recovery_plan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RollbackGtmRecoveryPlan',
@@ -7786,7 +10175,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7801,11 +10190,12 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.RollbackGtmRecoveryPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['RecoveryPlanId'] = request.recovery_plan_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.recovery_plan_id):
+            query['RecoveryPlanId'] = request.recovery_plan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RollbackGtmRecoveryPlan',
@@ -7815,7 +10205,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7837,6 +10227,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.rollback_gtm_recovery_plan_with_options_async(request, runtime)
 
+    def set_dnsslbstatus_with_options(
+        self,
+        request: alidns_20150109_models.SetDNSSLBStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SetDNSSLBStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
+        if not UtilClient.is_unset(request.open):
+            query['Open'] = request.open
+        if not UtilClient.is_unset(request.sub_domain):
+            query['SubDomain'] = request.sub_domain
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDNSSLBStatus',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SetDNSSLBStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_dnsslbstatus_with_options_async(
+        self,
+        request: alidns_20150109_models.SetDNSSLBStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SetDNSSLBStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
+        if not UtilClient.is_unset(request.open):
+            query['Open'] = request.open
+        if not UtilClient.is_unset(request.sub_domain):
+            query['SubDomain'] = request.sub_domain
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDNSSLBStatus',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SetDNSSLBStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_dnsslbstatus(
+        self,
+        request: alidns_20150109_models.SetDNSSLBStatusRequest,
+    ) -> alidns_20150109_models.SetDNSSLBStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_dnsslbstatus_with_options(request, runtime)
+
+    async def set_dnsslbstatus_async(
+        self,
+        request: alidns_20150109_models.SetDNSSLBStatusRequest,
+    ) -> alidns_20150109_models.SetDNSSLBStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_dnsslbstatus_with_options_async(request, runtime)
+
     def set_dns_gtm_access_mode_with_options(
         self,
         request: alidns_20150109_models.SetDnsGtmAccessModeRequest,
@@ -7844,12 +10328,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.SetDnsGtmAccessModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
-        query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.access_mode):
+            query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDnsGtmAccessMode',
@@ -7859,7 +10345,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7874,12 +10360,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.SetDnsGtmAccessModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
-        query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.access_mode):
+            query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDnsGtmAccessMode',
@@ -7889,7 +10377,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7918,12 +10406,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.SetDnsGtmMonitorStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['MonitorConfigId'] = request.monitor_config_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_config_id):
+            query['MonitorConfigId'] = request.monitor_config_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDnsGtmMonitorStatus',
@@ -7933,7 +10423,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7948,12 +10438,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.SetDnsGtmMonitorStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['MonitorConfigId'] = request.monitor_config_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_config_id):
+            query['MonitorConfigId'] = request.monitor_config_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDnsGtmMonitorStatus',
@@ -7963,7 +10455,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7985,88 +10477,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_dns_gtm_monitor_status_with_options_async(request, runtime)
 
-    def set_dnsslbstatus_with_options(
-        self,
-        request: alidns_20150109_models.SetDNSSLBStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alidns_20150109_models.SetDNSSLBStatusResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['SubDomain'] = request.sub_domain
-        query['Open'] = request.open
-        query['DomainName'] = request.domain_name
-        query['Type'] = request.type
-        query['Line'] = request.line
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetDNSSLBStatus',
-            version='2015-01-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            alidns_20150109_models.SetDNSSLBStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def set_dnsslbstatus_with_options_async(
-        self,
-        request: alidns_20150109_models.SetDNSSLBStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alidns_20150109_models.SetDNSSLBStatusResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['SubDomain'] = request.sub_domain
-        query['Open'] = request.open
-        query['DomainName'] = request.domain_name
-        query['Type'] = request.type
-        query['Line'] = request.line
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SetDNSSLBStatus',
-            version='2015-01-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            alidns_20150109_models.SetDNSSLBStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def set_dnsslbstatus(
-        self,
-        request: alidns_20150109_models.SetDNSSLBStatusRequest,
-    ) -> alidns_20150109_models.SetDNSSLBStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.set_dnsslbstatus_with_options(request, runtime)
-
-    async def set_dnsslbstatus_async(
-        self,
-        request: alidns_20150109_models.SetDNSSLBStatusRequest,
-    ) -> alidns_20150109_models.SetDNSSLBStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.set_dnsslbstatus_with_options_async(request, runtime)
-
     def set_domain_dnssec_status_with_options(
         self,
         request: alidns_20150109_models.SetDomainDnssecStatusRequest,
@@ -8074,12 +10484,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.SetDomainDnssecStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDomainDnssecStatus',
@@ -8089,7 +10501,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8104,12 +10516,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.SetDomainDnssecStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDomainDnssecStatus',
@@ -8119,7 +10533,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8148,13 +10562,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.SetDomainRecordStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['RecordId'] = request.record_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDomainRecordStatus',
@@ -8164,7 +10581,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8179,13 +10596,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.SetDomainRecordStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['RecordId'] = request.record_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDomainRecordStatus',
@@ -8195,7 +10615,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8224,12 +10644,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.SetGtmAccessModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
-        query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.access_mode):
+            query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetGtmAccessMode',
@@ -8239,7 +10661,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8254,12 +10676,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.SetGtmAccessModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
-        query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.access_mode):
+            query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetGtmAccessMode',
@@ -8269,7 +10693,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8298,12 +10722,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.SetGtmMonitorStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['MonitorConfigId'] = request.monitor_config_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_config_id):
+            query['MonitorConfigId'] = request.monitor_config_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetGtmMonitorStatus',
@@ -8313,7 +10739,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8328,12 +10754,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.SetGtmMonitorStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['MonitorConfigId'] = request.monitor_config_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_config_id):
+            query['MonitorConfigId'] = request.monitor_config_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetGtmMonitorStatus',
@@ -8343,7 +10771,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8365,6 +10793,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_gtm_monitor_status_with_options_async(request, runtime)
 
+    def submit_isp_flush_cache_task_with_options(
+        self,
+        request: alidns_20150109_models.SubmitIspFlushCacheTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SubmitIspFlushCacheTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.isp):
+            query['Isp'] = request.isp
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitIspFlushCacheTask',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SubmitIspFlushCacheTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_isp_flush_cache_task_with_options_async(
+        self,
+        request: alidns_20150109_models.SubmitIspFlushCacheTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SubmitIspFlushCacheTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.isp):
+            query['Isp'] = request.isp
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitIspFlushCacheTask',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SubmitIspFlushCacheTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_isp_flush_cache_task(
+        self,
+        request: alidns_20150109_models.SubmitIspFlushCacheTaskRequest,
+    ) -> alidns_20150109_models.SubmitIspFlushCacheTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_isp_flush_cache_task_with_options(request, runtime)
+
+    async def submit_isp_flush_cache_task_async(
+        self,
+        request: alidns_20150109_models.SubmitIspFlushCacheTaskRequest,
+    ) -> alidns_20150109_models.SubmitIspFlushCacheTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_isp_flush_cache_task_with_options_async(request, runtime)
+
     def switch_dns_gtm_instance_strategy_mode_with_options(
         self,
         request: alidns_20150109_models.SwitchDnsGtmInstanceStrategyModeRequest,
@@ -8372,12 +10882,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.SwitchDnsGtmInstanceStrategyModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['StrategyMode'] = request.strategy_mode
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_mode):
+            query['StrategyMode'] = request.strategy_mode
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SwitchDnsGtmInstanceStrategyMode',
@@ -8387,7 +10899,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8402,12 +10914,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.SwitchDnsGtmInstanceStrategyModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['StrategyMode'] = request.strategy_mode
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_mode):
+            query['StrategyMode'] = request.strategy_mode
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SwitchDnsGtmInstanceStrategyMode',
@@ -8417,7 +10931,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8446,13 +10960,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
-        query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TagResources',
@@ -8462,7 +10979,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8477,13 +10994,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
-        query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TagResources',
@@ -8493,7 +11013,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8522,13 +11042,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.TransferDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainNames'] = request.domain_names
-        query['Remark'] = request.remark
-        query['TargetUserId'] = request.target_user_id
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TransferDomain',
@@ -8538,7 +11061,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8553,13 +11076,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.TransferDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainNames'] = request.domain_names
-        query['Remark'] = request.remark
-        query['TargetUserId'] = request.target_user_id
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TransferDomain',
@@ -8569,7 +11095,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8598,12 +11124,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UnbindInstanceDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainNames'] = request.domain_names
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnbindInstanceDomains',
@@ -8613,7 +11141,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8628,12 +11156,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UnbindInstanceDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainNames'] = request.domain_names
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnbindInstanceDomains',
@@ -8643,7 +11173,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8672,14 +11202,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['ResourceType'] = request.resource_type
-        query['All'] = request.all
-        query['ResourceId'] = request.resource_id
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UntagResources',
@@ -8689,7 +11223,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8704,14 +11238,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['ResourceType'] = request.resource_type
-        query['All'] = request.all
-        query['ResourceId'] = request.resource_id
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UntagResources',
@@ -8721,7 +11259,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8743,6 +11281,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
+    def update_app_key_state_with_options(
+        self,
+        request: alidns_20150109_models.UpdateAppKeyStateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateAppKeyStateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_key_id):
+            query['AppKeyId'] = request.app_key_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAppKeyState',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateAppKeyStateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_app_key_state_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateAppKeyStateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateAppKeyStateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_key_id):
+            query['AppKeyId'] = request.app_key_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAppKeyState',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateAppKeyStateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_app_key_state(
+        self,
+        request: alidns_20150109_models.UpdateAppKeyStateRequest,
+    ) -> alidns_20150109_models.UpdateAppKeyStateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_app_key_state_with_options(request, runtime)
+
+    async def update_app_key_state_async(
+        self,
+        request: alidns_20150109_models.UpdateAppKeyStateRequest,
+    ) -> alidns_20150109_models.UpdateAppKeyStateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_app_key_state_with_options_async(request, runtime)
+
     def update_custom_line_with_options(
         self,
         request: alidns_20150109_models.UpdateCustomLineRequest,
@@ -8750,13 +11366,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateCustomLineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['LineName'] = request.line_name
-        query['LineId'] = request.line_id
-        query['IpSegment'] = request.ip_segment
+        if not UtilClient.is_unset(request.ip_segment):
+            query['IpSegment'] = request.ip_segment
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line_id):
+            query['LineId'] = request.line_id
+        if not UtilClient.is_unset(request.line_name):
+            query['LineName'] = request.line_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateCustomLine',
@@ -8766,7 +11385,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8781,13 +11400,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateCustomLineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['LineName'] = request.line_name
-        query['LineId'] = request.line_id
-        query['IpSegment'] = request.ip_segment
+        if not UtilClient.is_unset(request.ip_segment):
+            query['IpSegment'] = request.ip_segment
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line_id):
+            query['LineId'] = request.line_id
+        if not UtilClient.is_unset(request.line_name):
+            query['LineName'] = request.line_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateCustomLine',
@@ -8797,7 +11419,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8819,6 +11441,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_custom_line_with_options_async(request, runtime)
 
+    def update_dnsslbweight_with_options(
+        self,
+        request: alidns_20150109_models.UpdateDNSSLBWeightRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateDNSSLBWeightResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDNSSLBWeight',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateDNSSLBWeightResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dnsslbweight_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateDNSSLBWeightRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateDNSSLBWeightResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDNSSLBWeight',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateDNSSLBWeightResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dnsslbweight(
+        self,
+        request: alidns_20150109_models.UpdateDNSSLBWeightRequest,
+    ) -> alidns_20150109_models.UpdateDNSSLBWeightResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_dnsslbweight_with_options(request, runtime)
+
+    async def update_dnsslbweight_async(
+        self,
+        request: alidns_20150109_models.UpdateDNSSLBWeightRequest,
+    ) -> alidns_20150109_models.UpdateDNSSLBWeightResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dnsslbweight_with_options_async(request, runtime)
+
     def update_dns_cache_domain_with_options(
         self,
         request: alidns_20150109_models.UpdateDnsCacheDomainRequest,
@@ -8826,17 +11530,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDnsCacheDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['InstanceId'] = request.instance_id
-        query['CacheTtlMin'] = request.cache_ttl_min
-        query['CacheTtlMax'] = request.cache_ttl_max
-        query['SourceProtocol'] = request.source_protocol
-        query['SourceEdns'] = request.source_edns
-        query['SourceDnsServer'] = request.source_dns_server
+        if not UtilClient.is_unset(request.cache_ttl_max):
+            query['CacheTtlMax'] = request.cache_ttl_max
+        if not UtilClient.is_unset(request.cache_ttl_min):
+            query['CacheTtlMin'] = request.cache_ttl_min
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_dns_server):
+            query['SourceDnsServer'] = request.source_dns_server
+        if not UtilClient.is_unset(request.source_edns):
+            query['SourceEdns'] = request.source_edns
+        if not UtilClient.is_unset(request.source_protocol):
+            query['SourceProtocol'] = request.source_protocol
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDnsCacheDomain',
@@ -8846,7 +11557,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8861,17 +11572,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDnsCacheDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['InstanceId'] = request.instance_id
-        query['CacheTtlMin'] = request.cache_ttl_min
-        query['CacheTtlMax'] = request.cache_ttl_max
-        query['SourceProtocol'] = request.source_protocol
-        query['SourceEdns'] = request.source_edns
-        query['SourceDnsServer'] = request.source_dns_server
+        if not UtilClient.is_unset(request.cache_ttl_max):
+            query['CacheTtlMax'] = request.cache_ttl_max
+        if not UtilClient.is_unset(request.cache_ttl_min):
+            query['CacheTtlMin'] = request.cache_ttl_min
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_dns_server):
+            query['SourceDnsServer'] = request.source_dns_server
+        if not UtilClient.is_unset(request.source_edns):
+            query['SourceEdns'] = request.source_edns
+        if not UtilClient.is_unset(request.source_protocol):
+            query['SourceProtocol'] = request.source_protocol
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDnsCacheDomain',
@@ -8881,7 +11599,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8910,12 +11628,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDnsCacheDomainRemarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDnsCacheDomainRemark',
@@ -8925,7 +11645,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8940,12 +11660,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDnsCacheDomainRemarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDnsCacheDomainRemark',
@@ -8955,7 +11677,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8984,25 +11706,42 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDnsGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
-        query['StrategyName'] = request.strategy_name
-        query['Lines'] = request.lines
-        query['DefaultAddrPoolType'] = request.default_addr_pool_type
-        query['DefaultLbaStrategy'] = request.default_lba_strategy
-        query['DefaultMinAvailableAddrNum'] = request.default_min_available_addr_num
-        query['DefaultMaxReturnAddrNum'] = request.default_max_return_addr_num
-        query['DefaultLatencyOptimization'] = request.default_latency_optimization
-        query['FailoverAddrPoolType'] = request.failover_addr_pool_type
-        query['FailoverLbaStrategy'] = request.failover_lba_strategy
-        query['FailoverMinAvailableAddrNum'] = request.failover_min_available_addr_num
-        query['FailoverMaxReturnAddrNum'] = request.failover_max_return_addr_num
-        query['FailoverLatencyOptimization'] = request.failover_latency_optimization
-        query['DefaultAddrPool'] = request.default_addr_pool
-        query['FailoverAddrPool'] = request.failover_addr_pool
+        if not UtilClient.is_unset(request.access_mode):
+            query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.default_addr_pool):
+            query['DefaultAddrPool'] = request.default_addr_pool
+        if not UtilClient.is_unset(request.default_addr_pool_type):
+            query['DefaultAddrPoolType'] = request.default_addr_pool_type
+        if not UtilClient.is_unset(request.default_latency_optimization):
+            query['DefaultLatencyOptimization'] = request.default_latency_optimization
+        if not UtilClient.is_unset(request.default_lba_strategy):
+            query['DefaultLbaStrategy'] = request.default_lba_strategy
+        if not UtilClient.is_unset(request.default_max_return_addr_num):
+            query['DefaultMaxReturnAddrNum'] = request.default_max_return_addr_num
+        if not UtilClient.is_unset(request.default_min_available_addr_num):
+            query['DefaultMinAvailableAddrNum'] = request.default_min_available_addr_num
+        if not UtilClient.is_unset(request.failover_addr_pool):
+            query['FailoverAddrPool'] = request.failover_addr_pool
+        if not UtilClient.is_unset(request.failover_addr_pool_type):
+            query['FailoverAddrPoolType'] = request.failover_addr_pool_type
+        if not UtilClient.is_unset(request.failover_latency_optimization):
+            query['FailoverLatencyOptimization'] = request.failover_latency_optimization
+        if not UtilClient.is_unset(request.failover_lba_strategy):
+            query['FailoverLbaStrategy'] = request.failover_lba_strategy
+        if not UtilClient.is_unset(request.failover_max_return_addr_num):
+            query['FailoverMaxReturnAddrNum'] = request.failover_max_return_addr_num
+        if not UtilClient.is_unset(request.failover_min_available_addr_num):
+            query['FailoverMinAvailableAddrNum'] = request.failover_min_available_addr_num
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lines):
+            query['Lines'] = request.lines
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDnsGtmAccessStrategy',
@@ -9012,7 +11751,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9027,25 +11766,42 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDnsGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
-        query['StrategyName'] = request.strategy_name
-        query['Lines'] = request.lines
-        query['DefaultAddrPoolType'] = request.default_addr_pool_type
-        query['DefaultLbaStrategy'] = request.default_lba_strategy
-        query['DefaultMinAvailableAddrNum'] = request.default_min_available_addr_num
-        query['DefaultMaxReturnAddrNum'] = request.default_max_return_addr_num
-        query['DefaultLatencyOptimization'] = request.default_latency_optimization
-        query['FailoverAddrPoolType'] = request.failover_addr_pool_type
-        query['FailoverLbaStrategy'] = request.failover_lba_strategy
-        query['FailoverMinAvailableAddrNum'] = request.failover_min_available_addr_num
-        query['FailoverMaxReturnAddrNum'] = request.failover_max_return_addr_num
-        query['FailoverLatencyOptimization'] = request.failover_latency_optimization
-        query['DefaultAddrPool'] = request.default_addr_pool
-        query['FailoverAddrPool'] = request.failover_addr_pool
+        if not UtilClient.is_unset(request.access_mode):
+            query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.default_addr_pool):
+            query['DefaultAddrPool'] = request.default_addr_pool
+        if not UtilClient.is_unset(request.default_addr_pool_type):
+            query['DefaultAddrPoolType'] = request.default_addr_pool_type
+        if not UtilClient.is_unset(request.default_latency_optimization):
+            query['DefaultLatencyOptimization'] = request.default_latency_optimization
+        if not UtilClient.is_unset(request.default_lba_strategy):
+            query['DefaultLbaStrategy'] = request.default_lba_strategy
+        if not UtilClient.is_unset(request.default_max_return_addr_num):
+            query['DefaultMaxReturnAddrNum'] = request.default_max_return_addr_num
+        if not UtilClient.is_unset(request.default_min_available_addr_num):
+            query['DefaultMinAvailableAddrNum'] = request.default_min_available_addr_num
+        if not UtilClient.is_unset(request.failover_addr_pool):
+            query['FailoverAddrPool'] = request.failover_addr_pool
+        if not UtilClient.is_unset(request.failover_addr_pool_type):
+            query['FailoverAddrPoolType'] = request.failover_addr_pool_type
+        if not UtilClient.is_unset(request.failover_latency_optimization):
+            query['FailoverLatencyOptimization'] = request.failover_latency_optimization
+        if not UtilClient.is_unset(request.failover_lba_strategy):
+            query['FailoverLbaStrategy'] = request.failover_lba_strategy
+        if not UtilClient.is_unset(request.failover_max_return_addr_num):
+            query['FailoverMaxReturnAddrNum'] = request.failover_max_return_addr_num
+        if not UtilClient.is_unset(request.failover_min_available_addr_num):
+            query['FailoverMinAvailableAddrNum'] = request.failover_min_available_addr_num
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lines):
+            query['Lines'] = request.lines
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDnsGtmAccessStrategy',
@@ -9055,7 +11811,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9084,14 +11840,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDnsGtmAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
-        query['Name'] = request.name
-        query['LbaStrategy'] = request.lba_strategy
-        query['Addr'] = request.addr
+        if not UtilClient.is_unset(request.addr):
+            query['Addr'] = request.addr
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lba_strategy):
+            query['LbaStrategy'] = request.lba_strategy
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDnsGtmAddressPool',
@@ -9101,7 +11861,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9116,14 +11876,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDnsGtmAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
-        query['Name'] = request.name
-        query['LbaStrategy'] = request.lba_strategy
-        query['Addr'] = request.addr
+        if not UtilClient.is_unset(request.addr):
+            query['Addr'] = request.addr
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lba_strategy):
+            query['LbaStrategy'] = request.lba_strategy
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDnsGtmAddressPool',
@@ -9133,7 +11897,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9162,21 +11926,32 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDnsGtmInstanceGlobalConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['InstanceName'] = request.instance_name
-        query['Ttl'] = request.ttl
-        query['PublicCnameMode'] = request.public_cname_mode
-        query['PublicUserDomainName'] = request.public_user_domain_name
-        query['PublicZoneName'] = request.public_zone_name
-        query['AlertGroup'] = request.alert_group
-        query['CnameType'] = request.cname_type
-        query['AlertConfig'] = request.alert_config
-        query['PublicRr'] = request.public_rr
-        query['ForceUpdate'] = request.force_update
+        if not UtilClient.is_unset(request.alert_config):
+            query['AlertConfig'] = request.alert_config
+        if not UtilClient.is_unset(request.alert_group):
+            query['AlertGroup'] = request.alert_group
+        if not UtilClient.is_unset(request.cname_type):
+            query['CnameType'] = request.cname_type
+        if not UtilClient.is_unset(request.force_update):
+            query['ForceUpdate'] = request.force_update
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.public_cname_mode):
+            query['PublicCnameMode'] = request.public_cname_mode
+        if not UtilClient.is_unset(request.public_rr):
+            query['PublicRr'] = request.public_rr
+        if not UtilClient.is_unset(request.public_user_domain_name):
+            query['PublicUserDomainName'] = request.public_user_domain_name
+        if not UtilClient.is_unset(request.public_zone_name):
+            query['PublicZoneName'] = request.public_zone_name
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDnsGtmInstanceGlobalConfig',
@@ -9186,7 +11961,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9201,21 +11976,32 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDnsGtmInstanceGlobalConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['InstanceName'] = request.instance_name
-        query['Ttl'] = request.ttl
-        query['PublicCnameMode'] = request.public_cname_mode
-        query['PublicUserDomainName'] = request.public_user_domain_name
-        query['PublicZoneName'] = request.public_zone_name
-        query['AlertGroup'] = request.alert_group
-        query['CnameType'] = request.cname_type
-        query['AlertConfig'] = request.alert_config
-        query['PublicRr'] = request.public_rr
-        query['ForceUpdate'] = request.force_update
+        if not UtilClient.is_unset(request.alert_config):
+            query['AlertConfig'] = request.alert_config
+        if not UtilClient.is_unset(request.alert_group):
+            query['AlertGroup'] = request.alert_group
+        if not UtilClient.is_unset(request.cname_type):
+            query['CnameType'] = request.cname_type
+        if not UtilClient.is_unset(request.force_update):
+            query['ForceUpdate'] = request.force_update
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.public_cname_mode):
+            query['PublicCnameMode'] = request.public_cname_mode
+        if not UtilClient.is_unset(request.public_rr):
+            query['PublicRr'] = request.public_rr
+        if not UtilClient.is_unset(request.public_user_domain_name):
+            query['PublicUserDomainName'] = request.public_user_domain_name
+        if not UtilClient.is_unset(request.public_zone_name):
+            query['PublicZoneName'] = request.public_zone_name
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDnsGtmInstanceGlobalConfig',
@@ -9225,7 +12011,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9254,17 +12040,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDnsGtmMonitorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['MonitorConfigId'] = request.monitor_config_id
-        query['ProtocolType'] = request.protocol_type
-        query['Interval'] = request.interval
-        query['EvaluationCount'] = request.evaluation_count
-        query['Timeout'] = request.timeout
-        query['MonitorExtendInfo'] = request.monitor_extend_info
-        query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_city_node):
+            query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_config_id):
+            query['MonitorConfigId'] = request.monitor_config_id
+        if not UtilClient.is_unset(request.monitor_extend_info):
+            query['MonitorExtendInfo'] = request.monitor_extend_info
+        if not UtilClient.is_unset(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDnsGtmMonitor',
@@ -9274,7 +12067,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9289,17 +12082,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDnsGtmMonitorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['MonitorConfigId'] = request.monitor_config_id
-        query['ProtocolType'] = request.protocol_type
-        query['Interval'] = request.interval
-        query['EvaluationCount'] = request.evaluation_count
-        query['Timeout'] = request.timeout
-        query['MonitorExtendInfo'] = request.monitor_extend_info
-        query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_city_node):
+            query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_config_id):
+            query['MonitorConfigId'] = request.monitor_config_id
+        if not UtilClient.is_unset(request.monitor_extend_info):
+            query['MonitorExtendInfo'] = request.monitor_extend_info
+        if not UtilClient.is_unset(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDnsGtmMonitor',
@@ -9309,7 +12109,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9331,82 +12131,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_dns_gtm_monitor_with_options_async(request, runtime)
 
-    def update_dnsslbweight_with_options(
-        self,
-        request: alidns_20150109_models.UpdateDNSSLBWeightRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alidns_20150109_models.UpdateDNSSLBWeightResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['RecordId'] = request.record_id
-        query['Weight'] = request.weight
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateDNSSLBWeight',
-            version='2015-01-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            alidns_20150109_models.UpdateDNSSLBWeightResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_dnsslbweight_with_options_async(
-        self,
-        request: alidns_20150109_models.UpdateDNSSLBWeightRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alidns_20150109_models.UpdateDNSSLBWeightResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['RecordId'] = request.record_id
-        query['Weight'] = request.weight
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateDNSSLBWeight',
-            version='2015-01-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            alidns_20150109_models.UpdateDNSSLBWeightResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_dnsslbweight(
-        self,
-        request: alidns_20150109_models.UpdateDNSSLBWeightRequest,
-    ) -> alidns_20150109_models.UpdateDNSSLBWeightResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_dnsslbweight_with_options(request, runtime)
-
-    async def update_dnsslbweight_async(
-        self,
-        request: alidns_20150109_models.UpdateDNSSLBWeightRequest,
-    ) -> alidns_20150109_models.UpdateDNSSLBWeightResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_dnsslbweight_with_options_async(request, runtime)
-
     def update_domain_group_with_options(
         self,
         request: alidns_20150109_models.UpdateDomainGroupRequest,
@@ -9414,12 +12138,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDomainGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['GroupId'] = request.group_id
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDomainGroup',
@@ -9429,7 +12155,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9444,12 +12170,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDomainGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['GroupId'] = request.group_id
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDomainGroup',
@@ -9459,7 +12187,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9488,18 +12216,26 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDomainRecordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['RecordId'] = request.record_id
-        query['RR'] = request.rr
-        query['Type'] = request.type
-        query['Value'] = request.value
-        query['TTL'] = request.ttl
-        query['Priority'] = request.priority
-        query['Line'] = request.line
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.rr):
+            query['RR'] = request.rr
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.ttl):
+            query['TTL'] = request.ttl
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDomainRecord',
@@ -9509,7 +12245,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9524,18 +12260,26 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDomainRecordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['RecordId'] = request.record_id
-        query['RR'] = request.rr
-        query['Type'] = request.type
-        query['Value'] = request.value
-        query['TTL'] = request.ttl
-        query['Priority'] = request.priority
-        query['Line'] = request.line
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.rr):
+            query['RR'] = request.rr
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.ttl):
+            query['TTL'] = request.ttl
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDomainRecord',
@@ -9545,7 +12289,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9574,13 +12318,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDomainRecordRemarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['RecordId'] = request.record_id
-        query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDomainRecordRemark',
@@ -9590,7 +12337,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9605,13 +12352,16 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDomainRecordRemarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['UserClientIp'] = request.user_client_ip
-        query['RecordId'] = request.record_id
-        query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDomainRecordRemark',
@@ -9621,7 +12371,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9650,12 +12400,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDomainRemarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDomainRemark',
@@ -9665,7 +12417,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9680,12 +12432,14 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDomainRemarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['DomainName'] = request.domain_name
-        query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDomainRemark',
@@ -9695,7 +12449,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9724,15 +12478,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
-        query['StrategyName'] = request.strategy_name
-        query['DefaultAddrPoolId'] = request.default_addr_pool_id
-        query['FailoverAddrPoolId'] = request.failover_addr_pool_id
-        query['AccessLines'] = request.access_lines
+        if not UtilClient.is_unset(request.access_lines):
+            query['AccessLines'] = request.access_lines
+        if not UtilClient.is_unset(request.default_addr_pool_id):
+            query['DefaultAddrPoolId'] = request.default_addr_pool_id
+        if not UtilClient.is_unset(request.failover_addr_pool_id):
+            query['FailoverAddrPoolId'] = request.failover_addr_pool_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateGtmAccessStrategy',
@@ -9742,7 +12501,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9757,15 +12516,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateGtmAccessStrategyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['StrategyId'] = request.strategy_id
-        query['StrategyName'] = request.strategy_name
-        query['DefaultAddrPoolId'] = request.default_addr_pool_id
-        query['FailoverAddrPoolId'] = request.failover_addr_pool_id
-        query['AccessLines'] = request.access_lines
+        if not UtilClient.is_unset(request.access_lines):
+            query['AccessLines'] = request.access_lines
+        if not UtilClient.is_unset(request.default_addr_pool_id):
+            query['DefaultAddrPoolId'] = request.default_addr_pool_id
+        if not UtilClient.is_unset(request.failover_addr_pool_id):
+            query['FailoverAddrPoolId'] = request.failover_addr_pool_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateGtmAccessStrategy',
@@ -9775,7 +12539,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9804,15 +12568,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateGtmAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
-        query['Name'] = request.name
-        query['Type'] = request.type
-        query['MinAvailableAddrNum'] = request.min_available_addr_num
-        query['Addr'] = request.addr
+        if not UtilClient.is_unset(request.addr):
+            query['Addr'] = request.addr
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.min_available_addr_num):
+            query['MinAvailableAddrNum'] = request.min_available_addr_num
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateGtmAddressPool',
@@ -9822,7 +12591,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9837,15 +12606,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateGtmAddressPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['AddrPoolId'] = request.addr_pool_id
-        query['Name'] = request.name
-        query['Type'] = request.type
-        query['MinAvailableAddrNum'] = request.min_available_addr_num
-        query['Addr'] = request.addr
+        if not UtilClient.is_unset(request.addr):
+            query['Addr'] = request.addr
+        if not UtilClient.is_unset(request.addr_pool_id):
+            query['AddrPoolId'] = request.addr_pool_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.min_available_addr_num):
+            query['MinAvailableAddrNum'] = request.min_available_addr_num
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateGtmAddressPool',
@@ -9855,7 +12629,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9884,18 +12658,26 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateGtmInstanceGlobalConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['InstanceName'] = request.instance_name
-        query['Ttl'] = request.ttl
-        query['UserDomainName'] = request.user_domain_name
-        query['LbaStrategy'] = request.lba_strategy
-        query['AlertGroup'] = request.alert_group
-        query['CnameMode'] = request.cname_mode
-        query['CnameCustomDomainName'] = request.cname_custom_domain_name
+        if not UtilClient.is_unset(request.alert_group):
+            query['AlertGroup'] = request.alert_group
+        if not UtilClient.is_unset(request.cname_custom_domain_name):
+            query['CnameCustomDomainName'] = request.cname_custom_domain_name
+        if not UtilClient.is_unset(request.cname_mode):
+            query['CnameMode'] = request.cname_mode
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lba_strategy):
+            query['LbaStrategy'] = request.lba_strategy
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.user_domain_name):
+            query['UserDomainName'] = request.user_domain_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateGtmInstanceGlobalConfig',
@@ -9905,7 +12687,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9920,18 +12702,26 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateGtmInstanceGlobalConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['InstanceName'] = request.instance_name
-        query['Ttl'] = request.ttl
-        query['UserDomainName'] = request.user_domain_name
-        query['LbaStrategy'] = request.lba_strategy
-        query['AlertGroup'] = request.alert_group
-        query['CnameMode'] = request.cname_mode
-        query['CnameCustomDomainName'] = request.cname_custom_domain_name
+        if not UtilClient.is_unset(request.alert_group):
+            query['AlertGroup'] = request.alert_group
+        if not UtilClient.is_unset(request.cname_custom_domain_name):
+            query['CnameCustomDomainName'] = request.cname_custom_domain_name
+        if not UtilClient.is_unset(request.cname_mode):
+            query['CnameMode'] = request.cname_mode
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lba_strategy):
+            query['LbaStrategy'] = request.lba_strategy
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.user_domain_name):
+            query['UserDomainName'] = request.user_domain_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateGtmInstanceGlobalConfig',
@@ -9941,7 +12731,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9970,17 +12760,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateGtmMonitorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['MonitorConfigId'] = request.monitor_config_id
-        query['ProtocolType'] = request.protocol_type
-        query['Interval'] = request.interval
-        query['EvaluationCount'] = request.evaluation_count
-        query['Timeout'] = request.timeout
-        query['MonitorExtendInfo'] = request.monitor_extend_info
-        query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_city_node):
+            query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_config_id):
+            query['MonitorConfigId'] = request.monitor_config_id
+        if not UtilClient.is_unset(request.monitor_extend_info):
+            query['MonitorExtendInfo'] = request.monitor_extend_info
+        if not UtilClient.is_unset(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateGtmMonitor',
@@ -9990,7 +12787,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10005,17 +12802,24 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateGtmMonitorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['MonitorConfigId'] = request.monitor_config_id
-        query['ProtocolType'] = request.protocol_type
-        query['Interval'] = request.interval
-        query['EvaluationCount'] = request.evaluation_count
-        query['Timeout'] = request.timeout
-        query['MonitorExtendInfo'] = request.monitor_extend_info
-        query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_city_node):
+            query['IspCityNode'] = request.isp_city_node
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.monitor_config_id):
+            query['MonitorConfigId'] = request.monitor_config_id
+        if not UtilClient.is_unset(request.monitor_extend_info):
+            query['MonitorExtendInfo'] = request.monitor_extend_info
+        if not UtilClient.is_unset(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateGtmMonitor',
@@ -10025,7 +12829,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10054,14 +12858,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateGtmRecoveryPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['RecoveryPlanId'] = request.recovery_plan_id
-        query['Name'] = request.name
-        query['Remark'] = request.remark
-        query['FaultAddrPool'] = request.fault_addr_pool
+        if not UtilClient.is_unset(request.fault_addr_pool):
+            query['FaultAddrPool'] = request.fault_addr_pool
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.recovery_plan_id):
+            query['RecoveryPlanId'] = request.recovery_plan_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateGtmRecoveryPlan',
@@ -10071,7 +12879,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10086,14 +12894,18 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateGtmRecoveryPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['RecoveryPlanId'] = request.recovery_plan_id
-        query['Name'] = request.name
-        query['Remark'] = request.remark
-        query['FaultAddrPool'] = request.fault_addr_pool
+        if not UtilClient.is_unset(request.fault_addr_pool):
+            query['FaultAddrPool'] = request.fault_addr_pool
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.recovery_plan_id):
+            query['RecoveryPlanId'] = request.recovery_plan_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateGtmRecoveryPlan',
@@ -10103,7 +12915,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10125,77 +12937,83 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_gtm_recovery_plan_with_options_async(request, runtime)
 
-    def validate_dns_gtm_attribute_info_with_options(
+    def update_isp_flush_cache_instance_config_with_options(
         self,
-        request: alidns_20150109_models.ValidateDnsGtmAttributeInfoRequest,
+        request: alidns_20150109_models.UpdateIspFlushCacheInstanceConfigRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> alidns_20150109_models.ValidateDnsGtmAttributeInfoResponse:
+    ) -> alidns_20150109_models.UpdateIspFlushCacheInstanceConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['LineCode'] = request.line_code
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ValidateDnsGtmAttributeInfo',
+            action='UpdateIspFlushCacheInstanceConfig',
             version='2015-01-09',
             protocol='HTTPS',
             pathname='/',
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            alidns_20150109_models.ValidateDnsGtmAttributeInfoResponse(),
+            alidns_20150109_models.UpdateIspFlushCacheInstanceConfigResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def validate_dns_gtm_attribute_info_with_options_async(
+    async def update_isp_flush_cache_instance_config_with_options_async(
         self,
-        request: alidns_20150109_models.ValidateDnsGtmAttributeInfoRequest,
+        request: alidns_20150109_models.UpdateIspFlushCacheInstanceConfigRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> alidns_20150109_models.ValidateDnsGtmAttributeInfoResponse:
+    ) -> alidns_20150109_models.UpdateIspFlushCacheInstanceConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['LineCode'] = request.line_code
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ValidateDnsGtmAttributeInfo',
+            action='UpdateIspFlushCacheInstanceConfig',
             version='2015-01-09',
             protocol='HTTPS',
             pathname='/',
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            alidns_20150109_models.ValidateDnsGtmAttributeInfoResponse(),
+            alidns_20150109_models.UpdateIspFlushCacheInstanceConfigResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def validate_dns_gtm_attribute_info(
+    def update_isp_flush_cache_instance_config(
         self,
-        request: alidns_20150109_models.ValidateDnsGtmAttributeInfoRequest,
-    ) -> alidns_20150109_models.ValidateDnsGtmAttributeInfoResponse:
+        request: alidns_20150109_models.UpdateIspFlushCacheInstanceConfigRequest,
+    ) -> alidns_20150109_models.UpdateIspFlushCacheInstanceConfigResponse:
         runtime = util_models.RuntimeOptions()
-        return self.validate_dns_gtm_attribute_info_with_options(request, runtime)
+        return self.update_isp_flush_cache_instance_config_with_options(request, runtime)
 
-    async def validate_dns_gtm_attribute_info_async(
+    async def update_isp_flush_cache_instance_config_async(
         self,
-        request: alidns_20150109_models.ValidateDnsGtmAttributeInfoRequest,
-    ) -> alidns_20150109_models.ValidateDnsGtmAttributeInfoResponse:
+        request: alidns_20150109_models.UpdateIspFlushCacheInstanceConfigRequest,
+    ) -> alidns_20150109_models.UpdateIspFlushCacheInstanceConfigResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.validate_dns_gtm_attribute_info_with_options_async(request, runtime)
+        return await self.update_isp_flush_cache_instance_config_with_options_async(request, runtime)
 
     def validate_dns_gtm_cname_rr_can_use_with_options(
         self,
@@ -10204,15 +13022,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.ValidateDnsGtmCnameRrCanUseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['CnameRr'] = request.cname_rr
-        query['CnameType'] = request.cname_type
-        query['CnameMode'] = request.cname_mode
-        query['CnameZone'] = request.cname_zone
+        if not UtilClient.is_unset(request.cname_mode):
+            query['CnameMode'] = request.cname_mode
+        if not UtilClient.is_unset(request.cname_rr):
+            query['CnameRr'] = request.cname_rr
+        if not UtilClient.is_unset(request.cname_type):
+            query['CnameType'] = request.cname_type
+        if not UtilClient.is_unset(request.cname_zone):
+            query['CnameZone'] = request.cname_zone
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ValidateDnsGtmCnameRrCanUse',
@@ -10222,7 +13045,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10237,15 +13060,20 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.ValidateDnsGtmCnameRrCanUseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
-        query['InstanceId'] = request.instance_id
-        query['CnameRr'] = request.cname_rr
-        query['CnameType'] = request.cname_type
-        query['CnameMode'] = request.cname_mode
-        query['CnameZone'] = request.cname_zone
+        if not UtilClient.is_unset(request.cname_mode):
+            query['CnameMode'] = request.cname_mode
+        if not UtilClient.is_unset(request.cname_rr):
+            query['CnameRr'] = request.cname_rr
+        if not UtilClient.is_unset(request.cname_type):
+            query['CnameType'] = request.cname_type
+        if not UtilClient.is_unset(request.cname_zone):
+            query['CnameZone'] = request.cname_zone
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ValidateDnsGtmCnameRrCanUse',
@@ -10255,7 +13083,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10276,3 +13104,77 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.ValidateDnsGtmCnameRrCanUseResponse:
         runtime = util_models.RuntimeOptions()
         return await self.validate_dns_gtm_cname_rr_can_use_with_options_async(request, runtime)
+
+    def validate_pdns_udp_ip_segment_with_options(
+        self,
+        request: alidns_20150109_models.ValidatePdnsUdpIpSegmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ValidatePdnsUdpIpSegmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ValidatePdnsUdpIpSegment',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ValidatePdnsUdpIpSegmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def validate_pdns_udp_ip_segment_with_options_async(
+        self,
+        request: alidns_20150109_models.ValidatePdnsUdpIpSegmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ValidatePdnsUdpIpSegmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ValidatePdnsUdpIpSegment',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ValidatePdnsUdpIpSegmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def validate_pdns_udp_ip_segment(
+        self,
+        request: alidns_20150109_models.ValidatePdnsUdpIpSegmentRequest,
+    ) -> alidns_20150109_models.ValidatePdnsUdpIpSegmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.validate_pdns_udp_ip_segment_with_options(request, runtime)
+
+    async def validate_pdns_udp_ip_segment_async(
+        self,
+        request: alidns_20150109_models.ValidatePdnsUdpIpSegmentRequest,
+    ) -> alidns_20150109_models.ValidatePdnsUdpIpSegmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.validate_pdns_udp_ip_segment_with_options_async(request, runtime)
