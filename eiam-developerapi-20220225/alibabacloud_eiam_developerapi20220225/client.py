@@ -864,6 +864,112 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def get_organizational_unit_id_by_external_id(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdRequest,
+    ) -> eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdHeaders()
+        return self.get_organizational_unit_id_by_external_id_with_options(instance_id, application_id, request, headers, runtime)
+
+    async def get_organizational_unit_id_by_external_id_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdRequest,
+    ) -> eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdHeaders()
+        return await self.get_organizational_unit_id_by_external_id_with_options_async(instance_id, application_id, request, headers, runtime)
+
+    def get_organizational_unit_id_by_external_id_with_options(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdRequest,
+        headers: eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdResponse:
+        UtilClient.validate_model(request)
+        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        application_id = OpenApiUtilClient.get_encode_param(application_id)
+        body = {}
+        if not UtilClient.is_unset(request.organizational_unit_external_id):
+            body['organizationalUnitExternalId'] = request.organizational_unit_external_id
+        if not UtilClient.is_unset(request.organizational_unit_source_id):
+            body['organizationalUnitSourceId'] = request.organizational_unit_source_id
+        if not UtilClient.is_unset(request.organizational_unit_source_type):
+            body['organizationalUnitSourceType'] = request.organizational_unit_source_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetOrganizationalUnitIdByExternalId',
+            version='2022-02-25',
+            protocol='HTTPS',
+            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits/_/actions/getOrganizationalUnitIdByExternalId',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_organizational_unit_id_by_external_id_with_options_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdRequest,
+        headers: eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdResponse:
+        UtilClient.validate_model(request)
+        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        application_id = OpenApiUtilClient.get_encode_param(application_id)
+        body = {}
+        if not UtilClient.is_unset(request.organizational_unit_external_id):
+            body['organizationalUnitExternalId'] = request.organizational_unit_external_id
+        if not UtilClient.is_unset(request.organizational_unit_source_id):
+            body['organizationalUnitSourceId'] = request.organizational_unit_source_id
+        if not UtilClient.is_unset(request.organizational_unit_source_type):
+            body['organizationalUnitSourceType'] = request.organizational_unit_source_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetOrganizationalUnitIdByExternalId',
+            version='2022-02-25',
+            protocol='HTTPS',
+            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits/_/actions/getOrganizationalUnitIdByExternalId',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def get_user(
         self,
         instance_id: str,
@@ -954,6 +1060,308 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def get_user_id_by_email(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByEmailRequest,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByEmailResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = eiam_developerapi_20220225_models.GetUserIdByEmailHeaders()
+        return self.get_user_id_by_email_with_options(instance_id, application_id, request, headers, runtime)
+
+    async def get_user_id_by_email_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByEmailRequest,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByEmailResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = eiam_developerapi_20220225_models.GetUserIdByEmailHeaders()
+        return await self.get_user_id_by_email_with_options_async(instance_id, application_id, request, headers, runtime)
+
+    def get_user_id_by_email_with_options(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByEmailRequest,
+        headers: eiam_developerapi_20220225_models.GetUserIdByEmailHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByEmailResponse:
+        UtilClient.validate_model(request)
+        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        application_id = OpenApiUtilClient.get_encode_param(application_id)
+        body = {}
+        if not UtilClient.is_unset(request.email):
+            body['email'] = request.email
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUserIdByEmail',
+            version='2022-02-25',
+            protocol='HTTPS',
+            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByEmail',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_developerapi_20220225_models.GetUserIdByEmailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_id_by_email_with_options_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByEmailRequest,
+        headers: eiam_developerapi_20220225_models.GetUserIdByEmailHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByEmailResponse:
+        UtilClient.validate_model(request)
+        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        application_id = OpenApiUtilClient.get_encode_param(application_id)
+        body = {}
+        if not UtilClient.is_unset(request.email):
+            body['email'] = request.email
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUserIdByEmail',
+            version='2022-02-25',
+            protocol='HTTPS',
+            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByEmail',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_developerapi_20220225_models.GetUserIdByEmailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_id_by_phone_number(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByPhoneNumberRequest,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByPhoneNumberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = eiam_developerapi_20220225_models.GetUserIdByPhoneNumberHeaders()
+        return self.get_user_id_by_phone_number_with_options(instance_id, application_id, request, headers, runtime)
+
+    async def get_user_id_by_phone_number_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByPhoneNumberRequest,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByPhoneNumberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = eiam_developerapi_20220225_models.GetUserIdByPhoneNumberHeaders()
+        return await self.get_user_id_by_phone_number_with_options_async(instance_id, application_id, request, headers, runtime)
+
+    def get_user_id_by_phone_number_with_options(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByPhoneNumberRequest,
+        headers: eiam_developerapi_20220225_models.GetUserIdByPhoneNumberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByPhoneNumberResponse:
+        UtilClient.validate_model(request)
+        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        application_id = OpenApiUtilClient.get_encode_param(application_id)
+        body = {}
+        if not UtilClient.is_unset(request.phone_number):
+            body['phoneNumber'] = request.phone_number
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUserIdByPhoneNumber',
+            version='2022-02-25',
+            protocol='HTTPS',
+            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByPhoneNumber',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_developerapi_20220225_models.GetUserIdByPhoneNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_id_by_phone_number_with_options_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByPhoneNumberRequest,
+        headers: eiam_developerapi_20220225_models.GetUserIdByPhoneNumberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByPhoneNumberResponse:
+        UtilClient.validate_model(request)
+        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        application_id = OpenApiUtilClient.get_encode_param(application_id)
+        body = {}
+        if not UtilClient.is_unset(request.phone_number):
+            body['phoneNumber'] = request.phone_number
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUserIdByPhoneNumber',
+            version='2022-02-25',
+            protocol='HTTPS',
+            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByPhoneNumber',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_developerapi_20220225_models.GetUserIdByPhoneNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_id_by_user_external_id(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByUserExternalIdRequest,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByUserExternalIdResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = eiam_developerapi_20220225_models.GetUserIdByUserExternalIdHeaders()
+        return self.get_user_id_by_user_external_id_with_options(instance_id, application_id, request, headers, runtime)
+
+    async def get_user_id_by_user_external_id_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByUserExternalIdRequest,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByUserExternalIdResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = eiam_developerapi_20220225_models.GetUserIdByUserExternalIdHeaders()
+        return await self.get_user_id_by_user_external_id_with_options_async(instance_id, application_id, request, headers, runtime)
+
+    def get_user_id_by_user_external_id_with_options(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByUserExternalIdRequest,
+        headers: eiam_developerapi_20220225_models.GetUserIdByUserExternalIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByUserExternalIdResponse:
+        UtilClient.validate_model(request)
+        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        application_id = OpenApiUtilClient.get_encode_param(application_id)
+        body = {}
+        if not UtilClient.is_unset(request.user_external_id):
+            body['userExternalId'] = request.user_external_id
+        if not UtilClient.is_unset(request.user_source_id):
+            body['userSourceId'] = request.user_source_id
+        if not UtilClient.is_unset(request.user_source_type):
+            body['userSourceType'] = request.user_source_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUserIdByUserExternalId',
+            version='2022-02-25',
+            protocol='HTTPS',
+            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByExternalId',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_developerapi_20220225_models.GetUserIdByUserExternalIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_id_by_user_external_id_with_options_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByUserExternalIdRequest,
+        headers: eiam_developerapi_20220225_models.GetUserIdByUserExternalIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByUserExternalIdResponse:
+        UtilClient.validate_model(request)
+        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        application_id = OpenApiUtilClient.get_encode_param(application_id)
+        body = {}
+        if not UtilClient.is_unset(request.user_external_id):
+            body['userExternalId'] = request.user_external_id
+        if not UtilClient.is_unset(request.user_source_id):
+            body['userSourceId'] = request.user_source_id
+        if not UtilClient.is_unset(request.user_source_type):
+            body['userSourceType'] = request.user_source_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUserIdByUserExternalId',
+            version='2022-02-25',
+            protocol='HTTPS',
+            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByExternalId',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_developerapi_20220225_models.GetUserIdByUserExternalIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def get_user_info(
         self,
         instance_id: str,
@@ -1035,90 +1443,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             eiam_developerapi_20220225_models.GetUserInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_user_password_policy(
-        self,
-        instance_id: str,
-        application_id: str,
-    ) -> eiam_developerapi_20220225_models.GetUserPasswordPolicyResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = eiam_developerapi_20220225_models.GetUserPasswordPolicyHeaders()
-        return self.get_user_password_policy_with_options(instance_id, application_id, headers, runtime)
-
-    async def get_user_password_policy_async(
-        self,
-        instance_id: str,
-        application_id: str,
-    ) -> eiam_developerapi_20220225_models.GetUserPasswordPolicyResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = eiam_developerapi_20220225_models.GetUserPasswordPolicyHeaders()
-        return await self.get_user_password_policy_with_options_async(instance_id, application_id, headers, runtime)
-
-    def get_user_password_policy_with_options(
-        self,
-        instance_id: str,
-        application_id: str,
-        headers: eiam_developerapi_20220225_models.GetUserPasswordPolicyHeaders,
-        runtime: util_models.RuntimeOptions,
-    ) -> eiam_developerapi_20220225_models.GetUserPasswordPolicyResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        real_headers = {}
-        if not UtilClient.is_unset(headers.common_headers):
-            real_headers = headers.common_headers
-        if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
-        req = open_api_models.OpenApiRequest(
-            headers=real_headers
-        )
-        params = open_api_models.Params(
-            action='GetUserPasswordPolicy',
-            version='2022-02-25',
-            protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserPasswordPolicy',
-            method='POST',
-            auth_type='Anonymous',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            eiam_developerapi_20220225_models.GetUserPasswordPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_user_password_policy_with_options_async(
-        self,
-        instance_id: str,
-        application_id: str,
-        headers: eiam_developerapi_20220225_models.GetUserPasswordPolicyHeaders,
-        runtime: util_models.RuntimeOptions,
-    ) -> eiam_developerapi_20220225_models.GetUserPasswordPolicyResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        real_headers = {}
-        if not UtilClient.is_unset(headers.common_headers):
-            real_headers = headers.common_headers
-        if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
-        req = open_api_models.OpenApiRequest(
-            headers=real_headers
-        )
-        params = open_api_models.Params(
-            action='GetUserPasswordPolicy',
-            version='2022-02-25',
-            protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserPasswordPolicy',
-            method='POST',
-            auth_type='Anonymous',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            eiam_developerapi_20220225_models.GetUserPasswordPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
