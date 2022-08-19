@@ -10,9 +10,7 @@ class AddEntriesToAclRequestAclEntries(TeaModel):
         description: str = None,
         entry: str = None,
     ):
-        # 描述信息
         self.description = description
-        # 条目
         self.entry = entry
 
     def validate(self):
@@ -47,13 +45,9 @@ class AddEntriesToAclRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
     ):
-        # 条目信息列表
         self.acl_entries = acl_entries
-        # AclId
         self.acl_id = acl_id
-        # 幂等Token
         self.client_token = client_token
-        # dryRun
         self.dry_run = dry_run
 
     def validate(self):
@@ -102,9 +96,7 @@ class AddEntriesToAclResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # job
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -185,17 +177,11 @@ class AddServersToServerGroupRequestServers(TeaModel):
         server_type: str = None,
         weight: int = None,
     ):
-        # 描述信息
         self.description = description
-        # 后端端口号
         self.port = port
-        # 后端服务器id
         self.server_id = server_id
-        # 后端服务器ip
         self.server_ip = server_ip
-        # 后端服务器类型
         self.server_type = server_type
-        # 后端服务器权重
         self.weight = weight
 
     def validate(self):
@@ -246,13 +232,9 @@ class AddServersToServerGroupRequest(TeaModel):
         server_group_id: str = None,
         servers: List[AddServersToServerGroupRequestServers] = None,
     ):
-        # 幂等Token
         self.client_token = client_token
-        # dryRun
         self.dry_run = dry_run
-        # 后端服务器Id
         self.server_group_id = server_group_id
-        # 后端服务器
         self.servers = servers
 
     def validate(self):
@@ -301,9 +283,7 @@ class AddServersToServerGroupResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -382,13 +362,9 @@ class ApplyHealthCheckTemplateToServerGroupRequest(TeaModel):
         health_check_template_id: str = None,
         server_group_id: str = None,
     ):
-        # 幂等Token
         self.client_token = client_token
-        # dryRun
         self.dry_run = dry_run
-        # 健康检查模板Id
         self.health_check_template_id = health_check_template_id
-        # 服务器组Id
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -429,9 +405,7 @@ class ApplyHealthCheckTemplateToServerGroupResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -511,15 +485,10 @@ class AssociateAclsWithListenerRequest(TeaModel):
         dry_run: bool = None,
         listener_id: str = None,
     ):
-        # 访问控制策略Id
         self.acl_ids = acl_ids
-        # 绑定类型
         self.acl_type = acl_type
-        # 幂等标识
         self.client_token = client_token
-        # 预检此次请求
         self.dry_run = dry_run
-        # 监听Id
         self.listener_id = listener_id
 
     def validate(self):
@@ -564,9 +533,7 @@ class AssociateAclsWithListenerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # 请求id
         self.request_id = request_id
 
     def validate(self):
@@ -642,7 +609,6 @@ class AssociateAdditionalCertificatesWithListenerRequestCertificates(TeaModel):
         self,
         certificate_id: str = None,
     ):
-        # 证书Id
         self.certificate_id = certificate_id
 
     def validate(self):
@@ -673,13 +639,9 @@ class AssociateAdditionalCertificatesWithListenerRequest(TeaModel):
         dry_run: bool = None,
         listener_id: str = None,
     ):
-        # 证书列表
         self.certificates = certificates
-        # 幂等Token
         self.client_token = client_token
-        # dryRun
         self.dry_run = dry_run
-        # 监听Id
         self.listener_id = listener_id
 
     def validate(self):
@@ -728,9 +690,7 @@ class AssociateAdditionalCertificatesWithListenerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -810,15 +770,10 @@ class AttachCommonBandwidthPackageToLoadBalancerRequest(TeaModel):
         load_balancer_id: str = None,
         region_id: str = None,
     ):
-        # 带宽包ID
         self.bandwidth_package_id = bandwidth_package_id
-        # 幂等参数
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 实例ID
         self.load_balancer_id = load_balancer_id
-        # 地域ID
         self.region_id = region_id
 
     def validate(self):
@@ -863,9 +818,7 @@ class AttachCommonBandwidthPackageToLoadBalancerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -944,13 +897,9 @@ class CreateAclRequest(TeaModel):
         dry_run: bool = None,
         resource_group_id: str = None,
     ):
-        # Acl名称
         self.acl_name = acl_name
-        # 幂等Token
         self.client_token = client_token
-        # dryRun
         self.dry_run = dry_run
-        # 资源组Id
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -992,11 +941,8 @@ class CreateAclResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # AclId
         self.acl_id = acl_id
-        # 异步任务Id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1089,33 +1035,19 @@ class CreateHealthCheckTemplateRequest(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
-        # 幂等参数
         self.client_token = client_token
-        # dryRun
         self.dry_run = dry_run
-        # 状态码
         self.health_check_codes = health_check_codes
-        # 端口号
         self.health_check_connect_port = health_check_connect_port
-        # 域名
         self.health_check_host = health_check_host
-        # 版本
         self.health_check_http_version = health_check_http_version
-        # 时间间隔
         self.health_check_interval = health_check_interval
-        # 方法
         self.health_check_method = health_check_method
-        # uri
         self.health_check_path = health_check_path
-        # 协议
         self.health_check_protocol = health_check_protocol
-        # 名称
         self.health_check_template_name = health_check_template_name
-        # 超时时间
         self.health_check_timeout = health_check_timeout
-        # 健康阈值
         self.healthy_threshold = healthy_threshold
-        # 不健康阈值
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -1196,9 +1128,7 @@ class CreateHealthCheckTemplateResponseBody(TeaModel):
         health_check_template_id: str = None,
         request_id: str = None,
     ):
-        # 健康检查模板ID
         self.health_check_template_id = health_check_template_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1294,7 +1224,6 @@ class CreateListenerRequestCertificates(TeaModel):
         self,
         certificate_id: str = None,
     ):
-        # 正式标识
         self.certificate_id = certificate_id
 
     def validate(self):
@@ -1322,7 +1251,6 @@ class CreateListenerRequestDefaultActionsForwardGroupConfigServerGroupTuples(Tea
         self,
         server_group_id: str = None,
     ):
-        # 服务器组ID
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -1350,7 +1278,6 @@ class CreateListenerRequestDefaultActionsForwardGroupConfig(TeaModel):
         self,
         server_group_tuples: List[CreateListenerRequestDefaultActionsForwardGroupConfigServerGroupTuples] = None,
     ):
-        # 服务器组列表
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -1387,9 +1314,7 @@ class CreateListenerRequestDefaultActions(TeaModel):
         forward_group_config: CreateListenerRequestDefaultActionsForwardGroupConfig = None,
         type: str = None,
     ):
-        # 转发组
         self.forward_group_config = forward_group_config
-        # 动作类型
         self.type = type
 
     def validate(self):
@@ -1424,9 +1349,7 @@ class CreateListenerRequestQuicConfig(TeaModel):
         quic_listener_id: str = None,
         quic_upgrade_enabled: bool = None,
     ):
-        # 需要关联的QUIC监听ID，HTTPS监听时有效，QuicUpgradeEnabled为true时必选
         self.quic_listener_id = quic_listener_id
-        # 是否开启quic升级，HTTPS监听时有效
         self.quic_upgrade_enabled = quic_upgrade_enabled
 
     def validate(self):
@@ -1464,37 +1387,28 @@ class CreateListenerRequestXForwardedForConfig(TeaModel):
         xforwarded_for_client_cert_issuer_dnenabled: bool = None,
         xforwarded_for_client_cert_subject_dnalias: str = None,
         xforwarded_for_client_cert_subject_dnenabled: bool = None,
+        xforwarded_for_client_source_ips_enabled: bool = None,
+        xforwarded_for_client_source_ips_trusted: str = None,
         xforwarded_for_client_src_port_enabled: bool = None,
         xforwarded_for_enabled: bool = None,
         xforwarded_for_proto_enabled: bool = None,
         xforwarded_for_slbid_enabled: bool = None,
         xforwarded_for_slbport_enabled: bool = None,
     ):
-        # 自定义HEADER头名称，只有当XForwardedForClientCertClientVerifyEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_client_verify_alias = xforwarded_for_client_cert_client_verify_alias
-        # 是否通过X-Forwarded-Clientcert-clientverify  头字段获取对访问负载均衡实例客户端证书的校验结果。HTTPS监听有效。
         self.xforwarded_for_client_cert_client_verify_enabled = xforwarded_for_client_cert_client_verify_enabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertFingerprintEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_fingerprint_alias = xforwarded_for_client_cert_fingerprint_alias
-        # 是否通过X-Forwarded-Clientcert-fingerprint 头字段获取访问负载均衡实例客户端证书的指纹取值，HTTPS监听有效。
         self.xforwarded_for_client_cert_fingerprint_enabled = xforwarded_for_client_cert_fingerprint_enabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertIssuerDNEnabled的值为‘On’的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_issuer_dnalias = xforwarded_for_client_cert_issuer_dnalias
-        # 是否通过 X-Forwarded-Clientcert-issuerdn 头字段获取访问负载均衡实例客户端证书的发行者信息。HTTPS监听有效。
         self.xforwarded_for_client_cert_issuer_dnenabled = xforwarded_for_client_cert_issuer_dnenabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertSubjectDNEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_subject_dnalias = xforwarded_for_client_cert_subject_dnalias
-        # 是否通过X-Forwarded-Clientcert-subjectdn  头字段获取访问负载均衡实例客户端证书的所有者信息。HTTPS监听有效。
         self.xforwarded_for_client_cert_subject_dnenabled = xforwarded_for_client_cert_subject_dnenabled
-        # 是否通过X-Forwarded-Client-Port 头字段获取访问负载均衡实例客户端的端口。HTTPS监听有效。
+        self.xforwarded_for_client_source_ips_enabled = xforwarded_for_client_source_ips_enabled
+        self.xforwarded_for_client_source_ips_trusted = xforwarded_for_client_source_ips_trusted
         self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
-        # 是否开启通过X-Forwarded-For头字段获取来访者真实 IP
         self.xforwarded_for_enabled = xforwarded_for_enabled
-        # 是否通过X-Forwarded-Proto头字段获取负载均衡实例的监听协议。
         self.xforwarded_for_proto_enabled = xforwarded_for_proto_enabled
-        # 是否通过SLB-ID头字段获取负载均衡实例ID。
         self.xforwarded_for_slbid_enabled = xforwarded_for_slbid_enabled
-        # 是否通过X-Forwarded-Port 头字段获取负载均衡实例的监听端口。HTTPS监听有效。
         self.xforwarded_for_slbport_enabled = xforwarded_for_slbport_enabled
 
     def validate(self):
@@ -1522,6 +1436,10 @@ class CreateListenerRequestXForwardedForConfig(TeaModel):
             result['XForwardedForClientCertSubjectDNAlias'] = self.xforwarded_for_client_cert_subject_dnalias
         if self.xforwarded_for_client_cert_subject_dnenabled is not None:
             result['XForwardedForClientCertSubjectDNEnabled'] = self.xforwarded_for_client_cert_subject_dnenabled
+        if self.xforwarded_for_client_source_ips_enabled is not None:
+            result['XForwardedForClientSourceIpsEnabled'] = self.xforwarded_for_client_source_ips_enabled
+        if self.xforwarded_for_client_source_ips_trusted is not None:
+            result['XForwardedForClientSourceIpsTrusted'] = self.xforwarded_for_client_source_ips_trusted
         if self.xforwarded_for_client_src_port_enabled is not None:
             result['XForwardedForClientSrcPortEnabled'] = self.xforwarded_for_client_src_port_enabled
         if self.xforwarded_for_enabled is not None:
@@ -1552,6 +1470,10 @@ class CreateListenerRequestXForwardedForConfig(TeaModel):
             self.xforwarded_for_client_cert_subject_dnalias = m.get('XForwardedForClientCertSubjectDNAlias')
         if m.get('XForwardedForClientCertSubjectDNEnabled') is not None:
             self.xforwarded_for_client_cert_subject_dnenabled = m.get('XForwardedForClientCertSubjectDNEnabled')
+        if m.get('XForwardedForClientSourceIpsEnabled') is not None:
+            self.xforwarded_for_client_source_ips_enabled = m.get('XForwardedForClientSourceIpsEnabled')
+        if m.get('XForwardedForClientSourceIpsTrusted') is not None:
+            self.xforwarded_for_client_source_ips_trusted = m.get('XForwardedForClientSourceIpsTrusted')
         if m.get('XForwardedForClientSrcPortEnabled') is not None:
             self.xforwarded_for_client_src_port_enabled = m.get('XForwardedForClientSrcPortEnabled')
         if m.get('XForwardedForEnabled') is not None:
@@ -1586,39 +1508,22 @@ class CreateListenerRequest(TeaModel):
         security_policy_id: str = None,
         xforwarded_for_config: CreateListenerRequestXForwardedForConfig = None,
     ):
-        # 监听默认CA证书列表，N当前取值范围为1
         self.ca_certificates = ca_certificates
-        # 是否开启双向认证
         self.ca_enabled = ca_enabled
-        # 监听默认服务器证书列表，N当前取值范围为1
         self.certificates = certificates
-        # 幂等标识
         self.client_token = client_token
-        # 监听默认动作
         self.default_actions = default_actions
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 是否开启Gzip压缩
         self.gzip_enabled = gzip_enabled
-        # 是否开启HTTP/2特性
         self.http_2enabled = http_2enabled
-        # 连接空闲超时时间
         self.idle_timeout = idle_timeout
-        # 监听描述
         self.listener_description = listener_description
-        # 监听端口
         self.listener_port = listener_port
-        # 监听协议
         self.listener_protocol = listener_protocol
-        # 负载均衡标识
         self.load_balancer_id = load_balancer_id
-        # HTTPS启用QUIC时相关属性
         self.quic_config = quic_config
-        # 请求超时时间
         self.request_timeout = request_timeout
-        # 安全策略
         self.security_policy_id = security_policy_id
-        # XForward字段相关的配置
         self.xforwarded_for_config = xforwarded_for_config
 
     def validate(self):
@@ -1744,11 +1649,8 @@ class CreateListenerResponseBody(TeaModel):
         listener_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务Id
         self.job_id = job_id
-        # 监听标识
         self.listener_id = listener_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1826,9 +1728,10 @@ class CreateListenerResponse(TeaModel):
 class CreateLoadBalancerRequestLoadBalancerBillingConfig(TeaModel):
     def __init__(
         self,
+        bandwidth_package_id: str = None,
         pay_type: str = None,
     ):
-        # 实例的计费类型
+        self.bandwidth_package_id = bandwidth_package_id
         self.pay_type = pay_type
 
     def validate(self):
@@ -1840,12 +1743,16 @@ class CreateLoadBalancerRequestLoadBalancerBillingConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         return self
@@ -1857,9 +1764,7 @@ class CreateLoadBalancerRequestModificationProtectionConfig(TeaModel):
         reason: str = None,
         status: str = None,
     ):
-        # 设置修改保护状态的原因
         self.reason = reason
-        # 负载均衡修改保护状态
         self.status = status
 
     def validate(self):
@@ -1892,9 +1797,7 @@ class CreateLoadBalancerRequestZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # 交换机标识
         self.v_switch_id = v_switch_id
-        # 可用区
         self.zone_id = zone_id
 
     def validate(self):
@@ -1938,31 +1841,18 @@ class CreateLoadBalancerRequest(TeaModel):
         vpc_id: str = None,
         zone_mappings: List[CreateLoadBalancerRequestZoneMappings] = None,
     ):
-        # 地址模式
         self.address_allocated_mode = address_allocated_mode
-        # 协议版本
         self.address_ip_version = address_ip_version
-        # 负载均衡的地址类型
         self.address_type = address_type
-        # 幂等标识
         self.client_token = client_token
-        # 是否开启删除保护
         self.deletion_protection_enabled = deletion_protection_enabled
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 计费相关配置信息
         self.load_balancer_billing_config = load_balancer_billing_config
-        # 负载均衡的版本
         self.load_balancer_edition = load_balancer_edition
-        # 名称
         self.load_balancer_name = load_balancer_name
-        # 负载均衡修改保护相关信息
         self.modification_protection_config = modification_protection_config
-        # 资源组
         self.resource_group_id = resource_group_id
-        # 负载均衡实例的专有网络ID。
         self.vpc_id = vpc_id
-        # 可用区及交换机映射列表
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -2053,9 +1943,7 @@ class CreateLoadBalancerResponseBody(TeaModel):
         load_balancer_id: str = None,
         request_id: str = None,
     ):
-        # 负载均衡实例标识
         self.load_balancer_id = load_balancer_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2133,11 +2021,8 @@ class CreateRuleRequestRuleActionsFixedResponseConfig(TeaModel):
         content_type: str = None,
         http_code: str = None,
     ):
-        # 内容
         self.content = content
-        # 内容类型
         self.content_type = content_type
-        # HTTP响应码
         self.http_code = http_code
 
     def validate(self):
@@ -2174,9 +2059,7 @@ class CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession(Tea
         enabled: bool = None,
         timeout: int = None,
     ):
-        # 是否开启会话保持
         self.enabled = enabled
-        # 超时时间
         self.timeout = timeout
 
     def validate(self):
@@ -2209,9 +2092,7 @@ class CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples(TeaModel):
         server_group_id: str = None,
         weight: int = None,
     ):
-        # 服务器组标识
         self.server_group_id = server_group_id
-        # 权重
         self.weight = weight
 
     def validate(self):
@@ -2244,9 +2125,7 @@ class CreateRuleRequestRuleActionsForwardGroupConfig(TeaModel):
         server_group_sticky_session: CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession = None,
         server_group_tuples: List[CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples] = None,
     ):
-        # 服务器组之间会话保持
         self.server_group_sticky_session = server_group_sticky_session
-        # 转发到的目的服务器组列表
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -2291,11 +2170,8 @@ class CreateRuleRequestRuleActionsInsertHeaderConfig(TeaModel):
         value: str = None,
         value_type: str = None,
     ):
-        # HTTP标头
         self.key = key
-        # HTTP标头内容
         self.value = value
-        # 取值类型
         self.value_type = value_type
 
     def validate(self):
@@ -2336,17 +2212,11 @@ class CreateRuleRequestRuleActionsRedirectConfig(TeaModel):
         protocol: str = None,
         query: str = None,
     ):
-        # 要跳转的主机地址
         self.host = host
-        # 跳转方式
         self.http_code = http_code
-        # 要跳转的路径
         self.path = path
-        # 要跳转的端口
         self.port = port
-        # 要跳转的协议
         self.protocol = protocol
-        # 要跳转的查询字符串
         self.query = query
 
     def validate(self):
@@ -2396,11 +2266,8 @@ class CreateRuleRequestRuleActionsRewriteConfig(TeaModel):
         path: str = None,
         query: str = None,
     ):
-        # 主机名
         self.host = host
-        # 路径
         self.path = path
-        # 查询
         self.query = query
 
     def validate(self):
@@ -2434,8 +2301,10 @@ class CreateRuleRequestRuleActionsRewriteConfig(TeaModel):
 class CreateRuleRequestRuleActionsTrafficLimitConfig(TeaModel):
     def __init__(
         self,
+        per_ip_qps: int = None,
         qps: int = None,
     ):
+        self.per_ip_qps = per_ip_qps
         self.qps = qps
 
     def validate(self):
@@ -2447,12 +2316,16 @@ class CreateRuleRequestRuleActionsTrafficLimitConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.per_ip_qps is not None:
+            result['PerIpQps'] = self.per_ip_qps
         if self.qps is not None:
             result['QPS'] = self.qps
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PerIpQps') is not None:
+            self.per_ip_qps = m.get('PerIpQps')
         if m.get('QPS') is not None:
             self.qps = m.get('QPS')
         return self
@@ -2526,9 +2399,7 @@ class CreateRuleRequestRuleActionsTrafficMirrorConfig(TeaModel):
         mirror_group_config: CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
         target_type: str = None,
     ):
-        # 镜像至服务器组
         self.mirror_group_config = mirror_group_config
-        # 镜像目标类型
         self.target_type = target_type
 
     def validate(self):
@@ -2570,23 +2441,14 @@ class CreateRuleRequestRuleActions(TeaModel):
         traffic_mirror_config: CreateRuleRequestRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
-        # 返回固定内容动作配置
         self.fixed_response_config = fixed_response_config
-        # 转发组动作配置
         self.forward_group_config = forward_group_config
-        # 插入头部动作配置
         self.insert_header_config = insert_header_config
-        # 优先级
         self.order = order
-        # 重定向动作配置
         self.redirect_config = redirect_config
-        # 内部重定向动作配置
         self.rewrite_config = rewrite_config
-        # 流量限速
         self.traffic_limit_config = traffic_limit_config
-        # 流量镜像
         self.traffic_mirror_config = traffic_mirror_config
-        # 转发规则动作类型
         self.type = type
 
     def validate(self):
@@ -2667,9 +2529,7 @@ class CreateRuleRequestRuleConditionsCookieConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Cookie条件键
         self.key = key
-        # Cookie条件值
         self.value = value
 
     def validate(self):
@@ -2701,7 +2561,6 @@ class CreateRuleRequestRuleConditionsCookieConfig(TeaModel):
         self,
         values: List[CreateRuleRequestRuleConditionsCookieConfigValues] = None,
     ):
-        # Cookie键值对列表
         self.values = values
 
     def validate(self):
@@ -2738,9 +2597,7 @@ class CreateRuleRequestRuleConditionsHeaderConfig(TeaModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # HTTP标头键
         self.key = key
-        # HTTP标头值列表
         self.values = values
 
     def validate(self):
@@ -2772,7 +2629,6 @@ class CreateRuleRequestRuleConditionsHostConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # 主机名列表
         self.values = values
 
     def validate(self):
@@ -2800,7 +2656,6 @@ class CreateRuleRequestRuleConditionsMethodConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # HTTP请求方法列表
         self.values = values
 
     def validate(self):
@@ -2828,7 +2683,6 @@ class CreateRuleRequestRuleConditionsPathConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # 路径条件列表
         self.values = values
 
     def validate(self):
@@ -2857,9 +2711,7 @@ class CreateRuleRequestRuleConditionsQueryStringConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 查询字符串条件键
         self.key = key
-        # 查询字符串条件值
         self.value = value
 
     def validate(self):
@@ -2891,7 +2743,6 @@ class CreateRuleRequestRuleConditionsQueryStringConfig(TeaModel):
         self,
         values: List[CreateRuleRequestRuleConditionsQueryStringConfigValues] = None,
     ):
-        # 查询字符串条件键值对列表
         self.values = values
 
     def validate(self):
@@ -2927,7 +2778,6 @@ class CreateRuleRequestRuleConditionsSourceIpConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # 基于源IP业务流量匹配
         self.values = values
 
     def validate(self):
@@ -2962,21 +2812,13 @@ class CreateRuleRequestRuleConditions(TeaModel):
         source_ip_config: CreateRuleRequestRuleConditionsSourceIpConfig = None,
         type: str = None,
     ):
-        # Cookie条件配置
         self.cookie_config = cookie_config
-        # HTTP标头条件配置
         self.header_config = header_config
-        # 主机名条件配置
         self.host_config = host_config
-        # HTTP请求方法条件配置
         self.method_config = method_config
-        # 路径条件配置
         self.path_config = path_config
-        # 查询字符串条件配置
         self.query_string_config = query_string_config
-        # 基于源IP业务流量匹配
         self.source_ip_config = source_ip_config
-        # 条件类型
         self.type = type
 
     def validate(self):
@@ -3058,19 +2900,12 @@ class CreateRuleRequest(TeaModel):
         rule_conditions: List[CreateRuleRequestRuleConditions] = None,
         rule_name: str = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 监听标识
         self.listener_id = listener_id
-        # 转发规则优先级
         self.priority = priority
-        # 转发规则动作
         self.rule_actions = rule_actions
-        # 转发规则条件
         self.rule_conditions = rule_conditions
-        # 转发规则名称
         self.rule_name = rule_name
 
     def validate(self):
@@ -3141,11 +2976,8 @@ class CreateRuleResponseBody(TeaModel):
         request_id: str = None,
         rule_id: str = None,
     ):
-        # 异步任务Id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
-        # 转发规则标识
         self.rule_id = rule_id
 
     def validate(self):
@@ -3227,11 +3059,8 @@ class CreateRulesRequestRulesRuleActionsFixedResponseConfig(TeaModel):
         content_type: str = None,
         http_code: str = None,
     ):
-        # 内容
         self.content = content
-        # 内容类型
         self.content_type = content_type
-        # HTTP响应码
         self.http_code = http_code
 
     def validate(self):
@@ -3268,9 +3097,7 @@ class CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySessi
         enabled: bool = None,
         timeout: int = None,
     ):
-        # 是否开启会话保持
         self.enabled = enabled
-        # 超时时间
         self.timeout = timeout
 
     def validate(self):
@@ -3303,9 +3130,7 @@ class CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples(TeaM
         server_group_id: str = None,
         weight: int = None,
     ):
-        # 服务器组标识
         self.server_group_id = server_group_id
-        # 权重
         self.weight = weight
 
     def validate(self):
@@ -3338,9 +3163,7 @@ class CreateRulesRequestRulesRuleActionsForwardGroupConfig(TeaModel):
         server_group_sticky_session: CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession = None,
         server_group_tuples: List[CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples] = None,
     ):
-        # 服务器组之间会话保持
         self.server_group_sticky_session = server_group_sticky_session
-        # 转发到的目的服务器组列表
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -3385,11 +3208,8 @@ class CreateRulesRequestRulesRuleActionsInsertHeaderConfig(TeaModel):
         value: str = None,
         value_type: str = None,
     ):
-        # HTTP标头
         self.key = key
-        # HTTP标头内容
         self.value = value
-        # 取值类型
         self.value_type = value_type
 
     def validate(self):
@@ -3430,17 +3250,11 @@ class CreateRulesRequestRulesRuleActionsRedirectConfig(TeaModel):
         protocol: str = None,
         query: str = None,
     ):
-        # 要跳转的主机地址
         self.host = host
-        # 跳转方式
         self.http_code = http_code
-        # 要跳转的路径
         self.path = path
-        # 要跳转的端口
         self.port = port
-        # 要跳转的协议
         self.protocol = protocol
-        # 要跳转的查询字符串
         self.query = query
 
     def validate(self):
@@ -3490,11 +3304,8 @@ class CreateRulesRequestRulesRuleActionsRewriteConfig(TeaModel):
         path: str = None,
         query: str = None,
     ):
-        # 主机名
         self.host = host
-        # 路径
         self.path = path
-        # 查询
         self.query = query
 
     def validate(self):
@@ -3528,8 +3339,10 @@ class CreateRulesRequestRulesRuleActionsRewriteConfig(TeaModel):
 class CreateRulesRequestRulesRuleActionsTrafficLimitConfig(TeaModel):
     def __init__(
         self,
+        per_ip_qps: int = None,
         qps: int = None,
     ):
+        self.per_ip_qps = per_ip_qps
         self.qps = qps
 
     def validate(self):
@@ -3541,12 +3354,16 @@ class CreateRulesRequestRulesRuleActionsTrafficLimitConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.per_ip_qps is not None:
+            result['PerIpQps'] = self.per_ip_qps
         if self.qps is not None:
             result['QPS'] = self.qps
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PerIpQps') is not None:
+            self.per_ip_qps = m.get('PerIpQps')
         if m.get('QPS') is not None:
             self.qps = m.get('QPS')
         return self
@@ -3620,9 +3437,7 @@ class CreateRulesRequestRulesRuleActionsTrafficMirrorConfig(TeaModel):
         mirror_group_config: CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
         target_type: str = None,
     ):
-        # 镜像至服务器组
         self.mirror_group_config = mirror_group_config
-        # 镜像目标类型
         self.target_type = target_type
 
     def validate(self):
@@ -3664,23 +3479,14 @@ class CreateRulesRequestRulesRuleActions(TeaModel):
         traffic_mirror_config: CreateRulesRequestRulesRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
-        # 返回固定内容动作配置
         self.fixed_response_config = fixed_response_config
-        # 转发组动作配置
         self.forward_group_config = forward_group_config
-        # 插入头部动作配置
         self.insert_header_config = insert_header_config
-        # 优先级
         self.order = order
-        # 重定向动作配置
         self.redirect_config = redirect_config
-        # 内部重定向动作配置
         self.rewrite_config = rewrite_config
-        # 流量限速
         self.traffic_limit_config = traffic_limit_config
-        # 流量镜像
         self.traffic_mirror_config = traffic_mirror_config
-        # 转发规则动作类型
         self.type = type
 
     def validate(self):
@@ -3761,9 +3567,7 @@ class CreateRulesRequestRulesRuleConditionsCookieConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Cookie条件键
         self.key = key
-        # Cookie条件值
         self.value = value
 
     def validate(self):
@@ -3795,7 +3599,6 @@ class CreateRulesRequestRulesRuleConditionsCookieConfig(TeaModel):
         self,
         values: List[CreateRulesRequestRulesRuleConditionsCookieConfigValues] = None,
     ):
-        # Cookie键值对列表
         self.values = values
 
     def validate(self):
@@ -3832,9 +3635,7 @@ class CreateRulesRequestRulesRuleConditionsHeaderConfig(TeaModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # HTTP标头键
         self.key = key
-        # HTTP标头值列表
         self.values = values
 
     def validate(self):
@@ -3866,7 +3667,6 @@ class CreateRulesRequestRulesRuleConditionsHostConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # 主机名列表
         self.values = values
 
     def validate(self):
@@ -3894,7 +3694,6 @@ class CreateRulesRequestRulesRuleConditionsMethodConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # HTTP请求方法列表
         self.values = values
 
     def validate(self):
@@ -3922,7 +3721,6 @@ class CreateRulesRequestRulesRuleConditionsPathConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # 路径条件列表
         self.values = values
 
     def validate(self):
@@ -3951,9 +3749,7 @@ class CreateRulesRequestRulesRuleConditionsQueryStringConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 查询字符串条件键
         self.key = key
-        # 查询字符串条件值
         self.value = value
 
     def validate(self):
@@ -3985,7 +3781,6 @@ class CreateRulesRequestRulesRuleConditionsQueryStringConfig(TeaModel):
         self,
         values: List[CreateRulesRequestRulesRuleConditionsQueryStringConfigValues] = None,
     ):
-        # 查询字符串条件键值对列表
         self.values = values
 
     def validate(self):
@@ -4022,9 +3817,7 @@ class CreateRulesRequestRulesRuleConditionsResponseHeaderConfig(TeaModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # 返回HTTP标头键
         self.key = key
-        # 返回HTTP标头值
         self.values = values
 
     def validate(self):
@@ -4056,7 +3849,6 @@ class CreateRulesRequestRulesRuleConditionsSourceIpConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # 基于源IP业务流量匹配
         self.values = values
 
     def validate(self):
@@ -4092,23 +3884,14 @@ class CreateRulesRequestRulesRuleConditions(TeaModel):
         source_ip_config: CreateRulesRequestRulesRuleConditionsSourceIpConfig = None,
         type: str = None,
     ):
-        # Cookie条件配置
         self.cookie_config = cookie_config
-        # HTTP标头条件配置
         self.header_config = header_config
-        # 主机名条件配置
         self.host_config = host_config
-        # HTTP请求方法条件配置
         self.method_config = method_config
-        # 路径条件配置
         self.path_config = path_config
-        # 查询字符串条件配置
         self.query_string_config = query_string_config
-        # 返回HTTP标头
         self.response_header_config = response_header_config
-        # 基于源IP业务流量匹配
         self.source_ip_config = source_ip_config
-        # 条件类型
         self.type = type
 
     def validate(self):
@@ -4195,15 +3978,10 @@ class CreateRulesRequestRules(TeaModel):
         rule_conditions: List[CreateRulesRequestRulesRuleConditions] = None,
         rule_name: str = None,
     ):
-        # 转发规则方向
         self.direction = direction
-        # 转发规则优先级
         self.priority = priority
-        # 转发规则动作
         self.rule_actions = rule_actions
-        # 转发规则条件
         self.rule_conditions = rule_conditions
-        # 转发规则名称
         self.rule_name = rule_name
 
     def validate(self):
@@ -4267,13 +4045,9 @@ class CreateRulesRequest(TeaModel):
         listener_id: str = None,
         rules: List[CreateRulesRequestRules] = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 监听标识
         self.listener_id = listener_id
-        # 转发规则列表
         self.rules = rules
 
     def validate(self):
@@ -4322,9 +4096,7 @@ class CreateRulesResponseBodyRuleIds(TeaModel):
         priority: int = None,
         rule_id: str = None,
     ):
-        # 转发规则优先级
         self.priority = priority
-        # 转发规则标识
         self.rule_id = rule_id
 
     def validate(self):
@@ -4358,11 +4130,8 @@ class CreateRulesResponseBody(TeaModel):
         request_id: str = None,
         rule_ids: List[CreateRulesResponseBodyRuleIds] = None,
     ):
-        # 异步任务Id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
-        # 转发规则标识列表
         self.rule_ids = rule_ids
 
     def validate(self):
@@ -4455,17 +4224,11 @@ class CreateSecurityPolicyRequest(TeaModel):
         security_policy_name: str = None,
         tlsversions: List[str] = None,
     ):
-        # 加密套件
         self.ciphers = ciphers
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 资源组id
         self.resource_group_id = resource_group_id
-        # 安全策略名称
         self.security_policy_name = security_policy_name
-        # tls版本
         self.tlsversions = tlsversions
 
     def validate(self):
@@ -4514,9 +4277,7 @@ class CreateSecurityPolicyResponseBody(TeaModel):
         request_id: str = None,
         security_policy_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 安全策略id
         self.security_policy_id = security_policy_id
 
     def validate(self):
@@ -4603,29 +4364,17 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
-        # 健康检查正常的状态码
         self.health_check_codes = health_check_codes
-        # 健康检查端口
         self.health_check_connect_port = health_check_connect_port
-        # 是否启用健康检查
         self.health_check_enabled = health_check_enabled
-        # 健康检查域名
         self.health_check_host = health_check_host
-        # 健康检查HTTP协议版本
         self.health_check_http_version = health_check_http_version
-        # 健康检查间隔
         self.health_check_interval = health_check_interval
-        # 健康检查方法
         self.health_check_method = health_check_method
-        # 健康检查Path
         self.health_check_path = health_check_path
-        # 健康检查协议类型
         self.health_check_protocol = health_check_protocol
-        # 健康检查超时时间
         self.health_check_timeout = health_check_timeout
-        # 健康检查成功判定阈值
         self.healthy_threshold = healthy_threshold
-        # 健康检查不成功判定阈值
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -4700,13 +4449,9 @@ class CreateServerGroupRequestStickySessionConfig(TeaModel):
         sticky_session_enabled: bool = None,
         sticky_session_type: str = None,
     ):
-        # 服务器上配置的Cookie
         self.cookie = cookie
-        # 服务器上配置的Cookie
         self.cookie_timeout = cookie_timeout
-        # 是否启用会话保持
         self.sticky_session_enabled = sticky_session_enabled
-        # 会话保持类型
         self.sticky_session_type = sticky_session_type
 
     def validate(self):
@@ -4756,27 +4501,16 @@ class CreateServerGroupRequest(TeaModel):
         sticky_session_config: CreateServerGroupRequestStickySessionConfig = None,
         vpc_id: str = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 健康检查配置
         self.health_check_config = health_check_config
-        # 后端协议类型
         self.protocol = protocol
-        # 资源组id
         self.resource_group_id = resource_group_id
-        # 调度策略
         self.scheduler = scheduler
-        # 服务器组名称
         self.server_group_name = server_group_name
-        # 服务器组类型
         self.server_group_type = server_group_type
-        # 服务器名称
         self.service_name = service_name
-        # 会话保持配置
         self.sticky_session_config = sticky_session_config
-        # VpcId
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4851,11 +4585,8 @@ class CreateServerGroupResponseBody(TeaModel):
         request_id: str = None,
         server_group_id: str = None,
     ):
-        # 异步任务Id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
-        # 服务器组id
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -4937,11 +4668,8 @@ class DeleteAclRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
     ):
-        # 访问控制策略id
         self.acl_id = acl_id
-        # 幂等Token
         self.client_token = client_token
-        # DryRun
         self.dry_run = dry_run
 
     def validate(self):
@@ -4978,9 +4706,7 @@ class DeleteAclResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -5058,11 +4784,8 @@ class DeleteHealthCheckTemplatesRequest(TeaModel):
         dry_run: bool = None,
         health_check_template_ids: List[str] = None,
     ):
-        # 幂等token
         self.client_token = client_token
-        # dryRun
         self.dry_run = dry_run
-        # 健康检查模板Id列表
         self.health_check_template_ids = health_check_template_ids
 
     def validate(self):
@@ -5098,7 +4821,6 @@ class DeleteHealthCheckTemplatesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -5172,11 +4894,8 @@ class DeleteListenerRequest(TeaModel):
         dry_run: bool = None,
         listener_id: str = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 监听id
         self.listener_id = listener_id
 
     def validate(self):
@@ -5213,9 +4932,7 @@ class DeleteListenerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -5293,11 +5010,8 @@ class DeleteLoadBalancerRequest(TeaModel):
         dry_run: bool = None,
         load_balancer_id: str = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 实例id
         self.load_balancer_id = load_balancer_id
 
     def validate(self):
@@ -5334,9 +5048,7 @@ class DeleteLoadBalancerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -5414,11 +5126,8 @@ class DeleteRuleRequest(TeaModel):
         dry_run: bool = None,
         rule_id: str = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 转发规则标识
         self.rule_id = rule_id
 
     def validate(self):
@@ -5455,9 +5164,7 @@ class DeleteRuleResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务Id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -5535,11 +5242,8 @@ class DeleteRulesRequest(TeaModel):
         dry_run: bool = None,
         rule_ids: List[str] = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 同一个监听下的转发规则标识列表
         self.rule_ids = rule_ids
 
     def validate(self):
@@ -5576,9 +5280,7 @@ class DeleteRulesResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务Id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -5656,11 +5358,8 @@ class DeleteSecurityPolicyRequest(TeaModel):
         dry_run: bool = None,
         security_policy_id: str = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 安全策略Id
         self.security_policy_id = security_policy_id
 
     def validate(self):
@@ -5696,7 +5395,6 @@ class DeleteSecurityPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -5770,11 +5468,8 @@ class DeleteServerGroupRequest(TeaModel):
         dry_run: bool = None,
         server_group_id: str = None,
     ):
-        # 幂等参数
         self.client_token = client_token
-        # 是否DryRun
         self.dry_run = dry_run
-        # 服务器组id
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -5811,9 +5506,7 @@ class DeleteServerGroupResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # job
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -5889,7 +5582,6 @@ class DescribeRegionsRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
-        # 语言
         self.accept_language = accept_language
 
     def validate(self):
@@ -5919,11 +5611,8 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         region_endpoint: str = None,
         region_id: str = None,
     ):
-        # 名称
         self.local_name = local_name
-        # endpoint
         self.region_endpoint = region_endpoint
-        # RegionId
         self.region_id = region_id
 
     def validate(self):
@@ -5960,9 +5649,7 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # Region列表
         self.regions = regions
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -6047,9 +5734,7 @@ class DescribeZonesResponseBodyZones(TeaModel):
         local_name: str = None,
         zone_id: str = None,
     ):
-        # 可用区名称
         self.local_name = local_name
-        # 可用区id
         self.zone_id = zone_id
 
     def validate(self):
@@ -6082,9 +5767,7 @@ class DescribeZonesResponseBody(TeaModel):
         request_id: str = None,
         zones: List[DescribeZonesResponseBodyZones] = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 可用区列表
         self.zones = zones
 
     def validate(self):
@@ -6172,15 +5855,10 @@ class DetachCommonBandwidthPackageFromLoadBalancerRequest(TeaModel):
         load_balancer_id: str = None,
         region_id: str = None,
     ):
-        # 带宽包ID
         self.bandwidth_package_id = bandwidth_package_id
-        # 幂等参数
         self.client_token = client_token
-        # 预校验
         self.dry_run = dry_run
-        # 实例ID
         self.load_balancer_id = load_balancer_id
-        # 地域ID
         self.region_id = region_id
 
     def validate(self):
@@ -6225,9 +5903,7 @@ class DetachCommonBandwidthPackageFromLoadBalancerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务ID
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -6305,11 +5981,8 @@ class DisableDeletionProtectionRequest(TeaModel):
         dry_run: bool = None,
         resource_id: str = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 实例id
         self.resource_id = resource_id
 
     def validate(self):
@@ -6345,7 +6018,6 @@ class DisableDeletionProtectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -6419,11 +6091,8 @@ class DisableLoadBalancerAccessLogRequest(TeaModel):
         dry_run: bool = None,
         load_balancer_id: str = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 实例id
         self.load_balancer_id = load_balancer_id
 
     def validate(self):
@@ -6459,7 +6128,6 @@ class DisableLoadBalancerAccessLogResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -6534,13 +6202,9 @@ class DissociateAclsFromListenerRequest(TeaModel):
         dry_run: bool = None,
         listener_id: str = None,
     ):
-        # 访问控制策略Id
         self.acl_ids = acl_ids
-        # 幂等标识
         self.client_token = client_token
-        # 预检此次请求
         self.dry_run = dry_run
-        # 监听Id
         self.listener_id = listener_id
 
     def validate(self):
@@ -6581,9 +6245,7 @@ class DissociateAclsFromListenerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # 请求id
         self.request_id = request_id
 
     def validate(self):
@@ -6659,7 +6321,6 @@ class DissociateAdditionalCertificatesFromListenerRequestCertificates(TeaModel):
         self,
         certificate_id: str = None,
     ):
-        # 证书Id
         self.certificate_id = certificate_id
 
     def validate(self):
@@ -6690,13 +6351,9 @@ class DissociateAdditionalCertificatesFromListenerRequest(TeaModel):
         dry_run: bool = None,
         listener_id: str = None,
     ):
-        # 证书列表
         self.certificates = certificates
-        # 幂等Token
         self.client_token = client_token
-        # dryRun
         self.dry_run = dry_run
-        # 监听Id
         self.listener_id = listener_id
 
     def validate(self):
@@ -6745,9 +6402,7 @@ class DissociateAdditionalCertificatesFromListenerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -6825,11 +6480,8 @@ class EnableDeletionProtectionRequest(TeaModel):
         dry_run: bool = None,
         resource_id: str = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 实例id
         self.resource_id = resource_id
 
     def validate(self):
@@ -6865,7 +6517,6 @@ class EnableDeletionProtectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -6941,15 +6592,10 @@ class EnableLoadBalancerAccessLogRequest(TeaModel):
         log_project: str = None,
         log_store: str = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 实例id
         self.load_balancer_id = load_balancer_id
-        # 日志Project
         self.log_project = log_project
-        # 日志Store
         self.log_store = log_store
 
     def validate(self):
@@ -6993,7 +6639,6 @@ class EnableLoadBalancerAccessLogResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -7065,7 +6710,6 @@ class GetHealthCheckTemplateAttributeRequest(TeaModel):
         self,
         health_check_template_id: str = None,
     ):
-        # 健康检查模板Id
         self.health_check_template_id = health_check_template_id
 
     def validate(self):
@@ -7106,33 +6750,19 @@ class GetHealthCheckTemplateAttributeResponseBody(TeaModel):
         request_id: str = None,
         unhealthy_threshold: int = None,
     ):
-        # 状态码
         self.health_check_codes = health_check_codes
-        # 端口
         self.health_check_connect_port = health_check_connect_port
-        # 域名
         self.health_check_host = health_check_host
-        # 版本
         self.health_check_http_version = health_check_http_version
-        # 间隔时间
         self.health_check_interval = health_check_interval
-        # 方法
         self.health_check_method = health_check_method
-        # uri
         self.health_check_path = health_check_path
-        # 协议
         self.health_check_protocol = health_check_protocol
-        # 健康检查模板Id
         self.health_check_template_id = health_check_template_id
-        # 名称
         self.health_check_template_name = health_check_template_name
-        # 超时时间
         self.health_check_timeout = health_check_timeout
-        # 健康阈值
         self.healthy_threshold = healthy_threshold
-        # Id of the request
         self.request_id = request_id
-        # 不健康阈值
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -7256,7 +6886,6 @@ class GetListenerAttributeRequest(TeaModel):
         self,
         listener_id: str = None,
     ):
-        # 监听标识
         self.listener_id = listener_id
 
     def validate(self):
@@ -7285,9 +6914,7 @@ class GetListenerAttributeResponseBodyAclConfigAclRelations(TeaModel):
         acl_id: str = None,
         status: str = None,
     ):
-        # ACL标识
         self.acl_id = acl_id
-        # ACL与监听关联的状态
         self.status = status
 
     def validate(self):
@@ -7320,9 +6947,7 @@ class GetListenerAttributeResponseBodyAclConfig(TeaModel):
         acl_relations: List[GetListenerAttributeResponseBodyAclConfigAclRelations] = None,
         acl_type: str = None,
     ):
-        # 监听绑定的访问策略组
         self.acl_relations = acl_relations
-        # 访问控制类型
         self.acl_type = acl_type
 
     def validate(self):
@@ -7362,7 +6987,6 @@ class GetListenerAttributeResponseBodyCertificates(TeaModel):
         self,
         certificate_id: str = None,
     ):
-        # 正式标识
         self.certificate_id = certificate_id
 
     def validate(self):
@@ -7390,7 +7014,6 @@ class GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfigServerGrou
         self,
         server_group_id: str = None,
     ):
-        # 服务器组ID
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -7418,7 +7041,6 @@ class GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfig(TeaModel)
         self,
         server_group_tuples: List[GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfigServerGroupTuples] = None,
     ):
-        # 服务器组列表
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -7455,9 +7077,7 @@ class GetListenerAttributeResponseBodyDefaultActions(TeaModel):
         forward_group_config: GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfig = None,
         type: str = None,
     ):
-        # 转发到服务器组
         self.forward_group_config = forward_group_config
-        # 类型
         self.type = type
 
     def validate(self):
@@ -7493,11 +7113,8 @@ class GetListenerAttributeResponseBodyLogConfigAccessLogTracingConfig(TeaModel):
         tracing_sample: int = None,
         tracing_type: str = None,
     ):
-        # Xtrace功能状态
         self.tracing_enabled = tracing_enabled
-        # Xtrace功能状态
         self.tracing_sample = tracing_sample
-        # xtrace的类型
         self.tracing_type = tracing_type
 
     def validate(self):
@@ -7534,9 +7151,7 @@ class GetListenerAttributeResponseBodyLogConfig(TeaModel):
         access_log_record_customized_headers_enabled: bool = None,
         access_log_tracing_config: GetListenerAttributeResponseBodyLogConfigAccessLogTracingConfig = None,
     ):
-        # 访问日志是否开启携带自定义Header
         self.access_log_record_customized_headers_enabled = access_log_record_customized_headers_enabled
-        # 访问日志Xtrace相关的配置
         self.access_log_tracing_config = access_log_tracing_config
 
     def validate(self):
@@ -7571,9 +7186,7 @@ class GetListenerAttributeResponseBodyQuicConfig(TeaModel):
         quic_listener_id: str = None,
         quic_upgrade_enabled: bool = None,
     ):
-        # 需要关联的QUIC监听ID，HTTPS监听时有效，QuicUpgradeEnabled为true时必选
         self.quic_listener_id = quic_listener_id
-        # 是否开启quic升级，HTTPS监听时有效
         self.quic_upgrade_enabled = quic_upgrade_enabled
 
     def validate(self):
@@ -7611,37 +7224,28 @@ class GetListenerAttributeResponseBodyXForwardedForConfig(TeaModel):
         xforwarded_for_client_cert_issuer_dnenabled: bool = None,
         xforwarded_for_client_cert_subject_dnalias: str = None,
         xforwarded_for_client_cert_subject_dnenabled: bool = None,
+        xforwarded_for_client_source_ips_enabled: bool = None,
+        xforwarded_for_client_source_ips_trusted: str = None,
         xforwarded_for_client_src_port_enabled: bool = None,
         xforwarded_for_enabled: bool = None,
         xforwarded_for_proto_enabled: bool = None,
         xforwarded_for_slbid_enabled: bool = None,
         xforwarded_for_slbport_enabled: bool = None,
     ):
-        # 自定义HEADER头名称，只有当XForwardedForClientCertClientVerifyEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_client_verify_alias = xforwarded_for_client_cert_client_verify_alias
-        # 是否通过X-Forwarded-Clientcert-clientverify  头字段获取对访问负载均衡实例客户端证书的校验结果。HTTPS监听有效。
         self.xforwarded_for_client_cert_client_verify_enabled = xforwarded_for_client_cert_client_verify_enabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertFingerprintEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_fingerprint_alias = xforwarded_for_client_cert_fingerprint_alias
-        # 是否通过X-Forwarded-Clientcert-fingerprint 头字段获取访问负载均衡实例客户端证书的指纹取值，HTTPS监听有效。
         self.xforwarded_for_client_cert_fingerprint_enabled = xforwarded_for_client_cert_fingerprint_enabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertIssuerDNEnabled的值为‘On’的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_issuer_dnalias = xforwarded_for_client_cert_issuer_dnalias
-        # 是否通过 X-Forwarded-Clientcert-issuerdn 头字段获取访问负载均衡实例客户端证书的发行者信息。HTTPS监听有效。
         self.xforwarded_for_client_cert_issuer_dnenabled = xforwarded_for_client_cert_issuer_dnenabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertSubjectDNEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_subject_dnalias = xforwarded_for_client_cert_subject_dnalias
-        # 是否通过X-Forwarded-Clientcert-subjectdn  头字段获取访问负载均衡实例客户端证书的所有者信息。HTTPS监听有效。
         self.xforwarded_for_client_cert_subject_dnenabled = xforwarded_for_client_cert_subject_dnenabled
-        # 是否通过X-Forwarded-Client-Port 头字段获取访问负载均衡实例客户端的端口。HTTPS监听有效。
+        self.xforwarded_for_client_source_ips_enabled = xforwarded_for_client_source_ips_enabled
+        self.xforwarded_for_client_source_ips_trusted = xforwarded_for_client_source_ips_trusted
         self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
-        # 是否开启通过X-Forwarded-For头字段获取来访者真实 IP
         self.xforwarded_for_enabled = xforwarded_for_enabled
-        # 是否通过X-Forwarded-Proto头字段获取负载均衡实例的监听协议。
         self.xforwarded_for_proto_enabled = xforwarded_for_proto_enabled
-        # 是否通过SLB-ID头字段获取负载均衡实例ID。
         self.xforwarded_for_slbid_enabled = xforwarded_for_slbid_enabled
-        # 是否通过X-Forwarded-Port 头字段获取负载均衡实例的监听端口。HTTPS监听有效。
         self.xforwarded_for_slbport_enabled = xforwarded_for_slbport_enabled
 
     def validate(self):
@@ -7669,6 +7273,10 @@ class GetListenerAttributeResponseBodyXForwardedForConfig(TeaModel):
             result['XForwardedForClientCertSubjectDNAlias'] = self.xforwarded_for_client_cert_subject_dnalias
         if self.xforwarded_for_client_cert_subject_dnenabled is not None:
             result['XForwardedForClientCertSubjectDNEnabled'] = self.xforwarded_for_client_cert_subject_dnenabled
+        if self.xforwarded_for_client_source_ips_enabled is not None:
+            result['XForwardedForClientSourceIpsEnabled'] = self.xforwarded_for_client_source_ips_enabled
+        if self.xforwarded_for_client_source_ips_trusted is not None:
+            result['XForwardedForClientSourceIpsTrusted'] = self.xforwarded_for_client_source_ips_trusted
         if self.xforwarded_for_client_src_port_enabled is not None:
             result['XForwardedForClientSrcPortEnabled'] = self.xforwarded_for_client_src_port_enabled
         if self.xforwarded_for_enabled is not None:
@@ -7699,6 +7307,10 @@ class GetListenerAttributeResponseBodyXForwardedForConfig(TeaModel):
             self.xforwarded_for_client_cert_subject_dnalias = m.get('XForwardedForClientCertSubjectDNAlias')
         if m.get('XForwardedForClientCertSubjectDNEnabled') is not None:
             self.xforwarded_for_client_cert_subject_dnenabled = m.get('XForwardedForClientCertSubjectDNEnabled')
+        if m.get('XForwardedForClientSourceIpsEnabled') is not None:
+            self.xforwarded_for_client_source_ips_enabled = m.get('XForwardedForClientSourceIpsEnabled')
+        if m.get('XForwardedForClientSourceIpsTrusted') is not None:
+            self.xforwarded_for_client_source_ips_trusted = m.get('XForwardedForClientSourceIpsTrusted')
         if m.get('XForwardedForClientSrcPortEnabled') is not None:
             self.xforwarded_for_client_src_port_enabled = m.get('XForwardedForClientSrcPortEnabled')
         if m.get('XForwardedForEnabled') is not None:
@@ -7735,43 +7347,24 @@ class GetListenerAttributeResponseBody(TeaModel):
         security_policy_id: str = None,
         xforwarded_for_config: GetListenerAttributeResponseBodyXForwardedForConfig = None,
     ):
-        # ACL相关配置信息
         self.acl_config = acl_config
-        # 是否开启双向认证
         self.ca_enabled = ca_enabled
-        # 监听默认服务器证书列表，N当前取值范围为1
         self.certificates = certificates
-        # 默认动作
         self.default_actions = default_actions
-        # 是否开启Gzip压缩
         self.gzip_enabled = gzip_enabled
-        # 是否开启HTTP/2特性
         self.http_2enabled = http_2enabled
-        # 连接空闲超时时间
         self.idle_timeout = idle_timeout
-        # 监听描述
         self.listener_description = listener_description
-        # 监听标识
         self.listener_id = listener_id
-        # 监听端口
         self.listener_port = listener_port
-        # 监听协议
         self.listener_protocol = listener_protocol
-        # 监听状态
         self.listener_status = listener_status
-        # 负载均衡标识
         self.load_balancer_id = load_balancer_id
-        # 监听访问日志相关配置
         self.log_config = log_config
-        # HTTPS启用QUIC时相关属性
         self.quic_config = quic_config
-        # Id of the request
         self.request_id = request_id
-        # 请求超时时间
         self.request_timeout = request_timeout
-        # 安全策略
         self.security_policy_id = security_policy_id
-        # XForward字段相关的配置
         self.xforwarded_for_config = xforwarded_for_config
 
     def validate(self):
@@ -7947,9 +7540,7 @@ class GetListenerHealthStatusRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # 是否包含转发规则健康检查结果
         self.include_rule = include_rule
-        # 监听Id
         self.listener_id = listener_id
         self.max_results = max_results
         self.next_token = next_token
@@ -7993,11 +7584,8 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNon
         expected_response: str = None,
         reason_code: str = None,
     ):
-        # 后端实际的返回码信息
         self.actual_response = actual_response
-        # 用户预期的后端返回码信息
         self.expected_response = expected_response
-        # 失败reasonCode
         self.reason_code = reason_code
 
     def validate(self):
@@ -8037,15 +7625,10 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNon
         server_ip: str = None,
         status: str = None,
     ):
-        # 后端服务器端口
         self.port = port
-        # status为非正常状态时的详细异常原因
         self.reason = reason
-        # 后端服务器id
         self.server_id = server_id
-        # 后端服务器Ip
         self.server_ip = server_ip
-        # 健康检查状态
         self.status = status
 
     def validate(self):
@@ -8094,13 +7677,9 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos(Te
         non_normal_servers: List[GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers] = None,
         server_group_id: str = None,
     ):
-        # 服务器组使用类型
         self.action_type = action_type
-        # 健康检查开启/关闭
         self.health_check_enabled = health_check_enabled
-        # 处于非正常状态的后端服务器
         self.non_normal_servers = non_normal_servers
-        # 服务器组ID
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -8151,13 +7730,9 @@ class GetListenerHealthStatusResponseBodyListenerHealthStatus(TeaModel):
         listener_protocol: str = None,
         server_group_infos: List[GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos] = None,
     ):
-        # 监听Id
         self.listener_id = listener_id
-        # 监听的端口号
         self.listener_port = listener_port
-        # 监听的协议
         self.listener_protocol = listener_protocol
-        # 服务器组健康检查结果
         self.server_group_infos = server_group_infos
 
     def validate(self):
@@ -8207,11 +7782,8 @@ class GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNorm
         expected_response: str = None,
         reason_code: str = None,
     ):
-        # 后端实际的返回码信息
         self.actual_response = actual_response
-        # 用户预期的后端返回码信息
         self.expected_response = expected_response
-        # 失败reasonCode
         self.reason_code = reason_code
 
     def validate(self):
@@ -8251,15 +7823,10 @@ class GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNorm
         server_ip: str = None,
         status: str = None,
     ):
-        # 后端服务器端口
         self.port = port
-        # status为非正常状态时的详细异常原因
         self.reason = reason
-        # 后端服务器Id
         self.server_id = server_id
-        # 后端服务器ID
         self.server_ip = server_ip
-        # 健康检查状态
         self.status = status
 
     def validate(self):
@@ -8308,13 +7875,9 @@ class GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos(TeaMod
         non_normal_servers: List[GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers] = None,
         server_group_id: str = None,
     ):
-        # 服务器组使用类型
         self.action_type = action_type
-        # 健康检查开启/关闭
         self.health_check_enabled = health_check_enabled
-        # 处于非正常状态的后端服务器
         self.non_normal_servers = non_normal_servers
-        # 服务器组ID
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -8363,9 +7926,7 @@ class GetListenerHealthStatusResponseBodyRuleHealthStatus(TeaModel):
         rule_id: str = None,
         server_group_infos: List[GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos] = None,
     ):
-        # 转发规则ID
         self.rule_id = rule_id
-        # 服务器组健康检查结果
         self.server_group_infos = server_group_infos
 
     def validate(self):
@@ -8408,13 +7969,9 @@ class GetListenerHealthStatusResponseBody(TeaModel):
         request_id: str = None,
         rule_health_status: List[GetListenerHealthStatusResponseBodyRuleHealthStatus] = None,
     ):
-        # 监听健康检查结果
         self.listener_health_status = listener_health_status
-        # 下一页标识
         self.next_token = next_token
-        # 请求Id
         self.request_id = request_id
-        # 转发规则健康检查结果
         self.rule_health_status = rule_health_status
 
     def validate(self):
@@ -8515,7 +8072,6 @@ class GetLoadBalancerAttributeRequest(TeaModel):
         self,
         load_balancer_id: str = None,
     ):
-        # 实例标识
         self.load_balancer_id = load_balancer_id
 
     def validate(self):
@@ -8544,9 +8100,7 @@ class GetLoadBalancerAttributeResponseBodyAccessLogConfig(TeaModel):
         log_project: str = None,
         log_store: str = None,
     ):
-        # 访问日志投递的logProject
         self.log_project = log_project
-        # 删除保护开启时间
         self.log_store = log_store
 
     def validate(self):
@@ -8579,9 +8133,7 @@ class GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig(TeaModel):
         enabled: bool = None,
         enabled_time: str = None,
     ):
-        # 删除保护状态
         self.enabled = enabled
-        # 删除保护开启时间
         self.enabled_time = enabled_time
 
     def validate(self):
@@ -8613,7 +8165,6 @@ class GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig(TeaModel):
         self,
         pay_type: str = None,
     ):
-        # 实例的计费类型
         self.pay_type = pay_type
 
     def validate(self):
@@ -8642,9 +8193,7 @@ class GetLoadBalancerAttributeResponseBodyLoadBalancerOperationLocks(TeaModel):
         lock_reason: str = None,
         lock_type: str = None,
     ):
-        # 锁定原因
         self.lock_reason = lock_reason
-        # 锁定类型
         self.lock_type = lock_type
 
     def validate(self):
@@ -8677,9 +8226,7 @@ class GetLoadBalancerAttributeResponseBodyModificationProtectionConfig(TeaModel)
         reason: str = None,
         status: str = None,
     ):
-        # 设置修改保护状态的原因
         self.reason = reason
-        # 负载均衡修改保护状态
         self.status = status
 
     def validate(self):
@@ -8712,9 +8259,7 @@ class GetLoadBalancerAttributeResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 实例的标签键
         self.key = key
-        # 实例的标签值
         self.value = value
 
     def validate(self):
@@ -8747,9 +8292,7 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
         address: str = None,
         ipv_6address: str = None,
     ):
-        # IP地址
         self.address = address
-        # Ipv6地址
         self.ipv_6address = ipv_6address
 
     def validate(self):
@@ -8783,11 +8326,8 @@ class GetLoadBalancerAttributeResponseBodyZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # 固定VIP模式下，负载均衡在此可用区中的地址列表
         self.load_balancer_addresses = load_balancer_addresses
-        # 交换机标识
         self.v_switch_id = v_switch_id
-        # 可用区标识
         self.zone_id = zone_id
 
     def validate(self):
@@ -8853,51 +8393,28 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         vpc_id: str = None,
         zone_mappings: List[GetLoadBalancerAttributeResponseBodyZoneMappings] = None,
     ):
-        # 访问日志属性
         self.access_log_config = access_log_config
-        # 地址分配方式
         self.address_allocated_mode = address_allocated_mode
-        # 协议版本
         self.address_ip_version = address_ip_version
-        # 地址类型
         self.address_type = address_type
-        # 带宽包ID
         self.bandwidth_package_id = bandwidth_package_id
-        # 资源创建时间
         self.create_time = create_time
-        # DNS域名
         self.dnsname = dnsname
-        # 负载均衡删除保护相关信息
         self.deletion_protection_config = deletion_protection_config
-        # IPV6地址类型
         self.ipv_6address_type = ipv_6address_type
-        # 计费相关属性
         self.load_balancer_billing_config = load_balancer_billing_config
-        # 实例业务状态
         self.load_balancer_bussiness_status = load_balancer_bussiness_status
-        # 负载均衡的版本
         self.load_balancer_edition = load_balancer_edition
-        # 负载均衡标识
         self.load_balancer_id = load_balancer_id
-        # 实例名称
         self.load_balancer_name = load_balancer_name
-        # 锁定原因
         self.load_balancer_operation_locks = load_balancer_operation_locks
-        # 实例状态
         self.load_balancer_status = load_balancer_status
-        # 负载均衡修改保护相关信息
         self.modification_protection_config = modification_protection_config
-        # 地域
         self.region_id = region_id
-        # Id of the request
         self.request_id = request_id
-        # 企业资源组ID
         self.resource_group_id = resource_group_id
-        # 标签列表
         self.tags = tags
-        # Vpc网络ID
         self.vpc_id = vpc_id
-        # 负载均衡的可用区资源
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -9097,11 +8614,8 @@ class ListAclEntriesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # 访问控制策略Id
         self.acl_id = acl_id
-        # 查询数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
 
     def validate(self):
@@ -9139,11 +8653,8 @@ class ListAclEntriesResponseBodyAclEntries(TeaModel):
         entry: str = None,
         status: str = None,
     ):
-        # 描述信息
         self.description = description
-        # IP条目
         self.entry = entry
-        # 状态
         self.status = status
 
     def validate(self):
@@ -9183,15 +8694,10 @@ class ListAclEntriesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 访问控制列表
         self.acl_entries = acl_entries
-        # 本次查询返回记录数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # 总记录数
         self.total_count = total_count
 
     def validate(self):
@@ -9287,7 +8793,6 @@ class ListAclRelationsRequest(TeaModel):
         self,
         acl_ids: List[str] = None,
     ):
-        # 访问控制策略Id
         self.acl_ids = acl_ids
 
     def validate(self):
@@ -9319,15 +8824,10 @@ class ListAclRelationsResponseBodyAclRelationsRelatedListeners(TeaModel):
         load_balancer_id: str = None,
         status: str = None,
     ):
-        # 监听ID
         self.listener_id = listener_id
-        # 监听端口
         self.listener_port = listener_port
-        # 监听协议
         self.listener_protocol = listener_protocol
-        # 实例ID
         self.load_balancer_id = load_balancer_id
-        # 关联状态
         self.status = status
 
     def validate(self):
@@ -9372,9 +8872,7 @@ class ListAclRelationsResponseBodyAclRelations(TeaModel):
         acl_id: str = None,
         related_listeners: List[ListAclRelationsResponseBodyAclRelationsRelatedListeners] = None,
     ):
-        # 访问控制策略id
         self.acl_id = acl_id
-        # 关联的监听
         self.related_listeners = related_listeners
 
     def validate(self):
@@ -9415,9 +8913,7 @@ class ListAclRelationsResponseBody(TeaModel):
         acl_relations: List[ListAclRelationsResponseBodyAclRelations] = None,
         request_id: str = None,
     ):
-        # 访问控制列表
         self.acl_relations = acl_relations
-        # 请求id
         self.request_id = request_id
 
     def validate(self):
@@ -9505,15 +9001,10 @@ class ListAclsRequest(TeaModel):
         next_token: str = None,
         resource_group_id: str = None,
     ):
-        # 访问控制策略Id
         self.acl_ids = acl_ids
-        # 访问控制策略名称
         self.acl_names = acl_names
-        # 查询数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # 资源组ID
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -9562,17 +9053,11 @@ class ListAclsResponseBodyAcls(TeaModel):
         config_managed_enabled: bool = None,
         resource_group_id: str = None,
     ):
-        # 访问控制策略id
         self.acl_id = acl_id
-        # 访问控制策略名称
         self.acl_name = acl_name
-        # 状态
         self.acl_status = acl_status
-        # IP版本
         self.address_ipversion = address_ipversion
-        # 配置管理
         self.config_managed_enabled = config_managed_enabled
-        # 资源组ID
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -9624,15 +9109,10 @@ class ListAclsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 访问控制列表
         self.acls = acls
-        # 本次查询返回记录数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # 总记录数
         self.total_count = total_count
 
     def validate(self):
@@ -9735,21 +9215,13 @@ class ListAsynJobsRequest(TeaModel):
         resource_ids: List[str] = None,
         resource_type: str = None,
     ):
-        # 操作接口名
         self.api_name = api_name
-        # 任务过滤时间范围-开始时间
         self.begin_time = begin_time
-        # 任务过滤时间范围-结束时间
         self.end_time = end_time
-        # 任务ID列表
         self.job_ids = job_ids
-        # 本次读取的最大数据记录数量
         self.max_results = max_results
-        # 下一个查询开始Token
         self.next_token = next_token
-        # 资源实例ID列表
         self.resource_ids = resource_ids
-        # 资源类型类型
         self.resource_type = resource_type
 
     def validate(self):
@@ -9814,25 +9286,15 @@ class ListAsynJobsResponseBodyJobs(TeaModel):
         resource_type: str = None,
         status: str = None,
     ):
-        # openapi名称
         self.api_name = api_name
-        # 任务开始时间戳
         self.create_time = create_time
-        # 如果Status为失败，则为错误码
         self.error_code = error_code
-        # 如果Status为失败，则为错误信息
         self.error_message = error_message
-        # 任务ID
         self.id = id
-        # 任务结束时间戳
         self.modify_time = modify_time
-        # 操作类型
         self.operate_type = operate_type
-        # 关联的资源实例ID
         self.resource_id = resource_id
-        # 关联的资源类型
         self.resource_type = resource_type
-        # 任务状态
         self.status = status
 
     def validate(self):
@@ -9900,15 +9362,10 @@ class ListAsynJobsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 任务列表
         self.jobs = jobs
-        # 本次查询返回记录数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # 总记录数
         self.total_count = total_count
 
     def validate(self):
@@ -10007,13 +9464,9 @@ class ListHealthCheckTemplatesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # 健康检查模板ID列表
         self.health_check_template_ids = health_check_template_ids
-        # 健康检查模板名称列表
         self.health_check_template_names = health_check_template_names
-        # 查询数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
 
     def validate(self):
@@ -10065,31 +9518,18 @@ class ListHealthCheckTemplatesResponseBodyHealthCheckTemplates(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
-        # 状态码
         self.health_check_codes = health_check_codes
-        # 端口
         self.health_check_connect_port = health_check_connect_port
-        # 域名
         self.health_check_host = health_check_host
-        # 版本
         self.health_check_http_version = health_check_http_version
-        # 间隔时间
         self.health_check_interval = health_check_interval
-        # 方法
         self.health_check_method = health_check_method
-        # uri
         self.health_check_path = health_check_path
-        # 协议
         self.health_check_protocol = health_check_protocol
-        # 健康检查模板Id
         self.health_check_template_id = health_check_template_id
-        # 名称
         self.health_check_template_name = health_check_template_name
-        # 超时时间
         self.health_check_timeout = health_check_timeout
-        # 健康阈值
         self.healthy_threshold = healthy_threshold
-        # 不健康阈值
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -10169,15 +9609,10 @@ class ListHealthCheckTemplatesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 健康检查模板
         self.health_check_templates = health_check_templates
-        # 本次查询返回记录数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # 总记录数
         self.total_count = total_count
 
     def validate(self):
@@ -10276,13 +9711,9 @@ class ListListenerCertificatesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # 证书类型
         self.certificate_type = certificate_type
-        # 监听Id
         self.listener_id = listener_id
-        # 查询数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
 
     def validate(self):
@@ -10325,13 +9756,9 @@ class ListListenerCertificatesResponseBodyCertificates(TeaModel):
         is_default: bool = None,
         status: str = None,
     ):
-        # 证书Id
         self.certificate_id = certificate_id
-        # 证书类型
         self.certificate_type = certificate_type
-        # 是否为默认证书
         self.is_default = is_default
-        # 证书状态
         self.status = status
 
     def validate(self):
@@ -10375,15 +9802,10 @@ class ListListenerCertificatesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 监听SSL证书列表
         self.certificates = certificates
-        # 本次查询返回记录数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # 总记录数
         self.total_count = total_count
 
     def validate(self):
@@ -10483,15 +9905,10 @@ class ListListenersRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # 监听ID列表，N最大支持20
         self.listener_ids = listener_ids
-        # 监听协议
         self.listener_protocol = listener_protocol
-        # 实例ID列表，N最大支持20
         self.load_balancer_ids = load_balancer_ids
-        # 本次读取的最大数据记录数量，此参数为可选参数，取值1-100，用户传入为空时，默认为20。
         self.max_results = max_results
-        # 用来标记当前开始读取的位置，置空表示从头开始。
         self.next_token = next_token
 
     def validate(self):
@@ -10535,7 +9952,6 @@ class ListListenersResponseBodyListenersDefaultActionsForwardGroupConfigServerGr
         self,
         server_group_id: str = None,
     ):
-        # 服务器组ID
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -10563,7 +9979,6 @@ class ListListenersResponseBodyListenersDefaultActionsForwardGroupConfig(TeaMode
         self,
         server_group_tuples: List[ListListenersResponseBodyListenersDefaultActionsForwardGroupConfigServerGroupTuples] = None,
     ):
-        # 服务器组列表
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -10600,9 +10015,7 @@ class ListListenersResponseBodyListenersDefaultActions(TeaModel):
         forward_group_config: ListListenersResponseBodyListenersDefaultActionsForwardGroupConfig = None,
         type: str = None,
     ):
-        # 转发到服务器组
         self.forward_group_config = forward_group_config
-        # 类型
         self.type = type
 
     def validate(self):
@@ -10638,11 +10051,8 @@ class ListListenersResponseBodyListenersLogConfigAccessLogTracingConfig(TeaModel
         tracing_sample: int = None,
         tracing_type: str = None,
     ):
-        # Xtrace功能状态
         self.tracing_enabled = tracing_enabled
-        # Xtrace功能状态
         self.tracing_sample = tracing_sample
-        # xtrace的类型
         self.tracing_type = tracing_type
 
     def validate(self):
@@ -10679,9 +10089,7 @@ class ListListenersResponseBodyListenersLogConfig(TeaModel):
         access_log_record_customized_headers_enabled: bool = None,
         access_log_tracing_config: ListListenersResponseBodyListenersLogConfigAccessLogTracingConfig = None,
     ):
-        # 访问日志是否开启携带自定义Header
         self.access_log_record_customized_headers_enabled = access_log_record_customized_headers_enabled
-        # 访问日志Xtrace相关的配置
         self.access_log_tracing_config = access_log_tracing_config
 
     def validate(self):
@@ -10716,9 +10124,7 @@ class ListListenersResponseBodyListenersQuicConfig(TeaModel):
         quic_listener_id: str = None,
         quic_upgrade_enabled: bool = None,
     ):
-        # 需要关联的QUIC监听ID，HTTPS监听时有效，QuicUpgradeEnabled为true时必选
         self.quic_listener_id = quic_listener_id
-        # 是否开启quic升级，HTTPS监听时有效
         self.quic_upgrade_enabled = quic_upgrade_enabled
 
     def validate(self):
@@ -10756,37 +10162,28 @@ class ListListenersResponseBodyListenersXForwardedForConfig(TeaModel):
         xforwarded_for_client_cert_issuer_dnenabled: bool = None,
         xforwarded_for_client_cert_subject_dnalias: str = None,
         xforwarded_for_client_cert_subject_dnenabled: bool = None,
+        xforwarded_for_client_source_ips_enabled: bool = None,
+        xforwarded_for_client_source_ips_trusted: str = None,
         xforwarded_for_client_src_port_enabled: bool = None,
         xforwarded_for_enabled: bool = None,
         xforwarded_for_proto_enabled: bool = None,
         xforwarded_for_slbid_enabled: bool = None,
         xforwarded_for_slbport_enabled: bool = None,
     ):
-        # 自定义HEADER头名称，只有当XForwardedForClientCertClientVerifyEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_client_verify_alias = xforwarded_for_client_cert_client_verify_alias
-        # 是否通过X-Forwarded-Clientcert-clientverify  头字段获取对访问负载均衡实例客户端证书的校验结果。HTTPS监听有效。
         self.xforwarded_for_client_cert_client_verify_enabled = xforwarded_for_client_cert_client_verify_enabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertFingerprintEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_fingerprint_alias = xforwarded_for_client_cert_fingerprint_alias
-        # 是否通过X-Forwarded-Clientcert-fingerprint 头字段获取访问负载均衡实例客户端证书的指纹取值，HTTPS监听有效。
         self.xforwarded_for_client_cert_fingerprint_enabled = xforwarded_for_client_cert_fingerprint_enabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertIssuerDNEnabled的值为‘On’的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_issuer_dnalias = xforwarded_for_client_cert_issuer_dnalias
-        # 是否通过 X-Forwarded-Clientcert-issuerdn 头字段获取访问负载均衡实例客户端证书的发行者信息。HTTPS监听有效。
         self.xforwarded_for_client_cert_issuer_dnenabled = xforwarded_for_client_cert_issuer_dnenabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertSubjectDNEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_subject_dnalias = xforwarded_for_client_cert_subject_dnalias
-        # 是否通过X-Forwarded-Clientcert-subjectdn  头字段获取访问负载均衡实例客户端证书的所有者信息。HTTPS监听有效。
         self.xforwarded_for_client_cert_subject_dnenabled = xforwarded_for_client_cert_subject_dnenabled
-        # 是否通过X-Forwarded-Client-Port 头字段获取访问负载均衡实例客户端的端口。HTTPS监听有效。
+        self.xforwarded_for_client_source_ips_enabled = xforwarded_for_client_source_ips_enabled
+        self.xforwarded_for_client_source_ips_trusted = xforwarded_for_client_source_ips_trusted
         self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
-        # 是否开启通过X-Forwarded-For头字段获取来访者真实 IP
         self.xforwarded_for_enabled = xforwarded_for_enabled
-        # 是否通过X-Forwarded-Proto头字段获取负载均衡实例的监听协议。
         self.xforwarded_for_proto_enabled = xforwarded_for_proto_enabled
-        # 是否通过SLB-ID头字段获取负载均衡实例ID。
         self.xforwarded_for_slbid_enabled = xforwarded_for_slbid_enabled
-        # 是否通过X-Forwarded-Port 头字段获取负载均衡实例的监听端口。HTTPS监听有效。
         self.xforwarded_for_slbport_enabled = xforwarded_for_slbport_enabled
 
     def validate(self):
@@ -10814,6 +10211,10 @@ class ListListenersResponseBodyListenersXForwardedForConfig(TeaModel):
             result['XForwardedForClientCertSubjectDNAlias'] = self.xforwarded_for_client_cert_subject_dnalias
         if self.xforwarded_for_client_cert_subject_dnenabled is not None:
             result['XForwardedForClientCertSubjectDNEnabled'] = self.xforwarded_for_client_cert_subject_dnenabled
+        if self.xforwarded_for_client_source_ips_enabled is not None:
+            result['XForwardedForClientSourceIpsEnabled'] = self.xforwarded_for_client_source_ips_enabled
+        if self.xforwarded_for_client_source_ips_trusted is not None:
+            result['XForwardedForClientSourceIpsTrusted'] = self.xforwarded_for_client_source_ips_trusted
         if self.xforwarded_for_client_src_port_enabled is not None:
             result['XForwardedForClientSrcPortEnabled'] = self.xforwarded_for_client_src_port_enabled
         if self.xforwarded_for_enabled is not None:
@@ -10844,6 +10245,10 @@ class ListListenersResponseBodyListenersXForwardedForConfig(TeaModel):
             self.xforwarded_for_client_cert_subject_dnalias = m.get('XForwardedForClientCertSubjectDNAlias')
         if m.get('XForwardedForClientCertSubjectDNEnabled') is not None:
             self.xforwarded_for_client_cert_subject_dnenabled = m.get('XForwardedForClientCertSubjectDNEnabled')
+        if m.get('XForwardedForClientSourceIpsEnabled') is not None:
+            self.xforwarded_for_client_source_ips_enabled = m.get('XForwardedForClientSourceIpsEnabled')
+        if m.get('XForwardedForClientSourceIpsTrusted') is not None:
+            self.xforwarded_for_client_source_ips_trusted = m.get('XForwardedForClientSourceIpsTrusted')
         if m.get('XForwardedForClientSrcPortEnabled') is not None:
             self.xforwarded_for_client_src_port_enabled = m.get('XForwardedForClientSrcPortEnabled')
         if m.get('XForwardedForEnabled') is not None:
@@ -10876,35 +10281,20 @@ class ListListenersResponseBodyListeners(TeaModel):
         security_policy_id: str = None,
         xforwarded_for_config: ListListenersResponseBodyListenersXForwardedForConfig = None,
     ):
-        # 默认动作
         self.default_actions = default_actions
-        # 是否开启Gzip压缩
         self.gzip_enabled = gzip_enabled
-        # 是否开启HTTP/2特性
         self.http_2enabled = http_2enabled
-        # 连接空闲超时时间
         self.idle_timeout = idle_timeout
-        # 监听描述
         self.listener_description = listener_description
-        # 监听标识
         self.listener_id = listener_id
-        # 监听端口
         self.listener_port = listener_port
-        # 监听协议
         self.listener_protocol = listener_protocol
-        # 监听状态
         self.listener_status = listener_status
-        # 负载均衡标识
         self.load_balancer_id = load_balancer_id
-        # 监听访问日志相关配置
         self.log_config = log_config
-        # HTTPS启用QUIC时相关属性
         self.quic_config = quic_config
-        # 请求超时时间
         self.request_timeout = request_timeout
-        # 安全策略
         self.security_policy_id = security_policy_id
-        # XForward字段相关的配置
         self.xforwarded_for_config = xforwarded_for_config
 
     def validate(self):
@@ -11009,15 +10399,10 @@ class ListListenersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 监听列表
         self.listeners = listeners
-        # 本次请求所返回的最大记录条数。
         self.max_results = max_results
-        # 用来表示当前调用返回读取到的位置，空代表数据已经读取完毕。
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
         self.total_count = total_count
 
     def validate(self):
@@ -11114,9 +10499,7 @@ class ListLoadBalancersRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 实例的标签键
         self.key = key
-        # 实例的标签值
         self.value = value
 
     def validate(self):
@@ -11159,29 +10542,17 @@ class ListLoadBalancersRequest(TeaModel):
         vpc_ids: List[str] = None,
         zone_id: str = None,
     ):
-        # 负载均衡的地址类型
         self.address_type = address_type
-        # 实例业务状态
         self.load_balancer_bussiness_status = load_balancer_bussiness_status
-        # 实例ID列表，N最大支持20
         self.load_balancer_ids = load_balancer_ids
-        # 实例Name列表，N最大支持10
         self.load_balancer_names = load_balancer_names
-        # 实例状态
         self.load_balancer_status = load_balancer_status
-        # 本次读取的最大数据记录数量，此参数为可选参数，取值1-100，用户传入为空时，默认为20。
         self.max_results = max_results
-        # 用来标记当前开始读取的位置，置空表示从头开始。
         self.next_token = next_token
-        # 付费类型
         self.pay_type = pay_type
-        # 资源组ID
         self.resource_group_id = resource_group_id
-        # tag列表
         self.tag = tag
-        # vpcId列表
         self.vpc_ids = vpc_ids
-        # 可用区ID
         self.zone_id = zone_id
 
     def validate(self):
@@ -11262,9 +10633,7 @@ class ListLoadBalancersResponseBodyLoadBalancersAccessLogConfig(TeaModel):
         log_project: str = None,
         log_store: str = None,
     ):
-        # 访问日志投递的logProject
         self.log_project = log_project
-        # 删除保护开启时间
         self.log_store = log_store
 
     def validate(self):
@@ -11297,9 +10666,7 @@ class ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig(TeaMode
         enabled: bool = None,
         enabled_time: str = None,
     ):
-        # 删除保护状态
         self.enabled = enabled
-        # 删除保护开启时间
         self.enabled_time = enabled_time
 
     def validate(self):
@@ -11331,7 +10698,6 @@ class ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig(TeaMod
         self,
         pay_type: str = None,
     ):
-        # 实例的计费类型
         self.pay_type = pay_type
 
     def validate(self):
@@ -11360,9 +10726,7 @@ class ListLoadBalancersResponseBodyLoadBalancersLoadBalancerOperationLocks(TeaMo
         lock_reason: str = None,
         lock_type: str = None,
     ):
-        # 锁定的原因
         self.lock_reason = lock_reason
-        # 锁定的类型
         self.lock_type = lock_type
 
     def validate(self):
@@ -11395,9 +10759,7 @@ class ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig(Tea
         reason: str = None,
         status: str = None,
     ):
-        # 设置修改保护状态的原因
         self.reason = reason
-        # 负载均衡修改保护状态
         self.status = status
 
     def validate(self):
@@ -11430,9 +10792,7 @@ class ListLoadBalancersResponseBodyLoadBalancersTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 实例的标签键
         self.key = key
-        # 实例的标签值
         self.value = value
 
     def validate(self):
@@ -11483,45 +10843,25 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         tags: List[ListLoadBalancersResponseBodyLoadBalancersTags] = None,
         vpc_id: str = None,
     ):
-        # 访问日志属性
         self.access_log_config = access_log_config
-        # 地址模式
         self.address_allocated_mode = address_allocated_mode
-        # 协议版本
         self.address_ip_version = address_ip_version
-        # 地址类型
         self.address_type = address_type
-        # 带宽包ID
         self.bandwidth_package_id = bandwidth_package_id
-        # 资源创建时间
         self.create_time = create_time
-        # DNS域名
         self.dnsname = dnsname
-        # 负载均衡删除保护相关信息
         self.deletion_protection_config = deletion_protection_config
-        # IPV6地址类型
         self.ipv_6address_type = ipv_6address_type
-        # 计费相关属性
         self.load_balancer_billing_config = load_balancer_billing_config
-        # 实例业务状态
         self.load_balancer_bussiness_status = load_balancer_bussiness_status
-        # 负载均衡的版本
         self.load_balancer_edition = load_balancer_edition
-        # 负载均衡标识
         self.load_balancer_id = load_balancer_id
-        # 实例名称
         self.load_balancer_name = load_balancer_name
-        # 锁定的原因
         self.load_balancer_operation_locks = load_balancer_operation_locks
-        # 实例状态
         self.load_balancer_status = load_balancer_status
-        # 负载均衡修改保护相关信息
         self.modification_protection_config = modification_protection_config
-        # 企业资源组ID
         self.resource_group_id = resource_group_id
-        # 标签列表
         self.tags = tags
-        # Vpc网络ID
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -11658,15 +10998,10 @@ class ListLoadBalancersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 实例列表
         self.load_balancers = load_balancers
-        # 本次请求所返回的最大记录条数。
         self.max_results = max_results
-        # 用来表示当前调用返回读取到的位置，空代表数据已经读取完毕。
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
         self.total_count = total_count
 
     def validate(self):
@@ -11766,15 +11101,10 @@ class ListRulesRequest(TeaModel):
         next_token: str = None,
         rule_ids: List[str] = None,
     ):
-        # 监听ID列表
         self.listener_ids = listener_ids
-        # 实例ID列表
         self.load_balancer_ids = load_balancer_ids
-        # 本次读取的最大数据记录数量，此参数为可选参数，取值1-100，用户传入为空时，默认为20。
         self.max_results = max_results
-        # 用来标记当前开始读取的位置，置空表示从头开始。
         self.next_token = next_token
-        # 转发规则ID列表，N最大支持20
         self.rule_ids = rule_ids
 
     def validate(self):
@@ -11820,11 +11150,8 @@ class ListRulesResponseBodyRulesRuleActionsFixedResponseConfig(TeaModel):
         content_type: str = None,
         http_code: str = None,
     ):
-        # 内容
         self.content = content
-        # 内容类型
         self.content_type = content_type
-        # HTTP响应码
         self.http_code = http_code
 
     def validate(self):
@@ -11861,9 +11188,7 @@ class ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples(T
         server_group_id: str = None,
         weight: int = None,
     ):
-        # 服务器组标识
         self.server_group_id = server_group_id
-        # 当ServerGroupTuple.N数量大于1时，可配置每个服务器组的权重
         self.weight = weight
 
     def validate(self):
@@ -11895,7 +11220,6 @@ class ListRulesResponseBodyRulesRuleActionsForwardGroupConfig(TeaModel):
         self,
         server_group_tuples: List[ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples] = None,
     ):
-        # 转发到的目的服务器组列表
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -11933,11 +11257,8 @@ class ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig(TeaModel):
         value: str = None,
         value_type: str = None,
     ):
-        # HTTP标头
         self.key = key
-        # HTTP标头内容
         self.value = value
-        # 取值类型
         self.value_type = value_type
 
     def validate(self):
@@ -11978,17 +11299,11 @@ class ListRulesResponseBodyRulesRuleActionsRedirectConfig(TeaModel):
         protocol: str = None,
         query: str = None,
     ):
-        # 要跳转的主机地址
         self.host = host
-        # 跳转方式
         self.http_code = http_code
-        # 要跳转的路径
         self.path = path
-        # 要跳转的端口
         self.port = port
-        # 要跳转的协议
         self.protocol = protocol
-        # 要跳转的查询字符串
         self.query = query
 
     def validate(self):
@@ -12038,11 +11353,8 @@ class ListRulesResponseBodyRulesRuleActionsRewriteConfig(TeaModel):
         path: str = None,
         query: str = None,
     ):
-        # 主机名
         self.host = host
-        # 路径
         self.path = path
-        # 查询
         self.query = query
 
     def validate(self):
@@ -12076,8 +11388,10 @@ class ListRulesResponseBodyRulesRuleActionsRewriteConfig(TeaModel):
 class ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig(TeaModel):
     def __init__(
         self,
+        per_ip_qps: int = None,
         qps: int = None,
     ):
+        self.per_ip_qps = per_ip_qps
         self.qps = qps
 
     def validate(self):
@@ -12089,12 +11403,16 @@ class ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.per_ip_qps is not None:
+            result['PerIpQps'] = self.per_ip_qps
         if self.qps is not None:
             result['QPS'] = self.qps
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PerIpQps') is not None:
+            self.per_ip_qps = m.get('PerIpQps')
         if m.get('QPS') is not None:
             self.qps = m.get('QPS')
         return self
@@ -12173,7 +11491,6 @@ class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig(TeaModel):
         self,
         mirror_group_config: ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
     ):
-        # TargetType为服务器组时必选，目标服务器组
         self.mirror_group_config = mirror_group_config
 
     def validate(self):
@@ -12211,22 +11528,14 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
         traffic_mirror_config: ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
-        # 返回固定内容动作配置
         self.fixed_response_config = fixed_response_config
-        # 转发组动作配置
         self.forward_group_config = forward_group_config
-        # 插入头部动作配置
         self.insert_header_config = insert_header_config
-        # 优先级
         self.order = order
-        # 重定向动作配置
         self.redirect_config = redirect_config
-        # 内部重定向动作配置
         self.rewrite_config = rewrite_config
         self.traffic_limit_config = traffic_limit_config
-        # 流量镜像Action对应的配置，type为TrafficMirror时必填且有效
         self.traffic_mirror_config = traffic_mirror_config
-        # 转发规则动作类型
         self.type = type
 
     def validate(self):
@@ -12307,9 +11616,7 @@ class ListRulesResponseBodyRulesRuleConditionsCookieConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Cookie条件键
         self.key = key
-        # Cookie条件值
         self.value = value
 
     def validate(self):
@@ -12341,7 +11648,6 @@ class ListRulesResponseBodyRulesRuleConditionsCookieConfig(TeaModel):
         self,
         values: List[ListRulesResponseBodyRulesRuleConditionsCookieConfigValues] = None,
     ):
-        # Cookie键值对列表
         self.values = values
 
     def validate(self):
@@ -12378,9 +11684,7 @@ class ListRulesResponseBodyRulesRuleConditionsHeaderConfig(TeaModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # HTTP标头键
         self.key = key
-        # HTTP标头值列表
         self.values = values
 
     def validate(self):
@@ -12412,7 +11716,6 @@ class ListRulesResponseBodyRulesRuleConditionsHostConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # 主机名列表
         self.values = values
 
     def validate(self):
@@ -12440,7 +11743,6 @@ class ListRulesResponseBodyRulesRuleConditionsMethodConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # HTTP请求方法列表
         self.values = values
 
     def validate(self):
@@ -12468,7 +11770,6 @@ class ListRulesResponseBodyRulesRuleConditionsPathConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # 路径条件列表
         self.values = values
 
     def validate(self):
@@ -12497,9 +11798,7 @@ class ListRulesResponseBodyRulesRuleConditionsQueryStringConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 查询字符串条件键
         self.key = key
-        # 查询字符串条件值
         self.value = value
 
     def validate(self):
@@ -12531,7 +11830,6 @@ class ListRulesResponseBodyRulesRuleConditionsQueryStringConfig(TeaModel):
         self,
         values: List[ListRulesResponseBodyRulesRuleConditionsQueryStringConfigValues] = None,
     ):
-        # 查询字符串条件键值对列表
         self.values = values
 
     def validate(self):
@@ -12567,7 +11865,6 @@ class ListRulesResponseBodyRulesRuleConditionsSourceIpConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # 需要匹配的源IP列表
         self.values = values
 
     def validate(self):
@@ -12602,21 +11899,13 @@ class ListRulesResponseBodyRulesRuleConditions(TeaModel):
         source_ip_config: ListRulesResponseBodyRulesRuleConditionsSourceIpConfig = None,
         type: str = None,
     ):
-        # Cookie条件配置
         self.cookie_config = cookie_config
-        # HTTP标头条件配置
         self.header_config = header_config
-        # 主机名条件配置
         self.host_config = host_config
-        # HTTP请求方法条件配置
         self.method_config = method_config
-        # 路径条件配置
         self.path_config = path_config
-        # 查询字符串条件配置
         self.query_string_config = query_string_config
-        # 源IP业务流量匹配
         self.source_ip_config = source_ip_config
-        # 条件类型
         self.type = type
 
     def validate(self):
@@ -12699,21 +11988,13 @@ class ListRulesResponseBodyRules(TeaModel):
         rule_name: str = None,
         rule_status: str = None,
     ):
-        # 监听ID
         self.listener_id = listener_id
-        # 实例ID
         self.load_balancer_id = load_balancer_id
-        # 转发规则优先级
         self.priority = priority
-        # 转发规则动作
         self.rule_actions = rule_actions
-        # 转发规则条件
         self.rule_conditions = rule_conditions
-        # 转发规则标识
         self.rule_id = rule_id
-        # 转发规则名称
         self.rule_name = rule_name
-        # 转发规则状态
         self.rule_status = rule_status
 
     def validate(self):
@@ -12790,15 +12071,10 @@ class ListRulesResponseBody(TeaModel):
         rules: List[ListRulesResponseBodyRules] = None,
         total_count: int = None,
     ):
-        # 本次请求所返回的最大记录条数。
         self.max_results = max_results
-        # 用来表示当前调用返回读取到的位置，空代表数据已经读取完毕。
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # 转发规则列表
         self.rules = rules
-        # 本次请求条件下的数据总量。
         self.total_count = total_count
 
     def validate(self):
@@ -12898,15 +12174,10 @@ class ListSecurityPoliciesRequest(TeaModel):
         security_policy_ids: List[str] = None,
         security_policy_names: List[str] = None,
     ):
-        # 查询数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # 资源组ID
         self.resource_group_id = resource_group_id
-        # 安全策略id
         self.security_policy_ids = security_policy_ids
-        # 安全策略名称
         self.security_policy_names = security_policy_names
 
     def validate(self):
@@ -12955,17 +12226,11 @@ class ListSecurityPoliciesResponseBodySecurityPolicies(TeaModel):
         security_policy_status: str = None,
         tlsversions: List[str] = None,
     ):
-        # 加密套件
         self.ciphers = ciphers
-        # 资源组id
         self.resource_group_id = resource_group_id
-        # 安全策略id
         self.security_policy_id = security_policy_id
-        # 安全策略名称
         self.security_policy_name = security_policy_name
-        # 状态
         self.security_policy_status = security_policy_status
-        # TLS策略
         self.tlsversions = tlsversions
 
     def validate(self):
@@ -13017,15 +12282,10 @@ class ListSecurityPoliciesResponseBody(TeaModel):
         security_policies: List[ListSecurityPoliciesResponseBodySecurityPolicies] = None,
         total_count: int = None,
     ):
-        # 本次查询返回记录数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # 安全策略
         self.security_policies = security_policies
-        # 总记录数
         self.total_count = total_count
 
     def validate(self):
@@ -13121,7 +12381,6 @@ class ListSecurityPolicyRelationsRequest(TeaModel):
         self,
         security_policy_ids: List[str] = None,
     ):
-        # 安全策略id
         self.security_policy_ids = security_policy_ids
 
     def validate(self):
@@ -13152,13 +12411,9 @@ class ListSecurityPolicyRelationsResponseBodySecrityPolicyRelationsRelatedListen
         listener_protocol: str = None,
         load_balancer_id: str = None,
     ):
-        # 监听id
         self.listener_id = listener_id
-        # 监听端口
         self.listener_port = listener_port
-        # 监听协议
         self.listener_protocol = listener_protocol
-        # 实例id
         self.load_balancer_id = load_balancer_id
 
     def validate(self):
@@ -13199,9 +12454,7 @@ class ListSecurityPolicyRelationsResponseBodySecrityPolicyRelations(TeaModel):
         related_listeners: List[ListSecurityPolicyRelationsResponseBodySecrityPolicyRelationsRelatedListeners] = None,
         security_policy_id: str = None,
     ):
-        # 关联的监听列表
         self.related_listeners = related_listeners
-        # 安全策略id
         self.security_policy_id = security_policy_id
 
     def validate(self):
@@ -13242,9 +12495,7 @@ class ListSecurityPolicyRelationsResponseBody(TeaModel):
         request_id: str = None,
         secrity_policy_relations: List[ListSecurityPolicyRelationsResponseBodySecrityPolicyRelations] = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 安全策略关联关系
         self.secrity_policy_relations = secrity_policy_relations
 
     def validate(self):
@@ -13329,9 +12580,7 @@ class ListServerGroupServersRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键
         self.key = key
-        # 标签值
         self.value = value
 
     def validate(self):
@@ -13367,11 +12616,8 @@ class ListServerGroupServersRequest(TeaModel):
         server_ids: List[str] = None,
         tag: List[ListServerGroupServersRequestTag] = None,
     ):
-        # 查询数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # 服务器组id
         self.server_group_id = server_group_id
         self.server_ids = server_ids
         self.tag = tag
@@ -13432,21 +12678,13 @@ class ListServerGroupServersResponseBodyServers(TeaModel):
         status: str = None,
         weight: int = None,
     ):
-        # 描述信息
         self.description = description
-        # 端口
         self.port = port
-        # 服务器组id
         self.server_group_id = server_group_id
-        # 服务器id
         self.server_id = server_id
-        # 服务器ip
         self.server_ip = server_ip
-        # 后端服务器类型
         self.server_type = server_type
-        # 状态
         self.status = status
-        # 权重
         self.weight = weight
 
     def validate(self):
@@ -13506,15 +12744,10 @@ class ListServerGroupServersResponseBody(TeaModel):
         servers: List[ListServerGroupServersResponseBodyServers] = None,
         total_count: int = None,
     ):
-        # 本次查询返回记录数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # 后端服务器
         self.servers = servers
-        # 总记录数
         self.total_count = total_count
 
     def validate(self):
@@ -13611,9 +12844,7 @@ class ListServerGroupsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键
         self.key = key
-        # 标签值
         self.value = value
 
     def validate(self):
@@ -13651,19 +12882,12 @@ class ListServerGroupsRequest(TeaModel):
         tag: List[ListServerGroupsRequestTag] = None,
         vpc_id: str = None,
     ):
-        # 查询数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # 资源组ID
         self.resource_group_id = resource_group_id
-        # 服务器组Id列表
         self.server_group_ids = server_group_ids
-        # 服务器组名称
         self.server_group_names = server_group_names
-        # Tag列表
         self.tag = tag
-        # VpcId
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -13734,29 +12958,17 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheckConfig(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
-        # 状态码
         self.health_check_codes = health_check_codes
-        # 端口
         self.health_check_connect_port = health_check_connect_port
-        # 是否启用健康检查
         self.health_check_enabled = health_check_enabled
-        # 域名
         self.health_check_host = health_check_host
-        # 版本
         self.health_check_http_version = health_check_http_version
-        # 间隔时间
         self.health_check_interval = health_check_interval
-        # 方法
         self.health_check_method = health_check_method
-        # uri
         self.health_check_path = health_check_path
-        # 协议
         self.health_check_protocol = health_check_protocol
-        # 超时时间
         self.health_check_timeout = health_check_timeout
-        # 健康阈值
         self.healthy_threshold = healthy_threshold
-        # 不健康阈值
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -13831,13 +13043,9 @@ class ListServerGroupsResponseBodyServerGroupsStickySessionConfig(TeaModel):
         sticky_session_enabled: bool = None,
         sticky_session_type: str = None,
     ):
-        # Cookie
         self.cookie = cookie
-        # Cookie超时时间
         self.cookie_timeout = cookie_timeout
-        # 是否开启会话保持
         self.sticky_session_enabled = sticky_session_enabled
-        # 会话保持类型
         self.sticky_session_type = sticky_session_type
 
     def validate(self):
@@ -13878,9 +13086,7 @@ class ListServerGroupsResponseBodyServerGroupsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键
         self.key = key
-        # 标签值
         self.value = value
 
     def validate(self):
@@ -13927,37 +13133,21 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         upstream_keepalive_enabled: bool = None,
         vpc_id: str = None,
     ):
-        # 是否开启配置管理
         self.config_managed_enabled = config_managed_enabled
-        # 健康检查配置
         self.health_check_config = health_check_config
-        # 是否支持Ipv6
         self.ipv_6enabled = ipv_6enabled
-        # 服务器组协议
         self.protocol = protocol
-        # 资源组id
         self.resource_group_id = resource_group_id
-        # 调度策略
         self.scheduler = scheduler
-        # 服务器组内服务器数量
         self.server_count = server_count
-        # 服务器组Id
         self.server_group_id = server_group_id
-        # 服务器组名称
         self.server_group_name = server_group_name
-        # 服务器组状态
         self.server_group_status = server_group_status
-        # 服务器组类型
         self.server_group_type = server_group_type
-        # 服务器名称
         self.service_name = service_name
-        # 会话保持配置
         self.sticky_session_config = sticky_session_config
-        # 标签列表
         self.tags = tags
-        # 是否开启后端长链接
         self.upstream_keepalive_enabled = upstream_keepalive_enabled
-        # 服务器组所在VpcId
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -14063,15 +13253,10 @@ class ListServerGroupsResponseBody(TeaModel):
         server_groups: List[ListServerGroupsResponseBodyServerGroups] = None,
         total_count: int = None,
     ):
-        # 本次查询返回记录数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # 服务器组
         self.server_groups = server_groups
-        # 总记录数
         self.total_count = total_count
 
     def validate(self):
@@ -14169,11 +13354,8 @@ class ListSystemSecurityPoliciesResponseBodySecurityPolicies(TeaModel):
         security_policy_id: str = None,
         tlsversions: List[str] = None,
     ):
-        # 加密套件
         self.ciphers = ciphers
-        # 安全策略Id
         self.security_policy_id = security_policy_id
-        # 协议版本
         self.tlsversions = tlsversions
 
     def validate(self):
@@ -14210,9 +13392,7 @@ class ListSystemSecurityPoliciesResponseBody(TeaModel):
         request_id: str = None,
         security_policies: List[ListSystemSecurityPoliciesResponseBodySecurityPolicies] = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 安全策略
         self.security_policies = security_policies
 
     def validate(self):
@@ -14300,15 +13480,10 @@ class ListTagKeysRequest(TeaModel):
         next_token: str = None,
         resource_type: str = None,
     ):
-        # 标签类型
         self.category = category
-        # 具体的标签Key
         self.keyword = keyword
-        # 查询数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # 资源类型
         self.resource_type = resource_type
 
     def validate(self):
@@ -14353,9 +13528,7 @@ class ListTagKeysResponseBodyTagKeys(TeaModel):
         category: str = None,
         tag_key: str = None,
     ):
-        # 标签类型
         self.category = category
-        # 标签Key
         self.tag_key = tag_key
 
     def validate(self):
@@ -14391,15 +13564,10 @@ class ListTagKeysResponseBody(TeaModel):
         tag_keys: List[ListTagKeysResponseBodyTagKeys] = None,
         total_count: int = None,
     ):
-        # 本次查询返回记录数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # 标签Key列表
         self.tag_keys = tag_keys
-        # 总记录数
         self.total_count = total_count
 
     def validate(self):
@@ -14496,9 +13664,7 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键
         self.key = key
-        # 标签值
         self.value = value
 
     def validate(self):
@@ -14534,15 +13700,10 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
-        # 查询数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # 资源实例Id
         self.resource_id = resource_id
-        # 资源类型
         self.resource_type = resource_type
-        # 标签列表
         self.tag = tag
 
     def validate(self):
@@ -14597,13 +13758,9 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # 资源ID
         self.resource_id = resource_id
-        # 资源类型
         self.resource_type = resource_type
-        # 标签Key
         self.tag_key = tag_key
-        # 标签Value
         self.tag_value = tag_value
 
     def validate(self):
@@ -14646,13 +13803,9 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # 本次查询返回记录数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # 标签值列表
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -14748,15 +13901,10 @@ class ListTagValuesRequest(TeaModel):
         resource_type: str = None,
         tag_key: str = None,
     ):
-        # 查询数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # 资源实例Id
         self.resource_id = resource_id
-        # 资源类型
         self.resource_type = resource_type
-        # 具体的标签Key
         self.tag_key = tag_key
 
     def validate(self):
@@ -14804,15 +13952,10 @@ class ListTagValuesResponseBody(TeaModel):
         tag_values: List[str] = None,
         total_count: int = None,
     ):
-        # 本次查询返回记录数量
         self.max_results = max_results
-        # 分页查询标识
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # 标签值列表
         self.tag_values = tag_values
-        # 总记录数
         self.total_count = total_count
 
     def validate(self):
@@ -14902,11 +14045,8 @@ class MoveResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # 资源组id
         self.new_resource_group_id = new_resource_group_id
-        # 指定资源Id
         self.resource_id = resource_id
-        # 资源类型
         self.resource_type = resource_type
 
     def validate(self):
@@ -14942,7 +14082,6 @@ class MoveResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -15017,13 +14156,9 @@ class RemoveEntriesFromAclRequest(TeaModel):
         dry_run: bool = None,
         entries: List[str] = None,
     ):
-        # 访问控制策略Id
         self.acl_id = acl_id
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 条目列表
         self.entries = entries
 
     def validate(self):
@@ -15064,9 +14199,7 @@ class RemoveEntriesFromAclResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务Id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -15145,13 +14278,9 @@ class RemoveServersFromServerGroupRequestServers(TeaModel):
         server_ip: str = None,
         server_type: str = None,
     ):
-        # 后端端口号
         self.port = port
-        # 后端服务器id
         self.server_id = server_id
-        # 后端服务器ip
         self.server_ip = server_ip
-        # 后端服务器类型
         self.server_type = server_type
 
     def validate(self):
@@ -15194,13 +14323,9 @@ class RemoveServersFromServerGroupRequest(TeaModel):
         server_group_id: str = None,
         servers: List[RemoveServersFromServerGroupRequestServers] = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 后端服务器Id
         self.server_group_id = server_group_id
-        # 后端服务器
         self.servers = servers
 
     def validate(self):
@@ -15249,9 +14374,7 @@ class RemoveServersFromServerGroupResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -15332,17 +14455,11 @@ class ReplaceServersInServerGroupRequestAddedServers(TeaModel):
         server_type: str = None,
         weight: int = None,
     ):
-        # 描述信息
         self.description = description
-        # 后端端口号
         self.port = port
-        # 后端服务器id
         self.server_id = server_id
-        # 后端服务器ip
         self.server_ip = server_ip
-        # 后端服务器类型
         self.server_type = server_type
-        # 后端服务器权重
         self.weight = weight
 
     def validate(self):
@@ -15393,13 +14510,9 @@ class ReplaceServersInServerGroupRequestRemovedServers(TeaModel):
         server_ip: str = None,
         server_type: str = None,
     ):
-        # 端口
         self.port = port
-        # 后端服务器id
         self.server_id = server_id
-        # 后端服务器ip
         self.server_ip = server_ip
-        # 后端服务器类型
         self.server_type = server_type
 
     def validate(self):
@@ -15443,15 +14556,10 @@ class ReplaceServersInServerGroupRequest(TeaModel):
         removed_servers: List[ReplaceServersInServerGroupRequestRemovedServers] = None,
         server_group_id: str = None,
     ):
-        # 待添加后端服务器
         self.added_servers = added_servers
-        # 幂等Token
         self.client_token = client_token
-        # dryRun
         self.dry_run = dry_run
-        # 待删除后端服务器
         self.removed_servers = removed_servers
-        # 后端服务器Id
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -15513,9 +14621,7 @@ class ReplaceServersInServerGroupResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -15593,11 +14699,8 @@ class StartListenerRequest(TeaModel):
         dry_run: bool = None,
         listener_id: str = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 监听id
         self.listener_id = listener_id
 
     def validate(self):
@@ -15634,9 +14737,7 @@ class StartListenerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -15714,11 +14815,8 @@ class StopListenerRequest(TeaModel):
         dry_run: bool = None,
         listener_id: str = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 监听id
         self.listener_id = listener_id
 
     def validate(self):
@@ -15755,9 +14853,7 @@ class StopListenerResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -15834,9 +14930,7 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键
         self.key = key
-        # 标签值
         self.value = value
 
     def validate(self):
@@ -15870,11 +14964,8 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # 资源实例Id
         self.resource_id = resource_id
-        # 资源类型
         self.resource_type = resource_type
-        # 标签列表
         self.tag = tag
 
     def validate(self):
@@ -15918,7 +15009,6 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -15991,9 +15081,7 @@ class UnTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键
         self.key = key
-        # 标签值
         self.value = value
 
     def validate(self):
@@ -16029,15 +15117,10 @@ class UnTagResourcesRequest(TeaModel):
         tag: List[UnTagResourcesRequestTag] = None,
         tag_key: List[str] = None,
     ):
-        # 是否删除全部
         self.all = all
-        # 资源实例Id
         self.resource_id = resource_id
-        # 资源类型
         self.resource_type = resource_type
-        # 标签列表
         self.tag = tag
-        # 标签键列表
         self.tag_key = tag_key
 
     def validate(self):
@@ -16089,7 +15172,6 @@ class UnTagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -16164,13 +15246,9 @@ class UpdateAclAttributeRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
     ):
-        # AclId
         self.acl_id = acl_id
-        # 访问控制策略名称
         self.acl_name = acl_name
-        # 幂等参数
         self.client_token = client_token
-        # 是否预校验请求
         self.dry_run = dry_run
 
     def validate(self):
@@ -16210,7 +15288,6 @@ class UpdateAclAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -16296,35 +15373,20 @@ class UpdateHealthCheckTemplateAttributeRequest(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
-        # 幂等参数
         self.client_token = client_token
-        # dryRun
         self.dry_run = dry_run
-        # 状态码
         self.health_check_codes = health_check_codes
-        # 端口号
         self.health_check_connect_port = health_check_connect_port
-        # 域名
         self.health_check_host = health_check_host
-        # 版本
         self.health_check_http_version = health_check_http_version
-        # 时间间隔
         self.health_check_interval = health_check_interval
-        # 方法
         self.health_check_method = health_check_method
-        # uri
         self.health_check_path = health_check_path
-        # 协议
         self.health_check_protocol = health_check_protocol
-        # 健康检查模板ID
         self.health_check_template_id = health_check_template_id
-        # 名称
         self.health_check_template_name = health_check_template_name
-        # 超时时间
         self.health_check_timeout = health_check_timeout
-        # 健康阈值
         self.healthy_threshold = healthy_threshold
-        # 不健康阈值
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -16408,7 +15470,6 @@ class UpdateHealthCheckTemplateAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -16500,7 +15561,6 @@ class UpdateListenerAttributeRequestCertificates(TeaModel):
         self,
         certificate_id: str = None,
     ):
-        # 正式标识
         self.certificate_id = certificate_id
 
     def validate(self):
@@ -16528,7 +15588,6 @@ class UpdateListenerAttributeRequestDefaultActionsForwardGroupConfigServerGroupT
         self,
         server_group_id: str = None,
     ):
-        # 服务器组ID
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -16556,7 +15615,6 @@ class UpdateListenerAttributeRequestDefaultActionsForwardGroupConfig(TeaModel):
         self,
         server_group_tuples: List[UpdateListenerAttributeRequestDefaultActionsForwardGroupConfigServerGroupTuples] = None,
     ):
-        # 服务器组列表
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -16593,9 +15651,7 @@ class UpdateListenerAttributeRequestDefaultActions(TeaModel):
         forward_group_config: UpdateListenerAttributeRequestDefaultActionsForwardGroupConfig = None,
         type: str = None,
     ):
-        # 转发组
         self.forward_group_config = forward_group_config
-        # 动作类型
         self.type = type
 
     def validate(self):
@@ -16630,9 +15686,7 @@ class UpdateListenerAttributeRequestQuicConfig(TeaModel):
         quic_listener_id: str = None,
         quic_upgrade_enabled: bool = None,
     ):
-        # 需要关联的QUIC监听ID，HTTPS监听时有效，QuicUpgradeEnabled为true时必选
         self.quic_listener_id = quic_listener_id
-        # 是否开启quic升级，HTTPS监听时有效
         self.quic_upgrade_enabled = quic_upgrade_enabled
 
     def validate(self):
@@ -16670,37 +15724,28 @@ class UpdateListenerAttributeRequestXForwardedForConfig(TeaModel):
         xforwarded_for_client_cert_issuer_dnenabled: bool = None,
         xforwarded_for_client_cert_subject_dnalias: str = None,
         xforwarded_for_client_cert_subject_dnenabled: bool = None,
+        xforwarded_for_client_source_ips_enabled: bool = None,
+        xforwarded_for_client_source_ips_trusted: str = None,
         xforwarded_for_client_src_port_enabled: bool = None,
         xforwarded_for_enabled: bool = None,
         xforwarded_for_proto_enabled: bool = None,
         xforwarded_for_slbid_enabled: bool = None,
         xforwarded_for_slbport_enabled: bool = None,
     ):
-        # 自定义HEADER头名称，只有当XForwardedForClientCertClientVerifyEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_client_verify_alias = xforwarded_for_client_cert_client_verify_alias
-        # 是否通过X-Forwarded-Clientcert-clientverify  头字段获取对访问负载均衡实例客户端证书的校验结果。HTTPS监听有效。
         self.xforwarded_for_client_cert_client_verify_enabled = xforwarded_for_client_cert_client_verify_enabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertFingerprintEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_fingerprint_alias = xforwarded_for_client_cert_fingerprint_alias
-        # 是否通过X-Forwarded-Clientcert-fingerprint 头字段获取访问负载均衡实例客户端证书的指纹取值，HTTPS监听有效。
         self.xforwarded_for_client_cert_fingerprint_enabled = xforwarded_for_client_cert_fingerprint_enabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertIssuerDNEnabled的值为‘On’的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_issuer_dnalias = xforwarded_for_client_cert_issuer_dnalias
-        # 是否通过 X-Forwarded-Clientcert-issuerdn 头字段获取访问负载均衡实例客户端证书的发行者信息。HTTPS监听有效。
         self.xforwarded_for_client_cert_issuer_dnenabled = xforwarded_for_client_cert_issuer_dnenabled
-        # 自定义HEADER头名称，只有当XForwardedForClientCertSubjectDNEnabled的值为true的时候，此值才会生效；否则该值不会生效。HTTPS监听有效
         self.xforwarded_for_client_cert_subject_dnalias = xforwarded_for_client_cert_subject_dnalias
-        # 是否通过X-Forwarded-Clientcert-subjectdn  头字段获取访问负载均衡实例客户端证书的所有者信息。HTTPS监听有效。
         self.xforwarded_for_client_cert_subject_dnenabled = xforwarded_for_client_cert_subject_dnenabled
-        # 是否通过X-Forwarded-Client-Port 头字段获取访问负载均衡实例客户端的端口。HTTPS监听有效。
+        self.xforwarded_for_client_source_ips_enabled = xforwarded_for_client_source_ips_enabled
+        self.xforwarded_for_client_source_ips_trusted = xforwarded_for_client_source_ips_trusted
         self.xforwarded_for_client_src_port_enabled = xforwarded_for_client_src_port_enabled
-        # 是否开启通过X-Forwarded-For头字段获取来访者真实 IP
         self.xforwarded_for_enabled = xforwarded_for_enabled
-        # 是否通过X-Forwarded-Proto头字段获取负载均衡实例的监听协议。
         self.xforwarded_for_proto_enabled = xforwarded_for_proto_enabled
-        # 是否通过SLB-ID头字段获取负载均衡实例ID。
         self.xforwarded_for_slbid_enabled = xforwarded_for_slbid_enabled
-        # 是否通过X-Forwarded-Port 头字段获取负载均衡实例的监听端口。HTTPS监听有效。
         self.xforwarded_for_slbport_enabled = xforwarded_for_slbport_enabled
 
     def validate(self):
@@ -16728,6 +15773,10 @@ class UpdateListenerAttributeRequestXForwardedForConfig(TeaModel):
             result['XForwardedForClientCertSubjectDNAlias'] = self.xforwarded_for_client_cert_subject_dnalias
         if self.xforwarded_for_client_cert_subject_dnenabled is not None:
             result['XForwardedForClientCertSubjectDNEnabled'] = self.xforwarded_for_client_cert_subject_dnenabled
+        if self.xforwarded_for_client_source_ips_enabled is not None:
+            result['XForwardedForClientSourceIpsEnabled'] = self.xforwarded_for_client_source_ips_enabled
+        if self.xforwarded_for_client_source_ips_trusted is not None:
+            result['XForwardedForClientSourceIpsTrusted'] = self.xforwarded_for_client_source_ips_trusted
         if self.xforwarded_for_client_src_port_enabled is not None:
             result['XForwardedForClientSrcPortEnabled'] = self.xforwarded_for_client_src_port_enabled
         if self.xforwarded_for_enabled is not None:
@@ -16758,6 +15807,10 @@ class UpdateListenerAttributeRequestXForwardedForConfig(TeaModel):
             self.xforwarded_for_client_cert_subject_dnalias = m.get('XForwardedForClientCertSubjectDNAlias')
         if m.get('XForwardedForClientCertSubjectDNEnabled') is not None:
             self.xforwarded_for_client_cert_subject_dnenabled = m.get('XForwardedForClientCertSubjectDNEnabled')
+        if m.get('XForwardedForClientSourceIpsEnabled') is not None:
+            self.xforwarded_for_client_source_ips_enabled = m.get('XForwardedForClientSourceIpsEnabled')
+        if m.get('XForwardedForClientSourceIpsTrusted') is not None:
+            self.xforwarded_for_client_source_ips_trusted = m.get('XForwardedForClientSourceIpsTrusted')
         if m.get('XForwardedForClientSrcPortEnabled') is not None:
             self.xforwarded_for_client_src_port_enabled = m.get('XForwardedForClientSrcPortEnabled')
         if m.get('XForwardedForEnabled') is not None:
@@ -16790,35 +15843,20 @@ class UpdateListenerAttributeRequest(TeaModel):
         security_policy_id: str = None,
         xforwarded_for_config: UpdateListenerAttributeRequestXForwardedForConfig = None,
     ):
-        # 监听默认CA证书列表，N当前取值范围为1
         self.ca_certificates = ca_certificates
-        # 是否开启双向认证
         self.ca_enabled = ca_enabled
-        # 监听默认服务器证书列表，N当前取值范围为1
         self.certificates = certificates
-        # 幂等标识
         self.client_token = client_token
-        # 监听默认动作
         self.default_actions = default_actions
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 是否开启Gzip压缩
         self.gzip_enabled = gzip_enabled
-        # 是否开启HTTP/2特性
         self.http_2enabled = http_2enabled
-        # 连接空闲超时时间
         self.idle_timeout = idle_timeout
-        # 监听描述
         self.listener_description = listener_description
-        # 监听标识
         self.listener_id = listener_id
-        # HTTPS启用QUIC时相关属性
         self.quic_config = quic_config
-        # 请求超时时间
         self.request_timeout = request_timeout
-        # 安全策略
         self.security_policy_id = security_policy_id
-        # XForward字段相关的配置
         self.xforwarded_for_config = xforwarded_for_config
 
     def validate(self):
@@ -16935,9 +15973,7 @@ class UpdateListenerAttributeResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务Id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -17015,11 +16051,8 @@ class UpdateListenerLogConfigRequestAccessLogTracingConfig(TeaModel):
         tracing_sample: int = None,
         tracing_type: str = None,
     ):
-        # Xtrace功能状态
         self.tracing_enabled = tracing_enabled
-        # xtrace的采样率
         self.tracing_sample = tracing_sample
-        # xtrace的类型
         self.tracing_type = tracing_type
 
     def validate(self):
@@ -17059,15 +16092,10 @@ class UpdateListenerLogConfigRequest(TeaModel):
         dry_run: bool = None,
         listener_id: str = None,
     ):
-        # 是否开启携带自定义Header
         self.access_log_record_customized_headers_enabled = access_log_record_customized_headers_enabled
-        # 访问日志xtrace字段相关的配置
         self.access_log_tracing_config = access_log_tracing_config
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 监听标识
         self.listener_id = listener_id
 
     def validate(self):
@@ -17114,9 +16142,7 @@ class UpdateListenerLogConfigResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务Id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -17194,11 +16220,8 @@ class UpdateLoadBalancerAddressTypeConfigRequestZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # 弹性公网IP
         self.allocation_id = allocation_id
-        # 交换机标识
         self.v_switch_id = v_switch_id
-        # 可用区
         self.zone_id = zone_id
 
     def validate(self):
@@ -17238,15 +16261,10 @@ class UpdateLoadBalancerAddressTypeConfigRequest(TeaModel):
         load_balancer_id: str = None,
         zone_mappings: List[UpdateLoadBalancerAddressTypeConfigRequestZoneMappings] = None,
     ):
-        # 目标网络类型
         self.address_type = address_type
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 实例id
         self.load_balancer_id = load_balancer_id
-        # 可用区及交换机映射列表
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -17299,9 +16317,7 @@ class UpdateLoadBalancerAddressTypeConfigResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -17378,9 +16394,7 @@ class UpdateLoadBalancerAttributeRequestModificationProtectionConfig(TeaModel):
         reason: str = None,
         status: str = None,
     ):
-        # 设置修改保护状态的原因
         self.reason = reason
-        # 负载均衡修改保护状态
         self.status = status
 
     def validate(self):
@@ -17416,15 +16430,10 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
         load_balancer_name: str = None,
         modification_protection_config: UpdateLoadBalancerAttributeRequestModificationProtectionConfig = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 实例id
         self.load_balancer_id = load_balancer_id
-        # 名称
         self.load_balancer_name = load_balancer_name
-        # 负载均衡修改保护相关信息
         self.modification_protection_config = modification_protection_config
 
     def validate(self):
@@ -17471,9 +16480,7 @@ class UpdateLoadBalancerAttributeResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -17552,13 +16559,9 @@ class UpdateLoadBalancerEditionRequest(TeaModel):
         load_balancer_edition: str = None,
         load_balancer_id: str = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 实例版本
         self.load_balancer_edition = load_balancer_edition
-        # 实例Id
         self.load_balancer_id = load_balancer_id
 
     def validate(self):
@@ -17598,7 +16601,6 @@ class UpdateLoadBalancerEditionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -17671,9 +16673,7 @@ class UpdateLoadBalancerZonesRequestZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # 交换机标识
         self.v_switch_id = v_switch_id
-        # 可用区
         self.zone_id = zone_id
 
     def validate(self):
@@ -17708,13 +16708,9 @@ class UpdateLoadBalancerZonesRequest(TeaModel):
         load_balancer_id: str = None,
         zone_mappings: List[UpdateLoadBalancerZonesRequestZoneMappings] = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 实例id
         self.load_balancer_id = load_balancer_id
-        # 可用区及交换机映射列表
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -17763,9 +16759,7 @@ class UpdateLoadBalancerZonesResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -17843,11 +16837,8 @@ class UpdateRuleAttributeRequestRuleActionsFixedResponseConfig(TeaModel):
         content_type: str = None,
         http_code: str = None,
     ):
-        # 内容
         self.content = content
-        # 内容类型
         self.content_type = content_type
-        # HTTP响应码
         self.http_code = http_code
 
     def validate(self):
@@ -17884,9 +16875,7 @@ class UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySe
         enabled: bool = None,
         timeout: int = None,
     ):
-        # 是否开启会话保持
         self.enabled = enabled
-        # 超时时间
         self.timeout = timeout
 
     def validate(self):
@@ -17919,9 +16908,7 @@ class UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples(T
         server_group_id: str = None,
         weight: int = None,
     ):
-        # 服务器组标识
         self.server_group_id = server_group_id
-        # 权重
         self.weight = weight
 
     def validate(self):
@@ -17954,9 +16941,7 @@ class UpdateRuleAttributeRequestRuleActionsForwardGroupConfig(TeaModel):
         server_group_sticky_session: UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession = None,
         server_group_tuples: List[UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples] = None,
     ):
-        # 服务器组之间会话保持
         self.server_group_sticky_session = server_group_sticky_session
-        # 转发到的目的服务器组列表
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -18001,11 +16986,8 @@ class UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig(TeaModel):
         value: str = None,
         value_type: str = None,
     ):
-        # HTTP标头
         self.key = key
-        # HTTP标头内容
         self.value = value
-        # 取值类型
         self.value_type = value_type
 
     def validate(self):
@@ -18046,17 +17028,11 @@ class UpdateRuleAttributeRequestRuleActionsRedirectConfig(TeaModel):
         protocol: str = None,
         query: str = None,
     ):
-        # 要跳转的主机地址
         self.host = host
-        # 跳转方式
         self.http_code = http_code
-        # 要跳转的路径
         self.path = path
-        # 要跳转的端口
         self.port = port
-        # 要跳转的协议
         self.protocol = protocol
-        # 要跳转的查询字符串
         self.query = query
 
     def validate(self):
@@ -18106,11 +17082,8 @@ class UpdateRuleAttributeRequestRuleActionsRewriteConfig(TeaModel):
         path: str = None,
         query: str = None,
     ):
-        # 主机名
         self.host = host
-        # 路径
         self.path = path
-        # 查询
         self.query = query
 
     def validate(self):
@@ -18144,8 +17117,10 @@ class UpdateRuleAttributeRequestRuleActionsRewriteConfig(TeaModel):
 class UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig(TeaModel):
     def __init__(
         self,
+        per_ip_qps: int = None,
         qps: int = None,
     ):
+        self.per_ip_qps = per_ip_qps
         self.qps = qps
 
     def validate(self):
@@ -18157,12 +17132,16 @@ class UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.per_ip_qps is not None:
+            result['PerIpQps'] = self.per_ip_qps
         if self.qps is not None:
             result['QPS'] = self.qps
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PerIpQps') is not None:
+            self.per_ip_qps = m.get('PerIpQps')
         if m.get('QPS') is not None:
             self.qps = m.get('QPS')
         return self
@@ -18236,9 +17215,7 @@ class UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig(TeaModel):
         mirror_group_config: UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
         target_type: str = None,
     ):
-        # 镜像至服务器组
         self.mirror_group_config = mirror_group_config
-        # 镜像目标类型
         self.target_type = target_type
 
     def validate(self):
@@ -18280,23 +17257,14 @@ class UpdateRuleAttributeRequestRuleActions(TeaModel):
         traffic_mirror_config: UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
-        # 返回固定内容动作配置
         self.fixed_response_config = fixed_response_config
-        # 转发组动作配置
         self.forward_group_config = forward_group_config
-        # 插入头部动作配置
         self.insert_header_config = insert_header_config
-        # 优先级
         self.order = order
-        # 重定向动作配置
         self.redirect_config = redirect_config
-        # 内部重定向动作配置
         self.rewrite_config = rewrite_config
-        # 流量限速
         self.traffic_limit_config = traffic_limit_config
-        # 流量镜像
         self.traffic_mirror_config = traffic_mirror_config
-        # 转发规则动作类型
         self.type = type
 
     def validate(self):
@@ -18377,9 +17345,7 @@ class UpdateRuleAttributeRequestRuleConditionsCookieConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Cookie条件键
         self.key = key
-        # Cookie条件值
         self.value = value
 
     def validate(self):
@@ -18411,7 +17377,6 @@ class UpdateRuleAttributeRequestRuleConditionsCookieConfig(TeaModel):
         self,
         values: List[UpdateRuleAttributeRequestRuleConditionsCookieConfigValues] = None,
     ):
-        # Cookie键值对列表
         self.values = values
 
     def validate(self):
@@ -18448,9 +17413,7 @@ class UpdateRuleAttributeRequestRuleConditionsHeaderConfig(TeaModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # HTTP标头键
         self.key = key
-        # HTTP标头值列表
         self.values = values
 
     def validate(self):
@@ -18482,7 +17445,6 @@ class UpdateRuleAttributeRequestRuleConditionsHostConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # 主机名列表
         self.values = values
 
     def validate(self):
@@ -18510,7 +17472,6 @@ class UpdateRuleAttributeRequestRuleConditionsMethodConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # HTTP请求方法列表
         self.values = values
 
     def validate(self):
@@ -18538,7 +17499,6 @@ class UpdateRuleAttributeRequestRuleConditionsPathConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # 路径条件列表
         self.values = values
 
     def validate(self):
@@ -18567,9 +17527,7 @@ class UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 查询字符串条件键
         self.key = key
-        # 查询字符串条件值
         self.value = value
 
     def validate(self):
@@ -18601,7 +17559,6 @@ class UpdateRuleAttributeRequestRuleConditionsQueryStringConfig(TeaModel):
         self,
         values: List[UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues] = None,
     ):
-        # 查询字符串条件键值对列表
         self.values = values
 
     def validate(self):
@@ -18637,7 +17594,6 @@ class UpdateRuleAttributeRequestRuleConditionsSourceIpConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # 基于源IP业务流量匹配
         self.values = values
 
     def validate(self):
@@ -18672,21 +17628,13 @@ class UpdateRuleAttributeRequestRuleConditions(TeaModel):
         source_ip_config: UpdateRuleAttributeRequestRuleConditionsSourceIpConfig = None,
         type: str = None,
     ):
-        # Cookie条件配置
         self.cookie_config = cookie_config
-        # HTTP标头条件配置
         self.header_config = header_config
-        # 主机名条件配置
         self.host_config = host_config
-        # HTTP请求方法条件配置
         self.method_config = method_config
-        # 路径条件配置
         self.path_config = path_config
-        # 查询字符串条件配置
         self.query_string_config = query_string_config
-        # 基于源IP业务流量匹配
         self.source_ip_config = source_ip_config
-        # 条件类型
         self.type = type
 
     def validate(self):
@@ -18768,19 +17716,12 @@ class UpdateRuleAttributeRequest(TeaModel):
         rule_id: str = None,
         rule_name: str = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 转发规则优先级
         self.priority = priority
-        # 转发规则动作
         self.rule_actions = rule_actions
-        # 转发规则条件
         self.rule_conditions = rule_conditions
-        # 转发规则标识
         self.rule_id = rule_id
-        # 转发规则名称
         self.rule_name = rule_name
 
     def validate(self):
@@ -18850,9 +17791,7 @@ class UpdateRuleAttributeResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务Id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -18930,11 +17869,8 @@ class UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig(TeaModel):
         content_type: str = None,
         http_code: str = None,
     ):
-        # 内容
         self.content = content
-        # 内容类型
         self.content_type = content_type
-        # HTTP响应码
         self.http_code = http_code
 
     def validate(self):
@@ -18971,9 +17907,7 @@ class UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupSt
         enabled: bool = None,
         timeout: int = None,
     ):
-        # 是否开启会话保持
         self.enabled = enabled
-        # 超时时间
         self.timeout = timeout
 
     def validate(self):
@@ -19006,9 +17940,7 @@ class UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTu
         server_group_id: str = None,
         weight: int = None,
     ):
-        # 服务器组标识
         self.server_group_id = server_group_id
-        # 权重
         self.weight = weight
 
     def validate(self):
@@ -19041,9 +17973,7 @@ class UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig(TeaModel):
         server_group_sticky_session: UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession = None,
         server_group_tuples: List[UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples] = None,
     ):
-        # 服务器组之间会话保持
         self.server_group_sticky_session = server_group_sticky_session
-        # 转发到的目的服务器组列表
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -19089,13 +18019,9 @@ class UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig(TeaModel):
         value: str = None,
         value_type: str = None,
     ):
-        # 是否覆盖请求中的值
         self.cover_enabled = cover_enabled
-        # HTTP标头
         self.key = key
-        # HTTP标头内容
         self.value = value
-        # 取值类型
         self.value_type = value_type
 
     def validate(self):
@@ -19140,17 +18066,11 @@ class UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig(TeaModel):
         protocol: str = None,
         query: str = None,
     ):
-        # 要跳转的主机地址
         self.host = host
-        # 跳转方式
         self.http_code = http_code
-        # 要跳转的路径
         self.path = path
-        # 要跳转的端口
         self.port = port
-        # 要跳转的协议
         self.protocol = protocol
-        # 要跳转的查询字符串
         self.query = query
 
     def validate(self):
@@ -19198,7 +18118,6 @@ class UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig(TeaModel):
         self,
         key: str = None,
     ):
-        # HTTP标头键
         self.key = key
 
     def validate(self):
@@ -19228,11 +18147,8 @@ class UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig(TeaModel):
         path: str = None,
         query: str = None,
     ):
-        # 主机名
         self.host = host
-        # 路径
         self.path = path
-        # 查询
         self.query = query
 
     def validate(self):
@@ -19266,8 +18182,10 @@ class UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig(TeaModel):
 class UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig(TeaModel):
     def __init__(
         self,
+        per_ip_qps: int = None,
         qps: int = None,
     ):
+        self.per_ip_qps = per_ip_qps
         self.qps = qps
 
     def validate(self):
@@ -19279,12 +18197,16 @@ class UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.per_ip_qps is not None:
+            result['PerIpQps'] = self.per_ip_qps
         if self.qps is not None:
             result['QPS'] = self.qps
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PerIpQps') is not None:
+            self.per_ip_qps = m.get('PerIpQps')
         if m.get('QPS') is not None:
             self.qps = m.get('QPS')
         return self
@@ -19358,9 +18280,7 @@ class UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig(TeaModel):
         mirror_group_config: UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
         target_type: str = None,
     ):
-        # 镜像至服务器组
         self.mirror_group_config = mirror_group_config
-        # 镜像目标类型
         self.target_type = target_type
 
     def validate(self):
@@ -19403,25 +18323,15 @@ class UpdateRulesAttributeRequestRulesRuleActions(TeaModel):
         traffic_mirror_config: UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
-        # 返回固定内容动作配置
         self.fixed_response_config = fixed_response_config
-        # 转发组动作配置
         self.forward_group_config = forward_group_config
-        # 插入头部动作配置
         self.insert_header_config = insert_header_config
-        # 优先级
         self.order = order
-        # 重定向动作配置
         self.redirect_config = redirect_config
-        # 去除HTTP标头
         self.remove_header_config = remove_header_config
-        # 内部重定向动作配置
         self.rewrite_config = rewrite_config
-        # 流量限速
         self.traffic_limit_config = traffic_limit_config
-        # 流量镜像
         self.traffic_mirror_config = traffic_mirror_config
-        # 转发规则动作类型
         self.type = type
 
     def validate(self):
@@ -19509,9 +18419,7 @@ class UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues(TeaModel)
         key: str = None,
         value: str = None,
     ):
-        # Cookie条件键
         self.key = key
-        # Cookie条件值
         self.value = value
 
     def validate(self):
@@ -19543,7 +18451,6 @@ class UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig(TeaModel):
         self,
         values: List[UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues] = None,
     ):
-        # Cookie键值对列表
         self.values = values
 
     def validate(self):
@@ -19580,9 +18487,7 @@ class UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig(TeaModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # HTTP标头键
         self.key = key
-        # HTTP标头值列表
         self.values = values
 
     def validate(self):
@@ -19614,7 +18519,6 @@ class UpdateRulesAttributeRequestRulesRuleConditionsHostConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # 主机名列表
         self.values = values
 
     def validate(self):
@@ -19642,7 +18546,6 @@ class UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # HTTP请求方法列表
         self.values = values
 
     def validate(self):
@@ -19670,7 +18573,6 @@ class UpdateRulesAttributeRequestRulesRuleConditionsPathConfig(TeaModel):
         self,
         values: List[str] = None,
     ):
-        # 路径条件列表
         self.values = values
 
     def validate(self):
@@ -19699,9 +18601,7 @@ class UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues(TeaM
         key: str = None,
         value: str = None,
     ):
-        # 查询字符串条件键
         self.key = key
-        # 查询字符串条件值
         self.value = value
 
     def validate(self):
@@ -19733,7 +18633,6 @@ class UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig(TeaModel):
         self,
         values: List[UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues] = None,
     ):
-        # 查询字符串条件键值对列表
         self.values = values
 
     def validate(self):
@@ -19770,9 +18669,7 @@ class UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig(TeaMode
         key: str = None,
         values: List[str] = None,
     ):
-        # 返回HTTP标头键
         self.key = key
-        # 返回HTTP标头值
         self.values = values
 
     def validate(self):
@@ -19804,7 +18701,6 @@ class UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig(Tea
         self,
         values: List[str] = None,
     ):
-        # 返回状态码条件
         self.values = values
 
     def validate(self):
@@ -19868,25 +18764,15 @@ class UpdateRulesAttributeRequestRulesRuleConditions(TeaModel):
         source_ip_config: UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig = None,
         type: str = None,
     ):
-        # Cookie条件配置
         self.cookie_config = cookie_config
-        # HTTP标头条件配置
         self.header_config = header_config
-        # 主机名条件配置
         self.host_config = host_config
-        # HTTP请求方法条件配置
         self.method_config = method_config
-        # 查询字符串条件配置
         self.path_config = path_config
-        # 查询字符串条件配置
         self.query_string_config = query_string_config
-        # 返回HTTP标头
         self.response_header_config = response_header_config
-        # 返回状态码条件
         self.response_status_code_config = response_status_code_config
-        # 基于源IP业务流量匹配
         self.source_ip_config = source_ip_config
-        # 条件类型
         self.type = type
 
     def validate(self):
@@ -19980,15 +18866,10 @@ class UpdateRulesAttributeRequestRules(TeaModel):
         rule_id: str = None,
         rule_name: str = None,
     ):
-        # 转发规则优先级
         self.priority = priority
-        # 转发规则动作
         self.rule_actions = rule_actions
-        # 转发规则条件
         self.rule_conditions = rule_conditions
-        # 转发规则ID
         self.rule_id = rule_id
-        # 转发规则名称
         self.rule_name = rule_name
 
     def validate(self):
@@ -20051,11 +18932,8 @@ class UpdateRulesAttributeRequest(TeaModel):
         dry_run: bool = None,
         rules: List[UpdateRulesAttributeRequestRules] = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 转发规则列表
         self.rules = rules
 
     def validate(self):
@@ -20100,9 +18978,7 @@ class UpdateRulesAttributeResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务Id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -20183,17 +19059,11 @@ class UpdateSecurityPolicyAttributeRequest(TeaModel):
         security_policy_name: str = None,
         tlsversions: List[str] = None,
     ):
-        # 加密套件
         self.ciphers = ciphers
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 安全策略id
         self.security_policy_id = security_policy_id
-        # 安全策略名称
         self.security_policy_name = security_policy_name
-        # TLS版本
         self.tlsversions = tlsversions
 
     def validate(self):
@@ -20242,9 +19112,7 @@ class UpdateSecurityPolicyAttributeResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务Id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -20331,29 +19199,17 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         healthy_threshold: int = None,
         unhealthy_threshold: int = None,
     ):
-        # 健康检查正常的状态码
         self.health_check_codes = health_check_codes
-        # 健康检查端口
         self.health_check_connect_port = health_check_connect_port
-        # 是否启用健康检查
         self.health_check_enabled = health_check_enabled
-        # 健康检查域名
         self.health_check_host = health_check_host
-        # 健康检查HTTP协议版本
         self.health_check_http_version = health_check_http_version
-        # 健康检查间隔
         self.health_check_interval = health_check_interval
-        # 健康检查方法
         self.health_check_method = health_check_method
-        # 健康检查Path
         self.health_check_path = health_check_path
-        # 健康检查协议类型
         self.health_check_protocol = health_check_protocol
-        # 健康检查超时时间
         self.health_check_timeout = health_check_timeout
-        # 健康检查成功判定阈值
         self.healthy_threshold = healthy_threshold
-        # 健康检查不成功判定阈值
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -20428,13 +19284,9 @@ class UpdateServerGroupAttributeRequestStickySessionConfig(TeaModel):
         sticky_session_enabled: bool = None,
         sticky_session_type: str = None,
     ):
-        # 服务器上配置的Cookie
         self.cookie = cookie
-        # 服务器上配置的Cookie
         self.cookie_timeout = cookie_timeout
-        # 是否启用会话保持
         self.sticky_session_enabled = sticky_session_enabled
-        # 会话保持类型
         self.sticky_session_type = sticky_session_type
 
     def validate(self):
@@ -20481,21 +19333,13 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         service_name: str = None,
         sticky_session_config: UpdateServerGroupAttributeRequestStickySessionConfig = None,
     ):
-        # 幂等标识
         self.client_token = client_token
-        # 是否只预检此次请求
         self.dry_run = dry_run
-        # 健康检查配置
         self.health_check_config = health_check_config
-        # 调度策略
         self.scheduler = scheduler
-        # 服务器组Id
         self.server_group_id = server_group_id
-        # Acl名称
         self.server_group_name = server_group_name
-        # 服务器名称
         self.service_name = service_name
-        # 会话保持配置
         self.sticky_session_config = sticky_session_config
 
     def validate(self):
@@ -20557,9 +19401,7 @@ class UpdateServerGroupAttributeResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务Id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -20640,17 +19482,11 @@ class UpdateServerGroupServersAttributeRequestServers(TeaModel):
         server_type: str = None,
         weight: int = None,
     ):
-        # 后端服务器描述
         self.description = description
-        # 后端端口号
         self.port = port
-        # 后端服务器id
         self.server_id = server_id
-        # 后端服务器ip
         self.server_ip = server_ip
-        # 后端服务器类型
         self.server_type = server_type
-        # 后端服务器权重
         self.weight = weight
 
     def validate(self):
@@ -20701,13 +19537,9 @@ class UpdateServerGroupServersAttributeRequest(TeaModel):
         server_group_id: str = None,
         servers: List[UpdateServerGroupServersAttributeRequestServers] = None,
     ):
-        # 幂等Token
         self.client_token = client_token
-        # dryRun
         self.dry_run = dry_run
-        # 后端服务器Id
         self.server_group_id = server_group_id
-        # 后端服务器
         self.servers = servers
 
     def validate(self):
@@ -20756,9 +19588,7 @@ class UpdateServerGroupServersAttributeResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # 异步任务Id
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
