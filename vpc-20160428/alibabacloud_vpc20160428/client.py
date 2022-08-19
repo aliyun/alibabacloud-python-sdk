@@ -17793,6 +17793,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_physical_connections_with_options_async(request, runtime)
 
+    def describe_public_ip_address_with_options(
+        self,
+        request: vpc_20160428_models.DescribePublicIpAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribePublicIpAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePublicIpAddress',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribePublicIpAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_public_ip_address_with_options_async(
+        self,
+        request: vpc_20160428_models.DescribePublicIpAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribePublicIpAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePublicIpAddress',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribePublicIpAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_public_ip_address(
+        self,
+        request: vpc_20160428_models.DescribePublicIpAddressRequest,
+    ) -> vpc_20160428_models.DescribePublicIpAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_public_ip_address_with_options(request, runtime)
+
+    async def describe_public_ip_address_async(
+        self,
+        request: vpc_20160428_models.DescribePublicIpAddressRequest,
+    ) -> vpc_20160428_models.DescribePublicIpAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_public_ip_address_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: vpc_20160428_models.DescribeRegionsRequest,

@@ -1,3 +1,6 @@
+2022-08-19 Version: 2.0.5
+- Add DescribePublicIpAddress Interface.
+
 2022-08-15 Version: 2.0.4
 - Add param eipbindmode for api CreateNatGateway.
 
