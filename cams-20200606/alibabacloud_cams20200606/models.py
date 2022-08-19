@@ -12,13 +12,9 @@ class CheckChatappContactsRequest(TeaModel):
         cust_waba_id: str = None,
         from_: str = None,
     ):
-        # 通道类型
         self.channel_type = channel_type
-        # 需要查询的用户列表,单次调用最多查询10个。注意：用户号码必须加国家码
         self.contacts = contacts
-        # ISV客户wabaId
         self.cust_waba_id = cust_waba_id
-        # 发送号码,所选择ChannelType下的Business账号，即在控制台上审核通过的Number
         self.from_ = from_
 
     def validate(self):
@@ -61,13 +57,9 @@ class CheckChatappContactsShrinkRequest(TeaModel):
         cust_waba_id: str = None,
         from_: str = None,
     ):
-        # 通道类型
         self.channel_type = channel_type
-        # 需要查询的用户列表,单次调用最多查询10个。注意：用户号码必须加国家码
         self.contacts_shrink = contacts_shrink
-        # ISV客户wabaId
         self.cust_waba_id = cust_waba_id
-        # 发送号码,所选择ChannelType下的Business账号，即在控制台上审核通过的Number
         self.from_ = from_
 
     def validate(self):
@@ -108,10 +100,7 @@ class CheckChatappContactsResponseBodyData(TeaModel):
         phone_number: str = None,
         status: str = None,
     ):
-        # 号码
         self.phone_number = phone_number
-        # 状态
-        # 有效账号为"valid"，无法账号为"invalid"，查询失败返回"failed"
         self.status = status
 
     def validate(self):
@@ -146,12 +135,9 @@ class CheckChatappContactsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 返回结果 OK 为正常
         self.code = code
         self.data = data
-        # 提示信息，当返回异常时有值
         self.message = message
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -247,16 +233,10 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
         url: str = None,
         url_type: str = None,
     ):
-        # 号码
         self.phone_number = phone_number
-        # 所发送消息的文本
         self.text = text
-        # 按钮类型
-        # PHONE_NUMBER（电话）,URL（网页按钮）和QUICK_REPLY（快速回复）
         self.type = type
-        # 点击按钮后将访问的网址
         self.url = url
-        # 网址类型 static-静态dynamic-动态
         self.url_type = url_type
 
     def validate(self):
@@ -306,21 +286,12 @@ class CreateChatappTemplateRequestComponents(TeaModel):
         type: str = None,
         url: str = None,
     ):
-        # 按钮
         self.buttons = buttons
-        # 描述，当Type为Header，且Format为IMGAGE/DOCUMENT/VIDEO 可以增加描述
         self.caption = caption
-        # 文件名称，当Type为Header，且Format为DOCUMENT时可以给文件指定名称
         self.file_name = file_name
-        # 格式
-        # TEXT-文本 IMGAGE-图片 DOCUMENT-文档 VIDEO-视频
         self.format = format
-        # 所发送消息的文本
         self.text = text
-        # 组件类型
-        # 值：BODY、HEADER、FOOTER 和 BUTTONS
         self.type = type
-        # 素材路径
         self.url = url
 
     def validate(self):
@@ -386,18 +357,12 @@ class CreateChatappTemplateRequest(TeaModel):
         name: str = None,
         template_type: str = None,
     ):
-        # 模板分类
         self.category = category
         self.components = components
-        # ISV客户WabaId
         self.cust_waba_id = cust_waba_id
-        # 变量，KEY-VALUE结构
         self.example = example
-        # 语言
         self.language = language
-        # 模板名称
         self.name = name
-        # 模板类型
         self.template_type = template_type
 
     def validate(self):
@@ -463,18 +428,12 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
         name: str = None,
         template_type: str = None,
     ):
-        # 模板分类
         self.category = category
         self.components_shrink = components_shrink
-        # ISV客户WabaId
         self.cust_waba_id = cust_waba_id
-        # 变量，KEY-VALUE结构
         self.example_shrink = example_shrink
-        # 语言
         self.language = language
-        # 模板名称
         self.name = name
-        # 模板类型
         self.template_type = template_type
 
     def validate(self):
@@ -527,9 +486,7 @@ class CreateChatappTemplateResponseBodyData(TeaModel):
         template_code: str = None,
         template_name: str = None,
     ):
-        # 模板Code
         self.template_code = template_code
-        # 模板名称
         self.template_name = template_name
 
     def validate(self):
@@ -564,12 +521,9 @@ class CreateChatappTemplateResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 返回结果 OK 为正常
         self.code = code
         self.data = data
-        # 提示信息，当返回异常时有值
         self.message = message
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -656,9 +610,7 @@ class DeleteChatappTemplateRequest(TeaModel):
         cust_waba_id: str = None,
         template_code: str = None,
     ):
-        # ISV客户wabaId
         self.cust_waba_id = cust_waba_id
-        # 模板编码
         self.template_code = template_code
 
     def validate(self):
@@ -692,11 +644,8 @@ class DeleteChatappTemplateResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 返回结果 OK 为正常
         self.code = code
-        # 提示信息，当返回异常时有值
         self.message = message
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -778,11 +727,8 @@ class GetChatappTemplateDetailRequest(TeaModel):
         language: str = None,
         template_code: str = None,
     ):
-        # ISV客户WabaId
         self.cust_waba_id = cust_waba_id
-        # 语言
         self.language = language
-        # 模板分类
         self.template_code = template_code
 
     def validate(self):
@@ -822,18 +768,10 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
         url: str = None,
         url_type: str = None,
     ):
-        # 电话号码
         self.phone_number = phone_number
-        # 所发送消息的文本
         self.text = text
-        # 按钮类型
         self.type = type
-        # 当按钮类型是
-        # URL 时有效
         self.url = url
-        # WEB地址类型
-        # static-静态
-        # dynamic-动态
         self.url_type = url_type
 
     def validate(self):
@@ -883,20 +821,12 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
         type: str = None,
         url: str = None,
     ):
-        # 仅适用于 BUTTONS 类型。
-        # 与按钮相关的参数。
         self.buttons = buttons
-        # 描述，当Type为Header，且Format为IMGAGE/DOCUMENT/VIDEO 可以增加描述
         self.caption = caption
-        # 文件名称，当Type为Header，且Format为DOCUMENT时可以给文件指定名称
         self.file_name = file_name
-        # 格式
         self.format = format
-        # 所发送消息的文本
         self.text = text
-        # 组件类型
         self.type = type
-        # 素材路径
         self.url = url
 
     def validate(self):
@@ -962,19 +892,12 @@ class GetChatappTemplateDetailResponseBodyData(TeaModel):
         name: str = None,
         template_code: str = None,
     ):
-        # 审核状态
         self.audit_status = audit_status
-        # 模板分类
         self.category = category
-        # 消息模板组件
         self.components = components
-        # 变量例子
         self.example = example
-        # 语言
         self.language = language
-        # 模板名称
         self.name = name
-        # 模板编码
         self.template_code = template_code
 
     def validate(self):
@@ -1037,12 +960,9 @@ class GetChatappTemplateDetailResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 返回结果 OK 为正常
         self.code = code
-        # TemplateDetail
         self.data = data
         self.message = message
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -1129,9 +1049,7 @@ class ListChatappTemplateRequestPage(TeaModel):
         index: int = None,
         size: int = None,
     ):
-        # 查询开始数
         self.index = index
-        # 每次查询返回的条数
         self.size = size
 
     def validate(self):
@@ -1167,13 +1085,9 @@ class ListChatappTemplateRequest(TeaModel):
         name: str = None,
         page: ListChatappTemplateRequestPage = None,
     ):
-        # 审核状态
         self.audit_status = audit_status
-        # ISV客户WabaId
         self.cust_waba_id = cust_waba_id
-        # 语言
         self.language = language
-        # 模板名称
         self.name = name
         self.page = page
 
@@ -1224,13 +1138,9 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         name: str = None,
         page_shrink: str = None,
     ):
-        # 审核状态
         self.audit_status = audit_status
-        # ISV客户WabaId
         self.cust_waba_id = cust_waba_id
-        # 语言
         self.language = language
-        # 模板名称
         self.name = name
         self.page_shrink = page_shrink
 
@@ -1279,15 +1189,10 @@ class ListChatappTemplateResponseBodyListTemplate(TeaModel):
         template_code: str = None,
         template_name: str = None,
     ):
-        # 审核状态
         self.audit_status = audit_status
-        # 模板分类
         self.category = category
-        # 语言
         self.language = language
-        # 模板编码
         self.template_code = template_code
-        # 模板名称
         self.template_name = template_name
 
     def validate(self):
@@ -1335,7 +1240,6 @@ class ListChatappTemplateResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.code = code
-        # 模板列表
         self.list_template = list_template
         self.message = message
         self.request_id = request_id
@@ -1424,6 +1328,292 @@ class ListChatappTemplateResponse(TeaModel):
         return self
 
 
+class SendChatappMassMessageRequestSenderList(TeaModel):
+    def __init__(
+        self,
+        payload: List[str] = None,
+        template_params: Dict[str, str] = None,
+        to: str = None,
+    ):
+        self.payload = payload
+        self.template_params = template_params
+        self.to = to
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.payload is not None:
+            result['Payload'] = self.payload
+        if self.template_params is not None:
+            result['TemplateParams'] = self.template_params
+        if self.to is not None:
+            result['To'] = self.to
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Payload') is not None:
+            self.payload = m.get('Payload')
+        if m.get('TemplateParams') is not None:
+            self.template_params = m.get('TemplateParams')
+        if m.get('To') is not None:
+            self.to = m.get('To')
+        return self
+
+
+class SendChatappMassMessageRequest(TeaModel):
+    def __init__(
+        self,
+        channel_type: str = None,
+        cust_waba_id: str = None,
+        fall_back_content: str = None,
+        fall_back_id: str = None,
+        from_: str = None,
+        language: str = None,
+        sender_list: List[SendChatappMassMessageRequestSenderList] = None,
+        task_id: str = None,
+        template_code: str = None,
+    ):
+        self.channel_type = channel_type
+        self.cust_waba_id = cust_waba_id
+        self.fall_back_content = fall_back_content
+        self.fall_back_id = fall_back_id
+        self.from_ = from_
+        self.language = language
+        self.sender_list = sender_list
+        self.task_id = task_id
+        self.template_code = template_code
+
+    def validate(self):
+        if self.sender_list:
+            for k in self.sender_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.cust_waba_id is not None:
+            result['CustWabaId'] = self.cust_waba_id
+        if self.fall_back_content is not None:
+            result['FallBackContent'] = self.fall_back_content
+        if self.fall_back_id is not None:
+            result['FallBackId'] = self.fall_back_id
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.language is not None:
+            result['Language'] = self.language
+        result['SenderList'] = []
+        if self.sender_list is not None:
+            for k in self.sender_list:
+                result['SenderList'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('CustWabaId') is not None:
+            self.cust_waba_id = m.get('CustWabaId')
+        if m.get('FallBackContent') is not None:
+            self.fall_back_content = m.get('FallBackContent')
+        if m.get('FallBackId') is not None:
+            self.fall_back_id = m.get('FallBackId')
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        self.sender_list = []
+        if m.get('SenderList') is not None:
+            for k in m.get('SenderList'):
+                temp_model = SendChatappMassMessageRequestSenderList()
+                self.sender_list.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        return self
+
+
+class SendChatappMassMessageShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        channel_type: str = None,
+        cust_waba_id: str = None,
+        fall_back_content: str = None,
+        fall_back_id: str = None,
+        from_: str = None,
+        language: str = None,
+        sender_list_shrink: str = None,
+        task_id: str = None,
+        template_code: str = None,
+    ):
+        self.channel_type = channel_type
+        self.cust_waba_id = cust_waba_id
+        self.fall_back_content = fall_back_content
+        self.fall_back_id = fall_back_id
+        self.from_ = from_
+        self.language = language
+        self.sender_list_shrink = sender_list_shrink
+        self.task_id = task_id
+        self.template_code = template_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.cust_waba_id is not None:
+            result['CustWabaId'] = self.cust_waba_id
+        if self.fall_back_content is not None:
+            result['FallBackContent'] = self.fall_back_content
+        if self.fall_back_id is not None:
+            result['FallBackId'] = self.fall_back_id
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.sender_list_shrink is not None:
+            result['SenderList'] = self.sender_list_shrink
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('CustWabaId') is not None:
+            self.cust_waba_id = m.get('CustWabaId')
+        if m.get('FallBackContent') is not None:
+            self.fall_back_content = m.get('FallBackContent')
+        if m.get('FallBackId') is not None:
+            self.fall_back_id = m.get('FallBackId')
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('SenderList') is not None:
+            self.sender_list_shrink = m.get('SenderList')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        return self
+
+
+class SendChatappMassMessageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        group_message_id: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.group_message_id = group_message_id
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.group_message_id is not None:
+            result['GroupMessageId'] = self.group_message_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('GroupMessageId') is not None:
+            self.group_message_id = m.get('GroupMessageId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SendChatappMassMessageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SendChatappMassMessageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SendChatappMassMessageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SendChatappMessageRequest(TeaModel):
     def __init__(
         self,
@@ -1441,31 +1631,18 @@ class SendChatappMessageRequest(TeaModel):
         to: str = None,
         type: str = None,
     ):
-        # 通道类型 whatsapp/viber/line
         self.channel_type = channel_type
-        # 消息内容
         self.content = content
-        # ISV客户wabaId
         self.cust_waba_id = cust_waba_id
-        # 回落消息内容
         self.fall_back_content = fall_back_content
-        # 回落策略ID，可在控制台创建策略并查看
         self.fall_back_id = fall_back_id
-        # 发送方
         self.from_ = from_
-        # 语言
         self.language = language
-        # 消息类型
         self.message_type = message_type
         self.payload = payload
-        # 模板编码
         self.template_code = template_code
         self.template_params = template_params
-        # 接收号码
         self.to = to
-        # 消息大类
-        # template--模板
-        # message--非模板
         self.type = type
 
     def validate(self):
@@ -1553,31 +1730,18 @@ class SendChatappMessageShrinkRequest(TeaModel):
         to: str = None,
         type: str = None,
     ):
-        # 通道类型 whatsapp/viber/line
         self.channel_type = channel_type
-        # 消息内容
         self.content = content
-        # ISV客户wabaId
         self.cust_waba_id = cust_waba_id
-        # 回落消息内容
         self.fall_back_content = fall_back_content
-        # 回落策略ID，可在控制台创建策略并查看
         self.fall_back_id = fall_back_id
-        # 发送方
         self.from_ = from_
-        # 语言
         self.language = language
-        # 消息类型
         self.message_type = message_type
         self.payload_shrink = payload_shrink
-        # 模板编码
         self.template_code = template_code
         self.template_params_shrink = template_params_shrink
-        # 接收号码
         self.to = to
-        # 消息大类
-        # template--模板
-        # message--非模板
         self.type = type
 
     def validate(self):
@@ -1658,7 +1822,6 @@ class SendChatappMessageResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
-        # 消息ID
         self.message_id = message_id
         self.request_id = request_id
 
