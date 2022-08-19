@@ -33092,49 +33092,20 @@ class DescribePublicIpAddressRequest(TeaModel):
         return self
 
 
-class DescribePublicIpAddressResponseBodyIpRange(TeaModel):
-    def __init__(
-        self,
-        ip_range: List[str] = None,
-    ):
-        self.ip_range = ip_range
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ip_range is not None:
-            result['IpRange'] = self.ip_range
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('IpRange') is not None:
-            self.ip_range = m.get('IpRange')
-        return self
-
-
 class DescribePublicIpAddressResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
-        ip_range: DescribePublicIpAddressResponseBodyIpRange = None,
         message: str = None,
         page_number: int = None,
         page_size: int = None,
-        public_ip_address: str = None,
+        public_ip_address: List[str] = None,
         region_id: str = None,
         request_id: str = None,
         success: bool = None,
         total_count: int = None,
     ):
         self.code = code
-        self.ip_range = ip_range
         self.message = message
         self.page_number = page_number
         self.page_size = page_size
@@ -33145,8 +33116,7 @@ class DescribePublicIpAddressResponseBody(TeaModel):
         self.total_count = total_count
 
     def validate(self):
-        if self.ip_range:
-            self.ip_range.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -33156,8 +33126,6 @@ class DescribePublicIpAddressResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
-        if self.ip_range is not None:
-            result['IpRange'] = self.ip_range.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.page_number is not None:
@@ -33180,9 +33148,6 @@ class DescribePublicIpAddressResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('IpRange') is not None:
-            temp_model = DescribePublicIpAddressResponseBodyIpRange()
-            self.ip_range = temp_model.from_map(m['IpRange'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('PageNumber') is not None:
