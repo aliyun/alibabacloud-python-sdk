@@ -2382,8 +2382,12 @@ class ListDbfsResponse(TeaModel):
 class ListDbfsAttachableEcsInstancesRequest(TeaModel):
     def __init__(
         self,
+        page_number: int = None,
+        page_size: int = None,
         region_id: str = None,
     ):
+        self.page_number = page_number
+        self.page_size = page_size
         self.region_id = region_id
 
     def validate(self):
@@ -2395,12 +2399,20 @@ class ListDbfsAttachableEcsInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -2468,9 +2480,11 @@ class ListDbfsAttachableEcsInstancesResponseBody(TeaModel):
         self,
         ecs_label_info: List[ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo] = None,
         request_id: str = None,
+        total_count: int = None,
     ):
         self.ecs_label_info = ecs_label_info
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.ecs_label_info:
@@ -2490,6 +2504,8 @@ class ListDbfsAttachableEcsInstancesResponseBody(TeaModel):
                 result['EcsLabelInfo'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -2501,6 +2517,8 @@ class ListDbfsAttachableEcsInstancesResponseBody(TeaModel):
                 self.ecs_label_info.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 

@@ -1,3 +1,6 @@
+2022-08-22 Version: 3.1.6
+- Automatically generate sdk tasks.
+
 2022-08-17 Version: 3.1.5
 - Add UpdateDbfs interface.
 
