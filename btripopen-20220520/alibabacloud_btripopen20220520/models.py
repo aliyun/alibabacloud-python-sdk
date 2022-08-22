@@ -6684,6 +6684,39 @@ class CostCenterModifyResponse(TeaModel):
         return self
 
 
+class CostCenterQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class CostCenterQueryRequest(TeaModel):
     def __init__(
         self,

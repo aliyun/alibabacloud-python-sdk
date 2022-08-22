@@ -1795,7 +1795,7 @@ class Client(OpenApiClient):
         request: btrip_open_20220520_models.CostCenterQueryRequest,
     ) -> btrip_open_20220520_models.CostCenterQueryResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
+        headers = btrip_open_20220520_models.CostCenterQueryHeaders()
         return self.cost_center_query_with_options(request, headers, runtime)
 
     async def cost_center_query_async(
@@ -1803,13 +1803,13 @@ class Client(OpenApiClient):
         request: btrip_open_20220520_models.CostCenterQueryRequest,
     ) -> btrip_open_20220520_models.CostCenterQueryResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
+        headers = btrip_open_20220520_models.CostCenterQueryHeaders()
         return await self.cost_center_query_with_options_async(request, headers, runtime)
 
     def cost_center_query_with_options(
         self,
         request: btrip_open_20220520_models.CostCenterQueryRequest,
-        headers: Dict[str, str],
+        headers: btrip_open_20220520_models.CostCenterQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CostCenterQueryResponse:
         UtilClient.validate_model(request)
@@ -1822,8 +1822,13 @@ class Client(OpenApiClient):
             query['title'] = request.title
         if not UtilClient.is_unset(request.user_id):
             query['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
+            headers=real_headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
@@ -1845,7 +1850,7 @@ class Client(OpenApiClient):
     async def cost_center_query_with_options_async(
         self,
         request: btrip_open_20220520_models.CostCenterQueryRequest,
-        headers: Dict[str, str],
+        headers: btrip_open_20220520_models.CostCenterQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CostCenterQueryResponse:
         UtilClient.validate_model(request)
@@ -1858,8 +1863,13 @@ class Client(OpenApiClient):
             query['title'] = request.title
         if not UtilClient.is_unset(request.user_id):
             query['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
+            headers=real_headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
