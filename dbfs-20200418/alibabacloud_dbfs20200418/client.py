@@ -1251,6 +1251,10 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.filter_key):
+            query['FilterKey'] = request.filter_key
+        if not UtilClient.is_unset(request.filter_value):
+            query['FilterValue'] = request.filter_value
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -1283,6 +1287,10 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.filter_key):
+            query['FilterKey'] = request.filter_key
+        if not UtilClient.is_unset(request.filter_value):
+            query['FilterValue'] = request.filter_value
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):

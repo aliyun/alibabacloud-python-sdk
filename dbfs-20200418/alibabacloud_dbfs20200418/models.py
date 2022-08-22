@@ -2382,10 +2382,14 @@ class ListDbfsResponse(TeaModel):
 class ListDbfsAttachableEcsInstancesRequest(TeaModel):
     def __init__(
         self,
+        filter_key: str = None,
+        filter_value: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
     ):
+        self.filter_key = filter_key
+        self.filter_value = filter_value
         self.page_number = page_number
         self.page_size = page_size
         self.region_id = region_id
@@ -2399,6 +2403,10 @@ class ListDbfsAttachableEcsInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.filter_key is not None:
+            result['FilterKey'] = self.filter_key
+        if self.filter_value is not None:
+            result['FilterValue'] = self.filter_value
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -2409,6 +2417,10 @@ class ListDbfsAttachableEcsInstancesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FilterKey') is not None:
+            self.filter_key = m.get('FilterKey')
+        if m.get('FilterValue') is not None:
+            self.filter_value = m.get('FilterValue')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
