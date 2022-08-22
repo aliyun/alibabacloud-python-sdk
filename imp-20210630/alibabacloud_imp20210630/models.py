@@ -11,11 +11,8 @@ class RpcStatus(TeaModel):
         detail: str = None,
         message: str = None,
     ):
-        # 错误码
         self.code = code
-        # 错误详情
         self.detail = detail
-        # 错误消息
         self.message = message
 
     def validate(self):
@@ -52,9 +49,7 @@ class AssetsAuditAssetResponse(TeaModel):
         request_id: str = None,
         status: RpcStatus = None,
     ):
-        # 请求ID
         self.request_id = request_id
-        # 响应状态
         self.status = status
 
     def validate(self):
@@ -92,15 +87,10 @@ class CommonAddress(TeaModel):
         state: str = None,
         zip: str = None,
     ):
-        # 地址
         self.address = address
-        # 城市
         self.city = city
-        # 国家
         self.country = country
-        # 区域
         self.state = state
-        # zip
         self.zip = zip
 
     def validate(self):
@@ -149,17 +139,11 @@ class CommonMediaResource(TeaModel):
         size: int = None,
         url: str = None,
     ):
-        # media format
         self.format = format
-        # media id
         self.id = id
-        # name
         self.name = name
-        # media sha1
         self.sha_1 = sha_1
-        # media size
         self.size = size
-        # resource url
         self.url = url
 
     def validate(self):
@@ -208,9 +192,7 @@ class TypeLatLng(TeaModel):
         latitude: float = None,
         longitude: float = None,
     ):
-        # The latitude in degrees. It must be in the range [-90.0, +90.0].
         self.latitude = latitude
-        # The longitude in degrees. It must be in the range [-180.0, +180.0].
         self.longitude = longitude
 
     def validate(self):
@@ -259,41 +241,23 @@ class CommonAsset(TeaModel):
         updated_at: str = None,
         videos: List[CommonMediaResource] = None,
     ):
-        # 行政区域地址
         self.address = address
-        # 应用ID
         self.app_id = app_id
-        # 审核状态
         self.audit_status = audit_status
-        # 作者
         self.author = author
-        # 创建时间
         self.created_at = created_at
-        # 资产描述
         self.description = description
-        # 扩展字段
         self.extends = extends
-        # 资产ID
         self.id = id
-        # 图像资源
         self.images = images
-        # 定义Label， eg:type:advertise 支持广告类型的label
         self.labels = labels
-        # 经纬度地理位置
         self.location = location
-        # 资产来源
         self.source = source
-        # 资产状态
         self.status = status
-        # 概要
         self.synopsis = synopsis
-        # 标签
         self.tags = tags
-        # 标题
         self.title = title
-        # 更新时间
         self.updated_at = updated_at
-        # 视频资源
         self.videos = videos
 
     def validate(self):
@@ -414,11 +378,8 @@ class AssetsCreateAssetResponse(TeaModel):
         request_id: str = None,
         status: RpcStatus = None,
     ):
-        # 资产信息
         self.asset = asset
-        # 请求ID
         self.request_id = request_id
-        # 响应状态
         self.status = status
 
     def validate(self):
@@ -461,11 +422,8 @@ class AssetsDeleteAssetResponse(TeaModel):
         request_id: str = None,
         status: RpcStatus = None,
     ):
-        # 资产信息
         self.asset = asset
-        # 请求ID
         self.request_id = request_id
-        # 响应状态
         self.status = status
 
     def validate(self):
@@ -508,11 +466,8 @@ class AssetsGetAssetResponse(TeaModel):
         request_id: str = None,
         status: RpcStatus = None,
     ):
-        # Asset
         self.asset = asset
-        # 请求ID
         self.request_id = request_id
-        # 响应状态
         self.status = status
 
     def validate(self):
@@ -558,18 +513,11 @@ class AssetsListAssetsRequest(TeaModel):
         params: str = None,
         topic: str = None,
     ):
-        # AppId
         self.app_id = app_id
-        # Optional. Used to specify a subset of fields that should be
-        # returned by a get operation or modified by an update operation.
         self.field_mask = field_mask
-        # 每页显示个数，最大支持20，参数为空默认显示个数为10。
         self.max_results = max_results
-        # 分页Token Optional.
         self.next_token = next_token
-        # 参数
         self.params = params
-        # 订阅Topic
         self.topic = topic
 
     def validate(self):
@@ -620,13 +568,9 @@ class AssetsListAssetsResponse(TeaModel):
         request_id: str = None,
         status: RpcStatus = None,
     ):
-        # Asset列表
         self.assets = assets
-        # 分页Token
         self.next_token = next_token
-        # 请求ID
         self.request_id = request_id
-        # 响应状态
         self.status = status
 
     def validate(self):
@@ -679,11 +623,8 @@ class AssetsUpdateAssetResponse(TeaModel):
         request_id: str = None,
         status: RpcStatus = None,
     ):
-        # 资产信息
         self.asset = asset
-        # 请求ID
         self.request_id = request_id
-        # 响应状态
         self.status = status
 
     def validate(self):
@@ -739,37 +680,21 @@ class CommonSimpleAsset(TeaModel):
         title: str = None,
         video: CommonMediaResource = None,
     ):
-        # 行政区域地址
         self.address = address
-        # 应用ID
         self.app_id = app_id
-        # 审核状态
         self.audit_status = audit_status
-        # 作者
         self.author = author
-        # 资产描述
         self.description = description
-        # 扩展字段
         self.extends = extends
-        # 资产ID
         self.id = id
-        # 图像资源
         self.image = image
-        # 定义Label， eg:type:advertise 支持广告类型的label
         self.labels = labels
-        # 经纬度地理位置
         self.location = location
-        # 资产来源
         self.source = source
-        # 资产状态
         self.status = status
-        # 概要
         self.synopsis = synopsis
-        # 标签
         self.tags = tags
-        # 标题
         self.title = title
-        # 视频资源
         self.video = video
 
     def validate(self):
@@ -870,11 +795,8 @@ class BanAllCommentRequest(TeaModel):
         room_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 房间唯一标识，由调用CreateRoom返回。
         self.room_id = room_id
-        # 用户在房间内的唯一标识
         self.user_id = user_id
 
     def validate(self):
@@ -911,9 +833,7 @@ class BanAllCommentResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 操作成功标识
         self.result = result
 
     def validate(self):
@@ -993,15 +913,10 @@ class BanCommentRequest(TeaModel):
         room_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 禁言时长（秒）
         self.ban_comment_time = ban_comment_time
-        # 被禁言的用户在房间内的唯一标识
         self.ban_comment_user = ban_comment_user
-        # 房间唯一标识，由调用CreateRoom返回。
         self.room_id = room_id
-        # 用户在房间内的唯一标识
         self.user_id = user_id
 
     def validate(self):
@@ -1046,9 +961,7 @@ class BanCommentResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 操作是否成功
         self.result = result
 
     def validate(self):
@@ -1126,11 +1039,8 @@ class CancelBanAllCommentRequest(TeaModel):
         room_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 房间唯一标识，由调用CreateRoom返回。
         self.room_id = room_id
-        # 用户在房间内的唯一标识
         self.user_id = user_id
 
     def validate(self):
@@ -1167,9 +1077,7 @@ class CancelBanAllCommentResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 操作成功标识
         self.result = result
 
     def validate(self):
@@ -1248,13 +1156,9 @@ class CancelBanCommentRequest(TeaModel):
         room_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 取消禁言的用户唯一标识
         self.ban_comment_user = ban_comment_user
-        # 房间唯一标识，由调用CreateRoom返回。
         self.room_id = room_id
-        # 用户在房间内的唯一标识
         self.user_id = user_id
 
     def validate(self):
@@ -1295,9 +1199,7 @@ class CancelBanCommentResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 操作成功标识
         self.result = result
 
     def validate(self):
@@ -1375,11 +1277,8 @@ class CancelUserAdminRequest(TeaModel):
         room_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
         self.room_id = room_id
-        # 用户ID
         self.user_id = user_id
 
     def validate(self):
@@ -1415,7 +1314,6 @@ class CancelUserAdminResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1490,13 +1388,9 @@ class CreateClassRequest(TeaModel):
         create_user_id: str = None,
         title: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 创建人用户昵称。
         self.create_nickname = create_nickname
-        # 创建人用户ID。
         self.create_user_id = create_user_id
-        # 课堂标题
         self.title = title
 
     def validate(self):
@@ -1545,25 +1439,15 @@ class CreateClassResponseBodyResult(TeaModel):
         whiteboard_id: str = None,
         whiteboard_record_id: str = None,
     ):
-        # 课堂唯一标识。
         self.class_id = class_id
-        # 连麦会议唯一标识。
         self.conf_id = conf_id
-        # 创建人昵称。
         self.create_nickname = create_nickname
-        # 创建人ID。
         self.create_user_id = create_user_id
-        # 直播的唯一标识ID。
         self.live_id = live_id
-        # 房间ID
         self.room_id = room_id
-        # 课堂状态，0:未开始 1:上课中 2:已下课。
         self.status = status
-        # 课堂标题。
         self.title = title
-        # 白板ID
         self.whiteboard_id = whiteboard_id
-        # 白板录制ID
         self.whiteboard_record_id = whiteboard_record_id
 
     def validate(self):
@@ -1628,9 +1512,7 @@ class CreateClassResponseBody(TeaModel):
         request_id: str = None,
         result: CreateClassResponseBodyResult = None,
     ):
-        # 请求ID。
         self.request_id = request_id
-        # API请求的返回结果结构体。
         self.result = result
 
     def validate(self):
@@ -1715,21 +1597,13 @@ class CreateLiveRequest(TeaModel):
         title: str = None,
         user_id: str = None,
     ):
-        # 主播ID，支持中英文，最大长度128位，缺省时主播为当前创建直播用户。
         self.anchor_id = anchor_id
-        # 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
         self.app_id = app_id
-        # 直播推流码率，缺省时默认为3。取值：  -1：流畅lld。 1：标清lsd。 2：高清lhd。 3：超清lud。
         self.code_level = code_level
-        # 直播简介，支持中英文，最大长度2048位。
         self.introduction = introduction
-        # 直播资源的唯一标识ID，缺省时系统自动生成36位随机uuid字符串。
         self.live_id = live_id
-        # 房间ID，最大长度36个字符，传空值，则随机生成一个房间ID。
         self.room_id = room_id
-        # 直播标题，支持中英文，最大长度256位。
         self.title = title
-        # 创建直播用户。
         self.user_id = user_id
 
     def validate(self):
@@ -1785,7 +1659,6 @@ class CreateLiveResponseBodyResult(TeaModel):
         self,
         live_id: str = None,
     ):
-        # 直播的唯一标识ID。
         self.live_id = live_id
 
     def validate(self):
@@ -1814,7 +1687,6 @@ class CreateLiveResponseBody(TeaModel):
         request_id: str = None,
         result: CreateLiveResponseBodyResult = None,
     ):
-        # 请求ID。
         self.request_id = request_id
         self.result = result
 
@@ -1897,15 +1769,10 @@ class CreateLiveRecordSliceFileRequest(TeaModel):
         live_id: str = None,
         start_time: int = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 片段结束时间，时间戳。
         self.end_time = end_time
-        # 自定义文件名称。
         self.file_name = file_name
-        # 直播ID。
         self.live_id = live_id
-        # 片段开始时间，时间戳。
         self.start_time = start_time
 
     def validate(self):
@@ -1949,7 +1816,6 @@ class CreateLiveRecordSliceFileResponseBodyResult(TeaModel):
         self,
         slice_record_url: str = None,
     ):
-        # 片段录制文件的地址。
         self.slice_record_url = slice_record_url
 
     def validate(self):
@@ -1978,9 +1844,7 @@ class CreateLiveRecordSliceFileResponseBody(TeaModel):
         request_id: str = None,
         result: CreateLiveRecordSliceFileResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 创建场景化直播返回的结果。
         self.result = result
 
     def validate(self):
@@ -2066,23 +1930,14 @@ class CreateLiveRoomRequest(TeaModel):
         title: str = None,
         user_id: str = None,
     ):
-        # 主播id，仅支持英文和数字，最大长度36位。
         self.anchor_id = anchor_id
-        # 主播昵称。
         self.anchor_nick = anchor_nick
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 封面，支持图片地址链接格式
         self.cover_url = cover_url
-        # 是否开启连麦。
         self.enable_link_mic = enable_link_mic
-        # 拓展字段，按需传递，需要额外记录的房间属性。最大支持4096个字节。
         self.extension = extension
-        # 公告，支持中英文，最大长度256位。
         self.notice = notice
-        # 标题，支持中英文，最大长度32位。
         self.title = title
-        # 操作人ID。
         self.user_id = user_id
 
     def validate(self):
@@ -2150,23 +2005,14 @@ class CreateLiveRoomShrinkRequest(TeaModel):
         title: str = None,
         user_id: str = None,
     ):
-        # 主播id，仅支持英文和数字，最大长度36位。
         self.anchor_id = anchor_id
-        # 主播昵称。
         self.anchor_nick = anchor_nick
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 封面，支持图片地址链接格式
         self.cover_url = cover_url
-        # 是否开启连麦。
         self.enable_link_mic = enable_link_mic
-        # 拓展字段，按需传递，需要额外记录的房间属性。最大支持4096个字节。
         self.extension_shrink = extension_shrink
-        # 公告，支持中英文，最大长度256位。
         self.notice = notice
-        # 标题，支持中英文，最大长度32位。
         self.title = title
-        # 操作人ID。
         self.user_id = user_id
 
     def validate(self):
@@ -2227,9 +2073,7 @@ class CreateLiveRoomResponseBodyResultArtcInfo(TeaModel):
         artc_h5url: str = None,
         artc_url: str = None,
     ):
-        # RTS转码流地址，推荐web端使用。
         self.artc_h5url = artc_h5url
-        # RTS原码流地址，推荐移动端使用。
         self.artc_url = artc_url
 
     def validate(self):
@@ -2264,13 +2108,9 @@ class CreateLiveRoomResponseBodyResultPluginInstanceInfoList(TeaModel):
         plugin_id: str = None,
         plugin_type: str = None,
     ):
-        # 插件实例创建时间戳，单位：毫秒。
         self.create_time = create_time
-        # 插件拓展字段。
         self.extension = extension
-        # 插件实例唯一标识。
         self.plugin_id = plugin_id
-        # 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
         self.plugin_type = plugin_type
 
     def validate(self):
@@ -2325,37 +2165,21 @@ class CreateLiveRoomResponseBodyResult(TeaModel):
         room_id: str = None,
         title: str = None,
     ):
-        # 主播ID。
         self.anchor_id = anchor_id
-        # 主播昵称。
         self.anchor_nick = anchor_nick
-        # 应用ID。
         self.app_id = app_id
-        # RTS低延迟播流信息。
         self.artc_info = artc_info
-        # 聊天ID。
         self.chat_id = chat_id
-        # 封面。
         self.cover_url = cover_url
-        # 直播拓展字段。
         self.extension = extension
-        # 原画HLS播放地址。
         self.hls_url = hls_url
-        # 直播ID。
         self.live_id = live_id
-        # 直播拉流地址。
         self.live_url = live_url
-        # 公告。
         self.notice = notice
-        # 直播回放地址。
         self.playback_url = playback_url
-        # 活跃插件列表。
         self.plugin_instance_info_list = plugin_instance_info_list
-        # 直播推流地址。
         self.push_url = push_url
-        # 房间ID。
         self.room_id = room_id
-        # 标题。
         self.title = title
 
     def validate(self):
@@ -2455,9 +2279,7 @@ class CreateLiveRoomResponseBody(TeaModel):
         request_id: str = None,
         result: CreateLiveRoomResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 创建场景化直播返回的结果。
         self.result = result
 
     def validate(self):
@@ -2541,19 +2363,12 @@ class CreateRoomRequest(TeaModel):
         template_id: str = None,
         title: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 拓展字段，按需传递，需要额外记录的房间属性。
         self.extension = extension
-        # 房间公告，支持中英文，最大长度256位。
         self.notice = notice
-        # 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位，传空则随机生成一个房间id。
         self.room_id = room_id
-        # 房主用户id，仅支持英文和数字，最大长度36位。
         self.room_owner_id = room_owner_id
-        # 房间模板唯一标识，当前支持的取值：default，传空默认为default。
         self.template_id = template_id
-        # 房间标题，支持中英文，最大长度32位。
         self.title = title
 
     def validate(self):
@@ -2611,19 +2426,12 @@ class CreateRoomShrinkRequest(TeaModel):
         template_id: str = None,
         title: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 拓展字段，按需传递，需要额外记录的房间属性。
         self.extension_shrink = extension_shrink
-        # 房间公告，支持中英文，最大长度256位。
         self.notice = notice
-        # 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位，传空则随机生成一个房间id。
         self.room_id = room_id
-        # 房主用户id，仅支持英文和数字，最大长度36位。
         self.room_owner_id = room_owner_id
-        # 房间模板唯一标识，当前支持的取值：default，传空默认为default。
         self.template_id = template_id
-        # 房间标题，支持中英文，最大长度32位。
         self.title = title
 
     def validate(self):
@@ -2675,7 +2483,6 @@ class CreateRoomResponseBodyResult(TeaModel):
         self,
         room_id: str = None,
     ):
-        # 房间id
         self.room_id = room_id
 
     def validate(self):
@@ -2704,9 +2511,7 @@ class CreateRoomResponseBody(TeaModel):
         request_id: str = None,
         result: CreateRoomResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # API请求的返回结果结构体。
         self.result = result
 
     def validate(self):
@@ -2785,7 +2590,6 @@ class CreateSensitiveWordRequest(TeaModel):
         app_id: str = None,
         word_list: List[str] = None,
     ):
-        # 用户的应用ID，在控制台创建应用时生成。包含小写字母、数字，长度为6个字符。
         self.app_id = app_id
         self.word_list = word_list
 
@@ -2819,7 +2623,6 @@ class CreateSensitiveWordShrinkRequest(TeaModel):
         app_id: str = None,
         word_list_shrink: str = None,
     ):
-        # 用户的应用ID，在控制台创建应用时生成。包含小写字母、数字，长度为6个字符。
         self.app_id = app_id
         self.word_list_shrink = word_list_shrink
 
@@ -2880,9 +2683,7 @@ class CreateSensitiveWordResponseBody(TeaModel):
         request_id: str = None,
         result: CreateSensitiveWordResponseBodyResult = None,
     ):
-        # 请求ID。
         self.request_id = request_id
-        # 调用发送直播间弹幕的返回结果。
         self.result = result
 
     def validate(self):
@@ -2962,11 +2763,8 @@ class DeleteClassRequest(TeaModel):
         class_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 课堂唯一标识。
         self.class_id = class_id
-        # 操作人用户ID，仅支持中英文数字，下划线，中划线，1~36个字符。
         self.user_id = user_id
 
     def validate(self):
@@ -3002,7 +2800,6 @@ class DeleteClassResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3077,13 +2874,9 @@ class DeleteCommentRequest(TeaModel):
         room_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
         self.app_id = app_id
-        # 需要删除的弹幕id列表
         self.comment_id_list = comment_id_list
-        # 直播间唯一标识，在调用CreateRoom返回。
         self.room_id = room_id
-        # 删除的操作人ID。
         self.user_id = user_id
 
     def validate(self):
@@ -3123,7 +2916,6 @@ class DeleteCommentResponseBodyResult(TeaModel):
         self,
         delete_result: bool = None,
     ):
-        # 删除的结果
         self.delete_result = delete_result
 
     def validate(self):
@@ -3152,9 +2944,7 @@ class DeleteCommentResponseBody(TeaModel):
         request_id: str = None,
         result: DeleteCommentResponseBodyResult = None,
     ):
-        # 请求ID。
         self.request_id = request_id
-        # 调用删除直播间弹幕的返回结果。
         self.result = result
 
     def validate(self):
@@ -3236,15 +3026,10 @@ class DeleteCommentByCreatorIdRequest(TeaModel):
         room_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
         self.app_id = app_id
-        # 需要删除的弹幕id列表
         self.comment_id_list = comment_id_list
-        # 弹幕的创建者ID。
         self.creator_id = creator_id
-        # 直播间唯一标识，在调用CreateRoom返回。
         self.room_id = room_id
-        # 删除的操作人ID。
         self.user_id = user_id
 
     def validate(self):
@@ -3288,7 +3073,6 @@ class DeleteCommentByCreatorIdResponseBodyResult(TeaModel):
         self,
         delete_result: bool = None,
     ):
-        # 删除的结果
         self.delete_result = delete_result
 
     def validate(self):
@@ -3317,9 +3101,7 @@ class DeleteCommentByCreatorIdResponseBody(TeaModel):
         request_id: str = None,
         result: DeleteCommentByCreatorIdResponseBodyResult = None,
     ):
-        # 请求ID。
         self.request_id = request_id
-        # 调用删除直播间弹幕的返回结果。
         self.result = result
 
     def validate(self):
@@ -3400,13 +3182,9 @@ class DeleteConferenceRequest(TeaModel):
         room_id: str = None,
         user_id: str = None,
     ):
-        # 租户名
         self.app_id = app_id
-        # 会议资源的唯一标识ID
         self.conference_id = conference_id
-        # 房间ID，最大长度36位
         self.room_id = room_id
-        # 创建会议用户ID
         self.user_id = user_id
 
     def validate(self):
@@ -3446,7 +3224,6 @@ class DeleteConferenceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -3518,7 +3295,6 @@ class DeleteLiveRequest(TeaModel):
         self,
         live_id: str = None,
     ):
-        # 直播资源的唯一标识ID
         self.live_id = live_id
 
     def validate(self):
@@ -3546,7 +3322,6 @@ class DeleteLiveResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -3613,6 +3388,116 @@ class DeleteLiveResponse(TeaModel):
         return self
 
 
+class DeleteLiveFilesByIdRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        live_id: str = None,
+    ):
+        self.app_id = app_id
+        self.live_id = live_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.live_id is not None:
+            result['LiveId'] = self.live_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('LiveId') is not None:
+            self.live_id = m.get('LiveId')
+        return self
+
+
+class DeleteLiveFilesByIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class DeleteLiveFilesByIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteLiveFilesByIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteLiveFilesByIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteLiveRoomRequest(TeaModel):
     def __init__(
         self,
@@ -3620,11 +3505,8 @@ class DeleteLiveRoomRequest(TeaModel):
         live_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 直播ID。
         self.live_id = live_id
-        # 操作人ID。
         self.user_id = user_id
 
     def validate(self):
@@ -3660,7 +3542,6 @@ class DeleteLiveRoomResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3733,9 +3614,7 @@ class DeleteRoomRequest(TeaModel):
         app_id: str = None,
         room_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
         self.room_id = room_id
 
     def validate(self):
@@ -3767,7 +3646,6 @@ class DeleteRoomResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3840,7 +3718,6 @@ class DeleteSensitiveWordRequest(TeaModel):
         app_id: str = None,
         word_list: List[str] = None,
     ):
-        # 弹幕发送者的用户ID，最大长度不超过32个字节。
         self.app_id = app_id
         self.word_list = word_list
 
@@ -3874,7 +3751,6 @@ class DeleteSensitiveWordShrinkRequest(TeaModel):
         app_id: str = None,
         word_list_shrink: str = None,
     ):
-        # 弹幕发送者的用户ID，最大长度不超过32个字节。
         self.app_id = app_id
         self.word_list_shrink = word_list_shrink
 
@@ -3935,9 +3811,7 @@ class DeleteSensitiveWordResponseBody(TeaModel):
         request_id: str = None,
         result: DeleteSensitiveWordResponseBodyResult = None,
     ):
-        # 请求ID。
         self.request_id = request_id
-        # 调用发送直播间弹幕的返回结果。
         self.result = result
 
     def validate(self):
@@ -4089,7 +3963,6 @@ class DescribeMeterImpPlayBackTimeByLiveIdResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id
         self.request_id = request_id
 
     def validate(self):
@@ -4241,7 +4114,6 @@ class DescribeMeterImpWatchLiveTimeByLiveIdResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id
         self.request_id = request_id
 
     def validate(self):
@@ -4328,13 +4200,9 @@ class GetAuthTokenRequest(TeaModel):
         device_id: str = None,
         user_id: str = None,
     ):
-        # 用户的应用ID，在控制台创建应用时生成
         self.app_id = app_id
-        # 终端设备类型,通过控制台创建和查询
         self.app_key = app_key
-        # 终端设备ID
         self.device_id = device_id
-        # 用户UserId,在AppId下单独唯一
         self.user_id = user_id
 
     def validate(self):
@@ -4376,11 +4244,8 @@ class GetAuthTokenResponseBodyResult(TeaModel):
         access_token_expired_time: int = None,
         refresh_token: str = None,
     ):
-        # 用于长连接建连的token
         self.access_token = access_token
-        # 登录token过期时间(毫秒)
         self.access_token_expired_time = access_token_expired_time
-        # 更新Token，若AccessToken过期，则可以使用RefreshToken再次获取新Token
         self.refresh_token = refresh_token
 
     def validate(self):
@@ -4417,7 +4282,6 @@ class GetAuthTokenResponseBody(TeaModel):
         request_id: str = None,
         result: GetAuthTokenResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.result = result
 
@@ -4498,11 +4362,8 @@ class GetClassDetailRequest(TeaModel):
         class_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 课堂唯一标识，由调用CreateClass返回。
         self.class_id = class_id
-        # 操作人用户ID。
         self.user_id = user_id
 
     def validate(self):
@@ -4549,29 +4410,17 @@ class GetClassDetailResponseBodyResult(TeaModel):
         whiteboard_id: str = None,
         whiteboard_record_id: str = None,
     ):
-        # 课堂唯一标识，由调用CreateClass返回。
         self.class_id = class_id
-        # 连麦会议唯一标识。
         self.conf_id = conf_id
-        # 创建人昵称。
         self.create_nickname = create_nickname
-        # 创建人ID。
         self.create_user_id = create_user_id
-        # 下课时间戳，毫秒。
         self.end_time = end_time
-        # 直播的唯一标识ID。
         self.live_id = live_id
-        # 房间ID
         self.room_id = room_id
-        # 开始上课时间戳，毫秒。
         self.start_time = start_time
-        # 课堂状态，0:未开始 1:上课中 2:已下课。
         self.status = status
-        # 课堂标题。
         self.title = title
-        # 白板ID
         self.whiteboard_id = whiteboard_id
-        # 白板录制ID
         self.whiteboard_record_id = whiteboard_record_id
 
     def validate(self):
@@ -4644,9 +4493,7 @@ class GetClassDetailResponseBody(TeaModel):
         request_id: str = None,
         result: GetClassDetailResponseBodyResult = None,
     ):
-        # 请求ID。
         self.request_id = request_id
-        # API请求的返回结果结构体。
         self.result = result
 
     def validate(self):
@@ -4726,11 +4573,8 @@ class GetClassRecordRequest(TeaModel):
         class_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 课程唯一标识，由调用CreateClass返回。
         self.class_id = class_id
-        # 操作人用户ID。
         self.user_id = user_id
 
     def validate(self):
@@ -4794,9 +4638,7 @@ class GetClassRecordResponseBody(TeaModel):
         request_id: str = None,
         result: GetClassRecordResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # API请求的返回结果结构体。
         self.result = result
 
     def validate(self):
@@ -4874,7 +4716,6 @@ class GetConferenceRequest(TeaModel):
         self,
         conference_id: str = None,
     ):
-        # 会议资源唯一标识。
         self.conference_id = conference_id
 
     def validate(self):
@@ -4909,21 +4750,13 @@ class GetConferenceResponseBodyResult(TeaModel):
         title: str = None,
         user_id: str = None,
     ):
-        # 租户名
         self.app_id = app_id
-        # 会议资源唯一标识。
         self.conference_id = conference_id
-        # 会议创建时间戳，单位：毫秒。
         self.create_time = create_time
-        # 录制回放地址，m3u8格式，会议结束后10秒才会生成。
         self.playback_url = playback_url
-        # 房间ID。
         self.room_id = room_id
-        # 会议状态。
         self.status = status
-        # 会议标题。
         self.title = title
-        # 创建会议用户。
         self.user_id = user_id
 
     def validate(self):
@@ -4980,9 +4813,7 @@ class GetConferenceResponseBody(TeaModel):
         request_id: str = None,
         result: GetConferenceResponseBodyResult = None,
     ):
-        # 请求ID
         self.request_id = request_id
-        # 返回结果
         self.result = result
 
     def validate(self):
@@ -5060,7 +4891,6 @@ class GetLiveRequest(TeaModel):
         self,
         live_id: str = None,
     ):
-        # 直播资源的唯一标识ID
         self.live_id = live_id
 
     def validate(self):
@@ -5089,9 +4919,7 @@ class GetLiveResponseBodyResultArtcInfo(TeaModel):
         artc_h5url: str = None,
         artc_url: str = None,
     ):
-        # 原画转码地址
         self.artc_h5url = artc_h5url
-        # 源码地址
         self.artc_url = artc_url
 
     def validate(self):
@@ -5126,13 +4954,9 @@ class GetLiveResponseBodyResultPlayUrlInfoList(TeaModel):
         hls_url: str = None,
         rtmp_url: str = None,
     ):
-        # 直播拉取分辨率 -1:lld 1:lsd 2:lhd 3:lud
         self.code_level = code_level
-        # flv拉流地址
         self.flv_url = flv_url
-        # hls拉流地址
         self.hls_url = hls_url
-        # rtmp拉流地址
         self.rtmp_url = rtmp_url
 
     def validate(self):
@@ -5191,45 +5015,25 @@ class GetLiveResponseBodyResult(TeaModel):
         user_define_field: str = None,
         user_id: str = None,
     ):
-        # 主播ID
         self.anchor_id = anchor_id
-        # 租户名
         self.app_id = app_id
-        # rts播流信息
         self.artc_info = artc_info
-        # 直播推送分辨率 -1:lld 1:lsd 2:lhd 3:lud
         self.code_level = code_level
-        # 封面图片
         self.cover_url = cover_url
-        # 直播创建时间（毫秒ms）
         self.create_time = create_time
-        # 直播持续时间（毫秒ms）
         self.duration = duration
-        # 直播结束时间（毫秒ms）
         self.end_time = end_time
-        # hls播放地址
         self.hls_url = hls_url
-        # 直播简介
         self.introduction = introduction
-        # 直播资源的唯一标识ID
         self.live_id = live_id
-        # 直播拉流地址
         self.live_url = live_url
-        # 多分辨率多协议播放信息
         self.play_url_info_list = play_url_info_list
-        # 直播回放地址
         self.playback_url = playback_url
-        # 直播推流地址
         self.push_url = push_url
-        # 房间id
         self.room_id = room_id
-        # 直播状态：Created-已创建，未开播，Living-直播中，End-直播结束
         self.status = status
-        # 直播标题
         self.title = title
-        # 用户自定义数据存储
         self.user_define_field = user_define_field
-        # 创建直播用户
         self.user_id = user_id
 
     def validate(self):
@@ -5345,7 +5149,6 @@ class GetLiveResponseBody(TeaModel):
         request_id: str = None,
         result: GetLiveResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.result = result
 
@@ -5426,11 +5229,8 @@ class GetLiveRecordRequest(TeaModel):
         live_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 直播唯一标识，由调用CreateLiveRoom返回。
         self.live_id = live_id
-        # 操作人用户ID。
         self.user_id = user_id
 
     def validate(self):
@@ -5494,9 +5294,7 @@ class GetLiveRecordResponseBody(TeaModel):
         request_id: str = None,
         result: GetLiveRecordResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # API请求的返回结果结构体。
         self.result = result
 
     def validate(self):
@@ -5575,9 +5373,7 @@ class GetLiveRoomRequest(TeaModel):
         app_id: str = None,
         live_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 直播ID。
         self.live_id = live_id
 
     def validate(self):
@@ -5610,9 +5406,7 @@ class GetLiveRoomResponseBodyResultArtcInfo(TeaModel):
         artc_h5url: str = None,
         artc_url: str = None,
     ):
-        # RTS转码流地址，推荐web端使用。
         self.artc_h5url = artc_h5url
-        # RTS原码流地址，推荐移动端使用。
         self.artc_url = artc_url
 
     def validate(self):
@@ -5647,13 +5441,9 @@ class GetLiveRoomResponseBodyResultPluginInstanceInfoList(TeaModel):
         plugin_id: str = None,
         plugin_type: str = None,
     ):
-        # 插件实例创建时间戳，单位：毫秒。
         self.create_time = create_time
-        # 插件拓展字段。
         self.extension = extension
-        # 插件实例唯一标识。
         self.plugin_id = plugin_id
-        # 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
         self.plugin_type = plugin_type
 
     def validate(self):
@@ -5721,63 +5511,34 @@ class GetLiveRoomResponseBodyResult(TeaModel):
         title: str = None,
         uv: int = None,
     ):
-        # 主播ID。
         self.anchor_id = anchor_id
-        # 主播昵称
         self.anchor_nick = anchor_nick
-        # 应用ID。
         self.app_id = app_id
-        # RTS低延迟播流信息。
         self.artc_info = artc_info
-        # 聊天ID。
         self.chat_id = chat_id
-        # 连麦会议唯一标识。
         self.conf_id = conf_id
-        # 封面。
         self.cover_url = cover_url
-        # 直播创建时间，单位：毫秒。
         self.create_time = create_time
-        # 是否开启连麦。
         self.enable_link_mic = enable_link_mic
-        # 直播结束时间，单位：毫秒。
         self.end_time = end_time
-        # 直播拓展字段。
         self.extension = extension
-        # 原画HLS播放地址。
         self.hls_url = hls_url
-        # https协议的原画HLS播放地址。
         self.hls_url_https = hls_url_https
-        # 直播ID。
         self.live_id = live_id
-        # 直播拉流地址。
         self.live_url = live_url
-        # https协议的直播拉流地址。
         self.live_url_https = live_url_https
-        # 公告。
         self.notice = notice
-        # 在线用户数。
         self.online_count = online_count
-        # 直播回放地址。
         self.playback_url = playback_url
-        # https协议的直播回放地址
         self.playback_url_https = playback_url_https
-        # 活跃插件列表。
         self.plugin_instance_info_list = plugin_instance_info_list
-        # 直播推流地址。
         self.push_url = push_url
-        # 访问用户人次。
         self.pv = pv
-        # 房间ID。
         self.room_id = room_id
-        # rtmp协议的播放地址
         self.rtmp_url = rtmp_url
-        # 直播开始时间，单位：毫秒。
         self.start_time = start_time
-        # 直播状态，0-在播 1-下播。
         self.status = status
-        # 标题。
         self.title = title
-        # 访问用户数。
         self.uv = uv
 
     def validate(self):
@@ -5929,9 +5690,7 @@ class GetLiveRoomResponseBody(TeaModel):
         request_id: str = None,
         result: GetLiveRoomResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 创建场景化直播返回的结果。
         self.result = result
 
     def validate(self):
@@ -6010,9 +5769,7 @@ class GetLiveRoomStatisticsRequest(TeaModel):
         app_id: str = None,
         live_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 直播ID。
         self.live_id = live_id
 
     def validate(self):
@@ -6053,25 +5810,15 @@ class GetLiveRoomStatisticsResponseBodyResult(TeaModel):
         uv: int = None,
         watch_live_time: int = None,
     ):
-        # 直播结束时间，单位：毫秒。
         self.end_time = end_time
-        # 点赞数。
         self.like_count = like_count
-        # 直播ID。
         self.live_id = live_id
-        # 互动消息数。
         self.message_count = message_count
-        # 在线用户数。
         self.online_count = online_count
-        # 访问用户人次。
         self.pv = pv
-        # 直播开始时间，单位：毫秒。
         self.start_time = start_time
-        # 直播状态，0-已创建 1-直播中 2-已关闭。
         self.status = status
-        # 访问用户数。
         self.uv = uv
-        # 总观看时长，单位：毫秒。
         self.watch_live_time = watch_live_time
 
     def validate(self):
@@ -6136,9 +5883,7 @@ class GetLiveRoomStatisticsResponseBody(TeaModel):
         request_id: str = None,
         result: GetLiveRoomStatisticsResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 创建场景化直播返回的结果。
         self.result = result
 
     def validate(self):
@@ -6219,13 +5964,9 @@ class GetLiveRoomUserStatisticsRequest(TeaModel):
         page_number: str = None,
         page_size: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 直播ID。
         self.live_id = live_id
-        # 查询页码，从1开始，传空默认查询第1页。
         self.page_number = page_number
-        # 每页显示个数，最大支持50，参数为空默认显示个数为10。
         self.page_size = page_size
 
     def validate(self):
@@ -6270,9 +6011,7 @@ class GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList(TeaModel):
     ):
         self.comment_count = comment_count
         self.like_count = like_count
-        # 用户ID。
         self.user_id = user_id
-        # 观看时长，单位：毫秒。
         self.watch_live_time = watch_live_time
 
     def validate(self):
@@ -6316,15 +6055,10 @@ class GetLiveRoomUserStatisticsResponseBodyResult(TeaModel):
         total_count: int = None,
         user_statistics_list: List[GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList] = None,
     ):
-        # 是否还有下一页。
         self.has_more = has_more
-        # 直播ID。
         self.live_id = live_id
-        # 用户总页数。
         self.page_total = page_total
-        # 用户总数
         self.total_count = total_count
-        # 用户观看数据列表。
         self.user_statistics_list = user_statistics_list
 
     def validate(self):
@@ -6377,9 +6111,7 @@ class GetLiveRoomUserStatisticsResponseBody(TeaModel):
         request_id: str = None,
         result: GetLiveRoomUserStatisticsResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 创建场景化直播返回的结果。
         self.result = result
 
     def validate(self):
@@ -6458,9 +6190,7 @@ class GetRoomRequest(TeaModel):
         app_id: str = None,
         room_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
         self.room_id = room_id
 
     def validate(self):
@@ -6495,13 +6225,9 @@ class GetRoomResponseBodyResultRoomInfoPluginInstanceInfoList(TeaModel):
         plugin_id: str = None,
         plugin_type: str = None,
     ):
-        # 插件实例创建时间戳，单位：毫秒。
         self.create_time = create_time
-        # 插件拓展字段。
         self.extension = extension
-        # 插件实例唯一标识。
         self.plugin_id = plugin_id
-        # 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
         self.plugin_type = plugin_type
 
     def validate(self):
@@ -6553,31 +6279,18 @@ class GetRoomResponseBodyResultRoomInfo(TeaModel):
         title: str = None,
         uv: int = None,
     ):
-        # 管理员ID列表。
         self.admin_id_list = admin_id_list
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 房间创建时间戳，单位：毫秒。
         self.create_time = create_time
-        # 房间拓展字段。
         self.extension = extension
-        # 房间公告。
         self.notice = notice
-        # 在线用户数。
         self.online_count = online_count
-        # 活跃插件列表。
         self.plugin_instance_info_list = plugin_instance_info_list
-        # 访问用户人次。
         self.pv = pv
-        # 房间唯一标识。
         self.room_id = room_id
-        # 房主用户id。
         self.room_owner_id = room_owner_id
-        # 创建房间使用的模板id。
         self.template_id = template_id
-        # 房间标题。
         self.title = title
-        # 访问用户数。
         self.uv = uv
 
     def validate(self):
@@ -6661,7 +6374,6 @@ class GetRoomResponseBodyResult(TeaModel):
         self,
         room_info: GetRoomResponseBodyResultRoomInfo = None,
     ):
-        # 房间信息。
         self.room_info = room_info
 
     def validate(self):
@@ -6692,9 +6404,7 @@ class GetRoomResponseBody(TeaModel):
         request_id: str = None,
         result: GetRoomResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 查询房间信息返回结果。
         self.result = result
 
     def validate(self):
@@ -6778,19 +6488,12 @@ class GetStandardRoomJumpUrlRequest(TeaModel):
         user_id: str = None,
         user_nick: str = None,
     ):
-        # 用户的应用ID，在控制台创建应用时生成
         self.app_id = app_id
-        # 终端设备类型,通过控制台创建和查询
         self.app_key = app_key
-        # 资源ID：根据业务类型来定，比如直播ID，课堂ID等
         self.biz_id = biz_id
-        # 业务类型：互动直播live，互动课堂class
         self.biz_type = biz_type
-        # 平台：win, mac, android, ios, web
         self.platform = platform
-        # 用户UserId,在AppId下单独唯一
         self.user_id = user_id
-        # 用户昵称
         self.user_nick = user_nick
 
     def validate(self):
@@ -6842,7 +6545,6 @@ class GetStandardRoomJumpUrlResponseBodyResult(TeaModel):
         self,
         standard_room_jump_url: str = None,
     ):
-        # 样板间跳转协议地址
         self.standard_room_jump_url = standard_room_jump_url
 
     def validate(self):
@@ -6871,7 +6573,6 @@ class GetStandardRoomJumpUrlResponseBody(TeaModel):
         request_id: str = None,
         result: GetStandardRoomJumpUrlResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.result = result
 
@@ -6954,14 +6655,10 @@ class KickRoomUserRequest(TeaModel):
         room_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
         self.block_time = block_time
-        # 被踢出房间的用户ID。
         self.kick_user = kick_user
-        # 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位，传空则随机生成一个房间id。
         self.room_id = room_id
-        # 操作人的用户ID，用于表示谁执行了踢人操作。
         self.user_id = user_id
 
     def validate(self):
@@ -7005,7 +6702,6 @@ class KickRoomUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -7080,13 +6776,9 @@ class ListClassesRequest(TeaModel):
         page_size: int = None,
         status: int = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 查询页码，从1开始，传空默认查询第1页。
         self.page_number = page_number
-        # 每页显示个数，最大支持50，参数为空默认显示个数为10。
         self.page_size = page_size
-        # 课程状态，0-未开课 1-上课中 2-已下课，不传则返回所有课程。
         self.status = status
 
     def validate(self):
@@ -7137,29 +6829,17 @@ class ListClassesResponseBodyResultClassList(TeaModel):
         whiteboard_id: str = None,
         whiteboard_record_id: str = None,
     ):
-        # 课堂唯一标识，由调用CreateClass返回。
         self.class_id = class_id
-        # 连麦会议唯一标识。
         self.conf_id = conf_id
-        # 创建人昵称。
         self.create_nickname = create_nickname
-        # 创建人ID。
         self.create_user_id = create_user_id
-        # 下课时间戳，毫秒。
         self.end_time = end_time
-        # 直播的唯一标识ID。
         self.live_id = live_id
-        # 房间ID
         self.room_id = room_id
-        # 开始上课时间戳，毫秒。
         self.start_time = start_time
-        # 课堂状态，0:未开始 1:上课中 2:已下课。
         self.status = status
-        # 课堂标题。
         self.title = title
-        # 白板ID
         self.whiteboard_id = whiteboard_id
-        # 白板录制ID
         self.whiteboard_record_id = whiteboard_record_id
 
     def validate(self):
@@ -7234,13 +6914,9 @@ class ListClassesResponseBodyResult(TeaModel):
         page_total: int = None,
         total_count: int = None,
     ):
-        # 课程列表信息。
         self.class_list = class_list
-        # 是否还有下一页。
         self.has_more = has_more
-        # 课程总页数。
         self.page_total = page_total
-        # 课程总数。
         self.total_count = total_count
 
     def validate(self):
@@ -7289,9 +6965,7 @@ class ListClassesResponseBody(TeaModel):
         request_id: str = None,
         result: ListClassesResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 创建课程返回的结果。
         self.result = result
 
     def validate(self):
@@ -7375,19 +7049,12 @@ class ListCommentsRequest(TeaModel):
         sort_type: int = None,
         user_id: str = None,
     ):
-        # 用户的应用ID，在控制台创建应用时生成。包含小写字母、数字，长度为6个字符。
         self.app_id = app_id
-        # 弹幕创建者ID。
         self.creator_id = creator_id
-        # 查询弹幕消息列表的分页页数。应该从1开始，每次分页拉取时递增。
         self.page_num = page_num
-        # 查询弹幕消息列表的分页大小。最小不得小于1，最大不得超过100。如果超过100，会被截断为前100条。
         self.page_size = page_size
-        # 房间的唯一标识，在调用CreateRoom时返回。
         self.room_id = room_id
-        # 查询弹幕消息列表的排序方式。取值仅限0和1，其中0表示按照弹幕消息创建时间递增的顺序拉取，1表示按照弹幕消息创建时间递减的时间拉取。
         self.sort_type = sort_type
-        # 操作人用户ID，表示谁执行了查询弹幕消息列表的操作。
         self.user_id = user_id
 
     def validate(self):
@@ -7446,21 +7113,13 @@ class ListCommentsResponseBodyResultCommentVOList(TeaModel):
         sender_id: str = None,
         sender_nick: str = None,
     ):
-        # 应用ID。
         self.app_id = app_id
-        # 弹幕消息的唯一ID标识。
         self.comment_id = comment_id
-        # 弹幕消息的内容。
         self.content = content
-        # 弹幕消息的创建时间，Unix时间戳，单位：毫秒。
         self.create_at = create_at
-        # 扩展字段。
         self.extension = extension
-        # 房间ID。
         self.room_id = room_id
-        # 弹幕消息的发送者ID标识。
         self.sender_id = sender_id
-        # 弹幕消息发送者的昵称。
         self.sender_nick = sender_nick
 
     def validate(self):
@@ -7519,13 +7178,9 @@ class ListCommentsResponseBodyResult(TeaModel):
         page_total: int = None,
         total_count: int = None,
     ):
-        # 弹幕消息列表。
         self.comment_volist = comment_volist
-        # 是否还有下一页数据。true表示还有，false表示没有。
         self.has_more = has_more
-        # 分页查询弹幕消息列表的总页数。
         self.page_total = page_total
-        # 弹幕消息的总数。
         self.total_count = total_count
 
     def validate(self):
@@ -7574,9 +7229,7 @@ class ListCommentsResponseBody(TeaModel):
         request_id: str = None,
         result: ListCommentsResponseBodyResult = None,
     ):
-        # 请求ID。
         self.request_id = request_id
-        # 调用查询弹幕消息列表的返回结果。
         self.result = result
 
     def validate(self):
@@ -7656,11 +7309,8 @@ class ListConferenceUsersRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 会议唯一标识符
         self.conference_id = conference_id
-        # 查询页码，从第1页开始。
         self.page_number = page_number
-        # 每页显示个数，最大显示个数为100。
         self.page_size = page_size
 
     def validate(self):
@@ -7697,9 +7347,7 @@ class ListConferenceUsersResponseBodyResultConferenceUserList(TeaModel):
         status: str = None,
         user_id: str = None,
     ):
-        # 用户状态。
         self.status = status
-        # 用户ID。
         self.user_id = user_id
 
     def validate(self):
@@ -7734,13 +7382,9 @@ class ListConferenceUsersResponseBodyResult(TeaModel):
         page_total: int = None,
         total_count: int = None,
     ):
-        # 会议用户列表。
         self.conference_user_list = conference_user_list
-        # 是否还有数据
         self.has_more = has_more
-        # 总页数
         self.page_total = page_total
-        # 总条目数
         self.total_count = total_count
 
     def validate(self):
@@ -7789,9 +7433,7 @@ class ListConferenceUsersResponseBody(TeaModel):
         request_id: str = None,
         result: ListConferenceUsersResponseBodyResult = None,
     ):
-        # 请求ID
         self.request_id = request_id
-        # 返回结果
         self.result = result
 
     def validate(self):
@@ -7864,6 +7506,186 @@ class ListConferenceUsersResponse(TeaModel):
         return self
 
 
+class ListLiveFilesRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        live_id: str = None,
+    ):
+        self.app_id = app_id
+        self.live_id = live_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.live_id is not None:
+            result['LiveId'] = self.live_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('LiveId') is not None:
+            self.live_id = m.get('LiveId')
+        return self
+
+
+class ListLiveFilesResponseBodyResultFileList(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        url: str = None,
+    ):
+        self.file_name = file_name
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class ListLiveFilesResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        file_list: List[ListLiveFilesResponseBodyResultFileList] = None,
+    ):
+        self.file_list = file_list
+
+    def validate(self):
+        if self.file_list:
+            for k in self.file_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FileList'] = []
+        if self.file_list is not None:
+            for k in self.file_list:
+                result['FileList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.file_list = []
+        if m.get('FileList') is not None:
+            for k in m.get('FileList'):
+                temp_model = ListLiveFilesResponseBodyResultFileList()
+                self.file_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListLiveFilesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: ListLiveFilesResponseBodyResult = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = ListLiveFilesResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class ListLiveFilesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListLiveFilesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListLiveFilesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListLiveRoomsRequest(TeaModel):
     def __init__(
         self,
@@ -7872,13 +7694,9 @@ class ListLiveRoomsRequest(TeaModel):
         page_size: int = None,
         status: int = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 查询页码，从1开始，传空默认查询第1页。
         self.page_number = page_number
-        # 每页显示个数，最大支持50，参数为空默认显示个数为10。
         self.page_size = page_size
-        # 直播状态，0-在播 1-下播，不传则返回所有直播。
         self.status = status
 
     def validate(self):
@@ -7934,39 +7752,22 @@ class ListLiveRoomsResponseBodyResultLiveList(TeaModel):
         title: str = None,
         uv: int = None,
     ):
-        # 主播ID。
         self.anchor_id = anchor_id
-        # 主播昵称。
         self.anchor_nick = anchor_nick
-        # 应用ID。
         self.app_id = app_id
-        # 聊天ID。
         self.chat_id = chat_id
-        # 封面。
         self.cover_url = cover_url
-        # 直播的创建时间。单位为ms。
         self.create_time = create_time
-        # 直播的结束时间。单位为ms。
         self.end_time = end_time
-        # 直播拓展字段。
         self.extension = extension
-        # 直播ID。
         self.live_id = live_id
-        # 公告。
         self.notice = notice
-        # 在线用户数。
         self.online_count = online_count
-        # 访问用户人次。
         self.pv = pv
-        # 房间ID。
         self.room_id = room_id
-        # 直播的开始时间。单位为ms。
         self.start_time = start_time
-        # 直播状态，0-在播 1-下播。
         self.status = status
-        # 标题。
         self.title = title
-        # 访问用户数。
         self.uv = uv
 
     def validate(self):
@@ -8061,13 +7862,9 @@ class ListLiveRoomsResponseBodyResult(TeaModel):
         page_total: int = None,
         total_count: int = None,
     ):
-        # 是否还有下一页。
         self.has_more = has_more
-        # 直播列表信息。
         self.live_list = live_list
-        # 直播总页数。
         self.page_total = page_total
-        # 直播总数。
         self.total_count = total_count
 
     def validate(self):
@@ -8116,9 +7913,7 @@ class ListLiveRoomsResponseBody(TeaModel):
         request_id: str = None,
         result: ListLiveRoomsResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 创建场景化直播返回的结果。
         self.result = result
 
     def validate(self):
@@ -8197,9 +7992,7 @@ class ListLiveRoomsByIdRequest(TeaModel):
         app_id: str = None,
         live_id_list: List[str] = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 直播ID列表。
         self.live_id_list = live_id_list
 
     def validate(self):
@@ -8232,9 +8025,7 @@ class ListLiveRoomsByIdShrinkRequest(TeaModel):
         app_id: str = None,
         live_id_list_shrink: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 直播ID列表。
         self.live_id_list_shrink = live_id_list_shrink
 
     def validate(self):
@@ -8282,39 +8073,22 @@ class ListLiveRoomsByIdResponseBodyResultLiveList(TeaModel):
         title: str = None,
         uv: int = None,
     ):
-        # 主播ID。
         self.anchor_id = anchor_id
-        # 主播昵称。
         self.anchor_nick = anchor_nick
-        # 应用ID。
         self.app_id = app_id
-        # 聊天ID。
         self.chat_id = chat_id
-        # 封面。
         self.cover_url = cover_url
-        # 直播的创建时间。单位为ms。
         self.create_time = create_time
-        # 直播的结束时间。单位为ms。
         self.end_time = end_time
-        # 直播拓展字段。
         self.extension = extension
-        # 直播ID。
         self.live_id = live_id
-        # 公告。
         self.notice = notice
-        # 在线用户数。
         self.online_count = online_count
-        # 访问用户人次。
         self.pv = pv
-        # 房间ID。
         self.room_id = room_id
-        # 直播的开始时间。单位为ms。
         self.start_time = start_time
-        # 直播状态，0-在播 1-下播。
         self.status = status
-        # 标题。
         self.title = title
-        # 访问用户数。
         self.uv = uv
 
     def validate(self):
@@ -8406,7 +8180,6 @@ class ListLiveRoomsByIdResponseBodyResult(TeaModel):
         self,
         live_list: List[ListLiveRoomsByIdResponseBodyResultLiveList] = None,
     ):
-        # 直播列表信息。
         self.live_list = live_list
 
     def validate(self):
@@ -8443,9 +8216,7 @@ class ListLiveRoomsByIdResponseBody(TeaModel):
         request_id: str = None,
         result: ListLiveRoomsByIdResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 创建场景化直播返回的结果。
         self.result = result
 
     def validate(self):
@@ -8526,13 +8297,9 @@ class ListRoomUsersRequest(TeaModel):
         page_size: int = None,
         room_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 查询页码，从1开始，传空默认查询第1页。
         self.page_number = page_number
-        # 每页显示个数，最大支持50，参数为空默认显示个数为10。
         self.page_size = page_size
-        # 房间ID，最大长度36个字符。
         self.room_id = room_id
 
     def validate(self):
@@ -8574,11 +8341,8 @@ class ListRoomUsersResponseBodyResultRoomUserList(TeaModel):
         nick: str = None,
         user_id: str = None,
     ):
-        # 用户拓展字段。
         self.extension = extension
-        # 用户昵称。
         self.nick = nick
-        # 用户唯一标识。
         self.user_id = user_id
 
     def validate(self):
@@ -8617,13 +8381,9 @@ class ListRoomUsersResponseBodyResult(TeaModel):
         room_user_list: List[ListRoomUsersResponseBodyResultRoomUserList] = None,
         total_count: int = None,
     ):
-        # 是否还有下一页用户列表。
         self.has_more = has_more
-        # 该房间的用户总页数。
         self.page_total = page_total
-        # 房间用户列表信息。
         self.room_user_list = room_user_list
-        # 该房间的用户总数。
         self.total_count = total_count
 
     def validate(self):
@@ -8672,9 +8432,7 @@ class ListRoomUsersResponseBody(TeaModel):
         request_id: str = None,
         result: ListRoomUsersResponseBodyResult = None,
     ):
-        # 请求ID。
         self.request_id = request_id
-        # API请求的返回结果结构体。
         self.result = result
 
     def validate(self):
@@ -8754,11 +8512,8 @@ class ListRoomsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 查询页码，从1开始，传空默认查询第1页。
         self.page_number = page_number
-        # 每页显示个数，最大支持50，参数为空默认显示个数为10。
         self.page_size = page_size
 
     def validate(self):
@@ -8797,13 +8552,9 @@ class ListRoomsResponseBodyResultRoomInfoListPluginInstanceInfoList(TeaModel):
         plugin_id: str = None,
         plugin_type: str = None,
     ):
-        # 插件实例创建时间戳，单位：毫秒。
         self.create_time = create_time
-        # 插件拓展字段。
         self.extension = extension
-        # 插件实例唯一标识。
         self.plugin_id = plugin_id
-        # 插件唯一标识，取值：live-直播，wb-白板，chat-聊天，rtc。
         self.plugin_type = plugin_type
 
     def validate(self):
@@ -8853,27 +8604,16 @@ class ListRoomsResponseBodyResultRoomInfoList(TeaModel):
         title: str = None,
         uv: int = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 房间创建时间戳，单位：毫秒。
         self.create_time = create_time
-        # 房间拓展字段。
         self.extension = extension
-        # 房间公告。
         self.notice = notice
-        # 用户在线数。
         self.online_count = online_count
-        # 活跃插件列表。
         self.plugin_instance_info_list = plugin_instance_info_list
-        # 房间唯一标识。
         self.room_id = room_id
-        # 房主用户id。
         self.room_owner_id = room_owner_id
-        # 创建房间使用的模板id。
         self.template_id = template_id
-        # 房间标题。
         self.title = title
-        # 用户访问数。
         self.uv = uv
 
     def validate(self):
@@ -8952,13 +8692,9 @@ class ListRoomsResponseBodyResult(TeaModel):
         room_info_list: List[ListRoomsResponseBodyResultRoomInfoList] = None,
         total_count: int = None,
     ):
-        # 是否还有下一页房间列表。
         self.has_more = has_more
-        # 该应用的房间总页数。
         self.page_total = page_total
-        # 房间列表信息。
         self.room_info_list = room_info_list
-        # 该应用的房间总数。
         self.total_count = total_count
 
     def validate(self):
@@ -9007,9 +8743,7 @@ class ListRoomsResponseBody(TeaModel):
         request_id: str = None,
         result: ListRoomsResponseBodyResult = None,
     ):
-        # 请求ID。
         self.request_id = request_id
-        # API请求的返回结果结构体。
         self.result = result
 
     def validate(self):
@@ -9089,7 +8823,6 @@ class ListSensitiveWordRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
     ):
-        # 弹幕发送者的用户ID，最大长度不超过32个字节。
         self.app_id = app_id
         self.page_num = page_num
         self.page_size = page_size
@@ -9161,9 +8894,7 @@ class ListSensitiveWordResponseBody(TeaModel):
         request_id: str = None,
         result: ListSensitiveWordResponseBodyResult = None,
     ):
-        # 请求ID。
         self.request_id = request_id
-        # 调用发送直播间弹幕的返回结果。
         self.result = result
 
     def validate(self):
@@ -9242,9 +8973,7 @@ class PublishLiveRequest(TeaModel):
         live_id: str = None,
         user_id: str = None,
     ):
-        # 直播资源的唯一标识ID
         self.live_id = live_id
-        # 当前用户Id
         self.user_id = user_id
 
     def validate(self):
@@ -9280,15 +9009,10 @@ class PublishLiveResponseBodyResult(TeaModel):
         push_url: str = None,
         status: str = None,
     ):
-        # 主播ID
         self.anchor_id = anchor_id
-        # 直播资源的唯一标识ID
         self.live_id = live_id
-        # 直播拉流地址
         self.live_url = live_url
-        # 直播推流地址
         self.push_url = push_url
-        # 直播状态：Created-已创建未开播，Living-直播中，End-直播结束
         self.status = status
 
     def validate(self):
@@ -9333,7 +9057,6 @@ class PublishLiveResponseBody(TeaModel):
         request_id: str = None,
         result: PublishLiveResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.result = result
 
@@ -9414,11 +9137,8 @@ class PublishLiveRoomRequest(TeaModel):
         live_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 直播ID。
         self.live_id = live_id
-        # 操作人ID。
         self.user_id = user_id
 
     def validate(self):
@@ -9456,11 +9176,8 @@ class PublishLiveRoomResponseBodyResult(TeaModel):
         live_url: str = None,
         push_url: str = None,
     ):
-        # 直播ID。
         self.live_id = live_id
-        # 直播拉流地址。
         self.live_url = live_url
-        # 直播推流地址。
         self.push_url = push_url
 
     def validate(self):
@@ -9497,9 +9214,7 @@ class PublishLiveRoomResponseBody(TeaModel):
         request_id: str = None,
         result: PublishLiveRoomResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 创建场景化直播返回的结果。
         self.result = result
 
     def validate(self):
@@ -9579,11 +9294,8 @@ class RemoveMemberRequest(TeaModel):
         from_user_id: str = None,
         to_user_id: str = None,
     ):
-        # 会议唯一标识
         self.conference_id = conference_id
-        # 邀请者用户ID
         self.from_user_id = from_user_id
-        # 被邀请用户ID
         self.to_user_id = to_user_id
 
     def validate(self):
@@ -9619,7 +9331,6 @@ class RemoveMemberResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -9696,17 +9407,11 @@ class SendCommentRequest(TeaModel):
         sender_id: str = None,
         sender_nick: str = None,
     ):
-        # 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
         self.app_id = app_id
-        # 发送的文本内容。最大的长度不超过256个字节。
         self.content = content
-        # 扩展字段，服务端仅做透传。
         self.extension = extension
-        # 直播间唯一标识，在调用CreateRoom返回。
         self.room_id = room_id
-        # 弹幕发送者的用户ID，最大长度不超过32个字节。
         self.sender_id = sender_id
-        # 弹幕消息发送者的昵称。
         self.sender_nick = sender_nick
 
     def validate(self):
@@ -9759,17 +9464,11 @@ class SendCommentShrinkRequest(TeaModel):
         sender_id: str = None,
         sender_nick: str = None,
     ):
-        # 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
         self.app_id = app_id
-        # 发送的文本内容。最大的长度不超过256个字节。
         self.content = content
-        # 扩展字段，服务端仅做透传。
         self.extension_shrink = extension_shrink
-        # 直播间唯一标识，在调用CreateRoom返回。
         self.room_id = room_id
-        # 弹幕发送者的用户ID，最大长度不超过32个字节。
         self.sender_id = sender_id
-        # 弹幕消息发送者的昵称。
         self.sender_nick = sender_nick
 
     def validate(self):
@@ -9822,17 +9521,11 @@ class SendCommentResponseBodyResultCommentVO(TeaModel):
         sender_id: str = None,
         sender_nick: str = None,
     ):
-        # 弹幕的唯一ID。
         self.comment_id = comment_id
-        # 弹幕的内容。
         self.content = content
-        # 弹幕的创建时间，Unix时间戳，单位：毫秒。
         self.create_at = create_at
-        # 扩展字段。
         self.extension = extension
-        # 弹幕的发送者ID标识。
         self.sender_id = sender_id
-        # 弹幕发送者的昵称。
         self.sender_nick = sender_nick
 
     def validate(self):
@@ -9880,7 +9573,6 @@ class SendCommentResponseBodyResult(TeaModel):
         self,
         comment_vo: SendCommentResponseBodyResultCommentVO = None,
     ):
-        # 返回的弹幕数据模型。
         self.comment_vo = comment_vo
 
     def validate(self):
@@ -9911,9 +9603,7 @@ class SendCommentResponseBody(TeaModel):
         request_id: str = None,
         result: SendCommentResponseBodyResult = None,
     ):
-        # 请求ID。
         self.request_id = request_id
-        # 调用发送直播间弹幕的返回结果。
         self.result = result
 
     def validate(self):
@@ -9993,11 +9683,8 @@ class SendCustomMessageToAllRequest(TeaModel):
         body: str = None,
         room_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 消息体内容。
         self.body = body
-        # 房间唯一标识，由调用CreateRoom返回。
         self.room_id = room_id
 
     def validate(self):
@@ -10033,7 +9720,6 @@ class SendCustomMessageToAllResponseBodyResult(TeaModel):
         self,
         message_id: str = None,
     ):
-        # 消息的唯一ID标识。由数字、大小写字母组成，长度不超过20。
         self.message_id = message_id
 
     def validate(self):
@@ -10062,9 +9748,7 @@ class SendCustomMessageToAllResponseBody(TeaModel):
         request_id: str = None,
         result: SendCustomMessageToAllResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # API请求的返回结果结构体。
         self.result = result
 
     def validate(self):
@@ -10145,13 +9829,9 @@ class SendCustomMessageToUsersRequest(TeaModel):
         receiver_list: List[str] = None,
         room_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 消息体内容。
         self.body = body
-        # 消息指定的接收人ID列表。
         self.receiver_list = receiver_list
-        # 房间唯一标识，由调用CreateRoom返回。
         self.room_id = room_id
 
     def validate(self):
@@ -10191,7 +9871,6 @@ class SendCustomMessageToUsersResponseBodyResult(TeaModel):
         self,
         message_id: str = None,
     ):
-        # 消息的唯一ID标识。由数字、大小写字母组成，长度不超过20。
         self.message_id = message_id
 
     def validate(self):
@@ -10220,9 +9899,7 @@ class SendCustomMessageToUsersResponseBody(TeaModel):
         request_id: str = None,
         result: SendCustomMessageToUsersResponseBodyResult = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # API请求的返回结果结构体。
         self.result = result
 
     def validate(self):
@@ -10302,11 +9979,8 @@ class SetUserAdminRequest(TeaModel):
         room_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
         self.room_id = room_id
-        # 用户ID
         self.user_id = user_id
 
     def validate(self):
@@ -10342,7 +10016,6 @@ class SetUserAdminResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -10416,11 +10089,8 @@ class StopClassRequest(TeaModel):
         class_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 课堂唯一标识。
         self.class_id = class_id
-        # 操作者用户ID。
         self.user_id = user_id
 
     def validate(self):
@@ -10456,7 +10126,6 @@ class StopClassResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -10531,13 +10200,9 @@ class StopLiveRequest(TeaModel):
         room_id: str = None,
         user_id: str = None,
     ):
-        # 租户名
         self.app_id = app_id
-        # 直播资源的唯一标识ID
         self.live_id = live_id
-        # 房间ID，最大长度36位
         self.room_id = room_id
-        # 创建直播用户ID
         self.user_id = user_id
 
     def validate(self):
@@ -10577,7 +10242,6 @@ class StopLiveResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -10651,11 +10315,8 @@ class StopLiveRoomRequest(TeaModel):
         live_id: str = None,
         user_id: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 直播ID。
         self.live_id = live_id
-        # 操作人ID。
         self.user_id = user_id
 
     def validate(self):
@@ -10691,7 +10352,6 @@ class StopLiveRoomResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -10767,15 +10427,10 @@ class UpdateClassRequest(TeaModel):
         create_user_id: str = None,
         title: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 课堂唯一标识。
         self.class_id = class_id
-        # 创建人用户昵称，1~32个字符。
         self.create_nickname = create_nickname
-        # 创建人用户ID，仅支持中英文数字，下划线，中划线，1~36个字符。
         self.create_user_id = create_user_id
-        # 课堂标题，1~32个字符。
         self.title = title
 
     def validate(self):
@@ -10819,7 +10474,6 @@ class UpdateClassResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -10893,11 +10547,8 @@ class UpdateLiveRequest(TeaModel):
         live_id: str = None,
         title: str = None,
     ):
-        # 直播简介，支持中英文，最大长度2048位
         self.introduction = introduction
-        # 直播资源的唯一标识ID
         self.live_id = live_id
-        # 直播标题，支持中英文，最大长度256位
         self.title = title
 
     def validate(self):
@@ -10933,7 +10584,6 @@ class UpdateLiveResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -11013,23 +10663,14 @@ class UpdateLiveRoomRequest(TeaModel):
         title: str = None,
         user_id: str = None,
     ):
-        # 主播id，仅支持英文和数字，最大长度36位。
         self.anchor_id = anchor_id
-        # 主播昵称。
         self.anchor_nick = anchor_nick
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 封面，支持图片地址链接格式
         self.cover_url = cover_url
-        # 拓展字段，按需传递，需要额外记录的房间属性。
         self.extension = extension
-        # 直播ID。
         self.live_id = live_id
-        # 公告，支持中英文，最大长度256位。
         self.notice = notice
-        # 标题，支持中英文，最大长度32位。
         self.title = title
-        # 操作人ID。
         self.user_id = user_id
 
     def validate(self):
@@ -11097,23 +10738,14 @@ class UpdateLiveRoomShrinkRequest(TeaModel):
         title: str = None,
         user_id: str = None,
     ):
-        # 主播id，仅支持英文和数字，最大长度36位。
         self.anchor_id = anchor_id
-        # 主播昵称。
         self.anchor_nick = anchor_nick
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 封面，支持图片地址链接格式
         self.cover_url = cover_url
-        # 拓展字段，按需传递，需要额外记录的房间属性。
         self.extension_shrink = extension_shrink
-        # 直播ID。
         self.live_id = live_id
-        # 公告，支持中英文，最大长度256位。
         self.notice = notice
-        # 标题，支持中英文，最大长度32位。
         self.title = title
-        # 操作人ID。
         self.user_id = user_id
 
     def validate(self):
@@ -11173,7 +10805,6 @@ class UpdateLiveRoomResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -11250,17 +10881,11 @@ class UpdateRoomRequest(TeaModel):
         room_owner_id: str = None,
         title: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 拓展字段，按需传递，需要额外记录的房间属性。
         self.extension = extension
-        # 房间公告，支持中英文，最大长度256位。
         self.notice = notice
-        # 房间唯一标识。
         self.room_id = room_id
-        # 房主用户id，仅支持英文和数字，最大长度36位。
         self.room_owner_id = room_owner_id
-        # 房间标题，支持中英文，最大长度32位。
         self.title = title
 
     def validate(self):
@@ -11313,17 +10938,11 @@ class UpdateRoomShrinkRequest(TeaModel):
         room_owner_id: str = None,
         title: str = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 拓展字段，按需传递，需要额外记录的房间属性。
         self.extension_shrink = extension_shrink
-        # 房间公告，支持中英文，最大长度256位。
         self.notice = notice
-        # 房间唯一标识。
         self.room_id = room_id
-        # 房主用户id，仅支持英文和数字，最大长度36位。
         self.room_owner_id = room_owner_id
-        # 房间标题，支持中英文，最大长度32位。
         self.title = title
 
     def validate(self):
@@ -11371,7 +10990,6 @@ class UpdateRoomResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -11449,19 +11067,12 @@ class UpdateShareScreenLayoutRequest(TeaModel):
         overlay_x: float = None,
         overlay_y: float = None,
     ):
-        # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
-        # 课堂唯一标识，由调用CreateClass返回。
         self.class_id = class_id
-        # 是否开启叠加老师画面
         self.enable_overlay = enable_overlay
-        # 叠加画面高度，归一化为1
         self.overlay_height = overlay_height
-        # 叠加画面宽度，归一化为1
         self.overlay_width = overlay_width
-        # 叠加画面X坐标，归一化为1
         self.overlay_x = overlay_x
-        # 叠加画面Y坐标，归一化为1
         self.overlay_y = overlay_y
 
     def validate(self):
@@ -11513,7 +11124,6 @@ class UpdateShareScreenLayoutResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):

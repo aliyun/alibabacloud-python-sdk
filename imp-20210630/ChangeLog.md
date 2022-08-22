@@ -1,3 +1,6 @@
+2022-08-22 Version: 2.9.8
+- Add ListLiveFiles API.
+
 2022-07-15 Version: 2.9.7
 - Add xxTime for ListLiveRoomsById API.
 

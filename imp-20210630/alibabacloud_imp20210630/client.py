@@ -1413,6 +1413,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_live_with_options_async(request, runtime)
 
+    def delete_live_files_by_id_with_options(
+        self,
+        request: imp_20210630_models.DeleteLiveFilesByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.DeleteLiveFilesByIdResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteLiveFilesById',
+            version='2021-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.DeleteLiveFilesByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_live_files_by_id_with_options_async(
+        self,
+        request: imp_20210630_models.DeleteLiveFilesByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.DeleteLiveFilesByIdResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteLiveFilesById',
+            version='2021-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.DeleteLiveFilesByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_live_files_by_id(
+        self,
+        request: imp_20210630_models.DeleteLiveFilesByIdRequest,
+    ) -> imp_20210630_models.DeleteLiveFilesByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_live_files_by_id_with_options(request, runtime)
+
+    async def delete_live_files_by_id_async(
+        self,
+        request: imp_20210630_models.DeleteLiveFilesByIdRequest,
+    ) -> imp_20210630_models.DeleteLiveFilesByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_live_files_by_id_with_options_async(request, runtime)
+
     def delete_live_room_with_options(
         self,
         request: imp_20210630_models.DeleteLiveRoomRequest,
@@ -2996,6 +3070,80 @@ class Client(OpenApiClient):
     ) -> imp_20210630_models.ListConferenceUsersResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_conference_users_with_options_async(request, runtime)
+
+    def list_live_files_with_options(
+        self,
+        request: imp_20210630_models.ListLiveFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListLiveFilesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListLiveFiles',
+            version='2021-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListLiveFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_live_files_with_options_async(
+        self,
+        request: imp_20210630_models.ListLiveFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.ListLiveFilesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListLiveFiles',
+            version='2021-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.ListLiveFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_live_files(
+        self,
+        request: imp_20210630_models.ListLiveFilesRequest,
+    ) -> imp_20210630_models.ListLiveFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_live_files_with_options(request, runtime)
+
+    async def list_live_files_async(
+        self,
+        request: imp_20210630_models.ListLiveFilesRequest,
+    ) -> imp_20210630_models.ListLiveFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_live_files_with_options_async(request, runtime)
 
     def list_live_rooms_with_options(
         self,
