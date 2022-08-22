@@ -2804,12 +2804,10 @@ class CreateScheduleTaskRequestPayload(TeaModel):
         self,
         action_dtos: List[CreateScheduleTaskRequestPayloadActionDTOs] = None,
         idempotent_id: str = None,
-        invoker: str = None,
         schedule_dto: CreateScheduleTaskRequestPayloadScheduleDTO = None,
     ):
         self.action_dtos = action_dtos
         self.idempotent_id = idempotent_id
-        self.invoker = invoker
         self.schedule_dto = schedule_dto
 
     def validate(self):
@@ -2832,8 +2830,6 @@ class CreateScheduleTaskRequestPayload(TeaModel):
                 result['ActionDTOs'].append(k.to_map() if k else None)
         if self.idempotent_id is not None:
             result['IdempotentId'] = self.idempotent_id
-        if self.invoker is not None:
-            result['Invoker'] = self.invoker
         if self.schedule_dto is not None:
             result['ScheduleDTO'] = self.schedule_dto.to_map()
         return result
@@ -2847,8 +2843,6 @@ class CreateScheduleTaskRequestPayload(TeaModel):
                 self.action_dtos.append(temp_model.from_map(k))
         if m.get('IdempotentId') is not None:
             self.idempotent_id = m.get('IdempotentId')
-        if m.get('Invoker') is not None:
-            self.invoker = m.get('Invoker')
         if m.get('ScheduleDTO') is not None:
             temp_model = CreateScheduleTaskRequestPayloadScheduleDTO()
             self.schedule_dto = temp_model.from_map(m['ScheduleDTO'])
@@ -3518,10 +3512,8 @@ class DeleteScheduleTaskRequestPayload(TeaModel):
     def __init__(
         self,
         id: int = None,
-        invoker: str = None,
     ):
         self.id = id
-        self.invoker = invoker
 
     def validate(self):
         pass
@@ -3534,16 +3526,12 @@ class DeleteScheduleTaskRequestPayload(TeaModel):
         result = dict()
         if self.id is not None:
             result['Id'] = self.id
-        if self.invoker is not None:
-            result['Invoker'] = self.invoker
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Id') is not None:
             self.id = m.get('Id')
-        if m.get('Invoker') is not None:
-            self.invoker = m.get('Invoker')
         return self
 
 
@@ -9150,10 +9138,8 @@ class GetScheduleTaskRequestPayload(TeaModel):
     def __init__(
         self,
         id: int = None,
-        invoker: str = None,
     ):
         self.id = id
-        self.invoker = invoker
 
     def validate(self):
         pass
@@ -9166,16 +9152,12 @@ class GetScheduleTaskRequestPayload(TeaModel):
         result = dict()
         if self.id is not None:
             result['Id'] = self.id
-        if self.invoker is not None:
-            result['Invoker'] = self.invoker
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Id') is not None:
             self.id = m.get('Id')
-        if m.get('Invoker') is not None:
-            self.invoker = m.get('Invoker')
         return self
 
 
@@ -9352,8 +9334,6 @@ class GetScheduleTaskResponseBodyResult(TeaModel):
         schedule_id: int = None,
         schedule_start_time: str = None,
         schedule_type: str = None,
-        user_id: int = None,
-        uuid: str = None,
     ):
         self.action_topic_list = action_topic_list
         self.cron = cron
@@ -9361,8 +9341,6 @@ class GetScheduleTaskResponseBodyResult(TeaModel):
         self.schedule_id = schedule_id
         self.schedule_start_time = schedule_start_time
         self.schedule_type = schedule_type
-        self.user_id = user_id
-        self.uuid = uuid
 
     def validate(self):
         if self.action_topic_list:
@@ -9390,10 +9368,6 @@ class GetScheduleTaskResponseBodyResult(TeaModel):
             result['ScheduleStartTime'] = self.schedule_start_time
         if self.schedule_type is not None:
             result['ScheduleType'] = self.schedule_type
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
-        if self.uuid is not None:
-            result['Uuid'] = self.uuid
         return result
 
     def from_map(self, m: dict = None):
@@ -9413,10 +9387,6 @@ class GetScheduleTaskResponseBodyResult(TeaModel):
             self.schedule_start_time = m.get('ScheduleStartTime')
         if m.get('ScheduleType') is not None:
             self.schedule_type = m.get('ScheduleType')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
-        if m.get('Uuid') is not None:
-            self.uuid = m.get('Uuid')
         return self
 
 
@@ -10047,6 +10017,507 @@ class GetUserByDeviceIdResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetUserByDeviceIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetWeatherHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class GetWeatherRequestDeviceInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        self.encode_key = encode_key
+        self.encode_type = encode_type
+        self.id = id
+        self.id_type = id_type
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class GetWeatherRequestPayload(TeaModel):
+    def __init__(self):
+        pass
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        return self
+
+
+class GetWeatherRequestUserInfo(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        id: str = None,
+        id_type: str = None,
+        organization_id: str = None,
+    ):
+        self.encode_key = encode_key
+        self.encode_type = encode_type
+        self.id = id
+        self.id_type = id_type
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.id_type is not None:
+            result['IdType'] = self.id_type
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IdType') is not None:
+            self.id_type = m.get('IdType')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        return self
+
+
+class GetWeatherRequest(TeaModel):
+    def __init__(
+        self,
+        device_info: GetWeatherRequestDeviceInfo = None,
+        payload: GetWeatherRequestPayload = None,
+        user_info: GetWeatherRequestUserInfo = None,
+    ):
+        self.device_info = device_info
+        self.payload = payload
+        self.user_info = user_info
+
+    def validate(self):
+        if self.device_info:
+            self.device_info.validate()
+        if self.payload:
+            self.payload.validate()
+        if self.user_info:
+            self.user_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_info is not None:
+            result['DeviceInfo'] = self.device_info.to_map()
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.user_info is not None:
+            result['UserInfo'] = self.user_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceInfo') is not None:
+            temp_model = GetWeatherRequestDeviceInfo()
+            self.device_info = temp_model.from_map(m['DeviceInfo'])
+        if m.get('Payload') is not None:
+            temp_model = GetWeatherRequestPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('UserInfo') is not None:
+            temp_model = GetWeatherRequestUserInfo()
+            self.user_info = temp_model.from_map(m['UserInfo'])
+        return self
+
+
+class GetWeatherShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        device_info_shrink: str = None,
+        payload_shrink: str = None,
+        user_info_shrink: str = None,
+    ):
+        self.device_info_shrink = device_info_shrink
+        self.payload_shrink = payload_shrink
+        self.user_info_shrink = user_info_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_info_shrink is not None:
+            result['DeviceInfo'] = self.device_info_shrink
+        if self.payload_shrink is not None:
+            result['Payload'] = self.payload_shrink
+        if self.user_info_shrink is not None:
+            result['UserInfo'] = self.user_info_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceInfo') is not None:
+            self.device_info_shrink = m.get('DeviceInfo')
+        if m.get('Payload') is not None:
+            self.payload_shrink = m.get('Payload')
+        if m.get('UserInfo') is not None:
+            self.user_info_shrink = m.get('UserInfo')
+        return self
+
+
+class GetWeatherResponseBodyResultCurrentMeteorologyTemperature(TeaModel):
+    def __init__(
+        self,
+        current: str = None,
+        current_desc: str = None,
+        high: str = None,
+        high_desc: str = None,
+        logical: str = None,
+        low: str = None,
+        low_desc: str = None,
+    ):
+        self.current = current
+        self.current_desc = current_desc
+        self.high = high
+        self.high_desc = high_desc
+        self.logical = logical
+        self.low = low
+        self.low_desc = low_desc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['Current'] = self.current
+        if self.current_desc is not None:
+            result['CurrentDesc'] = self.current_desc
+        if self.high is not None:
+            result['High'] = self.high
+        if self.high_desc is not None:
+            result['HighDesc'] = self.high_desc
+        if self.logical is not None:
+            result['Logical'] = self.logical
+        if self.low is not None:
+            result['Low'] = self.low
+        if self.low_desc is not None:
+            result['LowDesc'] = self.low_desc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        if m.get('CurrentDesc') is not None:
+            self.current_desc = m.get('CurrentDesc')
+        if m.get('High') is not None:
+            self.high = m.get('High')
+        if m.get('HighDesc') is not None:
+            self.high_desc = m.get('HighDesc')
+        if m.get('Logical') is not None:
+            self.logical = m.get('Logical')
+        if m.get('Low') is not None:
+            self.low = m.get('Low')
+        if m.get('LowDesc') is not None:
+            self.low_desc = m.get('LowDesc')
+        return self
+
+
+class GetWeatherResponseBodyResultCurrentMeteorologyWeather(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetWeatherResponseBodyResultCurrentMeteorology(TeaModel):
+    def __init__(
+        self,
+        temperature: GetWeatherResponseBodyResultCurrentMeteorologyTemperature = None,
+        weather: GetWeatherResponseBodyResultCurrentMeteorologyWeather = None,
+    ):
+        self.temperature = temperature
+        self.weather = weather
+
+    def validate(self):
+        if self.temperature:
+            self.temperature.validate()
+        if self.weather:
+            self.weather.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.temperature is not None:
+            result['Temperature'] = self.temperature.to_map()
+        if self.weather is not None:
+            result['Weather'] = self.weather.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Temperature') is not None:
+            temp_model = GetWeatherResponseBodyResultCurrentMeteorologyTemperature()
+            self.temperature = temp_model.from_map(m['Temperature'])
+        if m.get('Weather') is not None:
+            temp_model = GetWeatherResponseBodyResultCurrentMeteorologyWeather()
+            self.weather = temp_model.from_map(m['Weather'])
+        return self
+
+
+class GetWeatherResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        current_meteorology: GetWeatherResponseBodyResultCurrentMeteorology = None,
+    ):
+        self.current_meteorology = current_meteorology
+
+    def validate(self):
+        if self.current_meteorology:
+            self.current_meteorology.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_meteorology is not None:
+            result['CurrentMeteorology'] = self.current_meteorology.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentMeteorology') is not None:
+            temp_model = GetWeatherResponseBodyResultCurrentMeteorology()
+            self.current_meteorology = temp_model.from_map(m['CurrentMeteorology'])
+        return self
+
+
+class GetWeatherResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result: GetWeatherResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetWeatherResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class GetWeatherResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetWeatherResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetWeatherResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20472,6 +20943,372 @@ class ReadMessageResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReadMessageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ScgSearchHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class ScgSearchRequestScgFilterOffSetParam(TeaModel):
+    def __init__(
+        self,
+        limit: int = None,
+        offset: int = None,
+    ):
+        self.limit = limit
+        self.offset = offset
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.offset is not None:
+            result['Offset'] = self.offset
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+        return self
+
+
+class ScgSearchRequestScgFilterPageParam(TeaModel):
+    def __init__(
+        self,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        self.page_num = page_num
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ScgSearchRequestScgFilterSortParam(TeaModel):
+    def __init__(
+        self,
+        sort_key: str = None,
+        sort_order: str = None,
+        sort_text: str = None,
+    ):
+        self.sort_key = sort_key
+        self.sort_order = sort_order
+        self.sort_text = sort_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sort_key is not None:
+            result['SortKey'] = self.sort_key
+        if self.sort_order is not None:
+            result['SortOrder'] = self.sort_order
+        if self.sort_text is not None:
+            result['SortText'] = self.sort_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SortKey') is not None:
+            self.sort_key = m.get('SortKey')
+        if m.get('SortOrder') is not None:
+            self.sort_order = m.get('SortOrder')
+        if m.get('SortText') is not None:
+            self.sort_text = m.get('SortText')
+        return self
+
+
+class ScgSearchRequestScgFilter(TeaModel):
+    def __init__(
+        self,
+        off_set_param: ScgSearchRequestScgFilterOffSetParam = None,
+        page_param: ScgSearchRequestScgFilterPageParam = None,
+        sort_param: ScgSearchRequestScgFilterSortParam = None,
+        use_off_set: bool = None,
+    ):
+        self.off_set_param = off_set_param
+        self.page_param = page_param
+        self.sort_param = sort_param
+        self.use_off_set = use_off_set
+
+    def validate(self):
+        if self.off_set_param:
+            self.off_set_param.validate()
+        if self.page_param:
+            self.page_param.validate()
+        if self.sort_param:
+            self.sort_param.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.off_set_param is not None:
+            result['OffSetParam'] = self.off_set_param.to_map()
+        if self.page_param is not None:
+            result['PageParam'] = self.page_param.to_map()
+        if self.sort_param is not None:
+            result['SortParam'] = self.sort_param.to_map()
+        if self.use_off_set is not None:
+            result['UseOffSet'] = self.use_off_set
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OffSetParam') is not None:
+            temp_model = ScgSearchRequestScgFilterOffSetParam()
+            self.off_set_param = temp_model.from_map(m['OffSetParam'])
+        if m.get('PageParam') is not None:
+            temp_model = ScgSearchRequestScgFilterPageParam()
+            self.page_param = temp_model.from_map(m['PageParam'])
+        if m.get('SortParam') is not None:
+            temp_model = ScgSearchRequestScgFilterSortParam()
+            self.sort_param = temp_model.from_map(m['SortParam'])
+        if m.get('UseOffSet') is not None:
+            self.use_off_set = m.get('UseOffSet')
+        return self
+
+
+class ScgSearchRequest(TeaModel):
+    def __init__(
+        self,
+        scg_filter: ScgSearchRequestScgFilter = None,
+        topic_id: str = None,
+    ):
+        self.scg_filter = scg_filter
+        self.topic_id = topic_id
+
+    def validate(self):
+        if self.scg_filter:
+            self.scg_filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scg_filter is not None:
+            result['ScgFilter'] = self.scg_filter.to_map()
+        if self.topic_id is not None:
+            result['TopicId'] = self.topic_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ScgFilter') is not None:
+            temp_model = ScgSearchRequestScgFilter()
+            self.scg_filter = temp_model.from_map(m['ScgFilter'])
+        if m.get('TopicId') is not None:
+            self.topic_id = m.get('TopicId')
+        return self
+
+
+class ScgSearchShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        scg_filter_shrink: str = None,
+        topic_id: str = None,
+    ):
+        self.scg_filter_shrink = scg_filter_shrink
+        self.topic_id = topic_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scg_filter_shrink is not None:
+            result['ScgFilter'] = self.scg_filter_shrink
+        if self.topic_id is not None:
+            result['TopicId'] = self.topic_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ScgFilter') is not None:
+            self.scg_filter_shrink = m.get('ScgFilter')
+        if m.get('TopicId') is not None:
+            self.topic_id = m.get('TopicId')
+        return self
+
+
+class ScgSearchResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        page_num: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        result: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.page_num = page_num
+        self.page_size = page_size
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class ScgSearchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ScgSearchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ScgSearchResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -2801,6 +2801,120 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def get_weather(
+        self,
+        request: ali_geniessp__1__0_models.GetWeatherRequest,
+    ) -> ali_geniessp__1__0_models.GetWeatherResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.GetWeatherHeaders()
+        return self.get_weather_with_options(request, headers, runtime)
+
+    async def get_weather_async(
+        self,
+        request: ali_geniessp__1__0_models.GetWeatherRequest,
+    ) -> ali_geniessp__1__0_models.GetWeatherResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.GetWeatherHeaders()
+        return await self.get_weather_with_options_async(request, headers, runtime)
+
+    def get_weather_with_options(
+        self,
+        tmp_req: ali_geniessp__1__0_models.GetWeatherRequest,
+        headers: ali_geniessp__1__0_models.GetWeatherHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.GetWeatherResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_geniessp__1__0_models.GetWeatherShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.payload):
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.device_info_shrink):
+            body['DeviceInfo'] = request.device_info_shrink
+        if not UtilClient.is_unset(request.payload_shrink):
+            body['Payload'] = request.payload_shrink
+        if not UtilClient.is_unset(request.user_info_shrink):
+            body['UserInfo'] = request.user_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetWeather',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/GetWeather',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.GetWeatherResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_weather_with_options_async(
+        self,
+        tmp_req: ali_geniessp__1__0_models.GetWeatherRequest,
+        headers: ali_geniessp__1__0_models.GetWeatherHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.GetWeatherResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_geniessp__1__0_models.GetWeatherShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.payload):
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.payload), 'Payload', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.device_info_shrink):
+            body['DeviceInfo'] = request.device_info_shrink
+        if not UtilClient.is_unset(request.payload_shrink):
+            body['Payload'] = request.payload_shrink
+        if not UtilClient.is_unset(request.user_info_shrink):
+            body['UserInfo'] = request.user_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetWeather',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/GetWeather',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.GetWeatherResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def index_control_playing_list(
         self,
         request: ali_geniessp__1__0_models.IndexControlPlayingListRequest,
@@ -5508,6 +5622,108 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ali_geniessp__1__0_models.ReadMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def scg_search(
+        self,
+        request: ali_geniessp__1__0_models.ScgSearchRequest,
+    ) -> ali_geniessp__1__0_models.ScgSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.ScgSearchHeaders()
+        return self.scg_search_with_options(request, headers, runtime)
+
+    async def scg_search_async(
+        self,
+        request: ali_geniessp__1__0_models.ScgSearchRequest,
+    ) -> ali_geniessp__1__0_models.ScgSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.ScgSearchHeaders()
+        return await self.scg_search_with_options_async(request, headers, runtime)
+
+    def scg_search_with_options(
+        self,
+        tmp_req: ali_geniessp__1__0_models.ScgSearchRequest,
+        headers: ali_geniessp__1__0_models.ScgSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.ScgSearchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_geniessp__1__0_models.ScgSearchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scg_filter):
+            request.scg_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.scg_filter), 'ScgFilter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.scg_filter_shrink):
+            query['ScgFilter'] = request.scg_filter_shrink
+        if not UtilClient.is_unset(request.topic_id):
+            query['TopicId'] = request.topic_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ScgSearch',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/scgSearch',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.ScgSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def scg_search_with_options_async(
+        self,
+        tmp_req: ali_geniessp__1__0_models.ScgSearchRequest,
+        headers: ali_geniessp__1__0_models.ScgSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.ScgSearchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_geniessp__1__0_models.ScgSearchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scg_filter):
+            request.scg_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.scg_filter), 'ScgFilter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.scg_filter_shrink):
+            query['ScgFilter'] = request.scg_filter_shrink
+        if not UtilClient.is_unset(request.topic_id):
+            query['TopicId'] = request.topic_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ScgSearch',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/scgSearch',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.ScgSearchResponse(),
             await self.call_api_async(params, req, runtime)
         )
 

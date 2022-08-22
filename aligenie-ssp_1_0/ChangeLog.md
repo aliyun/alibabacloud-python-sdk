@@ -1,3 +1,6 @@
+2022-08-22 Version: 1.0.9
+- Add scgsearch api.
+
 2022-07-29 Version: 1.0.8
 - Add net access api.
 
