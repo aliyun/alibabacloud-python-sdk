@@ -1,3 +1,6 @@
+2022-08-22 Version: 1.1.30
+- Change GetFileDetectResult Public.
+
 2022-08-16 Version: 1.1.29
 - Change GetFileDetectResult Public.
 

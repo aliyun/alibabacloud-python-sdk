@@ -914,14 +914,14 @@ class CreateFileDetectResponse(TeaModel):
         return self
 
 
-class CreateFileDetectUploadUrlRequest(TeaModel):
+class CreateFileDetectUploadUrlRequestHashKeyContextList(TeaModel):
     def __init__(
         self,
-        hash_key_list: List[str] = None,
-        type: int = None,
+        file_size: int = None,
+        hash_key: str = None,
     ):
-        self.hash_key_list = hash_key_list
-        self.type = type
+        self.file_size = file_size
+        self.hash_key = hash_key
 
     def validate(self):
         pass
@@ -932,6 +932,48 @@ class CreateFileDetectUploadUrlRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.file_size is not None:
+            result['FileSize'] = self.file_size
+        if self.hash_key is not None:
+            result['HashKey'] = self.hash_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileSize') is not None:
+            self.file_size = m.get('FileSize')
+        if m.get('HashKey') is not None:
+            self.hash_key = m.get('HashKey')
+        return self
+
+
+class CreateFileDetectUploadUrlRequest(TeaModel):
+    def __init__(
+        self,
+        hash_key_context_list: List[CreateFileDetectUploadUrlRequestHashKeyContextList] = None,
+        hash_key_list: List[str] = None,
+        type: int = None,
+    ):
+        self.hash_key_context_list = hash_key_context_list
+        self.hash_key_list = hash_key_list
+        self.type = type
+
+    def validate(self):
+        if self.hash_key_context_list:
+            for k in self.hash_key_context_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HashKeyContextList'] = []
+        if self.hash_key_context_list is not None:
+            for k in self.hash_key_context_list:
+                result['HashKeyContextList'].append(k.to_map() if k else None)
         if self.hash_key_list is not None:
             result['HashKeyList'] = self.hash_key_list
         if self.type is not None:
@@ -940,6 +982,11 @@ class CreateFileDetectUploadUrlRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.hash_key_context_list = []
+        if m.get('HashKeyContextList') is not None:
+            for k in m.get('HashKeyContextList'):
+                temp_model = CreateFileDetectUploadUrlRequestHashKeyContextList()
+                self.hash_key_context_list.append(temp_model.from_map(k))
         if m.get('HashKeyList') is not None:
             self.hash_key_list = m.get('HashKeyList')
         if m.get('Type') is not None:
@@ -995,18 +1042,22 @@ class CreateFileDetectUploadUrlResponseBodyUploadUrlListContext(TeaModel):
 class CreateFileDetectUploadUrlResponseBodyUploadUrlList(TeaModel):
     def __init__(
         self,
+        code: str = None,
         context: CreateFileDetectUploadUrlResponseBodyUploadUrlListContext = None,
         expire: str = None,
         file_exist: bool = None,
         hash_key: str = None,
         internal_url: str = None,
+        message: str = None,
         public_url: str = None,
     ):
+        self.code = code
         self.context = context
         self.expire = expire
         self.file_exist = file_exist
         self.hash_key = hash_key
         self.internal_url = internal_url
+        self.message = message
         self.public_url = public_url
 
     def validate(self):
@@ -1019,6 +1070,8 @@ class CreateFileDetectUploadUrlResponseBodyUploadUrlList(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.context is not None:
             result['Context'] = self.context.to_map()
         if self.expire is not None:
@@ -1029,12 +1082,16 @@ class CreateFileDetectUploadUrlResponseBodyUploadUrlList(TeaModel):
             result['HashKey'] = self.hash_key
         if self.internal_url is not None:
             result['InternalUrl'] = self.internal_url
+        if self.message is not None:
+            result['Message'] = self.message
         if self.public_url is not None:
             result['PublicUrl'] = self.public_url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Context') is not None:
             temp_model = CreateFileDetectUploadUrlResponseBodyUploadUrlListContext()
             self.context = temp_model.from_map(m['Context'])
@@ -1046,6 +1103,8 @@ class CreateFileDetectUploadUrlResponseBodyUploadUrlList(TeaModel):
             self.hash_key = m.get('HashKey')
         if m.get('InternalUrl') is not None:
             self.internal_url = m.get('InternalUrl')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('PublicUrl') is not None:
             self.public_url = m.get('PublicUrl')
         return self
@@ -33356,18 +33415,18 @@ class GetFileDetectResultRequest(TeaModel):
 class GetFileDetectResultResponseBodyResultList(TeaModel):
     def __init__(
         self,
-        error_code: str = None,
-        error_message: str = None,
+        code: str = None,
         ext: str = None,
         hash_key: str = None,
+        message: str = None,
         result: int = None,
         score: int = None,
         virus_type: str = None,
     ):
-        self.error_code = error_code
-        self.error_message = error_message
+        self.code = code
         self.ext = ext
         self.hash_key = hash_key
+        self.message = message
         self.result = result
         self.score = score
         self.virus_type = virus_type
@@ -33381,14 +33440,14 @@ class GetFileDetectResultResponseBodyResultList(TeaModel):
             return _map
 
         result = dict()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
+        if self.code is not None:
+            result['Code'] = self.code
         if self.ext is not None:
             result['Ext'] = self.ext
         if self.hash_key is not None:
             result['HashKey'] = self.hash_key
+        if self.message is not None:
+            result['Message'] = self.message
         if self.result is not None:
             result['Result'] = self.result
         if self.score is not None:
@@ -33399,14 +33458,14 @@ class GetFileDetectResultResponseBodyResultList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Ext') is not None:
             self.ext = m.get('Ext')
         if m.get('HashKey') is not None:
             self.hash_key = m.get('HashKey')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('Result') is not None:
             self.result = m.get('Result')
         if m.get('Score') is not None:
@@ -35343,13 +35402,11 @@ class ListHoneypotResponseBodyPageInfo(TeaModel):
         self,
         count: int = None,
         current_page: int = None,
-        last_row_key: str = None,
         page_size: int = None,
         total_count: int = None,
     ):
         self.count = count
         self.current_page = current_page
-        self.last_row_key = last_row_key
         self.page_size = page_size
         self.total_count = total_count
 
@@ -35366,8 +35423,6 @@ class ListHoneypotResponseBodyPageInfo(TeaModel):
             result['Count'] = self.count
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
-        if self.last_row_key is not None:
-            result['LastRowKey'] = self.last_row_key
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.total_count is not None:
@@ -35380,8 +35435,6 @@ class ListHoneypotResponseBodyPageInfo(TeaModel):
             self.count = m.get('Count')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
-        if m.get('LastRowKey') is not None:
-            self.last_row_key = m.get('LastRowKey')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('TotalCount') is not None:
@@ -36010,13 +36063,11 @@ class ListHoneypotNodeResponseBodyPageInfo(TeaModel):
         self,
         count: int = None,
         current_page: int = None,
-        last_row_key: str = None,
         page_size: int = None,
         total_count: int = None,
     ):
         self.count = count
         self.current_page = current_page
-        self.last_row_key = last_row_key
         self.page_size = page_size
         self.total_count = total_count
 
@@ -36033,8 +36084,6 @@ class ListHoneypotNodeResponseBodyPageInfo(TeaModel):
             result['Count'] = self.count
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
-        if self.last_row_key is not None:
-            result['LastRowKey'] = self.last_row_key
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.total_count is not None:
@@ -36047,8 +36096,6 @@ class ListHoneypotNodeResponseBodyPageInfo(TeaModel):
             self.count = m.get('Count')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
-        if m.get('LastRowKey') is not None:
-            self.last_row_key = m.get('LastRowKey')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('TotalCount') is not None:

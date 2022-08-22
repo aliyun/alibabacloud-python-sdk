@@ -685,6 +685,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.CreateFileDetectUploadUrlResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.hash_key_context_list):
+            query['HashKeyContextList'] = request.hash_key_context_list
         if not UtilClient.is_unset(request.hash_key_list):
             query['HashKeyList'] = request.hash_key_list
         if not UtilClient.is_unset(request.type):
@@ -715,6 +717,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.CreateFileDetectUploadUrlResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.hash_key_context_list):
+            query['HashKeyContextList'] = request.hash_key_context_list
         if not UtilClient.is_unset(request.hash_key_list):
             query['HashKeyList'] = request.hash_key_list
         if not UtilClient.is_unset(request.type):
