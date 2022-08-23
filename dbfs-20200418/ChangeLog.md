@@ -1,3 +1,6 @@
+2022-08-23 Version: 3.1.8
+- Bugfix.
+
 2022-08-22 Version: 3.1.7
 - Automatically generate sdk tasks.
 
