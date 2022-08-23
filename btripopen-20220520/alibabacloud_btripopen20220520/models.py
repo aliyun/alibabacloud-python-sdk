@@ -641,6 +641,99 @@ class ApplyAddRequestItineraryList(TeaModel):
         return self
 
 
+class ApplyAddRequestItinerarySetList(TeaModel):
+    def __init__(
+        self,
+        arr_date: str = None,
+        city_code_set: str = None,
+        city_set: str = None,
+        cost_center_id: int = None,
+        dep_date: str = None,
+        invoice_id: int = None,
+        itinerary_id: str = None,
+        project_code: str = None,
+        project_title: str = None,
+        third_part_invoice_id: str = None,
+        thirdpart_cost_center_id: str = None,
+        traffic_type: int = None,
+    ):
+        self.arr_date = arr_date
+        self.city_code_set = city_code_set
+        self.city_set = city_set
+        self.cost_center_id = cost_center_id
+        self.dep_date = dep_date
+        self.invoice_id = invoice_id
+        self.itinerary_id = itinerary_id
+        self.project_code = project_code
+        self.project_title = project_title
+        self.third_part_invoice_id = third_part_invoice_id
+        self.thirdpart_cost_center_id = thirdpart_cost_center_id
+        self.traffic_type = traffic_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arr_date is not None:
+            result['arr_date'] = self.arr_date
+        if self.city_code_set is not None:
+            result['city_code_set'] = self.city_code_set
+        if self.city_set is not None:
+            result['city_set'] = self.city_set
+        if self.cost_center_id is not None:
+            result['cost_center_id'] = self.cost_center_id
+        if self.dep_date is not None:
+            result['dep_date'] = self.dep_date
+        if self.invoice_id is not None:
+            result['invoice_id'] = self.invoice_id
+        if self.itinerary_id is not None:
+            result['itinerary_id'] = self.itinerary_id
+        if self.project_code is not None:
+            result['project_code'] = self.project_code
+        if self.project_title is not None:
+            result['project_title'] = self.project_title
+        if self.third_part_invoice_id is not None:
+            result['third_part_invoice_id'] = self.third_part_invoice_id
+        if self.thirdpart_cost_center_id is not None:
+            result['thirdpart_cost_center_id'] = self.thirdpart_cost_center_id
+        if self.traffic_type is not None:
+            result['traffic_type'] = self.traffic_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('arr_date') is not None:
+            self.arr_date = m.get('arr_date')
+        if m.get('city_code_set') is not None:
+            self.city_code_set = m.get('city_code_set')
+        if m.get('city_set') is not None:
+            self.city_set = m.get('city_set')
+        if m.get('cost_center_id') is not None:
+            self.cost_center_id = m.get('cost_center_id')
+        if m.get('dep_date') is not None:
+            self.dep_date = m.get('dep_date')
+        if m.get('invoice_id') is not None:
+            self.invoice_id = m.get('invoice_id')
+        if m.get('itinerary_id') is not None:
+            self.itinerary_id = m.get('itinerary_id')
+        if m.get('project_code') is not None:
+            self.project_code = m.get('project_code')
+        if m.get('project_title') is not None:
+            self.project_title = m.get('project_title')
+        if m.get('third_part_invoice_id') is not None:
+            self.third_part_invoice_id = m.get('third_part_invoice_id')
+        if m.get('thirdpart_cost_center_id') is not None:
+            self.thirdpart_cost_center_id = m.get('thirdpart_cost_center_id')
+        if m.get('traffic_type') is not None:
+            self.traffic_type = m.get('traffic_type')
+        return self
+
+
 class ApplyAddRequestTravelerList(TeaModel):
     def __init__(
         self,
@@ -805,6 +898,8 @@ class ApplyAddRequest(TeaModel):
         hotel_share: ApplyAddRequestHotelShare = None,
         international_flight_cabins: str = None,
         itinerary_list: List[ApplyAddRequestItineraryList] = None,
+        itinerary_rule: int = None,
+        itinerary_set_list: List[ApplyAddRequestItinerarySetList] = None,
         limit_traveler: int = None,
         status: int = None,
         thirdpart_apply_id: str = None,
@@ -834,6 +929,8 @@ class ApplyAddRequest(TeaModel):
         self.hotel_share = hotel_share
         self.international_flight_cabins = international_flight_cabins
         self.itinerary_list = itinerary_list
+        self.itinerary_rule = itinerary_rule
+        self.itinerary_set_list = itinerary_set_list
         self.limit_traveler = limit_traveler
         self.status = status
         self.thirdpart_apply_id = thirdpart_apply_id
@@ -862,6 +959,10 @@ class ApplyAddRequest(TeaModel):
             self.hotel_share.validate()
         if self.itinerary_list:
             for k in self.itinerary_list:
+                if k:
+                    k.validate()
+        if self.itinerary_set_list:
+            for k in self.itinerary_set_list:
                 if k:
                     k.validate()
         if self.traveler_list:
@@ -907,6 +1008,12 @@ class ApplyAddRequest(TeaModel):
         if self.itinerary_list is not None:
             for k in self.itinerary_list:
                 result['itinerary_list'].append(k.to_map() if k else None)
+        if self.itinerary_rule is not None:
+            result['itinerary_rule'] = self.itinerary_rule
+        result['itinerary_set_list'] = []
+        if self.itinerary_set_list is not None:
+            for k in self.itinerary_set_list:
+                result['itinerary_set_list'].append(k.to_map() if k else None)
         if self.limit_traveler is not None:
             result['limit_traveler'] = self.limit_traveler
         if self.status is not None:
@@ -979,6 +1086,13 @@ class ApplyAddRequest(TeaModel):
             for k in m.get('itinerary_list'):
                 temp_model = ApplyAddRequestItineraryList()
                 self.itinerary_list.append(temp_model.from_map(k))
+        if m.get('itinerary_rule') is not None:
+            self.itinerary_rule = m.get('itinerary_rule')
+        self.itinerary_set_list = []
+        if m.get('itinerary_set_list') is not None:
+            for k in m.get('itinerary_set_list'):
+                temp_model = ApplyAddRequestItinerarySetList()
+                self.itinerary_set_list.append(temp_model.from_map(k))
         if m.get('limit_traveler') is not None:
             self.limit_traveler = m.get('limit_traveler')
         if m.get('status') is not None:
@@ -1035,6 +1149,8 @@ class ApplyAddShrinkRequest(TeaModel):
         hotel_share_shrink: str = None,
         international_flight_cabins: str = None,
         itinerary_list_shrink: str = None,
+        itinerary_rule: int = None,
+        itinerary_set_list_shrink: str = None,
         limit_traveler: int = None,
         status: int = None,
         thirdpart_apply_id: str = None,
@@ -1064,6 +1180,8 @@ class ApplyAddShrinkRequest(TeaModel):
         self.hotel_share_shrink = hotel_share_shrink
         self.international_flight_cabins = international_flight_cabins
         self.itinerary_list_shrink = itinerary_list_shrink
+        self.itinerary_rule = itinerary_rule
+        self.itinerary_set_list_shrink = itinerary_set_list_shrink
         self.limit_traveler = limit_traveler
         self.status = status
         self.thirdpart_apply_id = thirdpart_apply_id
@@ -1114,6 +1232,10 @@ class ApplyAddShrinkRequest(TeaModel):
             result['international_flight_cabins'] = self.international_flight_cabins
         if self.itinerary_list_shrink is not None:
             result['itinerary_list'] = self.itinerary_list_shrink
+        if self.itinerary_rule is not None:
+            result['itinerary_rule'] = self.itinerary_rule
+        if self.itinerary_set_list_shrink is not None:
+            result['itinerary_set_list'] = self.itinerary_set_list_shrink
         if self.limit_traveler is not None:
             result['limit_traveler'] = self.limit_traveler
         if self.status is not None:
@@ -1174,6 +1296,10 @@ class ApplyAddShrinkRequest(TeaModel):
             self.international_flight_cabins = m.get('international_flight_cabins')
         if m.get('itinerary_list') is not None:
             self.itinerary_list_shrink = m.get('itinerary_list')
+        if m.get('itinerary_rule') is not None:
+            self.itinerary_rule = m.get('itinerary_rule')
+        if m.get('itinerary_set_list') is not None:
+            self.itinerary_set_list_shrink = m.get('itinerary_set_list')
         if m.get('limit_traveler') is not None:
             self.limit_traveler = m.get('limit_traveler')
         if m.get('status') is not None:
@@ -1615,6 +1741,87 @@ class ApplyListQueryResponseBodyModuleListItineraryList(TeaModel):
         return self
 
 
+class ApplyListQueryResponseBodyModuleListItinerarySetList(TeaModel):
+    def __init__(
+        self,
+        arr_date: str = None,
+        city_code_set: str = None,
+        city_set: str = None,
+        cost_center_name: str = None,
+        dep_date: str = None,
+        invoice_name: str = None,
+        itinerary_id: str = None,
+        project_code: str = None,
+        project_title: str = None,
+        traffic_type: int = None,
+    ):
+        self.arr_date = arr_date
+        self.city_code_set = city_code_set
+        self.city_set = city_set
+        self.cost_center_name = cost_center_name
+        self.dep_date = dep_date
+        self.invoice_name = invoice_name
+        self.itinerary_id = itinerary_id
+        self.project_code = project_code
+        self.project_title = project_title
+        self.traffic_type = traffic_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arr_date is not None:
+            result['arr_date'] = self.arr_date
+        if self.city_code_set is not None:
+            result['city_code_set'] = self.city_code_set
+        if self.city_set is not None:
+            result['city_set'] = self.city_set
+        if self.cost_center_name is not None:
+            result['cost_center_name'] = self.cost_center_name
+        if self.dep_date is not None:
+            result['dep_date'] = self.dep_date
+        if self.invoice_name is not None:
+            result['invoice_name'] = self.invoice_name
+        if self.itinerary_id is not None:
+            result['itinerary_id'] = self.itinerary_id
+        if self.project_code is not None:
+            result['project_code'] = self.project_code
+        if self.project_title is not None:
+            result['project_title'] = self.project_title
+        if self.traffic_type is not None:
+            result['traffic_type'] = self.traffic_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('arr_date') is not None:
+            self.arr_date = m.get('arr_date')
+        if m.get('city_code_set') is not None:
+            self.city_code_set = m.get('city_code_set')
+        if m.get('city_set') is not None:
+            self.city_set = m.get('city_set')
+        if m.get('cost_center_name') is not None:
+            self.cost_center_name = m.get('cost_center_name')
+        if m.get('dep_date') is not None:
+            self.dep_date = m.get('dep_date')
+        if m.get('invoice_name') is not None:
+            self.invoice_name = m.get('invoice_name')
+        if m.get('itinerary_id') is not None:
+            self.itinerary_id = m.get('itinerary_id')
+        if m.get('project_code') is not None:
+            self.project_code = m.get('project_code')
+        if m.get('project_title') is not None:
+            self.project_title = m.get('project_title')
+        if m.get('traffic_type') is not None:
+            self.traffic_type = m.get('traffic_type')
+        return self
+
+
 class ApplyListQueryResponseBodyModuleListTravelerList(TeaModel):
     def __init__(
         self,
@@ -1664,6 +1871,7 @@ class ApplyListQueryResponseBodyModuleList(TeaModel):
         id: int = None,
         itinerary_list: List[ApplyListQueryResponseBodyModuleListItineraryList] = None,
         itinerary_rule: int = None,
+        itinerary_set_list: List[ApplyListQueryResponseBodyModuleListItinerarySetList] = None,
         status: int = None,
         status_desc: str = None,
         thirdpart_business_id: str = None,
@@ -1690,6 +1898,7 @@ class ApplyListQueryResponseBodyModuleList(TeaModel):
         self.id = id
         self.itinerary_list = itinerary_list
         self.itinerary_rule = itinerary_rule
+        self.itinerary_set_list = itinerary_set_list
         self.status = status
         self.status_desc = status_desc
         self.thirdpart_business_id = thirdpart_business_id
@@ -1714,6 +1923,10 @@ class ApplyListQueryResponseBodyModuleList(TeaModel):
                     k.validate()
         if self.itinerary_list:
             for k in self.itinerary_list:
+                if k:
+                    k.validate()
+        if self.itinerary_set_list:
+            for k in self.itinerary_set_list:
                 if k:
                     k.validate()
         if self.traveler_list:
@@ -1759,6 +1972,10 @@ class ApplyListQueryResponseBodyModuleList(TeaModel):
                 result['itinerary_list'].append(k.to_map() if k else None)
         if self.itinerary_rule is not None:
             result['itinerary_rule'] = self.itinerary_rule
+        result['itinerary_set_list'] = []
+        if self.itinerary_set_list is not None:
+            for k in self.itinerary_set_list:
+                result['itinerary_set_list'].append(k.to_map() if k else None)
         if self.status is not None:
             result['status'] = self.status
         if self.status_desc is not None:
@@ -1824,6 +2041,11 @@ class ApplyListQueryResponseBodyModuleList(TeaModel):
                 self.itinerary_list.append(temp_model.from_map(k))
         if m.get('itinerary_rule') is not None:
             self.itinerary_rule = m.get('itinerary_rule')
+        self.itinerary_set_list = []
+        if m.get('itinerary_set_list') is not None:
+            for k in m.get('itinerary_set_list'):
+                temp_model = ApplyListQueryResponseBodyModuleListItinerarySetList()
+                self.itinerary_set_list.append(temp_model.from_map(k))
         if m.get('status') is not None:
             self.status = m.get('status')
         if m.get('status_desc') is not None:
@@ -2256,6 +2478,99 @@ class ApplyModifyRequestItineraryList(TeaModel):
         return self
 
 
+class ApplyModifyRequestItinerarySetList(TeaModel):
+    def __init__(
+        self,
+        arr_date: str = None,
+        city_code_set: str = None,
+        city_set: str = None,
+        cost_center_id: int = None,
+        dep_date: str = None,
+        invoice_id: int = None,
+        itinerary_id: str = None,
+        project_code: str = None,
+        project_title: str = None,
+        third_part_invoice_id: str = None,
+        thirdpart_cost_center_id: str = None,
+        traffic_type: int = None,
+    ):
+        self.arr_date = arr_date
+        self.city_code_set = city_code_set
+        self.city_set = city_set
+        self.cost_center_id = cost_center_id
+        self.dep_date = dep_date
+        self.invoice_id = invoice_id
+        self.itinerary_id = itinerary_id
+        self.project_code = project_code
+        self.project_title = project_title
+        self.third_part_invoice_id = third_part_invoice_id
+        self.thirdpart_cost_center_id = thirdpart_cost_center_id
+        self.traffic_type = traffic_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arr_date is not None:
+            result['arr_date'] = self.arr_date
+        if self.city_code_set is not None:
+            result['city_code_set'] = self.city_code_set
+        if self.city_set is not None:
+            result['city_set'] = self.city_set
+        if self.cost_center_id is not None:
+            result['cost_center_id'] = self.cost_center_id
+        if self.dep_date is not None:
+            result['dep_date'] = self.dep_date
+        if self.invoice_id is not None:
+            result['invoice_id'] = self.invoice_id
+        if self.itinerary_id is not None:
+            result['itinerary_id'] = self.itinerary_id
+        if self.project_code is not None:
+            result['project_code'] = self.project_code
+        if self.project_title is not None:
+            result['project_title'] = self.project_title
+        if self.third_part_invoice_id is not None:
+            result['third_part_invoice_id'] = self.third_part_invoice_id
+        if self.thirdpart_cost_center_id is not None:
+            result['thirdpart_cost_center_id'] = self.thirdpart_cost_center_id
+        if self.traffic_type is not None:
+            result['traffic_type'] = self.traffic_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('arr_date') is not None:
+            self.arr_date = m.get('arr_date')
+        if m.get('city_code_set') is not None:
+            self.city_code_set = m.get('city_code_set')
+        if m.get('city_set') is not None:
+            self.city_set = m.get('city_set')
+        if m.get('cost_center_id') is not None:
+            self.cost_center_id = m.get('cost_center_id')
+        if m.get('dep_date') is not None:
+            self.dep_date = m.get('dep_date')
+        if m.get('invoice_id') is not None:
+            self.invoice_id = m.get('invoice_id')
+        if m.get('itinerary_id') is not None:
+            self.itinerary_id = m.get('itinerary_id')
+        if m.get('project_code') is not None:
+            self.project_code = m.get('project_code')
+        if m.get('project_title') is not None:
+            self.project_title = m.get('project_title')
+        if m.get('third_part_invoice_id') is not None:
+            self.third_part_invoice_id = m.get('third_part_invoice_id')
+        if m.get('thirdpart_cost_center_id') is not None:
+            self.thirdpart_cost_center_id = m.get('thirdpart_cost_center_id')
+        if m.get('traffic_type') is not None:
+            self.traffic_type = m.get('traffic_type')
+        return self
+
+
 class ApplyModifyRequestTravelerList(TeaModel):
     def __init__(
         self,
@@ -2419,6 +2734,8 @@ class ApplyModifyRequest(TeaModel):
         hotel_budget: int = None,
         hotel_share: ApplyModifyRequestHotelShare = None,
         itinerary_list: List[ApplyModifyRequestItineraryList] = None,
+        itinerary_rule: int = None,
+        itinerary_set_list: List[ApplyModifyRequestItinerarySetList] = None,
         limit_traveler: int = None,
         status: int = None,
         thirdpart_apply_id: str = None,
@@ -2446,6 +2763,8 @@ class ApplyModifyRequest(TeaModel):
         self.hotel_budget = hotel_budget
         self.hotel_share = hotel_share
         self.itinerary_list = itinerary_list
+        self.itinerary_rule = itinerary_rule
+        self.itinerary_set_list = itinerary_set_list
         self.limit_traveler = limit_traveler
         self.status = status
         self.thirdpart_apply_id = thirdpart_apply_id
@@ -2473,6 +2792,10 @@ class ApplyModifyRequest(TeaModel):
             self.hotel_share.validate()
         if self.itinerary_list:
             for k in self.itinerary_list:
+                if k:
+                    k.validate()
+        if self.itinerary_set_list:
+            for k in self.itinerary_set_list:
                 if k:
                     k.validate()
         if self.traveler_list:
@@ -2516,6 +2839,12 @@ class ApplyModifyRequest(TeaModel):
         if self.itinerary_list is not None:
             for k in self.itinerary_list:
                 result['itinerary_list'].append(k.to_map() if k else None)
+        if self.itinerary_rule is not None:
+            result['itinerary_rule'] = self.itinerary_rule
+        result['itinerary_set_list'] = []
+        if self.itinerary_set_list is not None:
+            for k in self.itinerary_set_list:
+                result['itinerary_set_list'].append(k.to_map() if k else None)
         if self.limit_traveler is not None:
             result['limit_traveler'] = self.limit_traveler
         if self.status is not None:
@@ -2584,6 +2913,13 @@ class ApplyModifyRequest(TeaModel):
             for k in m.get('itinerary_list'):
                 temp_model = ApplyModifyRequestItineraryList()
                 self.itinerary_list.append(temp_model.from_map(k))
+        if m.get('itinerary_rule') is not None:
+            self.itinerary_rule = m.get('itinerary_rule')
+        self.itinerary_set_list = []
+        if m.get('itinerary_set_list') is not None:
+            for k in m.get('itinerary_set_list'):
+                temp_model = ApplyModifyRequestItinerarySetList()
+                self.itinerary_set_list.append(temp_model.from_map(k))
         if m.get('limit_traveler') is not None:
             self.limit_traveler = m.get('limit_traveler')
         if m.get('status') is not None:
@@ -2637,6 +2973,8 @@ class ApplyModifyShrinkRequest(TeaModel):
         hotel_budget: int = None,
         hotel_share_shrink: str = None,
         itinerary_list_shrink: str = None,
+        itinerary_rule: int = None,
+        itinerary_set_list_shrink: str = None,
         limit_traveler: int = None,
         status: int = None,
         thirdpart_apply_id: str = None,
@@ -2664,6 +3002,8 @@ class ApplyModifyShrinkRequest(TeaModel):
         self.hotel_budget = hotel_budget
         self.hotel_share_shrink = hotel_share_shrink
         self.itinerary_list_shrink = itinerary_list_shrink
+        self.itinerary_rule = itinerary_rule
+        self.itinerary_set_list_shrink = itinerary_set_list_shrink
         self.limit_traveler = limit_traveler
         self.status = status
         self.thirdpart_apply_id = thirdpart_apply_id
@@ -2711,6 +3051,10 @@ class ApplyModifyShrinkRequest(TeaModel):
             result['hotel_share'] = self.hotel_share_shrink
         if self.itinerary_list_shrink is not None:
             result['itinerary_list'] = self.itinerary_list_shrink
+        if self.itinerary_rule is not None:
+            result['itinerary_rule'] = self.itinerary_rule
+        if self.itinerary_set_list_shrink is not None:
+            result['itinerary_set_list'] = self.itinerary_set_list_shrink
         if self.limit_traveler is not None:
             result['limit_traveler'] = self.limit_traveler
         if self.status is not None:
@@ -2767,6 +3111,10 @@ class ApplyModifyShrinkRequest(TeaModel):
             self.hotel_share_shrink = m.get('hotel_share')
         if m.get('itinerary_list') is not None:
             self.itinerary_list_shrink = m.get('itinerary_list')
+        if m.get('itinerary_rule') is not None:
+            self.itinerary_rule = m.get('itinerary_rule')
+        if m.get('itinerary_set_list') is not None:
+            self.itinerary_set_list_shrink = m.get('itinerary_set_list')
         if m.get('limit_traveler') is not None:
             self.limit_traveler = m.get('limit_traveler')
         if m.get('status') is not None:
@@ -3298,6 +3646,87 @@ class ApplyQueryResponseBodyModuleItineraryList(TeaModel):
         return self
 
 
+class ApplyQueryResponseBodyModuleItinerarySetList(TeaModel):
+    def __init__(
+        self,
+        arr_date: str = None,
+        city_code_set: str = None,
+        city_set: str = None,
+        cost_center_name: str = None,
+        dep_date: str = None,
+        invoice_name: str = None,
+        itinerary_id: str = None,
+        project_code: str = None,
+        project_title: str = None,
+        traffic_type: int = None,
+    ):
+        self.arr_date = arr_date
+        self.city_code_set = city_code_set
+        self.city_set = city_set
+        self.cost_center_name = cost_center_name
+        self.dep_date = dep_date
+        self.invoice_name = invoice_name
+        self.itinerary_id = itinerary_id
+        self.project_code = project_code
+        self.project_title = project_title
+        self.traffic_type = traffic_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arr_date is not None:
+            result['arr_date'] = self.arr_date
+        if self.city_code_set is not None:
+            result['city_code_set'] = self.city_code_set
+        if self.city_set is not None:
+            result['city_set'] = self.city_set
+        if self.cost_center_name is not None:
+            result['cost_center_name'] = self.cost_center_name
+        if self.dep_date is not None:
+            result['dep_date'] = self.dep_date
+        if self.invoice_name is not None:
+            result['invoice_name'] = self.invoice_name
+        if self.itinerary_id is not None:
+            result['itinerary_id'] = self.itinerary_id
+        if self.project_code is not None:
+            result['project_code'] = self.project_code
+        if self.project_title is not None:
+            result['project_title'] = self.project_title
+        if self.traffic_type is not None:
+            result['traffic_type'] = self.traffic_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('arr_date') is not None:
+            self.arr_date = m.get('arr_date')
+        if m.get('city_code_set') is not None:
+            self.city_code_set = m.get('city_code_set')
+        if m.get('city_set') is not None:
+            self.city_set = m.get('city_set')
+        if m.get('cost_center_name') is not None:
+            self.cost_center_name = m.get('cost_center_name')
+        if m.get('dep_date') is not None:
+            self.dep_date = m.get('dep_date')
+        if m.get('invoice_name') is not None:
+            self.invoice_name = m.get('invoice_name')
+        if m.get('itinerary_id') is not None:
+            self.itinerary_id = m.get('itinerary_id')
+        if m.get('project_code') is not None:
+            self.project_code = m.get('project_code')
+        if m.get('project_title') is not None:
+            self.project_title = m.get('project_title')
+        if m.get('traffic_type') is not None:
+            self.traffic_type = m.get('traffic_type')
+        return self
+
+
 class ApplyQueryResponseBodyModuleTravelerListHotelCitys(TeaModel):
     def __init__(
         self,
@@ -3440,6 +3869,7 @@ class ApplyQueryResponseBodyModule(TeaModel):
         id: int = None,
         itinerary_list: List[ApplyQueryResponseBodyModuleItineraryList] = None,
         itinerary_rule: int = None,
+        itinerary_set_list: List[ApplyQueryResponseBodyModuleItinerarySetList] = None,
         limit_traveler: int = None,
         status: int = None,
         status_desc: str = None,
@@ -3474,6 +3904,7 @@ class ApplyQueryResponseBodyModule(TeaModel):
         self.id = id
         self.itinerary_list = itinerary_list
         self.itinerary_rule = itinerary_rule
+        self.itinerary_set_list = itinerary_set_list
         self.limit_traveler = limit_traveler
         self.status = status
         self.status_desc = status_desc
@@ -3504,6 +3935,10 @@ class ApplyQueryResponseBodyModule(TeaModel):
             self.hotel_share.validate()
         if self.itinerary_list:
             for k in self.itinerary_list:
+                if k:
+                    k.validate()
+        if self.itinerary_set_list:
+            for k in self.itinerary_set_list:
                 if k:
                     k.validate()
         if self.traveler_list:
@@ -3557,6 +3992,10 @@ class ApplyQueryResponseBodyModule(TeaModel):
                 result['itinerary_list'].append(k.to_map() if k else None)
         if self.itinerary_rule is not None:
             result['itinerary_rule'] = self.itinerary_rule
+        result['itinerary_set_list'] = []
+        if self.itinerary_set_list is not None:
+            for k in self.itinerary_set_list:
+                result['itinerary_set_list'].append(k.to_map() if k else None)
         if self.limit_traveler is not None:
             result['limit_traveler'] = self.limit_traveler
         if self.status is not None:
@@ -3639,6 +4078,11 @@ class ApplyQueryResponseBodyModule(TeaModel):
                 self.itinerary_list.append(temp_model.from_map(k))
         if m.get('itinerary_rule') is not None:
             self.itinerary_rule = m.get('itinerary_rule')
+        self.itinerary_set_list = []
+        if m.get('itinerary_set_list') is not None:
+            for k in m.get('itinerary_set_list'):
+                temp_model = ApplyQueryResponseBodyModuleItinerarySetList()
+                self.itinerary_set_list.append(temp_model.from_map(k))
         if m.get('limit_traveler') is not None:
             self.limit_traveler = m.get('limit_traveler')
         if m.get('status') is not None:
