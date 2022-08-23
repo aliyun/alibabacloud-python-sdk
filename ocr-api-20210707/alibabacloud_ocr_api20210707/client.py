@@ -517,104 +517,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_basic_with_options_async(request, runtime)
 
-    def recognize_batch_recognize_with_options(
-        self,
-        request: ocr_api_20210707_models.RecognizeBatchRecognizeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_api_20210707_models.RecognizeBatchRecognizeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.image_name):
-            query['ImageName'] = request.image_name
-        if not UtilClient.is_unset(request.image_op):
-            query['ImageOp'] = request.image_op
-        if not UtilClient.is_unset(request.image_oss_key):
-            query['ImageOssKey'] = request.image_oss_key
-        if not UtilClient.is_unset(request.need_rotate):
-            query['NeedRotate'] = request.need_rotate
-        if not UtilClient.is_unset(request.need_sort_page):
-            query['NeedSortPage'] = request.need_sort_page
-        if not UtilClient.is_unset(request.output_char_info):
-            query['OutputCharInfo'] = request.output_char_info
-        if not UtilClient.is_unset(request.output_table):
-            query['OutputTable'] = request.output_table
-        if not UtilClient.is_unset(request.url):
-            query['Url'] = request.url
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RecognizeBatchRecognize',
-            version='2021-07-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ocr_api_20210707_models.RecognizeBatchRecognizeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def recognize_batch_recognize_with_options_async(
-        self,
-        request: ocr_api_20210707_models.RecognizeBatchRecognizeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_api_20210707_models.RecognizeBatchRecognizeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.image_name):
-            query['ImageName'] = request.image_name
-        if not UtilClient.is_unset(request.image_op):
-            query['ImageOp'] = request.image_op
-        if not UtilClient.is_unset(request.image_oss_key):
-            query['ImageOssKey'] = request.image_oss_key
-        if not UtilClient.is_unset(request.need_rotate):
-            query['NeedRotate'] = request.need_rotate
-        if not UtilClient.is_unset(request.need_sort_page):
-            query['NeedSortPage'] = request.need_sort_page
-        if not UtilClient.is_unset(request.output_char_info):
-            query['OutputCharInfo'] = request.output_char_info
-        if not UtilClient.is_unset(request.output_table):
-            query['OutputTable'] = request.output_table
-        if not UtilClient.is_unset(request.url):
-            query['Url'] = request.url
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RecognizeBatchRecognize',
-            version='2021-07-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ocr_api_20210707_models.RecognizeBatchRecognizeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def recognize_batch_recognize(
-        self,
-        request: ocr_api_20210707_models.RecognizeBatchRecognizeRequest,
-    ) -> ocr_api_20210707_models.RecognizeBatchRecognizeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.recognize_batch_recognize_with_options(request, runtime)
-
-    async def recognize_batch_recognize_async(
-        self,
-        request: ocr_api_20210707_models.RecognizeBatchRecognizeRequest,
-    ) -> ocr_api_20210707_models.RecognizeBatchRecognizeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.recognize_batch_recognize_with_options_async(request, runtime)
-
     def recognize_birth_certification_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeBirthCertificationRequest,
@@ -1437,20 +1339,40 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_ctwo_medical_device_manage_license_with_options_async(request, runtime)
 
-    def recognize_delete_excel_record_with_options(
+    def recognize_document_structure_with_options(
         self,
-        request: ocr_api_20210707_models.RecognizeDeleteExcelRecordRequest,
+        request: ocr_api_20210707_models.RecognizeDocumentStructureRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ocr_api_20210707_models.RecognizeDeleteExcelRecordResponse:
+    ) -> ocr_api_20210707_models.RecognizeDocumentStructureResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.need_sort_page):
+            query['NeedSortPage'] = request.need_sort_page
+        if not UtilClient.is_unset(request.no_stamp):
+            query['NoStamp'] = request.no_stamp
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.paragraph):
+            query['Paragraph'] = request.paragraph
+        if not UtilClient.is_unset(request.row):
+            query['Row'] = request.row
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        if not UtilClient.is_unset(request.use_new_style_output):
+            query['UseNewStyleOutput'] = request.use_new_style_output
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
         )
         params = open_api_models.Params(
-            action='RecognizeDeleteExcelRecord',
+            action='RecognizeDocumentStructure',
             version='2021-07-07',
             protocol='HTTPS',
             pathname='/',
@@ -1461,24 +1383,44 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ocr_api_20210707_models.RecognizeDeleteExcelRecordResponse(),
+            ocr_api_20210707_models.RecognizeDocumentStructureResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def recognize_delete_excel_record_with_options_async(
+    async def recognize_document_structure_with_options_async(
         self,
-        request: ocr_api_20210707_models.RecognizeDeleteExcelRecordRequest,
+        request: ocr_api_20210707_models.RecognizeDocumentStructureRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ocr_api_20210707_models.RecognizeDeleteExcelRecordResponse:
+    ) -> ocr_api_20210707_models.RecognizeDocumentStructureResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.need_sort_page):
+            query['NeedSortPage'] = request.need_sort_page
+        if not UtilClient.is_unset(request.no_stamp):
+            query['NoStamp'] = request.no_stamp
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.paragraph):
+            query['Paragraph'] = request.paragraph
+        if not UtilClient.is_unset(request.row):
+            query['Row'] = request.row
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        if not UtilClient.is_unset(request.use_new_style_output):
+            query['UseNewStyleOutput'] = request.use_new_style_output
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
         )
         params = open_api_models.Params(
-            action='RecognizeDeleteExcelRecord',
+            action='RecognizeDocumentStructure',
             version='2021-07-07',
             protocol='HTTPS',
             pathname='/',
@@ -1489,23 +1431,23 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ocr_api_20210707_models.RecognizeDeleteExcelRecordResponse(),
+            ocr_api_20210707_models.RecognizeDocumentStructureResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def recognize_delete_excel_record(
+    def recognize_document_structure(
         self,
-        request: ocr_api_20210707_models.RecognizeDeleteExcelRecordRequest,
-    ) -> ocr_api_20210707_models.RecognizeDeleteExcelRecordResponse:
+        request: ocr_api_20210707_models.RecognizeDocumentStructureRequest,
+    ) -> ocr_api_20210707_models.RecognizeDocumentStructureResponse:
         runtime = util_models.RuntimeOptions()
-        return self.recognize_delete_excel_record_with_options(request, runtime)
+        return self.recognize_document_structure_with_options(request, runtime)
 
-    async def recognize_delete_excel_record_async(
+    async def recognize_document_structure_async(
         self,
-        request: ocr_api_20210707_models.RecognizeDeleteExcelRecordRequest,
-    ) -> ocr_api_20210707_models.RecognizeDeleteExcelRecordResponse:
+        request: ocr_api_20210707_models.RecognizeDocumentStructureRequest,
+    ) -> ocr_api_20210707_models.RecognizeDocumentStructureResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.recognize_delete_excel_record_with_options_async(request, runtime)
+        return await self.recognize_document_structure_with_options_async(request, runtime)
 
     def recognize_driving_license_with_options(
         self,
@@ -2216,166 +2158,6 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEstateCertificationResponse:
         runtime = util_models.RuntimeOptions()
         return await self.recognize_estate_certification_with_options_async(request, runtime)
-
-    def recognize_excel_export_with_options(
-        self,
-        request: ocr_api_20210707_models.RecognizeExcelExportRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_api_20210707_models.RecognizeExcelExportResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.file_name):
-            query['FileName'] = request.file_name
-        if not UtilClient.is_unset(request.image_op):
-            query['ImageOp'] = request.image_op
-        if not UtilClient.is_unset(request.ocr_image_count):
-            query['OcrImageCount'] = request.ocr_image_count
-        if not UtilClient.is_unset(request.ocr_result):
-            query['OcrResult'] = request.ocr_result
-        if not UtilClient.is_unset(request.ocr_type):
-            query['OcrType'] = request.ocr_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RecognizeExcelExport',
-            version='2021-07-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ocr_api_20210707_models.RecognizeExcelExportResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def recognize_excel_export_with_options_async(
-        self,
-        request: ocr_api_20210707_models.RecognizeExcelExportRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_api_20210707_models.RecognizeExcelExportResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.file_name):
-            query['FileName'] = request.file_name
-        if not UtilClient.is_unset(request.image_op):
-            query['ImageOp'] = request.image_op
-        if not UtilClient.is_unset(request.ocr_image_count):
-            query['OcrImageCount'] = request.ocr_image_count
-        if not UtilClient.is_unset(request.ocr_result):
-            query['OcrResult'] = request.ocr_result
-        if not UtilClient.is_unset(request.ocr_type):
-            query['OcrType'] = request.ocr_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RecognizeExcelExport',
-            version='2021-07-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ocr_api_20210707_models.RecognizeExcelExportResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def recognize_excel_export(
-        self,
-        request: ocr_api_20210707_models.RecognizeExcelExportRequest,
-    ) -> ocr_api_20210707_models.RecognizeExcelExportResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.recognize_excel_export_with_options(request, runtime)
-
-    async def recognize_excel_export_async(
-        self,
-        request: ocr_api_20210707_models.RecognizeExcelExportRequest,
-    ) -> ocr_api_20210707_models.RecognizeExcelExportResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.recognize_excel_export_with_options_async(request, runtime)
-
-    def recognize_excel_record_with_options(
-        self,
-        request: ocr_api_20210707_models.RecognizeExcelRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_api_20210707_models.RecognizeExcelRecordResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.curr_page):
-            query['CurrPage'] = request.curr_page
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RecognizeExcelRecord',
-            version='2021-07-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ocr_api_20210707_models.RecognizeExcelRecordResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def recognize_excel_record_with_options_async(
-        self,
-        request: ocr_api_20210707_models.RecognizeExcelRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ocr_api_20210707_models.RecognizeExcelRecordResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.curr_page):
-            query['CurrPage'] = request.curr_page
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RecognizeExcelRecord',
-            version='2021-07-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ocr_api_20210707_models.RecognizeExcelRecordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def recognize_excel_record(
-        self,
-        request: ocr_api_20210707_models.RecognizeExcelRecordRequest,
-    ) -> ocr_api_20210707_models.RecognizeExcelRecordResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.recognize_excel_record_with_options(request, runtime)
-
-    async def recognize_excel_record_async(
-        self,
-        request: ocr_api_20210707_models.RecognizeExcelRecordRequest,
-    ) -> ocr_api_20210707_models.RecognizeExcelRecordResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.recognize_excel_record_with_options_async(request, runtime)
 
     def recognize_exit_entry_permit_to_hkwith_options(
         self,
