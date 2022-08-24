@@ -261,7 +261,6 @@ class AnalyzeChestVesselResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2481,7 +2480,6 @@ class DetectLymphResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2709,7 +2707,6 @@ class DetectPancResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3572,7 +3569,6 @@ class FeedbackSessionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -5588,7 +5584,6 @@ class SegmentOARResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):

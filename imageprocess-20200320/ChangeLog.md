@@ -1,3 +1,6 @@
+2022-08-24 Version: 2.0.18
+- Update  ScreenChestCT.
+
 2022-07-25 Version: 2.0.17
 - Update  SegmentOAR.
 
