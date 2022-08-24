@@ -1,3 +1,6 @@
+2022-08-24 Version: 1.0.17
+- AMP version.
+
 2022-07-28 Version: 1.0.16
  - Delete SetDcdnConfigOfVersion.
 
