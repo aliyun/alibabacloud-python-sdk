@@ -1,3 +1,6 @@
+2022-08-24 Version: 1.0.3
+- Release CustomizeClassifyImage.
+
 2022-08-04 Version: 1.0.2
 - Release CustomizeClassifyImage.
 

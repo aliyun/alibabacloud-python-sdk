@@ -381,10 +381,14 @@ class CreateLabelsetResponse(TeaModel):
 class CreateServiceRequest(TeaModel):
     def __init__(
         self,
+        authorization_type: str = None,
+        authorized_account: str = None,
         description: str = None,
         name: str = None,
         train_task_id: int = None,
     ):
+        self.authorization_type = authorization_type
+        self.authorized_account = authorized_account
         self.description = description
         self.name = name
         self.train_task_id = train_task_id
@@ -398,6 +402,10 @@ class CreateServiceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.authorization_type is not None:
+            result['AuthorizationType'] = self.authorization_type
+        if self.authorized_account is not None:
+            result['AuthorizedAccount'] = self.authorized_account
         if self.description is not None:
             result['Description'] = self.description
         if self.name is not None:
@@ -408,6 +416,10 @@ class CreateServiceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthorizationType') is not None:
+            self.authorization_type = m.get('AuthorizationType')
+        if m.get('AuthorizedAccount') is not None:
+            self.authorized_account = m.get('AuthorizedAccount')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Name') is not None:
@@ -420,12 +432,16 @@ class CreateServiceRequest(TeaModel):
 class CreateServiceResponseBodyData(TeaModel):
     def __init__(
         self,
+        authorization_type: str = None,
+        authorized_account: str = None,
         gmt_create: int = None,
         id: int = None,
         service_description: str = None,
         service_name: str = None,
         status: str = None,
     ):
+        self.authorization_type = authorization_type
+        self.authorized_account = authorized_account
         self.gmt_create = gmt_create
         self.id = id
         self.service_description = service_description
@@ -441,6 +457,10 @@ class CreateServiceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.authorization_type is not None:
+            result['AuthorizationType'] = self.authorization_type
+        if self.authorized_account is not None:
+            result['AuthorizedAccount'] = self.authorized_account
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.id is not None:
@@ -455,6 +475,10 @@ class CreateServiceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthorizationType') is not None:
+            self.authorization_type = m.get('AuthorizationType')
+        if m.get('AuthorizedAccount') is not None:
+            self.authorized_account = m.get('AuthorizedAccount')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('Id') is not None:
@@ -713,6 +737,7 @@ class CreateTagTaskResponse(TeaModel):
 class CreateTrainTaskRequest(TeaModel):
     def __init__(
         self,
+        advanced_parameters: str = None,
         dataset_id: int = None,
         description: str = None,
         label_id: int = None,
@@ -720,6 +745,7 @@ class CreateTrainTaskRequest(TeaModel):
         train_mode: str = None,
         workspace_id: int = None,
     ):
+        self.advanced_parameters = advanced_parameters
         self.dataset_id = dataset_id
         self.description = description
         self.label_id = label_id
@@ -736,6 +762,8 @@ class CreateTrainTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.advanced_parameters is not None:
+            result['AdvancedParameters'] = self.advanced_parameters
         if self.dataset_id is not None:
             result['DatasetId'] = self.dataset_id
         if self.description is not None:
@@ -752,6 +780,8 @@ class CreateTrainTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdvancedParameters') is not None:
+            self.advanced_parameters = m.get('AdvancedParameters')
         if m.get('DatasetId') is not None:
             self.dataset_id = m.get('DatasetId')
         if m.get('Description') is not None:
@@ -770,6 +800,7 @@ class CreateTrainTaskRequest(TeaModel):
 class CreateTrainTaskResponseBodyData(TeaModel):
     def __init__(
         self,
+        advanced_parameters: str = None,
         dataset_id: int = None,
         dataset_name: str = None,
         description: str = None,
@@ -783,6 +814,7 @@ class CreateTrainTaskResponseBodyData(TeaModel):
         train_mode: str = None,
         train_status: str = None,
     ):
+        self.advanced_parameters = advanced_parameters
         self.dataset_id = dataset_id
         self.dataset_name = dataset_name
         self.description = description
@@ -805,6 +837,8 @@ class CreateTrainTaskResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.advanced_parameters is not None:
+            result['AdvancedParameters'] = self.advanced_parameters
         if self.dataset_id is not None:
             result['DatasetId'] = self.dataset_id
         if self.dataset_name is not None:
@@ -833,6 +867,8 @@ class CreateTrainTaskResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdvancedParameters') is not None:
+            self.advanced_parameters = m.get('AdvancedParameters')
         if m.get('DatasetId') is not None:
             self.dataset_id = m.get('DatasetId')
         if m.get('DatasetName') is not None:
@@ -3262,83 +3298,6 @@ class DownloadLabelFileResponse(TeaModel):
         return self
 
 
-class DownloadTemplateResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: Dict[str, Any] = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DownloadTemplateResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DownloadTemplateResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DownloadTemplateResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetDatasetRequest(TeaModel):
     def __init__(
         self,
@@ -3973,7 +3932,6 @@ class GetServiceRequest(TeaModel):
 class GetServiceResponseBodyData(TeaModel):
     def __init__(
         self,
-        curl_example: str = None,
         errorcodes: str = None,
         gmt_create: int = None,
         id: int = None,
@@ -3982,10 +3940,10 @@ class GetServiceResponseBodyData(TeaModel):
         output_example: str = None,
         output_params: str = None,
         service_description: str = None,
+        service_id: str = None,
         service_name: str = None,
         status: str = None,
     ):
-        self.curl_example = curl_example
         self.errorcodes = errorcodes
         self.gmt_create = gmt_create
         self.id = id
@@ -3994,6 +3952,7 @@ class GetServiceResponseBodyData(TeaModel):
         self.output_example = output_example
         self.output_params = output_params
         self.service_description = service_description
+        self.service_id = service_id
         self.service_name = service_name
         self.status = status
 
@@ -4006,8 +3965,6 @@ class GetServiceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        if self.curl_example is not None:
-            result['CurlExample'] = self.curl_example
         if self.errorcodes is not None:
             result['Errorcodes'] = self.errorcodes
         if self.gmt_create is not None:
@@ -4024,6 +3981,8 @@ class GetServiceResponseBodyData(TeaModel):
             result['OutputParams'] = self.output_params
         if self.service_description is not None:
             result['ServiceDescription'] = self.service_description
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
         if self.status is not None:
@@ -4032,8 +3991,6 @@ class GetServiceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CurlExample') is not None:
-            self.curl_example = m.get('CurlExample')
         if m.get('Errorcodes') is not None:
             self.errorcodes = m.get('Errorcodes')
         if m.get('GmtCreate') is not None:
@@ -4050,6 +4007,8 @@ class GetServiceResponseBodyData(TeaModel):
             self.output_params = m.get('OutputParams')
         if m.get('ServiceDescription') is not None:
             self.service_description = m.get('ServiceDescription')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
         if m.get('Status') is not None:
@@ -6546,8 +6505,10 @@ class StartServiceResponse(TeaModel):
 class StartTrainTaskRequest(TeaModel):
     def __init__(
         self,
+        force_start_flag: bool = None,
         id: int = None,
     ):
+        self.force_start_flag = force_start_flag
         self.id = id
 
     def validate(self):
@@ -6559,12 +6520,16 @@ class StartTrainTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.force_start_flag is not None:
+            result['ForceStartFlag'] = self.force_start_flag
         if self.id is not None:
             result['Id'] = self.id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ForceStartFlag') is not None:
+            self.force_start_flag = m.get('ForceStartFlag')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         return self
@@ -6573,6 +6538,7 @@ class StartTrainTaskRequest(TeaModel):
 class StartTrainTaskResponseBodyData(TeaModel):
     def __init__(
         self,
+        check_result: Dict[str, Any] = None,
         dataset_id: int = None,
         dataset_name: str = None,
         description: str = None,
@@ -6586,6 +6552,7 @@ class StartTrainTaskResponseBodyData(TeaModel):
         train_mode: str = None,
         train_status: str = None,
     ):
+        self.check_result = check_result
         self.dataset_id = dataset_id
         self.dataset_name = dataset_name
         self.description = description
@@ -6608,6 +6575,8 @@ class StartTrainTaskResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.check_result is not None:
+            result['CheckResult'] = self.check_result
         if self.dataset_id is not None:
             result['DatasetId'] = self.dataset_id
         if self.dataset_name is not None:
@@ -6636,6 +6605,8 @@ class StartTrainTaskResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CheckResult') is not None:
+            self.check_result = m.get('CheckResult')
         if m.get('DatasetId') is not None:
             self.dataset_id = m.get('DatasetId')
         if m.get('DatasetName') is not None:
@@ -7439,10 +7410,14 @@ class UpdateLabelsetResponse(TeaModel):
 class UpdateServiceRequest(TeaModel):
     def __init__(
         self,
+        authorization_type: str = None,
+        authorized_account: str = None,
         description: str = None,
         id: int = None,
         name: str = None,
     ):
+        self.authorization_type = authorization_type
+        self.authorized_account = authorized_account
         self.description = description
         self.id = id
         self.name = name
@@ -7456,6 +7431,10 @@ class UpdateServiceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.authorization_type is not None:
+            result['AuthorizationType'] = self.authorization_type
+        if self.authorized_account is not None:
+            result['AuthorizedAccount'] = self.authorized_account
         if self.description is not None:
             result['Description'] = self.description
         if self.id is not None:
@@ -7466,6 +7445,10 @@ class UpdateServiceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthorizationType') is not None:
+            self.authorization_type = m.get('AuthorizationType')
+        if m.get('AuthorizedAccount') is not None:
+            self.authorized_account = m.get('AuthorizedAccount')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Id') is not None:
@@ -7478,11 +7461,15 @@ class UpdateServiceRequest(TeaModel):
 class UpdateServiceResponseBodyData(TeaModel):
     def __init__(
         self,
+        authorization_type: str = None,
+        authorized_account: str = None,
         gmt_create: int = None,
         id: int = None,
         service_description: str = None,
         service_name: str = None,
     ):
+        self.authorization_type = authorization_type
+        self.authorized_account = authorized_account
         self.gmt_create = gmt_create
         self.id = id
         self.service_description = service_description
@@ -7497,6 +7484,10 @@ class UpdateServiceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.authorization_type is not None:
+            result['AuthorizationType'] = self.authorization_type
+        if self.authorized_account is not None:
+            result['AuthorizedAccount'] = self.authorized_account
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.id is not None:
@@ -7509,6 +7500,10 @@ class UpdateServiceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthorizationType') is not None:
+            self.authorization_type = m.get('AuthorizationType')
+        if m.get('AuthorizedAccount') is not None:
+            self.authorized_account = m.get('AuthorizedAccount')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('Id') is not None:
@@ -7602,10 +7597,12 @@ class UpdateServiceResponse(TeaModel):
 class UpdateTrainTaskRequest(TeaModel):
     def __init__(
         self,
+        advanced_parameters: str = None,
         description: str = None,
         id: int = None,
         name: str = None,
     ):
+        self.advanced_parameters = advanced_parameters
         self.description = description
         self.id = id
         self.name = name
@@ -7619,6 +7616,8 @@ class UpdateTrainTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.advanced_parameters is not None:
+            result['AdvancedParameters'] = self.advanced_parameters
         if self.description is not None:
             result['Description'] = self.description
         if self.id is not None:
@@ -7629,6 +7628,8 @@ class UpdateTrainTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdvancedParameters') is not None:
+            self.advanced_parameters = m.get('AdvancedParameters')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Id') is not None:
@@ -7641,6 +7642,7 @@ class UpdateTrainTaskRequest(TeaModel):
 class UpdateTrainTaskResponseBodyData(TeaModel):
     def __init__(
         self,
+        advanced_parameters: str = None,
         dataset_id: int = None,
         dataset_name: str = None,
         description: str = None,
@@ -7654,6 +7656,7 @@ class UpdateTrainTaskResponseBodyData(TeaModel):
         train_mode: str = None,
         train_status: str = None,
     ):
+        self.advanced_parameters = advanced_parameters
         self.dataset_id = dataset_id
         self.dataset_name = dataset_name
         self.description = description
@@ -7676,6 +7679,8 @@ class UpdateTrainTaskResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.advanced_parameters is not None:
+            result['AdvancedParameters'] = self.advanced_parameters
         if self.dataset_id is not None:
             result['DatasetId'] = self.dataset_id
         if self.dataset_name is not None:
@@ -7704,6 +7709,8 @@ class UpdateTrainTaskResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdvancedParameters') is not None:
+            self.advanced_parameters = m.get('AdvancedParameters')
         if m.get('DatasetId') is not None:
             self.dataset_id = m.get('DatasetId')
         if m.get('DatasetName') is not None:

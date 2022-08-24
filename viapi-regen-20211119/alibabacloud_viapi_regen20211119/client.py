@@ -28,7 +28,64 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'ap-northeast-1': 'viapi-regen-daily.aliyuncs.com',
+            'ap-northeast-2-pop': 'viapi-regen-daily.aliyuncs.com',
+            'ap-south-1': 'viapi-regen-daily.aliyuncs.com',
+            'ap-southeast-1': 'viapi-regen-daily.aliyuncs.com',
+            'ap-southeast-2': 'viapi-regen-daily.aliyuncs.com',
+            'ap-southeast-3': 'viapi-regen-daily.aliyuncs.com',
+            'ap-southeast-5': 'viapi-regen-daily.aliyuncs.com',
+            'cn-beijing': 'viapi-regen-daily.aliyuncs.com',
+            'cn-beijing-finance-1': 'viapi-regen-daily.aliyuncs.com',
+            'cn-beijing-finance-pop': 'viapi-regen-daily.aliyuncs.com',
+            'cn-beijing-gov-1': 'viapi-regen-daily.aliyuncs.com',
+            'cn-beijing-nu16-b01': 'viapi-regen-daily.aliyuncs.com',
+            'cn-chengdu': 'viapi-regen-daily.aliyuncs.com',
+            'cn-edge-1': 'viapi-regen-daily.aliyuncs.com',
+            'cn-fujian': 'viapi-regen-daily.aliyuncs.com',
+            'cn-haidian-cm12-c01': 'viapi-regen-daily.aliyuncs.com',
+            'cn-hangzhou-bj-b01': 'viapi-regen-daily.aliyuncs.com',
+            'cn-hangzhou-finance': 'viapi-regen-daily.aliyuncs.com',
+            'cn-hangzhou-internal-prod-1': 'viapi-regen-daily.aliyuncs.com',
+            'cn-hangzhou-internal-test-1': 'viapi-regen-daily.aliyuncs.com',
+            'cn-hangzhou-internal-test-2': 'viapi-regen-daily.aliyuncs.com',
+            'cn-hangzhou-internal-test-3': 'viapi-regen-daily.aliyuncs.com',
+            'cn-hangzhou-test-306': 'viapi-regen-daily.aliyuncs.com',
+            'cn-hongkong': 'viapi-regen-daily.aliyuncs.com',
+            'cn-hongkong-finance-pop': 'viapi-regen-daily.aliyuncs.com',
+            'cn-huhehaote': 'viapi-regen-daily.aliyuncs.com',
+            'cn-huhehaote-nebula-1': 'viapi-regen-daily.aliyuncs.com',
+            'cn-north-2-gov-1': 'viapi-regen-daily.aliyuncs.com',
+            'cn-qingdao': 'viapi-regen-daily.aliyuncs.com',
+            'cn-qingdao-nebula': 'viapi-regen-daily.aliyuncs.com',
+            'cn-shanghai-et15-b01': 'viapi-regen-daily.aliyuncs.com',
+            'cn-shanghai-et2-b01': 'viapi-regen-daily.aliyuncs.com',
+            'cn-shanghai-finance-1': 'viapi-regen-daily.aliyuncs.com',
+            'cn-shanghai-inner': 'viapi-regen-daily.aliyuncs.com',
+            'cn-shanghai-internal-test-1': 'viapi-regen-daily.aliyuncs.com',
+            'cn-shenzhen': 'viapi-regen-daily.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'viapi-regen-daily.aliyuncs.com',
+            'cn-shenzhen-inner': 'viapi-regen-daily.aliyuncs.com',
+            'cn-shenzhen-st4-d01': 'viapi-regen-daily.aliyuncs.com',
+            'cn-shenzhen-su18-b01': 'viapi-regen-daily.aliyuncs.com',
+            'cn-wuhan': 'viapi-regen-daily.aliyuncs.com',
+            'cn-wulanchabu': 'viapi-regen-daily.aliyuncs.com',
+            'cn-yushanfang': 'viapi-regen-daily.aliyuncs.com',
+            'cn-zhangbei': 'viapi-regen-daily.aliyuncs.com',
+            'cn-zhangbei-na61-b01': 'viapi-regen-daily.aliyuncs.com',
+            'cn-zhangjiakou': 'viapi-regen-daily.aliyuncs.com',
+            'cn-zhangjiakou-na62-a01': 'viapi-regen-daily.aliyuncs.com',
+            'cn-zhengzhou-nebula-1': 'viapi-regen-daily.aliyuncs.com',
+            'eu-central-1': 'viapi-regen-daily.aliyuncs.com',
+            'eu-west-1': 'viapi-regen-daily.aliyuncs.com',
+            'eu-west-1-oxs': 'viapi-regen-daily.aliyuncs.com',
+            'me-east-1': 'viapi-regen-daily.aliyuncs.com',
+            'rus-west-1-pop': 'viapi-regen-daily.aliyuncs.com',
+            'us-east-1': 'viapi-regen-daily.aliyuncs.com',
+            'us-west-1': 'viapi-regen-daily.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('viapi-regen', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -235,6 +292,10 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.CreateServiceResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.authorization_type):
+            body['AuthorizationType'] = request.authorization_type
+        if not UtilClient.is_unset(request.authorized_account):
+            body['AuthorizedAccount'] = request.authorized_account
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.name):
@@ -267,6 +328,10 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.CreateServiceResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.authorization_type):
+            body['AuthorizationType'] = request.authorization_type
+        if not UtilClient.is_unset(request.authorized_account):
+            body['AuthorizedAccount'] = request.authorized_account
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.name):
@@ -383,6 +448,8 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.CreateTrainTaskResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.advanced_parameters):
+            body['AdvancedParameters'] = request.advanced_parameters
         if not UtilClient.is_unset(request.dataset_id):
             body['DatasetId'] = request.dataset_id
         if not UtilClient.is_unset(request.description):
@@ -421,6 +488,8 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.CreateTrainTaskResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.advanced_parameters):
+            body['AdvancedParameters'] = request.advanced_parameters
         if not UtilClient.is_unset(request.dataset_id):
             body['DatasetId'] = request.dataset_id
         if not UtilClient.is_unset(request.description):
@@ -1833,56 +1902,6 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.DownloadLabelFileResponse:
         runtime = util_models.RuntimeOptions()
         return await self.download_label_file_with_options_async(request, runtime)
-
-    def download_template_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> viapi_regen_20211119_models.DownloadTemplateResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DownloadTemplate',
-            version='2021-11-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            viapi_regen_20211119_models.DownloadTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def download_template_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> viapi_regen_20211119_models.DownloadTemplateResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DownloadTemplate',
-            version='2021-11-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            viapi_regen_20211119_models.DownloadTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def download_template(self) -> viapi_regen_20211119_models.DownloadTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.download_template_with_options(runtime)
-
-    async def download_template_async(self) -> viapi_regen_20211119_models.DownloadTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.download_template_with_options_async(runtime)
 
     def get_dataset_with_options(
         self,
@@ -3313,6 +3332,8 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.StartTrainTaskResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.force_start_flag):
+            body['ForceStartFlag'] = request.force_start_flag
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
         req = open_api_models.OpenApiRequest(
@@ -3341,6 +3362,8 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.StartTrainTaskResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.force_start_flag):
+            body['ForceStartFlag'] = request.force_start_flag
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
         req = open_api_models.OpenApiRequest(
@@ -3687,6 +3710,10 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.UpdateServiceResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.authorization_type):
+            body['AuthorizationType'] = request.authorization_type
+        if not UtilClient.is_unset(request.authorized_account):
+            body['AuthorizedAccount'] = request.authorized_account
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.id):
@@ -3719,6 +3746,10 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.UpdateServiceResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.authorization_type):
+            body['AuthorizationType'] = request.authorization_type
+        if not UtilClient.is_unset(request.authorized_account):
+            body['AuthorizedAccount'] = request.authorized_account
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.id):
@@ -3765,6 +3796,8 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.UpdateTrainTaskResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.advanced_parameters):
+            body['AdvancedParameters'] = request.advanced_parameters
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.id):
@@ -3797,6 +3830,8 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.UpdateTrainTaskResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.advanced_parameters):
+            body['AdvancedParameters'] = request.advanced_parameters
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.id):
