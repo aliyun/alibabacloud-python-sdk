@@ -389,6 +389,8 @@ class Client(OpenApiClient):
             request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
         if not UtilClient.is_unset(tmp_req.channel):
             request.channel_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.channel), 'Channel', 'json')
+        if not UtilClient.is_unset(tmp_req.command_request):
+            request.command_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.command_request), 'CommandRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user):
             request.user_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user), 'User', 'json')
         query = {}
@@ -396,6 +398,8 @@ class Client(OpenApiClient):
             query['App'] = request.app_shrink
         if not UtilClient.is_unset(request.channel_shrink):
             query['Channel'] = request.channel_shrink
+        if not UtilClient.is_unset(request.command_request_shrink):
+            query['CommandRequest'] = request.command_request_shrink
         if not UtilClient.is_unset(request.tenant_id):
             query['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.user_shrink):
@@ -431,6 +435,8 @@ class Client(OpenApiClient):
             request.app_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.app), 'App', 'json')
         if not UtilClient.is_unset(tmp_req.channel):
             request.channel_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.channel), 'Channel', 'json')
+        if not UtilClient.is_unset(tmp_req.command_request):
+            request.command_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.command_request), 'CommandRequest', 'json')
         if not UtilClient.is_unset(tmp_req.user):
             request.user_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user), 'User', 'json')
         query = {}
@@ -438,6 +444,8 @@ class Client(OpenApiClient):
             query['App'] = request.app_shrink
         if not UtilClient.is_unset(request.channel_shrink):
             query['Channel'] = request.channel_shrink
+        if not UtilClient.is_unset(request.command_request_shrink):
+            query['CommandRequest'] = request.command_request_shrink
         if not UtilClient.is_unset(request.tenant_id):
             query['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.user_shrink):

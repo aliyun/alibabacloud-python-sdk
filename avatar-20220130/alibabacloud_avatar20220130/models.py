@@ -1250,6 +1250,33 @@ class StartInstanceRequestChannel(TeaModel):
         return self
 
 
+class StartInstanceRequestCommandRequest(TeaModel):
+    def __init__(
+        self,
+        alpha_switch: bool = None,
+    ):
+        self.alpha_switch = alpha_switch
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha_switch is not None:
+            result['AlphaSwitch'] = self.alpha_switch
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlphaSwitch') is not None:
+            self.alpha_switch = m.get('AlphaSwitch')
+        return self
+
+
 class StartInstanceRequestUser(TeaModel):
     def __init__(
         self,
@@ -1288,11 +1315,13 @@ class StartInstanceRequest(TeaModel):
         self,
         app: StartInstanceRequestApp = None,
         channel: StartInstanceRequestChannel = None,
+        command_request: StartInstanceRequestCommandRequest = None,
         tenant_id: int = None,
         user: StartInstanceRequestUser = None,
     ):
         self.app = app
         self.channel = channel
+        self.command_request = command_request
         self.tenant_id = tenant_id
         self.user = user
 
@@ -1301,6 +1330,8 @@ class StartInstanceRequest(TeaModel):
             self.app.validate()
         if self.channel:
             self.channel.validate()
+        if self.command_request:
+            self.command_request.validate()
         if self.user:
             self.user.validate()
 
@@ -1314,6 +1345,8 @@ class StartInstanceRequest(TeaModel):
             result['App'] = self.app.to_map()
         if self.channel is not None:
             result['Channel'] = self.channel.to_map()
+        if self.command_request is not None:
+            result['CommandRequest'] = self.command_request.to_map()
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.user is not None:
@@ -1328,6 +1361,9 @@ class StartInstanceRequest(TeaModel):
         if m.get('Channel') is not None:
             temp_model = StartInstanceRequestChannel()
             self.channel = temp_model.from_map(m['Channel'])
+        if m.get('CommandRequest') is not None:
+            temp_model = StartInstanceRequestCommandRequest()
+            self.command_request = temp_model.from_map(m['CommandRequest'])
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('User') is not None:
@@ -1341,11 +1377,13 @@ class StartInstanceShrinkRequest(TeaModel):
         self,
         app_shrink: str = None,
         channel_shrink: str = None,
+        command_request_shrink: str = None,
         tenant_id: int = None,
         user_shrink: str = None,
     ):
         self.app_shrink = app_shrink
         self.channel_shrink = channel_shrink
+        self.command_request_shrink = command_request_shrink
         self.tenant_id = tenant_id
         self.user_shrink = user_shrink
 
@@ -1362,6 +1400,8 @@ class StartInstanceShrinkRequest(TeaModel):
             result['App'] = self.app_shrink
         if self.channel_shrink is not None:
             result['Channel'] = self.channel_shrink
+        if self.command_request_shrink is not None:
+            result['CommandRequest'] = self.command_request_shrink
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.user_shrink is not None:
@@ -1374,6 +1414,8 @@ class StartInstanceShrinkRequest(TeaModel):
             self.app_shrink = m.get('App')
         if m.get('Channel') is not None:
             self.channel_shrink = m.get('Channel')
+        if m.get('CommandRequest') is not None:
+            self.command_request_shrink = m.get('CommandRequest')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('User') is not None:

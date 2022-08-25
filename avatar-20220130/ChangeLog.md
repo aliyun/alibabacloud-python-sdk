@@ -1,3 +1,6 @@
+2022-08-25 Version: 1.0.5
+- Support Return Im Token.
+
 2022-08-18 Version: 1.0.4
 - Support Return Im Token.
 
