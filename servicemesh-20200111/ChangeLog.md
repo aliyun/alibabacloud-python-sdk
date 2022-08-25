@@ -1,3 +1,6 @@
+2022-08-25 Version: 2.0.20
+- UpdateMeshFeature support modify service mesh auto diagnosis feature.
+
 2022-08-17 Version: 2.0.19
 - UpdateMeshFeature support modify service mesh auto diagnosis feature.
 
