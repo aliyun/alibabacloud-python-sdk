@@ -148,6 +148,8 @@ class Client(OpenApiClient):
             query['DestinationEndpointRegion'] = request.destination_endpoint_region
         if not UtilClient.is_unset(request.destination_endpoint_user_name):
             query['DestinationEndpointUserName'] = request.destination_endpoint_user_name
+        if not UtilClient.is_unset(request.disaster_recovery_job):
+            query['DisasterRecoveryJob'] = request.disaster_recovery_job
         if not UtilClient.is_unset(request.dts_instance_id):
             query['DtsInstanceId'] = request.dts_instance_id
         if not UtilClient.is_unset(request.dts_job_id):
@@ -262,6 +264,8 @@ class Client(OpenApiClient):
             query['DestinationEndpointRegion'] = request.destination_endpoint_region
         if not UtilClient.is_unset(request.destination_endpoint_user_name):
             query['DestinationEndpointUserName'] = request.destination_endpoint_user_name
+        if not UtilClient.is_unset(request.disaster_recovery_job):
+            query['DisasterRecoveryJob'] = request.disaster_recovery_job
         if not UtilClient.is_unset(request.dts_instance_id):
             query['DtsInstanceId'] = request.dts_instance_id
         if not UtilClient.is_unset(request.dts_job_id):
@@ -9534,6 +9538,88 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.SuspendSynchronizationJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.suspend_synchronization_job_with_options_async(request, runtime)
+
+    def switch_physical_dts_job_to_cloud_with_options(
+        self,
+        request: dts_20200101_models.SwitchPhysicalDtsJobToCloudRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.SwitchPhysicalDtsJobToCloudResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchPhysicalDtsJobToCloud',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.SwitchPhysicalDtsJobToCloudResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def switch_physical_dts_job_to_cloud_with_options_async(
+        self,
+        request: dts_20200101_models.SwitchPhysicalDtsJobToCloudRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.SwitchPhysicalDtsJobToCloudResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchPhysicalDtsJobToCloud',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.SwitchPhysicalDtsJobToCloudResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def switch_physical_dts_job_to_cloud(
+        self,
+        request: dts_20200101_models.SwitchPhysicalDtsJobToCloudRequest,
+    ) -> dts_20200101_models.SwitchPhysicalDtsJobToCloudResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.switch_physical_dts_job_to_cloud_with_options(request, runtime)
+
+    async def switch_physical_dts_job_to_cloud_async(
+        self,
+        request: dts_20200101_models.SwitchPhysicalDtsJobToCloudRequest,
+    ) -> dts_20200101_models.SwitchPhysicalDtsJobToCloudResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.switch_physical_dts_job_to_cloud_with_options_async(request, runtime)
 
     def switch_synchronization_endpoint_with_options(
         self,

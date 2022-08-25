@@ -26,6 +26,7 @@ class ConfigureDtsJobRequest(TeaModel):
         destination_endpoint_port: str = None,
         destination_endpoint_region: str = None,
         destination_endpoint_user_name: str = None,
+        disaster_recovery_job: bool = None,
         dts_instance_id: str = None,
         dts_job_id: str = None,
         dts_job_name: str = None,
@@ -70,6 +71,7 @@ class ConfigureDtsJobRequest(TeaModel):
         self.destination_endpoint_port = destination_endpoint_port
         self.destination_endpoint_region = destination_endpoint_region
         self.destination_endpoint_user_name = destination_endpoint_user_name
+        self.disaster_recovery_job = disaster_recovery_job
         self.dts_instance_id = dts_instance_id
         self.dts_job_id = dts_job_id
         self.dts_job_name = dts_job_name
@@ -142,6 +144,8 @@ class ConfigureDtsJobRequest(TeaModel):
             result['DestinationEndpointRegion'] = self.destination_endpoint_region
         if self.destination_endpoint_user_name is not None:
             result['DestinationEndpointUserName'] = self.destination_endpoint_user_name
+        if self.disaster_recovery_job is not None:
+            result['DisasterRecoveryJob'] = self.disaster_recovery_job
         if self.dts_instance_id is not None:
             result['DtsInstanceId'] = self.dts_instance_id
         if self.dts_job_id is not None:
@@ -232,6 +236,8 @@ class ConfigureDtsJobRequest(TeaModel):
             self.destination_endpoint_region = m.get('DestinationEndpointRegion')
         if m.get('DestinationEndpointUserName') is not None:
             self.destination_endpoint_user_name = m.get('DestinationEndpointUserName')
+        if m.get('DisasterRecoveryJob') is not None:
+            self.disaster_recovery_job = m.get('DisasterRecoveryJob')
         if m.get('DtsInstanceId') is not None:
             self.dts_instance_id = m.get('DtsInstanceId')
         if m.get('DtsJobId') is not None:
@@ -306,6 +312,7 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         destination_endpoint_port: str = None,
         destination_endpoint_region: str = None,
         destination_endpoint_user_name: str = None,
+        disaster_recovery_job: bool = None,
         dts_instance_id: str = None,
         dts_job_id: str = None,
         dts_job_name: str = None,
@@ -350,6 +357,7 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         self.destination_endpoint_port = destination_endpoint_port
         self.destination_endpoint_region = destination_endpoint_region
         self.destination_endpoint_user_name = destination_endpoint_user_name
+        self.disaster_recovery_job = disaster_recovery_job
         self.dts_instance_id = dts_instance_id
         self.dts_job_id = dts_job_id
         self.dts_job_name = dts_job_name
@@ -423,6 +431,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             result['DestinationEndpointRegion'] = self.destination_endpoint_region
         if self.destination_endpoint_user_name is not None:
             result['DestinationEndpointUserName'] = self.destination_endpoint_user_name
+        if self.disaster_recovery_job is not None:
+            result['DisasterRecoveryJob'] = self.disaster_recovery_job
         if self.dts_instance_id is not None:
             result['DtsInstanceId'] = self.dts_instance_id
         if self.dts_job_id is not None:
@@ -513,6 +523,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             self.destination_endpoint_region = m.get('DestinationEndpointRegion')
         if m.get('DestinationEndpointUserName') is not None:
             self.destination_endpoint_user_name = m.get('DestinationEndpointUserName')
+        if m.get('DisasterRecoveryJob') is not None:
+            self.disaster_recovery_job = m.get('DisasterRecoveryJob')
         if m.get('DtsInstanceId') is not None:
             self.dts_instance_id = m.get('DtsInstanceId')
         if m.get('DtsJobId') is not None:
@@ -14196,6 +14208,39 @@ class DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint(TeaModel):
         return self
 
 
+class DescribeDtsJobsResponseBodyDtsJobListErrorDetails(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        help_url: str = None,
+    ):
+        self.error_code = error_code
+        self.help_url = help_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.help_url is not None:
+            result['HelpUrl'] = self.help_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HelpUrl') is not None:
+            self.help_url = m.get('HelpUrl')
+        return self
+
+
 class DescribeDtsJobsResponseBodyDtsJobListMigrationMode(TeaModel):
     def __init__(
         self,
@@ -14600,6 +14645,39 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobDestinationEndpoint(TeaMode
         return self
 
 
+class DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        help_url: str = None,
+    ):
+        self.error_code = error_code
+        self.help_url = help_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.help_url is not None:
+            result['HelpUrl'] = self.help_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HelpUrl') is not None:
+            self.help_url = m.get('HelpUrl')
+        return self
+
+
 class DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode(TeaModel):
     def __init__(
         self,
@@ -14920,6 +14998,7 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
         dts_job_id: str = None,
         dts_job_name: str = None,
         du_usage: int = None,
+        error_details: List[DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails] = None,
         error_message: str = None,
         expire_time: str = None,
         mem_usage: str = None,
@@ -14947,6 +15026,7 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
         self.dts_job_id = dts_job_id
         self.dts_job_name = dts_job_name
         self.du_usage = du_usage
+        self.error_details = error_details
         self.error_message = error_message
         self.expire_time = expire_time
         self.mem_usage = mem_usage
@@ -14966,6 +15046,10 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
             self.data_synchronization_status.validate()
         if self.destination_endpoint:
             self.destination_endpoint.validate()
+        if self.error_details:
+            for k in self.error_details:
+                if k:
+                    k.validate()
         if self.migration_mode:
             self.migration_mode.validate()
         if self.performance:
@@ -15013,6 +15097,10 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
             result['DtsJobName'] = self.dts_job_name
         if self.du_usage is not None:
             result['DuUsage'] = self.du_usage
+        result['ErrorDetails'] = []
+        if self.error_details is not None:
+            for k in self.error_details:
+                result['ErrorDetails'].append(k.to_map() if k else None)
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.expire_time is not None:
@@ -15072,6 +15160,11 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
             self.dts_job_name = m.get('DtsJobName')
         if m.get('DuUsage') is not None:
             self.du_usage = m.get('DuUsage')
+        self.error_details = []
+        if m.get('ErrorDetails') is not None:
+            for k in m.get('ErrorDetails'):
+                temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails()
+                self.error_details.append(temp_model.from_map(k))
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('ExpireTime') is not None:
@@ -15285,6 +15378,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         dts_job_name: str = None,
         du_usage: int = None,
         end_timestamp: str = None,
+        error_details: List[DescribeDtsJobsResponseBodyDtsJobListErrorDetails] = None,
         error_message: str = None,
         expire_time: str = None,
         job_type: str = None,
@@ -15323,6 +15417,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         self.dts_job_name = dts_job_name
         self.du_usage = du_usage
         self.end_timestamp = end_timestamp
+        self.error_details = error_details
         self.error_message = error_message
         self.expire_time = expire_time
         self.job_type = job_type
@@ -15349,6 +15444,10 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             self.data_synchronization_status.validate()
         if self.destination_endpoint:
             self.destination_endpoint.validate()
+        if self.error_details:
+            for k in self.error_details:
+                if k:
+                    k.validate()
         if self.migration_mode:
             self.migration_mode.validate()
         if self.performance:
@@ -15416,6 +15515,10 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             result['DuUsage'] = self.du_usage
         if self.end_timestamp is not None:
             result['EndTimestamp'] = self.end_timestamp
+        result['ErrorDetails'] = []
+        if self.error_details is not None:
+            for k in self.error_details:
+                result['ErrorDetails'].append(k.to_map() if k else None)
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.expire_time is not None:
@@ -15500,6 +15603,11 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             self.du_usage = m.get('DuUsage')
         if m.get('EndTimestamp') is not None:
             self.end_timestamp = m.get('EndTimestamp')
+        self.error_details = []
+        if m.get('ErrorDetails') is not None:
+            for k in m.get('ErrorDetails'):
+                temp_model = DescribeDtsJobsResponseBodyDtsJobListErrorDetails()
+                self.error_details.append(temp_model.from_map(k))
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('ExpireTime') is not None:
@@ -32273,6 +32381,158 @@ class SuspendSynchronizationJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SuspendSynchronizationJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SwitchPhysicalDtsJobToCloudRequest(TeaModel):
+    def __init__(
+        self,
+        dts_instance_id: str = None,
+        dts_job_id: str = None,
+        region_id: str = None,
+        synchronization_direction: str = None,
+    ):
+        self.dts_instance_id = dts_instance_id
+        self.dts_job_id = dts_job_id
+        self.region_id = region_id
+        self.synchronization_direction = synchronization_direction
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.synchronization_direction is not None:
+            result['SynchronizationDirection'] = self.synchronization_direction
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SynchronizationDirection') is not None:
+            self.synchronization_direction = m.get('SynchronizationDirection')
+        return self
+
+
+class SwitchPhysicalDtsJobToCloudResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SwitchPhysicalDtsJobToCloudResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SwitchPhysicalDtsJobToCloudResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SwitchPhysicalDtsJobToCloudResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
