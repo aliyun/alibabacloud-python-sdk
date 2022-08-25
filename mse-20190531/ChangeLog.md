@@ -1,3 +1,6 @@
+2022-08-25 Version: 3.8.9
+- I.
+
 2022-06-21 Version: 3.0.23
 - Add Seata List Cluster open.
 - Add Seata List Group.
