@@ -317,6 +317,8 @@ class Client(OpenApiClient):
             query['DatabaseName'] = request.database_name
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -355,6 +357,8 @@ class Client(OpenApiClient):
             query['DatabaseName'] = request.database_name
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -573,14 +577,14 @@ class Client(OpenApiClient):
             query['PlanConfig'] = request.plan_config
         if not UtilClient.is_unset(request.plan_desc):
             query['PlanDesc'] = request.plan_desc
-        if not UtilClient.is_unset(request.plan_end_time):
-            query['PlanEndTime'] = request.plan_end_time
+        if not UtilClient.is_unset(request.plan_end_date):
+            query['PlanEndDate'] = request.plan_end_date
         if not UtilClient.is_unset(request.plan_name):
             query['PlanName'] = request.plan_name
         if not UtilClient.is_unset(request.plan_schedule_type):
             query['PlanScheduleType'] = request.plan_schedule_type
-        if not UtilClient.is_unset(request.plan_start_time):
-            query['PlanStartTime'] = request.plan_start_time
+        if not UtilClient.is_unset(request.plan_start_date):
+            query['PlanStartDate'] = request.plan_start_date
         if not UtilClient.is_unset(request.plan_type):
             query['PlanType'] = request.plan_type
         req = open_api_models.OpenApiRequest(
@@ -617,14 +621,14 @@ class Client(OpenApiClient):
             query['PlanConfig'] = request.plan_config
         if not UtilClient.is_unset(request.plan_desc):
             query['PlanDesc'] = request.plan_desc
-        if not UtilClient.is_unset(request.plan_end_time):
-            query['PlanEndTime'] = request.plan_end_time
+        if not UtilClient.is_unset(request.plan_end_date):
+            query['PlanEndDate'] = request.plan_end_date
         if not UtilClient.is_unset(request.plan_name):
             query['PlanName'] = request.plan_name
         if not UtilClient.is_unset(request.plan_schedule_type):
             query['PlanScheduleType'] = request.plan_schedule_type
-        if not UtilClient.is_unset(request.plan_start_time):
-            query['PlanStartTime'] = request.plan_start_time
+        if not UtilClient.is_unset(request.plan_start_date):
+            query['PlanStartDate'] = request.plan_start_date
         if not UtilClient.is_unset(request.plan_type):
             query['PlanType'] = request.plan_type
         req = open_api_models.OpenApiRequest(
@@ -2320,100 +2324,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_performance_with_options_async(request, runtime)
 
-    def describe_dbinstance_plans_with_options(
-        self,
-        request: gpdb_20160503_models.DescribeDBInstancePlansRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeDBInstancePlansResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.plan_create_date):
-            query['PlanCreateDate'] = request.plan_create_date
-        if not UtilClient.is_unset(request.plan_desc):
-            query['PlanDesc'] = request.plan_desc
-        if not UtilClient.is_unset(request.plan_id):
-            query['PlanId'] = request.plan_id
-        if not UtilClient.is_unset(request.plan_scheduler_type):
-            query['PlanSchedulerType'] = request.plan_scheduler_type
-        if not UtilClient.is_unset(request.plan_type):
-            query['PlanType'] = request.plan_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDBInstancePlans',
-            version='2016-05-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstancePlansResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_dbinstance_plans_with_options_async(
-        self,
-        request: gpdb_20160503_models.DescribeDBInstancePlansRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeDBInstancePlansResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.plan_create_date):
-            query['PlanCreateDate'] = request.plan_create_date
-        if not UtilClient.is_unset(request.plan_desc):
-            query['PlanDesc'] = request.plan_desc
-        if not UtilClient.is_unset(request.plan_id):
-            query['PlanId'] = request.plan_id
-        if not UtilClient.is_unset(request.plan_scheduler_type):
-            query['PlanSchedulerType'] = request.plan_scheduler_type
-        if not UtilClient.is_unset(request.plan_type):
-            query['PlanType'] = request.plan_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDBInstancePlans',
-            version='2016-05-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstancePlansResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_dbinstance_plans(
-        self,
-        request: gpdb_20160503_models.DescribeDBInstancePlansRequest,
-    ) -> gpdb_20160503_models.DescribeDBInstancePlansResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_dbinstance_plans_with_options(request, runtime)
-
-    async def describe_dbinstance_plans_async(
-        self,
-        request: gpdb_20160503_models.DescribeDBInstancePlansRequest,
-    ) -> gpdb_20160503_models.DescribeDBInstancePlansResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_dbinstance_plans_with_options_async(request, runtime)
-
     def describe_dbinstance_sqlpatterns_with_options(
         self,
         request: gpdb_20160503_models.DescribeDBInstanceSQLPatternsRequest,
@@ -3721,6 +3631,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -3763,6 +3675,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -3819,6 +3733,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -3859,6 +3775,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -6715,8 +6633,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.plan_id):
             query['PlanId'] = request.plan_id
-        if not UtilClient.is_unset(request.plan_staus):
-            query['PlanStaus'] = request.plan_staus
+        if not UtilClient.is_unset(request.plan_status):
+            query['PlanStatus'] = request.plan_status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6749,8 +6667,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.plan_id):
             query['PlanId'] = request.plan_id
-        if not UtilClient.is_unset(request.plan_staus):
-            query['PlanStaus'] = request.plan_staus
+        if not UtilClient.is_unset(request.plan_status):
+            query['PlanStatus'] = request.plan_status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7151,6 +7069,104 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_dbinstance_plan_with_options(
+        self,
+        request: gpdb_20160503_models.UpdateDBInstancePlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.UpdateDBInstancePlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.plan_config):
+            query['PlanConfig'] = request.plan_config
+        if not UtilClient.is_unset(request.plan_desc):
+            query['PlanDesc'] = request.plan_desc
+        if not UtilClient.is_unset(request.plan_end_date):
+            query['PlanEndDate'] = request.plan_end_date
+        if not UtilClient.is_unset(request.plan_id):
+            query['PlanId'] = request.plan_id
+        if not UtilClient.is_unset(request.plan_name):
+            query['PlanName'] = request.plan_name
+        if not UtilClient.is_unset(request.plan_start_date):
+            query['PlanStartDate'] = request.plan_start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDBInstancePlan',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.UpdateDBInstancePlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dbinstance_plan_with_options_async(
+        self,
+        request: gpdb_20160503_models.UpdateDBInstancePlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.UpdateDBInstancePlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.plan_config):
+            query['PlanConfig'] = request.plan_config
+        if not UtilClient.is_unset(request.plan_desc):
+            query['PlanDesc'] = request.plan_desc
+        if not UtilClient.is_unset(request.plan_end_date):
+            query['PlanEndDate'] = request.plan_end_date
+        if not UtilClient.is_unset(request.plan_id):
+            query['PlanId'] = request.plan_id
+        if not UtilClient.is_unset(request.plan_name):
+            query['PlanName'] = request.plan_name
+        if not UtilClient.is_unset(request.plan_start_date):
+            query['PlanStartDate'] = request.plan_start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDBInstancePlan',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.UpdateDBInstancePlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dbinstance_plan(
+        self,
+        request: gpdb_20160503_models.UpdateDBInstancePlanRequest,
+    ) -> gpdb_20160503_models.UpdateDBInstancePlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_dbinstance_plan_with_options(request, runtime)
+
+    async def update_dbinstance_plan_async(
+        self,
+        request: gpdb_20160503_models.UpdateDBInstancePlanRequest,
+    ) -> gpdb_20160503_models.UpdateDBInstancePlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dbinstance_plan_with_options_async(request, runtime)
 
     def upgrade_dbinstance_with_options(
         self,

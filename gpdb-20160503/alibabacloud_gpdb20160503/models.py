@@ -379,6 +379,7 @@ class CreateAccountRequest(TeaModel):
         dbinstance_id: str = None,
         database_name: str = None,
         owner_id: int = None,
+        resource_group_id: str = None,
     ):
         self.account_description = account_description
         self.account_name = account_name
@@ -386,6 +387,7 @@ class CreateAccountRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         self.database_name = database_name
         self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -408,6 +410,8 @@ class CreateAccountRequest(TeaModel):
             result['DatabaseName'] = self.database_name
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -424,6 +428,8 @@ class CreateAccountRequest(TeaModel):
             self.database_name = m.get('DatabaseName')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -777,20 +783,20 @@ class CreateDBInstancePlanRequest(TeaModel):
         owner_id: int = None,
         plan_config: str = None,
         plan_desc: str = None,
-        plan_end_time: str = None,
+        plan_end_date: str = None,
         plan_name: str = None,
         plan_schedule_type: str = None,
-        plan_start_time: str = None,
+        plan_start_date: str = None,
         plan_type: str = None,
     ):
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.plan_config = plan_config
         self.plan_desc = plan_desc
-        self.plan_end_time = plan_end_time
+        self.plan_end_date = plan_end_date
         self.plan_name = plan_name
         self.plan_schedule_type = plan_schedule_type
-        self.plan_start_time = plan_start_time
+        self.plan_start_date = plan_start_date
         self.plan_type = plan_type
 
     def validate(self):
@@ -810,14 +816,14 @@ class CreateDBInstancePlanRequest(TeaModel):
             result['PlanConfig'] = self.plan_config
         if self.plan_desc is not None:
             result['PlanDesc'] = self.plan_desc
-        if self.plan_end_time is not None:
-            result['PlanEndTime'] = self.plan_end_time
+        if self.plan_end_date is not None:
+            result['PlanEndDate'] = self.plan_end_date
         if self.plan_name is not None:
             result['PlanName'] = self.plan_name
         if self.plan_schedule_type is not None:
             result['PlanScheduleType'] = self.plan_schedule_type
-        if self.plan_start_time is not None:
-            result['PlanStartTime'] = self.plan_start_time
+        if self.plan_start_date is not None:
+            result['PlanStartDate'] = self.plan_start_date
         if self.plan_type is not None:
             result['PlanType'] = self.plan_type
         return result
@@ -832,14 +838,14 @@ class CreateDBInstancePlanRequest(TeaModel):
             self.plan_config = m.get('PlanConfig')
         if m.get('PlanDesc') is not None:
             self.plan_desc = m.get('PlanDesc')
-        if m.get('PlanEndTime') is not None:
-            self.plan_end_time = m.get('PlanEndTime')
+        if m.get('PlanEndDate') is not None:
+            self.plan_end_date = m.get('PlanEndDate')
         if m.get('PlanName') is not None:
             self.plan_name = m.get('PlanName')
         if m.get('PlanScheduleType') is not None:
             self.plan_schedule_type = m.get('PlanScheduleType')
-        if m.get('PlanStartTime') is not None:
-            self.plan_start_time = m.get('PlanStartTime')
+        if m.get('PlanStartDate') is not None:
+            self.plan_start_date = m.get('PlanStartDate')
         if m.get('PlanType') is not None:
             self.plan_type = m.get('PlanType')
         return self
@@ -5579,288 +5585,6 @@ class DescribeDBInstancePerformanceResponse(TeaModel):
         return self
 
 
-class DescribeDBInstancePlansRequest(TeaModel):
-    def __init__(
-        self,
-        dbinstance_id: str = None,
-        owner_id: int = None,
-        plan_create_date: str = None,
-        plan_desc: str = None,
-        plan_id: str = None,
-        plan_scheduler_type: str = None,
-        plan_type: str = None,
-    ):
-        self.dbinstance_id = dbinstance_id
-        self.owner_id = owner_id
-        self.plan_create_date = plan_create_date
-        self.plan_desc = plan_desc
-        self.plan_id = plan_id
-        self.plan_scheduler_type = plan_scheduler_type
-        self.plan_type = plan_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dbinstance_id is not None:
-            result['DBInstanceId'] = self.dbinstance_id
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.plan_create_date is not None:
-            result['PlanCreateDate'] = self.plan_create_date
-        if self.plan_desc is not None:
-            result['PlanDesc'] = self.plan_desc
-        if self.plan_id is not None:
-            result['PlanId'] = self.plan_id
-        if self.plan_scheduler_type is not None:
-            result['PlanSchedulerType'] = self.plan_scheduler_type
-        if self.plan_type is not None:
-            result['PlanType'] = self.plan_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DBInstanceId') is not None:
-            self.dbinstance_id = m.get('DBInstanceId')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('PlanCreateDate') is not None:
-            self.plan_create_date = m.get('PlanCreateDate')
-        if m.get('PlanDesc') is not None:
-            self.plan_desc = m.get('PlanDesc')
-        if m.get('PlanId') is not None:
-            self.plan_id = m.get('PlanId')
-        if m.get('PlanSchedulerType') is not None:
-            self.plan_scheduler_type = m.get('PlanSchedulerType')
-        if m.get('PlanType') is not None:
-            self.plan_type = m.get('PlanType')
-        return self
-
-
-class DescribeDBInstancePlansResponseBodyItemsPlan(TeaModel):
-    def __init__(
-        self,
-        dbinstance_id: str = None,
-        plan_config: str = None,
-        plan_desc: str = None,
-        plan_end_time: str = None,
-        plan_id: str = None,
-        plan_name: str = None,
-        plan_start_time: str = None,
-        plan_type: str = None,
-        planschedule_type: str = None,
-    ):
-        self.dbinstance_id = dbinstance_id
-        self.plan_config = plan_config
-        self.plan_desc = plan_desc
-        self.plan_end_time = plan_end_time
-        self.plan_id = plan_id
-        self.plan_name = plan_name
-        self.plan_start_time = plan_start_time
-        self.plan_type = plan_type
-        self.planschedule_type = planschedule_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dbinstance_id is not None:
-            result['DBInstanceId'] = self.dbinstance_id
-        if self.plan_config is not None:
-            result['PlanConfig'] = self.plan_config
-        if self.plan_desc is not None:
-            result['PlanDesc'] = self.plan_desc
-        if self.plan_end_time is not None:
-            result['PlanEndTime'] = self.plan_end_time
-        if self.plan_id is not None:
-            result['PlanId'] = self.plan_id
-        if self.plan_name is not None:
-            result['PlanName'] = self.plan_name
-        if self.plan_start_time is not None:
-            result['PlanStartTime'] = self.plan_start_time
-        if self.plan_type is not None:
-            result['PlanType'] = self.plan_type
-        if self.planschedule_type is not None:
-            result['PlanscheduleType'] = self.planschedule_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DBInstanceId') is not None:
-            self.dbinstance_id = m.get('DBInstanceId')
-        if m.get('PlanConfig') is not None:
-            self.plan_config = m.get('PlanConfig')
-        if m.get('PlanDesc') is not None:
-            self.plan_desc = m.get('PlanDesc')
-        if m.get('PlanEndTime') is not None:
-            self.plan_end_time = m.get('PlanEndTime')
-        if m.get('PlanId') is not None:
-            self.plan_id = m.get('PlanId')
-        if m.get('PlanName') is not None:
-            self.plan_name = m.get('PlanName')
-        if m.get('PlanStartTime') is not None:
-            self.plan_start_time = m.get('PlanStartTime')
-        if m.get('PlanType') is not None:
-            self.plan_type = m.get('PlanType')
-        if m.get('PlanscheduleType') is not None:
-            self.planschedule_type = m.get('PlanscheduleType')
-        return self
-
-
-class DescribeDBInstancePlansResponseBodyItems(TeaModel):
-    def __init__(
-        self,
-        plan: List[DescribeDBInstancePlansResponseBodyItemsPlan] = None,
-    ):
-        self.plan = plan
-
-    def validate(self):
-        if self.plan:
-            for k in self.plan:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Plan'] = []
-        if self.plan is not None:
-            for k in self.plan:
-                result['Plan'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.plan = []
-        if m.get('Plan') is not None:
-            for k in m.get('Plan'):
-                temp_model = DescribeDBInstancePlansResponseBodyItemsPlan()
-                self.plan.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeDBInstancePlansResponseBody(TeaModel):
-    def __init__(
-        self,
-        error_message: str = None,
-        items: DescribeDBInstancePlansResponseBodyItems = None,
-        page_number: int = None,
-        page_record_count: int = None,
-        request_id: str = None,
-        status: str = None,
-        total_record_count: int = None,
-    ):
-        self.error_message = error_message
-        self.items = items
-        self.page_number = page_number
-        self.page_record_count = page_record_count
-        self.request_id = request_id
-        self.status = status
-        self.total_record_count = total_record_count
-
-    def validate(self):
-        if self.items:
-            self.items.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.items is not None:
-            result['Items'] = self.items.to_map()
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_record_count is not None:
-            result['PageRecordCount'] = self.page_record_count
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.total_record_count is not None:
-            result['TotalRecordCount'] = self.total_record_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('Items') is not None:
-            temp_model = DescribeDBInstancePlansResponseBodyItems()
-            self.items = temp_model.from_map(m['Items'])
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageRecordCount') is not None:
-            self.page_record_count = m.get('PageRecordCount')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('TotalRecordCount') is not None:
-            self.total_record_count = m.get('TotalRecordCount')
-        return self
-
-
-class DescribeDBInstancePlansResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeDBInstancePlansResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeDBInstancePlansResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeDBInstanceSQLPatternsRequest(TeaModel):
     def __init__(
         self,
@@ -9761,6 +9485,7 @@ class DescribeRdsVSwitchsRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
@@ -9770,6 +9495,7 @@ class DescribeRdsVSwitchsRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -9791,6 +9517,8 @@ class DescribeRdsVSwitchsRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -9811,6 +9539,8 @@ class DescribeRdsVSwitchsRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -10031,6 +9761,7 @@ class DescribeRdsVpcsRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
@@ -10039,6 +9770,7 @@ class DescribeRdsVpcsRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -10059,6 +9791,8 @@ class DescribeRdsVpcsRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -10077,6 +9811,8 @@ class DescribeRdsVpcsRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -15953,12 +15689,12 @@ class SetDBInstancePlanStatusRequest(TeaModel):
         dbinstance_id: str = None,
         owner_id: int = None,
         plan_id: str = None,
-        plan_staus: str = None,
+        plan_status: str = None,
     ):
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.plan_id = plan_id
-        self.plan_staus = plan_staus
+        self.plan_status = plan_status
 
     def validate(self):
         pass
@@ -15975,8 +15711,8 @@ class SetDBInstancePlanStatusRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
-        if self.plan_staus is not None:
-            result['PlanStaus'] = self.plan_staus
+        if self.plan_status is not None:
+            result['PlanStatus'] = self.plan_status
         return result
 
     def from_map(self, m: dict = None):
@@ -15987,8 +15723,8 @@ class SetDBInstancePlanStatusRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
-        if m.get('PlanStaus') is not None:
-            self.plan_staus = m.get('PlanStaus')
+        if m.get('PlanStatus') is not None:
+            self.plan_status = m.get('PlanStatus')
         return self
 
 
@@ -16687,6 +16423,170 @@ class UntagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDBInstancePlanRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_id: int = None,
+        plan_config: str = None,
+        plan_desc: str = None,
+        plan_end_date: str = None,
+        plan_id: str = None,
+        plan_name: str = None,
+        plan_start_date: str = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.owner_id = owner_id
+        self.plan_config = plan_config
+        self.plan_desc = plan_desc
+        self.plan_end_date = plan_end_date
+        self.plan_id = plan_id
+        self.plan_name = plan_name
+        self.plan_start_date = plan_start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.plan_config is not None:
+            result['PlanConfig'] = self.plan_config
+        if self.plan_desc is not None:
+            result['PlanDesc'] = self.plan_desc
+        if self.plan_end_date is not None:
+            result['PlanEndDate'] = self.plan_end_date
+        if self.plan_id is not None:
+            result['PlanId'] = self.plan_id
+        if self.plan_name is not None:
+            result['PlanName'] = self.plan_name
+        if self.plan_start_date is not None:
+            result['PlanStartDate'] = self.plan_start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PlanConfig') is not None:
+            self.plan_config = m.get('PlanConfig')
+        if m.get('PlanDesc') is not None:
+            self.plan_desc = m.get('PlanDesc')
+        if m.get('PlanEndDate') is not None:
+            self.plan_end_date = m.get('PlanEndDate')
+        if m.get('PlanId') is not None:
+            self.plan_id = m.get('PlanId')
+        if m.get('PlanName') is not None:
+            self.plan_name = m.get('PlanName')
+        if m.get('PlanStartDate') is not None:
+            self.plan_start_date = m.get('PlanStartDate')
+        return self
+
+
+class UpdateDBInstancePlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        error_message: str = None,
+        plan_id: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.error_message = error_message
+        self.plan_id = plan_id
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.plan_id is not None:
+            result['PlanId'] = self.plan_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('PlanId') is not None:
+            self.plan_id = m.get('PlanId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateDBInstancePlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDBInstancePlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDBInstancePlanResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
