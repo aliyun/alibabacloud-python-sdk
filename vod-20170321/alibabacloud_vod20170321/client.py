@@ -21,6 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-2-pop': 'vod.aliyuncs.com',
@@ -1564,6 +1565,92 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.CreateUploadVideoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_upload_video_with_options_async(request, runtime)
+
+    def decrypt_kmsdata_key_with_options(
+        self,
+        request: vod_20170321_models.DecryptKMSDataKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DecryptKMSDataKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cipher_text):
+            query['CipherText'] = request.cipher_text
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DecryptKMSDataKey',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DecryptKMSDataKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def decrypt_kmsdata_key_with_options_async(
+        self,
+        request: vod_20170321_models.DecryptKMSDataKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DecryptKMSDataKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cipher_text):
+            query['CipherText'] = request.cipher_text
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DecryptKMSDataKey',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DecryptKMSDataKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def decrypt_kmsdata_key(
+        self,
+        request: vod_20170321_models.DecryptKMSDataKeyRequest,
+    ) -> vod_20170321_models.DecryptKMSDataKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.decrypt_kmsdata_key_with_options(request, runtime)
+
+    async def decrypt_kmsdata_key_async(
+        self,
+        request: vod_20170321_models.DecryptKMSDataKeyRequest,
+    ) -> vod_20170321_models.DecryptKMSDataKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.decrypt_kmsdata_key_with_options_async(request, runtime)
 
     def delete_aiimage_infos_with_options(
         self,
@@ -4625,6 +4712,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detach_app_policy_from_identity_with_options_async(request, runtime)
 
+    def generate_kmsdata_key_with_options(
+        self,
+        request: vod_20170321_models.GenerateKMSDataKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.GenerateKMSDataKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateKMSDataKey',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.GenerateKMSDataKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_kmsdata_key_with_options_async(
+        self,
+        request: vod_20170321_models.GenerateKMSDataKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.GenerateKMSDataKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateKMSDataKey',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.GenerateKMSDataKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_kmsdata_key(
+        self,
+        request: vod_20170321_models.GenerateKMSDataKeyRequest,
+    ) -> vod_20170321_models.GenerateKMSDataKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.generate_kmsdata_key_with_options(request, runtime)
+
+    async def generate_kmsdata_key_async(
+        self,
+        request: vod_20170321_models.GenerateKMSDataKeyRequest,
+    ) -> vod_20170321_models.GenerateKMSDataKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_kmsdata_key_with_options_async(request, runtime)
+
     def get_aiimage_jobs_with_options(
         self,
         request: vod_20170321_models.GetAIImageJobsRequest,
@@ -5580,6 +5749,84 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetImageInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_image_info_with_options_async(request, runtime)
+
+    def get_image_infos_with_options(
+        self,
+        request: vod_20170321_models.GetImageInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.GetImageInfosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not UtilClient.is_unset(request.image_ids):
+            query['ImageIds'] = request.image_ids
+        if not UtilClient.is_unset(request.output_type):
+            query['OutputType'] = request.output_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetImageInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.GetImageInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_image_infos_with_options_async(
+        self,
+        request: vod_20170321_models.GetImageInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.GetImageInfosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not UtilClient.is_unset(request.image_ids):
+            query['ImageIds'] = request.image_ids
+        if not UtilClient.is_unset(request.output_type):
+            query['OutputType'] = request.output_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetImageInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.GetImageInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_image_infos(
+        self,
+        request: vod_20170321_models.GetImageInfosRequest,
+    ) -> vod_20170321_models.GetImageInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_image_infos_with_options(request, runtime)
+
+    async def get_image_infos_async(
+        self,
+        request: vod_20170321_models.GetImageInfosRequest,
+    ) -> vod_20170321_models.GetImageInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_image_infos_with_options_async(request, runtime)
 
     def get_media_audit_audio_result_detail_with_options(
         self,
