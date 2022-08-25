@@ -21212,6 +21212,188 @@ class ScgSearchShrinkRequest(TeaModel):
         return self
 
 
+class ScgSearchResponseBodyResultCover(TeaModel):
+    def __init__(
+        self,
+        img: str = None,
+        large: str = None,
+        medium: str = None,
+        small: str = None,
+        can_resize: bool = None,
+    ):
+        self.img = img
+        self.large = large
+        self.medium = medium
+        self.small = small
+        self.can_resize = can_resize
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.img is not None:
+            result['Img'] = self.img
+        if self.large is not None:
+            result['Large'] = self.large
+        if self.medium is not None:
+            result['Medium'] = self.medium
+        if self.small is not None:
+            result['Small'] = self.small
+        if self.can_resize is not None:
+            result['canResize'] = self.can_resize
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Img') is not None:
+            self.img = m.get('Img')
+        if m.get('Large') is not None:
+            self.large = m.get('Large')
+        if m.get('Medium') is not None:
+            self.medium = m.get('Medium')
+        if m.get('Small') is not None:
+            self.small = m.get('Small')
+        if m.get('canResize') is not None:
+            self.can_resize = m.get('canResize')
+        return self
+
+
+class ScgSearchResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        album: bool = None,
+        album_raw_id: str = None,
+        album_type: int = None,
+        alias: List[str] = None,
+        author_ids: List[int] = None,
+        author_names: List[str] = None,
+        category: str = None,
+        content_type: str = None,
+        cover: ScgSearchResponseBodyResultCover = None,
+        is_audition: bool = None,
+        is_charge: str = None,
+        need_charge: bool = None,
+        raw_id: int = None,
+        singers: str = None,
+        source: str = None,
+        support_audition: bool = None,
+        title: str = None,
+        type: str = None,
+    ):
+        self.album = album
+        self.album_raw_id = album_raw_id
+        self.album_type = album_type
+        self.alias = alias
+        self.author_ids = author_ids
+        self.author_names = author_names
+        self.category = category
+        self.content_type = content_type
+        self.cover = cover
+        self.is_audition = is_audition
+        self.is_charge = is_charge
+        self.need_charge = need_charge
+        self.raw_id = raw_id
+        self.singers = singers
+        self.source = source
+        self.support_audition = support_audition
+        self.title = title
+        self.type = type
+
+    def validate(self):
+        if self.cover:
+            self.cover.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.album is not None:
+            result['Album'] = self.album
+        if self.album_raw_id is not None:
+            result['AlbumRawId'] = self.album_raw_id
+        if self.album_type is not None:
+            result['AlbumType'] = self.album_type
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.author_ids is not None:
+            result['AuthorIds'] = self.author_ids
+        if self.author_names is not None:
+            result['AuthorNames'] = self.author_names
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.cover is not None:
+            result['Cover'] = self.cover.to_map()
+        if self.is_audition is not None:
+            result['IsAudition'] = self.is_audition
+        if self.is_charge is not None:
+            result['IsCharge'] = self.is_charge
+        if self.need_charge is not None:
+            result['NeedCharge'] = self.need_charge
+        if self.raw_id is not None:
+            result['RawId'] = self.raw_id
+        if self.singers is not None:
+            result['Singers'] = self.singers
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.support_audition is not None:
+            result['SupportAudition'] = self.support_audition
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Album') is not None:
+            self.album = m.get('Album')
+        if m.get('AlbumRawId') is not None:
+            self.album_raw_id = m.get('AlbumRawId')
+        if m.get('AlbumType') is not None:
+            self.album_type = m.get('AlbumType')
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('AuthorIds') is not None:
+            self.author_ids = m.get('AuthorIds')
+        if m.get('AuthorNames') is not None:
+            self.author_names = m.get('AuthorNames')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('Cover') is not None:
+            temp_model = ScgSearchResponseBodyResultCover()
+            self.cover = temp_model.from_map(m['Cover'])
+        if m.get('IsAudition') is not None:
+            self.is_audition = m.get('IsAudition')
+        if m.get('IsCharge') is not None:
+            self.is_charge = m.get('IsCharge')
+        if m.get('NeedCharge') is not None:
+            self.need_charge = m.get('NeedCharge')
+        if m.get('RawId') is not None:
+            self.raw_id = m.get('RawId')
+        if m.get('Singers') is not None:
+            self.singers = m.get('Singers')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SupportAudition') is not None:
+            self.support_audition = m.get('SupportAudition')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class ScgSearchResponseBody(TeaModel):
     def __init__(
         self,
@@ -21220,7 +21402,7 @@ class ScgSearchResponseBody(TeaModel):
         page_num: int = None,
         page_size: int = None,
         request_id: str = None,
-        result: str = None,
+        result: List[ScgSearchResponseBodyResult] = None,
     ):
         self.code = code
         self.message = message
@@ -21230,7 +21412,10 @@ class ScgSearchResponseBody(TeaModel):
         self.result = result
 
     def validate(self):
-        pass
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -21248,8 +21433,10 @@ class ScgSearchResponseBody(TeaModel):
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['Result'] = []
         if self.result is not None:
-            result['Result'] = self.result
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -21264,8 +21451,11 @@ class ScgSearchResponseBody(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        self.result = []
         if m.get('Result') is not None:
-            self.result = m.get('Result')
+            for k in m.get('Result'):
+                temp_model = ScgSearchResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
         return self
 
 
