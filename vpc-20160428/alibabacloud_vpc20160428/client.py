@@ -17282,6 +17282,8 @@ class Client(OpenApiClient):
             query['Spec'] = request.spec
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.zone_id):
@@ -17344,6 +17346,8 @@ class Client(OpenApiClient):
             query['Spec'] = request.spec
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.zone_id):
@@ -22130,6 +22134,100 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.GetDhcpOptionsSetResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_dhcp_options_set_with_options_async(request, runtime)
+
+    def get_flow_log_service_status_with_options(
+        self,
+        request: vpc_20160428_models.GetFlowLogServiceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.GetFlowLogServiceStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFlowLogServiceStatus',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.GetFlowLogServiceStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_flow_log_service_status_with_options_async(
+        self,
+        request: vpc_20160428_models.GetFlowLogServiceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.GetFlowLogServiceStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFlowLogServiceStatus',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.GetFlowLogServiceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_flow_log_service_status(
+        self,
+        request: vpc_20160428_models.GetFlowLogServiceStatusRequest,
+    ) -> vpc_20160428_models.GetFlowLogServiceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_flow_log_service_status_with_options(request, runtime)
+
+    async def get_flow_log_service_status_async(
+        self,
+        request: vpc_20160428_models.GetFlowLogServiceStatusRequest,
+    ) -> vpc_20160428_models.GetFlowLogServiceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_flow_log_service_status_with_options_async(request, runtime)
 
     def get_ipv_4gateway_attribute_with_options(
         self,
@@ -30376,6 +30474,100 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.MoveResourceGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.move_resource_group_with_options_async(request, runtime)
+
+    def open_flow_log_service_with_options(
+        self,
+        request: vpc_20160428_models.OpenFlowLogServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.OpenFlowLogServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenFlowLogService',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.OpenFlowLogServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_flow_log_service_with_options_async(
+        self,
+        request: vpc_20160428_models.OpenFlowLogServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.OpenFlowLogServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenFlowLogService',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.OpenFlowLogServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_flow_log_service(
+        self,
+        request: vpc_20160428_models.OpenFlowLogServiceRequest,
+    ) -> vpc_20160428_models.OpenFlowLogServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.open_flow_log_service_with_options(request, runtime)
+
+    async def open_flow_log_service_async(
+        self,
+        request: vpc_20160428_models.OpenFlowLogServiceRequest,
+    ) -> vpc_20160428_models.OpenFlowLogServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.open_flow_log_service_with_options_async(request, runtime)
 
     def open_physical_connection_service_with_options(
         self,
