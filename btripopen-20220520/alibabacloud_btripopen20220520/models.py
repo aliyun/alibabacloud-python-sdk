@@ -167,6 +167,39 @@ class AccessTokenResponse(TeaModel):
         return self
 
 
+class AddressGetHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class AddressGetRequest(TeaModel):
     def __init__(
         self,
@@ -345,6 +378,294 @@ class AddressGetResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = AddressGetResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AirportSearchHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
+class AirportSearchRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        type: int = None,
+    ):
+        self.keyword = keyword
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class AirportSearchResponseBodyModuleCities(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        distance: int = None,
+        name: str = None,
+        travel_name: str = None,
+    ):
+        self.code = code
+        self.distance = distance
+        self.name = name
+        self.travel_name = travel_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.distance is not None:
+            result['distance'] = self.distance
+        if self.name is not None:
+            result['name'] = self.name
+        if self.travel_name is not None:
+            result['travel_name'] = self.travel_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('distance') is not None:
+            self.distance = m.get('distance')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('travel_name') is not None:
+            self.travel_name = m.get('travel_name')
+        return self
+
+
+class AirportSearchResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        cities: List[AirportSearchResponseBodyModuleCities] = None,
+        nearby: bool = None,
+    ):
+        self.cities = cities
+        self.nearby = nearby
+
+    def validate(self):
+        if self.cities:
+            for k in self.cities:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['cities'] = []
+        if self.cities is not None:
+            for k in self.cities:
+                result['cities'].append(k.to_map() if k else None)
+        if self.nearby is not None:
+            result['nearby'] = self.nearby
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cities = []
+        if m.get('cities') is not None:
+            for k in m.get('cities'):
+                temp_model = AirportSearchResponseBodyModuleCities()
+                self.cities.append(temp_model.from_map(k))
+        if m.get('nearby') is not None:
+            self.nearby = m.get('nearby')
+        return self
+
+
+class AirportSearchResponseBody(TeaModel):
+    def __init__(
+        self,
+        module: AirportSearchResponseBodyModule = None,
+        request_id: str = None,
+        result_code: int = None,
+        result_msg: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.module = module
+        self.request_id = request_id
+        self.result_code = result_code
+        self.result_msg = result_msg
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module is not None:
+            result['module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result_code is not None:
+            result['result_code'] = self.result_code
+        if self.result_msg is not None:
+            result['result_msg'] = self.result_msg
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('module') is not None:
+            temp_model = AirportSearchResponseBodyModule()
+            self.module = temp_model.from_map(m['module'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result_code') is not None:
+            self.result_code = m.get('result_code')
+        if m.get('result_msg') is not None:
+            self.result_msg = m.get('result_msg')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class AirportSearchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AirportSearchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AirportSearchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ApplyAddHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -1477,6 +1798,230 @@ class ApplyAddResponse(TeaModel):
         return self
 
 
+class ApplyApproveHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
+class ApplyApproveRequest(TeaModel):
+    def __init__(
+        self,
+        apply_id: str = None,
+        note: str = None,
+        operate_time: str = None,
+        status: int = None,
+        user_id: str = None,
+        user_name: str = None,
+    ):
+        self.apply_id = apply_id
+        self.note = note
+        self.operate_time = operate_time
+        self.status = status
+        self.user_id = user_id
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.apply_id is not None:
+            result['apply_id'] = self.apply_id
+        if self.note is not None:
+            result['note'] = self.note
+        if self.operate_time is not None:
+            result['operate_time'] = self.operate_time
+        if self.status is not None:
+            result['status'] = self.status
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('apply_id') is not None:
+            self.apply_id = m.get('apply_id')
+        if m.get('note') is not None:
+            self.note = m.get('note')
+        if m.get('operate_time') is not None:
+            self.operate_time = m.get('operate_time')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        if m.get('user_name') is not None:
+            self.user_name = m.get('user_name')
+        return self
+
+
+class ApplyApproveResponseBody(TeaModel):
+    def __init__(
+        self,
+        module: str = None,
+        request_id: str = None,
+        result_code: int = None,
+        result_msg: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.module = module
+        self.request_id = request_id
+        self.result_code = result_code
+        self.result_msg = result_msg
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module is not None:
+            result['module'] = self.module
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.result_code is not None:
+            result['result_code'] = self.result_code
+        if self.result_msg is not None:
+            result['result_msg'] = self.result_msg
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['trace_id'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('module') is not None:
+            self.module = m.get('module')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('result_code') is not None:
+            self.result_code = m.get('result_code')
+        if m.get('result_msg') is not None:
+            self.result_msg = m.get('result_msg')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('trace_id') is not None:
+            self.trace_id = m.get('trace_id')
+        return self
+
+
+class ApplyApproveResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ApplyApproveResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ApplyApproveResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ApplyListQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class ApplyListQueryRequest(TeaModel):
     def __init__(
         self,
@@ -2182,6 +2727,39 @@ class ApplyListQueryResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = ApplyListQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ApplyModifyHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -3290,6 +3868,39 @@ class ApplyModifyResponse(TeaModel):
         return self
 
 
+class ApplyQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class ApplyQueryRequest(TeaModel):
     def __init__(
         self,
@@ -4224,6 +4835,39 @@ class ApplyQueryResponse(TeaModel):
         return self
 
 
+class CarApplyAddHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class CarApplyAddRequest(TeaModel):
     def __init__(
         self,
@@ -4436,6 +5080,39 @@ class CarApplyAddResponse(TeaModel):
         return self
 
 
+class CarApplyModifyHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class CarApplyModifyRequest(TeaModel):
     def __init__(
         self,
@@ -4585,6 +5262,39 @@ class CarApplyModifyResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = CarApplyModifyResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CarApplyQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -5041,6 +5751,39 @@ class CarApplyQueryResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = CarApplyQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CarBillSettlementQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -5617,6 +6360,39 @@ class CarBillSettlementQueryResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = CarBillSettlementQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CarOrderListQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -6310,6 +7086,276 @@ class CarOrderListQueryResponse(TeaModel):
         return self
 
 
+class CitySearchHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
+class CitySearchRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+    ):
+        self.keyword = keyword
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
+        return self
+
+
+class CitySearchResponseBodyModuleCities(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        name: str = None,
+        region: int = None,
+    ):
+        self.code = code
+        self.name = name
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.name is not None:
+            result['name'] = self.name
+        if self.region is not None:
+            result['region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        return self
+
+
+class CitySearchResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        cities: List[CitySearchResponseBodyModuleCities] = None,
+    ):
+        self.cities = cities
+
+    def validate(self):
+        if self.cities:
+            for k in self.cities:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['cities'] = []
+        if self.cities is not None:
+            for k in self.cities:
+                result['cities'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cities = []
+        if m.get('cities') is not None:
+            for k in m.get('cities'):
+                temp_model = CitySearchResponseBodyModuleCities()
+                self.cities.append(temp_model.from_map(k))
+        return self
+
+
+class CitySearchResponseBody(TeaModel):
+    def __init__(
+        self,
+        module: CitySearchResponseBodyModule = None,
+        request_id: str = None,
+        result_code: int = None,
+        result_msg: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.module = module
+        self.request_id = request_id
+        self.result_code = result_code
+        self.result_msg = result_msg
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module is not None:
+            result['module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result_code is not None:
+            result['result_code'] = self.result_code
+        if self.result_msg is not None:
+            result['result_msg'] = self.result_msg
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('module') is not None:
+            temp_model = CitySearchResponseBodyModule()
+            self.module = temp_model.from_map(m['module'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result_code') is not None:
+            self.result_code = m.get('result_code')
+        if m.get('result_msg') is not None:
+            self.result_msg = m.get('result_msg')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class CitySearchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CitySearchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CitySearchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CommonApplyQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class CommonApplyQueryRequest(TeaModel):
     def __init__(
         self,
@@ -6539,6 +7585,39 @@ class CommonApplyQueryResponse(TeaModel):
         return self
 
 
+class CommonApplySyncHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class CommonApplySyncRequest(TeaModel):
     def __init__(
         self,
@@ -6694,6 +7773,39 @@ class CommonApplySyncResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = CommonApplySyncResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CorpTokenHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_access_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_access_token = x_acs_btrip_access_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_access_token is not None:
+            result['x-acs-btrip-access-token'] = self.x_acs_btrip_access_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-access-token') is not None:
+            self.x_acs_btrip_access_token = m.get('x-acs-btrip-access-token')
         return self
 
 
@@ -6860,6 +7972,39 @@ class CorpTokenResponse(TeaModel):
         return self
 
 
+class CostCenterDeleteHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class CostCenterDeleteRequest(TeaModel):
     def __init__(
         self,
@@ -6979,6 +8124,39 @@ class CostCenterDeleteResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = CostCenterDeleteResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CostCenterModifyHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -7455,6 +8633,39 @@ class CostCenterQueryResponse(TeaModel):
         return self
 
 
+class CostCenterSaveHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class CostCenterSaveRequest(TeaModel):
     def __init__(
         self,
@@ -7633,6 +8844,39 @@ class CostCenterSaveResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = CostCenterSaveResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DepartmentSaveHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -7859,6 +9103,39 @@ class DepartmentSaveResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DepartmentSaveResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EntityAddHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -8102,6 +9379,39 @@ class EntityAddResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = EntityAddResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EntityDeleteHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -8366,6 +9676,39 @@ class EntityDeleteResponse(TeaModel):
         return self
 
 
+class EntitySetHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class EntitySetRequestEntityDOList(TeaModel):
     def __init__(
         self,
@@ -8621,6 +9964,39 @@ class EntitySetResponse(TeaModel):
         return self
 
 
+class ExceedApplySyncHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class ExceedApplySyncRequest(TeaModel):
     def __init__(
         self,
@@ -8776,6 +10152,39 @@ class ExceedApplySyncResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = ExceedApplySyncResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class FlightBillSettlementQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -9439,6 +10848,39 @@ class FlightBillSettlementQueryResponse(TeaModel):
         return self
 
 
+class FlightExceedApplyQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class FlightExceedApplyQueryRequest(TeaModel):
     def __init__(
         self,
@@ -9760,6 +11202,39 @@ class FlightExceedApplyQueryResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = FlightExceedApplyQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class FlightOrderListQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -10528,6 +12003,39 @@ class FlightOrderListQueryResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = FlightOrderListQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class FlightOrderQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -11539,6 +13047,39 @@ class FlightOrderQueryResponse(TeaModel):
         return self
 
 
+class HotelBillSettlementQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class HotelBillSettlementQueryRequest(TeaModel):
     def __init__(
         self,
@@ -12091,6 +13632,39 @@ class HotelBillSettlementQueryResponse(TeaModel):
         return self
 
 
+class HotelExceedApplyQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class HotelExceedApplyQueryRequest(TeaModel):
     def __init__(
         self,
@@ -12376,6 +13950,39 @@ class HotelExceedApplyQueryResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = HotelExceedApplyQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class HotelOrderListQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -13063,6 +14670,744 @@ class HotelOrderListQueryResponse(TeaModel):
         return self
 
 
+class IeFlightBillSettlementQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
+class IeFlightBillSettlementQueryRequest(TeaModel):
+    def __init__(
+        self,
+        page_no: int = None,
+        page_size: int = None,
+        period_end: str = None,
+        period_start: str = None,
+    ):
+        self.page_no = page_no
+        self.page_size = page_size
+        self.period_end = period_end
+        self.period_start = period_start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_no is not None:
+            result['page_no'] = self.page_no
+        if self.page_size is not None:
+            result['page_size'] = self.page_size
+        if self.period_end is not None:
+            result['period_end'] = self.period_end
+        if self.period_start is not None:
+            result['period_start'] = self.period_start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('page_no') is not None:
+            self.page_no = m.get('page_no')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        if m.get('period_end') is not None:
+            self.period_end = m.get('period_end')
+        if m.get('period_start') is not None:
+            self.period_start = m.get('period_start')
+        return self
+
+
+class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
+    def __init__(
+        self,
+        advance_day: int = None,
+        airline_corp_code: str = None,
+        airline_corp_name: str = None,
+        alipay_trade_no: str = None,
+        apply_id: str = None,
+        arr_airport_code: str = None,
+        arr_city: str = None,
+        arr_date: str = None,
+        arr_station: str = None,
+        arr_time: str = None,
+        bill_record_time: str = None,
+        book_mode: str = None,
+        book_time: str = None,
+        booker_id: str = None,
+        booker_job_no: str = None,
+        booker_name: str = None,
+        btrip_coupon_fee: float = None,
+        cabin: str = None,
+        cabin_class: str = None,
+        capital_direction: str = None,
+        cascade_department: str = None,
+        change_fee: float = None,
+        corp_pay_order_fee: float = None,
+        cost_center: str = None,
+        cost_center_number: str = None,
+        coupon: float = None,
+        dep_airport_code: str = None,
+        department: str = None,
+        department_id: str = None,
+        dept_city: str = None,
+        dept_date: str = None,
+        dept_station: str = None,
+        dept_time: str = None,
+        discount: str = None,
+        fee_type: str = None,
+        flight_no: str = None,
+        index: str = None,
+        insurance_fee: float = None,
+        insurance_number: str = None,
+        invoice_title: str = None,
+        most_difference_dept_time: str = None,
+        most_difference_discount: str = None,
+        most_difference_flight_no: str = None,
+        most_difference_price: float = None,
+        most_difference_reason: str = None,
+        most_price: float = None,
+        negotiation_coupon_fee: float = None,
+        order_id: str = None,
+        order_status_desc: str = None,
+        over_apply_id: str = None,
+        primary_id: int = None,
+        project_code: str = None,
+        project_name: str = None,
+        refund_fee: float = None,
+        remark: str = None,
+        repeat_refund: str = None,
+        seal_price: float = None,
+        segment_type: str = None,
+        service_fee: float = None,
+        settlement_fee: float = None,
+        settlement_grant_fee: float = None,
+        settlement_time: str = None,
+        settlement_type: str = None,
+        status: int = None,
+        sub_order_id: str = None,
+        tax_fee: float = None,
+        ticket_id: str = None,
+        trade: str = None,
+        traveler_id: str = None,
+        traveler_job_no: str = None,
+        traveler_name: str = None,
+        voucher_type: int = None,
+    ):
+        self.advance_day = advance_day
+        self.airline_corp_code = airline_corp_code
+        self.airline_corp_name = airline_corp_name
+        self.alipay_trade_no = alipay_trade_no
+        self.apply_id = apply_id
+        self.arr_airport_code = arr_airport_code
+        self.arr_city = arr_city
+        self.arr_date = arr_date
+        self.arr_station = arr_station
+        self.arr_time = arr_time
+        self.bill_record_time = bill_record_time
+        self.book_mode = book_mode
+        self.book_time = book_time
+        self.booker_id = booker_id
+        self.booker_job_no = booker_job_no
+        self.booker_name = booker_name
+        self.btrip_coupon_fee = btrip_coupon_fee
+        self.cabin = cabin
+        self.cabin_class = cabin_class
+        self.capital_direction = capital_direction
+        self.cascade_department = cascade_department
+        self.change_fee = change_fee
+        self.corp_pay_order_fee = corp_pay_order_fee
+        self.cost_center = cost_center
+        self.cost_center_number = cost_center_number
+        self.coupon = coupon
+        self.dep_airport_code = dep_airport_code
+        self.department = department
+        self.department_id = department_id
+        self.dept_city = dept_city
+        self.dept_date = dept_date
+        self.dept_station = dept_station
+        self.dept_time = dept_time
+        self.discount = discount
+        self.fee_type = fee_type
+        self.flight_no = flight_no
+        self.index = index
+        self.insurance_fee = insurance_fee
+        self.insurance_number = insurance_number
+        self.invoice_title = invoice_title
+        self.most_difference_dept_time = most_difference_dept_time
+        self.most_difference_discount = most_difference_discount
+        self.most_difference_flight_no = most_difference_flight_no
+        self.most_difference_price = most_difference_price
+        self.most_difference_reason = most_difference_reason
+        self.most_price = most_price
+        self.negotiation_coupon_fee = negotiation_coupon_fee
+        self.order_id = order_id
+        self.order_status_desc = order_status_desc
+        self.over_apply_id = over_apply_id
+        self.primary_id = primary_id
+        self.project_code = project_code
+        self.project_name = project_name
+        self.refund_fee = refund_fee
+        self.remark = remark
+        self.repeat_refund = repeat_refund
+        self.seal_price = seal_price
+        self.segment_type = segment_type
+        self.service_fee = service_fee
+        self.settlement_fee = settlement_fee
+        self.settlement_grant_fee = settlement_grant_fee
+        self.settlement_time = settlement_time
+        self.settlement_type = settlement_type
+        self.status = status
+        self.sub_order_id = sub_order_id
+        self.tax_fee = tax_fee
+        self.ticket_id = ticket_id
+        self.trade = trade
+        self.traveler_id = traveler_id
+        self.traveler_job_no = traveler_job_no
+        self.traveler_name = traveler_name
+        self.voucher_type = voucher_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advance_day is not None:
+            result['advance_day'] = self.advance_day
+        if self.airline_corp_code is not None:
+            result['airline_corp_code'] = self.airline_corp_code
+        if self.airline_corp_name is not None:
+            result['airline_corp_name'] = self.airline_corp_name
+        if self.alipay_trade_no is not None:
+            result['alipay_trade_no'] = self.alipay_trade_no
+        if self.apply_id is not None:
+            result['apply_id'] = self.apply_id
+        if self.arr_airport_code is not None:
+            result['arr_airport_code'] = self.arr_airport_code
+        if self.arr_city is not None:
+            result['arr_city'] = self.arr_city
+        if self.arr_date is not None:
+            result['arr_date'] = self.arr_date
+        if self.arr_station is not None:
+            result['arr_station'] = self.arr_station
+        if self.arr_time is not None:
+            result['arr_time'] = self.arr_time
+        if self.bill_record_time is not None:
+            result['bill_record_time'] = self.bill_record_time
+        if self.book_mode is not None:
+            result['book_mode'] = self.book_mode
+        if self.book_time is not None:
+            result['book_time'] = self.book_time
+        if self.booker_id is not None:
+            result['booker_id'] = self.booker_id
+        if self.booker_job_no is not None:
+            result['booker_job_no'] = self.booker_job_no
+        if self.booker_name is not None:
+            result['booker_name'] = self.booker_name
+        if self.btrip_coupon_fee is not None:
+            result['btrip_coupon_fee'] = self.btrip_coupon_fee
+        if self.cabin is not None:
+            result['cabin'] = self.cabin
+        if self.cabin_class is not None:
+            result['cabin_class'] = self.cabin_class
+        if self.capital_direction is not None:
+            result['capital_direction'] = self.capital_direction
+        if self.cascade_department is not None:
+            result['cascade_department'] = self.cascade_department
+        if self.change_fee is not None:
+            result['change_fee'] = self.change_fee
+        if self.corp_pay_order_fee is not None:
+            result['corp_pay_order_fee'] = self.corp_pay_order_fee
+        if self.cost_center is not None:
+            result['cost_center'] = self.cost_center
+        if self.cost_center_number is not None:
+            result['cost_center_number'] = self.cost_center_number
+        if self.coupon is not None:
+            result['coupon'] = self.coupon
+        if self.dep_airport_code is not None:
+            result['dep_airport_code'] = self.dep_airport_code
+        if self.department is not None:
+            result['department'] = self.department
+        if self.department_id is not None:
+            result['department_id'] = self.department_id
+        if self.dept_city is not None:
+            result['dept_city'] = self.dept_city
+        if self.dept_date is not None:
+            result['dept_date'] = self.dept_date
+        if self.dept_station is not None:
+            result['dept_station'] = self.dept_station
+        if self.dept_time is not None:
+            result['dept_time'] = self.dept_time
+        if self.discount is not None:
+            result['discount'] = self.discount
+        if self.fee_type is not None:
+            result['fee_type'] = self.fee_type
+        if self.flight_no is not None:
+            result['flight_no'] = self.flight_no
+        if self.index is not None:
+            result['index'] = self.index
+        if self.insurance_fee is not None:
+            result['insurance_fee'] = self.insurance_fee
+        if self.insurance_number is not None:
+            result['insurance_number'] = self.insurance_number
+        if self.invoice_title is not None:
+            result['invoice_title'] = self.invoice_title
+        if self.most_difference_dept_time is not None:
+            result['most_difference_dept_time'] = self.most_difference_dept_time
+        if self.most_difference_discount is not None:
+            result['most_difference_discount'] = self.most_difference_discount
+        if self.most_difference_flight_no is not None:
+            result['most_difference_flight_no'] = self.most_difference_flight_no
+        if self.most_difference_price is not None:
+            result['most_difference_price'] = self.most_difference_price
+        if self.most_difference_reason is not None:
+            result['most_difference_reason'] = self.most_difference_reason
+        if self.most_price is not None:
+            result['most_price'] = self.most_price
+        if self.negotiation_coupon_fee is not None:
+            result['negotiation_coupon_fee'] = self.negotiation_coupon_fee
+        if self.order_id is not None:
+            result['order_id'] = self.order_id
+        if self.order_status_desc is not None:
+            result['order_status_desc'] = self.order_status_desc
+        if self.over_apply_id is not None:
+            result['over_apply_id'] = self.over_apply_id
+        if self.primary_id is not None:
+            result['primary_id'] = self.primary_id
+        if self.project_code is not None:
+            result['project_code'] = self.project_code
+        if self.project_name is not None:
+            result['project_name'] = self.project_name
+        if self.refund_fee is not None:
+            result['refund_fee'] = self.refund_fee
+        if self.remark is not None:
+            result['remark'] = self.remark
+        if self.repeat_refund is not None:
+            result['repeat_refund'] = self.repeat_refund
+        if self.seal_price is not None:
+            result['seal_price'] = self.seal_price
+        if self.segment_type is not None:
+            result['segment_type'] = self.segment_type
+        if self.service_fee is not None:
+            result['service_fee'] = self.service_fee
+        if self.settlement_fee is not None:
+            result['settlement_fee'] = self.settlement_fee
+        if self.settlement_grant_fee is not None:
+            result['settlement_grant_fee'] = self.settlement_grant_fee
+        if self.settlement_time is not None:
+            result['settlement_time'] = self.settlement_time
+        if self.settlement_type is not None:
+            result['settlement_type'] = self.settlement_type
+        if self.status is not None:
+            result['status'] = self.status
+        if self.sub_order_id is not None:
+            result['sub_order_id'] = self.sub_order_id
+        if self.tax_fee is not None:
+            result['tax_fee'] = self.tax_fee
+        if self.ticket_id is not None:
+            result['ticket_id'] = self.ticket_id
+        if self.trade is not None:
+            result['trade'] = self.trade
+        if self.traveler_id is not None:
+            result['traveler_id'] = self.traveler_id
+        if self.traveler_job_no is not None:
+            result['traveler_job_no'] = self.traveler_job_no
+        if self.traveler_name is not None:
+            result['traveler_name'] = self.traveler_name
+        if self.voucher_type is not None:
+            result['voucher_type'] = self.voucher_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('advance_day') is not None:
+            self.advance_day = m.get('advance_day')
+        if m.get('airline_corp_code') is not None:
+            self.airline_corp_code = m.get('airline_corp_code')
+        if m.get('airline_corp_name') is not None:
+            self.airline_corp_name = m.get('airline_corp_name')
+        if m.get('alipay_trade_no') is not None:
+            self.alipay_trade_no = m.get('alipay_trade_no')
+        if m.get('apply_id') is not None:
+            self.apply_id = m.get('apply_id')
+        if m.get('arr_airport_code') is not None:
+            self.arr_airport_code = m.get('arr_airport_code')
+        if m.get('arr_city') is not None:
+            self.arr_city = m.get('arr_city')
+        if m.get('arr_date') is not None:
+            self.arr_date = m.get('arr_date')
+        if m.get('arr_station') is not None:
+            self.arr_station = m.get('arr_station')
+        if m.get('arr_time') is not None:
+            self.arr_time = m.get('arr_time')
+        if m.get('bill_record_time') is not None:
+            self.bill_record_time = m.get('bill_record_time')
+        if m.get('book_mode') is not None:
+            self.book_mode = m.get('book_mode')
+        if m.get('book_time') is not None:
+            self.book_time = m.get('book_time')
+        if m.get('booker_id') is not None:
+            self.booker_id = m.get('booker_id')
+        if m.get('booker_job_no') is not None:
+            self.booker_job_no = m.get('booker_job_no')
+        if m.get('booker_name') is not None:
+            self.booker_name = m.get('booker_name')
+        if m.get('btrip_coupon_fee') is not None:
+            self.btrip_coupon_fee = m.get('btrip_coupon_fee')
+        if m.get('cabin') is not None:
+            self.cabin = m.get('cabin')
+        if m.get('cabin_class') is not None:
+            self.cabin_class = m.get('cabin_class')
+        if m.get('capital_direction') is not None:
+            self.capital_direction = m.get('capital_direction')
+        if m.get('cascade_department') is not None:
+            self.cascade_department = m.get('cascade_department')
+        if m.get('change_fee') is not None:
+            self.change_fee = m.get('change_fee')
+        if m.get('corp_pay_order_fee') is not None:
+            self.corp_pay_order_fee = m.get('corp_pay_order_fee')
+        if m.get('cost_center') is not None:
+            self.cost_center = m.get('cost_center')
+        if m.get('cost_center_number') is not None:
+            self.cost_center_number = m.get('cost_center_number')
+        if m.get('coupon') is not None:
+            self.coupon = m.get('coupon')
+        if m.get('dep_airport_code') is not None:
+            self.dep_airport_code = m.get('dep_airport_code')
+        if m.get('department') is not None:
+            self.department = m.get('department')
+        if m.get('department_id') is not None:
+            self.department_id = m.get('department_id')
+        if m.get('dept_city') is not None:
+            self.dept_city = m.get('dept_city')
+        if m.get('dept_date') is not None:
+            self.dept_date = m.get('dept_date')
+        if m.get('dept_station') is not None:
+            self.dept_station = m.get('dept_station')
+        if m.get('dept_time') is not None:
+            self.dept_time = m.get('dept_time')
+        if m.get('discount') is not None:
+            self.discount = m.get('discount')
+        if m.get('fee_type') is not None:
+            self.fee_type = m.get('fee_type')
+        if m.get('flight_no') is not None:
+            self.flight_no = m.get('flight_no')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('insurance_fee') is not None:
+            self.insurance_fee = m.get('insurance_fee')
+        if m.get('insurance_number') is not None:
+            self.insurance_number = m.get('insurance_number')
+        if m.get('invoice_title') is not None:
+            self.invoice_title = m.get('invoice_title')
+        if m.get('most_difference_dept_time') is not None:
+            self.most_difference_dept_time = m.get('most_difference_dept_time')
+        if m.get('most_difference_discount') is not None:
+            self.most_difference_discount = m.get('most_difference_discount')
+        if m.get('most_difference_flight_no') is not None:
+            self.most_difference_flight_no = m.get('most_difference_flight_no')
+        if m.get('most_difference_price') is not None:
+            self.most_difference_price = m.get('most_difference_price')
+        if m.get('most_difference_reason') is not None:
+            self.most_difference_reason = m.get('most_difference_reason')
+        if m.get('most_price') is not None:
+            self.most_price = m.get('most_price')
+        if m.get('negotiation_coupon_fee') is not None:
+            self.negotiation_coupon_fee = m.get('negotiation_coupon_fee')
+        if m.get('order_id') is not None:
+            self.order_id = m.get('order_id')
+        if m.get('order_status_desc') is not None:
+            self.order_status_desc = m.get('order_status_desc')
+        if m.get('over_apply_id') is not None:
+            self.over_apply_id = m.get('over_apply_id')
+        if m.get('primary_id') is not None:
+            self.primary_id = m.get('primary_id')
+        if m.get('project_code') is not None:
+            self.project_code = m.get('project_code')
+        if m.get('project_name') is not None:
+            self.project_name = m.get('project_name')
+        if m.get('refund_fee') is not None:
+            self.refund_fee = m.get('refund_fee')
+        if m.get('remark') is not None:
+            self.remark = m.get('remark')
+        if m.get('repeat_refund') is not None:
+            self.repeat_refund = m.get('repeat_refund')
+        if m.get('seal_price') is not None:
+            self.seal_price = m.get('seal_price')
+        if m.get('segment_type') is not None:
+            self.segment_type = m.get('segment_type')
+        if m.get('service_fee') is not None:
+            self.service_fee = m.get('service_fee')
+        if m.get('settlement_fee') is not None:
+            self.settlement_fee = m.get('settlement_fee')
+        if m.get('settlement_grant_fee') is not None:
+            self.settlement_grant_fee = m.get('settlement_grant_fee')
+        if m.get('settlement_time') is not None:
+            self.settlement_time = m.get('settlement_time')
+        if m.get('settlement_type') is not None:
+            self.settlement_type = m.get('settlement_type')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('sub_order_id') is not None:
+            self.sub_order_id = m.get('sub_order_id')
+        if m.get('tax_fee') is not None:
+            self.tax_fee = m.get('tax_fee')
+        if m.get('ticket_id') is not None:
+            self.ticket_id = m.get('ticket_id')
+        if m.get('trade') is not None:
+            self.trade = m.get('trade')
+        if m.get('traveler_id') is not None:
+            self.traveler_id = m.get('traveler_id')
+        if m.get('traveler_job_no') is not None:
+            self.traveler_job_no = m.get('traveler_job_no')
+        if m.get('traveler_name') is not None:
+            self.traveler_name = m.get('traveler_name')
+        if m.get('voucher_type') is not None:
+            self.voucher_type = m.get('voucher_type')
+        return self
+
+
+class IeFlightBillSettlementQueryResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        category: int = None,
+        corp_id: str = None,
+        data_list: List[IeFlightBillSettlementQueryResponseBodyModuleDataList] = None,
+        period_end: str = None,
+        period_start: str = None,
+        total_num: int = None,
+    ):
+        self.category = category
+        self.corp_id = corp_id
+        self.data_list = data_list
+        self.period_end = period_end
+        self.period_start = period_start
+        self.total_num = total_num
+
+    def validate(self):
+        if self.data_list:
+            for k in self.data_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        if self.corp_id is not None:
+            result['corp_id'] = self.corp_id
+        result['data_list'] = []
+        if self.data_list is not None:
+            for k in self.data_list:
+                result['data_list'].append(k.to_map() if k else None)
+        if self.period_end is not None:
+            result['period_end'] = self.period_end
+        if self.period_start is not None:
+            result['period_start'] = self.period_start
+        if self.total_num is not None:
+            result['total_num'] = self.total_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('corp_id') is not None:
+            self.corp_id = m.get('corp_id')
+        self.data_list = []
+        if m.get('data_list') is not None:
+            for k in m.get('data_list'):
+                temp_model = IeFlightBillSettlementQueryResponseBodyModuleDataList()
+                self.data_list.append(temp_model.from_map(k))
+        if m.get('period_end') is not None:
+            self.period_end = m.get('period_end')
+        if m.get('period_start') is not None:
+            self.period_start = m.get('period_start')
+        if m.get('total_num') is not None:
+            self.total_num = m.get('total_num')
+        return self
+
+
+class IeFlightBillSettlementQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        module: IeFlightBillSettlementQueryResponseBodyModule = None,
+        more_page: bool = None,
+        request_id: str = None,
+        result_code: int = None,
+        result_msg: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.module = module
+        self.more_page = more_page
+        self.request_id = request_id
+        self.result_code = result_code
+        self.result_msg = result_msg
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module is not None:
+            result['module'] = self.module.to_map()
+        if self.more_page is not None:
+            result['more_page'] = self.more_page
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result_code is not None:
+            result['result_code'] = self.result_code
+        if self.result_msg is not None:
+            result['result_msg'] = self.result_msg
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('module') is not None:
+            temp_model = IeFlightBillSettlementQueryResponseBodyModule()
+            self.module = temp_model.from_map(m['module'])
+        if m.get('more_page') is not None:
+            self.more_page = m.get('more_page')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result_code') is not None:
+            self.result_code = m.get('result_code')
+        if m.get('result_msg') is not None:
+            self.result_msg = m.get('result_msg')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class IeFlightBillSettlementQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: IeFlightBillSettlementQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = IeFlightBillSettlementQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class InvoiceAddHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class InvoiceAddRequest(TeaModel):
     def __init__(
         self,
@@ -13227,6 +15572,39 @@ class InvoiceAddResponse(TeaModel):
         return self
 
 
+class InvoiceDeleteHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class InvoiceDeleteRequest(TeaModel):
     def __init__(
         self,
@@ -13346,6 +15724,39 @@ class InvoiceDeleteResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = InvoiceDeleteResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class InvoiceModifyHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -13510,6 +15921,39 @@ class InvoiceModifyResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = InvoiceModifyResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class InvoiceRuleSaveHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -13774,6 +16218,39 @@ class InvoiceRuleSaveResponse(TeaModel):
         return self
 
 
+class InvoiceSearchHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class InvoiceSearchRequest(TeaModel):
     def __init__(
         self,
@@ -13952,6 +16429,39 @@ class InvoiceSearchResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = InvoiceSearchResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class IsvUserSaveHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -14211,6 +16721,39 @@ class IsvUserSaveResponse(TeaModel):
         return self
 
 
+class MonthBillGetHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class MonthBillGetRequest(TeaModel):
     def __init__(
         self,
@@ -14386,6 +16929,39 @@ class MonthBillGetResponse(TeaModel):
         return self
 
 
+class ProjectAddHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class ProjectAddRequest(TeaModel):
     def __init__(
         self,
@@ -14544,6 +17120,39 @@ class ProjectAddResponse(TeaModel):
         return self
 
 
+class ProjectDeleteHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class ProjectDeleteRequest(TeaModel):
     def __init__(
         self,
@@ -14669,6 +17278,39 @@ class ProjectDeleteResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = ProjectDeleteResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ProjectModifyHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -14821,6 +17463,39 @@ class ProjectModifyResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = ProjectModifyResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TrainBillSettlementQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -15352,6 +18027,39 @@ class TrainBillSettlementQueryResponse(TeaModel):
         return self
 
 
+class TrainExceedApplyQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class TrainExceedApplyQueryRequest(TeaModel):
     def __init__(
         self,
@@ -15673,6 +18381,39 @@ class TrainExceedApplyQueryResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = TrainExceedApplyQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TrainOrderListQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -16399,6 +19140,39 @@ class TrainOrderListQueryResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = TrainOrderListQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TrainOrderQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
         return self
 
 
@@ -17314,13 +20088,281 @@ class TrainOrderQueryResponse(TeaModel):
         return self
 
 
+class TrainStationSearchHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
+class TrainStationSearchRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+    ):
+        self.keyword = keyword
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
+        return self
+
+
+class TrainStationSearchResponseBodyModuleCities(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class TrainStationSearchResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        cities: List[TrainStationSearchResponseBodyModuleCities] = None,
+    ):
+        self.cities = cities
+
+    def validate(self):
+        if self.cities:
+            for k in self.cities:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['cities'] = []
+        if self.cities is not None:
+            for k in self.cities:
+                result['cities'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cities = []
+        if m.get('cities') is not None:
+            for k in m.get('cities'):
+                temp_model = TrainStationSearchResponseBodyModuleCities()
+                self.cities.append(temp_model.from_map(k))
+        return self
+
+
+class TrainStationSearchResponseBody(TeaModel):
+    def __init__(
+        self,
+        module: TrainStationSearchResponseBodyModule = None,
+        request_id: str = None,
+        result_code: int = None,
+        result_msg: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.module = module
+        self.request_id = request_id
+        self.result_code = result_code
+        self.result_msg = result_msg
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module is not None:
+            result['module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result_code is not None:
+            result['result_code'] = self.result_code
+        if self.result_msg is not None:
+            result['result_msg'] = self.result_msg
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('module') is not None:
+            temp_model = TrainStationSearchResponseBodyModule()
+            self.module = temp_model.from_map(m['module'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result_code') is not None:
+            self.result_code = m.get('result_code')
+        if m.get('result_msg') is not None:
+            self.result_msg = m.get('result_msg')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class TrainStationSearchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TrainStationSearchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TrainStationSearchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UserQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
 class UserQueryRequest(TeaModel):
     def __init__(
         self,
         modified_time_greater_or_equal_than: str = None,
+        page_size: int = None,
+        page_token: str = None,
         third_part_job_no: str = None,
     ):
         self.modified_time_greater_or_equal_than = modified_time_greater_or_equal_than
+        self.page_size = page_size
+        self.page_token = page_token
         self.third_part_job_no = third_part_job_no
 
     def validate(self):
@@ -17334,6 +20376,10 @@ class UserQueryRequest(TeaModel):
         result = dict()
         if self.modified_time_greater_or_equal_than is not None:
             result['modified_time_greater_or_equal_than'] = self.modified_time_greater_or_equal_than
+        if self.page_size is not None:
+            result['page_size'] = self.page_size
+        if self.page_token is not None:
+            result['page_token'] = self.page_token
         if self.third_part_job_no is not None:
             result['third_part_job_no'] = self.third_part_job_no
         return result
@@ -17342,6 +20388,10 @@ class UserQueryRequest(TeaModel):
         m = m or dict()
         if m.get('modified_time_greater_or_equal_than') is not None:
             self.modified_time_greater_or_equal_than = m.get('modified_time_greater_or_equal_than')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        if m.get('page_token') is not None:
+            self.page_token = m.get('page_token')
         if m.get('third_part_job_no') is not None:
             self.third_part_job_no = m.get('third_part_job_no')
         return self
