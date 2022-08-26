@@ -1,3 +1,6 @@
+2022-08-26 Version: 1.0.18
+- Add AvailableZones for ListTransitRouterAvailableResource.
+
 2022-04-27 Version: 1.0.17
 - update to latest.
 

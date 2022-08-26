@@ -139,6 +139,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.active_flow_log_with_options_async(request, runtime)
 
+    def add_traffic_match_rule_to_traffic_marking_policy_with_options(
+        self,
+        request: cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        if not UtilClient.is_unset(request.traffic_match_rules):
+            query['TrafficMatchRules'] = request.traffic_match_rules
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddTrafficMatchRuleToTrafficMarkingPolicy',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_traffic_match_rule_to_traffic_marking_policy_with_options_async(
+        self,
+        request: cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        if not UtilClient.is_unset(request.traffic_match_rules):
+            query['TrafficMatchRules'] = request.traffic_match_rules
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddTrafficMatchRuleToTrafficMarkingPolicy',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_traffic_match_rule_to_traffic_marking_policy(
+        self,
+        request: cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyRequest,
+    ) -> cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_traffic_match_rule_to_traffic_marking_policy_with_options(request, runtime)
+
+    async def add_traffic_match_rule_to_traffic_marking_policy_async(
+        self,
+        request: cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyRequest,
+    ) -> cbn_20170912_models.AddTrafficMatchRuleToTrafficMarkingPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_traffic_match_rule_to_traffic_marking_policy_with_options_async(request, runtime)
+
     def add_trafic_match_rule_to_traffic_marking_policy_with_options(
         self,
         request: cbn_20170912_models.AddTraficMatchRuleToTrafficMarkingPolicyRequest,
@@ -1302,6 +1400,8 @@ class Client(OpenApiClient):
             query['DestinationRouteTableIds'] = request.destination_route_table_ids
         if not UtilClient.is_unset(request.map_result):
             query['MapResult'] = request.map_result
+        if not UtilClient.is_unset(request.match_address_type):
+            query['MatchAddressType'] = request.match_address_type
         if not UtilClient.is_unset(request.match_asns):
             query['MatchAsns'] = request.match_asns
         if not UtilClient.is_unset(request.match_community_set):
@@ -1392,6 +1492,8 @@ class Client(OpenApiClient):
             query['DestinationRouteTableIds'] = request.destination_route_table_ids
         if not UtilClient.is_unset(request.map_result):
             query['MapResult'] = request.map_result
+        if not UtilClient.is_unset(request.match_address_type):
+            query['MatchAddressType'] = request.match_address_type
         if not UtilClient.is_unset(request.match_asns):
             query['MatchAsns'] = request.match_asns
         if not UtilClient.is_unset(request.match_community_set):
@@ -1478,6 +1580,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.flow_log_name):
             query['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
         if not UtilClient.is_unset(request.log_store_name):
             query['LogStoreName'] = request.log_store_name
         if not UtilClient.is_unset(request.owner_account):
@@ -1492,6 +1596,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1526,6 +1632,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.flow_log_name):
             query['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
         if not UtilClient.is_unset(request.log_store_name):
             query['LogStoreName'] = request.log_store_name
         if not UtilClient.is_unset(request.owner_account):
@@ -1540,6 +1648,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2041,6 +2151,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_transit_router_peer_attachment_with_options_async(request, runtime)
 
+    def create_transit_router_prefix_list_association_with_options(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterPrefixListAssociationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.CreateTransitRouterPrefixListAssociationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.next_hop):
+            query['NextHop'] = request.next_hop
+        if not UtilClient.is_unset(request.next_hop_type):
+            query['NextHopType'] = request.next_hop_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_uid):
+            query['OwnerUid'] = request.owner_uid
+        if not UtilClient.is_unset(request.prefix_list_id):
+            query['PrefixListId'] = request.prefix_list_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.transit_router_table_id):
+            query['TransitRouterTableId'] = request.transit_router_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTransitRouterPrefixListAssociation',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterPrefixListAssociationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_transit_router_prefix_list_association_with_options_async(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterPrefixListAssociationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.CreateTransitRouterPrefixListAssociationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.next_hop):
+            query['NextHop'] = request.next_hop
+        if not UtilClient.is_unset(request.next_hop_type):
+            query['NextHopType'] = request.next_hop_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_uid):
+            query['OwnerUid'] = request.owner_uid
+        if not UtilClient.is_unset(request.prefix_list_id):
+            query['PrefixListId'] = request.prefix_list_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.transit_router_table_id):
+            query['TransitRouterTableId'] = request.transit_router_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTransitRouterPrefixListAssociation',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterPrefixListAssociationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_transit_router_prefix_list_association(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterPrefixListAssociationRequest,
+    ) -> cbn_20170912_models.CreateTransitRouterPrefixListAssociationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_transit_router_prefix_list_association_with_options(request, runtime)
+
+    async def create_transit_router_prefix_list_association_async(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterPrefixListAssociationRequest,
+    ) -> cbn_20170912_models.CreateTransitRouterPrefixListAssociationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_transit_router_prefix_list_association_with_options_async(request, runtime)
+
     def create_transit_router_route_entry_with_options(
         self,
         request: cbn_20170912_models.CreateTransitRouterRouteEntryRequest,
@@ -2504,6 +2732,136 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateTransitRouterVpcAttachmentResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_transit_router_vpc_attachment_with_options_async(request, runtime)
+
+    def create_transit_router_vpn_attachment_with_options(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterVpnAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.CreateTransitRouterVpnAttachmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_publish_route_enabled):
+            query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.vpn_id):
+            query['VpnId'] = request.vpn_id
+        if not UtilClient.is_unset(request.vpn_owner_id):
+            query['VpnOwnerId'] = request.vpn_owner_id
+        if not UtilClient.is_unset(request.zone):
+            query['Zone'] = request.zone
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTransitRouterVpnAttachment',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterVpnAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_transit_router_vpn_attachment_with_options_async(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterVpnAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.CreateTransitRouterVpnAttachmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_publish_route_enabled):
+            query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.vpn_id):
+            query['VpnId'] = request.vpn_id
+        if not UtilClient.is_unset(request.vpn_owner_id):
+            query['VpnOwnerId'] = request.vpn_owner_id
+        if not UtilClient.is_unset(request.zone):
+            query['Zone'] = request.zone
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTransitRouterVpnAttachment',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterVpnAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_transit_router_vpn_attachment(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterVpnAttachmentRequest,
+    ) -> cbn_20170912_models.CreateTransitRouterVpnAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_transit_router_vpn_attachment_with_options(request, runtime)
+
+    async def create_transit_router_vpn_attachment_async(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterVpnAttachmentRequest,
+    ) -> cbn_20170912_models.CreateTransitRouterVpnAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_transit_router_vpn_attachment_with_options_async(request, runtime)
 
     def deactive_flow_log_with_options(
         self,
@@ -3849,6 +4207,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_transit_router_peer_attachment_with_options_async(request, runtime)
 
+    def delete_transit_router_prefix_list_association_with_options(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterPrefixListAssociationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.next_hop):
+            query['NextHop'] = request.next_hop
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.prefix_list_id):
+            query['PrefixListId'] = request.prefix_list_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.transit_router_table_id):
+            query['TransitRouterTableId'] = request.transit_router_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTransitRouterPrefixListAssociation',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_transit_router_prefix_list_association_with_options_async(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterPrefixListAssociationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.next_hop):
+            query['NextHop'] = request.next_hop
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.prefix_list_id):
+            query['PrefixListId'] = request.prefix_list_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.transit_router_table_id):
+            query['TransitRouterTableId'] = request.transit_router_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTransitRouterPrefixListAssociation',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_transit_router_prefix_list_association(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterPrefixListAssociationRequest,
+    ) -> cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_transit_router_prefix_list_association_with_options(request, runtime)
+
+    async def delete_transit_router_prefix_list_association_async(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterPrefixListAssociationRequest,
+    ) -> cbn_20170912_models.DeleteTransitRouterPrefixListAssociationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_transit_router_prefix_list_association_with_options_async(request, runtime)
+
     def delete_transit_router_route_entry_with_options(
         self,
         request: cbn_20170912_models.DeleteTransitRouterRouteEntryRequest,
@@ -4240,6 +4708,100 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteTransitRouterVpcAttachmentResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_transit_router_vpc_attachment_with_options_async(request, runtime)
+
+    def delete_transit_router_vpn_attachment_with_options(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterVpnAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DeleteTransitRouterVpnAttachmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTransitRouterVpnAttachment',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterVpnAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_transit_router_vpn_attachment_with_options_async(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterVpnAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DeleteTransitRouterVpnAttachmentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTransitRouterVpnAttachment',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterVpnAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_transit_router_vpn_attachment(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterVpnAttachmentRequest,
+    ) -> cbn_20170912_models.DeleteTransitRouterVpnAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_transit_router_vpn_attachment_with_options(request, runtime)
+
+    async def delete_transit_router_vpn_attachment_async(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterVpnAttachmentRequest,
+    ) -> cbn_20170912_models.DeleteTransitRouterVpnAttachmentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_transit_router_vpn_attachment_with_options_async(request, runtime)
 
     def deregister_transit_router_multicast_group_members_with_options(
         self,
@@ -5563,6 +6125,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cen_vbr_health_check_with_options_async(request, runtime)
 
+    def describe_cen_vpc_flow_statistic_switch_with_options(
+        self,
+        request: cbn_20170912_models.DescribeCenVpcFlowStatisticSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DescribeCenVpcFlowStatisticSwitchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCenVpcFlowStatisticSwitch',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenVpcFlowStatisticSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cen_vpc_flow_statistic_switch_with_options_async(
+        self,
+        request: cbn_20170912_models.DescribeCenVpcFlowStatisticSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DescribeCenVpcFlowStatisticSwitchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCenVpcFlowStatisticSwitch',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeCenVpcFlowStatisticSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cen_vpc_flow_statistic_switch(
+        self,
+        request: cbn_20170912_models.DescribeCenVpcFlowStatisticSwitchRequest,
+    ) -> cbn_20170912_models.DescribeCenVpcFlowStatisticSwitchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cen_vpc_flow_statistic_switch_with_options(request, runtime)
+
+    async def describe_cen_vpc_flow_statistic_switch_async(
+        self,
+        request: cbn_20170912_models.DescribeCenVpcFlowStatisticSwitchRequest,
+    ) -> cbn_20170912_models.DescribeCenVpcFlowStatisticSwitchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cen_vpc_flow_statistic_switch_with_options_async(request, runtime)
+
     def describe_cens_with_options(
         self,
         request: cbn_20170912_models.DescribeCensRequest,
@@ -6591,6 +7243,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_cen_vbr_health_check_with_options_async(request, runtime)
 
+    def disable_cen_vpc_flow_statistic_with_options(
+        self,
+        request: cbn_20170912_models.DisableCenVpcFlowStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DisableCenVpcFlowStatisticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableCenVpcFlowStatistic',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DisableCenVpcFlowStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_cen_vpc_flow_statistic_with_options_async(
+        self,
+        request: cbn_20170912_models.DisableCenVpcFlowStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DisableCenVpcFlowStatisticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableCenVpcFlowStatistic',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DisableCenVpcFlowStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_cen_vpc_flow_statistic(
+        self,
+        request: cbn_20170912_models.DisableCenVpcFlowStatisticRequest,
+    ) -> cbn_20170912_models.DisableCenVpcFlowStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.disable_cen_vpc_flow_statistic_with_options(request, runtime)
+
+    async def disable_cen_vpc_flow_statistic_async(
+        self,
+        request: cbn_20170912_models.DisableCenVpcFlowStatisticRequest,
+    ) -> cbn_20170912_models.DisableCenVpcFlowStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_cen_vpc_flow_statistic_with_options_async(request, runtime)
+
     def disable_transit_router_route_table_propagation_with_options(
         self,
         request: cbn_20170912_models.DisableTransitRouterRouteTablePropagationRequest,
@@ -7006,6 +7752,104 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.EnableCenVbrHealthCheckResponse:
         runtime = util_models.RuntimeOptions()
         return await self.enable_cen_vbr_health_check_with_options_async(request, runtime)
+
+    def enable_cen_vpc_flow_statistic_with_options(
+        self,
+        request: cbn_20170912_models.EnableCenVpcFlowStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.EnableCenVpcFlowStatisticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.days):
+            query['Days'] = request.days
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableCenVpcFlowStatistic',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.EnableCenVpcFlowStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_cen_vpc_flow_statistic_with_options_async(
+        self,
+        request: cbn_20170912_models.EnableCenVpcFlowStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.EnableCenVpcFlowStatisticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.days):
+            query['Days'] = request.days
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableCenVpcFlowStatistic',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.EnableCenVpcFlowStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_cen_vpc_flow_statistic(
+        self,
+        request: cbn_20170912_models.EnableCenVpcFlowStatisticRequest,
+    ) -> cbn_20170912_models.EnableCenVpcFlowStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.enable_cen_vpc_flow_statistic_with_options(request, runtime)
+
+    async def enable_cen_vpc_flow_statistic_async(
+        self,
+        request: cbn_20170912_models.EnableCenVpcFlowStatisticRequest,
+    ) -> cbn_20170912_models.EnableCenVpcFlowStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_cen_vpc_flow_statistic_with_options_async(request, runtime)
 
     def enable_transit_router_route_table_propagation_with_options(
         self,
@@ -7937,6 +8781,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_transit_router_multicast_domain_associations_with_options_async(request, runtime)
 
+    def list_transit_router_multicast_domain_vswitches_with_options(
+        self,
+        request: cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.v_switch_ids):
+            query['VSwitchIds'] = request.v_switch_ids
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTransitRouterMulticastDomainVSwitches',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_transit_router_multicast_domain_vswitches_with_options_async(
+        self,
+        request: cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.v_switch_ids):
+            query['VSwitchIds'] = request.v_switch_ids
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTransitRouterMulticastDomainVSwitches',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_transit_router_multicast_domain_vswitches(
+        self,
+        request: cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesRequest,
+    ) -> cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_transit_router_multicast_domain_vswitches_with_options(request, runtime)
+
+    async def list_transit_router_multicast_domain_vswitches_async(
+        self,
+        request: cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesRequest,
+    ) -> cbn_20170912_models.ListTransitRouterMulticastDomainVSwitchesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_transit_router_multicast_domain_vswitches_with_options_async(request, runtime)
+
     def list_transit_router_multicast_domains_with_options(
         self,
         request: cbn_20170912_models.ListTransitRouterMulticastDomainsRequest,
@@ -8278,6 +9224,116 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterPeerAttachmentsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_transit_router_peer_attachments_with_options_async(request, runtime)
+
+    def list_transit_router_prefix_list_association_with_options(
+        self,
+        request: cbn_20170912_models.ListTransitRouterPrefixListAssociationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ListTransitRouterPrefixListAssociationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_uid):
+            query['OwnerUid'] = request.owner_uid
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.prefix_list_id):
+            query['PrefixListId'] = request.prefix_list_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.transit_router_table_id):
+            query['TransitRouterTableId'] = request.transit_router_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTransitRouterPrefixListAssociation',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterPrefixListAssociationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_transit_router_prefix_list_association_with_options_async(
+        self,
+        request: cbn_20170912_models.ListTransitRouterPrefixListAssociationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ListTransitRouterPrefixListAssociationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_uid):
+            query['OwnerUid'] = request.owner_uid
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.prefix_list_id):
+            query['PrefixListId'] = request.prefix_list_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.transit_router_table_id):
+            query['TransitRouterTableId'] = request.transit_router_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTransitRouterPrefixListAssociation',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterPrefixListAssociationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_transit_router_prefix_list_association(
+        self,
+        request: cbn_20170912_models.ListTransitRouterPrefixListAssociationRequest,
+    ) -> cbn_20170912_models.ListTransitRouterPrefixListAssociationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_transit_router_prefix_list_association_with_options(request, runtime)
+
+    async def list_transit_router_prefix_list_association_async(
+        self,
+        request: cbn_20170912_models.ListTransitRouterPrefixListAssociationRequest,
+    ) -> cbn_20170912_models.ListTransitRouterPrefixListAssociationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_transit_router_prefix_list_association_with_options_async(request, runtime)
 
     def list_transit_router_route_entries_with_options(
         self,
@@ -8907,6 +9963,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_transit_router_vpc_attachments_with_options_async(request, runtime)
 
+    def list_transit_router_vpn_attachments_with_options(
+        self,
+        request: cbn_20170912_models.ListTransitRouterVpnAttachmentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ListTransitRouterVpnAttachmentsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTransitRouterVpnAttachments',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterVpnAttachmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_transit_router_vpn_attachments_with_options_async(
+        self,
+        request: cbn_20170912_models.ListTransitRouterVpnAttachmentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ListTransitRouterVpnAttachmentsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTransitRouterVpnAttachments',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterVpnAttachmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_transit_router_vpn_attachments(
+        self,
+        request: cbn_20170912_models.ListTransitRouterVpnAttachmentsRequest,
+    ) -> cbn_20170912_models.ListTransitRouterVpnAttachmentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_transit_router_vpn_attachments_with_options(request, runtime)
+
+    async def list_transit_router_vpn_attachments_async(
+        self,
+        request: cbn_20170912_models.ListTransitRouterVpnAttachmentsRequest,
+    ) -> cbn_20170912_models.ListTransitRouterVpnAttachmentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_transit_router_vpn_attachments_with_options_async(request, runtime)
+
     def list_transit_routers_with_options(
         self,
         request: cbn_20170912_models.ListTransitRoutersRequest,
@@ -9324,6 +10486,8 @@ class Client(OpenApiClient):
             query['DestinationRouteTableIds'] = request.destination_route_table_ids
         if not UtilClient.is_unset(request.map_result):
             query['MapResult'] = request.map_result
+        if not UtilClient.is_unset(request.match_address_type):
+            query['MatchAddressType'] = request.match_address_type
         if not UtilClient.is_unset(request.match_asns):
             query['MatchAsns'] = request.match_asns
         if not UtilClient.is_unset(request.match_community_set):
@@ -9412,6 +10576,8 @@ class Client(OpenApiClient):
             query['DestinationRouteTableIds'] = request.destination_route_table_ids
         if not UtilClient.is_unset(request.map_result):
             query['MapResult'] = request.map_result
+        if not UtilClient.is_unset(request.match_address_type):
+            query['MatchAddressType'] = request.match_address_type
         if not UtilClient.is_unset(request.match_asns):
             query['MatchAsns'] = request.match_asns
         if not UtilClient.is_unset(request.match_community_set):
@@ -10002,6 +11168,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.transit_router_multicast_domain_id):
             query['TransitRouterMulticastDomainId'] = request.transit_router_multicast_domain_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10048,6 +11216,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.transit_router_multicast_domain_id):
             query['TransitRouterMulticastDomainId'] = request.transit_router_multicast_domain_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10106,6 +11276,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.transit_router_multicast_domain_id):
             query['TransitRouterMulticastDomainId'] = request.transit_router_multicast_domain_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10150,6 +11322,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.transit_router_multicast_domain_id):
             query['TransitRouterMulticastDomainId'] = request.transit_router_multicast_domain_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12202,6 +13376,214 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_transit_router_vpc_attachment_attribute_with_options_async(request, runtime)
+
+    def update_transit_router_vpc_attachment_zones_with_options(
+        self,
+        request: cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.add_zone_mappings):
+            query['AddZoneMappings'] = request.add_zone_mappings
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remove_zone_mappings):
+            query['RemoveZoneMappings'] = request.remove_zone_mappings
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTransitRouterVpcAttachmentZones',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_transit_router_vpc_attachment_zones_with_options_async(
+        self,
+        request: cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.add_zone_mappings):
+            query['AddZoneMappings'] = request.add_zone_mappings
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remove_zone_mappings):
+            query['RemoveZoneMappings'] = request.remove_zone_mappings
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTransitRouterVpcAttachmentZones',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_transit_router_vpc_attachment_zones(
+        self,
+        request: cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesRequest,
+    ) -> cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_transit_router_vpc_attachment_zones_with_options(request, runtime)
+
+    async def update_transit_router_vpc_attachment_zones_async(
+        self,
+        request: cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesRequest,
+    ) -> cbn_20170912_models.UpdateTransitRouterVpcAttachmentZonesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_transit_router_vpc_attachment_zones_with_options_async(request, runtime)
+
+    def update_transit_router_vpn_attachment_attribute_with_options(
+        self,
+        request: cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_publish_route_enabled):
+            query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTransitRouterVpnAttachmentAttribute',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_transit_router_vpn_attachment_attribute_with_options_async(
+        self,
+        request: cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_publish_route_enabled):
+            query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTransitRouterVpnAttachmentAttribute',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_transit_router_vpn_attachment_attribute(
+        self,
+        request: cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeRequest,
+    ) -> cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_transit_router_vpn_attachment_attribute_with_options(request, runtime)
+
+    async def update_transit_router_vpn_attachment_attribute_async(
+        self,
+        request: cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeRequest,
+    ) -> cbn_20170912_models.UpdateTransitRouterVpnAttachmentAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_transit_router_vpn_attachment_attribute_with_options_async(request, runtime)
 
     def withdraw_published_route_entries_with_options(
         self,
