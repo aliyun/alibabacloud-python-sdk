@@ -6466,6 +6466,7 @@ class DeleteTransitRouterPrefixListAssociationRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
         next_hop: str = None,
+        next_hop_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         prefix_list_id: str = None,
@@ -6478,6 +6479,7 @@ class DeleteTransitRouterPrefixListAssociationRequest(TeaModel):
         self.client_token = client_token
         self.dry_run = dry_run
         self.next_hop = next_hop
+        self.next_hop_type = next_hop_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.prefix_list_id = prefix_list_id
@@ -6502,6 +6504,8 @@ class DeleteTransitRouterPrefixListAssociationRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.next_hop is not None:
             result['NextHop'] = self.next_hop
+        if self.next_hop_type is not None:
+            result['NextHopType'] = self.next_hop_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -6528,6 +6532,8 @@ class DeleteTransitRouterPrefixListAssociationRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('NextHop') is not None:
             self.next_hop = m.get('NextHop')
+        if m.get('NextHopType') is not None:
+            self.next_hop_type = m.get('NextHopType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
