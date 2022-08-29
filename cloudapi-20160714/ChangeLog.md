@@ -1,3 +1,6 @@
+2022-08-29 Version: 2.2.6
+- Modify  Api Ram-Meta.
+
 2022-08-01 Version: 2.2.5
 - Add parameter stageName for BatchAbolishApis.
 
