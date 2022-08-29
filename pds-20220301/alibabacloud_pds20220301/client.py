@@ -137,6 +137,86 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
+    def batch(
+        self,
+        request: pds_20220301_models.BatchRequest,
+    ) -> pds_20220301_models.BatchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.batch_with_options(request, headers, runtime)
+
+    async def batch_async(
+        self,
+        request: pds_20220301_models.BatchRequest,
+    ) -> pds_20220301_models.BatchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.batch_with_options_async(request, headers, runtime)
+
+    def batch_with_options(
+        self,
+        request: pds_20220301_models.BatchRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.BatchResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.requests):
+            body['requests'] = request.requests
+        if not UtilClient.is_unset(request.resource):
+            body['resource'] = request.resource
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Batch',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/batch',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.BatchResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def batch_with_options_async(
+        self,
+        request: pds_20220301_models.BatchRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.BatchResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.requests):
+            body['requests'] = request.requests
+        if not UtilClient.is_unset(request.resource):
+            body['resource'] = request.resource
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Batch',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/batch',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.BatchResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
     def cancel_share_link(
         self,
         request: pds_20220301_models.CancelShareLinkRequest,
@@ -370,6 +450,94 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             pds_20220301_models.CompleteFileResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def copy_file(
+        self,
+        request: pds_20220301_models.CopyFileRequest,
+    ) -> pds_20220301_models.CopyFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.copy_file_with_options(request, headers, runtime)
+
+    async def copy_file_async(
+        self,
+        request: pds_20220301_models.CopyFileRequest,
+    ) -> pds_20220301_models.CopyFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.copy_file_with_options_async(request, headers, runtime)
+
+    def copy_file_with_options(
+        self,
+        request: pds_20220301_models.CopyFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CopyFileResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_rename):
+            body['auto_rename'] = request.auto_rename
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.file_id):
+            body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.to_parent_file_id):
+            body['to_parent_file_id'] = request.to_parent_file_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CopyFile',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/file/copy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CopyFileResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def copy_file_with_options_async(
+        self,
+        request: pds_20220301_models.CopyFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CopyFileResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_rename):
+            body['auto_rename'] = request.auto_rename
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.file_id):
+            body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.to_parent_file_id):
+            body['to_parent_file_id'] = request.to_parent_file_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CopyFile',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/file/copy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CopyFileResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -1617,6 +1785,90 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
+    def file_delete_user_tags(
+        self,
+        request: pds_20220301_models.FileDeleteUserTagsRequest,
+    ) -> pds_20220301_models.FileDeleteUserTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.file_delete_user_tags_with_options(request, headers, runtime)
+
+    async def file_delete_user_tags_async(
+        self,
+        request: pds_20220301_models.FileDeleteUserTagsRequest,
+    ) -> pds_20220301_models.FileDeleteUserTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.file_delete_user_tags_with_options_async(request, headers, runtime)
+
+    def file_delete_user_tags_with_options(
+        self,
+        request: pds_20220301_models.FileDeleteUserTagsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.FileDeleteUserTagsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.file_id):
+            body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.key_list):
+            body['key_list'] = request.key_list
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FileDeleteUserTags',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/file/delete_usertags',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.FileDeleteUserTagsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def file_delete_user_tags_with_options_async(
+        self,
+        request: pds_20220301_models.FileDeleteUserTagsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.FileDeleteUserTagsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.file_id):
+            body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.key_list):
+            body['key_list'] = request.key_list
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FileDeleteUserTags',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/file/delete_usertags',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.FileDeleteUserTagsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
     def file_list_permission(
         self,
         request: pds_20220301_models.FileListPermissionRequest,
@@ -1694,6 +1946,90 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             pds_20220301_models.FileListPermissionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def file_put_user_tags(
+        self,
+        request: pds_20220301_models.FilePutUserTagsRequest,
+    ) -> pds_20220301_models.FilePutUserTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.file_put_user_tags_with_options(request, headers, runtime)
+
+    async def file_put_user_tags_async(
+        self,
+        request: pds_20220301_models.FilePutUserTagsRequest,
+    ) -> pds_20220301_models.FilePutUserTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.file_put_user_tags_with_options_async(request, headers, runtime)
+
+    def file_put_user_tags_with_options(
+        self,
+        request: pds_20220301_models.FilePutUserTagsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.FilePutUserTagsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.file_id):
+            body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.user_tags):
+            body['user_tags'] = request.user_tags
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FilePutUserTags',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/file/put_usertags',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.FilePutUserTagsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def file_put_user_tags_with_options_async(
+        self,
+        request: pds_20220301_models.FilePutUserTagsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.FilePutUserTagsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.file_id):
+            body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.user_tags):
+            body['user_tags'] = request.user_tags
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FilePutUserTags',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/file/put_usertags',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.FilePutUserTagsResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -3010,6 +3346,104 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             pds_20220301_models.GetVideoPreviewPlayInfoResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_video_preview_play_meta(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
+    ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_video_preview_play_meta_with_options(domain_id, request, headers, runtime)
+
+    async def get_video_preview_play_meta_async(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
+    ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_video_preview_play_meta_with_options_async(domain_id, request, headers, runtime)
+
+    def get_video_preview_play_meta_with_options(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['domain_id'] = domain_id
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['category'] = request.category
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.file_id):
+            body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.share_id):
+            body['share_id'] = request.share_id
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVideoPreviewPlayMeta',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/file/get_video_preview_play_meta',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.GetVideoPreviewPlayMetaResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_video_preview_play_meta_with_options_async(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['domain_id'] = domain_id
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['category'] = request.category
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.file_id):
+            body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.share_id):
+            body['share_id'] = request.share_id
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVideoPreviewPlayMeta',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/file/get_video_preview_play_meta',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.GetVideoPreviewPlayMetaResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -4366,74 +4800,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             pds_20220301_models.ListUserResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def live_transcode_for_get(
-        self,
-        object_path: str,
-    ) -> pds_20220301_models.LiveTranscodeForGetResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.live_transcode_for_get_with_options(object_path, headers, runtime)
-
-    async def live_transcode_for_get_async(
-        self,
-        object_path: str,
-    ) -> pds_20220301_models.LiveTranscodeForGetResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.live_transcode_for_get_with_options_async(object_path, headers, runtime)
-
-    def live_transcode_for_get_with_options(
-        self,
-        object_path: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pds_20220301_models.LiveTranscodeForGetResponse:
-        object_path = OpenApiUtilClient.get_encode_param(object_path)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='LiveTranscodeForGet',
-            version='2022-03-01',
-            protocol='HTTPS',
-            pathname=f'/v2/file/live_transcode_for_get/*object_path',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pds_20220301_models.LiveTranscodeForGetResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def live_transcode_for_get_with_options_async(
-        self,
-        object_path: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pds_20220301_models.LiveTranscodeForGetResponse:
-        object_path = OpenApiUtilClient.get_encode_param(object_path)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='LiveTranscodeForGet',
-            version='2022-03-01',
-            protocol='HTTPS',
-            pathname=f'/v2/file/live_transcode_for_get/*object_path',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pds_20220301_models.LiveTranscodeForGetResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -6330,5 +6696,117 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             pds_20220301_models.UpdateUserResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def walk_file(
+        self,
+        request: pds_20220301_models.WalkFileRequest,
+    ) -> pds_20220301_models.WalkFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.walk_file_with_options(request, headers, runtime)
+
+    async def walk_file_async(
+        self,
+        request: pds_20220301_models.WalkFileRequest,
+    ) -> pds_20220301_models.WalkFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.walk_file_with_options_async(request, headers, runtime)
+
+    def walk_file_with_options(
+        self,
+        request: pds_20220301_models.WalkFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.WalkFileResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['category'] = request.category
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.fields):
+            body['fields'] = request.fields
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        if not UtilClient.is_unset(request.order_by):
+            body['order_by'] = request.order_by
+        if not UtilClient.is_unset(request.order_direction):
+            body['order_direction'] = request.order_direction
+        if not UtilClient.is_unset(request.parent_file_id):
+            body['parent_file_id'] = request.parent_file_id
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='WalkFile',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/file/walk',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.WalkFileResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def walk_file_with_options_async(
+        self,
+        request: pds_20220301_models.WalkFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.WalkFileResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['category'] = request.category
+        if not UtilClient.is_unset(request.drive_id):
+            body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.fields):
+            body['fields'] = request.fields
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        if not UtilClient.is_unset(request.order_by):
+            body['order_by'] = request.order_by
+        if not UtilClient.is_unset(request.order_direction):
+            body['order_direction'] = request.order_direction
+        if not UtilClient.is_unset(request.parent_file_id):
+            body['parent_file_id'] = request.parent_file_id
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='WalkFile',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/file/walk',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.WalkFileResponse(),
             await self.execute_async(params, req, runtime)
         )

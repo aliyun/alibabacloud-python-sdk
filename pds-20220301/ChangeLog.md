@@ -1,3 +1,6 @@
+2022-08-29 Version: 1.0.4
+- 新增异步任务接口
+
 2022-07-13 Version: 1.0.3
 - 修复 list delta 接口关于 domain id 参数的属性.
 
