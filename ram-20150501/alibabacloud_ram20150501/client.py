@@ -48,11 +48,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.AddUserToGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddUserToGroup',
@@ -62,7 +63,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -77,11 +78,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.AddUserToGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddUserToGroup',
@@ -91,7 +93,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -120,12 +122,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.AttachPolicyToGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachPolicyToGroup',
@@ -135,7 +139,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -150,12 +154,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.AttachPolicyToGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachPolicyToGroup',
@@ -165,7 +171,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -194,12 +200,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.AttachPolicyToRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
-        query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachPolicyToRole',
@@ -209,7 +217,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -224,12 +232,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.AttachPolicyToRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
-        query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachPolicyToRole',
@@ -239,7 +249,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -268,12 +278,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.AttachPolicyToUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachPolicyToUser',
@@ -283,7 +295,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -298,12 +310,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.AttachPolicyToUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachPolicyToUser',
@@ -313,7 +327,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -342,13 +356,16 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.BindMFADeviceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SerialNumber'] = request.serial_number
-        query['UserName'] = request.user_name
-        query['AuthenticationCode1'] = request.authentication_code_1
-        query['AuthenticationCode2'] = request.authentication_code_2
+        if not UtilClient.is_unset(request.authentication_code_1):
+            query['AuthenticationCode1'] = request.authentication_code_1
+        if not UtilClient.is_unset(request.authentication_code_2):
+            query['AuthenticationCode2'] = request.authentication_code_2
+        if not UtilClient.is_unset(request.serial_number):
+            query['SerialNumber'] = request.serial_number
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindMFADevice',
@@ -358,7 +375,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -373,13 +390,16 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.BindMFADeviceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SerialNumber'] = request.serial_number
-        query['UserName'] = request.user_name
-        query['AuthenticationCode1'] = request.authentication_code_1
-        query['AuthenticationCode2'] = request.authentication_code_2
+        if not UtilClient.is_unset(request.authentication_code_1):
+            query['AuthenticationCode1'] = request.authentication_code_1
+        if not UtilClient.is_unset(request.authentication_code_2):
+            query['AuthenticationCode2'] = request.authentication_code_2
+        if not UtilClient.is_unset(request.serial_number):
+            query['SerialNumber'] = request.serial_number
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindMFADevice',
@@ -389,7 +409,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -418,11 +438,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ChangePasswordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OldPassword'] = request.old_password
-        query['NewPassword'] = request.new_password
+        if not UtilClient.is_unset(request.new_password):
+            query['NewPassword'] = request.new_password
+        if not UtilClient.is_unset(request.old_password):
+            query['OldPassword'] = request.old_password
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ChangePassword',
@@ -432,7 +453,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -447,11 +468,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ChangePasswordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OldPassword'] = request.old_password
-        query['NewPassword'] = request.new_password
+        if not UtilClient.is_unset(request.new_password):
+            query['NewPassword'] = request.new_password
+        if not UtilClient.is_unset(request.old_password):
+            query['OldPassword'] = request.old_password
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ChangePassword',
@@ -461,7 +483,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -496,7 +518,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -517,7 +539,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -540,10 +562,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreateAccessKeyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateAccessKey',
@@ -553,7 +575,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -568,10 +590,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreateAccessKeyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateAccessKey',
@@ -581,7 +603,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -610,11 +632,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
-        query['Comments'] = request.comments
+        if not UtilClient.is_unset(request.comments):
+            query['Comments'] = request.comments
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateGroup',
@@ -624,7 +647,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -639,11 +662,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
-        query['Comments'] = request.comments
+        if not UtilClient.is_unset(request.comments):
+            query['Comments'] = request.comments
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateGroup',
@@ -653,7 +677,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -682,13 +706,16 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreateLoginProfileResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['Password'] = request.password
-        query['PasswordResetRequired'] = request.password_reset_required
-        query['MFABindRequired'] = request.mfabind_required
+        if not UtilClient.is_unset(request.mfabind_required):
+            query['MFABindRequired'] = request.mfabind_required
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.password_reset_required):
+            query['PasswordResetRequired'] = request.password_reset_required
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateLoginProfile',
@@ -698,7 +725,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -713,13 +740,16 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreateLoginProfileResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['Password'] = request.password
-        query['PasswordResetRequired'] = request.password_reset_required
-        query['MFABindRequired'] = request.mfabind_required
+        if not UtilClient.is_unset(request.mfabind_required):
+            query['MFABindRequired'] = request.mfabind_required
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.password_reset_required):
+            query['PasswordResetRequired'] = request.password_reset_required
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateLoginProfile',
@@ -729,7 +759,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -758,12 +788,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreatePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyName'] = request.policy_name
-        query['Description'] = request.description
-        query['PolicyDocument'] = request.policy_document
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.policy_document):
+            query['PolicyDocument'] = request.policy_document
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreatePolicy',
@@ -773,7 +805,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -788,12 +820,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreatePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyName'] = request.policy_name
-        query['Description'] = request.description
-        query['PolicyDocument'] = request.policy_document
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.policy_document):
+            query['PolicyDocument'] = request.policy_document
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreatePolicy',
@@ -803,7 +837,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -832,13 +866,16 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreatePolicyVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyName'] = request.policy_name
-        query['PolicyDocument'] = request.policy_document
-        query['SetAsDefault'] = request.set_as_default
-        query['RotateStrategy'] = request.rotate_strategy
+        if not UtilClient.is_unset(request.policy_document):
+            query['PolicyDocument'] = request.policy_document
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.rotate_strategy):
+            query['RotateStrategy'] = request.rotate_strategy
+        if not UtilClient.is_unset(request.set_as_default):
+            query['SetAsDefault'] = request.set_as_default
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreatePolicyVersion',
@@ -848,7 +885,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -863,13 +900,16 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreatePolicyVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyName'] = request.policy_name
-        query['PolicyDocument'] = request.policy_document
-        query['SetAsDefault'] = request.set_as_default
-        query['RotateStrategy'] = request.rotate_strategy
+        if not UtilClient.is_unset(request.policy_document):
+            query['PolicyDocument'] = request.policy_document
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.rotate_strategy):
+            query['RotateStrategy'] = request.rotate_strategy
+        if not UtilClient.is_unset(request.set_as_default):
+            query['SetAsDefault'] = request.set_as_default
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreatePolicyVersion',
@@ -879,7 +919,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -908,13 +948,16 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreateRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RoleName'] = request.role_name
-        query['Description'] = request.description
-        query['AssumeRolePolicyDocument'] = request.assume_role_policy_document
-        query['MaxSessionDuration'] = request.max_session_duration
+        if not UtilClient.is_unset(request.assume_role_policy_document):
+            query['AssumeRolePolicyDocument'] = request.assume_role_policy_document
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.max_session_duration):
+            query['MaxSessionDuration'] = request.max_session_duration
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateRole',
@@ -924,7 +967,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -939,13 +982,16 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreateRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RoleName'] = request.role_name
-        query['Description'] = request.description
-        query['AssumeRolePolicyDocument'] = request.assume_role_policy_document
-        query['MaxSessionDuration'] = request.max_session_duration
+        if not UtilClient.is_unset(request.assume_role_policy_document):
+            query['AssumeRolePolicyDocument'] = request.assume_role_policy_document
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.max_session_duration):
+            query['MaxSessionDuration'] = request.max_session_duration
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateRole',
@@ -955,7 +1001,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -984,14 +1030,18 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreateUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['DisplayName'] = request.display_name
-        query['MobilePhone'] = request.mobile_phone
-        query['Email'] = request.email
-        query['Comments'] = request.comments
+        if not UtilClient.is_unset(request.comments):
+            query['Comments'] = request.comments
+        if not UtilClient.is_unset(request.display_name):
+            query['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.mobile_phone):
+            query['MobilePhone'] = request.mobile_phone
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateUser',
@@ -1001,7 +1051,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1016,14 +1066,18 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreateUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['DisplayName'] = request.display_name
-        query['MobilePhone'] = request.mobile_phone
-        query['Email'] = request.email
-        query['Comments'] = request.comments
+        if not UtilClient.is_unset(request.comments):
+            query['Comments'] = request.comments
+        if not UtilClient.is_unset(request.display_name):
+            query['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.mobile_phone):
+            query['MobilePhone'] = request.mobile_phone
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateUser',
@@ -1033,7 +1087,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1062,10 +1116,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreateVirtualMFADeviceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VirtualMFADeviceName'] = request.virtual_mfadevice_name
+        if not UtilClient.is_unset(request.virtual_mfadevice_name):
+            query['VirtualMFADeviceName'] = request.virtual_mfadevice_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateVirtualMFADevice',
@@ -1075,7 +1129,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1090,10 +1144,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.CreateVirtualMFADeviceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VirtualMFADeviceName'] = request.virtual_mfadevice_name
+        if not UtilClient.is_unset(request.virtual_mfadevice_name):
+            query['VirtualMFADeviceName'] = request.virtual_mfadevice_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateVirtualMFADevice',
@@ -1103,7 +1157,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1132,11 +1186,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeleteAccessKeyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_access_key_id):
+            query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAccessKey',
@@ -1146,7 +1201,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1161,11 +1216,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeleteAccessKeyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_access_key_id):
+            query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAccessKey',
@@ -1175,7 +1231,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1204,10 +1260,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeleteGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteGroup',
@@ -1217,7 +1273,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1232,10 +1288,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeleteGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteGroup',
@@ -1245,7 +1301,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1274,10 +1330,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeleteLoginProfileResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteLoginProfile',
@@ -1287,7 +1343,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1302,10 +1358,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeleteLoginProfileResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteLoginProfile',
@@ -1315,7 +1371,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1344,10 +1400,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeletePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeletePolicy',
@@ -1357,7 +1413,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1372,10 +1428,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeletePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeletePolicy',
@@ -1385,7 +1441,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1414,11 +1470,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeletePolicyVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyName'] = request.policy_name
-        query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeletePolicyVersion',
@@ -1428,7 +1485,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1443,11 +1500,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeletePolicyVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyName'] = request.policy_name
-        query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeletePolicyVersion',
@@ -1457,7 +1515,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1486,10 +1544,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeleteRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteRole',
@@ -1499,7 +1557,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1514,10 +1572,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeleteRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteRole',
@@ -1527,7 +1585,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1556,10 +1614,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeleteUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteUser',
@@ -1569,7 +1627,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1584,10 +1642,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeleteUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteUser',
@@ -1597,7 +1655,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1626,10 +1684,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeleteVirtualMFADeviceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SerialNumber'] = request.serial_number
+        if not UtilClient.is_unset(request.serial_number):
+            query['SerialNumber'] = request.serial_number
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteVirtualMFADevice',
@@ -1639,7 +1697,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1654,10 +1712,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DeleteVirtualMFADeviceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SerialNumber'] = request.serial_number
+        if not UtilClient.is_unset(request.serial_number):
+            query['SerialNumber'] = request.serial_number
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteVirtualMFADevice',
@@ -1667,7 +1725,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1696,12 +1754,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DetachPolicyFromGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachPolicyFromGroup',
@@ -1711,7 +1771,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1726,12 +1786,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DetachPolicyFromGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachPolicyFromGroup',
@@ -1741,7 +1803,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1770,12 +1832,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DetachPolicyFromRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
-        query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachPolicyFromRole',
@@ -1785,7 +1849,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1800,12 +1864,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DetachPolicyFromRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
-        query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachPolicyFromRole',
@@ -1815,7 +1881,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1844,12 +1910,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DetachPolicyFromUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachPolicyFromUser',
@@ -1859,7 +1927,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1874,12 +1942,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.DetachPolicyFromUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachPolicyFromUser',
@@ -1889,7 +1959,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1918,11 +1988,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetAccessKeyLastUsedResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_access_key_id):
+            query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetAccessKeyLastUsed',
@@ -1932,7 +2003,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1947,11 +2018,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetAccessKeyLastUsedResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_access_key_id):
+            query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetAccessKeyLastUsed',
@@ -1961,7 +2033,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1996,7 +2068,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2017,7 +2089,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2040,10 +2112,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetGroup',
@@ -2053,7 +2125,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2068,10 +2140,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetGroup',
@@ -2081,7 +2153,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2110,10 +2182,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetLoginProfileResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetLoginProfile',
@@ -2123,7 +2195,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2138,10 +2210,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetLoginProfileResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetLoginProfile',
@@ -2151,7 +2223,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2186,7 +2258,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2207,7 +2279,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2230,11 +2302,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetPolicy',
@@ -2244,7 +2317,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2259,11 +2332,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetPolicy',
@@ -2273,7 +2347,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2302,12 +2376,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetPolicyVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
-        query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetPolicyVersion',
@@ -2317,7 +2393,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2332,12 +2408,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetPolicyVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
-        query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetPolicyVersion',
@@ -2347,7 +2425,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2376,10 +2454,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetRole',
@@ -2389,7 +2467,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2404,10 +2482,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetRole',
@@ -2417,7 +2495,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2452,7 +2530,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2473,7 +2551,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2496,10 +2574,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetUser',
@@ -2509,7 +2587,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2524,10 +2602,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetUser',
@@ -2537,7 +2615,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2566,10 +2644,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetUserMFAInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetUserMFAInfo',
@@ -2579,7 +2657,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2594,10 +2672,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.GetUserMFAInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetUserMFAInfo',
@@ -2607,7 +2685,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2636,10 +2714,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListAccessKeysResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAccessKeys',
@@ -2649,7 +2727,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2664,10 +2742,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListAccessKeysResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAccessKeys',
@@ -2677,7 +2755,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2706,11 +2784,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListEntitiesForPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListEntitiesForPolicy',
@@ -2720,7 +2799,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2735,11 +2814,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListEntitiesForPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListEntitiesForPolicy',
@@ -2749,7 +2829,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2778,11 +2858,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Marker'] = request.marker
-        query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListGroups',
@@ -2792,7 +2873,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2807,11 +2888,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Marker'] = request.marker
-        query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListGroups',
@@ -2821,7 +2903,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2850,10 +2932,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListGroupsForUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListGroupsForUser',
@@ -2863,7 +2945,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2878,10 +2960,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListGroupsForUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListGroupsForUser',
@@ -2891,7 +2973,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2920,12 +3002,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListPoliciesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['Marker'] = request.marker
-        query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPolicies',
@@ -2935,7 +3019,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2950,12 +3034,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListPoliciesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['Marker'] = request.marker
-        query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPolicies',
@@ -2965,7 +3051,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2994,10 +3080,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListPoliciesForGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPoliciesForGroup',
@@ -3007,7 +3093,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3022,10 +3108,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListPoliciesForGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPoliciesForGroup',
@@ -3035,7 +3121,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3064,10 +3150,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListPoliciesForRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPoliciesForRole',
@@ -3077,7 +3163,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3092,10 +3178,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListPoliciesForRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPoliciesForRole',
@@ -3105,7 +3191,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3134,10 +3220,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListPoliciesForUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPoliciesForUser',
@@ -3147,7 +3233,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3162,10 +3248,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListPoliciesForUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPoliciesForUser',
@@ -3175,7 +3261,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3204,11 +3290,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListPolicyVersionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPolicyVersions',
@@ -3218,7 +3305,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3233,11 +3320,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListPolicyVersionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyType'] = request.policy_type
-        query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPolicyVersions',
@@ -3247,7 +3335,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3276,11 +3364,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListRolesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Marker'] = request.marker
-        query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListRoles',
@@ -3290,7 +3379,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3305,11 +3394,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListRolesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Marker'] = request.marker
-        query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListRoles',
@@ -3319,7 +3409,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3348,11 +3438,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListUsersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Marker'] = request.marker
-        query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListUsers',
@@ -3362,7 +3453,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3377,11 +3468,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListUsersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Marker'] = request.marker
-        query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListUsers',
@@ -3391,7 +3483,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3420,12 +3512,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListUsersForGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
-        query['Marker'] = request.marker
-        query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListUsersForGroup',
@@ -3435,7 +3529,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3450,12 +3544,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.ListUsersForGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
-        query['Marker'] = request.marker
-        query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListUsersForGroup',
@@ -3465,7 +3561,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3500,7 +3596,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3521,7 +3617,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3544,11 +3640,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.RemoveUserFromGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RemoveUserFromGroup',
@@ -3558,7 +3655,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3573,11 +3670,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.RemoveUserFromGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RemoveUserFromGroup',
@@ -3587,7 +3685,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3616,10 +3714,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.SetAccountAliasResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountAlias'] = request.account_alias
+        if not UtilClient.is_unset(request.account_alias):
+            query['AccountAlias'] = request.account_alias
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetAccountAlias',
@@ -3629,7 +3727,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3644,10 +3742,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.SetAccountAliasResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountAlias'] = request.account_alias
+        if not UtilClient.is_unset(request.account_alias):
+            query['AccountAlias'] = request.account_alias
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetAccountAlias',
@@ -3657,7 +3755,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3686,11 +3784,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.SetDefaultPolicyVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyName'] = request.policy_name
-        query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDefaultPolicyVersion',
@@ -3700,7 +3799,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3715,11 +3814,12 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.SetDefaultPolicyVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PolicyName'] = request.policy_name
-        query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDefaultPolicyVersion',
@@ -3729,7 +3829,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3758,18 +3858,26 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.SetPasswordPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MinimumPasswordLength'] = request.minimum_password_length
-        query['RequireLowercaseCharacters'] = request.require_lowercase_characters
-        query['RequireUppercaseCharacters'] = request.require_uppercase_characters
-        query['RequireNumbers'] = request.require_numbers
-        query['RequireSymbols'] = request.require_symbols
-        query['HardExpiry'] = request.hard_expiry
-        query['MaxPasswordAge'] = request.max_password_age
-        query['PasswordReusePrevention'] = request.password_reuse_prevention
-        query['MaxLoginAttemps'] = request.max_login_attemps
+        if not UtilClient.is_unset(request.hard_expiry):
+            query['HardExpiry'] = request.hard_expiry
+        if not UtilClient.is_unset(request.max_login_attemps):
+            query['MaxLoginAttemps'] = request.max_login_attemps
+        if not UtilClient.is_unset(request.max_password_age):
+            query['MaxPasswordAge'] = request.max_password_age
+        if not UtilClient.is_unset(request.minimum_password_length):
+            query['MinimumPasswordLength'] = request.minimum_password_length
+        if not UtilClient.is_unset(request.password_reuse_prevention):
+            query['PasswordReusePrevention'] = request.password_reuse_prevention
+        if not UtilClient.is_unset(request.require_lowercase_characters):
+            query['RequireLowercaseCharacters'] = request.require_lowercase_characters
+        if not UtilClient.is_unset(request.require_numbers):
+            query['RequireNumbers'] = request.require_numbers
+        if not UtilClient.is_unset(request.require_symbols):
+            query['RequireSymbols'] = request.require_symbols
+        if not UtilClient.is_unset(request.require_uppercase_characters):
+            query['RequireUppercaseCharacters'] = request.require_uppercase_characters
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetPasswordPolicy',
@@ -3779,7 +3887,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3794,18 +3902,26 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.SetPasswordPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MinimumPasswordLength'] = request.minimum_password_length
-        query['RequireLowercaseCharacters'] = request.require_lowercase_characters
-        query['RequireUppercaseCharacters'] = request.require_uppercase_characters
-        query['RequireNumbers'] = request.require_numbers
-        query['RequireSymbols'] = request.require_symbols
-        query['HardExpiry'] = request.hard_expiry
-        query['MaxPasswordAge'] = request.max_password_age
-        query['PasswordReusePrevention'] = request.password_reuse_prevention
-        query['MaxLoginAttemps'] = request.max_login_attemps
+        if not UtilClient.is_unset(request.hard_expiry):
+            query['HardExpiry'] = request.hard_expiry
+        if not UtilClient.is_unset(request.max_login_attemps):
+            query['MaxLoginAttemps'] = request.max_login_attemps
+        if not UtilClient.is_unset(request.max_password_age):
+            query['MaxPasswordAge'] = request.max_password_age
+        if not UtilClient.is_unset(request.minimum_password_length):
+            query['MinimumPasswordLength'] = request.minimum_password_length
+        if not UtilClient.is_unset(request.password_reuse_prevention):
+            query['PasswordReusePrevention'] = request.password_reuse_prevention
+        if not UtilClient.is_unset(request.require_lowercase_characters):
+            query['RequireLowercaseCharacters'] = request.require_lowercase_characters
+        if not UtilClient.is_unset(request.require_numbers):
+            query['RequireNumbers'] = request.require_numbers
+        if not UtilClient.is_unset(request.require_symbols):
+            query['RequireSymbols'] = request.require_symbols
+        if not UtilClient.is_unset(request.require_uppercase_characters):
+            query['RequireUppercaseCharacters'] = request.require_uppercase_characters
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetPasswordPolicy',
@@ -3815,7 +3931,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3844,16 +3960,22 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.SetSecurityPreferenceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EnableSaveMFATicket'] = request.enable_save_mfaticket
-        query['AllowUserToChangePassword'] = request.allow_user_to_change_password
-        query['AllowUserToManageAccessKeys'] = request.allow_user_to_manage_access_keys
-        query['AllowUserToManagePublicKeys'] = request.allow_user_to_manage_public_keys
-        query['AllowUserToManageMFADevices'] = request.allow_user_to_manage_mfadevices
-        query['LoginSessionDuration'] = request.login_session_duration
-        query['LoginNetworkMasks'] = request.login_network_masks
+        if not UtilClient.is_unset(request.allow_user_to_change_password):
+            query['AllowUserToChangePassword'] = request.allow_user_to_change_password
+        if not UtilClient.is_unset(request.allow_user_to_manage_access_keys):
+            query['AllowUserToManageAccessKeys'] = request.allow_user_to_manage_access_keys
+        if not UtilClient.is_unset(request.allow_user_to_manage_mfadevices):
+            query['AllowUserToManageMFADevices'] = request.allow_user_to_manage_mfadevices
+        if not UtilClient.is_unset(request.allow_user_to_manage_public_keys):
+            query['AllowUserToManagePublicKeys'] = request.allow_user_to_manage_public_keys
+        if not UtilClient.is_unset(request.enable_save_mfaticket):
+            query['EnableSaveMFATicket'] = request.enable_save_mfaticket
+        if not UtilClient.is_unset(request.login_network_masks):
+            query['LoginNetworkMasks'] = request.login_network_masks
+        if not UtilClient.is_unset(request.login_session_duration):
+            query['LoginSessionDuration'] = request.login_session_duration
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetSecurityPreference',
@@ -3863,7 +3985,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3878,16 +4000,22 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.SetSecurityPreferenceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EnableSaveMFATicket'] = request.enable_save_mfaticket
-        query['AllowUserToChangePassword'] = request.allow_user_to_change_password
-        query['AllowUserToManageAccessKeys'] = request.allow_user_to_manage_access_keys
-        query['AllowUserToManagePublicKeys'] = request.allow_user_to_manage_public_keys
-        query['AllowUserToManageMFADevices'] = request.allow_user_to_manage_mfadevices
-        query['LoginSessionDuration'] = request.login_session_duration
-        query['LoginNetworkMasks'] = request.login_network_masks
+        if not UtilClient.is_unset(request.allow_user_to_change_password):
+            query['AllowUserToChangePassword'] = request.allow_user_to_change_password
+        if not UtilClient.is_unset(request.allow_user_to_manage_access_keys):
+            query['AllowUserToManageAccessKeys'] = request.allow_user_to_manage_access_keys
+        if not UtilClient.is_unset(request.allow_user_to_manage_mfadevices):
+            query['AllowUserToManageMFADevices'] = request.allow_user_to_manage_mfadevices
+        if not UtilClient.is_unset(request.allow_user_to_manage_public_keys):
+            query['AllowUserToManagePublicKeys'] = request.allow_user_to_manage_public_keys
+        if not UtilClient.is_unset(request.enable_save_mfaticket):
+            query['EnableSaveMFATicket'] = request.enable_save_mfaticket
+        if not UtilClient.is_unset(request.login_network_masks):
+            query['LoginNetworkMasks'] = request.login_network_masks
+        if not UtilClient.is_unset(request.login_session_duration):
+            query['LoginSessionDuration'] = request.login_session_duration
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetSecurityPreference',
@@ -3897,7 +4025,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3926,10 +4054,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.UnbindMFADeviceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnbindMFADevice',
@@ -3939,7 +4067,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3954,10 +4082,10 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.UnbindMFADeviceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnbindMFADevice',
@@ -3967,7 +4095,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3996,12 +4124,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.UpdateAccessKeyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['UserAccessKeyId'] = request.user_access_key_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_access_key_id):
+            query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateAccessKey',
@@ -4011,7 +4141,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4026,12 +4156,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.UpdateAccessKeyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['UserAccessKeyId'] = request.user_access_key_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_access_key_id):
+            query['UserAccessKeyId'] = request.user_access_key_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateAccessKey',
@@ -4041,7 +4173,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4070,12 +4202,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.UpdateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
-        query['NewGroupName'] = request.new_group_name
-        query['NewComments'] = request.new_comments
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.new_comments):
+            query['NewComments'] = request.new_comments
+        if not UtilClient.is_unset(request.new_group_name):
+            query['NewGroupName'] = request.new_group_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateGroup',
@@ -4085,7 +4219,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4100,12 +4234,14 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.UpdateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupName'] = request.group_name
-        query['NewGroupName'] = request.new_group_name
-        query['NewComments'] = request.new_comments
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.new_comments):
+            query['NewComments'] = request.new_comments
+        if not UtilClient.is_unset(request.new_group_name):
+            query['NewGroupName'] = request.new_group_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateGroup',
@@ -4115,7 +4251,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4144,13 +4280,16 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.UpdateLoginProfileResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['Password'] = request.password
-        query['PasswordResetRequired'] = request.password_reset_required
-        query['MFABindRequired'] = request.mfabind_required
+        if not UtilClient.is_unset(request.mfabind_required):
+            query['MFABindRequired'] = request.mfabind_required
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.password_reset_required):
+            query['PasswordResetRequired'] = request.password_reset_required
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateLoginProfile',
@@ -4160,7 +4299,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4175,13 +4314,16 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.UpdateLoginProfileResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['Password'] = request.password
-        query['PasswordResetRequired'] = request.password_reset_required
-        query['MFABindRequired'] = request.mfabind_required
+        if not UtilClient.is_unset(request.mfabind_required):
+            query['MFABindRequired'] = request.mfabind_required
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.password_reset_required):
+            query['PasswordResetRequired'] = request.password_reset_required
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateLoginProfile',
@@ -4191,7 +4333,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4213,6 +4355,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_login_profile_with_options_async(request, runtime)
 
+    def update_policy_description_with_options(
+        self,
+        request: ram_20150501_models.UpdatePolicyDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ram_20150501_models.UpdatePolicyDescriptionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_description):
+            query['NewDescription'] = request.new_description
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePolicyDescription',
+            version='2015-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ram_20150501_models.UpdatePolicyDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_policy_description_with_options_async(
+        self,
+        request: ram_20150501_models.UpdatePolicyDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ram_20150501_models.UpdatePolicyDescriptionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_description):
+            query['NewDescription'] = request.new_description
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePolicyDescription',
+            version='2015-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ram_20150501_models.UpdatePolicyDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_policy_description(
+        self,
+        request: ram_20150501_models.UpdatePolicyDescriptionRequest,
+    ) -> ram_20150501_models.UpdatePolicyDescriptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_policy_description_with_options(request, runtime)
+
+    async def update_policy_description_async(
+        self,
+        request: ram_20150501_models.UpdatePolicyDescriptionRequest,
+    ) -> ram_20150501_models.UpdatePolicyDescriptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_policy_description_with_options_async(request, runtime)
+
     def update_role_with_options(
         self,
         request: ram_20150501_models.UpdateRoleRequest,
@@ -4220,13 +4436,16 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.UpdateRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RoleName'] = request.role_name
-        query['NewAssumeRolePolicyDocument'] = request.new_assume_role_policy_document
-        query['NewMaxSessionDuration'] = request.new_max_session_duration
-        query['NewDescription'] = request.new_description
+        if not UtilClient.is_unset(request.new_assume_role_policy_document):
+            query['NewAssumeRolePolicyDocument'] = request.new_assume_role_policy_document
+        if not UtilClient.is_unset(request.new_description):
+            query['NewDescription'] = request.new_description
+        if not UtilClient.is_unset(request.new_max_session_duration):
+            query['NewMaxSessionDuration'] = request.new_max_session_duration
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateRole',
@@ -4236,7 +4455,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4251,13 +4470,16 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.UpdateRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RoleName'] = request.role_name
-        query['NewAssumeRolePolicyDocument'] = request.new_assume_role_policy_document
-        query['NewMaxSessionDuration'] = request.new_max_session_duration
-        query['NewDescription'] = request.new_description
+        if not UtilClient.is_unset(request.new_assume_role_policy_document):
+            query['NewAssumeRolePolicyDocument'] = request.new_assume_role_policy_document
+        if not UtilClient.is_unset(request.new_description):
+            query['NewDescription'] = request.new_description
+        if not UtilClient.is_unset(request.new_max_session_duration):
+            query['NewMaxSessionDuration'] = request.new_max_session_duration
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateRole',
@@ -4267,7 +4489,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4296,15 +4518,20 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.UpdateUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['NewUserName'] = request.new_user_name
-        query['NewDisplayName'] = request.new_display_name
-        query['NewMobilePhone'] = request.new_mobile_phone
-        query['NewEmail'] = request.new_email
-        query['NewComments'] = request.new_comments
+        if not UtilClient.is_unset(request.new_comments):
+            query['NewComments'] = request.new_comments
+        if not UtilClient.is_unset(request.new_display_name):
+            query['NewDisplayName'] = request.new_display_name
+        if not UtilClient.is_unset(request.new_email):
+            query['NewEmail'] = request.new_email
+        if not UtilClient.is_unset(request.new_mobile_phone):
+            query['NewMobilePhone'] = request.new_mobile_phone
+        if not UtilClient.is_unset(request.new_user_name):
+            query['NewUserName'] = request.new_user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateUser',
@@ -4314,7 +4541,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4329,15 +4556,20 @@ class Client(OpenApiClient):
     ) -> ram_20150501_models.UpdateUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UserName'] = request.user_name
-        query['NewUserName'] = request.new_user_name
-        query['NewDisplayName'] = request.new_display_name
-        query['NewMobilePhone'] = request.new_mobile_phone
-        query['NewEmail'] = request.new_email
-        query['NewComments'] = request.new_comments
+        if not UtilClient.is_unset(request.new_comments):
+            query['NewComments'] = request.new_comments
+        if not UtilClient.is_unset(request.new_display_name):
+            query['NewDisplayName'] = request.new_display_name
+        if not UtilClient.is_unset(request.new_email):
+            query['NewEmail'] = request.new_email
+        if not UtilClient.is_unset(request.new_mobile_phone):
+            query['NewMobilePhone'] = request.new_mobile_phone
+        if not UtilClient.is_unset(request.new_user_name):
+            query['NewUserName'] = request.new_user_name
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateUser',
@@ -4347,7 +4579,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
