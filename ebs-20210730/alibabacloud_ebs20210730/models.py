@@ -1810,6 +1810,122 @@ class DescribeDiskReplicaGroupsResponse(TeaModel):
         return self
 
 
+class DescribeDiskReplicaPairProgressRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        replica_pair_id: str = None,
+    ):
+        self.region_id = region_id
+        self.replica_pair_id = replica_pair_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.replica_pair_id is not None:
+            result['ReplicaPairId'] = self.replica_pair_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ReplicaPairId') is not None:
+            self.replica_pair_id = m.get('ReplicaPairId')
+        return self
+
+
+class DescribeDiskReplicaPairProgressResponseBody(TeaModel):
+    def __init__(
+        self,
+        progress: int = None,
+        recover_point: int = None,
+        request_id: str = None,
+    ):
+        self.progress = progress
+        self.recover_point = recover_point
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.recover_point is not None:
+            result['RecoverPoint'] = self.recover_point
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('RecoverPoint') is not None:
+            self.recover_point = m.get('RecoverPoint')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDiskReplicaPairProgressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDiskReplicaPairProgressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDiskReplicaPairProgressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDiskReplicaPairsRequest(TeaModel):
     def __init__(
         self,

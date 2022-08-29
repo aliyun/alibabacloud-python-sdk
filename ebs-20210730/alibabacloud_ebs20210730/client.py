@@ -859,6 +859,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_disk_replica_groups_with_options_async(request, runtime)
 
+    def describe_disk_replica_pair_progress_with_options(
+        self,
+        request: ebs_20210730_models.DescribeDiskReplicaPairProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeDiskReplicaPairProgressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replica_pair_id):
+            query['ReplicaPairId'] = request.replica_pair_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskReplicaPairProgress',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskReplicaPairProgressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_disk_replica_pair_progress_with_options_async(
+        self,
+        request: ebs_20210730_models.DescribeDiskReplicaPairProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeDiskReplicaPairProgressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replica_pair_id):
+            query['ReplicaPairId'] = request.replica_pair_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskReplicaPairProgress',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskReplicaPairProgressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_disk_replica_pair_progress(
+        self,
+        request: ebs_20210730_models.DescribeDiskReplicaPairProgressRequest,
+    ) -> ebs_20210730_models.DescribeDiskReplicaPairProgressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_disk_replica_pair_progress_with_options(request, runtime)
+
+    async def describe_disk_replica_pair_progress_async(
+        self,
+        request: ebs_20210730_models.DescribeDiskReplicaPairProgressRequest,
+    ) -> ebs_20210730_models.DescribeDiskReplicaPairProgressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_disk_replica_pair_progress_with_options_async(request, runtime)
+
     def describe_disk_replica_pairs_with_options(
         self,
         request: ebs_20210730_models.DescribeDiskReplicaPairsRequest,
