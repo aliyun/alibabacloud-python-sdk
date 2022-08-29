@@ -1,3 +1,6 @@
+2022-08-29 Version: 1.0.2
+- Resource Service python sdk .
+
 2022-08-29 Version: 1.0.1
 - Resource Service go sdk .
 
