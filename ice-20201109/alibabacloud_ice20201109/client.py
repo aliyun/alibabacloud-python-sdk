@@ -337,6 +337,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.preview_media):
             query['PreviewMedia'] = request.preview_media
+        if not UtilClient.is_unset(request.related_mediaids):
+            query['RelatedMediaids'] = request.related_mediaids
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.status):
@@ -377,6 +379,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.preview_media):
             query['PreviewMedia'] = request.preview_media
+        if not UtilClient.is_unset(request.related_mediaids):
+            query['RelatedMediaids'] = request.related_mediaids
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.status):
@@ -559,154 +563,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.CancelFavoritePublicMediaResponse:
         runtime = util_models.RuntimeOptions()
         return await self.cancel_favorite_public_media_with_options_async(request, runtime)
-
-    def cancel_url_upload_jobs_with_options(
-        self,
-        request: ice20201109_models.CancelUrlUploadJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.CancelUrlUploadJobsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_ids):
-            query['JobIds'] = request.job_ids
-        if not UtilClient.is_unset(request.upload_urls):
-            query['UploadUrls'] = request.upload_urls
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CancelUrlUploadJobs',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.CancelUrlUploadJobsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def cancel_url_upload_jobs_with_options_async(
-        self,
-        request: ice20201109_models.CancelUrlUploadJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.CancelUrlUploadJobsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_ids):
-            query['JobIds'] = request.job_ids
-        if not UtilClient.is_unset(request.upload_urls):
-            query['UploadUrls'] = request.upload_urls
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CancelUrlUploadJobs',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.CancelUrlUploadJobsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def cancel_url_upload_jobs(
-        self,
-        request: ice20201109_models.CancelUrlUploadJobsRequest,
-    ) -> ice20201109_models.CancelUrlUploadJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.cancel_url_upload_jobs_with_options(request, runtime)
-
-    async def cancel_url_upload_jobs_async(
-        self,
-        request: ice20201109_models.CancelUrlUploadJobsRequest,
-    ) -> ice20201109_models.CancelUrlUploadJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.cancel_url_upload_jobs_with_options_async(request, runtime)
-
-    def create_audit_with_options(
-        self,
-        request: ice20201109_models.CreateAuditRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.CreateAuditResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.audit_content):
-            query['AuditContent'] = request.audit_content
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateAudit',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.CreateAuditResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_audit_with_options_async(
-        self,
-        request: ice20201109_models.CreateAuditRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.CreateAuditResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.audit_content):
-            query['AuditContent'] = request.audit_content
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateAudit',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.CreateAuditResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_audit(
-        self,
-        request: ice20201109_models.CreateAuditRequest,
-    ) -> ice20201109_models.CreateAuditResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_audit_with_options(request, runtime)
-
-    async def create_audit_async(
-        self,
-        request: ice20201109_models.CreateAuditRequest,
-    ) -> ice20201109_models.CreateAuditResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_audit_with_options_async(request, runtime)
 
     def create_custom_template_with_options(
         self,
@@ -973,6 +829,174 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.CreateLiveRecordTemplateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_live_record_template_with_options_async(request, runtime)
+
+    def create_live_snapshot_template_with_options(
+        self,
+        request: ice20201109_models.CreateLiveSnapshotTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateLiveSnapshotTemplateResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.overwrite_format):
+            body['OverwriteFormat'] = request.overwrite_format
+        if not UtilClient.is_unset(request.sequence_format):
+            body['SequenceFormat'] = request.sequence_format
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.time_interval):
+            body['TimeInterval'] = request.time_interval
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLiveSnapshotTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateLiveSnapshotTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_live_snapshot_template_with_options_async(
+        self,
+        request: ice20201109_models.CreateLiveSnapshotTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateLiveSnapshotTemplateResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.overwrite_format):
+            body['OverwriteFormat'] = request.overwrite_format
+        if not UtilClient.is_unset(request.sequence_format):
+            body['SequenceFormat'] = request.sequence_format
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.time_interval):
+            body['TimeInterval'] = request.time_interval
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLiveSnapshotTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateLiveSnapshotTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_live_snapshot_template(
+        self,
+        request: ice20201109_models.CreateLiveSnapshotTemplateRequest,
+    ) -> ice20201109_models.CreateLiveSnapshotTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_live_snapshot_template_with_options(request, runtime)
+
+    async def create_live_snapshot_template_async(
+        self,
+        request: ice20201109_models.CreateLiveSnapshotTemplateRequest,
+    ) -> ice20201109_models.CreateLiveSnapshotTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_live_snapshot_template_with_options_async(request, runtime)
+
+    def create_live_transcode_template_with_options(
+        self,
+        tmp_req: ice20201109_models.CreateLiveTranscodeTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateLiveTranscodeTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.CreateLiveTranscodeTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template_config):
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.template_config), 'TemplateConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.template_config_shrink):
+            query['TemplateConfig'] = request.template_config_shrink
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLiveTranscodeTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateLiveTranscodeTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_live_transcode_template_with_options_async(
+        self,
+        tmp_req: ice20201109_models.CreateLiveTranscodeTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateLiveTranscodeTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.CreateLiveTranscodeTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template_config):
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.template_config), 'TemplateConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.template_config_shrink):
+            query['TemplateConfig'] = request.template_config_shrink
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLiveTranscodeTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateLiveTranscodeTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_live_transcode_template(
+        self,
+        request: ice20201109_models.CreateLiveTranscodeTemplateRequest,
+    ) -> ice20201109_models.CreateLiveTranscodeTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_live_transcode_template_with_options(request, runtime)
+
+    async def create_live_transcode_template_async(
+        self,
+        request: ice20201109_models.CreateLiveTranscodeTemplateRequest,
+    ) -> ice20201109_models.CreateLiveTranscodeTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_live_transcode_template_with_options_async(request, runtime)
 
     def create_pipeline_with_options(
         self,
@@ -1520,6 +1544,306 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_editing_projects_with_options_async(request, runtime)
 
+    def delete_live_record_files_with_options(
+        self,
+        request: ice20201109_models.DeleteLiveRecordFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteLiveRecordFilesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.record_ids):
+            query['RecordIds'] = request.record_ids
+        if not UtilClient.is_unset(request.remove_file):
+            query['RemoveFile'] = request.remove_file
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLiveRecordFiles',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteLiveRecordFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_live_record_files_with_options_async(
+        self,
+        request: ice20201109_models.DeleteLiveRecordFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteLiveRecordFilesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.record_ids):
+            query['RecordIds'] = request.record_ids
+        if not UtilClient.is_unset(request.remove_file):
+            query['RemoveFile'] = request.remove_file
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLiveRecordFiles',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteLiveRecordFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_live_record_files(
+        self,
+        request: ice20201109_models.DeleteLiveRecordFilesRequest,
+    ) -> ice20201109_models.DeleteLiveRecordFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_live_record_files_with_options(request, runtime)
+
+    async def delete_live_record_files_async(
+        self,
+        request: ice20201109_models.DeleteLiveRecordFilesRequest,
+    ) -> ice20201109_models.DeleteLiveRecordFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_live_record_files_with_options_async(request, runtime)
+
+    def delete_live_record_template_with_options(
+        self,
+        request: ice20201109_models.DeleteLiveRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteLiveRecordTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLiveRecordTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteLiveRecordTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_live_record_template_with_options_async(
+        self,
+        request: ice20201109_models.DeleteLiveRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteLiveRecordTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLiveRecordTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteLiveRecordTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_live_record_template(
+        self,
+        request: ice20201109_models.DeleteLiveRecordTemplateRequest,
+    ) -> ice20201109_models.DeleteLiveRecordTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_live_record_template_with_options(request, runtime)
+
+    async def delete_live_record_template_async(
+        self,
+        request: ice20201109_models.DeleteLiveRecordTemplateRequest,
+    ) -> ice20201109_models.DeleteLiveRecordTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_live_record_template_with_options_async(request, runtime)
+
+    def delete_live_snapshot_files_with_options(
+        self,
+        tmp_req: ice20201109_models.DeleteLiveSnapshotFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteLiveSnapshotFilesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.DeleteLiveSnapshotFilesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_timestamp_list):
+            request.create_timestamp_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_timestamp_list, 'CreateTimestampList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.create_timestamp_list_shrink):
+            query['CreateTimestampList'] = request.create_timestamp_list_shrink
+        if not UtilClient.is_unset(request.delete_original_file):
+            query['DeleteOriginalFile'] = request.delete_original_file
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLiveSnapshotFiles',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteLiveSnapshotFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_live_snapshot_files_with_options_async(
+        self,
+        tmp_req: ice20201109_models.DeleteLiveSnapshotFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteLiveSnapshotFilesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.DeleteLiveSnapshotFilesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_timestamp_list):
+            request.create_timestamp_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_timestamp_list, 'CreateTimestampList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.create_timestamp_list_shrink):
+            query['CreateTimestampList'] = request.create_timestamp_list_shrink
+        if not UtilClient.is_unset(request.delete_original_file):
+            query['DeleteOriginalFile'] = request.delete_original_file
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLiveSnapshotFiles',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteLiveSnapshotFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_live_snapshot_files(
+        self,
+        request: ice20201109_models.DeleteLiveSnapshotFilesRequest,
+    ) -> ice20201109_models.DeleteLiveSnapshotFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_live_snapshot_files_with_options(request, runtime)
+
+    async def delete_live_snapshot_files_async(
+        self,
+        request: ice20201109_models.DeleteLiveSnapshotFilesRequest,
+    ) -> ice20201109_models.DeleteLiveSnapshotFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_live_snapshot_files_with_options_async(request, runtime)
+
+    def delete_live_snapshot_template_with_options(
+        self,
+        request: ice20201109_models.DeleteLiveSnapshotTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteLiveSnapshotTemplateResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteLiveSnapshotTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteLiveSnapshotTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_live_snapshot_template_with_options_async(
+        self,
+        request: ice20201109_models.DeleteLiveSnapshotTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteLiveSnapshotTemplateResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteLiveSnapshotTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteLiveSnapshotTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_live_snapshot_template(
+        self,
+        request: ice20201109_models.DeleteLiveSnapshotTemplateRequest,
+    ) -> ice20201109_models.DeleteLiveSnapshotTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_live_snapshot_template_with_options(request, runtime)
+
+    async def delete_live_snapshot_template_async(
+        self,
+        request: ice20201109_models.DeleteLiveSnapshotTemplateRequest,
+    ) -> ice20201109_models.DeleteLiveSnapshotTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_live_snapshot_template_with_options_async(request, runtime)
+
     def delete_live_transcode_job_with_options(
         self,
         request: ice20201109_models.DeleteLiveTranscodeJobRequest,
@@ -1667,6 +1991,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeleteMediaInfosResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.delete_physical_files):
+            query['DeletePhysicalFiles'] = request.delete_physical_files
         if not UtilClient.is_unset(request.input_urls):
             query['InputURLs'] = request.input_urls
         if not UtilClient.is_unset(request.media_ids):
@@ -1697,6 +2023,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeleteMediaInfosResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.delete_physical_files):
+            query['DeletePhysicalFiles'] = request.delete_physical_files
         if not UtilClient.is_unset(request.input_urls):
             query['InputURLs'] = request.input_urls
         if not UtilClient.is_unset(request.media_ids):
@@ -1733,76 +2061,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeleteMediaInfosResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_media_infos_with_options_async(request, runtime)
-
-    def delete_media_producing_jobs_with_options(
-        self,
-        request: ice20201109_models.DeleteMediaProducingJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DeleteMediaProducingJobsResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.job_ids):
-            body['JobIds'] = request.job_ids
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteMediaProducingJobs',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DeleteMediaProducingJobsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_media_producing_jobs_with_options_async(
-        self,
-        request: ice20201109_models.DeleteMediaProducingJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DeleteMediaProducingJobsResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.job_ids):
-            body['JobIds'] = request.job_ids
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteMediaProducingJobs',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DeleteMediaProducingJobsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_media_producing_jobs(
-        self,
-        request: ice20201109_models.DeleteMediaProducingJobsRequest,
-    ) -> ice20201109_models.DeleteMediaProducingJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_media_producing_jobs_with_options(request, runtime)
-
-    async def delete_media_producing_jobs_async(
-        self,
-        request: ice20201109_models.DeleteMediaProducingJobsRequest,
-    ) -> ice20201109_models.DeleteMediaProducingJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_media_producing_jobs_with_options_async(request, runtime)
 
     def delete_pipeline_with_options(
         self,
@@ -1881,6 +2139,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeletePlayInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.delete_physical_files):
+            query['DeletePhysicalFiles'] = request.delete_physical_files
         if not UtilClient.is_unset(request.file_urls):
             query['FileURLs'] = request.file_urls
         if not UtilClient.is_unset(request.media_id):
@@ -1911,6 +2171,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeletePlayInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.delete_physical_files):
+            query['DeletePhysicalFiles'] = request.delete_physical_files
         if not UtilClient.is_unset(request.file_urls):
             query['FileURLs'] = request.file_urls
         if not UtilClient.is_unset(request.media_id):
@@ -2084,76 +2346,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_template_with_options_async(request, runtime)
 
-    def describe_biz_user_type_with_options(
-        self,
-        request: ice20201109_models.DescribeBizUserTypeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeBizUserTypeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeBizUserType',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeBizUserTypeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_biz_user_type_with_options_async(
-        self,
-        request: ice20201109_models.DescribeBizUserTypeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeBizUserTypeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeBizUserType',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeBizUserTypeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_biz_user_type(
-        self,
-        request: ice20201109_models.DescribeBizUserTypeRequest,
-    ) -> ice20201109_models.DescribeBizUserTypeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_biz_user_type_with_options(request, runtime)
-
-    async def describe_biz_user_type_async(
-        self,
-        request: ice20201109_models.DescribeBizUserTypeRequest,
-    ) -> ice20201109_models.DescribeBizUserTypeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_biz_user_type_with_options_async(request, runtime)
-
     def describe_filter_configs_with_options(
         self,
         request: ice20201109_models.DescribeFilterConfigsRequest,
@@ -2223,646 +2415,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DescribeFilterConfigsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_filter_configs_with_options_async(request, runtime)
-
-    def describe_live_pub_experience_metric_data_with_options(
-        self,
-        request: ice20201109_models.DescribeLivePubExperienceMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLivePubExperienceMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.domain):
-            query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.pub_protocol):
-            query['PubProtocol'] = request.pub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLivePubExperienceMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLivePubExperienceMetricDataResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_live_pub_experience_metric_data_with_options_async(
-        self,
-        request: ice20201109_models.DescribeLivePubExperienceMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLivePubExperienceMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.domain):
-            query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.pub_protocol):
-            query['PubProtocol'] = request.pub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLivePubExperienceMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLivePubExperienceMetricDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_live_pub_experience_metric_data(
-        self,
-        request: ice20201109_models.DescribeLivePubExperienceMetricDataRequest,
-    ) -> ice20201109_models.DescribeLivePubExperienceMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_live_pub_experience_metric_data_with_options(request, runtime)
-
-    async def describe_live_pub_experience_metric_data_async(
-        self,
-        request: ice20201109_models.DescribeLivePubExperienceMetricDataRequest,
-    ) -> ice20201109_models.DescribeLivePubExperienceMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_live_pub_experience_metric_data_with_options_async(request, runtime)
-
-    def describe_live_pub_list_with_options(
-        self,
-        request: ice20201109_models.DescribeLivePubListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLivePubListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.domain):
-            query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.page_num):
-            query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.pub_protocol):
-            query['PubProtocol'] = request.pub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLivePubList',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLivePubListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_live_pub_list_with_options_async(
-        self,
-        request: ice20201109_models.DescribeLivePubListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLivePubListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.domain):
-            query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.page_num):
-            query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.pub_protocol):
-            query['PubProtocol'] = request.pub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLivePubList',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLivePubListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_live_pub_list(
-        self,
-        request: ice20201109_models.DescribeLivePubListRequest,
-    ) -> ice20201109_models.DescribeLivePubListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_live_pub_list_with_options(request, runtime)
-
-    async def describe_live_pub_list_async(
-        self,
-        request: ice20201109_models.DescribeLivePubListRequest,
-    ) -> ice20201109_models.DescribeLivePubListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_live_pub_list_with_options_async(request, runtime)
-
-    def describe_live_pub_metric_data_with_options(
-        self,
-        request: ice20201109_models.DescribeLivePubMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLivePubMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.domain):
-            query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.pub_protocol):
-            query['PubProtocol'] = request.pub_protocol
-        if not UtilClient.is_unset(request.sdk_version):
-            query['SdkVersion'] = request.sdk_version
-        if not UtilClient.is_unset(request.stream_name):
-            query['StreamName'] = request.stream_name
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLivePubMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLivePubMetricDataResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_live_pub_metric_data_with_options_async(
-        self,
-        request: ice20201109_models.DescribeLivePubMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLivePubMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.domain):
-            query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.pub_protocol):
-            query['PubProtocol'] = request.pub_protocol
-        if not UtilClient.is_unset(request.sdk_version):
-            query['SdkVersion'] = request.sdk_version
-        if not UtilClient.is_unset(request.stream_name):
-            query['StreamName'] = request.stream_name
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLivePubMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLivePubMetricDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_live_pub_metric_data(
-        self,
-        request: ice20201109_models.DescribeLivePubMetricDataRequest,
-    ) -> ice20201109_models.DescribeLivePubMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_live_pub_metric_data_with_options(request, runtime)
-
-    async def describe_live_pub_metric_data_async(
-        self,
-        request: ice20201109_models.DescribeLivePubMetricDataRequest,
-    ) -> ice20201109_models.DescribeLivePubMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_live_pub_metric_data_with_options_async(request, runtime)
-
-    def describe_live_sub_experience_metric_data_with_options(
-        self,
-        request: ice20201109_models.DescribeLiveSubExperienceMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLiveSubExperienceMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.sub_protocol):
-            query['SubProtocol'] = request.sub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLiveSubExperienceMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLiveSubExperienceMetricDataResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_live_sub_experience_metric_data_with_options_async(
-        self,
-        request: ice20201109_models.DescribeLiveSubExperienceMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLiveSubExperienceMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.sub_protocol):
-            query['SubProtocol'] = request.sub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLiveSubExperienceMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLiveSubExperienceMetricDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_live_sub_experience_metric_data(
-        self,
-        request: ice20201109_models.DescribeLiveSubExperienceMetricDataRequest,
-    ) -> ice20201109_models.DescribeLiveSubExperienceMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_live_sub_experience_metric_data_with_options(request, runtime)
-
-    async def describe_live_sub_experience_metric_data_async(
-        self,
-        request: ice20201109_models.DescribeLiveSubExperienceMetricDataRequest,
-    ) -> ice20201109_models.DescribeLiveSubExperienceMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_live_sub_experience_metric_data_with_options_async(request, runtime)
-
-    def describe_live_sub_list_with_options(
-        self,
-        request: ice20201109_models.DescribeLiveSubListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLiveSubListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.definition):
-            query['Definition'] = request.definition
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.item_configs):
-            query['ItemConfigs'] = request.item_configs
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.network):
-            query['Network'] = request.network
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.page_no):
-            query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.stream_name):
-            query['StreamName'] = request.stream_name
-        if not UtilClient.is_unset(request.sub_protocol):
-            query['SubProtocol'] = request.sub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLiveSubList',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLiveSubListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_live_sub_list_with_options_async(
-        self,
-        request: ice20201109_models.DescribeLiveSubListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLiveSubListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.definition):
-            query['Definition'] = request.definition
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.item_configs):
-            query['ItemConfigs'] = request.item_configs
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.network):
-            query['Network'] = request.network
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.page_no):
-            query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.stream_name):
-            query['StreamName'] = request.stream_name
-        if not UtilClient.is_unset(request.sub_protocol):
-            query['SubProtocol'] = request.sub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLiveSubList',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLiveSubListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_live_sub_list(
-        self,
-        request: ice20201109_models.DescribeLiveSubListRequest,
-    ) -> ice20201109_models.DescribeLiveSubListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_live_sub_list_with_options(request, runtime)
-
-    async def describe_live_sub_list_async(
-        self,
-        request: ice20201109_models.DescribeLiveSubListRequest,
-    ) -> ice20201109_models.DescribeLiveSubListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_live_sub_list_with_options_async(request, runtime)
-
-    def describe_live_sub_metric_data_with_options(
-        self,
-        request: ice20201109_models.DescribeLiveSubMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLiveSubMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.definition):
-            query['Definition'] = request.definition
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.item_configs):
-            query['ItemConfigs'] = request.item_configs
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.network):
-            query['Network'] = request.network
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.sdk_version):
-            query['SdkVersion'] = request.sdk_version
-        if not UtilClient.is_unset(request.stream_name):
-            query['StreamName'] = request.stream_name
-        if not UtilClient.is_unset(request.sub_protocol):
-            query['SubProtocol'] = request.sub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLiveSubMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLiveSubMetricDataResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_live_sub_metric_data_with_options_async(
-        self,
-        request: ice20201109_models.DescribeLiveSubMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLiveSubMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.definition):
-            query['Definition'] = request.definition
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.item_configs):
-            query['ItemConfigs'] = request.item_configs
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.network):
-            query['Network'] = request.network
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.sdk_version):
-            query['SdkVersion'] = request.sdk_version
-        if not UtilClient.is_unset(request.stream_name):
-            query['StreamName'] = request.stream_name
-        if not UtilClient.is_unset(request.sub_protocol):
-            query['SubProtocol'] = request.sub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLiveSubMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLiveSubMetricDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_live_sub_metric_data(
-        self,
-        request: ice20201109_models.DescribeLiveSubMetricDataRequest,
-    ) -> ice20201109_models.DescribeLiveSubMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_live_sub_metric_data_with_options(request, runtime)
-
-    async def describe_live_sub_metric_data_async(
-        self,
-        request: ice20201109_models.DescribeLiveSubMetricDataRequest,
-    ) -> ice20201109_models.DescribeLiveSubMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_live_sub_metric_data_with_options_async(request, runtime)
 
     def describe_meter_ice_edit_usage_with_options(
         self,
@@ -3274,11 +2826,667 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_meter_ice_mps_ai_usage_with_options_async(request, runtime)
 
-    def describe_meter_ice_summary_with_options(
+    def describe_meter_ims_edit_usage_with_options(
         self,
-        request: ice20201109_models.DescribeMeterIceSummaryRequest,
+        request: ice20201109_models.DescribeMeterImsEditUsageRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeMeterIceSummaryResponse:
+    ) -> ice20201109_models.DescribeMeterImsEditUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsEditUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsEditUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_meter_ims_edit_usage_with_options_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsEditUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsEditUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsEditUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsEditUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_meter_ims_edit_usage(
+        self,
+        request: ice20201109_models.DescribeMeterImsEditUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsEditUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_meter_ims_edit_usage_with_options(request, runtime)
+
+    async def describe_meter_ims_edit_usage_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsEditUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsEditUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_meter_ims_edit_usage_with_options_async(request, runtime)
+
+    def describe_meter_ims_live_edit_usage_with_options(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveEditUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsLiveEditUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsLiveEditUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsLiveEditUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_meter_ims_live_edit_usage_with_options_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveEditUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsLiveEditUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsLiveEditUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsLiveEditUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_meter_ims_live_edit_usage(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveEditUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsLiveEditUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_meter_ims_live_edit_usage_with_options(request, runtime)
+
+    async def describe_meter_ims_live_edit_usage_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveEditUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsLiveEditUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_meter_ims_live_edit_usage_with_options_async(request, runtime)
+
+    def describe_meter_ims_live_media_convert_usage_with_options(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveMediaConvertUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsLiveMediaConvertUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsLiveMediaConvertUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsLiveMediaConvertUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_meter_ims_live_media_convert_usage_with_options_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveMediaConvertUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsLiveMediaConvertUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsLiveMediaConvertUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsLiveMediaConvertUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_meter_ims_live_media_convert_usage(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveMediaConvertUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsLiveMediaConvertUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_meter_ims_live_media_convert_usage_with_options(request, runtime)
+
+    async def describe_meter_ims_live_media_convert_usage_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveMediaConvertUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsLiveMediaConvertUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_meter_ims_live_media_convert_usage_with_options_async(request, runtime)
+
+    def describe_meter_ims_live_record_usage_with_options(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveRecordUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsLiveRecordUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsLiveRecordUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsLiveRecordUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_meter_ims_live_record_usage_with_options_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveRecordUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsLiveRecordUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsLiveRecordUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsLiveRecordUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_meter_ims_live_record_usage(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveRecordUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsLiveRecordUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_meter_ims_live_record_usage_with_options(request, runtime)
+
+    async def describe_meter_ims_live_record_usage_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveRecordUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsLiveRecordUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_meter_ims_live_record_usage_with_options_async(request, runtime)
+
+    def describe_meter_ims_live_snapshot_usage_with_options(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveSnapshotUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsLiveSnapshotUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsLiveSnapshotUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsLiveSnapshotUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_meter_ims_live_snapshot_usage_with_options_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveSnapshotUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsLiveSnapshotUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsLiveSnapshotUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsLiveSnapshotUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_meter_ims_live_snapshot_usage(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveSnapshotUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsLiveSnapshotUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_meter_ims_live_snapshot_usage_with_options(request, runtime)
+
+    async def describe_meter_ims_live_snapshot_usage_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsLiveSnapshotUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsLiveSnapshotUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_meter_ims_live_snapshot_usage_with_options_async(request, runtime)
+
+    def describe_meter_ims_media_convert_uhdusage_with_options(
+        self,
+        request: ice20201109_models.DescribeMeterImsMediaConvertUHDUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsMediaConvertUHDUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsMediaConvertUHDUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsMediaConvertUHDUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_meter_ims_media_convert_uhdusage_with_options_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsMediaConvertUHDUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsMediaConvertUHDUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsMediaConvertUHDUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsMediaConvertUHDUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_meter_ims_media_convert_uhdusage(
+        self,
+        request: ice20201109_models.DescribeMeterImsMediaConvertUHDUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsMediaConvertUHDUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_meter_ims_media_convert_uhdusage_with_options(request, runtime)
+
+    async def describe_meter_ims_media_convert_uhdusage_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsMediaConvertUHDUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsMediaConvertUHDUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_meter_ims_media_convert_uhdusage_with_options_async(request, runtime)
+
+    def describe_meter_ims_media_convert_usage_with_options(
+        self,
+        request: ice20201109_models.DescribeMeterImsMediaConvertUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsMediaConvertUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsMediaConvertUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsMediaConvertUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_meter_ims_media_convert_usage_with_options_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsMediaConvertUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsMediaConvertUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsMediaConvertUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsMediaConvertUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_meter_ims_media_convert_usage(
+        self,
+        request: ice20201109_models.DescribeMeterImsMediaConvertUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsMediaConvertUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_meter_ims_media_convert_usage_with_options(request, runtime)
+
+    async def describe_meter_ims_media_convert_usage_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsMediaConvertUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsMediaConvertUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_meter_ims_media_convert_usage_with_options_async(request, runtime)
+
+    def describe_meter_ims_mps_ai_usage_with_options(
+        self,
+        request: ice20201109_models.DescribeMeterImsMpsAiUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsMpsAiUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsMpsAiUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsMpsAiUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_meter_ims_mps_ai_usage_with_options_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsMpsAiUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsMpsAiUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMeterImsMpsAiUsage',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeMeterImsMpsAiUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_meter_ims_mps_ai_usage(
+        self,
+        request: ice20201109_models.DescribeMeterImsMpsAiUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsMpsAiUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_meter_ims_mps_ai_usage_with_options(request, runtime)
+
+    async def describe_meter_ims_mps_ai_usage_async(
+        self,
+        request: ice20201109_models.DescribeMeterImsMpsAiUsageRequest,
+    ) -> ice20201109_models.DescribeMeterImsMpsAiUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_meter_ims_mps_ai_usage_with_options_async(request, runtime)
+
+    def describe_meter_ims_summary_with_options(
+        self,
+        request: ice20201109_models.DescribeMeterImsSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeMeterImsSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_ts):
@@ -3291,7 +3499,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribeMeterIceSummary',
+            action='DescribeMeterImsSummary',
             version='2020-11-09',
             protocol='HTTPS',
             pathname='/',
@@ -3302,15 +3510,15 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ice20201109_models.DescribeMeterIceSummaryResponse(),
+            ice20201109_models.DescribeMeterImsSummaryResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def describe_meter_ice_summary_with_options_async(
+    async def describe_meter_ims_summary_with_options_async(
         self,
-        request: ice20201109_models.DescribeMeterIceSummaryRequest,
+        request: ice20201109_models.DescribeMeterImsSummaryRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeMeterIceSummaryResponse:
+    ) -> ice20201109_models.DescribeMeterImsSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_ts):
@@ -3323,7 +3531,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribeMeterIceSummary',
+            action='DescribeMeterImsSummary',
             version='2020-11-09',
             protocol='HTTPS',
             pathname='/',
@@ -3334,38 +3542,38 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ice20201109_models.DescribeMeterIceSummaryResponse(),
+            ice20201109_models.DescribeMeterImsSummaryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_meter_ice_summary(
+    def describe_meter_ims_summary(
         self,
-        request: ice20201109_models.DescribeMeterIceSummaryRequest,
-    ) -> ice20201109_models.DescribeMeterIceSummaryResponse:
+        request: ice20201109_models.DescribeMeterImsSummaryRequest,
+    ) -> ice20201109_models.DescribeMeterImsSummaryResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_meter_ice_summary_with_options(request, runtime)
+        return self.describe_meter_ims_summary_with_options(request, runtime)
 
-    async def describe_meter_ice_summary_async(
+    async def describe_meter_ims_summary_async(
         self,
-        request: ice20201109_models.DescribeMeterIceSummaryRequest,
-    ) -> ice20201109_models.DescribeMeterIceSummaryResponse:
+        request: ice20201109_models.DescribeMeterImsSummaryRequest,
+    ) -> ice20201109_models.DescribeMeterImsSummaryResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_meter_ice_summary_with_options_async(request, runtime)
+        return await self.describe_meter_ims_summary_with_options_async(request, runtime)
 
-    def describe_paly_detail_with_options(
+    def describe_play_detail_with_options(
         self,
-        request: ice20201109_models.DescribePalyDetailRequest,
+        request: ice20201109_models.DescribePlayDetailRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribePalyDetailResponse:
+    ) -> ice20201109_models.DescribePlayDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.trace_id):
-            query['TraceId'] = request.trace_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribePalyDetail',
+            action='DescribePlayDetail',
             version='2020-11-09',
             protocol='HTTPS',
             pathname='/',
@@ -3376,24 +3584,24 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ice20201109_models.DescribePalyDetailResponse(),
+            ice20201109_models.DescribePlayDetailResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def describe_paly_detail_with_options_async(
+    async def describe_play_detail_with_options_async(
         self,
-        request: ice20201109_models.DescribePalyDetailRequest,
+        request: ice20201109_models.DescribePlayDetailRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribePalyDetailResponse:
+    ) -> ice20201109_models.DescribePlayDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.trace_id):
-            query['TraceId'] = request.trace_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribePalyDetail',
+            action='DescribePlayDetail',
             version='2020-11-09',
             protocol='HTTPS',
             pathname='/',
@@ -3404,42 +3612,42 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ice20201109_models.DescribePalyDetailResponse(),
+            ice20201109_models.DescribePlayDetailResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_paly_detail(
+    def describe_play_detail(
         self,
-        request: ice20201109_models.DescribePalyDetailRequest,
-    ) -> ice20201109_models.DescribePalyDetailResponse:
+        request: ice20201109_models.DescribePlayDetailRequest,
+    ) -> ice20201109_models.DescribePlayDetailResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_paly_detail_with_options(request, runtime)
+        return self.describe_play_detail_with_options(request, runtime)
 
-    async def describe_paly_detail_async(
+    async def describe_play_detail_async(
         self,
-        request: ice20201109_models.DescribePalyDetailRequest,
-    ) -> ice20201109_models.DescribePalyDetailResponse:
+        request: ice20201109_models.DescribePlayDetailRequest,
+    ) -> ice20201109_models.DescribePlayDetailResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_paly_detail_with_options_async(request, runtime)
+        return await self.describe_play_detail_with_options_async(request, runtime)
 
-    def describe_paly_event_list_with_options(
+    def describe_play_event_list_with_options(
         self,
-        request: ice20201109_models.DescribePalyEventListRequest,
+        request: ice20201109_models.DescribePlayEventListRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribePalyEventListResponse:
+    ) -> ice20201109_models.DescribePlayEventListResponse:
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.trace_id):
-            query['TraceId'] = request.trace_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribePalyEventList',
+            action='DescribePlayEventList',
             version='2020-11-09',
             protocol='HTTPS',
             pathname='/',
@@ -3450,28 +3658,28 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ice20201109_models.DescribePalyEventListResponse(),
+            ice20201109_models.DescribePlayEventListResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def describe_paly_event_list_with_options_async(
+    async def describe_play_event_list_with_options_async(
         self,
-        request: ice20201109_models.DescribePalyEventListRequest,
+        request: ice20201109_models.DescribePlayEventListRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribePalyEventListResponse:
+    ) -> ice20201109_models.DescribePlayEventListResponse:
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.trace_id):
-            query['TraceId'] = request.trace_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribePalyEventList',
+            action='DescribePlayEventList',
             version='2020-11-09',
             protocol='HTTPS',
             pathname='/',
@@ -3482,215 +3690,23 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ice20201109_models.DescribePalyEventListResponse(),
+            ice20201109_models.DescribePlayEventListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_paly_event_list(
+    def describe_play_event_list(
         self,
-        request: ice20201109_models.DescribePalyEventListRequest,
-    ) -> ice20201109_models.DescribePalyEventListResponse:
+        request: ice20201109_models.DescribePlayEventListRequest,
+    ) -> ice20201109_models.DescribePlayEventListResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_paly_event_list_with_options(request, runtime)
+        return self.describe_play_event_list_with_options(request, runtime)
 
-    async def describe_paly_event_list_async(
+    async def describe_play_event_list_async(
         self,
-        request: ice20201109_models.DescribePalyEventListRequest,
-    ) -> ice20201109_models.DescribePalyEventListResponse:
+        request: ice20201109_models.DescribePlayEventListRequest,
+    ) -> ice20201109_models.DescribePlayEventListResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_paly_event_list_with_options_async(request, runtime)
-
-    def describe_paly_list_with_options(
-        self,
-        request: ice20201109_models.DescribePalyListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribePalyListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.order_name):
-            query['OrderName'] = request.order_name
-        if not UtilClient.is_unset(request.order_type):
-            query['OrderType'] = request.order_type
-        if not UtilClient.is_unset(request.page_no):
-            query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.play_type):
-            query['PlayType'] = request.play_type
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.trace_id):
-            query['TraceId'] = request.trace_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribePalyList',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribePalyListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_paly_list_with_options_async(
-        self,
-        request: ice20201109_models.DescribePalyListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribePalyListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.order_name):
-            query['OrderName'] = request.order_name
-        if not UtilClient.is_unset(request.order_type):
-            query['OrderType'] = request.order_type
-        if not UtilClient.is_unset(request.page_no):
-            query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.play_type):
-            query['PlayType'] = request.play_type
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.trace_id):
-            query['TraceId'] = request.trace_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribePalyList',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribePalyListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_paly_list(
-        self,
-        request: ice20201109_models.DescribePalyListRequest,
-    ) -> ice20201109_models.DescribePalyListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_paly_list_with_options(request, runtime)
-
-    async def describe_paly_list_async(
-        self,
-        request: ice20201109_models.DescribePalyListRequest,
-    ) -> ice20201109_models.DescribePalyListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_paly_list_with_options_async(request, runtime)
-
-    def describe_play_experience_metric_data_with_options(
-        self,
-        request: ice20201109_models.DescribePlayExperienceMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribePlayExperienceMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribePlayExperienceMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribePlayExperienceMetricDataResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_play_experience_metric_data_with_options_async(
-        self,
-        request: ice20201109_models.DescribePlayExperienceMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribePlayExperienceMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribePlayExperienceMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribePlayExperienceMetricDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_play_experience_metric_data(
-        self,
-        request: ice20201109_models.DescribePlayExperienceMetricDataRequest,
-    ) -> ice20201109_models.DescribePlayExperienceMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_play_experience_metric_data_with_options(request, runtime)
-
-    async def describe_play_experience_metric_data_async(
-        self,
-        request: ice20201109_models.DescribePlayExperienceMetricDataRequest,
-    ) -> ice20201109_models.DescribePlayExperienceMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_play_experience_metric_data_with_options_async(request, runtime)
+        return await self.describe_play_event_list_with_options_async(request, runtime)
 
     def describe_play_first_frame_duration_metric_data_with_options(
         self,
@@ -3769,6 +3785,108 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DescribePlayFirstFrameDurationMetricDataResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_play_first_frame_duration_metric_data_with_options_async(request, runtime)
+
+    def describe_play_list_with_options(
+        self,
+        request: ice20201109_models.DescribePlayListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribePlayListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.begin_ts):
+            query['BeginTs'] = request.begin_ts
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.order_name):
+            query['OrderName'] = request.order_name
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.play_type):
+            query['PlayType'] = request.play_type
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.trace_id):
+            query['TraceId'] = request.trace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePlayList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribePlayListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_play_list_with_options_async(
+        self,
+        request: ice20201109_models.DescribePlayListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribePlayListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.begin_ts):
+            query['BeginTs'] = request.begin_ts
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.order_name):
+            query['OrderName'] = request.order_name
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.play_type):
+            query['PlayType'] = request.play_type
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.trace_id):
+            query['TraceId'] = request.trace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePlayList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribePlayListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_play_list(
+        self,
+        request: ice20201109_models.DescribePlayListRequest,
+    ) -> ice20201109_models.DescribePlayListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_play_list_with_options(request, runtime)
+
+    async def describe_play_list_async(
+        self,
+        request: ice20201109_models.DescribePlayListRequest,
+    ) -> ice20201109_models.DescribePlayListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_play_list_with_options_async(request, runtime)
 
     def describe_play_metric_data_with_options(
         self,
@@ -3882,10 +4000,14 @@ class Client(OpenApiClient):
 
     def describe_play_qoe_list_with_options(
         self,
-        request: ice20201109_models.DescribePlayQoeListRequest,
+        tmp_req: ice20201109_models.DescribePlayQoeListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribePlayQoeListResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.DescribePlayQoeListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.metric_types):
+            request.metric_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.metric_types, 'MetricTypes', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
@@ -3897,10 +4019,14 @@ class Client(OpenApiClient):
             query['EndTs'] = request.end_ts
         if not UtilClient.is_unset(request.item_configs):
             query['ItemConfigs'] = request.item_configs
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.metric_types_shrink):
+            query['MetricTypes'] = request.metric_types_shrink
         if not UtilClient.is_unset(request.network):
             query['Network'] = request.network
+        if not UtilClient.is_unset(request.order_name):
+            query['OrderName'] = request.order_name
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.os):
             query['Os'] = request.os
         if not UtilClient.is_unset(request.page_no):
@@ -3930,10 +4056,14 @@ class Client(OpenApiClient):
 
     async def describe_play_qoe_list_with_options_async(
         self,
-        request: ice20201109_models.DescribePlayQoeListRequest,
+        tmp_req: ice20201109_models.DescribePlayQoeListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribePlayQoeListResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.DescribePlayQoeListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.metric_types):
+            request.metric_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.metric_types, 'MetricTypes', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
@@ -3945,10 +4075,14 @@ class Client(OpenApiClient):
             query['EndTs'] = request.end_ts
         if not UtilClient.is_unset(request.item_configs):
             query['ItemConfigs'] = request.item_configs
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.metric_types_shrink):
+            query['MetricTypes'] = request.metric_types_shrink
         if not UtilClient.is_unset(request.network):
             query['Network'] = request.network
+        if not UtilClient.is_unset(request.order_name):
+            query['OrderName'] = request.order_name
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.os):
             query['Os'] = request.os
         if not UtilClient.is_unset(request.page_no):
@@ -3992,10 +4126,14 @@ class Client(OpenApiClient):
 
     def describe_play_qos_list_with_options(
         self,
-        request: ice20201109_models.DescribePlayQosListRequest,
+        tmp_req: ice20201109_models.DescribePlayQosListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribePlayQosListResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.DescribePlayQosListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.metric_types):
+            request.metric_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.metric_types, 'MetricTypes', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
@@ -4007,10 +4145,14 @@ class Client(OpenApiClient):
             query['EndTs'] = request.end_ts
         if not UtilClient.is_unset(request.item_configs):
             query['ItemConfigs'] = request.item_configs
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.metric_types_shrink):
+            query['MetricTypes'] = request.metric_types_shrink
         if not UtilClient.is_unset(request.network):
             query['Network'] = request.network
+        if not UtilClient.is_unset(request.order_name):
+            query['OrderName'] = request.order_name
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.os):
             query['Os'] = request.os
         if not UtilClient.is_unset(request.page_no):
@@ -4040,10 +4182,14 @@ class Client(OpenApiClient):
 
     async def describe_play_qos_list_with_options_async(
         self,
-        request: ice20201109_models.DescribePlayQosListRequest,
+        tmp_req: ice20201109_models.DescribePlayQosListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribePlayQosListResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.DescribePlayQosListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.metric_types):
+            request.metric_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.metric_types, 'MetricTypes', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
@@ -4055,10 +4201,14 @@ class Client(OpenApiClient):
             query['EndTs'] = request.end_ts
         if not UtilClient.is_unset(request.item_configs):
             query['ItemConfigs'] = request.item_configs
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.metric_types_shrink):
+            query['MetricTypes'] = request.metric_types_shrink
         if not UtilClient.is_unset(request.network):
             query['Network'] = request.network
+        if not UtilClient.is_unset(request.order_name):
+            query['OrderName'] = request.order_name
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.os):
             query['Os'] = request.os
         if not UtilClient.is_unset(request.page_no):
@@ -4170,146 +4320,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_query_configs_with_options_async(request, runtime)
 
-    def download_resource_by_resource_ids_with_options(
-        self,
-        request: ice20201109_models.DownloadResourceByResourceIdsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DownloadResourceByResourceIdsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.resource_ids):
-            query['ResourceIds'] = request.resource_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DownloadResourceByResourceIds',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DownloadResourceByResourceIdsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def download_resource_by_resource_ids_with_options_async(
-        self,
-        request: ice20201109_models.DownloadResourceByResourceIdsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DownloadResourceByResourceIdsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.resource_ids):
-            query['ResourceIds'] = request.resource_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DownloadResourceByResourceIds',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DownloadResourceByResourceIdsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def download_resource_by_resource_ids(
-        self,
-        request: ice20201109_models.DownloadResourceByResourceIdsRequest,
-    ) -> ice20201109_models.DownloadResourceByResourceIdsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.download_resource_by_resource_ids_with_options(request, runtime)
-
-    async def download_resource_by_resource_ids_async(
-        self,
-        request: ice20201109_models.DownloadResourceByResourceIdsRequest,
-    ) -> ice20201109_models.DownloadResourceByResourceIdsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.download_resource_by_resource_ids_with_options_async(request, runtime)
-
-    def get_audit_config_with_options(
-        self,
-        request: ice20201109_models.GetAuditConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetAuditConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetAuditConfig',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetAuditConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_audit_config_with_options_async(
-        self,
-        request: ice20201109_models.GetAuditConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetAuditConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetAuditConfig',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetAuditConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_audit_config(
-        self,
-        request: ice20201109_models.GetAuditConfigRequest,
-    ) -> ice20201109_models.GetAuditConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_audit_config_with_options(request, runtime)
-
-    async def get_audit_config_async(
-        self,
-        request: ice20201109_models.GetAuditConfigRequest,
-    ) -> ice20201109_models.GetAuditConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_audit_config_with_options_async(request, runtime)
-
     def get_categories_with_options(
         self,
         request: ice20201109_models.GetCategoriesRequest,
@@ -4395,84 +4405,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetCategoriesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_categories_with_options_async(request, runtime)
-
-    def get_client_config_with_options(
-        self,
-        request: ice20201109_models.GetClientConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetClientConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bundle_id):
-            query['BundleId'] = request.bundle_id
-        if not UtilClient.is_unset(request.pkg_name):
-            query['PkgName'] = request.pkg_name
-        if not UtilClient.is_unset(request.pkg_signature):
-            query['PkgSignature'] = request.pkg_signature
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetClientConfig',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetClientConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_client_config_with_options_async(
-        self,
-        request: ice20201109_models.GetClientConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetClientConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bundle_id):
-            query['BundleId'] = request.bundle_id
-        if not UtilClient.is_unset(request.pkg_name):
-            query['PkgName'] = request.pkg_name
-        if not UtilClient.is_unset(request.pkg_signature):
-            query['PkgSignature'] = request.pkg_signature
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetClientConfig',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetClientConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_client_config(
-        self,
-        request: ice20201109_models.GetClientConfigRequest,
-    ) -> ice20201109_models.GetClientConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_client_config_with_options(request, runtime)
-
-    async def get_client_config_async(
-        self,
-        request: ice20201109_models.GetClientConfigRequest,
-    ) -> ice20201109_models.GetClientConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_client_config_with_options_async(request, runtime)
 
     def get_custom_template_with_options(
         self,
@@ -4998,6 +4930,270 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_live_editing_job_with_options_async(request, runtime)
 
+    def get_live_record_job_with_options(
+        self,
+        request: ice20201109_models.GetLiveRecordJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetLiveRecordJobResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLiveRecordJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetLiveRecordJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_live_record_job_with_options_async(
+        self,
+        request: ice20201109_models.GetLiveRecordJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetLiveRecordJobResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLiveRecordJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetLiveRecordJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_live_record_job(
+        self,
+        request: ice20201109_models.GetLiveRecordJobRequest,
+    ) -> ice20201109_models.GetLiveRecordJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_live_record_job_with_options(request, runtime)
+
+    async def get_live_record_job_async(
+        self,
+        request: ice20201109_models.GetLiveRecordJobRequest,
+    ) -> ice20201109_models.GetLiveRecordJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_live_record_job_with_options_async(request, runtime)
+
+    def get_live_record_template_with_options(
+        self,
+        request: ice20201109_models.GetLiveRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetLiveRecordTemplateResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLiveRecordTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetLiveRecordTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_live_record_template_with_options_async(
+        self,
+        request: ice20201109_models.GetLiveRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetLiveRecordTemplateResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLiveRecordTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetLiveRecordTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_live_record_template(
+        self,
+        request: ice20201109_models.GetLiveRecordTemplateRequest,
+    ) -> ice20201109_models.GetLiveRecordTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_live_record_template_with_options(request, runtime)
+
+    async def get_live_record_template_async(
+        self,
+        request: ice20201109_models.GetLiveRecordTemplateRequest,
+    ) -> ice20201109_models.GetLiveRecordTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_live_record_template_with_options_async(request, runtime)
+
+    def get_live_snapshot_job_with_options(
+        self,
+        request: ice20201109_models.GetLiveSnapshotJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetLiveSnapshotJobResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLiveSnapshotJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetLiveSnapshotJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_live_snapshot_job_with_options_async(
+        self,
+        request: ice20201109_models.GetLiveSnapshotJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetLiveSnapshotJobResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLiveSnapshotJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetLiveSnapshotJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_live_snapshot_job(
+        self,
+        request: ice20201109_models.GetLiveSnapshotJobRequest,
+    ) -> ice20201109_models.GetLiveSnapshotJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_live_snapshot_job_with_options(request, runtime)
+
+    async def get_live_snapshot_job_async(
+        self,
+        request: ice20201109_models.GetLiveSnapshotJobRequest,
+    ) -> ice20201109_models.GetLiveSnapshotJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_live_snapshot_job_with_options_async(request, runtime)
+
+    def get_live_snapshot_template_with_options(
+        self,
+        request: ice20201109_models.GetLiveSnapshotTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetLiveSnapshotTemplateResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLiveSnapshotTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetLiveSnapshotTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_live_snapshot_template_with_options_async(
+        self,
+        request: ice20201109_models.GetLiveSnapshotTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetLiveSnapshotTemplateResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLiveSnapshotTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetLiveSnapshotTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_live_snapshot_template(
+        self,
+        request: ice20201109_models.GetLiveSnapshotTemplateRequest,
+    ) -> ice20201109_models.GetLiveSnapshotTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_live_snapshot_template_with_options(request, runtime)
+
+    async def get_live_snapshot_template_async(
+        self,
+        request: ice20201109_models.GetLiveSnapshotTemplateRequest,
+    ) -> ice20201109_models.GetLiveSnapshotTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_live_snapshot_template_with_options_async(request, runtime)
+
     def get_live_transcode_job_with_options(
         self,
         request: ice20201109_models.GetLiveTranscodeJobRequest,
@@ -5137,154 +5333,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetLiveTranscodeTemplateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_live_transcode_template_with_options_async(request, runtime)
-
-    def get_media_audit_result_with_options(
-        self,
-        request: ice20201109_models.GetMediaAuditResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetMediaAuditResultResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetMediaAuditResult',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetMediaAuditResultResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_media_audit_result_with_options_async(
-        self,
-        request: ice20201109_models.GetMediaAuditResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetMediaAuditResultResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetMediaAuditResult',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetMediaAuditResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_media_audit_result(
-        self,
-        request: ice20201109_models.GetMediaAuditResultRequest,
-    ) -> ice20201109_models.GetMediaAuditResultResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_media_audit_result_with_options(request, runtime)
-
-    async def get_media_audit_result_async(
-        self,
-        request: ice20201109_models.GetMediaAuditResultRequest,
-    ) -> ice20201109_models.GetMediaAuditResultResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_media_audit_result_with_options_async(request, runtime)
-
-    def get_media_audit_result_detail_with_options(
-        self,
-        request: ice20201109_models.GetMediaAuditResultDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetMediaAuditResultDetailResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetMediaAuditResultDetail',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetMediaAuditResultDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_media_audit_result_detail_with_options_async(
-        self,
-        request: ice20201109_models.GetMediaAuditResultDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetMediaAuditResultDetailResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetMediaAuditResultDetail',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetMediaAuditResultDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_media_audit_result_detail(
-        self,
-        request: ice20201109_models.GetMediaAuditResultDetailRequest,
-    ) -> ice20201109_models.GetMediaAuditResultDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_media_audit_result_detail_with_options(request, runtime)
-
-    async def get_media_audit_result_detail_async(
-        self,
-        request: ice20201109_models.GetMediaAuditResultDetailRequest,
-    ) -> ice20201109_models.GetMediaAuditResultDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_media_audit_result_detail_with_options_async(request, runtime)
 
     def get_media_info_with_options(
         self,
@@ -6540,6 +6588,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_dynamic_image_jobs_with_options_async(request, runtime)
 
+    def list_live_record_files_with_options(
+        self,
+        request: ice20201109_models.ListLiveRecordFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListLiveRecordFilesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLiveRecordFiles',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListLiveRecordFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_live_record_files_with_options_async(
+        self,
+        request: ice20201109_models.ListLiveRecordFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListLiveRecordFilesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLiveRecordFiles',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListLiveRecordFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_live_record_files(
+        self,
+        request: ice20201109_models.ListLiveRecordFilesRequest,
+    ) -> ice20201109_models.ListLiveRecordFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_live_record_files_with_options(request, runtime)
+
+    async def list_live_record_files_async(
+        self,
+        request: ice20201109_models.ListLiveRecordFilesRequest,
+    ) -> ice20201109_models.ListLiveRecordFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_live_record_files_with_options_async(request, runtime)
+
+    def list_live_record_jobs_with_options(
+        self,
+        request: ice20201109_models.ListLiveRecordJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListLiveRecordJobsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLiveRecordJobs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListLiveRecordJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_live_record_jobs_with_options_async(
+        self,
+        request: ice20201109_models.ListLiveRecordJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListLiveRecordJobsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLiveRecordJobs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListLiveRecordJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_live_record_jobs(
+        self,
+        request: ice20201109_models.ListLiveRecordJobsRequest,
+    ) -> ice20201109_models.ListLiveRecordJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_live_record_jobs_with_options(request, runtime)
+
+    async def list_live_record_jobs_async(
+        self,
+        request: ice20201109_models.ListLiveRecordJobsRequest,
+    ) -> ice20201109_models.ListLiveRecordJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_live_record_jobs_with_options_async(request, runtime)
+
     def list_live_record_templates_with_options(
         self,
         request: ice20201109_models.ListLiveRecordTemplatesRequest,
@@ -6605,6 +6785,204 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.ListLiveRecordTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_live_record_templates_with_options_async(request, runtime)
+
+    def list_live_snapshot_files_with_options(
+        self,
+        request: ice20201109_models.ListLiveSnapshotFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListLiveSnapshotFilesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLiveSnapshotFiles',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListLiveSnapshotFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_live_snapshot_files_with_options_async(
+        self,
+        request: ice20201109_models.ListLiveSnapshotFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListLiveSnapshotFilesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLiveSnapshotFiles',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListLiveSnapshotFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_live_snapshot_files(
+        self,
+        request: ice20201109_models.ListLiveSnapshotFilesRequest,
+    ) -> ice20201109_models.ListLiveSnapshotFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_live_snapshot_files_with_options(request, runtime)
+
+    async def list_live_snapshot_files_async(
+        self,
+        request: ice20201109_models.ListLiveSnapshotFilesRequest,
+    ) -> ice20201109_models.ListLiveSnapshotFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_live_snapshot_files_with_options_async(request, runtime)
+
+    def list_live_snapshot_jobs_with_options(
+        self,
+        request: ice20201109_models.ListLiveSnapshotJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListLiveSnapshotJobsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLiveSnapshotJobs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListLiveSnapshotJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_live_snapshot_jobs_with_options_async(
+        self,
+        request: ice20201109_models.ListLiveSnapshotJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListLiveSnapshotJobsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLiveSnapshotJobs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListLiveSnapshotJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_live_snapshot_jobs(
+        self,
+        request: ice20201109_models.ListLiveSnapshotJobsRequest,
+    ) -> ice20201109_models.ListLiveSnapshotJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_live_snapshot_jobs_with_options(request, runtime)
+
+    async def list_live_snapshot_jobs_async(
+        self,
+        request: ice20201109_models.ListLiveSnapshotJobsRequest,
+    ) -> ice20201109_models.ListLiveSnapshotJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_live_snapshot_jobs_with_options_async(request, runtime)
+
+    def list_live_snapshot_templates_with_options(
+        self,
+        request: ice20201109_models.ListLiveSnapshotTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListLiveSnapshotTemplatesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLiveSnapshotTemplates',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListLiveSnapshotTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_live_snapshot_templates_with_options_async(
+        self,
+        request: ice20201109_models.ListLiveSnapshotTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListLiveSnapshotTemplatesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLiveSnapshotTemplates',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListLiveSnapshotTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_live_snapshot_templates(
+        self,
+        request: ice20201109_models.ListLiveSnapshotTemplatesRequest,
+    ) -> ice20201109_models.ListLiveSnapshotTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_live_snapshot_templates_with_options(request, runtime)
+
+    async def list_live_snapshot_templates_async(
+        self,
+        request: ice20201109_models.ListLiveSnapshotTemplatesRequest,
+    ) -> ice20201109_models.ListLiveSnapshotTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_live_snapshot_templates_with_options_async(request, runtime)
 
     def list_live_transcode_jobs_with_options(
         self,
@@ -7083,6 +7461,10 @@ class Client(OpenApiClient):
             query['MediaTagId'] = request.media_tag_id
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7117,6 +7499,10 @@ class Client(OpenApiClient):
             query['MediaTagId'] = request.media_tag_id
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7592,76 +7978,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_transcode_jobs_with_options_async(request, runtime)
 
-    def notify_pre_oss_upload_complete_with_options(
-        self,
-        request: ice20201109_models.NotifyPreOssUploadCompleteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.NotifyPreOssUploadCompleteResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.file_name):
-            query['FileName'] = request.file_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='NotifyPreOssUploadComplete',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.NotifyPreOssUploadCompleteResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def notify_pre_oss_upload_complete_with_options_async(
-        self,
-        request: ice20201109_models.NotifyPreOssUploadCompleteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.NotifyPreOssUploadCompleteResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.file_name):
-            query['FileName'] = request.file_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='NotifyPreOssUploadComplete',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.NotifyPreOssUploadCompleteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def notify_pre_oss_upload_complete(
-        self,
-        request: ice20201109_models.NotifyPreOssUploadCompleteRequest,
-    ) -> ice20201109_models.NotifyPreOssUploadCompleteResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.notify_pre_oss_upload_complete_with_options(request, runtime)
-
-    async def notify_pre_oss_upload_complete_async(
-        self,
-        request: ice20201109_models.NotifyPreOssUploadCompleteRequest,
-    ) -> ice20201109_models.NotifyPreOssUploadCompleteResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.notify_pre_oss_upload_complete_with_options_async(request, runtime)
-
     def query_censor_job_list_with_options(
         self,
         request: ice20201109_models.QueryCensorJobListRequest,
@@ -7916,6 +8232,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_media_censor_job_detail_with_options_async(request, runtime)
 
+    def query_smarttag_job_with_options(
+        self,
+        request: ice20201109_models.QuerySmarttagJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QuerySmarttagJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySmarttagJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QuerySmarttagJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_smarttag_job_with_options_async(
+        self,
+        request: ice20201109_models.QuerySmarttagJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QuerySmarttagJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySmarttagJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QuerySmarttagJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_smarttag_job(
+        self,
+        request: ice20201109_models.QuerySmarttagJobRequest,
+    ) -> ice20201109_models.QuerySmarttagJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_smarttag_job_with_options(request, runtime)
+
+    async def query_smarttag_job_async(
+        self,
+        request: ice20201109_models.QuerySmarttagJobRequest,
+    ) -> ice20201109_models.QuerySmarttagJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_smarttag_job_with_options_async(request, runtime)
+
     def refresh_upload_media_with_options(
         self,
         request: ice20201109_models.RefreshUploadMediaRequest,
@@ -8017,6 +8407,8 @@ class Client(OpenApiClient):
             query['Title'] = request.title
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8067,6 +8459,8 @@ class Client(OpenApiClient):
             query['Title'] = request.title
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8464,6 +8858,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.search_public_media_info_with_options_async(request, runtime)
 
+    def send_live_snapshot_job_command_with_options(
+        self,
+        request: ice20201109_models.SendLiveSnapshotJobCommandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SendLiveSnapshotJobCommandResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.command):
+            body['Command'] = request.command
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendLiveSnapshotJobCommand',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SendLiveSnapshotJobCommandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_live_snapshot_job_command_with_options_async(
+        self,
+        request: ice20201109_models.SendLiveSnapshotJobCommandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SendLiveSnapshotJobCommandResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.command):
+            body['Command'] = request.command
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendLiveSnapshotJobCommand',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SendLiveSnapshotJobCommandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_live_snapshot_job_command(
+        self,
+        request: ice20201109_models.SendLiveSnapshotJobCommandRequest,
+    ) -> ice20201109_models.SendLiveSnapshotJobCommandResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_live_snapshot_job_command_with_options(request, runtime)
+
+    async def send_live_snapshot_job_command_async(
+        self,
+        request: ice20201109_models.SendLiveSnapshotJobCommandRequest,
+    ) -> ice20201109_models.SendLiveSnapshotJobCommandResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_live_snapshot_job_command_with_options_async(request, runtime)
+
     def send_live_transcode_job_command_with_options(
         self,
         request: ice20201109_models.SendLiveTranscodeJobCommandRequest,
@@ -8537,174 +9005,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SendLiveTranscodeJobCommandResponse:
         runtime = util_models.RuntimeOptions()
         return await self.send_live_transcode_job_command_with_options_async(request, runtime)
-
-    def set_audit_config_with_options(
-        self,
-        request: ice20201109_models.SetAuditConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SetAuditConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.channel):
-            query['Channel'] = request.channel
-        if not UtilClient.is_unset(request.legal_switch):
-            query['LegalSwitch'] = request.legal_switch
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetAuditConfig',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SetAuditConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def set_audit_config_with_options_async(
-        self,
-        request: ice20201109_models.SetAuditConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SetAuditConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.channel):
-            query['Channel'] = request.channel
-        if not UtilClient.is_unset(request.legal_switch):
-            query['LegalSwitch'] = request.legal_switch
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetAuditConfig',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SetAuditConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def set_audit_config(
-        self,
-        request: ice20201109_models.SetAuditConfigRequest,
-    ) -> ice20201109_models.SetAuditConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.set_audit_config_with_options(request, runtime)
-
-    async def set_audit_config_async(
-        self,
-        request: ice20201109_models.SetAuditConfigRequest,
-    ) -> ice20201109_models.SetAuditConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.set_audit_config_with_options_async(request, runtime)
-
-    def set_client_config_with_options(
-        self,
-        request: ice20201109_models.SetClientConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SetClientConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bundle_id):
-            query['BundleId'] = request.bundle_id
-        if not UtilClient.is_unset(request.client_upload_bucket):
-            query['ClientUploadBucket'] = request.client_upload_bucket
-        if not UtilClient.is_unset(request.client_upload_path):
-            query['ClientUploadPath'] = request.client_upload_path
-        if not UtilClient.is_unset(request.client_upload_storage_type):
-            query['ClientUploadStorageType'] = request.client_upload_storage_type
-        if not UtilClient.is_unset(request.pkg_name):
-            query['PkgName'] = request.pkg_name
-        if not UtilClient.is_unset(request.pkg_signature):
-            query['PkgSignature'] = request.pkg_signature
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetClientConfig',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SetClientConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def set_client_config_with_options_async(
-        self,
-        request: ice20201109_models.SetClientConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SetClientConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bundle_id):
-            query['BundleId'] = request.bundle_id
-        if not UtilClient.is_unset(request.client_upload_bucket):
-            query['ClientUploadBucket'] = request.client_upload_bucket
-        if not UtilClient.is_unset(request.client_upload_path):
-            query['ClientUploadPath'] = request.client_upload_path
-        if not UtilClient.is_unset(request.client_upload_storage_type):
-            query['ClientUploadStorageType'] = request.client_upload_storage_type
-        if not UtilClient.is_unset(request.pkg_name):
-            query['PkgName'] = request.pkg_name
-        if not UtilClient.is_unset(request.pkg_signature):
-            query['PkgSignature'] = request.pkg_signature
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetClientConfig',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SetClientConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def set_client_config(
-        self,
-        request: ice20201109_models.SetClientConfigRequest,
-    ) -> ice20201109_models.SetClientConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.set_client_config_with_options(request, runtime)
-
-    async def set_client_config_async(
-        self,
-        request: ice20201109_models.SetClientConfigRequest,
-    ) -> ice20201109_models.SetClientConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.set_client_config_with_options_async(request, runtime)
 
     def set_default_custom_template_with_options(
         self,
@@ -9127,120 +9427,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitAudioProduceJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_audio_produce_job_with_options_async(request, runtime)
-
-    def submit_batch_media_producing_job_with_options(
-        self,
-        request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.clips_param):
-            query['ClipsParam'] = request.clips_param
-        if not UtilClient.is_unset(request.editing_produce_config):
-            query['EditingProduceConfig'] = request.editing_produce_config
-        if not UtilClient.is_unset(request.job_title):
-            query['JobTitle'] = request.job_title
-        if not UtilClient.is_unset(request.output_media_config):
-            query['OutputMediaConfig'] = request.output_media_config
-        if not UtilClient.is_unset(request.output_media_target):
-            query['OutputMediaTarget'] = request.output_media_target
-        if not UtilClient.is_unset(request.output_num):
-            query['OutputNum'] = request.output_num
-        if not UtilClient.is_unset(request.project_metadata):
-            query['ProjectMetadata'] = request.project_metadata
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        if not UtilClient.is_unset(request.submit_by):
-            query['SubmitBy'] = request.submit_by
-        if not UtilClient.is_unset(request.template_id):
-            query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.user_data):
-            query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitBatchMediaProducingJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitBatchMediaProducingJobResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def submit_batch_media_producing_job_with_options_async(
-        self,
-        request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.clips_param):
-            query['ClipsParam'] = request.clips_param
-        if not UtilClient.is_unset(request.editing_produce_config):
-            query['EditingProduceConfig'] = request.editing_produce_config
-        if not UtilClient.is_unset(request.job_title):
-            query['JobTitle'] = request.job_title
-        if not UtilClient.is_unset(request.output_media_config):
-            query['OutputMediaConfig'] = request.output_media_config
-        if not UtilClient.is_unset(request.output_media_target):
-            query['OutputMediaTarget'] = request.output_media_target
-        if not UtilClient.is_unset(request.output_num):
-            query['OutputNum'] = request.output_num
-        if not UtilClient.is_unset(request.project_metadata):
-            query['ProjectMetadata'] = request.project_metadata
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        if not UtilClient.is_unset(request.submit_by):
-            query['SubmitBy'] = request.submit_by
-        if not UtilClient.is_unset(request.template_id):
-            query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.user_data):
-            query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitBatchMediaProducingJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitBatchMediaProducingJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def submit_batch_media_producing_job(
-        self,
-        request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
-    ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.submit_batch_media_producing_job_with_options(request, runtime)
-
-    async def submit_batch_media_producing_job_async(
-        self,
-        request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
-    ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.submit_batch_media_producing_job_with_options_async(request, runtime)
 
     def submit_dynamic_chart_job_with_options(
         self,
@@ -9678,6 +9864,308 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_live_editing_job_with_options_async(request, runtime)
 
+    def submit_live_record_job_with_options(
+        self,
+        tmp_req: ice20201109_models.SubmitLiveRecordJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitLiveRecordJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitLiveRecordJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.record_output):
+            request.record_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.record_output), 'RecordOutput', 'json')
+        if not UtilClient.is_unset(tmp_req.stream_input):
+            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.stream_input), 'StreamInput', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_url):
+            body['NotifyUrl'] = request.notify_url
+        if not UtilClient.is_unset(request.record_output_shrink):
+            body['RecordOutput'] = request.record_output_shrink
+        if not UtilClient.is_unset(request.stream_input_shrink):
+            body['StreamInput'] = request.stream_input_shrink
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitLiveRecordJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitLiveRecordJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_live_record_job_with_options_async(
+        self,
+        tmp_req: ice20201109_models.SubmitLiveRecordJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitLiveRecordJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitLiveRecordJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.record_output):
+            request.record_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.record_output), 'RecordOutput', 'json')
+        if not UtilClient.is_unset(tmp_req.stream_input):
+            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.stream_input), 'StreamInput', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_url):
+            body['NotifyUrl'] = request.notify_url
+        if not UtilClient.is_unset(request.record_output_shrink):
+            body['RecordOutput'] = request.record_output_shrink
+        if not UtilClient.is_unset(request.stream_input_shrink):
+            body['StreamInput'] = request.stream_input_shrink
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitLiveRecordJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitLiveRecordJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_live_record_job(
+        self,
+        request: ice20201109_models.SubmitLiveRecordJobRequest,
+    ) -> ice20201109_models.SubmitLiveRecordJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_live_record_job_with_options(request, runtime)
+
+    async def submit_live_record_job_async(
+        self,
+        request: ice20201109_models.SubmitLiveRecordJobRequest,
+    ) -> ice20201109_models.SubmitLiveRecordJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_live_record_job_with_options_async(request, runtime)
+
+    def submit_live_snapshot_job_with_options(
+        self,
+        tmp_req: ice20201109_models.SubmitLiveSnapshotJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitLiveSnapshotJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitLiveSnapshotJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.snapshot_output):
+            request.snapshot_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.snapshot_output), 'SnapshotOutput', 'json')
+        if not UtilClient.is_unset(tmp_req.stream_input):
+            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.stream_input), 'StreamInput', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.callback_url):
+            body['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.job_name):
+            body['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.snapshot_output_shrink):
+            body['SnapshotOutput'] = request.snapshot_output_shrink
+        if not UtilClient.is_unset(request.stream_input_shrink):
+            body['StreamInput'] = request.stream_input_shrink
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitLiveSnapshotJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitLiveSnapshotJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_live_snapshot_job_with_options_async(
+        self,
+        tmp_req: ice20201109_models.SubmitLiveSnapshotJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitLiveSnapshotJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitLiveSnapshotJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.snapshot_output):
+            request.snapshot_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.snapshot_output), 'SnapshotOutput', 'json')
+        if not UtilClient.is_unset(tmp_req.stream_input):
+            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.stream_input), 'StreamInput', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.callback_url):
+            body['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.job_name):
+            body['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.snapshot_output_shrink):
+            body['SnapshotOutput'] = request.snapshot_output_shrink
+        if not UtilClient.is_unset(request.stream_input_shrink):
+            body['StreamInput'] = request.stream_input_shrink
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitLiveSnapshotJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitLiveSnapshotJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_live_snapshot_job(
+        self,
+        request: ice20201109_models.SubmitLiveSnapshotJobRequest,
+    ) -> ice20201109_models.SubmitLiveSnapshotJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_live_snapshot_job_with_options(request, runtime)
+
+    async def submit_live_snapshot_job_async(
+        self,
+        request: ice20201109_models.SubmitLiveSnapshotJobRequest,
+    ) -> ice20201109_models.SubmitLiveSnapshotJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_live_snapshot_job_with_options_async(request, runtime)
+
+    def submit_live_transcode_job_with_options(
+        self,
+        tmp_req: ice20201109_models.SubmitLiveTranscodeJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitLiveTranscodeJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitLiveTranscodeJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.stream_input):
+            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.stream_input), 'StreamInput', 'json')
+        if not UtilClient.is_unset(tmp_req.timed_config):
+            request.timed_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.timed_config), 'TimedConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.transcode_output):
+            request.transcode_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.transcode_output), 'TranscodeOutput', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.start_mode):
+            query['StartMode'] = request.start_mode
+        if not UtilClient.is_unset(request.stream_input_shrink):
+            query['StreamInput'] = request.stream_input_shrink
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.timed_config_shrink):
+            query['TimedConfig'] = request.timed_config_shrink
+        if not UtilClient.is_unset(request.transcode_output_shrink):
+            query['TranscodeOutput'] = request.transcode_output_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitLiveTranscodeJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitLiveTranscodeJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_live_transcode_job_with_options_async(
+        self,
+        tmp_req: ice20201109_models.SubmitLiveTranscodeJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitLiveTranscodeJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitLiveTranscodeJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.stream_input):
+            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.stream_input), 'StreamInput', 'json')
+        if not UtilClient.is_unset(tmp_req.timed_config):
+            request.timed_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.timed_config), 'TimedConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.transcode_output):
+            request.transcode_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.transcode_output), 'TranscodeOutput', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.start_mode):
+            query['StartMode'] = request.start_mode
+        if not UtilClient.is_unset(request.stream_input_shrink):
+            query['StreamInput'] = request.stream_input_shrink
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.timed_config_shrink):
+            query['TimedConfig'] = request.timed_config_shrink
+        if not UtilClient.is_unset(request.transcode_output_shrink):
+            query['TranscodeOutput'] = request.transcode_output_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitLiveTranscodeJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitLiveTranscodeJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_live_transcode_job(
+        self,
+        request: ice20201109_models.SubmitLiveTranscodeJobRequest,
+    ) -> ice20201109_models.SubmitLiveTranscodeJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_live_transcode_job_with_options(request, runtime)
+
+    async def submit_live_transcode_job_async(
+        self,
+        request: ice20201109_models.SubmitLiveTranscodeJobRequest,
+    ) -> ice20201109_models.SubmitLiveTranscodeJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_live_transcode_job_with_options_async(request, runtime)
+
     def submit_media_censor_job_with_options(
         self,
         tmp_req: ice20201109_models.SubmitMediaCensorJobRequest,
@@ -9999,6 +10487,124 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitMediaProducingJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_media_producing_job_with_options_async(request, runtime)
+
+    def submit_smarttag_job_with_options(
+        self,
+        tmp_req: ice20201109_models.SubmitSmarttagJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitSmarttagJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitSmarttagJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+        if not UtilClient.is_unset(tmp_req.schedule_config):
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.content_addr):
+            query['ContentAddr'] = request.content_addr
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.notify_url):
+            query['NotifyUrl'] = request.notify_url
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.schedule_config_shrink):
+            query['ScheduleConfig'] = request.schedule_config_shrink
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitSmarttagJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitSmarttagJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_smarttag_job_with_options_async(
+        self,
+        tmp_req: ice20201109_models.SubmitSmarttagJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitSmarttagJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitSmarttagJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+        if not UtilClient.is_unset(tmp_req.schedule_config):
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.content_addr):
+            query['ContentAddr'] = request.content_addr
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.notify_url):
+            query['NotifyUrl'] = request.notify_url
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.schedule_config_shrink):
+            query['ScheduleConfig'] = request.schedule_config_shrink
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitSmarttagJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitSmarttagJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_smarttag_job(
+        self,
+        request: ice20201109_models.SubmitSmarttagJobRequest,
+    ) -> ice20201109_models.SubmitSmarttagJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_smarttag_job_with_options(request, runtime)
+
+    async def submit_smarttag_job_async(
+        self,
+        request: ice20201109_models.SubmitSmarttagJobRequest,
+    ) -> ice20201109_models.SubmitSmarttagJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_smarttag_job_with_options_async(request, runtime)
 
     def submit_snapshot_job_with_options(
         self,
@@ -10653,6 +11259,178 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.UpdateEditingProjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_editing_project_with_options_async(request, runtime)
+
+    def update_live_record_template_with_options(
+        self,
+        tmp_req: ice20201109_models.UpdateLiveRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateLiveRecordTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateLiveRecordTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.record_format):
+            request.record_format_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_format, 'RecordFormat', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.record_format_shrink):
+            body['RecordFormat'] = request.record_format_shrink
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLiveRecordTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateLiveRecordTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_live_record_template_with_options_async(
+        self,
+        tmp_req: ice20201109_models.UpdateLiveRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateLiveRecordTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateLiveRecordTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.record_format):
+            request.record_format_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_format, 'RecordFormat', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.record_format_shrink):
+            body['RecordFormat'] = request.record_format_shrink
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLiveRecordTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateLiveRecordTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_live_record_template(
+        self,
+        request: ice20201109_models.UpdateLiveRecordTemplateRequest,
+    ) -> ice20201109_models.UpdateLiveRecordTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_live_record_template_with_options(request, runtime)
+
+    async def update_live_record_template_async(
+        self,
+        request: ice20201109_models.UpdateLiveRecordTemplateRequest,
+    ) -> ice20201109_models.UpdateLiveRecordTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_live_record_template_with_options_async(request, runtime)
+
+    def update_live_snapshot_template_with_options(
+        self,
+        request: ice20201109_models.UpdateLiveSnapshotTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateLiveSnapshotTemplateResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.overwrite_format):
+            body['OverwriteFormat'] = request.overwrite_format
+        if not UtilClient.is_unset(request.sequence_format):
+            body['SequenceFormat'] = request.sequence_format
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.time_interval):
+            body['TimeInterval'] = request.time_interval
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLiveSnapshotTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateLiveSnapshotTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_live_snapshot_template_with_options_async(
+        self,
+        request: ice20201109_models.UpdateLiveSnapshotTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateLiveSnapshotTemplateResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.overwrite_format):
+            body['OverwriteFormat'] = request.overwrite_format
+        if not UtilClient.is_unset(request.sequence_format):
+            body['SequenceFormat'] = request.sequence_format
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.time_interval):
+            body['TimeInterval'] = request.time_interval
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLiveSnapshotTemplate',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateLiveSnapshotTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_live_snapshot_template(
+        self,
+        request: ice20201109_models.UpdateLiveSnapshotTemplateRequest,
+    ) -> ice20201109_models.UpdateLiveSnapshotTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_live_snapshot_template_with_options(request, runtime)
+
+    async def update_live_snapshot_template_async(
+        self,
+        request: ice20201109_models.UpdateLiveSnapshotTemplateRequest,
+    ) -> ice20201109_models.UpdateLiveSnapshotTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_live_snapshot_template_with_options_async(request, runtime)
 
     def update_live_transcode_job_with_options(
         self,

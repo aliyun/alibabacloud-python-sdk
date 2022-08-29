@@ -1,3 +1,6 @@
+2022-08-29 Version: 1.3.1
+- Change RegisterMediaInfo.
+
 2022-07-20 Version: 1.3.0
 - Ass new api called SubmitMediaInfoJob, which submit mediaInfo job.
 - Ass new api called SubmitMediaCensorJob, which submit mediaCensor job.
