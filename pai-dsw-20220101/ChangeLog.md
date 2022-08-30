@@ -1,3 +1,6 @@
+2022-08-30 Version: 1.1.20
+- DSW support query instance metrics .
+
 2022-08-08 Version: 1.1.19
 - Release of list instance enhancement.
 
