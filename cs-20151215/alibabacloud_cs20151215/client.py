@@ -6386,8 +6386,6 @@ class Client(OpenApiClient):
             body['kubernetes_config'] = request.kubernetes_config
         if not UtilClient.is_unset(request.management):
             body['management'] = request.management
-        if not UtilClient.is_unset(request.node_config):
-            body['node_config'] = request.node_config
         if not UtilClient.is_unset(request.nodepool_info):
             body['nodepool_info'] = request.nodepool_info
         if not UtilClient.is_unset(request.scaling_group):
@@ -6434,8 +6432,6 @@ class Client(OpenApiClient):
             body['kubernetes_config'] = request.kubernetes_config
         if not UtilClient.is_unset(request.management):
             body['management'] = request.management
-        if not UtilClient.is_unset(request.node_config):
-            body['node_config'] = request.node_config
         if not UtilClient.is_unset(request.nodepool_info):
             body['nodepool_info'] = request.nodepool_info
         if not UtilClient.is_unset(request.scaling_group):
@@ -6537,6 +6533,98 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             cs20151215_models.ModifyClusterTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_node_pool_node_config(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.ModifyNodePoolNodeConfigRequest,
+    ) -> cs20151215_models.ModifyNodePoolNodeConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.modify_node_pool_node_config_with_options(cluster_id, nodepool_id, request, headers, runtime)
+
+    async def modify_node_pool_node_config_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.ModifyNodePoolNodeConfigRequest,
+    ) -> cs20151215_models.ModifyNodePoolNodeConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.modify_node_pool_node_config_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
+
+    def modify_node_pool_node_config_with_options(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.ModifyNodePoolNodeConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.ModifyNodePoolNodeConfigResponse:
+        UtilClient.validate_model(request)
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
+        body = {}
+        if not UtilClient.is_unset(request.kubelet_config):
+            body['kubelet_config'] = request.kubelet_config
+        if not UtilClient.is_unset(request.rolling_policy):
+            body['rolling_policy'] = request.rolling_policy
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyNodePoolNodeConfig',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}/node_config',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.ModifyNodePoolNodeConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_node_pool_node_config_with_options_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.ModifyNodePoolNodeConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.ModifyNodePoolNodeConfigResponse:
+        UtilClient.validate_model(request)
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
+        body = {}
+        if not UtilClient.is_unset(request.kubelet_config):
+            body['kubelet_config'] = request.kubelet_config
+        if not UtilClient.is_unset(request.rolling_policy):
+            body['rolling_policy'] = request.rolling_policy
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyNodePoolNodeConfig',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}/node_config',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.ModifyNodePoolNodeConfigResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
