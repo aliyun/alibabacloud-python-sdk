@@ -1,3 +1,6 @@
+2022-08-31 Version: 2.1.1
+- Support More Open Api.
+
 2022-05-27 Version: 2.1.0
 - StartDBInstance parameter change.
 

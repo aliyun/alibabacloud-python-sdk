@@ -761,6 +761,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -803,6 +805,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -853,12 +857,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_set_id):
             query['BackupSetId'] = request.backup_set_id
-        if not UtilClient.is_unset(request.binlog_name):
-            query['BinlogName'] = request.binlog_name
-        if not UtilClient.is_unset(request.binlog_position):
-            query['BinlogPosition'] = request.binlog_position
-        if not UtilClient.is_unset(request.binlog_role):
-            query['BinlogRole'] = request.binlog_role
         if not UtilClient.is_unset(request.dbinstance_class):
             query['DBInstanceClass'] = request.dbinstance_class
         if not UtilClient.is_unset(request.dbinstance_storage):
@@ -911,12 +909,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_set_id):
             query['BackupSetId'] = request.backup_set_id
-        if not UtilClient.is_unset(request.binlog_name):
-            query['BinlogName'] = request.binlog_name
-        if not UtilClient.is_unset(request.binlog_position):
-            query['BinlogPosition'] = request.binlog_position
-        if not UtilClient.is_unset(request.binlog_role):
-            query['BinlogRole'] = request.binlog_role
         if not UtilClient.is_unset(request.dbinstance_class):
             query['DBInstanceClass'] = request.dbinstance_class
         if not UtilClient.is_unset(request.dbinstance_storage):
@@ -1150,12 +1142,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_instance_exist_with_options_async(request, runtime)
 
+    def check_service_linked_role_with_options(
+        self,
+        request: rds_20140815_models.CheckServiceLinkedRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CheckServiceLinkedRoleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.service_linked_role):
+            query['ServiceLinkedRole'] = request.service_linked_role
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckServiceLinkedRole',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CheckServiceLinkedRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_service_linked_role_with_options_async(
+        self,
+        request: rds_20140815_models.CheckServiceLinkedRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CheckServiceLinkedRoleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.service_linked_role):
+            query['ServiceLinkedRole'] = request.service_linked_role
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckServiceLinkedRole',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CheckServiceLinkedRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_service_linked_role(
+        self,
+        request: rds_20140815_models.CheckServiceLinkedRoleRequest,
+    ) -> rds_20140815_models.CheckServiceLinkedRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_service_linked_role_with_options(request, runtime)
+
+    async def check_service_linked_role_async(
+        self,
+        request: rds_20140815_models.CheckServiceLinkedRoleRequest,
+    ) -> rds_20140815_models.CheckServiceLinkedRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_service_linked_role_with_options_async(request, runtime)
+
     def clone_dbinstance_with_options(
         self,
-        request: rds_20140815_models.CloneDBInstanceRequest,
+        tmp_req: rds_20140815_models.CloneDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CloneDBInstanceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.CloneDBInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.serverless_config):
+            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.serverless_config), 'ServerlessConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.backup_id):
             query['BackupId'] = request.backup_id
@@ -1193,6 +1279,8 @@ class Client(OpenApiClient):
             query['RestoreTable'] = request.restore_table
         if not UtilClient.is_unset(request.restore_time):
             query['RestoreTime'] = request.restore_time
+        if not UtilClient.is_unset(request.serverless_config_shrink):
+            query['ServerlessConfig'] = request.serverless_config_shrink
         if not UtilClient.is_unset(request.table_meta):
             query['TableMeta'] = request.table_meta
         if not UtilClient.is_unset(request.used_time):
@@ -1224,10 +1312,14 @@ class Client(OpenApiClient):
 
     async def clone_dbinstance_with_options_async(
         self,
-        request: rds_20140815_models.CloneDBInstanceRequest,
+        tmp_req: rds_20140815_models.CloneDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CloneDBInstanceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.CloneDBInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.serverless_config):
+            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.serverless_config), 'ServerlessConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.backup_id):
             query['BackupId'] = request.backup_id
@@ -1265,6 +1357,8 @@ class Client(OpenApiClient):
             query['RestoreTable'] = request.restore_table
         if not UtilClient.is_unset(request.restore_time):
             query['RestoreTime'] = request.restore_time
+        if not UtilClient.is_unset(request.serverless_config_shrink):
+            query['ServerlessConfig'] = request.serverless_config_shrink
         if not UtilClient.is_unset(request.table_meta):
             query['TableMeta'] = request.table_meta
         if not UtilClient.is_unset(request.used_time):
@@ -1779,6 +1873,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbname):
             query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
@@ -1817,6 +1913,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbname):
             query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
@@ -2331,10 +2429,14 @@ class Client(OpenApiClient):
             query['DBProxyConnectStringNetType'] = request.dbproxy_connect_string_net_type
         if not UtilClient.is_unset(request.dbproxy_endpoint_id):
             query['DBProxyEndpointId'] = request.dbproxy_endpoint_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.dbproxy_new_connect_string_port):
             query['DBProxyNewConnectStringPort'] = request.dbproxy_new_connect_string_port
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.vpcid):
             query['VPCId'] = request.vpcid
         if not UtilClient.is_unset(request.v_switch_id):
@@ -2375,10 +2477,14 @@ class Client(OpenApiClient):
             query['DBProxyConnectStringNetType'] = request.dbproxy_connect_string_net_type
         if not UtilClient.is_unset(request.dbproxy_endpoint_id):
             query['DBProxyEndpointId'] = request.dbproxy_endpoint_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.dbproxy_new_connect_string_port):
             query['DBProxyNewConnectStringPort'] = request.dbproxy_new_connect_string_port
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.vpcid):
             query['VPCId'] = request.vpcid
         if not UtilClient.is_unset(request.v_switch_id):
@@ -2435,6 +2541,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -2477,6 +2585,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -2523,12 +2633,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_set_id):
             query['BackupSetId'] = request.backup_set_id
-        if not UtilClient.is_unset(request.binlog_name):
-            query['BinlogName'] = request.binlog_name
-        if not UtilClient.is_unset(request.binlog_position):
-            query['BinlogPosition'] = request.binlog_position
-        if not UtilClient.is_unset(request.binlog_role):
-            query['BinlogRole'] = request.binlog_role
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.connection_mode):
@@ -2615,12 +2719,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_set_id):
             query['BackupSetId'] = request.backup_set_id
-        if not UtilClient.is_unset(request.binlog_name):
-            query['BinlogName'] = request.binlog_name
-        if not UtilClient.is_unset(request.binlog_position):
-            query['BinlogPosition'] = request.binlog_position
-        if not UtilClient.is_unset(request.binlog_role):
-            query['BinlogRole'] = request.binlog_role
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.connection_mode):
@@ -2809,6 +2907,10 @@ class Client(OpenApiClient):
             query['DBList'] = request.dblist
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.unit_node):
             query['UnitNode'] = request.unit_node
         req = open_api_models.OpenApiRequest(
@@ -2849,6 +2951,10 @@ class Client(OpenApiClient):
             query['DBList'] = request.dblist
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.unit_node):
             query['UnitNode'] = request.unit_node
         req = open_api_models.OpenApiRequest(
@@ -3478,6 +3584,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_read_only_dbinstance_with_options_async(request, runtime)
 
+    def create_secret_with_options(
+        self,
+        request: rds_20140815_models.CreateSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreateSecretResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.db_names):
+            query['DbNames'] = request.db_names
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSecret',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreateSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_secret_with_options_async(
+        self,
+        request: rds_20140815_models.CreateSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreateSecretResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not UtilClient.is_unset(request.db_names):
+            query['DbNames'] = request.db_names
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSecret',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreateSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_secret(
+        self,
+        request: rds_20140815_models.CreateSecretRequest,
+    ) -> rds_20140815_models.CreateSecretResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_secret_with_options(request, runtime)
+
+    async def create_secret_async(
+        self,
+        request: rds_20140815_models.CreateSecretRequest,
+    ) -> rds_20140815_models.CreateSecretResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_secret_with_options_async(request, runtime)
+
     def create_service_linked_role_with_options(
         self,
         request: rds_20140815_models.CreateServiceLinkedRoleRequest,
@@ -3579,6 +3803,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -3619,6 +3845,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -3657,6 +3885,96 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.CreateTempDBInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_temp_dbinstance_with_options_async(request, runtime)
+
+    def delete_adsetting_with_options(
+        self,
+        request: rds_20140815_models.DeleteADSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteADSettingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteADSetting',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteADSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_adsetting_with_options_async(
+        self,
+        request: rds_20140815_models.DeleteADSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteADSettingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteADSetting',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteADSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_adsetting(
+        self,
+        request: rds_20140815_models.DeleteADSettingRequest,
+    ) -> rds_20140815_models.DeleteADSettingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_adsetting_with_options(request, runtime)
+
+    async def delete_adsetting_async(
+        self,
+        request: rds_20140815_models.DeleteADSettingRequest,
+    ) -> rds_20140815_models.DeleteADSettingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_adsetting_with_options_async(request, runtime)
 
     def delete_account_with_options(
         self,
@@ -4041,6 +4359,8 @@ class Client(OpenApiClient):
             query['DBProxyConnectStringNetType'] = request.dbproxy_connect_string_net_type
         if not UtilClient.is_unset(request.dbproxy_endpoint_id):
             query['DBProxyEndpointId'] = request.dbproxy_endpoint_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -4077,6 +4397,8 @@ class Client(OpenApiClient):
             query['DBProxyConnectStringNetType'] = request.dbproxy_connect_string_net_type
         if not UtilClient.is_unset(request.dbproxy_endpoint_id):
             query['DBProxyEndpointId'] = request.dbproxy_endpoint_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -4350,6 +4672,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_parameter_group_with_options_async(request, runtime)
 
+    def delete_secret_with_options(
+        self,
+        request: rds_20140815_models.DeleteSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteSecretResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecret',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_secret_with_options_async(
+        self,
+        request: rds_20140815_models.DeleteSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteSecretResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecret',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_secret(
+        self,
+        request: rds_20140815_models.DeleteSecretRequest,
+    ) -> rds_20140815_models.DeleteSecretResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_secret_with_options(request, runtime)
+
+    async def delete_secret_async(
+        self,
+        request: rds_20140815_models.DeleteSecretRequest,
+    ) -> rds_20140815_models.DeleteSecretResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_secret_with_options_async(request, runtime)
+
     def delete_user_backup_file_with_options(
         self,
         request: rds_20140815_models.DeleteUserBackupFileRequest,
@@ -4550,6 +4970,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.descibe_imports_from_database_with_options_async(request, runtime)
 
+    def describe_adinfo_with_options(
+        self,
+        request: rds_20140815_models.DescribeADInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeADInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeADInfo',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeADInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_adinfo_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeADInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeADInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeADInfo',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeADInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_adinfo(
+        self,
+        request: rds_20140815_models.DescribeADInfoRequest,
+    ) -> rds_20140815_models.DescribeADInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_adinfo_with_options(request, runtime)
+
+    async def describe_adinfo_async(
+        self,
+        request: rds_20140815_models.DescribeADInfoRequest,
+    ) -> rds_20140815_models.DescribeADInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_adinfo_with_options_async(request, runtime)
+
     def describe_accounts_with_options(
         self,
         request: rds_20140815_models.DescribeAccountsRequest,
@@ -4721,6 +5231,92 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeActionEventPolicyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_action_event_policy_with_options_async(request, runtime)
+
+    def describe_analyticdb_by_primary_dbinstance_with_options(
+        self,
+        request: rds_20140815_models.DescribeAnalyticdbByPrimaryDBInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeAnalyticdbByPrimaryDBInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAnalyticdbByPrimaryDBInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeAnalyticdbByPrimaryDBInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_analyticdb_by_primary_dbinstance_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeAnalyticdbByPrimaryDBInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeAnalyticdbByPrimaryDBInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAnalyticdbByPrimaryDBInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeAnalyticdbByPrimaryDBInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_analyticdb_by_primary_dbinstance(
+        self,
+        request: rds_20140815_models.DescribeAnalyticdbByPrimaryDBInstanceRequest,
+    ) -> rds_20140815_models.DescribeAnalyticdbByPrimaryDBInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_analyticdb_by_primary_dbinstance_with_options(request, runtime)
+
+    async def describe_analyticdb_by_primary_dbinstance_async(
+        self,
+        request: rds_20140815_models.DescribeAnalyticdbByPrimaryDBInstanceRequest,
+    ) -> rds_20140815_models.DescribeAnalyticdbByPrimaryDBInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_analyticdb_by_primary_dbinstance_with_options_async(request, runtime)
 
     def describe_available_classes_with_options(
         self,
@@ -4923,6 +5519,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
@@ -4953,6 +5551,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
@@ -4997,10 +5597,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cross_backup_id):
             query['CrossBackupId'] = request.cross_backup_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -5033,10 +5637,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cross_backup_id):
             query['CrossBackupId'] = request.cross_backup_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -5479,6 +6087,8 @@ class Client(OpenApiClient):
             query['BackupMode'] = request.backup_mode
         if not UtilClient.is_unset(request.backup_status):
             query['BackupStatus'] = request.backup_status
+        if not UtilClient.is_unset(request.backup_type):
+            query['BackupType'] = request.backup_type
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.end_time):
@@ -5487,6 +6097,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_time):
@@ -5523,6 +6135,8 @@ class Client(OpenApiClient):
             query['BackupMode'] = request.backup_mode
         if not UtilClient.is_unset(request.backup_status):
             query['BackupStatus'] = request.backup_status
+        if not UtilClient.is_unset(request.backup_type):
+            query['BackupType'] = request.backup_type
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.end_time):
@@ -5531,6 +6145,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_time):
@@ -6055,6 +6671,8 @@ class Client(OpenApiClient):
             query['Pattern'] = request.pattern
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -6099,6 +6717,8 @@ class Client(OpenApiClient):
             query['Pattern'] = request.pattern
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -6255,6 +6875,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -6305,6 +6927,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -6528,6 +7152,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_attribute_with_options_async(request, runtime)
 
+    def describe_dbinstance_by_tags_with_options(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceByTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeDBInstanceByTagsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.proxy_id):
+            query['proxyId'] = request.proxy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceByTags',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeDBInstanceByTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_by_tags_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceByTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeDBInstanceByTagsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.proxy_id):
+            query['proxyId'] = request.proxy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceByTags',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeDBInstanceByTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_by_tags(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceByTagsRequest,
+    ) -> rds_20140815_models.DescribeDBInstanceByTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_by_tags_with_options(request, runtime)
+
+    async def describe_dbinstance_by_tags_async(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceByTagsRequest,
+    ) -> rds_20140815_models.DescribeDBInstanceByTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_by_tags_with_options_async(request, runtime)
+
     def describe_dbinstance_detail_with_options(
         self,
         request: rds_20140815_models.DescribeDBInstanceDetailRequest,
@@ -6543,6 +7273,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -6581,6 +7313,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -6991,6 +7725,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
@@ -7021,6 +7757,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
@@ -7248,6 +7986,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_net_info_with_options_async(request, runtime)
 
+    def describe_dbinstance_net_info_for_channel_with_options(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceNetInfoForChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeDBInstanceNetInfoForChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbinstance_net_rwsplit_type):
+            query['DBInstanceNetRWSplitType'] = request.dbinstance_net_rwsplit_type
+        if not UtilClient.is_unset(request.flag):
+            query['Flag'] = request.flag
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceNetInfoForChannel',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeDBInstanceNetInfoForChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_net_info_for_channel_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceNetInfoForChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeDBInstanceNetInfoForChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbinstance_net_rwsplit_type):
+            query['DBInstanceNetRWSplitType'] = request.dbinstance_net_rwsplit_type
+        if not UtilClient.is_unset(request.flag):
+            query['Flag'] = request.flag
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceNetInfoForChannel',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeDBInstanceNetInfoForChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_net_info_for_channel(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceNetInfoForChannelRequest,
+    ) -> rds_20140815_models.DescribeDBInstanceNetInfoForChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_net_info_for_channel_with_options(request, runtime)
+
+    async def describe_dbinstance_net_info_for_channel_async(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceNetInfoForChannelRequest,
+    ) -> rds_20140815_models.DescribeDBInstanceNetInfoForChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_net_info_for_channel_with_options_async(request, runtime)
+
     def describe_dbinstance_performance_with_options(
         self,
         request: rds_20140815_models.DescribeDBInstancePerformanceRequest,
@@ -7333,6 +8169,96 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeDBInstancePerformanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_performance_with_options_async(request, runtime)
+
+    def describe_dbinstance_promote_activity_with_options(
+        self,
+        request: rds_20140815_models.DescribeDBInstancePromoteActivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeDBInstancePromoteActivityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.db_instance_name):
+            query['DbInstanceName'] = request.db_instance_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstancePromoteActivity',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeDBInstancePromoteActivityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_promote_activity_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeDBInstancePromoteActivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeDBInstancePromoteActivityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.db_instance_name):
+            query['DbInstanceName'] = request.db_instance_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstancePromoteActivity',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeDBInstancePromoteActivityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_promote_activity(
+        self,
+        request: rds_20140815_models.DescribeDBInstancePromoteActivityRequest,
+    ) -> rds_20140815_models.DescribeDBInstancePromoteActivityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_promote_activity_with_options(request, runtime)
+
+    async def describe_dbinstance_promote_activity_async(
+        self,
+        request: rds_20140815_models.DescribeDBInstancePromoteActivityRequest,
+    ) -> rds_20140815_models.DescribeDBInstancePromoteActivityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_promote_activity_with_options_async(request, runtime)
 
     def describe_dbinstance_proxy_configuration_with_options(
         self,
@@ -7791,6 +8717,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -7827,6 +8755,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -7995,6 +8925,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -8049,6 +8981,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -8139,6 +9073,8 @@ class Client(OpenApiClient):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -8215,6 +9151,8 @@ class Client(OpenApiClient):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -8262,6 +9200,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstances_for_clone_with_options_async(request, runtime)
 
+    def describe_dbmini_engine_versions_with_options(
+        self,
+        request: rds_20140815_models.DescribeDBMiniEngineVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeDBMiniEngineVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.minor_version_tag):
+            query['MinorVersionTag'] = request.minor_version_tag
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBMiniEngineVersions',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeDBMiniEngineVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbmini_engine_versions_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeDBMiniEngineVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeDBMiniEngineVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.minor_version_tag):
+            query['MinorVersionTag'] = request.minor_version_tag
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBMiniEngineVersions',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeDBMiniEngineVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbmini_engine_versions(
+        self,
+        request: rds_20140815_models.DescribeDBMiniEngineVersionsRequest,
+    ) -> rds_20140815_models.DescribeDBMiniEngineVersionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbmini_engine_versions_with_options(request, runtime)
+
+    async def describe_dbmini_engine_versions_async(
+        self,
+        request: rds_20140815_models.DescribeDBMiniEngineVersionsRequest,
+    ) -> rds_20140815_models.DescribeDBMiniEngineVersionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbmini_engine_versions_with_options_async(request, runtime)
+
     def describe_dbproxy_with_options(
         self,
         request: rds_20140815_models.DescribeDBProxyRequest,
@@ -8273,10 +9313,14 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -8311,10 +9355,14 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -8367,6 +9415,8 @@ class Client(OpenApiClient):
             query['DBProxyConnectString'] = request.dbproxy_connect_string
         if not UtilClient.is_unset(request.dbproxy_endpoint_id):
             query['DBProxyEndpointId'] = request.dbproxy_endpoint_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
@@ -8409,6 +9459,8 @@ class Client(OpenApiClient):
             query['DBProxyConnectString'] = request.dbproxy_connect_string
         if not UtilClient.is_unset(request.dbproxy_endpoint_id):
             query['DBProxyEndpointId'] = request.dbproxy_endpoint_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
@@ -8461,6 +9513,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.dbproxy_instance_type):
             query['DBProxyInstanceType'] = request.dbproxy_instance_type
         if not UtilClient.is_unset(request.end_time):
@@ -8507,6 +9561,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.dbproxy_instance_type):
             query['DBProxyInstanceType'] = request.dbproxy_instance_type
         if not UtilClient.is_unset(request.end_time):
@@ -8571,6 +9627,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -8611,6 +9669,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -8671,6 +9731,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -8715,6 +9777,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -8975,6 +10039,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_time):
@@ -9021,6 +10087,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_time):
@@ -9067,6 +10135,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9095,6 +10165,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9339,6 +10411,8 @@ class Client(OpenApiClient):
             query['GadInstanceName'] = request.gad_instance_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9369,6 +10443,8 @@ class Client(OpenApiClient):
             query['GadInstanceName'] = request.gad_instance_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9573,6 +10649,230 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeHASwitchConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_haswitch_config_with_options_async(request, runtime)
+
+    def describe_history_tasks_with_options(
+        self,
+        request: rds_20140815_models.DescribeHistoryTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeHistoryTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_exec_time):
+            query['FromExecTime'] = request.from_exec_time
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.to_exec_time):
+            query['ToExecTime'] = request.to_exec_time
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryTasks',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeHistoryTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_history_tasks_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeHistoryTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeHistoryTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_exec_time):
+            query['FromExecTime'] = request.from_exec_time
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.to_exec_time):
+            query['ToExecTime'] = request.to_exec_time
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryTasks',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeHistoryTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_history_tasks(
+        self,
+        request: rds_20140815_models.DescribeHistoryTasksRequest,
+    ) -> rds_20140815_models.DescribeHistoryTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_history_tasks_with_options(request, runtime)
+
+    async def describe_history_tasks_async(
+        self,
+        request: rds_20140815_models.DescribeHistoryTasksRequest,
+    ) -> rds_20140815_models.DescribeHistoryTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_history_tasks_with_options_async(request, runtime)
+
+    def describe_history_tasks_stat_with_options(
+        self,
+        request: rds_20140815_models.DescribeHistoryTasksStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_exec_time):
+            query['FromExecTime'] = request.from_exec_time
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.to_exec_time):
+            query['ToExecTime'] = request.to_exec_time
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryTasksStat',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeHistoryTasksStatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_history_tasks_stat_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeHistoryTasksStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_exec_time):
+            query['FromExecTime'] = request.from_exec_time
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.to_exec_time):
+            query['ToExecTime'] = request.to_exec_time
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryTasksStat',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeHistoryTasksStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_history_tasks_stat(
+        self,
+        request: rds_20140815_models.DescribeHistoryTasksStatRequest,
+    ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_history_tasks_stat_with_options(request, runtime)
+
+    async def describe_history_tasks_stat_async(
+        self,
+        request: rds_20140815_models.DescribeHistoryTasksStatRequest,
+    ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_history_tasks_stat_with_options_async(request, runtime)
 
     def describe_instance_auto_renewal_attribute_with_options(
         self,
@@ -9865,6 +11165,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -9901,6 +11203,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10063,6 +11367,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.pattern):
             query['Pattern'] = request.pattern
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10113,6 +11419,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.pattern):
             query['Pattern'] = request.pattern
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10167,6 +11475,8 @@ class Client(OpenApiClient):
             query['MigrateTaskId'] = request.migrate_task_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10203,6 +11513,8 @@ class Client(OpenApiClient):
             query['MigrateTaskId'] = request.migrate_task_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10257,6 +11569,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10299,6 +11613,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10355,6 +11671,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10397,6 +11715,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10551,6 +11871,8 @@ class Client(OpenApiClient):
             query['MigrateTaskId'] = request.migrate_task_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10587,6 +11909,8 @@ class Client(OpenApiClient):
             query['MigrateTaskId'] = request.migrate_task_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10639,6 +11963,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10677,6 +12003,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10811,6 +12139,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10845,6 +12175,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -11321,6 +12653,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.read_instance_id):
             query['ReadInstanceId'] = request.read_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -11361,6 +12695,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.read_instance_id):
             query['ReadInstanceId'] = request.read_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -11399,6 +12735,92 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeReadDBInstanceDelayResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_read_dbinstance_delay_with_options_async(request, runtime)
+
+    def describe_region_infos_with_options(
+        self,
+        request: rds_20140815_models.DescribeRegionInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRegionInfosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegionInfos',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRegionInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_region_infos_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeRegionInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRegionInfosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegionInfos',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRegionInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_region_infos(
+        self,
+        request: rds_20140815_models.DescribeRegionInfosRequest,
+    ) -> rds_20140815_models.DescribeRegionInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_region_infos_with_options(request, runtime)
+
+    async def describe_region_infos_async(
+        self,
+        request: rds_20140815_models.DescribeRegionInfosRequest,
+    ) -> rds_20140815_models.DescribeRegionInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_region_infos_with_options_async(request, runtime)
 
     def describe_regions_with_options(
         self,
@@ -11609,6 +13031,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -11645,6 +13069,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -12195,6 +13621,112 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeSQLLogReportListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_sqllog_report_list_with_options_async(request, runtime)
+
+    def describe_secrets_with_options(
+        self,
+        request: rds_20140815_models.DescribeSecretsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeSecretsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecrets',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeSecretsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_secrets_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeSecretsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeSecretsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecrets',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeSecretsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_secrets(
+        self,
+        request: rds_20140815_models.DescribeSecretsRequest,
+    ) -> rds_20140815_models.DescribeSecretsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_secrets_with_options(request, runtime)
+
+    async def describe_secrets_async(
+        self,
+        request: rds_20140815_models.DescribeSecretsRequest,
+    ) -> rds_20140815_models.DescribeSecretsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_secrets_with_options_async(request, runtime)
 
     def describe_security_group_configuration_with_options(
         self,
@@ -12937,6 +14469,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -12985,6 +14519,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -13196,6 +14732,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detach_gad_instance_member_with_options_async(request, runtime)
 
+    def get_dbinstance_topology_with_options(
+        self,
+        request: rds_20140815_models.GetDBInstanceTopologyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.GetDBInstanceTopologyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDBInstanceTopology',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.GetDBInstanceTopologyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dbinstance_topology_with_options_async(
+        self,
+        request: rds_20140815_models.GetDBInstanceTopologyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.GetDBInstanceTopologyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDBInstanceTopology',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.GetDBInstanceTopologyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dbinstance_topology(
+        self,
+        request: rds_20140815_models.GetDBInstanceTopologyRequest,
+    ) -> rds_20140815_models.GetDBInstanceTopologyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_dbinstance_topology_with_options(request, runtime)
+
+    async def get_dbinstance_topology_async(
+        self,
+        request: rds_20140815_models.GetDBInstanceTopologyRequest,
+    ) -> rds_20140815_models.GetDBInstanceTopologyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dbinstance_topology_with_options_async(request, runtime)
+
     def get_db_proxy_instance_ssl_with_options(
         self,
         request: rds_20140815_models.GetDbProxyInstanceSslRequest,
@@ -13203,6 +14809,8 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.GetDbProxyInstanceSslResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.db_instance_id):
             query['DbInstanceId'] = request.db_instance_id
         if not UtilClient.is_unset(request.db_instance_id):
@@ -13235,6 +14843,8 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.GetDbProxyInstanceSslResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.db_instance_id):
             query['DbInstanceId'] = request.db_instance_id
         if not UtilClient.is_unset(request.db_instance_id):
@@ -14042,6 +15652,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.lock_account_with_options_async(request, runtime)
 
+    def migrate_connection_to_other_zone_with_options(
+        self,
+        request: rds_20140815_models.MigrateConnectionToOtherZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.MigrateConnectionToOtherZoneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MigrateConnectionToOtherZone',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.MigrateConnectionToOtherZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def migrate_connection_to_other_zone_with_options_async(
+        self,
+        request: rds_20140815_models.MigrateConnectionToOtherZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.MigrateConnectionToOtherZoneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MigrateConnectionToOtherZone',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.MigrateConnectionToOtherZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def migrate_connection_to_other_zone(
+        self,
+        request: rds_20140815_models.MigrateConnectionToOtherZoneRequest,
+    ) -> rds_20140815_models.MigrateConnectionToOtherZoneResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.migrate_connection_to_other_zone_with_options(request, runtime)
+
+    async def migrate_connection_to_other_zone_async(
+        self,
+        request: rds_20140815_models.MigrateConnectionToOtherZoneRequest,
+    ) -> rds_20140815_models.MigrateConnectionToOtherZoneResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.migrate_connection_to_other_zone_with_options_async(request, runtime)
+
     def migrate_dbinstance_with_options(
         self,
         request: rds_20140815_models.MigrateDBInstanceRequest,
@@ -14367,6 +16055,112 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.MigrateToOtherZoneResponse:
         runtime = util_models.RuntimeOptions()
         return await self.migrate_to_other_zone_with_options_async(request, runtime)
+
+    def modify_adinfo_with_options(
+        self,
+        request: rds_20140815_models.ModifyADInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyADInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.adaccount_name):
+            query['ADAccountName'] = request.adaccount_name
+        if not UtilClient.is_unset(request.addns):
+            query['ADDNS'] = request.addns
+        if not UtilClient.is_unset(request.adpassword):
+            query['ADPassword'] = request.adpassword
+        if not UtilClient.is_unset(request.adserver_ip_address):
+            query['ADServerIpAddress'] = request.adserver_ip_address
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyADInfo',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyADInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_adinfo_with_options_async(
+        self,
+        request: rds_20140815_models.ModifyADInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyADInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.adaccount_name):
+            query['ADAccountName'] = request.adaccount_name
+        if not UtilClient.is_unset(request.addns):
+            query['ADDNS'] = request.addns
+        if not UtilClient.is_unset(request.adpassword):
+            query['ADPassword'] = request.adpassword
+        if not UtilClient.is_unset(request.adserver_ip_address):
+            query['ADServerIpAddress'] = request.adserver_ip_address
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyADInfo',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyADInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_adinfo(
+        self,
+        request: rds_20140815_models.ModifyADInfoRequest,
+    ) -> rds_20140815_models.ModifyADInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_adinfo_with_options(request, runtime)
+
+    async def modify_adinfo_async(
+        self,
+        request: rds_20140815_models.ModifyADInfoRequest,
+    ) -> rds_20140815_models.ModifyADInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_adinfo_with_options_async(request, runtime)
 
     def modify_account_description_with_options(
         self,
@@ -15183,6 +16977,92 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.ModifyDBInstanceConnectionStringResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_connection_string_with_options_async(request, runtime)
+
+    def modify_dbinstance_delayed_replication_time_with_options(
+        self,
+        request: rds_20140815_models.ModifyDBInstanceDelayedReplicationTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyDBInstanceDelayedReplicationTimeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.read_sqlreplication_time):
+            query['ReadSQLReplicationTime'] = request.read_sqlreplication_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceDelayedReplicationTime',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyDBInstanceDelayedReplicationTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbinstance_delayed_replication_time_with_options_async(
+        self,
+        request: rds_20140815_models.ModifyDBInstanceDelayedReplicationTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyDBInstanceDelayedReplicationTimeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.read_sqlreplication_time):
+            query['ReadSQLReplicationTime'] = request.read_sqlreplication_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceDelayedReplicationTime',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyDBInstanceDelayedReplicationTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbinstance_delayed_replication_time(
+        self,
+        request: rds_20140815_models.ModifyDBInstanceDelayedReplicationTimeRequest,
+    ) -> rds_20140815_models.ModifyDBInstanceDelayedReplicationTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbinstance_delayed_replication_time_with_options(request, runtime)
+
+    async def modify_dbinstance_delayed_replication_time_async(
+        self,
+        request: rds_20140815_models.ModifyDBInstanceDelayedReplicationTimeRequest,
+    ) -> rds_20140815_models.ModifyDBInstanceDelayedReplicationTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbinstance_delayed_replication_time_with_options_async(request, runtime)
 
     def modify_dbinstance_deletion_protection_with_options(
         self,
@@ -16531,6 +18411,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.dbproxy_instance_num):
             query['DBProxyInstanceNum'] = request.dbproxy_instance_num
         if not UtilClient.is_unset(request.instance_network_type):
@@ -16539,6 +18421,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -16579,6 +18463,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.dbproxy_instance_num):
             query['DBProxyInstanceNum'] = request.dbproxy_instance_num
         if not UtilClient.is_unset(request.instance_network_type):
@@ -16587,6 +18473,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -16643,6 +18531,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbproxy_endpoint_id):
             query['DBProxyEndpointId'] = request.dbproxy_endpoint_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.db_endpoint_aliases):
             query['DbEndpointAliases'] = request.db_endpoint_aliases
         if not UtilClient.is_unset(request.db_endpoint_operator):
@@ -16699,6 +18589,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbproxy_endpoint_id):
             query['DBProxyEndpointId'] = request.dbproxy_endpoint_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.db_endpoint_aliases):
             query['DbEndpointAliases'] = request.db_endpoint_aliases
         if not UtilClient.is_unset(request.db_endpoint_operator):
@@ -16769,6 +18661,8 @@ class Client(OpenApiClient):
             query['DBProxyConnectStringNetType'] = request.dbproxy_connect_string_net_type
         if not UtilClient.is_unset(request.dbproxy_endpoint_id):
             query['DBProxyEndpointId'] = request.dbproxy_endpoint_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.dbproxy_new_connect_string):
             query['DBProxyNewConnectString'] = request.dbproxy_new_connect_string
         if not UtilClient.is_unset(request.dbproxy_new_connect_string_port):
@@ -16813,6 +18707,8 @@ class Client(OpenApiClient):
             query['DBProxyConnectStringNetType'] = request.dbproxy_connect_string_net_type
         if not UtilClient.is_unset(request.dbproxy_endpoint_id):
             query['DBProxyEndpointId'] = request.dbproxy_endpoint_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.dbproxy_new_connect_string):
             query['DBProxyNewConnectString'] = request.dbproxy_new_connect_string
         if not UtilClient.is_unset(request.dbproxy_new_connect_string_port):
@@ -16867,6 +18763,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.dbproxy_instance_num):
             query['DBProxyInstanceNum'] = request.dbproxy_instance_num
         if not UtilClient.is_unset(request.dbproxy_instance_type):
@@ -16913,6 +18811,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.dbproxy_instance_num):
             query['DBProxyInstanceNum'] = request.dbproxy_instance_num
         if not UtilClient.is_unset(request.dbproxy_instance_type):
@@ -17169,6 +19069,8 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.ModifyDbProxyInstanceSslResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.db_instance_id):
             query['DbInstanceId'] = request.db_instance_id
         if not UtilClient.is_unset(request.db_instance_id):
@@ -17207,6 +19109,8 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.ModifyDbProxyInstanceSslResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.db_instance_id):
             query['DbInstanceId'] = request.db_instance_id
         if not UtilClient.is_unset(request.db_instance_id):
@@ -18898,6 +20802,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.rebuild_dbinstance_with_options_async(request, runtime)
 
+    def receive_dbinstance_with_options(
+        self,
+        request: rds_20140815_models.ReceiveDBInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ReceiveDBInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.guard_dbinstance_id):
+            query['GuardDBInstanceId'] = request.guard_dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReceiveDBInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ReceiveDBInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def receive_dbinstance_with_options_async(
+        self,
+        request: rds_20140815_models.ReceiveDBInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ReceiveDBInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.guard_dbinstance_id):
+            query['GuardDBInstanceId'] = request.guard_dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReceiveDBInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ReceiveDBInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def receive_dbinstance(
+        self,
+        request: rds_20140815_models.ReceiveDBInstanceRequest,
+    ) -> rds_20140815_models.ReceiveDBInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.receive_dbinstance_with_options(request, runtime)
+
+    async def receive_dbinstance_async(
+        self,
+        request: rds_20140815_models.ReceiveDBInstanceRequest,
+    ) -> rds_20140815_models.ReceiveDBInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.receive_dbinstance_with_options_async(request, runtime)
+
     def recovery_dbinstance_with_options(
         self,
         request: rds_20140815_models.RecoveryDBInstanceRequest,
@@ -19413,6 +21407,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -19453,6 +21449,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -19497,6 +21495,84 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.RenewInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.renew_instance_with_options_async(request, runtime)
+
+    def request_service_of_cloud_dbawith_options(
+        self,
+        request: rds_20140815_models.RequestServiceOfCloudDBARequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.RequestServiceOfCloudDBAResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.service_request_param):
+            query['ServiceRequestParam'] = request.service_request_param
+        if not UtilClient.is_unset(request.service_request_type):
+            query['ServiceRequestType'] = request.service_request_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RequestServiceOfCloudDBA',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.RequestServiceOfCloudDBAResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def request_service_of_cloud_dbawith_options_async(
+        self,
+        request: rds_20140815_models.RequestServiceOfCloudDBARequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.RequestServiceOfCloudDBAResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.service_request_param):
+            query['ServiceRequestParam'] = request.service_request_param
+        if not UtilClient.is_unset(request.service_request_type):
+            query['ServiceRequestType'] = request.service_request_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RequestServiceOfCloudDBA',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.RequestServiceOfCloudDBAResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def request_service_of_cloud_dba(
+        self,
+        request: rds_20140815_models.RequestServiceOfCloudDBARequest,
+    ) -> rds_20140815_models.RequestServiceOfCloudDBAResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.request_service_of_cloud_dbawith_options(request, runtime)
+
+    async def request_service_of_cloud_dba_async(
+        self,
+        request: rds_20140815_models.RequestServiceOfCloudDBARequest,
+    ) -> rds_20140815_models.RequestServiceOfCloudDBAResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.request_service_of_cloud_dbawith_options_async(request, runtime)
 
     def reset_account_with_options(
         self,
@@ -19793,6 +21869,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -19843,6 +21921,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -20681,6 +22761,92 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.SwitchDBInstanceVpcResponse:
         runtime = util_models.RuntimeOptions()
         return await self.switch_dbinstance_vpc_with_options_async(request, runtime)
+
+    def switch_guard_to_master_instance_with_options(
+        self,
+        request: rds_20140815_models.SwitchGuardToMasterInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.SwitchGuardToMasterInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchGuardToMasterInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.SwitchGuardToMasterInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def switch_guard_to_master_instance_with_options_async(
+        self,
+        request: rds_20140815_models.SwitchGuardToMasterInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.SwitchGuardToMasterInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchGuardToMasterInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.SwitchGuardToMasterInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def switch_guard_to_master_instance(
+        self,
+        request: rds_20140815_models.SwitchGuardToMasterInstanceRequest,
+    ) -> rds_20140815_models.SwitchGuardToMasterInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.switch_guard_to_master_instance_with_options(request, runtime)
+
+    async def switch_guard_to_master_instance_async(
+        self,
+        request: rds_20140815_models.SwitchGuardToMasterInstanceRequest,
+    ) -> rds_20140815_models.SwitchGuardToMasterInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.switch_guard_to_master_instance_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
@@ -21675,6 +23841,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -21713,6 +23881,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbproxy_engine_type):
+            query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_owner_account):
