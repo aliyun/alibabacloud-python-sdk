@@ -444,6 +444,140 @@ class CheckSecurityEventIdResponse(TeaModel):
         return self
 
 
+class CheckUserHasEcsRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        lang: str = None,
+        page_size: int = None,
+    ):
+        self.current_page = current_page
+        self.lang = lang
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class CheckUserHasEcsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CheckUserHasEcsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckUserHasEcsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckUserHasEcsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAntiBruteForceRuleRequest(TeaModel):
     def __init__(
         self,
@@ -27622,6 +27756,7 @@ class DescribeSuspEventsResponseBodySuspEvents(TeaModel):
         data_source: str = None,
         desc: str = None,
         details: List[DescribeSuspEventsResponseBodySuspEventsDetails] = None,
+        display_sandbox_result: bool = None,
         event_notes: List[DescribeSuspEventsResponseBodySuspEventsEventNotes] = None,
         event_status: int = None,
         event_sub_type: str = None,
@@ -27672,6 +27807,7 @@ class DescribeSuspEventsResponseBodySuspEvents(TeaModel):
         self.data_source = data_source
         self.desc = desc
         self.details = details
+        self.display_sandbox_result = display_sandbox_result
         self.event_notes = event_notes
         self.event_status = event_status
         self.event_sub_type = event_sub_type
@@ -27761,6 +27897,8 @@ class DescribeSuspEventsResponseBodySuspEvents(TeaModel):
         if self.details is not None:
             for k in self.details:
                 result['Details'].append(k.to_map() if k else None)
+        if self.display_sandbox_result is not None:
+            result['DisplaySandboxResult'] = self.display_sandbox_result
         result['EventNotes'] = []
         if self.event_notes is not None:
             for k in self.event_notes:
@@ -27870,6 +28008,8 @@ class DescribeSuspEventsResponseBodySuspEvents(TeaModel):
             for k in m.get('Details'):
                 temp_model = DescribeSuspEventsResponseBodySuspEventsDetails()
                 self.details.append(temp_model.from_map(k))
+        if m.get('DisplaySandboxResult') is not None:
+            self.display_sandbox_result = m.get('DisplaySandboxResult')
         self.event_notes = []
         if m.get('EventNotes') is not None:
             for k in m.get('EventNotes'):
