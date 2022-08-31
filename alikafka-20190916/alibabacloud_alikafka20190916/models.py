@@ -567,6 +567,7 @@ class CreatePostPayOrderRequest(TeaModel):
         eip_max: int = None,
         io_max: int = None,
         io_max_spec: str = None,
+        partition_num: int = None,
         region_id: str = None,
         resource_group_id: str = None,
         spec_type: str = None,
@@ -578,6 +579,7 @@ class CreatePostPayOrderRequest(TeaModel):
         self.eip_max = eip_max
         self.io_max = io_max
         self.io_max_spec = io_max_spec
+        self.partition_num = partition_num
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.spec_type = spec_type
@@ -604,6 +606,8 @@ class CreatePostPayOrderRequest(TeaModel):
             result['IoMax'] = self.io_max
         if self.io_max_spec is not None:
             result['IoMaxSpec'] = self.io_max_spec
+        if self.partition_num is not None:
+            result['PartitionNum'] = self.partition_num
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -628,6 +632,8 @@ class CreatePostPayOrderRequest(TeaModel):
             self.io_max = m.get('IoMax')
         if m.get('IoMaxSpec') is not None:
             self.io_max_spec = m.get('IoMaxSpec')
+        if m.get('PartitionNum') is not None:
+            self.partition_num = m.get('PartitionNum')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -743,6 +749,7 @@ class CreatePrePayOrderRequest(TeaModel):
         eip_max: int = None,
         io_max: int = None,
         io_max_spec: str = None,
+        partition_num: int = None,
         region_id: str = None,
         resource_group_id: str = None,
         spec_type: str = None,
@@ -754,6 +761,7 @@ class CreatePrePayOrderRequest(TeaModel):
         self.eip_max = eip_max
         self.io_max = io_max
         self.io_max_spec = io_max_spec
+        self.partition_num = partition_num
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.spec_type = spec_type
@@ -780,6 +788,8 @@ class CreatePrePayOrderRequest(TeaModel):
             result['IoMax'] = self.io_max
         if self.io_max_spec is not None:
             result['IoMaxSpec'] = self.io_max_spec
+        if self.partition_num is not None:
+            result['PartitionNum'] = self.partition_num
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -804,6 +814,8 @@ class CreatePrePayOrderRequest(TeaModel):
             self.io_max = m.get('IoMax')
         if m.get('IoMaxSpec') is not None:
             self.io_max_spec = m.get('IoMaxSpec')
+        if m.get('PartitionNum') is not None:
+            self.partition_num = m.get('PartitionNum')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -3778,6 +3790,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         expired_time: int = None,
         instance_id: str = None,
         io_max: int = None,
+        kms_key_id: str = None,
         msg_retain: int = None,
         name: str = None,
         paid_type: int = None,
@@ -3810,6 +3823,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         self.expired_time = expired_time
         self.instance_id = instance_id
         self.io_max = io_max
+        self.kms_key_id = kms_key_id
         self.msg_retain = msg_retain
         self.name = name
         self.paid_type = paid_type
@@ -3865,6 +3879,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.io_max is not None:
             result['IoMax'] = self.io_max
+        if self.kms_key_id is not None:
+            result['KmsKeyId'] = self.kms_key_id
         if self.msg_retain is not None:
             result['MsgRetain'] = self.msg_retain
         if self.name is not None:
@@ -3931,6 +3947,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('IoMax') is not None:
             self.io_max = m.get('IoMax')
+        if m.get('KmsKeyId') is not None:
+            self.kms_key_id = m.get('KmsKeyId')
         if m.get('MsgRetain') is not None:
             self.msg_retain = m.get('MsgRetain')
         if m.get('Name') is not None:
@@ -6430,6 +6448,7 @@ class UpgradePostPayOrderRequest(TeaModel):
         instance_id: str = None,
         io_max: int = None,
         io_max_spec: str = None,
+        partition_num: int = None,
         region_id: str = None,
         spec_type: str = None,
         topic_quota: int = None,
@@ -6440,6 +6459,7 @@ class UpgradePostPayOrderRequest(TeaModel):
         self.instance_id = instance_id
         self.io_max = io_max
         self.io_max_spec = io_max_spec
+        self.partition_num = partition_num
         self.region_id = region_id
         self.spec_type = spec_type
         self.topic_quota = topic_quota
@@ -6465,6 +6485,8 @@ class UpgradePostPayOrderRequest(TeaModel):
             result['IoMax'] = self.io_max
         if self.io_max_spec is not None:
             result['IoMaxSpec'] = self.io_max_spec
+        if self.partition_num is not None:
+            result['PartitionNum'] = self.partition_num
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.spec_type is not None:
@@ -6487,6 +6509,8 @@ class UpgradePostPayOrderRequest(TeaModel):
             self.io_max = m.get('IoMax')
         if m.get('IoMaxSpec') is not None:
             self.io_max_spec = m.get('IoMaxSpec')
+        if m.get('PartitionNum') is not None:
+            self.partition_num = m.get('PartitionNum')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SpecType') is not None:
@@ -6594,6 +6618,7 @@ class UpgradePrePayOrderRequest(TeaModel):
         instance_id: str = None,
         io_max: int = None,
         io_max_spec: str = None,
+        partition_num: int = None,
         region_id: str = None,
         spec_type: str = None,
         topic_quota: int = None,
@@ -6604,6 +6629,7 @@ class UpgradePrePayOrderRequest(TeaModel):
         self.instance_id = instance_id
         self.io_max = io_max
         self.io_max_spec = io_max_spec
+        self.partition_num = partition_num
         self.region_id = region_id
         self.spec_type = spec_type
         self.topic_quota = topic_quota
@@ -6629,6 +6655,8 @@ class UpgradePrePayOrderRequest(TeaModel):
             result['IoMax'] = self.io_max
         if self.io_max_spec is not None:
             result['IoMaxSpec'] = self.io_max_spec
+        if self.partition_num is not None:
+            result['PartitionNum'] = self.partition_num
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.spec_type is not None:
@@ -6651,6 +6679,8 @@ class UpgradePrePayOrderRequest(TeaModel):
             self.io_max = m.get('IoMax')
         if m.get('IoMaxSpec') is not None:
             self.io_max_spec = m.get('IoMaxSpec')
+        if m.get('PartitionNum') is not None:
+            self.partition_num = m.get('PartitionNum')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SpecType') is not None:

@@ -1,3 +1,6 @@
+2022-08-31 Version: 2.0.7
+- Create and update order support to buy partition.
+
 2022-08-02 Version: 2.0.5
 - TagResources add instanceId param.
 - Add topic count, group count, partition count.
