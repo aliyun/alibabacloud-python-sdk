@@ -104,13 +104,16 @@ class AddScdnDomainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AddScdnDomainResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -123,6 +126,8 @@ class AddScdnDomainResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -131,6 +136,8 @@ class AddScdnDomainResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddScdnDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -219,13 +226,16 @@ class BatchDeleteScdnDomainConfigsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BatchDeleteScdnDomainConfigsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -238,6 +248,8 @@ class BatchDeleteScdnDomainConfigsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -246,6 +258,8 @@ class BatchDeleteScdnDomainConfigsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchDeleteScdnDomainConfigsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -416,13 +430,16 @@ class BatchSetScdnDomainConfigsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BatchSetScdnDomainConfigsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -435,6 +452,8 @@ class BatchSetScdnDomainConfigsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -443,6 +462,8 @@ class BatchSetScdnDomainConfigsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchSetScdnDomainConfigsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -519,13 +540,16 @@ class BatchStartScdnDomainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BatchStartScdnDomainResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -538,6 +562,8 @@ class BatchStartScdnDomainResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -546,6 +572,8 @@ class BatchStartScdnDomainResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchStartScdnDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -622,13 +650,16 @@ class BatchStopScdnDomainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BatchStopScdnDomainResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -641,6 +672,8 @@ class BatchStopScdnDomainResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -649,6 +682,8 @@ class BatchStopScdnDomainResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchStopScdnDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -743,13 +778,16 @@ class BatchUpdateScdnDomainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BatchUpdateScdnDomainResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -762,6 +800,8 @@ class BatchUpdateScdnDomainResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -770,6 +810,8 @@ class BatchUpdateScdnDomainResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchUpdateScdnDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -864,13 +906,16 @@ class CheckScdnServiceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CheckScdnServiceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -883,6 +928,8 @@ class CheckScdnServiceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -891,6 +938,8 @@ class CheckScdnServiceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CheckScdnServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -973,13 +1022,16 @@ class DeleteScdnDomainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteScdnDomainResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -992,6 +1044,8 @@ class DeleteScdnDomainResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1000,6 +1054,8 @@ class DeleteScdnDomainResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteScdnDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1082,13 +1138,16 @@ class DeleteScdnSpecificConfigResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteScdnSpecificConfigResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1101,6 +1160,8 @@ class DeleteScdnSpecificConfigResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1109,36 +1170,11 @@ class DeleteScdnSpecificConfigResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteScdnSpecificConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeScdnCcInfoRequest(TeaModel):
-    def __init__(
-        self,
-        owner_id: int = None,
-    ):
-        self.owner_id = owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         return self
 
 
@@ -1179,13 +1215,16 @@ class DescribeScdnCcInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnCcInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1198,6 +1237,8 @@ class DescribeScdnCcInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1206,6 +1247,8 @@ class DescribeScdnCcInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnCcInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1217,12 +1260,10 @@ class DescribeScdnCcQpsInfoRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -1238,8 +1279,6 @@ class DescribeScdnCcQpsInfoRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -1250,8 +1289,6 @@ class DescribeScdnCcQpsInfoRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -1436,13 +1473,16 @@ class DescribeScdnCcQpsInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnCcQpsInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1455,6 +1495,8 @@ class DescribeScdnCcQpsInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1463,6 +1505,8 @@ class DescribeScdnCcQpsInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnCcQpsInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1474,14 +1518,12 @@ class DescribeScdnCcTopIpRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         page_number: str = None,
         page_size: str = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
-        self.owner_id = owner_id
         self.page_number = page_number
         self.page_size = page_size
         self.start_time = start_time
@@ -1499,8 +1541,6 @@ class DescribeScdnCcTopIpRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -1515,8 +1555,6 @@ class DescribeScdnCcTopIpRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -1645,13 +1683,16 @@ class DescribeScdnCcTopIpResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnCcTopIpResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1664,6 +1705,8 @@ class DescribeScdnCcTopIpResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1672,6 +1715,8 @@ class DescribeScdnCcTopIpResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnCcTopIpResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1683,14 +1728,12 @@ class DescribeScdnCcTopUrlRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         page_number: str = None,
         page_size: str = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
-        self.owner_id = owner_id
         self.page_number = page_number
         self.page_size = page_size
         self.start_time = start_time
@@ -1708,8 +1751,6 @@ class DescribeScdnCcTopUrlRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -1724,8 +1765,6 @@ class DescribeScdnCcTopUrlRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -1854,13 +1893,16 @@ class DescribeScdnCcTopUrlResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnCcTopUrlResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1873,6 +1915,8 @@ class DescribeScdnCcTopUrlResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1881,6 +1925,8 @@ class DescribeScdnCcTopUrlResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnCcTopUrlResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1981,13 +2027,16 @@ class DescribeScdnCertificateDetailResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnCertificateDetailResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2000,6 +2049,8 @@ class DescribeScdnCertificateDetailResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2008,6 +2059,8 @@ class DescribeScdnCertificateDetailResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnCertificateDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2219,13 +2272,16 @@ class DescribeScdnCertificateListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnCertificateListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2238,6 +2294,8 @@ class DescribeScdnCertificateListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2246,36 +2304,11 @@ class DescribeScdnCertificateListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnCertificateListResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeScdnDDoSInfoRequest(TeaModel):
-    def __init__(
-        self,
-        owner_id: int = None,
-    ):
-        self.owner_id = owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         return self
 
 
@@ -2322,13 +2355,16 @@ class DescribeScdnDDoSInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDDoSInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2341,6 +2377,8 @@ class DescribeScdnDDoSInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2349,6 +2387,8 @@ class DescribeScdnDDoSInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDDoSInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2360,12 +2400,10 @@ class DescribeScdnDDoSTrafficInfoRequest(TeaModel):
         self,
         end_time: str = None,
         line: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.end_time = end_time
         self.line = line
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -2381,8 +2419,6 @@ class DescribeScdnDDoSTrafficInfoRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.line is not None:
             result['Line'] = self.line
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -2393,8 +2429,6 @@ class DescribeScdnDDoSTrafficInfoRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Line') is not None:
             self.line = m.get('Line')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -2651,13 +2685,16 @@ class DescribeScdnDDoSTrafficInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDDoSTrafficInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2670,6 +2707,8 @@ class DescribeScdnDDoSTrafficInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2678,6 +2717,8 @@ class DescribeScdnDDoSTrafficInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDDoSTrafficInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2692,7 +2733,6 @@ class DescribeScdnDomainBpsDataRequest(TeaModel):
         interval: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
@@ -2700,7 +2740,6 @@ class DescribeScdnDomainBpsDataRequest(TeaModel):
         self.interval = interval
         self.isp_name_en = isp_name_en
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -2722,8 +2761,6 @@ class DescribeScdnDomainBpsDataRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -2740,8 +2777,6 @@ class DescribeScdnDomainBpsDataRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -2890,13 +2925,16 @@ class DescribeScdnDomainBpsDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainBpsDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2909,6 +2947,8 @@ class DescribeScdnDomainBpsDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2917,6 +2957,8 @@ class DescribeScdnDomainBpsDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainBpsDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2927,10 +2969,8 @@ class DescribeScdnDomainCertificateInfoRequest(TeaModel):
     def __init__(
         self,
         domain_name: str = None,
-        owner_id: int = None,
     ):
         self.domain_name = domain_name
-        self.owner_id = owner_id
 
     def validate(self):
         pass
@@ -2943,16 +2983,12 @@ class DescribeScdnDomainCertificateInfoRequest(TeaModel):
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         return self
 
 
@@ -3111,13 +3147,16 @@ class DescribeScdnDomainCertificateInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainCertificateInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3130,6 +3169,8 @@ class DescribeScdnDomainCertificateInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3138,6 +3179,8 @@ class DescribeScdnDomainCertificateInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainCertificateInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3148,10 +3191,8 @@ class DescribeScdnDomainCnameRequest(TeaModel):
     def __init__(
         self,
         domain_name: str = None,
-        owner_id: int = None,
     ):
         self.domain_name = domain_name
-        self.owner_id = owner_id
 
     def validate(self):
         pass
@@ -3164,16 +3205,12 @@ class DescribeScdnDomainCnameRequest(TeaModel):
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         return self
 
 
@@ -3290,13 +3327,16 @@ class DescribeScdnDomainCnameResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainCnameResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3309,6 +3349,8 @@ class DescribeScdnDomainCnameResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3317,6 +3359,8 @@ class DescribeScdnDomainCnameResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainCnameResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3448,7 +3492,7 @@ class DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfig(TeaModel):
         config_id: str = None,
         function_args: DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgs = None,
         function_name: str = None,
-        parent_id: int = None,
+        parent_id: str = None,
         status: str = None,
     ):
         self.config_id = config_id
@@ -3569,13 +3613,16 @@ class DescribeScdnDomainConfigsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainConfigsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3588,6 +3635,8 @@ class DescribeScdnDomainConfigsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3596,6 +3645,8 @@ class DescribeScdnDomainConfigsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainConfigsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3861,13 +3912,16 @@ class DescribeScdnDomainDetailResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainDetailResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3880,6 +3934,8 @@ class DescribeScdnDomainDetailResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3888,6 +3944,8 @@ class DescribeScdnDomainDetailResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3900,13 +3958,11 @@ class DescribeScdnDomainHitRateDataRequest(TeaModel):
         domain_name: str = None,
         end_time: str = None,
         interval: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
         self.interval = interval
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -3924,8 +3980,6 @@ class DescribeScdnDomainHitRateDataRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.interval is not None:
             result['Interval'] = self.interval
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -3938,8 +3992,6 @@ class DescribeScdnDomainHitRateDataRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -4082,13 +4134,16 @@ class DescribeScdnDomainHitRateDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainHitRateDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4101,6 +4156,8 @@ class DescribeScdnDomainHitRateDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4109,6 +4166,8 @@ class DescribeScdnDomainHitRateDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainHitRateDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4123,7 +4182,6 @@ class DescribeScdnDomainHttpCodeDataRequest(TeaModel):
         interval: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
@@ -4131,7 +4189,6 @@ class DescribeScdnDomainHttpCodeDataRequest(TeaModel):
         self.interval = interval
         self.isp_name_en = isp_name_en
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -4153,8 +4210,6 @@ class DescribeScdnDomainHttpCodeDataRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -4171,8 +4226,6 @@ class DescribeScdnDomainHttpCodeDataRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -4385,13 +4438,16 @@ class DescribeScdnDomainHttpCodeDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainHttpCodeDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4404,6 +4460,8 @@ class DescribeScdnDomainHttpCodeDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4412,6 +4470,8 @@ class DescribeScdnDomainHttpCodeDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainHttpCodeDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4423,12 +4483,10 @@ class DescribeScdnDomainIspDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -4444,8 +4502,6 @@ class DescribeScdnDomainIspDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -4456,8 +4512,6 @@ class DescribeScdnDomainIspDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -4654,13 +4708,16 @@ class DescribeScdnDomainIspDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainIspDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4673,6 +4730,8 @@ class DescribeScdnDomainIspDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4681,6 +4740,8 @@ class DescribeScdnDomainIspDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainIspDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4692,14 +4753,12 @@ class DescribeScdnDomainLogRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
-        self.owner_id = owner_id
         self.page_number = page_number
         self.page_size = page_size
         self.start_time = start_time
@@ -4717,8 +4776,6 @@ class DescribeScdnDomainLogRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -4733,8 +4790,6 @@ class DescribeScdnDomainLogRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -4993,13 +5048,16 @@ class DescribeScdnDomainLogResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainLogResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5012,6 +5070,8 @@ class DescribeScdnDomainLogResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5020,6 +5080,8 @@ class DescribeScdnDomainLogResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainLogResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5032,13 +5094,11 @@ class DescribeScdnDomainOriginBpsDataRequest(TeaModel):
         domain_name: str = None,
         end_time: str = None,
         interval: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
         self.interval = interval
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -5056,8 +5116,6 @@ class DescribeScdnDomainOriginBpsDataRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.interval is not None:
             result['Interval'] = self.interval
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -5070,8 +5128,6 @@ class DescribeScdnDomainOriginBpsDataRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -5220,13 +5276,16 @@ class DescribeScdnDomainOriginBpsDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainOriginBpsDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5239,6 +5298,8 @@ class DescribeScdnDomainOriginBpsDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5247,6 +5308,8 @@ class DescribeScdnDomainOriginBpsDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainOriginBpsDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5259,13 +5322,11 @@ class DescribeScdnDomainOriginTrafficDataRequest(TeaModel):
         domain_name: str = None,
         end_time: str = None,
         interval: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
         self.interval = interval
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -5283,8 +5344,6 @@ class DescribeScdnDomainOriginTrafficDataRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.interval is not None:
             result['Interval'] = self.interval
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -5297,8 +5356,6 @@ class DescribeScdnDomainOriginTrafficDataRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -5447,13 +5504,16 @@ class DescribeScdnDomainOriginTrafficDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainOriginTrafficDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5466,6 +5526,8 @@ class DescribeScdnDomainOriginTrafficDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5474,6 +5536,8 @@ class DescribeScdnDomainOriginTrafficDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainOriginTrafficDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5485,12 +5549,10 @@ class DescribeScdnDomainPvDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -5506,8 +5568,6 @@ class DescribeScdnDomainPvDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -5518,8 +5578,6 @@ class DescribeScdnDomainPvDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -5656,13 +5714,16 @@ class DescribeScdnDomainPvDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainPvDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5675,6 +5736,8 @@ class DescribeScdnDomainPvDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5683,6 +5746,8 @@ class DescribeScdnDomainPvDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainPvDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5697,7 +5762,6 @@ class DescribeScdnDomainQpsDataRequest(TeaModel):
         interval: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
@@ -5705,7 +5769,6 @@ class DescribeScdnDomainQpsDataRequest(TeaModel):
         self.interval = interval
         self.isp_name_en = isp_name_en
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -5727,8 +5790,6 @@ class DescribeScdnDomainQpsDataRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -5745,8 +5806,6 @@ class DescribeScdnDomainQpsDataRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -5913,13 +5972,16 @@ class DescribeScdnDomainQpsDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainQpsDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5932,6 +5994,8 @@ class DescribeScdnDomainQpsDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5940,6 +6004,8 @@ class DescribeScdnDomainQpsDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainQpsDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5953,14 +6019,12 @@ class DescribeScdnDomainRealTimeBpsDataRequest(TeaModel):
         end_time: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
         self.isp_name_en = isp_name_en
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -5980,8 +6044,6 @@ class DescribeScdnDomainRealTimeBpsDataRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -5996,8 +6058,6 @@ class DescribeScdnDomainRealTimeBpsDataRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -6110,13 +6170,16 @@ class DescribeScdnDomainRealTimeBpsDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainRealTimeBpsDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6129,6 +6192,8 @@ class DescribeScdnDomainRealTimeBpsDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6137,6 +6202,8 @@ class DescribeScdnDomainRealTimeBpsDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainRealTimeBpsDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6148,12 +6215,10 @@ class DescribeScdnDomainRealTimeByteHitRateDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -6169,8 +6234,6 @@ class DescribeScdnDomainRealTimeByteHitRateDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -6181,8 +6244,6 @@ class DescribeScdnDomainRealTimeByteHitRateDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -6295,13 +6356,16 @@ class DescribeScdnDomainRealTimeByteHitRateDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainRealTimeByteHitRateDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6314,6 +6378,8 @@ class DescribeScdnDomainRealTimeByteHitRateDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6322,6 +6388,8 @@ class DescribeScdnDomainRealTimeByteHitRateDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainRealTimeByteHitRateDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6335,14 +6403,12 @@ class DescribeScdnDomainRealTimeHttpCodeDataRequest(TeaModel):
         end_time: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
         self.isp_name_en = isp_name_en
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -6362,8 +6428,6 @@ class DescribeScdnDomainRealTimeHttpCodeDataRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -6378,8 +6442,6 @@ class DescribeScdnDomainRealTimeHttpCodeDataRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -6592,13 +6654,16 @@ class DescribeScdnDomainRealTimeHttpCodeDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainRealTimeHttpCodeDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6611,6 +6676,8 @@ class DescribeScdnDomainRealTimeHttpCodeDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6619,6 +6686,8 @@ class DescribeScdnDomainRealTimeHttpCodeDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainRealTimeHttpCodeDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6632,14 +6701,12 @@ class DescribeScdnDomainRealTimeQpsDataRequest(TeaModel):
         end_time: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
         self.isp_name_en = isp_name_en
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -6659,8 +6726,6 @@ class DescribeScdnDomainRealTimeQpsDataRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -6675,8 +6740,6 @@ class DescribeScdnDomainRealTimeQpsDataRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -6789,13 +6852,16 @@ class DescribeScdnDomainRealTimeQpsDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainRealTimeQpsDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6808,6 +6874,8 @@ class DescribeScdnDomainRealTimeQpsDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6816,6 +6884,8 @@ class DescribeScdnDomainRealTimeQpsDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainRealTimeQpsDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6827,12 +6897,10 @@ class DescribeScdnDomainRealTimeReqHitRateDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -6848,8 +6916,6 @@ class DescribeScdnDomainRealTimeReqHitRateDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -6860,8 +6926,6 @@ class DescribeScdnDomainRealTimeReqHitRateDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -6974,13 +7038,16 @@ class DescribeScdnDomainRealTimeReqHitRateDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainRealTimeReqHitRateDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6993,6 +7060,8 @@ class DescribeScdnDomainRealTimeReqHitRateDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7001,6 +7070,8 @@ class DescribeScdnDomainRealTimeReqHitRateDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainRealTimeReqHitRateDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7012,12 +7083,10 @@ class DescribeScdnDomainRealTimeSrcBpsDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -7033,8 +7102,6 @@ class DescribeScdnDomainRealTimeSrcBpsDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -7045,8 +7112,6 @@ class DescribeScdnDomainRealTimeSrcBpsDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -7183,13 +7248,16 @@ class DescribeScdnDomainRealTimeSrcBpsDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainRealTimeSrcBpsDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7202,6 +7270,8 @@ class DescribeScdnDomainRealTimeSrcBpsDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7210,6 +7280,8 @@ class DescribeScdnDomainRealTimeSrcBpsDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainRealTimeSrcBpsDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7221,12 +7293,10 @@ class DescribeScdnDomainRealTimeSrcTrafficDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -7242,8 +7312,6 @@ class DescribeScdnDomainRealTimeSrcTrafficDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -7254,8 +7322,6 @@ class DescribeScdnDomainRealTimeSrcTrafficDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -7392,13 +7458,16 @@ class DescribeScdnDomainRealTimeSrcTrafficDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainRealTimeSrcTrafficDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7411,6 +7480,8 @@ class DescribeScdnDomainRealTimeSrcTrafficDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7419,6 +7490,8 @@ class DescribeScdnDomainRealTimeSrcTrafficDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainRealTimeSrcTrafficDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7430,12 +7503,10 @@ class DescribeScdnDomainRealTimeTrafficDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -7451,8 +7522,6 @@ class DescribeScdnDomainRealTimeTrafficDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -7463,8 +7532,6 @@ class DescribeScdnDomainRealTimeTrafficDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -7601,13 +7668,16 @@ class DescribeScdnDomainRealTimeTrafficDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainRealTimeTrafficDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7620,6 +7690,8 @@ class DescribeScdnDomainRealTimeTrafficDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7628,6 +7700,8 @@ class DescribeScdnDomainRealTimeTrafficDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainRealTimeTrafficDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7639,12 +7713,10 @@ class DescribeScdnDomainRegionDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -7660,8 +7732,6 @@ class DescribeScdnDomainRegionDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -7672,8 +7742,6 @@ class DescribeScdnDomainRegionDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -7870,13 +7938,16 @@ class DescribeScdnDomainRegionDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainRegionDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7889,6 +7960,8 @@ class DescribeScdnDomainRegionDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7897,6 +7970,8 @@ class DescribeScdnDomainRegionDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainRegionDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7907,12 +7982,10 @@ class DescribeScdnDomainTopReferVisitRequest(TeaModel):
     def __init__(
         self,
         domain_name: str = None,
-        owner_id: int = None,
         sort_by: str = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
-        self.owner_id = owner_id
         self.sort_by = sort_by
         self.start_time = start_time
 
@@ -7927,8 +8000,6 @@ class DescribeScdnDomainTopReferVisitRequest(TeaModel):
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.start_time is not None:
@@ -7939,8 +8010,6 @@ class DescribeScdnDomainTopReferVisitRequest(TeaModel):
         m = m or dict()
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('StartTime') is not None:
@@ -8085,13 +8154,16 @@ class DescribeScdnDomainTopReferVisitResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainTopReferVisitResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8104,6 +8176,8 @@ class DescribeScdnDomainTopReferVisitResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8112,6 +8186,8 @@ class DescribeScdnDomainTopReferVisitResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainTopReferVisitResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8122,12 +8198,10 @@ class DescribeScdnDomainTopUrlVisitRequest(TeaModel):
     def __init__(
         self,
         domain_name: str = None,
-        owner_id: int = None,
         sort_by: str = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
-        self.owner_id = owner_id
         self.sort_by = sort_by
         self.start_time = start_time
 
@@ -8142,8 +8216,6 @@ class DescribeScdnDomainTopUrlVisitRequest(TeaModel):
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.start_time is not None:
@@ -8154,8 +8226,6 @@ class DescribeScdnDomainTopUrlVisitRequest(TeaModel):
         m = m or dict()
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('StartTime') is not None:
@@ -8680,13 +8750,16 @@ class DescribeScdnDomainTopUrlVisitResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainTopUrlVisitResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8699,6 +8772,8 @@ class DescribeScdnDomainTopUrlVisitResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8707,6 +8782,8 @@ class DescribeScdnDomainTopUrlVisitResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainTopUrlVisitResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8721,7 +8798,6 @@ class DescribeScdnDomainTrafficDataRequest(TeaModel):
         interval: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
@@ -8729,7 +8805,6 @@ class DescribeScdnDomainTrafficDataRequest(TeaModel):
         self.interval = interval
         self.isp_name_en = isp_name_en
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -8751,8 +8826,6 @@ class DescribeScdnDomainTrafficDataRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -8769,8 +8842,6 @@ class DescribeScdnDomainTrafficDataRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -8919,13 +8990,16 @@ class DescribeScdnDomainTrafficDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainTrafficDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8938,6 +9012,8 @@ class DescribeScdnDomainTrafficDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8946,6 +9022,8 @@ class DescribeScdnDomainTrafficDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainTrafficDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8957,12 +9035,10 @@ class DescribeScdnDomainUvDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         self.domain_name = domain_name
         self.end_time = end_time
-        self.owner_id = owner_id
         self.start_time = start_time
 
     def validate(self):
@@ -8978,8 +9054,6 @@ class DescribeScdnDomainUvDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -8990,8 +9064,6 @@ class DescribeScdnDomainUvDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -9128,13 +9200,16 @@ class DescribeScdnDomainUvDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnDomainUvDataResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9147,6 +9222,8 @@ class DescribeScdnDomainUvDataResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9155,6 +9232,8 @@ class DescribeScdnDomainUvDataResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnDomainUvDataResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9273,13 +9352,16 @@ class DescribeScdnRefreshQuotaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnRefreshQuotaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9292,6 +9374,8 @@ class DescribeScdnRefreshQuotaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9300,6 +9384,8 @@ class DescribeScdnRefreshQuotaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnRefreshQuotaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9554,13 +9640,16 @@ class DescribeScdnRefreshTasksResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnRefreshTasksResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9573,6 +9662,8 @@ class DescribeScdnRefreshTasksResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9581,6 +9672,8 @@ class DescribeScdnRefreshTasksResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnRefreshTasksResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9913,13 +10006,16 @@ class DescribeScdnServiceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnServiceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9932,6 +10028,8 @@ class DescribeScdnServiceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9940,6 +10038,8 @@ class DescribeScdnServiceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9951,13 +10051,11 @@ class DescribeScdnTopDomainsByFlowRequest(TeaModel):
         self,
         end_time: str = None,
         limit: int = None,
-        owner_id: int = None,
         product: str = None,
         start_time: str = None,
     ):
         self.end_time = end_time
         self.limit = limit
-        self.owner_id = owner_id
         self.product = product
         self.start_time = start_time
 
@@ -9974,8 +10072,6 @@ class DescribeScdnTopDomainsByFlowRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.limit is not None:
             result['Limit'] = self.limit
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.product is not None:
             result['Product'] = self.product
         if self.start_time is not None:
@@ -9988,8 +10084,6 @@ class DescribeScdnTopDomainsByFlowRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('Product') is not None:
             self.product = m.get('Product')
         if m.get('StartTime') is not None:
@@ -10158,13 +10252,16 @@ class DescribeScdnTopDomainsByFlowResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnTopDomainsByFlowResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10177,6 +10274,8 @@ class DescribeScdnTopDomainsByFlowResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10185,6 +10284,8 @@ class DescribeScdnTopDomainsByFlowResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnTopDomainsByFlowResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10533,13 +10634,16 @@ class DescribeScdnUserDomainsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnUserDomainsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10552,6 +10656,8 @@ class DescribeScdnUserDomainsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10560,36 +10666,11 @@ class DescribeScdnUserDomainsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnUserDomainsResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeScdnUserProtectInfoRequest(TeaModel):
-    def __init__(
-        self,
-        owner_id: int = None,
-    ):
-        self.owner_id = owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         return self
 
 
@@ -10630,13 +10711,16 @@ class DescribeScdnUserProtectInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnUserProtectInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10649,6 +10733,8 @@ class DescribeScdnUserProtectInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10657,6 +10743,8 @@ class DescribeScdnUserProtectInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnUserProtectInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10781,13 +10869,16 @@ class DescribeScdnUserQuotaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnUserQuotaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10800,6 +10891,8 @@ class DescribeScdnUserQuotaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10808,6 +10901,8 @@ class DescribeScdnUserQuotaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnUserQuotaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10818,10 +10913,8 @@ class DescribeScdnVerifyContentRequest(TeaModel):
     def __init__(
         self,
         domain_name: str = None,
-        owner_id: int = None,
     ):
         self.domain_name = domain_name
-        self.owner_id = owner_id
 
     def validate(self):
         pass
@@ -10834,16 +10927,12 @@ class DescribeScdnVerifyContentRequest(TeaModel):
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         return self
 
 
@@ -10884,13 +10973,16 @@ class DescribeScdnVerifyContentResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeScdnVerifyContentResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10903,6 +10995,8 @@ class DescribeScdnVerifyContentResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10911,153 +11005,10 @@ class DescribeScdnVerifyContentResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScdnVerifyContentResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OpenScdnServiceRequest(TeaModel):
-    def __init__(
-        self,
-        bandwidth: int = None,
-        cc_protection: int = None,
-        ddo_sbasic: int = None,
-        domain_count: int = None,
-        elastic_protection: int = None,
-        end_date: str = None,
-        owner_id: int = None,
-        protect_type: str = None,
-        security_token: str = None,
-        start_date: str = None,
-    ):
-        self.bandwidth = bandwidth
-        self.cc_protection = cc_protection
-        self.ddo_sbasic = ddo_sbasic
-        self.domain_count = domain_count
-        self.elastic_protection = elastic_protection
-        self.end_date = end_date
-        self.owner_id = owner_id
-        self.protect_type = protect_type
-        self.security_token = security_token
-        self.start_date = start_date
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bandwidth is not None:
-            result['Bandwidth'] = self.bandwidth
-        if self.cc_protection is not None:
-            result['CcProtection'] = self.cc_protection
-        if self.ddo_sbasic is not None:
-            result['DDoSBasic'] = self.ddo_sbasic
-        if self.domain_count is not None:
-            result['DomainCount'] = self.domain_count
-        if self.elastic_protection is not None:
-            result['ElasticProtection'] = self.elastic_protection
-        if self.end_date is not None:
-            result['EndDate'] = self.end_date
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.protect_type is not None:
-            result['ProtectType'] = self.protect_type
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
-        if self.start_date is not None:
-            result['StartDate'] = self.start_date
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bandwidth') is not None:
-            self.bandwidth = m.get('Bandwidth')
-        if m.get('CcProtection') is not None:
-            self.cc_protection = m.get('CcProtection')
-        if m.get('DDoSBasic') is not None:
-            self.ddo_sbasic = m.get('DDoSBasic')
-        if m.get('DomainCount') is not None:
-            self.domain_count = m.get('DomainCount')
-        if m.get('ElasticProtection') is not None:
-            self.elastic_protection = m.get('ElasticProtection')
-        if m.get('EndDate') is not None:
-            self.end_date = m.get('EndDate')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ProtectType') is not None:
-            self.protect_type = m.get('ProtectType')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
-        if m.get('StartDate') is not None:
-            self.start_date = m.get('StartDate')
-        return self
-
-
-class OpenScdnServiceResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class OpenScdnServiceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: OpenScdnServiceResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = OpenScdnServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11150,13 +11101,16 @@ class PreloadScdnObjectCachesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: PreloadScdnObjectCachesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11169,6 +11123,8 @@ class PreloadScdnObjectCachesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11177,6 +11133,8 @@ class PreloadScdnObjectCachesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PreloadScdnObjectCachesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11265,13 +11223,16 @@ class RefreshScdnObjectCachesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RefreshScdnObjectCachesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11284,6 +11245,8 @@ class RefreshScdnObjectCachesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11292,6 +11255,8 @@ class RefreshScdnObjectCachesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RefreshScdnObjectCachesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11303,12 +11268,10 @@ class SetScdnBotInfoRequest(TeaModel):
         self,
         domain_name: str = None,
         enable: str = None,
-        owner_id: int = None,
         status: str = None,
     ):
         self.domain_name = domain_name
         self.enable = enable
-        self.owner_id = owner_id
         self.status = status
 
     def validate(self):
@@ -11324,8 +11287,6 @@ class SetScdnBotInfoRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.enable is not None:
             result['Enable'] = self.enable
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -11336,8 +11297,6 @@ class SetScdnBotInfoRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -11374,13 +11333,16 @@ class SetScdnBotInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SetScdnBotInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11393,6 +11355,8 @@ class SetScdnBotInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11401,6 +11365,8 @@ class SetScdnBotInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetScdnBotInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11410,10 +11376,8 @@ class SetScdnBotInfoResponse(TeaModel):
 class SetScdnCcInfoRequest(TeaModel):
     def __init__(
         self,
-        owner_id: int = None,
         status: str = None,
     ):
-        self.owner_id = owner_id
         self.status = status
 
     def validate(self):
@@ -11425,16 +11389,12 @@ class SetScdnCcInfoRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.status is not None:
             result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -11471,13 +11431,16 @@ class SetScdnCcInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SetScdnCcInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11490,6 +11453,8 @@ class SetScdnCcInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11498,6 +11463,8 @@ class SetScdnCcInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetScdnCcInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11508,10 +11475,8 @@ class SetScdnDDoSInfoRequest(TeaModel):
     def __init__(
         self,
         elastic_bandwidth: int = None,
-        owner_id: int = None,
     ):
         self.elastic_bandwidth = elastic_bandwidth
-        self.owner_id = owner_id
 
     def validate(self):
         pass
@@ -11524,16 +11489,12 @@ class SetScdnDDoSInfoRequest(TeaModel):
         result = dict()
         if self.elastic_bandwidth is not None:
             result['ElasticBandwidth'] = self.elastic_bandwidth
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ElasticBandwidth') is not None:
             self.elastic_bandwidth = m.get('ElasticBandwidth')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         return self
 
 
@@ -11568,13 +11529,16 @@ class SetScdnDDoSInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SetScdnDDoSInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11587,6 +11551,8 @@ class SetScdnDDoSInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11595,111 +11561,10 @@ class SetScdnDDoSInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetScdnDDoSInfoResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SetScdnDomainBizInfoRequest(TeaModel):
-    def __init__(
-        self,
-        biz_name: str = None,
-        domain_name: str = None,
-        owner_id: int = None,
-    ):
-        self.biz_name = biz_name
-        self.domain_name = domain_name
-        self.owner_id = owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.biz_name is not None:
-            result['BizName'] = self.biz_name
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BizName') is not None:
-            self.biz_name = m.get('BizName')
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        return self
-
-
-class SetScdnDomainBizInfoResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class SetScdnDomainBizInfoResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: SetScdnDomainBizInfoResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = SetScdnDomainBizInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11816,13 +11681,16 @@ class SetScdnDomainCertificateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SetScdnDomainCertificateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11835,6 +11703,8 @@ class SetScdnDomainCertificateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11843,6 +11713,8 @@ class SetScdnDomainCertificateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetScdnDomainCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11919,13 +11791,16 @@ class StartScdnDomainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: StartScdnDomainResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11938,6 +11813,8 @@ class StartScdnDomainResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11946,6 +11823,8 @@ class StartScdnDomainResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartScdnDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -12022,13 +11901,16 @@ class StopScdnDomainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: StopScdnDomainResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12041,6 +11923,8 @@ class StopScdnDomainResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12049,8 +11933,280 @@ class StopScdnDomainResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopScdnDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TestAmpDescribeScdnDomainIspDataRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        start_time: str = None,
+    ):
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData(TeaModel):
+    def __init__(
+        self,
+        avg_object_size: str = None,
+        avg_response_rate: str = None,
+        avg_response_time: str = None,
+        bps: str = None,
+        bytes_proportion: str = None,
+        isp: str = None,
+        isp_ename: str = None,
+        proportion: str = None,
+        qps: str = None,
+        req_err_rate: str = None,
+        total_bytes: str = None,
+        total_query: str = None,
+    ):
+        self.avg_object_size = avg_object_size
+        self.avg_response_rate = avg_response_rate
+        self.avg_response_time = avg_response_time
+        self.bps = bps
+        self.bytes_proportion = bytes_proportion
+        self.isp = isp
+        self.isp_ename = isp_ename
+        self.proportion = proportion
+        self.qps = qps
+        self.req_err_rate = req_err_rate
+        self.total_bytes = total_bytes
+        self.total_query = total_query
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_object_size is not None:
+            result['AvgObjectSize'] = self.avg_object_size
+        if self.avg_response_rate is not None:
+            result['AvgResponseRate'] = self.avg_response_rate
+        if self.avg_response_time is not None:
+            result['AvgResponseTime'] = self.avg_response_time
+        if self.bps is not None:
+            result['Bps'] = self.bps
+        if self.bytes_proportion is not None:
+            result['BytesProportion'] = self.bytes_proportion
+        if self.isp is not None:
+            result['ISP'] = self.isp
+        if self.isp_ename is not None:
+            result['IspEname'] = self.isp_ename
+        if self.proportion is not None:
+            result['Proportion'] = self.proportion
+        if self.qps is not None:
+            result['Qps'] = self.qps
+        if self.req_err_rate is not None:
+            result['ReqErrRate'] = self.req_err_rate
+        if self.total_bytes is not None:
+            result['TotalBytes'] = self.total_bytes
+        if self.total_query is not None:
+            result['TotalQuery'] = self.total_query
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvgObjectSize') is not None:
+            self.avg_object_size = m.get('AvgObjectSize')
+        if m.get('AvgResponseRate') is not None:
+            self.avg_response_rate = m.get('AvgResponseRate')
+        if m.get('AvgResponseTime') is not None:
+            self.avg_response_time = m.get('AvgResponseTime')
+        if m.get('Bps') is not None:
+            self.bps = m.get('Bps')
+        if m.get('BytesProportion') is not None:
+            self.bytes_proportion = m.get('BytesProportion')
+        if m.get('ISP') is not None:
+            self.isp = m.get('ISP')
+        if m.get('IspEname') is not None:
+            self.isp_ename = m.get('IspEname')
+        if m.get('Proportion') is not None:
+            self.proportion = m.get('Proportion')
+        if m.get('Qps') is not None:
+            self.qps = m.get('Qps')
+        if m.get('ReqErrRate') is not None:
+            self.req_err_rate = m.get('ReqErrRate')
+        if m.get('TotalBytes') is not None:
+            self.total_bytes = m.get('TotalBytes')
+        if m.get('TotalQuery') is not None:
+            self.total_query = m.get('TotalQuery')
+        return self
+
+
+class TestAmpDescribeScdnDomainIspDataResponseBodyValue(TeaModel):
+    def __init__(
+        self,
+        ispproportion_data: List[TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData] = None,
+    ):
+        self.ispproportion_data = ispproportion_data
+
+    def validate(self):
+        if self.ispproportion_data:
+            for k in self.ispproportion_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ISPProportionData'] = []
+        if self.ispproportion_data is not None:
+            for k in self.ispproportion_data:
+                result['ISPProportionData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ispproportion_data = []
+        if m.get('ISPProportionData') is not None:
+            for k in m.get('ISPProportionData'):
+                temp_model = TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData()
+                self.ispproportion_data.append(temp_model.from_map(k))
+        return self
+
+
+class TestAmpDescribeScdnDomainIspDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_interval: str = None,
+        domain_name: str = None,
+        end_time: str = None,
+        request_id: str = None,
+        start_time: str = None,
+        value: TestAmpDescribeScdnDomainIspDataResponseBodyValue = None,
+    ):
+        self.data_interval = data_interval
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.request_id = request_id
+        self.start_time = start_time
+        self.value = value
+
+    def validate(self):
+        if self.value:
+            self.value.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_interval is not None:
+            result['DataInterval'] = self.data_interval
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.value is not None:
+            result['Value'] = self.value.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataInterval') is not None:
+            self.data_interval = m.get('DataInterval')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Value') is not None:
+            temp_model = TestAmpDescribeScdnDomainIspDataResponseBodyValue()
+            self.value = temp_model.from_map(m['Value'])
+        return self
+
+
+class TestAmpDescribeScdnDomainIspDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TestAmpDescribeScdnDomainIspDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TestAmpDescribeScdnDomainIspDataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12137,13 +12293,16 @@ class UpdateScdnDomainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateScdnDomainResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12156,6 +12315,8 @@ class UpdateScdnDomainResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12164,6 +12325,8 @@ class UpdateScdnDomainResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateScdnDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -12174,11 +12337,9 @@ class VerifyScdnDomainOwnerRequest(TeaModel):
     def __init__(
         self,
         domain_name: str = None,
-        owner_id: int = None,
         verify_type: str = None,
     ):
         self.domain_name = domain_name
-        self.owner_id = owner_id
         self.verify_type = verify_type
 
     def validate(self):
@@ -12192,8 +12353,6 @@ class VerifyScdnDomainOwnerRequest(TeaModel):
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.verify_type is not None:
             result['VerifyType'] = self.verify_type
         return result
@@ -12202,8 +12361,6 @@ class VerifyScdnDomainOwnerRequest(TeaModel):
         m = m or dict()
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('VerifyType') is not None:
             self.verify_type = m.get('VerifyType')
         return self
@@ -12246,13 +12403,16 @@ class VerifyScdnDomainOwnerResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: VerifyScdnDomainOwnerResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12265,6 +12425,8 @@ class VerifyScdnDomainOwnerResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12273,6 +12435,8 @@ class VerifyScdnDomainOwnerResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = VerifyScdnDomainOwnerResponseBody()
             self.body = temp_model.from_map(m['body'])

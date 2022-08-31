@@ -1,3 +1,6 @@
+2022-08-31 Version: 1.0.4
+- Support STS.
+
 2022-04-28 Version: 1.0.3
 - Update VerifyScdnDomainOwner.
 
