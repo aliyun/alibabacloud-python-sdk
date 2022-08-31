@@ -1,3 +1,6 @@
+2022-08-31 Version: 2.0.8
+- Support DescribeEipAddresses return Tags.
+
 2022-08-26 Version: 2.0.7
 - Support DescribeNatGateways return Tags.
 
