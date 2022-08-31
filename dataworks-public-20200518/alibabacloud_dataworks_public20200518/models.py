@@ -28305,6 +28305,7 @@ class ListAlertMessagesRequest(TeaModel):
         alert_methods: str = None,
         alert_rule_types: str = None,
         alert_user: str = None,
+        baseline_id: int = None,
         begin_time: str = None,
         end_time: str = None,
         page_number: int = None,
@@ -28314,6 +28315,7 @@ class ListAlertMessagesRequest(TeaModel):
         self.alert_methods = alert_methods
         self.alert_rule_types = alert_rule_types
         self.alert_user = alert_user
+        self.baseline_id = baseline_id
         self.begin_time = begin_time
         self.end_time = end_time
         self.page_number = page_number
@@ -28335,6 +28337,8 @@ class ListAlertMessagesRequest(TeaModel):
             result['AlertRuleTypes'] = self.alert_rule_types
         if self.alert_user is not None:
             result['AlertUser'] = self.alert_user
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
         if self.begin_time is not None:
             result['BeginTime'] = self.begin_time
         if self.end_time is not None:
@@ -28355,6 +28359,8 @@ class ListAlertMessagesRequest(TeaModel):
             self.alert_rule_types = m.get('AlertRuleTypes')
         if m.get('AlertUser') is not None:
             self.alert_user = m.get('AlertUser')
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
         if m.get('BeginTime') is not None:
             self.begin_time = m.get('BeginTime')
         if m.get('EndTime') is not None:
@@ -38119,6 +38125,7 @@ class ListInstancesRequest(TeaModel):
         program_type: str = None,
         project_env: str = None,
         project_id: int = None,
+        status: str = None,
     ):
         self.begin_bizdate = begin_bizdate
         self.biz_name = biz_name
@@ -38133,6 +38140,7 @@ class ListInstancesRequest(TeaModel):
         self.program_type = program_type
         self.project_env = project_env
         self.project_id = project_id
+        self.status = status
 
     def validate(self):
         pass
@@ -38169,6 +38177,8 @@ class ListInstancesRequest(TeaModel):
             result['ProjectEnv'] = self.project_env
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -38199,6 +38209,8 @@ class ListInstancesRequest(TeaModel):
             self.project_env = m.get('ProjectEnv')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 

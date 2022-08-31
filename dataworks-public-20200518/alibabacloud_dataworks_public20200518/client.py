@@ -10677,6 +10677,8 @@ class Client(OpenApiClient):
             body['AlertRuleTypes'] = request.alert_rule_types
         if not UtilClient.is_unset(request.alert_user):
             body['AlertUser'] = request.alert_user
+        if not UtilClient.is_unset(request.baseline_id):
+            body['BaselineId'] = request.baseline_id
         if not UtilClient.is_unset(request.begin_time):
             body['BeginTime'] = request.begin_time
         if not UtilClient.is_unset(request.end_time):
@@ -10719,6 +10721,8 @@ class Client(OpenApiClient):
             body['AlertRuleTypes'] = request.alert_rule_types
         if not UtilClient.is_unset(request.alert_user):
             body['AlertUser'] = request.alert_user
+        if not UtilClient.is_unset(request.baseline_id):
+            body['BaselineId'] = request.baseline_id
         if not UtilClient.is_unset(request.begin_time):
             body['BeginTime'] = request.begin_time
         if not UtilClient.is_unset(request.end_time):
@@ -13187,6 +13191,8 @@ class Client(OpenApiClient):
             body['ProjectEnv'] = request.project_env
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -13239,6 +13245,8 @@ class Client(OpenApiClient):
             body['ProjectEnv'] = request.project_env
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
