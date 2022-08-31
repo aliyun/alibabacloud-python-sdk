@@ -9015,7 +9015,7 @@ class DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataM
         self,
         time_stamp: str = None,
         total_value: str = None,
-        value: str = None,
+        value: Dict[str, Any] = None,
     ):
         self.time_stamp = time_stamp
         self.total_value = total_value
